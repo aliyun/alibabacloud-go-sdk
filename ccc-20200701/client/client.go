@@ -994,6 +994,7 @@ type AnswerCallResponseBodyDataCallContextChannelContexts struct {
 	CallType         *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	ChannelId        *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	ChannelState     *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
 	Destination      *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Originator       *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
@@ -1025,6 +1026,11 @@ func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetChannelId(v st
 
 func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetChannelState(v string) *AnswerCallResponseBodyDataCallContextChannelContexts {
 	s.ChannelState = &v
+	return s
+}
+
+func (s *AnswerCallResponseBodyDataCallContextChannelContexts) SetChannelVariables(v string) *AnswerCallResponseBodyDataCallContextChannelContexts {
+	s.ChannelVariables = &v
 	return s
 }
 
@@ -6032,6 +6038,110 @@ func (s *ExportDoNotCallNumbersResponse) SetBody(v *ExportDoNotCallNumbersRespon
 	return s
 }
 
+type GetAccessChannelOfStagingRequest struct {
+	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+}
+
+func (s GetAccessChannelOfStagingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessChannelOfStagingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessChannelOfStagingRequest) SetSearchPattern(v string) *GetAccessChannelOfStagingRequest {
+	s.SearchPattern = &v
+	return s
+}
+
+type GetAccessChannelOfStagingResponseBody struct {
+	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetAccessChannelOfStagingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccessChannelOfStagingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessChannelOfStagingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessChannelOfStagingResponseBody) SetCode(v string) *GetAccessChannelOfStagingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponseBody) SetData(v *GetAccessChannelOfStagingResponseBodyData) *GetAccessChannelOfStagingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponseBody) SetHttpStatusCode(v int32) *GetAccessChannelOfStagingResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponseBody) SetMessage(v string) *GetAccessChannelOfStagingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponseBody) SetRequestId(v string) *GetAccessChannelOfStagingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccessChannelOfStagingResponseBodyData struct {
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetAccessChannelOfStagingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessChannelOfStagingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessChannelOfStagingResponseBodyData) SetToken(v string) *GetAccessChannelOfStagingResponseBodyData {
+	s.Token = &v
+	return s
+}
+
+type GetAccessChannelOfStagingResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAccessChannelOfStagingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAccessChannelOfStagingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessChannelOfStagingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessChannelOfStagingResponse) SetHeaders(v map[string]*string) *GetAccessChannelOfStagingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponse) SetStatusCode(v int32) *GetAccessChannelOfStagingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccessChannelOfStagingResponse) SetBody(v *GetAccessChannelOfStagingResponseBody) *GetAccessChannelOfStagingResponse {
+	s.Body = v
+	return s
+}
+
 type GetAudioFileRequest struct {
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9724,8 +9834,9 @@ func (s *GetLoginDetailsResponse) SetBody(v *GetLoginDetailsResponseBody) *GetLo
 }
 
 type GetMonoRecordingRequest struct {
-	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ContactId     *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ExpireSeconds *int64  `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s GetMonoRecordingRequest) String() string {
@@ -9738,6 +9849,11 @@ func (s GetMonoRecordingRequest) GoString() string {
 
 func (s *GetMonoRecordingRequest) SetContactId(v string) *GetMonoRecordingRequest {
 	s.ContactId = &v
+	return s
+}
+
+func (s *GetMonoRecordingRequest) SetExpireSeconds(v int64) *GetMonoRecordingRequest {
+	s.ExpireSeconds = &v
 	return s
 }
 
@@ -13547,11 +13663,13 @@ func (s *ListAgentStateLogsResponseBody) SetRequestId(v string) *ListAgentStateL
 }
 
 type ListAgentStateLogsResponseBodyData struct {
+	BreakCode        *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
 	Duration         *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OutboundScenario *bool   `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
 	StartTime        *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	State            *string `json:"State,omitempty" xml:"State,omitempty"`
 	StateCode        *string `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
+	WorkMode         *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s ListAgentStateLogsResponseBodyData) String() string {
@@ -13560,6 +13678,11 @@ func (s ListAgentStateLogsResponseBodyData) String() string {
 
 func (s ListAgentStateLogsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListAgentStateLogsResponseBodyData) SetBreakCode(v string) *ListAgentStateLogsResponseBodyData {
+	s.BreakCode = &v
+	return s
 }
 
 func (s *ListAgentStateLogsResponseBodyData) SetDuration(v int64) *ListAgentStateLogsResponseBodyData {
@@ -13584,6 +13707,11 @@ func (s *ListAgentStateLogsResponseBodyData) SetState(v string) *ListAgentStateL
 
 func (s *ListAgentStateLogsResponseBodyData) SetStateCode(v string) *ListAgentStateLogsResponseBodyData {
 	s.StateCode = &v
+	return s
+}
+
+func (s *ListAgentStateLogsResponseBodyData) SetWorkMode(v string) *ListAgentStateLogsResponseBodyData {
+	s.WorkMode = &v
 	return s
 }
 
@@ -15329,6 +15457,7 @@ type ListCallDetailRecordsResponseBodyDataList struct {
 	DialingTime               *int64  `json:"DialingTime,omitempty" xml:"DialingTime,omitempty"`
 	EarlyMediaState           *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
 	EstablishedTime           *int64  `json:"EstablishedTime,omitempty" xml:"EstablishedTime,omitempty"`
+	HeldTime                  *int64  `json:"HeldTime,omitempty" xml:"HeldTime,omitempty"`
 	InstanceId                *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IvrTime                   *int64  `json:"IvrTime,omitempty" xml:"IvrTime,omitempty"`
 	QueueTime                 *int64  `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
@@ -15429,6 +15558,11 @@ func (s *ListCallDetailRecordsResponseBodyDataList) SetEarlyMediaState(v string)
 
 func (s *ListCallDetailRecordsResponseBodyDataList) SetEstablishedTime(v int64) *ListCallDetailRecordsResponseBodyDataList {
 	s.EstablishedTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsResponseBodyDataList) SetHeldTime(v int64) *ListCallDetailRecordsResponseBodyDataList {
+	s.HeldTime = &v
 	return s
 }
 
@@ -17819,28 +17953,36 @@ func (s *ListHistoricalAgentReportResponseBodyDataListOutbound) SetTotalWorkTime
 }
 
 type ListHistoricalAgentReportResponseBodyDataListOverall struct {
-	AverageBreakTime             *float32 `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
-	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
-	AverageReadyTime             *float32 `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
-	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
-	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
-	MaxBreakTime                 *int64   `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
-	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
-	MaxReadyTime                 *int64   `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
-	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
-	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
-	OccupancyRate                *float32 `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
-	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
-	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
-	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
-	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
-	TotalBreakTime               *int64   `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
-	TotalCalls                   *int64   `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
-	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
-	TotalLoggedInTime            *int64   `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
-	TotalReadyTime               *int64   `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
-	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
-	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+	AverageBreakTime               *float32                                                                   `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
+	AverageHoldTime                *float32                                                                   `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageReadyTime               *float32                                                                   `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	AverageTalkTime                *float32                                                                   `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime                *float32                                                                   `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	BreakCodeDetailList            []*ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	FirstCheckInTime               *int64                                                                     `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
+	LastCheckOutTime               *int64                                                                     `json:"LastCheckOutTime,omitempty" xml:"LastCheckOutTime,omitempty"`
+	MaxBreakTime                   *int64                                                                     `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
+	MaxHoldTime                    *int64                                                                     `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxReadyTime                   *int64                                                                     `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	MaxTalkTime                    *int64                                                                     `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                    *int64                                                                     `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	OccupancyRate                  *float32                                                                   `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	SatisfactionIndex              *float32                                                                   `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate               *float32                                                                   `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered     *int64                                                                     `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded   *int64                                                                     `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalBreakTime                 *int64                                                                     `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	TotalCalls                     *int64                                                                     `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	TotalHoldTime                  *int64                                                                     `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalLoggedInTime              *int64                                                                     `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	TotalOffSiteOnlineTime         *int64                                                                     `json:"TotalOffSiteOnlineTime,omitempty" xml:"TotalOffSiteOnlineTime,omitempty"`
+	TotalOfficePhoneOnlineTime     *int64                                                                     `json:"TotalOfficePhoneOnlineTime,omitempty" xml:"TotalOfficePhoneOnlineTime,omitempty"`
+	TotalOnSiteOnlineTime          *int64                                                                     `json:"TotalOnSiteOnlineTime,omitempty" xml:"TotalOnSiteOnlineTime,omitempty"`
+	TotalOutboundScenarioReadyTime *int64                                                                     `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	TotalOutboundScenarioTime      *int64                                                                     `json:"TotalOutboundScenarioTime,omitempty" xml:"TotalOutboundScenarioTime,omitempty"`
+	TotalReadyTime                 *int64                                                                     `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	TotalTalkTime                  *int64                                                                     `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                  *int64                                                                     `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
 }
 
 func (s ListHistoricalAgentReportResponseBodyDataListOverall) String() string {
@@ -17873,6 +18015,21 @@ func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetAverageTalkTim
 
 func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetAverageWorkTime(v float32) *ListHistoricalAgentReportResponseBodyDataListOverall {
 	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetBreakCodeDetailList(v []*ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.BreakCodeDetailList = v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetFirstCheckInTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.FirstCheckInTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetLastCheckOutTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.LastCheckOutTime = &v
 	return s
 }
 
@@ -17946,6 +18103,31 @@ func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalLoggedInT
 	return s
 }
 
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalOffSiteOnlineTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.TotalOffSiteOnlineTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalOfficePhoneOnlineTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.TotalOfficePhoneOnlineTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalOnSiteOnlineTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.TotalOnSiteOnlineTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalOutboundScenarioReadyTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.TotalOutboundScenarioReadyTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalOutboundScenarioTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
+	s.TotalOutboundScenarioTime = &v
+	return s
+}
+
 func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalReadyTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
 	s.TotalReadyTime = &v
 	return s
@@ -17958,6 +18140,35 @@ func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalTalkTime(
 
 func (s *ListHistoricalAgentReportResponseBodyDataListOverall) SetTotalWorkTime(v int64) *ListHistoricalAgentReportResponseBodyDataListOverall {
 	s.TotalWorkTime = &v
+	return s
+}
+
+type ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList struct {
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) SetBreakCode(v string) *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) SetCount(v int64) *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.Count = &v
+	return s
+}
+
+func (s *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList) SetDuration(v int64) *ListHistoricalAgentReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.Duration = &v
 	return s
 }
 
@@ -17986,6 +18197,937 @@ func (s *ListHistoricalAgentReportResponse) SetStatusCode(v int32) *ListHistoric
 }
 
 func (s *ListHistoricalAgentReportResponse) SetBody(v *ListHistoricalAgentReportResponseBody) *ListHistoricalAgentReportResponse {
+	s.Body = v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportRequest struct {
+	AgentIdList      *string `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty"`
+	EndTime          *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
+	StartTime        *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetAgentIdList(v string) *ListHistoricalAgentSkillGroupReportRequest {
+	s.AgentIdList = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetEndTime(v int64) *ListHistoricalAgentSkillGroupReportRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetInstanceId(v string) *ListHistoricalAgentSkillGroupReportRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetPageNumber(v int32) *ListHistoricalAgentSkillGroupReportRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetPageSize(v int32) *ListHistoricalAgentSkillGroupReportRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetSkillGroupIdList(v string) *ListHistoricalAgentSkillGroupReportRequest {
+	s.SkillGroupIdList = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportRequest) SetStartTime(v int64) *ListHistoricalAgentSkillGroupReportRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBody struct {
+	Code           *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListHistoricalAgentSkillGroupReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBody) SetCode(v string) *ListHistoricalAgentSkillGroupReportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBody) SetData(v *ListHistoricalAgentSkillGroupReportResponseBodyData) *ListHistoricalAgentSkillGroupReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBody) SetHttpStatusCode(v int32) *ListHistoricalAgentSkillGroupReportResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBody) SetMessage(v string) *ListHistoricalAgentSkillGroupReportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBody) SetRequestId(v string) *ListHistoricalAgentSkillGroupReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyData struct {
+	List       []*ListHistoricalAgentSkillGroupReportResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNumber *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyData) SetList(v []*ListHistoricalAgentSkillGroupReportResponseBodyDataList) *ListHistoricalAgentSkillGroupReportResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyData) SetPageNumber(v int32) *ListHistoricalAgentSkillGroupReportResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyData) SetPageSize(v int32) *ListHistoricalAgentSkillGroupReportResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyData) SetTotalCount(v int32) *ListHistoricalAgentSkillGroupReportResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataList struct {
+	AgentId        *string                                                           `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName      *string                                                           `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	Back2Back      *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back `json:"Back2Back,omitempty" xml:"Back2Back,omitempty" type:"Struct"`
+	DisplayId      *string                                                           `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	Inbound        *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound   `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
+	Internal       *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal  `json:"Internal,omitempty" xml:"Internal,omitempty" type:"Struct"`
+	Outbound       *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound  `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
+	Overall        *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall   `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	SkillGroupId   *string                                                           `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupName *string                                                           `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetAgentId(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetAgentName(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetBack2Back(v *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.Back2Back = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetDisplayId(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.DisplayId = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetInbound(v *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.Inbound = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetInternal(v *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.Internal = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetOutbound(v *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.Outbound = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetOverall(v *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.Overall = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetSkillGroupId(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataList) SetSkillGroupName(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataList {
+	s.SkillGroupName = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back struct {
+	AgentAnswerRate         *float32 `json:"AgentAnswerRate,omitempty" xml:"AgentAnswerRate,omitempty"`
+	AnswerRate              *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	AverageCustomerRingTime *float32 `json:"AverageCustomerRingTime,omitempty" xml:"AverageCustomerRingTime,omitempty"`
+	AverageRingTime         *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime         *int64   `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	CallsAnswered           *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsCustomerHandled    *int64   `json:"CallsCustomerHandled,omitempty" xml:"CallsCustomerHandled,omitempty"`
+	CallsDialed             *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CustomerHandleRate      *float32 `json:"CustomerHandleRate,omitempty" xml:"CustomerHandleRate,omitempty"`
+	MaxCustomerRingTime     *int64   `json:"MaxCustomerRingTime,omitempty" xml:"MaxCustomerRingTime,omitempty"`
+	MaxRingTime             *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime             *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	TotalCustomerRingTime   *int64   `json:"TotalCustomerRingTime,omitempty" xml:"TotalCustomerRingTime,omitempty"`
+	TotalRingTime           *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime           *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetAgentAnswerRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.AgentAnswerRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetAnswerRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.AnswerRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetAverageCustomerRingTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.AverageCustomerRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetAverageRingTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetAverageTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetCallsAnswered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetCallsCustomerHandled(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.CallsCustomerHandled = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetCallsDialed(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetCustomerHandleRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.CustomerHandleRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetMaxCustomerRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.MaxCustomerRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetMaxRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetMaxTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetTotalCustomerRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.TotalCustomerRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetTotalRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back) SetTotalTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back {
+	s.TotalTalkTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound struct {
+	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageRingTime              *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAttendedTransferIn      *int64   `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	CallsAttendedTransferOut     *int64   `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	CallsBlindTransferIn         *int64   `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	CallsBlindTransferOut        *int64   `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	CallsHandled                 *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	CallsHold                    *int64   `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	CallsOffered                 *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsRinged                  *int64   `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	HandleRate                   *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
+	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxRingTime                  *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalRingTime                *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetAverageHoldTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetAverageRingTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetAverageTalkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetAverageWorkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsAttendedTransferIn(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsAttendedTransferIn = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsAttendedTransferOut(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsAttendedTransferOut = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsBlindTransferIn(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsBlindTransferIn = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsBlindTransferOut(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsBlindTransferOut = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsHandled(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsHandled = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsHold(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsHold = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsOffered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetCallsRinged(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.CallsRinged = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetHandleRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.HandleRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetMaxHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetMaxRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetMaxTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetMaxWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetSatisfactionIndex(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetSatisfactionRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetSatisfactionSurveysOffered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetSatisfactionSurveysResponded(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetTotalHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetTotalRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetTotalTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound) SetTotalWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal struct {
+	AverageTalkTime *int64 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	CallsAnswered   *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsDialed     *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CallsHandled    *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	CallsOffered    *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsTalk       *int64 `json:"CallsTalk,omitempty" xml:"CallsTalk,omitempty"`
+	MaxTalkTime     *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	TotalTalkTime   *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetAverageTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetCallsAnswered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetCallsDialed(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetCallsHandled(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.CallsHandled = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetCallsOffered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetCallsTalk(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.CallsTalk = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetMaxTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal) SetTotalTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal {
+	s.TotalTalkTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound struct {
+	AnswerRate                   *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	AverageDialingTime           *float32 `json:"AverageDialingTime,omitempty" xml:"AverageDialingTime,omitempty"`
+	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageRingTime              *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAnswered                *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsAttendedTransferIn      *int64   `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	CallsAttendedTransferOut     *int64   `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	CallsBlindTransferIn         *int64   `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	CallsBlindTransferOut        *int64   `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	CallsDialed                  *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CallsHold                    *int64   `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	CallsRinged                  *int64   `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	MaxDialingTime               *int64   `json:"MaxDialingTime,omitempty" xml:"MaxDialingTime,omitempty"`
+	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxRingTime                  *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalDialingTime             *int64   `json:"TotalDialingTime,omitempty" xml:"TotalDialingTime,omitempty"`
+	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalRingTime                *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAnswerRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AnswerRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAverageDialingTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AverageDialingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAverageHoldTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAverageRingTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAverageTalkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetAverageWorkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsAnswered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsAttendedTransferIn(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsAttendedTransferIn = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsAttendedTransferOut(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsAttendedTransferOut = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsBlindTransferIn(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsBlindTransferIn = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsBlindTransferOut(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsBlindTransferOut = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsDialed(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsHold(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsHold = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetCallsRinged(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.CallsRinged = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetMaxDialingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.MaxDialingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetMaxHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetMaxRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetMaxTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetMaxWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetSatisfactionIndex(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetSatisfactionRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetSatisfactionSurveysOffered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetSatisfactionSurveysResponded(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetTotalDialingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.TotalDialingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetTotalHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetTotalRingTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetTotalTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound) SetTotalWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall struct {
+	AverageBreakTime               *float32                                                                             `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
+	AverageHoldTime                *float32                                                                             `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageReadyTime               *float32                                                                             `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	AverageTalkTime                *float32                                                                             `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime                *float32                                                                             `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	BreakCodeDetailList            []*ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	FirstCheckInTime               *int64                                                                               `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
+	LastCheckOutTime               *int64                                                                               `json:"LastCheckOutTime,omitempty" xml:"LastCheckOutTime,omitempty"`
+	MaxBreakTime                   *int64                                                                               `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
+	MaxHoldTime                    *int64                                                                               `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxReadyTime                   *int64                                                                               `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	MaxTalkTime                    *int64                                                                               `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                    *int64                                                                               `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	OccupancyRate                  *float32                                                                             `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	SatisfactionIndex              *float32                                                                             `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate               *float32                                                                             `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered     *int64                                                                               `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded   *int64                                                                               `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalBreakTime                 *int64                                                                               `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	TotalCalls                     *int64                                                                               `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	TotalHoldTime                  *int64                                                                               `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalLoggedInTime              *int64                                                                               `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	TotalOutboundScenarioReadyTime *int64                                                                               `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	TotalOutboundScenarioTime      *int64                                                                               `json:"TotalOutboundScenarioTime,omitempty" xml:"TotalOutboundScenarioTime,omitempty"`
+	TotalReadyTime                 *int64                                                                               `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	TotalTalkTime                  *int64                                                                               `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                  *int64                                                                               `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetAverageBreakTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.AverageBreakTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetAverageHoldTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetAverageReadyTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.AverageReadyTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetAverageTalkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetAverageWorkTime(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetBreakCodeDetailList(v []*ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.BreakCodeDetailList = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetFirstCheckInTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.FirstCheckInTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetLastCheckOutTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.LastCheckOutTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetMaxBreakTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.MaxBreakTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetMaxHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetMaxReadyTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.MaxReadyTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetMaxTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetMaxWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetOccupancyRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.OccupancyRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetSatisfactionIndex(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetSatisfactionRate(v float32) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetSatisfactionSurveysOffered(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetSatisfactionSurveysResponded(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalBreakTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalBreakTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalCalls(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalCalls = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalHoldTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalLoggedInTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalLoggedInTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalOutboundScenarioReadyTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalOutboundScenarioReadyTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalOutboundScenarioTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalOutboundScenarioTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalReadyTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalReadyTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalTalkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall) SetTotalWorkTime(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList struct {
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) SetBreakCode(v string) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) SetCount(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.Count = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList) SetDuration(v int64) *ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList {
+	s.Duration = &v
+	return s
+}
+
+type ListHistoricalAgentSkillGroupReportResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListHistoricalAgentSkillGroupReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoricalAgentSkillGroupReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponse) SetHeaders(v map[string]*string) *ListHistoricalAgentSkillGroupReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponse) SetStatusCode(v int32) *ListHistoricalAgentSkillGroupReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListHistoricalAgentSkillGroupReportResponse) SetBody(v *ListHistoricalAgentSkillGroupReportResponseBody) *ListHistoricalAgentSkillGroupReportResponse {
 	s.Body = v
 	return s
 }
@@ -19913,30 +21055,36 @@ func (s *ListIntervalAgentReportResponseBodyDataOutbound) SetTotalWorkTime(v int
 }
 
 type ListIntervalAgentReportResponseBodyDataOverall struct {
-	AverageBreakTime             *float32 `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
-	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
-	AverageReadyTime             *float32 `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
-	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
-	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
-	FirstCheckInTime             *int64   `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
-	LastCheckoutTime             *int64   `json:"LastCheckoutTime,omitempty" xml:"LastCheckoutTime,omitempty"`
-	MaxBreakTime                 *int64   `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
-	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
-	MaxReadyTime                 *int64   `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
-	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
-	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
-	OccupancyRate                *float32 `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
-	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
-	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
-	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
-	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
-	TotalBreakTime               *int64   `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
-	TotalCalls                   *int64   `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
-	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
-	TotalLoggedInTime            *int64   `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
-	TotalReadyTime               *int64   `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
-	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
-	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+	AverageBreakTime               *float32                                                             `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
+	AverageHoldTime                *float32                                                             `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageReadyTime               *float32                                                             `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	AverageTalkTime                *float32                                                             `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime                *float32                                                             `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	BreakCodeDetailList            []*ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	FirstCheckInTime               *int64                                                               `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
+	LastCheckoutTime               *int64                                                               `json:"LastCheckoutTime,omitempty" xml:"LastCheckoutTime,omitempty"`
+	MaxBreakTime                   *int64                                                               `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
+	MaxHoldTime                    *int64                                                               `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxReadyTime                   *int64                                                               `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	MaxTalkTime                    *int64                                                               `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                    *int64                                                               `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	OccupancyRate                  *float32                                                             `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	SatisfactionIndex              *float32                                                             `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate               *float32                                                             `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered     *int64                                                               `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded   *int64                                                               `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalBreakTime                 *int64                                                               `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	TotalCalls                     *int64                                                               `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	TotalHoldTime                  *int64                                                               `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalLoggedInTime              *int64                                                               `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	TotalOffSiteOnlineTime         *int64                                                               `json:"TotalOffSiteOnlineTime,omitempty" xml:"TotalOffSiteOnlineTime,omitempty"`
+	TotalOfficePhoneOnlineTime     *int64                                                               `json:"TotalOfficePhoneOnlineTime,omitempty" xml:"TotalOfficePhoneOnlineTime,omitempty"`
+	TotalOnSiteOnlineTime          *int64                                                               `json:"TotalOnSiteOnlineTime,omitempty" xml:"TotalOnSiteOnlineTime,omitempty"`
+	TotalOutboundScenarioReadyTime *int64                                                               `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	TotalOutboundScenarioTime      *int64                                                               `json:"TotalOutboundScenarioTime,omitempty" xml:"TotalOutboundScenarioTime,omitempty"`
+	TotalReadyTime                 *int64                                                               `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	TotalTalkTime                  *int64                                                               `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                  *int64                                                               `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
 }
 
 func (s ListIntervalAgentReportResponseBodyDataOverall) String() string {
@@ -19969,6 +21117,11 @@ func (s *ListIntervalAgentReportResponseBodyDataOverall) SetAverageTalkTime(v fl
 
 func (s *ListIntervalAgentReportResponseBodyDataOverall) SetAverageWorkTime(v float32) *ListIntervalAgentReportResponseBodyDataOverall {
 	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetBreakCodeDetailList(v []*ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.BreakCodeDetailList = v
 	return s
 }
 
@@ -20052,6 +21205,31 @@ func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalLoggedInTime(v 
 	return s
 }
 
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalOffSiteOnlineTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.TotalOffSiteOnlineTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalOfficePhoneOnlineTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.TotalOfficePhoneOnlineTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalOnSiteOnlineTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.TotalOnSiteOnlineTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalOutboundScenarioReadyTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.TotalOutboundScenarioReadyTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalOutboundScenarioTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
+	s.TotalOutboundScenarioTime = &v
+	return s
+}
+
 func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalReadyTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
 	s.TotalReadyTime = &v
 	return s
@@ -20064,6 +21242,35 @@ func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalTalkTime(v int6
 
 func (s *ListIntervalAgentReportResponseBodyDataOverall) SetTotalWorkTime(v int64) *ListIntervalAgentReportResponseBodyDataOverall {
 	s.TotalWorkTime = &v
+	return s
+}
+
+type ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList struct {
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) SetBreakCode(v string) *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) SetCount(v int64) *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) SetDuration(v int64) *ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList {
+	s.Duration = &v
 	return s
 }
 
@@ -20092,6 +21299,872 @@ func (s *ListIntervalAgentReportResponse) SetStatusCode(v int32) *ListIntervalAg
 }
 
 func (s *ListIntervalAgentReportResponse) SetBody(v *ListIntervalAgentReportResponseBody) *ListIntervalAgentReportResponse {
+	s.Body = v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportRequest struct {
+	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Interval     *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetAgentId(v string) *ListIntervalAgentSkillGroupReportRequest {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetEndTime(v int64) *ListIntervalAgentSkillGroupReportRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetInstanceId(v string) *ListIntervalAgentSkillGroupReportRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetInterval(v string) *ListIntervalAgentSkillGroupReportRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetSkillGroupId(v string) *ListIntervalAgentSkillGroupReportRequest {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportRequest) SetStartTime(v int64) *ListIntervalAgentSkillGroupReportRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBody struct {
+	Code           *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListIntervalAgentSkillGroupReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBody) SetCode(v string) *ListIntervalAgentSkillGroupReportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBody) SetData(v []*ListIntervalAgentSkillGroupReportResponseBodyData) *ListIntervalAgentSkillGroupReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBody) SetHttpStatusCode(v int32) *ListIntervalAgentSkillGroupReportResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBody) SetMessage(v string) *ListIntervalAgentSkillGroupReportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBody) SetRequestId(v string) *ListIntervalAgentSkillGroupReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyData struct {
+	Back2Back *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back `json:"Back2Back,omitempty" xml:"Back2Back,omitempty" type:"Struct"`
+	Inbound   *ListIntervalAgentSkillGroupReportResponseBodyDataInbound   `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
+	Internal  *ListIntervalAgentSkillGroupReportResponseBodyDataInternal  `json:"Internal,omitempty" xml:"Internal,omitempty" type:"Struct"`
+	Outbound  *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound  `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
+	Overall   *ListIntervalAgentSkillGroupReportResponseBodyDataOverall   `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	StatsTime *int64                                                      `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetBack2Back(v *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.Back2Back = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetInbound(v *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.Inbound = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetInternal(v *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.Internal = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetOutbound(v *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.Outbound = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetOverall(v *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.Overall = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyData) SetStatsTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyData {
+	s.StatsTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back struct {
+	AgentAnswerRate         *float32 `json:"AgentAnswerRate,omitempty" xml:"AgentAnswerRate,omitempty"`
+	AnswerRate              *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	AverageCustomerRingTime *float32 `json:"AverageCustomerRingTime,omitempty" xml:"AverageCustomerRingTime,omitempty"`
+	AverageRingTime         *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime         *int64   `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	CallsAnswered           *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsCustomerHandled    *int64   `json:"CallsCustomerHandled,omitempty" xml:"CallsCustomerHandled,omitempty"`
+	CallsDialed             *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CustomerHandleRate      *float32 `json:"CustomerHandleRate,omitempty" xml:"CustomerHandleRate,omitempty"`
+	MaxCustomerRingTime     *int64   `json:"MaxCustomerRingTime,omitempty" xml:"MaxCustomerRingTime,omitempty"`
+	MaxRingTime             *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime             *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	TotalCustomerRingTime   *int64   `json:"TotalCustomerRingTime,omitempty" xml:"TotalCustomerRingTime,omitempty"`
+	TotalRingTime           *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime           *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetAgentAnswerRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.AgentAnswerRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetAnswerRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.AnswerRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetAverageCustomerRingTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.AverageCustomerRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetAverageRingTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetAverageTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetCallsAnswered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetCallsCustomerHandled(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.CallsCustomerHandled = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetCallsDialed(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetCustomerHandleRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.CustomerHandleRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetMaxCustomerRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.MaxCustomerRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetMaxRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetMaxTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetTotalCustomerRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.TotalCustomerRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetTotalRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back) SetTotalTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back {
+	s.TotalTalkTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataInbound struct {
+	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageRingTime              *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAttendedTransferIn      *int64   `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	CallsAttendedTransferOut     *int64   `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	CallsBlindTransferIn         *int64   `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	CallsBlindTransferOut        *int64   `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	CallsHandled                 *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	CallsHold                    *int64   `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	CallsOffered                 *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsRinged                  *int64   `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	HandleRate                   *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
+	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxRingTime                  *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalRingTime                *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataInbound) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataInbound) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetAverageHoldTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetAverageRingTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetAverageTalkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetAverageWorkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsAttendedTransferIn(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsAttendedTransferIn = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsAttendedTransferOut(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsAttendedTransferOut = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsBlindTransferIn(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsBlindTransferIn = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsBlindTransferOut(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsBlindTransferOut = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsHandled(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsHandled = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsHold(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsHold = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsOffered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetCallsRinged(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.CallsRinged = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetHandleRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.HandleRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetMaxHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetMaxRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetMaxTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetMaxWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetSatisfactionIndex(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetSatisfactionRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetSatisfactionSurveysOffered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetSatisfactionSurveysResponded(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetTotalHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetTotalRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetTotalTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInbound) SetTotalWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInbound {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataInternal struct {
+	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	CallsAnswered   *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsDialed     *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CallsHandled    *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	CallsOffered    *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsTalk       *int64   `json:"CallsTalk,omitempty" xml:"CallsTalk,omitempty"`
+	MaxTalkTime     *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	TotalTalkTime   *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataInternal) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataInternal) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetAverageTalkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetCallsAnswered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetCallsDialed(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetCallsHandled(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.CallsHandled = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetCallsOffered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetCallsTalk(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.CallsTalk = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetMaxTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataInternal) SetTotalTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataInternal {
+	s.TotalTalkTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataOutbound struct {
+	AnswerRate                   *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	AverageDialingTime           *float32 `json:"AverageDialingTime,omitempty" xml:"AverageDialingTime,omitempty"`
+	AverageHoldTime              *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageRingTime              *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	AverageTalkTime              *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime              *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	CallsAnswered                *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	CallsAttendedTransferIn      *int64   `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	CallsAttendedTransferOut     *int64   `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	CallsBlindTransferIn         *int64   `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	CallsBlindTransferOut        *int64   `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	CallsDialed                  *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	CallsHold                    *int64   `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	CallsRinged                  *int64   `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	MaxDialingTime               *int64   `json:"MaxDialingTime,omitempty" xml:"MaxDialingTime,omitempty"`
+	MaxHoldTime                  *int64   `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxRingTime                  *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	MaxTalkTime                  *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                  *int64   `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	SatisfactionIndex            *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate             *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered   *int64   `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalDialingTime             *int64   `json:"TotalDialingTime,omitempty" xml:"TotalDialingTime,omitempty"`
+	TotalHoldTime                *int64   `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalRingTime                *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	TotalTalkTime                *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                *int64   `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAnswerRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AnswerRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAverageDialingTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AverageDialingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAverageHoldTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAverageRingTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AverageRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAverageTalkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetAverageWorkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsAnswered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsAnswered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsAttendedTransferIn(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsAttendedTransferIn = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsAttendedTransferOut(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsAttendedTransferOut = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsBlindTransferIn(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsBlindTransferIn = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsBlindTransferOut(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsBlindTransferOut = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsDialed(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsDialed = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsHold(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsHold = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetCallsRinged(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.CallsRinged = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetMaxDialingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.MaxDialingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetMaxHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetMaxRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.MaxRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetMaxTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetMaxWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetSatisfactionIndex(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetSatisfactionRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetSatisfactionSurveysOffered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetSatisfactionSurveysResponded(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetTotalDialingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.TotalDialingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetTotalHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetTotalRingTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.TotalRingTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetTotalTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound) SetTotalWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOutbound {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataOverall struct {
+	AverageBreakTime               *float32                                                                       `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
+	AverageHoldTime                *float32                                                                       `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageReadyTime               *float32                                                                       `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	AverageTalkTime                *float32                                                                       `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	AverageWorkTime                *float32                                                                       `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	BreakCodeDetailList            []*ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	FirstCheckInTime               *int64                                                                         `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
+	LastCheckoutTime               *int64                                                                         `json:"LastCheckoutTime,omitempty" xml:"LastCheckoutTime,omitempty"`
+	MaxBreakTime                   *int64                                                                         `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
+	MaxHoldTime                    *int64                                                                         `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	MaxReadyTime                   *int64                                                                         `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	MaxTalkTime                    *int64                                                                         `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	MaxWorkTime                    *int64                                                                         `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	OccupancyRate                  *float32                                                                       `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	SatisfactionIndex              *float32                                                                       `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	SatisfactionRate               *float32                                                                       `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	SatisfactionSurveysOffered     *int64                                                                         `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	SatisfactionSurveysResponded   *int64                                                                         `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	TotalBreakTime                 *int64                                                                         `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	TotalCalls                     *int64                                                                         `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	TotalHoldTime                  *int64                                                                         `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	TotalLoggedInTime              *int64                                                                         `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	TotalOutboundScenarioReadyTime *int64                                                                         `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	TotalOutboundScenarioTime      *int64                                                                         `json:"TotalOutboundScenarioTime,omitempty" xml:"TotalOutboundScenarioTime,omitempty"`
+	TotalReadyTime                 *int64                                                                         `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	TotalTalkTime                  *int64                                                                         `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	TotalWorkTime                  *int64                                                                         `json:"TotalWorkTime,omitempty" xml:"TotalWorkTime,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOverall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOverall) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetAverageBreakTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.AverageBreakTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetAverageHoldTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.AverageHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetAverageReadyTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.AverageReadyTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetAverageTalkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.AverageTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetAverageWorkTime(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.AverageWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetBreakCodeDetailList(v []*ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.BreakCodeDetailList = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetFirstCheckInTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.FirstCheckInTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetLastCheckoutTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.LastCheckoutTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetMaxBreakTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.MaxBreakTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetMaxHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.MaxHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetMaxReadyTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.MaxReadyTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetMaxTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.MaxTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetMaxWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.MaxWorkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetOccupancyRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.OccupancyRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetSatisfactionIndex(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetSatisfactionRate(v float32) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.SatisfactionRate = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetSatisfactionSurveysOffered(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.SatisfactionSurveysOffered = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetSatisfactionSurveysResponded(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.SatisfactionSurveysResponded = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalBreakTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalBreakTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalCalls(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalCalls = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalHoldTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalHoldTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalLoggedInTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalLoggedInTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalOutboundScenarioReadyTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalOutboundScenarioReadyTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalOutboundScenarioTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalOutboundScenarioTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalReadyTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalReadyTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalTalkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalTalkTime = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverall) SetTotalWorkTime(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverall {
+	s.TotalWorkTime = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList struct {
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) SetBreakCode(v string) *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) SetCount(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList {
+	s.Count = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList) SetDuration(v int64) *ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList {
+	s.Duration = &v
+	return s
+}
+
+type ListIntervalAgentSkillGroupReportResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIntervalAgentSkillGroupReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIntervalAgentSkillGroupReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntervalAgentSkillGroupReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponse) SetHeaders(v map[string]*string) *ListIntervalAgentSkillGroupReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponse) SetStatusCode(v int32) *ListIntervalAgentSkillGroupReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIntervalAgentSkillGroupReportResponse) SetBody(v *ListIntervalAgentSkillGroupReportResponseBody) *ListIntervalAgentSkillGroupReportResponse {
 	s.Body = v
 	return s
 }
@@ -27237,6 +29310,236 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type ListVoicemailsRequest struct {
+	Caller     *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Deprecated
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListVoicemailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVoicemailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVoicemailsRequest) SetCaller(v string) *ListVoicemailsRequest {
+	s.Caller = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetContactId(v string) *ListVoicemailsRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetEndTime(v int64) *ListVoicemailsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetInstanceId(v string) *ListVoicemailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetName(v string) *ListVoicemailsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetPageNumber(v int32) *ListVoicemailsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetPageSize(v int32) *ListVoicemailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVoicemailsRequest) SetStartTime(v int64) *ListVoicemailsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListVoicemailsResponseBody struct {
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListVoicemailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListVoicemailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVoicemailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVoicemailsResponseBody) SetCode(v string) *ListVoicemailsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBody) SetData(v *ListVoicemailsResponseBodyData) *ListVoicemailsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListVoicemailsResponseBody) SetHttpStatusCode(v int32) *ListVoicemailsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBody) SetMessage(v string) *ListVoicemailsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBody) SetRequestId(v string) *ListVoicemailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListVoicemailsResponseBodyData struct {
+	List       []*ListVoicemailsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListVoicemailsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVoicemailsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListVoicemailsResponseBodyData) SetList(v []*ListVoicemailsResponseBodyDataList) *ListVoicemailsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyData) SetPageNumber(v int32) *ListVoicemailsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyData) SetPageSize(v int32) *ListVoicemailsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyData) SetTotalCount(v int32) *ListVoicemailsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListVoicemailsResponseBodyDataList struct {
+	Callee            *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	Caller            *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	CdrStartTime      *int64  `json:"CdrStartTime,omitempty" xml:"CdrStartTime,omitempty"`
+	ContactId         *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Duration          *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecordingDuration *int64  `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListVoicemailsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVoicemailsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetCallee(v string) *ListVoicemailsResponseBodyDataList {
+	s.Callee = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetCaller(v string) *ListVoicemailsResponseBodyDataList {
+	s.Caller = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetCdrStartTime(v int64) *ListVoicemailsResponseBodyDataList {
+	s.CdrStartTime = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetContactId(v string) *ListVoicemailsResponseBodyDataList {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetDuration(v int64) *ListVoicemailsResponseBodyDataList {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetInstanceId(v string) *ListVoicemailsResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetName(v string) *ListVoicemailsResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetRecordingDuration(v int64) *ListVoicemailsResponseBodyDataList {
+	s.RecordingDuration = &v
+	return s
+}
+
+func (s *ListVoicemailsResponseBodyDataList) SetStartTime(v string) *ListVoicemailsResponseBodyDataList {
+	s.StartTime = &v
+	return s
+}
+
+type ListVoicemailsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVoicemailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListVoicemailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVoicemailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVoicemailsResponse) SetHeaders(v map[string]*string) *ListVoicemailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVoicemailsResponse) SetStatusCode(v int32) *ListVoicemailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVoicemailsResponse) SetBody(v *ListVoicemailsResponseBody) *ListVoicemailsResponse {
+	s.Body = v
+	return s
+}
+
 type MakeCallRequest struct {
 	Callee         *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
 	Caller         *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
@@ -29762,6 +32065,116 @@ func (s *PollUserStatusResponse) SetBody(v *PollUserStatusResponseBody) *PollUse
 	return s
 }
 
+type ProcessAliMeCallbackOfStagingRequest struct {
+	Data  *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s ProcessAliMeCallbackOfStagingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessAliMeCallbackOfStagingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessAliMeCallbackOfStagingRequest) SetData(v string) *ProcessAliMeCallbackOfStagingRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingRequest) SetToken(v string) *ProcessAliMeCallbackOfStagingRequest {
+	s.Token = &v
+	return s
+}
+
+type ProcessAliMeCallbackOfStagingResponseBody struct {
+	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ProcessAliMeCallbackOfStagingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ProcessAliMeCallbackOfStagingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessAliMeCallbackOfStagingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBody) SetCode(v string) *ProcessAliMeCallbackOfStagingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBody) SetData(v *ProcessAliMeCallbackOfStagingResponseBodyData) *ProcessAliMeCallbackOfStagingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBody) SetHttpStatusCode(v int32) *ProcessAliMeCallbackOfStagingResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBody) SetMessage(v string) *ProcessAliMeCallbackOfStagingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBody) SetRequestId(v string) *ProcessAliMeCallbackOfStagingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ProcessAliMeCallbackOfStagingResponseBodyData struct {
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s ProcessAliMeCallbackOfStagingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessAliMeCallbackOfStagingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponseBodyData) SetResult(v string) *ProcessAliMeCallbackOfStagingResponseBodyData {
+	s.Result = &v
+	return s
+}
+
+type ProcessAliMeCallbackOfStagingResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ProcessAliMeCallbackOfStagingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ProcessAliMeCallbackOfStagingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessAliMeCallbackOfStagingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponse) SetHeaders(v map[string]*string) *ProcessAliMeCallbackOfStagingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponse) SetStatusCode(v int32) *ProcessAliMeCallbackOfStagingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ProcessAliMeCallbackOfStagingResponse) SetBody(v *ProcessAliMeCallbackOfStagingResponseBody) *ProcessAliMeCallbackOfStagingResponse {
+	s.Body = v
+	return s
+}
+
 type PublishContactFlowRequest struct {
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
 	DraftId       *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
@@ -30750,6 +33163,7 @@ type ReleaseCallResponseBodyDataCallContextChannelContexts struct {
 	CallType         *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	ChannelId        *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	ChannelState     *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
 	Destination      *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Originator       *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
@@ -30780,6 +33194,11 @@ func (s *ReleaseCallResponseBodyDataCallContextChannelContexts) SetChannelId(v s
 
 func (s *ReleaseCallResponseBodyDataCallContextChannelContexts) SetChannelState(v string) *ReleaseCallResponseBodyDataCallContextChannelContexts {
 	s.ChannelState = &v
+	return s
+}
+
+func (s *ReleaseCallResponseBodyDataCallContextChannelContexts) SetChannelVariables(v string) *ReleaseCallResponseBodyDataCallContextChannelContexts {
+	s.ChannelVariables = &v
 	return s
 }
 
@@ -36158,6 +38577,129 @@ func (s *UnregisterDeviceResponse) SetBody(v *UnregisterDeviceResponseBody) *Unr
 	return s
 }
 
+type UpdateCampaignRequest struct {
+	CallableTime       *string `json:"CallableTime,omitempty" xml:"CallableTime,omitempty"`
+	CampaignId         *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	ContactFlowId      *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StrategyParameters *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
+}
+
+func (s UpdateCampaignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCampaignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCampaignRequest) SetCallableTime(v string) *UpdateCampaignRequest {
+	s.CallableTime = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetCampaignId(v string) *UpdateCampaignRequest {
+	s.CampaignId = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetContactFlowId(v string) *UpdateCampaignRequest {
+	s.ContactFlowId = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetEndTime(v string) *UpdateCampaignRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetInstanceId(v string) *UpdateCampaignRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetName(v string) *UpdateCampaignRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetStartTime(v string) *UpdateCampaignRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateCampaignRequest) SetStrategyParameters(v string) *UpdateCampaignRequest {
+	s.StrategyParameters = &v
+	return s
+}
+
+type UpdateCampaignResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCampaignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCampaignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCampaignResponseBody) SetCode(v string) *UpdateCampaignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateCampaignResponseBody) SetHttpStatusCode(v int64) *UpdateCampaignResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateCampaignResponseBody) SetMessage(v string) *UpdateCampaignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateCampaignResponseBody) SetRequestId(v string) *UpdateCampaignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCampaignResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCampaignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateCampaignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCampaignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCampaignResponse) SetHeaders(v map[string]*string) *UpdateCampaignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCampaignResponse) SetStatusCode(v int32) *UpdateCampaignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCampaignResponse) SetBody(v *UpdateCampaignResponseBody) *UpdateCampaignResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateConfigItemsRequest struct {
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -38412,6 +40954,46 @@ func (client *Client) ExportDoNotCallNumbers(request *ExportDoNotCallNumbersRequ
 	return _result, _err
 }
 
+func (client *Client) GetAccessChannelOfStagingWithOptions(request *GetAccessChannelOfStagingRequest, runtime *util.RuntimeOptions) (_result *GetAccessChannelOfStagingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccessChannelOfStaging"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccessChannelOfStagingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAccessChannelOfStaging(request *GetAccessChannelOfStagingRequest) (_result *GetAccessChannelOfStagingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccessChannelOfStagingResponse{}
+	_body, _err := client.GetAccessChannelOfStagingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAudioFileWithOptions(request *GetAudioFileRequest, runtime *util.RuntimeOptions) (_result *GetAudioFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39244,6 +41826,10 @@ func (client *Client) GetMonoRecordingWithOptions(request *GetMonoRecordingReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
 		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireSeconds)) {
+		query["ExpireSeconds"] = request.ExpireSeconds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -41294,6 +43880,76 @@ func (client *Client) ListHistoricalAgentReport(request *ListHistoricalAgentRepo
 	return _result, _err
 }
 
+func (client *Client) ListHistoricalAgentSkillGroupReportWithOptions(request *ListHistoricalAgentSkillGroupReportRequest, runtime *util.RuntimeOptions) (_result *ListHistoricalAgentSkillGroupReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentIdList)) {
+		body["AgentIdList"] = request.AgentIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHistoricalAgentSkillGroupReport"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHistoricalAgentSkillGroupReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHistoricalAgentSkillGroupReport(request *ListHistoricalAgentSkillGroupReportRequest) (_result *ListHistoricalAgentSkillGroupReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHistoricalAgentSkillGroupReportResponse{}
+	_body, _err := client.ListHistoricalAgentSkillGroupReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListHistoricalSkillGroupReportWithOptions(request *ListHistoricalSkillGroupReportRequest, runtime *util.RuntimeOptions) (_result *ListHistoricalSkillGroupReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41509,6 +44165,46 @@ func (client *Client) ListIntervalAgentReport(request *ListIntervalAgentReportRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIntervalAgentReportResponse{}
 	_body, _err := client.ListIntervalAgentReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIntervalAgentSkillGroupReportWithOptions(request *ListIntervalAgentSkillGroupReportRequest, runtime *util.RuntimeOptions) (_result *ListIntervalAgentSkillGroupReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntervalAgentSkillGroupReport"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIntervalAgentSkillGroupReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIntervalAgentSkillGroupReport(request *ListIntervalAgentSkillGroupReportRequest) (_result *ListIntervalAgentSkillGroupReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIntervalAgentSkillGroupReportResponse{}
+	_body, _err := client.ListIntervalAgentSkillGroupReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43018,6 +45714,78 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	return _result, _err
 }
 
+func (client *Client) ListVoicemailsWithOptions(request *ListVoicemailsRequest, runtime *util.RuntimeOptions) (_result *ListVoicemailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Caller)) {
+		query["Caller"] = request.Caller
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVoicemails"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVoicemailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListVoicemails(request *ListVoicemailsRequest) (_result *ListVoicemailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVoicemailsResponse{}
+	_body, _err := client.ListVoicemailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) MakeCallWithOptions(request *MakeCallRequest, runtime *util.RuntimeOptions) (_result *MakeCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43811,6 +46579,54 @@ func (client *Client) PollUserStatus(request *PollUserStatusRequest) (_result *P
 	runtime := &util.RuntimeOptions{}
 	_result = &PollUserStatusResponse{}
 	_body, _err := client.PollUserStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ProcessAliMeCallbackOfStagingWithOptions(request *ProcessAliMeCallbackOfStagingRequest, runtime *util.RuntimeOptions) (_result *ProcessAliMeCallbackOfStagingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ProcessAliMeCallbackOfStaging"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ProcessAliMeCallbackOfStagingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ProcessAliMeCallbackOfStaging(request *ProcessAliMeCallbackOfStagingRequest) (_result *ProcessAliMeCallbackOfStagingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ProcessAliMeCallbackOfStagingResponse{}
+	_body, _err := client.ProcessAliMeCallbackOfStagingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45847,6 +48663,78 @@ func (client *Client) UnregisterDevice(request *UnregisterDeviceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UnregisterDeviceResponse{}
 	_body, _err := client.UnregisterDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCampaignWithOptions(request *UpdateCampaignRequest, runtime *util.RuntimeOptions) (_result *UpdateCampaignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallableTime)) {
+		query["CallableTime"] = request.CallableTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CampaignId)) {
+		query["CampaignId"] = request.CampaignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowId)) {
+		query["ContactFlowId"] = request.ContactFlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyParameters)) {
+		query["StrategyParameters"] = request.StrategyParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCampaign"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCampaignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCampaign(request *UpdateCampaignRequest) (_result *UpdateCampaignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCampaignResponse{}
+	_body, _err := client.UpdateCampaignWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
