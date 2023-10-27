@@ -28000,6 +28000,130 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStat
 	return s
 }
 
+type ListWorkitemAttachmentsResponseBody struct {
+	Attachments []*ListWorkitemAttachmentsResponseBodyAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
+	ErrorCode   *string                                           `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg    *string                                           `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListWorkitemAttachmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemAttachmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemAttachmentsResponseBody) SetAttachments(v []*ListWorkitemAttachmentsResponseBodyAttachments) *ListWorkitemAttachmentsResponseBody {
+	s.Attachments = v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBody) SetErrorCode(v string) *ListWorkitemAttachmentsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBody) SetErrorMsg(v string) *ListWorkitemAttachmentsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBody) SetRequestId(v string) *ListWorkitemAttachmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBody) SetSuccess(v bool) *ListWorkitemAttachmentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWorkitemAttachmentsResponseBodyAttachments struct {
+	Creator        *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	FileIdentifier *string `json:"fileIdentifier,omitempty" xml:"fileIdentifier,omitempty"`
+	FileName       *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	FileSuffix     *string `json:"fileSuffix,omitempty" xml:"fileSuffix,omitempty"`
+	GmtCreate      *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	Size           *string `json:"size,omitempty" xml:"size,omitempty"`
+	Url            *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListWorkitemAttachmentsResponseBodyAttachments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemAttachmentsResponseBodyAttachments) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetCreator(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetFileIdentifier(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.FileIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetFileName(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetFileSuffix(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.FileSuffix = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetGmtCreate(v int64) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetSize(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.Size = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponseBodyAttachments) SetUrl(v string) *ListWorkitemAttachmentsResponseBodyAttachments {
+	s.Url = &v
+	return s
+}
+
+type ListWorkitemAttachmentsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkitemAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkitemAttachmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemAttachmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemAttachmentsResponse) SetHeaders(v map[string]*string) *ListWorkitemAttachmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponse) SetStatusCode(v int32) *ListWorkitemAttachmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkitemAttachmentsResponse) SetBody(v *ListWorkitemAttachmentsResponseBody) *ListWorkitemAttachmentsResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkitemEstimateResponseBody struct {
 	Code                 *int64                                                  `json:"code,omitempty" xml:"code,omitempty"`
 	ErrorCode            *string                                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -43692,6 +43816,42 @@ func (client *Client) ListWorkItemWorkFlowStatus(organizationId *string, request
 	headers := make(map[string]*string)
 	_result = &ListWorkItemWorkFlowStatusResponse{}
 	_body, _err := client.ListWorkItemWorkFlowStatusWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemAttachmentsWithOptions(organizationId *string, workitemIdentifier *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkitemAttachmentsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkitemAttachments"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(openapiutil.GetEncodeParam(organizationId)) + "/workitem/" + tea.StringValue(openapiutil.GetEncodeParam(workitemIdentifier)) + "/attachments"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkitemAttachmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemAttachments(organizationId *string, workitemIdentifier *string) (_result *ListWorkitemAttachmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkitemAttachmentsResponse{}
+	_body, _err := client.ListWorkitemAttachmentsWithOptions(organizationId, workitemIdentifier, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
