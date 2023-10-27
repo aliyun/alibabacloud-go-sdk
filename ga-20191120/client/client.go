@@ -4790,6 +4790,8 @@ type CreateEndpointGroupsRequestEndpointGroupConfigurations struct {
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
 	// The mappings between ports.
 	PortOverrides []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides `json:"PortOverrides,omitempty" xml:"PortOverrides,omitempty" type:"Repeated"`
+	SystemTag     []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag     `json:"SystemTag,omitempty" xml:"SystemTag,omitempty" type:"Repeated"`
+	Tag           []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag           `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of consecutive health check failures that must occur before a healthy endpoint group is considered unhealthy, or the number of consecutive health check successes that must occur before an unhealthy endpoint group is considered healthy.
 	//
 	// Valid values: **2** to **10**. Default value: **3**.
@@ -4879,6 +4881,16 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetHealthCheckP
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetPortOverrides(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
 	s.PortOverrides = v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetSystemTag(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.SystemTag = v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurations) SetTag(v []*CreateEndpointGroupsRequestEndpointGroupConfigurationsTag) *CreateEndpointGroupsRequestEndpointGroupConfigurations {
+	s.Tag = v
 	return s
 }
 
@@ -4991,6 +5003,58 @@ func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) Se
 
 func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides) SetListenerPort(v int64) *CreateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides {
 	s.ListenerPort = &v
+	return s
+}
+
+type CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) SetKey(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) SetScope(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag) SetValue(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsSystemTag {
+	s.Value = &v
+	return s
+}
+
+type CreateEndpointGroupsRequestEndpointGroupConfigurationsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEndpointGroupsRequestEndpointGroupConfigurationsTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsTag) SetKey(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEndpointGroupsRequestEndpointGroupConfigurationsTag) SetValue(v string) *CreateEndpointGroupsRequestEndpointGroupConfigurationsTag {
+	s.Value = &v
 	return s
 }
 
@@ -6346,7 +6410,8 @@ type CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations stru
 	// You can specify up to 100 endpoint IP addresses or domain names for an endpoint group of an intelligent routing listener.
 	//
 	// > If the **Type** parameter is set to **Standard**, you can configure endpoint groups and endpoints for an intelligent routing listener, and this parameter is required.
-	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Endpoint   *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	SubAddress *string `json:"SubAddress,omitempty" xml:"SubAddress,omitempty"`
 	// The endpoint type of the intelligent routing listener. Valid values:
 	//
 	// *   **Domain**: a custom domain name
@@ -6393,6 +6458,11 @@ func (s CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) 
 
 func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetEndpoint(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations) SetSubAddress(v string) *CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations {
+	s.SubAddress = &v
 	return s
 }
 
@@ -11374,19 +11444,20 @@ type DescribeCustomRoutingEndpointGroupResponseBody struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 托管实例所属的服务方ID。
-	// > 仅在**ServiceManaged**参数为**True**时有效。
+	// The ID of the service that manages the GA instance.
+	//
+	// >  This parameter takes effect only if **ServiceManaged** is set to **True**.
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// 是否为托管实例。取值：
+	// Indicates whether the GA instance is managed. Valid values:
 	//
-	// - **true**：是托管实例。
-	//
-	// - **false**：不是托管实例。
+	// *   **true**
+	// *   **false**
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// 用户在此托管实例下可执行的动作策略列表。
+	// The actions that users can perform on the managed instance.
 	//
-	// > 仅在**ServiceManaged**参数为**True**时有效。
-	// > - 当实例处于托管状态时，用户对实例的操作会受到限制，某些操作行为会被禁止。
+	// >  This parameter takes effect only if **ServiceManaged** is set to **True**.
+	//
+	// *   Users can perform only specific actions on a managed instance.
 	ServiceManagedInfos []*DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos `json:"ServiceManagedInfos,omitempty" xml:"ServiceManagedInfos,omitempty" type:"Repeated"`
 	// The name of the Logstore.
 	SlsLogStoreName *string `json:"SlsLogStoreName,omitempty" xml:"SlsLogStoreName,omitempty"`
@@ -11502,27 +11573,31 @@ func (s *DescribeCustomRoutingEndpointGroupResponseBody) SetState(v string) *Des
 }
 
 type DescribeCustomRoutingEndpointGroupResponseBodyServiceManagedInfos struct {
-	// 托管策略动作名称，取值：
-	// - **Create**：创建实例。
-	// - **Update**：更新当前实例。
-	// - **Delete**：删除当前实例。
-	// - **Associate**：引用/被引用当前实例。
-	// - **UserUnmanaged**：用户解托管实例。
-	// - **CreateChild**：在当前实例下创建子资源。
+	// The name of the action on the managed instance. Valid values:
+	//
+	// *   **Create**
+	// *   **Update**
+	// *   **Delete**
+	// *   **Associate**
+	// *   **UserUnmanaged**
+	// *   **CreateChild**
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 子资源类型，取值：
-	// - **Listener**：监听资源。
-	// - **IpSet**：加速地域资源。
-	// - **EndpointGroup**：终端节点组资源。
-	// - **ForwardingRule**：转发策略资源。
-	// - **Endpoint**：终端节点资源。
-	// - **EndpointGroupDestination**：自定义路由监听下的终端节点组协议映射资源。
-	// - **EndpointPolicy**：自定义路由监听下的终端节点通行策略资源。
-	// > 仅在**Action**参数为**CreateChild**时有效
+	// The type of the child resource. Valid values:
+	//
+	// *   **Listener**: listener
+	// *   **IpSet**: acceleration region
+	// *   **EndpointGroup**: endpoint group
+	// *   **ForwardingRule**: forwarding rule
+	// *   **Endpoint**: endpoint
+	// *   **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener
+	// *   **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener
+	//
+	// >  This parameter takes effect only if **Action** is set to **CreateChild**.
 	ChildType *string `json:"ChildType,omitempty" xml:"ChildType,omitempty"`
-	// 托管策略动作是否被托管，取值：
-	// - **true**：托管策略动作被托管，用户无权在托管实例下执行Action指定的操作。
-	// - **false**：托管策略动作未被托管，用户可在托管实例下执行Action指定的操作。
+	// Indicates whether the specified actions are managed. Valid values:
+	//
+	// *   **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
+	// *   **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
 	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 }
 
@@ -17521,16 +17596,19 @@ func (s *ListAvailableBusiRegionsResponseBody) SetRequestId(v string) *ListAvail
 }
 
 type ListAvailableBusiRegionsResponseBodyRegions struct {
-	// Whether China Mainland.
-	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
-	// The name of the region.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Indicates whether the region is a point of presence (PoP). Valid values:
+	// Indicates whether the region is in the Chinese mainland. Valid values:
 	//
-	// *   **true**: The region is a PoP.
-	// *   **false**: The region is not a PoP.
+	// *   **true**
+	// *   **false**
+	ChinaMainland *bool `json:"ChinaMainland,omitempty" xml:"ChinaMainland,omitempty"`
+	// The region name.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// Indicates whether the region is a point of presence (PoP) of Alibaba Cloud. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	Pop *bool `json:"Pop,omitempty" xml:"Pop,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -24728,23 +24806,23 @@ type TagResourcesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the GA resource.
+	// The ID of the resource to which you want to add tags.
 	//
-	// *   If you set the **ResourceType** parameter to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
-	// *   If you set the **ResourceType** parameter to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-	// *   If you set the **ResourceType** parameter to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
-	// *   If you set the **ResourceType** parameter to **acl**, set the value of ResourceId to the ID of an ACL.
-	// *   If you set the **ResourceType** parameter to **endpointgroup**, set the value of ResourceId to the ID of an EndpointGroup.
+	// *   If you set **ResourceType** to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
+	// *   If you set **ResourceType** to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
+	// *   If you set **ResourceType** to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
+	// *   If you set **ResourceType** to **acl**, set the value of ResourceId to the ID of an ACL.
+	// *   If you set **ResourceType** to **endpointgroup**, set the value of ResourceId to the ID of an endpoint group.
 	//
-	// You can specify 1 to 50 GA resource IDs.
+	// The parameter is required. You can enter up to 50 GA resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the GA resource. Valid values:
+	// The type of the resource to which you want to add tags. Valid values:
 	//
-	// *   **accelerator:** a standard GA instance.
-	// *   **basicaccelerator:** a basic GA instance.
-	// *   **bandwidthpackage:** a bandwidth plan.
-	// *   **acl:** an access control list (ACL).
-	// *   **endpointgroup:** an endpoint group (EndpointGroup).
+	// *   **accelerator**: a standard GA instance
+	// *   **basicaccelerator**: a basic GA instance
+	// *   **bandwidthpackage**: a bandwidth plan
+	// *   **acl**: an ACL
+	// *   **endpointgroup**: an endpoint group
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags of GA resources.
 	//
@@ -29186,13 +29264,13 @@ type UpdateServiceManagedControlRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource whose control mode you want to change.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource whose control mode you want to change. Valid value:
+	// The type of the resource whose control mode you want to change.
 	//
-	// *   **Accelerator**: standard GA instance.
+	// *   Set the value to **Accelerator**, which specifies a standard GA instance.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Specifies the control mode of the resource. Valid value:
+	// The control mode of the resource.
 	//
-	// *   false: changes the control mode of the resource from managed mode to unmanaged mode.
+	// *   Set the value to false, which changes the control mode of the resource from managed mode to unmanaged mode.
 	//
 	// >  You can change the control mode only from managed mode to unmanaged mode.
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
@@ -40374,8 +40452,7 @@ func (client *Client) UpdateListener(request *UpdateListenerRequest) (_result *U
  * *   This operation is applicable only to **managed** Global Accelerator (GA) instances.
  * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you cannot change the mode of the instance to managed mode.
  * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you can obtain all operation permissions on the instance.
- *     **
- *     **Warning** If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.
+ *   <warning>If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.></warning>
  *
  * @param request UpdateServiceManagedControlRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -40434,8 +40511,7 @@ func (client *Client) UpdateServiceManagedControlWithOptions(request *UpdateServ
  * *   This operation is applicable only to **managed** Global Accelerator (GA) instances.
  * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you cannot change the mode of the instance to managed mode.
  * *   After you change the control mode of a GA instance from managed mode to unmanaged mode, you can obtain all operation permissions on the instance.
- *     **
- *     **Warning** If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.
+ *   <warning>If you change or delete a configuration of a GA instance whose control mode is changed from managed mode to unmanaged mode, the cloud services that depend on the instance may not work as expected. Proceed with caution.></warning>
  *
  * @param request UpdateServiceManagedControlRequest
  * @return UpdateServiceManagedControlResponse
