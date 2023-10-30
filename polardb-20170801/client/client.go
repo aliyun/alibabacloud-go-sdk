@@ -7460,6 +7460,7 @@ func (s *DescribeDBClusterAttributeResponseBody) SetZoneIds(v string) *DescribeD
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// The number of CPU cores for compute node scale-out within seconds.
 	AddedCpuCores *string `json:"AddedCpuCores,omitempty" xml:"AddedCpuCores,omitempty"`
+	CpuCores      *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the node was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The type of the node.
@@ -7504,7 +7505,8 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// The maximum number of concurrent connections in the cluster.
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum input/output operations per second (IOPS).
-	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MaxIOPS    *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
 	// *   **ON**
@@ -7530,6 +7532,11 @@ func (s DescribeDBClusterAttributeResponseBodyDBNodes) GoString() string {
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetAddedCpuCores(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.AddedCpuCores = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetCpuCores(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.CpuCores = &v
 	return s
 }
 
@@ -7585,6 +7592,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxConnections(v int3
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxIOPS(v int32) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.MaxIOPS = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.MemorySize = &v
 	return s
 }
 
