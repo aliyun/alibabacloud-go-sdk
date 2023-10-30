@@ -12,22 +12,206 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AcceptApproveCommandRequest struct {
+	CommandId  *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AcceptApproveCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptApproveCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptApproveCommandRequest) SetCommandId(v string) *AcceptApproveCommandRequest {
+	s.CommandId = &v
+	return s
+}
+
+func (s *AcceptApproveCommandRequest) SetInstanceId(v string) *AcceptApproveCommandRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AcceptApproveCommandRequest) SetRegionId(v string) *AcceptApproveCommandRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AcceptApproveCommandResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AcceptApproveCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptApproveCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptApproveCommandResponseBody) SetRequestId(v string) *AcceptApproveCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AcceptApproveCommandResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AcceptApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AcceptApproveCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptApproveCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptApproveCommandResponse) SetHeaders(v map[string]*string) *AcceptApproveCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AcceptApproveCommandResponse) SetStatusCode(v int32) *AcceptApproveCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AcceptApproveCommandResponse) SetBody(v *AcceptApproveCommandResponseBody) *AcceptApproveCommandResponse {
+	s.Body = v
+	return s
+}
+
+type AcceptOperationTicketRequest struct {
+	// The maximum number of logons allowed. Valid values:
+	//
+	// *   0: The number of logons is unlimited. The O\&M engineer can log on to the specified asset for an unlimited number of times during the validity period.
+	// *   1: The O\&M engineer can log on to the specified asset only once during the validity period.
+	//
+	// >  You can set this parameter only to 0 if you review an O\&M application on a database.
+	EffectCount *string `json:"EffectCount,omitempty" xml:"EffectCount,omitempty"`
+	// The end time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+	EffectEndTime *string `json:"EffectEndTime,omitempty" xml:"EffectEndTime,omitempty"`
+	// The start time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+	EffectStartTime *string `json:"EffectStartTime,omitempty" xml:"EffectStartTime,omitempty"`
+	// The ID of the bastion host.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the O\&M application that you want to approve. You can call the ListOperationTickets operation to query the IDs of all O\&M applications that require review.
+	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
+	// The region ID of the bastion host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AcceptOperationTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptOperationTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptOperationTicketRequest) SetEffectCount(v string) *AcceptOperationTicketRequest {
+	s.EffectCount = &v
+	return s
+}
+
+func (s *AcceptOperationTicketRequest) SetEffectEndTime(v string) *AcceptOperationTicketRequest {
+	s.EffectEndTime = &v
+	return s
+}
+
+func (s *AcceptOperationTicketRequest) SetEffectStartTime(v string) *AcceptOperationTicketRequest {
+	s.EffectStartTime = &v
+	return s
+}
+
+func (s *AcceptOperationTicketRequest) SetInstanceId(v string) *AcceptOperationTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AcceptOperationTicketRequest) SetOperationTicketId(v string) *AcceptOperationTicketRequest {
+	s.OperationTicketId = &v
+	return s
+}
+
+func (s *AcceptOperationTicketRequest) SetRegionId(v string) *AcceptOperationTicketRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AcceptOperationTicketResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AcceptOperationTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptOperationTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptOperationTicketResponseBody) SetRequestId(v string) *AcceptOperationTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AcceptOperationTicketResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AcceptOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AcceptOperationTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptOperationTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptOperationTicketResponse) SetHeaders(v map[string]*string) *AcceptOperationTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AcceptOperationTicketResponse) SetStatusCode(v int32) *AcceptOperationTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AcceptOperationTicketResponse) SetBody(v *AcceptOperationTicketResponseBody) *AcceptOperationTicketResponse {
+	s.Body = v
+	return s
+}
+
 type AddHostsToGroupRequest struct {
 	// The ID of the host group to which you want to add hosts.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The ID of the host that you want to add to the host group. The value is a JSON string. You can add up to 100 host IDs.
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+	// > You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
 	// The ID of the bastion host for which you want to add hosts to the host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host for which you want to add hosts to the host group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -93,11 +277,15 @@ type AddHostsToGroupResponseBodyResults struct {
 	//
 	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	//  > Make sure that the request parameters are valid and call the operation again.
+	//     **
+	//
+	//     **Note**Make sure that the request parameters are valid and call the operation again.
 	//
 	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//     **
+	//
+	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
 	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -167,21 +355,29 @@ func (s *AddHostsToGroupResponse) SetBody(v *AddHostsToGroupResponseBody) *AddHo
 }
 
 type AddUsersToGroupRequest struct {
-	// The ID of the bastion host for which you want to add users to the user group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to add users to the user group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group to which you want to add users.
-	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The ID of the user that you want to add to the user group. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
 	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the user.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	//
+	// *   **UNEXPECTED**: An unknown error occurred.
+	//
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	//
+	// > Make sure that the request parameters are valid and call the operation again.
+	//
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	//
+	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -214,9 +410,11 @@ func (s *AddUsersToGroupRequest) SetUserIds(v string) *AddUsersToGroupRequest {
 }
 
 type AddUsersToGroupResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+	//
+	// For more information about sample requests, see the "Examples" section of this topic.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// Adds one or more users to a user group.
 	Results []*AddUsersToGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -239,28 +437,13 @@ func (s *AddUsersToGroupResponseBody) SetResults(v []*AddUsersToGroupResponseBod
 }
 
 type AddUsersToGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	//
-	// *   **UNEXPECTED**: An unknown error occurred.
-	//
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	//
-	// > Make sure that the request parameters are valid and call the operation again.
-	//
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-	//
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// AddUsersToGroup
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is deprecated.
+	// WB01014029
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the group.
+	// AddUsersToGroup
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the user.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s AddUsersToGroupResponseBodyResults) String() string {
@@ -323,11 +506,11 @@ func (s *AddUsersToGroupResponse) SetBody(v *AddUsersToGroupResponseBody) *AddUs
 type AttachHostAccountsToHostShareKeyRequest struct {
 	// The IDs of the host accounts.
 	//
-	// >  You must specify this parameter.
+	// > You must specify this parameter.
 	HostAccountIds *string `json:"HostAccountIds,omitempty" xml:"HostAccountIds,omitempty"`
 	// The ID of the shared key.
 	//
-	// >  You must specify this parameter.
+	// > You must specify this parameter.
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
 	// The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -658,19 +841,19 @@ func (s *AttachHostAccountsToUserResponse) SetBody(v *AttachHostAccountsToUserRe
 type AttachHostAccountsToUserGroupRequest struct {
 	// The IDs of the host and host account that you want to authorize the user group to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user group is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+	// > You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	// The ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -742,7 +925,7 @@ type AttachHostAccountsToUserGroupResponseBodyResults struct {
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// This parameter is deprecated.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the group.
+	// The ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -1229,11 +1412,11 @@ func (s *AttachHostGroupAccountsToUserGroupResponse) SetBody(v *AttachHostGroupA
 }
 
 type ConfigInstanceSecurityGroupsRequest struct {
-	// The IDs of authorized security group.
+	// An array that consists of the IDs of authorized security groups.
 	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
 	// The ID of the bastion host.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
@@ -1327,11 +1510,11 @@ func (s *ConfigInstanceSecurityGroupsResponse) SetBody(v *ConfigInstanceSecurity
 }
 
 type ConfigInstanceWhiteListRequest struct {
-	// The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
+	// The ID of the bastion host for which a whitelist of public IP addresses is configured.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// Configures a whitelist of public IP addresses for a bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The public IP addresses that you want to add to the whitelist. You can add up to 30 IP addresses.
+	// ConfigInstanceWhiteList
 	WhiteList []*string `json:"WhiteList,omitempty" xml:"WhiteList,omitempty" type:"Repeated"`
 }
 
@@ -1359,10 +1542,8 @@ func (s *ConfigInstanceWhiteListRequest) SetWhiteList(v []*string) *ConfigInstan
 }
 
 type ConfigInstanceWhiteListResponseBody struct {
-	// The ID of the bastion host for which a whitelist of public IP addresses is configured.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConfigInstanceWhiteListResponseBody) String() string {
@@ -1415,47 +1596,47 @@ func (s *ConfigInstanceWhiteListResponse) SetBody(v *ConfigInstanceWhiteListResp
 type CreateHostRequest struct {
 	// The endpoint type of the host that you want to create. Valid values:
 	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// *   **Public**: public endpoint
+	// *   **Private**: internal endpoint
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host that you want to create. The value can be up to 500 characters.
+	// The description of the host that you want to create. The value can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The name of the host that you want to create. The name can be up to 128 characters in length.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The internal endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
 	//
-	// >  This parameter is required if the **ActiveAddressType** parameter is set to **Private**.
+	// > This parameter is required if the **ActiveAddressType** parameter is set to **Private**.
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
 	// The public endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
 	//
-	// >  This parameter is required if the **ActiveAddressType** parameter is set to **Public**.
+	// > This parameter is required if the **ActiveAddressType** parameter is set to **Public**.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The ID of the Bastionhost instance where you want to create the host.
+	// The ID of the bastion host in which you want to create the host.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region where the ECS instance or dedicated cluster host that you want to create resides.
+	// The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
 	//
-	// >  This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+	// > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
 	// The operating system of the host that you want to create. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The region ID of the Bastionhost instance where you want to create the host.
+	// The region ID of the bastion host in which you want to create the host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source of the host that you want to create. Valid values:
 	//
-	// *   **Local**: an on-premises host
+	// *   **Local**: a host in a data center
 	// *   **Ecs**: an Elastic Compute Service (ECS) instance
-	// *   **Rds**: a host in a dedicated cluster
+	// *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or dedicated cluster host that you want to create.
+	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
 	//
-	// >  This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+	// > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 }
 
@@ -1523,7 +1704,7 @@ func (s *CreateHostRequest) SetSourceInstanceId(v string) *CreateHostRequest {
 }
 
 type CreateHostResponseBody struct {
-	// The ID of the host that was created.
+	// The ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1577,38 +1758,38 @@ func (s *CreateHostResponse) SetBody(v *CreateHostResponseBody) *CreateHostRespo
 }
 
 type CreateHostAccountRequest struct {
-	// The name of the host account that you want to add. The name can be up to 128 characters in length.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host to which you want to add a host account.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the shared key.
-	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The ID of the bastion host in which you want to add a host account to the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The passphrase of the private key for the host account.
 	//
 	// >  You can specify this parameter when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter.
-	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
-	// The password of the host account.
-	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The private key of the host account. The value is a Base64-encoded string.
-	//
-	// >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
-	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the shared key.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The protocol of the host to which you want to add a host account.
 	//
 	// Valid values:
 	//
 	// *   SSH
 	// *   RDP
-	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
+	// master
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The private key of the host account. The value is a Base64-encoded string.
+	//
+	// >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
+	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
 	// The region ID of the bastion host in which you want to add a host account to the host.
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The ID of the host to which you want to add a host account.
+	//
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The ID of the bastion host in which you want to add a host account to the host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	// The password of the host account.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1666,9 +1847,9 @@ func (s *CreateHostAccountRequest) SetRegionId(v string) *CreateHostAccountReque
 }
 
 type CreateHostAccountResponseBody struct {
-	// The ID of the host account.
-	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// The ID of the request.
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The operation that you want to perform. Set the value to **CreateHostAccount**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1720,17 +1901,19 @@ func (s *CreateHostAccountResponse) SetBody(v *CreateHostAccountResponseBody) *C
 }
 
 type CreateHostGroupRequest struct {
-	// The description of the host group. The value can be up to 500 characters in length.
+	// The description of the host group. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The name of the host group. The name can be up to 128 characters in length.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the Bastionhost instance where you want to create the host group.
+	// The ID of the bastion host on which you want to create a host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to create the host group.
+	// The region ID of the bastion host on which you want to create a host group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// **
+	//
+	// **For more information about the mapping between region IDs and region names, see **Regions and zones[.](~~40654~~)
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1920,9 +2103,11 @@ type CreateUserRequest struct {
 	// The remarks of the user that you want to add. The remarks can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The display name of the user that you want to add. This display name can be up to 128 characters in length.
-	DisplayName        *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EffectiveEndTime   *int64  `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	EffectiveStartTime *int64  `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
 	// The email address of the user that you want to add.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The ID of the bastion host to which you want to add a user.
@@ -1953,7 +2138,12 @@ type CreateUserRequest struct {
 	// *   **CH**: Switzerland, whose country calling code is +41
 	// *   **SE**: Sweden, whose country calling code is +46
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
-	NeedResetPassword *bool   `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
+	// Specifies whether password reset is required upon the next logon. Valid values:
+	//
+	// - true: yes
+	//
+	// - false: no
+	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The logon password of the user that you want to add. The logon password can be up to 128 characters in length.
 	//
 	// >  This parameter is required if the **Source** parameter is set to **Local**.
@@ -1972,9 +2162,22 @@ type CreateUserRequest struct {
 	// The unique identifier of the user that you want to add.
 	//
 	// >  This parameter uniquely identifies a RAM user of the bastion host. This parameter is required if the **Source** parameter is set to **Ram**. You can call the [ListUsers](~~28684~~) operation to obtain the unique identifier of the user from the **UserId** response parameter.
-	SourceUserId     *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	// The two-factor authentication method. You can select only one method. Valid values:
+	//
+	// *   **sms:** text message
+	// *   **email:** email
+	// *   **dingtalk:** DingTalk
+	// *   **totp OTP:** time-based one-time password (TOTP) app
+	//
+	// > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
 	TwoFactorMethods *string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty"`
-	TwoFactorStatus  *string `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
+	// The two-factor authentication status of the user. Valid values:
+	//
+	// - Global: follows the global settings
+	// - Disable: disables two-factor authentication
+	// - Enable: enable two-factor authentication and follows settings of the single user
+	TwoFactorStatus *string `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
 	// The logon name of the user that you want to add. The logon name can contain only letters, digits, and underscores (\_) and can be up to 128 characters in length.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -2122,15 +2325,15 @@ func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserRespo
 }
 
 type CreateUserGroupRequest struct {
-	// The remarks of the user group. The remarks can be up to 500 characters in length.
+	// The description of the user group. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the bastion host for which you want to create a user group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host for which you want to create a user group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the user group that you want to create. This name can be a up to 128 characters in length.
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
@@ -2332,15 +2535,15 @@ func (s *CreateUserPublicKeyResponse) SetBody(v *CreateUserPublicKeyResponseBody
 type DeleteHostRequest struct {
 	// The ID of the host that you want to delete.
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	// > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the Bastionhost instance where you want to delete the host.
+	// The ID of the bastion host on which you want to delete the host.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to delete the host.
+	// The region ID of the bastion host on which you want to delete the host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2415,17 +2618,11 @@ func (s *DeleteHostResponse) SetBody(v *DeleteHostResponseBody) *DeleteHostRespo
 }
 
 type DeleteHostAccountRequest struct {
-	// The ID of the host account that you want to remove.
-	//
-	// >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+	// DeleteHostAccount
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the bastion host from which you want to remove the host account.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// DeleteHostAccount
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host from which you want to remove the host account.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// WB01014029
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2453,7 +2650,6 @@ func (s *DeleteHostAccountRequest) SetRegionId(v string) *DeleteHostAccountReque
 }
 
 type DeleteHostAccountResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2502,15 +2698,15 @@ func (s *DeleteHostAccountResponse) SetBody(v *DeleteHostAccountResponseBody) *D
 type DeleteHostGroupRequest struct {
 	// The ID of the host group that you want to delete.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The ID of the bastion host from which you want to delete the host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host from which you want to delete the host group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -2587,7 +2783,7 @@ func (s *DeleteHostGroupResponse) SetBody(v *DeleteHostGroupResponseBody) *Delet
 type DeleteHostShareKeyRequest struct {
 	// The ID of the shared key.
 	//
-	// >  You must specify this parameter.
+	// > You must specify this parameter.
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
 	// The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2666,17 +2862,15 @@ func (s *DeleteHostShareKeyResponse) SetBody(v *DeleteHostShareKeyResponseBody) 
 }
 
 type DeleteUserRequest struct {
-	// The ID of the Bastionhost instance to which the user to be deleted belongs.
+	// The ID of the bastion host to which the user to be deleted belongs.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance to which the user to be deleted belongs.
+	// The region ID of the bastion host to which the user to be deleted belongs.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user to be deleted.
-	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -2704,7 +2898,7 @@ func (s *DeleteUserRequest) SetUserId(v string) *DeleteUserRequest {
 }
 
 type DeleteUserResponseBody struct {
-	// The ID of the request.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2751,17 +2945,17 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 }
 
 type DeleteUserGroupRequest struct {
-	// The ID of the Bastionhost instance where you want to delete the user group.
+	// The ID of the bastion host on which you want to delete the user group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to delete the user group.
+	// The region ID of the bastion host on which you want to delete the user group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group that you want to delete.
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -2836,7 +3030,7 @@ func (s *DeleteUserGroupResponse) SetBody(v *DeleteUserGroupResponseBody) *Delet
 }
 
 type DeleteUserPublicKeyRequest struct {
-	// Specifies the region ID of the bastion host on which you want to delete the public key from the user.
+	// The region ID of the bastion host on which you want to delete the public key from the user.
 	//
 	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2917,10 +3111,8 @@ func (s *DeleteUserPublicKeyResponse) SetBody(v *DeleteUserPublicKeyResponseBody
 }
 
 type DescribeInstanceAttributeRequest struct {
-	// The ID of the bastion host to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host to query.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeInstanceAttributeRequest) String() string {
@@ -2942,10 +3134,8 @@ func (s *DescribeInstanceAttributeRequest) SetRegionId(v string) *DescribeInstan
 }
 
 type DescribeInstanceAttributeResponseBody struct {
-	// The attribute information about the bastion host.
 	InstanceAttribute *DescribeInstanceAttributeResponseBodyInstanceAttribute `json:"InstanceAttribute,omitempty" xml:"InstanceAttribute,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBody) String() string {
@@ -2967,77 +3157,35 @@ func (s *DescribeInstanceAttributeResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
-	// An array that consists of the IDs of authorized security groups.
-	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
-	// The status of the database O\&M feature.
-	DbOperationModule *string `json:"DbOperationModule,omitempty" xml:"DbOperationModule,omitempty"`
-	// The remarks of the bastion host.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the elastic network interface (ENI).
-	EniInstanceId *string `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	// The time when the bastion host expires.
-	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the bastion host. Valid values:
-	//
-	// *   **PENDING**: The bastion host is not initialized.
-	// *   **CREATING**: The bastion host is being created.
-	// *   **RUNNING**: The bastion host is running.
-	// *   **EXPIRED**: The bastion host expired.
-	// *   **CREATE_FAILED**: The bastion host fails to be created.
-	// *   **UPGRADING**: The configurations of the bastion host are being changed.
-	// *   **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// The public endpoint of the bastion host.
-	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	// The internal endpoint of the bastion host.
-	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// The license code.
-	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	// The status of the automatic password change feature.
-	//
-	// *   **Enable**
-	// *   **Disable**
-	ModifyPasswordModule *string `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
-	// The status of the network domain feature.
-	//
-	// *   **Enable**
-	// *   **Disable**
-	NetworkProxyModule *string `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
-	// An array that consists of the O\&M ports of the bastion host.
-	Ports []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// An array that consists of the egress private IP addresses of the bastion host.
-	PrivateExportIps []*string `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
-	// An array that consists of private IP addresses in a whitelist for the bastion host.
-	PrivateWhiteList []*string `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
-	// An array that consists of the egress public IP addresses of the bastion host.
-	PublicExportIps []*string `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
-	// An array that consists of the public IP addresses of the bastion host.
-	PublicIps []*string `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
-	// Indicates whether the bastion host can be accessed over the Internet.
-	PublicNetworkAccess *bool `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
-	// An array that consists of public IP addresses in a whitelist for the bastion host.
-	PublicWhiteList []*string `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
-	// The ID of the region in which the bastion host resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the bastion host belongs.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// An array that consists of the IDs of the security groups to which the bastion host belongs.
-	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The time when the bastion host was purchased.
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The storage capacity of the bastion host.
-	Storage *int64 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the bastion host belongs.
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch to which the bastion host belongs.
-	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The status of the web terminal.
-	//
-	// *   **Enable**
-	// *   **Disable**
-	WebTerminalModule *string `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
+	AuthorizedSecurityGroups []*string                                                      `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
+	Bandwidth                *string                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	BandwidthPackage         *string                                                        `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
+	DbOperationModule        *string                                                        `json:"DbOperationModule,omitempty" xml:"DbOperationModule,omitempty"`
+	Description              *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EniInstanceId            *string                                                        `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	ExpireTime               *int64                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId               *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus           *string                                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InternetEndpoint         *string                                                        `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint         *string                                                        `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	LicenseCode              *string                                                        `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	ModifyPasswordModule     *string                                                        `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
+	NetworkProxyModule       *string                                                        `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
+	Ports                    []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	PrivateExportIps         []*string                                                      `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
+	PrivateWhiteList         []*string                                                      `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
+	PublicExportIps          []*string                                                      `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
+	PublicIps                []*string                                                      `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
+	PublicNetworkAccess      *bool                                                          `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
+	PublicWhiteList          []*string                                                      `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
+	RegionId                 *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds         []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	StartTime                *int64                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Storage                  *int64                                                         `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	VpcId                    *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId                *string                                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	WebTerminalModule        *string                                                        `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) String() string {
@@ -3050,6 +3198,16 @@ func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) GoString() strin
 
 func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetAuthorizedSecurityGroups(v []*string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
 	s.AuthorizedSecurityGroups = v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetBandwidth(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetBandwidthPackage(v string) *DescribeInstanceAttributeResponseBodyInstanceAttribute {
+	s.BandwidthPackage = &v
 	return s
 }
 
@@ -3184,15 +3342,7 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetWebTerminalM
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttributePorts struct {
-	// The custom port.
-	//
-	// > : You can change only the SSH and RDP ports. If O\&M ports are not specified, the value of the StandardPort parameter is returned.
-	CustomPort *int32 `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
-	// The standard port of the bastion host. Valid values:
-	//
-	// *   **SSH**: 60022
-	// *   **RDP**: 63389
-	// *   **HTTPS**: 443
+	CustomPort   *int32 `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
 	StandardPort *int32 `json:"StandardPort,omitempty" xml:"StandardPort,omitempty"`
 }
 
@@ -3244,9 +3394,9 @@ func (s *DescribeInstanceAttributeResponse) SetBody(v *DescribeInstanceAttribute
 }
 
 type DescribeInstancesRequest struct {
-	// The IDs of the bastion hosts.
+	// An array that consists of the IDs of the bastion hosts.
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The state of the bastion host. Valid values:
+	// The status of the bastion host. Valid values:
 	//
 	// *   **PENDING**: The bastion host is not initialized.
 	// *   **CREATING**: The bastion host is being created.
@@ -3264,7 +3414,7 @@ type DescribeInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the bastion host belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// An array consisting of the tags that are added to the bastion hosts.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -3312,9 +3462,9 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
-	// The tag key of the bastion host.
+	// The key of the tag.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the bastion host.
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3377,7 +3527,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
 	// The ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The state of the bastion host. Valid values:
+	// The status of the bastion host. Valid values:
 	//
 	// *   **PENDING**: The bastion host is not initialized.
 	// *   **CREATING**: The bastion host is being created.
@@ -3538,13 +3688,9 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
-	// The natural language in which responses are returned. Valid values:
-	//
-	// *   **zh-CN**: Chinese. This is the default value.
-	// *   **en-US**: English.
-	// *   **ja**: Japanese.
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the region.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of request.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3567,9 +3713,9 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The information about regions where you can create bastion hosts.
+	// DescribeRegions
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of request.
+	// Queries available regions where you can create bastion hosts.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3592,12 +3738,9 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The name of the region.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The endpoint of the region.
+	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -3717,13 +3860,13 @@ func (s *DetachHostAccountsFromHostShareKeyResponseBody) SetResults(v []*DetachH
 }
 
 type DetachHostAccountsFromHostShareKeyResponseBodyResults struct {
-	// The error code. If **OK** is returned, the disassociation was successful. If a different error code is returned, the disassociation failed.
+	// The error code returned. If **OK** is returned, the disassociation was successful. If a different error code is returned, the disassociation failed.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// The ID of the shared key.
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The error message.
+	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -4171,19 +4314,19 @@ func (s *DetachHostAccountsFromUserGroupResponse) SetBody(v *DetachHostAccountsF
 type DetachHostGroupAccountsFromUserRequest struct {
 	// The ID of the host group and the name of the host account on which you want to revoke permissions from the user. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the permissions on the specified host groups and all host accounts in the host groups are revoked from the user. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
 	HostGroups *string `json:"HostGroups,omitempty" xml:"HostGroups,omitempty"`
 	// The ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user from which you want to revoke permissions on the specified host groups and host accounts.
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -4553,7 +4696,7 @@ func (s *DetachHostGroupAccountsFromUserGroupResponse) SetBody(v *DetachHostGrou
 type DisableInstancePublicAccessRequest struct {
 	// The ID of the bastion host whose Internet access you want to disable.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to obtain the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4632,11 +4775,9 @@ func (s *DisableInstancePublicAccessResponse) SetBody(v *DisableInstancePublicAc
 }
 
 type EnableInstancePublicAccessRequest struct {
-	// The ID of the bastion host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// The operation that you want to perform. Set the value to **EnableInstancePublicAccess**.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
+	// The ID of the bastion host whose Internet access is enabled.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4659,10 +4800,8 @@ func (s *EnableInstancePublicAccessRequest) SetRegionId(v string) *EnableInstanc
 }
 
 type EnableInstancePublicAccessResponseBody struct {
-	// The ID of the bastion host whose Internet access is enabled.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableInstancePublicAccessResponseBody) String() string {
@@ -4713,17 +4852,16 @@ func (s *EnableInstancePublicAccessResponse) SetBody(v *EnableInstancePublicAcce
 }
 
 type GetHostRequest struct {
+	// The protocol that is used to connect to the host. Valid values:
+	//
+	// *   **SSH**
+	// *   **RDP**
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the host that you want to query. You can specify only one host ID.
 	//
 	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The name of the host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4751,9 +4889,12 @@ func (s *GetHostRequest) SetRegionId(v string) *GetHostRequest {
 }
 
 type GetHostResponseBody struct {
-	// The information of the host that was queried.
+	// The fingerprint of the host. This parameter uniquely identifies a host.
 	Host *GetHostResponseBodyHost `json:"Host,omitempty" xml:"Host,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The endpoint type of the host. Valid values:
+	//
+	// *   **Public**: a public endpoint
+	// *   **Private**: an internal endpoint
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4776,43 +4917,40 @@ func (s *GetHostResponseBody) SetRequestId(v string) *GetHostResponseBody {
 }
 
 type GetHostResponseBodyHost struct {
-	// The endpoint type of the host. Valid values:
-	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
-	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The name of the host.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. You can set this parameter to a domain name or an IP address.
-	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
 	// The public endpoint of the host. You can set this parameter to a domain name or an IP address.
+	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
+	// The ID of the ECS instance or dedicated cluster host that was queried.
+	//
+	// >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the request.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the Bastionhost instance where you want to query the host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The description of the host.
+	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
+	// The status of the host. Valid values:
+	//
+	// - **Normal**: The host is normal.
+	//
+	// - **Release**: The host is released.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
 	// The operating system of the host. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The protocol information of the host.
+	// GetHost
 	Protocols []*GetHostResponseBodyHostProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The source of the host. Valid values:
-	//
-	// *   **Local**: an on-premises host
-	// *   **Ecs**: an Elastic Compute Service (ECS) instance
-	// *   **Rds**: a host in a dedicated cluster
+	// The protocol information of the host.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or dedicated cluster host that was queried.
-	//
-	// >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+	// Queries the details of a specified host, such as the name, source, endpoint, protocol, and service port of the host.
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	// The status of the host. Valid values:
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
 	//
-	// - **Normal**: The host is normal.
-	//
-	// - **Release**: The host is released.
+	// For more information about sample requests, see the "Examples" section of this topic.
 	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
 }
 
@@ -4880,14 +5018,10 @@ func (s *GetHostResponseBodyHost) SetSourceInstanceState(v string) *GetHostRespo
 }
 
 type GetHostResponseBodyHostProtocols struct {
-	// The fingerprint of the host. This parameter uniquely identifies a host.
+	// WB662865
 	HostFingerPrint *string `json:"HostFingerPrint,omitempty" xml:"HostFingerPrint,omitempty"`
-	// The service port of the host.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol that is used to connect to the host. Valid values:
-	//
-	// *   **SSH**
-	// *   **RDP**
+	// GetHost
+	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -4946,15 +5080,15 @@ func (s *GetHostResponse) SetBody(v *GetHostResponseBody) *GetHostResponse {
 type GetHostAccountRequest struct {
 	// The ID of the host account that you want to query.
 	//
-	// >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+	// > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the details of the host account.
+	// The ID of the bastion host in which you want to query the details of the host account.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the details of the host account.
+	// The region ID of the bastion host in which you want to query the details of the host account.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4982,7 +5116,7 @@ func (s *GetHostAccountRequest) SetRegionId(v string) *GetHostAccountRequest {
 }
 
 type GetHostAccountResponseBody struct {
-	// The details of the host account that were queried.
+	// The details of the host account that was queried.
 	HostAccount *GetHostAccountResponseBodyHostAccount `json:"HostAccount,omitempty" xml:"HostAccount,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5007,10 +5141,10 @@ func (s *GetHostAccountResponseBody) SetRequestId(v string) *GetHostAccountRespo
 }
 
 type GetHostAccountResponseBodyHostAccount struct {
-	// Indicates whether a password is set for the host account. Valid values:
+	// Indicates whether a password is configured for the host account. Valid values:
 	//
-	// *   **true**: indicates that a password is set for the host account.
-	// *   **false**: indicates that no password is set for the host account.
+	// *   **true**: yes
+	// *   **false**: no
 	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
 	// The ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
@@ -5024,7 +5158,7 @@ type GetHostAccountResponseBodyHostAccount struct {
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
 	// The fingerprint of the private key.
 	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
-	// The protocol used by the host account. Valid values:
+	// The protocol that is used by the host. Valid values:
 	//
 	// *   **SSH**
 	// *   **RDP**
@@ -5109,17 +5243,15 @@ func (s *GetHostAccountResponse) SetBody(v *GetHostAccountResponseBody) *GetHost
 }
 
 type GetHostGroupRequest struct {
-	// The ID of the host group that you want to query.
-	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the Bastionhost instance where you want to query the host group.
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// MyHostGroup
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Bastionhost instance where you want to query the host group.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5147,9 +5279,11 @@ func (s *GetHostGroupRequest) SetRegionId(v string) *GetHostGroupRequest {
 }
 
 type GetHostGroupResponseBody struct {
-	// The details of the host group returned.
+	// The ID of the host group that you want to query.
+	//
+	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroup *GetHostGroupResponseBodyHostGroup `json:"HostGroup,omitempty" xml:"HostGroup,omitempty" type:"Struct"`
-	// The ID of the request.
+	// my host group.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5172,11 +5306,11 @@ func (s *GetHostGroupResponseBody) SetRequestId(v string) *GetHostGroupResponseB
 }
 
 type GetHostGroupResponseBodyHostGroup struct {
-	// The description of the host group.
+	// The details of the host group returned.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host group.
+	// The description of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The name of the host group.
+	// The ID of the host group.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -5233,11 +5367,11 @@ func (s *GetHostGroupResponse) SetBody(v *GetHostGroupResponseBody) *GetHostGrou
 }
 
 type GetHostShareKeyRequest struct {
-	// The ID of the shared key whose details you want to query.
+	// The time when the information about the shared key was last modified.
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// The ID of the shared key whose details you want to query.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The name of the shared key.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5265,7 +5399,7 @@ func (s *GetHostShareKeyRequest) SetRegionId(v string) *GetHostShareKeyRequest {
 }
 
 type GetHostShareKeyResponseBody struct {
-	// The details of the shared key.
+	// The operation that you want to perform. Set the value to **GetHostShareKey**.
 	HostShareKey *GetHostShareKeyResponseBodyHostShareKey `json:"HostShareKey,omitempty" xml:"HostShareKey,omitempty" type:"Struct"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5290,13 +5424,10 @@ func (s *GetHostShareKeyResponseBody) SetRequestId(v string) *GetHostShareKeyRes
 }
 
 type GetHostShareKeyResponseBodyHostShareKey struct {
-	// The ID of the shared key.
-	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The name of the shared key.
-	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
-	// The time when the information about the shared key was last modified.
-	LastModifyKeyAt *int64 `json:"LastModifyKeyAt,omitempty" xml:"LastModifyKeyAt,omitempty"`
 	// The fingerprint of the private key.
+	HostShareKeyId        *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
+	HostShareKeyName      *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
+	LastModifyKeyAt       *int64  `json:"LastModifyKeyAt,omitempty" xml:"LastModifyKeyAt,omitempty"`
 	PrivateKeyFingerPrint *string `json:"PrivateKeyFingerPrint,omitempty" xml:"PrivateKeyFingerPrint,omitempty"`
 }
 
@@ -5358,13 +5489,12 @@ func (s *GetHostShareKeyResponse) SetBody(v *GetHostShareKeyResponseBody) *GetHo
 }
 
 type GetInstanceADAuthServerRequest struct {
-	// The ID of the bastion host to query.
-	//
-	// You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// The field that is used to indicate the email address of a user on the AD server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host to query.
+	// Indicates whether passwords are required. Valid values:
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// *   **true**: required
+	// *   **false**: not required
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5387,9 +5517,12 @@ func (s *GetInstanceADAuthServerRequest) SetRegionId(v string) *GetInstanceADAut
 }
 
 type GetInstanceADAuthServerResponseBody struct {
-	// The settings of AD authentication.
+	// The operation that you want to perform. Set the value to **GetInstanceADAuthServer**.
 	AD *GetInstanceADAuthServerResponseBodyAD `json:"AD,omitempty" xml:"AD,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// Indicates whether SSL is supported. Valid values:
+	//
+	// *   **true**: supported
+	// *   **false**: not supported
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5412,35 +5545,29 @@ func (s *GetInstanceADAuthServerResponseBody) SetRequestId(v string) *GetInstanc
 }
 
 type GetInstanceADAuthServerResponseBodyAD struct {
-	// The distinguished name (DN) of the AD server account.
-	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base DN of the AD server.
-	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The domain on the AD server.
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The field that is used to indicate the email address of a user on the AD server.
-	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
-	// The condition that is used to filter users.
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// Indicates whether passwords are required. Valid values:
-	//
-	// *   **true**: required
-	// *   **false**: not required
-	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// Indicates whether SSL is supported. Valid values:
-	//
-	// *   **true**: supported
-	// *   **false**: not supported
-	IsSSL *bool `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
-	// The field that is used to indicate the mobile phone number of a user on the AD server.
-	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The field that is used to indicate the name of a user on the AD server.
-	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
 	// The port that is used to access the AD server.
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The address of the AD server.
-	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The ID of the bastion host to query.
+	//
+	// You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
+	// The settings of AD authentication.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The address of the secondary AD server.
+	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
+	// The field that is used to indicate the mobile phone number of a user on the AD server.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The address of the AD server.
+	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	// The Base DN of the AD server.
+	IsSSL *bool `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
+	// The field that is used to indicate the name of a user on the AD server.
+	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
+	// Queries the settings of Active Directory (AD) authentication on a bastion host.
+	Port          *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
 	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
 }
 
@@ -5542,13 +5669,12 @@ func (s *GetInstanceADAuthServerResponse) SetBody(v *GetInstanceADAuthServerResp
 }
 
 type GetInstanceLDAPAuthServerRequest struct {
-	// The ID of the bastion host.
+	// Indicates whether passwords are required. Valid values:
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// *   **true**: required
+	// *   **false**: not required
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The operation that you want to perform. Set the value to **GetInstanceLDAPAuthServer**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5571,9 +5697,12 @@ func (s *GetInstanceLDAPAuthServerRequest) SetRegionId(v string) *GetInstanceLDA
 }
 
 type GetInstanceLDAPAuthServerResponseBody struct {
-	// The settings of LDAP authentication.
+	// Indicates whether SSL is supported. Valid values:
+	//
+	// *   **true**: supported
+	// *   **false**: not supported
 	LDAP *GetInstanceLDAPAuthServerResponseBodyLDAP `json:"LDAP,omitempty" xml:"LDAP,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The settings of LDAP authentication.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5596,35 +5725,28 @@ func (s *GetInstanceLDAPAuthServerResponseBody) SetRequestId(v string) *GetInsta
 }
 
 type GetInstanceLDAPAuthServerResponseBodyLDAP struct {
-	// The account of the LDAP server.
+	// The ID of the bastion host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The Base distinguished name (DN).
-	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
-	// The field that is used to indicate the email address of a user on the LDAP server.
-	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
-	// The condition that is used to filter users.
-	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// Indicates whether passwords are required. Valid values:
-	//
-	// *   **true**: required
-	// *   **false**: not required
-	HasPassword *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// Indicates whether SSL is supported. Valid values:
-	//
-	// *   **true**: supported
-	// *   **false**: not supported
-	IsSSL *bool `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
 	// The field that is used to indicate the logon name of a user on the LDAP server.
-	LoginNameMapping *string `json:"LoginNameMapping,omitempty" xml:"LoginNameMapping,omitempty"`
-	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
-	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
-	// The field that is used to indicate the name of a user on the LDAP server.
-	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// The port that is used to access the LDAP server.
-	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The address of the LDAP server.
-	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	BaseDN *string `json:"BaseDN,omitempty" xml:"BaseDN,omitempty"`
 	// The address of the secondary LDAP server.
+	EmailMapping *string `json:"EmailMapping,omitempty" xml:"EmailMapping,omitempty"`
+	// The Base distinguished name (DN).
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	HasPassword *string `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	// The condition that is used to filter users.
+	IsSSL *bool `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
+	// The port that is used to access the LDAP server.
+	LoginNameMapping *string `json:"LoginNameMapping,omitempty" xml:"LoginNameMapping,omitempty"`
+	// The field that is used to indicate the email address of a user on the LDAP server.
+	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
+	// The field that is used to indicate the mobile phone number of a user on the LDAP server.
+	NameMapping   *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
+	Port          *int64  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
 	StandbyServer *string `json:"StandbyServer,omitempty" xml:"StandbyServer,omitempty"`
 }
 
@@ -5726,13 +5848,9 @@ func (s *GetInstanceLDAPAuthServerResponse) SetBody(v *GetInstanceLDAPAuthServer
 }
 
 type GetInstanceTwoFactorRequest struct {
-	// The ID of the bastion host to query.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host to query.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The operation that you want to perform. Set the value to **GetInstanceTwoFactor**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5757,7 +5875,9 @@ func (s *GetInstanceTwoFactorRequest) SetRegionId(v string) *GetInstanceTwoFacto
 type GetInstanceTwoFactorResponseBody struct {
 	// The settings of two-factor authentication.
 	Config *GetInstanceTwoFactorResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
+	//
+	// >  If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5780,17 +5900,10 @@ func (s *GetInstanceTwoFactorResponseBody) SetRequestId(v string) *GetInstanceTw
 }
 
 type GetInstanceTwoFactorResponseBodyConfig struct {
-	// Indicates whether two-factor authentication is enabled. Valid values:
-	//
-	// *   **true**: enabled
-	// *   **false**: disabled
-	EnableTwoFactor *bool `json:"EnableTwoFactor,omitempty" xml:"EnableTwoFactor,omitempty"`
-	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
-	//
-	// >  If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
-	SkipTwoFactorTime *int64 `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
-	// Indicates one or more methods that are used to send verification codes if two-factor authentication is enabled.
-	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
+	// Queries the settings of two-factor authentication on a bastion host.
+	EnableTwoFactor   *bool     `json:"EnableTwoFactor,omitempty" xml:"EnableTwoFactor,omitempty"`
+	SkipTwoFactorTime *int64    `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
+	TwoFactorMethods  []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceTwoFactorResponseBodyConfig) String() string {
@@ -5846,17 +5959,17 @@ func (s *GetInstanceTwoFactorResponse) SetBody(v *GetInstanceTwoFactorResponseBo
 }
 
 type GetUserRequest struct {
-	// The ID of the Bastionhost instance to which the user to be queried belongs.
+	// The ID of the bastion host on which you want to query the user.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance to which the user to be queried belongs.
+	// The region ID of the bastion host on which you want to query the user.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user to be queried.
+	// The ID of the user.
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -5886,7 +5999,7 @@ func (s *GetUserRequest) SetUserId(v string) *GetUserRequest {
 type GetUserResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the user that was queried.
+	// The details of the user that was queried.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -5912,18 +6025,20 @@ type GetUserResponseBodyUser struct {
 	// The description of the user.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The display name of the user.
-	DisplayName        *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EffectiveEndTime   *int64  `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	EffectiveStartTime *int64  `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
 	// The email address of the user.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The mobile number of the user.
+	// The mobile phone number of the user.
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The country where the mobile number of the user is registered. Valid values:
+	// The location in which the mobile number of the user is registered. Valid values:
 	//
 	// *   **CN**: the Chinese mainland, whose country calling code is +86
 	// *   **HK**: Hong Kong (China), whose country calling code is +852
-	// *   **MO**: Macau (China), whose country calling code is +853
+	// *   **MO**: Macao (China), whose country calling code is +853
 	// *   **TW**: Taiwan (China), whose country calling code is +886
 	// *   **RU**: Russia, whose country calling code is +7
 	// *   **SG**: Singapore, whose country calling code is +65
@@ -5931,17 +6046,21 @@ type GetUserResponseBodyUser struct {
 	// *   **ID**: Indonesia, whose country calling code is +62
 	// *   **DE**: Germany, whose country calling code is +49
 	// *   **AU**: Australia, whose country calling code is +61
-	// *   **US**: United States, whose country calling code is +1
+	// *   **US**: US, whose country calling code is +1
 	// *   **AE**: United Arab Emirates, whose country calling code is +971
-	// *   **JP**: Japan, whose country calling code is +81
-	// *   **GB**: United Kingdom, whose country calling code is +44
+	// *   **JP:** Japan, whose country calling code is +81
+	// *   **GB**: UK, whose country calling code is +44
 	// *   **IN**: India, whose country calling code is +91
-	// *   **KR**: South Korea, whose country calling code is +82
+	// *   **KR**: Republic of Korea, whose country calling code is +82
 	// *   **PH**: Philippines, whose country calling code is +63
 	// *   **CH**: Switzerland, whose country calling code is +41
 	// *   **SE**: Sweden, whose country calling code is +46
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
-	NeedResetPassword *bool   `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
+	// Specifies whether password reset is required upon the next logon. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The source of the user. Valid values:
 	//
 	// *   **Local**: a local user
@@ -5949,15 +6068,21 @@ type GetUserResponseBodyUser struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The unique ID of the user.
 	//
-	// >  This parameter uniquely identifies a RAM user of the Bastionhost instance. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
-	SourceUserId     *string   `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	// > This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
+	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	// An array that consists of the details of the two-factor authentication method.
 	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
-	TwoFactorStatus  *string   `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
+	// The two-factor authentication status of the user. Valid values:
+	//
+	// *   **Global**: The global settings are used.
+	// *   **Disable**: The two-factor authentication is disabled.
+	// *   **Enable**: The two-factor authentication is enabled and the user-specific setting is used.
+	TwoFactorStatus *string `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
 	// The ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The logon name of the user.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The statuses of the user.
+	// An array that consists of the details of the user status.
 	UserState []*string `json:"UserState,omitempty" xml:"UserState,omitempty" type:"Repeated"`
 }
 
@@ -6074,17 +6199,13 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 }
 
 type GetUserGroupRequest struct {
-	// The ID of the Bastionhost instance where you want to query the details of the user group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// The ID of the request.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the details of the user group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The name of the user group.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group to be queried.
+	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// For more information about sample requests, see the "Examples" section of this topic.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -6112,9 +6233,9 @@ func (s *GetUserGroupRequest) SetUserGroupId(v string) *GetUserGroupRequest {
 }
 
 type GetUserGroupResponseBody struct {
-	// The ID of the request.
+	// Queries the details of a specified user group in a specified Bastionhost instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the user group returned.
+	// GetUserGroup
 	UserGroup *GetUserGroupResponseBodyUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
 }
 
@@ -6137,11 +6258,10 @@ func (s *GetUserGroupResponseBody) SetUserGroup(v *GetUserGroupResponseBodyUserG
 }
 
 type GetUserGroupResponseBodyUserGroup struct {
-	// The description of the user group.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the user group.
+	// GetUserGroup
+	Comment     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The name of the user group.
+	// WB662865
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -6197,18 +6317,196 @@ func (s *GetUserGroupResponse) SetBody(v *GetUserGroupResponseBody) *GetUserGrou
 	return s
 }
 
-type ListHostAccountsRequest struct {
-	// The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the specified host whose accounts you want to query.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the bastion host in which you want to query accounts of the specified host.
-	//
-	// >  You can call the DescribeInstances operation to query the ID of the bastion host.
+type ListApproveCommandsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListApproveCommandsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApproveCommandsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApproveCommandsRequest) SetInstanceId(v string) *ListApproveCommandsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListApproveCommandsRequest) SetPageNumber(v string) *ListApproveCommandsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListApproveCommandsRequest) SetPageSize(v string) *ListApproveCommandsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListApproveCommandsRequest) SetRegionId(v string) *ListApproveCommandsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListApproveCommandsResponseBody struct {
+	ApproveCommands []*ListApproveCommandsResponseBodyApproveCommands `json:"ApproveCommands,omitempty" xml:"ApproveCommands,omitempty" type:"Repeated"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListApproveCommandsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApproveCommandsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApproveCommandsResponseBody) SetApproveCommands(v []*ListApproveCommandsResponseBodyApproveCommands) *ListApproveCommandsResponseBody {
+	s.ApproveCommands = v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBody) SetRequestId(v string) *ListApproveCommandsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBody) SetTotalCount(v int64) *ListApproveCommandsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListApproveCommandsResponseBodyApproveCommands struct {
+	ApproveCommandId *string `json:"ApproveCommandId,omitempty" xml:"ApproveCommandId,omitempty"`
+	AssetAccountName *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
+	AssetIp          *string `json:"AssetIp,omitempty" xml:"AssetIp,omitempty"`
+	AssetName        *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	ClientIp         *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientUser       *string `json:"ClientUser,omitempty" xml:"ClientUser,omitempty"`
+	Command          *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ProtocolName     *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	SessionId        *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListApproveCommandsResponseBodyApproveCommands) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApproveCommandsResponseBodyApproveCommands) GoString() string {
+	return s.String()
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetApproveCommandId(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.ApproveCommandId = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetAssetAccountName(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.AssetAccountName = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetAssetIp(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.AssetIp = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetAssetName(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.AssetName = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetClientIp(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetClientUser(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.ClientUser = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetCommand(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.Command = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetCreateTime(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetProtocolName(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.ProtocolName = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetSessionId(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.SessionId = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponseBodyApproveCommands) SetState(v string) *ListApproveCommandsResponseBodyApproveCommands {
+	s.State = &v
+	return s
+}
+
+type ListApproveCommandsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListApproveCommandsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListApproveCommandsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApproveCommandsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApproveCommandsResponse) SetHeaders(v map[string]*string) *ListApproveCommandsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApproveCommandsResponse) SetStatusCode(v int32) *ListApproveCommandsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApproveCommandsResponse) SetBody(v *ListApproveCommandsResponseBody) *ListApproveCommandsResponse {
+	s.Body = v
+	return s
+}
+
+type ListHostAccountsRequest struct {
+	// Indicates whether a password is configured for the host account.
+	//
+	// Valid values:
+	//
+	// *   true: A password is configured for the host account.
+	// *   false: No passwords are configured for the host account.
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The protocol used by the host whose accounts you want to query.
+	//
+	// Valid values:
+	//
+	// *   SSH
+	// *   RDP
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the shared key.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation that you want to perform.
+	//
+	// Set the value to **ListHostAccounts**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -6216,16 +6514,11 @@ type ListHostAccountsRequest struct {
 	//
 	// >  We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The protocol used by the host whose accounts you want to query.
-	//
-	// Valid values:
-	//
-	// *   SSH
-	// *   RDP
+	// The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
-	// The region ID of the bastion host in which you want to query accounts of the specified host.
+	// The ID of the specified host whose accounts you want to query.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6273,11 +6566,13 @@ func (s *ListHostAccountsRequest) SetRegionId(v string) *ListHostAccountsRequest
 }
 
 type ListHostAccountsResponseBody struct {
-	// An array that consists of the queried host accounts.
+	// The ID of the host account.
 	HostAccounts []*ListHostAccountsResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// An array that consists of the queried host accounts.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host accounts that are queried.
+	// The ID of the bastion host in which you want to query accounts of the specified host.
+	//
+	// >  You can call the DescribeInstances operation to query the ID of the bastion host.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6305,31 +6600,23 @@ func (s *ListHostAccountsResponseBody) SetTotalCount(v int32) *ListHostAccountsR
 }
 
 type ListHostAccountsResponseBodyHostAccounts struct {
-	// Indicates whether a password is configured for the host account.
-	//
-	// Valid values:
-	//
-	// *   true: A password is configured for the host account.
-	// *   false: No passwords are configured for the host account.
-	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
-	// The ID of the host account.
-	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The name of the host account.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the shared key.
-	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
-	// The name of the shared key.
-	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
 	// The fingerprint of the private key for the host account.
-	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
+	HasPassword *bool `json:"HasPassword,omitempty" xml:"HasPassword,omitempty"`
+	// The ID of the request.
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The name of the shared key.
+	HostAccountName  *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	HostId           *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostShareKeyId   *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
+	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
 	// The protocol that is used by the host.
 	//
 	// Valid values:
 	//
 	// *   SSH
 	// *   RDP
+	PrivateKeyFingerprint *string `json:"PrivateKeyFingerprint,omitempty" xml:"PrivateKeyFingerprint,omitempty"`
+	// The number of the page to return. Default value: **1**.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -6495,7 +6782,7 @@ type ListHostAccountsForHostShareKeyResponseBodyHostAccounts struct {
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the host account.
 	HostsAccountId *string `json:"HostsAccountId,omitempty" xml:"HostsAccountId,omitempty"`
-	// The O&M protocol.
+	// The O\&M protocol.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -6557,31 +6844,23 @@ func (s *ListHostAccountsForHostShareKeyResponse) SetBody(v *ListHostAccountsFor
 }
 
 type ListHostAccountsForUserRequest struct {
-	// The name of the host account that you want to query. Exact match is supported.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host for which you want to query the host accounts that the user is authorized to manage.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
-	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the host for which the host accounts were queried.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The total number of host accounts returned.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the user for which you want to query authorized host accounts.
 	//
 	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The name of the host account that you want to query. Exact match is supported.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the host account.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6631,9 +6910,15 @@ func (s *ListHostAccountsForUserRequest) SetUserId(v string) *ListHostAccountsFo
 type ListHostAccountsForUserResponseBody struct {
 	// The host accounts returned.
 	HostAccounts []*ListHostAccountsForUserResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host accounts returned.
+	// The number of entries to return on each page.
+	//
+	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
+	//
+	// >  We recommend that you do not leave the PageSize parameter empty.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6661,21 +6946,23 @@ func (s *ListHostAccountsForUserResponseBody) SetTotalCount(v int32) *ListHostAc
 }
 
 type ListHostAccountsForUserResponseBodyHostAccounts struct {
-	// The ID of the host account.
-	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The name of the host account.
-	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host for which the host accounts were queried.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// Indicates whether the user is authorized to manage the host account. Valid values:
-	//
-	// *   **true**: The user is authorized to manage the host account.
-	// *   **false**: The user is not authorized to manage the host account.
-	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
 	// The protocol that is used by the host account. Valid values:
 	//
 	// *   **SSH**
 	// *   **RDP**
+	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
+	// The ID of the host account.
+	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
+	// The ID of the request.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The ID of the host for which you want to query the host accounts that the user is authorized to manage.
+	//
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
+	// Indicates whether the user is authorized to manage the host account. Valid values:
+	//
+	// *   **true**: The user is authorized to manage the host account.
+	// *   **false**: The user is not authorized to manage the host account.
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 }
 
@@ -6744,29 +7031,28 @@ func (s *ListHostAccountsForUserResponse) SetBody(v *ListHostAccountsForUserResp
 type ListHostAccountsForUserGroupRequest struct {
 	// The name of the host account that you want to query. Exact match is supported.
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
-	// The ID of the host for which you want to query the host accounts that the user group is authorized to manage.
+	// The ID of the host to query.
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	// > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host accounts that the user group is authorized to manage on the host.
+	// The ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page.\
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host accounts that the user group is authorized to manage on the host.
+	// The region ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group for which you want to query authorized host accounts.
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -6814,11 +7100,11 @@ func (s *ListHostAccountsForUserGroupRequest) SetUserGroupId(v string) *ListHost
 }
 
 type ListHostAccountsForUserGroupResponseBody struct {
-	// The host accounts returned.
+	// An array that consists of the queried host accounts.
 	HostAccounts []*ListHostAccountsForUserGroupResponseBodyHostAccounts `json:"HostAccounts,omitempty" xml:"HostAccounts,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host accounts returned.
+	// The total number of host accounts that were queried.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6854,10 +7140,10 @@ type ListHostAccountsForUserGroupResponseBodyHostAccounts struct {
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// Indicates whether the user group is authorized to manage the host account. Valid values:
 	//
-	// *   **true**: The user group is authorized to manage the host account.
-	// *   **false**: The user group is not authorized to manage the host account.
+	// *   **true**: yes
+	// *   **false**: no
 	IsAuthorized *bool `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The protocol that is used by the host account. Valid values:
+	// The protocol that is used by the host. Valid values:
 	//
 	// *   **SSH**
 	// *   **RDP**
@@ -6929,19 +7215,19 @@ func (s *ListHostAccountsForUserGroupResponse) SetBody(v *ListHostAccountsForUse
 type ListHostGroupAccountNamesForUserRequest struct {
 	// The ID of the host group.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host account names that the user is authorized to manage in a specified host group.
+	// The ID of the bastion host to which the user belongs.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host account names that the user is authorized to manage in a specified host group.
+	// The region ID of the bastion host to which the user belongs.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user.
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -6974,7 +7260,7 @@ func (s *ListHostGroupAccountNamesForUserRequest) SetUserId(v string) *ListHostG
 }
 
 type ListHostGroupAccountNamesForUserResponseBody struct {
-	// The names of host accounts returned.
+	// An array that consists of the names of host accounts.
 	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7028,21 +7314,15 @@ func (s *ListHostGroupAccountNamesForUserResponse) SetBody(v *ListHostGroupAccou
 }
 
 type ListHostGroupAccountNamesForUserGroupRequest struct {
-	// The ID of the host group.
-	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// WB662865
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host account names that the user group is authorized to manage in a specified host group.
+	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// For more information about sample requests, see the "Examples" section of this topic.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host account names that the user group is authorized to manage in a specified host group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// Queries the names of the host accounts that a specified user group is authorized to manage in a specified host group.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group.
-	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// ListHostGroupAccountNamesForUserGroup
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -7075,9 +7355,8 @@ func (s *ListHostGroupAccountNamesForUserGroupRequest) SetUserGroupId(v string) 
 }
 
 type ListHostGroupAccountNamesForUserGroupResponseBody struct {
-	// The names of host accounts returned.
 	HostAccountNames []*string `json:"HostAccountNames,omitempty" xml:"HostAccountNames,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// ListHostGroupAccountNamesForUserGroup
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7131,21 +7410,20 @@ func (s *ListHostGroupAccountNamesForUserGroupResponse) SetBody(v *ListHostGroup
 type ListHostGroupsRequest struct {
 	// The name of the host group that you want to query. Only exact match is supported.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query host groups.
+	// The ID of the bastion host in which you want to query the host group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page.\
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page by default.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query host groups.
+	// The region ID of the bastion host in which you want to query the host group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7183,7 +7461,7 @@ func (s *ListHostGroupsRequest) SetRegionId(v string) *ListHostGroupsRequest {
 }
 
 type ListHostGroupsResponseBody struct {
-	// The host groups returned.
+	// An array that consists of the host groups.
 	HostGroups []*ListHostGroupsResponseBodyHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -7283,32 +7561,27 @@ func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHos
 }
 
 type ListHostGroupsForUserRequest struct {
-	// The name of the host group that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
+	// The ID of the request.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// The host groups returned.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The category of the host group that you want to query. Valid values:
-	//
-	// *   **Authorized**: Query the host groups that the user is authorized to manage. This is the default value.
-	// *   **Unauthorized**: Query the host groups that the user is not authorized to manage.
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
 	//
 	// >  We recommend that you do not leave the PageSize parameter empty.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The ID of the host group.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The ID of the user.
 	//
 	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. Default value: **1**.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -7356,11 +7629,13 @@ func (s *ListHostGroupsForUserRequest) SetUserId(v string) *ListHostGroupsForUse
 }
 
 type ListHostGroupsForUserResponseBody struct {
-	// The host groups returned.
+	// ListHostGroupsForUser
 	HostGroups []*ListHostGroupsForUserResponseBodyHostGroups `json:"HostGroups,omitempty" xml:"HostGroups,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Queries the host groups that a specified user is authorized or not authorized to manage.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of host groups returned.
+	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+	//
+	// For more information about sample requests, see the "Examples" section of this topic.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7388,11 +7663,10 @@ func (s *ListHostGroupsForUserResponseBody) SetTotalCount(v int32) *ListHostGrou
 }
 
 type ListHostGroupsForUserResponseBodyHostGroups struct {
-	// The description of the host group.
+	// ListHostGroupsForUser
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host group.
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The name of the host group.
+	// WB662865
+	HostGroupId   *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
 }
 
@@ -7451,30 +7725,29 @@ func (s *ListHostGroupsForUserResponse) SetBody(v *ListHostGroupsForUserResponse
 type ListHostGroupsForUserGroupRequest struct {
 	// The name of the host group that you want to query. Only exact match is supported.
 	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the host groups that the user group is authorized or not authorized to manage.
+	// The ID of the bastion host to which the user group belongs.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The category of the host group that you want to query. Valid values:
+	// Specifies the category of the host group that you want to query. Valid values:
 	//
-	// *   **Authorized**: Query the host groups that the user group is authorized to manage. This is the default value.
-	// *   **Unauthorized**: Query the host groups that the user group is not authorized to manage.
+	// *   **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
+	// *   **Unauthorized**: queries the host groups that the user group is not authorized to manage.
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page.\
+	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
 	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the host groups that the user group is authorized or not authorized to manage.
+	// The region ID of the bastion host to which the user group belongs.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group.
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -7761,17 +8034,17 @@ func (s *ListHostShareKeysResponse) SetBody(v *ListHostShareKeysResponseBody) *L
 }
 
 type ListHostsRequest struct {
-	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+	// The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The ID of the host group to which the host that you want to query belongs.
+	// The ID of the host group to which the host to be queried belongs.
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The name of the host that you want to query. Only exact match is supported.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query hosts.
+	// The ID of the bastion host on which you want to query hosts.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
@@ -7780,29 +8053,26 @@ type ListHostsRequest struct {
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The number of the page to return. Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return on each page. Default value: **10**.
 	//
-	// The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page by default.
-	//
-	// >  We recommend that you do not leave the PageSize parameter empty.
+	// > We recommend that you do not leave this parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query hosts.
+	// The region ID of the bastion host on which you want to query hosts.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The source of the host that you want to query. Valid values:
 	//
-	// *   **Local**: an on-premises host
+	// *   **Local**: a host in a data center
 	// *   **Ecs**: an Elastic Compute Service (ECS) instance
-	// *   **Rds**: a host in a dedicated cluster
+	// *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or dedicated cluster host that you want to query. Only exact match is supported.
+	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster that you want to query. Only exact match is supported.
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The status of the host that you want to query. Valid values:
 	//
-	// - **Normal**: The host is normal.
-	//
-	// - **Release**: The host is released.
+	// *   **Normal**: normal
+	// *   **Release**: released
 	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
 }
 
@@ -7870,11 +8140,11 @@ func (s *ListHostsRequest) SetSourceInstanceState(v string) *ListHostsRequest {
 }
 
 type ListHostsResponseBody struct {
-	// The hosts that were queried.
+	// An array that consists of the hosts returned.
 	Hosts []*ListHostsResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts that were queried.
+	// The total number of hosts returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7902,22 +8172,22 @@ func (s *ListHostsResponseBody) SetTotalCount(v int32) *ListHostsResponseBody {
 }
 
 type ListHostsResponseBodyHosts struct {
-	// The endpoint type of the host. Valid values:
+	// The address type of the host. Valid values:
 	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// *   **Public**: a public address
+	// *   **Private**: a private address
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
 	// The description of the host.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The number of host accounts of the host.
+	// The number of host accounts.
 	HostAccountCount *int32 `json:"HostAccountCount,omitempty" xml:"HostAccountCount,omitempty"`
 	// The ID of the host.
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The name of the host.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The private address of the host. The value is a domain name or an IP address.
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host. You can set this parameter to a domain name or an IP address.
+	// The public address of the host. The value is a domain name or an IP address.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
 	// The operating system of the host. Valid values:
 	//
@@ -7926,19 +8196,18 @@ type ListHostsResponseBodyHosts struct {
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The source of the host. Valid values:
 	//
-	// *   **Local**: an on-premises host
-	// *   **Ecs**: an Elastic Compute Service (ECS) instance
-	// *   **Rds**: a host in a dedicated cluster
+	// *   **Local**: a host in a data center
+	// *   **Ecs**: an ECS instance
+	// *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The ID of the ECS instance or dedicated cluster host that was queried.
+	// The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
 	//
-	// >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+	// > No value is returned for this parameter if the **Source** parameter is set to **Local**.
 	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	// The status of the host. Valid values:
 	//
-	// - **Normal**: The host is normal.
-	//
-	// - **Release**: The host is released.
+	// *   **Normal**: normal
+	// *   **Release**: released
 	SourceInstanceState *string `json:"SourceInstanceState,omitempty" xml:"SourceInstanceState,omitempty"`
 }
 
@@ -8035,25 +8304,31 @@ func (s *ListHostsResponse) SetBody(v *ListHostsResponseBody) *ListHostsResponse
 }
 
 type ListHostsForUserRequest struct {
-	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The name of the host that you want to query. Only exact match is supported.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The category of the host that you want to query. Valid values:
-	//
-	// *   **Authorized**: Query the hosts that the user is authorized to manage. This is the default value.
-	// *   **Unauthorized**: Query the hosts that the user is not authorized to manage.
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// The ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The category of the host that you want to query. Valid values:
+	//
+	// *   **Authorized**: Query the hosts that the user is authorized to manage. This is the default value.
+	// *   **Unauthorized**: Query the hosts that the user is not authorized to manage.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operating system of the host. Valid values:
+	//
+	// *   **Linux**
+	// *   **Windows**
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The internal endpoint of the host. The value is a domain name or an IP address.
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The endpoint type of the host. Valid values:
+	//
+	// *   **Public**: a public endpoint
+	// *   **Private**: an internal endpoint
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -8061,13 +8336,9 @@ type ListHostsForUserRequest struct {
 	//
 	// >  We recommend that you do not leave the PageSize parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user.
-	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
+	// The number of the page to return. Default value: 1.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -8125,11 +8396,13 @@ func (s *ListHostsForUserRequest) SetUserId(v string) *ListHostsForUserRequest {
 }
 
 type ListHostsForUserResponseBody struct {
-	// The hosts returned.
+	// The ID of the user.
+	//
+	// >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
 	Hosts []*ListHostsForUserResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The hosts returned.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts returned.
+	// The public endpoint of the host. The value is a domain name or an IP address.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8157,25 +8430,20 @@ func (s *ListHostsForUserResponseBody) SetTotalCount(v int32) *ListHostsForUserR
 }
 
 type ListHostsForUserResponseBodyHosts struct {
-	// The endpoint type of the host. Valid values:
+	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
 	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// For more information about sample requests, see the "Examples" section of this topic.
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host.
+	// The ID of the request.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The name of the host.
+	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// ListHostsForUser
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. The value is a domain name or an IP address.
+	// WB662865
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host. The value is a domain name or an IP address.
+	// Queries the hosts that a specified user is authorized or not authorized to manage.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The operating system of the host. Valid values:
-	//
-	// *   **Linux**
-	// *   **Windows**
+	// ListHostsForUser
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 }
 
@@ -8252,25 +8520,31 @@ func (s *ListHostsForUserResponse) SetBody(v *ListHostsForUserResponseBody) *Lis
 }
 
 type ListHostsForUserGroupRequest struct {
-	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
-	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The name of the host that you want to query. Only exact match is supported.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The category of the host that you want to query. Valid values:
-	//
-	// *   **Authorized**: Query the hosts that the user group is authorized to manage. This is the default value.
-	// *   **Unauthorized**: Query the hosts that the user group is not authorized to manage.
-	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The operating system of the host that you want to query. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
+	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// The ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The category of the host that you want to query. Valid values:
+	//
+	// *   **Authorized**: Query the hosts that the user group is authorized to manage. This is the default value.
+	// *   **Unauthorized**: Query the hosts that the user group is not authorized to manage.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operating system of the host. Valid values:
+	//
+	// *   **Linux**
+	// *   **Windows**
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The internal endpoint of the host. The value is a domain name or an IP address.
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The endpoint type of the host. Valid values:
+	//
+	// *   **Public**: a public endpoint
+	// *   **Private**: an internal endpoint
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	//
@@ -8278,13 +8552,9 @@ type ListHostsForUserGroupRequest struct {
 	//
 	// >  We recommend that you do not leave the PageSize parameter empty.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group for which you want to query hosts.
-	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// The number of the page to return. Default value: 1.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 }
 
@@ -8342,11 +8612,13 @@ func (s *ListHostsForUserGroupRequest) SetUserGroupId(v string) *ListHostsForUse
 }
 
 type ListHostsForUserGroupResponseBody struct {
-	// The hosts returned.
+	// The ID of the user group for which you want to query hosts.
+	//
+	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	Hosts []*ListHostsForUserGroupResponseBodyHosts `json:"Hosts,omitempty" xml:"Hosts,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The hosts returned.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of hosts returned.
+	// The public endpoint of the host. The value is a domain name or an IP address.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8374,25 +8646,20 @@ func (s *ListHostsForUserGroupResponseBody) SetTotalCount(v int32) *ListHostsFor
 }
 
 type ListHostsForUserGroupResponseBodyHosts struct {
-	// The endpoint type of the host. Valid values:
+	// All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
 	//
-	// *   **Public**: a public endpoint
-	// *   **Private**: an internal endpoint
+	// For more information about sample requests, see the "Examples" section of this topic.
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The description of the host.
+	// The ID of the request.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The name of the host.
+	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// ListHostsForUserGroup
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The internal endpoint of the host. The value is a domain name or an IP address.
+	// WB662865
 	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The public endpoint of the host. The value is a domain name or an IP address.
+	// Queries the hosts that a specified user group is authorized or not authorized to manage.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
-	// The operating system of the host. Valid values:
-	//
-	// *   **Linux**
-	// *   **Windows**
+	// ListHostsForUserGroup
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 }
 
@@ -8468,16 +8735,216 @@ func (s *ListHostsForUserGroupResponse) SetBody(v *ListHostsForUserGroupResponse
 	return s
 }
 
+type ListOperationTicketsRequest struct {
+	AssetAddress *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListOperationTicketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationTicketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationTicketsRequest) SetAssetAddress(v string) *ListOperationTicketsRequest {
+	s.AssetAddress = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetInstanceId(v string) *ListOperationTicketsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetPageNumber(v string) *ListOperationTicketsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetPageSize(v string) *ListOperationTicketsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOperationTicketsRequest) SetRegionId(v string) *ListOperationTicketsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListOperationTicketsResponseBody struct {
+	OperationTickets []*ListOperationTicketsResponseBodyOperationTickets `json:"OperationTickets,omitempty" xml:"OperationTickets,omitempty" type:"Repeated"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListOperationTicketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationTicketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationTicketsResponseBody) SetOperationTickets(v []*ListOperationTicketsResponseBodyOperationTickets) *ListOperationTicketsResponseBody {
+	s.OperationTickets = v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBody) SetRequestId(v string) *ListOperationTicketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBody) SetTotalCount(v int64) *ListOperationTicketsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListOperationTicketsResponseBodyOperationTickets struct {
+	ApplyUserId           *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
+	ApplyUsername         *string `json:"ApplyUsername,omitempty" xml:"ApplyUsername,omitempty"`
+	AssetAccountId        *string `json:"AssetAccountId,omitempty" xml:"AssetAccountId,omitempty"`
+	AssetAccountName      *string `json:"AssetAccountName,omitempty" xml:"AssetAccountName,omitempty"`
+	AssetAddress          *string `json:"AssetAddress,omitempty" xml:"AssetAddress,omitempty"`
+	AssetId               *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	AssetName             *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	AssetNetworkDomainId  *string `json:"AssetNetworkDomainId,omitempty" xml:"AssetNetworkDomainId,omitempty"`
+	AssetOs               *string `json:"AssetOs,omitempty" xml:"AssetOs,omitempty"`
+	AssetSource           *string `json:"AssetSource,omitempty" xml:"AssetSource,omitempty"`
+	AssetSourceInstanceId *string `json:"AssetSourceInstanceId,omitempty" xml:"AssetSourceInstanceId,omitempty"`
+	CreatedTime           *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	OperationTicketId     *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
+	ProtocolName          *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
+	State                 *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s ListOperationTicketsResponseBodyOperationTickets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationTicketsResponseBodyOperationTickets) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetApplyUserId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.ApplyUserId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetApplyUsername(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.ApplyUsername = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetAccountId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetAccountId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetAccountName(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetAccountName = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetAddress(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetAddress = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetName(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetName = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetNetworkDomainId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetNetworkDomainId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetOs(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetOs = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetSource(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetSource = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetAssetSourceInstanceId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.AssetSourceInstanceId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetCreatedTime(v int64) *ListOperationTicketsResponseBodyOperationTickets {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetOperationTicketId(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.OperationTicketId = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetProtocolName(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.ProtocolName = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponseBodyOperationTickets) SetState(v string) *ListOperationTicketsResponseBodyOperationTickets {
+	s.State = &v
+	return s
+}
+
+type ListOperationTicketsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOperationTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOperationTicketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationTicketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationTicketsResponse) SetHeaders(v map[string]*string) *ListOperationTicketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationTicketsResponse) SetStatusCode(v int32) *ListOperationTicketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationTicketsResponse) SetBody(v *ListOperationTicketsResponseBody) *ListOperationTicketsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the Bastionhost instance.
+	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the resource.
 	//
-	// Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// Set the value to INSTANCE, which indicates that the resource is a bastion host.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -8510,13 +8977,13 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
-	// The number of the returned page.
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of tags.
+	// An array that consists of tags.
 	TagKeys []*ListTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The total number of tags returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -8556,7 +9023,7 @@ func (s *ListTagKeysResponseBody) SetTotalCount(v int32) *ListTagKeysResponseBod
 }
 
 type ListTagKeysResponseBodyTagKeys struct {
-	// The number of times the tag key was used.
+	// The total number of tag keys.
 	TagCount *int32 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
 	// The name of the tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
@@ -8610,17 +9077,19 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagResourcesRequest struct {
-	// The token for starting the next query.
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID of the Bastionhost instance.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of instances. The ID is up to 20.
+	// The value of the tag.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource.
+	// The operation that you want to perform.
 	//
-	// Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// Set the value to **ListTagResources**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -8658,13 +9127,11 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of tag N.
-	//
-	// Valid values of N: 1 to 20.
+	// The ID of the request.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N.
+	// The type of the resource.
 	//
-	// Valid values of N: 1 to 20.
+	// The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8687,13 +9154,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token for starting the next query.
+	// Queries the tags bound to one or more Bastionhost instances.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// ListTagResources
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about Bastionhost instances and the tags bound to Bastionhost instances.
-	//
-	// The following information is included: instance ID, resource type, tag key, and tag value.
+	// 58928
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -8721,16 +9186,10 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The ID of the instance.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
-	//
-	// The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -8791,22 +9250,10 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserGroupsRequest struct {
-	// The ID of the bastion host on which you want to query user groups.
-	//
-	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.\
-	// Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-	//
-	// > We recommend that you do not leave this parameter empty.
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the bastion host on which you want to query user groups.
-	//
-	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the user group that you want to query. Only exact match is supported.
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber    *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -8844,11 +9291,8 @@ func (s *ListUserGroupsRequest) SetUserGroupName(v string) *ListUserGroupsReques
 }
 
 type ListUserGroupsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of user groups returned.
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The user groups returned.
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	UserGroups []*ListUserGroupsResponseBodyUserGroups `json:"UserGroups,omitempty" xml:"UserGroups,omitempty" type:"Repeated"`
 }
 
@@ -8876,13 +9320,9 @@ func (s *ListUserGroupsResponseBody) SetUserGroups(v []*ListUserGroupsResponseBo
 }
 
 type ListUserGroupsResponseBodyUserGroups struct {
-	// The description of the user group.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The number of users in the user group.
-	MemberCount *int32 `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
-	// The ID of the user group.
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The name of the user group.
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	MemberCount   *int32  `json:"MemberCount,omitempty" xml:"MemberCount,omitempty"`
+	UserGroupId   *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -9246,9 +9686,11 @@ type ListUsersResponseBodyUsers struct {
 	// The description of the user.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The display name of the user.
-	DisplayName        *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EffectiveEndTime   *int64  `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	EffectiveStartTime *int64  `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
 	// The email address of the user.
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile number of the user.
@@ -9275,7 +9717,11 @@ type ListUsersResponseBodyUsers struct {
 	// *   **CH**: Switzerland, whose country calling code is +41
 	// *   **SE**: Sweden, whose country calling code is +46
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
-	NeedResetPassword *bool   `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
+	// Specifies whether password reset is required upon the next logon. Valid values:
+	//
+	// - true: yes
+	// - false: no
+	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The source of the user. Valid values:
 	//
 	// *   **Local**: a local user
@@ -9284,9 +9730,15 @@ type ListUsersResponseBodyUsers struct {
 	// The unique ID of the user.
 	//
 	// >  This parameter uniquely identifies a RAM user of the Bastionhost instance. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
-	SourceUserId     *string   `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+	// The two-factor authentication method.
 	TwoFactorMethods []*string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty" type:"Repeated"`
-	TwoFactorStatus  *string   `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
+	// The two-factor authentication status of the user. Valid values:
+	//
+	// *   **Global:** follows the global settings
+	// *   **Disable:** disables two-factor authentication
+	// *   **Enable:** enable two-factor authentication and follows settings of the single user
+	TwoFactorStatus *string `json:"TwoFactorStatus,omitempty" xml:"TwoFactorStatus,omitempty"`
 	// The ID of the user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The logon name of the user.
@@ -9410,15 +9862,15 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 type LockUsersRequest struct {
 	// The ID of the bastion host to which the users to be locked belong.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host to which the users to be locked belong.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user to be locked. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -9479,11 +9931,15 @@ type LockUsersResponseBodyResults struct {
 	//
 	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// > Make sure that the request parameters are valid and call the operation again.
+	//     **
+	//
+	//     **Note**Make sure that the request parameters are valid and call the operation again.
 	//
 	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//     **
+	//
+	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
 	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -9546,30 +10002,32 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 }
 
 type ModifyHostRequest struct {
-	// The new description of the host. The value can be up to 500 characters in length.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host.
-	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// The new name of the host. The name can be up to 128 characters.
-	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The new internal endpoint of the host. You can set this parameter to a domain name or an IP address.
-	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
-	// The new public endpoint of the host. You can set this parameter to a domain name or an IP address.
-	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The ID of the Bastionhost instance where you want to modify the information of the host.
 	//
 	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The new name of the host. The name can be up to 128 characters.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The new description of the host. The value can be up to 500 characters in length.
+	HostPrivateAddress *string `json:"HostPrivateAddress,omitempty" xml:"HostPrivateAddress,omitempty"`
+	// The region ID of the Bastionhost instance where you want to modify the information of the host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
+	// You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
+	//
+	// >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the host.
+	//
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The new operating system of the host. Valid values:
 	//
 	// *   **Linux**
 	// *   **Windows**
-	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// The region ID of the Bastionhost instance where you want to modify the information of the host.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9671,7 +10129,7 @@ func (s *ModifyHostResponse) SetBody(v *ModifyHostResponseBody) *ModifyHostRespo
 type ModifyHostAccountRequest struct {
 	// The ID of the host account whose information you want to modify.
 	//
-	// > : You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+	// > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
 	// The new name of the host account. The name can be up to 128 characters in length.
 	HostAccountName *string `json:"HostAccountName,omitempty" xml:"HostAccountName,omitempty"`
@@ -9679,21 +10137,21 @@ type ModifyHostAccountRequest struct {
 	HostShareKeyId *string `json:"HostShareKeyId,omitempty" xml:"HostShareKeyId,omitempty"`
 	// The ID of the bastion host in which you want to modify the information about the host account.
 	//
-	// > : You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The passphrase of the new private key for the host account.
 	//
-	// > : This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required.
+	// > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required.
 	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
 	// The new password of the host account.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The new private key of the host account. The value is a Base64-encoded string.
 	//
-	// > : This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required. You can call the [GetHostAccount](~~204391~~) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
+	// > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required. You can call the [GetHostAccount](~~204391~~) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The region ID of the bastion host in which you want to modify the information about the host account.
+	// The region ID of the bastion host in which you want to query the details of the host account.
 	//
-	// > : For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9793,21 +10251,21 @@ func (s *ModifyHostAccountResponse) SetBody(v *ModifyHostAccountResponseBody) *M
 }
 
 type ModifyHostGroupRequest struct {
-	// The new description of the host group. The value can be up to 500 characters in length.
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the host group that you want to modify.
-	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
-	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
 	// The new name of the host group. The name can be up to 128 characters in length.
-	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
-	// The ID of the Bastionhost instance where you want to modify the information of the host group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The region ID of the Bastionhost instance where you want to modify the information of the host group.
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// The ID of the host group that you want to modify.
+	//
+	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	HostGroupName *string `json:"HostGroupName,omitempty" xml:"HostGroupName,omitempty"`
+	// The ID of the request.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Bastionhost instance where you want to modify the information of the host group.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9898,7 +10356,7 @@ type ModifyHostShareKeyRequest struct {
 	HostShareKeyName *string `json:"HostShareKeyName,omitempty" xml:"HostShareKeyName,omitempty"`
 	// The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The password of the private key. The value is a Base64-encoded string.
+	// The passphrase of the private key. The value is a Base64-encoded string.
 	PassPhrase *string `json:"PassPhrase,omitempty" xml:"PassPhrase,omitempty"`
 	// The private key. The value is a Base64-encoded string.
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
@@ -9992,22 +10450,16 @@ func (s *ModifyHostShareKeyResponse) SetBody(v *ModifyHostShareKeyResponseBody) 
 }
 
 type ModifyHostsActiveAddressTypeRequest struct {
-	// The new portal type of the host. Valid values:
-	//
-	// *   **Public**: public portal
-	// *   **Private**: internal portal
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// The ID of the host for which you want to change the portal type. The value is a JSON string. You can add up to 100 host IDs.
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
 	//
-	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+	// For more information about sample requests, see the "Examples" section of this topic.
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the bastion host for which you want to change the portal type of the host.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to change the portal type of the host.
+	// The operation that you want to perform.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// Set the value to **ModifyHostsActiveAddressType**.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10040,10 +10492,8 @@ func (s *ModifyHostsActiveAddressTypeRequest) SetRegionId(v string) *ModifyHosts
 }
 
 type ModifyHostsActiveAddressTypeResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
-	Results []*ModifyHostsActiveAddressTypeResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*ModifyHostsActiveAddressTypeResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s ModifyHostsActiveAddressTypeResponseBody) String() string {
@@ -10065,17 +10515,8 @@ func (s *ModifyHostsActiveAddressTypeResponseBody) SetResults(v []*ModifyHostsAc
 }
 
 type ModifyHostsActiveAddressTypeResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	// *   **UNEXPECTED**: An unknown error occurred.
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// This parameter is deprecated.
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -10298,8 +10739,8 @@ type ModifyInstanceADAuthServerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to support SSL. Valid values:
 	//
-	// *   **true**: supports SSL.
-	// *   **false**: does not support SSL.
+	// *   **true**: yes
+	// *   **false**: no
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
 	// The field that is used to indicate the mobile phone number of a user on the AD server.
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
@@ -10540,8 +10981,8 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Specifies whether to support SSL. Valid values:
 	//
-	// *   **true**: supports SSL.
-	// *   **false**: does not support SSL.
+	// *   **true**
+	// *   **false**
 	IsSSL *string `json:"IsSSL,omitempty" xml:"IsSSL,omitempty"`
 	// The field that is used to indicate the logon name of a user on the LDAP server.
 	LoginNameMapping *string `json:"LoginNameMapping,omitempty" xml:"LoginNameMapping,omitempty"`
@@ -10549,7 +10990,7 @@ type ModifyInstanceLDAPAuthServerRequest struct {
 	MobileMapping *string `json:"MobileMapping,omitempty" xml:"MobileMapping,omitempty"`
 	// The field that is used to indicate the name of a user on the LDAP server.
 	NameMapping *string `json:"NameMapping,omitempty" xml:"NameMapping,omitempty"`
-	// The password of the account that is used for the LDAP server.
+	// The password of the account that is used for the LDAP server. You must configure a password when you configure LDAP authentication. If you leave this parameter empty when you modify the settings of LDAP authentication, the current password is used.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The port that is used to access the LDAP server.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
@@ -10700,7 +11141,7 @@ type ModifyInstanceTwoFactorRequest struct {
 	//
 	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the local user must pass two-factor authentication every time the local user logs on to the bastion host.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	SkipTwoFactorTime *string `json:"SkipTwoFactorTime,omitempty" xml:"SkipTwoFactorTime,omitempty"`
 	// One or more methods that are used to send a verification code if two-factor authentication is enabled. If you set the EnableTwoFactor parameter to true, you must specify at least one method. Valid values:
 	//
@@ -10744,7 +11185,7 @@ func (s *ModifyInstanceTwoFactorRequest) SetTwoFactorMethods(v string) *ModifyIn
 }
 
 type ModifyInstanceTwoFactorResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the local user must pass two-factor authentication every time the local user logs on to the bastion host.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10834,7 +11275,10 @@ type ModifyUserRequest struct {
 	// *   **SE:** Sweden, whose country calling code is +46
 	// *   **SA:** Saudi Arabia, whose country calling code is +966
 	MobileCountryCode *string `json:"MobileCountryCode,omitempty" xml:"MobileCountryCode,omitempty"`
-	// The original password of the user. The password must be 8 to 128 characters in length and must contain lowercase letters, uppercase letters, digits, and special characters.
+	// Specifies whether password reset is required upon the next logon. Valid values:
+	//
+	// - true: yes
+	// - false: no
 	NeedResetPassword *bool `json:"NeedResetPassword,omitempty" xml:"NeedResetPassword,omitempty"`
 	// The new password of the user. The password must be 8 to 128 characters in length and must contain lowercase letters, uppercase letters, digits, and special characters.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
@@ -10849,9 +11293,7 @@ type ModifyUserRequest struct {
 	// *   **dingtalk:** DingTalk
 	// *   **totp OTP:** time-based one-time password (TOTP) app
 	//
-	// >
-	//
-	// *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
+	// > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
 	TwoFactorMethods *string `json:"TwoFactorMethods,omitempty" xml:"TwoFactorMethods,omitempty"`
 	// The two-factor authentication status of the user. Valid values:
 	//
@@ -10989,21 +11431,21 @@ func (s *ModifyUserResponse) SetBody(v *ModifyUserResponseBody) *ModifyUserRespo
 }
 
 type ModifyUserGroupRequest struct {
-	// The new description of the user group. The value can be up to 500 characters in length.
+	// The new description of the user group. The description can be up to 500 characters in length.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the Bastionhost instance where you want to modify the information of the user group.
+	// The ID of the bastion host in which you want to modify the information about the user group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to modify the information of the user group.
+	// The region ID of the bastion host in which you want to modify the information about the user group.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user group that you want to modify.
 	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+	// > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The new name of the user group. The value can be up to 128 characters in length.
+	// The new name of the user group. This name can be up to 128 characters in length.
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 }
 
@@ -11092,11 +11534,11 @@ type MoveResourceGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the bastion host is moved.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the resource group ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the resource group ID of the bastion host.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the bastion host for which you want to change the resource group.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
@@ -11177,22 +11619,172 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 	return s
 }
 
+type RejectApproveCommandRequest struct {
+	CommandId  *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RejectApproveCommandRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectApproveCommandRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RejectApproveCommandRequest) SetCommandId(v string) *RejectApproveCommandRequest {
+	s.CommandId = &v
+	return s
+}
+
+func (s *RejectApproveCommandRequest) SetInstanceId(v string) *RejectApproveCommandRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RejectApproveCommandRequest) SetRegionId(v string) *RejectApproveCommandRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RejectApproveCommandResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RejectApproveCommandResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectApproveCommandResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RejectApproveCommandResponseBody) SetRequestId(v string) *RejectApproveCommandResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RejectApproveCommandResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RejectApproveCommandResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RejectApproveCommandResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectApproveCommandResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectApproveCommandResponse) SetHeaders(v map[string]*string) *RejectApproveCommandResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectApproveCommandResponse) SetStatusCode(v int32) *RejectApproveCommandResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectApproveCommandResponse) SetBody(v *RejectApproveCommandResponseBody) *RejectApproveCommandResponse {
+	s.Body = v
+	return s
+}
+
+type RejectOperationTicketRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OperationTicketId *string `json:"OperationTicketId,omitempty" xml:"OperationTicketId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RejectOperationTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectOperationTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RejectOperationTicketRequest) SetInstanceId(v string) *RejectOperationTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RejectOperationTicketRequest) SetOperationTicketId(v string) *RejectOperationTicketRequest {
+	s.OperationTicketId = &v
+	return s
+}
+
+func (s *RejectOperationTicketRequest) SetRegionId(v string) *RejectOperationTicketRequest {
+	s.RegionId = &v
+	return s
+}
+
+type RejectOperationTicketResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RejectOperationTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectOperationTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RejectOperationTicketResponseBody) SetRequestId(v string) *RejectOperationTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RejectOperationTicketResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RejectOperationTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RejectOperationTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectOperationTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectOperationTicketResponse) SetHeaders(v map[string]*string) *RejectOperationTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectOperationTicketResponse) SetStatusCode(v int32) *RejectOperationTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectOperationTicketResponse) SetBody(v *RejectOperationTicketResponseBody) *RejectOperationTicketResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveHostsFromGroupRequest struct {
-	// The ID of the host group from which you want to remove hosts.
+	// The return code that indicates whether the call was successful. Valid values:
 	//
-	// >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+	// *   **OK**: The call was successful.
+	// *   **UNEXPECTED**: An unknown error occurred.
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
+	// The ID of the request.
+	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
 	// The ID of the host that you want to remove from the host group. The value is a JSON string. You can add up to 100 host IDs.
 	//
 	// >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
-	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the bastion host for which you want to remove hosts from the host group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to remove hosts from the host group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// The ID of the host group.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11225,9 +11817,11 @@ func (s *RemoveHostsFromGroupRequest) SetRegionId(v string) *RemoveHostsFromGrou
 }
 
 type RemoveHostsFromGroupResponseBody struct {
-	// The ID of the request.
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+	//
+	// For more information about sample requests, see the "Examples" section of this topic.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// Removes one or more hosts from a host group.
 	Results []*RemoveHostsFromGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -11250,19 +11844,12 @@ func (s *RemoveHostsFromGroupResponseBody) SetResults(v []*RemoveHostsFromGroupR
 }
 
 type RemoveHostsFromGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	// *   **UNEXPECTED**: An unknown error occurred.
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// RemoveHostsFromGroup
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the host group.
+	// RemoveHostsFromGroup
 	HostGroupId *string `json:"HostGroupId,omitempty" xml:"HostGroupId,omitempty"`
-	// The ID of the host.
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	// This parameter is deprecated.
+	HostId      *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// WB662865
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -11324,21 +11911,29 @@ func (s *RemoveHostsFromGroupResponse) SetBody(v *RemoveHostsFromGroupResponseBo
 }
 
 type RemoveUsersFromGroupRequest struct {
-	// The ID of the bastion host for which you want to remove users from the user group.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the bastion host for which you want to remove users from the user group.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user group from which you want to remove users.
-	//
-	// >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
-	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
 	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the user.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	//
+	// *   **UNEXPECTED**: An unknown error occurred.
+	//
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	//
+	// > Make sure that the request parameters are valid and call the operation again.
+	//
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	//
+	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -11371,9 +11966,11 @@ func (s *RemoveUsersFromGroupRequest) SetUserIds(v string) *RemoveUsersFromGroup
 }
 
 type RemoveUsersFromGroupResponseBody struct {
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+	//
+	// For more information about sample requests, see the "Examples" section of this topic.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// Removes one or more users from a user group.
 	Results []*RemoveUsersFromGroupResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -11396,28 +11993,13 @@ func (s *RemoveUsersFromGroupResponseBody) SetResults(v []*RemoveUsersFromGroupR
 }
 
 type RemoveUsersFromGroupResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
-	//
-	// *   **OK**: The call was successful.
-	//
-	// *   **UNEXPECTED**: An unknown error occurred.
-	//
-	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
-	//
-	// > Make sure that the request parameters are valid and call the operation again.
-	//
-	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-	//
-	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	// RemoveUsersFromGroup
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// This parameter is deprecated.
+	// WB01014029
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the group.
+	// RemoveUsersFromGroup
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The ID of the user.
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s RemoveUsersFromGroupResponseBodyResults) String() string {
@@ -11478,22 +12060,13 @@ func (s *RemoveUsersFromGroupResponse) SetBody(v *RemoveUsersFromGroupResponseBo
 }
 
 type ResetHostAccountCredentialRequest struct {
-	// The type of the logon credential that you want to delete. Valid values:
-	//
-	// *   **Password**: You want to delete the password.
-	// *   **PrivateKey**: You want to delete the SSH private key.
+	// ResetHostAccountCredential
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The ID of the host account for which the logon credential is to be deleted.
-	//
-	// >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+	// WB662865
 	HostAccountId *string `json:"HostAccountId,omitempty" xml:"HostAccountId,omitempty"`
-	// The ID of the Bastionhost instance where you want to delete the logon credential for the host account.
-	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+	// Deletes the logon credential of a specified host account of a specified Bastionhost instance. The logon credential can be the password or SSH private key.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the Bastionhost instance where you want to delete the logon credential for the host account.
-	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// ResetHostAccountCredential
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11526,7 +12099,6 @@ func (s *ResetHostAccountCredentialRequest) SetRegionId(v string) *ResetHostAcco
 }
 
 type ResetHostAccountCredentialResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11575,11 +12147,11 @@ func (s *ResetHostAccountCredentialResponse) SetBody(v *ResetHostAccountCredenti
 type StartInstanceRequest struct {
 	// The ID of the bastion host that you want to enable.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to obtain the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the security groups.
+	// An array consisting of the IDs of security groups to which the bastion host is added.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The ID of the vSwitch to which the bastion host belongs.
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -11668,15 +12240,21 @@ func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInst
 }
 
 type TagResourcesRequest struct {
-	// The region ID of the Bastionhost instances to which tags need to be created and bound.
+	// The region ID of the bastion hosts to which you want to create and add tags.
+	//
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs.
+	// An array that consists of IDs of bastion hosts.
+	//
+	// Valid values: 1 to 20.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query IDs of bastion hosts.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource.
 	//
-	// Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+	// Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// An array that consists of tags.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -11709,21 +12287,22 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of tag N of the instance.
-	//
-	// Valid values of N: 1 to 20.
+	// The key of tag N. Valid values of N: 1 to 20.
 	//
 	// >
-	// *   The key can be up to 128 characters in length but cannot be an empty string.
-	// *   The key cannot start with **aliyun** or **acs:**. It cannot contain **http://** or **https://**.
+	//
+	// *   The value can be up to 128 characters in length but cannot be an empty string.
+	//
+	// *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the instance.
-	//
+	// The value of tag N.\
 	// Valid values of N: 1 to 20.
 	//
 	// >
+	//
 	// *   The value can be up to 128 characters in length or an empty string.
-	// *   The value cannot start with **aliyun** or **acs:**. It cannot contain **http://** or **https://**.
+	//
+	// *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11746,7 +12325,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11795,15 +12374,15 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnlockUsersRequest struct {
 	// The ID of the bastion host to which the users to be unlocked belong.
 	//
-	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the bastion host to which the users to be unlocked belong.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the user that you want to unlock. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
 	//
-	// >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+	// > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
 	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
 }
 
@@ -11833,7 +12412,7 @@ func (s *UnlockUsersRequest) SetUserIds(v string) *UnlockUsersRequest {
 type UnlockUsersResponseBody struct {
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the call.
+	// An array that consists of information about the result of the call.
 	Results []*UnlockUsersResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
@@ -11856,7 +12435,7 @@ func (s *UnlockUsersResponseBody) SetResults(v []*UnlockUsersResponseBodyResults
 }
 
 type UnlockUsersResponseBodyResults struct {
-	// The return code that indicates whether the call was successful. Valid values:
+	// The result of the call. Valid values:
 	//
 	// *   **OK**: The call was successful.
 	//
@@ -11864,11 +12443,15 @@ type UnlockUsersResponseBodyResults struct {
 	//
 	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
 	//
-	// > Make sure that the request parameters are valid and call the operation again.
+	//     **
+	//
+	//     **Note**Make sure that the request parameters are valid and call the operation again.
 	//
 	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
 	//
-	// > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+	//     **
+	//
+	//     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
 	//
 	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -11938,15 +12521,21 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID of the bastion host to query.
 	//
-	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+	// > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	// An array that consists of IDs of bastion hosts.
+	//
+	// Valid values: 1 to 20.
+	//
+	// > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource.
 	//
 	// Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys of the resource.
+	// The key of tag N.
+	//
+	// Valid values of N: 1 to 20.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -12077,11 +12666,141 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AcceptApproveCommandWithOptions(request *AcceptApproveCommandRequest, runtime *util.RuntimeOptions) (_result *AcceptApproveCommandResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+		query["CommandId"] = request.CommandId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AcceptApproveCommand"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AcceptApproveCommandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AcceptApproveCommand(request *AcceptApproveCommandRequest) (_result *AcceptApproveCommandResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AcceptApproveCommandResponse{}
+	_body, _err := client.AcceptApproveCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * ## Usage notes
- * You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
- * ## QPS limit
+ * You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AcceptOperationTicketRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AcceptOperationTicketResponse
+ */
+func (client *Client) AcceptOperationTicketWithOptions(request *AcceptOperationTicketRequest, runtime *util.RuntimeOptions) (_result *AcceptOperationTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectCount)) {
+		query["EffectCount"] = request.EffectCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectEndTime)) {
+		query["EffectEndTime"] = request.EffectEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectStartTime)) {
+		query["EffectStartTime"] = request.EffectStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationTicketId)) {
+		query["OperationTicketId"] = request.OperationTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AcceptOperationTicket"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AcceptOperationTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request AcceptOperationTicketRequest
+ * @return AcceptOperationTicketResponse
+ */
+func (client *Client) AcceptOperationTicket(request *AcceptOperationTicketRequest) (_result *AcceptOperationTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AcceptOperationTicketResponse{}
+	_body, _err := client.AcceptOperationTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddHostsToGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12133,10 +12852,9 @@ func (client *Client) AddHostsToGroupWithOptions(request *AddHostsToGroupRequest
 }
 
 /**
- * ## Usage notes
  * You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
- * ## QPS limit
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * # Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddHostsToGroupRequest
  * @return AddHostsToGroupResponse
@@ -12153,10 +12871,7 @@ func (client *Client) AddHostsToGroup(request *AddHostsToGroupRequest) (_result 
 }
 
 /**
- * ## Usage notes
- * You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
- * ## QPS limit
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * This parameter is deprecated.
  *
  * @param request AddUsersToGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12208,10 +12923,7 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 }
 
 /**
- * ## Usage notes
- * You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
- * ## QPS limit
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * This parameter is deprecated.
  *
  * @param request AddUsersToGroupRequest
  * @return AddUsersToGroupResponse
@@ -12577,10 +13289,7 @@ func (client *Client) ConfigInstanceSecurityGroups(request *ConfigInstanceSecuri
 }
 
 /**
- * ## Usage notes
- * You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
- * ## Limits
- * You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * The ID of the request, which is used to locate and troubleshoot issues.
  *
  * @param request ConfigInstanceWhiteListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12628,10 +13337,7 @@ func (client *Client) ConfigInstanceWhiteListWithOptions(request *ConfigInstance
 }
 
 /**
- * ## Usage notes
- * You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
- * ## Limits
- * You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * The ID of the request, which is used to locate and troubleshoot issues.
  *
  * @param request ConfigInstanceWhiteListRequest
  * @return ConfigInstanceWhiteListResponse
@@ -13047,9 +13753,7 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 }
 
 /**
- * ## Usage notes
- * You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
- * ## Limits
+ * You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateUserGroupRequest
@@ -13102,9 +13806,7 @@ func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest
 }
 
 /**
- * ## Usage notes
- * You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
- * ## Limits
+ * You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateUserGroupRequest
@@ -13251,11 +13953,8 @@ func (client *Client) DeleteHost(request *DeleteHostRequest) (_result *DeleteHos
 }
 
 /**
- * ## Usage notes
- * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
- * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+ * For more information about sample requests, see the "Examples" section of this topic.
  *
  * @param request DeleteHostAccountRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13303,11 +14002,8 @@ func (client *Client) DeleteHostAccountWithOptions(request *DeleteHostAccountReq
 }
 
 /**
- * ## Usage notes
- * You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
- * >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
- * ## Limits
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+ * For more information about sample requests, see the "Examples" section of this topic.
  *
  * @param request DeleteHostAccountRequest
  * @return DeleteHostAccountResponse
@@ -13324,9 +14020,8 @@ func (client *Client) DeleteHostAccount(request *DeleteHostAccountRequest) (_res
 }
 
 /**
- * ## Usage notes
- * You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
- * ## Limits
+ * You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+ * ### Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteHostGroupRequest
@@ -13375,9 +14070,8 @@ func (client *Client) DeleteHostGroupWithOptions(request *DeleteHostGroupRequest
 }
 
 /**
- * ## Usage notes
- * You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
- * ## Limits
+ * You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+ * ### Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request DeleteHostGroupRequest
@@ -14381,10 +15075,7 @@ func (client *Client) GetHostShareKey(request *GetHostShareKeyRequest) (_result 
 }
 
 /**
- * ## Usage notes
- * You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
- * ## Limits
- * You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * The condition that is used to filter users.
  *
  * @param request GetInstanceADAuthServerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14428,10 +15119,7 @@ func (client *Client) GetInstanceADAuthServerWithOptions(request *GetInstanceADA
 }
 
 /**
- * ## Usage notes
- * You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
- * ## Limits
- * You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * The condition that is used to filter users.
  *
  * @param request GetInstanceADAuthServerRequest
  * @return GetInstanceADAuthServerResponse
@@ -14496,10 +15184,9 @@ func (client *Client) GetInstanceLDAPAuthServer(request *GetInstanceLDAPAuthServ
 }
 
 /**
- * ## Usage notes
- * You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
- * ## Limits
- * You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * Indicates whether two-factor authentication is enabled. Valid values:
+ * *   **true**: enabled
+ * *   **false**: disabled
  *
  * @param request GetInstanceTwoFactorRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -14543,10 +15230,9 @@ func (client *Client) GetInstanceTwoFactorWithOptions(request *GetInstanceTwoFac
 }
 
 /**
- * ## Usage notes
- * You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
- * ## Limits
- * You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * Indicates whether two-factor authentication is enabled. Valid values:
+ * *   **true**: enabled
+ * *   **false**: disabled
  *
  * @param request GetInstanceTwoFactorRequest
  * @return GetInstanceTwoFactorResponse
@@ -14659,6 +15345,62 @@ func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUs
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserGroupResponse{}
 	_body, _err := client.GetUserGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListApproveCommandsWithOptions(request *ListApproveCommandsRequest, runtime *util.RuntimeOptions) (_result *ListApproveCommandsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApproveCommands"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApproveCommandsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListApproveCommands(request *ListApproveCommandsRequest) (_result *ListApproveCommandsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApproveCommandsResponse{}
+	_body, _err := client.ListApproveCommandsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15530,14 +16272,66 @@ func (client *Client) ListHostsForUserGroup(request *ListHostsForUserGroupReques
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
- *
- * @param request ListTagKeysRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListTagKeysResponse
- */
+func (client *Client) ListOperationTicketsWithOptions(request *ListOperationTicketsRequest, runtime *util.RuntimeOptions) (_result *ListOperationTicketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetAddress)) {
+		query["AssetAddress"] = request.AssetAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationTickets"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationTicketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationTickets(request *ListOperationTicketsRequest) (_result *ListOperationTicketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOperationTicketsResponse{}
+	_body, _err := client.ListOperationTicketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15583,13 +16377,6 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
- *
- * @param request ListTagKeysRequest
- * @return ListTagKeysResponse
- */
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -15866,9 +16653,9 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 }
 
 /**
- * ## Usage notes
- * You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
- * ## QPS limit
+ * # Description
+ * You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+ * # Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request LockUsersRequest
@@ -15917,9 +16704,9 @@ func (client *Client) LockUsersWithOptions(request *LockUsersRequest, runtime *u
 }
 
 /**
- * ## Usage notes
- * You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
- * ## QPS limit
+ * # Description
+ * You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+ * # Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request LockUsersRequest
@@ -15937,8 +16724,7 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 }
 
 /**
- * You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
- * >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+ * The ID of the request.
  *
  * @param request ModifyHostRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -16006,8 +16792,7 @@ func (client *Client) ModifyHostWithOptions(request *ModifyHostRequest, runtime 
 }
 
 /**
- * You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
- * >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+ * The ID of the request.
  *
  * @param request ModifyHostRequest
  * @return ModifyHostResponse
@@ -16872,6 +17657,110 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) RejectApproveCommandWithOptions(request *RejectApproveCommandRequest, runtime *util.RuntimeOptions) (_result *RejectApproveCommandResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommandId)) {
+		query["CommandId"] = request.CommandId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectApproveCommand"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RejectApproveCommandResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RejectApproveCommand(request *RejectApproveCommandRequest) (_result *RejectApproveCommandResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectApproveCommandResponse{}
+	_body, _err := client.RejectApproveCommandWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RejectOperationTicketWithOptions(request *RejectOperationTicketRequest, runtime *util.RuntimeOptions) (_result *RejectOperationTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationTicketId)) {
+		query["OperationTicketId"] = request.OperationTicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectOperationTicket"),
+		Version:     tea.String("2019-12-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RejectOperationTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RejectOperationTicket(request *RejectOperationTicketRequest) (_result *RejectOperationTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectOperationTicketResponse{}
+	_body, _err := client.RejectOperationTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RemoveHostsFromGroupWithOptions(request *RemoveHostsFromGroupRequest, runtime *util.RuntimeOptions) (_result *RemoveHostsFromGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16929,10 +17818,7 @@ func (client *Client) RemoveHostsFromGroup(request *RemoveHostsFromGroupRequest)
 }
 
 /**
- * ## Usage notes
- * You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
- * ## QPS limit
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * This parameter is deprecated.
  *
  * @param request RemoveUsersFromGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -16984,10 +17870,7 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 }
 
 /**
- * ## Usage notes
- * You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
- * ## QPS limit
- * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * This parameter is deprecated.
  *
  * @param request RemoveUsersFromGroupRequest
  * @return RemoveUsersFromGroupResponse
@@ -17172,9 +18055,8 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 }
 
 /**
- * ## Usage notes
- * After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
- * ## QPS limit
+ * After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+ * # Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request UnlockUsersRequest
@@ -17223,9 +18105,8 @@ func (client *Client) UnlockUsersWithOptions(request *UnlockUsersRequest, runtim
 }
 
 /**
- * ## Usage notes
- * After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
- * ## QPS limit
+ * After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+ * # Limits
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request UnlockUsersRequest
