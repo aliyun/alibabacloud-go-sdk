@@ -761,6 +761,110 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerResponse) SetBody(v *AttachCo
 	return s
 }
 
+type CancelShiftLoadBalancerZonesRequest struct {
+	ClientToken    *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId *string                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ZoneMappings   []*CancelShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+}
+
+func (s CancelShiftLoadBalancerZonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShiftLoadBalancerZonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShiftLoadBalancerZonesRequest) SetClientToken(v string) *CancelShiftLoadBalancerZonesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesRequest) SetDryRun(v bool) *CancelShiftLoadBalancerZonesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesRequest) SetLoadBalancerId(v string) *CancelShiftLoadBalancerZonesRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesRequest) SetZoneMappings(v []*CancelShiftLoadBalancerZonesRequestZoneMappings) *CancelShiftLoadBalancerZonesRequest {
+	s.ZoneMappings = v
+	return s
+}
+
+type CancelShiftLoadBalancerZonesRequestZoneMappings struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CancelShiftLoadBalancerZonesRequestZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShiftLoadBalancerZonesRequestZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShiftLoadBalancerZonesRequestZoneMappings) SetVSwitchId(v string) *CancelShiftLoadBalancerZonesRequestZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *CancelShiftLoadBalancerZonesRequestZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type CancelShiftLoadBalancerZonesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelShiftLoadBalancerZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShiftLoadBalancerZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShiftLoadBalancerZonesResponseBody) SetRequestId(v string) *CancelShiftLoadBalancerZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelShiftLoadBalancerZonesResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelShiftLoadBalancerZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelShiftLoadBalancerZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelShiftLoadBalancerZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelShiftLoadBalancerZonesResponse) SetHeaders(v map[string]*string) *CancelShiftLoadBalancerZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesResponse) SetStatusCode(v int32) *CancelShiftLoadBalancerZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelShiftLoadBalancerZonesResponse) SetBody(v *CancelShiftLoadBalancerZonesResponseBody) *CancelShiftLoadBalancerZonesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAScriptsRequest struct {
 	// The AScript rules.
 	AScripts []*CreateAScriptsRequestAScripts `json:"AScripts,omitempty" xml:"AScripts,omitempty" type:"Repeated"`
@@ -2099,6 +2203,7 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
+	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 vSwitch IDs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone where the ALB instance is deployed. You can specify up to 10 zone IDs.
@@ -2113,6 +2218,11 @@ func (s CreateLoadBalancerRequestZoneMappings) String() string {
 
 func (s CreateLoadBalancerRequestZoneMappings) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestZoneMappings) SetIntranetAddress(v string) *CreateLoadBalancerRequestZoneMappings {
+	s.IntranetAddress = &v
+	return s
 }
 
 func (s *CreateLoadBalancerRequestZoneMappings) SetVSwitchId(v string) *CreateLoadBalancerRequestZoneMappings {
@@ -14821,6 +14931,110 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 	return s
 }
 
+type StartShiftLoadBalancerZonesRequest struct {
+	ClientToken    *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun         *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerId *string                                           `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	ZoneMappings   []*StartShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+}
+
+func (s StartShiftLoadBalancerZonesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartShiftLoadBalancerZonesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartShiftLoadBalancerZonesRequest) SetClientToken(v string) *StartShiftLoadBalancerZonesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesRequest) SetDryRun(v bool) *StartShiftLoadBalancerZonesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesRequest) SetLoadBalancerId(v string) *StartShiftLoadBalancerZonesRequest {
+	s.LoadBalancerId = &v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesRequest) SetZoneMappings(v []*StartShiftLoadBalancerZonesRequestZoneMappings) *StartShiftLoadBalancerZonesRequest {
+	s.ZoneMappings = v
+	return s
+}
+
+type StartShiftLoadBalancerZonesRequestZoneMappings struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s StartShiftLoadBalancerZonesRequestZoneMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartShiftLoadBalancerZonesRequestZoneMappings) GoString() string {
+	return s.String()
+}
+
+func (s *StartShiftLoadBalancerZonesRequestZoneMappings) SetVSwitchId(v string) *StartShiftLoadBalancerZonesRequestZoneMappings {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *StartShiftLoadBalancerZonesRequestZoneMappings {
+	s.ZoneId = &v
+	return s
+}
+
+type StartShiftLoadBalancerZonesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartShiftLoadBalancerZonesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartShiftLoadBalancerZonesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartShiftLoadBalancerZonesResponseBody) SetRequestId(v string) *StartShiftLoadBalancerZonesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartShiftLoadBalancerZonesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartShiftLoadBalancerZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartShiftLoadBalancerZonesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartShiftLoadBalancerZonesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartShiftLoadBalancerZonesResponse) SetHeaders(v map[string]*string) *StartShiftLoadBalancerZonesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesResponse) SetStatusCode(v int32) *StartShiftLoadBalancerZonesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartShiftLoadBalancerZonesResponse) SetBody(v *StartShiftLoadBalancerZonesResponseBody) *StartShiftLoadBalancerZonesResponse {
+	s.Body = v
+	return s
+}
+
 type StopListenerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -16681,6 +16895,7 @@ func (s *UpdateLoadBalancerZonesRequest) SetZoneMappings(v []*UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerZonesRequestZoneMappings struct {
+	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The ID of the vSwitch in the zone. By default, you can specify only one vSwitch (subnet) for each zone of an ALB instance. You can specify up to 10 zone IDs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the zone. You can call the [DescribeZones](~~189196~~) operation to query the zones. You can specify up to 10 zone IDs.
@@ -16693,6 +16908,11 @@ func (s UpdateLoadBalancerZonesRequestZoneMappings) String() string {
 
 func (s UpdateLoadBalancerZonesRequestZoneMappings) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetIntranetAddress(v string) *UpdateLoadBalancerZonesRequestZoneMappings {
+	s.IntranetAddress = &v
+	return s
 }
 
 func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetVSwitchId(v string) *UpdateLoadBalancerZonesRequestZoneMappings {
@@ -19862,6 +20082,62 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancer(request *Attach
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachCommonBandwidthPackageToLoadBalancerResponse{}
 	_body, _err := client.AttachCommonBandwidthPackageToLoadBalancerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelShiftLoadBalancerZones"),
+		Version:     tea.String("2020-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelShiftLoadBalancerZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelShiftLoadBalancerZones(request *CancelShiftLoadBalancerZonesRequest) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelShiftLoadBalancerZonesResponse{}
+	_body, _err := client.CancelShiftLoadBalancerZonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23632,6 +23908,62 @@ func (client *Client) StartListener(request *StartListenerRequest) (_result *Sta
 	runtime := &util.RuntimeOptions{}
 	_result = &StartListenerResponse{}
 	_body, _err := client.StartListenerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalancerId)) {
+		query["LoadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneMappings)) {
+		query["ZoneMappings"] = request.ZoneMappings
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartShiftLoadBalancerZones"),
+		Version:     tea.String("2020-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartShiftLoadBalancerZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalancerZonesRequest) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartShiftLoadBalancerZonesResponse{}
+	_body, _err := client.StartShiftLoadBalancerZonesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
