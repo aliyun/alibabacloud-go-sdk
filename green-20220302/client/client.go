@@ -12,6 +12,145 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeImageModerationResultRequest struct {
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s DescribeImageModerationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageModerationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageModerationResultRequest) SetReqId(v string) *DescribeImageModerationResultRequest {
+	s.ReqId = &v
+	return s
+}
+
+type DescribeImageModerationResultResponseBody struct {
+	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                                        `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeImageModerationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageModerationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageModerationResultResponseBody) SetCode(v string) *DescribeImageModerationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBody) SetData(v *DescribeImageModerationResultResponseBodyData) *DescribeImageModerationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBody) SetMsg(v string) *DescribeImageModerationResultResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBody) SetRequestId(v string) *DescribeImageModerationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeImageModerationResultResponseBodyData struct {
+	DataId   *string                                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Frame    *string                                                `json:"Frame,omitempty" xml:"Frame,omitempty"`
+	FrameNum *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	Result   []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s DescribeImageModerationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageModerationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetDataId(v string) *DescribeImageModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetFrame(v string) *DescribeImageModerationResultResponseBodyData {
+	s.Frame = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetFrameNum(v int32) *DescribeImageModerationResultResponseBodyData {
+	s.FrameNum = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetResult(v []*DescribeImageModerationResultResponseBodyDataResult) *DescribeImageModerationResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+type DescribeImageModerationResultResponseBodyDataResult struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s DescribeImageModerationResultResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageModerationResultResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageModerationResultResponseBodyDataResult) SetConfidence(v float32) *DescribeImageModerationResultResponseBodyDataResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyDataResult) SetLabel(v string) *DescribeImageModerationResultResponseBodyDataResult {
+	s.Label = &v
+	return s
+}
+
+type DescribeImageModerationResultResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImageModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImageModerationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImageModerationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImageModerationResultResponse) SetHeaders(v map[string]*string) *DescribeImageModerationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponse) SetStatusCode(v int32) *DescribeImageModerationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponse) SetBody(v *DescribeImageModerationResultResponseBody) *DescribeImageModerationResultResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeImageResultExtRequest struct {
 	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
 	ReqId    *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
@@ -320,6 +459,116 @@ func (s *DescribeUploadTokenResponse) SetStatusCode(v int32) *DescribeUploadToke
 }
 
 func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody) *DescribeUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
+type ImageAsyncModerationRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s ImageAsyncModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncModerationRequest) SetService(v string) *ImageAsyncModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *ImageAsyncModerationRequest) SetServiceParameters(v string) *ImageAsyncModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type ImageAsyncModerationResponseBody struct {
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ImageAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg       *string                               `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImageAsyncModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncModerationResponseBody) SetCode(v int32) *ImageAsyncModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImageAsyncModerationResponseBody) SetData(v *ImageAsyncModerationResponseBodyData) *ImageAsyncModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImageAsyncModerationResponseBody) SetMsg(v string) *ImageAsyncModerationResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ImageAsyncModerationResponseBody) SetRequestId(v string) *ImageAsyncModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImageAsyncModerationResponseBodyData struct {
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	ReqId  *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+}
+
+func (s ImageAsyncModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncModerationResponseBodyData) SetDataId(v string) *ImageAsyncModerationResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *ImageAsyncModerationResponseBodyData) SetReqId(v string) *ImageAsyncModerationResponseBodyData {
+	s.ReqId = &v
+	return s
+}
+
+type ImageAsyncModerationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImageAsyncModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImageAsyncModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageAsyncModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImageAsyncModerationResponse) SetHeaders(v map[string]*string) *ImageAsyncModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImageAsyncModerationResponse) SetStatusCode(v int32) *ImageAsyncModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBody) *ImageAsyncModerationResponse {
 	s.Body = v
 	return s
 }
@@ -1459,6 +1708,50 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) DescribeImageModerationResultWithOptions(request *DescribeImageModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeImageModerationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReqId)) {
+		query["ReqId"] = request.ReqId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImageModerationResult"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImageModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImageModerationResult(request *DescribeImageModerationResultRequest) (_result *DescribeImageModerationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImageModerationResultResponse{}
+	_body, _err := client.DescribeImageModerationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeImageResultExtWithOptions(request *DescribeImageResultExtRequest, runtime *util.RuntimeOptions) (_result *DescribeImageResultExtResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1533,6 +1826,54 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUploadTokenResponse{}
 	_body, _err := client.DescribeUploadTokenWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImageAsyncModerationWithOptions(request *ImageAsyncModerationRequest, runtime *util.RuntimeOptions) (_result *ImageAsyncModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImageAsyncModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImageAsyncModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImageAsyncModeration(request *ImageAsyncModerationRequest) (_result *ImageAsyncModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImageAsyncModerationResponse{}
+	_body, _err := client.ImageAsyncModerationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
