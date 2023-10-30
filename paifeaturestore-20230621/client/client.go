@@ -750,10 +750,11 @@ func (s *CreateLabelTableResponse) SetBody(v *CreateLabelTableResponseBody) *Cre
 }
 
 type CreateModelFeatureRequest struct {
-	Features     []*CreateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	LabelTableId *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
-	Name         *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId    *string                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Features               []*CreateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	LabelTableId           *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	Name                   *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId              *string                              `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SequenceFeatureViewIds []*string                            `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
 }
 
 func (s CreateModelFeatureRequest) String() string {
@@ -781,6 +782,11 @@ func (s *CreateModelFeatureRequest) SetName(v string) *CreateModelFeatureRequest
 
 func (s *CreateModelFeatureRequest) SetProjectId(v string) *CreateModelFeatureRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateModelFeatureRequest) SetSequenceFeatureViewIds(v []*string) *CreateModelFeatureRequest {
+	s.SequenceFeatureViewIds = v
 	return s
 }
 
@@ -5879,8 +5885,9 @@ func (s *UpdateLabelTableResponse) SetBody(v *UpdateLabelTableResponseBody) *Upd
 }
 
 type UpdateModelFeatureRequest struct {
-	Features     []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
-	LabelTableId *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	Features               []*UpdateModelFeatureRequestFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	LabelTableId           *string                              `json:"LabelTableId,omitempty" xml:"LabelTableId,omitempty"`
+	SequenceFeatureViewIds []*string                            `json:"SequenceFeatureViewIds,omitempty" xml:"SequenceFeatureViewIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateModelFeatureRequest) String() string {
@@ -5898,6 +5905,11 @@ func (s *UpdateModelFeatureRequest) SetFeatures(v []*UpdateModelFeatureRequestFe
 
 func (s *UpdateModelFeatureRequest) SetLabelTableId(v string) *UpdateModelFeatureRequest {
 	s.LabelTableId = &v
+	return s
+}
+
+func (s *UpdateModelFeatureRequest) SetSequenceFeatureViewIds(v []*string) *UpdateModelFeatureRequest {
+	s.SequenceFeatureViewIds = v
 	return s
 }
 
@@ -6707,6 +6719,10 @@ func (client *Client) CreateModelFeatureWithOptions(InstanceId *string, request 
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceFeatureViewIds)) {
+		body["SequenceFeatureViewIds"] = request.SequenceFeatureViewIds
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8713,6 +8729,10 @@ func (client *Client) UpdateModelFeatureWithOptions(InstanceId *string, ModelFea
 
 	if !tea.BoolValue(util.IsUnset(request.LabelTableId)) {
 		body["LabelTableId"] = request.LabelTableId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SequenceFeatureViewIds)) {
+		body["SequenceFeatureViewIds"] = request.SequenceFeatureViewIds
 	}
 
 	req := &openapi.OpenApiRequest{
