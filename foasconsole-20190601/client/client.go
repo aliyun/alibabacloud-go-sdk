@@ -296,19 +296,23 @@ func (s *CreateInstanceRequest) SetCreateInstanceRequest(v *CreateInstanceReques
 }
 
 type CreateInstanceRequestCreateInstanceRequest struct {
+	ArchitectureType *string                                                 `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	AutoRenew        *bool                                                   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ChargeType       *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Duration         *int32                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra            *string                                                 `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	InstanceName     *string                                                 `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	PricingCycle     *string                                                 `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode    *string                                                 `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	Region           *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId  *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceSpec     *CreateInstanceRequestCreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	Storage          *CreateInstanceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 	UsePromotionCode *bool                                                   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	VSwitchIds       []*string                                               `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string                                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId           *string                                                 `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceRequestCreateInstanceRequest) String() string {
@@ -317,6 +321,11 @@ func (s CreateInstanceRequestCreateInstanceRequest) String() string {
 
 func (s CreateInstanceRequestCreateInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetArchitectureType(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.ArchitectureType = &v
+	return s
 }
 
 func (s *CreateInstanceRequestCreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequestCreateInstanceRequest {
@@ -331,6 +340,11 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetChargeType(v string) *Cr
 
 func (s *CreateInstanceRequestCreateInstanceRequest) SetDuration(v int32) *CreateInstanceRequestCreateInstanceRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetExtra(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.Extra = &v
 	return s
 }
 
@@ -351,6 +365,11 @@ func (s *CreateInstanceRequestCreateInstanceRequest) SetPromotionCode(v string) 
 
 func (s *CreateInstanceRequestCreateInstanceRequest) SetRegion(v string) *CreateInstanceRequestCreateInstanceRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *CreateInstanceRequestCreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequestCreateInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -857,12 +876,14 @@ func (s *DescribeInstancesRequest) SetDescribeInstancesRequest(v *DescribeInstan
 }
 
 type DescribeInstancesRequestDescribeInstancesRequest struct {
-	ChargeType *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageIndex  *int32                                                  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region     *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
-	Tags       []*DescribeInstancesRequestDescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ArchitectureType *string                                                 `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	ChargeType       *string                                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	InstanceId       *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageIndex        *int32                                                  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region           *string                                                 `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId  *string                                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags             []*DescribeInstancesRequestDescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequestDescribeInstancesRequest) String() string {
@@ -871,6 +892,11 @@ func (s DescribeInstancesRequestDescribeInstancesRequest) String() string {
 
 func (s DescribeInstancesRequestDescribeInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancesRequestDescribeInstancesRequest) SetArchitectureType(v string) *DescribeInstancesRequestDescribeInstancesRequest {
+	s.ArchitectureType = &v
+	return s
 }
 
 func (s *DescribeInstancesRequestDescribeInstancesRequest) SetChargeType(v string) *DescribeInstancesRequestDescribeInstancesRequest {
@@ -895,6 +921,11 @@ func (s *DescribeInstancesRequestDescribeInstancesRequest) SetPageSize(v int32) 
 
 func (s *DescribeInstancesRequestDescribeInstancesRequest) SetRegion(v string) *DescribeInstancesRequestDescribeInstancesRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeInstancesRequestDescribeInstancesRequest) SetResourceGroupId(v string) *DescribeInstancesRequestDescribeInstancesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -980,22 +1011,26 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	ChargeType          *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterStatus       *string                                             `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	InstanceId          *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	OrderState          *string                                             `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	Region              *string                                             `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime  *int64                                              `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceExpiredTime *int64                                              `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	ResourceId          *string                                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage             *DescribeInstancesResponseBodyInstancesStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tags                []*DescribeInstancesResponseBodyInstancesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Uid                 *string                                             `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitchIds          []*string                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId               *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ArchitectureType    *string                                              `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AskClusterId        *string                                              `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
+	ChargeType          *string                                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterStatus       *string                                              `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	HostAliases         []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	InstanceId          *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName        *string                                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OrderState          *string                                              `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	Region              *string                                              `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreateTime  *int64                                               `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	ResourceExpiredTime *int64                                               `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	ResourceGroupId     *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceId          *string                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec  `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage             *DescribeInstancesResponseBodyInstancesStorage       `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tags                []*DescribeInstancesResponseBodyInstancesTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Uid                 *string                                              `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VSwitchIds          []*string                                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId               *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId              *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -1006,6 +1041,16 @@ func (s DescribeInstancesResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetArchitectureType(v string) *DescribeInstancesResponseBodyInstances {
+	s.ArchitectureType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetAskClusterId(v string) *DescribeInstancesResponseBodyInstances {
+	s.AskClusterId = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetChargeType(v string) *DescribeInstancesResponseBodyInstances {
 	s.ChargeType = &v
 	return s
@@ -1013,6 +1058,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetChargeType(v string) *Descri
 
 func (s *DescribeInstancesResponseBodyInstances) SetClusterStatus(v string) *DescribeInstancesResponseBodyInstances {
 	s.ClusterStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHostAliases(v []*DescribeInstancesResponseBodyInstancesHostAliases) *DescribeInstancesResponseBodyInstances {
+	s.HostAliases = v
 	return s
 }
 
@@ -1043,6 +1093,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceCreateTime(v int64) 
 
 func (s *DescribeInstancesResponseBodyInstances) SetResourceExpiredTime(v int64) *DescribeInstancesResponseBodyInstances {
 	s.ResourceExpiredTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetResourceGroupId(v string) *DescribeInstancesResponseBodyInstances {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1083,6 +1138,29 @@ func (s *DescribeInstancesResponseBodyInstances) SetVpcId(v string) *DescribeIns
 
 func (s *DescribeInstancesResponseBodyInstances) SetZoneId(v string) *DescribeInstancesResponseBodyInstances {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesHostAliases struct {
+	HostNames []*string `json:"HostNames,omitempty" xml:"HostNames,omitempty" type:"Repeated"`
+	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesHostAliases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesHostAliases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHostAliases) SetHostNames(v []*string) *DescribeInstancesResponseBodyInstancesHostAliases {
+	s.HostNames = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHostAliases) SetIp(v string) *DescribeInstancesResponseBodyInstancesHostAliases {
+	s.Ip = &v
 	return s
 }
 
@@ -1574,7 +1652,8 @@ func (s *DescribeSupportedRegionsResponse) SetBody(v *DescribeSupportedRegionsRe
 }
 
 type DescribeSupportedZonesRequest struct {
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeSupportedZonesRequest) String() string {
@@ -1583,6 +1662,11 @@ func (s DescribeSupportedZonesRequest) String() string {
 
 func (s DescribeSupportedZonesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSupportedZonesRequest) SetArchitectureType(v string) *DescribeSupportedZonesRequest {
+	s.ArchitectureType = &v
+	return s
 }
 
 func (s *DescribeSupportedZonesRequest) SetRegion(v string) *DescribeSupportedZonesRequest {
@@ -1713,7 +1797,8 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// requestID。
 	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 	TagReponseId *string                                     `json:"TagReponseId,omitempty" xml:"TagReponseId,omitempty"`
@@ -2589,9 +2674,11 @@ func (s *QueryCreateInstancePriceRequest) SetCreateInstanceRequest(v *QueryCreat
 }
 
 type QueryCreateInstancePriceRequestCreateInstanceRequest struct {
+	ArchitectureType *string                                                           `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	AutoRenew        *bool                                                             `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ChargeType       *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	Duration         *int32                                                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra            *string                                                           `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	InstanceName     *string                                                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	PricingCycle     *string                                                           `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	PromotionCode    *string                                                           `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
@@ -2600,8 +2687,9 @@ type QueryCreateInstancePriceRequestCreateInstanceRequest struct {
 	Storage          *QueryCreateInstancePriceRequestCreateInstanceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 	UsePromotionCode *bool                                                             `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	VSwitchIds       []*string                                                         `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId           *string                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// VPC ID。
+	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceRequestCreateInstanceRequest) String() string {
@@ -2610,6 +2698,11 @@ func (s QueryCreateInstancePriceRequestCreateInstanceRequest) String() string {
 
 func (s QueryCreateInstancePriceRequestCreateInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetArchitectureType(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.ArchitectureType = &v
+	return s
 }
 
 func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetAutoRenew(v bool) *QueryCreateInstancePriceRequestCreateInstanceRequest {
@@ -2624,6 +2717,11 @@ func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetChargeType(v s
 
 func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetDuration(v int32) *QueryCreateInstancePriceRequestCreateInstanceRequest {
 	s.Duration = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceRequestCreateInstanceRequest) SetExtra(v string) *QueryCreateInstancePriceRequestCreateInstanceRequest {
+	s.Extra = &v
 	return s
 }
 
@@ -3783,7 +3881,7 @@ func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPostpayInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ConvertPostpayInstanceRequest)) {
 		bodyFlat["ConvertPostpayInstanceRequest"] = request.ConvertPostpayInstanceRequest
 	}
 
@@ -3830,7 +3928,7 @@ func (client *Client) ConvertPrepayInstanceWithOptions(request *ConvertPrepayIns
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPrepayInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ConvertPrepayInstanceRequest)) {
 		bodyFlat["ConvertPrepayInstanceRequest"] = request.ConvertPrepayInstanceRequest
 	}
 
@@ -3877,7 +3975,7 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.CreateInstanceRequest)) {
 		bodyFlat["CreateInstanceRequest"] = request.CreateInstanceRequest
 	}
 
@@ -3924,7 +4022,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateNamespaceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.CreateNamespaceRequest)) {
 		bodyFlat["CreateNamespaceRequest"] = request.CreateNamespaceRequest
 	}
 
@@ -3971,7 +4069,7 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DeleteInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.DeleteInstanceRequest)) {
 		bodyFlat["DeleteInstanceRequest"] = request.DeleteInstanceRequest
 	}
 
@@ -4018,7 +4116,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.DeleteNamespaceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.DeleteNamespaceRequest)) {
 		bodyFlat["DeleteNamespaceRequest"] = request.DeleteNamespaceRequest
 	}
 
@@ -4278,7 +4376,7 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayI
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayInstanceSpecRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ModifyPrepayInstanceSpecRequest)) {
 		bodyFlat["ModifyPrepayInstanceSpecRequest"] = request.ModifyPrepayInstanceSpecRequest
 	}
 
@@ -4325,7 +4423,7 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(request *ModifyPrepay
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayNamespaceSpecRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ModifyPrepayNamespaceSpecRequest)) {
 		bodyFlat["ModifyPrepayNamespaceSpecRequest"] = request.ModifyPrepayNamespaceSpecRequest
 	}
 
@@ -4372,7 +4470,7 @@ func (client *Client) QueryConvertInstancePriceWithOptions(request *QueryConvert
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPostpayInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ConvertPostpayInstanceRequest)) {
 		bodyFlat["ConvertPostpayInstanceRequest"] = request.ConvertPostpayInstanceRequest
 	}
 
@@ -4419,7 +4517,7 @@ func (client *Client) QueryConvertPrepayInstancePriceWithOptions(request *QueryC
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ConvertPrepayInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ConvertPrepayInstanceRequest)) {
 		bodyFlat["ConvertPrepayInstanceRequest"] = request.ConvertPrepayInstanceRequest
 	}
 
@@ -4466,7 +4564,7 @@ func (client *Client) QueryCreateInstancePriceWithOptions(request *QueryCreateIn
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.CreateInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.CreateInstanceRequest)) {
 		bodyFlat["CreateInstanceRequest"] = request.CreateInstanceRequest
 	}
 
@@ -4513,7 +4611,7 @@ func (client *Client) QueryModifyInstancePriceWithOptions(request *QueryModifyIn
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ModifyPrepayInstanceSpecRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.ModifyPrepayInstanceSpecRequest)) {
 		bodyFlat["ModifyPrepayInstanceSpecRequest"] = request.ModifyPrepayInstanceSpecRequest
 	}
 
@@ -4560,7 +4658,7 @@ func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInst
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RenewInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.RenewInstanceRequest)) {
 		bodyFlat["RenewInstanceRequest"] = request.RenewInstanceRequest
 	}
 
@@ -4607,7 +4705,7 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	}
 	body := map[string]interface{}{}
 	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.RenewInstanceRequest))) {
+	if !tea.BoolValue(util.IsUnset(request.RenewInstanceRequest)) {
 		bodyFlat["RenewInstanceRequest"] = request.RenewInstanceRequest
 	}
 
