@@ -27324,6 +27324,111 @@ func (s *ModifyApiGroupResponse) SetBody(v *ModifyApiGroupResponseBody) *ModifyA
 	return s
 }
 
+type ModifyApiGroupNetworkPolicyRequest struct {
+	GroupId              *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	HttpsPolicy          *string `json:"HttpsPolicy,omitempty" xml:"HttpsPolicy,omitempty"`
+	InnerDomainEnable    *bool   `json:"InnerDomainEnable,omitempty" xml:"InnerDomainEnable,omitempty"`
+	InternetEnable       *bool   `json:"InternetEnable,omitempty" xml:"InternetEnable,omitempty"`
+	InternetIPV6Enable   *bool   `json:"InternetIPV6Enable,omitempty" xml:"InternetIPV6Enable,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcIntranetEnable    *bool   `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcSlbIntranetEnable *bool   `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+}
+
+func (s ModifyApiGroupNetworkPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetGroupId(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetHttpsPolicy(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.HttpsPolicy = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetInnerDomainEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.InnerDomainEnable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetInternetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.InternetEnable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetInternetIPV6Enable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.InternetIPV6Enable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetSecurityToken(v string) *ModifyApiGroupNetworkPolicyRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetVpcIntranetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.VpcIntranetEnable = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyRequest) SetVpcSlbIntranetEnable(v bool) *ModifyApiGroupNetworkPolicyRequest {
+	s.VpcSlbIntranetEnable = &v
+	return s
+}
+
+type ModifyApiGroupNetworkPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApiGroupNetworkPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponseBody) SetRequestId(v string) *ModifyApiGroupNetworkPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApiGroupNetworkPolicyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyApiGroupNetworkPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyApiGroupNetworkPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiGroupNetworkPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetHeaders(v map[string]*string) *ModifyApiGroupNetworkPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetStatusCode(v int32) *ModifyApiGroupNetworkPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApiGroupNetworkPolicyResponse) SetBody(v *ModifyApiGroupNetworkPolicyResponseBody) *ModifyApiGroupNetworkPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyApiGroupVpcWhitelistRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -42255,6 +42360,78 @@ func (client *Client) ModifyApiGroup(request *ModifyApiGroupRequest) (_result *M
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiGroupResponse{}
 	_body, _err := client.ModifyApiGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyApiGroupNetworkPolicyWithOptions(request *ModifyApiGroupNetworkPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpsPolicy)) {
+		query["HttpsPolicy"] = request.HttpsPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InnerDomainEnable)) {
+		query["InnerDomainEnable"] = request.InnerDomainEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetEnable)) {
+		query["InternetEnable"] = request.InternetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIPV6Enable)) {
+		query["InternetIPV6Enable"] = request.InternetIPV6Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcIntranetEnable)) {
+		query["VpcIntranetEnable"] = request.VpcIntranetEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcSlbIntranetEnable)) {
+		query["VpcSlbIntranetEnable"] = request.VpcSlbIntranetEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApiGroupNetworkPolicy"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApiGroupNetworkPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApiGroupNetworkPolicy(request *ModifyApiGroupNetworkPolicyRequest) (_result *ModifyApiGroupNetworkPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApiGroupNetworkPolicyResponse{}
+	_body, _err := client.ModifyApiGroupNetworkPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
