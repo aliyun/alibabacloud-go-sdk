@@ -13587,8 +13587,9 @@ type EvaluateResourceRequest struct {
 	// *   NodeId: the ID of the node.
 	// *   NodeClass: the instance type of the node. For more information, see [Sharded cluster instance types](~~311414~~).
 	ShardsInfo *string `json:"ShardsInfo,omitempty" xml:"ShardsInfo,omitempty"`
-	// 副本集的存储空间，单位为GB。
-	// > 实例规格为云盘型时，该参数必填。</props>
+	// The storage capacity of the replica set instance. Unit: GB.
+	//
+	// > This parameter is required for the instances that use cloud disks.
 	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	// The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -15221,7 +15222,6 @@ func (s *ModifyDBInstanceMonitorResponse) SetBody(v *ModifyDBInstanceMonitorResp
 }
 
 type ModifyDBInstanceNetExpireTimeRequest struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The retention period of the original classic network address. Valid values: **14**, **30**, **60**, and** 120**. Unit: day.
 	ClassicExpendExpiredDays *int32 `json:"ClassicExpendExpiredDays,omitempty" xml:"ClassicExpendExpiredDays,omitempty"`
 	// The connection string of the instance
@@ -15241,11 +15241,6 @@ func (s ModifyDBInstanceNetExpireTimeRequest) String() string {
 
 func (s ModifyDBInstanceNetExpireTimeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyDBInstanceNetExpireTimeRequest) SetCategory(v string) *ModifyDBInstanceNetExpireTimeRequest {
-	s.Category = &v
-	return s
 }
 
 func (s *ModifyDBInstanceNetExpireTimeRequest) SetClassicExpendExpiredDays(v int32) *ModifyDBInstanceNetExpireTimeRequest {
@@ -25330,10 +25325,6 @@ func (client *Client) ModifyDBInstanceNetExpireTimeWithOptions(request *ModifyDB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Category)) {
-		query["Category"] = request.Category
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClassicExpendExpiredDays)) {
 		query["ClassicExpendExpiredDays"] = request.ClassicExpendExpiredDays
 	}
