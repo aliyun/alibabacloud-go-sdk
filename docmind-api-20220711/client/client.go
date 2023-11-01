@@ -582,6 +582,116 @@ func (s *GetDocumentExtractResultResponse) SetBody(v *GetDocumentExtractResultRe
 	return s
 }
 
+type GetPageNumRequest struct {
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+}
+
+func (s GetPageNumRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPageNumRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPageNumRequest) SetBizId(v string) *GetPageNumRequest {
+	s.BizId = &v
+	return s
+}
+
+type GetPageNumResponseBody struct {
+	Data         *GetPageNumResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode    *string                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpCode     *string                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPageNumResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPageNumResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPageNumResponseBody) SetData(v *GetPageNumResponseBodyData) *GetPageNumResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPageNumResponseBody) SetErrorCode(v string) *GetPageNumResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPageNumResponseBody) SetErrorMessage(v string) *GetPageNumResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetPageNumResponseBody) SetHttpCode(v string) *GetPageNumResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetPageNumResponseBody) SetRequestId(v string) *GetPageNumResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPageNumResponseBody) SetSuccess(v bool) *GetPageNumResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPageNumResponseBodyData struct {
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+}
+
+func (s GetPageNumResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPageNumResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPageNumResponseBodyData) SetPageNum(v int32) *GetPageNumResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+type GetPageNumResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPageNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPageNumResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPageNumResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPageNumResponse) SetHeaders(v map[string]*string) *GetPageNumResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPageNumResponse) SetStatusCode(v int32) *GetPageNumResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPageNumResponse) SetBody(v *GetPageNumResponseBody) *GetPageNumResponse {
+	s.Body = v
+	return s
+}
+
 type GetTableUnderstandingResultRequest struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
@@ -2540,6 +2650,50 @@ func (client *Client) GetDocumentExtractResult(request *GetDocumentExtractResult
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocumentExtractResultResponse{}
 	_body, _err := client.GetDocumentExtractResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime *util.RuntimeOptions) (_result *GetPageNumResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPageNum"),
+		Version:     tea.String("2022-07-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPageNumResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPageNum(request *GetPageNumRequest) (_result *GetPageNumResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPageNumResponse{}
+	_body, _err := client.GetPageNumWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
