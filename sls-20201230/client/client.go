@@ -799,9 +799,9 @@ type Ticket struct {
 	Extra               *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
 	Number              *int32  `json:"number,omitempty" xml:"number,omitempty"`
-	Policy              *string `json:"policy,omitempty" xml:"policy,omitempty"`
 	Ticket              *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
 	TicketId            *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
+	Type                *string `json:"type,omitempty" xml:"type,omitempty"`
 	UnlimitedExpiration *bool   `json:"unlimitedExpiration,omitempty" xml:"unlimitedExpiration,omitempty"`
 	UnlimitedNumber     *bool   `json:"unlimitedNumber,omitempty" xml:"unlimitedNumber,omitempty"`
 	UsedNumber          *int32  `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
@@ -851,11 +851,6 @@ func (s *Ticket) SetNumber(v int32) *Ticket {
 	return s
 }
 
-func (s *Ticket) SetPolicy(v string) *Ticket {
-	s.Policy = &v
-	return s
-}
-
 func (s *Ticket) SetTicket(v string) *Ticket {
 	s.Ticket = &v
 	return s
@@ -863,6 +858,11 @@ func (s *Ticket) SetTicket(v string) *Ticket {
 
 func (s *Ticket) SetTicketId(v string) *Ticket {
 	s.TicketId = &v
+	return s
+}
+
+func (s *Ticket) SetType(v string) *Ticket {
+	s.Type = &v
 	return s
 }
 
@@ -2680,117 +2680,6 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 	return s
 }
 
-type CreateOdpsShipperRequest struct {
-	ShipperName         *string                                      `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
-	TargetConfiguration *CreateOdpsShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
-	TargetType          *string                                      `json:"targetType,omitempty" xml:"targetType,omitempty"`
-}
-
-func (s CreateOdpsShipperRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOdpsShipperRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOdpsShipperRequest) SetShipperName(v string) *CreateOdpsShipperRequest {
-	s.ShipperName = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequest) SetTargetConfiguration(v *CreateOdpsShipperRequestTargetConfiguration) *CreateOdpsShipperRequest {
-	s.TargetConfiguration = v
-	return s
-}
-
-func (s *CreateOdpsShipperRequest) SetTargetType(v string) *CreateOdpsShipperRequest {
-	s.TargetType = &v
-	return s
-}
-
-type CreateOdpsShipperRequestTargetConfiguration struct {
-	BufferInterval      *int32    `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	Enable              *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
-	Fields              []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	OdpsEndpoint        *string   `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
-	OdpsProject         *string   `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
-	OdpsTable           *string   `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
-	PartitionColumn     []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
-	PartitionTimeFormat *string   `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
-}
-
-func (s CreateOdpsShipperRequestTargetConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOdpsShipperRequestTargetConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetBufferInterval(v int32) *CreateOdpsShipperRequestTargetConfiguration {
-	s.BufferInterval = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetEnable(v bool) *CreateOdpsShipperRequestTargetConfiguration {
-	s.Enable = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetFields(v []*string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.Fields = v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsEndpoint(v string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.OdpsEndpoint = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsProject(v string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.OdpsProject = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetOdpsTable(v string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.OdpsTable = &v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetPartitionColumn(v []*string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.PartitionColumn = v
-	return s
-}
-
-func (s *CreateOdpsShipperRequestTargetConfiguration) SetPartitionTimeFormat(v string) *CreateOdpsShipperRequestTargetConfiguration {
-	s.PartitionTimeFormat = &v
-	return s
-}
-
-type CreateOdpsShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s CreateOdpsShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOdpsShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOdpsShipperResponse) SetHeaders(v map[string]*string) *CreateOdpsShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateOdpsShipperResponse) SetStatusCode(v int32) *CreateOdpsShipperResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type CreateOssExternalStoreRequest struct {
 	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
 	Parameter         *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
@@ -2909,152 +2798,6 @@ func (s *CreateOssExternalStoreResponse) SetHeaders(v map[string]*string) *Creat
 }
 
 func (s *CreateOssExternalStoreResponse) SetStatusCode(v int32) *CreateOssExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type CreateOssShipperRequest struct {
-	ShipperName         *string                                     `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
-	TargetConfiguration *CreateOssShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
-	TargetType          *string                                     `json:"targetType,omitempty" xml:"targetType,omitempty"`
-}
-
-func (s CreateOssShipperRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssShipperRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssShipperRequest) SetShipperName(v string) *CreateOssShipperRequest {
-	s.ShipperName = &v
-	return s
-}
-
-func (s *CreateOssShipperRequest) SetTargetConfiguration(v *CreateOssShipperRequestTargetConfiguration) *CreateOssShipperRequest {
-	s.TargetConfiguration = v
-	return s
-}
-
-func (s *CreateOssShipperRequest) SetTargetType(v string) *CreateOssShipperRequest {
-	s.TargetType = &v
-	return s
-}
-
-type CreateOssShipperRequestTargetConfiguration struct {
-	BufferInterval *int32                                             `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	BufferSize     *int32                                             `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
-	CompressType   *string                                            `json:"compressType,omitempty" xml:"compressType,omitempty"`
-	Enable         *bool                                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	OssBucket      *string                                            `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
-	OssPrefix      *string                                            `json:"ossPrefix,omitempty" xml:"ossPrefix,omitempty"`
-	PathFormat     *string                                            `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
-	RoleArn        *string                                            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Storage        *CreateOssShipperRequestTargetConfigurationStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
-	TimeZone       *string                                            `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-}
-
-func (s CreateOssShipperRequestTargetConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssShipperRequestTargetConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetBufferInterval(v int32) *CreateOssShipperRequestTargetConfiguration {
-	s.BufferInterval = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetBufferSize(v int32) *CreateOssShipperRequestTargetConfiguration {
-	s.BufferSize = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetCompressType(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.CompressType = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetEnable(v bool) *CreateOssShipperRequestTargetConfiguration {
-	s.Enable = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetOssBucket(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetOssPrefix(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.OssPrefix = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetPathFormat(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.PathFormat = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetRoleArn(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetStorage(v *CreateOssShipperRequestTargetConfigurationStorage) *CreateOssShipperRequestTargetConfiguration {
-	s.Storage = v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfiguration) SetTimeZone(v string) *CreateOssShipperRequestTargetConfiguration {
-	s.TimeZone = &v
-	return s
-}
-
-type CreateOssShipperRequestTargetConfigurationStorage struct {
-	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	Format *string                `json:"format,omitempty" xml:"format,omitempty"`
-}
-
-func (s CreateOssShipperRequestTargetConfigurationStorage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssShipperRequestTargetConfigurationStorage) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssShipperRequestTargetConfigurationStorage) SetDetail(v map[string]interface{}) *CreateOssShipperRequestTargetConfigurationStorage {
-	s.Detail = v
-	return s
-}
-
-func (s *CreateOssShipperRequestTargetConfigurationStorage) SetFormat(v string) *CreateOssShipperRequestTargetConfigurationStorage {
-	s.Format = &v
-	return s
-}
-
-type CreateOssShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s CreateOssShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateOssShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateOssShipperResponse) SetHeaders(v map[string]*string) *CreateOssShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateOssShipperResponse) SetStatusCode(v int32) *CreateOssShipperResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -6303,9 +6046,9 @@ func (s *ListConfigRequest) SetSize(v int64) *ListConfigRequest {
 }
 
 type ListConfigResponseBody struct {
-	Configs []*LogtailConfig `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Count   *int32           `json:"count,omitempty" xml:"count,omitempty"`
-	Total   *int32           `json:"total,omitempty" xml:"total,omitempty"`
+	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	Total   *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListConfigResponseBody) String() string {
@@ -6316,7 +6059,7 @@ func (s ListConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListConfigResponseBody) SetConfigs(v []*LogtailConfig) *ListConfigResponseBody {
+func (s *ListConfigResponseBody) SetConfigs(v []*string) *ListConfigResponseBody {
 	s.Configs = v
 	return s
 }
@@ -7444,58 +7187,6 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
-type PullDataRequest struct {
-	Count     *string `json:"count,omitempty" xml:"count,omitempty"`
-	Cursor    *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
-	EndCursor *string `json:"endCursor,omitempty" xml:"endCursor,omitempty"`
-}
-
-func (s PullDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PullDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PullDataRequest) SetCount(v string) *PullDataRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *PullDataRequest) SetCursor(v string) *PullDataRequest {
-	s.Cursor = &v
-	return s
-}
-
-func (s *PullDataRequest) SetEndCursor(v string) *PullDataRequest {
-	s.EndCursor = &v
-	return s
-}
-
-type PullDataResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s PullDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PullDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PullDataResponse) SetHeaders(v map[string]*string) *PullDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PullDataResponse) SetStatusCode(v int32) *PullDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type PutAnnotationDataRequest struct {
 	AnnotationdataId *string              `json:"annotationdataId,omitempty" xml:"annotationdataId,omitempty"`
 	MlDataParam      *MLDataParam         `json:"mlDataParam,omitempty" xml:"mlDataParam,omitempty"`
@@ -7873,7 +7564,7 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 
 type UntagResourcesRequest struct {
 	All          *bool     `json:"all,omitempty" xml:"all,omitempty"`
-	ResourceId   *string   `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceId   []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
 	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	Tags         []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
@@ -7891,8 +7582,8 @@ func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
 	return s
 }
 
-func (s *UntagResourcesRequest) SetResourceId(v string) *UntagResourcesRequest {
-	s.ResourceId = &v
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
 	return s
 }
 
@@ -8694,117 +8385,6 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 	return s
 }
 
-type UpdateOdpsShipperRequest struct {
-	ShipperName         *string                                      `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
-	TargetConfiguration *UpdateOdpsShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
-	TargetType          *string                                      `json:"targetType,omitempty" xml:"targetType,omitempty"`
-}
-
-func (s UpdateOdpsShipperRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOdpsShipperRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOdpsShipperRequest) SetShipperName(v string) *UpdateOdpsShipperRequest {
-	s.ShipperName = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequest) SetTargetConfiguration(v *UpdateOdpsShipperRequestTargetConfiguration) *UpdateOdpsShipperRequest {
-	s.TargetConfiguration = v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequest) SetTargetType(v string) *UpdateOdpsShipperRequest {
-	s.TargetType = &v
-	return s
-}
-
-type UpdateOdpsShipperRequestTargetConfiguration struct {
-	BufferInterval      *int32    `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	Enable              *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
-	Fields              []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	OdpsEndpoint        *string   `json:"odpsEndpoint,omitempty" xml:"odpsEndpoint,omitempty"`
-	OdpsProject         *string   `json:"odpsProject,omitempty" xml:"odpsProject,omitempty"`
-	OdpsTable           *string   `json:"odpsTable,omitempty" xml:"odpsTable,omitempty"`
-	PartitionColumn     []*string `json:"partitionColumn,omitempty" xml:"partitionColumn,omitempty" type:"Repeated"`
-	PartitionTimeFormat *string   `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
-}
-
-func (s UpdateOdpsShipperRequestTargetConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOdpsShipperRequestTargetConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetBufferInterval(v int32) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.BufferInterval = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetEnable(v bool) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetFields(v []*string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.Fields = v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsEndpoint(v string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.OdpsEndpoint = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsProject(v string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.OdpsProject = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetOdpsTable(v string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.OdpsTable = &v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetPartitionColumn(v []*string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.PartitionColumn = v
-	return s
-}
-
-func (s *UpdateOdpsShipperRequestTargetConfiguration) SetPartitionTimeFormat(v string) *UpdateOdpsShipperRequestTargetConfiguration {
-	s.PartitionTimeFormat = &v
-	return s
-}
-
-type UpdateOdpsShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s UpdateOdpsShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOdpsShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOdpsShipperResponse) SetHeaders(v map[string]*string) *UpdateOdpsShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateOdpsShipperResponse) SetStatusCode(v int32) *UpdateOdpsShipperResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type UpdateOssExternalStoreRequest struct {
 	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
 	Parameter         *UpdateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
@@ -8923,152 +8503,6 @@ func (s *UpdateOssExternalStoreResponse) SetHeaders(v map[string]*string) *Updat
 }
 
 func (s *UpdateOssExternalStoreResponse) SetStatusCode(v int32) *UpdateOssExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type UpdateOssShipperRequest struct {
-	ShipperName         *string                                     `json:"shipperName,omitempty" xml:"shipperName,omitempty"`
-	TargetConfiguration *UpdateOssShipperRequestTargetConfiguration `json:"targetConfiguration,omitempty" xml:"targetConfiguration,omitempty" type:"Struct"`
-	TargetType          *string                                     `json:"targetType,omitempty" xml:"targetType,omitempty"`
-}
-
-func (s UpdateOssShipperRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssShipperRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssShipperRequest) SetShipperName(v string) *UpdateOssShipperRequest {
-	s.ShipperName = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequest) SetTargetConfiguration(v *UpdateOssShipperRequestTargetConfiguration) *UpdateOssShipperRequest {
-	s.TargetConfiguration = v
-	return s
-}
-
-func (s *UpdateOssShipperRequest) SetTargetType(v string) *UpdateOssShipperRequest {
-	s.TargetType = &v
-	return s
-}
-
-type UpdateOssShipperRequestTargetConfiguration struct {
-	BufferInterval *int32                                             `json:"bufferInterval,omitempty" xml:"bufferInterval,omitempty"`
-	BufferSize     *int32                                             `json:"bufferSize,omitempty" xml:"bufferSize,omitempty"`
-	CompressType   *string                                            `json:"compressType,omitempty" xml:"compressType,omitempty"`
-	Enable         *bool                                              `json:"enable,omitempty" xml:"enable,omitempty"`
-	OssBucket      *string                                            `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
-	OssPrefix      *string                                            `json:"ossPrefix,omitempty" xml:"ossPrefix,omitempty"`
-	PathFormat     *string                                            `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
-	RoleArn        *string                                            `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	Storage        *UpdateOssShipperRequestTargetConfigurationStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
-	TimeZone       *string                                            `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
-}
-
-func (s UpdateOssShipperRequestTargetConfiguration) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssShipperRequestTargetConfiguration) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetBufferInterval(v int32) *UpdateOssShipperRequestTargetConfiguration {
-	s.BufferInterval = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetBufferSize(v int32) *UpdateOssShipperRequestTargetConfiguration {
-	s.BufferSize = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetCompressType(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.CompressType = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetEnable(v bool) *UpdateOssShipperRequestTargetConfiguration {
-	s.Enable = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetOssBucket(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.OssBucket = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetOssPrefix(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.OssPrefix = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetPathFormat(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.PathFormat = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetRoleArn(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetStorage(v *UpdateOssShipperRequestTargetConfigurationStorage) *UpdateOssShipperRequestTargetConfiguration {
-	s.Storage = v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfiguration) SetTimeZone(v string) *UpdateOssShipperRequestTargetConfiguration {
-	s.TimeZone = &v
-	return s
-}
-
-type UpdateOssShipperRequestTargetConfigurationStorage struct {
-	Detail map[string]interface{} `json:"detail,omitempty" xml:"detail,omitempty"`
-	Format *string                `json:"format,omitempty" xml:"format,omitempty"`
-}
-
-func (s UpdateOssShipperRequestTargetConfigurationStorage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssShipperRequestTargetConfigurationStorage) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssShipperRequestTargetConfigurationStorage) SetDetail(v map[string]interface{}) *UpdateOssShipperRequestTargetConfigurationStorage {
-	s.Detail = v
-	return s
-}
-
-func (s *UpdateOssShipperRequestTargetConfigurationStorage) SetFormat(v string) *UpdateOssShipperRequestTargetConfigurationStorage {
-	s.Format = &v
-	return s
-}
-
-type UpdateOssShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s UpdateOssShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateOssShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateOssShipperResponse) SetHeaders(v map[string]*string) *UpdateOssShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateOssShipperResponse) SetStatusCode(v int32) *UpdateOssShipperResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -10298,63 +9732,6 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 	return _result, _err
 }
 
-func (client *Client) CreateOdpsShipperWithOptions(project *string, logstore *string, request *CreateOdpsShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOdpsShipperResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
-		body["shipperName"] = request.ShipperName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
-		body["targetConfiguration"] = request.TargetConfiguration
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["targetType"] = request.TargetType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateOdpsShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateOdpsShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateOdpsShipper(project *string, logstore *string, request *CreateOdpsShipperRequest) (_result *CreateOdpsShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateOdpsShipperResponse{}
-	_body, _err := client.CreateOdpsShipperWithOptions(project, logstore, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateOssExternalStoreWithOptions(project *string, request *CreateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10405,63 +9782,6 @@ func (client *Client) CreateOssExternalStore(project *string, request *CreateOss
 	headers := make(map[string]*string)
 	_result = &CreateOssExternalStoreResponse{}
 	_body, _err := client.CreateOssExternalStoreWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateOssShipperWithOptions(project *string, logstore *string, request *CreateOssShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssShipperResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
-		body["shipperName"] = request.ShipperName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
-		body["targetConfiguration"] = request.TargetConfiguration
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["targetType"] = request.TargetType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateOssShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &CreateOssShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateOssShipper(project *string, logstore *string, request *CreateOssShipperRequest) (_result *CreateOssShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateOssShipperResponse{}
-	_body, _err := client.CreateOssShipperWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13651,63 +12971,6 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) PullDataWithOptions(project *string, logstore *string, shard *string, request *PullDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PullDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Count)) {
-		query["count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Cursor)) {
-		query["cursor"] = request.Cursor
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndCursor)) {
-		query["endCursor"] = request.EndCursor
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PullData"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shard) + "?type=log"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PullDataResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PullData(project *string, logstore *string, shard *string, request *PullDataRequest) (_result *PullDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PullDataResponse{}
-	_body, _err := client.PullDataWithOptions(project, logstore, shard, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) PutAnnotationDataWithOptions(datasetId *string, request *PutAnnotationDataRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutAnnotationDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14816,63 +14079,6 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 	return _result, _err
 }
 
-func (client *Client) UpdateOdpsShipperWithOptions(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOdpsShipperResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
-		body["shipperName"] = request.ShipperName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
-		body["targetConfiguration"] = request.TargetConfiguration
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["targetType"] = request.TargetType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateOdpsShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateOdpsShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateOdpsShipper(project *string, logstore *string, shipperName *string, request *UpdateOdpsShipperRequest) (_result *UpdateOdpsShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateOdpsShipperResponse{}
-	_body, _err := client.UpdateOdpsShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14923,63 +14129,6 @@ func (client *Client) UpdateOssExternalStore(project *string, externalStoreName 
 	headers := make(map[string]*string)
 	_result = &UpdateOssExternalStoreResponse{}
 	_body, _err := client.UpdateOssExternalStoreWithOptions(project, externalStoreName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateOssShipperWithOptions(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssShipperResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ShipperName)) {
-		body["shipperName"] = request.ShipperName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetConfiguration)) {
-		body["targetConfiguration"] = request.TargetConfiguration
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
-		body["targetType"] = request.TargetType
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateOssShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &UpdateOssShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateOssShipper(project *string, logstore *string, shipperName *string, request *UpdateOssShipperRequest) (_result *UpdateOssShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &UpdateOssShipperResponse{}
-	_body, _err := client.UpdateOssShipperWithOptions(project, logstore, shipperName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

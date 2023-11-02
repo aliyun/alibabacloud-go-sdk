@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sls-20201230/v4
+module github.com/alibabacloud-go/sls-20201230/v5
 
 go 1.15
 
