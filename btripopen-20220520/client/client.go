@@ -43588,7 +43588,9 @@ type HotelOrderQueryResponseBodyModuleHotelInfo struct {
 	CheckOut                   *int64  `json:"check_out,omitempty" xml:"check_out,omitempty"`
 	City                       *string `json:"city,omitempty" xml:"city,omitempty"`
 	CityAdCode                 *string `json:"city_ad_code,omitempty" xml:"city_ad_code,omitempty"`
+	HotelAddress               *string `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
 	HotelName                  *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelPhone                 *string `json:"hotel_phone,omitempty" xml:"hotel_phone,omitempty"`
 	HotelSupportVatInvoiceType *int32  `json:"hotel_support_vat_invoice_type,omitempty" xml:"hotel_support_vat_invoice_type,omitempty"`
 	Night                      *int32  `json:"night,omitempty" xml:"night,omitempty"`
 	RoomNum                    *int32  `json:"room_num,omitempty" xml:"room_num,omitempty"`
@@ -43623,8 +43625,18 @@ func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCityAdCode(v string) *Ho
 	return s
 }
 
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetHotelAddress(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.HotelAddress = &v
+	return s
+}
+
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetHotelName(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
 	s.HotelName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetHotelPhone(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.HotelPhone = &v
 	return s
 }
 
@@ -43672,24 +43684,25 @@ func (s *HotelOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *Hotel
 }
 
 type HotelOrderQueryResponseBodyModuleOrderBaseInfo struct {
-	ApplyId              *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle           *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	CorpId               *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	ExtendField          *string `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
-	GmtCreate            *int64  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModified          *int64  `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	Id                   *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	OrderStatus          *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	OrderType            *int32  `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	ThirdpartApplyId     *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartDepartId    *string `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-	UserName             *string `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	ApplyId              *string   `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle           *string   `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	CorpId               *string   `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName             *string   `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId             *string   `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName           *string   `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExceedApplyNos       []*string `json:"exceed_apply_nos,omitempty" xml:"exceed_apply_nos,omitempty" type:"Repeated"`
+	ExtendField          *string   `json:"extend_field,omitempty" xml:"extend_field,omitempty"`
+	GmtCreate            *int64    `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModified          *int64    `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Id                   *int64    `json:"id,omitempty" xml:"id,omitempty"`
+	ItineraryId          *string   `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderStatus          *int32    `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderType            *int32    `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	ThirdpartApplyId     *string   `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartDepartId    *string   `json:"thirdpart_depart_id,omitempty" xml:"thirdpart_depart_id,omitempty"`
+	ThirdpartItineraryId *string   `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	UserId               *string   `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserName             *string   `json:"user_name,omitempty" xml:"user_name,omitempty"`
 }
 
 func (s HotelOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
@@ -43727,6 +43740,11 @@ func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) *
 
 func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetExceedApplyNos(v []*string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExceedApplyNos = v
 	return s
 }
 
