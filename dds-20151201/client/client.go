@@ -3513,12 +3513,14 @@ type DescribeAvailabilityZonesRequest struct {
 	//
 	// *   **zh**: Chinese.
 	// *   **en**: English
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The database engine type of the instance. Valid values:
 	//
 	// *   **normal**: replica set instance
 	// *   **sharding**: sharded cluster instance
 	DbType                 *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EngineVersion          *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExcludeSecondaryZoneId *string `json:"ExcludeSecondaryZoneId,omitempty" xml:"ExcludeSecondaryZoneId,omitempty"`
 	ExcludeZoneId          *string `json:"ExcludeZoneId,omitempty" xml:"ExcludeZoneId,omitempty"`
 	// The billing method of the instance. Default value: PrePaid. Valid values:
@@ -3569,8 +3571,18 @@ func (s *DescribeAvailabilityZonesRequest) SetAcceptLanguage(v string) *Describe
 	return s
 }
 
+func (s *DescribeAvailabilityZonesRequest) SetDBInstanceClass(v string) *DescribeAvailabilityZonesRequest {
+	s.DBInstanceClass = &v
+	return s
+}
+
 func (s *DescribeAvailabilityZonesRequest) SetDbType(v string) *DescribeAvailabilityZonesRequest {
 	s.DbType = &v
+	return s
+}
+
+func (s *DescribeAvailabilityZonesRequest) SetEngineVersion(v string) *DescribeAvailabilityZonesRequest {
+	s.EngineVersion = &v
 	return s
 }
 
@@ -3857,11 +3869,13 @@ func (s *DescribeAvailableEngineVersionResponse) SetBody(v *DescribeAvailableEng
 }
 
 type DescribeAvailableResourceRequest struct {
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The architecture of the instance. Valid values:
 	//
 	// *   **normal**: replica set instance
 	// *   **sharding**: sharded cluster instance
-	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	DbType        *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The billing method of the instance. Default value: PrePaid. Valid values:
 	//
 	// *   **PrePaid**: subscription
@@ -3889,8 +3903,18 @@ func (s DescribeAvailableResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAvailableResourceRequest) SetDBInstanceClass(v string) *DescribeAvailableResourceRequest {
+	s.DBInstanceClass = &v
+	return s
+}
+
 func (s *DescribeAvailableResourceRequest) SetDbType(v string) *DescribeAvailableResourceRequest {
 	s.DbType = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetEngineVersion(v string) *DescribeAvailableResourceRequest {
+	s.EngineVersion = &v
 	return s
 }
 
@@ -21119,8 +21143,16 @@ func (client *Client) DescribeAvailabilityZonesWithOptions(request *DescribeAvai
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceClass)) {
+		query["DBInstanceClass"] = request.DBInstanceClass
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DbType)) {
 		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExcludeSecondaryZoneId)) {
@@ -21289,8 +21321,16 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceClass)) {
+		query["DBInstanceClass"] = request.DBInstanceClass
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DbType)) {
 		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
