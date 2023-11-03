@@ -11704,7 +11704,7 @@ type GetDatabaseObjectsRequest struct {
 	// *   Asc
 	// *   Desc
 	//
-	// Valid values for Field: DatabaseName, CreateTime, and UpdateTime.
+	// Valid values for Field: DatabaseName, CreateTime, and UpdateTime. -CreateTime; -UpdateTime;
 	//
 	// Default value: {"Type": "Desc","Field": "DatabaseName"}.
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
@@ -11942,8 +11942,9 @@ func (s *GetSparkAppAttemptLogResponseBody) SetRequestId(v string) *GetSparkAppA
 }
 
 type GetSparkAppAttemptLogResponseBodyData struct {
+	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The content of the log.
 	LogContent *string `json:"LogContent,omitempty" xml:"LogContent,omitempty"`
@@ -21913,6 +21914,14 @@ func (client *Client) GetSparkTemplateFullTree(request *GetSparkTemplateFullTree
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetTableRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetTableResponse
+ */
+// Deprecated
 func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *util.RuntimeOptions) (_result *GetTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21958,6 +21967,13 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request GetTableRequest
+ * @return GetTableResponse
+ */
+// Deprecated
 func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableResponse{}
