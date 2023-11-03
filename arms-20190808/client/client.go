@@ -4247,14 +4247,13 @@ func (s *CreateDispatchRuleResponse) SetBody(v *CreateDispatchRuleResponseBody) 
 }
 
 type CreateEnvCustomJobRequest struct {
-	// Locale: zh | en.
-	// The default value is zh.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Customize the Job\"s yaml configuration string.
+	// The YAML configuration string of the custom job.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Customize job name.
+	// The name of the custom job.
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4294,13 +4293,13 @@ func (s *CreateEnvCustomJobRequest) SetRegionId(v string) *CreateEnvCustomJobReq
 }
 
 type CreateEnvCustomJobResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The struct returned.
+	// The name of the custom job that was created, or the exception information.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4362,13 +4361,13 @@ func (s *CreateEnvCustomJobResponse) SetBody(v *CreateEnvCustomJobResponseBody) 
 }
 
 type CreateEnvPodMonitorRequest struct {
-	// Locale, default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// PodMonitor\"s yaml configuration string.
+	// The YAML configuration string of the PodMonitor.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Trial run: Check whether the format is legal and whether it can match targets.
+	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4408,13 +4407,13 @@ func (s *CreateEnvPodMonitorRequest) SetRegionId(v string) *CreateEnvPodMonitorR
 }
 
 type CreateEnvPodMonitorResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned information.
+	// The returned result, which indicates whether the operation was successful.
 	Data *CreateEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4447,13 +4446,13 @@ func (s *CreateEnvPodMonitorResponseBody) SetRequestId(v string) *CreateEnvPodMo
 }
 
 type CreateEnvPodMonitorResponseBodyData struct {
-	// target matching prompt information.
+	// Indicates whether targets are matched.
 	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
 	// The number of matched targets.
 	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// Successfully created podMonitor name.
+	// The name of the created PodMonitor.
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 }
 
@@ -4515,15 +4514,15 @@ func (s *CreateEnvPodMonitorResponse) SetBody(v *CreateEnvPodMonitorResponseBody
 }
 
 type CreateEnvServiceMonitorRequest struct {
-	// Locale, default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// ServiceMonitor\"s yaml configuration string.
+	// The YAML configuration string of the ServiceMonitor.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Trial run: Check whether the format is legal and whether it can match targets.
+	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4561,13 +4560,13 @@ func (s *CreateEnvServiceMonitorRequest) SetRegionId(v string) *CreateEnvService
 }
 
 type CreateEnvServiceMonitorResponseBody struct {
-	// The status code.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *CreateEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4600,13 +4599,13 @@ func (s *CreateEnvServiceMonitorResponseBody) SetRequestId(v string) *CreateEnvS
 }
 
 type CreateEnvServiceMonitorResponseBodyData struct {
-	// target matching prompt information.
+	// Indicates whether targets are matched.
 	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
 	// The number of matched targets.
 	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the serviceMonitor successfully created.
+	// The name of the created ServiceMonitor.
 	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
 }
 
@@ -10698,6 +10697,123 @@ func (s *DelAuthTokenResponse) SetBody(v *DelAuthTokenResponseBody) *DelAuthToke
 	return s
 }
 
+type DeleteAddonReleaseRequest struct {
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Whether to be forcibly deleted. The default value is false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+}
+
+func (s DeleteAddonReleaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAddonReleaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAddonReleaseRequest) SetEnvironmentId(v string) *DeleteAddonReleaseRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseRequest) SetForce(v bool) *DeleteAddonReleaseRequest {
+	s.Force = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseRequest) SetRegionId(v string) *DeleteAddonReleaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseRequest) SetReleaseName(v string) *DeleteAddonReleaseRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+type DeleteAddonReleaseResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return a message.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the alert rule was deleted. Valid values:
+	//
+	// *   `true`: The alert rule was deleted.
+	// *   `false`: The alert rule failed to be deleted.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAddonReleaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAddonReleaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAddonReleaseResponseBody) SetCode(v int32) *DeleteAddonReleaseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponseBody) SetData(v string) *DeleteAddonReleaseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponseBody) SetMessage(v string) *DeleteAddonReleaseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponseBody) SetRequestId(v string) *DeleteAddonReleaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponseBody) SetSuccess(v bool) *DeleteAddonReleaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAddonReleaseResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAddonReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAddonReleaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAddonReleaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAddonReleaseResponse) SetHeaders(v map[string]*string) *DeleteAddonReleaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponse) SetStatusCode(v int32) *DeleteAddonReleaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAddonReleaseResponse) SetBody(v *DeleteAddonReleaseResponseBody) *DeleteAddonReleaseResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAlertContactRequest struct {
 	// The ID of the alert contact.
 	ContactId *int64 `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
@@ -13765,6 +13881,331 @@ func (s *DeleteWebhookContactResponse) SetBody(v *DeleteWebhookContactResponseBo
 	return s
 }
 
+type DescribeAddonReleaseRequest struct {
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+}
+
+func (s DescribeAddonReleaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseRequest) SetEnvironmentId(v string) *DescribeAddonReleaseRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseRequest) SetRegionId(v string) *DescribeAddonReleaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseRequest) SetReleaseName(v string) *DescribeAddonReleaseRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+type DescribeAddonReleaseResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The struct returned.
+	Data *DescribeAddonReleaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the alert rule was deleted. Valid values:
+	//
+	// *   `true`: The alert rule was deleted.
+	// *   `false`: The alert rule failed to be deleted.
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAddonReleaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseResponseBody) SetCode(v string) *DescribeAddonReleaseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBody) SetData(v *DescribeAddonReleaseResponseBodyData) *DescribeAddonReleaseResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBody) SetMessage(v string) *DescribeAddonReleaseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBody) SetRequestId(v string) *DescribeAddonReleaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBody) SetSuccess(v string) *DescribeAddonReleaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAddonReleaseResponseBodyData struct {
+	// Config of the Release.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Release Detail.
+	Release *DescribeAddonReleaseResponseBodyDataRelease `json:"Release,omitempty" xml:"Release,omitempty" type:"Struct"`
+}
+
+func (s DescribeAddonReleaseResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseResponseBodyData) SetConfig(v string) *DescribeAddonReleaseResponseBodyData {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyData) SetRelease(v *DescribeAddonReleaseResponseBodyDataRelease) *DescribeAddonReleaseResponseBodyData {
+	s.Release = v
+	return s
+}
+
+type DescribeAddonReleaseResponseBodyDataRelease struct {
+	// Name of Addon.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Number of alarm groups.
+	AlertRuleCount *int64 `json:"AlertRuleCount,omitempty" xml:"AlertRuleCount,omitempty"`
+	// Condition list.
+	Conditions []*DescribeAddonReleaseResponseBodyDataReleaseConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Create time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Number of dashboard.
+	DashboardCount *int64 `json:"DashboardCount,omitempty" xml:"DashboardCount,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Number of Exporter.
+	ExporterCount *int64 `json:"ExporterCount,omitempty" xml:"ExporterCount,omitempty"`
+	// Whether there is configuration.
+	HaveConfig *bool `json:"HaveConfig,omitempty" xml:"HaveConfig,omitempty"`
+	// User ID of the installation.
+	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
+	// Language.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Release ID.
+	ReleaseId *string `json:"ReleaseId,omitempty" xml:"ReleaseId,omitempty"`
+	// Name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+	// Scene.
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Status of Release.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Update time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User ID.
+	UserID *string `json:"UserID,omitempty" xml:"UserID,omitempty"`
+	// Version of Addon.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeAddonReleaseResponseBodyDataRelease) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseResponseBodyDataRelease) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetAddonName(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.AddonName = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetAlertRuleCount(v int64) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.AlertRuleCount = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetConditions(v []*DescribeAddonReleaseResponseBodyDataReleaseConditions) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetCreateTime(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetDashboardCount(v int64) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.DashboardCount = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetEnvironmentId(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetExporterCount(v int64) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.ExporterCount = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetHaveConfig(v bool) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.HaveConfig = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetInstallUserId(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.InstallUserId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetLanguage(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetRegionId(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetReleaseId(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.ReleaseId = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetReleaseName(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetScene(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Scene = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetStatus(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetUpdateTime(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetUserID(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.UserID = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataRelease) SetVersion(v string) *DescribeAddonReleaseResponseBodyDataRelease {
+	s.Version = &v
+	return s
+}
+
+type DescribeAddonReleaseResponseBodyDataReleaseConditions struct {
+	// First transition time.
+	FirstTransitionTime *string `json:"FirstTransitionTime,omitempty" xml:"FirstTransitionTime,omitempty"`
+	// Last transition time.
+	LastTransitionTime *string `json:"LastTransitionTime,omitempty" xml:"LastTransitionTime,omitempty"`
+	// COndition details.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reason of failure.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Condition status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Condition type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAddonReleaseResponseBodyDataReleaseConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseResponseBodyDataReleaseConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetFirstTransitionTime(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.FirstTransitionTime = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetLastTransitionTime(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.LastTransitionTime = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetMessage(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetReason(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetStatus(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponseBodyDataReleaseConditions) SetType(v string) *DescribeAddonReleaseResponseBodyDataReleaseConditions {
+	s.Type = &v
+	return s
+}
+
+type DescribeAddonReleaseResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAddonReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAddonReleaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonReleaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonReleaseResponse) SetHeaders(v map[string]*string) *DescribeAddonReleaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponse) SetStatusCode(v int32) *DescribeAddonReleaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAddonReleaseResponse) SetBody(v *DescribeAddonReleaseResponseBody) *DescribeAddonReleaseResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeContactGroupsRequest struct {
 	// The name of the alert contact group.
 	ContactGroupName *string `json:"ContactGroupName,omitempty" xml:"ContactGroupName,omitempty"`
@@ -14576,11 +15017,11 @@ func (s *DescribeDispatchRuleResponse) SetBody(v *DescribeDispatchRuleResponseBo
 }
 
 type DescribeEnvCustomJobRequest struct {
-	// Custom job name.
+	// The name of the custom job.
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
-	// Whether to return the encrypted yaml string.
+	// Specifies whether to return the encrypted YAML string.
 	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -14615,13 +15056,13 @@ func (s *DescribeEnvCustomJobRequest) SetRegionId(v string) *DescribeEnvCustomJo
 }
 
 type DescribeEnvCustomJobResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *DescribeEnvCustomJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14654,15 +15095,15 @@ func (s *DescribeEnvCustomJobResponseBody) SetRequestId(v string) *DescribeEnvCu
 }
 
 type DescribeEnvCustomJobResponseBodyData struct {
-	// If the request parameter encryptYaml is true, the base64-encoded yaml string is returned. Otherwise, the plaintext yaml string is returned.
+	// If the request parameter EncryptYaml is set to true, a Base64-encoded YAML string is returned. Otherwise, a plaintext YAML string is returned.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Custom job name.
+	// The name of the custom job.
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Status: run, stop.
+	// The status of the custom job. Valid values: run and stop.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14729,13 +15170,13 @@ func (s *DescribeEnvCustomJobResponse) SetBody(v *DescribeEnvCustomJobResponseBo
 }
 
 type DescribeEnvPodMonitorRequest struct {
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The namespace where podMonitor is located.
+	// The namespace where the PodMonitor is located.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// PodMonitor name.
+	// The name of the PodMonitor.
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14768,13 +15209,13 @@ func (s *DescribeEnvPodMonitorRequest) SetRegionId(v string) *DescribeEnvPodMoni
 }
 
 type DescribeEnvPodMonitorResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *DescribeEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14807,17 +15248,17 @@ func (s *DescribeEnvPodMonitorResponseBody) SetRequestId(v string) *DescribeEnvP
 }
 
 type DescribeEnvPodMonitorResponseBodyData struct {
-	// PodMonitor\"s yaml configuration string.
+	// The YAML configuration string of the PodMonitor.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// PodMonitor name.
+	// The name of the PodMonitor.
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Status: run, stop.
+	// The status of the PodMonitor. Valid values: run and stop.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14889,13 +15330,13 @@ func (s *DescribeEnvPodMonitorResponse) SetBody(v *DescribeEnvPodMonitorResponse
 }
 
 type DescribeEnvServiceMonitorRequest struct {
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The name of the namespace.
+	// The namespace where the ServiceMonitor is located.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ServiceMonitor name.
+	// The name of the ServiceMonitor.
 	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
 }
 
@@ -14928,13 +15369,13 @@ func (s *DescribeEnvServiceMonitorRequest) SetServiceMonitorName(v string) *Desc
 }
 
 type DescribeEnvServiceMonitorResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *DescribeEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14967,17 +15408,17 @@ func (s *DescribeEnvServiceMonitorResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeEnvServiceMonitorResponseBodyData struct {
-	// ServiceMonitor\"s yaml configuration string.
+	// The YAML configuration string of the ServiceMonitor.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ServiceMonitor name.
+	// The name of the ServiceMonitor.
 	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
-	// Status: run, stop.
+	// The status of the ServiceMonitor. Valid values: run and stop.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -15128,7 +15569,8 @@ type DescribeEnvironmentResponseBodyData struct {
 	// Environment instance ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// Environment name.
-	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	EnvironmentName    *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
 	// Environment type:
 	// - CS: Container Service.
 	// - ECS.
@@ -15204,6 +15646,11 @@ func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentId(v string) *Descri
 
 func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentName(v string) *DescribeEnvironmentResponseBodyData {
 	s.EnvironmentName = &v
+	return s
+}
+
+func (s *DescribeEnvironmentResponseBodyData) SetEnvironmentSubType(v string) *DescribeEnvironmentResponseBodyData {
+	s.EnvironmentSubType = &v
 	return s
 }
 
@@ -15320,6 +15767,296 @@ func (s *DescribeEnvironmentResponse) SetStatusCode(v int32) *DescribeEnvironmen
 }
 
 func (s *DescribeEnvironmentResponse) SetBody(v *DescribeEnvironmentResponseBody) *DescribeEnvironmentResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeEnvironmentFeatureRequest struct {
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Name of Feature.
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeEnvironmentFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureRequest) SetEnvironmentId(v string) *DescribeEnvironmentFeatureRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureRequest) SetFeatureName(v string) *DescribeEnvironmentFeatureRequest {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureRequest) SetRegionId(v string) *DescribeEnvironmentFeatureRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return data.
+	Data *DescribeEnvironmentFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// *   `true`: successful
+	// *   `false`: failed
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeEnvironmentFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponseBody) SetCode(v int32) *DescribeEnvironmentFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBody) SetData(v *DescribeEnvironmentFeatureResponseBodyData) *DescribeEnvironmentFeatureResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBody) SetMessage(v string) *DescribeEnvironmentFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBody) SetRequestId(v string) *DescribeEnvironmentFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBody) SetSuccess(v bool) *DescribeEnvironmentFeatureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponseBodyData struct {
+	// Feature Installation information.
+	Feature *DescribeEnvironmentFeatureResponseBodyDataFeature `json:"Feature,omitempty" xml:"Feature,omitempty" type:"Struct"`
+	// Running status of the Feature.
+	FeatureStatus *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus `json:"FeatureStatus,omitempty" xml:"FeatureStatus,omitempty" type:"Struct"`
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyData) SetFeature(v *DescribeEnvironmentFeatureResponseBodyDataFeature) *DescribeEnvironmentFeatureResponseBodyData {
+	s.Feature = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyData) SetFeatureStatus(v *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) *DescribeEnvironmentFeatureResponseBodyData {
+	s.FeatureStatus = v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
+	// Alias of Feature.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Config of Feature.
+	Config map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Description of Feature.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Icon address.
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// Lanuage.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This is the latest version of Feature.
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// Name of Feature.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Status of Feature.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Version of Feature.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeature) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetAlias(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetConfig(v map[string]*string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Config = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetDescription(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetEnvironmentId(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetIcon(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Icon = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetLanguage(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetLatestVersion(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.LatestVersion = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetName(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetStatus(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeature) SetVersion(v string) *DescribeEnvironmentFeatureResponseBodyDataFeature {
+	s.Version = &v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
+	// Feature container list.
+	FeatureContainers []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers `json:"FeatureContainers,omitempty" xml:"FeatureContainers,omitempty" type:"Repeated"`
+	// K8s resource name of the Feature.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Running status.
+	// - Success: Normal operation
+	// - Failed: running exception
+	// - Not Found: Not installed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetFeatureContainers(v []*DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
+	s.FeatureContainers = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetName(v string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetNamespace(v string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus) SetStatus(v string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers struct {
+	// Container parameters.
+	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	// Container image.
+	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// Name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) SetArgs(v []*string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers {
+	s.Args = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) SetImage(v string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers) SetName(v string) *DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers {
+	s.Name = &v
+	return s
+}
+
+type DescribeEnvironmentFeatureResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEnvironmentFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnvironmentFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnvironmentFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnvironmentFeatureResponse) SetHeaders(v map[string]*string) *DescribeEnvironmentFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponse) SetStatusCode(v int32) *DescribeEnvironmentFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeEnvironmentFeatureResponse) SetBody(v *DescribeEnvironmentFeatureResponseBody) *DescribeEnvironmentFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -23887,6 +24624,341 @@ func (s *InitEnvironmentResponse) SetBody(v *InitEnvironmentResponseBody) *InitE
 	return s
 }
 
+type InstallAddonRequest struct {
+	// Version of Addon.
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// Locale, the default is Chinese zh.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Whether to test run. The default value is false.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Name of Addon.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The release name after installation, if not specified, generates the default rule name.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+	// Config information.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s InstallAddonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallAddonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAddonRequest) SetAddonVersion(v string) *InstallAddonRequest {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetAliyunLang(v string) *InstallAddonRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetDryRun(v bool) *InstallAddonRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetEnvironmentId(v string) *InstallAddonRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetName(v string) *InstallAddonRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetRegionId(v string) *InstallAddonRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetReleaseName(v string) *InstallAddonRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *InstallAddonRequest) SetValues(v string) *InstallAddonRequest {
+	s.Values = &v
+	return s
+}
+
+type InstallAddonResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *InstallAddonResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   `true`: The call was successful.
+	// *   `false`: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InstallAddonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallAddonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAddonResponseBody) SetCode(v int32) *InstallAddonResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InstallAddonResponseBody) SetData(v *InstallAddonResponseBodyData) *InstallAddonResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InstallAddonResponseBody) SetMessage(v string) *InstallAddonResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InstallAddonResponseBody) SetRequestId(v string) *InstallAddonResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBody) SetSuccess(v bool) *InstallAddonResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InstallAddonResponseBodyData struct {
+	// Addon name.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Number of alarm groups.
+	AlertRuleCount *int64 `json:"AlertRuleCount,omitempty" xml:"AlertRuleCount,omitempty"`
+	// Condition list.
+	Conditions []*InstallAddonResponseBodyDataConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Created time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Number of dashboard.
+	DashboardCount *int64 `json:"DashboardCount,omitempty" xml:"DashboardCount,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Number of Exporter.
+	ExporterCount *int64 `json:"ExporterCount,omitempty" xml:"ExporterCount,omitempty"`
+	// Whether there is configuration.
+	HaveConfig *bool `json:"HaveConfig,omitempty" xml:"HaveConfig,omitempty"`
+	// User ID of the installation.
+	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
+	// Language.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Release ID.
+	ReleaseId *string `json:"ReleaseId,omitempty" xml:"ReleaseId,omitempty"`
+	// Name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+	// Scene.
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Status of Release.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Update time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s InstallAddonResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallAddonResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAddonResponseBodyData) SetAddonName(v string) *InstallAddonResponseBodyData {
+	s.AddonName = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetAlertRuleCount(v int64) *InstallAddonResponseBodyData {
+	s.AlertRuleCount = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetConditions(v []*InstallAddonResponseBodyDataConditions) *InstallAddonResponseBodyData {
+	s.Conditions = v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetCreateTime(v string) *InstallAddonResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetDashboardCount(v int64) *InstallAddonResponseBodyData {
+	s.DashboardCount = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetEnvironmentId(v string) *InstallAddonResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetExporterCount(v int64) *InstallAddonResponseBodyData {
+	s.ExporterCount = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetHaveConfig(v bool) *InstallAddonResponseBodyData {
+	s.HaveConfig = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetInstallUserId(v string) *InstallAddonResponseBodyData {
+	s.InstallUserId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetLanguage(v string) *InstallAddonResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetRegionId(v string) *InstallAddonResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetReleaseId(v string) *InstallAddonResponseBodyData {
+	s.ReleaseId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetReleaseName(v string) *InstallAddonResponseBodyData {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetScene(v string) *InstallAddonResponseBodyData {
+	s.Scene = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetStatus(v string) *InstallAddonResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetUpdateTime(v string) *InstallAddonResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetUserId(v string) *InstallAddonResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyData) SetVersion(v string) *InstallAddonResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type InstallAddonResponseBodyDataConditions struct {
+	// First transition time.
+	FirstTransitionTime *string `json:"FirstTransitionTime,omitempty" xml:"FirstTransitionTime,omitempty"`
+	// Last transition time.
+	LastTransitionTime *string `json:"LastTransitionTime,omitempty" xml:"LastTransitionTime,omitempty"`
+	// Details.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reason of failure.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Condition status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Condition type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s InstallAddonResponseBodyDataConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallAddonResponseBodyDataConditions) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetFirstTransitionTime(v string) *InstallAddonResponseBodyDataConditions {
+	s.FirstTransitionTime = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetLastTransitionTime(v string) *InstallAddonResponseBodyDataConditions {
+	s.LastTransitionTime = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetMessage(v string) *InstallAddonResponseBodyDataConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetReason(v string) *InstallAddonResponseBodyDataConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetStatus(v string) *InstallAddonResponseBodyDataConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *InstallAddonResponseBodyDataConditions) SetType(v string) *InstallAddonResponseBodyDataConditions {
+	s.Type = &v
+	return s
+}
+
+type InstallAddonResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallAddonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallAddonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallAddonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallAddonResponse) SetHeaders(v map[string]*string) *InstallAddonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallAddonResponse) SetStatusCode(v int32) *InstallAddonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallAddonResponse) SetBody(v *InstallAddonResponseBody) *InstallAddonResponse {
+	s.Body = v
+	return s
+}
+
 type InstallCmsExporterRequest struct {
 	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CmsArgs    *string `json:"CmsArgs,omitempty" xml:"CmsArgs,omitempty"`
@@ -23976,6 +25048,144 @@ func (s *InstallCmsExporterResponse) SetStatusCode(v int32) *InstallCmsExporterR
 }
 
 func (s *InstallCmsExporterResponse) SetBody(v *InstallCmsExporterResponseBody) *InstallCmsExporterResponse {
+	s.Body = v
+	return s
+}
+
+type InstallEnvironmentFeatureRequest struct {
+	// Language,the default language is Chinese.
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Config information of Feature.
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Name of Feature.
+	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	// Version of Feature.
+	FeatureVersion *string `json:"FeatureVersion,omitempty" xml:"FeatureVersion,omitempty"`
+	// Region of Feature.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s InstallEnvironmentFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallEnvironmentFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetAliyunLang(v string) *InstallEnvironmentFeatureRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetConfig(v string) *InstallEnvironmentFeatureRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetEnvironmentId(v string) *InstallEnvironmentFeatureRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetFeatureName(v string) *InstallEnvironmentFeatureRequest {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetFeatureVersion(v string) *InstallEnvironmentFeatureRequest {
+	s.FeatureVersion = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetRegion(v string) *InstallEnvironmentFeatureRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureRequest) SetRegionId(v string) *InstallEnvironmentFeatureRequest {
+	s.RegionId = &v
+	return s
+}
+
+type InstallEnvironmentFeatureResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// ReleaseId after installation.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Prompt message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// api was successful:
+	//
+	// - true: success.
+	// - false: fails.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InstallEnvironmentFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallEnvironmentFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallEnvironmentFeatureResponseBody) SetCode(v int32) *InstallEnvironmentFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponseBody) SetData(v string) *InstallEnvironmentFeatureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponseBody) SetMessage(v string) *InstallEnvironmentFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponseBody) SetRequestId(v string) *InstallEnvironmentFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponseBody) SetSuccess(v bool) *InstallEnvironmentFeatureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InstallEnvironmentFeatureResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallEnvironmentFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallEnvironmentFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallEnvironmentFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallEnvironmentFeatureResponse) SetHeaders(v map[string]*string) *InstallEnvironmentFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponse) SetStatusCode(v int32) *InstallEnvironmentFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallEnvironmentFeatureResponse) SetBody(v *InstallEnvironmentFeatureResponseBody) *InstallEnvironmentFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -24426,6 +25636,331 @@ func (s *ListActivatedAlertsResponse) SetStatusCode(v int32) *ListActivatedAlert
 }
 
 func (s *ListActivatedAlertsResponse) SetBody(v *ListActivatedAlertsResponseBody) *ListActivatedAlertsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAddonReleasesRequest struct {
+	// Name of Addon.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAddonReleasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesRequest) SetAddonName(v string) *ListAddonReleasesRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListAddonReleasesRequest) SetEnvironmentId(v string) *ListAddonReleasesRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListAddonReleasesRequest) SetRegionId(v string) *ListAddonReleasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAddonReleasesResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data *ListAddonReleasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAddonReleasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesResponseBody) SetCode(v int32) *ListAddonReleasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBody) SetData(v *ListAddonReleasesResponseBodyData) *ListAddonReleasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBody) SetMessage(v string) *ListAddonReleasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBody) SetRequestId(v string) *ListAddonReleasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBody) SetSuccess(v bool) *ListAddonReleasesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAddonReleasesResponseBodyData struct {
+	// Release list.
+	Releases []*ListAddonReleasesResponseBodyDataReleases `json:"Releases,omitempty" xml:"Releases,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListAddonReleasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesResponseBodyData) SetReleases(v []*ListAddonReleasesResponseBodyDataReleases) *ListAddonReleasesResponseBodyData {
+	s.Releases = v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyData) SetTotal(v int64) *ListAddonReleasesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListAddonReleasesResponseBodyDataReleases struct {
+	// Name of Addon.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Number of alarm groups.
+	AlertRuleCount *int64 `json:"AlertRuleCount,omitempty" xml:"AlertRuleCount,omitempty"`
+	// Condition list.
+	Conditions []*ListAddonReleasesResponseBodyDataReleasesConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// Created time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Number of dashboard.
+	DashboardCount *int64 `json:"DashboardCount,omitempty" xml:"DashboardCount,omitempty"`
+	// Environment instance ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Number of Exporter.
+	ExporterCount *int64 `json:"ExporterCount,omitempty" xml:"ExporterCount,omitempty"`
+	// Whether there is configuration.
+	HaveConfig *bool `json:"HaveConfig,omitempty" xml:"HaveConfig,omitempty"`
+	// User ID of the installation.
+	InstallUserId *string `json:"InstallUserId,omitempty" xml:"InstallUserId,omitempty"`
+	// Language.
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Release ID.
+	ReleaseId *string `json:"ReleaseId,omitempty" xml:"ReleaseId,omitempty"`
+	// Name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+	// Scene.
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Status of Release.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Update time.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Version of Addon.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListAddonReleasesResponseBodyDataReleases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesResponseBodyDataReleases) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetAddonName(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetAlertRuleCount(v int64) *ListAddonReleasesResponseBodyDataReleases {
+	s.AlertRuleCount = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetConditions(v []*ListAddonReleasesResponseBodyDataReleasesConditions) *ListAddonReleasesResponseBodyDataReleases {
+	s.Conditions = v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetCreateTime(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetDashboardCount(v int64) *ListAddonReleasesResponseBodyDataReleases {
+	s.DashboardCount = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetEnvironmentId(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetExporterCount(v int64) *ListAddonReleasesResponseBodyDataReleases {
+	s.ExporterCount = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetHaveConfig(v bool) *ListAddonReleasesResponseBodyDataReleases {
+	s.HaveConfig = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetInstallUserId(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.InstallUserId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetLanguage(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.Language = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetRegionId(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetReleaseId(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.ReleaseId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetReleaseName(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetScene(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetStatus(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetUpdateTime(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetUserId(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleases) SetVersion(v string) *ListAddonReleasesResponseBodyDataReleases {
+	s.Version = &v
+	return s
+}
+
+type ListAddonReleasesResponseBodyDataReleasesConditions struct {
+	// First transition time.
+	FirstTransitionTime *string `json:"FirstTransitionTime,omitempty" xml:"FirstTransitionTime,omitempty"`
+	// Last transition time.
+	LastTransitionTime *string `json:"LastTransitionTime,omitempty" xml:"LastTransitionTime,omitempty"`
+	// Details.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reason of failure.
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Condition status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Condition type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListAddonReleasesResponseBodyDataReleasesConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesResponseBodyDataReleasesConditions) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetFirstTransitionTime(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.FirstTransitionTime = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetLastTransitionTime(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.LastTransitionTime = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetMessage(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetReason(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetStatus(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponseBodyDataReleasesConditions) SetType(v string) *ListAddonReleasesResponseBodyDataReleasesConditions {
+	s.Type = &v
+	return s
+}
+
+type ListAddonReleasesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAddonReleasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAddonReleasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonReleasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonReleasesResponse) SetHeaders(v map[string]*string) *ListAddonReleasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAddonReleasesResponse) SetStatusCode(v int32) *ListAddonReleasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAddonReleasesResponse) SetBody(v *ListAddonReleasesResponseBody) *ListAddonReleasesResponse {
 	s.Body = v
 	return s
 }
@@ -26301,9 +27836,9 @@ func (s *ListDispatchRuleResponse) SetBody(v *ListDispatchRuleResponseBody) *Lis
 }
 
 type ListEnvCustomJobsRequest struct {
-	// Whether to return encrypted yaml.
+	// Specifies whether to return the encrypted YAML string.
 	EncryptYaml *bool `json:"EncryptYaml,omitempty" xml:"EncryptYaml,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -26333,13 +27868,13 @@ func (s *ListEnvCustomJobsRequest) SetRegionId(v string) *ListEnvCustomJobsReque
 }
 
 type ListEnvCustomJobsResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned information.
+	// The returned struct.
 	Data []*ListEnvCustomJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26372,25 +27907,25 @@ func (s *ListEnvCustomJobsResponseBody) SetRequestId(v string) *ListEnvCustomJob
 }
 
 type ListEnvCustomJobsResponseBodyData struct {
-	// The attributed component name.
+	// The name of the component to which the custom job belongs.
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
-	// The attributed component instance name.
+	// The instance name of the component.
 	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
-	// The attributed component version.
+	// The version of the component.
 	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
-	// If the request parameter encryptYaml is true, the base64-encoded yaml string is returned. Otherwise, the plaintext yaml string is returned.
+	// If the request parameter EncryptYaml is set to true, a Base64-encoded YAML string is returned. Otherwise, a plaintext YAML string is returned.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Creation time (timestamp).
+	// The time when the custom job was created. The value of this parameter is a timestamp.
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// Custom job name.
+	// The name of the custom job.
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// scrape configuration.
+	// The capture configurations.
 	ScrapeConfigs []*ListEnvCustomJobsResponseBodyDataScrapeConfigs `json:"ScrapeConfigs,omitempty" xml:"ScrapeConfigs,omitempty" type:"Repeated"`
-	// state.
+	// The status of the custom job.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -26453,13 +27988,13 @@ func (s *ListEnvCustomJobsResponseBodyData) SetStatus(v string) *ListEnvCustomJo
 }
 
 type ListEnvCustomJobsResponseBodyDataScrapeConfigs struct {
-	// Job name.
+	// The name of the job.
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// scrape the path of the metric.
+	// The path of the metric.
 	MetricsPath *string `json:"MetricsPath,omitempty" xml:"MetricsPath,omitempty"`
-	// List of service discovery methods.
+	// The service discovery methods.
 	ScrapeDiscoverys []*string `json:"ScrapeDiscoverys,omitempty" xml:"ScrapeDiscoverys,omitempty" type:"Repeated"`
-	// scrape interval.
+	// The capture interval.
 	ScrapeInterval *string `json:"ScrapeInterval,omitempty" xml:"ScrapeInterval,omitempty"`
 }
 
@@ -26521,7 +28056,7 @@ func (s *ListEnvCustomJobsResponse) SetBody(v *ListEnvCustomJobsResponseBody) *L
 }
 
 type ListEnvPodMonitorsRequest struct {
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -26546,13 +28081,13 @@ func (s *ListEnvPodMonitorsRequest) SetRegionId(v string) *ListEnvPodMonitorsReq
 }
 
 type ListEnvPodMonitorsResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned struct.
+	// The result of the operation.
 	Data []*ListEnvPodMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26585,27 +28120,27 @@ func (s *ListEnvPodMonitorsResponseBody) SetRequestId(v string) *ListEnvPodMonit
 }
 
 type ListEnvPodMonitorsResponseBodyData struct {
-	// addon name.
+	// The name of the component to which the PodMonitor belongs.
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
-	// addon release name.
+	// The instance name of the component.
 	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
-	// addon version.
+	// The version of the component.
 	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
-	// yaml configuration string.
+	// The YAML configuration string.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Creation time (timestamp).
+	// The time when the PodMonitor was created. The value of this parameter is a timestamp.
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// List of endpoints for podmonitor.
+	// The endpoints of the PodMonitor.
 	Endpoints []*ListEnvPodMonitorsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// PodMonitor name.
+	// The name of the PodMonitor.
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// state.
+	// The status of the PodMonitor.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -26673,15 +28208,15 @@ func (s *ListEnvPodMonitorsResponseBodyData) SetStatus(v string) *ListEnvPodMoni
 }
 
 type ListEnvPodMonitorsResponseBodyDataEndpoints struct {
-	// scrape interval.
+	// The collection interval.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of targets (pods) matched by PodMonitor.Endpoint.
+	// The number of pods that match the PodMonitor endpoint.
 	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
-	// metric path.
+	// The collection path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// External port.
+	// The external port.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Destination port.
+	// The destination port.
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
@@ -26748,7 +28283,7 @@ func (s *ListEnvPodMonitorsResponse) SetBody(v *ListEnvPodMonitorsResponseBody) 
 }
 
 type ListEnvServiceMonitorsRequest struct {
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -26773,13 +28308,13 @@ func (s *ListEnvServiceMonitorsRequest) SetRegionId(v string) *ListEnvServiceMon
 }
 
 type ListEnvServiceMonitorsResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data []*ListEnvServiceMonitorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26812,29 +28347,29 @@ func (s *ListEnvServiceMonitorsResponseBody) SetRequestId(v string) *ListEnvServ
 }
 
 type ListEnvServiceMonitorsResponseBodyData struct {
-	// addon name.
+	// The name of the component to which the ServiceMonitor belongs.
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
-	// addon release name.
+	// The instance name of the component.
 	AddonReleaseName *string `json:"AddonReleaseName,omitempty" xml:"AddonReleaseName,omitempty"`
-	// addon version.
+	// The version of the component.
 	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
-	// yaml configuration string.
+	// The YAML configuration string.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Creation time (timestamp).
+	// The time when the ServiceMonitor was created. The value of this parameter is a timestamp.
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// List of endpoints for ServiceMonitor.
+	// The endpoints of the ServiceMonitor.
 	Endpoints []*ListEnvServiceMonitorsResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The number of matching services.
+	// The number of matched services.
 	MatchedServiceCount *int32 `json:"MatchedServiceCount,omitempty" xml:"MatchedServiceCount,omitempty"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ServiceMonitor name.
+	// The name of the ServiceMonitor.
 	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
-	// status.
+	// The status of the ServiceMonitor.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -26907,15 +28442,15 @@ func (s *ListEnvServiceMonitorsResponseBodyData) SetStatus(v string) *ListEnvSer
 }
 
 type ListEnvServiceMonitorsResponseBodyDataEndpoints struct {
-	// scrape interval.
+	// The collection interval.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The number of targets matched by servcieMonitor.Endpoint.
+	// The number of pods that match the ServiceMonitor endpoint.
 	MatchedTargetCount *int32 `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
-	// metric path.
+	// The collection path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// External port.
+	// The external port.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Destination port.
+	// The destination port.
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
@@ -26977,6 +28512,659 @@ func (s *ListEnvServiceMonitorsResponse) SetStatusCode(v int32) *ListEnvServiceM
 }
 
 func (s *ListEnvServiceMonitorsResponse) SetBody(v *ListEnvServiceMonitorsResponseBody) *ListEnvServiceMonitorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentFeaturesRequest struct {
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEnvironmentFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentFeaturesRequest) SetEnvironmentId(v string) *ListEnvironmentFeaturesRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesRequest) SetRegionId(v string) *ListEnvironmentFeaturesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListEnvironmentFeaturesResponseBody struct {
+	Code    *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*ListEnvironmentFeaturesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentFeaturesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentFeaturesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentFeaturesResponseBody) SetCode(v int32) *ListEnvironmentFeaturesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBody) SetData(v []*ListEnvironmentFeaturesResponseBodyData) *ListEnvironmentFeaturesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBody) SetMessage(v string) *ListEnvironmentFeaturesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBody) SetRequestId(v string) *ListEnvironmentFeaturesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBody) SetSuccess(v bool) *ListEnvironmentFeaturesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentFeaturesResponseBodyData struct {
+	Alias         *string            `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Config        map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Description   *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnvironmentId *string            `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	Icon          *string            `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Language      *string            `json:"Language,omitempty" xml:"Language,omitempty"`
+	LatestVersion *string            `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	Name          *string            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status        *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Version       *string            `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListEnvironmentFeaturesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentFeaturesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetAlias(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetConfig(v map[string]*string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Config = v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetDescription(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetEnvironmentId(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetIcon(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetLanguage(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetLatestVersion(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.LatestVersion = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetName(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetStatus(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponseBodyData) SetVersion(v string) *ListEnvironmentFeaturesResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type ListEnvironmentFeaturesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnvironmentFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentFeaturesResponse) SetHeaders(v map[string]*string) *ListEnvironmentFeaturesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponse) SetStatusCode(v int32) *ListEnvironmentFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentFeaturesResponse) SetBody(v *ListEnvironmentFeaturesResponseBody) *ListEnvironmentFeaturesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEnvironmentsRequest struct {
+	// Name of Addon.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Environment type, AddonName or EnvironmentType must be at least one.
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource tag list.
+	Tag []*ListEnvironmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListEnvironmentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsRequest) SetAddonName(v string) *ListEnvironmentsRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetEnvironmentType(v string) *ListEnvironmentsRequest {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetRegionId(v string) *ListEnvironmentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetResourceGroupId(v string) *ListEnvironmentsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetTag(v []*ListEnvironmentsRequestTag) *ListEnvironmentsRequest {
+	s.Tag = v
+	return s
+}
+
+type ListEnvironmentsRequestTag struct {
+	// Tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEnvironmentsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsRequestTag) SetKey(v string) *ListEnvironmentsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequestTag) SetValue(v string) *ListEnvironmentsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListEnvironmentsShrinkRequest struct {
+	// Name of Addon.
+	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	// Environment type, AddonName or EnvironmentType must be at least one.
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource tag list.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListEnvironmentsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetAddonName(v string) *ListEnvironmentsShrinkRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetEnvironmentType(v string) *ListEnvironmentsShrinkRequest {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetRegionId(v string) *ListEnvironmentsShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetResourceGroupId(v string) *ListEnvironmentsShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetTagShrink(v string) *ListEnvironmentsShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+type ListEnvironmentsResponseBody struct {
+	// Status code: 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Data *ListEnvironmentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBody) SetCode(v int32) *ListEnvironmentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBody) SetData(v *ListEnvironmentsResponseBodyData) *ListEnvironmentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBody) SetMessage(v string) *ListEnvironmentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBody) SetRequestId(v string) *ListEnvironmentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBody) SetSuccess(v bool) *ListEnvironmentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListEnvironmentsResponseBodyData struct {
+	// Environment list.
+	Environments []*ListEnvironmentsResponseBodyDataEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBodyData) SetEnvironments(v []*ListEnvironmentsResponseBodyDataEnvironments) *ListEnvironmentsResponseBodyData {
+	s.Environments = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyData) SetTotal(v int64) *ListEnvironmentsResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListEnvironmentsResponseBodyDataEnvironments struct {
+	// Addon list.
+	Addons []*ListEnvironmentsResponseBodyDataEnvironmentsAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// Id of the resource to be bound.
+	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
+	// Profile of the resource to be bound.
+	BindResourceProfile *string `json:"BindResourceProfile,omitempty" xml:"BindResourceProfile,omitempty"`
+	// Type of the resource to be bound.
+	BindResourceType *string `json:"BindResourceType,omitempty" xml:"BindResourceType,omitempty"`
+	// Bound Vpc IP Cidr.
+	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
+	// Create time.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Created User ID.
+	CreatedUserId *string `json:"CreatedUserId,omitempty" xml:"CreatedUserId,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// Environment name.
+	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// Environment type.
+	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
+	// Featyre list.
+	Features []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// Grafana datasource UID.
+	GrafanaDatasourceUid *string `json:"GrafanaDatasourceUid,omitempty" xml:"GrafanaDatasourceUid,omitempty"`
+	// Grafana folder title.
+	GrafanaFolderTitle *string `json:"GrafanaFolderTitle,omitempty" xml:"GrafanaFolderTitle,omitempty"`
+	// Grafana folder UID.
+	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
+	// Latest Release create time.
+	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
+	// Prometheus ID.
+	PrometheusId *int64 `json:"PrometheusId,omitempty" xml:"PrometheusId,omitempty"`
+	// Prometheus instance ID.
+	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Number of Release.
+	ReleaseCount *int32 `json:"ReleaseCount,omitempty" xml:"ReleaseCount,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag value.
+	Tags []*ListEnvironmentsResponseBodyDataEnvironmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// User ID.
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironments) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetAddons(v []*ListEnvironmentsResponseBodyDataEnvironmentsAddons) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.Addons = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetBindResourceId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.BindResourceId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetBindResourceProfile(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.BindResourceProfile = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetBindResourceType(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.BindResourceType = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetBindVpcCidr(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.BindVpcCidr = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetCreateTime(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetCreatedUserId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.CreatedUserId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetEnvironmentId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetEnvironmentName(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.EnvironmentName = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetEnvironmentType(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.EnvironmentType = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetFeatures(v []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.Features = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetGrafanaDatasourceUid(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.GrafanaDatasourceUid = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetGrafanaFolderTitle(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.GrafanaFolderTitle = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetGrafanaFolderUid(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.GrafanaFolderUid = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetLatestReleaseCreateTime(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.LatestReleaseCreateTime = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetPrometheusId(v int64) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.PrometheusId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetPrometheusInstanceId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.PrometheusInstanceId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetRegionId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetReleaseCount(v int32) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.ReleaseCount = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetResourceGroupId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetTags(v []*ListEnvironmentsResponseBodyDataEnvironmentsTags) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.Tags = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironments) SetUserId(v string) *ListEnvironmentsResponseBodyDataEnvironments {
+	s.UserId = &v
+	return s
+}
+
+type ListEnvironmentsResponseBodyDataEnvironmentsAddons struct {
+	// Alias of Addon.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Description of Addon.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Icon of Addon.
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// Name of Addon.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsAddons) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsAddons) SetAlias(v string) *ListEnvironmentsResponseBodyDataEnvironmentsAddons {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsAddons) SetDescription(v string) *ListEnvironmentsResponseBodyDataEnvironmentsAddons {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsAddons) SetIcon(v string) *ListEnvironmentsResponseBodyDataEnvironmentsAddons {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsAddons) SetName(v string) *ListEnvironmentsResponseBodyDataEnvironmentsAddons {
+	s.Name = &v
+	return s
+}
+
+type ListEnvironmentsResponseBodyDataEnvironmentsFeatures struct {
+	// Alias of Feature.
+	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// Description of Feature.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Icon address.
+	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	// Name of Feature.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsFeatures) SetAlias(v string) *ListEnvironmentsResponseBodyDataEnvironmentsFeatures {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsFeatures) SetDescription(v string) *ListEnvironmentsResponseBodyDataEnvironmentsFeatures {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsFeatures) SetIcon(v string) *ListEnvironmentsResponseBodyDataEnvironmentsFeatures {
+	s.Icon = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsFeatures) SetName(v string) *ListEnvironmentsResponseBodyDataEnvironmentsFeatures {
+	s.Name = &v
+	return s
+}
+
+type ListEnvironmentsResponseBodyDataEnvironmentsTags struct {
+	// Tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponseBodyDataEnvironmentsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsTags) SetKey(v string) *ListEnvironmentsResponseBodyDataEnvironmentsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataEnvironmentsTags) SetValue(v string) *ListEnvironmentsResponseBodyDataEnvironmentsTags {
+	s.Value = &v
+	return s
+}
+
+type ListEnvironmentsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEnvironmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEnvironmentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEnvironmentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEnvironmentsResponse) SetHeaders(v map[string]*string) *ListEnvironmentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEnvironmentsResponse) SetStatusCode(v int32) *ListEnvironmentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *ListEnvironmentsResponse {
 	s.Body = v
 	return s
 }
@@ -37741,17 +39929,17 @@ func (s *UpdateDispatchRuleResponse) SetBody(v *UpdateDispatchRuleResponseBody) 
 }
 
 type UpdateEnvCustomJobRequest struct {
-	// Locale, the default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// yaml configuration string.
+	// The YAML configuration string.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Custom job name.
+	// The name of the custom job.
 	CustomJobName *string `json:"CustomJobName,omitempty" xml:"CustomJobName,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Custom task status: run or stop.
+	// The status of the custom job. Valid values: run and stop.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -37794,13 +39982,13 @@ func (s *UpdateEnvCustomJobRequest) SetStatus(v string) *UpdateEnvCustomJobReque
 }
 
 type UpdateEnvCustomJobResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The status code or error code.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Operation results.
+	// The result of the operation.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -37862,19 +40050,19 @@ func (s *UpdateEnvCustomJobResponse) SetBody(v *UpdateEnvCustomJobResponseBody) 
 }
 
 type UpdateEnvPodMonitorRequest struct {
-	// Locale, the default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// yaml configuration string.
+	// The YAML configuration string.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Trial run: Check whether the format is legal and whether it can match targets.
+	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The namespace where podMonitor is located.
+	// The namespace where the PodMonitor is located.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// PodMonitor name.
+	// The name of the PodMonitor.
 	PodMonitorName *string `json:"PodMonitorName,omitempty" xml:"PodMonitorName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -37922,13 +40110,13 @@ func (s *UpdateEnvPodMonitorRequest) SetRegionId(v string) *UpdateEnvPodMonitorR
 }
 
 type UpdateEnvPodMonitorResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *UpdateEnvPodMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -37961,7 +40149,7 @@ func (s *UpdateEnvPodMonitorResponseBody) SetRequestId(v string) *UpdateEnvPodMo
 }
 
 type UpdateEnvPodMonitorResponseBodyData struct {
-	// Target matching prompt information.
+	// Indicates whether targets are matched.
 	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
 	// The number of matched targets.
 	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
@@ -38015,19 +40203,19 @@ func (s *UpdateEnvPodMonitorResponse) SetBody(v *UpdateEnvPodMonitorResponseBody
 }
 
 type UpdateEnvServiceMonitorRequest struct {
-	// Locale, the default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// yaml configuration string.
+	// The YAML configuration string.
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
-	// Trial run: Check whether the format is legal and whether it can match targets.
+	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The namespace where serviceMonitor is located.
+	// The namespace where the ServiceMonitor is located.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ServiceMonitor name.
+	// The name of the ServiceMonitor.
 	ServiceMonitorName *string `json:"ServiceMonitorName,omitempty" xml:"ServiceMonitorName,omitempty"`
 }
 
@@ -38075,13 +40263,13 @@ func (s *UpdateEnvServiceMonitorRequest) SetServiceMonitorName(v string) *Update
 }
 
 type UpdateEnvServiceMonitorResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The struct returned.
+	// The returned struct.
 	Data *UpdateEnvServiceMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -38114,7 +40302,7 @@ func (s *UpdateEnvServiceMonitorResponseBody) SetRequestId(v string) *UpdateEnvS
 }
 
 type UpdateEnvServiceMonitorResponseBodyData struct {
-	// Target matching prompt information.
+	// Indicates whether targets are matched.
 	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
 	// The number of matched targets.
 	MatchedTargetCount *string `json:"MatchedTargetCount,omitempty" xml:"MatchedTargetCount,omitempty"`
@@ -40709,6 +42897,252 @@ func (s *UpdateWebhookResponse) SetStatusCode(v int32) *UpdateWebhookResponse {
 }
 
 func (s *UpdateWebhookResponse) SetBody(v *UpdateWebhookResponseBody) *UpdateWebhookResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeAddonReleaseRequest struct {
+	// Version of Addon.
+	AddonVersion *string `json:"AddonVersion,omitempty" xml:"AddonVersion,omitempty"`
+	// Whether to pre-check this request.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Environment ID.
+	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of Release.
+	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
+	// Metadata information.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s UpgradeAddonReleaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAddonReleaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAddonReleaseRequest) SetAddonVersion(v string) *UpgradeAddonReleaseRequest {
+	s.AddonVersion = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseRequest) SetDryRun(v bool) *UpgradeAddonReleaseRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseRequest) SetEnvironmentId(v string) *UpgradeAddonReleaseRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseRequest) SetRegionId(v string) *UpgradeAddonReleaseRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseRequest) SetReleaseName(v string) *UpgradeAddonReleaseRequest {
+	s.ReleaseName = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseRequest) SetValues(v string) *UpgradeAddonReleaseRequest {
+	s.Values = &v
+	return s
+}
+
+type UpgradeAddonReleaseResponseBody struct {
+	// The status code. 200 indicates success.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return a message.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The information returned when the request parameter is incorrect.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Whether the call was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpgradeAddonReleaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAddonReleaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAddonReleaseResponseBody) SetCode(v int32) *UpgradeAddonReleaseResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponseBody) SetData(v string) *UpgradeAddonReleaseResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponseBody) SetMessage(v string) *UpgradeAddonReleaseResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponseBody) SetRequestId(v string) *UpgradeAddonReleaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponseBody) SetSuccess(v bool) *UpgradeAddonReleaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpgradeAddonReleaseResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeAddonReleaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeAddonReleaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeAddonReleaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeAddonReleaseResponse) SetHeaders(v map[string]*string) *UpgradeAddonReleaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponse) SetStatusCode(v int32) *UpgradeAddonReleaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeAddonReleaseResponse) SetBody(v *UpgradeAddonReleaseResponseBody) *UpgradeAddonReleaseResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeEnvironmentFeatureRequest struct {
+	AliyunLang     *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	EnvironmentId  *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	FeatureName    *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
+	FeatureVersion *string `json:"FeatureVersion,omitempty" xml:"FeatureVersion,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Values         *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s UpgradeEnvironmentFeatureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeEnvironmentFeatureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetAliyunLang(v string) *UpgradeEnvironmentFeatureRequest {
+	s.AliyunLang = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetEnvironmentId(v string) *UpgradeEnvironmentFeatureRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetFeatureName(v string) *UpgradeEnvironmentFeatureRequest {
+	s.FeatureName = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetFeatureVersion(v string) *UpgradeEnvironmentFeatureRequest {
+	s.FeatureVersion = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetRegionId(v string) *UpgradeEnvironmentFeatureRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureRequest) SetValues(v string) *UpgradeEnvironmentFeatureRequest {
+	s.Values = &v
+	return s
+}
+
+type UpgradeEnvironmentFeatureResponseBody struct {
+	Code    *int32             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    map[string]*string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpgradeEnvironmentFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeEnvironmentFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeEnvironmentFeatureResponseBody) SetCode(v int32) *UpgradeEnvironmentFeatureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponseBody) SetData(v map[string]*string) *UpgradeEnvironmentFeatureResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponseBody) SetMessage(v string) *UpgradeEnvironmentFeatureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponseBody) SetRequestId(v string) *UpgradeEnvironmentFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponseBody) SetSuccess(v bool) *UpgradeEnvironmentFeatureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpgradeEnvironmentFeatureResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeEnvironmentFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeEnvironmentFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeEnvironmentFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeEnvironmentFeatureResponse) SetHeaders(v map[string]*string) *UpgradeEnvironmentFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponse) SetStatusCode(v int32) *UpgradeEnvironmentFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeEnvironmentFeatureResponse) SetBody(v *UpgradeEnvironmentFeatureResponseBody) *UpgradeEnvironmentFeatureResponse {
 	s.Body = v
 	return s
 }
@@ -43833,6 +46267,62 @@ func (client *Client) DelAuthToken(request *DelAuthTokenRequest) (_result *DelAu
 	return _result, _err
 }
 
+func (client *Client) DeleteAddonReleaseWithOptions(request *DeleteAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *DeleteAddonReleaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
+		query["ReleaseName"] = request.ReleaseName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAddonRelease"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAddonRelease(request *DeleteAddonReleaseRequest) (_result *DeleteAddonReleaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAddonReleaseResponse{}
+	_body, _err := client.DeleteAddonReleaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ********
  *
@@ -45484,6 +47974,58 @@ func (client *Client) DeleteWebhookContact(request *DeleteWebhookContactRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeAddonReleaseWithOptions(request *DescribeAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *DescribeAddonReleaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
+		query["ReleaseName"] = request.ReleaseName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddonRelease"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAddonRelease(request *DescribeAddonReleaseRequest) (_result *DescribeAddonReleaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAddonReleaseResponse{}
+	_body, _err := client.DescribeAddonReleaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeContactGroupsWithOptions(request *DescribeContactGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeContactGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45877,6 +48419,58 @@ func (client *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEnvironmentResponse{}
 	_body, _err := client.DescribeEnvironmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvironmentFeatureWithOptions(request *DescribeEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *DescribeEnvironmentFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnvironmentFeature"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnvironmentFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnvironmentFeature(request *DescribeEnvironmentFeatureRequest) (_result *DescribeEnvironmentFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnvironmentFeatureResponse{}
+	_body, _err := client.DescribeEnvironmentFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47913,6 +50507,78 @@ func (client *Client) InitEnvironment(request *InitEnvironmentRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runtime *util.RuntimeOptions) (_result *InstallAddonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonVersion)) {
+		query["AddonVersion"] = request.AddonVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
+		query["ReleaseName"] = request.ReleaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Values)) {
+		query["Values"] = request.Values
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallAddon"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *InstallAddonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallAddonResponse{}
+	_body, _err := client.InstallAddonWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InstallCmsExporterWithOptions(request *InstallCmsExporterRequest, runtime *util.RuntimeOptions) (_result *InstallCmsExporterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47966,6 +50632,74 @@ func (client *Client) InstallCmsExporter(request *InstallCmsExporterRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCmsExporterResponse{}
 	_body, _err := client.InstallCmsExporterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InstallEnvironmentFeatureWithOptions(request *InstallEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *InstallEnvironmentFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureVersion)) {
+		query["FeatureVersion"] = request.FeatureVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallEnvironmentFeature"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallEnvironmentFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatureRequest) (_result *InstallEnvironmentFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallEnvironmentFeatureResponse{}
+	_body, _err := client.InstallEnvironmentFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48115,6 +50849,58 @@ func (client *Client) ListActivatedAlerts(request *ListActivatedAlertsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListActivatedAlertsResponse{}
 	_body, _err := client.ListActivatedAlertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAddonReleasesWithOptions(request *ListAddonReleasesRequest, runtime *util.RuntimeOptions) (_result *ListAddonReleasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
+		query["AddonName"] = request.AddonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAddonReleases"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAddonReleasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAddonReleases(request *ListAddonReleasesRequest) (_result *ListAddonReleasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAddonReleasesResponse{}
+	_body, _err := client.ListAddonReleasesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48728,6 +51514,120 @@ func (client *Client) ListEnvServiceMonitors(request *ListEnvServiceMonitorsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnvServiceMonitorsResponse{}
 	_body, _err := client.ListEnvServiceMonitorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentFeaturesWithOptions(request *ListEnvironmentFeaturesRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentFeaturesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironmentFeatures"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentFeatures(request *ListEnvironmentFeaturesRequest) (_result *ListEnvironmentFeaturesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentFeaturesResponse{}
+	_body, _err := client.ListEnvironmentFeaturesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsRequest, runtime *util.RuntimeOptions) (_result *ListEnvironmentsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListEnvironmentsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
+		query["AddonName"] = request.AddonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentType)) {
+		query["EnvironmentType"] = request.EnvironmentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEnvironments"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEnvironments(request *ListEnvironmentsRequest) (_result *ListEnvironmentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.ListEnvironmentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -53240,6 +56140,134 @@ func (client *Client) UpdateWebhook(request *UpdateWebhookRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateWebhookResponse{}
 	_body, _err := client.UpdateWebhookWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeAddonReleaseWithOptions(request *UpgradeAddonReleaseRequest, runtime *util.RuntimeOptions) (_result *UpgradeAddonReleaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonVersion)) {
+		query["AddonVersion"] = request.AddonVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseName)) {
+		query["ReleaseName"] = request.ReleaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Values)) {
+		query["Values"] = request.Values
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeAddonRelease"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeAddonReleaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeAddonRelease(request *UpgradeAddonReleaseRequest) (_result *UpgradeAddonReleaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeAddonReleaseResponse{}
+	_body, _err := client.UpgradeAddonReleaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeEnvironmentFeatureWithOptions(request *UpgradeEnvironmentFeatureRequest, runtime *util.RuntimeOptions) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		query["EnvironmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureName)) {
+		query["FeatureName"] = request.FeatureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FeatureVersion)) {
+		query["FeatureVersion"] = request.FeatureVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Values)) {
+		query["Values"] = request.Values
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeEnvironmentFeature"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeEnvironmentFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeEnvironmentFeature(request *UpgradeEnvironmentFeatureRequest) (_result *UpgradeEnvironmentFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeEnvironmentFeatureResponse{}
+	_body, _err := client.UpgradeEnvironmentFeatureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
