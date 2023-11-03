@@ -1,3 +1,6 @@
+2023-11-03 Version: v3.2.1
+- Generated golang 2017-03-21 for vod.
+
 2023-10-18 Version: v3.2.0
 - Generated golang 2017-03-21 for vod.
 

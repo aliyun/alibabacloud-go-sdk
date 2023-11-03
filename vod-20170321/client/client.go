@@ -11254,8 +11254,14 @@ func (s *GetDefaultAITemplateResponse) SetBody(v *GetDefaultAITemplateResponseBo
 }
 
 type GetDigitalWatermarkExtractResultRequest struct {
-	ExtractType          *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
-	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the digital watermark. Valid values:
+	//
+	// *   TraceMark: tracing watermark
+	// *   CopyrightMark: copyright watermark
+	ExtractType *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
+	// The ID of the job.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the video file. You can query the video ID by using the ApsaraVideo VOD console or calling the SearchMedia operation.
 	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11307,8 +11313,10 @@ func (s *GetDigitalWatermarkExtractResultRequest) SetResourceOwnerId(v string) *
 }
 
 type GetDigitalWatermarkExtractResultResponseBody struct {
+	// The information about the job.
 	AiExtractResultList []*GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList `json:"AiExtractResultList,omitempty" xml:"AiExtractResultList,omitempty" type:"Repeated"`
-	RequestId           *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDigitalWatermarkExtractResultResponseBody) String() string {
@@ -11330,11 +11338,21 @@ func (s *GetDigitalWatermarkExtractResultResponseBody) SetRequestId(v string) *G
 }
 
 type GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	ModifyTime    *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the job was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the job.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The time when the job was modified.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// *   **Success**
+	// *   **Failed**
+	// *   **Processing**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The extracted watermark text.
 	WaterMarkText *string `json:"WaterMarkText,omitempty" xml:"WaterMarkText,omitempty"`
 }
 
@@ -15432,7 +15450,11 @@ type GetPlayInfoRequest struct {
 	// *   **AUTO**: adaptive bitrate
 	//
 	// > By default, ApsaraVideo VOD returns video streams in all preceding qualities. However, video streams for adaptive bitrate streaming are returned only if the PackageSetting parameter is specified in the transcoding template. For more information, see the [PackageSetting parameter in the TranscodeTemplate](~~52839~~) table.
-	Definition           *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The type of the digital watermark. Valid values:
+	//
+	// *   TraceMark: tracing watermark
+	// *   CopyrightMark: copyright watermark
 	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" xml:"DigitalWatermarkType,omitempty"`
 	// The format of the media stream. Separate multiple formats with commas (,). Valid values:
 	//
@@ -15467,7 +15489,11 @@ type GetPlayInfoRequest struct {
 	//
 	// By default, video and audio streams are returned.
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	Trace      *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
+	// The custom digital watermark.
+	//
+	// *   If you set `DigitalWatermarkType` to `TraceMark`, specify this parameter to configure the video tracing watermark and return the video stream that contains the watermark. The value can be up to 1,024 characters in length and can contain letters and digits.
+	// *   If you set `DigitalWatermarkType` to `CopyrightMark`, specify the **watermark text** that you created for the watermark template for this parameter.`` You can specify this parameter to query and return the video stream that contains the specified watermark text.
+	Trace *string `json:"Trace,omitempty" xml:"Trace,omitempty"`
 	// The ID of the media file. You can specify only one ID. You can use one of the following methods to obtain the media ID:
 	//
 	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -15598,7 +15624,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	BitDepth *int32 `json:"BitDepth,omitempty" xml:"BitDepth,omitempty"`
 	// The bitrate of the media stream. Unit: Kbit/s.
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The quality of the media stream. Valid values:
 	//
@@ -15615,10 +15641,10 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
 	// The duration of the media stream. Unit: seconds.
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Indicates whether the media stream was encrypted. Valid values:
+	// Indicates whether the media stream is encrypted. Valid values:
 	//
-	// *   **0**: no
-	// *   **1**: yes.
+	// *   **0**: The media stream is not encrypted.
+	// *   **1**: The media stream is encrypted.
 	Encrypt *int64 `json:"Encrypt,omitempty" xml:"Encrypt,omitempty"`
 	// The encryption type of the media stream. Valid values:
 	//
@@ -15643,12 +15669,17 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	// *   HDRVivid
 	// *   SDR+
 	HDRType *string `json:"HDRType,omitempty" xml:"HDRType,omitempty"`
-	// The height of the media stream. Unit: pixel.
-	Height *int64  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The height of the media stream. Unit: pixels.
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The custom watermark information of the copyright watermark. This parameter is returned if you set `JobType` to `2`.
 	JobExt *string `json:"JobExt,omitempty" xml:"JobExt,omitempty"`
 	// The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobType *int32  `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The type of the digital watermark. Valid values:
+	//
+	// *   **1**: tracing watermark
+	// *   **2**: copyright watermark
+	JobType *int32 `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The update time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// The type of Narrowband HD transcoding. Valid values:
@@ -15665,7 +15696,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The specifications of transcoded audio and video streams. For more information about the valid values, see [Output specifications](~~124671~~).
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The status of the media stream. Valid values:
+	// The status of the audio or video stream. Valid values:
 	//
 	// *   **Normal**: The latest transcoded stream in each quality and format is in the Normal status.
 	// *   **Invisible**: If multiple streams are transcoded in the same quality and format, the latest transcoded stream is in the Normal status and other streams are in the Invisible status.
@@ -15674,7 +15705,7 @@ type GetPlayInfoResponseBodyPlayInfoListPlayInfo struct {
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
 	// The ID of the watermark that is associated with the media stream.
 	WatermarkId *string `json:"WatermarkId,omitempty" xml:"WatermarkId,omitempty"`
-	// The width of the media stream. Unit: pixel.
+	// The width of the media stream. Unit: pixels.
 	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -16547,7 +16578,7 @@ func (s *GetTranscodeTemplateGroupRequest) SetTranscodeTemplateGroupId(v string)
 }
 
 type GetTranscodeTemplateGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the transcoding template group.
 	TranscodeTemplateGroup *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup `json:"TranscodeTemplateGroup,omitempty" xml:"TranscodeTemplateGroup,omitempty" type:"Struct"`
@@ -16574,23 +16605,25 @@ func (s *GetTranscodeTemplateGroupResponseBody) SetTranscodeTemplateGroup(v *Get
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup struct {
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Indicates whether the template group is the default one. Valid values:
-	// *   **Default**: The template group is the default one.
-	// *   **NotDefault**: The template group is not the default one.
+	//
+	// *   **Default**
+	// *   **NotDefault**
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// Indicates whether the template group is locked. Valid values:
+	//
 	// *   **Disabled**: The template group is not locked.
 	// *   **Enabled**: The template group is locked.
 	Locked *string `json:"Locked,omitempty" xml:"Locked,omitempty"`
-	// The time when the template group was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the transcoding template group was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the template group.
+	// The name of the transcoding template group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the transcoding template group.
 	TranscodeTemplateGroupId *string `json:"TranscodeTemplateGroupId,omitempty" xml:"TranscodeTemplateGroupId,omitempty"`
-	// The configurations of the transcoding templates.
+	// The information about the transcoding templates.
 	TranscodeTemplateList []*GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList `json:"TranscodeTemplateList,omitempty" xml:"TranscodeTemplateList,omitempty" type:"Repeated"`
 }
 
@@ -16643,14 +16676,16 @@ func (s *GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup) SetTransco
 }
 
 type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList struct {
-	// The transcoding configurations of the audio stream. The value is a JSON-formatted string.
+	// The transcoding configurations of the audio stream. The value is a JSON string.
 	Audio *string `json:"Audio,omitempty" xml:"Audio,omitempty"`
-	// The clipping configurations of the video. The value is a JSON-formatted string. For example, you can set this parameter if you want to extract 5 seconds of content from a video to generate a new video.
+	// The video cropping configurations. The value is a JSON string. For example, you can set this parameter to extract 5 seconds of content from a video to generate a new video.
 	Clip *string `json:"Clip,omitempty" xml:"Clip,omitempty"`
-	// The format of the container used to encapsulate audio and video streams. The value is a JSON-formatted string.
-	Container     *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The format of the container that is used to encapsulate audio and video streams. The value is a JSON string.
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// CopyrightMark.
 	CopyrightMark *string `json:"CopyrightMark,omitempty" xml:"CopyrightMark,omitempty"`
 	// Valid values for the definition of a common transcoding template:
+	//
 	// *   **LD**: low definition.
 	// *   **SD**: standard definition.
 	// *   **HD**: high definition.
@@ -16662,43 +16697,47 @@ type GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplat
 	// *   **HQ**: high sound quality.
 	//
 	// Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+	//
 	// *   **LD-NBV1**: low definition.
 	// *   **SD-NBV1**: standard definition.
 	// *   **HD-NBV1**: high definition.
 	// *   **FHD-NBV1**: ultra high definition.
 	// *   **2K-NBV1**
 	// *   **4K-NBV1**
-	// >*   You cannot modify the definition of transcoding templates.
-	// >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+	//
+	// > *   You cannot change the definition of a transcoding template.
+	// >*   You cannot modify the system parameters of Narrowband HD™ 1.0 transcoding templates such as the video resolution, audio resolution, and bitrate.
 	// >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	// The encryption configuration used for transcoding.
+	// The encryption configuration for transcoding.
 	EncryptSetting *string `json:"EncryptSetting,omitempty" xml:"EncryptSetting,omitempty"`
-	// The transcoding segment configurations. This parameter must be returned if HTTP-Live-Streaming (HLS) encryption is used. The value is a JSON-formatted string.
+	// The transcoding segment configurations. This parameter is used when you transcode a media stream into an HLS file. The value is a JSON string.
 	MuxConfig *string `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty"`
-	// The packaging configurations. Only HLS packaging and DASH packaging are supported. The value is a JSON-formatted string.
+	// The packaging configuration. Only HTTP-Live-Streaming (HLS) packaging and DASH packaging are supported. The value is a JSON string.
 	PackageSetting *string `json:"PackageSetting,omitempty" xml:"PackageSetting,omitempty"`
-	// The video rotation identifier. It is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `0 to 360`.
+	// The video rotation identifier. This parameter is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
 	Rotate *string `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
-	// The subtitle configurations. The value is a JSON-formatted string.
+	// The subtitle configurations. The value is a JSON string.
 	SubtitleList *string `json:"SubtitleList,omitempty" xml:"SubtitleList,omitempty"`
 	// The name of the transcoding template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TraceMark    *string `json:"TraceMark,omitempty" xml:"TraceMark,omitempty"`
-	// The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the mezzanine file before the video is transcoded. The value is a JSON-formatted string.
+	// TraceMark.
+	TraceMark *string `json:"TraceMark,omitempty" xml:"TraceMark,omitempty"`
+	// The conditional transcoding configurations. This parameter is used if you want to determine the basic logic based on the bitrate and resolution of the source file before the transcoded video is generated. The value is a JSON string.
 	TransConfig *string `json:"TransConfig,omitempty" xml:"TransConfig,omitempty"`
-	// The custom output path of transcoded files.
+	// The custom path used to store the output files.
 	TranscodeFileRegular *string `json:"TranscodeFileRegular,omitempty" xml:"TranscodeFileRegular,omitempty"`
 	// The ID of the transcoding template.
 	TranscodeTemplateId *string `json:"TranscodeTemplateId,omitempty" xml:"TranscodeTemplateId,omitempty"`
-	// The type of the template. Valid values:
-	// *   **Normal**: a common transcoding template. This is the default value. The PackageSetting parameter cannot be set for this type of template.
-	// *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and packages these video streams with a file. The PackageSetting parameter must be set for this type of template.
-	// *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle package template and associate the subtitle package template with a video stream package template. A template group can contain only one subtitle package template.
+	// The type of the transcoding template. Valid values:
+	//
+	// *   **Normal** (default): a common transcoding template. You cannot set the PackageSetting parameter for this type of template.
+	// *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and creates a multi-bitrate video package. You must set the PackageSetting parameter for this type of template.
+	// *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file that is generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle packaging template and associate the subtitle packaging template with a video stream packaging template. You can configure only one subtitle packaging template in a template group.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The transcoding configurations of the video stream. The value is a JSON-formatted string.
+	// The transcoding configurations of the video stream. The value is a JSON string.
 	Video *string `json:"Video,omitempty" xml:"Video,omitempty"`
-	// The ID of the associated watermark.
+	// The IDs of associated watermarks.
 	WatermarkIds []*string `json:"WatermarkIds,omitempty" xml:"WatermarkIds,omitempty" type:"Repeated"`
 }
 
@@ -20913,6 +20952,7 @@ func (s *PreloadVodObjectCachesResponse) SetBody(v *PreloadVodObjectCachesRespon
 }
 
 type ProduceEditingProjectVideoRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The thumbnail URL of the online editing project.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
 	// The description of the online editing project.
@@ -20947,6 +20987,11 @@ func (s ProduceEditingProjectVideoRequest) String() string {
 
 func (s ProduceEditingProjectVideoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ProduceEditingProjectVideoRequest) SetAppId(v string) *ProduceEditingProjectVideoRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *ProduceEditingProjectVideoRequest) SetCoverURL(v string) *ProduceEditingProjectVideoRequest {
@@ -22029,9 +22074,7 @@ type SearchMediaRequest struct {
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The pagination identifier. The identifier can be up to 32 characters in length.
-	//
-	// The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter criteria are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
+	// The pagination identifier. The password must be 32 characters in length The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter condition are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
 	//
 	// *   If SearchType is set to **video** or **audio** and you need to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
 	// *   If the value of the PageNo parameter exceeds **200**, we recommend that you set this parameter to optimize search performance.
@@ -24353,7 +24396,12 @@ func (s *SubmitAIMediaAuditJobResponse) SetBody(v *SubmitAIMediaAuditJobResponse
 }
 
 type SubmitDigitalWatermarkExtractJobRequest struct {
-	ExtractType          *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
+	// The type of the digital watermark that you want to extract. Valid values:
+	//
+	// *   TraceMark: tracing watermark
+	// *   CopyrightMark: copyright watermark
+	ExtractType *string `json:"ExtractType,omitempty" xml:"ExtractType,omitempty"`
+	// The ID of the video file. You can query the video ID by using the ApsaraVideo VOD console or calling the SearchMedia operation.
 	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24400,7 +24448,9 @@ func (s *SubmitDigitalWatermarkExtractJobRequest) SetResourceOwnerId(v string) *
 }
 
 type SubmitDigitalWatermarkExtractJobResponseBody struct {
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the job.
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26935,6 +26985,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
+		"cn-hangzhou":                 tea.String("vod.cn-shanghai.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("vod.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("vod.aliyuncs.com"),
 		"ap-southeast-3":              tea.String("vod.aliyuncs.com"),
@@ -26946,7 +26997,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-edge-1":                   tea.String("vod.aliyuncs.com"),
 		"cn-fujian":                   tea.String("vod.aliyuncs.com"),
 		"cn-haidian-cm12-c01":         tea.String("vod.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("vod.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("vod.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("vod.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("vod.aliyuncs.com"),
@@ -26954,7 +27004,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-hangzhou-internal-test-2": tea.String("vod.aliyuncs.com"),
 		"cn-hangzhou-internal-test-3": tea.String("vod.aliyuncs.com"),
 		"cn-hangzhou-test-306":        tea.String("vod.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("vod.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("vod.aliyuncs.com"),
 		"cn-huhehaote":                tea.String("vod.aliyuncs.com"),
 		"cn-huhehaote-nebula-1":       tea.String("vod.aliyuncs.com"),
@@ -26974,15 +27023,12 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-yushanfang":               tea.String("vod.aliyuncs.com"),
 		"cn-zhangbei":                 tea.String("vod.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("vod.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("vod.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("vod.aliyuncs.com"),
 		"cn-zhengzhou-nebula-1":       tea.String("vod.aliyuncs.com"),
-		"eu-west-1":                   tea.String("vod.aliyuncs.com"),
 		"eu-west-1-oxs":               tea.String("vod.aliyuncs.com"),
 		"me-east-1":                   tea.String("vod.aliyuncs.com"),
 		"rus-west-1-pop":              tea.String("vod.aliyuncs.com"),
 		"us-east-1":                   tea.String("vod.aliyuncs.com"),
-		"us-west-1":                   tea.String("vod.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -31906,6 +31952,13 @@ func (client *Client) GetDefaultAITemplate(request *GetDefaultAITemplateRequest)
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query the results of digital watermark extraction jobs that are created in the last two years.
+ *
+ * @param request GetDigitalWatermarkExtractResultRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDigitalWatermarkExtractResultResponse
+ */
 func (client *Client) GetDigitalWatermarkExtractResultWithOptions(request *GetDigitalWatermarkExtractResultRequest, runtime *util.RuntimeOptions) (_result *GetDigitalWatermarkExtractResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31963,6 +32016,12 @@ func (client *Client) GetDigitalWatermarkExtractResultWithOptions(request *GetDi
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query the results of digital watermark extraction jobs that are created in the last two years.
+ *
+ * @param request GetDigitalWatermarkExtractResultRequest
+ * @return GetDigitalWatermarkExtractResultResponse
+ */
 func (client *Client) GetDigitalWatermarkExtractResult(request *GetDigitalWatermarkExtractResultRequest) (_result *GetDigitalWatermarkExtractResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDigitalWatermarkExtractResultResponse{}
@@ -32950,7 +33009,7 @@ func (client *Client) GetTranscodeTask(request *GetTranscodeTaskRequest) (_resul
 }
 
 /**
- * This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+ * >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
  *
  * @param request GetTranscodeTemplateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -32990,7 +33049,7 @@ func (client *Client) GetTranscodeTemplateGroupWithOptions(request *GetTranscode
 }
 
 /**
- * This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
+ * >  This operation returns the information about the specified transcoding template group and the configurations of all the transcoding templates in the group.
  *
  * @param request GetTranscodeTemplateGroupRequest
  * @return GetTranscodeTemplateGroupResponse
@@ -34445,6 +34504,10 @@ func (client *Client) ProduceEditingProjectVideoWithOptions(request *ProduceEdit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
 		query["CoverURL"] = request.CoverURL
 	}
@@ -35008,8 +35071,8 @@ func (client *Client) SearchEditingProject(request *SearchEditingProjectRequest)
 
 /**
  * The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
- * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
- * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
+ * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
+ * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
  *     *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
  *     *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
  *     *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
@@ -35077,8 +35140,8 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 
 /**
  * The maximum number of data records that you can query is limited based on the method used to query the data. You can use the following methods to query data:
- * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter criteria. This allows you to traverse data page by page. If the number of data records that meet the specified filter criteria exceeds 5,000, use Method 2.
- * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter criteria, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the desired page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
+ * *   Method 1: You must use the PageNo and PageSize parameters for the first 5,000 data records that meet the specified filter condition. This allows you to traverse data page by page. If the number of data records that meet the specified filter condition exceeds 5,000, use Method 2.
+ * *   Method 2: This method applies only to the data of video and audio files. To traverse all the data records that meet the specified filter condition, you must set the PageNo, PageSize, and ScrollToken parameters to traverse data page by page. The total number of data records from the current page to the target page cannot exceed 1,200. Assume that the PageSize parameter is set to **20**:
  *     *   When the PageNo parameter is set to **1**, you can scroll forward to traverse data records from page 1 to page **60** at most.
  *     *   When the PageNo parameter is set to **2**, you can scroll forward to traverse data records from page 2 to page **61** at most.
  *     *   When the PageNo parameter is set to **61**, you can scroll backward to traverse data records from page 61 to page **2** at most or scroll forward to traverse data records from page 61 to page **120** at most.
@@ -35932,6 +35995,14 @@ func (client *Client) SubmitAIMediaAuditJob(request *SubmitAIMediaAuditJobReques
 	return _result, _err
 }
 
+/**
+ * *   You must upload the video from which you want to extract the digital watermark to ApsaraVideo VOD.
+ * *   The duration of the video from which you want to extract the digital watermark must exceed 3 minutes.
+ *
+ * @param request SubmitDigitalWatermarkExtractJobRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SubmitDigitalWatermarkExtractJobResponse
+ */
 func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *SubmitDigitalWatermarkExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalWatermarkExtractJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35985,6 +36056,13 @@ func (client *Client) SubmitDigitalWatermarkExtractJobWithOptions(request *Submi
 	return _result, _err
 }
 
+/**
+ * *   You must upload the video from which you want to extract the digital watermark to ApsaraVideo VOD.
+ * *   The duration of the video from which you want to extract the digital watermark must exceed 3 minutes.
+ *
+ * @param request SubmitDigitalWatermarkExtractJobRequest
+ * @return SubmitDigitalWatermarkExtractJobResponse
+ */
 func (client *Client) SubmitDigitalWatermarkExtractJob(request *SubmitDigitalWatermarkExtractJobRequest) (_result *SubmitDigitalWatermarkExtractJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDigitalWatermarkExtractJobResponse{}
