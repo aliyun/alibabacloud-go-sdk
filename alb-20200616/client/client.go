@@ -2203,6 +2203,7 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
+	AllocationId    *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an ALB instance. You can specify up to 10 vSwitch IDs.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -2218,6 +2219,11 @@ func (s CreateLoadBalancerRequestZoneMappings) String() string {
 
 func (s CreateLoadBalancerRequestZoneMappings) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLoadBalancerRequestZoneMappings) SetAllocationId(v string) *CreateLoadBalancerRequestZoneMappings {
+	s.AllocationId = &v
+	return s
 }
 
 func (s *CreateLoadBalancerRequestZoneMappings) SetIntranetAddress(v string) *CreateLoadBalancerRequestZoneMappings {
@@ -4529,7 +4535,8 @@ type CreateServerGroupRequest struct {
 	StickySessionConfig *CreateServerGroupRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
 	Tag                 []*CreateServerGroupRequestTag               `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The setting of consistent hashing based on URLs.
-	UchConfig *CreateServerGroupRequestUchConfig `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
+	UchConfig                *CreateServerGroupRequestUchConfig `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
+	UpstreamKeepaliveEnabled *bool                              `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
 	// The ID of the virtual private cloud (VPC). You can add only backend servers that are deployed in the specified VPC to the server group.
 	//
 	// > This parameter takes effect when the **ServerGroupType** parameter is set to **Instance** or **Ip**.
@@ -4601,6 +4608,11 @@ func (s *CreateServerGroupRequest) SetTag(v []*CreateServerGroupRequestTag) *Cre
 
 func (s *CreateServerGroupRequest) SetUchConfig(v *CreateServerGroupRequestUchConfig) *CreateServerGroupRequest {
 	s.UchConfig = v
+	return s
+}
+
+func (s *CreateServerGroupRequest) SetUpstreamKeepaliveEnabled(v bool) *CreateServerGroupRequest {
+	s.UpstreamKeepaliveEnabled = &v
 	return s
 }
 
@@ -8617,9 +8629,10 @@ type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struc
 	// The ID of the zone where the ALB instance was deployed.
 	//
 	// You can call the [DescribeZones](~~189196~~) operation to query the zones of the ALB instance.
-	Address      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EipType      *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
+	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AllocationId    *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	EipType         *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
+	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
 	// The protocol version. Valid values:
 	//
 	// *   **IPv4:** IPv4.
@@ -8647,6 +8660,11 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) 
 
 func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetEipType(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
 	s.EipType = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIntranetAddress(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.IntranetAddress = &v
 	return s
 }
 
@@ -19091,8 +19109,9 @@ type UpdateServerGroupAttributeRequest struct {
 	// This parameter is available only if the ALB Ingress controller is used. In this case, set this parameter to the name of the `Kubernetes Service` that is associated with the server group.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The configuration of session persistence.
-	StickySessionConfig *UpdateServerGroupAttributeRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
-	UchConfig           *UpdateServerGroupAttributeRequestUchConfig           `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
+	StickySessionConfig      *UpdateServerGroupAttributeRequestStickySessionConfig `json:"StickySessionConfig,omitempty" xml:"StickySessionConfig,omitempty" type:"Struct"`
+	UchConfig                *UpdateServerGroupAttributeRequestUchConfig           `json:"UchConfig,omitempty" xml:"UchConfig,omitempty" type:"Struct"`
+	UpstreamKeepaliveEnabled *bool                                                 `json:"UpstreamKeepaliveEnabled,omitempty" xml:"UpstreamKeepaliveEnabled,omitempty"`
 }
 
 func (s UpdateServerGroupAttributeRequest) String() string {
@@ -19145,6 +19164,11 @@ func (s *UpdateServerGroupAttributeRequest) SetStickySessionConfig(v *UpdateServ
 
 func (s *UpdateServerGroupAttributeRequest) SetUchConfig(v *UpdateServerGroupAttributeRequestUchConfig) *UpdateServerGroupAttributeRequest {
 	s.UchConfig = v
+	return s
+}
+
+func (s *UpdateServerGroupAttributeRequest) SetUpstreamKeepaliveEnabled(v bool) *UpdateServerGroupAttributeRequest {
+	s.UpstreamKeepaliveEnabled = &v
 	return s
 }
 
@@ -20966,6 +20990,10 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.UchConfig)) {
 		query["UchConfig"] = request.UchConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamKeepaliveEnabled)) {
+		query["UpstreamKeepaliveEnabled"] = request.UpstreamKeepaliveEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
@@ -25190,6 +25218,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 	if !tea.BoolValue(util.IsUnset(request.UchConfig)) {
 		query["UchConfig"] = request.UchConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpstreamKeepaliveEnabled)) {
+		query["UpstreamKeepaliveEnabled"] = request.UpstreamKeepaliveEnabled
 	}
 
 	req := &openapi.OpenApiRequest{
