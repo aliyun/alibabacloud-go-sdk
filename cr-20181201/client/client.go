@@ -271,10 +271,11 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateArtifactBuildRuleRequest struct {
-	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ScopeId      *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	ScopeType    *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	ArtifactType *string                `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	InstanceId   *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Parameters   map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ScopeId      *string                `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType    *string                `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 }
 
 func (s CreateArtifactBuildRuleRequest) String() string {
@@ -295,12 +296,58 @@ func (s *CreateArtifactBuildRuleRequest) SetInstanceId(v string) *CreateArtifact
 	return s
 }
 
+func (s *CreateArtifactBuildRuleRequest) SetParameters(v map[string]interface{}) *CreateArtifactBuildRuleRequest {
+	s.Parameters = v
+	return s
+}
+
 func (s *CreateArtifactBuildRuleRequest) SetScopeId(v string) *CreateArtifactBuildRuleRequest {
 	s.ScopeId = &v
 	return s
 }
 
 func (s *CreateArtifactBuildRuleRequest) SetScopeType(v string) *CreateArtifactBuildRuleRequest {
+	s.ScopeType = &v
+	return s
+}
+
+type CreateArtifactBuildRuleShrinkRequest struct {
+	ArtifactType     *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ScopeId          *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
+	ScopeType        *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+}
+
+func (s CreateArtifactBuildRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateArtifactBuildRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateArtifactBuildRuleShrinkRequest) SetArtifactType(v string) *CreateArtifactBuildRuleShrinkRequest {
+	s.ArtifactType = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleShrinkRequest) SetInstanceId(v string) *CreateArtifactBuildRuleShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleShrinkRequest) SetParametersShrink(v string) *CreateArtifactBuildRuleShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleShrinkRequest) SetScopeId(v string) *CreateArtifactBuildRuleShrinkRequest {
+	s.ScopeId = &v
+	return s
+}
+
+func (s *CreateArtifactBuildRuleShrinkRequest) SetScopeType(v string) *CreateArtifactBuildRuleShrinkRequest {
 	s.ScopeType = &v
 	return s
 }
@@ -13322,15 +13369,21 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 /**
  * The ID of the rule.
  *
- * @param request CreateArtifactBuildRuleRequest
+ * @param tmpReq CreateArtifactBuildRuleRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return CreateArtifactBuildRuleResponse
  */
-func (client *Client) CreateArtifactBuildRuleWithOptions(request *CreateArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactBuildRuleRequest, runtime *util.RuntimeOptions) (_result *CreateArtifactBuildRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateArtifactBuildRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ArtifactType)) {
 		query["ArtifactType"] = request.ArtifactType
@@ -13338,6 +13391,10 @@ func (client *Client) CreateArtifactBuildRuleWithOptions(request *CreateArtifact
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScopeId)) {

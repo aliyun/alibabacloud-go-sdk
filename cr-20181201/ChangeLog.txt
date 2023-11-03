@@ -1,3 +1,6 @@
+2023-11-03 Version: v2.2.1
+- Generated golang 2018-12-01 for cr.
+
 2023-09-27 Version: v2.2.0
 - Generated golang 2018-12-01 for cr.
 
