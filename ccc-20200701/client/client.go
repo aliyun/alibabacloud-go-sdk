@@ -4665,6 +4665,7 @@ type CreateSkillGroupRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType   *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -4688,6 +4689,11 @@ func (s *CreateSkillGroupRequest) SetDisplayName(v string) *CreateSkillGroupRequ
 
 func (s *CreateSkillGroupRequest) SetInstanceId(v string) *CreateSkillGroupRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSkillGroupRequest) SetMediaType(v string) *CreateSkillGroupRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -4740,6 +4746,7 @@ func (s *CreateSkillGroupResponseBody) SetRequestId(v string) *CreateSkillGroupR
 type CreateSkillGroupResponseBodyData struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
@@ -4759,6 +4766,11 @@ func (s *CreateSkillGroupResponseBodyData) SetDescription(v string) *CreateSkill
 
 func (s *CreateSkillGroupResponseBodyData) SetInstanceId(v string) *CreateSkillGroupResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSkillGroupResponseBodyData) SetMediaType(v string) *CreateSkillGroupResponseBodyData {
+	s.MediaType = &v
 	return s
 }
 
@@ -5969,11 +5981,12 @@ func (s *ExportDoNotCallNumbersRequest) SetSearchPattern(v string) *ExportDoNotC
 }
 
 type ExportDoNotCallNumbersResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportDoNotCallNumbersResponseBody) String() string {
@@ -6001,6 +6014,11 @@ func (s *ExportDoNotCallNumbersResponseBody) SetHttpStatusCode(v int32) *ExportD
 
 func (s *ExportDoNotCallNumbersResponseBody) SetMessage(v string) *ExportDoNotCallNumbersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ExportDoNotCallNumbersResponseBody) SetParams(v []*string) *ExportDoNotCallNumbersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -10571,6 +10589,7 @@ type GetSkillGroupResponseBodyData struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType    *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
@@ -10595,6 +10614,11 @@ func (s *GetSkillGroupResponseBodyData) SetDisplayName(v string) *GetSkillGroupR
 
 func (s *GetSkillGroupResponseBodyData) SetInstanceId(v string) *GetSkillGroupResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBodyData) SetMediaType(v string) *GetSkillGroupResponseBodyData {
+	s.MediaType = &v
 	return s
 }
 
@@ -10665,6 +10689,7 @@ type GetTurnCredentialsResponseBody struct {
 	Data           *GetTurnCredentialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                           `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10693,6 +10718,11 @@ func (s *GetTurnCredentialsResponseBody) SetHttpStatusCode(v int32) *GetTurnCred
 
 func (s *GetTurnCredentialsResponseBody) SetMessage(v string) *GetTurnCredentialsResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetTurnCredentialsResponseBody) SetParams(v []*string) *GetTurnCredentialsResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -10771,11 +10801,12 @@ func (s *GetTurnServerListRequest) SetInstanceId(v string) *GetTurnServerListReq
 }
 
 type GetTurnServerListResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTurnServerListResponseBody) String() string {
@@ -10803,6 +10834,11 @@ func (s *GetTurnServerListResponseBody) SetHttpStatusCode(v int32) *GetTurnServe
 
 func (s *GetTurnServerListResponseBody) SetMessage(v string) *GetTurnServerListResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *GetTurnServerListResponseBody) SetParams(v []*string) *GetTurnServerListResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -12015,10 +12051,11 @@ func (s *ImportDoNotCallNumbersRequest) SetRemark(v string) *ImportDoNotCallNumb
 }
 
 type ImportDoNotCallNumbersResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImportDoNotCallNumbersResponseBody) String() string {
@@ -12041,6 +12078,11 @@ func (s *ImportDoNotCallNumbersResponseBody) SetHttpStatusCode(v int32) *ImportD
 
 func (s *ImportDoNotCallNumbersResponseBody) SetMessage(v string) *ImportDoNotCallNumbersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ImportDoNotCallNumbersResponseBody) SetParams(v []*string) *ImportDoNotCallNumbersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -16653,10 +16695,12 @@ func (s *ListConfigItemsResponse) SetBody(v *ListConfigItemsResponseBody) *ListC
 }
 
 type ListContactFlowsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortOrder    *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListContactFlowsRequest) String() string {
@@ -16672,6 +16716,11 @@ func (s *ListContactFlowsRequest) SetInstanceId(v string) *ListContactFlowsReque
 	return s
 }
 
+func (s *ListContactFlowsRequest) SetOrderByField(v string) *ListContactFlowsRequest {
+	s.OrderByField = &v
+	return s
+}
+
 func (s *ListContactFlowsRequest) SetPageNumber(v int32) *ListContactFlowsRequest {
 	s.PageNumber = &v
 	return s
@@ -16679,6 +16728,11 @@ func (s *ListContactFlowsRequest) SetPageNumber(v int32) *ListContactFlowsReques
 
 func (s *ListContactFlowsRequest) SetPageSize(v int32) *ListContactFlowsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListContactFlowsRequest) SetSortOrder(v string) *ListContactFlowsRequest {
+	s.SortOrder = &v
 	return s
 }
 
@@ -17165,6 +17219,7 @@ type ListDevicesResponseBodyData struct {
 	CallId     *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
 	Contact    *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
 	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	Expires    *int64  `json:"Expires,omitempty" xml:"Expires,omitempty"`
 	Extension  *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -17191,6 +17246,11 @@ func (s *ListDevicesResponseBodyData) SetContact(v string) *ListDevicesResponseB
 
 func (s *ListDevicesResponseBodyData) SetDeviceId(v string) *ListDevicesResponseBodyData {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *ListDevicesResponseBodyData) SetDeviceType(v string) *ListDevicesResponseBodyData {
+	s.DeviceType = &v
 	return s
 }
 
@@ -26378,6 +26438,7 @@ type ListRamUsersResponseBody struct {
 	Data           *ListRamUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                     `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26406,6 +26467,11 @@ func (s *ListRamUsersResponseBody) SetHttpStatusCode(v int32) *ListRamUsersRespo
 
 func (s *ListRamUsersResponseBody) SetMessage(v string) *ListRamUsersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ListRamUsersResponseBody) SetParams(v []*string) *ListRamUsersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -28235,6 +28301,7 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponse) SetBody(v *ListSkill
 
 type ListSkillGroupsRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType     *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
@@ -28250,6 +28317,11 @@ func (s ListSkillGroupsRequest) GoString() string {
 
 func (s *ListSkillGroupsRequest) SetInstanceId(v string) *ListSkillGroupsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSkillGroupsRequest) SetMediaType(v string) *ListSkillGroupsRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -28348,6 +28420,7 @@ type ListSkillGroupsResponseBodyDataList struct {
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType        *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	PhoneNumberCount *int32  `json:"PhoneNumberCount,omitempty" xml:"PhoneNumberCount,omitempty"`
 	SkillGroupId     *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	SkillGroupName   *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
@@ -28374,6 +28447,11 @@ func (s *ListSkillGroupsResponseBodyDataList) SetDisplayName(v string) *ListSkil
 
 func (s *ListSkillGroupsResponseBodyDataList) SetInstanceId(v string) *ListSkillGroupsResponseBodyDataList {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSkillGroupsResponseBodyDataList) SetMediaType(v string) *ListSkillGroupsResponseBodyDataList {
+	s.MediaType = &v
 	return s
 }
 
@@ -28550,6 +28628,7 @@ func (s *ListSkillLevelsOfUserResponseBodyData) SetTotalCount(v int32) *ListSkil
 }
 
 type ListSkillLevelsOfUserResponseBodyDataList struct {
+	MediaType      *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 	SkillLevel     *string `json:"SkillLevel,omitempty" xml:"SkillLevel,omitempty"`
@@ -28561,6 +28640,11 @@ func (s ListSkillLevelsOfUserResponseBodyDataList) String() string {
 
 func (s ListSkillLevelsOfUserResponseBodyDataList) GoString() string {
 	return s.String()
+}
+
+func (s *ListSkillLevelsOfUserResponseBodyDataList) SetMediaType(v string) *ListSkillLevelsOfUserResponseBodyDataList {
+	s.MediaType = &v
+	return s
 }
 
 func (s *ListSkillLevelsOfUserResponseBodyDataList) SetSkillGroupId(v string) *ListSkillLevelsOfUserResponseBodyDataList {
@@ -33366,11 +33450,12 @@ func (s *RemoveDoNotCallNumbersRequest) SetNumberList(v string) *RemoveDoNotCall
 }
 
 type RemoveDoNotCallNumbersResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveDoNotCallNumbersResponseBody) String() string {
@@ -33398,6 +33483,11 @@ func (s *RemoveDoNotCallNumbersResponseBody) SetHttpStatusCode(v int32) *RemoveD
 
 func (s *RemoveDoNotCallNumbersResponseBody) SetMessage(v string) *RemoveDoNotCallNumbersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *RemoveDoNotCallNumbersResponseBody) SetParams(v []*string) *RemoveDoNotCallNumbersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -40392,6 +40482,10 @@ func (client *Client) CreateSkillGroupWithOptions(request *CreateSkillGroupReque
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -43600,12 +43694,20 @@ func (client *Client) ListContactFlowsWithOptions(request *ListContactFlowsReque
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderByField)) {
+		query["OrderByField"] = request.OrderByField
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -45430,6 +45532,10 @@ func (client *Client) ListSkillGroupsWithOptions(request *ListSkillGroupsRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
