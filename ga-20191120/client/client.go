@@ -5769,6 +5769,7 @@ type CreateListenerRequest struct {
 	//
 	// > You can configure endpoint groups and endpoints for an intelligent routing listener only if the **Type** parameter is set to **Standard**.
 	EndpointGroupConfigurations []*CreateListenerRequestEndpointGroupConfigurations `json:"EndpointGroupConfigurations,omitempty" xml:"EndpointGroupConfigurations,omitempty" type:"Repeated"`
+	IdleTimeout                 *int32                                              `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The name of the listener.
 	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
@@ -5790,7 +5791,8 @@ type CreateListenerRequest struct {
 	// > This parameter will be deprecated in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol** parameter, see [CreateEndpointGroup](~~153259~~) and [UpdateEndpointGroup](~~153262~~).
 	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy. Valid values:
 	//
 	// *   **tls_cipher_policy\_1\_0**
@@ -5878,6 +5880,11 @@ func (s *CreateListenerRequest) SetEndpointGroupConfigurations(v []*CreateListen
 	return s
 }
 
+func (s *CreateListenerRequest) SetIdleTimeout(v int32) *CreateListenerRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
 func (s *CreateListenerRequest) SetName(v string) *CreateListenerRequest {
 	s.Name = &v
 	return s
@@ -5900,6 +5907,11 @@ func (s *CreateListenerRequest) SetProxyProtocol(v bool) *CreateListenerRequest 
 
 func (s *CreateListenerRequest) SetRegionId(v string) *CreateListenerRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateListenerRequest) SetRequestTimeout(v int32) *CreateListenerRequest {
+	s.RequestTimeout = &v
 	return s
 }
 
@@ -12657,6 +12669,7 @@ type DescribeListenerResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the listener.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the listener.
@@ -12678,7 +12691,8 @@ type DescribeListenerResponseBody struct {
 	// The information about the access control list (ACL) that is associated with the listener.
 	RelatedAcls []*DescribeListenerResponseBodyRelatedAcls `json:"RelatedAcls,omitempty" xml:"RelatedAcls,omitempty" type:"Repeated"`
 	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy.
 	//
 	// *   **tls_cipher_policy\_1\_0**
@@ -12778,6 +12792,11 @@ func (s *DescribeListenerResponseBody) SetDescription(v string) *DescribeListene
 	return s
 }
 
+func (s *DescribeListenerResponseBody) SetIdleTimeout(v int32) *DescribeListenerResponseBody {
+	s.IdleTimeout = &v
+	return s
+}
+
 func (s *DescribeListenerResponseBody) SetListenerId(v string) *DescribeListenerResponseBody {
 	s.ListenerId = &v
 	return s
@@ -12810,6 +12829,11 @@ func (s *DescribeListenerResponseBody) SetRelatedAcls(v []*DescribeListenerRespo
 
 func (s *DescribeListenerResponseBody) SetRequestId(v string) *DescribeListenerResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeListenerResponseBody) SetRequestTimeout(v int32) *DescribeListenerResponseBody {
+	s.RequestTimeout = &v
 	return s
 }
 
@@ -23469,6 +23493,7 @@ type ListListenersResponseBodyListeners struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the listener.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the listener.
@@ -23486,7 +23511,8 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// *   **true**: The client IP address preservation feature is enabled. After client IP addresses are reserved, you can view the source IP addresses of clients over the backend service.
 	// *   **false**: The client IP address preservation feature is disabled.
-	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	ProxyProtocol  *bool  `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy.
 	//
 	// *   **tls_cipher_policy\_1\_0**
@@ -23581,6 +23607,11 @@ func (s *ListListenersResponseBodyListeners) SetDescription(v string) *ListListe
 	return s
 }
 
+func (s *ListListenersResponseBodyListeners) SetIdleTimeout(v int32) *ListListenersResponseBodyListeners {
+	s.IdleTimeout = &v
+	return s
+}
+
 func (s *ListListenersResponseBodyListeners) SetListenerId(v string) *ListListenersResponseBodyListeners {
 	s.ListenerId = &v
 	return s
@@ -23603,6 +23634,11 @@ func (s *ListListenersResponseBodyListeners) SetProtocol(v string) *ListListener
 
 func (s *ListListenersResponseBodyListeners) SetProxyProtocol(v bool) *ListListenersResponseBodyListeners {
 	s.ProxyProtocol = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetRequestTimeout(v int32) *ListListenersResponseBodyListeners {
+	s.RequestTimeout = &v
 	return s
 }
 
@@ -28915,6 +28951,7 @@ type UpdateListenerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the listener. The description can be at most 200 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IdleTimeout *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the listener.
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	// The name of the listener.
@@ -28942,7 +28979,8 @@ type UpdateListenerRequest struct {
 	// > This parameter will be deprecated in the API operations that are used to configure listeners. We recommend that you set this parameter when you call API operations to configure endpoint groups. For more information about the **ProxyProtocol** parameter, see [CreateEndpointGroup](~~153259~~) and [UpdateEndpointGroup](~~153262~~).
 	ProxyProtocol *string `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The region ID of the GA instance. Set the value to **cn-hangzhou**.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestTimeout *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The ID of the security policy. Valid values:
 	//
 	// *   **tls_cipher_policy\_1\_0**
@@ -29009,6 +29047,11 @@ func (s *UpdateListenerRequest) SetDescription(v string) *UpdateListenerRequest 
 	return s
 }
 
+func (s *UpdateListenerRequest) SetIdleTimeout(v int32) *UpdateListenerRequest {
+	s.IdleTimeout = &v
+	return s
+}
+
 func (s *UpdateListenerRequest) SetListenerId(v string) *UpdateListenerRequest {
 	s.ListenerId = &v
 	return s
@@ -29036,6 +29079,11 @@ func (s *UpdateListenerRequest) SetProxyProtocol(v string) *UpdateListenerReques
 
 func (s *UpdateListenerRequest) SetRegionId(v string) *UpdateListenerRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateListenerRequest) SetRequestTimeout(v int32) *UpdateListenerRequest {
+	s.RequestTimeout = &v
 	return s
 }
 
@@ -32127,6 +32175,10 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 		query["EndpointGroupConfigurations"] = request.EndpointGroupConfigurations
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -32145,6 +32197,10 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
@@ -40371,6 +40427,10 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdleTimeout)) {
+		query["IdleTimeout"] = request.IdleTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
 		query["ListenerId"] = request.ListenerId
 	}
@@ -40393,6 +40453,10 @@ func (client *Client) UpdateListenerWithOptions(request *UpdateListenerRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestTimeout)) {
+		query["RequestTimeout"] = request.RequestTimeout
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityPolicyId)) {
