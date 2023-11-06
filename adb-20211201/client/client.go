@@ -10681,7 +10681,7 @@ func (s *DescribeSqlPatternRequest) SetType(v string) *DescribeSqlPatternRequest
 }
 
 type DescribeSqlPatternResponseBody struct {
-	// The average number of tasks.
+	// The queried SQL pattern.
 	Items []*DescribeSqlPatternResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -10727,23 +10727,42 @@ func (s *DescribeSqlPatternResponseBody) SetTotalCount(v int32) *DescribeSqlPatt
 }
 
 type DescribeSqlPatternResponseBodyItems struct {
-	AccessIP      *string `json:"AccessIP,omitempty" xml:"AccessIP,omitempty"`
-	AvgCpuTime    *string `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// The IP address of the client.
+	//
+	// >  This parameter is returned only when **Type** is set to **accessip**.
+	AccessIP *string `json:"AccessIP,omitempty" xml:"AccessIP,omitempty"`
+	// The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+	AvgCpuTime *string `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// The average peak memory usage of the SQL pattern within the query time range. Unit: KB.
 	AvgPeakMemory *string `json:"AvgPeakMemory,omitempty" xml:"AvgPeakMemory,omitempty"`
-	AvgScanSize   *string `json:"AvgScanSize,omitempty" xml:"AvgScanSize,omitempty"`
+	// The average amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+	AvgScanSize *string `json:"AvgScanSize,omitempty" xml:"AvgScanSize,omitempty"`
+	// The average number of scanned rows.
 	AvgStageCount *string `json:"AvgStageCount,omitempty" xml:"AvgStageCount,omitempty"`
-	AvgTaskCount  *string `json:"AvgTaskCount,omitempty" xml:"AvgTaskCount,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MaxCpuTime    *string `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// The average number of tasks.
+	AvgTaskCount *string `json:"AvgTaskCount,omitempty" xml:"AvgTaskCount,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
+	MaxCpuTime *string `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// The maximum peak memory usage of the SQL pattern within the query time range. Unit: KB.
 	MaxPeakMemory *string `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	MaxScanSize   *string `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
+	// The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: KB.
+	MaxScanSize *string `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
+	// The maximum number of stages.
 	MaxStageCount *string `json:"MaxStageCount,omitempty" xml:"MaxStageCount,omitempty"`
-	MaxTaskCount  *string `json:"MaxTaskCount,omitempty" xml:"MaxTaskCount,omitempty"`
-	// SQL Pattern。
-	Pattern    *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The maximum number of tasks.
+	MaxTaskCount *string `json:"MaxTaskCount,omitempty" xml:"MaxTaskCount,omitempty"`
+	// The SQL pattern.
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The number of queries performed in association with the SQL pattern within the query time range.
 	QueryCount *string `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// The start date of the query.
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
-	User       *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The username.
+	//
+	// >  This parameter is returned only when **Type** is left empty or set to **user**.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeSqlPatternResponseBodyItems) String() string {
@@ -11164,6 +11183,7 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 
 type DescribeUserQuotaRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeUserQuotaRequest) String() string {
@@ -11176,6 +11196,11 @@ func (s DescribeUserQuotaRequest) GoString() string {
 
 func (s *DescribeUserQuotaRequest) SetDBClusterId(v string) *DescribeUserQuotaRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeUserQuotaRequest) SetRegionId(v string) *DescribeUserQuotaRequest {
+	s.RegionId = &v
 	return s
 }
 
