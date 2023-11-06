@@ -1594,6 +1594,7 @@ func (s *CreateListenerRequest) SetXForwardedForConfig(v *CreateListenerRequestX
 }
 
 type CreateListenerRequestCaCertificates struct {
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
 func (s CreateListenerRequestCaCertificates) String() string {
@@ -1602,6 +1603,11 @@ func (s CreateListenerRequestCaCertificates) String() string {
 
 func (s CreateListenerRequestCaCertificates) GoString() string {
 	return s.String()
+}
+
+func (s *CreateListenerRequestCaCertificates) SetCertificateId(v string) *CreateListenerRequestCaCertificates {
+	s.CertificateId = &v
+	return s
 }
 
 type CreateListenerRequestCertificates struct {
@@ -10867,11 +10873,14 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
+	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The network type. Valid values:
 	//
 	// *   **Internet**: The ALB instance uses a public IP address. The domain name of the ALB instance is resolved to the public IP address. Therefore, the ALB instance can be accessed over the Internet.
 	// *   **Intranet**: The ALB instance uses a private IP address. The domain name of the ALB instance is resolved to the private IP address. In this case, the ALB instance can be accessed over the VPC where the ALB instance is deployed.
-	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	AddressType     *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	DNSName         *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	// The service status of the ALB instance. Valid values:
 	//
 	// *   **Abnormal**
@@ -10920,8 +10929,23 @@ func (s ListLoadBalancersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListLoadBalancersRequest) SetAddressIpVersion(v string) *ListLoadBalancersRequest {
+	s.AddressIpVersion = &v
+	return s
+}
+
 func (s *ListLoadBalancersRequest) SetAddressType(v string) *ListLoadBalancersRequest {
 	s.AddressType = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetDNSName(v string) *ListLoadBalancersRequest {
+	s.DNSName = &v
+	return s
+}
+
+func (s *ListLoadBalancersRequest) SetIpv6AddressType(v string) *ListLoadBalancersRequest {
+	s.Ipv6AddressType = &v
 	return s
 }
 
@@ -15968,6 +15992,7 @@ func (s *UpdateListenerAttributeRequest) SetXForwardedForConfig(v *UpdateListene
 }
 
 type UpdateListenerAttributeRequestCaCertificates struct {
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
 func (s UpdateListenerAttributeRequestCaCertificates) String() string {
@@ -15976,6 +16001,11 @@ func (s UpdateListenerAttributeRequestCaCertificates) String() string {
 
 func (s UpdateListenerAttributeRequestCaCertificates) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateListenerAttributeRequestCaCertificates) SetCertificateId(v string) *UpdateListenerAttributeRequestCaCertificates {
+	s.CertificateId = &v
+	return s
 }
 
 type UpdateListenerAttributeRequestCertificates struct {
@@ -22984,8 +23014,20 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressIpVersion)) {
+		query["AddressIpVersion"] = request.AddressIpVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
 		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DNSName)) {
+		query["DNSName"] = request.DNSName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressType)) {
+		query["Ipv6AddressType"] = request.Ipv6AddressType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerBussinessStatus)) {
