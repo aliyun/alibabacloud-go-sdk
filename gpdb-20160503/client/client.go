@@ -1180,6 +1180,159 @@ func (s *CreateDBInstancePlanResponse) SetBody(v *CreateDBInstancePlanResponseBo
 	return s
 }
 
+type CreateDocumentCollectionRequest struct {
+	Collection              *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId            *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	HnswM                   *int32  `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
+	ManagerAccount          *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	ManagerAccountPassword  *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
+	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	PqEnable                *int32  `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateDocumentCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentCollectionRequest) SetCollection(v string) *CreateDocumentCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetDBInstanceId(v string) *CreateDocumentCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetEmbeddingModel(v string) *CreateDocumentCollectionRequest {
+	s.EmbeddingModel = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetFullTextRetrievalFields(v string) *CreateDocumentCollectionRequest {
+	s.FullTextRetrievalFields = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetHnswM(v int32) *CreateDocumentCollectionRequest {
+	s.HnswM = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetManagerAccount(v string) *CreateDocumentCollectionRequest {
+	s.ManagerAccount = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetManagerAccountPassword(v string) *CreateDocumentCollectionRequest {
+	s.ManagerAccountPassword = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetMetadata(v string) *CreateDocumentCollectionRequest {
+	s.Metadata = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetMetrics(v string) *CreateDocumentCollectionRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetNamespace(v string) *CreateDocumentCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetOwnerId(v int64) *CreateDocumentCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetParser(v string) *CreateDocumentCollectionRequest {
+	s.Parser = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetPqEnable(v int32) *CreateDocumentCollectionRequest {
+	s.PqEnable = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionRequest) SetRegionId(v string) *CreateDocumentCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateDocumentCollectionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateDocumentCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentCollectionResponseBody) SetMessage(v string) *CreateDocumentCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionResponseBody) SetRequestId(v string) *CreateDocumentCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionResponseBody) SetStatus(v string) *CreateDocumentCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateDocumentCollectionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDocumentCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDocumentCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentCollectionResponse) SetHeaders(v map[string]*string) *CreateDocumentCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDocumentCollectionResponse) SetStatusCode(v int32) *CreateDocumentCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDocumentCollectionResponse) SetBody(v *CreateDocumentCollectionResponseBody) *CreateDocumentCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNamespaceRequest struct {
 	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
@@ -2035,6 +2188,222 @@ func (s *DeleteDBInstancePlanResponse) SetStatusCode(v int32) *DeleteDBInstanceP
 }
 
 func (s *DeleteDBInstancePlanResponse) SetBody(v *DeleteDBInstancePlanResponseBody) *DeleteDBInstancePlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDocumentRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentRequest) SetCollection(v string) *DeleteDocumentRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetDBInstanceId(v string) *DeleteDocumentRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetFileName(v string) *DeleteDocumentRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetNamespace(v string) *DeleteDocumentRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetNamespacePassword(v string) *DeleteDocumentRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetOwnerId(v int64) *DeleteDocumentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDocumentRequest) SetRegionId(v string) *DeleteDocumentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDocumentResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentResponseBody) SetMessage(v string) *DeleteDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetRequestId(v string) *DeleteDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocumentResponseBody) SetStatus(v string) *DeleteDocumentResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteDocumentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentResponse) SetHeaders(v map[string]*string) *DeleteDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocumentResponse) SetStatusCode(v int32) *DeleteDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentResponse) SetBody(v *DeleteDocumentResponseBody) *DeleteDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDocumentCollectionRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDocumentCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentCollectionRequest) SetCollection(v string) *DeleteDocumentCollectionRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionRequest) SetDBInstanceId(v string) *DeleteDocumentCollectionRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionRequest) SetNamespace(v string) *DeleteDocumentCollectionRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionRequest) SetNamespacePassword(v string) *DeleteDocumentCollectionRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionRequest) SetOwnerId(v int64) *DeleteDocumentCollectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionRequest) SetRegionId(v string) *DeleteDocumentCollectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDocumentCollectionResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteDocumentCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentCollectionResponseBody) SetMessage(v string) *DeleteDocumentCollectionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionResponseBody) SetRequestId(v string) *DeleteDocumentCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionResponseBody) SetStatus(v string) *DeleteDocumentCollectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteDocumentCollectionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDocumentCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDocumentCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDocumentCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDocumentCollectionResponse) SetHeaders(v map[string]*string) *DeleteDocumentCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDocumentCollectionResponse) SetStatusCode(v int32) *DeleteDocumentCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDocumentCollectionResponse) SetBody(v *DeleteDocumentCollectionResponseBody) *DeleteDocumentCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -4149,8 +4518,9 @@ type DescribeDBInstanceDataBloatResponseBodyItems struct {
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// The storage type of the table. Valid values:
 	//
-	// *   **Heap**: heap table
-	// *   **AO**: append-optimized (AO) table
+	// *   **Heap Table**
+	// *   **Append-Only Heap Table**
+	// *   **Append-Only Columnar Table**
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// This parameter is not returned.
 	SuggestedAction *string `json:"SuggestedAction,omitempty" xml:"SuggestedAction,omitempty"`
@@ -6042,6 +6412,139 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 	return s
 }
 
+type DescribeDBInstanceSupportMaxPerformanceRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceRequest) SetDBInstanceId(v string) *DescribeDBInstanceSupportMaxPerformanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceRequest) SetOwnerId(v int64) *DescribeDBInstanceSupportMaxPerformanceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDBInstanceSupportMaxPerformanceResponseBody struct {
+	DBInstanceId *string                                                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Performances *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Struct"`
+	RequestId    *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBody) SetPerformances(v *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) *DescribeDBInstanceSupportMaxPerformanceResponseBody {
+	s.Performances = v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBody) SetRequestId(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances struct {
+	Performance []*DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances) SetPerformance(v []*DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformances {
+	s.Performance = v
+	return s
+}
+
+type DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance struct {
+	Bottleneck *string `json:"Bottleneck,omitempty" xml:"Bottleneck,omitempty"`
+	Key        *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Unit       *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) SetBottleneck(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance {
+	s.Bottleneck = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) SetKey(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) SetUnit(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance {
+	s.Unit = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance) SetValue(v string) *DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance {
+	s.Value = &v
+	return s
+}
+
+type DescribeDBInstanceSupportMaxPerformanceResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceSupportMaxPerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSupportMaxPerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceSupportMaxPerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponse) SetStatusCode(v int32) *DescribeDBInstanceSupportMaxPerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSupportMaxPerformanceResponse) SetBody(v *DescribeDBInstanceSupportMaxPerformanceResponseBody) *DescribeDBInstanceSupportMaxPerformanceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBInstancesRequest struct {
 	// The edition of the instance. Separate multiple values with commas (,).
 	DBInstanceCategories []*string `json:"DBInstanceCategories,omitempty" xml:"DBInstanceCategories,omitempty" type:"Repeated"`
@@ -6697,6 +7200,122 @@ func (s *DescribeDBInstancesResponse) SetStatusCode(v int32) *DescribeDBInstance
 }
 
 func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody) *DescribeDBInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBVersionInfosRequest struct {
+	DBInstanceMode  *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	DBVersion       *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s DescribeDBVersionInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBVersionInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBVersionInfosRequest) SetDBInstanceMode(v string) *DescribeDBVersionInfosRequest {
+	s.DBInstanceMode = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosRequest) SetDBVersion(v string) *DescribeDBVersionInfosRequest {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosRequest) SetOwnerId(v int64) *DescribeDBVersionInfosRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosRequest) SetRegionId(v string) *DescribeDBVersionInfosRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosRequest) SetResourceGroupId(v string) *DescribeDBVersionInfosRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type DescribeDBVersionInfosResponseBody struct {
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionDetails *DescribeDBVersionInfosResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Struct"`
+}
+
+func (s DescribeDBVersionInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBVersionInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBVersionInfosResponseBody) SetRequestId(v string) *DescribeDBVersionInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosResponseBody) SetVersionDetails(v *DescribeDBVersionInfosResponseBodyVersionDetails) *DescribeDBVersionInfosResponseBody {
+	s.VersionDetails = v
+	return s
+}
+
+type DescribeDBVersionInfosResponseBodyVersionDetails struct {
+	Serverless     interface{} `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
+	StorageElastic interface{} `json:"StorageElastic,omitempty" xml:"StorageElastic,omitempty"`
+}
+
+func (s DescribeDBVersionInfosResponseBodyVersionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBVersionInfosResponseBodyVersionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBVersionInfosResponseBodyVersionDetails) SetServerless(v interface{}) *DescribeDBVersionInfosResponseBodyVersionDetails {
+	s.Serverless = v
+	return s
+}
+
+func (s *DescribeDBVersionInfosResponseBodyVersionDetails) SetStorageElastic(v interface{}) *DescribeDBVersionInfosResponseBodyVersionDetails {
+	s.StorageElastic = v
+	return s
+}
+
+type DescribeDBVersionInfosResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBVersionInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBVersionInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBVersionInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBVersionInfosResponse) SetHeaders(v map[string]*string) *DescribeDBVersionInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBVersionInfosResponse) SetStatusCode(v int32) *DescribeDBVersionInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBVersionInfosResponse) SetBody(v *DescribeDBVersionInfosResponseBody) *DescribeDBVersionInfosResponse {
 	s.Body = v
 	return s
 }
@@ -8262,6 +8881,177 @@ func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoRe
 	return s
 }
 
+type DescribeDocumentRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentRequest) SetCollection(v string) *DescribeDocumentRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetDBInstanceId(v string) *DescribeDocumentRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetFileName(v string) *DescribeDocumentRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetNamespace(v string) *DescribeDocumentRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetNamespacePassword(v string) *DescribeDocumentRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetOwnerId(v int64) *DescribeDocumentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDocumentRequest) SetRegionId(v string) *DescribeDocumentRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDocumentResponseBody struct {
+	DocsCount      *int32  `json:"DocsCount,omitempty" xml:"DocsCount,omitempty"`
+	DocumentLoader *string `json:"DocumentLoader,omitempty" xml:"DocumentLoader,omitempty"`
+	FileExt        *string `json:"FileExt,omitempty" xml:"FileExt,omitempty"`
+	FileMd5        *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	FileMtime      *string `json:"FileMtime,omitempty" xml:"FileMtime,omitempty"`
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileSize       *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileVersion    *int32  `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TextSplitter   *string `json:"TextSplitter,omitempty" xml:"TextSplitter,omitempty"`
+}
+
+func (s DescribeDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentResponseBody) SetDocsCount(v int32) *DescribeDocumentResponseBody {
+	s.DocsCount = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetDocumentLoader(v string) *DescribeDocumentResponseBody {
+	s.DocumentLoader = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileExt(v string) *DescribeDocumentResponseBody {
+	s.FileExt = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileMd5(v string) *DescribeDocumentResponseBody {
+	s.FileMd5 = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileMtime(v string) *DescribeDocumentResponseBody {
+	s.FileMtime = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileName(v string) *DescribeDocumentResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileSize(v int64) *DescribeDocumentResponseBody {
+	s.FileSize = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetFileVersion(v int32) *DescribeDocumentResponseBody {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetMessage(v string) *DescribeDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetRequestId(v string) *DescribeDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetSource(v string) *DescribeDocumentResponseBody {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetStatus(v string) *DescribeDocumentResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetTextSplitter(v string) *DescribeDocumentResponseBody {
+	s.TextSplitter = &v
+	return s
+}
+
+type DescribeDocumentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDocumentResponse) SetHeaders(v map[string]*string) *DescribeDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDocumentResponse) SetStatusCode(v int32) *DescribeDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDocumentResponse) SetBody(v *DescribeDocumentResponseBody) *DescribeDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDownloadRecordsRequest struct {
 	// The instance ID.
 	//
@@ -9141,6 +9931,122 @@ func (s *DescribeHealthStatusResponse) SetStatusCode(v int32) *DescribeHealthSta
 }
 
 func (s *DescribeHealthStatusResponse) SetBody(v *DescribeHealthStatusResponseBody) *DescribeHealthStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIMVInfosRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	MVName       *string `json:"MVName,omitempty" xml:"MVName,omitempty"`
+}
+
+func (s DescribeIMVInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIMVInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIMVInfosRequest) SetDBInstanceId(v string) *DescribeIMVInfosRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeIMVInfosRequest) SetDatabase(v string) *DescribeIMVInfosRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeIMVInfosRequest) SetMVName(v string) *DescribeIMVInfosRequest {
+	s.MVName = &v
+	return s
+}
+
+type DescribeIMVInfosResponseBody struct {
+	DBInstanceId *string                                 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ImvInfos     []*DescribeIMVInfosResponseBodyImvInfos `json:"ImvInfos,omitempty" xml:"ImvInfos,omitempty" type:"Repeated"`
+	RequestId    *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIMVInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIMVInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIMVInfosResponseBody) SetDBInstanceId(v string) *DescribeIMVInfosResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeIMVInfosResponseBody) SetImvInfos(v []*DescribeIMVInfosResponseBodyImvInfos) *DescribeIMVInfosResponseBody {
+	s.ImvInfos = v
+	return s
+}
+
+func (s *DescribeIMVInfosResponseBody) SetRequestId(v string) *DescribeIMVInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIMVInfosResponseBodyImvInfos struct {
+	Base       *string `json:"Base,omitempty" xml:"Base,omitempty"`
+	DetailInfo *string `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
+	MV         *string `json:"MV,omitempty" xml:"MV,omitempty"`
+}
+
+func (s DescribeIMVInfosResponseBodyImvInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIMVInfosResponseBodyImvInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIMVInfosResponseBodyImvInfos) SetBase(v string) *DescribeIMVInfosResponseBodyImvInfos {
+	s.Base = &v
+	return s
+}
+
+func (s *DescribeIMVInfosResponseBodyImvInfos) SetDetailInfo(v string) *DescribeIMVInfosResponseBodyImvInfos {
+	s.DetailInfo = &v
+	return s
+}
+
+func (s *DescribeIMVInfosResponseBodyImvInfos) SetMV(v string) *DescribeIMVInfosResponseBodyImvInfos {
+	s.MV = &v
+	return s
+}
+
+type DescribeIMVInfosResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeIMVInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIMVInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIMVInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIMVInfosResponse) SetHeaders(v map[string]*string) *DescribeIMVInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIMVInfosResponse) SetStatusCode(v int32) *DescribeIMVInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIMVInfosResponse) SetBody(v *DescribeIMVInfosResponseBody) *DescribeIMVInfosResponse {
 	s.Body = v
 	return s
 }
@@ -10707,6 +11613,328 @@ func (s *DescribeSQLLogCountResponse) SetStatusCode(v int32) *DescribeSQLLogCoun
 }
 
 func (s *DescribeSQLLogCountResponse) SetBody(v *DescribeSQLLogCountResponseBody) *DescribeSQLLogCountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSQLLogsRequest struct {
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	//
+	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The execution duration of the query. Unit: seconds.
+	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
+	// The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
+	// The type of the query language. Valid values:
+	//
+	// *   **DQL**
+	// *   **DML**
+	// *   **DDL**
+	// *   **DCL**
+	// *   **TCL**
+	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	// The type of the SQL statement.
+	//
+	// >
+	//
+	// *   If **OperationClass** is specified, the value of **OperationType** must belong to the corresponding query language. For example, if **OperationClass** is set to **DQL**, the value of **OperationType** must be a **DQL** statement such as **SELECT**.
+	//
+	// *   If **OperationClass** is not specified, the value of **OperationType** can be an SQL statement of any query language.
+	// *   If **OperationClass** and **OperationType** are not specified, all types of SQL statements are returned.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// *   **30**
+	// *   **50**
+	// *   **100**
+	//
+	// Default value: **30**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keywords of the SQL statement.
+	QueryKeywords *string `json:"QueryKeywords,omitempty" xml:"QueryKeywords,omitempty"`
+	// The source IP address.
+	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the database account.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeSQLLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsRequest) SetDBInstanceId(v string) *DescribeSQLLogsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetDatabase(v string) *DescribeSQLLogsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetEndTime(v string) *DescribeSQLLogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetExecuteCost(v string) *DescribeSQLLogsRequest {
+	s.ExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetExecuteState(v string) *DescribeSQLLogsRequest {
+	s.ExecuteState = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetMaxExecuteCost(v string) *DescribeSQLLogsRequest {
+	s.MaxExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetMinExecuteCost(v string) *DescribeSQLLogsRequest {
+	s.MinExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetOperationClass(v string) *DescribeSQLLogsRequest {
+	s.OperationClass = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetOperationType(v string) *DescribeSQLLogsRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetPageNumber(v int32) *DescribeSQLLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetPageSize(v int32) *DescribeSQLLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetQueryKeywords(v string) *DescribeSQLLogsRequest {
+	s.QueryKeywords = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetSourceIP(v string) *DescribeSQLLogsRequest {
+	s.SourceIP = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetStartTime(v string) *DescribeSQLLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsRequest) SetUser(v string) *DescribeSQLLogsRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeSQLLogsResponseBody struct {
+	// The queried SQL execution logs.
+	Items []*DescribeSQLLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSQLLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsResponseBody) SetItems(v []*DescribeSQLLogsResponseBodyItems) *DescribeSQLLogsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBody) SetPageNumber(v int32) *DescribeSQLLogsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBody) SetPageRecordCount(v int32) *DescribeSQLLogsResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBody) SetRequestId(v string) *DescribeSQLLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSQLLogsResponseBodyItems struct {
+	// The database account that executes the SQL statement.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The name of the database.
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The role of the database.
+	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
+	// The execution duration of the query.
+	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
+	// The execution state of the query. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
+	// The type of the query language.
+	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
+	// The time when the SQL statement was executed.
+	OperationExecuteTime *string `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
+	// The type of the SQL statement.
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The total number of entries returned.
+	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
+	// The SQL execution plan.
+	SQLPlan *string `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
+	// The SQL statement.
+	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// The number of entries scanned.
+	ScanRowCounts *int64 `json:"ScanRowCounts,omitempty" xml:"ScanRowCounts,omitempty"`
+	// The source IP address.
+	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
+	// The number of the source port.
+	SourcePort *int32 `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
+}
+
+func (s DescribeSQLLogsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetAccountName(v string) *DescribeSQLLogsResponseBodyItems {
+	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetDBName(v string) *DescribeSQLLogsResponseBodyItems {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetDBRole(v string) *DescribeSQLLogsResponseBodyItems {
+	s.DBRole = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetExecuteCost(v float32) *DescribeSQLLogsResponseBodyItems {
+	s.ExecuteCost = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetExecuteState(v string) *DescribeSQLLogsResponseBodyItems {
+	s.ExecuteState = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetOperationClass(v string) *DescribeSQLLogsResponseBodyItems {
+	s.OperationClass = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetOperationExecuteTime(v string) *DescribeSQLLogsResponseBodyItems {
+	s.OperationExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetOperationType(v string) *DescribeSQLLogsResponseBodyItems {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetReturnRowCounts(v int64) *DescribeSQLLogsResponseBodyItems {
+	s.ReturnRowCounts = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetSQLPlan(v string) *DescribeSQLLogsResponseBodyItems {
+	s.SQLPlan = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetSQLText(v string) *DescribeSQLLogsResponseBodyItems {
+	s.SQLText = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetScanRowCounts(v int64) *DescribeSQLLogsResponseBodyItems {
+	s.ScanRowCounts = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetSourceIP(v string) *DescribeSQLLogsResponseBodyItems {
+	s.SourceIP = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponseBodyItems) SetSourcePort(v int32) *DescribeSQLLogsResponseBodyItems {
+	s.SourcePort = &v
+	return s
+}
+
+type DescribeSQLLogsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSQLLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSQLLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLLogsResponse) SetHeaders(v map[string]*string) *DescribeSQLLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQLLogsResponse) SetStatusCode(v int32) *DescribeSQLLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQLLogsResponse) SetBody(v *DescribeSQLLogsResponseBody) *DescribeSQLLogsResponse {
 	s.Body = v
 	return s
 }
@@ -12357,6 +13585,122 @@ func (s *GrantCollectionResponse) SetBody(v *GrantCollectionResponseBody) *Grant
 	return s
 }
 
+type HandleActiveSQLRecordRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OperateType  *int32  `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Pids         *string `json:"Pids,omitempty" xml:"Pids,omitempty"`
+}
+
+func (s HandleActiveSQLRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleActiveSQLRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HandleActiveSQLRecordRequest) SetDBInstanceId(v string) *HandleActiveSQLRecordRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordRequest) SetOperateType(v int32) *HandleActiveSQLRecordRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordRequest) SetPids(v string) *HandleActiveSQLRecordRequest {
+	s.Pids = &v
+	return s
+}
+
+type HandleActiveSQLRecordResponseBody struct {
+	DBInstanceId *string                                     `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results      []*HandleActiveSQLRecordResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	Status       *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s HandleActiveSQLRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleActiveSQLRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HandleActiveSQLRecordResponseBody) SetDBInstanceId(v string) *HandleActiveSQLRecordResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponseBody) SetRequestId(v string) *HandleActiveSQLRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponseBody) SetResults(v []*HandleActiveSQLRecordResponseBodyResults) *HandleActiveSQLRecordResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponseBody) SetStatus(v string) *HandleActiveSQLRecordResponseBody {
+	s.Status = &v
+	return s
+}
+
+type HandleActiveSQLRecordResponseBodyResults struct {
+	Pid    *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s HandleActiveSQLRecordResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleActiveSQLRecordResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *HandleActiveSQLRecordResponseBodyResults) SetPid(v string) *HandleActiveSQLRecordResponseBodyResults {
+	s.Pid = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponseBodyResults) SetStatus(v string) *HandleActiveSQLRecordResponseBodyResults {
+	s.Status = &v
+	return s
+}
+
+type HandleActiveSQLRecordResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HandleActiveSQLRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HandleActiveSQLRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleActiveSQLRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HandleActiveSQLRecordResponse) SetHeaders(v map[string]*string) *HandleActiveSQLRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponse) SetStatusCode(v int32) *HandleActiveSQLRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HandleActiveSQLRecordResponse) SetBody(v *HandleActiveSQLRecordResponseBody) *HandleActiveSQLRecordResponse {
+	s.Body = v
+	return s
+}
+
 type InitVectorDatabaseRequest struct {
 	// The instance ID.
 	//
@@ -12631,6 +13975,338 @@ func (s *ListCollectionsResponse) SetStatusCode(v int32) *ListCollectionsRespons
 }
 
 func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListCollectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDocumentCollectionsRequest struct {
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDocumentCollectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentCollectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentCollectionsRequest) SetDBInstanceId(v string) *ListDocumentCollectionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsRequest) SetNamespace(v string) *ListDocumentCollectionsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsRequest) SetNamespacePassword(v string) *ListDocumentCollectionsRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsRequest) SetOwnerId(v int64) *ListDocumentCollectionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsRequest) SetRegionId(v string) *ListDocumentCollectionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDocumentCollectionsResponseBody struct {
+	Count     *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
+	Items     *ListDocumentCollectionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDocumentCollectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentCollectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentCollectionsResponseBody) SetCount(v int32) *ListDocumentCollectionsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBody) SetItems(v *ListDocumentCollectionsResponseBodyItems) *ListDocumentCollectionsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBody) SetMessage(v string) *ListDocumentCollectionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBody) SetRequestId(v string) *ListDocumentCollectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBody) SetStatus(v string) *ListDocumentCollectionsResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListDocumentCollectionsResponseBodyItems struct {
+	CollectionList []*ListDocumentCollectionsResponseBodyItemsCollectionList `json:"CollectionList,omitempty" xml:"CollectionList,omitempty" type:"Repeated"`
+}
+
+func (s ListDocumentCollectionsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentCollectionsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentCollectionsResponseBodyItems) SetCollectionList(v []*ListDocumentCollectionsResponseBodyItemsCollectionList) *ListDocumentCollectionsResponseBodyItems {
+	s.CollectionList = v
+	return s
+}
+
+type ListDocumentCollectionsResponseBodyItemsCollectionList struct {
+	CollectionName          *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	Dimension               *int32  `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
+	EmbeddingModel          *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
+	Metadata                *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metrics                 *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Parser                  *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+}
+
+func (s ListDocumentCollectionsResponseBodyItemsCollectionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentCollectionsResponseBodyItemsCollectionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetCollectionName(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.CollectionName = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetDimension(v int32) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.Dimension = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetEmbeddingModel(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.EmbeddingModel = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetFullTextRetrievalFields(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.FullTextRetrievalFields = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetMetadata(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.Metadata = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetMetrics(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.Metrics = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponseBodyItemsCollectionList) SetParser(v string) *ListDocumentCollectionsResponseBodyItemsCollectionList {
+	s.Parser = &v
+	return s
+}
+
+type ListDocumentCollectionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDocumentCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDocumentCollectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentCollectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentCollectionsResponse) SetHeaders(v map[string]*string) *ListDocumentCollectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponse) SetStatusCode(v int32) *ListDocumentCollectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocumentCollectionsResponse) SetBody(v *ListDocumentCollectionsResponseBody) *ListDocumentCollectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDocumentsRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsRequest) SetCollection(v string) *ListDocumentsRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetDBInstanceId(v string) *ListDocumentsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetNamespace(v string) *ListDocumentsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetNamespacePassword(v string) *ListDocumentsRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetOwnerId(v int64) *ListDocumentsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDocumentsRequest) SetRegionId(v string) *ListDocumentsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDocumentsResponseBody struct {
+	Items     *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBody) SetItems(v *ListDocumentsResponseBodyItems) *ListDocumentsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetMessage(v string) *ListDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetRequestId(v string) *ListDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBody) SetStatus(v string) *ListDocumentsResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListDocumentsResponseBodyItems struct {
+	DocumentList []*ListDocumentsResponseBodyItemsDocumentList `json:"DocumentList,omitempty" xml:"DocumentList,omitempty" type:"Repeated"`
+}
+
+func (s ListDocumentsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBodyItems) SetDocumentList(v []*ListDocumentsResponseBodyItemsDocumentList) *ListDocumentsResponseBodyItems {
+	s.DocumentList = v
+	return s
+}
+
+type ListDocumentsResponseBodyItemsDocumentList struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s ListDocumentsResponseBodyItemsDocumentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponseBodyItemsDocumentList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponseBodyItemsDocumentList) SetFileName(v string) *ListDocumentsResponseBodyItemsDocumentList {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListDocumentsResponseBodyItemsDocumentList) SetSource(v string) *ListDocumentsResponseBodyItemsDocumentList {
+	s.Source = &v
+	return s
+}
+
+type ListDocumentsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDocumentsResponse) SetHeaders(v map[string]*string) *ListDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDocumentsResponse) SetStatusCode(v int32) *ListDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocumentsResponse {
 	s.Body = v
 	return s
 }
@@ -14670,6 +16346,246 @@ func (s *QueryCollectionDataResponse) SetBody(v *QueryCollectionDataResponseBody
 	return s
 }
 
+type QueryContentRequest struct {
+	Collection           *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	Content              *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Filter               *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	Metrics              *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword    *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TopK                 *int32  `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	UseFullTextRetrieval *bool   `json:"UseFullTextRetrieval,omitempty" xml:"UseFullTextRetrieval,omitempty"`
+}
+
+func (s QueryContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentRequest) SetCollection(v string) *QueryContentRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetContent(v string) *QueryContentRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetDBInstanceId(v string) *QueryContentRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetFilter(v string) *QueryContentRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetMetrics(v string) *QueryContentRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetNamespace(v string) *QueryContentRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetNamespacePassword(v string) *QueryContentRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetOwnerId(v int64) *QueryContentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetRegionId(v string) *QueryContentRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetTopK(v int32) *QueryContentRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *QueryContentRequest) SetUseFullTextRetrieval(v bool) *QueryContentRequest {
+	s.UseFullTextRetrieval = &v
+	return s
+}
+
+type QueryContentResponseBody struct {
+	EmbeddingTokens *string                          `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Matches         *QueryContentResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
+	Message         *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status          *string                          `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBody) SetEmbeddingTokens(v string) *QueryContentResponseBody {
+	s.EmbeddingTokens = &v
+	return s
+}
+
+func (s *QueryContentResponseBody) SetMatches(v *QueryContentResponseBodyMatches) *QueryContentResponseBody {
+	s.Matches = v
+	return s
+}
+
+func (s *QueryContentResponseBody) SetMessage(v string) *QueryContentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryContentResponseBody) SetRequestId(v string) *QueryContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryContentResponseBody) SetStatus(v string) *QueryContentResponseBody {
+	s.Status = &v
+	return s
+}
+
+type QueryContentResponseBodyMatches struct {
+	MatchList []*QueryContentResponseBodyMatchesMatchList `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
+}
+
+func (s QueryContentResponseBodyMatches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponseBodyMatches) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyMatches) SetMatchList(v []*QueryContentResponseBodyMatchesMatchList) *QueryContentResponseBodyMatches {
+	s.MatchList = v
+	return s
+}
+
+type QueryContentResponseBodyMatchesMatchList struct {
+	Content         *string                                         `json:"Content,omitempty" xml:"Content,omitempty"`
+	FileName        *string                                         `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id              *string                                         `json:"Id,omitempty" xml:"Id,omitempty"`
+	LoaderMetadata  *string                                         `json:"LoaderMetadata,omitempty" xml:"LoaderMetadata,omitempty"`
+	Metadata        map[string]*string                              `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	RetrievalSource *int32                                          `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
+	Score           *float64                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Vector          *QueryContentResponseBodyMatchesMatchListVector `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+}
+
+func (s QueryContentResponseBodyMatchesMatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponseBodyMatchesMatchList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetContent(v string) *QueryContentResponseBodyMatchesMatchList {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetFileName(v string) *QueryContentResponseBodyMatchesMatchList {
+	s.FileName = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetId(v string) *QueryContentResponseBodyMatchesMatchList {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetLoaderMetadata(v string) *QueryContentResponseBodyMatchesMatchList {
+	s.LoaderMetadata = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetMetadata(v map[string]*string) *QueryContentResponseBodyMatchesMatchList {
+	s.Metadata = v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetRetrievalSource(v int32) *QueryContentResponseBodyMatchesMatchList {
+	s.RetrievalSource = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetScore(v float64) *QueryContentResponseBodyMatchesMatchList {
+	s.Score = &v
+	return s
+}
+
+func (s *QueryContentResponseBodyMatchesMatchList) SetVector(v *QueryContentResponseBodyMatchesMatchListVector) *QueryContentResponseBodyMatchesMatchList {
+	s.Vector = v
+	return s
+}
+
+type QueryContentResponseBodyMatchesMatchListVector struct {
+	VectorList []*float64 `json:"VectorList,omitempty" xml:"VectorList,omitempty" type:"Repeated"`
+}
+
+func (s QueryContentResponseBodyMatchesMatchListVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponseBodyMatchesMatchListVector) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponseBodyMatchesMatchListVector) SetVectorList(v []*float64) *QueryContentResponseBodyMatchesMatchListVector {
+	s.VectorList = v
+	return s
+}
+
+type QueryContentResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryContentResponse) SetHeaders(v map[string]*string) *QueryContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryContentResponse) SetStatusCode(v int32) *QueryContentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryContentResponse) SetBody(v *QueryContentResponseBody) *QueryContentResponse {
+	s.Body = v
+	return s
+}
+
 type RebalanceDBInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests.
 	//
@@ -14910,6 +16826,81 @@ func (s *ResetAccountPasswordResponse) SetStatusCode(v int32) *ResetAccountPassw
 }
 
 func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBody) *ResetAccountPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type ResetIMVMonitorDataRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+}
+
+func (s ResetIMVMonitorDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetIMVMonitorDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResetIMVMonitorDataRequest) SetDBInstanceId(v string) *ResetIMVMonitorDataRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ResetIMVMonitorDataRequest) SetDatabase(v string) *ResetIMVMonitorDataRequest {
+	s.Database = &v
+	return s
+}
+
+type ResetIMVMonitorDataResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ResetIMVMonitorDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetIMVMonitorDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResetIMVMonitorDataResponseBody) SetRequestId(v string) *ResetIMVMonitorDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResetIMVMonitorDataResponseBody) SetStatus(v bool) *ResetIMVMonitorDataResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ResetIMVMonitorDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetIMVMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResetIMVMonitorDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResetIMVMonitorDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResetIMVMonitorDataResponse) SetHeaders(v map[string]*string) *ResetIMVMonitorDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResetIMVMonitorDataResponse) SetStatusCode(v int32) *ResetIMVMonitorDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResetIMVMonitorDataResponse) SetBody(v *ResetIMVMonitorDataResponseBody) *ResetIMVMonitorDataResponse {
 	s.Body = v
 	return s
 }
@@ -16350,16 +18341,16 @@ func (s *UpgradeDBInstanceResponse) SetBody(v *UpgradeDBInstanceResponseBody) *U
 type UpgradeDBVersionRequest struct {
 	// The ID of the instance.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The major version of the instance.
+	// This parameter is no longer used and does not need to be specified.
 	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	// The minor version of the instance.
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The upgrade time.
+	// This parameter is no longer used and does not need to be specified.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The upgrade method.
+	// This parameter is no longer used and does not need to be specified.
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 }
 
@@ -16407,7 +18398,7 @@ func (s *UpgradeDBVersionRequest) SetSwitchTimeMode(v string) *UpgradeDBVersionR
 }
 
 type UpgradeDBVersionResponseBody struct {
-	// The ID of the instance.
+	// This parameter is no longer returned.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the instance.
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
@@ -16470,6 +18461,211 @@ func (s *UpgradeDBVersionResponse) SetStatusCode(v int32) *UpgradeDBVersionRespo
 }
 
 func (s *UpgradeDBVersionResponse) SetBody(v *UpgradeDBVersionResponseBody) *UpgradeDBVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpsertChunksRequest struct {
+	Collection        *string                          `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string                          `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName          *string                          `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Namespace         *string                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string                          `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TextChunks        []*UpsertChunksRequestTextChunks `json:"TextChunks,omitempty" xml:"TextChunks,omitempty" type:"Repeated"`
+}
+
+func (s UpsertChunksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertChunksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertChunksRequest) SetCollection(v string) *UpsertChunksRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetDBInstanceId(v string) *UpsertChunksRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetFileName(v string) *UpsertChunksRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetNamespace(v string) *UpsertChunksRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetNamespacePassword(v string) *UpsertChunksRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetOwnerId(v int64) *UpsertChunksRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetRegionId(v string) *UpsertChunksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertChunksRequest) SetTextChunks(v []*UpsertChunksRequestTextChunks) *UpsertChunksRequest {
+	s.TextChunks = v
+	return s
+}
+
+type UpsertChunksRequestTextChunks struct {
+	Content  *string                `json:"Content,omitempty" xml:"Content,omitempty"`
+	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+}
+
+func (s UpsertChunksRequestTextChunks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertChunksRequestTextChunks) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertChunksRequestTextChunks) SetContent(v string) *UpsertChunksRequestTextChunks {
+	s.Content = &v
+	return s
+}
+
+func (s *UpsertChunksRequestTextChunks) SetMetadata(v map[string]interface{}) *UpsertChunksRequestTextChunks {
+	s.Metadata = v
+	return s
+}
+
+type UpsertChunksShrinkRequest struct {
+	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	FileName          *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TextChunksShrink  *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
+}
+
+func (s UpsertChunksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertChunksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertChunksShrinkRequest) SetCollection(v string) *UpsertChunksShrinkRequest {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetDBInstanceId(v string) *UpsertChunksShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetFileName(v string) *UpsertChunksShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetNamespace(v string) *UpsertChunksShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetNamespacePassword(v string) *UpsertChunksShrinkRequest {
+	s.NamespacePassword = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetOwnerId(v int64) *UpsertChunksShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetRegionId(v string) *UpsertChunksShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertChunksShrinkRequest) SetTextChunksShrink(v string) *UpsertChunksShrinkRequest {
+	s.TextChunksShrink = &v
+	return s
+}
+
+type UpsertChunksResponseBody struct {
+	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpsertChunksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertChunksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertChunksResponseBody) SetEmbeddingTokens(v string) *UpsertChunksResponseBody {
+	s.EmbeddingTokens = &v
+	return s
+}
+
+func (s *UpsertChunksResponseBody) SetMessage(v string) *UpsertChunksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpsertChunksResponseBody) SetRequestId(v string) *UpsertChunksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpsertChunksResponseBody) SetStatus(v string) *UpsertChunksResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpsertChunksResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpsertChunksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpsertChunksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertChunksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertChunksResponse) SetHeaders(v map[string]*string) *UpsertChunksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpsertChunksResponse) SetStatusCode(v int32) *UpsertChunksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpsertChunksResponse) SetBody(v *UpsertChunksResponseBody) *UpsertChunksResponse {
 	s.Body = v
 	return s
 }
@@ -17345,6 +19541,102 @@ func (client *Client) CreateDBInstancePlan(request *CreateDBInstancePlanRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateDocumentCollectionWithOptions(request *CreateDocumentCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateDocumentCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EmbeddingModel)) {
+		query["EmbeddingModel"] = request.EmbeddingModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullTextRetrievalFields)) {
+		query["FullTextRetrievalFields"] = request.FullTextRetrievalFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HnswM)) {
+		query["HnswM"] = request.HnswM
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccount)) {
+		query["ManagerAccount"] = request.ManagerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerAccountPassword)) {
+		query["ManagerAccountPassword"] = request.ManagerAccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		query["Metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parser)) {
+		query["Parser"] = request.Parser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PqEnable)) {
+		query["PqEnable"] = request.PqEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDocumentCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDocumentCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDocumentCollection(request *CreateDocumentCollectionRequest) (_result *CreateDocumentCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDocumentCollectionResponse{}
+	_body, _err := client.CreateDocumentCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17893,6 +20185,138 @@ func (client *Client) DeleteDBInstancePlan(request *DeleteDBInstancePlanRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstancePlanResponse{}
 	_body, _err := client.DeleteDBInstancePlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDocument"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDocument(request *DeleteDocumentRequest) (_result *DeleteDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocumentResponse{}
+	_body, _err := client.DeleteDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDocumentCollectionWithOptions(request *DeleteDocumentCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteDocumentCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDocumentCollection"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDocumentCollectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDocumentCollection(request *DeleteDocumentCollectionRequest) (_result *DeleteDocumentCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDocumentCollectionResponse{}
+	_body, _err := client.DeleteDocumentCollectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19187,6 +21611,54 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	return _result, _err
 }
 
+func (client *Client) DescribeDBInstanceSupportMaxPerformanceWithOptions(request *DescribeDBInstanceSupportMaxPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSupportMaxPerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceSupportMaxPerformance"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceSupportMaxPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceSupportMaxPerformance(request *DescribeDBInstanceSupportMaxPerformanceRequest) (_result *DescribeDBInstanceSupportMaxPerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceSupportMaxPerformanceResponse{}
+	_body, _err := client.DescribeDBInstanceSupportMaxPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ##
  * You can call this operation to query the instance types, network types, and states of AnalyticDB for PostgreSQL instances within a region.
@@ -19309,6 +21781,66 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstancesResponse{}
 	_body, _err := client.DescribeDBInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBVersionInfosWithOptions(request *DescribeDBVersionInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeDBVersionInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceMode)) {
+		query["DBInstanceMode"] = request.DBInstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
+		query["DBVersion"] = request.DBVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBVersionInfos"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBVersionInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBVersionInfos(request *DescribeDBVersionInfosRequest) (_result *DescribeDBVersionInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBVersionInfosResponse{}
+	_body, _err := client.DescribeDBVersionInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19913,6 +22445,74 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 	return _result, _err
 }
 
+func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentRequest, runtime *util.RuntimeOptions) (_result *DescribeDocumentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDocument"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDocument(request *DescribeDocumentRequest) (_result *DescribeDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.DescribeDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You must call the [DownloadDiagnosisRecords](~~447700~~) operation to download the query diagnostic information before you can call this operation to query the download records and download URLs.
  * This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](~~277424~~) and [Update the minor engine version](~~139271~~).
@@ -20074,6 +22674,58 @@ func (client *Client) DescribeHealthStatus(request *DescribeHealthStatusRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHealthStatusResponse{}
 	_body, _err := client.DescribeHealthStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIMVInfosWithOptions(request *DescribeIMVInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeIMVInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MVName)) {
+		query["MVName"] = request.MVName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIMVInfos"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIMVInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIMVInfos(request *DescribeIMVInfosRequest) (_result *DescribeIMVInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIMVInfosResponse{}
+	_body, _err := client.DescribeIMVInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20659,6 +23311,119 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogCountResponse{}
 	_body, _err := client.DescribeSQLLogCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+ *
+ * @param request DescribeSQLLogsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeSQLLogsResponse
+ */
+func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteCost)) {
+		query["ExecuteCost"] = request.ExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteState)) {
+		query["ExecuteState"] = request.ExecuteState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxExecuteCost)) {
+		query["MaxExecuteCost"] = request.MaxExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinExecuteCost)) {
+		query["MinExecuteCost"] = request.MinExecuteCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationClass)) {
+		query["OperationClass"] = request.OperationClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryKeywords)) {
+		query["QueryKeywords"] = request.QueryKeywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIP)) {
+		query["SourceIP"] = request.SourceIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQLLogs"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQLLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](~~453722~~) operation.
+ *
+ * @param request DescribeSQLLogsRequest
+ * @return DescribeSQLLogsResponse
+ */
+func (client *Client) DescribeSQLLogs(request *DescribeSQLLogsRequest) (_result *DescribeSQLLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQLLogsResponse{}
+	_body, _err := client.DescribeSQLLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21457,6 +24222,58 @@ func (client *Client) GrantCollection(request *GrantCollectionRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) HandleActiveSQLRecordWithOptions(request *HandleActiveSQLRecordRequest, runtime *util.RuntimeOptions) (_result *HandleActiveSQLRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pids)) {
+		query["Pids"] = request.Pids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HandleActiveSQLRecord"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HandleActiveSQLRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HandleActiveSQLRecord(request *HandleActiveSQLRecordRequest) (_result *HandleActiveSQLRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &HandleActiveSQLRecordResponse{}
+	_body, _err := client.HandleActiveSQLRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseRequest, runtime *util.RuntimeOptions) (_result *InitVectorDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21570,6 +24387,130 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCollectionsResponse{}
 	_body, _err := client.ListCollectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDocumentCollectionsWithOptions(request *ListDocumentCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentCollectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocumentCollections"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocumentCollectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDocumentCollections(request *ListDocumentCollectionsRequest) (_result *ListDocumentCollectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocumentCollectionsResponse{}
+	_body, _err := client.ListDocumentCollectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, runtime *util.RuntimeOptions) (_result *ListDocumentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDocuments"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *ListDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDocumentsResponse{}
+	_body, _err := client.ListDocumentsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22689,6 +25630,90 @@ func (client *Client) QueryCollectionData(request *QueryCollectionDataRequest) (
 	return _result, _err
 }
 
+func (client *Client) QueryContentWithOptions(request *QueryContentRequest, runtime *util.RuntimeOptions) (_result *QueryContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopK)) {
+		query["TopK"] = request.TopK
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseFullTextRetrieval)) {
+		query["UseFullTextRetrieval"] = request.UseFullTextRetrieval
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryContent"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryContent(request *QueryContentRequest) (_result *QueryContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryContentResponse{}
+	_body, _err := client.QueryContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RebalanceDBInstanceWithOptions(request *RebalanceDBInstanceRequest, runtime *util.RuntimeOptions) (_result *RebalanceDBInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22834,6 +25859,54 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountPasswordResponse{}
 	_body, _err := client.ResetAccountPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResetIMVMonitorDataWithOptions(request *ResetIMVMonitorDataRequest, runtime *util.RuntimeOptions) (_result *ResetIMVMonitorDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResetIMVMonitorData"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResetIMVMonitorDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResetIMVMonitorData(request *ResetIMVMonitorDataRequest) (_result *ResetIMVMonitorDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResetIMVMonitorDataResponse{}
+	_body, _err := client.ResetIMVMonitorDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23739,6 +26812,86 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBVersionResponse{}
 	_body, _err := client.UpgradeDBVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runtime *util.RuntimeOptions) (_result *UpsertChunksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpsertChunksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TextChunks)) {
+		request.TextChunksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TextChunks, tea.String("TextChunks"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collection)) {
+		query["Collection"] = request.Collection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacePassword)) {
+		query["NamespacePassword"] = request.NamespacePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TextChunksShrink)) {
+		body["TextChunks"] = request.TextChunksShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpsertChunks"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpsertChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpsertChunks(request *UpsertChunksRequest) (_result *UpsertChunksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpsertChunksResponse{}
+	_body, _err := client.UpsertChunksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
