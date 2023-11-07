@@ -560,6 +560,99 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	UserClientIp       *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetLang(v string) *ChangeResourceGroupRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetUserClientIp(v string) *ChangeResourceGroupRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetResult(v string) *ChangeResourceGroupResponseBody {
+	s.Result = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CheckDomainRequest struct {
 	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	FeeCommand  *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
@@ -1540,6 +1633,141 @@ func (s *DeleteRegistrantProfileResponse) SetBody(v *DeleteRegistrantProfileResp
 	return s
 }
 
+type DomainSpecialBizCancelRequest struct {
+	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s DomainSpecialBizCancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainSpecialBizCancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DomainSpecialBizCancelRequest) SetBizId(v int64) *DomainSpecialBizCancelRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelRequest) SetUserClientIp(v string) *DomainSpecialBizCancelRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type DomainSpecialBizCancelResponseBody struct {
+	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         interface{}   `json:"Module,omitempty" xml:"Module,omitempty"`
+	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro        *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s DomainSpecialBizCancelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainSpecialBizCancelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetAllowRetry(v bool) *DomainSpecialBizCancelResponseBody {
+	s.AllowRetry = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetAppName(v string) *DomainSpecialBizCancelResponseBody {
+	s.AppName = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetDynamicCode(v string) *DomainSpecialBizCancelResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetDynamicMessage(v string) *DomainSpecialBizCancelResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetErrorArgs(v []interface{}) *DomainSpecialBizCancelResponseBody {
+	s.ErrorArgs = v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetErrorCode(v string) *DomainSpecialBizCancelResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetErrorMsg(v string) *DomainSpecialBizCancelResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetHttpStatusCode(v int32) *DomainSpecialBizCancelResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetModule(v interface{}) *DomainSpecialBizCancelResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetRequestId(v string) *DomainSpecialBizCancelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetSuccess(v bool) *DomainSpecialBizCancelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponseBody) SetSynchro(v bool) *DomainSpecialBizCancelResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type DomainSpecialBizCancelResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DomainSpecialBizCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DomainSpecialBizCancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DomainSpecialBizCancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DomainSpecialBizCancelResponse) SetHeaders(v map[string]*string) *DomainSpecialBizCancelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponse) SetStatusCode(v int32) *DomainSpecialBizCancelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DomainSpecialBizCancelResponse) SetBody(v *DomainSpecialBizCancelResponseBody) *DomainSpecialBizCancelResponse {
+	s.Body = v
+	return s
+}
+
 type EmailVerifiedRequest struct {
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -1770,9 +1998,10 @@ type GetOperationOssUploadPolicyResponseBody struct {
 	EncodedPolicy *string `json:"EncodedPolicy,omitempty" xml:"EncodedPolicy,omitempty"`
 	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	FileDir       *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
-	Host          *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// OSS Endpoint。
+	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
 func (s GetOperationOssUploadPolicyResponseBody) String() string {
@@ -2183,6 +2412,8 @@ type ListServerLockRequest struct {
 	EndStartDate     *int64  `json:"EndStartDate,omitempty" xml:"EndStartDate,omitempty"`
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	LockProductId    *string `json:"LockProductId,omitempty" xml:"LockProductId,omitempty"`
+	OrderBy          *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	OrderByType      *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
 	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ServerLockStatus *int32  `json:"ServerLockStatus,omitempty" xml:"ServerLockStatus,omitempty"`
@@ -2225,6 +2456,16 @@ func (s *ListServerLockRequest) SetLang(v string) *ListServerLockRequest {
 
 func (s *ListServerLockRequest) SetLockProductId(v string) *ListServerLockRequest {
 	s.LockProductId = &v
+	return s
+}
+
+func (s *ListServerLockRequest) SetOrderBy(v string) *ListServerLockRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListServerLockRequest) SetOrderByType(v string) *ListServerLockRequest {
+	s.OrderByType = &v
 	return s
 }
 
@@ -3130,32 +3371,34 @@ func (s *PollTaskResultResponse) SetBody(v *PollTaskResultResponseBody) *PollTas
 }
 
 type QueryAdvancedDomainListRequest struct {
-	DomainGroupId         *int64  `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainNameSort        *bool   `json:"DomainNameSort,omitempty" xml:"DomainNameSort,omitempty"`
-	DomainStatus          *int32  `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	EndExpirationDate     *int64  `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndLength             *int32  `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
-	EndRegistrationDate   *int64  `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Excluded              *string `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
-	ExcludedPrefix        *bool   `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
-	ExcludedSuffix        *bool   `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
-	ExpirationDateSort    *bool   `json:"ExpirationDateSort,omitempty" xml:"ExpirationDateSort,omitempty"`
-	Form                  *int32  `json:"Form,omitempty" xml:"Form,omitempty"`
-	KeyWord               *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	KeyWordPrefix         *bool   `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
-	KeyWordSuffix         *bool   `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum               *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	ProductDomainTypeSort *bool   `json:"ProductDomainTypeSort,omitempty" xml:"ProductDomainTypeSort,omitempty"`
-	RegistrationDateSort  *bool   `json:"RegistrationDateSort,omitempty" xml:"RegistrationDateSort,omitempty"`
-	StartExpirationDate   *int64  `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartLength           *int32  `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
-	StartRegistrationDate *int64  `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	Suffixs               *string `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
-	TradeType             *int32  `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainGroupId         *int64                               `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainNameSort        *bool                                `json:"DomainNameSort,omitempty" xml:"DomainNameSort,omitempty"`
+	DomainStatus          *int32                               `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	EndExpirationDate     *int64                               `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	EndLength             *int32                               `json:"EndLength,omitempty" xml:"EndLength,omitempty"`
+	EndRegistrationDate   *int64                               `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	Excluded              *string                              `json:"Excluded,omitempty" xml:"Excluded,omitempty"`
+	ExcludedPrefix        *bool                                `json:"ExcludedPrefix,omitempty" xml:"ExcludedPrefix,omitempty"`
+	ExcludedSuffix        *bool                                `json:"ExcludedSuffix,omitempty" xml:"ExcludedSuffix,omitempty"`
+	ExpirationDateSort    *bool                                `json:"ExpirationDateSort,omitempty" xml:"ExpirationDateSort,omitempty"`
+	Form                  *int32                               `json:"Form,omitempty" xml:"Form,omitempty"`
+	KeyWord               *string                              `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	KeyWordPrefix         *bool                                `json:"KeyWordPrefix,omitempty" xml:"KeyWordPrefix,omitempty"`
+	KeyWordSuffix         *bool                                `json:"KeyWordSuffix,omitempty" xml:"KeyWordSuffix,omitempty"`
+	Lang                  *string                              `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNum               *int32                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize              *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductDomainType     *string                              `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	ProductDomainTypeSort *bool                                `json:"ProductDomainTypeSort,omitempty" xml:"ProductDomainTypeSort,omitempty"`
+	RegistrationDateSort  *bool                                `json:"RegistrationDateSort,omitempty" xml:"RegistrationDateSort,omitempty"`
+	ResourceGroupId       *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartExpirationDate   *int64                               `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	StartLength           *int32                               `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
+	StartRegistrationDate *int64                               `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	Suffixs               *string                              `json:"Suffixs,omitempty" xml:"Suffixs,omitempty"`
+	Tag                   []*QueryAdvancedDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TradeType             *int32                               `json:"TradeType,omitempty" xml:"TradeType,omitempty"`
+	UserClientIp          *string                              `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryAdvancedDomainListRequest) String() string {
@@ -3266,6 +3509,11 @@ func (s *QueryAdvancedDomainListRequest) SetRegistrationDateSort(v bool) *QueryA
 	return s
 }
 
+func (s *QueryAdvancedDomainListRequest) SetResourceGroupId(v string) *QueryAdvancedDomainListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *QueryAdvancedDomainListRequest) SetStartExpirationDate(v int64) *QueryAdvancedDomainListRequest {
 	s.StartExpirationDate = &v
 	return s
@@ -3286,6 +3534,11 @@ func (s *QueryAdvancedDomainListRequest) SetSuffixs(v string) *QueryAdvancedDoma
 	return s
 }
 
+func (s *QueryAdvancedDomainListRequest) SetTag(v []*QueryAdvancedDomainListRequestTag) *QueryAdvancedDomainListRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *QueryAdvancedDomainListRequest) SetTradeType(v int32) *QueryAdvancedDomainListRequest {
 	s.TradeType = &v
 	return s
@@ -3293,6 +3546,29 @@ func (s *QueryAdvancedDomainListRequest) SetTradeType(v int32) *QueryAdvancedDom
 
 func (s *QueryAdvancedDomainListRequest) SetUserClientIp(v string) *QueryAdvancedDomainListRequest {
 	s.UserClientIp = &v
+	return s
+}
+
+type QueryAdvancedDomainListRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryAdvancedDomainListRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvancedDomainListRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvancedDomainListRequestTag) SetKey(v string) *QueryAdvancedDomainListRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryAdvancedDomainListRequestTag) SetValue(v string) *QueryAdvancedDomainListRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3393,6 +3669,8 @@ type QueryAdvancedDomainListResponseBodyDataDomain struct {
 	RegistrationDate         *string                                               `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
 	RegistrationDateLong     *int64                                                `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	Remark                   *string                                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId          *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                      *QueryAdvancedDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	ZhRegistrantOrganization *string                                               `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
@@ -3504,6 +3782,16 @@ func (s *QueryAdvancedDomainListResponseBodyDataDomain) SetRemark(v string) *Que
 	return s
 }
 
+func (s *QueryAdvancedDomainListResponseBodyDataDomain) SetResourceGroupId(v string) *QueryAdvancedDomainListResponseBodyDataDomain {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryAdvancedDomainListResponseBodyDataDomain) SetTag(v *QueryAdvancedDomainListResponseBodyDataDomainTag) *QueryAdvancedDomainListResponseBodyDataDomain {
+	s.Tag = v
+	return s
+}
+
 func (s *QueryAdvancedDomainListResponseBodyDataDomain) SetZhRegistrantOrganization(v string) *QueryAdvancedDomainListResponseBodyDataDomain {
 	s.ZhRegistrantOrganization = &v
 	return s
@@ -3523,6 +3811,46 @@ func (s QueryAdvancedDomainListResponseBodyDataDomainDnsList) GoString() string 
 
 func (s *QueryAdvancedDomainListResponseBodyDataDomainDnsList) SetDns(v []*string) *QueryAdvancedDomainListResponseBodyDataDomainDnsList {
 	s.Dns = v
+	return s
+}
+
+type QueryAdvancedDomainListResponseBodyDataDomainTag struct {
+	Tag []*QueryAdvancedDomainListResponseBodyDataDomainTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s QueryAdvancedDomainListResponseBodyDataDomainTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvancedDomainListResponseBodyDataDomainTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvancedDomainListResponseBodyDataDomainTag) SetTag(v []*QueryAdvancedDomainListResponseBodyDataDomainTagTag) *QueryAdvancedDomainListResponseBodyDataDomainTag {
+	s.Tag = v
+	return s
+}
+
+type QueryAdvancedDomainListResponseBodyDataDomainTagTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryAdvancedDomainListResponseBodyDataDomainTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAdvancedDomainListResponseBodyDataDomainTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAdvancedDomainListResponseBodyDataDomainTagTag) SetKey(v string) *QueryAdvancedDomainListResponseBodyDataDomainTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryAdvancedDomainListResponseBodyDataDomainTagTag) SetValue(v string) *QueryAdvancedDomainListResponseBodyDataDomainTagTag {
+	s.Value = &v
 	return s
 }
 
@@ -4509,6 +4837,8 @@ type QueryDomainByDomainNameResponseBody struct {
 	RegistrationDateLong         *int64                                      `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	Remark                       *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	RequestId                    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId              *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                          *QueryDomainByDomainNameResponseBodyTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	TransferOutStatus            *string                                     `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
 	TransferProhibitionLock      *string                                     `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
 	UpdateProhibitionLock        *string                                     `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
@@ -4655,6 +4985,16 @@ func (s *QueryDomainByDomainNameResponseBody) SetRequestId(v string) *QueryDomai
 	return s
 }
 
+func (s *QueryDomainByDomainNameResponseBody) SetResourceGroupId(v string) *QueryDomainByDomainNameResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryDomainByDomainNameResponseBody) SetTag(v *QueryDomainByDomainNameResponseBodyTag) *QueryDomainByDomainNameResponseBody {
+	s.Tag = v
+	return s
+}
+
 func (s *QueryDomainByDomainNameResponseBody) SetTransferOutStatus(v string) *QueryDomainByDomainNameResponseBody {
 	s.TransferOutStatus = &v
 	return s
@@ -4699,6 +5039,46 @@ func (s QueryDomainByDomainNameResponseBodyDnsList) GoString() string {
 
 func (s *QueryDomainByDomainNameResponseBodyDnsList) SetDns(v []*string) *QueryDomainByDomainNameResponseBodyDnsList {
 	s.Dns = v
+	return s
+}
+
+type QueryDomainByDomainNameResponseBodyTag struct {
+	Tag []*QueryDomainByDomainNameResponseBodyTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s QueryDomainByDomainNameResponseBodyTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainByDomainNameResponseBodyTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainByDomainNameResponseBodyTag) SetTag(v []*QueryDomainByDomainNameResponseBodyTagTag) *QueryDomainByDomainNameResponseBodyTag {
+	s.Tag = v
+	return s
+}
+
+type QueryDomainByDomainNameResponseBodyTagTag struct {
+	Key  *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Vaue *string `json:"Vaue,omitempty" xml:"Vaue,omitempty"`
+}
+
+func (s QueryDomainByDomainNameResponseBodyTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainByDomainNameResponseBodyTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainByDomainNameResponseBodyTagTag) SetKey(v string) *QueryDomainByDomainNameResponseBodyTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryDomainByDomainNameResponseBodyTagTag) SetVaue(v string) *QueryDomainByDomainNameResponseBodyTagTag {
+	s.Vaue = &v
 	return s
 }
 
@@ -4787,6 +5167,8 @@ type QueryDomainByInstanceIdResponseBody struct {
 	RegistrationDateLong         *int64                                      `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	Remark                       *string                                     `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	RequestId                    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId              *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                          *QueryDomainByInstanceIdResponseBodyTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	TransferOutStatus            *string                                     `json:"TransferOutStatus,omitempty" xml:"TransferOutStatus,omitempty"`
 	TransferProhibitionLock      *string                                     `json:"TransferProhibitionLock,omitempty" xml:"TransferProhibitionLock,omitempty"`
 	UpdateProhibitionLock        *string                                     `json:"UpdateProhibitionLock,omitempty" xml:"UpdateProhibitionLock,omitempty"`
@@ -4933,6 +5315,16 @@ func (s *QueryDomainByInstanceIdResponseBody) SetRequestId(v string) *QueryDomai
 	return s
 }
 
+func (s *QueryDomainByInstanceIdResponseBody) SetResourceGroupId(v string) *QueryDomainByInstanceIdResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryDomainByInstanceIdResponseBody) SetTag(v *QueryDomainByInstanceIdResponseBodyTag) *QueryDomainByInstanceIdResponseBody {
+	s.Tag = v
+	return s
+}
+
 func (s *QueryDomainByInstanceIdResponseBody) SetTransferOutStatus(v string) *QueryDomainByInstanceIdResponseBody {
 	s.TransferOutStatus = &v
 	return s
@@ -4977,6 +5369,46 @@ func (s QueryDomainByInstanceIdResponseBodyDnsList) GoString() string {
 
 func (s *QueryDomainByInstanceIdResponseBodyDnsList) SetDns(v []*string) *QueryDomainByInstanceIdResponseBodyDnsList {
 	s.Dns = v
+	return s
+}
+
+type QueryDomainByInstanceIdResponseBodyTag struct {
+	Tag []*QueryDomainByInstanceIdResponseBodyTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s QueryDomainByInstanceIdResponseBodyTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainByInstanceIdResponseBodyTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainByInstanceIdResponseBodyTag) SetTag(v []*QueryDomainByInstanceIdResponseBodyTagTag) *QueryDomainByInstanceIdResponseBodyTag {
+	s.Tag = v
+	return s
+}
+
+type QueryDomainByInstanceIdResponseBodyTagTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryDomainByInstanceIdResponseBodyTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainByInstanceIdResponseBodyTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainByInstanceIdResponseBodyTagTag) SetKey(v string) *QueryDomainByInstanceIdResponseBodyTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryDomainByInstanceIdResponseBodyTagTag) SetValue(v string) *QueryDomainByInstanceIdResponseBodyTagTag {
+	s.Value = &v
 	return s
 }
 
@@ -5167,20 +5599,22 @@ func (s *QueryDomainGroupListResponse) SetBody(v *QueryDomainGroupListResponseBo
 }
 
 type QueryDomainListRequest struct {
-	DomainGroupId         *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndExpirationDate     *int64  `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndRegistrationDate   *int64  `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OrderByType           *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
-	OrderKeyType          *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
-	PageNum               *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	QueryType             *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	StartExpirationDate   *int64  `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartRegistrationDate *int64  `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	DomainGroupId         *string                      `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainName            *string                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndExpirationDate     *int64                       `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	EndRegistrationDate   *int64                       `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	Lang                  *string                      `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OrderByType           *string                      `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
+	OrderKeyType          *string                      `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
+	PageNum               *int32                       `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize              *int32                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductDomainType     *string                      `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	QueryType             *string                      `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResourceGroupId       *string                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StartExpirationDate   *int64                       `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	StartRegistrationDate *int64                       `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	Tag                   []*QueryDomainListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserClientIp          *string                      `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryDomainListRequest) String() string {
@@ -5246,6 +5680,11 @@ func (s *QueryDomainListRequest) SetQueryType(v string) *QueryDomainListRequest 
 	return s
 }
 
+func (s *QueryDomainListRequest) SetResourceGroupId(v string) *QueryDomainListRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *QueryDomainListRequest) SetStartExpirationDate(v int64) *QueryDomainListRequest {
 	s.StartExpirationDate = &v
 	return s
@@ -5256,8 +5695,36 @@ func (s *QueryDomainListRequest) SetStartRegistrationDate(v int64) *QueryDomainL
 	return s
 }
 
+func (s *QueryDomainListRequest) SetTag(v []*QueryDomainListRequestTag) *QueryDomainListRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *QueryDomainListRequest) SetUserClientIp(v string) *QueryDomainListRequest {
 	s.UserClientIp = &v
+	return s
+}
+
+type QueryDomainListRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryDomainListRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainListRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainListRequestTag) SetKey(v string) *QueryDomainListRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryDomainListRequestTag) SetValue(v string) *QueryDomainListRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5338,23 +5805,25 @@ func (s *QueryDomainListResponseBodyData) SetDomain(v []*QueryDomainListResponse
 }
 
 type QueryDomainListResponseBodyDataDomain struct {
-	DomainAuditStatus      *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	DomainGroupId          *string `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
-	DomainGroupName        *string `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
-	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainStatus           *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType             *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	ExpirationCurrDateDiff *int32  `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate         *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong     *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus   *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                *bool   `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	ProductId              *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegistrantType         *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrationDate       *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong   *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                 *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	DomainAuditStatus      *string                                   `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	DomainGroupId          *string                                   `json:"DomainGroupId,omitempty" xml:"DomainGroupId,omitempty"`
+	DomainGroupName        *string                                   `json:"DomainGroupName,omitempty" xml:"DomainGroupName,omitempty"`
+	DomainName             *string                                   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainStatus           *string                                   `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	DomainType             *string                                   `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	ExpirationCurrDateDiff *int32                                    `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	ExpirationDate         *string                                   `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	ExpirationDateLong     *int64                                    `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	ExpirationDateStatus   *string                                   `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	InstanceId             *string                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Premium                *bool                                     `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	ProductId              *string                                   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegistrantType         *string                                   `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	RegistrationDate       *string                                   `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	RegistrationDateLong   *int64                                    `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark                 *string                                   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId        *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                    *QueryDomainListResponseBodyDataDomainTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
 func (s QueryDomainListResponseBodyDataDomain) String() string {
@@ -5447,6 +5916,56 @@ func (s *QueryDomainListResponseBodyDataDomain) SetRegistrationDateLong(v int64)
 
 func (s *QueryDomainListResponseBodyDataDomain) SetRemark(v string) *QueryDomainListResponseBodyDataDomain {
 	s.Remark = &v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetResourceGroupId(v string) *QueryDomainListResponseBodyDataDomain {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomain) SetTag(v *QueryDomainListResponseBodyDataDomainTag) *QueryDomainListResponseBodyDataDomain {
+	s.Tag = v
+	return s
+}
+
+type QueryDomainListResponseBodyDataDomainTag struct {
+	Tag []*QueryDomainListResponseBodyDataDomainTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s QueryDomainListResponseBodyDataDomainTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainListResponseBodyDataDomainTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainListResponseBodyDataDomainTag) SetTag(v []*QueryDomainListResponseBodyDataDomainTagTag) *QueryDomainListResponseBodyDataDomainTag {
+	s.Tag = v
+	return s
+}
+
+type QueryDomainListResponseBodyDataDomainTagTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryDomainListResponseBodyDataDomainTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainListResponseBodyDataDomainTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainListResponseBodyDataDomainTagTag) SetKey(v string) *QueryDomainListResponseBodyDataDomainTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryDomainListResponseBodyDataDomainTagTag) SetValue(v string) *QueryDomainListResponseBodyDataDomainTagTag {
+	s.Value = &v
 	return s
 }
 
@@ -5598,6 +6117,1031 @@ func (s *QueryDomainRealNameVerificationInfoResponse) SetStatusCode(v int32) *Qu
 }
 
 func (s *QueryDomainRealNameVerificationInfoResponse) SetBody(v *QueryDomainRealNameVerificationInfoResponseBody) *QueryDomainRealNameVerificationInfoResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDomainSpecialBizDetailRequest struct {
+	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailRequest) SetBizId(v int64) *QueryDomainSpecialBizDetailRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailRequest) SetUserClientIp(v string) *QueryDomainSpecialBizDetailRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponseBody struct {
+	AllowRetry     *bool                                          `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	AppName        *string                                        `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DynamicCode    *string                                        `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                        `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorArgs      []interface{}                                  `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	ErrorCode      *string                                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg       *string                                        `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         *QueryDomainSpecialBizDetailResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro        *bool                                          `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetAllowRetry(v bool) *QueryDomainSpecialBizDetailResponseBody {
+	s.AllowRetry = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetAppName(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetDynamicCode(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetDynamicMessage(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetErrorArgs(v []interface{}) *QueryDomainSpecialBizDetailResponseBody {
+	s.ErrorArgs = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetErrorCode(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetErrorMsg(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetHttpStatusCode(v int32) *QueryDomainSpecialBizDetailResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetModule(v *QueryDomainSpecialBizDetailResponseBodyModule) *QueryDomainSpecialBizDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetRequestId(v string) *QueryDomainSpecialBizDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetSuccess(v bool) *QueryDomainSpecialBizDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBody) SetSynchro(v bool) *QueryDomainSpecialBizDetailResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponseBodyModule struct {
+	AuditMsg                    *string                                                                     `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
+	BizName                     *string                                                                     `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	BizNo                       *string                                                                     `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
+	BizStatus                   *string                                                                     `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	BizType                     *string                                                                     `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CreateTime                  *int64                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName                  *string                                                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainSpecialBizContact     *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact       `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	DomainSpecialBizCredentials []*QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials `json:"DomainSpecialBizCredentials,omitempty" xml:"DomainSpecialBizCredentials,omitempty" type:"Repeated"`
+	DomainSpecialOrderResult    *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult      `json:"DomainSpecialOrderResult,omitempty" xml:"DomainSpecialOrderResult,omitempty" type:"Struct"`
+	GmtCreate                   *string                                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                 *string                                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                          *int64                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	OrderId                     *string                                                                     `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ProductId                   *string                                                                     `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	SaleId                      *string                                                                     `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	Status                      *int32                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDesc                  *string                                                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	UpdateTime                  *int64                                                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId                      *string                                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetAuditMsg(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.AuditMsg = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetBizName(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.BizName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetBizNo(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.BizNo = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetBizStatus(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.BizStatus = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetBizType(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetCreateTime(v int64) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetDomainName(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetDomainSpecialBizContact(v *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.DomainSpecialBizContact = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetDomainSpecialBizCredentials(v []*QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.DomainSpecialBizCredentials = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetDomainSpecialOrderResult(v *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.DomainSpecialOrderResult = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetGmtCreate(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetGmtModified(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetId(v int64) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetOrderId(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetProductId(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.ProductId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetSaleId(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.SaleId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetStatus(v int32) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetStatusDesc(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetUpdateTime(v int64) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModule) SetUserId(v string) *QueryDomainSpecialBizDetailResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact struct {
+	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CCity        *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
+	CCompany     *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
+	CCountry     *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
+	CName        *string `json:"CName,omitempty" xml:"CName,omitempty"`
+	CProvince    *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
+	CVenu        *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
+	ECity        *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
+	ECompany     *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
+	EName        *string `json:"EName,omitempty" xml:"EName,omitempty"`
+	EProvince    *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
+	EVenu        *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	FaxArea      *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
+	FaxExt       *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
+	FaxMain      *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Postalcode   *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
+	RegType      *int32  `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
+	TelArea      *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	TelExt       *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	TelMain      *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetBizId(v int64) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCCity(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CCity = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCCompany(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CCompany = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCCountry(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CCountry = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCName(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCProvince(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CProvince = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetCVenu(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.CVenu = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetECity(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.ECity = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetECompany(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.ECompany = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetEName(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.EName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetEProvince(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.EProvince = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetEVenu(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.EVenu = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetEmail(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.Email = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetExtend(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.Extend = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetFaxArea(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.FaxArea = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetFaxExt(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.FaxExt = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetFaxMain(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.FaxMain = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetMobile(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.Mobile = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetPostalcode(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.Postalcode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetRegType(v int32) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.RegType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetRegistrantId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.RegistrantId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetTelArea(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.TelArea = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetTelExt(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.TelExt = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetTelMain(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.TelMain = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact) SetVspContactId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact {
+	s.VspContactId = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials struct {
+	BizId          *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	HolderCert     *int32  `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
+	SaleId         *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetBizId(v int64) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetCredentialNo(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialNo = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetCredentialType(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetCredentialUrl(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialUrl = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetDomainName(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetHolderCert(v int32) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.HolderCert = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials) SetSaleId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials {
+	s.SaleId = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult struct {
+	ActionType    *string  `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	OrderAmount   *float64 `json:"OrderAmount,omitempty" xml:"OrderAmount,omitempty"`
+	OrderCurrency *string  `json:"OrderCurrency,omitempty" xml:"OrderCurrency,omitempty"`
+	OrderId       *string  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderStatus   *string  `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	OrderTime     *string  `json:"OrderTime,omitempty" xml:"OrderTime,omitempty"`
+	OrderYear     *int32   `json:"OrderYear,omitempty" xml:"OrderYear,omitempty"`
+	SaleId        *string  `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	SubOrderId    *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetActionType(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.ActionType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderAmount(v float64) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderAmount = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderCurrency(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderCurrency = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderStatus(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderTime(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderTime = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetOrderYear(v int32) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.OrderYear = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetSaleId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.SaleId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult) SetSubOrderId(v string) *QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult {
+	s.SubOrderId = &v
+	return s
+}
+
+type QueryDomainSpecialBizDetailResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDomainSpecialBizDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDomainSpecialBizDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizDetailResponse) SetHeaders(v map[string]*string) *QueryDomainSpecialBizDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponse) SetStatusCode(v int32) *QueryDomainSpecialBizDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizDetailResponse) SetBody(v *QueryDomainSpecialBizDetailResponseBody) *QueryDomainSpecialBizDetailResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainRequest struct {
+	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainRequest) SetBizType(v string) *QueryDomainSpecialBizInfoByDomainRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainRequest) SetDomainName(v string) *QueryDomainSpecialBizInfoByDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainRequest) SetUserClientIp(v string) *QueryDomainSpecialBizInfoByDomainRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainResponseBody struct {
+	AllowRetry     *bool                                                `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	AppName        *string                                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DynamicCode    *string                                              `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string                                              `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorArgs      []interface{}                                        `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	ErrorCode      *string                                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg       *string                                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         *QueryDomainSpecialBizInfoByDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro        *bool                                                `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetAllowRetry(v bool) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.AllowRetry = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetAppName(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.AppName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetDynamicCode(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetDynamicMessage(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetErrorArgs(v []interface{}) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.ErrorArgs = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetErrorCode(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetErrorMsg(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetHttpStatusCode(v int32) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetModule(v *QueryDomainSpecialBizInfoByDomainResponseBodyModule) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetRequestId(v string) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetSuccess(v bool) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBody) SetSynchro(v bool) *QueryDomainSpecialBizInfoByDomainResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainResponseBodyModule struct {
+	AuditMsg                    *string                                                                           `json:"AuditMsg,omitempty" xml:"AuditMsg,omitempty"`
+	BizName                     *string                                                                           `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	BizNo                       *string                                                                           `json:"BizNo,omitempty" xml:"BizNo,omitempty"`
+	BizStatus                   *string                                                                           `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	BizType                     *string                                                                           `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	CreateTime                  *int64                                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DomainName                  *string                                                                           `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainSpecialBizContact     *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact       `json:"DomainSpecialBizContact,omitempty" xml:"DomainSpecialBizContact,omitempty" type:"Struct"`
+	DomainSpecialBizCredentials []*QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials `json:"DomainSpecialBizCredentials,omitempty" xml:"DomainSpecialBizCredentials,omitempty" type:"Repeated"`
+	GmtCreate                   *string                                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified                 *string                                                                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                          *int64                                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	OrderId                     *string                                                                           `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	ProductId                   *string                                                                           `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	SaleId                      *string                                                                           `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+	Status                      *int32                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDesc                  *string                                                                           `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	UpdateTime                  *int64                                                                            `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId                      *string                                                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetAuditMsg(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.AuditMsg = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetBizName(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.BizName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetBizNo(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.BizNo = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetBizStatus(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.BizStatus = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetBizType(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetCreateTime(v int64) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetDomainName(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetDomainSpecialBizContact(v *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.DomainSpecialBizContact = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetDomainSpecialBizCredentials(v []*QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.DomainSpecialBizCredentials = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetGmtCreate(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetGmtModified(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetId(v int64) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetOrderId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetProductId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.ProductId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetSaleId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.SaleId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetStatus(v int32) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetStatusDesc(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.StatusDesc = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetUpdateTime(v int64) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModule) SetUserId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact struct {
+	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CCity        *string `json:"CCity,omitempty" xml:"CCity,omitempty"`
+	CCompany     *string `json:"CCompany,omitempty" xml:"CCompany,omitempty"`
+	CCountry     *string `json:"CCountry,omitempty" xml:"CCountry,omitempty"`
+	CName        *string `json:"CName,omitempty" xml:"CName,omitempty"`
+	CProvince    *string `json:"CProvince,omitempty" xml:"CProvince,omitempty"`
+	CVenu        *string `json:"CVenu,omitempty" xml:"CVenu,omitempty"`
+	ECity        *string `json:"ECity,omitempty" xml:"ECity,omitempty"`
+	ECompany     *string `json:"ECompany,omitempty" xml:"ECompany,omitempty"`
+	EName        *string `json:"EName,omitempty" xml:"EName,omitempty"`
+	EProvince    *string `json:"EProvince,omitempty" xml:"EProvince,omitempty"`
+	EVenu        *string `json:"EVenu,omitempty" xml:"EVenu,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	FaxArea      *string `json:"FaxArea,omitempty" xml:"FaxArea,omitempty"`
+	FaxExt       *string `json:"FaxExt,omitempty" xml:"FaxExt,omitempty"`
+	FaxMain      *string `json:"FaxMain,omitempty" xml:"FaxMain,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Postalcode   *string `json:"Postalcode,omitempty" xml:"Postalcode,omitempty"`
+	RegType      *int32  `json:"RegType,omitempty" xml:"RegType,omitempty"`
+	RegistrantId *string `json:"RegistrantId,omitempty" xml:"RegistrantId,omitempty"`
+	TelArea      *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	TelExt       *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	TelMain      *string `json:"TelMain,omitempty" xml:"TelMain,omitempty"`
+	VspContactId *string `json:"VspContactId,omitempty" xml:"VspContactId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetBizId(v int64) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCCity(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CCity = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCCompany(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CCompany = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCCountry(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CCountry = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCName(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCProvince(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CProvince = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetCVenu(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.CVenu = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetECity(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.ECity = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetECompany(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.ECompany = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetEName(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.EName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetEProvince(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.EProvince = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetEVenu(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.EVenu = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetEmail(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.Email = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetExtend(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.Extend = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetFaxArea(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.FaxArea = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetFaxExt(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.FaxExt = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetFaxMain(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.FaxMain = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetMobile(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.Mobile = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetPostalcode(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.Postalcode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetRegType(v int32) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.RegType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetRegistrantId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.RegistrantId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetTelArea(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.TelArea = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetTelExt(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.TelExt = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetTelMain(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.TelMain = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact) SetVspContactId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact {
+	s.VspContactId = &v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials struct {
+	BizId          *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CredentialNo   *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	CredentialUrl  *string `json:"CredentialUrl,omitempty" xml:"CredentialUrl,omitempty"`
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	HolderCert     *int32  `json:"HolderCert,omitempty" xml:"HolderCert,omitempty"`
+	SaleId         *string `json:"SaleId,omitempty" xml:"SaleId,omitempty"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetBizId(v int64) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetCredentialNo(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialNo = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetCredentialType(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialType = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetCredentialUrl(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.CredentialUrl = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetDomainName(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetHolderCert(v int32) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.HolderCert = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials) SetSaleId(v string) *QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials {
+	s.SaleId = &v
+	return s
+}
+
+type QueryDomainSpecialBizInfoByDomainResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDomainSpecialBizInfoByDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDomainSpecialBizInfoByDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponse) SetHeaders(v map[string]*string) *QueryDomainSpecialBizInfoByDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponse) SetStatusCode(v int32) *QueryDomainSpecialBizInfoByDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDomainSpecialBizInfoByDomainResponse) SetBody(v *QueryDomainSpecialBizInfoByDomainResponseBody) *QueryDomainSpecialBizInfoByDomainResponse {
 	s.Body = v
 	return s
 }
@@ -7082,6 +8626,8 @@ type QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile stru
 	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
 	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialNo             *string `json:"CredentialNo,omitempty" xml:"CredentialNo,omitempty"`
+	CredentialType           *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
 	DefaultRegistrantProfile *bool   `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
 	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	EmailVerificationStatus  *int32  `json:"EmailVerificationStatus,omitempty" xml:"EmailVerificationStatus,omitempty"`
@@ -7129,6 +8675,16 @@ func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile)
 
 func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile) SetCreateTime(v string) *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile) SetCredentialNo(v string) *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile {
+	s.CredentialNo = &v
+	return s
+}
+
+func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile) SetCredentialType(v string) *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile {
+	s.CredentialType = &v
 	return s
 }
 
@@ -9741,6 +11297,87 @@ func (s *SaveBatchDomainRemarkResponse) SetBody(v *SaveBatchDomainRemarkResponse
 	return s
 }
 
+type SaveBatchTaskForApplyQuickTransferOutOpenlyRequest struct {
+	DomainNames  []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) SetDomainNames(v []*string) *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest {
+	s.DomainNames = v
+	return s
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) SetLang(v string) *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) SetUserClientIp(v string) *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) SetRequestId(v string) *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) SetTaskNo(v string) *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveBatchTaskForApplyQuickTransferOutOpenlyResponse struct {
+	Headers    map[string]*string                                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) SetHeaders(v map[string]*string) *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) SetStatusCode(v int32) *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse) SetBody(v *SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody) *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse {
+	s.Body = v
+	return s
+}
+
 type SaveBatchTaskForCreatingOrderActivateRequest struct {
 	CouponNo           *string                                                           `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
 	Lang               *string                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -9811,6 +11448,7 @@ type SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam struct {
 	RegistrantOrganization    *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
 	RegistrantProfileId       *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	RegistrantType            *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SubscriptionDuration      *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
 	TelArea                   *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
 	TelExt                    *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
@@ -9908,6 +11546,11 @@ func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetRegi
 
 func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetRegistrantType(v string) *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam {
 	s.RegistrantType = &v
+	return s
+}
+
+func (s *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam) SetResourceGroupId(v string) *SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10498,6 +12141,116 @@ func (s *SaveBatchTaskForDomainNameProxyServiceResponse) SetStatusCode(v int32) 
 }
 
 func (s *SaveBatchTaskForDomainNameProxyServiceResponse) SetBody(v *SaveBatchTaskForDomainNameProxyServiceResponseBody) *SaveBatchTaskForDomainNameProxyServiceResponse {
+	s.Body = v
+	return s
+}
+
+type SaveBatchTaskForGenerateDomainCertificateRequest struct {
+	DomainNames  []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
+	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateRequest) SetDomainNames(v []*string) *SaveBatchTaskForGenerateDomainCertificateRequest {
+	s.DomainNames = v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateRequest) SetLang(v string) *SaveBatchTaskForGenerateDomainCertificateRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateRequest) SetUserClientIp(v string) *SaveBatchTaskForGenerateDomainCertificateRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveBatchTaskForGenerateDomainCertificateShrinkRequest struct {
+	DomainNamesShrink *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	Lang              *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp      *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateShrinkRequest) SetDomainNamesShrink(v string) *SaveBatchTaskForGenerateDomainCertificateShrinkRequest {
+	s.DomainNamesShrink = &v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateShrinkRequest) SetLang(v string) *SaveBatchTaskForGenerateDomainCertificateShrinkRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateShrinkRequest) SetUserClientIp(v string) *SaveBatchTaskForGenerateDomainCertificateShrinkRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveBatchTaskForGenerateDomainCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateResponseBody) SetRequestId(v string) *SaveBatchTaskForGenerateDomainCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateResponseBody) SetTaskNo(v string) *SaveBatchTaskForGenerateDomainCertificateResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveBatchTaskForGenerateDomainCertificateResponse struct {
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveBatchTaskForGenerateDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveBatchTaskForGenerateDomainCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateResponse) SetHeaders(v map[string]*string) *SaveBatchTaskForGenerateDomainCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateResponse) SetStatusCode(v int32) *SaveBatchTaskForGenerateDomainCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveBatchTaskForGenerateDomainCertificateResponse) SetBody(v *SaveBatchTaskForGenerateDomainCertificateResponseBody) *SaveBatchTaskForGenerateDomainCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -11785,6 +13538,87 @@ func (s *SaveSingleTaskForAddingDSRecordResponse) SetBody(v *SaveSingleTaskForAd
 	return s
 }
 
+type SaveSingleTaskForApplyQuickTransferOutOpenlyRequest struct {
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) SetDomainName(v string) *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) SetLang(v string) *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) SetUserClientIp(v string) *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) SetRequestId(v string) *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) SetTaskNo(v string) *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveSingleTaskForApplyQuickTransferOutOpenlyResponse struct {
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) SetHeaders(v map[string]*string) *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) SetStatusCode(v int32) *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse) SetBody(v *SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody) *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse {
+	s.Body = v
+	return s
+}
+
 type SaveSingleTaskForApprovingTransferOutRequest struct {
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -12228,6 +14062,7 @@ type SaveSingleTaskForCreatingOrderActivateRequest struct {
 	RegistrantOrganization    *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
 	RegistrantProfileId       *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	RegistrantType            *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	ResourceGroupId           *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SubscriptionDuration      *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
 	TelArea                   *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
 	TelExt                    *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
@@ -12343,6 +14178,11 @@ func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetRegistrantProfileId(v
 
 func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetRegistrantType(v string) *SaveSingleTaskForCreatingOrderActivateRequest {
 	s.RegistrantType = &v
+	return s
+}
+
+func (s *SaveSingleTaskForCreatingOrderActivateRequest) SetResourceGroupId(v string) *SaveSingleTaskForCreatingOrderActivateRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -13152,6 +14992,87 @@ func (s *SaveSingleTaskForDomainNameProxyServiceResponse) SetStatusCode(v int32)
 }
 
 func (s *SaveSingleTaskForDomainNameProxyServiceResponse) SetBody(v *SaveSingleTaskForDomainNameProxyServiceResponseBody) *SaveSingleTaskForDomainNameProxyServiceResponse {
+	s.Body = v
+	return s
+}
+
+type SaveSingleTaskForGenerateDomainCertificateRequest struct {
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateRequest) SetDomainName(v string) *SaveSingleTaskForGenerateDomainCertificateRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateRequest) SetLang(v string) *SaveSingleTaskForGenerateDomainCertificateRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateRequest) SetUserClientIp(v string) *SaveSingleTaskForGenerateDomainCertificateRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SaveSingleTaskForGenerateDomainCertificateResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateResponseBody) SetRequestId(v string) *SaveSingleTaskForGenerateDomainCertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateResponseBody) SetTaskNo(v string) *SaveSingleTaskForGenerateDomainCertificateResponseBody {
+	s.TaskNo = &v
+	return s
+}
+
+type SaveSingleTaskForGenerateDomainCertificateResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveSingleTaskForGenerateDomainCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveSingleTaskForGenerateDomainCertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateResponse) SetHeaders(v map[string]*string) *SaveSingleTaskForGenerateDomainCertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateResponse) SetStatusCode(v int32) *SaveSingleTaskForGenerateDomainCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveSingleTaskForGenerateDomainCertificateResponse) SetBody(v *SaveSingleTaskForGenerateDomainCertificateResponseBody) *SaveSingleTaskForGenerateDomainCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -14600,6 +16521,7 @@ type ScrollDomainListRequest struct {
 	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductDomainType     *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ScrollId              *string `json:"ScrollId,omitempty" xml:"ScrollId,omitempty"`
 	StartExpirationDate   *int64  `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
 	StartLength           *int32  `json:"StartLength,omitempty" xml:"StartLength,omitempty"`
@@ -14689,6 +16611,11 @@ func (s *ScrollDomainListRequest) SetPageSize(v int32) *ScrollDomainListRequest 
 
 func (s *ScrollDomainListRequest) SetProductDomainType(v string) *ScrollDomainListRequest {
 	s.ProductDomainType = &v
+	return s
+}
+
+func (s *ScrollDomainListRequest) SetResourceGroupId(v string) *ScrollDomainListRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -14806,6 +16733,8 @@ type ScrollDomainListResponseBodyDataDomain struct {
 	RegistrationDate         *string                                        `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
 	RegistrationDateLong     *int64                                         `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
 	Remark                   *string                                        `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceGroupId          *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag                      *ScrollDomainListResponseBodyDataDomainTag     `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 	ZhRegistrantOrganization *string                                        `json:"ZhRegistrantOrganization,omitempty" xml:"ZhRegistrantOrganization,omitempty"`
 }
 
@@ -14917,6 +16846,16 @@ func (s *ScrollDomainListResponseBodyDataDomain) SetRemark(v string) *ScrollDoma
 	return s
 }
 
+func (s *ScrollDomainListResponseBodyDataDomain) SetResourceGroupId(v string) *ScrollDomainListResponseBodyDataDomain {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ScrollDomainListResponseBodyDataDomain) SetTag(v *ScrollDomainListResponseBodyDataDomainTag) *ScrollDomainListResponseBodyDataDomain {
+	s.Tag = v
+	return s
+}
+
 func (s *ScrollDomainListResponseBodyDataDomain) SetZhRegistrantOrganization(v string) *ScrollDomainListResponseBodyDataDomain {
 	s.ZhRegistrantOrganization = &v
 	return s
@@ -14936,6 +16875,46 @@ func (s ScrollDomainListResponseBodyDataDomainDnsList) GoString() string {
 
 func (s *ScrollDomainListResponseBodyDataDomainDnsList) SetDns(v []*string) *ScrollDomainListResponseBodyDataDomainDnsList {
 	s.Dns = v
+	return s
+}
+
+type ScrollDomainListResponseBodyDataDomainTag struct {
+	Tag []*ScrollDomainListResponseBodyDataDomainTagTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ScrollDomainListResponseBodyDataDomainTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScrollDomainListResponseBodyDataDomainTag) GoString() string {
+	return s.String()
+}
+
+func (s *ScrollDomainListResponseBodyDataDomainTag) SetTag(v []*ScrollDomainListResponseBodyDataDomainTagTag) *ScrollDomainListResponseBodyDataDomainTag {
+	s.Tag = v
+	return s
+}
+
+type ScrollDomainListResponseBodyDataDomainTagTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ScrollDomainListResponseBodyDataDomainTagTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScrollDomainListResponseBodyDataDomainTagTag) GoString() string {
+	return s.String()
+}
+
+func (s *ScrollDomainListResponseBodyDataDomainTagTag) SetKey(v string) *ScrollDomainListResponseBodyDataDomainTagTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ScrollDomainListResponseBodyDataDomainTagTag) SetValue(v string) *ScrollDomainListResponseBodyDataDomainTagTag {
+	s.Value = &v
 	return s
 }
 
@@ -15033,6 +17012,228 @@ func (s *SetDefaultRegistrantProfileResponse) SetStatusCode(v int32) *SetDefault
 }
 
 func (s *SetDefaultRegistrantProfileResponse) SetBody(v *SetDefaultRegistrantProfileResponseBody) *SetDefaultRegistrantProfileResponse {
+	s.Body = v
+	return s
+}
+
+type SetupDomainAutoRenewRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Operation  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+}
+
+func (s SetupDomainAutoRenewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetupDomainAutoRenewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetupDomainAutoRenewRequest) SetInstanceId(v string) *SetupDomainAutoRenewRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SetupDomainAutoRenewRequest) SetOperation(v string) *SetupDomainAutoRenewRequest {
+	s.Operation = &v
+	return s
+}
+
+type SetupDomainAutoRenewResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SetupDomainAutoRenewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetupDomainAutoRenewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetupDomainAutoRenewResponseBody) SetRequestId(v string) *SetupDomainAutoRenewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetupDomainAutoRenewResponseBody) SetResult(v bool) *SetupDomainAutoRenewResponseBody {
+	s.Result = &v
+	return s
+}
+
+type SetupDomainAutoRenewResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetupDomainAutoRenewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetupDomainAutoRenewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetupDomainAutoRenewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetupDomainAutoRenewResponse) SetHeaders(v map[string]*string) *SetupDomainAutoRenewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetupDomainAutoRenewResponse) SetStatusCode(v int32) *SetupDomainAutoRenewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetupDomainAutoRenewResponse) SetBody(v *SetupDomainAutoRenewResponseBody) *SetupDomainAutoRenewResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDomainSpecialBizCredentialsRequest struct {
+	BizId        *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Credentials  *string `json:"Credentials,omitempty" xml:"Credentials,omitempty"`
+	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+}
+
+func (s SubmitDomainSpecialBizCredentialsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDomainSpecialBizCredentialsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDomainSpecialBizCredentialsRequest) SetBizId(v int64) *SubmitDomainSpecialBizCredentialsRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsRequest) SetCredentials(v string) *SubmitDomainSpecialBizCredentialsRequest {
+	s.Credentials = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsRequest) SetExtend(v string) *SubmitDomainSpecialBizCredentialsRequest {
+	s.Extend = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsRequest) SetUserClientIp(v string) *SubmitDomainSpecialBizCredentialsRequest {
+	s.UserClientIp = &v
+	return s
+}
+
+type SubmitDomainSpecialBizCredentialsResponseBody struct {
+	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
+	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         interface{}   `json:"Module,omitempty" xml:"Module,omitempty"`
+	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Synchro        *bool         `json:"Synchro,omitempty" xml:"Synchro,omitempty"`
+}
+
+func (s SubmitDomainSpecialBizCredentialsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDomainSpecialBizCredentialsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetAllowRetry(v bool) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.AllowRetry = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetAppName(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.AppName = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetDynamicCode(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetDynamicMessage(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetErrorArgs(v []interface{}) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.ErrorArgs = v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetErrorCode(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetErrorMsg(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetHttpStatusCode(v int32) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetModule(v interface{}) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetRequestId(v string) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetSuccess(v bool) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponseBody) SetSynchro(v bool) *SubmitDomainSpecialBizCredentialsResponseBody {
+	s.Synchro = &v
+	return s
+}
+
+type SubmitDomainSpecialBizCredentialsResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDomainSpecialBizCredentialsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitDomainSpecialBizCredentialsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDomainSpecialBizCredentialsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponse) SetHeaders(v map[string]*string) *SubmitDomainSpecialBizCredentialsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponse) SetStatusCode(v int32) *SubmitDomainSpecialBizCredentialsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDomainSpecialBizCredentialsResponse) SetBody(v *SubmitDomainSpecialBizCredentialsResponseBody) *SubmitDomainSpecialBizCredentialsResponse {
 	s.Body = v
 	return s
 }
@@ -16469,6 +18670,66 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 	return _result, _err
 }
 
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *util.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17009,6 +19270,56 @@ func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRe
 	return _result, _err
 }
 
+func (client *Client) DomainSpecialBizCancelWithOptions(request *DomainSpecialBizCancelRequest, runtime *util.RuntimeOptions) (_result *DomainSpecialBizCancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DomainSpecialBizCancel"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DomainSpecialBizCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DomainSpecialBizCancel(request *DomainSpecialBizCancelRequest) (_result *DomainSpecialBizCancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DomainSpecialBizCancelResponse{}
+	_body, _err := client.DomainSpecialBizCancelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, runtime *util.RuntimeOptions) (_result *EmailVerifiedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17311,6 +19622,14 @@ func (client *Client) ListServerLockWithOptions(request *ListServerLockRequest, 
 		query["LockProductId"] = request.LockProductId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByType)) {
+		query["OrderByType"] = request.OrderByType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["PageNum"] = request.PageNum
 	}
@@ -17575,6 +19894,10 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 		query["RegistrationDateSort"] = request.RegistrationDateSort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartExpirationDate)) {
 		query["StartExpirationDate"] = request.StartExpirationDate
 	}
@@ -17589,6 +19912,10 @@ func (client *Client) QueryAdvancedDomainListWithOptions(request *QueryAdvancedD
 
 	if !tea.BoolValue(util.IsUnset(request.Suffixs)) {
 		query["Suffixs"] = request.Suffixs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TradeType)) {
@@ -18171,12 +20498,20 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 		query["QueryType"] = request.QueryType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartExpirationDate)) {
 		query["StartExpirationDate"] = request.StartExpirationDate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartRegistrationDate)) {
 		query["StartRegistrationDate"] = request.StartRegistrationDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
@@ -18266,6 +20601,110 @@ func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainRealNameVerificationInfoResponse{}
 	_body, _err := client.QueryDomainRealNameVerificationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDomainSpecialBizDetailWithOptions(request *QueryDomainSpecialBizDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDomainSpecialBizDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDomainSpecialBizDetail"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDomainSpecialBizDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDomainSpecialBizDetail(request *QueryDomainSpecialBizDetailRequest) (_result *QueryDomainSpecialBizDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDomainSpecialBizDetailResponse{}
+	_body, _err := client.QueryDomainSpecialBizDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDomainSpecialBizInfoByDomainWithOptions(request *QueryDomainSpecialBizInfoByDomainRequest, runtime *util.RuntimeOptions) (_result *QueryDomainSpecialBizInfoByDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDomainSpecialBizInfoByDomain"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDomainSpecialBizInfoByDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDomainSpecialBizInfoByDomain(request *QueryDomainSpecialBizInfoByDomainRequest) (_result *QueryDomainSpecialBizInfoByDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDomainSpecialBizInfoByDomainResponse{}
+	_body, _err := client.QueryDomainSpecialBizInfoByDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19687,6 +22126,58 @@ func (client *Client) SaveBatchDomainRemark(request *SaveBatchDomainRemarkReques
 	return _result, _err
 }
 
+func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenlyWithOptions(request *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		query["DomainNames"] = request.DomainNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveBatchTaskForApplyQuickTransferOutOpenly"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveBatchTaskForApplyQuickTransferOutOpenlyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveBatchTaskForApplyQuickTransferOutOpenly(request *SaveBatchTaskForApplyQuickTransferOutOpenlyRequest) (_result *SaveBatchTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveBatchTaskForApplyQuickTransferOutOpenlyResponse{}
+	_body, _err := client.SaveBatchTaskForApplyQuickTransferOutOpenlyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *SaveBatchTaskForCreatingOrderActivateRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20008,6 +22499,64 @@ func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchT
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForDomainNameProxyServiceResponse{}
 	_body, _err := client.SaveBatchTaskForDomainNameProxyServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveBatchTaskForGenerateDomainCertificateWithOptions(tmpReq *SaveBatchTaskForGenerateDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForGenerateDomainCertificateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SaveBatchTaskForGenerateDomainCertificateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DomainNames)) {
+		request.DomainNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DomainNames, tea.String("DomainNames"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainNamesShrink)) {
+		query["DomainNames"] = request.DomainNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveBatchTaskForGenerateDomainCertificate"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveBatchTaskForGenerateDomainCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveBatchTaskForGenerateDomainCertificate(request *SaveBatchTaskForGenerateDomainCertificateRequest) (_result *SaveBatchTaskForGenerateDomainCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveBatchTaskForGenerateDomainCertificateResponse{}
+	_body, _err := client.SaveBatchTaskForGenerateDomainCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20815,6 +23364,58 @@ func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenlyWithOptions(request *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveSingleTaskForApplyQuickTransferOutOpenly"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveSingleTaskForApplyQuickTransferOutOpenlyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveSingleTaskForApplyQuickTransferOutOpenly(request *SaveSingleTaskForApplyQuickTransferOutOpenlyRequest) (_result *SaveSingleTaskForApplyQuickTransferOutOpenlyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveSingleTaskForApplyQuickTransferOutOpenlyResponse{}
+	_body, _err := client.SaveSingleTaskForApplyQuickTransferOutOpenlyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *SaveSingleTaskForApprovingTransferOutRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21167,6 +23768,10 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 
 	if !tea.BoolValue(util.IsUnset(request.RegistrantType)) {
 		query["RegistrantType"] = request.RegistrantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionDuration)) {
@@ -21696,6 +24301,58 @@ func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingl
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDomainNameProxyServiceResponse{}
 	_body, _err := client.SaveSingleTaskForDomainNameProxyServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveSingleTaskForGenerateDomainCertificateWithOptions(request *SaveSingleTaskForGenerateDomainCertificateRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForGenerateDomainCertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveSingleTaskForGenerateDomainCertificate"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveSingleTaskForGenerateDomainCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveSingleTaskForGenerateDomainCertificate(request *SaveSingleTaskForGenerateDomainCertificateRequest) (_result *SaveSingleTaskForGenerateDomainCertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveSingleTaskForGenerateDomainCertificateResponse{}
+	_body, _err := client.SaveSingleTaskForGenerateDomainCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22697,6 +25354,10 @@ func (client *Client) ScrollDomainListWithOptions(request *ScrollDomainListReque
 		query["ProductDomainType"] = request.ProductDomainType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScrollId)) {
 		query["ScrollId"] = request.ScrollId
 	}
@@ -22800,6 +25461,112 @@ func (client *Client) SetDefaultRegistrantProfile(request *SetDefaultRegistrantP
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDefaultRegistrantProfileResponse{}
 	_body, _err := client.SetDefaultRegistrantProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetupDomainAutoRenewWithOptions(request *SetupDomainAutoRenewRequest, runtime *util.RuntimeOptions) (_result *SetupDomainAutoRenewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		query["Operation"] = request.Operation
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetupDomainAutoRenew"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetupDomainAutoRenewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetupDomainAutoRenew(request *SetupDomainAutoRenewRequest) (_result *SetupDomainAutoRenewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetupDomainAutoRenewResponse{}
+	_body, _err := client.SetupDomainAutoRenewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDomainSpecialBizCredentialsWithOptions(request *SubmitDomainSpecialBizCredentialsRequest, runtime *util.RuntimeOptions) (_result *SubmitDomainSpecialBizCredentialsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserClientIp)) {
+		query["UserClientIp"] = request.UserClientIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		body["BizId"] = request.BizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Credentials)) {
+		body["Credentials"] = request.Credentials
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		body["Extend"] = request.Extend
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDomainSpecialBizCredentials"),
+		Version:     tea.String("2018-01-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDomainSpecialBizCredentialsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitDomainSpecialBizCredentials(request *SubmitDomainSpecialBizCredentialsRequest) (_result *SubmitDomainSpecialBizCredentialsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitDomainSpecialBizCredentialsResponse{}
+	_body, _err := client.SubmitDomainSpecialBizCredentialsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
