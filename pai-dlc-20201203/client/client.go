@@ -584,6 +584,47 @@ func (s *EnvVar) SetValue(v string) *EnvVar {
 	return s
 }
 
+type EventInfo struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PodId   *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid  *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s EventInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventInfo) GoString() string {
+	return s.String()
+}
+
+func (s *EventInfo) SetContent(v string) *EventInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *EventInfo) SetId(v string) *EventInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *EventInfo) SetPodId(v string) *EventInfo {
+	s.PodId = &v
+	return s
+}
+
+func (s *EventInfo) SetPodUid(v string) *EventInfo {
+	s.PodUid = &v
+	return s
+}
+
+func (s *EventInfo) SetTime(v string) *EventInfo {
+	s.Time = &v
+	return s
+}
+
 type ExtraPodSpec struct {
 	InitContainers         []*ContainerSpec   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
 	PodAnnotations         map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
@@ -1413,6 +1454,53 @@ func (s *JobSpec) SetType(v string) *JobSpec {
 
 func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
 	s.UseSpotInstance = &v
+	return s
+}
+
+type LogInfo struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	PodId   *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid  *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s LogInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogInfo) GoString() string {
+	return s.String()
+}
+
+func (s *LogInfo) SetContent(v string) *LogInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *LogInfo) SetId(v string) *LogInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *LogInfo) SetPodId(v string) *LogInfo {
+	s.PodId = &v
+	return s
+}
+
+func (s *LogInfo) SetPodUid(v string) *LogInfo {
+	s.PodUid = &v
+	return s
+}
+
+func (s *LogInfo) SetSource(v string) *LogInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *LogInfo) SetTime(v string) *LogInfo {
+	s.Time = &v
 	return s
 }
 
@@ -3738,6 +3826,7 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type GetWebTerminalRequest struct {
+	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
 	// Pod UID。
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 }
@@ -3748,6 +3837,11 @@ func (s GetWebTerminalRequest) String() string {
 
 func (s GetWebTerminalRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetWebTerminalRequest) SetIsShared(v bool) *GetWebTerminalRequest {
+	s.IsShared = &v
+	return s
 }
 
 func (s *GetWebTerminalRequest) SetPodUid(v string) *GetWebTerminalRequest {
@@ -5538,6 +5632,10 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsShared)) {
+		query["IsShared"] = request.IsShared
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PodUid)) {
 		query["PodUid"] = request.PodUid
 	}
