@@ -37639,6 +37639,10 @@ func (s *GroupUserSaveHeaders) SetXAcsBtripCorpToken(v string) *GroupUserSaveHea
 }
 
 type GroupUserSaveRequest struct {
+	BaseCityCode  *string                              `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
+	Birthday      *string                              `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList      []*GroupUserSaveRequestCertList      `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	Gender        *string                              `json:"gender,omitempty" xml:"gender,omitempty"`
 	JobNo         *string                              `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	Phone         *string                              `json:"phone,omitempty" xml:"phone,omitempty"`
 	RealNameEn    *string                              `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
@@ -37653,6 +37657,26 @@ func (s GroupUserSaveRequest) String() string {
 
 func (s GroupUserSaveRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GroupUserSaveRequest) SetBaseCityCode(v string) *GroupUserSaveRequest {
+	s.BaseCityCode = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetBirthday(v string) *GroupUserSaveRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetCertList(v []*GroupUserSaveRequestCertList) *GroupUserSaveRequest {
+	s.CertList = v
+	return s
+}
+
+func (s *GroupUserSaveRequest) SetGender(v string) *GroupUserSaveRequest {
+	s.Gender = &v
+	return s
 }
 
 func (s *GroupUserSaveRequest) SetJobNo(v string) *GroupUserSaveRequest {
@@ -37682,6 +37706,47 @@ func (s *GroupUserSaveRequest) SetUserId(v string) *GroupUserSaveRequest {
 
 func (s *GroupUserSaveRequest) SetUserName(v string) *GroupUserSaveRequest {
 	s.UserName = &v
+	return s
+}
+
+type GroupUserSaveRequestCertList struct {
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	CertNation      *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	CertNo          *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	CertType        *int32  `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Nationality     *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+}
+
+func (s GroupUserSaveRequestCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GroupUserSaveRequestCertList) GoString() string {
+	return s.String()
+}
+
+func (s *GroupUserSaveRequestCertList) SetCertExpiredTime(v string) *GroupUserSaveRequestCertList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestCertList) SetCertNation(v string) *GroupUserSaveRequestCertList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestCertList) SetCertNo(v string) *GroupUserSaveRequestCertList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestCertList) SetCertType(v int32) *GroupUserSaveRequestCertList {
+	s.CertType = &v
+	return s
+}
+
+func (s *GroupUserSaveRequestCertList) SetNationality(v string) *GroupUserSaveRequestCertList {
+	s.Nationality = &v
 	return s
 }
 
@@ -37733,6 +37798,10 @@ func (s *GroupUserSaveRequestSubCorpIdList) SetSubCorpId(v string) *GroupUserSav
 }
 
 type GroupUserSaveShrinkRequest struct {
+	BaseCityCode        *string `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
+	Birthday            *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertListShrink      *string `json:"cert_list,omitempty" xml:"cert_list,omitempty"`
+	Gender              *string `json:"gender,omitempty" xml:"gender,omitempty"`
 	JobNo               *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
 	Phone               *string `json:"phone,omitempty" xml:"phone,omitempty"`
 	RealNameEn          *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
@@ -37747,6 +37816,26 @@ func (s GroupUserSaveShrinkRequest) String() string {
 
 func (s GroupUserSaveShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GroupUserSaveShrinkRequest) SetBaseCityCode(v string) *GroupUserSaveShrinkRequest {
+	s.BaseCityCode = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetBirthday(v string) *GroupUserSaveShrinkRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetCertListShrink(v string) *GroupUserSaveShrinkRequest {
+	s.CertListShrink = &v
+	return s
+}
+
+func (s *GroupUserSaveShrinkRequest) SetGender(v string) *GroupUserSaveShrinkRequest {
+	s.Gender = &v
+	return s
 }
 
 func (s *GroupUserSaveShrinkRequest) SetJobNo(v string) *GroupUserSaveShrinkRequest {
@@ -66470,11 +66559,31 @@ func (client *Client) GroupUserSaveWithOptions(tmpReq *GroupUserSaveRequest, hea
 	}
 	request := &GroupUserSaveShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CertList)) {
+		request.CertListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CertList, tea.String("cert_list"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SubCorpIdList)) {
 		request.SubCorpIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubCorpIdList, tea.String("sub_corp_id_list"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseCityCode)) {
+		body["base_city_code"] = request.BaseCityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		body["birthday"] = request.Birthday
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertListShrink)) {
+		body["cert_list"] = request.CertListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["gender"] = request.Gender
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
 		body["job_no"] = request.JobNo
 	}
