@@ -4958,8 +4958,6 @@ type DescribeAccountsResponseBodyAccounts struct {
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
 	// The name of the account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account that is used to log on to the database.
-	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The validity period of the password.
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
 	// The state of the account. Valid values:
@@ -4997,11 +4995,6 @@ func (s *DescribeAccountsResponseBodyAccounts) SetAccountLockState(v string) *De
 
 func (s *DescribeAccountsResponseBodyAccounts) SetAccountName(v string) *DescribeAccountsResponseBodyAccounts {
 	s.AccountName = &v
-	return s
-}
-
-func (s *DescribeAccountsResponseBodyAccounts) SetAccountPassword(v string) *DescribeAccountsResponseBodyAccounts {
-	s.AccountPassword = &v
 	return s
 }
 
@@ -7064,8 +7057,6 @@ type DescribeDBClusterAttributeResponseBody struct {
 	// *   **0**: The cluster is not locked and can be deleted.
 	// *   **1**: The cluster is locked and cannot be deleted.
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	// The unit to which the cluster belongs.
-	DeployUnit *string `json:"DeployUnit,omitempty" xml:"DeployUnit,omitempty"`
 	// The database type.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The time when the cluster expires.
@@ -7274,11 +7265,6 @@ func (s *DescribeDBClusterAttributeResponseBody) SetDataSyncMode(v string) *Desc
 
 func (s *DescribeDBClusterAttributeResponseBody) SetDeletionLock(v int32) *DescribeDBClusterAttributeResponseBody {
 	s.DeletionLock = &v
-	return s
-}
-
-func (s *DescribeDBClusterAttributeResponseBody) SetDeployUnit(v string) *DescribeDBClusterAttributeResponseBody {
-	s.DeployUnit = &v
 	return s
 }
 
@@ -10011,6 +9997,7 @@ type DescribeDBClusterVersionRequest struct {
 	//
 	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -10027,6 +10014,11 @@ func (s DescribeDBClusterVersionRequest) GoString() string {
 
 func (s *DescribeDBClusterVersionRequest) SetDBClusterId(v string) *DescribeDBClusterVersionRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionRequest) SetDescribeType(v string) *DescribeDBClusterVersionRequest {
+	s.DescribeType = &v
 	return s
 }
 
@@ -23509,7 +23501,6 @@ func (s *ModifyPendingMaintenanceActionResponse) SetBody(v *ModifyPendingMainten
 type OpenAITaskRequest struct {
 	// The cluster ID.
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -23535,11 +23526,6 @@ func (s OpenAITaskRequest) GoString() string {
 
 func (s *OpenAITaskRequest) SetDBClusterId(v string) *OpenAITaskRequest {
 	s.DBClusterId = &v
-	return s
-}
-
-func (s *OpenAITaskRequest) SetDescribeType(v string) *OpenAITaskRequest {
-	s.DescribeType = &v
 	return s
 }
 
@@ -29745,6 +29731,10 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DescribeType)) {
+		query["DescribeType"] = request.DescribeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -35441,10 +35431,6 @@ func (client *Client) OpenAITaskWithOptions(request *OpenAITaskRequest, runtime 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DescribeType)) {
-		query["DescribeType"] = request.DescribeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
