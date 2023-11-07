@@ -42019,6 +42019,7 @@ type UpdateTimingSyntheticTaskRequestMonitorConf struct {
 	NetDNS       *UpdateTimingSyntheticTaskRequestMonitorConfNetDNS       `json:"NetDNS,omitempty" xml:"NetDNS,omitempty" type:"Struct"`
 	NetICMP      *UpdateTimingSyntheticTaskRequestMonitorConfNetICMP      `json:"NetICMP,omitempty" xml:"NetICMP,omitempty" type:"Struct"`
 	NetTCP       *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP       `json:"NetTCP,omitempty" xml:"NetTCP,omitempty" type:"Struct"`
+	Stream       *UpdateTimingSyntheticTaskRequestMonitorConfStream       `json:"Stream,omitempty" xml:"Stream,omitempty" type:"Struct"`
 	Website      *UpdateTimingSyntheticTaskRequestMonitorConfWebsite      `json:"Website,omitempty" xml:"Website,omitempty" type:"Struct"`
 }
 
@@ -42052,6 +42053,11 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetNetICMP(v *UpdateTiming
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetNetTCP(v *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) *UpdateTimingSyntheticTaskRequestMonitorConf {
 	s.NetTCP = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConf) SetStream(v *UpdateTimingSyntheticTaskRequestMonitorConfStream) *UpdateTimingSyntheticTaskRequestMonitorConf {
+	s.Stream = v
 	return s
 }
 
@@ -42411,6 +42417,59 @@ func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertNumMax(v i
 
 func (s *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP) SetTracertTimeout(v int64) *UpdateTimingSyntheticTaskRequestMonitorConfNetTCP {
 	s.TracertTimeout = &v
+	return s
+}
+
+type UpdateTimingSyntheticTaskRequestMonitorConfStream struct {
+	CustomHeaderContent  map[string]*string `json:"CustomHeaderContent,omitempty" xml:"CustomHeaderContent,omitempty"`
+	PlayerType           *int32             `json:"PlayerType,omitempty" xml:"PlayerType,omitempty"`
+	StreamAddressType    *int32             `json:"StreamAddressType,omitempty" xml:"StreamAddressType,omitempty"`
+	StreamMonitorTimeout *int32             `json:"StreamMonitorTimeout,omitempty" xml:"StreamMonitorTimeout,omitempty"`
+	StreamType           *int32             `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TargetUrl            *string            `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WhiteList            *string            `json:"WhiteList,omitempty" xml:"WhiteList,omitempty"`
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfStream) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTimingSyntheticTaskRequestMonitorConfStream) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetCustomHeaderContent(v map[string]*string) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.CustomHeaderContent = v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetPlayerType(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.PlayerType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetStreamAddressType(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamAddressType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetStreamMonitorTimeout(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamMonitorTimeout = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetStreamType(v int32) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.StreamType = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetTargetUrl(v string) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *UpdateTimingSyntheticTaskRequestMonitorConfStream) SetWhiteList(v string) *UpdateTimingSyntheticTaskRequestMonitorConfStream {
+	s.WhiteList = &v
 	return s
 }
 
