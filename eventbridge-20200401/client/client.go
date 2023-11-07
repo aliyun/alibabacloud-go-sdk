@@ -1569,15 +1569,18 @@ func (s *CreateEventStreamingRequest) SetSource(v *CreateEventStreamingRequestSo
 }
 
 type CreateEventStreamingRequestRunOptions struct {
-	// The information about the batch window.
+	// The batch window.
 	BatchWindow *CreateEventStreamingRequestRunOptionsBatchWindow `json:"BatchWindow,omitempty" xml:"BatchWindow,omitempty" type:"Struct"`
-	// Specifies whether to enable dead-letter queues. By default, dead-letter queues are disabled. Messages that fail to be pushed are discarded after the maximum number of retries specified by the retry policy is reached.
+	// Specifies whether to enable dead-letter queues. By default, dead-letter queues are disabled. Messages that fail to be pushed are discarded after the maximum number of retries that is specified by the retry policy is reached.
 	DeadLetterQueue *CreateEventStreamingRequestRunOptionsDeadLetterQueue `json:"DeadLetterQueue,omitempty" xml:"DeadLetterQueue,omitempty" type:"Struct"`
-	// The fault tolerance policy. The value NONE specifies that faults are not tolerated, and the value All specifies that all faults are tolerated.
+	// The exception tolerance policy. Valid values:
+	//
+	// *   NONE: does not tolerate exceptions.
+	// *   ALL: tolerates all exceptions.
 	ErrorsTolerance *string `json:"ErrorsTolerance,omitempty" xml:"ErrorsTolerance,omitempty"`
-	// The concurrency level.
+	// The maximum number of concurrent threads.
 	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
-	// The information about the retry policy that is used if events fail to be pushed.
+	// The retry policy that you want to use if events fail to be pushed.
 	RetryStrategy *CreateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
 }
 
@@ -1615,9 +1618,9 @@ func (s *CreateEventStreamingRequestRunOptions) SetRetryStrategy(v *CreateEventS
 }
 
 type CreateEventStreamingRequestRunOptionsBatchWindow struct {
-	// The maximum number of events that is allowed in the batch window. If the value specified by this parameter is reached, the data in the batch window is pushed to the downstream application. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
+	// The maximum number of events that is allowed in the batch window. When this threshold is reached, data in the window is pushed to the downstream service. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
 	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	// The maximum period of time during which events are allowed in the batch window. Unit: seconds. If the value specified by this parameter is reached, the data in the batch window is pushed to the downstream application. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
+	// The maximum period of time during which events are allowed in the batch window. Unit: seconds. When this threshold is reached, data in the window is pushed to the downstream service. If multiple batch windows exist, data is pushed if triggering conditions are met in one of the windows.
 	TimeBasedWindow *int32 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
 }
 
@@ -1658,11 +1661,14 @@ func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetArn(v string) 
 }
 
 type CreateEventStreamingRequestRunOptionsRetryStrategy struct {
-	// The maximum period of time during which retries are performed.
+	// The maximum timeout period for a retry.
 	MaximumEventAgeInSeconds *int64 `json:"MaximumEventAgeInSeconds,omitempty" xml:"MaximumEventAgeInSeconds,omitempty"`
 	// The maximum number of retries.
 	MaximumRetryAttempts *int64 `json:"MaximumRetryAttempts,omitempty" xml:"MaximumRetryAttempts,omitempty"`
-	// The retry policy that is used if events fail to be pushed. Valid values: BACKOFF_RETRY and EXPONENTIAL_DECAY_RETRY.
+	// The retry policy. Valid values:
+	//
+	// *   BACKOFF_RETRY
+	// *   EXPONENTIAL_DECAY_RETRY
 	PushRetryStrategy *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
 }
 
@@ -1690,20 +1696,21 @@ func (s *CreateEventStreamingRequestRunOptionsRetryStrategy) SetPushRetryStrateg
 }
 
 type CreateEventStreamingRequestSink struct {
-	// The parameters that are configured if the event target is DataHub.
+	// The parameters that are configured if you specify the event target as DataHub.
 	SinkDataHubParameters *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event target is Function Compute.
-	SinkFcParameters  *CreateEventStreamingRequestSinkSinkFcParameters  `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
+	// The parameters that are configured if you specify the event target as Function Compute.
+	SinkFcParameters *CreateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
+	// The parameters that are configured if you specify the event target as Serverless Workflow.
 	SinkFnfParameters *CreateEventStreamingRequestSinkSinkFnfParameters `json:"SinkFnfParameters,omitempty" xml:"SinkFnfParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event target is Message Queue for Apache Kafka.
+	// The parameters that are configured if you specify the event target as Message Queue for Apache Kafka.
 	SinkKafkaParameters *CreateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event target is MNS.
+	// The parameters that are configured if you specify the event target as MNS.
 	SinkMNSParameters *CreateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event target is Message Queue for RabbitMQ.
+	// The parameters that are configured if you specify the event target as Message Queue for RabbitMQ.
 	SinkRabbitMQParameters *CreateEventStreamingRequestSinkSinkRabbitMQParameters `json:"SinkRabbitMQParameters,omitempty" xml:"SinkRabbitMQParameters,omitempty" type:"Struct"`
-	// Sink RocketMQ Parameters
+	// The parameters that are configured if you specify the event target as Message Queue for Apache RocketMQ.
 	SinkRocketMQParameters *CreateEventStreamingRequestSinkSinkRocketMQParameters `json:"SinkRocketMQParameters,omitempty" xml:"SinkRocketMQParameters,omitempty" type:"Struct"`
-	// Sink SLS Parameters
+	// The parameters that are configured if you specify the event target as Simple Log Service.
 	SinkSLSParameters *CreateEventStreamingRequestSinkSinkSLSParameters `json:"SinkSLSParameters,omitempty" xml:"SinkSLSParameters,omitempty" type:"Struct"`
 }
 
@@ -1756,17 +1763,20 @@ func (s *CreateEventStreamingRequestSink) SetSinkSLSParameters(v *CreateEventStr
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParameters struct {
-	// The information about the BLOB topic.
+	// The BLOB topic.
 	Body *CreateEventStreamingRequestSinkSinkDataHubParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The information about the DataHub project.
+	// The name of the DataHub project.
 	Project *CreateEventStreamingRequestSinkSinkDataHubParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// The information about the role.
+	// The role name.
 	RoleName *CreateEventStreamingRequestSinkSinkDataHubParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The information about the DataHub topic.
+	// The name of the DataHub topic.
 	Topic *CreateEventStreamingRequestSinkSinkDataHubParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The information about the TUPLE topic.
+	// The TUBLE topic.
 	TopicSchema *CreateEventStreamingRequestSinkSinkDataHubParametersTopicSchema `json:"TopicSchema,omitempty" xml:"TopicSchema,omitempty" type:"Struct"`
-	// The information about the topic.
+	// The topic type. Valid values:
+	//
+	// *   TUPLE
+	// *   BLOB
 	TopicType *CreateEventStreamingRequestSinkSinkDataHubParametersTopicType `json:"TopicType,omitempty" xml:"TopicType,omitempty" type:"Struct"`
 }
 
@@ -1809,11 +1819,11 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParameters) SetTopicType(v *C
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value of the BLOB topic.
+	// The BLOB topic.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1841,7 +1851,7 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersBody) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersProject struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -1873,7 +1883,7 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersProject) SetValue(v
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersRoleName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -1905,7 +1915,7 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersRoleName) SetValue(
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersTopic struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -1937,11 +1947,11 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersTopic) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersTopicSchema struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value of the TUPLE topic.
+	// The TUBLE topic.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1969,11 +1979,14 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersTopicSchema) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkDataHubParametersTopicType struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The topic type. Valid values: TUPLE and BLOB.
+	// The topic type. Valid values:
+	//
+	// *   TUPLE
+	// *   BLOB
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2001,17 +2014,17 @@ func (s *CreateEventStreamingRequestSinkSinkDataHubParametersTopicType) SetValue
 }
 
 type CreateEventStreamingRequestSinkSinkFcParameters struct {
-	// The message body that is sent to the function.
+	// The message body that you want to deliver to Function Compute.
 	Body *CreateEventStreamingRequestSinkSinkFcParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The information about the delivery concurrency.
+	// The delivery concurrency. Minimum value: 1.
 	Concurrency *CreateEventStreamingRequestSinkSinkFcParametersConcurrency `json:"Concurrency,omitempty" xml:"Concurrency,omitempty" type:"Struct"`
-	// The information about the Function Compute function.
+	// The function name.
 	FunctionName *CreateEventStreamingRequestSinkSinkFcParametersFunctionName `json:"FunctionName,omitempty" xml:"FunctionName,omitempty" type:"Struct"`
-	// The information about the invocation type. Valid values: Sync and Async.
+	// The invocation method. Valid values: Sync and Async.
 	InvocationType *CreateEventStreamingRequestSinkSinkFcParametersInvocationType `json:"InvocationType,omitempty" xml:"InvocationType,omitempty" type:"Struct"`
-	// The information about the service version.
+	// The service version.
 	Qualifier *CreateEventStreamingRequestSinkSinkFcParametersQualifier `json:"Qualifier,omitempty" xml:"Qualifier,omitempty" type:"Struct"`
-	// The information about the Function Compute service.
+	// The service name.
 	ServiceName *CreateEventStreamingRequestSinkSinkFcParametersServiceName `json:"ServiceName,omitempty" xml:"ServiceName,omitempty" type:"Struct"`
 }
 
@@ -2054,11 +2067,11 @@ func (s *CreateEventStreamingRequestSinkSinkFcParameters) SetServiceName(v *Crea
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2086,9 +2099,9 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersBody) SetValue(v string)
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersConcurrency struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The delivery concurrency. Minimum value: 1.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2118,11 +2131,11 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersConcurrency) SetValue(v 
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersFunctionName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Function Compute function.
+	// The function name.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2150,11 +2163,11 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersFunctionName) SetValue(v
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersInvocationType struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The invocation type. Valid values: Sync and Async.
+	// The invocation method. Valid values: Sync and Async.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2182,9 +2195,9 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersInvocationType) SetValue
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersQualifier struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The service version.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2214,11 +2227,11 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersQualifier) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkFcParametersServiceName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the Function Compute service.
+	// The service name.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2246,10 +2259,14 @@ func (s *CreateEventStreamingRequestSinkSinkFcParametersServiceName) SetValue(v 
 }
 
 type CreateEventStreamingRequestSinkSinkFnfParameters struct {
+	// The execution name.
 	ExecutionName *CreateEventStreamingRequestSinkSinkFnfParametersExecutionName `json:"ExecutionName,omitempty" xml:"ExecutionName,omitempty" type:"Struct"`
-	FlowName      *CreateEventStreamingRequestSinkSinkFnfParametersFlowName      `json:"FlowName,omitempty" xml:"FlowName,omitempty" type:"Struct"`
-	Input         *CreateEventStreamingRequestSinkSinkFnfParametersInput         `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
-	RoleName      *CreateEventStreamingRequestSinkSinkFnfParametersRoleName      `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
+	// The flow name.
+	FlowName *CreateEventStreamingRequestSinkSinkFnfParametersFlowName `json:"FlowName,omitempty" xml:"FlowName,omitempty" type:"Struct"`
+	// The input information of the execution.
+	Input *CreateEventStreamingRequestSinkSinkFnfParametersInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	// The role name.
+	RoleName *CreateEventStreamingRequestSinkSinkFnfParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkFnfParameters) String() string {
@@ -2281,9 +2298,12 @@ func (s *CreateEventStreamingRequestSinkSinkFnfParameters) SetRoleName(v *Create
 }
 
 type CreateEventStreamingRequestSinkSinkFnfParametersExecutionName struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The format into which you want to transform events. Default value: CONSTANT.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The execution name.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkFnfParametersExecutionName) String() string {
@@ -2310,9 +2330,12 @@ func (s *CreateEventStreamingRequestSinkSinkFnfParametersExecutionName) SetValue
 }
 
 type CreateEventStreamingRequestSinkSinkFnfParametersFlowName struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The format into which you want to transform events. Default value: CONSTANT.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The flow name.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkFnfParametersFlowName) String() string {
@@ -2339,9 +2362,12 @@ func (s *CreateEventStreamingRequestSinkSinkFnfParametersFlowName) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkFnfParametersInput struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The format into which you want to transform events. Default value: CONSTANT.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The input information of the execution.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkFnfParametersInput) String() string {
@@ -2368,9 +2394,12 @@ func (s *CreateEventStreamingRequestSinkSinkFnfParametersInput) SetValue(v strin
 }
 
 type CreateEventStreamingRequestSinkSinkFnfParametersRoleName struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The format into which you want to transform events. Default value: CONSTANT.
+	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The role name.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateEventStreamingRequestSinkSinkFnfParametersRoleName) String() string {
@@ -2397,15 +2426,19 @@ func (s *CreateEventStreamingRequestSinkSinkFnfParametersRoleName) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParameters struct {
-	// The information about the acknowledgement (ACK) mode. If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high. If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader. If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
+	// The acknowledgement (ACK) mode.
+	//
+	// *   If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high.
+	// *   If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
+	// *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
 	Acks *CreateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
-	// The information about the Message Queue for Apache Kafka instance.
+	// The ID of the Message Queue for Apache Kafka instance.
 	InstanceId *CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
-	// The information about the message key.
+	// The message key.
 	Key *CreateEventStreamingRequestSinkSinkKafkaParametersKey `json:"Key,omitempty" xml:"Key,omitempty" type:"Struct"`
-	// The information about the topic in the Message Queue for Apache Kafka instance.
+	// The topic name.
 	Topic *CreateEventStreamingRequestSinkSinkKafkaParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The information about the message value.
+	// The message body.
 	Value *CreateEventStreamingRequestSinkSinkKafkaParametersValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
 
@@ -2443,11 +2476,15 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetValue(v *CreateE
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParametersAcks struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The ACK mode. If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high. If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader. If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
+	// The ACK mode.
+	//
+	// *   If you set this parameter to 0, no response is returned from the broker. In this mode, the performance is high, but the risk of data loss is also high.
+	// *   If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
+	// *   If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2475,11 +2512,11 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) SetValue(v stri
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The ID of the Message Queue for Apache Kafka instance.
+	// The instance ID.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2507,9 +2544,9 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId) SetValue(
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParametersKey struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The message key.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2539,9 +2576,9 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersKey) SetValue(v strin
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParametersTopic struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The topic name.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2571,11 +2608,11 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersTopic) SetValue(v str
 }
 
 type CreateEventStreamingRequestSinkSinkKafkaParametersValue struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2603,11 +2640,11 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersValue) SetValue(v str
 }
 
 type CreateEventStreamingRequestSinkSinkMNSParameters struct {
-	// The message content.
+	// The message body.
 	Body *CreateEventStreamingRequestSinkSinkMNSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	// Specifies whether to enable Base64 encoding.
 	IsBase64Encode *CreateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode `json:"IsBase64Encode,omitempty" xml:"IsBase64Encode,omitempty" type:"Struct"`
-	// The information about the MNS queue.
+	// The name of the MNS queue.
 	QueueName *CreateEventStreamingRequestSinkSinkMNSParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
 }
 
@@ -2635,11 +2672,11 @@ func (s *CreateEventStreamingRequestSinkSinkMNSParameters) SetQueueName(v *Creat
 }
 
 type CreateEventStreamingRequestSinkSinkMNSParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2667,9 +2704,9 @@ func (s *CreateEventStreamingRequestSinkSinkMNSParametersBody) SetValue(v string
 }
 
 type CreateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// Specifies that Base64 encoding is enabled.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2699,11 +2736,11 @@ func (s *CreateEventStreamingRequestSinkSinkMNSParametersIsBase64Encode) SetValu
 }
 
 type CreateEventStreamingRequestSinkSinkMNSParametersQueueName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the queue in MNS.
+	// The name of the MNS queue.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2731,23 +2768,23 @@ func (s *CreateEventStreamingRequestSinkSinkMNSParametersQueueName) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParameters struct {
-	// The message content.
+	// The message body.
 	Body *CreateEventStreamingRequestSinkSinkRabbitMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The information about the exchange to whichevents are delivered. This parameter is available only if you set TargetType to Exchange.
+	// The exchange to which you want to deliver events. This parameter is available only if you set TargetType to Exchange.
 	Exchange *CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
 	// The information about the Message Queue for RabbitMQ instance.
 	InstanceId *CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message ID.
 	MessageId *CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	// The properties that are used to filter messages.
+	// The properties that you want to use to filter messages.
 	Properties *CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The information about the queue to which events are delivered. This parameter is available only if you set TargetType to Queue.
+	// The queue to which you want to deliver events. This parameter is available only if you set TargetType to Queue.
 	QueueName *CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
-	// The information about the routing rule of the message. This parameter is available only if you set TargetType to Exchange.
+	// The rule that you want to use to route messages. This parameter is available only if you set TargetType to Exchange.
 	RoutingKey *CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
-	// The information about the resource to which events are delivered.
+	// The type of the resource to which you want to deliver events.
 	TargetType *CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType `json:"TargetType,omitempty" xml:"TargetType,omitempty" type:"Struct"`
-	// The information about the vhost of the Message Queue for RabbitMQ instance.
+	// The name of the vhost of the Message Queue for RabbitMQ instance.
 	VirtualHostName *CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty" type:"Struct"`
 }
 
@@ -2805,11 +2842,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParameters) SetVirtualHostNa
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2837,11 +2874,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersBody) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the exchange in the Message Queue for RabbitMQ instance.
+	// The name of the exchange on the Message Queue for RabbitMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2869,9 +2906,9 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersExchange) SetValue
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The ID of the Message Queue for RabbitMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -2901,11 +2938,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2933,11 +2970,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersMessageId) SetValu
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2965,11 +3002,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersProperties) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the queue in the Message Queue for RabbitMQ instance.
+	// The name of the queue on the Message Queue for RabbitMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2997,11 +3034,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersQueueName) SetValu
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The routing rule of the message.
+	// The rule that you want to use to route messages.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3029,11 +3066,14 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The type of the resource to which events are delivered. Valid values: Exchange: exchanges. Queue: queues.
+	// The type of the resource to which you want to deliver events. Valid values:
+	//
+	// *   Exchange
+	// *   Queue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3061,11 +3101,11 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersTargetType) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The vhost name of the Message Queue for RabbitMQ instance.
+	// The name of the vhost of the Message Queue for RabbitMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3093,33 +3133,36 @@ func (s *CreateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName) S
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParameters struct {
-	// The message content.
+	// The message body.
 	Body *CreateEventStreamingRequestSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The information about the instance endpoint.
+	// The instance endpoint.
 	InstanceEndpoint *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
-	// The parameters that are configured if the event target is Message Queue for Apache RocketMQ.
+	// The parameters that are configured if you specify the event target as Message Queue for Apache RocketMQ.
 	InstanceId *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
-	// The information about the instance password.
+	// The instance password.
 	InstancePassword *CreateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty" type:"Struct"`
-	// The information about the instance type.
+	// The instance type.
 	InstanceType *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceType `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Struct"`
-	// The information about the instance username.
+	// The instance username.
 	InstanceUsername *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty" type:"Struct"`
-	// The properties that are used to filter messages.
+	// The keys that you want to use to filter messages.
 	Keys *CreateEventStreamingRequestSinkSinkRocketMQParametersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
-	// The information about the network. Valid values: PublicNetwork and PrivateNetwork.
+	// The network type. Valid values:
+	//
+	// *   PublicNetwork
+	// *   PrivateNetwork
 	Network *CreateEventStreamingRequestSinkSinkRocketMQParametersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	// The properties that are used to filter messages.
+	// The properties that you want to use to filter messages.
 	Properties *CreateEventStreamingRequestSinkSinkRocketMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	// The information about the security group.
+	// The security group ID.
 	SecurityGroupId *CreateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	// The properties that are used to filter messages.
+	// The tags that you want to use to filter messages.
 	Tags *CreateEventStreamingRequestSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The information about the topic in the Message Queue for Apache RocketMQ instance.
+	// The topic on the Message Queue for Apache RocketMQ instance.
 	Topic *CreateEventStreamingRequestSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
-	// The information about the vSwitch.
+	// The vSwitch ID.
 	VSwitchIds *CreateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	// The information about the VPC.
+	// The VPC ID.
 	VpcId *CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
@@ -3202,11 +3245,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParameters) SetVpcId(v *Crea
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3234,7 +3277,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersBody) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3266,9 +3309,9 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) 
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceId struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The ID of the Message Queue for Apache RocketMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -3298,7 +3341,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceId) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3330,7 +3373,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) 
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3362,7 +3405,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) SetV
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3394,11 +3437,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) 
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersKeys struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3426,11 +3469,14 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersKeys) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersNetwork struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The network type. Valid values: PublicNetwork and PrivateNetwork.
+	// The network type. Valid values:
+	//
+	// *   PublicNetwork
+	// *   PrivateNetwork
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3458,11 +3504,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersNetwork) SetValue(
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersProperties struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3490,11 +3536,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersProperties) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The ID of security group.
+	// The security group ID.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3522,11 +3568,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) S
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersTags struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3554,11 +3600,11 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersTags) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersTopic struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// None.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic in the Message Queue for Apache RocketMQ instance.
+	// The name of the topic on the Message Queue for Apache RocketMQ instance.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3586,7 +3632,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersTopic) SetValue(v 
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3618,7 +3664,7 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) SetVal
 }
 
 type CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -3650,15 +3696,15 @@ func (s *CreateEventStreamingRequestSinkSinkRocketMQParametersVpcId) SetValue(v 
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParameters struct {
-	// The message body that is sent to Log Service.
+	// The message body that you want to deliver to Simple Log Service.
 	Body *CreateEventStreamingRequestSinkSinkSLSParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	// The information about the Log Service Logstore.
+	// The Simple Log Service Logstore.
 	LogStore *CreateEventStreamingRequestSinkSinkSLSParametersLogStore `json:"LogStore,omitempty" xml:"LogStore,omitempty" type:"Struct"`
-	// The information about the Log Service project.
+	// The Simple Log Service project.
 	Project *CreateEventStreamingRequestSinkSinkSLSParametersProject `json:"Project,omitempty" xml:"Project,omitempty" type:"Struct"`
-	// If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
+	// The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
 	RoleName *CreateEventStreamingRequestSinkSinkSLSParametersRoleName `json:"RoleName,omitempty" xml:"RoleName,omitempty" type:"Struct"`
-	// The information about the topic in which logs are stored. The topic corresponds to the **topic** reserved field in Log Service.
+	// The topic that you want to use to store logs. This parameter corresponds to the **topic** reserved field in Simple Log Service.
 	Topic *CreateEventStreamingRequestSinkSinkSLSParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
 }
 
@@ -3696,11 +3742,11 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParameters) SetTopic(v *CreateEve
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParametersBody struct {
-	// The method that is used to transform events.
+	// The format into which you want to transform events.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	// The template based on which events are transformed.
+	// The template based on which you want to transform events.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The value before event transformation.
+	// The value before transformation.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3728,11 +3774,11 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersBody) SetValue(v string
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParametersLogStore struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Log Service Logstore.
+	// The Simple Log Service Logstore.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3760,11 +3806,11 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersLogStore) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParametersProject struct {
-	// The method that is used to transform events. The default value is CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The Log Service project.
+	// The Simple Log Service project.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3792,11 +3838,11 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersProject) SetValue(v str
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParametersRoleName struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
+	// The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the RAM console.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3824,11 +3870,11 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersRoleName) SetValue(v st
 }
 
 type CreateEventStreamingRequestSinkSinkSLSParametersTopic struct {
-	// The method that is used to transform events. Default value: CONSTANT.
+	// The format into which you want to transform events. Default value: CONSTANT.
 	Form *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	// None.
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The name of the topic in which logs are stored. The topic corresponds to the **topic** reserved field in Log Service.
+	// The topic that you want to use to store logs. This parameter corresponds to the **topic** reserved field in Simple Log Service.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3856,19 +3902,19 @@ func (s *CreateEventStreamingRequestSinkSinkSLSParametersTopic) SetValue(v strin
 }
 
 type CreateEventStreamingRequestSource struct {
-	// The parameters that are configured if the event source is Data Transmission Service (DTS).
+	// The parameters that are configured if you specify the event source as Data Transmission Service (DTS).
 	SourceDTSParameters *CreateEventStreamingRequestSourceSourceDTSParameters `json:"SourceDTSParameters,omitempty" xml:"SourceDTSParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for Apache Kafka.
+	// The parameters that are configured if you specify the event source as Message Queue for Apache Kafka.
 	SourceKafkaParameters *CreateEventStreamingRequestSourceSourceKafkaParameters `json:"SourceKafkaParameters,omitempty" xml:"SourceKafkaParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Service (MNS).
+	// The parameters that are configured if you specify the event source as Message Service (MNS).
 	SourceMNSParameters *CreateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for MQTT.
+	// The parameters that are configured if you specify the event source as Message Queue for MQTT.
 	SourceMQTTParameters *CreateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for RabbitMQ.
+	// The parameters that are configured if you specify the event source as Message Queue for RabbitMQ.
 	SourceRabbitMQParameters *CreateEventStreamingRequestSourceSourceRabbitMQParameters `json:"SourceRabbitMQParameters,omitempty" xml:"SourceRabbitMQParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
+	// The parameters that are configured if you specify the event source as Message Queue for Apache RocketMQ.
 	SourceRocketMQParameters *CreateEventStreamingRequestSourceSourceRocketMQParameters `json:"SourceRocketMQParameters,omitempty" xml:"SourceRocketMQParameters,omitempty" type:"Struct"`
-	// The parameters that are configured if the event source is Log Service.
+	// The parameters that are configured if you specify the event source as Simple Log Service.
 	SourceSLSParameters *CreateEventStreamingRequestSourceSourceSLSParameters `json:"SourceSLSParameters,omitempty" xml:"SourceSLSParameters,omitempty" type:"Struct"`
 }
 
@@ -3918,17 +3964,17 @@ func (s *CreateEventStreamingRequestSource) SetSourceSLSParameters(v *CreateEven
 type CreateEventStreamingRequestSourceSourceDTSParameters struct {
 	// The URL and port number of the data subscription channel.
 	BrokerUrl *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
-	// The consumer offset. A consumer offset is a timestamp that indicates when the SDK client consumes the first data record. The value is a UNIX timestamp.
+	// The consumer offset. It is the timestamp that indicates when the SDK client consumes the first data record.
 	InitCheckPoint *int64 `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
-	// The password of the consumer group.
+	// The consumer group password.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The ID of the consumer group.
+	// The consumer group ID.
 	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
 	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The topic to which you want to subscribe by using the data subscription channel.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The username of the consumer group.
+	// The consumer group username.
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -3978,21 +4024,21 @@ func (s *CreateEventStreamingRequestSourceSourceDTSParameters) SetUsername(v str
 type CreateEventStreamingRequestSourceSourceKafkaParameters struct {
 	// The ID of the consumer group that subscribes to the topic.
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	// The ID of the Message Queue for Apache Kafka instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The network. Default value: Default. The value PublicNetwork specifies a virtual private cloud (VPC).
+	// The network type. Default value: Default. The value PublicNetwork specifies virtual private clouds (VPCs).
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The offset.
 	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the instance belongs.
+	// The security group ID.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the topic in the Message Queue for Apache Kafka instance.
+	// The topic name.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The ID of the vSwitch with which the instance is associated.
+	// The vSwitch ID.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC to which the instance belongs.
+	// The VPC ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -4082,11 +4128,11 @@ func (s *CreateEventStreamingRequestSourceSourceMNSParameters) SetRegionId(v str
 }
 
 type CreateEventStreamingRequestSourceSourceMQTTParameters struct {
-	// The ID of the Message Queue for MQTT instance.
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the region in which the Message Queue for MQTT resides.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the topic in the Message Queue for MQTT instance.
+	// The topic in which messages are stored.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -4116,11 +4162,11 @@ func (s *CreateEventStreamingRequestSourceSourceMQTTParameters) SetTopic(v strin
 type CreateEventStreamingRequestSourceSourceRabbitMQParameters struct {
 	// The ID of the Message Queue for RabbitMQ instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the queue in the Message Queue for RabbitMQ instance.
+	// The name of the queue on the Message Queue for RabbitMQ instance.
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	// The region ID. You can call the [describeregions](~~62010~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The vhost name of the Message Queue for RabbitMQ instance.
+	// The name of the vhost of the Message Queue for RabbitMQ instance.
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -4153,49 +4199,58 @@ func (s *CreateEventStreamingRequestSourceSourceRabbitMQParameters) SetVirtualHo
 }
 
 type CreateEventStreamingRequestSourceSourceRocketMQParameters struct {
-	// The authentication type.
+	// The authentication method.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	// The SQL statement that is used to filter messages.
 	FilterSql *string `json:"FilterSql,omitempty" xml:"FilterSql,omitempty"`
-	// The type of message filtering.
+	// The message filter type.
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
+	// The ID of the consumer group on the Message Queue for Apache RocketMQ instance.
 	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
-	// The endpoint that is used to access the instance.
+	// The instance endpoint.
 	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	// The ID of the Message Queue for Apache RocketMQ instance.
+	// The region where the Message Queue for Apache RocketMQ instance resides.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance network. Valid values: PublicNetwork and PrivateNetwork.
+	// The network type of the instance. Valid values:
+	//
+	// *   PublicNetwork
+	// *   PrivateNetwork
 	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
 	// The instance password.
 	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
-	// The ID of the security group to which the Message Queue for Apache RocketMQ instance belongs.
+	// The security group ID of the instance.
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
 	// The instance type.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The instance username.
 	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
-	// The ID of the vSwitch with which the Message Queue for Apache RocketMQ instance is associated.
+	// The vSwitch ID of the instance.
 	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	// The ID of the VPC to which the Message Queue for Apache RocketMQ instance belongs.
+	// The VPC ID of the instance.
 	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
 	// The network type. Valid values: PublicNetwork and PrivateNetwork.
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	// The offset from which messages are consumed. Valid values: CONSUME_FROM_LAST_OFFSET: Messages are consumed from the latest offset. CONSUME_FROM_FIRST_OFFSET: Messages are consumed from the earliest offset. CONSUME_FROM_TIMESTAMP: Messages are consumed from the offset at the specified point in time. Default value: CONSUME_FROM_LAST_OFFSET.
+	// The offset from which message consumption starts. Valid values:
+	//
+	// *   CONSUME_FROM_LAST_OFFSET: Start message consumption from the latest offset.
+	// *   CONSUME_FROM_FIRST_OFFSET: Start message consumption from the earliest offset.
+	// *   CONSUME_FROM_TIMESTAMP: Start message consumption from the offset at the specified point in time.
+	//
+	// Default value: CONSUME_FROM_LAST_OFFSET.
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The ID of the region in which the Message Queue for Apache RocketMQ instance resides.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the cross-border task belongs.
+	// The security group of the cross-border task.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The tags that are used to filter messages.
+	// The tag that is used to filter messages.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The timestamp that indicates the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
+	// The timestamp that specifies the time from which messages are consumed. This parameter is valid only if you set Offset to CONSUME_FROM_TIMESTAMP.
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The name of the topic in the Message Queue for Apache RocketMQ instance.
+	// The name of the topic on the Message Queue for Apache RocketMQ instance.
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	// The ID of the vSwitch with which the cross-border task is associated.
+	// The vSwitch ID of the cross-border task.
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC to which the cross-border task belongs.
+	// The VPC ID of the cross-border task.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -4318,13 +4373,13 @@ func (s *CreateEventStreamingRequestSourceSourceRocketMQParameters) SetVpcId(v s
 }
 
 type CreateEventStreamingRequestSourceSourceSLSParameters struct {
-	// The starting consumer offset. The value begin specifies the earliest offset, and the value end specifies the latest offset. You can also specify a time in seconds to start consumption.
+	// The consumer offset. The value begin indicates the earliest offset, and the value end indicates the latest offset. You can also specify a time in seconds to start message consumption.
 	ConsumePosition *string `json:"ConsumePosition,omitempty" xml:"ConsumePosition,omitempty"`
-	// The Log Service Logstore.
+	// The Simple Log Service Logstore.
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// The Log Service project.
+	// The Simple Log Service project.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The role name. If you want to authorize EventBridge to use this role to read logs in Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
+	// The role name. If you want to authorize EventBridge to use this role to read logs in Simple Log Service, you must select Alibaba Cloud Service for Selected Trusted Entity and EventBridge for Select Trusted Service when you create the role in the Resource Access Management (RAM) console.
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -4410,7 +4465,10 @@ func (s *CreateEventStreamingShrinkRequest) SetSourceShrink(v string) *CreateEve
 }
 
 type CreateEventStreamingResponseBody struct {
-	// The HTTP status code. The HTTP status code 200 indicates that the request is successful. Other HTTP codes indicate that the request failed. For more information about error codes, see Error codes.
+	// The response code. Valid values:
+	//
+	// *   Success: The request is successful.
+	// *   Other codes: The request failed. For more information about error codes, see Error codes.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *CreateEventStreamingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -4418,7 +4476,7 @@ type CreateEventStreamingResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the operation is successful. The value true indicates that the operation is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5986,8 +6044,9 @@ type GetConnectionResponseBody struct {
 	// The returned response code. The value Success indicates that the request is successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
-	Data     *GetConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpCode *int32                         `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Data *GetConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	HttpCode *int32 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned request ID.
@@ -6046,9 +6105,9 @@ func (s *GetConnectionResponseBodyData) SetConnections(v []*GetConnectionRespons
 }
 
 type GetConnectionResponseBodyDataConnections struct {
-	// The parameters that are returned for authentication.
+	// The authentication methods.
 	AuthParameters *GetConnectionResponseBodyDataConnectionsAuthParameters `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	// The name of the queried connection.
+	// The connection name.
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
 	// The connection description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -6056,7 +6115,7 @@ type GetConnectionResponseBodyDataConnections struct {
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The data source ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The parameters that are returned for the network.
+	// The information about the network.
 	NetworkParameters *GetConnectionResponseBodyDataConnectionsNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
 }
 
@@ -6099,19 +6158,17 @@ func (s *GetConnectionResponseBodyDataConnections) SetNetworkParameters(v *GetCo
 }
 
 type GetConnectionResponseBodyDataConnectionsAuthParameters struct {
-	// The parameters that are returned for API key authentication.
+	// The information about API key authentication.
 	ApiKeyAuthParameters *GetConnectionResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	// The authentication type. Valid values:
+	// The authentication method. Valid values:
 	//
-	// * **BASIC_AUTH**: basic authentication.
-	//
-	// * **API_KEY_AUTH**: API key authentication.
-	//
-	// * **OAUTH_AUTH**: OAuth authentication.
+	// *   BASIC_AUTH: basic authentication.
+	// *   API_KEY_AUTH: API key authentication.
+	// *   OAUTH_AUTH: OAuth authentication.
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The parameters that are returned for basic authentication.
+	// The information about basic authentication.
 	BasicAuthParameters *GetConnectionResponseBodyDataConnectionsAuthParametersBasicAuthParameters `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	// The parameters that are returned for OAuth authentication.
+	// The information about OAuth authentication.
 	OAuthParameters *GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParameters `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
@@ -6144,7 +6201,7 @@ func (s *GetConnectionResponseBodyDataConnectionsAuthParameters) SetOAuthParamet
 }
 
 type GetConnectionResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters struct {
-	// The API key.
+	// The key of the API key.
 	ApiKeyName *string `json:"ApiKeyName,omitempty" xml:"ApiKeyName,omitempty"`
 	// The value of the API key.
 	ApiKeyValue *string `json:"ApiKeyValue,omitempty" xml:"ApiKeyValue,omitempty"`
@@ -6169,9 +6226,9 @@ func (s *GetConnectionResponseBodyDataConnectionsAuthParametersApiKeyAuthParamet
 }
 
 type GetConnectionResponseBodyDataConnectionsAuthParametersBasicAuthParameters struct {
-	// The password for basic authentication.
+	// The password of basic authentication.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The username for basic authentication.
+	// The username of basic authentication.
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -6196,15 +6253,15 @@ func (s *GetConnectionResponseBodyDataConnectionsAuthParametersBasicAuthParamete
 type GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParameters struct {
 	// The endpoint that is used to obtain the OAuth token.
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The parameters that are returned for the client.
+	// The information about the client.
 	ClientParameters *GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters `json:"ClientParameters,omitempty" xml:"ClientParameters,omitempty" type:"Struct"`
 	// The HTTP request method. Valid values:
 	//
-	// * **GET**
-	// * **POST**
-	// * **HEAD**
+	// *   GET
+	// *   POST
+	// *   HEAD
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The request parameters that are returned for OAuth authentication.
+	// The request parameters of OAuth authentication.
 	OAuthHttpParameters *GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters `json:"OAuthHttpParameters,omitempty" xml:"OAuthHttpParameters,omitempty" type:"Struct"`
 }
 
@@ -6262,11 +6319,11 @@ func (s *GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersCl
 }
 
 type GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParameters struct {
-	// The parameters that are returned for the request body.
+	// The information about the request body.
 	BodyParameters []*GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersBodyParameters `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	// The parameters that are returned for the request header.
+	// The information about the request header.
 	HeaderParameters []*GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	// The parameters that are returned for the request path.
+	// The information about the request path.
 	QueryStringParameters []*GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
 }
 
@@ -6390,9 +6447,8 @@ func (s *GetConnectionResponseBodyDataConnectionsAuthParametersOAuthParametersOA
 }
 
 type GetConnectionResponseBodyDataConnectionsNetworkParameters struct {
-	// * **PublicNetwork**: the Internet.
-	//
-	// * **PrivateNetwork**: virtual private cloud (VPC).
+	// *   PublicNetwork: the Internet.
+	// *   PrivateNetwork: virtual private cloud (VPC).
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The security group ID.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -14175,7 +14231,8 @@ type QueryEventRequest struct {
 	// The name of the event bus.
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
 	// The event ID.
-	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventSource *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
 }
 
 func (s QueryEventRequest) String() string {
@@ -14193,6 +14250,11 @@ func (s *QueryEventRequest) SetEventBusName(v string) *QueryEventRequest {
 
 func (s *QueryEventRequest) SetEventId(v string) *QueryEventRequest {
 	s.EventId = &v
+	return s
+}
+
+func (s *QueryEventRequest) SetEventSource(v string) *QueryEventRequest {
+	s.EventSource = &v
 	return s
 }
 
@@ -21051,6 +21113,10 @@ func (client *Client) QueryEventWithOptions(request *QueryEventRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.EventId)) {
 		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventSource)) {
+		query["EventSource"] = request.EventSource
 	}
 
 	req := &openapi.OpenApiRequest{
