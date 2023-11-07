@@ -263,9 +263,10 @@ func (s *AddCasesResponse) SetBody(v *AddCasesResponseBody) *AddCasesResponse {
 }
 
 type AddNumbersToSkillGroupRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NumberList   *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	InstNumberGroupIdList *string `json:"InstNumberGroupIdList,omitempty" xml:"InstNumberGroupIdList,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NumberList            *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	SkillGroupId          *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 }
 
 func (s AddNumbersToSkillGroupRequest) String() string {
@@ -274,6 +275,11 @@ func (s AddNumbersToSkillGroupRequest) String() string {
 
 func (s AddNumbersToSkillGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddNumbersToSkillGroupRequest) SetInstNumberGroupIdList(v string) *AddNumbersToSkillGroupRequest {
+	s.InstNumberGroupIdList = &v
+	return s
 }
 
 func (s *AddNumbersToSkillGroupRequest) SetInstanceId(v string) *AddNumbersToSkillGroupRequest {
@@ -1849,16 +1855,18 @@ func (s *BargeInCallResponse) SetBody(v *BargeInCallResponseBody) *BargeInCallRe
 }
 
 type BlindTransferRequest struct {
-	CallPriority   *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	StrategyName   *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	StrategyParams *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
-	TimeoutSeconds *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
-	Transferee     *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
-	Transferor     *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	CallPriority         *int32  `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
+	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	StrategyName         *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	StrategyParams       *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
+	TimeoutSeconds       *int32  `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	Transferee           *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
+	TransfereeType       *string `json:"TransfereeType,omitempty" xml:"TransfereeType,omitempty"`
+	Transferor           *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s BlindTransferRequest) String() string {
@@ -1871,6 +1879,11 @@ func (s BlindTransferRequest) GoString() string {
 
 func (s *BlindTransferRequest) SetCallPriority(v int32) *BlindTransferRequest {
 	s.CallPriority = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetContactFlowVariables(v string) *BlindTransferRequest {
+	s.ContactFlowVariables = &v
 	return s
 }
 
@@ -1906,6 +1919,11 @@ func (s *BlindTransferRequest) SetTimeoutSeconds(v int32) *BlindTransferRequest 
 
 func (s *BlindTransferRequest) SetTransferee(v string) *BlindTransferRequest {
 	s.Transferee = &v
+	return s
+}
+
+func (s *BlindTransferRequest) SetTransfereeType(v string) *BlindTransferRequest {
+	s.TransfereeType = &v
 	return s
 }
 
@@ -4814,12 +4832,14 @@ func (s *CreateSkillGroupResponse) SetBody(v *CreateSkillGroupResponseBody) *Cre
 }
 
 type CreateUserRequest struct {
+	AvatarUrl      *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	DisplayId      *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
 	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LoginName      *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	Mobile         *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Nickname       *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	ResetPassword  *bool   `json:"ResetPassword,omitempty" xml:"ResetPassword,omitempty"`
 	RoleId         *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	SkillLevelList *string `json:"SkillLevelList,omitempty" xml:"SkillLevelList,omitempty"`
@@ -4832,6 +4852,11 @@ func (s CreateUserRequest) String() string {
 
 func (s CreateUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUserRequest) SetAvatarUrl(v string) *CreateUserRequest {
+	s.AvatarUrl = &v
+	return s
 }
 
 func (s *CreateUserRequest) SetDisplayId(v string) *CreateUserRequest {
@@ -4864,6 +4889,11 @@ func (s *CreateUserRequest) SetMobile(v string) *CreateUserRequest {
 	return s
 }
 
+func (s *CreateUserRequest) SetNickname(v string) *CreateUserRequest {
+	s.Nickname = &v
+	return s
+}
+
 func (s *CreateUserRequest) SetResetPassword(v bool) *CreateUserRequest {
 	s.ResetPassword = &v
 	return s
@@ -4889,6 +4919,7 @@ type CreateUserResponseBody struct {
 	Data           *CreateUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                   `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4920,17 +4951,24 @@ func (s *CreateUserResponseBody) SetMessage(v string) *CreateUserResponseBody {
 	return s
 }
 
+func (s *CreateUserResponseBody) SetParams(v []*string) *CreateUserResponseBody {
+	s.Params = v
+	return s
+}
+
 func (s *CreateUserResponseBody) SetRequestId(v string) *CreateUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type CreateUserResponseBodyData struct {
+	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Extension   *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	LoginName   *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Nickname    *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkMode    *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
@@ -4941,6 +4979,11 @@ func (s CreateUserResponseBodyData) String() string {
 
 func (s CreateUserResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUserResponseBodyData) SetAvatarUrl(v string) *CreateUserResponseBodyData {
+	s.AvatarUrl = &v
+	return s
 }
 
 func (s *CreateUserResponseBodyData) SetDisplayName(v string) *CreateUserResponseBodyData {
@@ -4965,6 +5008,11 @@ func (s *CreateUserResponseBodyData) SetLoginName(v string) *CreateUserResponseB
 
 func (s *CreateUserResponseBodyData) SetMobile(v string) *CreateUserResponseBodyData {
 	s.Mobile = &v
+	return s
+}
+
+func (s *CreateUserResponseBodyData) SetNickname(v string) *CreateUserResponseBodyData {
+	s.Nickname = &v
 	return s
 }
 
@@ -9462,6 +9510,7 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 type GetInstanceTrendingReportRequest struct {
 	EndTime    *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9480,6 +9529,11 @@ func (s *GetInstanceTrendingReportRequest) SetEndTime(v int64) *GetInstanceTrend
 
 func (s *GetInstanceTrendingReportRequest) SetInstanceId(v string) *GetInstanceTrendingReportRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceTrendingReportRequest) SetMediaType(v string) *GetInstanceTrendingReportRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -9532,6 +9586,7 @@ func (s *GetInstanceTrendingReportResponseBody) SetRequestId(v string) *GetInsta
 type GetInstanceTrendingReportResponseBodyData struct {
 	Inbound  []*GetInstanceTrendingReportResponseBodyDataInbound  `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Repeated"`
 	Outbound []*GetInstanceTrendingReportResponseBodyDataOutbound `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Repeated"`
+	Overall  []*GetInstanceTrendingReportResponseBodyDataOverall  `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceTrendingReportResponseBodyData) String() string {
@@ -9549,6 +9604,11 @@ func (s *GetInstanceTrendingReportResponseBodyData) SetInbound(v []*GetInstanceT
 
 func (s *GetInstanceTrendingReportResponseBodyData) SetOutbound(v []*GetInstanceTrendingReportResponseBodyDataOutbound) *GetInstanceTrendingReportResponseBodyData {
 	s.Outbound = v
+	return s
+}
+
+func (s *GetInstanceTrendingReportResponseBodyData) SetOverall(v []*GetInstanceTrendingReportResponseBodyDataOverall) *GetInstanceTrendingReportResponseBodyData {
+	s.Overall = v
 	return s
 }
 
@@ -9634,6 +9694,29 @@ func (s *GetInstanceTrendingReportResponseBodyDataOutbound) SetTotalCalls(v int6
 	return s
 }
 
+type GetInstanceTrendingReportResponseBodyDataOverall struct {
+	MaxLoggedInAgents *int64 `json:"MaxLoggedInAgents,omitempty" xml:"MaxLoggedInAgents,omitempty"`
+	StatsTime         *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+}
+
+func (s GetInstanceTrendingReportResponseBodyDataOverall) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceTrendingReportResponseBodyDataOverall) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceTrendingReportResponseBodyDataOverall) SetMaxLoggedInAgents(v int64) *GetInstanceTrendingReportResponseBodyDataOverall {
+	s.MaxLoggedInAgents = &v
+	return s
+}
+
+func (s *GetInstanceTrendingReportResponseBodyDataOverall) SetStatsTime(v int64) *GetInstanceTrendingReportResponseBodyDataOverall {
+	s.StatsTime = &v
+	return s
+}
+
 type GetInstanceTrendingReportResponse struct {
 	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -9664,8 +9747,9 @@ func (s *GetInstanceTrendingReportResponse) SetBody(v *GetInstanceTrendingReport
 }
 
 type GetLoginDetailsRequest struct {
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetLoginDetailsRequest) String() string {
@@ -9674,6 +9758,11 @@ func (s GetLoginDetailsRequest) String() string {
 
 func (s GetLoginDetailsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetLoginDetailsRequest) SetChatDeviceId(v string) *GetLoginDetailsRequest {
+	s.ChatDeviceId = &v
+	return s
 }
 
 func (s *GetLoginDetailsRequest) SetInstanceId(v string) *GetLoginDetailsRequest {
@@ -9735,11 +9824,19 @@ func (s *GetLoginDetailsResponseBody) SetRequestId(v string) *GetLoginDetailsRes
 
 type GetLoginDetailsResponseBodyData struct {
 	AgentServerUrl *string `json:"AgentServerUrl,omitempty" xml:"AgentServerUrl,omitempty"`
+	AvatarUrl      *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	ChatAppId      *string `json:"ChatAppId,omitempty" xml:"ChatAppId,omitempty"`
+	ChatAppKey     *string `json:"ChatAppKey,omitempty" xml:"ChatAppKey,omitempty"`
+	ChatDeviceId   *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	ChatLoginToken *string `json:"ChatLoginToken,omitempty" xml:"ChatLoginToken,omitempty"`
+	ChatServerUrl  *string `json:"ChatServerUrl,omitempty" xml:"ChatServerUrl,omitempty"`
+	ChatUserId     *string `json:"ChatUserId,omitempty" xml:"ChatUserId,omitempty"`
 	DeviceExt      *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
 	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceState    *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
 	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Extension      *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Nickname       *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	Signature      *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	Signature2     *string `json:"Signature2,omitempty" xml:"Signature2,omitempty"`
 	SipServerUrl   *string `json:"SipServerUrl,omitempty" xml:"SipServerUrl,omitempty"`
@@ -9759,6 +9856,41 @@ func (s GetLoginDetailsResponseBodyData) GoString() string {
 
 func (s *GetLoginDetailsResponseBodyData) SetAgentServerUrl(v string) *GetLoginDetailsResponseBodyData {
 	s.AgentServerUrl = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetAvatarUrl(v string) *GetLoginDetailsResponseBodyData {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatAppId(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatAppId = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatAppKey(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatAppKey = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatDeviceId(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatDeviceId = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatLoginToken(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatLoginToken = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatServerUrl(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatServerUrl = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetChatUserId(v string) *GetLoginDetailsResponseBodyData {
+	s.ChatUserId = &v
 	return s
 }
 
@@ -9784,6 +9916,11 @@ func (s *GetLoginDetailsResponseBodyData) SetDisplayName(v string) *GetLoginDeta
 
 func (s *GetLoginDetailsResponseBodyData) SetExtension(v string) *GetLoginDetailsResponseBodyData {
 	s.Extension = &v
+	return s
+}
+
+func (s *GetLoginDetailsResponseBodyData) SetNickname(v string) *GetLoginDetailsResponseBodyData {
+	s.Nickname = &v
 	return s
 }
 
@@ -10282,13 +10419,17 @@ func (s *GetRealtimeCampaignStatsResponseBody) SetRequestId(v string) *GetRealti
 }
 
 type GetRealtimeCampaignStatsResponseBodyData struct {
-	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
-	Caps           *int64 `json:"Caps,omitempty" xml:"Caps,omitempty"`
-	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
-	ReadyAgents    *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
-	TalkingAgents  *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
-	TotalAgents    *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
-	WorkingAgents  *int64 `json:"WorkingAgents,omitempty" xml:"WorkingAgents,omitempty"`
+	BreakingAgents                 *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	Caps                           *int64 `json:"Caps,omitempty" xml:"Caps,omitempty"`
+	LoggedInAgents                 *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	OutboundScenarioBreakingAgents *int64 `json:"OutboundScenarioBreakingAgents,omitempty" xml:"OutboundScenarioBreakingAgents,omitempty"`
+	OutboundScenarioReadyAgents    *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
+	OutboundScenarioTalkingAgents  *int64 `json:"OutboundScenarioTalkingAgents,omitempty" xml:"OutboundScenarioTalkingAgents,omitempty"`
+	OutboundScenarioWorkingAgents  *int64 `json:"OutboundScenarioWorkingAgents,omitempty" xml:"OutboundScenarioWorkingAgents,omitempty"`
+	ReadyAgents                    *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	TalkingAgents                  *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	TotalAgents                    *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	WorkingAgents                  *int64 `json:"WorkingAgents,omitempty" xml:"WorkingAgents,omitempty"`
 }
 
 func (s GetRealtimeCampaignStatsResponseBodyData) String() string {
@@ -10311,6 +10452,26 @@ func (s *GetRealtimeCampaignStatsResponseBodyData) SetCaps(v int64) *GetRealtime
 
 func (s *GetRealtimeCampaignStatsResponseBodyData) SetLoggedInAgents(v int64) *GetRealtimeCampaignStatsResponseBodyData {
 	s.LoggedInAgents = &v
+	return s
+}
+
+func (s *GetRealtimeCampaignStatsResponseBodyData) SetOutboundScenarioBreakingAgents(v int64) *GetRealtimeCampaignStatsResponseBodyData {
+	s.OutboundScenarioBreakingAgents = &v
+	return s
+}
+
+func (s *GetRealtimeCampaignStatsResponseBodyData) SetOutboundScenarioReadyAgents(v int64) *GetRealtimeCampaignStatsResponseBodyData {
+	s.OutboundScenarioReadyAgents = &v
+	return s
+}
+
+func (s *GetRealtimeCampaignStatsResponseBodyData) SetOutboundScenarioTalkingAgents(v int64) *GetRealtimeCampaignStatsResponseBodyData {
+	s.OutboundScenarioTalkingAgents = &v
+	return s
+}
+
+func (s *GetRealtimeCampaignStatsResponseBodyData) SetOutboundScenarioWorkingAgents(v int64) *GetRealtimeCampaignStatsResponseBodyData {
+	s.OutboundScenarioWorkingAgents = &v
 	return s
 }
 
@@ -10365,6 +10526,7 @@ func (s *GetRealtimeCampaignStatsResponse) SetBody(v *GetRealtimeCampaignStatsRe
 
 type GetRealtimeInstanceStatesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 }
 
 func (s GetRealtimeInstanceStatesRequest) String() string {
@@ -10377,6 +10539,11 @@ func (s GetRealtimeInstanceStatesRequest) GoString() string {
 
 func (s *GetRealtimeInstanceStatesRequest) SetInstanceId(v string) *GetRealtimeInstanceStatesRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetRealtimeInstanceStatesRequest) SetMediaType(v string) *GetRealtimeInstanceStatesRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -10422,16 +10589,17 @@ func (s *GetRealtimeInstanceStatesResponseBody) SetRequestId(v string) *GetRealt
 }
 
 type GetRealtimeInstanceStatesResponseBodyData struct {
-	BreakingAgents     *int64  `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InteractiveCalls   *int64  `json:"InteractiveCalls,omitempty" xml:"InteractiveCalls,omitempty"`
-	LoggedInAgents     *int64  `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
-	LongestWaitingTime *int64  `json:"LongestWaitingTime,omitempty" xml:"LongestWaitingTime,omitempty"`
-	ReadyAgents        *int64  `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
-	TalkingAgents      *int64  `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
-	TotalAgents        *int64  `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
-	WaitingCalls       *int64  `json:"WaitingCalls,omitempty" xml:"WaitingCalls,omitempty"`
-	WorkingAgents      *int64  `json:"WorkingAgents,omitempty" xml:"WorkingAgents,omitempty"`
+	BreakCodeDetailList []*GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	BreakingAgents      *int64                                                          `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	InstanceId          *string                                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InteractiveCalls    *int64                                                          `json:"InteractiveCalls,omitempty" xml:"InteractiveCalls,omitempty"`
+	LoggedInAgents      *int64                                                          `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	LongestWaitingTime  *int64                                                          `json:"LongestWaitingTime,omitempty" xml:"LongestWaitingTime,omitempty"`
+	ReadyAgents         *int64                                                          `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	TalkingAgents       *int64                                                          `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	TotalAgents         *int64                                                          `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	WaitingCalls        *int64                                                          `json:"WaitingCalls,omitempty" xml:"WaitingCalls,omitempty"`
+	WorkingAgents       *int64                                                          `json:"WorkingAgents,omitempty" xml:"WorkingAgents,omitempty"`
 }
 
 func (s GetRealtimeInstanceStatesResponseBodyData) String() string {
@@ -10440,6 +10608,11 @@ func (s GetRealtimeInstanceStatesResponseBodyData) String() string {
 
 func (s GetRealtimeInstanceStatesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetRealtimeInstanceStatesResponseBodyData) SetBreakCodeDetailList(v []*GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) *GetRealtimeInstanceStatesResponseBodyData {
+	s.BreakCodeDetailList = v
+	return s
 }
 
 func (s *GetRealtimeInstanceStatesResponseBodyData) SetBreakingAgents(v int64) *GetRealtimeInstanceStatesResponseBodyData {
@@ -10489,6 +10662,29 @@ func (s *GetRealtimeInstanceStatesResponseBodyData) SetWaitingCalls(v int64) *Ge
 
 func (s *GetRealtimeInstanceStatesResponseBodyData) SetWorkingAgents(v int64) *GetRealtimeInstanceStatesResponseBodyData {
 	s.WorkingAgents = &v
+	return s
+}
+
+type GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList struct {
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) SetBreakCode(v string) *GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) SetCount(v int64) *GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList {
+	s.Count = &v
 	return s
 }
 
@@ -11020,6 +11216,7 @@ type GetUserResponseBody struct {
 	Data           *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11051,12 +11248,18 @@ func (s *GetUserResponseBody) SetMessage(v string) *GetUserResponseBody {
 	return s
 }
 
+func (s *GetUserResponseBody) SetParams(v []*string) *GetUserResponseBody {
+	s.Params = v
+	return s
+}
+
 func (s *GetUserResponseBody) SetRequestId(v string) *GetUserResponseBody {
 	s.RequestId = &v
 	return s
 }
 
 type GetUserResponseBodyData struct {
+	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	DeviceExt   *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
@@ -11067,6 +11270,7 @@ type GetUserResponseBodyData struct {
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	LoginName   *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Nickname    *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -11079,6 +11283,11 @@ func (s GetUserResponseBodyData) String() string {
 
 func (s GetUserResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetUserResponseBodyData) SetAvatarUrl(v string) *GetUserResponseBodyData {
+	s.AvatarUrl = &v
+	return s
 }
 
 func (s *GetUserResponseBodyData) SetDeviceExt(v string) *GetUserResponseBodyData {
@@ -11128,6 +11337,11 @@ func (s *GetUserResponseBodyData) SetLoginName(v string) *GetUserResponseBodyDat
 
 func (s *GetUserResponseBodyData) SetMobile(v string) *GetUserResponseBodyData {
 	s.Mobile = &v
+	return s
+}
+
+func (s *GetUserResponseBodyData) SetNickname(v string) *GetUserResponseBodyData {
+	s.Nickname = &v
 	return s
 }
 
@@ -39072,6 +39286,10 @@ func (client *Client) AddNumbersToSkillGroupWithOptions(request *AddNumbersToSki
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstNumberGroupIdList)) {
+		query["InstNumberGroupIdList"] = request.InstNumberGroupIdList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -39636,6 +39854,10 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 		query["CallPriority"] = request.CallPriority
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVariables)) {
+		query["ContactFlowVariables"] = request.ContactFlowVariables
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		query["DeviceId"] = request.DeviceId
 	}
@@ -39662,6 +39884,10 @@ func (client *Client) BlindTransferWithOptions(request *BlindTransferRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Transferee)) {
 		query["Transferee"] = request.Transferee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransfereeType)) {
+		query["TransfereeType"] = request.TransfereeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Transferor)) {
@@ -40530,6 +40756,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		query["AvatarUrl"] = request.AvatarUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisplayId)) {
 		query["DisplayId"] = request.DisplayId
 	}
@@ -40552,6 +40782,10 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
 		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nickname)) {
+		query["Nickname"] = request.Nickname
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResetPassword)) {
@@ -41826,6 +42060,10 @@ func (client *Client) GetInstanceTrendingReportWithOptions(request *GetInstanceT
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -41870,6 +42108,10 @@ func (client *Client) GetLoginDetailsWithOptions(request *GetLoginDetailsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChatDeviceId)) {
+		query["ChatDeviceId"] = request.ChatDeviceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -42108,6 +42350,10 @@ func (client *Client) GetRealtimeInstanceStatesWithOptions(request *GetRealtimeI
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
 	}
 
 	req := &openapi.OpenApiRequest{
