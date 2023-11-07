@@ -1,3 +1,6 @@
+2023-11-07 Version: v3.3.1
+- Generated golang 2014-08-15 for Rds.
+
 2023-11-03 Version: v3.3.0
 - Generated golang 2014-08-15 for Rds.
 
