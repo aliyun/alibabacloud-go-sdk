@@ -43942,7 +43942,15 @@ func (client *Client) UpdateDcdnUserRealTimeDeliveryFieldWithOptions(request *Up
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		query["Fields"] = request.Fields
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -43951,7 +43959,7 @@ func (client *Client) UpdateDcdnUserRealTimeDeliveryFieldWithOptions(request *Up
 		Version:     tea.String("2018-01-15"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
