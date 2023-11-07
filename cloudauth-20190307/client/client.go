@@ -2273,6 +2273,7 @@ type InitFaceVerifyRequest struct {
 	EncryptType                *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
 	FaceContrastPicture        *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
 	FaceContrastPictureUrl     *string `json:"FaceContrastPictureUrl,omitempty" xml:"FaceContrastPictureUrl,omitempty"`
+	FaceGuardOutput            *string `json:"FaceGuardOutput,omitempty" xml:"FaceGuardOutput,omitempty"`
 	Ip                         *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	MetaInfo                   *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 	Mobile                     *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
@@ -2367,6 +2368,11 @@ func (s *InitFaceVerifyRequest) SetFaceContrastPicture(v string) *InitFaceVerify
 
 func (s *InitFaceVerifyRequest) SetFaceContrastPictureUrl(v string) *InitFaceVerifyRequest {
 	s.FaceContrastPictureUrl = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetFaceGuardOutput(v string) *InitFaceVerifyRequest {
+	s.FaceGuardOutput = &v
 	return s
 }
 
@@ -4398,6 +4404,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.FaceContrastPictureUrl)) {
 		query["FaceContrastPictureUrl"] = request.FaceContrastPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceGuardOutput)) {
+		query["FaceGuardOutput"] = request.FaceGuardOutput
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
