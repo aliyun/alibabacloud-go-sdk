@@ -748,7 +748,7 @@ func (s *CreateAccessConfigurationResponse) SetBody(v *CreateAccessConfiguration
 type CreateDirectoryRequest struct {
 	// The name of the directory. The name must be globally unique.
 	//
-	// The name can contain lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-). The name cannot start with d-.
+	// The name can contain lowercase letters, digits, or hyphens (-). The name cannot start or end with a hyphen (-) and cannot contain two consecutive hyphens (-). The name cannot start with d-.
 	//
 	// The name must be 2 to 64 characters in length.
 	//
@@ -1376,6 +1376,224 @@ func (s *CreateUserResponse) SetStatusCode(v int32) *CreateUserResponse {
 }
 
 func (s *CreateUserResponse) SetBody(v *CreateUserResponseBody) *CreateUserResponse {
+	s.Body = v
+	return s
+}
+
+type CreateUserProvisioningRequest struct {
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s CreateUserProvisioningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserProvisioningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserProvisioningRequest) SetDeletionStrategy(v string) *CreateUserProvisioningRequest {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetDescription(v string) *CreateUserProvisioningRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetDirectoryId(v string) *CreateUserProvisioningRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetDuplicationStrategy(v string) *CreateUserProvisioningRequest {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetPrincipalId(v string) *CreateUserProvisioningRequest {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetPrincipalType(v string) *CreateUserProvisioningRequest {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetTargetId(v string) *CreateUserProvisioningRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningRequest) SetTargetType(v string) *CreateUserProvisioningRequest {
+	s.TargetType = &v
+	return s
+}
+
+type CreateUserProvisioningResponseBody struct {
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioning *CreateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
+}
+
+func (s CreateUserProvisioningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserProvisioningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserProvisioningResponseBody) SetRequestId(v string) *CreateUserProvisioningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBody) SetUserProvisioning(v *CreateUserProvisioningResponseBodyUserProvisioning) *CreateUserProvisioningResponseBody {
+	s.UserProvisioning = v
+	return s
+}
+
+type CreateUserProvisioningResponseBodyUserProvisioning struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s CreateUserProvisioningResponseBodyUserProvisioning) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserProvisioningResponseBodyUserProvisioning) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetCreateTime(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetDeletionStrategy(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetDescription(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetDirectoryId(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetDuplicationStrategy(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetOwnerPk(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetPrincipalId(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetPrincipalName(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetPrincipalType(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetStatus(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetTargetId(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetId = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetTargetName(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetName = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetTargetPath(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetTargetType(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetUpdateTime(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponseBodyUserProvisioning) SetUserProvisioningId(v string) *CreateUserProvisioningResponseBodyUserProvisioning {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type CreateUserProvisioningResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateUserProvisioningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUserProvisioningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUserProvisioningResponse) SetHeaders(v map[string]*string) *CreateUserProvisioningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUserProvisioningResponse) SetStatusCode(v int32) *CreateUserProvisioningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUserProvisioningResponse) SetBody(v *CreateUserProvisioningResponseBody) *CreateUserProvisioningResponse {
 	s.Body = v
 	return s
 }
@@ -2056,6 +2274,81 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 	return s
 }
 
+type DeleteUserProvisioningRequest struct {
+	DeletionStrategy   *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s DeleteUserProvisioningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningRequest) SetDeletionStrategy(v string) *DeleteUserProvisioningRequest {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningRequest) SetDirectoryId(v string) *DeleteUserProvisioningRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningRequest) SetUserProvisioningId(v string) *DeleteUserProvisioningRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type DeleteUserProvisioningResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserProvisioningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningResponseBody) SetRequestId(v string) *DeleteUserProvisioningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserProvisioningResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserProvisioningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningResponse) SetHeaders(v map[string]*string) *DeleteUserProvisioningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserProvisioningResponse) SetStatusCode(v int32) *DeleteUserProvisioningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningResponse) SetBody(v *DeleteUserProvisioningResponseBody) *DeleteUserProvisioningResponse {
+	s.Body = v
+	return s
+}
+
 type DeprovisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
@@ -2726,7 +3019,7 @@ func (s *GetDirectoryStatisticsRequest) SetDirectoryId(v string) *GetDirectorySt
 type GetDirectoryStatisticsResponseBody struct {
 	// The statistics of the directory.
 	DirectoryStatistics *GetDirectoryStatisticsResponseBodyDirectoryStatistics `json:"DirectoryStatistics,omitempty" xml:"DirectoryStatistics,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2759,9 +3052,9 @@ type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The name of the directory.
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The number of groups.
+	// The number of user groups.
 	GroupCount *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
-	// The quota for groups.
+	// The quota for user groups.
 	GroupQuota *int32 `json:"GroupQuota,omitempty" xml:"GroupQuota,omitempty"`
 	// The number of tasks that are being performed.
 	InProgressTaskCount *int32 `json:"InProgressTaskCount,omitempty" xml:"InProgressTaskCount,omitempty"`
@@ -2771,14 +3064,15 @@ type GetDirectoryStatisticsResponseBodyDirectoryStatistics struct {
 	SCIMServerCredentialCount *int32 `json:"SCIMServerCredentialCount,omitempty" xml:"SCIMServerCredentialCount,omitempty"`
 	// Indicates whether SCIM synchronization is enabled. Valid values:
 	//
-	// *   true: SCIM synchronization is enabled.
-	// *   false: SCIM synchronization is disabled.
+	// *   true
+	// *   false
 	SCIMSyncEnabled *bool `json:"SCIMSyncEnabled,omitempty" xml:"SCIMSyncEnabled,omitempty"`
-	// Indicates whether SSO logon is enabled. Valid values:
+	// Indicates whether SSO is enabled. Valid values:
 	//
-	// *   true: SSO logon is enabled.
-	// *   false: SSO logon is disabled.
-	SSOEnabled                              *bool  `json:"SSOEnabled,omitempty" xml:"SSOEnabled,omitempty"`
+	// *   true
+	// *   false
+	SSOEnabled *bool `json:"SSOEnabled,omitempty" xml:"SSOEnabled,omitempty"`
+	// The quota for system policies that can be configured for an access configuration.
 	SystemPolicyPerAccessConfigurationQuota *int32 `json:"SystemPolicyPerAccessConfigurationQuota,omitempty" xml:"SystemPolicyPerAccessConfigurationQuota,omitempty"`
 	// The number of users.
 	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
@@ -4233,6 +4527,188 @@ func (s *GetUserMFAAuthenticationSettingsResponse) SetBody(v *GetUserMFAAuthenti
 	return s
 }
 
+type GetUserProvisioningRequest struct {
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s GetUserProvisioningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningRequest) SetDirectoryId(v string) *GetUserProvisioningRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningRequest) SetUserProvisioningId(v string) *GetUserProvisioningRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type GetUserProvisioningResponseBody struct {
+	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioning *GetUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
+}
+
+func (s GetUserProvisioningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningResponseBody) SetRequestId(v string) *GetUserProvisioningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBody) SetUserProvisioning(v *GetUserProvisioningResponseBodyUserProvisioning) *GetUserProvisioningResponseBody {
+	s.UserProvisioning = v
+	return s
+}
+
+type GetUserProvisioningResponseBodyUserProvisioning struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s GetUserProvisioningResponseBodyUserProvisioning) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningResponseBodyUserProvisioning) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetCreateTime(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetDeletionStrategy(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetDescription(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetDirectoryId(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetDuplicationStrategy(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetOwnerPk(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetPrincipalId(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetPrincipalName(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetPrincipalType(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetStatus(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetTargetId(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetTargetName(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.TargetName = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetTargetPath(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetTargetType(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.TargetType = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetUpdateTime(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponseBodyUserProvisioning) SetUserProvisioningId(v string) *GetUserProvisioningResponseBodyUserProvisioning {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type GetUserProvisioningResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserProvisioningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningResponse) SetHeaders(v map[string]*string) *GetUserProvisioningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserProvisioningResponse) SetStatusCode(v int32) *GetUserProvisioningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserProvisioningResponse) SetBody(v *GetUserProvisioningResponseBody) *GetUserProvisioningResponse {
+	s.Body = v
+	return s
+}
+
 type ListAccessAssignmentsRequest struct {
 	// The ID of the access configuration. The ID can be used to filter access permissions.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
@@ -5155,7 +5631,7 @@ type ListExternalSAMLIdPCertificatesResponseBodySAMLIdPCertificates struct {
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
 	// The time when the certificate was created.
 	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	// The public key of the certificate. The value of this paremeter is in the PEM format and is Base64-encoded.
+	// The public key of the certificate. The value of this parameter is in the PEM format and is Base64-encoded.
 	PublicKey *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
 	// The serial number of the certificate.
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
@@ -5473,7 +5949,7 @@ type ListGroupsRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The filter condition.
 	//
-	// Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to `GroupName` and \<Operator> only to `eq` or `sw`. The value eq indicates Equals. The value sw indicates Starts With.
+	// Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case sensitive. You can set `<Attribute>` only to `GroupName` and `<Operator>` only to `eq` or `sw`. The value eq indicates Equals. The value sw indicates Starts With.
 	//
 	// For example, if you set Filter to GroupName sw test, the operation queries the groups whose names start with test. If you set Filter to GroupName eq testgroup, the operation queries the group whose name is testgroup.
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
@@ -6615,6 +7091,242 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 	return s
 }
 
+type ListUserProvisioningsRequest struct {
+	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PrincipalId   *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	TargetId      *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetType    *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s ListUserProvisioningsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningsRequest) SetDirectoryId(v string) *ListUserProvisioningsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetMaxResults(v int32) *ListUserProvisioningsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetNextToken(v string) *ListUserProvisioningsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetPrincipalId(v string) *ListUserProvisioningsRequest {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetPrincipalType(v string) *ListUserProvisioningsRequest {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetTargetId(v string) *ListUserProvisioningsRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsRequest) SetTargetType(v string) *ListUserProvisioningsRequest {
+	s.TargetType = &v
+	return s
+}
+
+type ListUserProvisioningsResponseBody struct {
+	IsTruncated       *bool                                                 `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	MaxResults        *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken         *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId         *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCounts       *int32                                                `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	UserProvisionings []*ListUserProvisioningsResponseBodyUserProvisionings `json:"UserProvisionings,omitempty" xml:"UserProvisionings,omitempty" type:"Repeated"`
+}
+
+func (s ListUserProvisioningsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningsResponseBody) SetIsTruncated(v bool) *ListUserProvisioningsResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBody) SetMaxResults(v int32) *ListUserProvisioningsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBody) SetNextToken(v string) *ListUserProvisioningsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBody) SetRequestId(v string) *ListUserProvisioningsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBody) SetTotalCounts(v int32) *ListUserProvisioningsResponseBody {
+	s.TotalCounts = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBody) SetUserProvisionings(v []*ListUserProvisioningsResponseBodyUserProvisionings) *ListUserProvisioningsResponseBody {
+	s.UserProvisionings = v
+	return s
+}
+
+type ListUserProvisioningsResponseBodyUserProvisionings struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s ListUserProvisioningsResponseBodyUserProvisionings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningsResponseBodyUserProvisionings) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetCreateTime(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetDeletionStrategy(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetDescription(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetDirectoryId(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetDuplicationStrategy(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetOwnerPk(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetPrincipalId(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetPrincipalName(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetPrincipalType(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetStatus(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetTargetId(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetTargetName(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.TargetName = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetTargetPath(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetTargetType(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetUpdateTime(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponseBodyUserProvisionings) SetUserProvisioningId(v string) *ListUserProvisioningsResponseBodyUserProvisionings {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type ListUserProvisioningsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserProvisioningsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserProvisioningsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningsResponse) SetHeaders(v map[string]*string) *ListUserProvisioningsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserProvisioningsResponse) SetStatusCode(v int32) *ListUserProvisioningsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserProvisioningsResponse) SetBody(v *ListUserProvisioningsResponseBody) *ListUserProvisioningsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUsersRequest struct {
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
@@ -6948,7 +7660,7 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in your resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates an account your resource directory.
+	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The ID of the task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -8819,6 +9531,206 @@ func (s *UpdateUserMFAAuthenticationSettingsResponse) SetBody(v *UpdateUserMFAAu
 	return s
 }
 
+type UpdateUserProvisioningRequest struct {
+	DirectoryId            *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	NewDeletionStrategy    *string `json:"NewDeletionStrategy,omitempty" xml:"NewDeletionStrategy,omitempty"`
+	NewDescription         *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
+	NewDuplicationStrategy *string `json:"NewDuplicationStrategy,omitempty" xml:"NewDuplicationStrategy,omitempty"`
+	UserProvisioningId     *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s UpdateUserProvisioningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningRequest) SetDirectoryId(v string) *UpdateUserProvisioningRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningRequest) SetNewDeletionStrategy(v string) *UpdateUserProvisioningRequest {
+	s.NewDeletionStrategy = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningRequest) SetNewDescription(v string) *UpdateUserProvisioningRequest {
+	s.NewDescription = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningRequest) SetNewDuplicationStrategy(v string) *UpdateUserProvisioningRequest {
+	s.NewDuplicationStrategy = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningRequest) SetUserProvisioningId(v string) *UpdateUserProvisioningRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type UpdateUserProvisioningResponseBody struct {
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioning *UpdateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
+}
+
+func (s UpdateUserProvisioningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningResponseBody) SetRequestId(v string) *UpdateUserProvisioningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBody) SetUserProvisioning(v *UpdateUserProvisioningResponseBodyUserProvisioning) *UpdateUserProvisioningResponseBody {
+	s.UserProvisioning = v
+	return s
+}
+
+type UpdateUserProvisioningResponseBodyUserProvisioning struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	OwnerPk             *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s UpdateUserProvisioningResponseBodyUserProvisioning) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningResponseBodyUserProvisioning) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetCreateTime(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetDeletionStrategy(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetDescription(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetDirectoryId(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetDuplicationStrategy(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetOwnerPk(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetPrincipalId(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetPrincipalName(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetPrincipalType(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetStatus(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetTargetId(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetTargetName(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetName = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetTargetPath(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetTargetType(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.TargetType = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetUpdateTime(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponseBodyUserProvisioning) SetUserProvisioningId(v string) *UpdateUserProvisioningResponseBodyUserProvisioning {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type UpdateUserProvisioningResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserProvisioningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserProvisioningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningResponse) SetHeaders(v map[string]*string) *UpdateUserProvisioningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponse) SetStatusCode(v int32) *UpdateUserProvisioningResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningResponse) SetBody(v *UpdateUserProvisioningResponseBody) *UpdateUserProvisioningResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserStatusRequest struct {
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
@@ -8951,8 +9863,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 /**
  * You can add up to two SAML signing certificates.
  * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddExternalSAMLIdPCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -8998,8 +9908,6 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 /**
  * You can add up to two SAML signing certificates.
  * This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddExternalSAMLIdPCertificateRequest
  * @return AddExternalSAMLIdPCertificateResponse
@@ -9017,8 +9925,6 @@ func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPC
 
 /**
  * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddPermissionPolicyToAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9075,8 +9981,6 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 
 /**
  * This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddPermissionPolicyToAccessConfigurationRequest
  * @return AddPermissionPolicyToAccessConfigurationResponse
@@ -9095,8 +9999,6 @@ func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermi
 /**
  * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
  * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddUserToGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9146,8 +10048,6 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 /**
  * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
  * This topic provides an example of how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AddUserToGroupRequest
  * @return AddUserToGroupResponse
@@ -9166,8 +10066,6 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 /**
  * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
  * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ClearExternalSAMLIdentityProviderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9209,8 +10107,6 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 /**
  * If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
  * This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ClearExternalSAMLIdentityProviderRequest
  * @return ClearExternalSAMLIdentityProviderResponse
@@ -9230,8 +10126,6 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
  * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
  * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
  * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateAccessAssignmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9294,8 +10188,6 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
  * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of task execution by using the value of the `TaskId` response parameter.
  * For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](~~266726~~).
  * This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateAccessAssignmentRequest
  * @return CreateAccessAssignmentResponse
@@ -9314,8 +10206,6 @@ func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequ
 /**
  * For more information about access configurations, see [Overview of access configurations](~~266737~~).
  * This topic provides an example on how to create an access configuration named `ECS-Admin`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9373,8 +10263,6 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 /**
  * For more information about access configurations, see [Overview of access configurations](~~266737~~).
  * This topic provides an example on how to create an access configuration named `ECS-Admin`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateAccessConfigurationRequest
  * @return CreateAccessConfigurationResponse
@@ -9397,8 +10285,6 @@ func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurati
  * ## Limits
  * - You can create only one directory for a management account.
  * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9444,8 +10330,6 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
  * ## Limits
  * - You can create only one directory for a management account.
  * - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateDirectoryRequest
  * @return CreateDirectoryResponse
@@ -9463,8 +10347,6 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 
 /**
  * This topic provides an example on how to create a group named `TestGroup`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9513,8 +10395,6 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 /**
  * This topic provides an example on how to create a group named `TestGroup`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateGroupRequest
  * @return CreateGroupResponse
@@ -9533,8 +10413,6 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 /**
  * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
  * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateSCIMServerCredentialRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9576,8 +10454,6 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 /**
  * SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
  * This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateSCIMServerCredentialRequest
  * @return CreateSCIMServerCredentialResponse
@@ -9595,8 +10471,6 @@ func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCreden
 
 /**
  * This topic provides an example on how to create a user named `Alice`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9665,8 +10539,6 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 /**
  * This topic provides an example on how to create a user named `Alice`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateUserRequest
  * @return CreateUserResponse
@@ -9682,11 +10554,81 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	return _result, _err
 }
 
+func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *CreateUserProvisioningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletionStrategy)) {
+		query["DeletionStrategy"] = request.DeletionStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DuplicationStrategy)) {
+		query["DuplicationStrategy"] = request.DuplicationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUserProvisioning"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUserProvisioningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateUserProvisioning(request *CreateUserProvisioningRequest) (_result *CreateUserProvisioningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUserProvisioningResponse{}
+	_body, _err := client.CreateUserProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteAccessAssignmentRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9752,8 +10694,6 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 /**
  * When you call this operation, an asynchronous task is created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteAccessAssignmentRequest
  * @return DeleteAccessAssignmentResponse
@@ -9773,8 +10713,6 @@ func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequ
  * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
  * ## Prerequisites
  * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9825,8 +10763,6 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
  * This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
  * ## Prerequisites
  * The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](~~338352~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteAccessConfigurationRequest
  * @return DeleteAccessConfigurationResponse
@@ -9852,8 +10788,6 @@ func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurati
  * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
  * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
  * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9902,8 +10836,6 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
  * *   Access configurations are deleted. For more information, see [DeleteAccessConfiguration](~~336907~~).
  * *   System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](~~341842~~).
  * *   SSO logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](~~341573~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteDirectoryRequest
  * @return DeleteDirectoryResponse
@@ -9925,8 +10857,6 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
  * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
  * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
  * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -9975,8 +10905,6 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
  * The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
  * *   Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](~~335116~~).
  * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](~~338350~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteGroupRequest
  * @return DeleteGroupResponse
@@ -9994,8 +10922,6 @@ func (client *Client) DeleteGroup(request *DeleteGroupRequest) (_result *DeleteG
 
 /**
  * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteMFADeviceForUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10044,8 +10970,6 @@ func (client *Client) DeleteMFADeviceForUserWithOptions(request *DeleteMFADevice
 
 /**
  * This topic provides an example on how to unbind the MFA device `mfa-00ujhet8pycljj7j****` from the user `u-00q8wbq42wiltcrk****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteMFADeviceForUserRequest
  * @return DeleteMFADeviceForUserResponse
@@ -10064,8 +10988,6 @@ func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequ
 /**
  * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
  * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteSCIMServerCredentialRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10111,8 +11033,6 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 /**
  * After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
  * This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteSCIMServerCredentialRequest
  * @return DeleteSCIMServerCredentialResponse
@@ -10135,8 +11055,6 @@ func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCreden
  * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
  * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
  * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10186,8 +11104,6 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
  * *   Multi-factor authentication (MFA) devices: You must unbind the MFA devices from the user. For more information, see [DeleteMFADeviceForUser](~~341675~~).
  * *   Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](~~338350~~).
  * *   Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](~~335116~~).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeleteUserRequest
  * @return DeleteUserResponse
@@ -10203,11 +11119,61 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	return _result, _err
 }
 
+func (client *Client) DeleteUserProvisioningWithOptions(request *DeleteUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *DeleteUserProvisioningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletionStrategy)) {
+		query["DeletionStrategy"] = request.DeletionStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserProvisioning"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserProvisioningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserProvisioning(request *DeleteUserProvisioningRequest) (_result *DeleteUserProvisioningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserProvisioningResponse{}
+	_body, _err := client.DeleteUserProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeprovisionAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10261,8 +11227,6 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 /**
  * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DeprovisionAccessConfigurationRequest
  * @return DeprovisionAccessConfigurationResponse
@@ -10280,8 +11244,6 @@ func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessC
 
 /**
  * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DisableServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10311,8 +11273,6 @@ func (client *Client) DisableServiceWithOptions(runtime *util.RuntimeOptions) (_
 
 /**
  * If your CloudSSO has no directory, you can disable CloudSSO based on your business requirements. After you disable CloudSSO, you can enable it at any time.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @return DisableServiceResponse
  */
@@ -10330,8 +11290,6 @@ func (client *Client) DisableService() (_result *DisableServiceResponse, _err er
 /**
  * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
  * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request EnableServiceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10362,8 +11320,6 @@ func (client *Client) EnableServiceWithOptions(runtime *util.RuntimeOptions) (_r
 /**
  * You can call this operation only if your account belongs to the management account that is used to enable a resource directory and has permissions to enable CloudSSO. For more information, see [Enable CloudSSO](~~262819~~).
  * If you call this operation, you agree to the [Alibaba Cloud International Website Product Terms of Service](https://www.alibabacloud.com/help/doc-detail/42416.htm).
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @return EnableServiceResponse
  */
@@ -10379,7 +11335,6 @@ func (client *Client) EnableService() (_result *EnableServiceResponse, _err erro
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
  *
  * @param request GetAccessConfigurationRequest
@@ -10424,7 +11379,6 @@ func (client *Client) GetAccessConfigurationWithOptions(request *GetAccessConfig
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the information about the access configuration whose ID is `ac-00ccule7tadaijxc****`.
  *
  * @param request GetAccessConfigurationRequest
@@ -10443,8 +11397,6 @@ func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequ
 
 /**
  * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10485,8 +11437,6 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 
 /**
  * This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectoryRequest
  * @return GetDirectoryResponse
@@ -10505,8 +11455,6 @@ func (client *Client) GetDirectory(request *GetDirectoryRequest) (_result *GetDi
 /**
  * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
  * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectorySAMLServiceProviderInfoRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10548,8 +11496,6 @@ func (client *Client) GetDirectorySAMLServiceProviderInfoWithOptions(request *Ge
 /**
  * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an identity provider (IdP).
  * This topic provides an example on how to query the information about the SP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectorySAMLServiceProviderInfoRequest
  * @return GetDirectorySAMLServiceProviderInfoResponse
@@ -10566,8 +11512,9 @@ func (client *Client) GetDirectorySAMLServiceProviderInfo(request *GetDirectoryS
 }
 
 /**
- * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
- * ## Limits
+ * ### [](#)
+ * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
+ * ### [](#qps)Limit
  * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectoryStatisticsRequest
@@ -10608,8 +11555,9 @@ func (client *Client) GetDirectoryStatisticsWithOptions(request *GetDirectorySta
 }
 
 /**
- * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO) logon, and status of SCIM synchronization.
- * ## Limits
+ * ### [](#)
+ * This topic provides an example on how to query the statistics of a directory whose ID is `d-00fc2p61****`. The statistics include the number of users, quota for users, number of groups, quota for groups, number of access configurations, quota for access configurations, quota for system policies that can be configured for an access configuration, number of access permissions that are assigned, number of System for Cross-domain Identity Management (SCIM) credentials, number of asynchronous tasks, status of single sign-on (SSO), and status of SCIM synchronization.
+ * ### [](#qps)Limit
  * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetDirectoryStatisticsRequest
@@ -10628,8 +11576,6 @@ func (client *Client) GetDirectoryStatistics(request *GetDirectoryStatisticsRequ
 
 /**
  * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetExternalSAMLIdentityProviderRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10670,8 +11616,6 @@ func (client *Client) GetExternalSAMLIdentityProviderWithOptions(request *GetExt
 
 /**
  * This topic provides an example on how to query the configurations of the SAML IdP within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetExternalSAMLIdentityProviderRequest
  * @return GetExternalSAMLIdentityProviderResponse
@@ -10689,8 +11633,6 @@ func (client *Client) GetExternalSAMLIdentityProvider(request *GetExternalSAMLId
 
 /**
  * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10735,8 +11677,6 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 
 /**
  * This topic provides an example on how to query the information about the group `g-00jqzghi2n3o5hkh****` in the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetGroupRequest
  * @return GetGroupResponse
@@ -10872,8 +11812,6 @@ func (client *Client) GetMFAAuthenticationSettings(request *GetMFAAuthentication
 
 /**
  * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetMFAAuthenticationStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10914,8 +11852,6 @@ func (client *Client) GetMFAAuthenticationStatusWithOptions(request *GetMFAAuthe
 
 /**
  * This topic provides an example on how to check whether MFA is enabled for users in the directory whose ID is `00fc2p61****`. The returned result shows that MFA is in the Enabled state.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetMFAAuthenticationStatusRequest
  * @return GetMFAAuthenticationStatusResponse
@@ -10933,8 +11869,6 @@ func (client *Client) GetMFAAuthenticationStatus(request *GetMFAAuthenticationSt
 
 /**
  * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetSCIMSynchronizationStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10975,8 +11909,6 @@ func (client *Client) GetSCIMSynchronizationStatusWithOptions(request *GetSCIMSy
 
 /**
  * This topic provides an example on how to query the status of SCIM synchronization within the directory `d-00fc2p61****`. The returned result shows that SCIM synchronization is in the Enabled state.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetSCIMSynchronizationStatusRequest
  * @return GetSCIMSynchronizationStatusResponse
@@ -10992,14 +11924,6 @@ func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizati
 	return _result, _err
 }
 
-/**
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @param request GetServiceStatusRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetServiceStatusResponse
- */
 func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetServiceStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -11022,12 +11946,6 @@ func (client *Client) GetServiceStatusWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
-/**
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
- *
- * @return GetServiceStatusResponse
- */
 func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceStatusResponse{}
@@ -11041,8 +11959,6 @@ func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _er
 
 /**
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11087,8 +12003,6 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.
 
 /**
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetTaskRequest
  * @return GetTaskResponse
@@ -11107,8 +12021,6 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 /**
  * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetTaskStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11154,8 +12066,6 @@ func (client *Client) GetTaskStatusWithOptions(request *GetTaskStatusRequest, ru
 /**
  * You can call the GetTaskStatus operation to query the status of an asynchronous task. If you want to query more information about an asynchronous task, you can call the [GetTask](~~340670~~) operation.
  * This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetTaskStatusRequest
  * @return GetTaskStatusResponse
@@ -11173,8 +12083,6 @@ func (client *Client) GetTaskStatus(request *GetTaskStatusRequest) (_result *Get
 
 /**
  * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11219,8 +12127,6 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 
 /**
  * This topic provides an example on how to query information about the user whose ID is `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetUserRequest
  * @return GetUserResponse
@@ -11297,10 +12203,56 @@ func (client *Client) GetUserMFAAuthenticationSettings(request *GetUserMFAAuthen
 	return _result, _err
 }
 
+func (client *Client) GetUserProvisioningWithOptions(request *GetUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserProvisioning"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserProvisioningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioning(request *GetUserProvisioningRequest) (_result *GetUserProvisioningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserProvisioningResponse{}
+	_body, _err := client.GetUserProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListAccessAssignmentsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11369,8 +12321,6 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 
 /**
  * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListAccessAssignmentsRequest
  * @return ListAccessAssignmentsResponse
@@ -11387,7 +12337,6 @@ func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsReques
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
  *
  * @param request ListAccessConfigurationProvisioningsRequest
@@ -11452,7 +12401,6 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
  *
  * @param request ListAccessConfigurationProvisioningsRequest
@@ -11470,7 +12418,6 @@ func (client *Client) ListAccessConfigurationProvisionings(request *ListAccessCo
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
  *
  * @param request ListAccessConfigurationsRequest
@@ -11527,7 +12474,6 @@ func (client *Client) ListAccessConfigurationsWithOptions(request *ListAccessCon
 }
 
 /**
- * ## Usage notes
  * This topic provides an example on how to query the access configurations within the directory `d-00fc2p61****`. The returned result shows that the directory contains the `VPC-Admin` and `ECS-Admin` access configurations.
  *
  * @param request ListAccessConfigurationsRequest
@@ -11546,8 +12492,6 @@ func (client *Client) ListAccessConfigurations(request *ListAccessConfigurations
 
 /**
  * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListDirectoriesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11577,8 +12521,6 @@ func (client *Client) ListDirectoriesWithOptions(runtime *util.RuntimeOptions) (
 
 /**
  * This topic provides an example on how to query the directories within your Alibaba Cloud account. The returned result shows that only one directory with the ID `d-00fc2p61****` is created within your Alibaba Cloud account.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @return ListDirectoriesResponse
  */
@@ -11595,8 +12537,6 @@ func (client *Client) ListDirectories() (_result *ListDirectoriesResponse, _err 
 
 /**
  * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListExternalSAMLIdPCertificatesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11637,8 +12577,6 @@ func (client *Client) ListExternalSAMLIdPCertificatesWithOptions(request *ListEx
 
 /**
  * This topic provides an example on how to query the SAML signing certificates within the directory `d-00fc2p61****`. The returned result shows that the directory contains one SAML signing certificate.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListExternalSAMLIdPCertificatesRequest
  * @return ListExternalSAMLIdPCertificatesResponse
@@ -11656,8 +12594,6 @@ func (client *Client) ListExternalSAMLIdPCertificates(request *ListExternalSAMLI
 
 /**
  * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListGroupMembersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11710,8 +12646,6 @@ func (client *Client) ListGroupMembersWithOptions(request *ListGroupMembersReque
 
 /**
  * This topic provides an example on how to query the users in the group `g-00jqzghi2n3o5hkh****`. The returned result shows that the group contains the user `Alice` and the user `user1`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListGroupMembersRequest
  * @return ListGroupMembersResponse
@@ -11729,8 +12663,6 @@ func (client *Client) ListGroupMembers(request *ListGroupMembersRequest) (_resul
 
 /**
  * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListGroupsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11787,8 +12719,6 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 /**
  * This topic provides an example on how to query the groups in the directory `d-00fc2p61****`. The returned result shows that the directory contains three groups. The groups `group1` and `group2` are synchronized from an external identity provider (IdP). The group `TestGroup` is manually created in CloudSSO.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListGroupsRequest
  * @return ListGroupsResponse
@@ -11806,8 +12736,6 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 /**
  * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListJoinedGroupsForUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11860,8 +12788,6 @@ func (client *Client) ListJoinedGroupsForUserWithOptions(request *ListJoinedGrou
 
 /**
  * This topic provides an example on how to query the groups to which the user `u-00q8wbq42wiltcrk****` is added. The returned result shows that the user is added to both the `TestGroup` and the `group1` groups.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListJoinedGroupsForUserRequest
  * @return ListJoinedGroupsForUserResponse
@@ -11879,8 +12805,6 @@ func (client *Client) ListJoinedGroupsForUser(request *ListJoinedGroupsForUserRe
 
 /**
  * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListMFADevicesForUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11925,8 +12849,6 @@ func (client *Client) ListMFADevicesForUserWithOptions(request *ListMFADevicesFo
 
 /**
  * This topic provides an example on how to query the MFA devices that are bound to the user `u-00q8wbq42wiltcrk****`. The returned result shows that the MFA device named `Alice-MFA1` is bound to the user.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListMFADevicesForUserRequest
  * @return ListMFADevicesForUserResponse
@@ -11944,8 +12866,6 @@ func (client *Client) ListMFADevicesForUser(request *ListMFADevicesForUserReques
 
 /**
  * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionPoliciesInAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -11994,8 +12914,6 @@ func (client *Client) ListPermissionPoliciesInAccessConfigurationWithOptions(req
 
 /**
  * This topic provides an example on how to query the policies that are created for the access configuration `ac-00jhtfl8thteu6uj****`. The returned result shows that the access configuration contains one system policy and one inline policy.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionPoliciesInAccessConfigurationRequest
  * @return ListPermissionPoliciesInAccessConfigurationResponse
@@ -12013,8 +12931,6 @@ func (client *Client) ListPermissionPoliciesInAccessConfiguration(request *ListP
 
 /**
  * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSCIMServerCredentialsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12055,8 +12971,6 @@ func (client *Client) ListSCIMServerCredentialsWithOptions(request *ListSCIMServ
 
 /**
  * This topic provides an example on how to query the SCIM credentials within the `d-00fc2p61****` directory.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSCIMServerCredentialsRequest
  * @return ListSCIMServerCredentialsResponse
@@ -12075,8 +12989,6 @@ func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentia
 /**
  * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
  * This topic provides an example on how to query the tasks within the previous 24 hours.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListTasksRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12158,8 +13070,6 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *u
 /**
  * By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
  * This topic provides an example on how to query the tasks within the previous 24 hours.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListTasksRequest
  * @return ListTasksResponse
@@ -12175,10 +13085,76 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+func (client *Client) ListUserProvisioningsWithOptions(request *ListUserProvisioningsRequest, runtime *util.RuntimeOptions) (_result *ListUserProvisioningsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalId)) {
+		query["PrincipalId"] = request.PrincipalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrincipalType)) {
+		query["PrincipalType"] = request.PrincipalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserProvisionings"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserProvisioningsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserProvisionings(request *ListUserProvisioningsRequest) (_result *ListUserProvisioningsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserProvisioningsResponse{}
+	_body, _err := client.ListUserProvisioningsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListUsersRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12239,8 +13215,6 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 
 /**
  * This topic provides an example on how to query users in the `d-00fc2p61****` directory. The returned result shows that the directory contains two users. The user `AliceLee` is synchronized from an external identity provider (IdP). The user `user1` is manually created within CloudSSO.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListUsersRequest
  * @return ListUsersResponse
@@ -12259,8 +13233,6 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 /**
  * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ProvisionAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12314,8 +13286,6 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 /**
  * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ProvisionAccessConfigurationRequest
  * @return ProvisionAccessConfigurationResponse
@@ -12333,8 +13303,6 @@ func (client *Client) ProvisionAccessConfiguration(request *ProvisionAccessConfi
 
 /**
  * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemoveExternalSAMLIdPCertificateRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12379,8 +13347,6 @@ func (client *Client) RemoveExternalSAMLIdPCertificateWithOptions(request *Remov
 
 /**
  * This topic provides an example on how to remove the SAML signing certificate whose ID is `idp-c-00dt9gnl7fmjaw9c****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemoveExternalSAMLIdPCertificateRequest
  * @return RemoveExternalSAMLIdPCertificateResponse
@@ -12399,8 +13365,6 @@ func (client *Client) RemoveExternalSAMLIdPCertificate(request *RemoveExternalSA
 /**
  * After you remove an inline policy from an access configuration, the policy cannot be restored.
  * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemovePermissionPolicyFromAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12454,8 +13418,6 @@ func (client *Client) RemovePermissionPolicyFromAccessConfigurationWithOptions(r
 /**
  * After you remove an inline policy from an access configuration, the policy cannot be restored.
  * This topic provides an example on how to remove the system policy `AliyunECSFullAccess` from the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemovePermissionPolicyFromAccessConfigurationRequest
  * @return RemovePermissionPolicyFromAccessConfigurationResponse
@@ -12474,8 +13436,6 @@ func (client *Client) RemovePermissionPolicyFromAccessConfiguration(request *Rem
 /**
  * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
  * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemoveUserFromGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12525,8 +13485,6 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 /**
  * If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot remove a user from a group that is synchronized by using SCIM.
  * This topic provides an example on how to remove the user `u-00q8wbq42wiltcrk****` from the group `g-00jqzghi2n3o5hkh****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request RemoveUserFromGroupRequest
  * @return RemoveUserFromGroupResponse
@@ -12546,8 +13504,6 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
  * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
  * >  After you enable SSO logon, your password cannot be reset.
  * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ResetUserPasswordRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12606,8 +13562,6 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
  * If you forget your password or your password expires or is at risk, you must contact a CloudSSO administrator to reset your password.
  * >  After you enable SSO logon, your password cannot be reset.
  * This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ResetUserPasswordRequest
  * @return ResetUserPasswordResponse
@@ -12624,11 +13578,10 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 }
 
 /**
- * ## Usage notes
  * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
  * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
  * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
- * *   Manually configure the IdP. You can manually specifythe following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+ * *   Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
  * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
  * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
  * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -12697,11 +13650,10 @@ func (client *Client) SetExternalSAMLIdentityProviderWithOptions(request *SetExt
 }
 
 /**
- * ## Usage notes
  * During SAML 2.0-based single sign-on (SSO) logon, CloudSSO is an SP, and the identity management system of an enterprise is an IdP.
  * You can use one of the following methods to configure a SAML IdP. You can obtain the required metadata file or parameter values from your IdP.
  * *   Use the metadata file. You can specify the `EncodedMetadataDocument` parameter to upload the metadata file.
- * *   Manually configure the IdP. You can manually specifythe following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
+ * *   Manually configure the IdP. You can manually specify the following parameters for your IdP: `EntityId`, `LoginUrl`, `WantRequestSigned`, and `X509Certificate`.
  * If you have configured a SAML IdP, the existing configurations are replaced after you call this operation.
  * *   If the IdP is configured by using the metadata file, all existing configurations are replaced with new configurations.
  * *   If the IdP is manually configured, the original parameter values that are different from the new parameter values are replaced.
@@ -12725,8 +13677,6 @@ func (client *Client) SetExternalSAMLIdentityProvider(request *SetExternalSAMLId
 /**
  * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
  * This topic provides an example on how to enable MFA for users.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request SetMFAAuthenticationStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12772,8 +13722,6 @@ func (client *Client) SetMFAAuthenticationStatusWithOptions(request *SetMFAAuthe
 /**
  * If a CloudSSO administrator enables username-password logon for users, CloudSSO automatically enables MFA to improve security. The administrator can call this operation to enable or disable MFA based on the business requirements.
  * This topic provides an example on how to enable MFA for users.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request SetMFAAuthenticationStatusRequest
  * @return SetMFAAuthenticationStatusResponse
@@ -12794,8 +13742,6 @@ func (client *Client) SetMFAAuthenticationStatus(request *SetMFAAuthenticationSt
  * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
  * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
  * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request SetSCIMSynchronizationStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12843,8 +13789,6 @@ func (client *Client) SetSCIMSynchronizationStatusWithOptions(request *SetSCIMSy
  * *   After you enable SCIM synchronization, you cannot modify or delete the users or groups that are synchronized to CloudSSO by using SCIM. In addition, you cannot add users to or remove users from the groups. However, you can change the passwords of the users and enable or disable the logon of the users.
  * *   After you disable SCIM synchronization, you can modify and delete the users and groups that are synchronized to CloudSSO by using SCIM. You can also add users to or remove users from the groups.
  * This topic provides an example on how to enable SCIM synchronization within the directory `d-00fc2p61****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request SetSCIMSynchronizationStatusRequest
  * @return SetSCIMSynchronizationStatusResponse
@@ -12863,8 +13807,6 @@ func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizati
 /**
  * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
  * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12922,8 +13864,6 @@ func (client *Client) UpdateAccessConfigurationWithOptions(request *UpdateAccess
 /**
  * You can modify the `Description`, `SessionDuration`, and `RelayState` parameters for an access configuration.
  * This topic provides an example on how to change the initial web page in the access configuration `ac-00jhtfl8thteu6uj****` to `https://cloudsso.console.aliyun.com`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateAccessConfigurationRequest
  * @return UpdateAccessConfigurationResponse
@@ -12942,8 +13882,6 @@ func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurati
 /**
  * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
  * This topic provides an example on how to change the name of a directory to `new-example`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12989,8 +13927,6 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 /**
  * After you change the name of a directory, the URL that is used to log on to the Cloud SSO user portal is changed. You must notify the Cloud SSO users of the correct URL.
  * This topic provides an example on how to change the name of a directory to `new-example`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateDirectoryRequest
  * @return UpdateDirectoryResponse
@@ -13010,8 +13946,6 @@ func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result 
  * You can modify `GroupName` and `Description` for a group.
  * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
  * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateGroupRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13066,8 +14000,6 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
  * You can modify `GroupName` and `Description` for a group.
  * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a group that is synchronized by using SCIM.
  * This topic provides an example on how to change the name of the group `g-00jqzghi2n3o5hkh****` to `NewTestGroup`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateGroupRequest
  * @return UpdateGroupResponse
@@ -13085,8 +14017,6 @@ func (client *Client) UpdateGroup(request *UpdateGroupRequest) (_result *UpdateG
 
 /**
  * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateInlinePolicyForAccessConfigurationRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13139,8 +14069,6 @@ func (client *Client) UpdateInlinePolicyForAccessConfigurationWithOptions(reques
 
 /**
  * This topic provides an example on how to modify an inline policy that is created for the access configuration `ac-00jhtfl8thteu6uj****`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateInlinePolicyForAccessConfigurationRequest
  * @return UpdateInlinePolicyForAccessConfigurationResponse
@@ -13225,8 +14153,6 @@ func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenti
 
 /**
  * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateSCIMServerCredentialStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13275,8 +14201,6 @@ func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *Updat
 
 /**
  * This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateSCIMServerCredentialStatusRequest
  * @return UpdateSCIMServerCredentialStatusResponse
@@ -13296,8 +14220,6 @@ func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServer
  * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
  * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
  * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateUserRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13364,8 +14286,6 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
  * You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
  * >  If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify the information about a user that is synchronized by using SCIM.
  * This topic provides an example on how to change the email address of the user whose ID is `u-00q8wbq42wiltcrk****` to `AliceLee@example.com`.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateUserRequest
  * @return UpdateUserResponse
@@ -13450,10 +14370,68 @@ func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFA
 	return _result, _err
 }
 
+func (client *Client) UpdateUserProvisioningWithOptions(request *UpdateUserProvisioningRequest, runtime *util.RuntimeOptions) (_result *UpdateUserProvisioningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDeletionStrategy)) {
+		query["NewDeletionStrategy"] = request.NewDeletionStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDuplicationStrategy)) {
+		query["NewDuplicationStrategy"] = request.NewDuplicationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserProvisioning"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserProvisioningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserProvisioning(request *UpdateUserProvisioningRequest) (_result *UpdateUserProvisioningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserProvisioningResponse{}
+	_body, _err := client.UpdateUserProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateUserStatusRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -13502,8 +14480,6 @@ func (client *Client) UpdateUserStatusWithOptions(request *UpdateUserStatusReque
 
 /**
  * This topic provides an example on how to change the status of the user whose ID is `u-00q8wbq42wiltcrk****` to Disabled. Users in the Disabled state cannot log on to the CloudSSO user portal.
- * ## Limits
- * You can call this operation up to 100 times per second per account. This operation is globally limited to 100 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request UpdateUserStatusRequest
  * @return UpdateUserStatusResponse

@@ -1,3 +1,6 @@
+2023-11-07 Version: v1.2.0
+- Generated golang 2021-05-15 for cloudsso.
+
 2023-09-04 Version: v1.1.0
 - Generated golang 2021-05-15 for cloudsso.
 
