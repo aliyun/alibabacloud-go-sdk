@@ -12,6 +12,81 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ApproveOperationRequest struct {
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+}
+
+func (s ApproveOperationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOperationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOperationRequest) SetNodeId(v string) *ApproveOperationRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ApproveOperationRequest) SetOperationType(v string) *ApproveOperationRequest {
+	s.OperationType = &v
+	return s
+}
+
+type ApproveOperationResponseBody struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApproveOperationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOperationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOperationResponseBody) SetErrorMessage(v string) *ApproveOperationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ApproveOperationResponseBody) SetRequestId(v string) *ApproveOperationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApproveOperationResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApproveOperationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApproveOperationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveOperationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveOperationResponse) SetHeaders(v map[string]*string) *ApproveOperationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApproveOperationResponse) SetStatusCode(v int32) *ApproveOperationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApproveOperationResponse) SetBody(v *ApproveOperationResponseBody) *ApproveOperationResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -3417,6 +3492,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApproveOperationWithOptions(request *ApproveOperationRequest, runtime *util.RuntimeOptions) (_result *ApproveOperationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApproveOperation"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApproveOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApproveOperation(request *ApproveOperationRequest) (_result *ApproveOperationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApproveOperationResponse{}
+	_body, _err := client.ApproveOperationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
