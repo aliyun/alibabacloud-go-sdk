@@ -26935,12 +26935,14 @@ func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDa
 		query["RegionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RowsShrink)) {
-		query["Rows"] = request.RowsShrink
+		body["Rows"] = request.RowsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpsertCollectionData"),
