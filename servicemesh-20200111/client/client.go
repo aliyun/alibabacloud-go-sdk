@@ -13,9 +13,15 @@ import (
 )
 
 type SecretCreateRecordValue struct {
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The result of creating the secret. Valid values:
+	//
+	// *   `success`: The secret was created.
+	// *   `fail`: The secret failed to be created.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the cluster on the data plane.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message returned when exceptions occur. Otherwise, an empty value is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s SecretCreateRecordValue) String() string {
@@ -42,9 +48,15 @@ func (s *SecretCreateRecordValue) SetMessage(v string) *SecretCreateRecordValue 
 }
 
 type SecretDeleteRecordValue struct {
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The result of deleting the secret. Valid values:
+	//
+	// *   `success`: The secret was deleted.
+	// *   `fail`: The secret failed to be deleted.
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message returned when exceptions occur. Otherwise, an empty value is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
 func (s SecretDeleteRecordValue) String() string {
@@ -112,8 +124,18 @@ func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
 }
 
 type UpgradeDetailGatewayStatusRecordValue struct {
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The upgrade status of the ingress gateway. Valid values:
+	//
+	// *   `upgrading`: The ingress gateway is being upgraded.
+	// *   `pending`: The ingress gateway waits to be upgraded.
+	// *   `finished`: The ingress gateway upgrade is complete.
+	// *   `notStart`: The ingress gateway upgrade does not start.
+	// *   `failed`: The ingress gateway upgrade fails.
+	// *   `unknown`: The upgrade status of the ingress gateway is unknown.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Additional status information of the ingress gateway.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The version of the ingress gateway.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -141,8 +163,7 @@ func (s *UpgradeDetailGatewayStatusRecordValue) SetVersion(v string) *UpgradeDet
 }
 
 type AddClusterIntoServiceMeshRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 添加集群时不检查目标集群是否存在istio-system namespace，一般用于自建istio 迁移ASM 场景
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	IgnoreNamespaceCheck *bool   `json:"IgnoreNamespaceCheck,omitempty" xml:"IgnoreNamespaceCheck,omitempty"`
 	ServiceMeshId        *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -305,7 +326,7 @@ type CreateASMGatewayRequest struct {
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -333,7 +354,7 @@ func (s *CreateASMGatewayRequest) SetServiceMeshId(v string) *CreateASMGatewayRe
 }
 
 type CreateASMGatewayResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -388,7 +409,7 @@ type CreateGatewaySecretRequest struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The name of the secret.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -426,7 +447,7 @@ func (s *CreateGatewaySecretRequest) SetServiceMeshId(v string) *CreateGatewaySe
 }
 
 type CreateGatewaySecretResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The record of creating the secret.
 	SecretCreateRecord map[string]*SecretCreateRecordValue `json:"SecretCreateRecord,omitempty" xml:"SecretCreateRecord,omitempty"`
@@ -487,7 +508,7 @@ type CreateIstioGatewayDomainsRequest struct {
 	// *   `true`: forcibly uses TLS to protect connection security.
 	// *   `false`: does not forcibly use TLS to protect connection security.
 	ForceHttps *bool `json:"ForceHttps,omitempty" xml:"ForceHttps,omitempty"`
-	// The domain names of the one or more hosts that are exposed by the ASM gateway. Separate multiple domain names with commas (,).
+	// The one or more domain names that are exposed by the ASM gateway. Separate multiple domain names with commas (,).
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
@@ -501,7 +522,7 @@ type CreateIstioGatewayDomainsRequest struct {
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	// The type of the protocol. Valid values: `HTTP`, `HTTPS`, `GRPC`, `HTTP2`, `MONGO`, `TCP`, and `TLS`.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -564,7 +585,7 @@ func (s *CreateIstioGatewayDomainsRequest) SetServiceMeshId(v string) *CreateIst
 }
 
 type CreateIstioGatewayDomainsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1435,7 +1456,7 @@ type CreateServiceMeshRequest struct {
 	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
 	// The port of Envoy\"s gRPC ALS.
 	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
-	// The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+	// The type of the CLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
 	ApiServerLoadBalancerSpec *string `json:"ApiServerLoadBalancerSpec,omitempty" xml:"ApiServerLoadBalancerSpec,omitempty"`
 	// Specifies whether to expose the API server to the Internet. Valid values:
 	//
@@ -1450,13 +1471,13 @@ type CreateServiceMeshRequest struct {
 	//
 	// Default value: mesh-log-{ASM instance ID}.
 	AuditProject *string `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	// Specifies whether to enable auto-renewal for the SLB instance if the SLB instance uses the subscription billing method. Valid values:
+	// Specifies whether to enable auto-renewal for the CLB instance if the CLB instance uses the subscription billing method. Valid values:
 	//
 	// - true
 	//
 	// - false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal period of the SLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePay`. If the original subscription period of the SLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the original subscription period of the SLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
+	// The auto-renewal period of the CLB instance. This parameter is valid only if the `ChargeType` parameter is set to `PrePay`. If the original subscription period of the CLB instance is less than one year, the value of this parameter indicates the number of months for auto-renewal. If the original subscription period of the CLB instance is more than one year, the value of this parameter indicates the number of years for auto-renewal.
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// Specifies whether to allow the Kubernetes API of clusters on the data plane to access Istio resources. The version of the ASM instance must be V1.9.7.93 or later. Valid values:
 	//
@@ -1465,7 +1486,7 @@ type CreateServiceMeshRequest struct {
 	//
 	// Default value: `false`.
 	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	// The billing method of the SLB instance. Valid values:
+	// The billing method of the CLB instance. Valid values:
 	//
 	// *   `PayOnDemand`: pay-as-you-go.
 	// *   `PrePay`: subscription.
@@ -1525,8 +1546,9 @@ type CreateServiceMeshRequest struct {
 	// Default value: `false`.
 	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
 	// The edition of the ASM instance.
-	Edition       *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	EnableAmbient *bool   `json:"EnableAmbient,omitempty" xml:"EnableAmbient,omitempty"`
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// Specifies whether to enable the Ambient Mesh mode for the ASM instance.
+	EnableAmbient *bool `json:"EnableAmbient,omitempty" xml:"EnableAmbient,omitempty"`
 	// Specifies whether to enable the mesh audit feature. To enable this feature, make sure that you have activated [Log Service](https://sls.console.aliyun.com/). Valid values:
 	//
 	// *   `true`
@@ -1581,8 +1603,7 @@ type CreateServiceMeshRequest struct {
 	//
 	// Default value: `false`.
 	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
-	// After this ASM instance is successfully created, automatically add an ACK cluster to it.
-	// Make sure this ASM instance and ACK cluster have same VPC, VSwitch, cluster domain.
+	// When you create an ASM instance, you can add a cluster to the ASM instance. If you do not specify this parameter, no cluster is added to the ASM instance. The cluster and the ASM instance must be in the same vSwitch of the same VPC and have the same domain name.
 	GuestCluster *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
 	// The IP ranges in CIDR form for which traffic is to be redirected to the sidecar proxy in the ASM instance.
 	IncludeIPRanges *string `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
@@ -1655,9 +1676,9 @@ type CreateServiceMeshRequest struct {
 	//
 	// Default value: `false`.
 	OpenAgentPolicy *bool `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	// The auto-renewal period of the SLB instance. This parameter is valid only if `ChargeType` is set to `PrePaid`. The value of this parameter indicates the purchased month of the SLB instance when the subscription billing method is used. For example, if the subscription period is one year, set this parameter to 12.
+	// The auto-renewal period of the CLB instance. This parameter is valid only if `ChargeType` is set to `PrePaid`. The value of this parameter indicates the purchased month of the CLB instance when the subscription billing method is used. For example, if the subscription period is one year, set this parameter to 12.
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The type of the SLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
+	// The type of the CLB instance that is bound to Istio Pilot. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`, `slb.s3.small`, `slb.s3.medium`, and `slb.s3.large`.
 	PilotLoadBalancerSpec *string `json:"PilotLoadBalancerSpec,omitempty" xml:"PilotLoadBalancerSpec,omitempty"`
 	// The endpoint of the custom Prometheus instance.
 	PrometheusUrl *string `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
@@ -1677,8 +1698,12 @@ type CreateServiceMeshRequest struct {
 	// Default value: `false`.
 	RedisFilterEnabled *bool `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
 	// The ID of the region in which the ASM instance resides.
-	RegionId *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*CreateServiceMeshRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Tag of the ASM instance. A tag contains the following information:
+	//
+	// *   key: the name of the tag
+	// *   value: the value of the tag
+	Tag []*CreateServiceMeshRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to enable Prometheus monitoring. We recommend that you use Prometheus Service of [Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
 	//
 	// *   `true`
@@ -2096,7 +2121,9 @@ func (s *CreateServiceMeshRequest) SetWebAssemblyFilterEnabled(v bool) *CreateSe
 }
 
 type CreateServiceMeshRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the tag.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2179,9 +2206,9 @@ type CreateSwimLaneRequest struct {
 	LabelSelectorKey *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
 	// The label value of the associated service workload.``
 	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The list of services associated with the lane. The value is a JSON array. The format of a single service is `$Cluster name /$Cluster ID/$Namespace/$Service name`.
+	// The list of services associated with the lane. The value is a JSON array. The format of a single service is `$Cluster name/$Cluster ID/$Namespace/$Service name`.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
 	// The name of the lane.
 	SwimLaneName *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
@@ -2226,7 +2253,7 @@ func (s *CreateSwimLaneRequest) SetSwimLaneName(v string) *CreateSwimLaneRequest
 }
 
 type CreateSwimLaneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2383,12 +2410,175 @@ func (s *CreateSwimLaneGroupResponse) SetBody(v *CreateSwimLaneGroupResponseBody
 	return s
 }
 
+type CreateWaypointRequest struct {
+	// The ID of the cluster on the data plane.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable Horizontal Pod Autoscaling (HPA).
+	HPAEnabled *bool `json:"HPAEnabled,omitempty" xml:"HPAEnabled,omitempty"`
+	// The maximum number of waypoint proxy pods when HPA is enabled.
+	HPAMaxReplicas *int32 `json:"HPAMaxReplicas,omitempty" xml:"HPAMaxReplicas,omitempty"`
+	// The minimum number of waypoint proxy pods when HPA is enabled.
+	HPAMinReplicas *int32 `json:"HPAMinReplicas,omitempty" xml:"HPAMinReplicas,omitempty"`
+	// The expected CPU utilization when HPA is enabled.
+	HPATargetCPU *int32 `json:"HPATargetCPU,omitempty" xml:"HPATargetCPU,omitempty"`
+	// The expected memory usage when HPA is enabled.
+	HPATargetMemory *int32 `json:"HPATargetMemory,omitempty" xml:"HPATargetMemory,omitempty"`
+	// The maximum number of CPU cores that are available to the waypoint proxy pods.
+	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the waypoint proxy pods.
+	LimitMemory *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Specifies whether to deploy waypoint proxy pods based on Elastic Container Instance (ECI).
+	PreferECI *bool `json:"PreferECI,omitempty" xml:"PreferECI,omitempty"`
+	// The number of waypoint proxy pods.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The number of CPU cores requested by the waypoint proxy pods.
+	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The size of the memory requested by the waypoint proxy pods.
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The service account on which the waypoint proxy takes effect. If you do not specify this parameter, the waypoint proxy takes effect for the entire namespace.
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+	// The Service Mesh (ASM) instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s CreateWaypointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWaypointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWaypointRequest) SetClusterId(v string) *CreateWaypointRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetHPAEnabled(v bool) *CreateWaypointRequest {
+	s.HPAEnabled = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetHPAMaxReplicas(v int32) *CreateWaypointRequest {
+	s.HPAMaxReplicas = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetHPAMinReplicas(v int32) *CreateWaypointRequest {
+	s.HPAMinReplicas = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetHPATargetCPU(v int32) *CreateWaypointRequest {
+	s.HPATargetCPU = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetHPATargetMemory(v int32) *CreateWaypointRequest {
+	s.HPATargetMemory = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetLimitCPU(v string) *CreateWaypointRequest {
+	s.LimitCPU = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetLimitMemory(v string) *CreateWaypointRequest {
+	s.LimitMemory = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetNamespace(v string) *CreateWaypointRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetPreferECI(v bool) *CreateWaypointRequest {
+	s.PreferECI = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetReplicas(v int32) *CreateWaypointRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetRequestCPU(v string) *CreateWaypointRequest {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetRequestMemory(v string) *CreateWaypointRequest {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetServiceAccount(v string) *CreateWaypointRequest {
+	s.ServiceAccount = &v
+	return s
+}
+
+func (s *CreateWaypointRequest) SetServiceMeshId(v string) *CreateWaypointRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type CreateWaypointResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateWaypointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWaypointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWaypointResponseBody) SetRequestId(v string) *CreateWaypointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateWaypointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateWaypointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateWaypointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWaypointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWaypointResponse) SetHeaders(v map[string]*string) *CreateWaypointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWaypointResponse) SetStatusCode(v int32) *CreateWaypointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWaypointResponse) SetBody(v *CreateWaypointResponseBody) *CreateWaypointResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteGatewayRouteRequest struct {
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
 	// The name of the routing rule.
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2416,7 +2606,7 @@ func (s *DeleteGatewayRouteRequest) SetServiceMeshId(v string) *DeleteGatewayRou
 }
 
 type DeleteGatewayRouteResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2467,7 +2657,7 @@ type DeleteGatewaySecretRequest struct {
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
 	// The name of the secret.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2495,9 +2685,9 @@ func (s *DeleteGatewaySecretRequest) SetServiceMeshId(v string) *DeleteGatewaySe
 }
 
 type DeleteGatewaySecretResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The record of deleting the secret.
+	// The records of deleting the secret in all clusters.
 	SecretDeleteRecord map[string]*SecretDeleteRecordValue `json:"SecretDeleteRecord,omitempty" xml:"SecretDeleteRecord,omitempty"`
 }
 
@@ -2553,13 +2743,13 @@ type DeleteIstioGatewayDomainsRequest struct {
 	Hosts *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The maximum number of ASM gateways to query.
+	// The maximum number of Istio gateways to query.
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The namespace in which the ASM gateway resides.
+	// The name of the namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the port.
+	// The port name.
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2602,7 +2792,7 @@ func (s *DeleteIstioGatewayDomainsRequest) SetServiceMeshId(v string) *DeleteIst
 }
 
 type DeleteIstioGatewayDomainsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2658,7 +2848,7 @@ type DeleteServiceMeshRequest struct {
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// A JSON string that can be parsed into a string array. You can use this JSON string to specify the IDs of the resource instances that need to be retained when the ASM instance is deleted.
 	RetainResources *string `json:"RetainResources,omitempty" xml:"RetainResources,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2686,7 +2876,7 @@ func (s *DeleteServiceMeshRequest) SetServiceMeshId(v string) *DeleteServiceMesh
 }
 
 type DeleteServiceMeshResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2735,7 +2925,7 @@ func (s *DeleteServiceMeshResponse) SetBody(v *DeleteServiceMeshResponseBody) *D
 type DeleteSwimLaneRequest struct {
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The name of the lane.
 	SwimLaneName *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
@@ -2765,7 +2955,7 @@ func (s *DeleteSwimLaneRequest) SetSwimLaneName(v string) *DeleteSwimLaneRequest
 }
 
 type DeleteSwimLaneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2814,7 +3004,7 @@ func (s *DeleteSwimLaneResponse) SetBody(v *DeleteSwimLaneResponseBody) *DeleteS
 type DeleteSwimLaneGroupRequest struct {
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -2837,7 +3027,7 @@ func (s *DeleteSwimLaneGroupRequest) SetServiceMeshId(v string) *DeleteSwimLaneG
 }
 
 type DeleteSwimLaneGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2883,12 +3073,98 @@ func (s *DeleteSwimLaneGroupResponse) SetBody(v *DeleteSwimLaneGroupResponseBody
 	return s
 }
 
+type DeleteWaypointRequest struct {
+	// The ID of the cluster on the data plane.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Waypoint名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The Service Mesh (ASM) instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DeleteWaypointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWaypointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWaypointRequest) SetClusterId(v string) *DeleteWaypointRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteWaypointRequest) SetName(v string) *DeleteWaypointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteWaypointRequest) SetNamespace(v string) *DeleteWaypointRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteWaypointRequest) SetServiceMeshId(v string) *DeleteWaypointRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DeleteWaypointResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteWaypointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWaypointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWaypointResponseBody) SetRequestId(v string) *DeleteWaypointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWaypointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteWaypointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteWaypointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWaypointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWaypointResponse) SetHeaders(v map[string]*string) *DeleteWaypointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWaypointResponse) SetStatusCode(v int32) *DeleteWaypointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWaypointResponse) SetBody(v *DeleteWaypointResponseBody) *DeleteWaypointResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeASMGatewayImportedServicesRequest struct {
 	// The name of the ASM gateway.
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace in which the services reside.
 	ServiceNamespace *string `json:"ServiceNamespace,omitempty" xml:"ServiceNamespace,omitempty"`
 }
 
@@ -2916,9 +3192,9 @@ func (s *DescribeASMGatewayImportedServicesRequest) SetServiceNamespace(v string
 }
 
 type DescribeASMGatewayImportedServicesResponseBody struct {
-	// The imported services.
+	// The list of the imported services.
 	ImportedServices []*DescribeASMGatewayImportedServicesResponseBodyImportedServices `json:"ImportedServices,omitempty" xml:"ImportedServices,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2941,7 +3217,7 @@ func (s *DescribeASMGatewayImportedServicesResponseBody) SetRequestId(v string) 
 }
 
 type DescribeASMGatewayImportedServicesResponseBodyImportedServices struct {
-	// The name of the service.
+	// The name of a service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The namespace in which the service resides.
 	ServiceNamespace *string `json:"ServiceNamespace,omitempty" xml:"ServiceNamespace,omitempty"`
@@ -3066,7 +3342,7 @@ func (s *DescribeCCMVersionResponse) SetBody(v *DescribeCCMVersionResponseBody) 
 }
 
 type DescribeCensRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3084,9 +3360,9 @@ func (s *DescribeCensRequest) SetServiceMeshId(v string) *DescribeCensRequest {
 }
 
 type DescribeCensResponseBody struct {
-	// The IDs of the queried Kubernetes clusters.
+	// The list of Kubernetes clusters that are added to the same ASM instance but are in different VPCs and are not connected by using a Cloud Enterprise Network (CEN) instance.
 	Clusters []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3140,7 +3416,7 @@ func (s *DescribeCensResponse) SetBody(v *DescribeCensResponseBody) *DescribeCen
 type DescribeClusterGrafanaRequest struct {
 	// The ID of the cluster on the data plane.
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3165,7 +3441,7 @@ func (s *DescribeClusterGrafanaRequest) SetServiceMeshId(v string) *DescribeClus
 type DescribeClusterGrafanaResponseBody struct {
 	// The information of Grafana dashboards.
 	Dashboards []*DescribeClusterGrafanaResponseBodyDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3190,7 +3466,7 @@ func (s *DescribeClusterGrafanaResponseBody) SetRequestId(v string) *DescribeClu
 type DescribeClusterGrafanaResponseBodyDashboards struct {
 	// The title of the Grafana dashboard.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The endpoint of the Grafana dashboard.
+	// The endpoint of a Grafana dashboard.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -3246,7 +3522,7 @@ type DescribeClusterPrometheusRequest struct {
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
 	// The ID of the region where the cluster on the data plane resides.
 	K8sClusterRegionId *string `json:"K8sClusterRegionId,omitempty" xml:"K8sClusterRegionId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3276,7 +3552,7 @@ func (s *DescribeClusterPrometheusRequest) SetServiceMeshId(v string) *DescribeC
 type DescribeClusterPrometheusResponseBody struct {
 	// The public endpoint of the Prometheus service that is used to monitor a cluster in the ASM instance.
 	Prometheus *string `json:"Prometheus,omitempty" xml:"Prometheus,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3328,7 +3604,7 @@ func (s *DescribeClusterPrometheusResponse) SetBody(v *DescribeClusterPrometheus
 }
 
 type DescribeClustersInServiceMeshRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3346,9 +3622,9 @@ func (s *DescribeClustersInServiceMeshRequest) SetServiceMeshId(v string) *Descr
 }
 
 type DescribeClustersInServiceMeshResponseBody struct {
-	// The clusters in the ASM instance.
+	// The list of the clusters in the ASM instance.
 	Clusters []*DescribeClustersInServiceMeshResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3373,15 +3649,15 @@ func (s *DescribeClustersInServiceMeshResponseBody) SetRequestId(v string) *Desc
 type DescribeClustersInServiceMeshResponseBodyClusters struct {
 	// The configurations of access log collection.
 	AccessLogDashboards []*DescribeClustersInServiceMeshResponseBodyClustersAccessLogDashboards `json:"AccessLogDashboards,omitempty" xml:"AccessLogDashboards,omitempty" type:"Repeated"`
-	// The domain of the cluster.
+	// The domain name of the cluster.
 	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
 	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The type of the cluster.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The point in time when the cluster was created.
+	// The time when the cluster was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The error message that is returned when the call failed.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// Indicates whether the Logtail component is installed in the cluster. Valid values:
 	//
@@ -3389,7 +3665,7 @@ type DescribeClustersInServiceMeshResponseBodyClusters struct {
 	//
 	// \-`logtail_uninstalled`: The Logtail component is not installed.
 	//
-	// *   `logtail_state_get_error`: The Logtail component fails to be installed.
+	// *   `logtail_state_get_error`: The Logtail component failed to be installed.
 	LogtailInstalledState *string `json:"LogtailInstalledState,omitempty" xml:"LogtailInstalledState,omitempty"`
 	// The name of the cluster.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -3399,7 +3675,7 @@ type DescribeClustersInServiceMeshResponseBodyClusters struct {
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
 	// The status of the cluster.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The point in time when the cluster was last modified.
+	// The time when the cluster was last modified.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version number of the cluster.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -3842,7 +4118,7 @@ func (s *DescribeEipResourcesResponse) SetBody(v *DescribeEipResourcesResponseBo
 type DescribeGatewaySecretDetailsRequest struct {
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3867,7 +4143,7 @@ func (s *DescribeGatewaySecretDetailsRequest) SetServiceMeshId(v string) *Descri
 type DescribeGatewaySecretDetailsResponseBody struct {
 	// The detailed information about the secret of the ASM gateway.
 	GatewaySecretDetails []*DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails `json:"GatewaySecretDetails,omitempty" xml:"GatewaySecretDetails,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3899,7 +4175,7 @@ type DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails struct {
 	// *   An error message is returned if the status of the gateway is abnormal. Examples: `tls.crt not exist`, `tls.key not exist`, and `secret type must be kubernetes.io/tls`.
 	// *   An empty value is returned if the status of the gateway is normal.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Server Name Indication (SNI) value that indicates the hostname of the service.
+	// The Server Name Indication (SNI) value.
 	SNI *string `json:"SNI,omitempty" xml:"SNI,omitempty"`
 	// The name of the secret.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
@@ -4001,11 +4277,11 @@ func (s *DescribeGuestClusterAccessLogDashboardsRequest) SetK8sClusterId(v strin
 }
 
 type DescribeGuestClusterAccessLogDashboardsResponseBody struct {
-	// The access log reports of a cluster on the data plane.
+	// The access log dashboards of the cluster on the data plane.
 	Dashboards []*DescribeGuestClusterAccessLogDashboardsResponseBodyDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
 	// The ID of the cluster on the data plane.
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4033,9 +4309,9 @@ func (s *DescribeGuestClusterAccessLogDashboardsResponseBody) SetRequestId(v str
 }
 
 type DescribeGuestClusterAccessLogDashboardsResponseBodyDashboards struct {
-	// The title of the report.
+	// The title of the dashboard.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The URL of the report.
+	// The URL of a dashboard.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -4089,7 +4365,7 @@ func (s *DescribeGuestClusterAccessLogDashboardsResponse) SetBody(v *DescribeGue
 type DescribeGuestClusterNamespacesRequest struct {
 	// The ID of the Kubernetes cluster that is added to the ASM instance.
 	GuestClusterID *string `json:"GuestClusterID,omitempty" xml:"GuestClusterID,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// Specifies whether to return the labels of the namespaces.
 	ShowNsLabels *bool `json:"ShowNsLabels,omitempty" xml:"ShowNsLabels,omitempty"`
@@ -4119,11 +4395,11 @@ func (s *DescribeGuestClusterNamespacesRequest) SetShowNsLabels(v bool) *Describ
 }
 
 type DescribeGuestClusterNamespacesResponseBody struct {
-	// The labels of the namespaces. Labels are returned only when the `ShowNsLabels` parameter is set to `true`.
+	// The labels of the namespaces. Labels are returned only when `ShowNsLabels` is set to `true`.
 	NsLabels map[string]interface{} `json:"NsLabels,omitempty" xml:"NsLabels,omitempty"`
 	// The names of the namespaces.
 	NsList []*string `json:"NsList,omitempty" xml:"NsList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4182,9 +4458,9 @@ func (s *DescribeGuestClusterNamespacesResponse) SetBody(v *DescribeGuestCluster
 type DescribeGuestClusterPodsRequest struct {
 	// The ID of the Kubernetes cluster that is added to the ASM instance.
 	GuestClusterID *string `json:"GuestClusterID,omitempty" xml:"GuestClusterID,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -4212,9 +4488,9 @@ func (s *DescribeGuestClusterPodsRequest) SetServiceMeshId(v string) *DescribeGu
 }
 
 type DescribeGuestClusterPodsResponseBody struct {
-	// The names of the queried pods.
+	// The list of the names of the queried pods.
 	PodList []*string `json:"PodList,omitempty" xml:"PodList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4266,11 +4542,11 @@ func (s *DescribeGuestClusterPodsResponse) SetBody(v *DescribeGuestClusterPodsRe
 }
 
 type DescribeImportedServicesDetailRequest struct {
-	// The name of the service.
+	// The name of the ASM gateway.
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
-	// The details of the services.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace in which the services reside.
 	ServiceNamespace *string `json:"ServiceNamespace,omitempty" xml:"ServiceNamespace,omitempty"`
 }
 
@@ -4298,9 +4574,9 @@ func (s *DescribeImportedServicesDetailRequest) SetServiceNamespace(v string) *D
 }
 
 type DescribeImportedServicesDetailResponseBody struct {
-	// The IDs of the clusters to which the service belongs.
+	// The details of the services.
 	Details []*DescribeImportedServicesDetailResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The labels of the service.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4323,17 +4599,17 @@ func (s *DescribeImportedServicesDetailResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeImportedServicesDetailResponseBodyDetails struct {
-	// The name of the port.
+	// The clusters on the data plane.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
-	// The ports declared for the service.
+	// The labels of the service.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// Kubernetes
+	// The namespace in which the service resides.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The port number.
+	// The ports declared for the service.
 	Ports []*DescribeImportedServicesDetailResponseBodyDetailsPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The type of the service.
+	// The name of a service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The protocol of the port.
+	// The type of the service.
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -4376,13 +4652,16 @@ func (s *DescribeImportedServicesDetailResponseBodyDetails) SetServiceType(v str
 }
 
 type DescribeImportedServicesDetailResponseBodyDetailsPorts struct {
-	// The container port.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NodePort *int32  `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of a port.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node port.
-	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	TargetPort *int32  `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	NodePort *int32 `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
+	// The port number.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol of the port.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The container port.
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
 func (s DescribeImportedServicesDetailResponseBodyDetailsPorts) String() string {
@@ -4450,11 +4729,11 @@ func (s *DescribeImportedServicesDetailResponse) SetBody(v *DescribeImportedServ
 type DescribeIstioGatewayDomainsRequest struct {
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The maximum number of ASM gateways to query.
+	// The maximum number of Istio gateways to query.
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The namespace in which the ASM gateway resides.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -4489,7 +4768,7 @@ func (s *DescribeIstioGatewayDomainsRequest) SetServiceMeshId(v string) *Describ
 type DescribeIstioGatewayDomainsResponseBody struct {
 	// The domain names that are exposed by the ASM gateway.
 	GatewaySecretDetails []*DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails `json:"GatewaySecretDetails,omitempty" xml:"GatewaySecretDetails,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4516,12 +4795,13 @@ type DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails struct {
 	CredentialName *string `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
 	// The details of the domain name in the JSON format.
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The domain name.
-	Domains       []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	GatewayCRName *string   `json:"GatewayCRName,omitempty" xml:"GatewayCRName,omitempty"`
+	// The list of domain names.
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The name of the Istio gateway.
+	GatewayCRName *string `json:"GatewayCRName,omitempty" xml:"GatewayCRName,omitempty"`
 	// The namespace in which the ASM gateway resides.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the port.
+	// The port name.
 	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	// The type of the protocol. Valid values: `HTTP`, `HTTPS`, `GRPC`, `HTTP2`, `MONGO`, `TCP`, and `TLS`.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
@@ -4692,10 +4972,12 @@ type DescribeIstioGatewayRouteDetailResponseBodyRouteDetail struct {
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
-	HasUnsafeFeatures   *bool                                                                      `json:"HasUnsafeFeatures,omitempty" xml:"HasUnsafeFeatures,omitempty"`
+	// If the value is true, the original YAML file contains features that are not supported on the current interface.
+	HasUnsafeFeatures *bool `json:"HasUnsafeFeatures,omitempty" xml:"HasUnsafeFeatures,omitempty"`
 	// The matching rules for traffic routing.
 	MatchRequest *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
-	RawVSRoute   *string                                                             `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
+	// The original YAML file of the virtual service that is serialized into a JSON string.
+	RawVSRoute *string `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
 	// The endpoints of destination services for Layer 4 weighted routing.
 	RouteDestinations []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
 	// The name of the routing rule.
@@ -5256,7 +5538,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) 
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations struct {
 	// The unique endpoint of the destination service to which the specified requests are sent.
 	Destination *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
-	// The request headers to be matched.
+	// The list of the request headers to be matched.
 	Headers *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The traffic weight. Valid values: 1 to 100.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -5288,7 +5570,7 @@ func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations
 type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination struct {
 	// The name of the service defined in the service registry.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ports.
+	// The ports of the specified hosts from which the traffic is routed.
 	Port *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
 	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
@@ -5507,8 +5789,10 @@ type DescribeIstioGatewayRoutesResponseBodyManagementRoutes struct {
 	// The name of the ASM gateway.
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
 	// The description of the routing rule.
-	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationHost   []*string `json:"DestinationHost,omitempty" xml:"DestinationHost,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Destination hosts list.
+	DestinationHost []*string `json:"DestinationHost,omitempty" xml:"DestinationHost,omitempty" type:"Repeated"`
+	// Destination subset list.
 	DestinationSubSet []*string `json:"DestinationSubSet,omitempty" xml:"DestinationSubSet,omitempty" type:"Repeated"`
 	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -5611,7 +5895,7 @@ func (s *DescribeIstioGatewayRoutesResponse) SetBody(v *DescribeIstioGatewayRout
 type DescribeMetadataResponseBody struct {
 	// The metadata of ASM, which contains basic information about ASM.
 	MetaData *DescribeMetadataResponseBodyMetaData `json:"MetaData,omitempty" xml:"MetaData,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5640,11 +5924,11 @@ type DescribeMetadataResponseBodyMetaData struct {
 	ProEdition *DescribeMetadataResponseBodyMetaDataProEdition `json:"ProEdition,omitempty" xml:"ProEdition,omitempty" type:"Struct"`
 	// The regions where ASM instances can be created.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The Custom Resource Definitions (CRDs) of the versions.
+	// The custom resource definitions (CRDs) of all ASM versions.
 	VersionCrds []map[string]interface{} `json:"VersionCrds,omitempty" xml:"VersionCrds,omitempty" type:"Repeated"`
-	// The ASM version and the corresponding Istio version.
+	// The Istio versions corresponding to the ASM versions.
 	VersionRegistry []map[string]interface{} `json:"VersionRegistry,omitempty" xml:"VersionRegistry,omitempty" type:"Repeated"`
-	// The supported versions.
+	// The list of ASM versions.
 	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -5689,11 +5973,11 @@ func (s *DescribeMetadataResponseBodyMetaData) SetVersions(v []*string) *Describ
 type DescribeMetadataResponseBodyMetaDataProEdition struct {
 	// The current version.
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// The CRDs of the versions.
+	// The CRDs of all ASM versions.
 	VersionCrds []map[string]interface{} `json:"VersionCrds,omitempty" xml:"VersionCrds,omitempty" type:"Repeated"`
-	// The ASM version and the corresponding Istio version.
+	// The Istio versions corresponding to the ASM versions.
 	VersionRegistry []map[string]interface{} `json:"VersionRegistry,omitempty" xml:"VersionRegistry,omitempty" type:"Repeated"`
-	// The supported versions.
+	// The list of ASM versions.
 	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -6389,7 +6673,7 @@ func (s *DescribeReusableSlbRequest) SetNetworkType(v string) *DescribeReusableS
 }
 
 type DescribeReusableSlbResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of SLB instances that can be reused.
 	ReusableSlbList []*DescribeReusableSlbResponseBodyReusableSlbList `json:"ReusableSlbList,omitempty" xml:"ReusableSlbList,omitempty" type:"Repeated"`
@@ -6849,11 +7133,11 @@ func (s *DescribeServiceMeshAdditionalStatusResponse) SetBody(v *DescribeService
 }
 
 type DescribeServiceMeshClustersRequest struct {
-	// The maximum number of clusters in a cluster list.
+	// The maximum number of entries per page.
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The position where the query starts.
 	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -6928,14 +7212,38 @@ type DescribeServiceMeshClustersResponseBodyClusters struct {
 	// *   `1`: The cluster cannot be added to the ASM instance because you do not have administrator permissions on the cluster.
 	// *   `2`: The cluster cannot be added to the ASM instance because the cluster and the ASM instance reside in different VPCs between which no private connections are built.
 	// *   `3`: The CIDR block of the cluster conflicts with that of the ASM instance.
-	// *   `4`: The cluster has a namespace that is named istio system.
-	ForbiddenFlag *int64  `json:"ForbiddenFlag,omitempty" xml:"ForbiddenFlag,omitempty"`
+	// *   `4`: The cluster has a namespace that is named istio-system.
+	ForbiddenFlag *int64 `json:"ForbiddenFlag,omitempty" xml:"ForbiddenFlag,omitempty"`
+	// The reason why the cluster on the data plane cannot be added to the ASM instance. The value is a JSON string in the following format:
+	//
+	//     [
+	//       {
+	//         "cluster": "cdd55bd6e054b4c6ca18ec02614******",
+	//         "object": "Pod",
+	//         "cidr": "172.16.0.0/24"
+	//       },
+	//       {
+	//         "cluster": "cfa37fdf7cb1641e1976f8293ac******",
+	//         "object": "Pod",
+	//         "cidr": "172.16.0.0/24"
+	//       }
+	//     ]
+	//
+	// In the preceding example, the CIDR block `172.16.0.0/24` of the pod in the `cdd55bd6e054b4c6ca18ec02614******` cluster conflicts with the CIDR block `172.16.0.0/24` of the pod in the `cfa37fdf7cb1641e1976f8293ac******` cluster.
+	//
+	// Valid values of the `object` parameter:
+	//
+	// *   `Pod`
+	// *   `Service`
+	// *   `VSwitch`
+	// *   `VPC`
+	// *   `VPC CIDR`
 	ForbiddenInfo *string `json:"ForbiddenInfo,omitempty" xml:"ForbiddenInfo,omitempty"`
 	// The name of the cluster.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region in which the cluster resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The ID of the security group.
 	SgId *string `json:"SgId,omitempty" xml:"SgId,omitempty"`
@@ -7068,7 +7376,7 @@ func (s *DescribeServiceMeshClustersResponse) SetBody(v *DescribeServiceMeshClus
 }
 
 type DescribeServiceMeshDetailRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -7086,7 +7394,7 @@ func (s *DescribeServiceMeshDetailRequest) SetServiceMeshId(v string) *DescribeS
 }
 
 type DescribeServiceMeshDetailResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the ASM instance.
 	ServiceMesh *DescribeServiceMeshDetailResponseBodyServiceMesh `json:"ServiceMesh,omitempty" xml:"ServiceMesh,omitempty" type:"Struct"`
@@ -7113,11 +7421,11 @@ func (s *DescribeServiceMeshDetailResponseBody) SetServiceMesh(v *DescribeServic
 type DescribeServiceMeshDetailResponseBodyServiceMesh struct {
 	// The specification of the ASM instance. Valid values:
 	//
-	// - `standard`: Standard Edition
-	// - `enterprise`: Enterprise Edition
-	// - `ultimate`: Ultimate Edition
+	// *   `standard`: Standard Edition
+	// *   `enterprise`: Enterprise Edition
+	// *   `ultimate`: Ultimate Edition
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The list of clusters.
+	// The clusters.
 	Clusters []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// The endpoints of the ASM instance.
 	Endpoints *DescribeServiceMeshDetailResponseBodyServiceMeshEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
@@ -7125,8 +7433,8 @@ type DescribeServiceMeshDetailResponseBodyServiceMesh struct {
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud service for which the ASM instance is created. Valid values:
 	//
-	// - `ackone`: The ASM instance is created for Alibaba Cloud Distributed Cloud Container Platform (ACK One).
-	// - An empty value indicates that the ASM instance is created by the user.
+	// *   `ackone`: The ASM instance is created for Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+	// *   An empty value indicates that the ASM instance is created by the user.
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
 	// The basic information about the ASM instance.
 	ServiceMeshInfo *DescribeServiceMeshDetailResponseBodyServiceMeshServiceMeshInfo `json:"ServiceMeshInfo,omitempty" xml:"ServiceMeshInfo,omitempty" type:"Struct"`
@@ -7182,7 +7490,7 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshEndpoints struct {
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	// The endpoint that is used to access Istio Pilot from the internal network.
 	IntranetPilotEndpoint *string `json:"IntranetPilotEndpoint,omitempty" xml:"IntranetPilotEndpoint,omitempty"`
-	// The endpoint that is used to expose the API server to the Internet.
+	// The endpoint that is used to access the API server over the Internet.
 	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 	// The endpoint that is used to expose Istio Pilot to the Internet.
 	PublicPilotEndpoint *string `json:"PublicPilotEndpoint,omitempty" xml:"PublicPilotEndpoint,omitempty"`
@@ -7219,20 +7527,20 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshEndpoints) SetPublicPil
 type DescribeServiceMeshDetailResponseBodyServiceMeshServiceMeshInfo struct {
 	// The time when the ASM instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The error message that is returned when the call failed.
+	// The returned error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the ASM instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The edition of the ASM instance. Valid values:
 	//
 	// *   `Default`: Standard Edition
-	// *   `Pro`: Professional Edition
+	// *   `Pro`: Enterprise Edition and Ultimate Edition
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The ID of the region in which the ASM instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The status of the ASM instance.
+	// The state of the ASM instance.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The time when the ASM instance was last modified.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -7326,19 +7634,19 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpec) SetNetwork(v *Des
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecLoadBalancer struct {
-	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+	// The ID of the CLB instance that is used when the API server is exposed to the Internet.
 	ApiServerLoadbalancerId *string `json:"ApiServerLoadbalancerId,omitempty" xml:"ApiServerLoadbalancerId,omitempty"`
 	// Indicates whether the API server is exposed to the Internet. Valid values:
 	//
-	// *   `true`: The API server is exposed to the Internet.
-	// *   `false`: The API server is not exposed to the Internet.
+	// *   `true`
+	// *   `false`
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
 	// Indicates whether Istio Pilot is exposed to the Internet. Valid values:
 	//
-	// *   `true`: Istio Pilot is exposed to the Internet.
-	// *   `false`: Istio Pilot is not exposed to the Internet.
+	// *   `true`
+	// *   `false`
 	PilotPublicEip *bool `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
-	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+	// The ID of the Classic Load Balancer (CLB) instance that is used when Istio Pilot is exposed to the Internet.
 	PilotPublicLoadbalancerId *string `json:"PilotPublicLoadbalancerId,omitempty" xml:"PilotPublicLoadbalancerId,omitempty"`
 }
 
@@ -7375,19 +7683,19 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfig struct {
 	AccessLog *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigAccessLog `json:"AccessLog,omitempty" xml:"AccessLog,omitempty" type:"Struct"`
 	// The information about mesh audit.
 	Audit *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigAudit `json:"Audit,omitempty" xml:"Audit,omitempty" type:"Struct"`
-	// The configurations of control-plane log collection.
+	// The configurations of control plane log collection.
 	ControlPlaneLogInfo *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo `json:"ControlPlaneLogInfo,omitempty" xml:"ControlPlaneLogInfo,omitempty" type:"Struct"`
 	// Indicates whether a custom Zipkin system is used. Valid values:
 	//
-	// *   `true`: A custom Zipkin system is used.
-	// *   `false`: No custom Zipkin system is used.
+	// *   `true`
+	// *   `false`
 	CustomizedZipkin *bool `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
 	// The information about the edition.
 	Edition *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigEdition `json:"Edition,omitempty" xml:"Edition,omitempty" type:"Struct"`
 	// Indicates whether the feature that routes traffic to the nearest instance is enabled. Valid values:
 	//
-	// *   `true`: The feature is enabled.
-	// *   `false`: The feature is disabled.
+	// *   `true`
+	// *   `false`
 	EnableLocalityLB *bool `json:"EnableLocalityLB,omitempty" xml:"EnableLocalityLB,omitempty"`
 	// The IP ranges in CIDR form to be excluded from redirection to sidecar proxies in the ASM instance.
 	ExcludeIPRanges *string `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
@@ -7424,15 +7732,15 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfig struct {
 	Proxy *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigProxy `json:"Proxy,omitempty" xml:"Proxy,omitempty" type:"Struct"`
 	// The configurations of the sidecar injector.
 	SidecarInjector *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" type:"Struct"`
-	// Indicates whether Prometheus monitoring is enabled. We recommend that you use [Prometheus Service of Application Real-Time Monitoring Service (ARMS)](https://arms.console.aliyun.com/). Valid values:
+	// Indicates whether Prometheus monitoring is enabled. We recommend that you use [Managed Service for Prometheus](https://arms.console.aliyun.com/). Valid values:
 	//
-	// *   `true`: Prometheus monitoring is enabled.
-	// *   `false`: Prometheus monitoring is disabled.
+	// *   `true`
+	// *   `false`
 	Telemetry *bool `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	// Indicates whether tracing analysis is enabled. This feature can be enabled only after [Tracing Analysis](https://tracing-analysis.console.aliyun.com/) is activated. Valid values:
+	// Indicates whether tracing analysis is enabled. This feature can be enabled only after [Managed Service for OpenTelemetry](https://tracing-analysis.console.aliyun.com/) is activated. Valid values:
 	//
-	// *   `true`: Tracing analysis is enabled.
-	// *   `false`: Tracing analysis is disabled.
+	// *   `true`
+	// *   `false`
 	Tracing *bool `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
 	// The configurations of WebAssembly Filter.
 	WebAssemblyFilterDeployment *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigWebAssemblyFilterDeployment `json:"WebAssemblyFilterDeployment,omitempty" xml:"WebAssemblyFilterDeployment,omitempty" type:"Struct"`
@@ -7574,10 +7882,10 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfig) SetWebA
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigAccessLog struct {
 	// Indicates whether access log collection is enabled. Valid values:
 	//
-	// *   `true`: Access log collection is enabled.
-	// *   `false`: Access log collection is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the Log Service project that stores access logs.
+	// The name of the Simple Log Service project that stores access logs.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
@@ -7607,10 +7915,10 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigAudit struct 
 	AuditProjectStatus *string `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
 	// Indicates whether mesh audit is enabled. Valid values:
 	//
-	// *   `true`: Mesh audit is enabled.
-	// *   `false`: Mesh audit is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The name of the Log Service project that is used for mesh audit.
+	// The name of the Simple Log Service project that is used for mesh audit.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
@@ -7638,13 +7946,13 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigAudit) Se
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigControlPlaneLogInfo struct {
-	// Indicates whether the collection of control-plane logs is enabled. Valid values:
+	// Indicates whether the collection of control plane logs is enabled. Valid values:
 	//
-	// *   `true`: The collection of control-plane logs is enabled.
-	// *   `false`: The collection of control-plane logs is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	LogTTL  *int32 `json:"LogTTL,omitempty" xml:"LogTTL,omitempty"`
-	// The name of the Log Service project that stores control-plane logs.
+	// The name of the Simple Log Service project that stores control plane logs.
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 }
 
@@ -7704,20 +8012,20 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigEdition) 
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration struct {
-	// The configurations of additional features for access log collection
+	// The configurations of additional features for access log collection.
 	AccessLogExtraConf *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf `json:"AccessLogExtraConf,omitempty" xml:"AccessLogExtraConf,omitempty" type:"Struct"`
 	// The configurations of adaptive xDS optimization.
 	AdaptiveXdsConfiguration *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAdaptiveXdsConfiguration `json:"AdaptiveXdsConfiguration,omitempty" xml:"AdaptiveXdsConfiguration,omitempty" type:"Struct"`
-	// The configurations of automatic diagnosis for the ASM instance.
+	// The configurations of automatic diagnostics for the ASM instance.
 	AutoDiagnosis *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAutoDiagnosis `json:"AutoDiagnosis,omitempty" xml:"AutoDiagnosis,omitempty" type:"Struct"`
 	// Access to Istio resources by using the Kubernetes API on the data plane.
 	CRAggregationConfiguration *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationCRAggregationConfiguration `json:"CRAggregationConfiguration,omitempty" xml:"CRAggregationConfiguration,omitempty" type:"Struct"`
 	// Indicates whether the Kubernetes API of clusters on the data plane can be used to access Istio resources. Valid values:
 	//
-	// *   `true`: The Kubernetes API of clusters on the data plane can be used to access Istio resources.
-	// *   `false`: The Kubernetes API of clusters on the data plane cannot be used to access Istio resources.
+	// *   `true`
+	// *   `false`
 	CRAggregationEnabled *bool `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	// The label selectors used to specify namespaces on the data plane. The control plane discovers and process only application services in the specified namespaces.
+	// The label selectors used to specify the namespaces of the clusters on the data plane. The control plane discovers and processes only application services in the specified namespaces.
 	DiscoverySelectors []map[string]interface{} `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty" type:"Repeated"`
 	// The configurations of the rollback feature for Istio resources.
 	IstioCRHistory *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationIstioCRHistory `json:"IstioCRHistory,omitempty" xml:"IstioCRHistory,omitempty" type:"Struct"`
@@ -7731,7 +8039,7 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigur
 	OPAScopeInjection *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection `json:"OPAScopeInjection,omitempty" xml:"OPAScopeInjection,omitempty" type:"Struct"`
 	// The resource limits on the istio-init container.
 	SidecarProxyInitResourceLimit *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceLimit `json:"SidecarProxyInitResourceLimit,omitempty" xml:"SidecarProxyInitResourceLimit,omitempty" type:"Struct"`
-	// The resources that are requested by the istio-init container.
+	// The resources that are required by the istio-init container.
 	SidecarProxyInitResourceRequest *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceRequest `json:"SidecarProxyInitResourceRequest,omitempty" xml:"SidecarProxyInitResourceRequest,omitempty" type:"Struct"`
 	// The maximum period of time that Istio Proxy waits for a request to end.
 	TerminationDrainDuration *string `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
@@ -7817,10 +8125,10 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAccessLogExtraConf struct {
 	GatewayEnabled *bool `json:"GatewayEnabled,omitempty" xml:"GatewayEnabled,omitempty"`
-	// The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
+	// The retention period for the access logs of the ingress gateway. Unit: day. The logs are collected by using Simple Log Service. For example, the value 30 indicates that the logs are retained for 30 days.
 	GatewayLifecycle *int32 `json:"GatewayLifecycle,omitempty" xml:"GatewayLifecycle,omitempty"`
 	SidecarEnabled   *bool  `json:"SidecarEnabled,omitempty" xml:"SidecarEnabled,omitempty"`
-	// The retention period for the access logs of sidecar proxies. Unit: day. The logs are collected by using the Log Service. For example, a value of 30 indicates that the logs are retained for 30 days.
+	// The retention period for the access logs of sidecar proxies. Unit: day. The logs are collected by using Simple Log Service. For example, the value 30 indicates that the logs are retained for 30 days.
 	SidecarLifecycle *int32 `json:"SidecarLifecycle,omitempty" xml:"SidecarLifecycle,omitempty"`
 }
 
@@ -7981,7 +8289,7 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationAutoDiagnosis struct {
-	// Indicates whether automatic diagnosis is enabled for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed five minutes after you modify an Istio resource.
+	// Indicates whether automatic diagnostics is enabled for the ASM instance. If you enable this feature, the ASM instance is automatically diagnosed 5 minutes after you modify an Istio resource.
 	AutoDiagnosisEnabled *bool `json:"AutoDiagnosisEnabled,omitempty" xml:"AutoDiagnosisEnabled,omitempty"`
 }
 
@@ -8019,8 +8327,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationIstioCRHistory struct {
 	// Indicates whether the rollback feature for Istio resources is enabled. Valid values:
 	//
-	// *   `true`: The rollback feature for Istio resources is enabled.
-	// *   `false`: The rollback feature for Istio resources is disabled.
+	// *   `true`
+	// *   `false`
 	EnableHistory *bool `json:"EnableHistory,omitempty" xml:"EnableHistory,omitempty"`
 }
 
@@ -8095,7 +8403,7 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePostStartExec struct {
-	// The executed command.
+	// The executed commands. The value is a string that consists of JSON arrays.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 }
 
@@ -8234,7 +8542,7 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecyclePreStopExec struct {
-	// The executed command.
+	// The executed commands. The value is a string that consists of JSON arrays.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 }
 
@@ -8343,8 +8651,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer struct {
 	// Indicates whether MulitiBuffer-based TLS acceleration is enabled. Valid values:
 	//
-	// *   `true`: MulitiBuffer-based TLS acceleration is enabled.
-	// *   `false`: MulitiBuffer-based TLS acceleration is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The pull-request latency.
 	PollDelay *string `json:"PollDelay,omitempty" xml:"PollDelay,omitempty"`
@@ -8396,8 +8704,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection struct {
 	// Indicates whether the feature of controlling the OPA injection scope is enabled. Valid values:
 	//
-	// *   `true`: The feature is enabled.
-	// *   `false`: The feature is disabled.
+	// *   `true`
+	// *   `false`
 	OPAScopeInjected *bool `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
 }
 
@@ -8467,8 +8775,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigK8sNewAPIsSupport struct {
 	// Indicates whether Gateway API is enabled. Valid values:
 	//
-	// *   `true`: Gateway API is enabled.
-	// *   `false`: Gateway API is disabled.
+	// *   `true`
+	// *   `false`
 	GatewayAPIEnabled *bool `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
 }
 
@@ -8486,10 +8794,10 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigK8sNewAPI
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigKiali struct {
-	// Indicates whether mesh topology is enabled. Mesh topology can be enabled only when Prometheus monitoring is enabled. If Prometheus monitoring is disabled, you must set this parameter to `false`. Valid values:
+	// Indicates whether mesh topology is enabled. Mesh topology can be enabled only when Prometheus monitoring is enabled. If Prometheus monitoring is disabled, you must set this parameter to `false`.`` Valid values:
 	//
-	// *   `true`: Mesh topology is enabled.
-	// *   `false`: Mesh topology is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The endpoint of the mesh topology service.
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -8516,16 +8824,16 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigKiali) Se
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigLocalityLB struct {
 	// The configurations of cross-region traffic distribution.
 	//
-	// >  Only one of `Failover` and Distribute parameters can be set. If you set the `Distribute` parameter, you cannot set the Failover parameter.
+	// >  Either `Failover` or Distribute can be set. If you set `Distribute`, you cannot set Failover.
 	Distribute map[string]interface{} `json:"Distribute,omitempty" xml:"Distribute,omitempty"`
 	// Indicates whether cross-region load balancing is enabled. Valid values:
 	//
-	// *   `true`: Cross-region load balancing is enabled.
-	// *   `false`: Cross-region load balancing is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The configurations of cross-region failover.
 	//
-	// >  Only one of Failover and `Distribute` parameters can be set. If you set the `Failover` parameter, you cannot set the `Distribute` parameter.
+	// >  Either Failover or `Distribute` can be set. If you set `Failover`, you cannot set `Distribute`.
 	Failover map[string]interface{} `json:"Failover,omitempty" xml:"Failover,omitempty"`
 }
 
@@ -8555,8 +8863,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigLocalityL
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigMSE struct {
 	// Indicates whether MSE is enabled. Valid values:
 	//
-	// - `true`: MSE is enabled.
-	// - `false`: MSE is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
@@ -8576,8 +8884,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigMSE) SetE
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigOPA struct {
 	// Indicates whether the OPA plug-in is installed. Valid values:
 	//
-	// *   `true`: The OPA plug-in is installed.
-	// *   `false`: The OPA plug-in is not installed.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The maximum number of CPU cores that are available to the OPA proxy container.
 	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
@@ -8587,7 +8895,7 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigOPA struct {
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
 	// The number of CPU cores that are requested by the OPA proxy container.
 	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	// The size of the memory that is requested by the OPA proxy container.
+	// The size of the memory that is requested by OPA.
 	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
 }
 
@@ -8636,8 +8944,8 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilot struct 
 	Feature *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilotFeature `json:"Feature,omitempty" xml:"Feature,omitempty" type:"Struct"`
 	// Indicates whether HTTP/1.0 is supported. Valid values:
 	//
-	// *   `true`: HTTP/1.0 is supported.
-	// *   `false`: HTTP/1.0 is not supported.
+	// *   `true`
+	// *   `false`
 	Http10Enabled *bool `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
 	// The sampling percentage of tracing analysis.
 	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
@@ -8674,8 +8982,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilot) Se
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilotConfigSource struct {
 	// Indicates whether communication is allowed between external services and services in the mesh. Valid values:
 	//
-	// *   `true`: The communication is allowed.
-	// *   `false`: The communication is not allowed.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The ID of the Nacos instance that provides external service information.
 	NacosID *string `json:"NacosID,omitempty" xml:"NacosID,omitempty"`
@@ -8702,13 +9010,13 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilotConf
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPilotFeature struct {
 	// Indicates whether Secret Discovery Service (SDS) is enabled. Valid values:
 	//
-	// *   `true`: SDS is enabled.
-	// *   `false`: SDS is disabled.
+	// *   `true`
+	// *   `false`
 	EnableSDSServer *bool `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
 	// Indicates whether gateway configuration filtering is enabled. Valid values:
 	//
-	// *   `true`: Gateway configuration filtering is enabled.
-	// *   `false`: Gateway configuration filtering is disabled.
+	// *   `true`
+	// *   `false`
 	FilterGatewayClusterConfig *bool `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
 }
 
@@ -8735,8 +9043,8 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPrometheus st
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
 	// Indicates whether a custom Prometheus instance is used. Valid values:
 	//
-	// *   `true`: A custom Prometheus instance is used.
-	// *   `false`: No custom Prometheus instance is used.
+	// *   `true`
+	// *   `false`
 	UseExternal *bool `json:"UseExternal,omitempty" xml:"UseExternal,omitempty"`
 }
 
@@ -8761,23 +9069,23 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigPrometheu
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigProtocolSupport struct {
 	// Indicates whether Dubbo Filter is enabled. Valid values:
 	//
-	// *   `true`: Dubbo Filter is enabled.
-	// *   `false`: Dubbo Filter is disabled.
+	// *   `true`
+	// *   `false`
 	DubboFilterEnabled *bool `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
 	// Indicates whether MySQL Filter is enabled. Valid values:
 	//
-	// *   `true`: MySQL Filter is enabled.
-	// *   `false`: MySQL Filter is disabled.
+	// *   `true`
+	// *   `false`
 	MysqlFilterEnabled *bool `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
 	// Indicates whether Redis Filter is enabled. Valid values:
 	//
-	// *   `true`: Redis Filter is enabled.
-	// *   `false`: Redis Filter is disabled.
+	// *   `true`
+	// *   `false`
 	RedisFilterEnabled *bool `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
 	// Indicates whether Thrift Filter is enabled. Valid values:
 	//
-	// *   `true`: Thrift Filter is enabled.
-	// *   `false`: Thrift Filter is disabled.
+	// *   `true`
+	// *   `false`
 	ThriftFilterEnabled *bool `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
 }
 
@@ -8816,8 +9124,8 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigProxy struct 
 	AccessLogFormat *string `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
 	// Indicates whether gRPC Access Log Service (ALS) for Envoy is enabled. Valid values:
 	//
-	// *   `true`: gRPC ALS for Envoy is enabled.
-	// *   `false`: gRPC ALS for Envoy is disabled.
+	// *   `true`
+	// *   `false`
 	AccessLogServiceEnabled *bool `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
 	// The endpoint of gRPC ALS for Envoy.
 	AccessLogServiceHost *string `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
@@ -8825,10 +9133,10 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigProxy struct 
 	AccessLogServicePort *int32 `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
 	// The trusted domain.
 	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
-	// Indicates whether the Domain Name System (DNS) proxy feature is enabled. Valid values: Valid values:
+	// Indicates whether the Domain Name System (DNS) proxy feature is enabled. Valid values:
 	//
-	// *   `true`: The DNS proxy feature is enabled.
-	// *   `false`: The DNS proxy feature is disabled.
+	// *   `true`
+	// *   `false`
 	EnableDNSProxying *bool `json:"EnableDNSProxying,omitempty" xml:"EnableDNSProxying,omitempty"`
 	// The maximum number of CPU cores.
 	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
@@ -8904,29 +9212,29 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigProxy) Se
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarInjector struct {
-	// Indicates whether automatic sidecar injection can be enabled by using pod annotations. Valid values:
+	// Indicates whether automatic sidecar proxy injection can be enabled by using pod annotations. Valid values:
 	//
-	// *   `true`: Automatic sidecar injection can be enabled by using pod annotations.
-	// *   `false`: Automatic sidecar injection cannot be enabled by using pod annotations.
+	// *   `true`
+	// *   `false`
 	AutoInjectionPolicyEnabled *bool `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
-	// Indicates whether automatic sidecar injection is enabled for all namespaces. Valid values:
+	// Indicates whether automatic sidecar proxy injection is enabled for all namespaces. Valid values:
 	//
-	// *   `true`: Automatic sidecar injection is enabled for all namespaces.
-	// *   `false`: Automatic sidecar injection is not enabled for all namespaces.
+	// *   `true`
+	// *   `false`
 	EnableNamespacesByDefault *bool `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
 	// The configurations of Container Network Interface (CNI).
 	InitCNIConfiguration *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" type:"Struct"`
-	// The maximum number of CPU cores that are available to the sidecar injector pod.
+	// The maximum number of CPU cores that are available to the pod where the sidecar injector resides.
 	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
-	// The maximum size of the memory that is available to the sidecar injector pod.
+	// The maximum size of the memory that is available to the pod where the sidecar injector resides.
 	LimitMemory *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
-	// The number of CPU cores that are requested by the sidecar injector pod.
+	// The number of CPU cores that are requested by the pod where the sidecar injector resides.
 	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	// The size of the memory that is requested by the sidecar injector pod.
+	// The size of the memory that is requested by the pod where the sidecar injector resides.
 	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-	// The number of component replicas that are used for sidecar injection. Default value: `1`.
+	// The number of component replicas that are used for sidecar proxy injection. Default value: `1`.
 	SidecarInjectorNum *int32 `json:"SidecarInjectorNum,omitempty" xml:"SidecarInjectorNum,omitempty"`
-	// Other configurations of automatic sidecar injection, in the YAML format. For more information, see [Enable automatic sidecar injection by using multiple methods](~~186136~~).
+	// Other configurations of automatic sidecar proxy injection, in the YAML format. For more information, see [Enable automatic sidecar proxy injection](~~186136~~).
 	SidecarInjectorWebhookAsYaml *string `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
 }
 
@@ -8986,8 +9294,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarIn
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
 	// Indicates whether the CNI plug-in is enabled. Valid values:
 	//
-	// *   `true`: The CNI plug-in is enabled.
-	// *   `false`: The CNI plug-in is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The namespaces to exclude. The CNI plug-in ignores pods in the excluded namespaces.
 	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty"`
@@ -9014,8 +9322,8 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigSidecarIn
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigWebAssemblyFilterDeployment struct {
 	// Indicates whether WebAssembly Filter is enabled. Valid values:
 	//
-	// *   `true`:WebAssembly Filter is enabled.
-	// *   `false`: WebAssembly Filter is disabled.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
@@ -9033,9 +9341,9 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigWebAssemb
 }
 
 type DescribeServiceMeshDetailResponseBodyServiceMeshSpecNetwork struct {
-	// The ID of the security group.
+	// The security group ID.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The ID of the vSwitch.
+	// The virtual switches (vSwitches).
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -9119,10 +9427,11 @@ func (s *DescribeServiceMeshKubeconfigRequest) SetServiceMeshId(v string) *Descr
 }
 
 type DescribeServiceMeshKubeconfigResponseBody struct {
+	// The expiration time of the kubeconfig certificate. The format is: YYYY-MM-DD hh: mm: ss.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The content of the kubeconfig file of the cluster.
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9179,7 +9488,7 @@ func (s *DescribeServiceMeshKubeconfigResponse) SetBody(v *DescribeServiceMeshKu
 }
 
 type DescribeServiceMeshLogsRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -9199,7 +9508,7 @@ func (s *DescribeServiceMeshLogsRequest) SetServiceMeshId(v string) *DescribeSer
 type DescribeServiceMeshLogsResponseBody struct {
 	// The details of the logs.
 	Logs []*DescribeServiceMeshLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9226,7 +9535,7 @@ type DescribeServiceMeshLogsResponseBodyLogs struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The content of the logs.
 	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -9283,7 +9592,7 @@ func (s *DescribeServiceMeshLogsResponse) SetBody(v *DescribeServiceMeshLogsResp
 }
 
 type DescribeServiceMeshProxyStatusRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -9303,18 +9612,18 @@ func (s *DescribeServiceMeshProxyStatusRequest) SetServiceMeshId(v string) *Desc
 type DescribeServiceMeshProxyStatusResponseBody struct {
 	// The status code. Valid values:
 	//
-	// `200`: The status code returned because the operation is successful.
+	// `200`: The operation is successful.
 	//
-	// *   `403`: The status code returned because you are not authorized to perform this operation.
-	// *   `503`: The status code returned because a backend server error occurs.
+	// *   `403`: You are not authorized to perform this operation.
+	// *   `503`: A backend server error occurs.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The information about the status of the proxies on the data plane.
 	ProxyStatus []*DescribeServiceMeshProxyStatusResponseBodyProxyStatus `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9379,7 +9688,7 @@ type DescribeServiceMeshProxyStatusResponseBodyProxyStatus struct {
 	ListenerSynced *string `json:"ListenerSynced,omitempty" xml:"ListenerSynced,omitempty"`
 	// The ID of the proxy on the data plane.
 	ProxyId *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
-	// The version number of the proxy on the data plane.
+	// The version number of a proxy on the data plane.
 	ProxyVersion *string `json:"ProxyVersion,omitempty" xml:"ProxyVersion,omitempty"`
 	// The update status of the route. Valid values:
 	//
@@ -9468,11 +9777,11 @@ func (s *DescribeServiceMeshProxyStatusResponse) SetBody(v *DescribeServiceMeshP
 }
 
 type DescribeServiceMeshUpgradeStatusRequest struct {
-	// The ID of the request.
-	AllIstioGatewayFullNames *string `json:"AllIstioGatewayFullNames,omitempty" xml:"AllIstioGatewayFullNames,omitempty"`
 	// The fully qualified names of ingress gateways in the ASM instance. Separate multiple names with commas (,).
-	GuestClusterIds *string `json:"GuestClusterIds,omitempty" xml:"GuestClusterIds,omitempty"`
+	AllIstioGatewayFullNames *string `json:"AllIstioGatewayFullNames,omitempty" xml:"AllIstioGatewayFullNames,omitempty"`
 	// The IDs of the clusters on the data plane of the ASM instance. Separate multiple clusters with commas (,).
+	GuestClusterIds *string `json:"GuestClusterIds,omitempty" xml:"GuestClusterIds,omitempty"`
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -9500,9 +9809,9 @@ func (s *DescribeServiceMeshUpgradeStatusRequest) SetServiceMeshId(v string) *De
 }
 
 type DescribeServiceMeshUpgradeStatusResponseBody struct {
-	// The upgrade results.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of ingress gateways that are upgraded.
+	// The upgrade results.
 	UpgradeDetail *DescribeServiceMeshUpgradeStatusResponseBodyUpgradeDetail `json:"UpgradeDetail,omitempty" xml:"UpgradeDetail,omitempty" type:"Struct"`
 }
 
@@ -9525,16 +9834,17 @@ func (s *DescribeServiceMeshUpgradeStatusResponseBody) SetUpgradeDetail(v *Descr
 }
 
 type DescribeServiceMeshUpgradeStatusResponseBodyUpgradeDetail struct {
+	// The number of ingress gateways that are upgraded.
+	FinishedGatewaysNum *int64 `json:"FinishedGatewaysNum,omitempty" xml:"FinishedGatewaysNum,omitempty"`
+	// The information about the status of the ingress gateways.
+	GatewayStatusRecord map[string]*UpgradeDetailGatewayStatusRecordValue `json:"GatewayStatusRecord,omitempty" xml:"GatewayStatusRecord,omitempty"`
 	// The status of the ASM instance. Valid values:
 	//
 	// *   running: The instance is running.
 	// *   `upgrading`: The instance is being upgraded.
 	// *   `upgrading_failed`: The upgrade of the instance fails.
-	FinishedGatewaysNum *int64                                            `json:"FinishedGatewaysNum,omitempty" xml:"FinishedGatewaysNum,omitempty"`
-	GatewayStatusRecord map[string]*UpgradeDetailGatewayStatusRecordValue `json:"GatewayStatusRecord,omitempty" xml:"GatewayStatusRecord,omitempty"`
-	// The total number of ingress gateways in the ASM instance.
 	MeshStatus *string `json:"MeshStatus,omitempty" xml:"MeshStatus,omitempty"`
-	// The information about the status of the ingress gateways.
+	// The total number of ingress gateways in the ASM instance.
 	TotalGatewaysNum *int64 `json:"TotalGatewaysNum,omitempty" xml:"TotalGatewaysNum,omitempty"`
 }
 
@@ -9775,7 +10085,7 @@ func (s *DescribeServiceMeshesRequestTag) SetValue(v string) *DescribeServiceMes
 }
 
 type DescribeServiceMeshesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The information about the ASM instances.
 	ServiceMeshes []*DescribeServiceMeshesResponseBodyServiceMeshes `json:"ServiceMeshes,omitempty" xml:"ServiceMeshes,omitempty" type:"Repeated"`
@@ -9802,26 +10112,27 @@ func (s *DescribeServiceMeshesResponseBody) SetServiceMeshes(v []*DescribeServic
 type DescribeServiceMeshesResponseBodyServiceMeshes struct {
 	// The edition of the ASM instance. Valid values:
 	//
-	// - `standard`: Standard Edition
-	// - `enterprise`: Enterprise Edition
-	// - `ultimate`: Ultimate Edition
+	// *   `standard`: Standard Edition
+	// *   `enterprise`: Enterprise Edition
+	// *   `ultimate`: Ultimate Edition
 	ClusterSpec *string `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The information about the clusters.
+	// The clusters.
 	Clusters []*string `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// All endpoints of the ASM instance.
+	// The information about all endpoints of the ASM instances.
 	Endpoints *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud service instance for which the ASM instance is created.
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The Alibaba Cloud service for which the ASM instance is created. Valid values:
 	//
-	// - `ackone`: The ASM instance is created for Alibaba Cloud Distributed Cloud Container Platform (ACK One).
-	// - An empty value indicates that the ASM instance is created by the user.
+	// *   `ackone`: The ASM instance is created for Alibaba Cloud Distributed Cloud Container Platform (ACK One).
+	// *   An empty value indicates that the ASM instance is created by the user.
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	// The basic information about the ASM instance.
+	// The basic information about the ASM instances.
 	ServiceMeshInfo *DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo `json:"ServiceMeshInfo,omitempty" xml:"ServiceMeshInfo,omitempty" type:"Struct"`
 	// The specifications of the ASM instance.
-	Spec *DescribeServiceMeshesResponseBodyServiceMeshesSpec  `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	Tag  []*DescribeServiceMeshesResponseBodyServiceMeshesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Spec       *DescribeServiceMeshesResponseBodyServiceMeshesSpec  `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
+	Tag        []*DescribeServiceMeshesResponseBodyServiceMeshesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Upgradable *bool                                                `json:"Upgradable,omitempty" xml:"Upgradable,omitempty"`
 }
 
 func (s DescribeServiceMeshesResponseBodyServiceMeshes) String() string {
@@ -9872,12 +10183,17 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetTag(v []*DescribeSer
 	return s
 }
 
+func (s *DescribeServiceMeshesResponseBodyServiceMeshes) SetUpgradable(v bool) *DescribeServiceMeshesResponseBodyServiceMeshes {
+	s.Upgradable = &v
+	return s
+}
+
 type DescribeServiceMeshesResponseBodyServiceMeshesEndpoints struct {
-	// The endpoint that is used to access the API server from the internal network.
+	// The endpoint that is used to access the API server over the internal network.
 	IntranetApiServerEndpoint *string `json:"IntranetApiServerEndpoint,omitempty" xml:"IntranetApiServerEndpoint,omitempty"`
 	// The endpoint that is used to access Istio Pilot from the internal network.
 	IntranetPilotEndpoint *string `json:"IntranetPilotEndpoint,omitempty" xml:"IntranetPilotEndpoint,omitempty"`
-	// The endpoint that is used to expose the API server to the Internet.
+	// The endpoint that is used to access the API server over the Internet.
 	PublicApiServerEndpoint *string `json:"PublicApiServerEndpoint,omitempty" xml:"PublicApiServerEndpoint,omitempty"`
 	// The endpoint that is used to expose Istio Pilot to the Internet.
 	PublicPilotEndpoint *string `json:"PublicPilotEndpoint,omitempty" xml:"PublicPilotEndpoint,omitempty"`
@@ -9919,9 +10235,9 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesEndpoints) SetReverseTunn
 }
 
 type DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo struct {
-	// The point in time when the ASM instance was created.
+	// The time when the ASM instance was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The error message that is returned when the call failed.
+	// The error message.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The name of the ASM instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -9930,13 +10246,13 @@ type DescribeServiceMeshesResponseBodyServiceMeshesServiceMeshInfo struct {
 	// *   `Pro`: Professional Edition
 	// *   `Default`: Standard Edition
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	// The ID of the region in which the ASM instance resides.
+	// The region ID of the ASM instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the ASM instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The status of the ASM instance.
+	// The state of the ASM instance.
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The point in time when the ASM instance was last modified.
+	// The time when the ASM instance was last modified.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version number of the ASM instance.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -10030,15 +10346,15 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpec) SetNetwork(v *Descr
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer struct {
 	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
 	ApiServerLoadbalancerId *string `json:"ApiServerLoadbalancerId,omitempty" xml:"ApiServerLoadbalancerId,omitempty"`
-	// Indicates whether the API Server is exposed to the Internet. Valid values:
+	// Indicates whether the API server is exposed to the Internet. Valid values:
 	//
-	// *   `true`: The API server is exposed to the Internet.
-	// *   `false`: The API server is not exposed to the Internet.
+	// *   `true`
+	// *   `false`
 	ApiServerPublicEip *bool `json:"ApiServerPublicEip,omitempty" xml:"ApiServerPublicEip,omitempty"`
 	// Indicates whether Istio Pilot is exposed to the Internet. Valid values:
 	//
-	// *   `true`: Istio Pilot is exposed to the Internet.
-	// *   `false`: Istio Pilot is not exposed to the Internet.
+	// *   `true`
+	// *   `false`
 	PilotPublicEip *bool `json:"PilotPublicEip,omitempty" xml:"PilotPublicEip,omitempty"`
 	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
 	PilotPublicLoadbalancerId *string `json:"PilotPublicLoadbalancerId,omitempty" xml:"PilotPublicLoadbalancerId,omitempty"`
@@ -10073,10 +10389,10 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecLoadBalancer) SetPilo
 }
 
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig struct {
-	// Indicates whether the feature of routing traffic to the nearest instance is enabled. Valid values:
+	// Indicates whether nearby access is enabled. Valid values:
 	//
-	// *   `true`: The feature is enabled.
-	// *   `false`: The feature is disabled.
+	// *   `true`
+	// *   `false`
 	Mtls *bool `json:"Mtls,omitempty" xml:"Mtls,omitempty"`
 	// The outbound traffic policy. Valid values:
 	//
@@ -10085,19 +10401,19 @@ type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig struct {
 	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
 	// The configurations of the control plane.
 	Pilot *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot `json:"Pilot,omitempty" xml:"Pilot,omitempty" type:"Struct"`
-	// The configurations of sidecar injection.
+	// The configurations of sidecar proxy injection.
 	SidecarInjector *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector `json:"SidecarInjector,omitempty" xml:"SidecarInjector,omitempty" type:"Struct"`
 	// Indicates whether mutual Transport Layer Security (mTLS) is strictly enforced.
 	StrictMtls *bool `json:"StrictMtls,omitempty" xml:"StrictMtls,omitempty"`
-	// Indicates whether Prometheus monitoring is enabled. We recommend that you use Prometheus Service of Application Real-Time Monitoring Service (ARMS). Valid values:
+	// Indicates whether Prometheus monitoring is enabled. We recommend that you use Managed Service for Prometheus. Valid values:
 	//
-	// *   `true`: Prometheus monitoring is enabled.
-	// *   `false`: Prometheus monitoring is disabled.
+	// *   `true`
+	// *   `false`
 	Telemetry *bool `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
 	// Indicates whether the tracing feature is enabled. This feature can be enabled only after Tracing Analysis is activated. Valid values:
 	//
-	// *   `true`: The tracing feature is enabled.
-	// *   `false`: The tracing feature is disabled.
+	// *   `true`
+	// *   `false`
 	Tracing *bool `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
 }
 
@@ -10147,10 +10463,10 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfig) SetTracin
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot struct {
 	// Indicates whether the support for HTTP 1.0 is enabled. Valid values:
 	//
-	// *   `true`: The support for HTTP 1.0 is enabled.
-	// *   `false`: The support for HTTP 1.0 is disabled.
+	// *   `true`
+	// *   `false`
 	Http10Enabled *bool `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
-	// The sampling percentage of tracing.
+	// The sampling rate when Tracing Analysis is enabled.
 	TraceSampling *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
 }
 
@@ -10173,12 +10489,12 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigPilot) SetT
 }
 
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjector struct {
-	// Indicates whether automatic sidecar injection is enabled by using annotations.
+	// Indicates whether automatic sidecar proxy injection is enabled by using annotations.
 	AutoInjectionPolicyEnabled *bool `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
-	// Indicates whether automatic sidecar injection is enabled for all namespaces. Valid values:
+	// Indicates whether automatic sidecar proxy injection is enabled for all namespaces. Valid values:
 	//
-	// *   `true`: Automatic sidecar injection is enabled for all namespaces.
-	// *   `false`: Automatic sidecar injection is disabled for all namespaces.
+	// *   `true`
+	// *   `false`
 	EnableNamespacesByDefault *bool `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
 	// The initial configurations of Container Network Interface (CNI).
 	InitCNIConfiguration *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration `json:"InitCNIConfiguration,omitempty" xml:"InitCNIConfiguration,omitempty" type:"Struct"`
@@ -10210,10 +10526,10 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInje
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInjectorInitCNIConfiguration struct {
 	// Indicates whether elevated privileges are required for the istio-init container when you perform traffic redirection for the istio-proxy container. Valid values:
 	//
-	// *   `true`: Elevated privileges are required for the istio-init container.
-	// *   `false`: Elevated privileges are not required for the istio-init container.
+	// *   `true`
+	// *   `false`
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The namespace for which sidecar injection is disabled.
+	// The namespace for which sidecar proxy injection is disabled.
 	ExcludeNamespaces *string `json:"ExcludeNamespaces,omitempty" xml:"ExcludeNamespaces,omitempty"`
 }
 
@@ -10238,7 +10554,7 @@ func (s *DescribeServiceMeshesResponseBodyServiceMeshesSpecMeshConfigSidecarInje
 type DescribeServiceMeshesResponseBodyServiceMeshesSpecNetwork struct {
 	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of vSwitches.
+	// The IDs of the vSwitches.
 	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -10320,7 +10636,7 @@ func (s *DescribeServiceMeshesResponse) SetBody(v *DescribeServiceMeshesResponse
 }
 
 type DescribeUpgradeVersionRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -10338,7 +10654,7 @@ func (s *DescribeUpgradeVersionRequest) SetServiceMeshId(v string) *DescribeUpgr
 }
 
 type DescribeUpgradeVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The version information.
 	Version *DescribeUpgradeVersionResponseBodyVersion `json:"Version,omitempty" xml:"Version,omitempty" type:"Struct"`
@@ -10424,7 +10740,7 @@ func (s *DescribeUpgradeVersionResponse) SetBody(v *DescribeUpgradeVersionRespon
 }
 
 type DescribeUserPermissionsRequest struct {
-	// The ID of the RAM user or RAM role.
+	// The ID of a RAM user or RAM role.
 	SubAccountUserId *string `json:"SubAccountUserId,omitempty" xml:"SubAccountUserId,omitempty"`
 }
 
@@ -10444,7 +10760,7 @@ func (s *DescribeUserPermissionsRequest) SetSubAccountUserId(v string) *Describe
 type DescribeUserPermissionsResponseBody struct {
 	// The permissions that are granted to an entity.
 	Permissions []*DescribeUserPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10469,19 +10785,19 @@ func (s *DescribeUserPermissionsResponseBody) SetRequestId(v string) *DescribeUs
 type DescribeUserPermissionsResponseBodyPermissions struct {
 	// The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
 	IsRamRole *string `json:"IsRamRole,omitempty" xml:"IsRamRole,omitempty"`
-	// This parameter is required by the system. The return value is fixed to `0`.
+	// The value is fixed as `0`.
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The ID of the ASM instance.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// This parameter is required by the system. The return value is fixed to `cluster`.
+	// The value is fixed as `cluster`.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The name of the permissions. Valid values:
 	//
-	// *   `istio-admin`: the permissions of Alibaba Cloud Service Mesh (ASM) administrators.
+	// *   `istio-admin`: the permissions of ASM administrators.
 	// *   `istio-ops`: the permissions of ASM restricted users.
 	// *   `istio-readonly`: the read-only permissions.
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// This parameter is required by the system. The return value is fixed to `custom`.
+	// The value is fixed as `custom`.
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
 }
 
@@ -10574,9 +10890,9 @@ func (s *DescribeUsersWithPermissionsRequest) SetUserType(v string) *DescribeUse
 }
 
 type DescribeUsersWithPermissionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the RAM users or RAM roles to which an RBAC role is assigned.
+	// The list of the IDs of the RAM users or RAM roles to which an RBAC role is assigned.
 	UIDs []*string `json:"UIDs,omitempty" xml:"UIDs,omitempty" type:"Repeated"`
 }
 
@@ -10847,7 +11163,7 @@ type DescribeVSwitchesResponseBodyVSwitches struct {
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 	// The ID of the VPC to which the vSwitch belongs.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// 交换机所属的可用区。
+	// The zone to which the switch belongs.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -10919,7 +11235,7 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 }
 
 type DescribeVersionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The available ASM versions.
 	VersionInfo []*DescribeVersionsResponseBodyVersionInfo `json:"VersionInfo,omitempty" xml:"VersionInfo,omitempty" type:"Repeated"`
@@ -10949,7 +11265,7 @@ type DescribeVersionsResponseBodyVersionInfo struct {
 	// *   `Default`: Standard Edition
 	// *   `Pro`: Professional Edition that is commercially released
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The ASM versions available for the ASM instance of the current edition.
+	// The list of ASM versions available for the ASM instance of the current edition.
 	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -11023,7 +11339,7 @@ type DescribeVpcsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that marks the end of the current returned page. If this parameter is empty, it indicates that you have retrieved all the data.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned. By default, this parameter is not returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -11075,7 +11391,7 @@ type DescribeVpcsResponseBodyVpcs struct {
 	// *   `Pending`: The VPC is being configured.
 	// *   `Available`: The VPC is available for use.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC.
+	// The ID of a VPC.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The name of the VPC.
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
@@ -11139,7 +11455,7 @@ func (s *DescribeVpcsResponse) SetBody(v *DescribeVpcsResponseBody) *DescribeVpc
 }
 
 type GetCaCertRequest struct {
-	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -11159,7 +11475,7 @@ func (s *GetCaCertRequest) SetServiceMeshId(v string) *GetCaCertRequest {
 type GetCaCertResponseBody struct {
 	// The Base64-encoded content of the CA certificate.
 	CaCert *string `json:"CaCert,omitempty" xml:"CaCert,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11378,9 +11694,9 @@ func (s *GetDeploymentBySelectorResponse) SetBody(v *GetDeploymentBySelectorResp
 }
 
 type GetGrafanaDashboardUrlRequest struct {
-	// The ID of the Container Service for Kubernetes (ACK) or serverless Kubernetes (ASK) cluster.
+	// The ID of the Container Service for Kubernetes (ACK) or ACK Serverless cluster.
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The name of the dashboard.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -11412,7 +11728,7 @@ func (s *GetGrafanaDashboardUrlRequest) SetTitle(v string) *GetGrafanaDashboardU
 type GetGrafanaDashboardUrlResponseBody struct {
 	// The information about the dashboard.
 	Dashboards []*GetGrafanaDashboardUrlResponseBodyDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11795,7 +12111,7 @@ func (s *GetRegisteredServiceNamespacesResponse) SetBody(v *GetRegisteredService
 type GetSwimLaneDetailRequest struct {
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The name of the lane.
 	SwimLaneName *string `json:"SwimLaneName,omitempty" xml:"SwimLaneName,omitempty"`
@@ -11829,11 +12145,11 @@ type GetSwimLaneDetailResponseBody struct {
 	IngressRule *string `json:"IngressRule,omitempty" xml:"IngressRule,omitempty"`
 	// This parameter is deprecated.
 	IngressService *string `json:"IngressService,omitempty" xml:"IngressService,omitempty"`
-	// Fixed value: **ASM_TRAFFIC_TAG**.
+	// The label key of the associated service workload. The value is fixed as **ASM_TRAFFIC_TAG**.
 	LabelSelectorKey *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
 	// The value of ASM_TRAFFIC_TAG.
 	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of services associated with the lane.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
@@ -11951,7 +12267,7 @@ func (s *GetSwimLaneGroupListResponseBody) SetSwimLaneGroupList(v []*GetSwimLane
 
 type GetSwimLaneGroupListResponseBodySwimLaneGroupList struct {
 	FallbackTarget *string `json:"FallbackTarget,omitempty" xml:"FallbackTarget,omitempty"`
-	// The name of the lane group.
+	// The name of a lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the ingress gateway.
 	IngressGatewayName *string `json:"IngressGatewayName,omitempty" xml:"IngressGatewayName,omitempty"`
@@ -12050,7 +12366,7 @@ func (s *GetSwimLaneGroupListResponse) SetBody(v *GetSwimLaneGroupListResponseBo
 type GetSwimLaneListRequest struct {
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12073,7 +12389,7 @@ func (s *GetSwimLaneListRequest) SetServiceMeshId(v string) *GetSwimLaneListRequ
 }
 
 type GetSwimLaneListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of all the lanes in the lane group.
 	SwimLaneList []*GetSwimLaneListResponseBodySwimLaneList `json:"SwimLaneList,omitempty" xml:"SwimLaneList,omitempty" type:"Repeated"`
@@ -12104,11 +12420,11 @@ type GetSwimLaneListResponseBodySwimLaneList struct {
 	IngressRule *string `json:"IngressRule,omitempty" xml:"IngressRule,omitempty"`
 	// This parameter is deprecated.
 	IngressService *string `json:"IngressService,omitempty" xml:"IngressService,omitempty"`
-	// The label key of the associated service workload. Fixed value: `ASM_TRAFFIC_TAG`.
+	// The label key of the associated service workload. The value is fixed as `ASM_TRAFFIC_TAG`.
 	LabelSelectorKey *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
 	// The label value of the associated service workload.``
 	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
-	// The name of the lane.
+	// The name of a lane.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// A list of services associated with the lane.
 	ServiceList *string `json:"ServiceList,omitempty" xml:"ServiceList,omitempty"`
@@ -12187,7 +12503,7 @@ func (s *GetSwimLaneListResponse) SetBody(v *GetSwimLaneListResponseBody) *GetSw
 }
 
 type GetVmAppMeshInfoRequest struct {
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12205,9 +12521,9 @@ func (s *GetVmAppMeshInfoRequest) SetServiceMeshId(v string) *GetVmAppMeshInfoRe
 }
 
 type GetVmAppMeshInfoResponseBody struct {
-	// The returned information.
+	// The response parameters.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12259,11 +12575,11 @@ func (s *GetVmAppMeshInfoResponse) SetBody(v *GetVmAppMeshInfoResponseBody) *Get
 }
 
 type GetVmMetaRequest struct {
-	// The namespace. This parameter is valid only after you set the Namespace and the ServiceAccount parameters.
+	// The name of the namespace. This parameter is valid only after you set the Namespace and the ServiceAccount parameters.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The service account. This parameter is valid only after you set the Namespace and the ServiceAccount parameters.
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The trusted domain. Default value: cluster.local. This parameter is valid only after you set the Namespace and the ServiceAccount parameters.
 	TrustDomain *string `json:"TrustDomain,omitempty" xml:"TrustDomain,omitempty"`
@@ -12298,7 +12614,7 @@ func (s *GetVmMetaRequest) SetTrustDomain(v string) *GetVmMetaRequest {
 }
 
 type GetVmMetaResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The metadata that is required to add a non-containerized application to the ASM instance.
 	VmMetaInfo *GetVmMetaResponseBodyVmMetaInfo `json:"VmMetaInfo,omitempty" xml:"VmMetaInfo,omitempty" type:"Struct"`
@@ -12387,13 +12703,13 @@ type GrantUserPermissionsRequest struct {
 	// The permissions that are granted to an entity. The content is a string that consists of JSON arrays. You must specify all permissions that you want to grant to an entity. You can add or remove permissions by modifying the content. Field definition of the sample code:
 	//
 	// *   `IsCustom`: a parameter that is required by the system. Set the value to `true`.
-	// *   `Cluster`: the ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// *   `Cluster`: the ID of the Service Mesh (ASM) instance.
 	// *   `RoleName`: the name of the permissions. Valid values: `istio-admin`, `istio-ops`, and `istio-readonly`. A value of istio-admin indicates the permissions of ASM administrators. A value of istio-ops indicates the permissions of ASM restricted users. A value of istio-readonly indicates the read-only permissions.
 	// *   `IsRamRole`: the entity to which you want to grant the permissions. To grant the permissions to a RAM role, set the value to `true`. Otherwise, set the value to `false`.
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The ID of the RAM user or RAM role.
 	SubAccountUserId *string `json:"SubAccountUserId,omitempty" xml:"SubAccountUserId,omitempty"`
-	// The ID list of the RAM user or RAM role.
+	// The IDs of RAM users or RAM roles. You can grant permissions to multiple users at a time.
 	SubAccountUserIds []*string `json:"SubAccountUserIds,omitempty" xml:"SubAccountUserIds,omitempty" type:"Repeated"`
 }
 
@@ -12424,13 +12740,13 @@ type GrantUserPermissionsShrinkRequest struct {
 	// The permissions that are granted to an entity. The content is a string that consists of JSON arrays. You must specify all permissions that you want to grant to an entity. You can add or remove permissions by modifying the content. Field definition of the sample code:
 	//
 	// *   `IsCustom`: a parameter that is required by the system. Set the value to `true`.
-	// *   `Cluster`: the ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// *   `Cluster`: the ID of the Service Mesh (ASM) instance.
 	// *   `RoleName`: the name of the permissions. Valid values: `istio-admin`, `istio-ops`, and `istio-readonly`. A value of istio-admin indicates the permissions of ASM administrators. A value of istio-ops indicates the permissions of ASM restricted users. A value of istio-readonly indicates the read-only permissions.
 	// *   `IsRamRole`: the entity to which you want to grant the permissions. To grant the permissions to a RAM role, set the value to `true`. Otherwise, set the value to `false`.
 	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The ID of the RAM user or RAM role.
 	SubAccountUserId *string `json:"SubAccountUserId,omitempty" xml:"SubAccountUserId,omitempty"`
-	// The ID list of the RAM user or RAM role.
+	// The IDs of RAM users or RAM roles. You can grant permissions to multiple users at a time.
 	SubAccountUserIdsShrink *string `json:"SubAccountUserIds,omitempty" xml:"SubAccountUserIds,omitempty"`
 }
 
@@ -12458,7 +12774,7 @@ func (s *GrantUserPermissionsShrinkRequest) SetSubAccountUserIdsShrink(v string)
 }
 
 type GrantUserPermissionsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12504,12 +12820,121 @@ func (s *GrantUserPermissionsResponse) SetBody(v *GrantUserPermissionsResponseBo
 	return s
 }
 
+type ListServiceAccountsRequest struct {
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s ListServiceAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAccountsRequest) SetClusterId(v string) *ListServiceAccountsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListServiceAccountsRequest) SetNamespace(v string) *ListServiceAccountsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListServiceAccountsRequest) SetServiceMeshId(v string) *ListServiceAccountsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type ListServiceAccountsResponseBody struct {
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceAccounts []*ListServiceAccountsResponseBodyServiceAccounts `json:"ServiceAccounts,omitempty" xml:"ServiceAccounts,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAccountsResponseBody) SetRequestId(v string) *ListServiceAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceAccountsResponseBody) SetServiceAccounts(v []*ListServiceAccountsResponseBodyServiceAccounts) *ListServiceAccountsResponseBody {
+	s.ServiceAccounts = v
+	return s
+}
+
+type ListServiceAccountsResponseBodyServiceAccounts struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListServiceAccountsResponseBodyServiceAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAccountsResponseBodyServiceAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAccountsResponseBodyServiceAccounts) SetName(v string) *ListServiceAccountsResponseBodyServiceAccounts {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceAccountsResponseBodyServiceAccounts) SetNamespace(v string) *ListServiceAccountsResponseBodyServiceAccounts {
+	s.Namespace = &v
+	return s
+}
+
+type ListServiceAccountsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListServiceAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceAccountsResponse) SetHeaders(v map[string]*string) *ListServiceAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceAccountsResponse) SetStatusCode(v int32) *ListServiceAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceAccountsResponse) SetBody(v *ListServiceAccountsResponseBody) *ListServiceAccountsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID of the ASM instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the ASM instances.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to `servicemesh`.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. A maximum of 20 tags are supported.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -12546,7 +12971,15 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// A tag key can be up to 128 characters in length. The tag key cannot contain `http://` or `https://` and cannot start with `aliyun` or `acs:`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the resource.
+	//
+	// The tag value can be left empty or a string of up to 128 characters. The tag value cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	//
+	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12569,8 +13002,11 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the queried clusters and tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -12598,10 +13034,14 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the ASM instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Set the value to `servicemesh`.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The tag key.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -12657,6 +13097,225 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWaypointsRequest struct {
+	// The ID of the cluster on the data plane.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Continue  *string `json:"Continue,omitempty" xml:"Continue,omitempty"`
+	Limit     *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The Service Mesh (ASM) instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s ListWaypointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaypointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaypointsRequest) SetClusterId(v string) *ListWaypointsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListWaypointsRequest) SetContinue(v string) *ListWaypointsRequest {
+	s.Continue = &v
+	return s
+}
+
+func (s *ListWaypointsRequest) SetLimit(v int64) *ListWaypointsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWaypointsRequest) SetName(v string) *ListWaypointsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWaypointsRequest) SetNamespace(v string) *ListWaypointsRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListWaypointsRequest) SetServiceMeshId(v string) *ListWaypointsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type ListWaypointsResponseBody struct {
+	Continue *string `json:"Continue,omitempty" xml:"Continue,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of waypoint proxy configurations.
+	Waypoints []*ListWaypointsResponseBodyWaypoints `json:"Waypoints,omitempty" xml:"Waypoints,omitempty" type:"Repeated"`
+}
+
+func (s ListWaypointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaypointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaypointsResponseBody) SetContinue(v string) *ListWaypointsResponseBody {
+	s.Continue = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBody) SetRequestId(v string) *ListWaypointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBody) SetWaypoints(v []*ListWaypointsResponseBodyWaypoints) *ListWaypointsResponseBody {
+	s.Waypoints = v
+	return s
+}
+
+type ListWaypointsResponseBodyWaypoints struct {
+	// Indicates whether Horizontal Pod Autoscaling (HPA) is enabled.
+	HPAEnabled *string `json:"HPAEnabled,omitempty" xml:"HPAEnabled,omitempty"`
+	// The maximum number of waypoint proxy pods when HPA is enabled.
+	HPAMaxReplicas *string `json:"HPAMaxReplicas,omitempty" xml:"HPAMaxReplicas,omitempty"`
+	// The minimum number of waypoint proxy pods when HPA is enabled.
+	HPAMinReplicas *string `json:"HPAMinReplicas,omitempty" xml:"HPAMinReplicas,omitempty"`
+	// The expected CPU utilization when HPA is enabled.
+	HPATargetCPU *string `json:"HPATargetCPU,omitempty" xml:"HPATargetCPU,omitempty"`
+	// The expected memory usage when HPA is enabled.
+	HPATargetMemory *string `json:"HPATargetMemory,omitempty" xml:"HPATargetMemory,omitempty"`
+	// The maximum number of CPU cores that are available to the waypoint proxy pods.
+	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the waypoint proxy pods.
+	LimitMemory *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	// The name of the gateway resource corresponding to the waypoint proxy. If the waypoint proxy takes effect on a service account, the name is the service account name. If the waypoint proxy takes effect for the entire namespace, the name is "namespace".
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Indicates whether waypoint proxy pods are deployed based on Elastic Container Instance (ECI).
+	PreferECI *string `json:"PreferECI,omitempty" xml:"PreferECI,omitempty"`
+	// The number of waypoint proxy pods.
+	Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The number of CPU cores requested by the waypoint proxy pods.
+	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The size of the memory requested by the waypoint proxy pods.
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The service account on which the waypoint proxy takes effect. If this parameter is not specified, the waypoint proxy takes effect for the entire namespace.
+	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
+}
+
+func (s ListWaypointsResponseBodyWaypoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaypointsResponseBodyWaypoints) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetHPAEnabled(v string) *ListWaypointsResponseBodyWaypoints {
+	s.HPAEnabled = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetHPAMaxReplicas(v string) *ListWaypointsResponseBodyWaypoints {
+	s.HPAMaxReplicas = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetHPAMinReplicas(v string) *ListWaypointsResponseBodyWaypoints {
+	s.HPAMinReplicas = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetHPATargetCPU(v string) *ListWaypointsResponseBodyWaypoints {
+	s.HPATargetCPU = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetHPATargetMemory(v string) *ListWaypointsResponseBodyWaypoints {
+	s.HPATargetMemory = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetLimitCPU(v string) *ListWaypointsResponseBodyWaypoints {
+	s.LimitCPU = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetLimitMemory(v string) *ListWaypointsResponseBodyWaypoints {
+	s.LimitMemory = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetName(v string) *ListWaypointsResponseBodyWaypoints {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetNamespace(v string) *ListWaypointsResponseBodyWaypoints {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetPreferECI(v string) *ListWaypointsResponseBodyWaypoints {
+	s.PreferECI = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetReplicas(v string) *ListWaypointsResponseBodyWaypoints {
+	s.Replicas = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetRequestCPU(v string) *ListWaypointsResponseBodyWaypoints {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetRequestMemory(v string) *ListWaypointsResponseBodyWaypoints {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *ListWaypointsResponseBodyWaypoints) SetServiceAccount(v string) *ListWaypointsResponseBodyWaypoints {
+	s.ServiceAccount = &v
+	return s
+}
+
+type ListWaypointsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWaypointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWaypointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWaypointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWaypointsResponse) SetHeaders(v map[string]*string) *ListWaypointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWaypointsResponse) SetStatusCode(v int32) *ListWaypointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWaypointsResponse) SetBody(v *ListWaypointsResponseBody) *ListWaypointsResponse {
 	s.Body = v
 	return s
 }
@@ -12746,7 +13405,7 @@ func (s *ModifyApiServerEipResourceResponse) SetBody(v *ModifyApiServerEipResour
 type ModifyServiceMeshNameRequest struct {
 	// The new name of the ASM instance.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12769,7 +13428,7 @@ func (s *ModifyServiceMeshNameRequest) SetServiceMeshId(v string) *ModifyService
 }
 
 type ModifyServiceMeshNameResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12821,7 +13480,7 @@ type ReActivateAuditRequest struct {
 	// *   true: recreates a project.
 	// *   false: does not recreate a project.
 	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -12846,7 +13505,7 @@ func (s *ReActivateAuditRequest) SetServiceMeshId(v string) *ReActivateAuditRequ
 type ReActivateAuditResponseBody struct {
 	// The name of the project that is used to store audit logs.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12898,8 +13557,7 @@ func (s *ReActivateAuditResponse) SetBody(v *ReActivateAuditResponseBody) *ReAct
 }
 
 type RemoveClusterFromServiceMeshRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 移除集群时，保留istio-system 命名空间
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ReserveNamespace *bool   `json:"ReserveNamespace,omitempty" xml:"ReserveNamespace,omitempty"`
 	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -13063,7 +13721,7 @@ type RevokeKubeconfigRequest struct {
 	// *   `true`: returns the kubeconfig file for private access.
 	// *   `false`: returns the kubeconfig file for public access.
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The ID of the ASM instance for which you want to revoke a kubeconfig file.
+	// The ID of the ASM instance for which you want to revoke its kubeconfig file.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -13088,7 +13746,7 @@ func (s *RevokeKubeconfigRequest) SetServiceMeshId(v string) *RevokeKubeconfigRe
 type RevokeKubeconfigResponseBody struct {
 	// The new kubeconfig file generated.
 	Kubeconfig *string `json:"Kubeconfig,omitempty" xml:"Kubeconfig,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13140,10 +13798,14 @@ func (s *RevokeKubeconfigResponse) SetBody(v *RevokeKubeconfigResponseBody) *Rev
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The region ID of the Service Mesh (ASM) instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the ASM instances.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to `servicemesh`.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13175,7 +13837,24 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag keys.
+	//
+	// The following limits apply:
+	//
+	// *   The key of tag N cannot be an empty string.
+	// *   Valid values of N: 1 to 20.
+	// *   The tag key can be up to 128 characters in length.
+	// *   The tag key cannot start with `aliyun` or `acs:`.
+	// *   The tag key cannot contain `http://` or `https://`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values.
+	//
+	// The following limits apply:
+	//
+	// *   The value of tag N cannot be an empty string.
+	// *   Valid values of N: 1 to 20.
+	// *   The tag value can be up to 128 characters in length.
+	// *   The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13198,6 +13877,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13244,11 +13924,21 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to delete all tags. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
+	//
+	// *   true
+	// *   false
+	//
+	// Default value: false.
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID of the ASM instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the ASM instances.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set the value to `servicemesh`.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -13285,6 +13975,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13335,7 +14026,7 @@ type UpdateASMGatewayRequest struct {
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The name of the ASM gateway.
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -13363,7 +14054,7 @@ func (s *UpdateASMGatewayRequest) SetServiceMeshId(v string) *UpdateASMGatewayRe
 }
 
 type UpdateASMGatewayResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13412,7 +14103,7 @@ func (s *UpdateASMGatewayResponse) SetBody(v *UpdateASMGatewayResponseBody) *Upd
 type UpdateASMGatewayImportedServicesRequest struct {
 	// The name of the ASM gateway.
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// The names of the services. Separate multiple service names with commas (,). Example: reviews,sleep.
 	ServiceNames *string `json:"ServiceNames,omitempty" xml:"ServiceNames,omitempty"`
@@ -13449,7 +14140,7 @@ func (s *UpdateASMGatewayImportedServicesRequest) SetServiceNamespace(v string) 
 }
 
 type UpdateASMGatewayImportedServicesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13568,9 +14259,13 @@ func (s *UpdateASMNamespaceFromGuestClusterResponse) SetBody(v *UpdateASMNamespa
 }
 
 type UpdateControlPlaneLogConfigRequest struct {
-	Enabled       *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	LogTTLInDay   *int32  `json:"LogTTLInDay,omitempty" xml:"LogTTLInDay,omitempty"`
-	Project       *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// Specifies whether to collect control plane logs to Simple Log Service.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The time to live (TTL) period of the collected logs. Unit: day.
+	LogTTLInDay *int32 `json:"LogTTLInDay,omitempty" xml:"LogTTLInDay,omitempty"`
+	// The name of the Simple Log Service project to which control plane logs are collected.
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -13603,6 +14298,7 @@ func (s *UpdateControlPlaneLogConfigRequest) SetServiceMeshId(v string) *UpdateC
 }
 
 type UpdateControlPlaneLogConfigResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13706,13 +14402,15 @@ func (s *UpdateIstioGatewayRoutesRequest) SetStatus(v int32) *UpdateIstioGateway
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRoute struct {
+	// The list of requested domain names.
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The advanced settings for routing HTTP traffic.
 	HTTPAdvancedOptions *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
 	// The matching rules for traffic routing.
 	MatchRequest *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
-	// The namespace in which the destination service resides.
-	Namespace  *string     `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The original YAML file of the virtual service that is serialized in a JSON string.
 	RawVSRoute interface{} `json:"RawVSRoute,omitempty" xml:"RawVSRoute,omitempty"`
 	// The endpoints of destination services for Layer 4 weighted routing.
 	RouteDestinations []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
@@ -14049,7 +14747,7 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPer
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
-	// The number of retries allowed for a request.
+	// The number of retries that are allowed for a request.
 	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
 	// The timeout period for each retry.
 	PerTryTimeout *string `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
@@ -14291,7 +14989,10 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
 	// The name of the service defined in the service registry.
-	Host *string                                                                      `json:"Host,omitempty" xml:"Host,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The port of the destination service.
+	//
+	// >  If the destination service of the route has only one port, this field can be left empty. If the destination service has multiple ports, you must specify the port number.
 	Port *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
 	// The name of the service subset.
 	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
@@ -14321,6 +15022,7 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination
 }
 
 type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestinationPort struct {
+	// The port number.
 	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
@@ -14442,6 +15144,10 @@ func (s *UpdateIstioGatewayRoutesResponse) SetBody(v *UpdateIstioGatewayRoutesRe
 }
 
 type UpdateIstioInjectionConfigRequest struct {
+	// The data plane mode of the namespace. This parameter is valid only when the Ambient Mesh mode is enabled for the current Service Mesh (ASM) instance. Valid values:
+	//
+	// *   ambient: sets the data plane mode of the namespace to the Ambient Mesh mode.
+	// *   sidecar: sets the data plane mode of the namespace to the Sidecar mode.
 	DataPlaneMode *string `json:"DataPlaneMode,omitempty" xml:"DataPlaneMode,omitempty"`
 	// Specifies whether to enable Istio automatic sidecar injection.
 	EnableIstioInjection *bool `json:"EnableIstioInjection,omitempty" xml:"EnableIstioInjection,omitempty"`
@@ -14549,13 +15255,9 @@ type UpdateIstioRouteAdditionalStatusRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The name of the routing rule.
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	// The status of the routing rule. Valid values:
-	//
-	// *   `0`: The routing rule is valid.
-	// *   `1`: The routing rule is invalid.
-	// *   `2`: An error occurs during the creation or update of the routing rule.
+	// The status of the routing rule. Valid values: 0: The routing rule is valid. 1: The routing rule is invalid. 2: An error occurs during the creation or update of the routing rule.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -14598,7 +15300,7 @@ func (s *UpdateIstioRouteAdditionalStatusRequest) SetStatus(v int32) *UpdateIsti
 }
 
 type UpdateIstioRouteAdditionalStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14652,13 +15354,13 @@ type UpdateMeshCRAggregationRequest struct {
 	// Specifies whether to enable the Kubernetes API on the data plane to access Istio resources in the ASM instance. Valid values:
 	//
 	// *   `true`: enables the Kubernetes API to access Istio resources in the ASM instance.
-	// *   `false`: does not enable the Kubernetes API to access Istio resources in the ASM instance.
+	// *   `false`: disables the Kubernetes API to access Istio resources in the ASM instance.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The maximum size of the memory that is available for the components installed in the ACK cluster on the data plane if you enable the Kubernetes API to access Istio resources in the ASM instance. You can specify the parameter value in the standard quantity representation used by Kubernetes. 1 Mi equals 1,024 KB.
 	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
 	// The size of the memory that is requested by the components installed in the ACK cluster on the data plane if you enable the Kubernetes API to access Istio resources in the ASM instance. You can specify the parameter value in the standard quantity representation used by Kubernetes. 1 Mi equals 1,024 KB.
 	MemoryRequirement *string `json:"MemoryRequirement,omitempty" xml:"MemoryRequirement,omitempty"`
-	// The ID of the Alibaba Cloud Service Mesh (ASM) instance.
+	// The Service Mesh (ASM) instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// Specifies whether the Kubernetes API on the data plane uses the public endpoint of the API server to access Istio resources in the ASM instance. Valid values:
 	//
@@ -14713,7 +15415,7 @@ func (s *UpdateMeshCRAggregationRequest) SetUsePublicApiServer(v bool) *UpdateMe
 }
 
 type UpdateMeshCRAggregationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15021,7 +15723,7 @@ type UpdateMeshFeatureRequest struct {
 	OPAInjectorCPULimit *string `json:"OPAInjectorCPULimit,omitempty" xml:"OPAInjectorCPULimit,omitempty"`
 	// The minimum size of the memory requested by the pod that injects OPA proxies into application pods. For example, `50 Mi` indicates 50 MB.
 	OPAInjectorCPURequirement *string `json:"OPAInjectorCPURequirement,omitempty" xml:"OPAInjectorCPURequirement,omitempty"`
-	// Specifies whether to create an SLB instance for accessing the ASM mesh topology.
+	// Specifies whether to create a CLB instance for accessing the ASM mesh topology.
 	OPAInjectorMemoryLimit *string `json:"OPAInjectorMemoryLimit,omitempty" xml:"OPAInjectorMemoryLimit,omitempty"`
 	// The maximum number of CPU cores that are available to the pod that injects OPA proxies into application pods. For example, `1000m` indicates one CPU core.
 	OPAInjectorMemoryRequirement *string `json:"OPAInjectorMemoryRequirement,omitempty" xml:"OPAInjectorMemoryRequirement,omitempty"`
@@ -16075,7 +16777,7 @@ type UpdateSwimLaneRequest struct {
 	LabelSelectorKey *string `json:"LabelSelectorKey,omitempty" xml:"LabelSelectorKey,omitempty"`
 	// The label value of the associated service workload.``
 	LabelSelectorValue *string `json:"LabelSelectorValue,omitempty" xml:"LabelSelectorValue,omitempty"`
-	// The ID of the ASM instance.
+	// The ID of the Service Mesh (ASM) instance.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// A list of services associated with the lane.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
@@ -16122,7 +16824,7 @@ func (s *UpdateSwimLaneRequest) SetSwimLaneName(v string) *UpdateSwimLaneRequest
 }
 
 type UpdateSwimLaneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16172,7 +16874,7 @@ type UpdateSwimLaneGroupRequest struct {
 	FallbackTarget *string `json:"FallbackTarget,omitempty" xml:"FallbackTarget,omitempty"`
 	// The name of the lane group.
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the ASM instance.
+	// The Service Mesh (ASM) instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 	// A list of services associated with the lane group.
 	ServicesList *string `json:"ServicesList,omitempty" xml:"ServicesList,omitempty"`
@@ -16207,7 +16909,7 @@ func (s *UpdateSwimLaneGroupRequest) SetServicesList(v string) *UpdateSwimLaneGr
 }
 
 type UpdateSwimLaneGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16249,6 +16951,169 @@ func (s *UpdateSwimLaneGroupResponse) SetStatusCode(v int32) *UpdateSwimLaneGrou
 }
 
 func (s *UpdateSwimLaneGroupResponse) SetBody(v *UpdateSwimLaneGroupResponseBody) *UpdateSwimLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWaypointRequest struct {
+	// The ID of the cluster on the data plane.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to enable Horizontal Pod Autoscaling (HPA).
+	HPAEnabled *bool `json:"HPAEnabled,omitempty" xml:"HPAEnabled,omitempty"`
+	// The maximum number of waypoint proxy pods when HPA is enabled.
+	HPAMaxReplicas *int32 `json:"HPAMaxReplicas,omitempty" xml:"HPAMaxReplicas,omitempty"`
+	// The minimum number of waypoint proxy pods when HPA is enabled.
+	HPAMinReplicas *int32 `json:"HPAMinReplicas,omitempty" xml:"HPAMinReplicas,omitempty"`
+	// The expected CPU utilization when HPA is enabled.
+	HPATargetCPU *int32 `json:"HPATargetCPU,omitempty" xml:"HPATargetCPU,omitempty"`
+	// The expected memory usage when HPA is enabled.
+	HPATargetMemory *int32 `json:"HPATargetMemory,omitempty" xml:"HPATargetMemory,omitempty"`
+	// The maximum number of CPU cores that are available to the waypoint proxy pods.
+	LimitCPU *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
+	// The maximum size of the memory that is available to the waypoint proxy pods.
+	LimitMemory *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	// Waypoint名称。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Specifies whether to deploy waypoint proxy pods based on Elastic Container Instance (ECI).
+	PreferECI *bool `json:"PreferECI,omitempty" xml:"PreferECI,omitempty"`
+	// The number of waypoint proxy pods.
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The number of CPU cores requested by the waypoint proxy pods.
+	RequestCPU *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// The size of the memory requested by the waypoint proxy pods.
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// The Service Mesh (ASM) instance ID.
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateWaypointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWaypointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWaypointRequest) SetClusterId(v string) *UpdateWaypointRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetHPAEnabled(v bool) *UpdateWaypointRequest {
+	s.HPAEnabled = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetHPAMaxReplicas(v int32) *UpdateWaypointRequest {
+	s.HPAMaxReplicas = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetHPAMinReplicas(v int32) *UpdateWaypointRequest {
+	s.HPAMinReplicas = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetHPATargetCPU(v int32) *UpdateWaypointRequest {
+	s.HPATargetCPU = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetHPATargetMemory(v int32) *UpdateWaypointRequest {
+	s.HPATargetMemory = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetLimitCPU(v string) *UpdateWaypointRequest {
+	s.LimitCPU = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetLimitMemory(v string) *UpdateWaypointRequest {
+	s.LimitMemory = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetName(v string) *UpdateWaypointRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetNamespace(v string) *UpdateWaypointRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetPreferECI(v bool) *UpdateWaypointRequest {
+	s.PreferECI = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetReplicas(v int32) *UpdateWaypointRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetRequestCPU(v string) *UpdateWaypointRequest {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetRequestMemory(v string) *UpdateWaypointRequest {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *UpdateWaypointRequest) SetServiceMeshId(v string) *UpdateWaypointRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateWaypointResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateWaypointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWaypointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWaypointResponseBody) SetRequestId(v string) *UpdateWaypointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateWaypointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateWaypointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWaypointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWaypointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWaypointResponse) SetHeaders(v map[string]*string) *UpdateWaypointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWaypointResponse) SetStatusCode(v int32) *UpdateWaypointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWaypointResponse) SetBody(v *UpdateWaypointResponseBody) *UpdateWaypointResponse {
 	s.Body = v
 	return s
 }
@@ -16360,8 +17225,9 @@ func (s *UpgradeMeshEditionPartiallyResponse) SetBody(v *UpgradeMeshEditionParti
 }
 
 type UpgradeMeshVersionRequest struct {
+	// Specifies whether to perform a precheck. Default value: false. If this parameter is set to true, this call only checks whether the current ASM instance meets the upgrade conditions and does not actually perform an upgrade.
 	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
-	// The ID of the ASM instance.
+	// The ASM instance ID.
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -16384,7 +17250,7 @@ func (s *UpgradeMeshVersionRequest) SetServiceMeshId(v string) *UpgradeMeshVersi
 }
 
 type UpgradeMeshVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17329,6 +18195,106 @@ func (client *Client) CreateSwimLaneGroup(request *CreateSwimLaneGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateWaypointWithOptions(request *CreateWaypointRequest, runtime *util.RuntimeOptions) (_result *CreateWaypointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAEnabled)) {
+		body["HPAEnabled"] = request.HPAEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAMaxReplicas)) {
+		body["HPAMaxReplicas"] = request.HPAMaxReplicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAMinReplicas)) {
+		body["HPAMinReplicas"] = request.HPAMinReplicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPATargetCPU)) {
+		body["HPATargetCPU"] = request.HPATargetCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPATargetMemory)) {
+		body["HPATargetMemory"] = request.HPATargetMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitCPU)) {
+		body["LimitCPU"] = request.LimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitMemory)) {
+		body["LimitMemory"] = request.LimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferECI)) {
+		body["PreferECI"] = request.PreferECI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestCPU)) {
+		body["RequestCPU"] = request.RequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMemory)) {
+		body["RequestMemory"] = request.RequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceAccount)) {
+		body["ServiceAccount"] = request.ServiceAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWaypoint"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWaypointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateWaypoint(request *CreateWaypointRequest) (_result *CreateWaypointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWaypointResponse{}
+	_body, _err := client.CreateWaypointWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17642,6 +18608,62 @@ func (client *Client) DeleteSwimLaneGroup(request *DeleteSwimLaneGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSwimLaneGroupResponse{}
 	_body, _err := client.DeleteSwimLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteWaypointWithOptions(request *DeleteWaypointRequest, runtime *util.RuntimeOptions) (_result *DeleteWaypointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWaypoint"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWaypointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteWaypoint(request *DeleteWaypointRequest) (_result *DeleteWaypointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWaypointResponse{}
+	_body, _err := client.DeleteWaypointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19943,6 +20965,58 @@ func (client *Client) GrantUserPermissions(request *GrantUserPermissionsRequest)
 	return _result, _err
 }
 
+func (client *Client) ListServiceAccountsWithOptions(request *ListServiceAccountsRequest, runtime *util.RuntimeOptions) (_result *ListServiceAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceAccounts"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListServiceAccounts(request *ListServiceAccountsRequest) (_result *ListServiceAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceAccountsResponse{}
+	_body, _err := client.ListServiceAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19996,6 +21070,70 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWaypointsWithOptions(request *ListWaypointsRequest, runtime *util.RuntimeOptions) (_result *ListWaypointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Continue)) {
+		body["Continue"] = request.Continue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWaypoints"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWaypointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWaypoints(request *ListWaypointsRequest) (_result *ListWaypointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWaypointsResponse{}
+	_body, _err := client.ListWaypointsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20104,7 +21242,7 @@ func (client *Client) ModifyServiceMeshName(request *ModifyServiceMeshNameReques
 }
 
 /**
- * Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+ * Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
  *
  * @param request ReActivateAuditRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20148,7 +21286,7 @@ func (client *Client) ReActivateAuditWithOptions(request *ReActivateAuditRequest
 }
 
 /**
- * Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+ * Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
  *
  * @param request ReActivateAuditRequest
  * @return ReActivateAuditResponse
@@ -21678,6 +22816,106 @@ func (client *Client) UpdateSwimLaneGroup(request *UpdateSwimLaneGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSwimLaneGroupResponse{}
 	_body, _err := client.UpdateSwimLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWaypointWithOptions(request *UpdateWaypointRequest, runtime *util.RuntimeOptions) (_result *UpdateWaypointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		body["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAEnabled)) {
+		body["HPAEnabled"] = request.HPAEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAMaxReplicas)) {
+		body["HPAMaxReplicas"] = request.HPAMaxReplicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPAMinReplicas)) {
+		body["HPAMinReplicas"] = request.HPAMinReplicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPATargetCPU)) {
+		body["HPATargetCPU"] = request.HPATargetCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HPATargetMemory)) {
+		body["HPATargetMemory"] = request.HPATargetMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitCPU)) {
+		body["LimitCPU"] = request.LimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitMemory)) {
+		body["LimitMemory"] = request.LimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferECI)) {
+		body["PreferECI"] = request.PreferECI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestCPU)) {
+		body["RequestCPU"] = request.RequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMemory)) {
+		body["RequestMemory"] = request.RequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWaypoint"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWaypointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWaypoint(request *UpdateWaypointRequest) (_result *UpdateWaypointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWaypointResponse{}
+	_body, _err := client.UpdateWaypointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
