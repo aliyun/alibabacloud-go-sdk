@@ -40467,7 +40467,8 @@ func (s *HotelOrderCancelHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderCan
 }
 
 type HotelOrderCancelRequest struct {
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	BtripOrderId *string `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	DisOrderId   *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 }
 
 func (s HotelOrderCancelRequest) String() string {
@@ -40476,6 +40477,11 @@ func (s HotelOrderCancelRequest) String() string {
 
 func (s HotelOrderCancelRequest) GoString() string {
 	return s.String()
+}
+
+func (s *HotelOrderCancelRequest) SetBtripOrderId(v string) *HotelOrderCancelRequest {
+	s.BtripOrderId = &v
+	return s
 }
 
 func (s *HotelOrderCancelRequest) SetDisOrderId(v string) *HotelOrderCancelRequest {
@@ -41311,7 +41317,8 @@ func (s *HotelOrderDetailInfoHeaders) SetXAcsBtripCorpToken(v string) *HotelOrde
 }
 
 type HotelOrderDetailInfoRequest struct {
-	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	BtripOrderId *string `json:"btrip_order_id,omitempty" xml:"btrip_order_id,omitempty"`
+	DisOrderId   *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
 }
 
 func (s HotelOrderDetailInfoRequest) String() string {
@@ -41320,6 +41327,11 @@ func (s HotelOrderDetailInfoRequest) String() string {
 
 func (s HotelOrderDetailInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *HotelOrderDetailInfoRequest) SetBtripOrderId(v string) *HotelOrderDetailInfoRequest {
+	s.BtripOrderId = &v
+	return s
 }
 
 func (s *HotelOrderDetailInfoRequest) SetDisOrderId(v string) *HotelOrderDetailInfoRequest {
@@ -50899,8 +50911,10 @@ func (s *IsvRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *IsvRuleSaveHeade
 }
 
 type IsvRuleSaveRequest struct {
+	ApplyNeed    *bool                             `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
 	BookType     *string                           `json:"book_type,omitempty" xml:"book_type,omitempty"`
 	BookuserList []*IsvRuleSaveRequestBookuserList `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty" type:"Repeated"`
+	RuleNeed     *bool                             `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
 	Status       *int32                            `json:"status,omitempty" xml:"status,omitempty"`
 	UserId       *string                           `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -50913,6 +50927,11 @@ func (s IsvRuleSaveRequest) GoString() string {
 	return s.String()
 }
 
+func (s *IsvRuleSaveRequest) SetApplyNeed(v bool) *IsvRuleSaveRequest {
+	s.ApplyNeed = &v
+	return s
+}
+
 func (s *IsvRuleSaveRequest) SetBookType(v string) *IsvRuleSaveRequest {
 	s.BookType = &v
 	return s
@@ -50920,6 +50939,11 @@ func (s *IsvRuleSaveRequest) SetBookType(v string) *IsvRuleSaveRequest {
 
 func (s *IsvRuleSaveRequest) SetBookuserList(v []*IsvRuleSaveRequestBookuserList) *IsvRuleSaveRequest {
 	s.BookuserList = v
+	return s
+}
+
+func (s *IsvRuleSaveRequest) SetRuleNeed(v bool) *IsvRuleSaveRequest {
+	s.RuleNeed = &v
 	return s
 }
 
@@ -50957,8 +50981,10 @@ func (s *IsvRuleSaveRequestBookuserList) SetEntityType(v int32) *IsvRuleSaveRequ
 }
 
 type IsvRuleSaveShrinkRequest struct {
+	ApplyNeed          *bool   `json:"apply_need,omitempty" xml:"apply_need,omitempty"`
 	BookType           *string `json:"book_type,omitempty" xml:"book_type,omitempty"`
 	BookuserListShrink *string `json:"bookuser_list,omitempty" xml:"bookuser_list,omitempty"`
+	RuleNeed           *bool   `json:"rule_need,omitempty" xml:"rule_need,omitempty"`
 	Status             *int32  `json:"status,omitempty" xml:"status,omitempty"`
 	UserId             *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
@@ -50971,6 +50997,11 @@ func (s IsvRuleSaveShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *IsvRuleSaveShrinkRequest) SetApplyNeed(v bool) *IsvRuleSaveShrinkRequest {
+	s.ApplyNeed = &v
+	return s
+}
+
 func (s *IsvRuleSaveShrinkRequest) SetBookType(v string) *IsvRuleSaveShrinkRequest {
 	s.BookType = &v
 	return s
@@ -50978,6 +51009,11 @@ func (s *IsvRuleSaveShrinkRequest) SetBookType(v string) *IsvRuleSaveShrinkReque
 
 func (s *IsvRuleSaveShrinkRequest) SetBookuserListShrink(v string) *IsvRuleSaveShrinkRequest {
 	s.BookuserListShrink = &v
+	return s
+}
+
+func (s *IsvRuleSaveShrinkRequest) SetRuleNeed(v bool) *IsvRuleSaveShrinkRequest {
+	s.RuleNeed = &v
 	return s
 }
 
@@ -67107,6 +67143,10 @@ func (client *Client) HotelOrderCancelWithOptions(request *HotelOrderCancelReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripOrderId)) {
+		query["btrip_order_id"] = request.BtripOrderId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisOrderId)) {
 		query["dis_order_id"] = request.DisOrderId
 	}
@@ -67315,6 +67355,10 @@ func (client *Client) HotelOrderDetailInfoWithOptions(request *HotelOrderDetailI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripOrderId)) {
+		query["btrip_order_id"] = request.BtripOrderId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisOrderId)) {
 		query["dis_order_id"] = request.DisOrderId
 	}
@@ -69305,12 +69349,20 @@ func (client *Client) IsvRuleSaveWithOptions(tmpReq *IsvRuleSaveRequest, headers
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplyNeed)) {
+		body["apply_need"] = request.ApplyNeed
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BookType)) {
 		body["book_type"] = request.BookType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BookuserListShrink)) {
 		body["bookuser_list"] = request.BookuserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleNeed)) {
+		body["rule_need"] = request.RuleNeed
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
