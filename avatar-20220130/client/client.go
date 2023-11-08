@@ -3656,6 +3656,7 @@ func (s *SendVamlResponse) SetBody(v *SendVamlResponseBody) *SendVamlResponse {
 
 type StartInstanceRequest struct {
 	App            *StartInstanceRequestApp            `json:"App,omitempty" xml:"App,omitempty" type:"Struct"`
+	BizId          *string                             `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	Channel        *StartInstanceRequestChannel        `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
 	CommandRequest *StartInstanceRequestCommandRequest `json:"CommandRequest,omitempty" xml:"CommandRequest,omitempty" type:"Struct"`
 	TenantId       *int64                              `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -3672,6 +3673,11 @@ func (s StartInstanceRequest) GoString() string {
 
 func (s *StartInstanceRequest) SetApp(v *StartInstanceRequestApp) *StartInstanceRequest {
 	s.App = v
+	return s
+}
+
+func (s *StartInstanceRequest) SetBizId(v string) *StartInstanceRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -3777,6 +3783,7 @@ func (s *StartInstanceRequestUser) SetUserName(v string) *StartInstanceRequestUs
 
 type StartInstanceShrinkRequest struct {
 	AppShrink            *string `json:"App,omitempty" xml:"App,omitempty"`
+	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	ChannelShrink        *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	CommandRequestShrink *string `json:"CommandRequest,omitempty" xml:"CommandRequest,omitempty"`
 	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -3793,6 +3800,11 @@ func (s StartInstanceShrinkRequest) GoString() string {
 
 func (s *StartInstanceShrinkRequest) SetAppShrink(v string) *StartInstanceShrinkRequest {
 	s.AppShrink = &v
+	return s
+}
+
+func (s *StartInstanceShrinkRequest) SetBizId(v string) *StartInstanceShrinkRequest {
+	s.BizId = &v
 	return s
 }
 
@@ -7096,6 +7108,10 @@ func (client *Client) StartInstanceWithOptions(tmpReq *StartInstanceRequest, run
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppShrink)) {
 		query["App"] = request.AppShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizId)) {
+		query["BizId"] = request.BizId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChannelShrink)) {
