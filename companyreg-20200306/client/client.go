@@ -3793,6 +3793,7 @@ func (s *SubmitIntentionNoteResponse) SetBody(v *SubmitIntentionNoteResponseBody
 type SubmitSolutionRequest struct {
 	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	OperateType    *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 	Solution       *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
@@ -3812,6 +3813,11 @@ func (s *SubmitSolutionRequest) SetBizType(v string) *SubmitSolutionRequest {
 
 func (s *SubmitSolutionRequest) SetIntentionBizId(v string) *SubmitSolutionRequest {
 	s.IntentionBizId = &v
+	return s
+}
+
+func (s *SubmitSolutionRequest) SetOperateType(v string) *SubmitSolutionRequest {
+	s.OperateType = &v
 	return s
 }
 
@@ -5875,6 +5881,10 @@ func (client *Client) SubmitSolutionWithOptions(request *SubmitSolutionRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.IntentionBizId)) {
 		query["IntentionBizId"] = request.IntentionBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Solution)) {
