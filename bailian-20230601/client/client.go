@@ -652,6 +652,99 @@ func (s *CreateTokenResponse) SetBody(v *CreateTokenResponseBody) *CreateTokenRe
 	return s
 }
 
+type DeleteEnterpriseDataRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s DeleteEnterpriseDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseDataRequest) SetAgentKey(v string) *DeleteEnterpriseDataRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataRequest) SetDataId(v string) *DeleteEnterpriseDataRequest {
+	s.DataId = &v
+	return s
+}
+
+type DeleteEnterpriseDataResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteEnterpriseDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseDataResponseBody) SetData(v bool) *DeleteEnterpriseDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponseBody) SetErrorCode(v string) *DeleteEnterpriseDataResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponseBody) SetErrorMsg(v string) *DeleteEnterpriseDataResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponseBody) SetRequestId(v string) *DeleteEnterpriseDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponseBody) SetSuccess(v bool) *DeleteEnterpriseDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteEnterpriseDataResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEnterpriseDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnterpriseDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnterpriseDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnterpriseDataResponse) SetHeaders(v map[string]*string) *DeleteEnterpriseDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponse) SetStatusCode(v int32) *DeleteEnterpriseDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEnterpriseDataResponse) SetBody(v *DeleteEnterpriseDataResponseBody) *DeleteEnterpriseDataResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFineTuneJobRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -1053,6 +1146,887 @@ func (s *DescribeServiceResponse) SetBody(v *DescribeServiceResponseBody) *Descr
 	return s
 }
 
+type GetEnterpriseDataByDataIdRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s GetEnterpriseDataByDataIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataByDataIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataByDataIdRequest) SetAgentKey(v string) *GetEnterpriseDataByDataIdRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdRequest) SetDataId(v string) *GetEnterpriseDataByDataIdRequest {
+	s.DataId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdRequest) SetOwnerId(v int64) *GetEnterpriseDataByDataIdRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type GetEnterpriseDataByDataIdResponseBody struct {
+	Data      *GetEnterpriseDataByDataIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                    `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEnterpriseDataByDataIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataByDataIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBody) SetData(v *GetEnterpriseDataByDataIdResponseBodyData) *GetEnterpriseDataByDataIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBody) SetErrorCode(v string) *GetEnterpriseDataByDataIdResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBody) SetErrorMsg(v string) *GetEnterpriseDataByDataIdResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBody) SetRequestId(v string) *GetEnterpriseDataByDataIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBody) SetSuccess(v bool) *GetEnterpriseDataByDataIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseDataByDataIdResponseBodyData struct {
+	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataName       *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	DataSize       *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataStatus     *string `json:"DataStatus,omitempty" xml:"DataStatus,omitempty"`
+	DataStatusCode *int32  `json:"DataStatusCode,omitempty" xml:"DataStatusCode,omitempty"`
+	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataTypeCode   *int32  `json:"DataTypeCode,omitempty" xml:"DataTypeCode,omitempty"`
+	DownloadUrl    *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	StatusDetail   *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	StoreType      *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
+	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UploadTime     *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+}
+
+func (s GetEnterpriseDataByDataIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataByDataIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataId(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataName(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataName = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataSize(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataSize = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataStatus(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataStatus = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataStatusCode(v int32) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataStatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataType(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDataTypeCode(v int32) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DataTypeCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetDownloadUrl(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetStatusDetail(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.StatusDetail = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetStoreType(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.StoreType = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetTags(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponseBodyData) SetUploadTime(v string) *GetEnterpriseDataByDataIdResponseBodyData {
+	s.UploadTime = &v
+	return s
+}
+
+type GetEnterpriseDataByDataIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEnterpriseDataByDataIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnterpriseDataByDataIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataByDataIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataByDataIdResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataByDataIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponse) SetStatusCode(v int32) *GetEnterpriseDataByDataIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataByDataIdResponse) SetBody(v *GetEnterpriseDataByDataIdResponseBody) *GetEnterpriseDataByDataIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnterpriseDataChunkRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s GetEnterpriseDataChunkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataChunkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataChunkRequest) SetAgentKey(v string) *GetEnterpriseDataChunkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkRequest) SetDataId(v string) *GetEnterpriseDataChunkRequest {
+	s.DataId = &v
+	return s
+}
+
+type GetEnterpriseDataChunkResponseBody struct {
+	Data      []*GetEnterpriseDataChunkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEnterpriseDataChunkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataChunkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataChunkResponseBody) SetData(v []*GetEnterpriseDataChunkResponseBodyData) *GetEnterpriseDataChunkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBody) SetErrorCode(v string) *GetEnterpriseDataChunkResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBody) SetErrorMsg(v string) *GetEnterpriseDataChunkResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBody) SetRequestId(v string) *GetEnterpriseDataChunkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBody) SetSuccess(v bool) *GetEnterpriseDataChunkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseDataChunkResponseBodyData struct {
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TitlePath *string `json:"TitlePath,omitempty" xml:"TitlePath,omitempty"`
+}
+
+func (s GetEnterpriseDataChunkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataChunkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataChunkResponseBodyData) SetText(v string) *GetEnterpriseDataChunkResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBodyData) SetTitle(v string) *GetEnterpriseDataChunkResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponseBodyData) SetTitlePath(v string) *GetEnterpriseDataChunkResponseBodyData {
+	s.TitlePath = &v
+	return s
+}
+
+type GetEnterpriseDataChunkResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEnterpriseDataChunkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnterpriseDataChunkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataChunkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataChunkResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataChunkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponse) SetStatusCode(v int32) *GetEnterpriseDataChunkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataChunkResponse) SetBody(v *GetEnterpriseDataChunkResponseBody) *GetEnterpriseDataChunkResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnterpriseDataPageImageRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s GetEnterpriseDataPageImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataPageImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataPageImageRequest) SetAgentKey(v string) *GetEnterpriseDataPageImageRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageRequest) SetDataId(v string) *GetEnterpriseDataPageImageRequest {
+	s.DataId = &v
+	return s
+}
+
+type GetEnterpriseDataPageImageResponseBody struct {
+	Data      []*GetEnterpriseDataPageImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEnterpriseDataPageImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataPageImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataPageImageResponseBody) SetData(v []*GetEnterpriseDataPageImageResponseBodyData) *GetEnterpriseDataPageImageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBody) SetErrorCode(v string) *GetEnterpriseDataPageImageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBody) SetErrorMsg(v string) *GetEnterpriseDataPageImageResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBody) SetRequestId(v string) *GetEnterpriseDataPageImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBody) SetSuccess(v bool) *GetEnterpriseDataPageImageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseDataPageImageResponseBodyData struct {
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	PageId   *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s GetEnterpriseDataPageImageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataPageImageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataPageImageResponseBodyData) SetHeight(v int32) *GetEnterpriseDataPageImageResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBodyData) SetImageUrl(v string) *GetEnterpriseDataPageImageResponseBodyData {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBodyData) SetPageId(v string) *GetEnterpriseDataPageImageResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponseBodyData) SetWidth(v int32) *GetEnterpriseDataPageImageResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+type GetEnterpriseDataPageImageResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEnterpriseDataPageImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnterpriseDataPageImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataPageImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataPageImageResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataPageImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponse) SetStatusCode(v int32) *GetEnterpriseDataPageImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataPageImageResponse) SetBody(v *GetEnterpriseDataPageImageResponseBody) *GetEnterpriseDataPageImageResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnterpriseDataParseResultRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+}
+
+func (s GetEnterpriseDataParseResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataParseResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataParseResultRequest) SetAgentKey(v string) *GetEnterpriseDataParseResultRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultRequest) SetDataId(v string) *GetEnterpriseDataParseResultRequest {
+	s.DataId = &v
+	return s
+}
+
+type GetEnterpriseDataParseResultResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetEnterpriseDataParseResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataParseResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataParseResultResponseBody) SetData(v string) *GetEnterpriseDataParseResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponseBody) SetErrorCode(v string) *GetEnterpriseDataParseResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponseBody) SetErrorMsg(v string) *GetEnterpriseDataParseResultResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponseBody) SetRequestId(v string) *GetEnterpriseDataParseResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponseBody) SetSuccess(v bool) *GetEnterpriseDataParseResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseDataParseResultResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEnterpriseDataParseResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEnterpriseDataParseResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseDataParseResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseDataParseResultResponse) SetHeaders(v map[string]*string) *GetEnterpriseDataParseResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponse) SetStatusCode(v int32) *GetEnterpriseDataParseResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseDataParseResultResponse) SetBody(v *GetEnterpriseDataParseResultResponseBody) *GetEnterpriseDataParseResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetImportTaskResultRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetImportTaskResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImportTaskResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImportTaskResultRequest) SetAgentKey(v string) *GetImportTaskResultRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetImportTaskResultRequest) SetTaskId(v string) *GetImportTaskResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetImportTaskResultResponseBody struct {
+	Data      *GetImportTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                              `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetImportTaskResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImportTaskResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetImportTaskResultResponseBody) SetData(v *GetImportTaskResultResponseBodyData) *GetImportTaskResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBody) SetErrorCode(v string) *GetImportTaskResultResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBody) SetErrorMsg(v string) *GetImportTaskResultResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBody) SetRequestId(v string) *GetImportTaskResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBody) SetSuccess(v bool) *GetImportTaskResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetImportTaskResultResponseBodyData struct {
+	Details        []*GetImportTaskResultResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
+	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus     *int32                                        `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatusText *string                                       `json:"TaskStatusText,omitempty" xml:"TaskStatusText,omitempty"`
+}
+
+func (s GetImportTaskResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImportTaskResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetImportTaskResultResponseBodyData) SetDetails(v []*GetImportTaskResultResponseBodyDataDetails) *GetImportTaskResultResponseBodyData {
+	s.Details = v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyData) SetTaskId(v string) *GetImportTaskResultResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyData) SetTaskStatus(v int32) *GetImportTaskResultResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyData) SetTaskStatusText(v string) *GetImportTaskResultResponseBodyData {
+	s.TaskStatusText = &v
+	return s
+}
+
+type GetImportTaskResultResponseBodyDataDetails struct {
+	DataId   *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetImportTaskResultResponseBodyDataDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImportTaskResultResponseBodyDataDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetImportTaskResultResponseBodyDataDetails) SetDataId(v string) *GetImportTaskResultResponseBodyDataDetails {
+	s.DataId = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyDataDetails) SetDataName(v string) *GetImportTaskResultResponseBodyDataDetails {
+	s.DataName = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyDataDetails) SetErrorMsg(v string) *GetImportTaskResultResponseBodyDataDetails {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponseBodyDataDetails) SetSuccess(v bool) *GetImportTaskResultResponseBodyDataDetails {
+	s.Success = &v
+	return s
+}
+
+type GetImportTaskResultResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetImportTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetImportTaskResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImportTaskResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImportTaskResultResponse) SetHeaders(v map[string]*string) *GetImportTaskResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImportTaskResultResponse) SetStatusCode(v int32) *GetImportTaskResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetImportTaskResultResponse) SetBody(v *GetImportTaskResultResponseBody) *GetImportTaskResultResponse {
+	s.Body = v
+	return s
+}
+
+type ImportEnterpriseDocumentRequest struct {
+	AgentKey     *string                                        `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocumentList []*ImportEnterpriseDocumentRequestDocumentList `json:"DocumentList,omitempty" xml:"DocumentList,omitempty" type:"Repeated"`
+	OwnerId      *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StoreId      *int64                                         `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	Tags         []*string                                      `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s ImportEnterpriseDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseDocumentRequest) SetAgentKey(v string) *ImportEnterpriseDocumentRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequest) SetDocumentList(v []*ImportEnterpriseDocumentRequestDocumentList) *ImportEnterpriseDocumentRequest {
+	s.DocumentList = v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequest) SetOwnerId(v int64) *ImportEnterpriseDocumentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequest) SetStoreId(v int64) *ImportEnterpriseDocumentRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequest) SetTags(v []*string) *ImportEnterpriseDocumentRequest {
+	s.Tags = v
+	return s
+}
+
+type ImportEnterpriseDocumentRequestDocumentList struct {
+	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	FileCanDownload *bool   `json:"FileCanDownload,omitempty" xml:"FileCanDownload,omitempty"`
+	FileLink        *string `json:"FileLink,omitempty" xml:"FileLink,omitempty"`
+	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePreviewLink *string `json:"FilePreviewLink,omitempty" xml:"FilePreviewLink,omitempty"`
+}
+
+func (s ImportEnterpriseDocumentRequestDocumentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseDocumentRequestDocumentList) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseDocumentRequestDocumentList) SetBizId(v string) *ImportEnterpriseDocumentRequestDocumentList {
+	s.BizId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileCanDownload(v bool) *ImportEnterpriseDocumentRequestDocumentList {
+	s.FileCanDownload = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileLink(v string) *ImportEnterpriseDocumentRequestDocumentList {
+	s.FileLink = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequestDocumentList) SetFileName(v string) *ImportEnterpriseDocumentRequestDocumentList {
+	s.FileName = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentRequestDocumentList) SetFilePreviewLink(v string) *ImportEnterpriseDocumentRequestDocumentList {
+	s.FilePreviewLink = &v
+	return s
+}
+
+type ImportEnterpriseDocumentShrinkRequest struct {
+	AgentKey           *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DocumentListShrink *string `json:"DocumentList,omitempty" xml:"DocumentList,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StoreId            *int64  `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagsShrink         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ImportEnterpriseDocumentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseDocumentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseDocumentShrinkRequest) SetAgentKey(v string) *ImportEnterpriseDocumentShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentShrinkRequest) SetDocumentListShrink(v string) *ImportEnterpriseDocumentShrinkRequest {
+	s.DocumentListShrink = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentShrinkRequest) SetOwnerId(v int64) *ImportEnterpriseDocumentShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentShrinkRequest) SetStoreId(v int64) *ImportEnterpriseDocumentShrinkRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentShrinkRequest) SetTagsShrink(v string) *ImportEnterpriseDocumentShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ImportEnterpriseDocumentResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportEnterpriseDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseDocumentResponseBody) SetData(v string) *ImportEnterpriseDocumentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponseBody) SetErrorCode(v string) *ImportEnterpriseDocumentResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponseBody) SetErrorMsg(v string) *ImportEnterpriseDocumentResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponseBody) SetRequestId(v string) *ImportEnterpriseDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponseBody) SetSuccess(v bool) *ImportEnterpriseDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportEnterpriseDocumentResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportEnterpriseDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportEnterpriseDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportEnterpriseDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportEnterpriseDocumentResponse) SetHeaders(v map[string]*string) *ImportEnterpriseDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponse) SetStatusCode(v int32) *ImportEnterpriseDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportEnterpriseDocumentResponse) SetBody(v *ImportEnterpriseDocumentResponseBody) *ImportEnterpriseDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type ListFineTuneJobsRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -1382,6 +2356,517 @@ func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
 }
 
 func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
+	s.Body = v
+	return s
+}
+
+type QueryEnterpriseDataListRequest struct {
+	AgentKey  *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataName  *string   `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	PageNo    *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StoreType *string   `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
+	Tags      []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s QueryEnterpriseDataListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListRequest) SetAgentKey(v string) *QueryEnterpriseDataListRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListRequest) SetDataName(v string) *QueryEnterpriseDataListRequest {
+	s.DataName = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListRequest) SetPageNo(v int32) *QueryEnterpriseDataListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListRequest) SetPageSize(v int32) *QueryEnterpriseDataListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListRequest) SetStoreType(v string) *QueryEnterpriseDataListRequest {
+	s.StoreType = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListRequest) SetTags(v []*string) *QueryEnterpriseDataListRequest {
+	s.Tags = v
+	return s
+}
+
+type QueryEnterpriseDataListShrinkRequest struct {
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataName   *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	PageNo     *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StoreType  *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s QueryEnterpriseDataListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetAgentKey(v string) *QueryEnterpriseDataListShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetDataName(v string) *QueryEnterpriseDataListShrinkRequest {
+	s.DataName = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetPageNo(v int32) *QueryEnterpriseDataListShrinkRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetPageSize(v int32) *QueryEnterpriseDataListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetStoreType(v string) *QueryEnterpriseDataListShrinkRequest {
+	s.StoreType = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListShrinkRequest) SetTagsShrink(v string) *QueryEnterpriseDataListShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type QueryEnterpriseDataListResponseBody struct {
+	Data      *QueryEnterpriseDataListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                  `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryEnterpriseDataListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListResponseBody) SetData(v *QueryEnterpriseDataListResponseBodyData) *QueryEnterpriseDataListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBody) SetErrorCode(v string) *QueryEnterpriseDataListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBody) SetErrorMsg(v string) *QueryEnterpriseDataListResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBody) SetRequestId(v string) *QueryEnterpriseDataListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBody) SetSuccess(v bool) *QueryEnterpriseDataListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryEnterpriseDataListResponseBodyData struct {
+	List     []*QueryEnterpriseDataListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int32                                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryEnterpriseDataListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListResponseBodyData) SetList(v []*QueryEnterpriseDataListResponseBodyDataList) *QueryEnterpriseDataListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyData) SetPageNo(v int32) *QueryEnterpriseDataListResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyData) SetPageSize(v int32) *QueryEnterpriseDataListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyData) SetTotal(v int64) *QueryEnterpriseDataListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryEnterpriseDataListResponseBodyDataList struct {
+	DataId         *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataName       *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	DataSize       *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataStatus     *string `json:"DataStatus,omitempty" xml:"DataStatus,omitempty"`
+	DataStatusCode *int32  `json:"DataStatusCode,omitempty" xml:"DataStatusCode,omitempty"`
+	DataType       *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataTypeCode   *int32  `json:"DataTypeCode,omitempty" xml:"DataTypeCode,omitempty"`
+	DownloadUrl    *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	StatusDetail   *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	StoreType      *string `json:"StoreType,omitempty" xml:"StoreType,omitempty"`
+	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UploadTime     *string `json:"UploadTime,omitempty" xml:"UploadTime,omitempty"`
+}
+
+func (s QueryEnterpriseDataListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataId(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataId = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataName(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataName = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataSize(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataSize = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataStatus(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataStatus = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataStatusCode(v int32) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataStatusCode = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataType(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataType = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDataTypeCode(v int32) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DataTypeCode = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetDownloadUrl(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetStatusDetail(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.StatusDetail = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetStoreType(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.StoreType = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetTags(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.Tags = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponseBodyDataList) SetUploadTime(v string) *QueryEnterpriseDataListResponseBodyDataList {
+	s.UploadTime = &v
+	return s
+}
+
+type QueryEnterpriseDataListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryEnterpriseDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryEnterpriseDataListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEnterpriseDataListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEnterpriseDataListResponse) SetHeaders(v map[string]*string) *QueryEnterpriseDataListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponse) SetStatusCode(v int32) *QueryEnterpriseDataListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryEnterpriseDataListResponse) SetBody(v *QueryEnterpriseDataListResponseBody) *QueryEnterpriseDataListResponse {
+	s.Body = v
+	return s
+}
+
+type SearchEnterpriseDataRequest struct {
+	AgentKey   *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataIdList []*string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty" type:"Repeated"`
+	EnableRank *bool     `json:"EnableRank,omitempty" xml:"EnableRank,omitempty"`
+	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Query      *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	StoreId    *int64    `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagIdList  []*int64  `json:"TagIdList,omitempty" xml:"TagIdList,omitempty" type:"Repeated"`
+}
+
+func (s SearchEnterpriseDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEnterpriseDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEnterpriseDataRequest) SetAgentKey(v string) *SearchEnterpriseDataRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetDataIdList(v []*string) *SearchEnterpriseDataRequest {
+	s.DataIdList = v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetEnableRank(v bool) *SearchEnterpriseDataRequest {
+	s.EnableRank = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetOwnerId(v int64) *SearchEnterpriseDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetQuery(v string) *SearchEnterpriseDataRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetStoreId(v int64) *SearchEnterpriseDataRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataRequest) SetTagIdList(v []*int64) *SearchEnterpriseDataRequest {
+	s.TagIdList = v
+	return s
+}
+
+type SearchEnterpriseDataShrinkRequest struct {
+	AgentKey         *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DataIdListShrink *string `json:"DataIdList,omitempty" xml:"DataIdList,omitempty"`
+	EnableRank       *bool   `json:"EnableRank,omitempty" xml:"EnableRank,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	StoreId          *int64  `json:"StoreId,omitempty" xml:"StoreId,omitempty"`
+	TagIdListShrink  *string `json:"TagIdList,omitempty" xml:"TagIdList,omitempty"`
+}
+
+func (s SearchEnterpriseDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEnterpriseDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetAgentKey(v string) *SearchEnterpriseDataShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetDataIdListShrink(v string) *SearchEnterpriseDataShrinkRequest {
+	s.DataIdListShrink = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetEnableRank(v bool) *SearchEnterpriseDataShrinkRequest {
+	s.EnableRank = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetOwnerId(v int64) *SearchEnterpriseDataShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetQuery(v string) *SearchEnterpriseDataShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetStoreId(v int64) *SearchEnterpriseDataShrinkRequest {
+	s.StoreId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataShrinkRequest) SetTagIdListShrink(v string) *SearchEnterpriseDataShrinkRequest {
+	s.TagIdListShrink = &v
+	return s
+}
+
+type SearchEnterpriseDataResponseBody struct {
+	Data      []*SearchEnterpriseDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string                                 `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchEnterpriseDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEnterpriseDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEnterpriseDataResponseBody) SetData(v []*SearchEnterpriseDataResponseBodyData) *SearchEnterpriseDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBody) SetErrorCode(v string) *SearchEnterpriseDataResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBody) SetErrorMsg(v string) *SearchEnterpriseDataResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBody) SetRequestId(v string) *SearchEnterpriseDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBody) SetSuccess(v bool) *SearchEnterpriseDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchEnterpriseDataResponseBodyData struct {
+	DataId    *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataName  *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Text      *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Title     *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	TitlePath *string `json:"TitlePath,omitempty" xml:"TitlePath,omitempty"`
+}
+
+func (s SearchEnterpriseDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEnterpriseDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetDataId(v string) *SearchEnterpriseDataResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetDataName(v string) *SearchEnterpriseDataResponseBodyData {
+	s.DataName = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetScore(v string) *SearchEnterpriseDataResponseBodyData {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetSource(v string) *SearchEnterpriseDataResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetText(v string) *SearchEnterpriseDataResponseBodyData {
+	s.Text = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetTitle(v string) *SearchEnterpriseDataResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponseBodyData) SetTitlePath(v string) *SearchEnterpriseDataResponseBodyData {
+	s.TitlePath = &v
+	return s
+}
+
+type SearchEnterpriseDataResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchEnterpriseDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchEnterpriseDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEnterpriseDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEnterpriseDataResponse) SetHeaders(v map[string]*string) *SearchEnterpriseDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponse) SetStatusCode(v int32) *SearchEnterpriseDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchEnterpriseDataResponse) SetBody(v *SearchEnterpriseDataResponseBody) *SearchEnterpriseDataResponse {
 	s.Body = v
 	return s
 }
@@ -1719,6 +3204,54 @@ func (client *Client) CreateToken(request *CreateTokenRequest) (_result *CreateT
 	return _result, _err
 }
 
+func (client *Client) DeleteEnterpriseDataWithOptions(request *DeleteEnterpriseDataRequest, runtime *util.RuntimeOptions) (_result *DeleteEnterpriseDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnterpriseData"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnterpriseDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnterpriseData(request *DeleteEnterpriseDataRequest) (_result *DeleteEnterpriseDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnterpriseDataResponse{}
+	_body, _err := client.DeleteEnterpriseDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFineTuneJobWithOptions(request *DeleteFineTuneJobRequest, runtime *util.RuntimeOptions) (_result *DeleteFineTuneJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1919,6 +3452,320 @@ func (client *Client) DescribeService(request *DescribeServiceRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetEnterpriseDataByDataIdWithOptions(request *GetEnterpriseDataByDataIdRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataByDataIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseDataByDataId"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseDataByDataIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataByDataId(request *GetEnterpriseDataByDataIdRequest) (_result *GetEnterpriseDataByDataIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEnterpriseDataByDataIdResponse{}
+	_body, _err := client.GetEnterpriseDataByDataIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataChunkWithOptions(request *GetEnterpriseDataChunkRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataChunkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseDataChunk"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseDataChunkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataChunk(request *GetEnterpriseDataChunkRequest) (_result *GetEnterpriseDataChunkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEnterpriseDataChunkResponse{}
+	_body, _err := client.GetEnterpriseDataChunkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataPageImageWithOptions(request *GetEnterpriseDataPageImageRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataPageImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseDataPageImage"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseDataPageImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataPageImage(request *GetEnterpriseDataPageImageRequest) (_result *GetEnterpriseDataPageImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEnterpriseDataPageImageResponse{}
+	_body, _err := client.GetEnterpriseDataPageImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataParseResultWithOptions(request *GetEnterpriseDataParseResultRequest, runtime *util.RuntimeOptions) (_result *GetEnterpriseDataParseResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataId)) {
+		query["DataId"] = request.DataId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseDataParseResult"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseDataParseResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEnterpriseDataParseResult(request *GetEnterpriseDataParseResultRequest) (_result *GetEnterpriseDataParseResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEnterpriseDataParseResultResponse{}
+	_body, _err := client.GetEnterpriseDataParseResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetImportTaskResultWithOptions(request *GetImportTaskResultRequest, runtime *util.RuntimeOptions) (_result *GetImportTaskResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImportTaskResult"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetImportTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetImportTaskResult(request *GetImportTaskResultRequest) (_result *GetImportTaskResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetImportTaskResultResponse{}
+	_body, _err := client.GetImportTaskResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ImportEnterpriseDocumentWithOptions(tmpReq *ImportEnterpriseDocumentRequest, runtime *util.RuntimeOptions) (_result *ImportEnterpriseDocumentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportEnterpriseDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentList)) {
+		request.DocumentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentList, tea.String("DocumentList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentListShrink)) {
+		query["DocumentList"] = request.DocumentListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreId)) {
+		query["StoreId"] = request.StoreId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportEnterpriseDocument"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportEnterpriseDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportEnterpriseDocument(request *ImportEnterpriseDocumentRequest) (_result *ImportEnterpriseDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportEnterpriseDocumentResponse{}
+	_body, _err := client.ImportEnterpriseDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFineTuneJobsWithOptions(request *ListFineTuneJobsRequest, runtime *util.RuntimeOptions) (_result *ListFineTuneJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2018,6 +3865,154 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	runtime := &util.RuntimeOptions{}
 	_result = &ListServicesResponse{}
 	_body, _err := client.ListServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryEnterpriseDataListWithOptions(tmpReq *QueryEnterpriseDataListRequest, runtime *util.RuntimeOptions) (_result *QueryEnterpriseDataListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryEnterpriseDataListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataName)) {
+		query["DataName"] = request.DataName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreType)) {
+		query["StoreType"] = request.StoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEnterpriseDataList"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryEnterpriseDataListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryEnterpriseDataList(request *QueryEnterpriseDataListRequest) (_result *QueryEnterpriseDataListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryEnterpriseDataListResponse{}
+	_body, _err := client.QueryEnterpriseDataListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchEnterpriseDataWithOptions(tmpReq *SearchEnterpriseDataRequest, runtime *util.RuntimeOptions) (_result *SearchEnterpriseDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SearchEnterpriseDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataIdList)) {
+		request.DataIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataIdList, tea.String("DataIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagIdList)) {
+		request.TagIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIdList, tea.String("TagIdList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataIdListShrink)) {
+		query["DataIdList"] = request.DataIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableRank)) {
+		query["EnableRank"] = request.EnableRank
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreId)) {
+		query["StoreId"] = request.StoreId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagIdListShrink)) {
+		query["TagIdList"] = request.TagIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchEnterpriseData"),
+		Version:     tea.String("2023-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchEnterpriseDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchEnterpriseData(request *SearchEnterpriseDataRequest) (_result *SearchEnterpriseDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchEnterpriseDataResponse{}
+	_body, _err := client.SearchEnterpriseDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
