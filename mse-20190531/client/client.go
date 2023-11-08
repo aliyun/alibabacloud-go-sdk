@@ -7438,7 +7438,7 @@ type CreateNacosConfigRequest struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The tags of the configuration.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The configuration format such as text, JSON, or XML.
+	// The format of the configuration. Supported formats include TEXT, JSON, and XML.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -7596,30 +7596,27 @@ type CreateNacosInstanceRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The port number of the Nacos instance.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
-	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Specifies whether to enable the service for the instance.
-	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
 	// The name of the Nacos instance.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of the group.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Specifies whether to enable the service for the instance.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// Specifies whether to mark the instance as a temporary node.
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The data structure.
-	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
+	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The IP address of the Nacos instance.
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The weight. Valid values: 0 to 10000. The value must be an integer. A larger value indicates a higher frequency at which the instance is accessed.
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the namespace.
-	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The node metadata of the instance.
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The port number of the Nacos instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the service.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The weight. Valid values: 0 to 10000. The value must be an integer. A larger value indicates a higher frequency at which the instance is accessed.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -7692,17 +7689,17 @@ func (s *CreateNacosInstanceRequest) SetWeight(v string) *CreateNacosInstanceReq
 }
 
 type CreateNacosInstanceResponseBody struct {
-	// The result returned.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// duplicatedClusterAliasName
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The response code returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The result returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request is successfully processed.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// mse-200-105
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7942,6 +7939,7 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// Deprecated
 	// The JSON string.
 	EntryRule  *string                                        `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
 	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
@@ -8231,6 +8229,7 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// Deprecated
 	// The JSON string.
 	EntryRule  *string                                              `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
 	EntryRules []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
@@ -18312,15 +18311,12 @@ type GetMseSourceRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The MSE engine type. Valid values:
 	//
 	// *   NACOS
 	// *   ZOOKEEPER
-	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18348,23 +18344,23 @@ func (s *GetMseSourceRequest) SetType(v string) *GetMseSourceRequest {
 }
 
 type GetMseSourceResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   `true`: The request was successful.
-	// *   `false`: The request failed.
+	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data structure.
 	Data []*GetMseSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	//
 	// *   If the request is successful, a success message is returned.
 	// *   If the request fails, an error message is returned, such as the "TaskId not found" message.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request is successfully processed.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The HTTP status code returned.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The data structure.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18407,15 +18403,15 @@ func (s *GetMseSourceResponseBody) SetSuccess(v bool) *GetMseSourceResponseBody 
 }
 
 type GetMseSourceResponseBodyData struct {
-	// The type.
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// code
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The endpoint of the instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The ID of cluster.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the instance
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -18705,18 +18701,15 @@ type GetNacosHistoryConfigRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The name of the group.
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The ID of the namespace.
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The ID of the data.
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The name of the group.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The version ID of the configuration.
+	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
+	// The version ID of the configuration.
 	Nid *string `json:"Nid,omitempty" xml:"Nid,omitempty"`
 }
 
@@ -18759,18 +18752,18 @@ func (s *GetNacosHistoryConfigRequest) SetNid(v string) *GetNacosHistoryConfigRe
 }
 
 type GetNacosHistoryConfigResponseBody struct {
-	// The name of the application.
+	// The configuration information.
 	Configuration *GetNacosHistoryConfigResponseBodyConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The request was successfully processed.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The configuration information.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// mse-200-105
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18808,19 +18801,19 @@ func (s *GetNacosHistoryConfigResponseBody) SetSuccess(v bool) *GetNacosHistoryC
 }
 
 type GetNacosHistoryConfigResponseBodyConfiguration struct {
-	// The MD5 value of the configuration.
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the configuration group.
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content of the configuration.
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The error code returned if the request failed.
-	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
-	// The configuration type.
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the configuration.
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	// The encryption key.
+	EncryptedDataKey *string `json:"EncryptedDataKey,omitempty" xml:"EncryptedDataKey,omitempty"`
+	// The name of the configuration group.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The MD5 value of the configuration.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// The configuration type.
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 }
 
@@ -19415,10 +19408,6 @@ type GetPluginsRequest struct {
 	//
 	// zh: Chinese en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable the plug-in.
-	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The name of the plug-in.
-	EnableOnly *bool `json:"EnableOnly,omitempty" xml:"EnableOnly,omitempty"`
 	// The type of the plug-in. Valid values:
 	//
 	// *   0: custom
@@ -19427,10 +19416,12 @@ type GetPluginsRequest struct {
 	// *   3: transmission protocol
 	// *   4: traffic control
 	// *   5: traffic observation
+	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Specifies whether to enable the plug-in.
+	EnableOnly *bool `json:"EnableOnly,omitempty" xml:"EnableOnly,omitempty"`
+	// The ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// zh: Chinese en: English
+	// The name of the plug-in.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -19468,23 +19459,23 @@ func (s *GetPluginsRequest) SetName(v string) *GetPluginsRequest {
 }
 
 type GetPluginsResponseBody struct {
-	// The error code returned if the request failed.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data []*GetPluginsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The dynamic error message.
-	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The data entries returned.
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The HTTP status code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The dynamic part in the error message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data entries returned.
+	Data []*GetPluginsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The dynamic part in the error message.
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic error message.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19546,7 +19537,7 @@ type GetPluginsResponseBodyData struct {
 	//
 	// 0: custom
 	//
-	// 1: permission authentication
+	// 1: permission authorization
 	//
 	// 2: security protection
 	//
@@ -19559,18 +19550,12 @@ type GetPluginsResponseBodyData struct {
 	// The information about the plug-in configuration used for checking.
 	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
 	// The ID of the plug-in.
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The latest version of the plug-in.
+	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	// The plug-in language. Valid values:
-	//
-	// *   0: the WebAssembly plug-in
-	// *   2: the Lua plug-in
-	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Mode       *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The name of the plug-in.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the latest version is being released.
-	NewVersionPublishingFlag *bool `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NewVersionPublishingFlag *bool   `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
 	// The execution stage of the plug-in.
 	//
 	// *   0: default stage
@@ -19582,13 +19567,9 @@ type GetPluginsResponseBodyData struct {
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
 	// The execution priority of the plug-in. A larger value indicates a higher priority.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The release state of the plug-in. Valid values:
-	//
-	// *   0: The plug-in was released.
-	// *   1: The plug-in is being released.
-	// *   2: The plug-in failed to be released.
+	// The publish status.
 	PublishState *int32 `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	// Indicates whether the plug-in is enabled. Valid values:
+	// Indicates whether the plug-in is enabled.
 	//
 	// *   0: disabled
 	// *   1: enabled
@@ -20249,36 +20230,33 @@ type GetServiceListenersRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the instance to which the service belongs.
-	//
-	// > You must specify InstanceId or ClusterId.
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A reserved parameter.
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The namespace to which the service belongs.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the MSE instance to which the service belongs.
 	//
 	// > You must specify InstanceId or ClusterId.
-	HasIpCount *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
-	// The number of the page to return.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the cluster to which the service belongs.
 	//
 	// > The cluster is a concept for Nacos services and is not equivalent to a Microservices Engine (MSE) instance.
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The number of entries to return on each page.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The ID of the region.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The extended request parameters in the JSON format.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The group to which the service belongs.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// A reserved parameter.
+	HasIpCount *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
+	// The ID of the instance to which the service belongs.
+	//
+	// > You must specify InstanceId or ClusterId.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace to which the service belongs.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The number of the page to return.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The name of the service whose listeners you want to query.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -20351,29 +20329,29 @@ func (s *GetServiceListenersRequest) SetServiceName(v string) *GetServiceListene
 }
 
 type GetServiceListenersResponseBody struct {
-	// The details of the data.
+	// The returned data.
 	Data []*GetServiceListenersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// errorCode=500
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The ID of the request.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of listeners that are queried.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// *   `true`: The request was successful.
-	// *   `false`: The request failed.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The error code returned if the request failed.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
 	// The message returned.
 	//
 	// *   If the request is successful, a success message is returned.
 	// *   If the request fails, an error message is returned.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The number of listeners that are queried.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20431,21 +20409,21 @@ func (s *GetServiceListenersResponseBody) SetTotalCount(v int32) *GetServiceList
 }
 
 type GetServiceListenersResponseBodyData struct {
-	// The listener client version.
+	// The IP address of the listener.
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
-	// The application name of the listener.
+	// The listener client version.
 	Agent *string `json:"Agent,omitempty" xml:"Agent,omitempty"`
-	// The IP address of the monitored service.
+	// The application name of the listener.
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The page number of the returned page.
-	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
-	// The port number of the monitored service.
-	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The name of the monitored service.
-	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The ID of the namespace.
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The name of the cluster to which the monitored service belongs.
+	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The IP address of the monitored service.
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The ID of the namespace.
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The port number of the monitored service.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the monitored service.
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -24785,23 +24763,23 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The time when the task was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The serial number.
+	// The ID.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// A redundant parameter.
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user to which the cluster belongs.
+	// The ID of the user to which the instance belongs.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The number of nodes in the cluster.
+	// The number of nodes in the instance.
 	Replica *string `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// The risk items.
+	// The list of risk items.
 	RiskList []*ListClusterHealthCheckTaskResponseBodyDataResultRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
 	// The total score.
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The specifications.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The task state.
+	// The status of the task.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of check items.
 	TotalItem *int32 `json:"TotalItem,omitempty" xml:"TotalItem,omitempty"`
@@ -24809,7 +24787,7 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	TotalRisk *int32 `json:"TotalRisk,omitempty" xml:"TotalRisk,omitempty"`
 	// A redundant parameter.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the task was last updated.
+	// The last update time.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version number.
 	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
@@ -24916,11 +24894,11 @@ func (s *ListClusterHealthCheckTaskResponseBodyDataResult) SetVersionCode(v stri
 type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance ID.
+	// The ID.
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// A redundant parameter.
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// Indicates whether the risk item notification feature is disabled. Valid values:
+	// Indicates whether the risk item notification feature is disabled.
 	//
 	// *   true: disabled
 	// *   false: enabled
@@ -24929,7 +24907,7 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	NoticeFeature *bool `json:"NoticeFeature,omitempty" xml:"NoticeFeature,omitempty"`
 	// The ID of the user to which the cluster belongs.
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The code of the risk.
+	// The risk code.
 	RiskCode *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
 	// The severity of the risk. Valid values:
 	//
@@ -25787,33 +25765,30 @@ type ListConfigTrackRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The name of the configuration group.
-	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The number of entries to return on each page.
-	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// The ID of the namespace.
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The ID of the configuration.
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The end timestamp. Unit: seconds.
+	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The name of the configuration group.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
+	// The IP address of the listener.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The start timestamp. Unit: seconds.
+	// The ID of the namespace.
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The number of the page to return.
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// Specifies whether to enable reverse ordering. Valid values:
 	//
 	// *   true
 	// *   false
-	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of the page to return.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the instance.
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The IP address of the listener.
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The end timestamp. Unit: seconds.
+	// The start timestamp. Unit: seconds.
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
 }
 
@@ -25886,26 +25861,26 @@ func (s *ListConfigTrackRequest) SetStartTs(v int64) *ListConfigTrackRequest {
 }
 
 type ListConfigTrackResponseBody struct {
+	// The error code returned if the request failed.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code returned.
+	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The track data.
-	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The request was successfully processed.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The total number of entries returned.
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the returned page.
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The message returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// httpCode
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the request.
+	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of the data.
+	// The track data.
 	Traces []*ListConfigTrackResponseBodyTraces `json:"Traces,omitempty" xml:"Traces,omitempty" type:"Repeated"`
 }
 
@@ -25963,46 +25938,46 @@ func (s *ListConfigTrackResponseBody) SetTraces(v []*ListConfigTrackResponseBody
 }
 
 type ListConfigTrackResponseBodyTraces struct {
-	// The number of entries returned per page.
+	// Indicates whether the request is sent from the client. Valid values:
+	//
+	// *   true
+	// *   false
 	Client *bool `json:"Client,omitempty" xml:"Client,omitempty"`
-	// The name of the configuration group.
+	// The ID of the configuration.
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The MD5 value.
+	// The response latency. Unit: milliseconds.
 	Delay *string `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The result.
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	// The event. Valid values:
 	//
 	// *   pull: configuration acquisition events
 	// *   persist: persistence events
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The name of the configuration group.
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The logging time.
+	LogDate *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
+	// The MD5 value.
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Indicates whether messages are pushed by a server. Valid values:
+	//
+	// *   true
+	// *   false
+	Push *bool `json:"Push,omitempty" xml:"Push,omitempty"`
+	// The source IP address of the request.
+	RequestIp *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
+	// The response node.
+	ResponseIp *string `json:"ResponseIp,omitempty" xml:"ResponseIp,omitempty"`
+	// The result.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The timestamp that indicates the time when the metric value is collected.
 	//
 	// Unit: seconds.
-	LogDate *string `json:"LogDate,omitempty" xml:"LogDate,omitempty"`
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
 	// The release type. Valid values:
 	//
 	// *   beta: beta release
 	// *   tag: canary release
 	// *   batch: batch release
-	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// Indicates whether the request is sent from the client. Valid values:
-	//
-	// *   true
-	// *   false
-	Push *bool `json:"Push,omitempty" xml:"Push,omitempty"`
-	// The response node.
-	RequestIp *string `json:"RequestIp,omitempty" xml:"RequestIp,omitempty"`
-	// The ID of the configuration.
-	ResponseIp *string `json:"ResponseIp,omitempty" xml:"ResponseIp,omitempty"`
-	// The response latency. Unit: milliseconds.
-	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The source IP address of the request.
-	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	// Indicates whether messages are pushed by a server. Valid values:
-	//
-	// *   true
-	// *   false
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -31472,17 +31447,17 @@ type ListInstanceCountResponseBody struct {
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic part in the error message. This parameter is used to replace `%s` in the `ErrMessage` parameter.
 	//
-	// > If the return value of the `ErrMessage` parameter is `The Value of Input Parameter %s is not valid` and the return value of the `DynamicMessage` parameter is `DtsJobId`, the specified `DtsJobId` parameter is invalid.
+	// >  If the return value of the `ErrMessage` parameter is `The Value of Input Parameter %s is not valid` and the return value of the `DynamicMessage` parameter is `DtsJobId`, the specified `DtsJobId` parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error code returned if the request failed. If the request failed, the ErrorCode parameter is returned. For more information, see the [Error codes](~~456441~~) section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned. If the request is successful, a success message is returned. If the request fails, an error message is returned.
+	// The returned message. If the request is successful, a success message is returned. If the request fails, an error message is returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
@@ -33510,7 +33485,14 @@ type ListServiceSourceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Specifies the type of the returned service source. If this parameter is not specified, service sources of all types are returned. Valid values:
+	//
+	// *   K8S
+	// *   MSE
+	// *   MSE_ZK
+	// *   SAE
+	// *   EDAS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListServiceSourceRequest) String() string {
@@ -34514,9 +34496,8 @@ func (s *ModifyGovernanceKubernetesClusterRequest) SetRegionId(v string) *Modify
 }
 
 type ModifyGovernanceKubernetesClusterRequestNamespaceInfos struct {
-	Labels       map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	MseNamespace *string            `json:"mseNamespace,omitempty" xml:"mseNamespace,omitempty"`
-	Name         *string            `json:"name,omitempty" xml:"name,omitempty"`
+	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyGovernanceKubernetesClusterRequestNamespaceInfos) String() string {
@@ -34525,11 +34506,6 @@ func (s ModifyGovernanceKubernetesClusterRequestNamespaceInfos) String() string 
 
 func (s ModifyGovernanceKubernetesClusterRequestNamespaceInfos) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyGovernanceKubernetesClusterRequestNamespaceInfos) SetLabels(v map[string]*string) *ModifyGovernanceKubernetesClusterRequestNamespaceInfos {
-	s.Labels = v
-	return s
 }
 
 func (s *ModifyGovernanceKubernetesClusterRequestNamespaceInfos) SetMseNamespace(v string) *ModifyGovernanceKubernetesClusterRequestNamespaceInfos {
@@ -34674,20 +34650,20 @@ type ModifyLosslessRuleRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the region.
+	// Specifies whether to align the lifecycle of the application in the Kubernetes cluster with that of the microservice.
 	Aligned *bool `json:"Aligned,omitempty" xml:"Aligned,omitempty"`
 	// The ID of the application.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The microservice namespace to which the rule applies.
+	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Specifies whether to enable graceful start. Valid values:
-	//
-	// *   true: enabled
-	// *   false: disabled
-	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The prefetching duration.
-	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The registration latency.
+	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
+	// Specifies whether to enable the alert rule. Valid values:
+	//
+	// *   `true`: enables the rule.
+	// *   `false`: disables the rule.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The slope of the prefetching curve.
 	FuncType *int32 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
 	// Specifies whether to display online and offline processing details.
 	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
@@ -34695,11 +34671,11 @@ type ModifyLosslessRuleRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Specifies whether to enable notification.
 	Notice *bool `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// The slope of the prefetching curve.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to complete service registration before readiness probe.
+	// Specifies whether to associate with service prefetching.
 	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
-	// Specifies whether to complete service prefetching before readiness probe.
+	// The prefetching duration.
 	WarmupTime *int32 `json:"WarmupTime,omitempty" xml:"WarmupTime,omitempty"`
 }
 
@@ -34777,11 +34753,14 @@ func (s *ModifyLosslessRuleRequest) SetWarmupTime(v int32) *ModifyLosslessRuleRe
 }
 
 type ModifyLosslessRuleResponseBody struct {
-	Code *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 响应码。
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回数据。
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code returned if the request failed.
-	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// HTTP状态码。
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -35168,14 +35147,11 @@ type PullServicesRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The namespace.
-	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The unique ID of the gateway.
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The type of the service source.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -35208,20 +35184,20 @@ func (s *PullServicesRequest) SetSourceType(v string) *PullServicesRequest {
 }
 
 type PullServicesResponseBody struct {
+	// The status code returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*PullServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
 	// *   `true`: The request was successful.
 	// *   `false`: The request failed.
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data structure.
-	Data []*PullServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The message returned.
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The status code returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The HTTP status code returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -35264,13 +35240,13 @@ func (s *PullServicesResponseBody) SetSuccess(v bool) *PullServicesResponseBody 
 }
 
 type PullServicesResponseBodyData struct {
-	// The information about services.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// code
+	// The alias of the namespace.
 	NamespaceShowName *string `json:"NamespaceShowName,omitempty" xml:"NamespaceShowName,omitempty"`
-	// The data structure.
+	// The information about services.
 	Services []*PullServicesResponseBodyDataServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -35303,15 +35279,15 @@ func (s *PullServicesResponseBodyData) SetServices(v []*PullServicesResponseBody
 }
 
 type PullServicesResponseBodyDataServices struct {
-	// The ID of the service source.
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The namespace.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The name of the group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the service.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The type of the service source.
+	// The ID of the service source.
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The alias of the namespace.
+	// The type of the service source.
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
@@ -38623,20 +38599,44 @@ type QueryMonitorRequest struct {
 	// *   zh: Chinese
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// system error
+	// The timestamp when the monitoring ends.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// mse-100-001
+	// The metric type. The following metric types are supported:
+	//
+	// \[Basic system metrics]
+	//
+	// *   cpuUsage
+	// *   memoryUsage
+	// *   diskUsage
+	// *   gcCount
+	// *   gcTime
+	//
+	// \[Nacos registry]
+	//
+	// *   serviceCount
+	// *   writeCostTime
+	// *   readCostTime
+	// *   TPS regCenterTps
+	// *   QPS regCenterQps
+	//
+	// \[Nacos configuration center]
+	//
+	// *   publish
+	// *   getConfig
+	//
+	// \[zookeeper]
+	//
+	// *   TPS zk_TpsCount
+	// *   QPS zk_QpsCount
+	// *   zookeeper_AvgRequestLatency
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// cluster not found
-	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// systemError
-	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The extended request parameters in the JSON format.
+	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// The timestamp when the monitoring starts.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The interval between data points. Unit: seconds.
 	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
 }
 
@@ -38684,18 +38684,19 @@ func (s *QueryMonitorRequest) SetStep(v int64) *QueryMonitorRequest {
 }
 
 type QueryMonitorResponseBody struct {
-	// The data structure.
+	// The details of the data.
 	Data []*QueryMonitorResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The name of the pod.
+	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The interval between data points. Unit: seconds.
+	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// *   zh: Chinese
-	// *   en: English
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`: The request was successful.
+	// *   `false`: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMonitorResponseBody) String() string {
@@ -38732,9 +38733,9 @@ func (s *QueryMonitorResponseBody) SetSuccess(v bool) *QueryMonitorResponseBody 
 }
 
 type QueryMonitorResponseBodyData struct {
-	// The ID of the request.
+	// The prefix of the name.
 	ClusterNamePrefix *string `json:"clusterNamePrefix,omitempty" xml:"clusterNamePrefix,omitempty"`
-	// The request was successfully processed.
+	// The name of the pod.
 	PodName *string `json:"podName,omitempty" xml:"podName,omitempty"`
 	// The details of the data.
 	Values []map[string]interface{} `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
@@ -40718,7 +40719,7 @@ type UpdateBlackWhiteListRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The ID of the blacklist.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The whitelist. Default value: No.
+	// Specifies whether to enable the whitelist.
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
 	// The name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -51431,7 +51432,7 @@ func (client *Client) CreateNacosConfig(request *CreateNacosConfigRequest) (_res
 }
 
 /**
- * mse-200-105
+ * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request CreateNacosInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -51517,7 +51518,7 @@ func (client *Client) CreateNacosInstanceWithOptions(request *CreateNacosInstanc
 }
 
 /**
- * mse-200-105
+ * > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
  *
  * @param request CreateNacosInstanceRequest
  * @return CreateNacosInstanceResponse
@@ -60104,7 +60105,7 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+ * You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
  *
  * @param request UpdateClusterSpecRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -60164,7 +60165,7 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 }
 
 /**
- * You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+ * You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
  *
  * @param request UpdateClusterSpecRequest
  * @return UpdateClusterSpecResponse
