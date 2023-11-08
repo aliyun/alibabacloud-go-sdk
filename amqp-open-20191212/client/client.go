@@ -12,6 +12,224 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataValue struct {
+	MasterUid       *int64  `json:"masterUid,omitempty" xml:"masterUid,omitempty"`
+	CInstanceId     *string `json:"cInstanceId,omitempty" xml:"cInstanceId,omitempty"`
+	AccessKey       *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	UserName        *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Password        *string `json:"password,omitempty" xml:"password,omitempty"`
+	Deleted         *int64  `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	CreateTimestamp *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+}
+
+func (s DataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataValue) SetMasterUid(v int64) *DataValue {
+	s.MasterUid = &v
+	return s
+}
+
+func (s *DataValue) SetCInstanceId(v string) *DataValue {
+	s.CInstanceId = &v
+	return s
+}
+
+func (s *DataValue) SetAccessKey(v string) *DataValue {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *DataValue) SetUserName(v string) *DataValue {
+	s.UserName = &v
+	return s
+}
+
+func (s *DataValue) SetPassword(v string) *DataValue {
+	s.Password = &v
+	return s
+}
+
+func (s *DataValue) SetDeleted(v int64) *DataValue {
+	s.Deleted = &v
+	return s
+}
+
+func (s *DataValue) SetCreateTimestamp(v int64) *DataValue {
+	s.CreateTimestamp = &v
+	return s
+}
+
+type CreateAccountRequest struct {
+	AccountAccessKey *string `json:"accountAccessKey,omitempty" xml:"accountAccessKey,omitempty"`
+	CreateTimestamp  *int64  `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	InstanceId       *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	SecretSign       *string `json:"secretSign,omitempty" xml:"secretSign,omitempty"`
+	Signature        *string `json:"signature,omitempty" xml:"signature,omitempty"`
+	UserName         *string `json:"userName,omitempty" xml:"userName,omitempty"`
+}
+
+func (s CreateAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountRequest) SetAccountAccessKey(v string) *CreateAccountRequest {
+	s.AccountAccessKey = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetCreateTimestamp(v int64) *CreateAccountRequest {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetInstanceId(v string) *CreateAccountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetSecretSign(v string) *CreateAccountRequest {
+	s.SecretSign = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetSignature(v string) *CreateAccountRequest {
+	s.Signature = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetUserName(v string) *CreateAccountRequest {
+	s.UserName = &v
+	return s
+}
+
+type CreateAccountResponseBody struct {
+	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountResponseBody) SetCode(v int32) *CreateAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAccountResponseBody) SetData(v *CreateAccountResponseBodyData) *CreateAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateAccountResponseBody) SetMessage(v string) *CreateAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAccountResponseBody) SetRequestId(v string) *CreateAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAccountResponseBody) SetSuccess(v bool) *CreateAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAccountResponseBodyData struct {
+	// AccessKey ID。
+	AccessKey       *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	CreateTimeStamp *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MasterUId       *int64  `json:"MasterUId,omitempty" xml:"MasterUId,omitempty"`
+	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountResponseBodyData) SetAccessKey(v string) *CreateAccountResponseBodyData {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetCreateTimeStamp(v int64) *CreateAccountResponseBodyData {
+	s.CreateTimeStamp = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetInstanceId(v string) *CreateAccountResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetMasterUId(v int64) *CreateAccountResponseBodyData {
+	s.MasterUId = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetPassword(v string) *CreateAccountResponseBodyData {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateAccountResponseBodyData) SetUserName(v string) *CreateAccountResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type CreateAccountResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountResponse) SetHeaders(v map[string]*string) *CreateAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccountResponse) SetStatusCode(v int32) *CreateAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAccountResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBindingRequest struct {
 	Argument        *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
 	BindingKey      *string `json:"BindingKey,omitempty" xml:"BindingKey,omitempty"`
@@ -210,6 +428,177 @@ func (s *CreateExchangeResponse) SetBody(v *CreateExchangeResponseBody) *CreateE
 	return s
 }
 
+type CreateInstanceRequest struct {
+	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxConnections     *int32  `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	MaxEipTps          *int64  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	MaxPrivateTps      *int64  `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
+	PaymentType        *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodCycle        *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
+	QueueCapacity      *int32  `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
+	StorageSize        *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEip         *bool   `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	SupportTracing     *bool   `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	TracingStorageTime *int32  `json:"TracingStorageTime,omitempty" xml:"TracingStorageTime,omitempty"`
+}
+
+func (s CreateInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequest) SetAutoRenew(v bool) *CreateInstanceRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceRequest {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetInstanceType(v string) *CreateInstanceRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetMaxConnections(v int32) *CreateInstanceRequest {
+	s.MaxConnections = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetMaxEipTps(v int64) *CreateInstanceRequest {
+	s.MaxEipTps = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetMaxPrivateTps(v int64) *CreateInstanceRequest {
+	s.MaxPrivateTps = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPaymentType(v string) *CreateInstanceRequest {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPeriodCycle(v string) *CreateInstanceRequest {
+	s.PeriodCycle = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetQueueCapacity(v int32) *CreateInstanceRequest {
+	s.QueueCapacity = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetStorageSize(v int32) *CreateInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSupportEip(v bool) *CreateInstanceRequest {
+	s.SupportEip = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetSupportTracing(v bool) *CreateInstanceRequest {
+	s.SupportTracing = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetTracingStorageTime(v int32) *CreateInstanceRequest {
+	s.TracingStorageTime = &v
+	return s
+}
+
+type CreateInstanceResponseBody struct {
+	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponseBody) SetCode(v int32) *CreateInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetData(v interface{}) *CreateInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetMessage(v string) *CreateInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateInstanceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResponse) SetHeaders(v map[string]*string) *CreateInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateQueueRequest struct {
 	AutoDeleteState      *bool   `json:"AutoDeleteState,omitempty" xml:"AutoDeleteState,omitempty"`
 	AutoExpireState      *int64  `json:"AutoExpireState,omitempty" xml:"AutoExpireState,omitempty"`
@@ -398,6 +787,99 @@ func (s *CreateVirtualHostResponse) SetStatusCode(v int32) *CreateVirtualHostRes
 }
 
 func (s *CreateVirtualHostResponse) SetBody(v *CreateVirtualHostResponseBody) *CreateVirtualHostResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAccountRequest struct {
+	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	UserName        *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DeleteAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountRequest) SetCreateTimestamp(v int64) *DeleteAccountRequest {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DeleteAccountRequest) SetUserName(v string) *DeleteAccountRequest {
+	s.UserName = &v
+	return s
+}
+
+type DeleteAccountResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponseBody) SetCode(v int32) *DeleteAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAccountResponseBody) SetData(v bool) *DeleteAccountResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteAccountResponseBody) SetMessage(v string) *DeleteAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAccountResponseBody) SetRequestId(v string) *DeleteAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAccountResponseBody) SetSuccess(v bool) *DeleteAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAccountResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountResponse) SetHeaders(v map[string]*string) *DeleteAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetStatusCode(v int32) *DeleteAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAccountResponse {
 	s.Body = v
 	return s
 }
@@ -826,6 +1308,93 @@ func (s *GetMetadataAmountResponse) SetStatusCode(v int32) *GetMetadataAmountRes
 }
 
 func (s *GetMetadataAmountResponse) SetBody(v *GetMetadataAmountResponseBody) *GetMetadataAmountResponse {
+	s.Body = v
+	return s
+}
+
+type ListAccountsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsRequest) SetInstanceId(v string) *ListAccountsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListAccountsResponseBody struct {
+	Code      *int32                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsResponseBody) SetCode(v int32) *ListAccountsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetData(v map[string][]*DataValue) *ListAccountsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetMessage(v string) *ListAccountsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetRequestId(v string) *ListAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccountsResponseBody) SetSuccess(v bool) *ListAccountsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAccountsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsResponse) SetHeaders(v map[string]*string) *ListAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccountsResponse) SetStatusCode(v int32) *ListAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccountsResponse) SetBody(v *ListAccountsResponseBody) *ListAccountsResponse {
 	s.Body = v
 	return s
 }
@@ -1408,6 +1977,7 @@ func (s *ListExchangesResponseBody) SetRequestId(v string) *ListExchangesRespons
 }
 
 type ListExchangesResponseBodyData struct {
+	// Exchange。
 	Exchanges  []*ListExchangesResponseBodyDataExchanges `json:"Exchanges,omitempty" xml:"Exchanges,omitempty" type:"Repeated"`
 	MaxResults *int32                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -1588,23 +2158,24 @@ func (s *ListInstancesResponseBodyData) SetNextToken(v string) *ListInstancesRes
 }
 
 type ListInstancesResponseBodyDataInstances struct {
-	AutoRenewInstance *bool   `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
-	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	ExpireTime        *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType      *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaxEipTps         *int32  `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	MaxQueue          *int32  `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
-	MaxTps            *int32  `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
-	MaxVhost          *int32  `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
-	OrderCreateTime   *int64  `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	PrivateEndpoint   *string `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
-	PublicEndpoint    *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageSize       *int32  `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	SupportEIP        *bool   `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	AutoRenewInstance *bool                                         `json:"AutoRenewInstance,omitempty" xml:"AutoRenewInstance,omitempty"`
+	ClassicEndpoint   *string                                       `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	ExpireTime        *int64                                        `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId        *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName      *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType      *string                                       `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxEipTps         *int32                                        `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	MaxQueue          *int32                                        `json:"MaxQueue,omitempty" xml:"MaxQueue,omitempty"`
+	MaxTps            *int32                                        `json:"MaxTps,omitempty" xml:"MaxTps,omitempty"`
+	MaxVhost          *int32                                        `json:"MaxVhost,omitempty" xml:"MaxVhost,omitempty"`
+	OrderCreateTime   *int64                                        `json:"OrderCreateTime,omitempty" xml:"OrderCreateTime,omitempty"`
+	OrderType         *string                                       `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	PrivateEndpoint   *string                                       `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty"`
+	PublicEndpoint    *string                                       `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	Status            *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageSize       *int32                                        `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	SupportEIP        *bool                                         `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
+	Tags              []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListInstancesResponseBodyDataInstances) String() string {
@@ -1697,6 +2268,34 @@ func (s *ListInstancesResponseBodyDataInstances) SetStorageSize(v int32) *ListIn
 
 func (s *ListInstancesResponseBodyDataInstances) SetSupportEIP(v bool) *ListInstancesResponseBodyDataInstances {
 	s.SupportEIP = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstances) SetTags(v []*ListInstancesResponseBodyDataInstancesTags) *ListInstancesResponseBodyDataInstances {
+	s.Tags = v
+	return s
+}
+
+type ListInstancesResponseBodyDataInstancesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListInstancesResponseBodyDataInstancesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyDataInstancesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyDataInstancesTags) SetKey(v string) *ListInstancesResponseBodyDataInstancesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyDataInstancesTags) SetValue(v string) *ListInstancesResponseBodyDataInstancesTags {
+	s.Value = &v
 	return s
 }
 
@@ -2090,9 +2689,10 @@ func (s *ListQueuesResponseBody) SetRequestId(v string) *ListQueuesResponseBody 
 }
 
 type ListQueuesResponseBodyData struct {
-	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Queues     []*ListQueuesResponseBodyDataQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Queue。
+	Queues []*ListQueuesResponseBodyDataQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
 }
 
 func (s ListQueuesResponseBodyData) String() string {
@@ -2259,8 +2859,9 @@ func (s *ListVirtualHostsResponseBody) SetRequestId(v string) *ListVirtualHostsR
 }
 
 type ListVirtualHostsResponseBodyData struct {
-	MaxResults   *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Vhost。
 	VirtualHosts []*ListVirtualHostsResponseBodyDataVirtualHosts `json:"VirtualHosts,omitempty" xml:"VirtualHosts,omitempty" type:"Repeated"`
 }
 
@@ -2473,6 +3074,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountAccessKey)) {
+		query["accountAccessKey"] = request.AccountAccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimestamp)) {
+		query["createTimestamp"] = request.CreateTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretSign)) {
+		query["secretSign"] = request.SecretSign
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Signature)) {
+		query["signature"] = request.Signature
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["userName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccount"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccountResponse{}
+	_body, _err := client.CreateAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBindingWithOptions(request *CreateBindingRequest, runtime *util.RuntimeOptions) (_result *CreateBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2609,6 +3274,106 @@ func (client *Client) CreateExchange(request *CreateExchangeRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxConnections)) {
+		query["MaxConnections"] = request.MaxConnections
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxEipTps)) {
+		query["MaxEipTps"] = request.MaxEipTps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPrivateTps)) {
+		query["MaxPrivateTps"] = request.MaxPrivateTps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodCycle)) {
+		query["PeriodCycle"] = request.PeriodCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueCapacity)) {
+		query["QueueCapacity"] = request.QueueCapacity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportEip)) {
+		query["SupportEip"] = request.SupportEip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportTracing)) {
+		query["SupportTracing"] = request.SupportTracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingStorageTime)) {
+		query["TracingStorageTime"] = request.TracingStorageTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CreateInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtime *util.RuntimeOptions) (_result *CreateQueueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2734,6 +3499,54 @@ func (client *Client) CreateVirtualHost(request *CreateVirtualHostRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVirtualHostResponse{}
 	_body, _err := client.CreateVirtualHostWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimestamp)) {
+		query["CreateTimestamp"] = request.CreateTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccount"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccountResponse{}
+	_body, _err := client.DeleteAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2990,6 +3803,50 @@ func (client *Client) GetMetadataAmount(request *GetMetadataAmountRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMetadataAmountResponse{}
 	_body, _err := client.GetMetadataAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAccountsWithOptions(request *ListAccountsRequest, runtime *util.RuntimeOptions) (_result *ListAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccounts"),
+		Version:     tea.String("2019-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAccounts(request *ListAccountsRequest) (_result *ListAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccountsResponse{}
+	_body, _err := client.ListAccountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
