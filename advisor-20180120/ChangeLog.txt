@@ -1,3 +1,6 @@
+2023-11-08 Version: v1.1.0
+- Generated golang 2018-01-20 for Advisor.
+
 2023-08-17 Version: v1.0.0
 - Generated golang 2018-01-20 for Advisor.
 

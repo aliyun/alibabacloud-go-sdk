@@ -15,15 +15,10 @@ import (
 type DescribeAdvicesRequest struct {
 	AdviceId        *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
 	CheckId         *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	ClientUid       *int64  `json:"ClientUid,omitempty" xml:"ClientUid,omitempty"`
 	ExcludeAdviceId *int64  `json:"ExcludeAdviceId,omitempty" xml:"ExcludeAdviceId,omitempty"`
-	FilterType      *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	FilterValue     *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
 	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Token           *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s DescribeAdvicesRequest) String() string {
@@ -44,23 +39,8 @@ func (s *DescribeAdvicesRequest) SetCheckId(v string) *DescribeAdvicesRequest {
 	return s
 }
 
-func (s *DescribeAdvicesRequest) SetClientUid(v int64) *DescribeAdvicesRequest {
-	s.ClientUid = &v
-	return s
-}
-
 func (s *DescribeAdvicesRequest) SetExcludeAdviceId(v int64) *DescribeAdvicesRequest {
 	s.ExcludeAdviceId = &v
-	return s
-}
-
-func (s *DescribeAdvicesRequest) SetFilterType(v string) *DescribeAdvicesRequest {
-	s.FilterType = &v
-	return s
-}
-
-func (s *DescribeAdvicesRequest) SetFilterValue(v string) *DescribeAdvicesRequest {
-	s.FilterValue = &v
 	return s
 }
 
@@ -74,18 +54,8 @@ func (s *DescribeAdvicesRequest) SetProduct(v string) *DescribeAdvicesRequest {
 	return s
 }
 
-func (s *DescribeAdvicesRequest) SetRegion(v string) *DescribeAdvicesRequest {
-	s.Region = &v
-	return s
-}
-
 func (s *DescribeAdvicesRequest) SetResourceId(v string) *DescribeAdvicesRequest {
 	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeAdvicesRequest) SetToken(v string) *DescribeAdvicesRequest {
-	s.Token = &v
 	return s
 }
 
@@ -130,21 +100,17 @@ func (s *DescribeAdvicesResponseBodyData) SetAdvice(v []*DescribeAdvicesResponse
 }
 
 type DescribeAdvicesResponseBodyDataAdvice struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
 	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Details     *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// ID
 	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Links      *string `json:"Links,omitempty" xml:"Links,omitempty"`
 	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Severity   *int32  `json:"Severity,omitempty" xml:"Severity,omitempty"`
@@ -156,11 +122,6 @@ func (s DescribeAdvicesResponseBodyDataAdvice) String() string {
 
 func (s DescribeAdvicesResponseBodyDataAdvice) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAdvicesResponseBodyDataAdvice) SetAction(v string) *DescribeAdvicesResponseBodyDataAdvice {
-	s.Action = &v
-	return s
 }
 
 func (s *DescribeAdvicesResponseBodyDataAdvice) SetAliyunId(v int64) *DescribeAdvicesResponseBodyDataAdvice {
@@ -188,11 +149,6 @@ func (s *DescribeAdvicesResponseBodyDataAdvice) SetDescription(v string) *Descri
 	return s
 }
 
-func (s *DescribeAdvicesResponseBodyDataAdvice) SetDetails(v string) *DescribeAdvicesResponseBodyDataAdvice {
-	s.Details = &v
-	return s
-}
-
 func (s *DescribeAdvicesResponseBodyDataAdvice) SetGmtCreated(v string) *DescribeAdvicesResponseBodyDataAdvice {
 	s.GmtCreated = &v
 	return s
@@ -213,18 +169,8 @@ func (s *DescribeAdvicesResponseBodyDataAdvice) SetIsExpired(v bool) *DescribeAd
 	return s
 }
 
-func (s *DescribeAdvicesResponseBodyDataAdvice) SetLinks(v string) *DescribeAdvicesResponseBodyDataAdvice {
-	s.Links = &v
-	return s
-}
-
 func (s *DescribeAdvicesResponseBodyDataAdvice) SetProduct(v string) *DescribeAdvicesResponseBodyDataAdvice {
 	s.Product = &v
-	return s
-}
-
-func (s *DescribeAdvicesResponseBodyDataAdvice) SetReason(v string) *DescribeAdvicesResponseBodyDataAdvice {
-	s.Reason = &v
 	return s
 }
 
@@ -272,16 +218,243 @@ func (s *DescribeAdvicesResponse) SetBody(v *DescribeAdvicesResponseBody) *Descr
 	return s
 }
 
+type DescribeAdvicesFlatPageRequest struct {
+	AdviceId   *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s DescribeAdvicesFlatPageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvicesFlatPageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetAdviceId(v int64) *DescribeAdvicesFlatPageRequest {
+	s.AdviceId = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetCheckId(v string) *DescribeAdvicesFlatPageRequest {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetLanguage(v string) *DescribeAdvicesFlatPageRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetPageNumber(v int32) *DescribeAdvicesFlatPageRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetPageSize(v int32) *DescribeAdvicesFlatPageRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetProduct(v string) *DescribeAdvicesFlatPageRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageRequest) SetResourceId(v string) *DescribeAdvicesFlatPageRequest {
+	s.ResourceId = &v
+	return s
+}
+
+type DescribeAdvicesFlatPageResponseBody struct {
+	Data      *DescribeAdvicesFlatPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAdvicesFlatPageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvicesFlatPageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvicesFlatPageResponseBody) SetData(v *DescribeAdvicesFlatPageResponseBodyData) *DescribeAdvicesFlatPageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBody) SetRequestId(v string) *DescribeAdvicesFlatPageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAdvicesFlatPageResponseBodyData struct {
+	PageNo   *int64                                           `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   []*DescribeAdvicesFlatPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Total    *int64                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeAdvicesFlatPageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvicesFlatPageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyData) SetPageNo(v int64) *DescribeAdvicesFlatPageResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyData) SetPageSize(v int64) *DescribeAdvicesFlatPageResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyData) SetResult(v []*DescribeAdvicesFlatPageResponseBodyDataResult) *DescribeAdvicesFlatPageResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyData) SetTotal(v int64) *DescribeAdvicesFlatPageResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type DescribeAdvicesFlatPageResponseBodyDataResult struct {
+	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsExpired   *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Resource    *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Severity    *int64  `json:"Severity,omitempty" xml:"Severity,omitempty"`
+}
+
+func (s DescribeAdvicesFlatPageResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvicesFlatPageResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetAliyunId(v int64) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.AliyunId = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetCheckId(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetCheckName(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.CheckName = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetContent(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetDescription(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetGmtCreated(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.GmtCreated = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetGmtModified(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetId(v int64) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetIsExpired(v bool) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.IsExpired = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetProduct(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetResource(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Resource = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetResourceId(v string) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponseBodyDataResult) SetSeverity(v int64) *DescribeAdvicesFlatPageResponseBodyDataResult {
+	s.Severity = &v
+	return s
+}
+
+type DescribeAdvicesFlatPageResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAdvicesFlatPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAdvicesFlatPageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvicesFlatPageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvicesFlatPageResponse) SetHeaders(v map[string]*string) *DescribeAdvicesFlatPageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponse) SetStatusCode(v int32) *DescribeAdvicesFlatPageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAdvicesFlatPageResponse) SetBody(v *DescribeAdvicesFlatPageResponseBody) *DescribeAdvicesFlatPageResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAdvicesPageRequest struct {
-	AdviceId        *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	AssociateUid    *int64  `json:"AssociateUid,omitempty" xml:"AssociateUid,omitempty"`
-	CheckId         *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	ExcludeAdviceId *string `json:"ExcludeAdviceId,omitempty" xml:"ExcludeAdviceId,omitempty"`
-	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Product         *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	AdviceId   *int64  `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s DescribeAdvicesPageRequest) String() string {
@@ -297,18 +470,8 @@ func (s *DescribeAdvicesPageRequest) SetAdviceId(v int64) *DescribeAdvicesPageRe
 	return s
 }
 
-func (s *DescribeAdvicesPageRequest) SetAssociateUid(v int64) *DescribeAdvicesPageRequest {
-	s.AssociateUid = &v
-	return s
-}
-
 func (s *DescribeAdvicesPageRequest) SetCheckId(v string) *DescribeAdvicesPageRequest {
 	s.CheckId = &v
-	return s
-}
-
-func (s *DescribeAdvicesPageRequest) SetExcludeAdviceId(v string) *DescribeAdvicesPageRequest {
-	s.ExcludeAdviceId = &v
 	return s
 }
 
@@ -396,21 +559,17 @@ func (s *DescribeAdvicesPageResponseBodyData) SetTotal(v int64) *DescribeAdvices
 }
 
 type DescribeAdvicesPageResponseBodyDataResult struct {
-	Action      *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	AliyunId    *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
 	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	CheckName   *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Details     *string `json:"Details,omitempty" xml:"Details,omitempty"`
 	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// ID
 	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Links      *string `json:"Links,omitempty" xml:"Links,omitempty"`
 	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Reason     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	Resource   *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	Severity   *int64  `json:"Severity,omitempty" xml:"Severity,omitempty"`
@@ -422,11 +581,6 @@ func (s DescribeAdvicesPageResponseBodyDataResult) String() string {
 
 func (s DescribeAdvicesPageResponseBodyDataResult) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeAdvicesPageResponseBodyDataResult) SetAction(v string) *DescribeAdvicesPageResponseBodyDataResult {
-	s.Action = &v
-	return s
 }
 
 func (s *DescribeAdvicesPageResponseBodyDataResult) SetAliyunId(v int64) *DescribeAdvicesPageResponseBodyDataResult {
@@ -454,11 +608,6 @@ func (s *DescribeAdvicesPageResponseBodyDataResult) SetDescription(v string) *De
 	return s
 }
 
-func (s *DescribeAdvicesPageResponseBodyDataResult) SetDetails(v string) *DescribeAdvicesPageResponseBodyDataResult {
-	s.Details = &v
-	return s
-}
-
 func (s *DescribeAdvicesPageResponseBodyDataResult) SetGmtCreated(v string) *DescribeAdvicesPageResponseBodyDataResult {
 	s.GmtCreated = &v
 	return s
@@ -479,18 +628,8 @@ func (s *DescribeAdvicesPageResponseBodyDataResult) SetIsExpired(v bool) *Descri
 	return s
 }
 
-func (s *DescribeAdvicesPageResponseBodyDataResult) SetLinks(v string) *DescribeAdvicesPageResponseBodyDataResult {
-	s.Links = &v
-	return s
-}
-
 func (s *DescribeAdvicesPageResponseBodyDataResult) SetProduct(v string) *DescribeAdvicesPageResponseBodyDataResult {
 	s.Product = &v
-	return s
-}
-
-func (s *DescribeAdvicesPageResponseBodyDataResult) SetReason(v string) *DescribeAdvicesPageResponseBodyDataResult {
-	s.Reason = &v
 	return s
 }
 
@@ -539,10 +678,8 @@ func (s *DescribeAdvicesPageResponse) SetBody(v *DescribeAdvicesPageResponseBody
 }
 
 type DescribeAdvisorChecksRequest struct {
-	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
 func (s DescribeAdvisorChecksRequest) String() string {
@@ -553,11 +690,6 @@ func (s DescribeAdvisorChecksRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAdvisorChecksRequest) SetCheckId(v string) *DescribeAdvisorChecksRequest {
-	s.CheckId = &v
-	return s
-}
-
 func (s *DescribeAdvisorChecksRequest) SetLanguage(v string) *DescribeAdvisorChecksRequest {
 	s.Language = &v
 	return s
@@ -565,11 +697,6 @@ func (s *DescribeAdvisorChecksRequest) SetLanguage(v string) *DescribeAdvisorChe
 
 func (s *DescribeAdvisorChecksRequest) SetProduct(v string) *DescribeAdvisorChecksRequest {
 	s.Product = &v
-	return s
-}
-
-func (s *DescribeAdvisorChecksRequest) SetResourceId(v string) *DescribeAdvisorChecksRequest {
-	s.ResourceId = &v
 	return s
 }
 
@@ -620,18 +747,15 @@ func (s *DescribeAdvisorChecksResponseBodyData) SetAdvisorCheck(v []*DescribeAdv
 }
 
 type DescribeAdvisorChecksResponseBodyDataAdvisorCheck struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreated  *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// ID
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreated    *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	GmtModified   *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperateColumn *string `json:"OperateColumn,omitempty" xml:"OperateColumn,omitempty"`
 	Product       *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SuppResources *string `json:"SuppResources,omitempty" xml:"SuppResources,omitempty"`
 	Tips          *string `json:"Tips,omitempty" xml:"Tips,omitempty"`
 	ViewColumn    *string `json:"ViewColumn,omitempty" xml:"ViewColumn,omitempty"`
 }
@@ -669,11 +793,6 @@ func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetGmtModified(v str
 	return s
 }
 
-func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetId(v int64) *DescribeAdvisorChecksResponseBodyDataAdvisorCheck {
-	s.Id = &v
-	return s
-}
-
 func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetName(v string) *DescribeAdvisorChecksResponseBodyDataAdvisorCheck {
 	s.Name = &v
 	return s
@@ -691,11 +810,6 @@ func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetProduct(v string)
 
 func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetStatus(v string) *DescribeAdvisorChecksResponseBodyDataAdvisorCheck {
 	s.Status = &v
-	return s
-}
-
-func (s *DescribeAdvisorChecksResponseBodyDataAdvisorCheck) SetSuppResources(v string) *DescribeAdvisorChecksResponseBodyDataAdvisorCheck {
-	s.SuppResources = &v
 	return s
 }
 
@@ -738,23 +852,207 @@ func (s *DescribeAdvisorChecksResponse) SetBody(v *DescribeAdvisorChecksResponse
 	return s
 }
 
-type GetHistoryAdvicesRequest struct {
-	AssociateUid *int64  `json:"AssociateUid,omitempty" xml:"AssociateUid,omitempty"`
-	CheckId      *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	ClientUid    *int64  `json:"ClientUid,omitempty" xml:"ClientUid,omitempty"`
-	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	FilterType   *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	FilterValue  *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	IsExpired    *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+type DescribeAdvisorResourcesRequest struct {
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s DescribeAdvisorResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetKeyword(v string) *DescribeAdvisorResourcesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetLanguage(v string) *DescribeAdvisorResourcesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetPageNumber(v int32) *DescribeAdvisorResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetPageSize(v int32) *DescribeAdvisorResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetProduct(v string) *DescribeAdvisorResourcesRequest {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesRequest) SetResourceId(v string) *DescribeAdvisorResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+type DescribeAdvisorResourcesResponseBody struct {
+	Data      *DescribeAdvisorResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAdvisorResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesResponseBody) SetData(v *DescribeAdvisorResourcesResponseBodyData) *DescribeAdvisorResourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBody) SetRequestId(v string) *DescribeAdvisorResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAdvisorResourcesResponseBodyData struct {
+	PageNo   *int32                                          `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   *DescribeAdvisorResourcesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Total    *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeAdvisorResourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyData) SetPageNo(v int32) *DescribeAdvisorResourcesResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyData) SetPageSize(v int32) *DescribeAdvisorResourcesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyData) SetResult(v *DescribeAdvisorResourcesResponseBodyDataResult) *DescribeAdvisorResourcesResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyData) SetTotal(v int32) *DescribeAdvisorResourcesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type DescribeAdvisorResourcesResponseBodyDataResult struct {
+	Resource []*DescribeAdvisorResourcesResponseBodyDataResultResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAdvisorResourcesResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResult) SetResource(v []*DescribeAdvisorResourcesResponseBodyDataResultResource) *DescribeAdvisorResourcesResponseBodyDataResult {
+	s.Resource = v
+	return s
+}
+
+type DescribeAdvisorResourcesResponseBodyDataResultResource struct {
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	Product      *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Reverse      *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	Severity     *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s DescribeAdvisorResourcesResponseBodyDataResultResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesResponseBodyDataResultResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetData(v string) *DescribeAdvisorResourcesResponseBodyDataResultResource {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetProduct(v string) *DescribeAdvisorResourcesResponseBodyDataResultResource {
+	s.Product = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetRegionId(v string) *DescribeAdvisorResourcesResponseBodyDataResultResource {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetResourceId(v string) *DescribeAdvisorResourcesResponseBodyDataResultResource {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponseBodyDataResultResource) SetResourceName(v string) *DescribeAdvisorResourcesResponseBodyDataResultResource {
+	s.ResourceName = &v
+	return s
+}
+
+type DescribeAdvisorResourcesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAdvisorResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAdvisorResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdvisorResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdvisorResourcesResponse) SetHeaders(v map[string]*string) *DescribeAdvisorResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponse) SetStatusCode(v int32) *DescribeAdvisorResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAdvisorResourcesResponse) SetBody(v *DescribeAdvisorResourcesResponseBody) *DescribeAdvisorResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type GetHistoryAdvicesRequest struct {
+	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Language  *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNum   *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Reverse   *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	Severity  *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetHistoryAdvicesRequest) String() string {
@@ -765,38 +1063,8 @@ func (s GetHistoryAdvicesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetHistoryAdvicesRequest) SetAssociateUid(v int64) *GetHistoryAdvicesRequest {
-	s.AssociateUid = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetCheckId(v string) *GetHistoryAdvicesRequest {
-	s.CheckId = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetClientUid(v int64) *GetHistoryAdvicesRequest {
-	s.ClientUid = &v
-	return s
-}
-
 func (s *GetHistoryAdvicesRequest) SetEndDate(v string) *GetHistoryAdvicesRequest {
 	s.EndDate = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetFilterType(v string) *GetHistoryAdvicesRequest {
-	s.FilterType = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetFilterValue(v string) *GetHistoryAdvicesRequest {
-	s.FilterValue = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetIsExpired(v bool) *GetHistoryAdvicesRequest {
-	s.IsExpired = &v
 	return s
 }
 
@@ -817,16 +1085,6 @@ func (s *GetHistoryAdvicesRequest) SetPageSize(v int32) *GetHistoryAdvicesReques
 
 func (s *GetHistoryAdvicesRequest) SetProduct(v string) *GetHistoryAdvicesRequest {
 	s.Product = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetRegion(v string) *GetHistoryAdvicesRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *GetHistoryAdvicesRequest) SetResourceId(v string) *GetHistoryAdvicesRequest {
-	s.ResourceId = &v
 	return s
 }
 
@@ -981,6 +1239,98 @@ func (s *GetHistoryAdvicesResponse) SetStatusCode(v int32) *GetHistoryAdvicesRes
 }
 
 func (s *GetHistoryAdvicesResponse) SetBody(v *GetHistoryAdvicesResponseBody) *GetHistoryAdvicesResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskStatusByIdRequest struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTaskStatusByIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusByIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusByIdRequest) SetTaskId(v string) *GetTaskStatusByIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskStatusByIdResponseBody struct {
+	Data      *GetTaskStatusByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTaskStatusByIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusByIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusByIdResponseBody) SetData(v *GetTaskStatusByIdResponseBodyData) *GetTaskStatusByIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTaskStatusByIdResponseBody) SetRequestId(v string) *GetTaskStatusByIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTaskStatusByIdResponseBodyData struct {
+	TaskId     *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s GetTaskStatusByIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusByIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusByIdResponseBodyData) SetTaskId(v int64) *GetTaskStatusByIdResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskStatusByIdResponseBodyData) SetTaskStatus(v int32) *GetTaskStatusByIdResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+type GetTaskStatusByIdResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskStatusByIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskStatusByIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskStatusByIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskStatusByIdResponse) SetHeaders(v map[string]*string) *GetTaskStatusByIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskStatusByIdResponse) SetStatusCode(v int32) *GetTaskStatusByIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTaskStatusByIdResponse) SetBody(v *GetTaskStatusByIdResponseBody) *GetTaskStatusByIdResponse {
 	s.Body = v
 	return s
 }
@@ -1237,20 +1587,8 @@ func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest
 		query["CheckId"] = request.CheckId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ClientUid)) {
-		query["ClientUid"] = request.ClientUid
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ExcludeAdviceId)) {
 		query["ExcludeAdviceId"] = request.ExcludeAdviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilterType)) {
-		query["FilterType"] = request.FilterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
-		query["FilterValue"] = request.FilterValue
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1261,16 +1599,8 @@ func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest
 		query["Product"] = request.Product
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Token)) {
-		query["Token"] = request.Token
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1307,6 +1637,74 @@ func (client *Client) DescribeAdvices(request *DescribeAdvicesRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvicesFlatPageRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvicesFlatPageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdviceId)) {
+		query["AdviceId"] = request.AdviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAdvicesFlatPage"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAdvicesFlatPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAdvicesFlatPage(request *DescribeAdvicesFlatPageRequest) (_result *DescribeAdvicesFlatPageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAdvicesFlatPageResponse{}
+	_body, _err := client.DescribeAdvicesFlatPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPageRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvicesPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1317,16 +1715,8 @@ func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPag
 		query["AdviceId"] = request.AdviceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.AssociateUid)) {
-		query["AssociateUid"] = request.AssociateUid
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
 		query["CheckId"] = request.CheckId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExcludeAdviceId)) {
-		query["ExcludeAdviceId"] = request.ExcludeAdviceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1389,20 +1779,12 @@ func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
-		query["CheckId"] = request.CheckId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1439,38 +1821,78 @@ func (client *Client) DescribeAdvisorChecks(request *DescribeAdvisorChecksReques
 	return _result, _err
 }
 
+func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvisorResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeAdvisorResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAdvisorResources"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAdvisorResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAdvisorResources(request *DescribeAdvisorResourcesRequest) (_result *DescribeAdvisorResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAdvisorResourcesResponse{}
+	_body, _err := client.DescribeAdvisorResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesRequest, runtime *util.RuntimeOptions) (_result *GetHistoryAdvicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AssociateUid)) {
-		query["AssociateUid"] = request.AssociateUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
-		query["CheckId"] = request.CheckId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientUid)) {
-		query["ClientUid"] = request.ClientUid
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
 		query["EndDate"] = request.EndDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilterType)) {
-		query["FilterType"] = request.FilterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilterValue)) {
-		query["FilterValue"] = request.FilterValue
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IsExpired)) {
-		query["IsExpired"] = request.IsExpired
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1487,14 +1909,6 @@ func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesReq
 
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
@@ -1536,6 +1950,46 @@ func (client *Client) GetHistoryAdvices(request *GetHistoryAdvicesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetHistoryAdvicesResponse{}
 	_body, _err := client.GetHistoryAdvicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdRequest, runtime *util.RuntimeOptions) (_result *GetTaskStatusByIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskStatusById"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskStatusByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskStatusById(request *GetTaskStatusByIdRequest) (_result *GetTaskStatusByIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskStatusByIdResponse{}
+	_body, _err := client.GetTaskStatusByIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
