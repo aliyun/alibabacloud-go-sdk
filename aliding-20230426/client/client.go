@@ -1394,6 +1394,1358 @@ func (s *AddWorkspaceMembersResponse) SetBody(v *AddWorkspaceMembersResponseBody
 	return s
 }
 
+type BatchGetFormDataByIdListHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *BatchGetFormDataByIdListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s BatchGetFormDataByIdListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListHeaders) SetCommonHeaders(v map[string]*string) *BatchGetFormDataByIdListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListHeaders) SetAccountContext(v *BatchGetFormDataByIdListHeadersAccountContext) *BatchGetFormDataByIdListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type BatchGetFormDataByIdListHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListHeadersAccountContext) SetAccountId(v string) *BatchGetFormDataByIdListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type BatchGetFormDataByIdListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListShrinkHeaders) SetCommonHeaders(v map[string]*string) *BatchGetFormDataByIdListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListShrinkHeaders) SetAccountContextShrink(v string) *BatchGetFormDataByIdListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type BatchGetFormDataByIdListRequest struct {
+	AppType               *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceIdList    []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	FormUuid              *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	NeedFormInstanceValue *bool     `json:"NeedFormInstanceValue,omitempty" xml:"NeedFormInstanceValue,omitempty"`
+	SystemToken           *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListRequest) SetAppType(v string) *BatchGetFormDataByIdListRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListRequest) SetFormInstanceIdList(v []*string) *BatchGetFormDataByIdListRequest {
+	s.FormInstanceIdList = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListRequest) SetFormUuid(v string) *BatchGetFormDataByIdListRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListRequest) SetNeedFormInstanceValue(v bool) *BatchGetFormDataByIdListRequest {
+	s.NeedFormInstanceValue = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListRequest) SetSystemToken(v string) *BatchGetFormDataByIdListRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchGetFormDataByIdListShrinkRequest struct {
+	AppType                  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	FormUuid                 *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	NeedFormInstanceValue    *bool   `json:"NeedFormInstanceValue,omitempty" xml:"NeedFormInstanceValue,omitempty"`
+	SystemToken              *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListShrinkRequest) SetAppType(v string) *BatchGetFormDataByIdListShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListShrinkRequest) SetFormInstanceIdListShrink(v string) *BatchGetFormDataByIdListShrinkRequest {
+	s.FormInstanceIdListShrink = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListShrinkRequest) SetFormUuid(v string) *BatchGetFormDataByIdListShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListShrinkRequest) SetNeedFormInstanceValue(v bool) *BatchGetFormDataByIdListShrinkRequest {
+	s.NeedFormInstanceValue = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListShrinkRequest) SetSystemToken(v string) *BatchGetFormDataByIdListShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBody struct {
+	RequestId       *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*BatchGetFormDataByIdListResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string                                       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBody) SetRequestId(v string) *BatchGetFormDataByIdListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBody) SetResult(v []*BatchGetFormDataByIdListResponseBodyResult) *BatchGetFormDataByIdListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBody) SetVendorRequestId(v string) *BatchGetFormDataByIdListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBody) SetVendorType(v string) *BatchGetFormDataByIdListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBodyResult struct {
+	CreateTimeGMT   *string                                               `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CreatorUserId   *string                                               `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	FormData        map[string]interface{}                                `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                               `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                               `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Id              *int64                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceValue   *string                                               `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModifiedTimeGMT *string                                               `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	Modifier        *string                                               `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ModifyUser      *BatchGetFormDataByIdListResponseBodyResultModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
+	Originator      *BatchGetFormDataByIdListResponseBodyResultOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
+	Sequence        *string                                               `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNumber    *string                                               `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Title           *string                                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                                `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetCreateTimeGMT(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetCreatorUserId(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetFormData(v map[string]interface{}) *BatchGetFormDataByIdListResponseBodyResult {
+	s.FormData = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetFormInstanceId(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetFormUuid(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetId(v int64) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetInstanceValue(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.InstanceValue = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetModifiedTimeGMT(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetModifier(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Modifier = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetModifyUser(v *BatchGetFormDataByIdListResponseBodyResultModifyUser) *BatchGetFormDataByIdListResponseBodyResult {
+	s.ModifyUser = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetOriginator(v *BatchGetFormDataByIdListResponseBodyResultOriginator) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Originator = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetSequence(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Sequence = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetSerialNumber(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetTitle(v string) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResult) SetVersion(v int64) *BatchGetFormDataByIdListResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBodyResultModifyUser struct {
+	Name   *BatchGetFormDataByIdListResponseBodyResultModifyUserName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultModifyUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultModifyUser) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultModifyUser) SetName(v *BatchGetFormDataByIdListResponseBodyResultModifyUserName) *BatchGetFormDataByIdListResponseBodyResultModifyUser {
+	s.Name = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultModifyUser) SetUserId(v string) *BatchGetFormDataByIdListResponseBodyResultModifyUser {
+	s.UserId = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBodyResultModifyUserName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultModifyUserName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultModifyUserName) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultModifyUserName) SetNameInChinese(v string) *BatchGetFormDataByIdListResponseBodyResultModifyUserName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultModifyUserName) SetNameInEnglish(v string) *BatchGetFormDataByIdListResponseBodyResultModifyUserName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBodyResultOriginator struct {
+	Name   *BatchGetFormDataByIdListResponseBodyResultOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultOriginator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultOriginator) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultOriginator) SetName(v *BatchGetFormDataByIdListResponseBodyResultOriginatorName) *BatchGetFormDataByIdListResponseBodyResultOriginator {
+	s.Name = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultOriginator) SetUserId(v string) *BatchGetFormDataByIdListResponseBodyResultOriginator {
+	s.UserId = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponseBodyResultOriginatorName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultOriginatorName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponseBodyResultOriginatorName) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultOriginatorName) SetNameInChinese(v string) *BatchGetFormDataByIdListResponseBodyResultOriginatorName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponseBodyResultOriginatorName) SetNameInEnglish(v string) *BatchGetFormDataByIdListResponseBodyResultOriginatorName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type BatchGetFormDataByIdListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchGetFormDataByIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchGetFormDataByIdListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchGetFormDataByIdListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchGetFormDataByIdListResponse) SetHeaders(v map[string]*string) *BatchGetFormDataByIdListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponse) SetStatusCode(v int32) *BatchGetFormDataByIdListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchGetFormDataByIdListResponse) SetBody(v *BatchGetFormDataByIdListResponseBody) *BatchGetFormDataByIdListResponse {
+	s.Body = v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListHeaders struct {
+	CommonHeaders  map[string]*string                                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *BatchRemovalByFormInstanceIdListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s BatchRemovalByFormInstanceIdListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListHeaders) SetCommonHeaders(v map[string]*string) *BatchRemovalByFormInstanceIdListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListHeaders) SetAccountContext(v *BatchRemovalByFormInstanceIdListHeadersAccountContext) *BatchRemovalByFormInstanceIdListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s BatchRemovalByFormInstanceIdListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListHeadersAccountContext) SetAccountId(v string) *BatchRemovalByFormInstanceIdListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s BatchRemovalByFormInstanceIdListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkHeaders) SetCommonHeaders(v map[string]*string) *BatchRemovalByFormInstanceIdListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkHeaders) SetAccountContextShrink(v string) *BatchRemovalByFormInstanceIdListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListRequest struct {
+	AppType               *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution *bool     `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	ExecuteExpression     *bool     `json:"ExecuteExpression,omitempty" xml:"ExecuteExpression,omitempty"`
+	FormInstanceIdList    []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	FormUuid              *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	SystemToken           *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchRemovalByFormInstanceIdListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetAppType(v string) *BatchRemovalByFormInstanceIdListRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetAsynchronousExecution(v bool) *BatchRemovalByFormInstanceIdListRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetExecuteExpression(v bool) *BatchRemovalByFormInstanceIdListRequest {
+	s.ExecuteExpression = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetFormInstanceIdList(v []*string) *BatchRemovalByFormInstanceIdListRequest {
+	s.FormInstanceIdList = v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetFormUuid(v string) *BatchRemovalByFormInstanceIdListRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListRequest) SetSystemToken(v string) *BatchRemovalByFormInstanceIdListRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListShrinkRequest struct {
+	AppType                  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution    *bool   `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	ExecuteExpression        *bool   `json:"ExecuteExpression,omitempty" xml:"ExecuteExpression,omitempty"`
+	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	FormUuid                 *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	SystemToken              *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchRemovalByFormInstanceIdListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetAppType(v string) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetAsynchronousExecution(v bool) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetExecuteExpression(v bool) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.ExecuteExpression = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetFormInstanceIdListShrink(v string) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.FormInstanceIdListShrink = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetFormUuid(v string) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListShrinkRequest) SetSystemToken(v string) *BatchRemovalByFormInstanceIdListShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s BatchRemovalByFormInstanceIdListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponseBody) SetRequestId(v string) *BatchRemovalByFormInstanceIdListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponseBody) SetVendorRequestId(v string) *BatchRemovalByFormInstanceIdListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponseBody) SetVendorType(v string) *BatchRemovalByFormInstanceIdListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type BatchRemovalByFormInstanceIdListResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchRemovalByFormInstanceIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchRemovalByFormInstanceIdListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchRemovalByFormInstanceIdListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponse) SetHeaders(v map[string]*string) *BatchRemovalByFormInstanceIdListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponse) SetStatusCode(v int32) *BatchRemovalByFormInstanceIdListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchRemovalByFormInstanceIdListResponse) SetBody(v *BatchRemovalByFormInstanceIdListResponseBody) *BatchRemovalByFormInstanceIdListResponse {
+	s.Body = v
+	return s
+}
+
+type BatchSaveFormDataHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *BatchSaveFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s BatchSaveFormDataHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataHeaders) SetCommonHeaders(v map[string]*string) *BatchSaveFormDataHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchSaveFormDataHeaders) SetAccountContext(v *BatchSaveFormDataHeadersAccountContext) *BatchSaveFormDataHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type BatchSaveFormDataHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s BatchSaveFormDataHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataHeadersAccountContext) SetAccountId(v string) *BatchSaveFormDataHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type BatchSaveFormDataShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s BatchSaveFormDataShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataShrinkHeaders) SetCommonHeaders(v map[string]*string) *BatchSaveFormDataShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkHeaders) SetAccountContextShrink(v string) *BatchSaveFormDataShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type BatchSaveFormDataRequest struct {
+	AppType                   *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution     *bool     `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormDataJsonList          []*string `json:"FormDataJsonList,omitempty" xml:"FormDataJsonList,omitempty" type:"Repeated"`
+	FormUuid                  *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	KeepRunningAfterException *bool     `json:"KeepRunningAfterException,omitempty" xml:"KeepRunningAfterException,omitempty"`
+	NoExecuteExpression       *bool     `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken               *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchSaveFormDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataRequest) SetAppType(v string) *BatchSaveFormDataRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetAsynchronousExecution(v bool) *BatchSaveFormDataRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetFormDataJsonList(v []*string) *BatchSaveFormDataRequest {
+	s.FormDataJsonList = v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetFormUuid(v string) *BatchSaveFormDataRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetKeepRunningAfterException(v bool) *BatchSaveFormDataRequest {
+	s.KeepRunningAfterException = &v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetNoExecuteExpression(v bool) *BatchSaveFormDataRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchSaveFormDataRequest) SetSystemToken(v string) *BatchSaveFormDataRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchSaveFormDataShrinkRequest struct {
+	AppType                   *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution     *bool   `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormDataJsonListShrink    *string `json:"FormDataJsonList,omitempty" xml:"FormDataJsonList,omitempty"`
+	FormUuid                  *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	KeepRunningAfterException *bool   `json:"KeepRunningAfterException,omitempty" xml:"KeepRunningAfterException,omitempty"`
+	NoExecuteExpression       *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken               *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s BatchSaveFormDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetAppType(v string) *BatchSaveFormDataShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetAsynchronousExecution(v bool) *BatchSaveFormDataShrinkRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetFormDataJsonListShrink(v string) *BatchSaveFormDataShrinkRequest {
+	s.FormDataJsonListShrink = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetFormUuid(v string) *BatchSaveFormDataShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetKeepRunningAfterException(v bool) *BatchSaveFormDataShrinkRequest {
+	s.KeepRunningAfterException = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetNoExecuteExpression(v bool) *BatchSaveFormDataShrinkRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchSaveFormDataShrinkRequest) SetSystemToken(v string) *BatchSaveFormDataShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type BatchSaveFormDataResponseBody struct {
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s BatchSaveFormDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataResponseBody) SetRequestId(v string) *BatchSaveFormDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchSaveFormDataResponseBody) SetResult(v []*string) *BatchSaveFormDataResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *BatchSaveFormDataResponseBody) SetVendorRequestId(v string) *BatchSaveFormDataResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *BatchSaveFormDataResponseBody) SetVendorType(v string) *BatchSaveFormDataResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type BatchSaveFormDataResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchSaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchSaveFormDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSaveFormDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSaveFormDataResponse) SetHeaders(v map[string]*string) *BatchSaveFormDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchSaveFormDataResponse) SetStatusCode(v int32) *BatchSaveFormDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchSaveFormDataResponse) SetBody(v *BatchSaveFormDataResponseBody) *BatchSaveFormDataResponse {
+	s.Body = v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdHeaders struct {
+	CommonHeaders  map[string]*string                                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *BatchUpdateFormDataByInstanceIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdHeaders) SetCommonHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdHeaders) SetAccountContext(v *BatchUpdateFormDataByInstanceIdHeadersAccountContext) *BatchUpdateFormDataByInstanceIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdHeadersAccountContext) SetAccountId(v string) *BatchUpdateFormDataByInstanceIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkHeaders) SetAccountContextShrink(v string) *BatchUpdateFormDataByInstanceIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdRequest struct {
+	AppType                    *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution      *bool     `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormInstanceIdList         []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	FormUuid                   *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	IgnoreEmpty                *bool     `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
+	NoExecuteExpression        *bool     `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken                *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UpdateFormDataJson         *string   `json:"UpdateFormDataJson,omitempty" xml:"UpdateFormDataJson,omitempty"`
+	UseLatestFormSchemaVersion *bool     `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetAppType(v string) *BatchUpdateFormDataByInstanceIdRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetAsynchronousExecution(v bool) *BatchUpdateFormDataByInstanceIdRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetFormInstanceIdList(v []*string) *BatchUpdateFormDataByInstanceIdRequest {
+	s.FormInstanceIdList = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetFormUuid(v string) *BatchUpdateFormDataByInstanceIdRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetIgnoreEmpty(v bool) *BatchUpdateFormDataByInstanceIdRequest {
+	s.IgnoreEmpty = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetNoExecuteExpression(v bool) *BatchUpdateFormDataByInstanceIdRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetSystemToken(v string) *BatchUpdateFormDataByInstanceIdRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetUpdateFormDataJson(v string) *BatchUpdateFormDataByInstanceIdRequest {
+	s.UpdateFormDataJson = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdRequest) SetUseLatestFormSchemaVersion(v bool) *BatchUpdateFormDataByInstanceIdRequest {
+	s.UseLatestFormSchemaVersion = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdShrinkRequest struct {
+	AppType                    *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution      *bool   `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormInstanceIdListShrink   *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	FormUuid                   *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	IgnoreEmpty                *bool   `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
+	NoExecuteExpression        *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken                *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UpdateFormDataJson         *string `json:"UpdateFormDataJson,omitempty" xml:"UpdateFormDataJson,omitempty"`
+	UseLatestFormSchemaVersion *bool   `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetAppType(v string) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetAsynchronousExecution(v bool) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetFormInstanceIdListShrink(v string) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.FormInstanceIdListShrink = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetFormUuid(v string) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetIgnoreEmpty(v bool) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.IgnoreEmpty = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetNoExecuteExpression(v bool) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetSystemToken(v string) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetUpdateFormDataJson(v string) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.UpdateFormDataJson = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdShrinkRequest) SetUseLatestFormSchemaVersion(v bool) *BatchUpdateFormDataByInstanceIdShrinkRequest {
+	s.UseLatestFormSchemaVersion = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdResponseBody struct {
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponseBody) SetRequestId(v string) *BatchUpdateFormDataByInstanceIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponseBody) SetResult(v []*string) *BatchUpdateFormDataByInstanceIdResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponseBody) SetVendorRequestId(v string) *BatchUpdateFormDataByInstanceIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponseBody) SetVendorType(v string) *BatchUpdateFormDataByInstanceIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceIdResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchUpdateFormDataByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchUpdateFormDataByInstanceIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponse) SetHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponse) SetStatusCode(v int32) *BatchUpdateFormDataByInstanceIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceIdResponse) SetBody(v *BatchUpdateFormDataByInstanceIdResponseBody) *BatchUpdateFormDataByInstanceIdResponse {
+	s.Body = v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapHeaders struct {
+	CommonHeaders  map[string]*string                                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *BatchUpdateFormDataByInstanceMapHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapHeaders) SetCommonHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceMapHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapHeaders) SetAccountContext(v *BatchUpdateFormDataByInstanceMapHeadersAccountContext) *BatchUpdateFormDataByInstanceMapHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapHeadersAccountContext) SetAccountId(v string) *BatchUpdateFormDataByInstanceMapHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkHeaders) SetCommonHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceMapShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkHeaders) SetAccountContextShrink(v string) *BatchUpdateFormDataByInstanceMapShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapRequest struct {
+	AppType                    *string                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution      *bool                  `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormUuid                   *string                `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	IgnoreEmpty                *bool                  `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
+	NoExecuteExpression        *bool                  `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken                *string                `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UpdateFormDataJsonMap      map[string]interface{} `json:"UpdateFormDataJsonMap,omitempty" xml:"UpdateFormDataJsonMap,omitempty"`
+	UseLatestFormSchemaVersion *bool                  `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetAppType(v string) *BatchUpdateFormDataByInstanceMapRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetAsynchronousExecution(v bool) *BatchUpdateFormDataByInstanceMapRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetFormUuid(v string) *BatchUpdateFormDataByInstanceMapRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetIgnoreEmpty(v bool) *BatchUpdateFormDataByInstanceMapRequest {
+	s.IgnoreEmpty = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetNoExecuteExpression(v bool) *BatchUpdateFormDataByInstanceMapRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetSystemToken(v string) *BatchUpdateFormDataByInstanceMapRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetUpdateFormDataJsonMap(v map[string]interface{}) *BatchUpdateFormDataByInstanceMapRequest {
+	s.UpdateFormDataJsonMap = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapRequest) SetUseLatestFormSchemaVersion(v bool) *BatchUpdateFormDataByInstanceMapRequest {
+	s.UseLatestFormSchemaVersion = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapShrinkRequest struct {
+	AppType                     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AsynchronousExecution       *bool   `json:"AsynchronousExecution,omitempty" xml:"AsynchronousExecution,omitempty"`
+	FormUuid                    *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	IgnoreEmpty                 *bool   `json:"IgnoreEmpty,omitempty" xml:"IgnoreEmpty,omitempty"`
+	NoExecuteExpression         *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SystemToken                 *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UpdateFormDataJsonMapShrink *string `json:"UpdateFormDataJsonMap,omitempty" xml:"UpdateFormDataJsonMap,omitempty"`
+	UseLatestFormSchemaVersion  *bool   `json:"UseLatestFormSchemaVersion,omitempty" xml:"UseLatestFormSchemaVersion,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetAppType(v string) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetAsynchronousExecution(v bool) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.AsynchronousExecution = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetFormUuid(v string) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetIgnoreEmpty(v bool) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.IgnoreEmpty = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetNoExecuteExpression(v bool) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetSystemToken(v string) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetUpdateFormDataJsonMapShrink(v string) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.UpdateFormDataJsonMapShrink = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapShrinkRequest) SetUseLatestFormSchemaVersion(v bool) *BatchUpdateFormDataByInstanceMapShrinkRequest {
+	s.UseLatestFormSchemaVersion = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapResponseBody struct {
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponseBody) SetRequestId(v string) *BatchUpdateFormDataByInstanceMapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponseBody) SetResult(v []*string) *BatchUpdateFormDataByInstanceMapResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponseBody) SetVendorRequestId(v string) *BatchUpdateFormDataByInstanceMapResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponseBody) SetVendorType(v string) *BatchUpdateFormDataByInstanceMapResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type BatchUpdateFormDataByInstanceMapResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchUpdateFormDataByInstanceMapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchUpdateFormDataByInstanceMapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateFormDataByInstanceMapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponse) SetHeaders(v map[string]*string) *BatchUpdateFormDataByInstanceMapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponse) SetStatusCode(v int32) *BatchUpdateFormDataByInstanceMapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchUpdateFormDataByInstanceMapResponse) SetBody(v *BatchUpdateFormDataByInstanceMapResponseBody) *BatchUpdateFormDataByInstanceMapResponse {
+	s.Body = v
+	return s
+}
+
 type CancelScheduleConferenceHeaders struct {
 	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CancelScheduleConferenceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -3886,6 +5238,186 @@ func (s *CreateMeetingRoomGroupResponse) SetStatusCode(v int32) *CreateMeetingRo
 }
 
 func (s *CreateMeetingRoomGroupResponse) SetBody(v *CreateMeetingRoomGroupResponseBody) *CreateMeetingRoomGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrUpdateFormDataHeaders struct {
+	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateOrUpdateFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateOrUpdateFormDataHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataHeaders) SetCommonHeaders(v map[string]*string) *CreateOrUpdateFormDataHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataHeaders) SetAccountContext(v *CreateOrUpdateFormDataHeadersAccountContext) *CreateOrUpdateFormDataHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateOrUpdateFormDataHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateOrUpdateFormDataHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataHeadersAccountContext) SetAccountId(v string) *CreateOrUpdateFormDataHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateOrUpdateFormDataShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateOrUpdateFormDataShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateOrUpdateFormDataShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataShrinkHeaders) SetAccountContextShrink(v string) *CreateOrUpdateFormDataShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateOrUpdateFormDataRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormDataJson        *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	NoExecuteExpression *bool   `json:"NoExecuteExpression,omitempty" xml:"NoExecuteExpression,omitempty"`
+	SearchCondition     *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateOrUpdateFormDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetAppType(v string) *CreateOrUpdateFormDataRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetFormDataJson(v string) *CreateOrUpdateFormDataRequest {
+	s.FormDataJson = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetFormUuid(v string) *CreateOrUpdateFormDataRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetNoExecuteExpression(v bool) *CreateOrUpdateFormDataRequest {
+	s.NoExecuteExpression = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetSearchCondition(v string) *CreateOrUpdateFormDataRequest {
+	s.SearchCondition = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetSystemToken(v string) *CreateOrUpdateFormDataRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataRequest) SetUserId(v string) *CreateOrUpdateFormDataRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateOrUpdateFormDataResponseBody struct {
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*string `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateOrUpdateFormDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataResponseBody) SetRequestId(v string) *CreateOrUpdateFormDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataResponseBody) SetResult(v []*string) *CreateOrUpdateFormDataResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataResponseBody) SetVendorRequestId(v string) *CreateOrUpdateFormDataResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataResponseBody) SetVendorType(v string) *CreateOrUpdateFormDataResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateOrUpdateFormDataResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOrUpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOrUpdateFormDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateFormDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateFormDataResponse) SetHeaders(v map[string]*string) *CreateOrUpdateFormDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataResponse) SetStatusCode(v int32) *CreateOrUpdateFormDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateFormDataResponse) SetBody(v *CreateOrUpdateFormDataResponseBody) *CreateOrUpdateFormDataResponse {
 	s.Body = v
 	return s
 }
@@ -6944,6 +8476,162 @@ func (s *DeleteEventResponse) SetBody(v *DeleteEventResponseBody) *DeleteEventRe
 	return s
 }
 
+type DeleteFormDataHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DeleteFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteFormDataHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataHeaders) SetCommonHeaders(v map[string]*string) *DeleteFormDataHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteFormDataHeaders) SetAccountContext(v *DeleteFormDataHeadersAccountContext) *DeleteFormDataHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteFormDataHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteFormDataHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataHeadersAccountContext) SetAccountId(v string) *DeleteFormDataHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteFormDataShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteFormDataShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteFormDataShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteFormDataShrinkHeaders) SetAccountContextShrink(v string) *DeleteFormDataShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteFormDataRequest struct {
+	AppType        *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken    *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s DeleteFormDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataRequest) SetAppType(v string) *DeleteFormDataRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *DeleteFormDataRequest) SetFormInstanceId(v string) *DeleteFormDataRequest {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *DeleteFormDataRequest) SetLanguage(v string) *DeleteFormDataRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DeleteFormDataRequest) SetSystemToken(v string) *DeleteFormDataRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type DeleteFormDataResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DeleteFormDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataResponseBody) SetRequestId(v string) *DeleteFormDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFormDataResponseBody) SetVendorRequestId(v string) *DeleteFormDataResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DeleteFormDataResponseBody) SetVendorType(v string) *DeleteFormDataResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DeleteFormDataResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFormDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFormDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFormDataResponse) SetHeaders(v map[string]*string) *DeleteFormDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFormDataResponse) SetStatusCode(v int32) *DeleteFormDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFormDataResponse) SetBody(v *DeleteFormDataResponseBody) *DeleteFormDataResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteLiveHeaders struct {
 	CommonHeaders  map[string]*string               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *DeleteLiveHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -9670,6 +11358,912 @@ func (s *GetEventResponse) SetStatusCode(v int32) *GetEventResponse {
 }
 
 func (s *GetEventResponse) SetBody(v *GetEventResponseBody) *GetEventResponse {
+	s.Body = v
+	return s
+}
+
+type GetFieldDefByUuidHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetFieldDefByUuidHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetFieldDefByUuidHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidHeaders) SetCommonHeaders(v map[string]*string) *GetFieldDefByUuidHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFieldDefByUuidHeaders) SetAccountContext(v *GetFieldDefByUuidHeadersAccountContext) *GetFieldDefByUuidHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetFieldDefByUuidHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetFieldDefByUuidHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidHeadersAccountContext) SetAccountId(v string) *GetFieldDefByUuidHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetFieldDefByUuidShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetFieldDefByUuidShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetFieldDefByUuidShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFieldDefByUuidShrinkHeaders) SetAccountContextShrink(v string) *GetFieldDefByUuidShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetFieldDefByUuidRequest struct {
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormUuid    *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetFieldDefByUuidRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidRequest) SetAppType(v string) *GetFieldDefByUuidRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidRequest) SetFormUuid(v string) *GetFieldDefByUuidRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidRequest) SetSystemToken(v string) *GetFieldDefByUuidRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetFieldDefByUuidResponseBody struct {
+	RequestId       *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*GetFieldDefByUuidResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success         *bool                                  `json:"success,omitempty" xml:"success,omitempty"`
+	VendorRequestId *string                                `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetFieldDefByUuidResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidResponseBody) SetRequestId(v string) *GetFieldDefByUuidResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBody) SetResult(v []*GetFieldDefByUuidResponseBodyResult) *GetFieldDefByUuidResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBody) SetSuccess(v bool) *GetFieldDefByUuidResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBody) SetVendorRequestId(v string) *GetFieldDefByUuidResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBody) SetVendorType(v string) *GetFieldDefByUuidResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetFieldDefByUuidResponseBodyResult struct {
+	Behavior      *string     `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	Children      *string     `json:"Children,omitempty" xml:"Children,omitempty"`
+	ComponentName *string     `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	FieldId       *string     `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	Label         interface{} `json:"Label,omitempty" xml:"Label,omitempty"`
+	Props         interface{} `json:"Props,omitempty" xml:"Props,omitempty"`
+	Success       *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFieldDefByUuidResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetBehavior(v string) *GetFieldDefByUuidResponseBodyResult {
+	s.Behavior = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetChildren(v string) *GetFieldDefByUuidResponseBodyResult {
+	s.Children = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetComponentName(v string) *GetFieldDefByUuidResponseBodyResult {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetFieldId(v string) *GetFieldDefByUuidResponseBodyResult {
+	s.FieldId = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetLabel(v interface{}) *GetFieldDefByUuidResponseBodyResult {
+	s.Label = v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetProps(v interface{}) *GetFieldDefByUuidResponseBodyResult {
+	s.Props = v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponseBodyResult) SetSuccess(v bool) *GetFieldDefByUuidResponseBodyResult {
+	s.Success = &v
+	return s
+}
+
+type GetFieldDefByUuidResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFieldDefByUuidResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFieldDefByUuidResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFieldDefByUuidResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFieldDefByUuidResponse) SetHeaders(v map[string]*string) *GetFieldDefByUuidResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponse) SetStatusCode(v int32) *GetFieldDefByUuidResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFieldDefByUuidResponse) SetBody(v *GetFieldDefByUuidResponseBody) *GetFieldDefByUuidResponse {
+	s.Body = v
+	return s
+}
+
+type GetFormComponentDefinitionListHeaders struct {
+	CommonHeaders  map[string]*string                                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetFormComponentDefinitionListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetFormComponentDefinitionListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListHeaders) SetCommonHeaders(v map[string]*string) *GetFormComponentDefinitionListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListHeaders) SetAccountContext(v *GetFormComponentDefinitionListHeadersAccountContext) *GetFormComponentDefinitionListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetFormComponentDefinitionListHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetFormComponentDefinitionListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListHeadersAccountContext) SetAccountId(v string) *GetFormComponentDefinitionListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetFormComponentDefinitionListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetFormComponentDefinitionListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetFormComponentDefinitionListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListShrinkHeaders) SetAccountContextShrink(v string) *GetFormComponentDefinitionListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetFormComponentDefinitionListRequest struct {
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormUuid    *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetFormComponentDefinitionListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListRequest) SetAppType(v string) *GetFormComponentDefinitionListRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListRequest) SetFormUuid(v string) *GetFormComponentDefinitionListRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListRequest) SetLanguage(v string) *GetFormComponentDefinitionListRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListRequest) SetSystemToken(v string) *GetFormComponentDefinitionListRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetFormComponentDefinitionListResponseBody struct {
+	Result          []*GetFormComponentDefinitionListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId       *string                                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string                                             `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                             `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetFormComponentDefinitionListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListResponseBody) SetResult(v []*GetFormComponentDefinitionListResponseBodyResult) *GetFormComponentDefinitionListResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBody) SetRequestId(v string) *GetFormComponentDefinitionListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBody) SetVendorRequestId(v string) *GetFormComponentDefinitionListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBody) SetVendorType(v string) *GetFormComponentDefinitionListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetFormComponentDefinitionListResponseBodyResult struct {
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	FieldId       *string `json:"FieldId,omitempty" xml:"FieldId,omitempty"`
+	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ParentId      *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+}
+
+func (s GetFormComponentDefinitionListResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListResponseBodyResult) SetComponentName(v string) *GetFormComponentDefinitionListResponseBodyResult {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBodyResult) SetFieldId(v string) *GetFormComponentDefinitionListResponseBodyResult {
+	s.FieldId = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBodyResult) SetLabel(v string) *GetFormComponentDefinitionListResponseBodyResult {
+	s.Label = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponseBodyResult) SetParentId(v string) *GetFormComponentDefinitionListResponseBodyResult {
+	s.ParentId = &v
+	return s
+}
+
+type GetFormComponentDefinitionListResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFormComponentDefinitionListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFormComponentDefinitionListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormComponentDefinitionListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormComponentDefinitionListResponse) SetHeaders(v map[string]*string) *GetFormComponentDefinitionListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponse) SetStatusCode(v int32) *GetFormComponentDefinitionListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFormComponentDefinitionListResponse) SetBody(v *GetFormComponentDefinitionListResponseBody) *GetFormComponentDefinitionListResponse {
+	s.Body = v
+	return s
+}
+
+type GetFormDataByIDHeaders struct {
+	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetFormDataByIDHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetFormDataByIDHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDHeaders) SetCommonHeaders(v map[string]*string) *GetFormDataByIDHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormDataByIDHeaders) SetAccountContext(v *GetFormDataByIDHeadersAccountContext) *GetFormDataByIDHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetFormDataByIDHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetFormDataByIDHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDHeadersAccountContext) SetAccountId(v string) *GetFormDataByIDHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetFormDataByIDShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetFormDataByIDShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetFormDataByIDShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormDataByIDShrinkHeaders) SetAccountContextShrink(v string) *GetFormDataByIDShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetFormDataByIDRequest struct {
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetFormDataByIDRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDRequest) SetAppType(v string) *GetFormDataByIDRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetFormDataByIDRequest) SetId(v string) *GetFormDataByIDRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetFormDataByIDRequest) SetLanguage(v string) *GetFormDataByIDRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetFormDataByIDRequest) SetSystemToken(v string) *GetFormDataByIDRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetFormDataByIDResponseBody struct {
+	FormData        map[string]interface{}                 `json:"formData,omitempty" xml:"formData,omitempty"`
+	FormInstId      *string                                `json:"formInstId,omitempty" xml:"formInstId,omitempty"`
+	ModifiedTimeGMT *string                                `json:"modifiedTimeGMT,omitempty" xml:"modifiedTimeGMT,omitempty"`
+	Originator      *GetFormDataByIDResponseBodyOriginator `json:"originator,omitempty" xml:"originator,omitempty" type:"Struct"`
+	RequestId       *string                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string                                `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetFormDataByIDResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDResponseBody) SetFormData(v map[string]interface{}) *GetFormDataByIDResponseBody {
+	s.FormData = v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetFormInstId(v string) *GetFormDataByIDResponseBody {
+	s.FormInstId = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetModifiedTimeGMT(v string) *GetFormDataByIDResponseBody {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetOriginator(v *GetFormDataByIDResponseBodyOriginator) *GetFormDataByIDResponseBody {
+	s.Originator = v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetRequestId(v string) *GetFormDataByIDResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetVendorRequestId(v string) *GetFormDataByIDResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBody) SetVendorType(v string) *GetFormDataByIDResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetFormDataByIDResponseBodyOriginator struct {
+	DepartmentName *string                                    `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	Email          *string                                    `json:"Email,omitempty" xml:"Email,omitempty"`
+	Name           *GetFormDataByIDResponseBodyOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId         *string                                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetFormDataByIDResponseBodyOriginator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDResponseBodyOriginator) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDResponseBodyOriginator) SetDepartmentName(v string) *GetFormDataByIDResponseBodyOriginator {
+	s.DepartmentName = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBodyOriginator) SetEmail(v string) *GetFormDataByIDResponseBodyOriginator {
+	s.Email = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBodyOriginator) SetName(v *GetFormDataByIDResponseBodyOriginatorName) *GetFormDataByIDResponseBodyOriginator {
+	s.Name = v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBodyOriginator) SetUserId(v string) *GetFormDataByIDResponseBodyOriginator {
+	s.UserId = &v
+	return s
+}
+
+type GetFormDataByIDResponseBodyOriginatorName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFormDataByIDResponseBodyOriginatorName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDResponseBodyOriginatorName) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDResponseBodyOriginatorName) SetNameInChinese(v string) *GetFormDataByIDResponseBodyOriginatorName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBodyOriginatorName) SetNameInEnglish(v string) *GetFormDataByIDResponseBodyOriginatorName {
+	s.NameInEnglish = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponseBodyOriginatorName) SetType(v string) *GetFormDataByIDResponseBodyOriginatorName {
+	s.Type = &v
+	return s
+}
+
+type GetFormDataByIDResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFormDataByIDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFormDataByIDResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormDataByIDResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormDataByIDResponse) SetHeaders(v map[string]*string) *GetFormDataByIDResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFormDataByIDResponse) SetStatusCode(v int32) *GetFormDataByIDResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFormDataByIDResponse) SetBody(v *GetFormDataByIDResponseBody) *GetFormDataByIDResponse {
+	s.Body = v
+	return s
+}
+
+type GetFormListInAppHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *GetFormListInAppHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s GetFormListInAppHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppHeaders) SetCommonHeaders(v map[string]*string) *GetFormListInAppHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormListInAppHeaders) SetAccountContext(v *GetFormListInAppHeadersAccountContext) *GetFormListInAppHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type GetFormListInAppHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetFormListInAppHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppHeadersAccountContext) SetAccountId(v string) *GetFormListInAppHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type GetFormListInAppShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s GetFormListInAppShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppShrinkHeaders) SetCommonHeaders(v map[string]*string) *GetFormListInAppShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetFormListInAppShrinkHeaders) SetAccountContextShrink(v string) *GetFormListInAppShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type GetFormListInAppRequest struct {
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormTypes   *string `json:"FormTypes,omitempty" xml:"FormTypes,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s GetFormListInAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppRequest) SetAppType(v string) *GetFormListInAppRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *GetFormListInAppRequest) SetFormTypes(v string) *GetFormListInAppRequest {
+	s.FormTypes = &v
+	return s
+}
+
+func (s *GetFormListInAppRequest) SetPageNumber(v int32) *GetFormListInAppRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetFormListInAppRequest) SetPageSize(v int32) *GetFormListInAppRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetFormListInAppRequest) SetSystemToken(v string) *GetFormListInAppRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type GetFormListInAppResponseBody struct {
+	CurrentPage     *int32                              `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	Data            []*GetFormListInAppResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId       *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success         *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+	TotalCount      *int32                              `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                             `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                             `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s GetFormListInAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppResponseBody) SetCurrentPage(v int32) *GetFormListInAppResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetData(v []*GetFormListInAppResponseBodyData) *GetFormListInAppResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetRequestId(v string) *GetFormListInAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetSuccess(v bool) *GetFormListInAppResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetTotalCount(v int32) *GetFormListInAppResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetVendorRequestId(v string) *GetFormListInAppResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBody) SetVendorType(v string) *GetFormListInAppResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type GetFormListInAppResponseBodyData struct {
+	Creator   *string                                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	FormType  *string                                `json:"FormType,omitempty" xml:"FormType,omitempty"`
+	FormUuid  *string                                `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	GmtCreate *string                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Title     *GetFormListInAppResponseBodyDataTitle `json:"Title,omitempty" xml:"Title,omitempty" type:"Struct"`
+}
+
+func (s GetFormListInAppResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppResponseBodyData) SetCreator(v string) *GetFormListInAppResponseBodyData {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBodyData) SetFormType(v string) *GetFormListInAppResponseBodyData {
+	s.FormType = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBodyData) SetFormUuid(v string) *GetFormListInAppResponseBodyData {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBodyData) SetGmtCreate(v string) *GetFormListInAppResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBodyData) SetTitle(v *GetFormListInAppResponseBodyDataTitle) *GetFormListInAppResponseBodyData {
+	s.Title = v
+	return s
+}
+
+type GetFormListInAppResponseBodyDataTitle struct {
+	EnUS *string `json:"EnUS,omitempty" xml:"EnUS,omitempty"`
+	ZhCN *string `json:"ZhCN,omitempty" xml:"ZhCN,omitempty"`
+}
+
+func (s GetFormListInAppResponseBodyDataTitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppResponseBodyDataTitle) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppResponseBodyDataTitle) SetEnUS(v string) *GetFormListInAppResponseBodyDataTitle {
+	s.EnUS = &v
+	return s
+}
+
+func (s *GetFormListInAppResponseBodyDataTitle) SetZhCN(v string) *GetFormListInAppResponseBodyDataTitle {
+	s.ZhCN = &v
+	return s
+}
+
+type GetFormListInAppResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFormListInAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFormListInAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFormListInAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFormListInAppResponse) SetHeaders(v map[string]*string) *GetFormListInAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFormListInAppResponse) SetStatusCode(v int32) *GetFormListInAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFormListInAppResponse) SetBody(v *GetFormListInAppResponseBody) *GetFormListInAppResponse {
 	s.Body = v
 	return s
 }
@@ -17248,6 +19842,423 @@ func (s *ListEventsViewResponse) SetBody(v *ListEventsViewResponseBody) *ListEve
 	return s
 }
 
+type ListFormRemarksHeaders struct {
+	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListFormRemarksHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListFormRemarksHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksHeaders) SetCommonHeaders(v map[string]*string) *ListFormRemarksHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListFormRemarksHeaders) SetAccountContext(v *ListFormRemarksHeadersAccountContext) *ListFormRemarksHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListFormRemarksHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListFormRemarksHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksHeadersAccountContext) SetAccountId(v string) *ListFormRemarksHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListFormRemarksShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListFormRemarksShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListFormRemarksShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListFormRemarksShrinkHeaders) SetAccountContextShrink(v string) *ListFormRemarksShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListFormRemarksRequest struct {
+	AppType            *string   `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceIdList []*string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty" type:"Repeated"`
+	FormUuid           *string   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	SystemToken        *string   `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s ListFormRemarksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksRequest) SetAppType(v string) *ListFormRemarksRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListFormRemarksRequest) SetFormInstanceIdList(v []*string) *ListFormRemarksRequest {
+	s.FormInstanceIdList = v
+	return s
+}
+
+func (s *ListFormRemarksRequest) SetFormUuid(v string) *ListFormRemarksRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *ListFormRemarksRequest) SetSystemToken(v string) *ListFormRemarksRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type ListFormRemarksShrinkRequest struct {
+	AppType                  *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceIdListShrink *string `json:"FormInstanceIdList,omitempty" xml:"FormInstanceIdList,omitempty"`
+	FormUuid                 *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	SystemToken              *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s ListFormRemarksShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksShrinkRequest) SetAppType(v string) *ListFormRemarksShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListFormRemarksShrinkRequest) SetFormInstanceIdListShrink(v string) *ListFormRemarksShrinkRequest {
+	s.FormInstanceIdListShrink = &v
+	return s
+}
+
+func (s *ListFormRemarksShrinkRequest) SetFormUuid(v string) *ListFormRemarksShrinkRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *ListFormRemarksShrinkRequest) SetSystemToken(v string) *ListFormRemarksShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type ListFormRemarksResponseBody struct {
+	FormRemarkVoMap map[string]interface{} `json:"formRemarkVoMap,omitempty" xml:"formRemarkVoMap,omitempty"`
+	RequestId       *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string                `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListFormRemarksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksResponseBody) SetFormRemarkVoMap(v map[string]interface{}) *ListFormRemarksResponseBody {
+	s.FormRemarkVoMap = v
+	return s
+}
+
+func (s *ListFormRemarksResponseBody) SetRequestId(v string) *ListFormRemarksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFormRemarksResponseBody) SetVendorRequestId(v string) *ListFormRemarksResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListFormRemarksResponseBody) SetVendorType(v string) *ListFormRemarksResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListFormRemarksResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFormRemarksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFormRemarksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFormRemarksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFormRemarksResponse) SetHeaders(v map[string]*string) *ListFormRemarksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFormRemarksResponse) SetStatusCode(v int32) *ListFormRemarksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFormRemarksResponse) SetBody(v *ListFormRemarksResponseBody) *ListFormRemarksResponse {
+	s.Body = v
+	return s
+}
+
+type ListNavigationByFormTypeHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListNavigationByFormTypeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListNavigationByFormTypeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeHeaders) SetCommonHeaders(v map[string]*string) *ListNavigationByFormTypeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListNavigationByFormTypeHeaders) SetAccountContext(v *ListNavigationByFormTypeHeadersAccountContext) *ListNavigationByFormTypeHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListNavigationByFormTypeHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListNavigationByFormTypeHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeHeadersAccountContext) SetAccountId(v string) *ListNavigationByFormTypeHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListNavigationByFormTypeShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListNavigationByFormTypeShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListNavigationByFormTypeShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListNavigationByFormTypeShrinkHeaders) SetAccountContextShrink(v string) *ListNavigationByFormTypeShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListNavigationByFormTypeRequest struct {
+	AppType     *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormType    *string `json:"FormType,omitempty" xml:"FormType,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s ListNavigationByFormTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeRequest) SetAppType(v string) *ListNavigationByFormTypeRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeRequest) SetFormType(v string) *ListNavigationByFormTypeRequest {
+	s.FormType = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeRequest) SetLanguage(v string) *ListNavigationByFormTypeRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeRequest) SetSystemToken(v string) *ListNavigationByFormTypeRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type ListNavigationByFormTypeResponseBody struct {
+	RequestId       *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          []*ListNavigationByFormTypeResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	VendorRequestId *string                                       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListNavigationByFormTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeResponseBody) SetRequestId(v string) *ListNavigationByFormTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBody) SetResult(v []*ListNavigationByFormTypeResponseBodyResult) *ListNavigationByFormTypeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBody) SetVendorRequestId(v string) *ListNavigationByFormTypeResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBody) SetVendorType(v string) *ListNavigationByFormTypeResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListNavigationByFormTypeResponseBodyResult struct {
+	FormUuid    *string                                          `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	ProcessCode *string                                          `json:"ProcessCode,omitempty" xml:"ProcessCode,omitempty"`
+	Title       *ListNavigationByFormTypeResponseBodyResultTitle `json:"Title,omitempty" xml:"Title,omitempty" type:"Struct"`
+}
+
+func (s ListNavigationByFormTypeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResult) SetFormUuid(v string) *ListNavigationByFormTypeResponseBodyResult {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResult) SetProcessCode(v string) *ListNavigationByFormTypeResponseBodyResult {
+	s.ProcessCode = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResult) SetTitle(v *ListNavigationByFormTypeResponseBodyResultTitle) *ListNavigationByFormTypeResponseBodyResult {
+	s.Title = v
+	return s
+}
+
+type ListNavigationByFormTypeResponseBodyResultTitle struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListNavigationByFormTypeResponseBodyResultTitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeResponseBodyResultTitle) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResultTitle) SetNameInChinese(v string) *ListNavigationByFormTypeResponseBodyResultTitle {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResultTitle) SetNameInEnglish(v string) *ListNavigationByFormTypeResponseBodyResultTitle {
+	s.NameInEnglish = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponseBodyResultTitle) SetType(v string) *ListNavigationByFormTypeResponseBodyResultTitle {
+	s.Type = &v
+	return s
+}
+
+type ListNavigationByFormTypeResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListNavigationByFormTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListNavigationByFormTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNavigationByFormTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNavigationByFormTypeResponse) SetHeaders(v map[string]*string) *ListNavigationByFormTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponse) SetStatusCode(v int32) *ListNavigationByFormTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNavigationByFormTypeResponse) SetBody(v *ListNavigationByFormTypeResponseBody) *ListNavigationByFormTypeResponse {
+	s.Body = v
+	return s
+}
+
 type ListNodesHeaders struct {
 	CommonHeaders  map[string]*string              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *ListNodesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -17970,6 +20981,198 @@ func (s *ListReportResponse) SetStatusCode(v int32) *ListReportResponse {
 }
 
 func (s *ListReportResponse) SetBody(v *ListReportResponseBody) *ListReportResponse {
+	s.Body = v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdHeaders struct {
+	CommonHeaders  map[string]*string                                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *ListTableDataByFormInstanceIdTableIdHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdHeaders) SetCommonHeaders(v map[string]*string) *ListTableDataByFormInstanceIdTableIdHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdHeaders) SetAccountContext(v *ListTableDataByFormInstanceIdTableIdHeadersAccountContext) *ListTableDataByFormInstanceIdTableIdHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdHeadersAccountContext) SetAccountId(v string) *ListTableDataByFormInstanceIdTableIdHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdShrinkHeaders) SetCommonHeaders(v map[string]*string) *ListTableDataByFormInstanceIdTableIdShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdShrinkHeaders) SetAccountContextShrink(v string) *ListTableDataByFormInstanceIdTableIdShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdRequest struct {
+	AppType        *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceId *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid       *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SystemToken    *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	TableFieldId   *string `json:"TableFieldId,omitempty" xml:"TableFieldId,omitempty"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetAppType(v string) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetFormInstanceId(v string) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetFormUuid(v string) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetPageNumber(v int32) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetPageSize(v int32) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetSystemToken(v string) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdRequest) SetTableFieldId(v string) *ListTableDataByFormInstanceIdTableIdRequest {
+	s.TableFieldId = &v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdResponseBody struct {
+	Data            []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetData(v []*string) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetPageNumber(v int64) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetRequestId(v string) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetTotalCount(v int64) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetVendorRequestId(v string) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponseBody) SetVendorType(v string) *ListTableDataByFormInstanceIdTableIdResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type ListTableDataByFormInstanceIdTableIdResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTableDataByFormInstanceIdTableIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTableDataByFormInstanceIdTableIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableDataByFormInstanceIdTableIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponse) SetHeaders(v map[string]*string) *ListTableDataByFormInstanceIdTableIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponse) SetStatusCode(v int32) *ListTableDataByFormInstanceIdTableIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTableDataByFormInstanceIdTableIdResponse) SetBody(v *ListTableDataByFormInstanceIdTableIdResponseBody) *ListTableDataByFormInstanceIdTableIdResponse {
 	s.Body = v
 	return s
 }
@@ -25440,6 +28643,1869 @@ func (s *SaveContentResponse) SetBody(v *SaveContentResponseBody) *SaveContentRe
 	return s
 }
 
+type SaveFormDataHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SaveFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SaveFormDataHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataHeaders) SetCommonHeaders(v map[string]*string) *SaveFormDataHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SaveFormDataHeaders) SetAccountContext(v *SaveFormDataHeadersAccountContext) *SaveFormDataHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SaveFormDataHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SaveFormDataHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataHeadersAccountContext) SetAccountId(v string) *SaveFormDataHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SaveFormDataShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SaveFormDataShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataShrinkHeaders) SetCommonHeaders(v map[string]*string) *SaveFormDataShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SaveFormDataShrinkHeaders) SetAccountContextShrink(v string) *SaveFormDataShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SaveFormDataRequest struct {
+	AppType      *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormDataJson *string `json:"FormDataJson,omitempty" xml:"FormDataJson,omitempty"`
+	FormUuid     *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language     *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken  *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SaveFormDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataRequest) SetAppType(v string) *SaveFormDataRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SaveFormDataRequest) SetFormDataJson(v string) *SaveFormDataRequest {
+	s.FormDataJson = &v
+	return s
+}
+
+func (s *SaveFormDataRequest) SetFormUuid(v string) *SaveFormDataRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SaveFormDataRequest) SetLanguage(v string) *SaveFormDataRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SaveFormDataRequest) SetSystemToken(v string) *SaveFormDataRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SaveFormDataResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          *string `json:"result,omitempty" xml:"result,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SaveFormDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataResponseBody) SetRequestId(v string) *SaveFormDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveFormDataResponseBody) SetResult(v string) *SaveFormDataResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *SaveFormDataResponseBody) SetVendorRequestId(v string) *SaveFormDataResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SaveFormDataResponseBody) SetVendorType(v string) *SaveFormDataResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SaveFormDataResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveFormDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveFormDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveFormDataResponse) SetHeaders(v map[string]*string) *SaveFormDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveFormDataResponse) SetStatusCode(v int32) *SaveFormDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveFormDataResponse) SetBody(v *SaveFormDataResponseBody) *SaveFormDataResponse {
+	s.Body = v
+	return s
+}
+
+type SearchEmployeeFieldValuesHeaders struct {
+	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SearchEmployeeFieldValuesHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SearchEmployeeFieldValuesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesHeaders) SetCommonHeaders(v map[string]*string) *SearchEmployeeFieldValuesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesHeaders) SetAccountContext(v *SearchEmployeeFieldValuesHeadersAccountContext) *SearchEmployeeFieldValuesHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SearchEmployeeFieldValuesHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SearchEmployeeFieldValuesHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesHeadersAccountContext) SetAccountId(v string) *SearchEmployeeFieldValuesHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SearchEmployeeFieldValuesShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SearchEmployeeFieldValuesShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesShrinkHeaders) SetCommonHeaders(v map[string]*string) *SearchEmployeeFieldValuesShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesShrinkHeaders) SetAccountContextShrink(v string) *SearchEmployeeFieldValuesShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SearchEmployeeFieldValuesRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	SearchFieldJson     *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	TargetFieldJson     *string `json:"TargetFieldJson,omitempty" xml:"TargetFieldJson,omitempty"`
+}
+
+func (s SearchEmployeeFieldValuesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetAppType(v string) *SearchEmployeeFieldValuesRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetCreateFromTimeGMT(v string) *SearchEmployeeFieldValuesRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetCreateToTimeGMT(v string) *SearchEmployeeFieldValuesRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetFormUuid(v string) *SearchEmployeeFieldValuesRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetLanguage(v string) *SearchEmployeeFieldValuesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetModifiedFromTimeGMT(v string) *SearchEmployeeFieldValuesRequest {
+	s.ModifiedFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetModifiedToTimeGMT(v string) *SearchEmployeeFieldValuesRequest {
+	s.ModifiedToTimeGMT = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetOriginatorId(v string) *SearchEmployeeFieldValuesRequest {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetSearchFieldJson(v string) *SearchEmployeeFieldValuesRequest {
+	s.SearchFieldJson = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetSystemToken(v string) *SearchEmployeeFieldValuesRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesRequest) SetTargetFieldJson(v string) *SearchEmployeeFieldValuesRequest {
+	s.TargetFieldJson = &v
+	return s
+}
+
+type SearchEmployeeFieldValuesResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result          *string `json:"result,omitempty" xml:"result,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SearchEmployeeFieldValuesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesResponseBody) SetRequestId(v string) *SearchEmployeeFieldValuesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesResponseBody) SetResult(v string) *SearchEmployeeFieldValuesResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesResponseBody) SetVendorRequestId(v string) *SearchEmployeeFieldValuesResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesResponseBody) SetVendorType(v string) *SearchEmployeeFieldValuesResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SearchEmployeeFieldValuesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchEmployeeFieldValuesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchEmployeeFieldValuesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchEmployeeFieldValuesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchEmployeeFieldValuesResponse) SetHeaders(v map[string]*string) *SearchEmployeeFieldValuesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesResponse) SetStatusCode(v int32) *SearchEmployeeFieldValuesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchEmployeeFieldValuesResponse) SetBody(v *SearchEmployeeFieldValuesResponseBody) *SearchEmployeeFieldValuesResponse {
+	s.Body = v
+	return s
+}
+
+type SearchFormDataIdListHeaders struct {
+	CommonHeaders  map[string]*string                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SearchFormDataIdListHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDataIdListHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataIdListHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataIdListHeaders) SetAccountContext(v *SearchFormDataIdListHeadersAccountContext) *SearchFormDataIdListHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SearchFormDataIdListHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SearchFormDataIdListHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListHeadersAccountContext) SetAccountId(v string) *SearchFormDataIdListHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SearchFormDataIdListShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SearchFormDataIdListShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListShrinkHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataIdListShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataIdListShrinkHeaders) SetAccountContextShrink(v string) *SearchFormDataIdListShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SearchFormDataIdListRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchFieldJson     *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SearchFormDataIdListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListRequest) SetAppType(v string) *SearchFormDataIdListRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetCreateFromTimeGMT(v string) *SearchFormDataIdListRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetCreateToTimeGMT(v string) *SearchFormDataIdListRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetFormUuid(v string) *SearchFormDataIdListRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetLanguage(v string) *SearchFormDataIdListRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetModifiedFromTimeGMT(v string) *SearchFormDataIdListRequest {
+	s.ModifiedFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetModifiedToTimeGMT(v string) *SearchFormDataIdListRequest {
+	s.ModifiedToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetOriginatorId(v string) *SearchFormDataIdListRequest {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetPageNumber(v int32) *SearchFormDataIdListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetPageSize(v int32) *SearchFormDataIdListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetSearchFieldJson(v string) *SearchFormDataIdListRequest {
+	s.SearchFieldJson = &v
+	return s
+}
+
+func (s *SearchFormDataIdListRequest) SetSystemToken(v string) *SearchFormDataIdListRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SearchFormDataIdListResponseBody struct {
+	Data            []*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64    `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64    `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string   `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string   `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SearchFormDataIdListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListResponseBody) SetData(v []*string) *SearchFormDataIdListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchFormDataIdListResponseBody) SetPageNumber(v int64) *SearchFormDataIdListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataIdListResponseBody) SetRequestId(v string) *SearchFormDataIdListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchFormDataIdListResponseBody) SetTotalCount(v int64) *SearchFormDataIdListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchFormDataIdListResponseBody) SetVendorRequestId(v string) *SearchFormDataIdListResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SearchFormDataIdListResponseBody) SetVendorType(v string) *SearchFormDataIdListResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SearchFormDataIdListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchFormDataIdListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFormDataIdListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataIdListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataIdListResponse) SetHeaders(v map[string]*string) *SearchFormDataIdListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFormDataIdListResponse) SetStatusCode(v int32) *SearchFormDataIdListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchFormDataIdListResponse) SetBody(v *SearchFormDataIdListResponseBody) *SearchFormDataIdListResponse {
+	s.Body = v
+	return s
+}
+
+type SearchFormDataSecondGenerationHeaders struct {
+	CommonHeaders  map[string]*string                                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SearchFormDataSecondGenerationHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDataSecondGenerationHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataSecondGenerationHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationHeaders) SetAccountContext(v *SearchFormDataSecondGenerationHeadersAccountContext) *SearchFormDataSecondGenerationHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SearchFormDataSecondGenerationHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationHeadersAccountContext) SetAccountId(v string) *SearchFormDataSecondGenerationHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationShrinkHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataSecondGenerationShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationShrinkHeaders) SetAccountContextShrink(v string) *SearchFormDataSecondGenerationShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OrderConfigJson     *string `json:"OrderConfigJson,omitempty" xml:"OrderConfigJson,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchCondition     *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetAppType(v string) *SearchFormDataSecondGenerationRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetCreateFromTimeGMT(v string) *SearchFormDataSecondGenerationRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetCreateToTimeGMT(v string) *SearchFormDataSecondGenerationRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetFormUuid(v string) *SearchFormDataSecondGenerationRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetModifiedFromTimeGMT(v string) *SearchFormDataSecondGenerationRequest {
+	s.ModifiedFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetModifiedToTimeGMT(v string) *SearchFormDataSecondGenerationRequest {
+	s.ModifiedToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetOrderConfigJson(v string) *SearchFormDataSecondGenerationRequest {
+	s.OrderConfigJson = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetOriginatorId(v string) *SearchFormDataSecondGenerationRequest {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetPageNumber(v int32) *SearchFormDataSecondGenerationRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetPageSize(v int32) *SearchFormDataSecondGenerationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetSearchCondition(v string) *SearchFormDataSecondGenerationRequest {
+	s.SearchCondition = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationRequest) SetSystemToken(v string) *SearchFormDataSecondGenerationRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBody struct {
+	Data            []*SearchFormDataSecondGenerationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                                            `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                                           `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                           `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetData(v []*SearchFormDataSecondGenerationResponseBodyData) *SearchFormDataSecondGenerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetPageNumber(v int64) *SearchFormDataSecondGenerationResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetRequestId(v string) *SearchFormDataSecondGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetTotalCount(v int64) *SearchFormDataSecondGenerationResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetVendorRequestId(v string) *SearchFormDataSecondGenerationResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBody) SetVendorType(v string) *SearchFormDataSecondGenerationResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBodyData struct {
+	CreateTimeGMT   *string                                                   `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CreatorUserId   *string                                                   `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	FormData        map[string]interface{}                                    `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                                   `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                                   `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Id              *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceValue   *string                                                   `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModifiedTimeGMT *string                                                   `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	Modifier        *string                                                   `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ModifyUser      *SearchFormDataSecondGenerationResponseBodyDataModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
+	Originator      *SearchFormDataSecondGenerationResponseBodyDataOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
+	Sequence        *string                                                   `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNumber    *string                                                   `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Title           *string                                                   `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                                    `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetCreateTimeGMT(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetCreatorUserId(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetFormData(v map[string]interface{}) *SearchFormDataSecondGenerationResponseBodyData {
+	s.FormData = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetFormInstanceId(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetFormUuid(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetId(v int64) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetInstanceValue(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.InstanceValue = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetModifiedTimeGMT(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetModifier(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Modifier = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetModifyUser(v *SearchFormDataSecondGenerationResponseBodyDataModifyUser) *SearchFormDataSecondGenerationResponseBodyData {
+	s.ModifyUser = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetOriginator(v *SearchFormDataSecondGenerationResponseBodyDataOriginator) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Originator = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetSequence(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Sequence = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetSerialNumber(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetTitle(v string) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyData) SetVersion(v int64) *SearchFormDataSecondGenerationResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBodyDataModifyUser struct {
+	Name   *SearchFormDataSecondGenerationResponseBodyDataModifyUserName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataModifyUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataModifyUser) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUser) SetName(v *SearchFormDataSecondGenerationResponseBodyDataModifyUserName) *SearchFormDataSecondGenerationResponseBodyDataModifyUser {
+	s.Name = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUser) SetUserId(v string) *SearchFormDataSecondGenerationResponseBodyDataModifyUser {
+	s.UserId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBodyDataModifyUserName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataModifyUserName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataModifyUserName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUserName) SetNameInChinese(v string) *SearchFormDataSecondGenerationResponseBodyDataModifyUserName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataModifyUserName) SetNameInEnglish(v string) *SearchFormDataSecondGenerationResponseBodyDataModifyUserName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBodyDataOriginator struct {
+	Name   *SearchFormDataSecondGenerationResponseBodyDataOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataOriginator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataOriginator) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataOriginator) SetName(v *SearchFormDataSecondGenerationResponseBodyDataOriginatorName) *SearchFormDataSecondGenerationResponseBodyDataOriginator {
+	s.Name = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataOriginator) SetUserId(v string) *SearchFormDataSecondGenerationResponseBodyDataOriginator {
+	s.UserId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponseBodyDataOriginatorName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataOriginatorName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponseBodyDataOriginatorName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataOriginatorName) SetNameInChinese(v string) *SearchFormDataSecondGenerationResponseBodyDataOriginatorName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponseBodyDataOriginatorName) SetNameInEnglish(v string) *SearchFormDataSecondGenerationResponseBodyDataOriginatorName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchFormDataSecondGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFormDataSecondGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationResponse) SetHeaders(v map[string]*string) *SearchFormDataSecondGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponse) SetStatusCode(v int32) *SearchFormDataSecondGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationResponse) SetBody(v *SearchFormDataSecondGenerationResponseBody) *SearchFormDataSecondGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldHeaders struct {
+	CommonHeaders  map[string]*string                                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataSecondGenerationNoTableFieldHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldHeaders) SetAccountContext(v *SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext) *SearchFormDataSecondGenerationNoTableFieldHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext) SetAccountId(v string) *SearchFormDataSecondGenerationNoTableFieldHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldShrinkHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDataSecondGenerationNoTableFieldShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldShrinkHeaders) SetAccountContextShrink(v string) *SearchFormDataSecondGenerationNoTableFieldShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OrderConfigJson     *string `json:"OrderConfigJson,omitempty" xml:"OrderConfigJson,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchCondition     *string `json:"SearchCondition,omitempty" xml:"SearchCondition,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetAppType(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetCreateFromTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetCreateToTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetFormUuid(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetModifiedFromTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.ModifiedFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetModifiedToTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.ModifiedToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetOrderConfigJson(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.OrderConfigJson = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetOriginatorId(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetPageNumber(v int32) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetPageSize(v int32) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetSearchCondition(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.SearchCondition = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldRequest) SetSystemToken(v string) *SearchFormDataSecondGenerationNoTableFieldRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBody struct {
+	Data            []*SearchFormDataSecondGenerationNoTableFieldResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	PageNumber      *int64                                                        `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	RequestId       *string                                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int64                                                        `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                                                       `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                                                       `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetData(v []*SearchFormDataSecondGenerationNoTableFieldResponseBodyData) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetPageNumber(v int64) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetRequestId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetTotalCount(v int64) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetVendorRequestId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBody) SetVendorType(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBodyData struct {
+	CreateTimeGMT   *string                                                               `json:"CreateTimeGMT,omitempty" xml:"CreateTimeGMT,omitempty"`
+	CreatorUserId   *string                                                               `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	FormData        map[string]interface{}                                                `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                                               `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                                               `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Id              *int64                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceValue   *string                                                               `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModifiedTimeGMT *string                                                               `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	Modifier        *string                                                               `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ModifyUser      *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
+	Originator      *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
+	Sequence        *string                                                               `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNumber    *string                                                               `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Title           *string                                                               `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                                                `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetCreateTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.CreateTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetCreatorUserId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetFormData(v map[string]interface{}) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.FormData = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetFormInstanceId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetFormUuid(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetId(v int64) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetInstanceValue(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.InstanceValue = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetModifiedTimeGMT(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetModifier(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Modifier = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetModifyUser(v *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.ModifyUser = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetOriginator(v *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Originator = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetSequence(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Sequence = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetSerialNumber(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetTitle(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyData) SetVersion(v int64) *SearchFormDataSecondGenerationNoTableFieldResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser struct {
+	Name   *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) SetName(v *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser {
+	s.Name = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser) SetUserId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUser {
+	s.UserId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName) SetNameInChinese(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName) SetNameInEnglish(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataModifyUserName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator struct {
+	Name   *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	UserId *string                                                                   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) SetName(v *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator {
+	s.Name = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator) SetUserId(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginator {
+	s.UserId = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName) SetNameInChinese(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName) SetNameInEnglish(v string) *SearchFormDataSecondGenerationNoTableFieldResponseBodyDataOriginatorName {
+	s.NameInEnglish = &v
+	return s
+}
+
+type SearchFormDataSecondGenerationNoTableFieldResponse struct {
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchFormDataSecondGenerationNoTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDataSecondGenerationNoTableFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponse) SetHeaders(v map[string]*string) *SearchFormDataSecondGenerationNoTableFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponse) SetStatusCode(v int32) *SearchFormDataSecondGenerationNoTableFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchFormDataSecondGenerationNoTableFieldResponse) SetBody(v *SearchFormDataSecondGenerationNoTableFieldResponseBody) *SearchFormDataSecondGenerationNoTableFieldResponse {
+	s.Body = v
+	return s
+}
+
+type SearchFormDatasHeaders struct {
+	CommonHeaders  map[string]*string                    `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SearchFormDatasHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDatasHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDatasHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDatasHeaders) SetAccountContext(v *SearchFormDatasHeadersAccountContext) *SearchFormDatasHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SearchFormDatasHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SearchFormDatasHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasHeadersAccountContext) SetAccountId(v string) *SearchFormDatasHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SearchFormDatasShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SearchFormDatasShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasShrinkHeaders) SetCommonHeaders(v map[string]*string) *SearchFormDatasShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SearchFormDatasShrinkHeaders) SetAccountContextShrink(v string) *SearchFormDatasShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SearchFormDatasRequest struct {
+	AppType             *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	CreateFromTimeGMT   *string `json:"CreateFromTimeGMT,omitempty" xml:"CreateFromTimeGMT,omitempty"`
+	CreateToTimeGMT     *string `json:"CreateToTimeGMT,omitempty" xml:"CreateToTimeGMT,omitempty"`
+	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DynamicOrder        *string `json:"DynamicOrder,omitempty" xml:"DynamicOrder,omitempty"`
+	FormUuid            *string `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	Language            *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ModifiedFromTimeGMT *string `json:"ModifiedFromTimeGMT,omitempty" xml:"ModifiedFromTimeGMT,omitempty"`
+	ModifiedToTimeGMT   *string `json:"ModifiedToTimeGMT,omitempty" xml:"ModifiedToTimeGMT,omitempty"`
+	OriginatorId        *string `json:"OriginatorId,omitempty" xml:"OriginatorId,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchFieldJson     *string `json:"SearchFieldJson,omitempty" xml:"SearchFieldJson,omitempty"`
+	SystemToken         *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s SearchFormDatasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasRequest) SetAppType(v string) *SearchFormDatasRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetCreateFromTimeGMT(v string) *SearchFormDatasRequest {
+	s.CreateFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetCreateToTimeGMT(v string) *SearchFormDatasRequest {
+	s.CreateToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetCurrentPage(v int32) *SearchFormDatasRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetDynamicOrder(v string) *SearchFormDatasRequest {
+	s.DynamicOrder = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetFormUuid(v string) *SearchFormDatasRequest {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetLanguage(v string) *SearchFormDatasRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetModifiedFromTimeGMT(v string) *SearchFormDatasRequest {
+	s.ModifiedFromTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetModifiedToTimeGMT(v string) *SearchFormDatasRequest {
+	s.ModifiedToTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetOriginatorId(v string) *SearchFormDatasRequest {
+	s.OriginatorId = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetPageSize(v int32) *SearchFormDatasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetSearchFieldJson(v string) *SearchFormDatasRequest {
+	s.SearchFieldJson = &v
+	return s
+}
+
+func (s *SearchFormDatasRequest) SetSystemToken(v string) *SearchFormDatasRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type SearchFormDatasResponseBody struct {
+	CurrentPage     *int32                             `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	Data            []*SearchFormDatasResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	RequestId       *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	TotalCount      *int32                             `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	VendorRequestId *string                            `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string                            `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s SearchFormDatasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBody) SetCurrentPage(v int32) *SearchFormDatasResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBody) SetData(v []*SearchFormDatasResponseBodyData) *SearchFormDatasResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SearchFormDatasResponseBody) SetRequestId(v string) *SearchFormDatasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBody) SetTotalCount(v int32) *SearchFormDatasResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBody) SetVendorRequestId(v string) *SearchFormDatasResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBody) SetVendorType(v string) *SearchFormDatasResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type SearchFormDatasResponseBodyData struct {
+	CreatedTimeGMT  *string                                    `json:"CreatedTimeGMT,omitempty" xml:"CreatedTimeGMT,omitempty"`
+	CreatorUserId   *string                                    `json:"CreatorUserId,omitempty" xml:"CreatorUserId,omitempty"`
+	DataId          *int64                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	FormData        map[string]interface{}                     `json:"FormData,omitempty" xml:"FormData,omitempty"`
+	FormInstanceId  *string                                    `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	FormUuid        *string                                    `json:"FormUuid,omitempty" xml:"FormUuid,omitempty"`
+	InstanceValue   *string                                    `json:"InstanceValue,omitempty" xml:"InstanceValue,omitempty"`
+	ModelUuid       *string                                    `json:"ModelUuid,omitempty" xml:"ModelUuid,omitempty"`
+	ModifiedTimeGMT *string                                    `json:"ModifiedTimeGMT,omitempty" xml:"ModifiedTimeGMT,omitempty"`
+	ModifierUserId  *string                                    `json:"ModifierUserId,omitempty" xml:"ModifierUserId,omitempty"`
+	ModifyUser      *SearchFormDatasResponseBodyDataModifyUser `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty" type:"Struct"`
+	Originator      *SearchFormDatasResponseBodyDataOriginator `json:"Originator,omitempty" xml:"Originator,omitempty" type:"Struct"`
+	Sequence        *string                                    `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	SerialNo        *string                                    `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	Title           *string                                    `json:"Title,omitempty" xml:"Title,omitempty"`
+	Version         *int64                                     `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s SearchFormDatasResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBodyData) SetCreatedTimeGMT(v string) *SearchFormDatasResponseBodyData {
+	s.CreatedTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetCreatorUserId(v string) *SearchFormDatasResponseBodyData {
+	s.CreatorUserId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetDataId(v int64) *SearchFormDatasResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetFormData(v map[string]interface{}) *SearchFormDatasResponseBodyData {
+	s.FormData = v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetFormInstanceId(v string) *SearchFormDatasResponseBodyData {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetFormUuid(v string) *SearchFormDatasResponseBodyData {
+	s.FormUuid = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetInstanceValue(v string) *SearchFormDatasResponseBodyData {
+	s.InstanceValue = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetModelUuid(v string) *SearchFormDatasResponseBodyData {
+	s.ModelUuid = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetModifiedTimeGMT(v string) *SearchFormDatasResponseBodyData {
+	s.ModifiedTimeGMT = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetModifierUserId(v string) *SearchFormDatasResponseBodyData {
+	s.ModifierUserId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetModifyUser(v *SearchFormDatasResponseBodyDataModifyUser) *SearchFormDatasResponseBodyData {
+	s.ModifyUser = v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetOriginator(v *SearchFormDatasResponseBodyDataOriginator) *SearchFormDatasResponseBodyData {
+	s.Originator = v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetSequence(v string) *SearchFormDatasResponseBodyData {
+	s.Sequence = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetSerialNo(v string) *SearchFormDatasResponseBodyData {
+	s.SerialNo = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetTitle(v string) *SearchFormDatasResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyData) SetVersion(v int64) *SearchFormDatasResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type SearchFormDatasResponseBodyDataModifyUser struct {
+	UserId   *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName *SearchFormDatasResponseBodyDataModifyUserUserName `json:"UserName,omitempty" xml:"UserName,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDatasResponseBodyDataModifyUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBodyDataModifyUser) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBodyDataModifyUser) SetUserId(v string) *SearchFormDatasResponseBodyDataModifyUser {
+	s.UserId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataModifyUser) SetUserName(v *SearchFormDatasResponseBodyDataModifyUserUserName) *SearchFormDatasResponseBodyDataModifyUser {
+	s.UserName = v
+	return s
+}
+
+type SearchFormDatasResponseBodyDataModifyUserUserName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SearchFormDatasResponseBodyDataModifyUserUserName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBodyDataModifyUserUserName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBodyDataModifyUserUserName) SetNameInChinese(v string) *SearchFormDatasResponseBodyDataModifyUserUserName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataModifyUserUserName) SetNameInEnglish(v string) *SearchFormDatasResponseBodyDataModifyUserUserName {
+	s.NameInEnglish = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataModifyUserUserName) SetType(v string) *SearchFormDatasResponseBodyDataModifyUserUserName {
+	s.Type = &v
+	return s
+}
+
+type SearchFormDatasResponseBodyDataOriginator struct {
+	UserId   *string                                            `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserName *SearchFormDatasResponseBodyDataOriginatorUserName `json:"UserName,omitempty" xml:"UserName,omitempty" type:"Struct"`
+}
+
+func (s SearchFormDatasResponseBodyDataOriginator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBodyDataOriginator) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBodyDataOriginator) SetUserId(v string) *SearchFormDatasResponseBodyDataOriginator {
+	s.UserId = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataOriginator) SetUserName(v *SearchFormDatasResponseBodyDataOriginatorUserName) *SearchFormDatasResponseBodyDataOriginator {
+	s.UserName = v
+	return s
+}
+
+type SearchFormDatasResponseBodyDataOriginatorUserName struct {
+	NameInChinese *string `json:"NameInChinese,omitempty" xml:"NameInChinese,omitempty"`
+	NameInEnglish *string `json:"NameInEnglish,omitempty" xml:"NameInEnglish,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SearchFormDatasResponseBodyDataOriginatorUserName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponseBodyDataOriginatorUserName) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponseBodyDataOriginatorUserName) SetNameInChinese(v string) *SearchFormDatasResponseBodyDataOriginatorUserName {
+	s.NameInChinese = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataOriginatorUserName) SetNameInEnglish(v string) *SearchFormDatasResponseBodyDataOriginatorUserName {
+	s.NameInEnglish = &v
+	return s
+}
+
+func (s *SearchFormDatasResponseBodyDataOriginatorUserName) SetType(v string) *SearchFormDatasResponseBodyDataOriginatorUserName {
+	s.Type = &v
+	return s
+}
+
+type SearchFormDatasResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchFormDatasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchFormDatasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchFormDatasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchFormDatasResponse) SetHeaders(v map[string]*string) *SearchFormDatasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchFormDatasResponse) SetStatusCode(v int32) *SearchFormDatasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchFormDatasResponse) SetBody(v *SearchFormDatasResponseBody) *SearchFormDatasResponse {
+	s.Body = v
+	return s
+}
+
 type SetColumnsVisibilityHeaders struct {
 	CommonHeaders  map[string]*string                         `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *SetColumnsVisibilityHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -27258,6 +32324,174 @@ func (s *UnsubscribeCalendarResponse) SetBody(v *UnsubscribeCalendarResponseBody
 	return s
 }
 
+type UpdateFormDataHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateFormDataHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataHeaders) SetCommonHeaders(v map[string]*string) *UpdateFormDataHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateFormDataHeaders) SetAccountContext(v *UpdateFormDataHeadersAccountContext) *UpdateFormDataHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateFormDataHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateFormDataHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataHeadersAccountContext) SetAccountId(v string) *UpdateFormDataHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateFormDataShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateFormDataShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateFormDataShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateFormDataShrinkHeaders) SetAccountContextShrink(v string) *UpdateFormDataShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateFormDataRequest struct {
+	AppType            *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	FormInstanceId     *string `json:"FormInstanceId,omitempty" xml:"FormInstanceId,omitempty"`
+	Language           *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SystemToken        *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+	UpdateFormDataJson *string `json:"UpdateFormDataJson,omitempty" xml:"UpdateFormDataJson,omitempty"`
+	UseLatestVersion   *bool   `json:"UseLatestVersion,omitempty" xml:"UseLatestVersion,omitempty"`
+}
+
+func (s UpdateFormDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataRequest) SetAppType(v string) *UpdateFormDataRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *UpdateFormDataRequest) SetFormInstanceId(v string) *UpdateFormDataRequest {
+	s.FormInstanceId = &v
+	return s
+}
+
+func (s *UpdateFormDataRequest) SetLanguage(v string) *UpdateFormDataRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *UpdateFormDataRequest) SetSystemToken(v string) *UpdateFormDataRequest {
+	s.SystemToken = &v
+	return s
+}
+
+func (s *UpdateFormDataRequest) SetUpdateFormDataJson(v string) *UpdateFormDataRequest {
+	s.UpdateFormDataJson = &v
+	return s
+}
+
+func (s *UpdateFormDataRequest) SetUseLatestVersion(v bool) *UpdateFormDataRequest {
+	s.UseLatestVersion = &v
+	return s
+}
+
+type UpdateFormDataResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateFormDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataResponseBody) SetRequestId(v string) *UpdateFormDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFormDataResponseBody) SetVendorRequestId(v string) *UpdateFormDataResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateFormDataResponseBody) SetVendorType(v string) *UpdateFormDataResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateFormDataResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFormDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFormDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFormDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFormDataResponse) SetHeaders(v map[string]*string) *UpdateFormDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFormDataResponse) SetStatusCode(v int32) *UpdateFormDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFormDataResponse) SetBody(v *UpdateFormDataResponseBody) *UpdateFormDataResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLiveHeaders struct {
 	CommonHeaders  map[string]*string               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdateLiveHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -28477,6 +33711,221 @@ func (s *UpdateScheduleConferenceResponse) SetStatusCode(v int32) *UpdateSchedul
 }
 
 func (s *UpdateScheduleConferenceResponse) SetBody(v *UpdateScheduleConferenceResponseBody) *UpdateScheduleConferenceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateStatusHeaders struct {
+	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateStatusHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateStatusHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusHeaders) SetCommonHeaders(v map[string]*string) *UpdateStatusHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateStatusHeaders) SetAccountContext(v *UpdateStatusHeadersAccountContext) *UpdateStatusHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateStatusHeadersAccountContext struct {
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateStatusHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusHeadersAccountContext) SetAccountId(v string) *UpdateStatusHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateStatusShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateStatusShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateStatusShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateStatusShrinkHeaders) SetAccountContextShrink(v string) *UpdateStatusShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateStatusRequest struct {
+	AppType        *string  `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ErrorLines     []*int32 `json:"ErrorLines,omitempty" xml:"ErrorLines,omitempty" type:"Repeated"`
+	ImportSequence *string  `json:"ImportSequence,omitempty" xml:"ImportSequence,omitempty"`
+	Language       *string  `json:"Language,omitempty" xml:"Language,omitempty"`
+	Status         *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemToken    *string  `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s UpdateStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusRequest) SetAppType(v string) *UpdateStatusRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *UpdateStatusRequest) SetErrorLines(v []*int32) *UpdateStatusRequest {
+	s.ErrorLines = v
+	return s
+}
+
+func (s *UpdateStatusRequest) SetImportSequence(v string) *UpdateStatusRequest {
+	s.ImportSequence = &v
+	return s
+}
+
+func (s *UpdateStatusRequest) SetLanguage(v string) *UpdateStatusRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *UpdateStatusRequest) SetStatus(v string) *UpdateStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateStatusRequest) SetSystemToken(v string) *UpdateStatusRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type UpdateStatusShrinkRequest struct {
+	AppType          *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	ErrorLinesShrink *string `json:"ErrorLines,omitempty" xml:"ErrorLines,omitempty"`
+	ImportSequence   *string `json:"ImportSequence,omitempty" xml:"ImportSequence,omitempty"`
+	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemToken      *string `json:"SystemToken,omitempty" xml:"SystemToken,omitempty"`
+}
+
+func (s UpdateStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusShrinkRequest) SetAppType(v string) *UpdateStatusShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *UpdateStatusShrinkRequest) SetErrorLinesShrink(v string) *UpdateStatusShrinkRequest {
+	s.ErrorLinesShrink = &v
+	return s
+}
+
+func (s *UpdateStatusShrinkRequest) SetImportSequence(v string) *UpdateStatusShrinkRequest {
+	s.ImportSequence = &v
+	return s
+}
+
+func (s *UpdateStatusShrinkRequest) SetLanguage(v string) *UpdateStatusShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *UpdateStatusShrinkRequest) SetStatus(v string) *UpdateStatusShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateStatusShrinkRequest) SetSystemToken(v string) *UpdateStatusShrinkRequest {
+	s.SystemToken = &v
+	return s
+}
+
+type UpdateStatusResponseBody struct {
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	VendorType      *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusResponseBody) SetRequestId(v string) *UpdateStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateStatusResponseBody) SetVendorRequestId(v string) *UpdateStatusResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateStatusResponseBody) SetVendorType(v string) *UpdateStatusResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateStatusResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStatusResponse) SetHeaders(v map[string]*string) *UpdateStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStatusResponse) SetStatusCode(v int32) *UpdateStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateStatusResponse) SetBody(v *UpdateStatusResponseBody) *UpdateStatusResponse {
 	s.Body = v
 	return s
 }
@@ -30600,6 +36049,461 @@ func (client *Client) AddWorkspaceMembers(request *AddWorkspaceMembersRequest) (
 	return _result, _err
 }
 
+func (client *Client) BatchGetFormDataByIdListWithOptions(tmpReq *BatchGetFormDataByIdListRequest, tmpHeader *BatchGetFormDataByIdListHeaders, runtime *util.RuntimeOptions) (_result *BatchGetFormDataByIdListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchGetFormDataByIdListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchGetFormDataByIdListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FormInstanceIdList)) {
+		request.FormInstanceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FormInstanceIdList, tea.String("FormInstanceIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceIdListShrink)) {
+		body["FormInstanceIdList"] = request.FormInstanceIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedFormInstanceValue)) {
+		body["NeedFormInstanceValue"] = request.NeedFormInstanceValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchGetFormDataByIdList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/batchGetFormDataByIdList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchGetFormDataByIdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchGetFormDataByIdList(request *BatchGetFormDataByIdListRequest) (_result *BatchGetFormDataByIdListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchGetFormDataByIdListHeaders{}
+	_result = &BatchGetFormDataByIdListResponse{}
+	_body, _err := client.BatchGetFormDataByIdListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchRemovalByFormInstanceIdListWithOptions(tmpReq *BatchRemovalByFormInstanceIdListRequest, tmpHeader *BatchRemovalByFormInstanceIdListHeaders, runtime *util.RuntimeOptions) (_result *BatchRemovalByFormInstanceIdListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchRemovalByFormInstanceIdListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchRemovalByFormInstanceIdListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FormInstanceIdList)) {
+		request.FormInstanceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FormInstanceIdList, tea.String("FormInstanceIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsynchronousExecution)) {
+		body["AsynchronousExecution"] = request.AsynchronousExecution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteExpression)) {
+		body["ExecuteExpression"] = request.ExecuteExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceIdListShrink)) {
+		body["FormInstanceIdList"] = request.FormInstanceIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchRemovalByFormInstanceIdList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/batchRemovalByFormInstanceIdList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchRemovalByFormInstanceIdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchRemovalByFormInstanceIdList(request *BatchRemovalByFormInstanceIdListRequest) (_result *BatchRemovalByFormInstanceIdListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchRemovalByFormInstanceIdListHeaders{}
+	_result = &BatchRemovalByFormInstanceIdListResponse{}
+	_body, _err := client.BatchRemovalByFormInstanceIdListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchSaveFormDataWithOptions(tmpReq *BatchSaveFormDataRequest, tmpHeader *BatchSaveFormDataHeaders, runtime *util.RuntimeOptions) (_result *BatchSaveFormDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchSaveFormDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchSaveFormDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FormDataJsonList)) {
+		request.FormDataJsonListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FormDataJsonList, tea.String("FormDataJsonList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsynchronousExecution)) {
+		body["AsynchronousExecution"] = request.AsynchronousExecution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormDataJsonListShrink)) {
+		body["FormDataJsonList"] = request.FormDataJsonListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepRunningAfterException)) {
+		body["KeepRunningAfterException"] = request.KeepRunningAfterException
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoExecuteExpression)) {
+		body["NoExecuteExpression"] = request.NoExecuteExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchSaveFormData"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/batchSaveFormData"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchSaveFormDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchSaveFormData(request *BatchSaveFormDataRequest) (_result *BatchSaveFormDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchSaveFormDataHeaders{}
+	_result = &BatchSaveFormDataResponse{}
+	_body, _err := client.BatchSaveFormDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFormDataByInstanceIdWithOptions(tmpReq *BatchUpdateFormDataByInstanceIdRequest, tmpHeader *BatchUpdateFormDataByInstanceIdHeaders, runtime *util.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchUpdateFormDataByInstanceIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchUpdateFormDataByInstanceIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FormInstanceIdList)) {
+		request.FormInstanceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FormInstanceIdList, tea.String("FormInstanceIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsynchronousExecution)) {
+		body["AsynchronousExecution"] = request.AsynchronousExecution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceIdListShrink)) {
+		body["FormInstanceIdList"] = request.FormInstanceIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreEmpty)) {
+		body["IgnoreEmpty"] = request.IgnoreEmpty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoExecuteExpression)) {
+		body["NoExecuteExpression"] = request.NoExecuteExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateFormDataJson)) {
+		body["UpdateFormDataJson"] = request.UpdateFormDataJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseLatestFormSchemaVersion)) {
+		body["UseLatestFormSchemaVersion"] = request.UseLatestFormSchemaVersion
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateFormDataByInstanceId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/batchUpdateFormDataByInstanceId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchUpdateFormDataByInstanceIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFormDataByInstanceId(request *BatchUpdateFormDataByInstanceIdRequest) (_result *BatchUpdateFormDataByInstanceIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchUpdateFormDataByInstanceIdHeaders{}
+	_result = &BatchUpdateFormDataByInstanceIdResponse{}
+	_body, _err := client.BatchUpdateFormDataByInstanceIdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFormDataByInstanceMapWithOptions(tmpReq *BatchUpdateFormDataByInstanceMapRequest, tmpHeader *BatchUpdateFormDataByInstanceMapHeaders, runtime *util.RuntimeOptions) (_result *BatchUpdateFormDataByInstanceMapResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchUpdateFormDataByInstanceMapShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &BatchUpdateFormDataByInstanceMapShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateFormDataJsonMap)) {
+		request.UpdateFormDataJsonMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFormDataJsonMap, tea.String("UpdateFormDataJsonMap"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AsynchronousExecution)) {
+		body["AsynchronousExecution"] = request.AsynchronousExecution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreEmpty)) {
+		body["IgnoreEmpty"] = request.IgnoreEmpty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoExecuteExpression)) {
+		body["NoExecuteExpression"] = request.NoExecuteExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateFormDataJsonMapShrink)) {
+		body["UpdateFormDataJsonMap"] = request.UpdateFormDataJsonMapShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseLatestFormSchemaVersion)) {
+		body["UseLatestFormSchemaVersion"] = request.UseLatestFormSchemaVersion
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateFormDataByInstanceMap"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/batchUpdateFormDataByInstanceMap"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchUpdateFormDataByInstanceMapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateFormDataByInstanceMap(request *BatchUpdateFormDataByInstanceMapRequest) (_result *BatchUpdateFormDataByInstanceMapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BatchUpdateFormDataByInstanceMapHeaders{}
+	_result = &BatchUpdateFormDataByInstanceMapResponse{}
+	_body, _err := client.BatchUpdateFormDataByInstanceMapWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelScheduleConferenceWithOptions(tmpReq *CancelScheduleConferenceRequest, tmpHeader *CancelScheduleConferenceHeaders, runtime *util.RuntimeOptions) (_result *CancelScheduleConferenceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -31321,6 +37225,91 @@ func (client *Client) CreateMeetingRoomGroup(request *CreateMeetingRoomGroupRequ
 	headers := &CreateMeetingRoomGroupHeaders{}
 	_result = &CreateMeetingRoomGroupResponse{}
 	_body, _err := client.CreateMeetingRoomGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateFormDataWithOptions(request *CreateOrUpdateFormDataRequest, tmpHeader *CreateOrUpdateFormDataHeaders, runtime *util.RuntimeOptions) (_result *CreateOrUpdateFormDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &CreateOrUpdateFormDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormDataJson)) {
+		body["FormDataJson"] = request.FormDataJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoExecuteExpression)) {
+		body["NoExecuteExpression"] = request.NoExecuteExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchCondition)) {
+		body["SearchCondition"] = request.SearchCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateFormData"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/createOrUpdateFormData"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateFormDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOrUpdateFormData(request *CreateOrUpdateFormDataRequest) (_result *CreateOrUpdateFormDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateOrUpdateFormDataHeaders{}
+	_result = &CreateOrUpdateFormDataResponse{}
+	_body, _err := client.CreateOrUpdateFormDataWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32434,6 +38423,79 @@ func (client *Client) DeleteEvent(request *DeleteEventRequest) (_result *DeleteE
 	return _result, _err
 }
 
+func (client *Client) DeleteFormDataWithOptions(request *DeleteFormDataRequest, tmpHeader *DeleteFormDataHeaders, runtime *util.RuntimeOptions) (_result *DeleteFormDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &DeleteFormDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceId)) {
+		body["FormInstanceId"] = request.FormInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFormData"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/deleteFormData"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFormDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFormData(request *DeleteFormDataRequest) (_result *DeleteFormDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteFormDataHeaders{}
+	_result = &DeleteFormDataResponse{}
+	_body, _err := client.DeleteFormDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteLiveWithOptions(tmpReq *DeleteLiveRequest, tmpHeader *DeleteLiveHeaders, runtime *util.RuntimeOptions) (_result *DeleteLiveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -33303,6 +39365,298 @@ func (client *Client) GetEvent(request *GetEventRequest) (_result *GetEventRespo
 	headers := &GetEventHeaders{}
 	_result = &GetEventResponse{}
 	_body, _err := client.GetEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFieldDefByUuidWithOptions(request *GetFieldDefByUuidRequest, tmpHeader *GetFieldDefByUuidHeaders, runtime *util.RuntimeOptions) (_result *GetFieldDefByUuidResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetFieldDefByUuidShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFieldDefByUuid"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getFieldDefByUuid"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFieldDefByUuidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFieldDefByUuid(request *GetFieldDefByUuidRequest) (_result *GetFieldDefByUuidResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFieldDefByUuidHeaders{}
+	_result = &GetFieldDefByUuidResponse{}
+	_body, _err := client.GetFieldDefByUuidWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFormComponentDefinitionListWithOptions(request *GetFormComponentDefinitionListRequest, tmpHeader *GetFormComponentDefinitionListHeaders, runtime *util.RuntimeOptions) (_result *GetFormComponentDefinitionListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetFormComponentDefinitionListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFormComponentDefinitionList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getFormComponentDefinitionList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFormComponentDefinitionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFormComponentDefinitionList(request *GetFormComponentDefinitionListRequest) (_result *GetFormComponentDefinitionListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFormComponentDefinitionListHeaders{}
+	_result = &GetFormComponentDefinitionListResponse{}
+	_body, _err := client.GetFormComponentDefinitionListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFormDataByIDWithOptions(request *GetFormDataByIDRequest, tmpHeader *GetFormDataByIDHeaders, runtime *util.RuntimeOptions) (_result *GetFormDataByIDResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetFormDataByIDShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFormDataByID"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getFormDataByID"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFormDataByIDResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFormDataByID(request *GetFormDataByIDRequest) (_result *GetFormDataByIDResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFormDataByIDHeaders{}
+	_result = &GetFormDataByIDResponse{}
+	_body, _err := client.GetFormDataByIDWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFormListInAppWithOptions(request *GetFormListInAppRequest, tmpHeader *GetFormListInAppHeaders, runtime *util.RuntimeOptions) (_result *GetFormListInAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &GetFormListInAppShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormTypes)) {
+		body["FormTypes"] = request.FormTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFormListInApp"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/getFormListInApp"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFormListInAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFormListInApp(request *GetFormListInAppRequest) (_result *GetFormListInAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetFormListInAppHeaders{}
+	_result = &GetFormListInAppResponse{}
+	_body, _err := client.GetFormListInAppWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35131,6 +41485,158 @@ func (client *Client) ListEventsView(request *ListEventsViewRequest) (_result *L
 	return _result, _err
 }
 
+func (client *Client) ListFormRemarksWithOptions(tmpReq *ListFormRemarksRequest, tmpHeader *ListFormRemarksHeaders, runtime *util.RuntimeOptions) (_result *ListFormRemarksResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListFormRemarksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &ListFormRemarksShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FormInstanceIdList)) {
+		request.FormInstanceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FormInstanceIdList, tea.String("FormInstanceIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceIdListShrink)) {
+		body["FormInstanceIdList"] = request.FormInstanceIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFormRemarks"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/listFormRemarks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFormRemarksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFormRemarks(request *ListFormRemarksRequest) (_result *ListFormRemarksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListFormRemarksHeaders{}
+	_result = &ListFormRemarksResponse{}
+	_body, _err := client.ListFormRemarksWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListNavigationByFormTypeWithOptions(request *ListNavigationByFormTypeRequest, tmpHeader *ListNavigationByFormTypeHeaders, runtime *util.RuntimeOptions) (_result *ListNavigationByFormTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &ListNavigationByFormTypeShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormType)) {
+		body["FormType"] = request.FormType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNavigationByFormType"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/listNavigationByFormType"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNavigationByFormTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListNavigationByFormType(request *ListNavigationByFormTypeRequest) (_result *ListNavigationByFormTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListNavigationByFormTypeHeaders{}
+	_result = &ListNavigationByFormTypeResponse{}
+	_body, _err := client.ListNavigationByFormTypeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, tmpHeader *ListNodesHeaders, runtime *util.RuntimeOptions) (_result *ListNodesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -35302,6 +41808,91 @@ func (client *Client) ListReport(request *ListReportRequest) (_result *ListRepor
 	headers := &ListReportHeaders{}
 	_result = &ListReportResponse{}
 	_body, _err := client.ListReportWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTableDataByFormInstanceIdTableIdWithOptions(request *ListTableDataByFormInstanceIdTableIdRequest, tmpHeader *ListTableDataByFormInstanceIdTableIdHeaders, runtime *util.RuntimeOptions) (_result *ListTableDataByFormInstanceIdTableIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &ListTableDataByFormInstanceIdTableIdShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceId)) {
+		body["FormInstanceId"] = request.FormInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableFieldId)) {
+		body["TableFieldId"] = request.TableFieldId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTableDataByFormInstanceIdTableId"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/listTableDataByFormInstanceIdTableId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTableDataByFormInstanceIdTableIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTableDataByFormInstanceIdTableId(request *ListTableDataByFormInstanceIdTableIdRequest) (_result *ListTableDataByFormInstanceIdTableIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListTableDataByFormInstanceIdTableIdHeaders{}
+	_result = &ListTableDataByFormInstanceIdTableIdResponse{}
+	_body, _err := client.ListTableDataByFormInstanceIdTableIdWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37199,6 +43790,608 @@ func (client *Client) SaveContent(request *SaveContentRequest) (_result *SaveCon
 	return _result, _err
 }
 
+func (client *Client) SaveFormDataWithOptions(request *SaveFormDataRequest, tmpHeader *SaveFormDataHeaders, runtime *util.RuntimeOptions) (_result *SaveFormDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SaveFormDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormDataJson)) {
+		body["FormDataJson"] = request.FormDataJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveFormData"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/saveFormData"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveFormDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveFormData(request *SaveFormDataRequest) (_result *SaveFormDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SaveFormDataHeaders{}
+	_result = &SaveFormDataResponse{}
+	_body, _err := client.SaveFormDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchEmployeeFieldValuesWithOptions(request *SearchEmployeeFieldValuesRequest, tmpHeader *SearchEmployeeFieldValuesHeaders, runtime *util.RuntimeOptions) (_result *SearchEmployeeFieldValuesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SearchEmployeeFieldValuesShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedFromTimeGMT)) {
+		body["ModifiedFromTimeGMT"] = request.ModifiedFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedToTimeGMT)) {
+		body["ModifiedToTimeGMT"] = request.ModifiedToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginatorId)) {
+		body["OriginatorId"] = request.OriginatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchFieldJson)) {
+		body["SearchFieldJson"] = request.SearchFieldJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetFieldJson)) {
+		body["TargetFieldJson"] = request.TargetFieldJson
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchEmployeeFieldValues"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/searchEmployeeFieldValues"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchEmployeeFieldValuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchEmployeeFieldValues(request *SearchEmployeeFieldValuesRequest) (_result *SearchEmployeeFieldValuesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchEmployeeFieldValuesHeaders{}
+	_result = &SearchEmployeeFieldValuesResponse{}
+	_body, _err := client.SearchEmployeeFieldValuesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataIdListWithOptions(request *SearchFormDataIdListRequest, tmpHeader *SearchFormDataIdListHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataIdListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SearchFormDataIdListShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedFromTimeGMT)) {
+		body["ModifiedFromTimeGMT"] = request.ModifiedFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedToTimeGMT)) {
+		body["ModifiedToTimeGMT"] = request.ModifiedToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginatorId)) {
+		body["OriginatorId"] = request.OriginatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchFieldJson)) {
+		body["SearchFieldJson"] = request.SearchFieldJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchFormDataIdList"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/searchFormDataIdList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchFormDataIdListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataIdList(request *SearchFormDataIdListRequest) (_result *SearchFormDataIdListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchFormDataIdListHeaders{}
+	_result = &SearchFormDataIdListResponse{}
+	_body, _err := client.SearchFormDataIdListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataSecondGenerationWithOptions(request *SearchFormDataSecondGenerationRequest, tmpHeader *SearchFormDataSecondGenerationHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataSecondGenerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SearchFormDataSecondGenerationShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedFromTimeGMT)) {
+		body["ModifiedFromTimeGMT"] = request.ModifiedFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedToTimeGMT)) {
+		body["ModifiedToTimeGMT"] = request.ModifiedToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderConfigJson)) {
+		body["OrderConfigJson"] = request.OrderConfigJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginatorId)) {
+		body["OriginatorId"] = request.OriginatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchCondition)) {
+		body["SearchCondition"] = request.SearchCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchFormDataSecondGeneration"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/searchFormDataSecondGeneration"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchFormDataSecondGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataSecondGeneration(request *SearchFormDataSecondGenerationRequest) (_result *SearchFormDataSecondGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchFormDataSecondGenerationHeaders{}
+	_result = &SearchFormDataSecondGenerationResponse{}
+	_body, _err := client.SearchFormDataSecondGenerationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataSecondGenerationNoTableFieldWithOptions(request *SearchFormDataSecondGenerationNoTableFieldRequest, tmpHeader *SearchFormDataSecondGenerationNoTableFieldHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDataSecondGenerationNoTableFieldResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SearchFormDataSecondGenerationNoTableFieldShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedFromTimeGMT)) {
+		body["ModifiedFromTimeGMT"] = request.ModifiedFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedToTimeGMT)) {
+		body["ModifiedToTimeGMT"] = request.ModifiedToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderConfigJson)) {
+		body["OrderConfigJson"] = request.OrderConfigJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginatorId)) {
+		body["OriginatorId"] = request.OriginatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchCondition)) {
+		body["SearchCondition"] = request.SearchCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchFormDataSecondGenerationNoTableField"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/searchFormDataSecondGenerationNoTableField"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchFormDataSecondGenerationNoTableFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchFormDataSecondGenerationNoTableField(request *SearchFormDataSecondGenerationNoTableFieldRequest) (_result *SearchFormDataSecondGenerationNoTableFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchFormDataSecondGenerationNoTableFieldHeaders{}
+	_result = &SearchFormDataSecondGenerationNoTableFieldResponse{}
+	_body, _err := client.SearchFormDataSecondGenerationNoTableFieldWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchFormDatasWithOptions(request *SearchFormDatasRequest, tmpHeader *SearchFormDatasHeaders, runtime *util.RuntimeOptions) (_result *SearchFormDatasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &SearchFormDatasShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFromTimeGMT)) {
+		body["CreateFromTimeGMT"] = request.CreateFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateToTimeGMT)) {
+		body["CreateToTimeGMT"] = request.CreateToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicOrder)) {
+		body["DynamicOrder"] = request.DynamicOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormUuid)) {
+		body["FormUuid"] = request.FormUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedFromTimeGMT)) {
+		body["ModifiedFromTimeGMT"] = request.ModifiedFromTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifiedToTimeGMT)) {
+		body["ModifiedToTimeGMT"] = request.ModifiedToTimeGMT
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginatorId)) {
+		body["OriginatorId"] = request.OriginatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchFieldJson)) {
+		body["SearchFieldJson"] = request.SearchFieldJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchFormDatas"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/searchFormDatas"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchFormDatasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchFormDatas(request *SearchFormDatasRequest) (_result *SearchFormDatasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SearchFormDatasHeaders{}
+	_result = &SearchFormDatasResponse{}
+	_body, _err := client.SearchFormDatasWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetColumnsVisibilityWithOptions(tmpReq *SetColumnsVisibilityRequest, tmpHeader *SetColumnsVisibilityHeaders, runtime *util.RuntimeOptions) (_result *SetColumnsVisibilityResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -37886,6 +45079,87 @@ func (client *Client) UnsubscribeCalendar(request *UnsubscribeCalendarRequest) (
 	return _result, _err
 }
 
+func (client *Client) UpdateFormDataWithOptions(request *UpdateFormDataRequest, tmpHeader *UpdateFormDataHeaders, runtime *util.RuntimeOptions) (_result *UpdateFormDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	headers := &UpdateFormDataShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FormInstanceId)) {
+		body["FormInstanceId"] = request.FormInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateFormDataJson)) {
+		body["UpdateFormDataJson"] = request.UpdateFormDataJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseLatestVersion)) {
+		body["UseLatestVersion"] = request.UseLatestVersion
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFormData"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/updateFormData"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFormDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFormData(request *UpdateFormDataRequest) (_result *UpdateFormDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateFormDataHeaders{}
+	_result = &UpdateFormDataResponse{}
+	_body, _err := client.UpdateFormDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateLiveWithOptions(tmpReq *UpdateLiveRequest, tmpHeader *UpdateLiveHeaders, runtime *util.RuntimeOptions) (_result *UpdateLiveResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -38346,6 +45620,93 @@ func (client *Client) UpdateScheduleConference(request *UpdateScheduleConference
 	headers := &UpdateScheduleConferenceHeaders{}
 	_result = &UpdateScheduleConferenceResponse{}
 	_body, _err := client.UpdateScheduleConferenceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateStatusWithOptions(tmpReq *UpdateStatusRequest, tmpHeader *UpdateStatusHeaders, runtime *util.RuntimeOptions) (_result *UpdateStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateStatusShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ErrorLines)) {
+		request.ErrorLinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ErrorLines, tea.String("ErrorLines"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorLinesShrink)) {
+		body["ErrorLines"] = request.ErrorLinesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportSequence)) {
+		body["ImportSequence"] = request.ImportSequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemToken)) {
+		body["SystemToken"] = request.SystemToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStatus"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/yida/updateStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateStatus(request *UpdateStatusRequest) (_result *UpdateStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateStatusHeaders{}
+	_result = &UpdateStatusResponse{}
+	_body, _err := client.UpdateStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
