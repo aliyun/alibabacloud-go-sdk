@@ -911,6 +911,29 @@ func (s *Logging) SetLoggingProfile(v string) *Logging {
 	return s
 }
 
+type Member struct {
+	Member *string `json:"member,omitempty" xml:"member,omitempty"`
+	Role   *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s Member) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Member) GoString() string {
+	return s.String()
+}
+
+func (s *Member) SetMember(v string) *Member {
+	s.Member = &v
+	return s
+}
+
+func (s *Member) SetRole(v string) *Member {
+	s.Role = &v
+	return s
+}
+
 type PythonArtifact struct {
 	AdditionalDependencies    []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
 	AdditionalPythonArchives  []*string `json:"additionalPythonArchives,omitempty" xml:"additionalPythonArchives,omitempty" type:"Repeated"`
@@ -1342,6 +1365,122 @@ func (s *CreateDeploymentResponse) SetBody(v *CreateDeploymentResponseBody) *Cre
 	return s
 }
 
+type CreateMemberHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s CreateMemberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemberHeaders) SetCommonHeaders(v map[string]*string) *CreateMemberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateMemberHeaders) SetWorkspace(v string) *CreateMemberHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type CreateMemberRequest struct {
+	Body *Member `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemberRequest) SetBody(v *Member) *CreateMemberRequest {
+	s.Body = v
+	return s
+}
+
+type CreateMemberResponseBody struct {
+	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemberResponseBody) SetData(v *Member) *CreateMemberResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateMemberResponseBody) SetErrorCode(v string) *CreateMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateMemberResponseBody) SetErrorMessage(v string) *CreateMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateMemberResponseBody) SetHttpCode(v int32) *CreateMemberResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateMemberResponseBody) SetRequestId(v string) *CreateMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMemberResponseBody) SetSuccess(v bool) *CreateMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMemberResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMemberResponse) SetHeaders(v map[string]*string) *CreateMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMemberResponse) SetStatusCode(v int32) *CreateMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMemberResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
@@ -1768,6 +1907,99 @@ func (s *DeleteJobResponse) SetStatusCode(v int32) *DeleteJobResponse {
 }
 
 func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMemberHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s DeleteMemberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemberHeaders) SetCommonHeaders(v map[string]*string) *DeleteMemberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMemberHeaders) SetWorkspace(v string) *DeleteMemberHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type DeleteMemberResponseBody struct {
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemberResponseBody) SetErrorCode(v string) *DeleteMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteMemberResponseBody) SetErrorMessage(v string) *DeleteMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteMemberResponseBody) SetHttpCode(v int32) *DeleteMemberResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteMemberResponseBody) SetRequestId(v string) *DeleteMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMemberResponseBody) SetSuccess(v bool) *DeleteMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteMemberResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMemberResponse) SetHeaders(v map[string]*string) *DeleteMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMemberResponse) SetStatusCode(v int32) *DeleteMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMemberResponse) SetBody(v *DeleteMemberResponseBody) *DeleteMemberResponse {
 	s.Body = v
 	return s
 }
@@ -2522,6 +2754,105 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 	return s
 }
 
+type GetMemberHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetMemberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemberHeaders) SetCommonHeaders(v map[string]*string) *GetMemberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetMemberHeaders) SetWorkspace(v string) *GetMemberHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetMemberResponseBody struct {
+	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemberResponseBody) SetData(v *Member) *GetMemberResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMemberResponseBody) SetErrorCode(v string) *GetMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMemberResponseBody) SetErrorMessage(v string) *GetMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMemberResponseBody) SetHttpCode(v int32) *GetMemberResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetMemberResponseBody) SetRequestId(v string) *GetMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMemberResponseBody) SetSuccess(v bool) *GetMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMemberResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMemberResponse) SetHeaders(v map[string]*string) *GetMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMemberResponse) SetStatusCode(v int32) *GetMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse {
+	s.Body = v
+	return s
+}
+
 type GetSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
@@ -3154,6 +3485,146 @@ func (s *ListJobsResponse) SetStatusCode(v int32) *ListJobsResponse {
 }
 
 func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMembersHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ListMembersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMembersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListMembersHeaders) SetCommonHeaders(v map[string]*string) *ListMembersHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListMembersHeaders) SetWorkspace(v string) *ListMembersHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ListMembersRequest struct {
+	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	PageSize  *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMembersRequest) SetPageIndex(v int32) *ListMembersRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMembersRequest) SetPageSize(v int32) *ListMembersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListMembersResponseBody struct {
+	Data         []*Member `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	ErrorCode    *string   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string   `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32    `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	PageIndex    *int32    `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	PageSize     *int32    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RequestId    *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool     `json:"success,omitempty" xml:"success,omitempty"`
+	TotalSize    *int32    `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMembersResponseBody) SetData(v []*Member) *ListMembersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetErrorCode(v string) *ListMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetErrorMessage(v string) *ListMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetHttpCode(v int32) *ListMembersResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetPageIndex(v int32) *ListMembersResponseBody {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetPageSize(v int32) *ListMembersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetRequestId(v string) *ListMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetSuccess(v bool) *ListMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListMembersResponseBody) SetTotalSize(v int32) *ListMembersResponseBody {
+	s.TotalSize = &v
+	return s
+}
+
+type ListMembersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMembersResponse) SetHeaders(v map[string]*string) *ListMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMembersResponse) SetStatusCode(v int32) *ListMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersResponse {
 	s.Body = v
 	return s
 }
@@ -3914,6 +4385,122 @@ func (s *UpdateDeploymentResponse) SetBody(v *UpdateDeploymentResponseBody) *Upd
 	return s
 }
 
+type UpdateMemberHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	Workspace     *string            `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s UpdateMemberHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemberHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemberHeaders) SetCommonHeaders(v map[string]*string) *UpdateMemberHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMemberHeaders) SetWorkspace(v string) *UpdateMemberHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type UpdateMemberRequest struct {
+	Body *Member `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemberRequest) SetBody(v *Member) *UpdateMemberRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateMemberResponseBody struct {
+	Data         *Member `json:"data,omitempty" xml:"data,omitempty"`
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	HttpCode     *int32  `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId    *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success      *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemberResponseBody) SetData(v *Member) *UpdateMemberResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateMemberResponseBody) SetErrorCode(v string) *UpdateMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateMemberResponseBody) SetErrorMessage(v string) *UpdateMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateMemberResponseBody) SetHttpCode(v int32) *UpdateMemberResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateMemberResponseBody) SetRequestId(v string) *UpdateMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMemberResponseBody) SetSuccess(v bool) *UpdateMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMemberResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMemberResponse) SetHeaders(v map[string]*string) *UpdateMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMemberResponse) SetStatusCode(v int32) *UpdateMemberResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMemberResponse) SetBody(v *UpdateMemberResponseBody) *UpdateMemberResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4004,6 +4591,56 @@ func (client *Client) CreateDeployment(namespace *string, request *CreateDeploym
 	headers := &CreateDeploymentHeaders{}
 	_result = &CreateDeploymentResponse{}
 	_body, _err := client.CreateDeploymentWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMemberWithOptions(namespace *string, request *CreateMemberRequest, headers *CreateMemberHeaders, runtime *util.RuntimeOptions) (_result *CreateMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMember"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/members"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMember(namespace *string, request *CreateMemberRequest) (_result *CreateMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateMemberHeaders{}
+	_result = &CreateMemberResponse{}
+	_body, _err := client.CreateMemberWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4207,6 +4844,51 @@ func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *Dele
 	headers := &DeleteJobHeaders{}
 	_result = &DeleteJobResponse{}
 	_body, _err := client.DeleteJobWithOptions(namespace, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMemberWithOptions(namespace *string, member *string, headers *DeleteMemberHeaders, runtime *util.RuntimeOptions) (_result *DeleteMemberResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMember"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(member))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMember(namespace *string, member *string) (_result *DeleteMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteMemberHeaders{}
+	_result = &DeleteMemberResponse{}
+	_body, _err := client.DeleteMemberWithOptions(namespace, member, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4556,6 +5238,51 @@ func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobR
 	return _result, _err
 }
 
+func (client *Client) GetMemberWithOptions(namespace *string, member *string, headers *GetMemberHeaders, runtime *util.RuntimeOptions) (_result *GetMemberResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMember"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/members/" + tea.StringValue(openapiutil.GetEncodeParam(member))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMember(namespace *string, member *string) (_result *GetMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetMemberHeaders{}
+	_result = &GetMemberResponse{}
+	_body, _err := client.GetMemberWithOptions(namespace, member, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSavepointWithOptions(namespace *string, savepointId *string, headers *GetSavepointHeaders, runtime *util.RuntimeOptions) (_result *GetSavepointResponse, _err error) {
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
@@ -4828,6 +5555,65 @@ func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_re
 	headers := &ListJobsHeaders{}
 	_result = &ListJobsResponse{}
 	_body, _err := client.ListJobsWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMembersWithOptions(namespace *string, request *ListMembersRequest, headers *ListMembersHeaders, runtime *util.RuntimeOptions) (_result *ListMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["pageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMembers"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/members"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMembers(namespace *string, request *ListMembersRequest) (_result *ListMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListMembersHeaders{}
+	_result = &ListMembersResponse{}
+	_body, _err := client.ListMembersWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5170,6 +5956,56 @@ func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, 
 	headers := &UpdateDeploymentHeaders{}
 	_result = &UpdateDeploymentResponse{}
 	_body, _err := client.UpdateDeploymentWithOptions(namespace, deploymentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMemberWithOptions(namespace *string, request *UpdateMemberRequest, headers *UpdateMemberHeaders, runtime *util.RuntimeOptions) (_result *UpdateMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMember"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/gateway/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/members"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMember(namespace *string, request *UpdateMemberRequest) (_result *UpdateMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateMemberHeaders{}
+	_result = &UpdateMemberResponse{}
+	_body, _err := client.UpdateMemberWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
