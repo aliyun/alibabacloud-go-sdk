@@ -51146,6 +51146,7 @@ func (s *IsvUserSaveRequest) SetUserList(v []*IsvUserSaveRequestUserList) *IsvUs
 }
 
 type IsvUserSaveRequestUserList struct {
+	BaseCityCode      *string                               `json:"base_city_code,omitempty" xml:"base_city_code,omitempty"`
 	Birthday          *string                               `json:"birthday,omitempty" xml:"birthday,omitempty"`
 	CertList          []*IsvUserSaveRequestUserListCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
 	DepartId          *int64                                `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
@@ -51171,6 +51172,11 @@ func (s IsvUserSaveRequestUserList) String() string {
 
 func (s IsvUserSaveRequestUserList) GoString() string {
 	return s.String()
+}
+
+func (s *IsvUserSaveRequestUserList) SetBaseCityCode(v string) *IsvUserSaveRequestUserList {
+	s.BaseCityCode = &v
+	return s
 }
 
 func (s *IsvUserSaveRequestUserList) SetBirthday(v string) *IsvUserSaveRequestUserList {
@@ -51646,6 +51652,7 @@ type MonthBillGetResponseBodyModuleMonthAccountBillDetail struct {
 	HotelAmount *float64 `json:"hotelAmount,omitempty" xml:"hotelAmount,omitempty"`
 	// 国际机票金额（单位：元）
 	IeFlightAmount *float64 `json:"ieFlightAmount,omitempty" xml:"ieFlightAmount,omitempty"`
+	IeHotelAmount  *float64 `json:"ieHotelAmount,omitempty" xml:"ieHotelAmount,omitempty"`
 	// 账期日：YYYYMMDD
 	MailBillDate *int64 `json:"mailBillDate,omitempty" xml:"mailBillDate,omitempty"`
 	// 服务费金额（单位：元）
@@ -51694,6 +51701,11 @@ func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetHotelAmount(v 
 
 func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetIeFlightAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
 	s.IeFlightAmount = &v
+	return s
+}
+
+func (s *MonthBillGetResponseBodyModuleMonthAccountBillDetail) SetIeHotelAmount(v float64) *MonthBillGetResponseBodyModuleMonthAccountBillDetail {
+	s.IeHotelAmount = &v
 	return s
 }
 
