@@ -1,3 +1,6 @@
+2023-11-09 Version: v3.2.0
+- Generated golang 2019-03-07 for Cloudauth.
+
 2023-11-07 Version: v3.1.1
 - Generated golang 2019-03-07 for Cloudauth.
 

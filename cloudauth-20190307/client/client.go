@@ -1324,6 +1324,182 @@ func (s *DescribeOssUploadTokenResponse) SetBody(v *DescribeOssUploadTokenRespon
 	return s
 }
 
+type DescribeSmartStatisticsPageListRequest struct {
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s DescribeSmartStatisticsPageListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmartStatisticsPageListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetCurrentPage(v string) *DescribeSmartStatisticsPageListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetEndDate(v string) *DescribeSmartStatisticsPageListRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetPageSize(v string) *DescribeSmartStatisticsPageListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetSceneId(v string) *DescribeSmartStatisticsPageListRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetServiceCode(v string) *DescribeSmartStatisticsPageListRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListRequest) SetStartDate(v string) *DescribeSmartStatisticsPageListRequest {
+	s.StartDate = &v
+	return s
+}
+
+type DescribeSmartStatisticsPageListResponseBody struct {
+	CurrentPage *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Items       []*DescribeSmartStatisticsPageListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPage   *int32                                              `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeSmartStatisticsPageListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmartStatisticsPageListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetCurrentPage(v int32) *DescribeSmartStatisticsPageListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetItems(v []*DescribeSmartStatisticsPageListResponseBodyItems) *DescribeSmartStatisticsPageListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetPageSize(v int32) *DescribeSmartStatisticsPageListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetRequestId(v string) *DescribeSmartStatisticsPageListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetTotalCount(v int32) *DescribeSmartStatisticsPageListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBody) SetTotalPage(v int32) *DescribeSmartStatisticsPageListResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeSmartStatisticsPageListResponseBodyItems struct {
+	Date         *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	PassRate     *string `json:"PassRate,omitempty" xml:"PassRate,omitempty"`
+	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName    *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	SuccessCount *int32  `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSmartStatisticsPageListResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmartStatisticsPageListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetDate(v string) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.Date = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetPassRate(v string) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.PassRate = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetProductCode(v string) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetSceneId(v int64) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.SceneId = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetSceneName(v string) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.SceneName = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetSuccessCount(v int32) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.SuccessCount = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponseBodyItems) SetTotalCount(v int32) *DescribeSmartStatisticsPageListResponseBodyItems {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSmartStatisticsPageListResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSmartStatisticsPageListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSmartStatisticsPageListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSmartStatisticsPageListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSmartStatisticsPageListResponse) SetHeaders(v map[string]*string) *DescribeSmartStatisticsPageListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponse) SetStatusCode(v int32) *DescribeSmartStatisticsPageListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSmartStatisticsPageListResponse) SetBody(v *DescribeSmartStatisticsPageListResponseBody) *DescribeSmartStatisticsPageListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVerifyResultRequest struct {
 	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
@@ -4057,6 +4233,70 @@ func (client *Client) DescribeOssUploadToken() (_result *DescribeOssUploadTokenR
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOssUploadTokenResponse{}
 	_body, _err := client.DescribeOssUploadTokenWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSmartStatisticsPageListWithOptions(request *DescribeSmartStatisticsPageListRequest, runtime *util.RuntimeOptions) (_result *DescribeSmartStatisticsPageListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		query["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSmartStatisticsPageList"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSmartStatisticsPageListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSmartStatisticsPageList(request *DescribeSmartStatisticsPageListRequest) (_result *DescribeSmartStatisticsPageListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSmartStatisticsPageListResponse{}
+	_body, _err := client.DescribeSmartStatisticsPageListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
