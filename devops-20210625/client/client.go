@@ -16908,6 +16908,7 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	Creator                *string                                            `json:"creator,omitempty" xml:"creator,omitempty"`
 	CustomFields           []*GetWorkItemInfoResponseBodyWorkitemCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
 	Document               *string                                            `json:"document,omitempty" xml:"document,omitempty"`
+	FinishTime             *int64                                             `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
 	GmtCreate              *int64                                             `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *int64                                             `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	Identifier             *string                                            `json:"identifier,omitempty" xml:"identifier,omitempty"`
@@ -16961,6 +16962,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetCustomFields(v []*GetWorkItemIn
 
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetDocument(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.Document = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetFinishTime(v int64) *GetWorkItemInfoResponseBodyWorkitem {
+	s.FinishTime = &v
 	return s
 }
 
@@ -28576,6 +28582,7 @@ type ListWorkitemsResponseBodyWorkitems struct {
 	CategoryIdentifier     *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
 	Creator                *string `json:"creator,omitempty" xml:"creator,omitempty"`
 	Document               *string `json:"document,omitempty" xml:"document,omitempty"`
+	FinishTime             *int64  `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
 	GmtCreate              *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	GmtModified            *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	Identifier             *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
@@ -28620,6 +28627,11 @@ func (s *ListWorkitemsResponseBodyWorkitems) SetCreator(v string) *ListWorkitems
 
 func (s *ListWorkitemsResponseBodyWorkitems) SetDocument(v string) *ListWorkitemsResponseBodyWorkitems {
 	s.Document = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetFinishTime(v int64) *ListWorkitemsResponseBodyWorkitems {
+	s.FinishTime = &v
 	return s
 }
 
