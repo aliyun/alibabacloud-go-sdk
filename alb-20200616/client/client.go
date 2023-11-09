@@ -2407,7 +2407,8 @@ type CreateRuleRequestRuleActions struct {
 	// The redirect configuration.
 	//
 	// > When you configure the **RedirectConfig** action, you can use the default value only for the **httpCode** parameter. Do not use the default values for the other parameters.
-	RedirectConfig *CreateRuleRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RedirectConfig     *CreateRuleRequestRuleActionsRedirectConfig     `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RemoveHeaderConfig *CreateRuleRequestRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The rewrite configuration.
 	//
 	// > If multiple actions are configured within a forwarding rule, you must set **RewriteConfig** to the value of **ForwardGroup**.
@@ -2470,6 +2471,11 @@ func (s *CreateRuleRequestRuleActions) SetOrder(v int32) *CreateRuleRequestRuleA
 
 func (s *CreateRuleRequestRuleActions) SetRedirectConfig(v *CreateRuleRequestRuleActionsRedirectConfig) *CreateRuleRequestRuleActions {
 	s.RedirectConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActions) SetRemoveHeaderConfig(v *CreateRuleRequestRuleActionsRemoveHeaderConfig) *CreateRuleRequestRuleActions {
+	s.RemoveHeaderConfig = v
 	return s
 }
 
@@ -2801,6 +2807,23 @@ func (s *CreateRuleRequestRuleActionsRedirectConfig) SetQuery(v string) *CreateR
 	return s
 }
 
+type CreateRuleRequestRuleActionsRemoveHeaderConfig struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s CreateRuleRequestRuleActionsRemoveHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleActionsRemoveHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleActionsRemoveHeaderConfig) SetKey(v string) *CreateRuleRequestRuleActionsRemoveHeaderConfig {
+	s.Key = &v
+	return s
+}
+
 type CreateRuleRequestRuleActionsRewriteConfig struct {
 	// The hostname to which requests are redirected. Valid values:
 	//
@@ -2959,7 +2982,9 @@ type CreateRuleRequestRuleConditions struct {
 	// The configurations of the URLs.
 	PathConfig *CreateRuleRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The configurations of the query strings.
-	QueryStringConfig *CreateRuleRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	QueryStringConfig        *CreateRuleRequestRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	ResponseHeaderConfig     *CreateRuleRequestRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	ResponseStatusCodeConfig *CreateRuleRequestRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
 	// The configuration of the source IP-based forwarding rule. This parameter is required and takes effect only when **Type** is set to **SourceIP**.
 	SourceIpConfig *CreateRuleRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of forwarding rule. Valid values:
@@ -3009,6 +3034,16 @@ func (s *CreateRuleRequestRuleConditions) SetPathConfig(v *CreateRuleRequestRule
 
 func (s *CreateRuleRequestRuleConditions) SetQueryStringConfig(v *CreateRuleRequestRuleConditionsQueryStringConfig) *CreateRuleRequestRuleConditions {
 	s.QueryStringConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleConditions) SetResponseHeaderConfig(v *CreateRuleRequestRuleConditionsResponseHeaderConfig) *CreateRuleRequestRuleConditions {
+	s.ResponseHeaderConfig = v
+	return s
+}
+
+func (s *CreateRuleRequestRuleConditions) SetResponseStatusCodeConfig(v *CreateRuleRequestRuleConditionsResponseStatusCodeConfig) *CreateRuleRequestRuleConditions {
+	s.ResponseStatusCodeConfig = v
 	return s
 }
 
@@ -3202,6 +3237,46 @@ func (s *CreateRuleRequestRuleConditionsQueryStringConfigValues) SetKey(v string
 
 func (s *CreateRuleRequestRuleConditionsQueryStringConfigValues) SetValue(v string) *CreateRuleRequestRuleConditionsQueryStringConfigValues {
 	s.Value = &v
+	return s
+}
+
+type CreateRuleRequestRuleConditionsResponseHeaderConfig struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRuleRequestRuleConditionsResponseHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleConditionsResponseHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleConditionsResponseHeaderConfig) SetKey(v string) *CreateRuleRequestRuleConditionsResponseHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateRuleRequestRuleConditionsResponseHeaderConfig) SetValues(v []*string) *CreateRuleRequestRuleConditionsResponseHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type CreateRuleRequestRuleConditionsResponseStatusCodeConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRuleRequestRuleConditionsResponseStatusCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRuleRequestRuleConditionsResponseStatusCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRuleRequestRuleConditionsResponseStatusCodeConfig) SetValues(v []*string) *CreateRuleRequestRuleConditionsResponseStatusCodeConfig {
+	s.Values = v
 	return s
 }
 
@@ -3419,6 +3494,7 @@ type CreateRulesRequestRulesRuleActions struct {
 	// *   You can also enter a port number. Valid values: **1 to 63335**.
 	Order               *int32                                                 `json:"Order,omitempty" xml:"Order,omitempty"`
 	RedirectConfig      *CreateRulesRequestRulesRuleActionsRedirectConfig      `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RemoveHeaderConfig  *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig  `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	RewriteConfig       *CreateRulesRequestRulesRuleActionsRewriteConfig       `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
 	TrafficLimitConfig  *CreateRulesRequestRulesRuleActionsTrafficLimitConfig  `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
 	TrafficMirrorConfig *CreateRulesRequestRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
@@ -3461,6 +3537,11 @@ func (s *CreateRulesRequestRulesRuleActions) SetOrder(v int32) *CreateRulesReque
 
 func (s *CreateRulesRequestRulesRuleActions) SetRedirectConfig(v *CreateRulesRequestRulesRuleActionsRedirectConfig) *CreateRulesRequestRulesRuleActions {
 	s.RedirectConfig = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActions) SetRemoveHeaderConfig(v *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) *CreateRulesRequestRulesRuleActions {
+	s.RemoveHeaderConfig = v
 	return s
 }
 
@@ -3821,6 +3902,23 @@ func (s *CreateRulesRequestRulesRuleActionsRedirectConfig) SetQuery(v string) *C
 	return s
 }
 
+type CreateRulesRequestRulesRuleActionsRemoveHeaderConfig struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig) SetKey(v string) *CreateRulesRequestRulesRuleActionsRemoveHeaderConfig {
+	s.Key = &v
+	return s
+}
+
 type CreateRulesRequestRulesRuleActionsRewriteConfig struct {
 	// Queries per second (QPS). Valid values: **1 to 100000**.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
@@ -3954,14 +4052,15 @@ func (s *CreateRulesRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigS
 }
 
 type CreateRulesRequestRulesRuleConditions struct {
-	CookieConfig         *CreateRulesRequestRulesRuleConditionsCookieConfig         `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
-	HeaderConfig         *CreateRulesRequestRulesRuleConditionsHeaderConfig         `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
-	HostConfig           *CreateRulesRequestRulesRuleConditionsHostConfig           `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	MethodConfig         *CreateRulesRequestRulesRuleConditionsMethodConfig         `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
-	PathConfig           *CreateRulesRequestRulesRuleConditionsPathConfig           `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	QueryStringConfig    *CreateRulesRequestRulesRuleConditionsQueryStringConfig    `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
-	ResponseHeaderConfig *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
-	SourceIpConfig       *CreateRulesRequestRulesRuleConditionsSourceIpConfig       `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
+	CookieConfig             *CreateRulesRequestRulesRuleConditionsCookieConfig             `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	HeaderConfig             *CreateRulesRequestRulesRuleConditionsHeaderConfig             `json:"HeaderConfig,omitempty" xml:"HeaderConfig,omitempty" type:"Struct"`
+	HostConfig               *CreateRulesRequestRulesRuleConditionsHostConfig               `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	MethodConfig             *CreateRulesRequestRulesRuleConditionsMethodConfig             `json:"MethodConfig,omitempty" xml:"MethodConfig,omitempty" type:"Struct"`
+	PathConfig               *CreateRulesRequestRulesRuleConditionsPathConfig               `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	QueryStringConfig        *CreateRulesRequestRulesRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	ResponseHeaderConfig     *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	ResponseStatusCodeConfig *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
+	SourceIpConfig           *CreateRulesRequestRulesRuleConditionsSourceIpConfig           `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The ID of the asynchronous task.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4006,6 +4105,11 @@ func (s *CreateRulesRequestRulesRuleConditions) SetQueryStringConfig(v *CreateRu
 
 func (s *CreateRulesRequestRulesRuleConditions) SetResponseHeaderConfig(v *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) *CreateRulesRequestRulesRuleConditions {
 	s.ResponseHeaderConfig = v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleConditions) SetResponseStatusCodeConfig(v *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig) *CreateRulesRequestRulesRuleConditions {
+	s.ResponseStatusCodeConfig = v
 	return s
 }
 
@@ -4220,6 +4324,23 @@ func (s *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) SetKey(v str
 }
 
 func (s *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig) SetValues(v []*string) *CreateRulesRequestRulesRuleConditionsResponseHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig) SetValues(v []*string) *CreateRulesRequestRulesRuleConditionsResponseStatusCodeConfig {
 	s.Values = v
 	return s
 }
@@ -17108,7 +17229,8 @@ type UpdateRuleAttributeRequestRuleActions struct {
 	// The priority of the action. Valid values: **1 to 50000**. A lower value indicates a higher priority. The actions of a forwarding rule are applied in descending order of priority. This parameter is required. The priority of each action within a forwarding rule must be unique. You can specify priorities for at most 20 actions.
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
 	// The configuration of the redirection. You can specify at most 20 rewrites.
-	RedirectConfig *UpdateRuleAttributeRequestRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RedirectConfig     *UpdateRuleAttributeRequestRuleActionsRedirectConfig     `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
+	RemoveHeaderConfig *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig `json:"RemoveHeaderConfig,omitempty" xml:"RemoveHeaderConfig,omitempty" type:"Struct"`
 	// The configuration of the rewrite action.
 	RewriteConfig *UpdateRuleAttributeRequestRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
 	// The action to throttle traffic.
@@ -17169,6 +17291,11 @@ func (s *UpdateRuleAttributeRequestRuleActions) SetOrder(v int32) *UpdateRuleAtt
 
 func (s *UpdateRuleAttributeRequestRuleActions) SetRedirectConfig(v *UpdateRuleAttributeRequestRuleActionsRedirectConfig) *UpdateRuleAttributeRequestRuleActions {
 	s.RedirectConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActions) SetRemoveHeaderConfig(v *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig) *UpdateRuleAttributeRequestRuleActions {
+	s.RemoveHeaderConfig = v
 	return s
 }
 
@@ -17366,6 +17493,7 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuple
 }
 
 type UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig struct {
+	CoverEnabled *bool `json:"CoverEnabled,omitempty" xml:"CoverEnabled,omitempty"`
 	// The key of the header. The key must be 1 to 40 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The header key specified by **InsertHeaderConfig** must be unique.
 	//
 	// > You cannot specify the following header keys (case-insensitive): `slb-id`, `slb-ip`, `x-forwarded-for`, `x-forwarded-proto`, `x-forwarded-eip`, `x-forwarded-port`, `x-forwarded-client-srcport`, `connection`, `upgrade`, `content-length`, `transfer-encoding`, `keep-alive`, `te`, `host`, `cookie`, `remoteip`, and `authority`.
@@ -17398,6 +17526,11 @@ func (s UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) String() string
 
 func (s UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) SetCoverEnabled(v bool) *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig {
+	s.CoverEnabled = &v
+	return s
 }
 
 func (s *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig) SetKey(v string) *UpdateRuleAttributeRequestRuleActionsInsertHeaderConfig {
@@ -17497,6 +17630,23 @@ func (s *UpdateRuleAttributeRequestRuleActionsRedirectConfig) SetProtocol(v stri
 
 func (s *UpdateRuleAttributeRequestRuleActionsRedirectConfig) SetQuery(v string) *UpdateRuleAttributeRequestRuleActionsRedirectConfig {
 	s.Query = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig) SetKey(v string) *UpdateRuleAttributeRequestRuleActionsRemoveHeaderConfig {
+	s.Key = &v
 	return s
 }
 
@@ -17658,7 +17808,9 @@ type UpdateRuleAttributeRequestRuleConditions struct {
 	// The configurations of the URLs.
 	PathConfig *UpdateRuleAttributeRequestRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// The configurations of the query strings. You can specify at most 20 query conditions.
-	QueryStringConfig *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	QueryStringConfig        *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig        `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	ResponseHeaderConfig     *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig     `json:"ResponseHeaderConfig,omitempty" xml:"ResponseHeaderConfig,omitempty" type:"Struct"`
+	ResponseStatusCodeConfig *UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig `json:"ResponseStatusCodeConfig,omitempty" xml:"ResponseStatusCodeConfig,omitempty" type:"Struct"`
 	// The configuration of the source IP-based forwarding rule. You can add at most five source IP-based forwarding rules.
 	SourceIpConfig *UpdateRuleAttributeRequestRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// The type of the forwarding rule. You can specify at most seven types. Valid values:
@@ -17708,6 +17860,16 @@ func (s *UpdateRuleAttributeRequestRuleConditions) SetPathConfig(v *UpdateRuleAt
 
 func (s *UpdateRuleAttributeRequestRuleConditions) SetQueryStringConfig(v *UpdateRuleAttributeRequestRuleConditionsQueryStringConfig) *UpdateRuleAttributeRequestRuleConditions {
 	s.QueryStringConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditions) SetResponseHeaderConfig(v *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig) *UpdateRuleAttributeRequestRuleConditions {
+	s.ResponseHeaderConfig = v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditions) SetResponseStatusCodeConfig(v *UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig) *UpdateRuleAttributeRequestRuleConditions {
+	s.ResponseStatusCodeConfig = v
 	return s
 }
 
@@ -17883,6 +18045,46 @@ func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetKey
 
 func (s *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues) SetValue(v string) *UpdateRuleAttributeRequestRuleConditionsQueryStringConfigValues {
 	s.Value = &v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig) SetKey(v string) *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig) SetValues(v []*string) *UpdateRuleAttributeRequestRuleConditionsResponseHeaderConfig {
+	s.Values = v
+	return s
+}
+
+type UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig struct {
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig) SetValues(v []*string) *UpdateRuleAttributeRequestRuleConditionsResponseStatusCodeConfig {
+	s.Values = v
 	return s
 }
 
