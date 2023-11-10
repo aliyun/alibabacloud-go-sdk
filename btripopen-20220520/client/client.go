@@ -46889,6 +46889,703 @@ func (s *IeFlightBillSettlementQueryResponse) SetBody(v *IeFlightBillSettlementQ
 	return s
 }
 
+type IeHotelBillSettlementQueryHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s IeHotelBillSettlementQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryHeaders) SetCommonHeaders(v map[string]*string) *IeHotelBillSettlementQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryHeaders) SetXAcsBtripSoCorpToken(v string) *IeHotelBillSettlementQueryHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type IeHotelBillSettlementQueryRequest struct {
+	Category    *int32  `json:"category,omitempty" xml:"category,omitempty"`
+	PageNo      *int32  `json:"page_no,omitempty" xml:"page_no,omitempty"`
+	PageSize    *int32  `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	PeriodEnd   *string `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string `json:"period_start,omitempty" xml:"period_start,omitempty"`
+}
+
+func (s IeHotelBillSettlementQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetCategory(v int32) *IeHotelBillSettlementQueryRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetPageNo(v int32) *IeHotelBillSettlementQueryRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetPageSize(v int32) *IeHotelBillSettlementQueryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetPeriodEnd(v string) *IeHotelBillSettlementQueryRequest {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryRequest) SetPeriodStart(v string) *IeHotelBillSettlementQueryRequest {
+	s.PeriodStart = &v
+	return s
+}
+
+type IeHotelBillSettlementQueryResponseBody struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module    *IeHotelBillSettlementQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	RequestId *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+	TraceId   *string                                       `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s IeHotelBillSettlementQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetCode(v string) *IeHotelBillSettlementQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetMessage(v string) *IeHotelBillSettlementQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetModule(v *IeHotelBillSettlementQueryResponseBodyModule) *IeHotelBillSettlementQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetRequestId(v string) *IeHotelBillSettlementQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetSuccess(v bool) *IeHotelBillSettlementQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBody) SetTraceId(v string) *IeHotelBillSettlementQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type IeHotelBillSettlementQueryResponseBodyModule struct {
+	Category    *int32                                                  `json:"category,omitempty" xml:"category,omitempty"`
+	CorpId      *string                                                 `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	DataList    []*IeHotelBillSettlementQueryResponseBodyModuleDataList `json:"data_list,omitempty" xml:"data_list,omitempty" type:"Repeated"`
+	OrderId     *string                                                 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	PeriodEnd   *string                                                 `json:"period_end,omitempty" xml:"period_end,omitempty"`
+	PeriodStart *string                                                 `json:"period_start,omitempty" xml:"period_start,omitempty"`
+	TotalSize   *int64                                                  `json:"total_size,omitempty" xml:"total_size,omitempty"`
+}
+
+func (s IeHotelBillSettlementQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetCategory(v int32) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.Category = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetCorpId(v string) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetDataList(v []*IeHotelBillSettlementQueryResponseBodyModuleDataList) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.DataList = v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetOrderId(v string) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetPeriodEnd(v string) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.PeriodEnd = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetPeriodStart(v string) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.PeriodStart = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModule) SetTotalSize(v int64) *IeHotelBillSettlementQueryResponseBodyModule {
+	s.TotalSize = &v
+	return s
+}
+
+type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
+	AlipayTradeNo          *string  `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
+	AmountCurrency         *string  `json:"amount_currency,omitempty" xml:"amount_currency,omitempty"`
+	ApplyArrCityCode       *string  `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
+	ApplyArrCityName       *string  `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
+	ApplyDepCityCode       *string  `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
+	ApplyDepCityName       *string  `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
+	ApplyExtendField       *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId                *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	AverageNights          *float64 `json:"average_nights,omitempty" xml:"average_nights,omitempty"`
+	BillRecordTime         *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookReason             *string  `json:"book_reason,omitempty" xml:"book_reason,omitempty"`
+	BookTime               *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId               *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo            *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName             *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BrandGroup             *string  `json:"brand_group,omitempty" xml:"brand_group,omitempty"`
+	BrandName              *string  `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
+	BusinessExpense        *int64   `json:"business_expense,omitempty" xml:"business_expense,omitempty"`
+	BusinessTripResult     *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
+	CapitalDirection       *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment      *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	CheckInDate            *string  `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	CheckoutDate           *string  `json:"checkout_date,omitempty" xml:"checkout_date,omitempty"`
+	City                   *string  `json:"city,omitempty" xml:"city,omitempty"`
+	CityCode               *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CorpRefundFee          *float64 `json:"corp_refund_fee,omitempty" xml:"corp_refund_fee,omitempty"`
+	CorpTotalFee           *float64 `json:"corp_total_fee,omitempty" xml:"corp_total_fee,omitempty"`
+	CostCenter             *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber       *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Country                *string  `json:"country,omitempty" xml:"country,omitempty"`
+	CountryCode            *string  `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	Department             *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId           *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	ExceedReason           *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	FeeType                *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	Fines                  *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	ForeignBusinessExpense *int64   `json:"foreign_business_expense,omitempty" xml:"foreign_business_expense,omitempty"`
+	HotelName              *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	HotelStar              *string  `json:"hotel_star,omitempty" xml:"hotel_star,omitempty"`
+	Index                  *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InvoiceTitle           *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IsEarlyDeparture       *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
+	IsNegotiation          *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
+	IsShareStr             *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	MainApplyId            *string  `json:"main_apply_id,omitempty" xml:"main_apply_id,omitempty"`
+	Nights                 *int32   `json:"nights,omitempty" xml:"nights,omitempty"`
+	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderPrice             *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	OrderType              *string  `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PersonRefundFee        *float64 `json:"person_refund_fee,omitempty" xml:"person_refund_fee,omitempty"`
+	PersonSettlePrice      *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
+	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	PromotionFee           *float64 `json:"promotion_fee,omitempty" xml:"promotion_fee,omitempty"`
+	Rate                   *string  `json:"rate,omitempty" xml:"rate,omitempty"`
+	Remark                 *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReserveRule            *int32   `json:"reserve_rule,omitempty" xml:"reserve_rule,omitempty"`
+	RoomNo                 *string  `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	RoomNumber             *int32   `json:"room_number,omitempty" xml:"room_number,omitempty"`
+	RoomPrice              *float64 `json:"room_price,omitempty" xml:"room_price,omitempty"`
+	RoomType               *string  `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	ServiceFee             *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee          *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee     *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime         *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType         *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Status                 *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	SubOrderId             *string  `json:"sub_order_id,omitempty" xml:"sub_order_id,omitempty"`
+	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
+	ThirdInvoiceId         *string  `json:"third_invoice_id,omitempty" xml:"third_invoice_id,omitempty"`
+	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
+	ThirdPartBusinessId    *string  `json:"third_part_business_id,omitempty" xml:"third_part_business_id,omitempty"`
+	ThirdpartApplyId       *string  `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	TotalNights            *int32   `json:"total_nights,omitempty" xml:"total_nights,omitempty"`
+	TravelerId             *string  `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerJobNo          *string  `json:"traveler_job_no,omitempty" xml:"traveler_job_no,omitempty"`
+	TravelerMemberType     *string  `json:"traveler_member_type,omitempty" xml:"traveler_member_type,omitempty"`
+	TravelerName           *string  `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	VoucherType            *int32   `json:"voucher_type,omitempty" xml:"voucher_type,omitempty"`
+}
+
+func (s IeHotelBillSettlementQueryResponseBodyModuleDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryResponseBodyModuleDataList) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.AlipayTradeNo = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetAmountCurrency(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.AmountCurrency = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityCode(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyArrCityName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyArrCityName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityCode(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyDepCityName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyDepCityName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyExtendField(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyExtendField = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetAverageNights(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.AverageNights = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBillRecordTime(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BillRecordTime = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBookReason(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BookReason = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBookTime(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BookTime = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBookerId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBookerJobNo(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerJobNo = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBookerName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BookerName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBrandGroup(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BrandGroup = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBrandName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BrandName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBusinessExpense(v int64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BusinessExpense = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetBusinessTripResult(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.BusinessTripResult = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCapitalDirection(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CapitalDirection = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCascadeDepartment(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CascadeDepartment = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCheckInDate(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CheckInDate = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCheckoutDate(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CheckoutDate = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCity(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.City = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCityCode(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CityCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCorpRefundFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CorpRefundFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCorpTotalFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CorpTotalFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCostCenter(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CostCenter = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCostCenterNumber(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CostCenterNumber = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCountry(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Country = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetCountryCode(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetDepartment(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Department = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetDepartmentId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetExceedReason(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ExceedReason = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetFeeType(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.FeeType = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetFines(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Fines = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetForeignBusinessExpense(v int64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ForeignBusinessExpense = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetHotelName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.HotelName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetHotelStar(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.HotelStar = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Index = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetInvoiceTitle(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIsEarlyDeparture(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.IsEarlyDeparture = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIsNegotiation(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.IsNegotiation = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetIsShareStr(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.IsShareStr = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetMainApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.MainApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetNights(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Nights = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOrderId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOrderPrice(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderPrice = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOrderStatusDesc(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOrderType(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.OrderType = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.OverApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPersonRefundFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PersonRefundFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPersonSettlePrice(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PersonSettlePrice = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPrimaryId(v int64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PrimaryId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetProjectCode(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetProjectName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPromotionFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PromotionFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRate(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Rate = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRemark(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Remark = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetReserveRule(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ReserveRule = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRoomNo(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.RoomNo = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRoomNumber(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.RoomNumber = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRoomPrice(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.RoomPrice = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetRoomType(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.RoomType = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetServiceFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ServiceFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementGrantFee(v float64) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementGrantFee = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementTime(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementTime = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.SettlementType = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetStatus(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetSubOrderId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.SubOrderId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTaxRate(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TaxRate = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetThirdInvoiceId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdInvoiceId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetThirdItineraryId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdItineraryId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetThirdPartBusinessId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdPartBusinessId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetThirdpartApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTotalNights(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TotalNights = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerJobNo(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerJobNo = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerMemberType(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerMemberType = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetTravelerName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.TravelerName = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetVoucherType(v int32) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.VoucherType = &v
+	return s
+}
+
+type IeHotelBillSettlementQueryResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *IeHotelBillSettlementQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s IeHotelBillSettlementQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IeHotelBillSettlementQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *IeHotelBillSettlementQueryResponse) SetHeaders(v map[string]*string) *IeHotelBillSettlementQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponse) SetStatusCode(v int32) *IeHotelBillSettlementQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponse) SetBody(v *IeHotelBillSettlementQueryResponseBody) *IeHotelBillSettlementQueryResponse {
+	s.Body = v
+	return s
+}
+
 type InsInvoiceScanQueryHeaders struct {
 	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripSoCorpToken *string            `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
@@ -68174,6 +68871,77 @@ func (client *Client) IeFlightBillSettlementQuery(request *IeFlightBillSettlemen
 	headers := &IeFlightBillSettlementQueryHeaders{}
 	_result = &IeFlightBillSettlementQueryResponse{}
 	_body, _err := client.IeFlightBillSettlementQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) IeHotelBillSettlementQueryWithOptions(request *IeHotelBillSettlementQueryRequest, headers *IeHotelBillSettlementQueryHeaders, runtime *util.RuntimeOptions) (_result *IeHotelBillSettlementQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["page_no"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodEnd)) {
+		query["period_end"] = request.PeriodEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodStart)) {
+		query["period_start"] = request.PeriodStart
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("IeHotelBillSettlementQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ie-hotel/v1/bill-settlement"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &IeHotelBillSettlementQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) IeHotelBillSettlementQuery(request *IeHotelBillSettlementQueryRequest) (_result *IeHotelBillSettlementQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &IeHotelBillSettlementQueryHeaders{}
+	_result = &IeHotelBillSettlementQueryResponse{}
+	_body, _err := client.IeHotelBillSettlementQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
