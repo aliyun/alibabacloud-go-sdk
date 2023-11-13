@@ -12,6 +12,150 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateSavedQueryRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateSavedQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavedQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavedQueryRequest) SetDescription(v string) *CreateSavedQueryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSavedQueryRequest) SetExpression(v string) *CreateSavedQueryRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *CreateSavedQueryRequest) SetName(v string) *CreateSavedQueryRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateSavedQueryResponseBody struct {
+	QueryId   *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSavedQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavedQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavedQueryResponseBody) SetQueryId(v string) *CreateSavedQueryResponseBody {
+	s.QueryId = &v
+	return s
+}
+
+func (s *CreateSavedQueryResponseBody) SetRequestId(v string) *CreateSavedQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSavedQueryResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSavedQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSavedQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSavedQueryResponse) SetHeaders(v map[string]*string) *CreateSavedQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSavedQueryResponse) SetStatusCode(v int32) *CreateSavedQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *CreateSavedQueryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSavedQueryRequest struct {
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s DeleteSavedQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSavedQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSavedQueryRequest) SetQueryId(v string) *DeleteSavedQueryRequest {
+	s.QueryId = &v
+	return s
+}
+
+type DeleteSavedQueryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSavedQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSavedQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSavedQueryResponseBody) SetRequestId(v string) *DeleteSavedQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSavedQueryResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSavedQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSavedQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSavedQueryResponse) SetHeaders(v map[string]*string) *DeleteSavedQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSavedQueryResponse) SetStatusCode(v int32) *DeleteSavedQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSavedQueryResponse) SetBody(v *DeleteSavedQueryResponseBody) *DeleteSavedQueryResponse {
+	s.Body = v
+	return s
+}
+
 type DisableMultiAccountResourceCenterResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -216,6 +360,318 @@ func (s *EnableResourceCenterResponse) SetStatusCode(v int32) *EnableResourceCen
 }
 
 func (s *EnableResourceCenterResponse) SetBody(v *EnableResourceCenterResponseBody) *EnableResourceCenterResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteMultiAccountSQLQueryRequest struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ExecuteMultiAccountSQLQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteMultiAccountSQLQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteMultiAccountSQLQueryRequest) SetExpression(v string) *ExecuteMultiAccountSQLQueryRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryRequest) SetScope(v string) *ExecuteMultiAccountSQLQueryRequest {
+	s.Scope = &v
+	return s
+}
+
+type ExecuteMultiAccountSQLQueryResponseBody struct {
+	Columns   []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rows      []interface{}                                     `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteMultiAccountSQLQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteMultiAccountSQLQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBody) SetColumns(v []*ExecuteMultiAccountSQLQueryResponseBodyColumns) *ExecuteMultiAccountSQLQueryResponseBody {
+	s.Columns = v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBody) SetRequestId(v string) *ExecuteMultiAccountSQLQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBody) SetRows(v []interface{}) *ExecuteMultiAccountSQLQueryResponseBody {
+	s.Rows = v
+	return s
+}
+
+type ExecuteMultiAccountSQLQueryResponseBodyColumns struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ExecuteMultiAccountSQLQueryResponseBodyColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteMultiAccountSQLQueryResponseBodyColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBodyColumns) SetName(v string) *ExecuteMultiAccountSQLQueryResponseBodyColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponseBodyColumns) SetType(v string) *ExecuteMultiAccountSQLQueryResponseBodyColumns {
+	s.Type = &v
+	return s
+}
+
+type ExecuteMultiAccountSQLQueryResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteMultiAccountSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteMultiAccountSQLQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteMultiAccountSQLQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetHeaders(v map[string]*string) *ExecuteMultiAccountSQLQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetStatusCode(v int32) *ExecuteMultiAccountSQLQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteMultiAccountSQLQueryResponse) SetBody(v *ExecuteMultiAccountSQLQueryResponseBody) *ExecuteMultiAccountSQLQueryResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteSQLQueryRequest struct {
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ExecuteSQLQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSQLQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSQLQueryRequest) SetExpression(v string) *ExecuteSQLQueryRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryRequest) SetScope(v string) *ExecuteSQLQueryRequest {
+	s.Scope = &v
+	return s
+}
+
+type ExecuteSQLQueryResponseBody struct {
+	Columns   []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rows      []interface{}                         `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteSQLQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSQLQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSQLQueryResponseBody) SetColumns(v []*ExecuteSQLQueryResponseBodyColumns) *ExecuteSQLQueryResponseBody {
+	s.Columns = v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponseBody) SetRequestId(v string) *ExecuteSQLQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponseBody) SetRows(v []interface{}) *ExecuteSQLQueryResponseBody {
+	s.Rows = v
+	return s
+}
+
+type ExecuteSQLQueryResponseBodyColumns struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ExecuteSQLQueryResponseBodyColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSQLQueryResponseBodyColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSQLQueryResponseBodyColumns) SetName(v string) *ExecuteSQLQueryResponseBodyColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponseBodyColumns) SetType(v string) *ExecuteSQLQueryResponseBodyColumns {
+	s.Type = &v
+	return s
+}
+
+type ExecuteSQLQueryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteSQLQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecuteSQLQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSQLQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSQLQueryResponse) SetHeaders(v map[string]*string) *ExecuteSQLQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponse) SetStatusCode(v int32) *ExecuteSQLQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSQLQueryResponse) SetBody(v *ExecuteSQLQueryResponseBody) *ExecuteSQLQueryResponse {
+	s.Body = v
+	return s
+}
+
+type GetExampleQueryRequest struct {
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s GetExampleQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExampleQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetExampleQueryRequest) SetQueryId(v string) *GetExampleQueryRequest {
+	s.QueryId = &v
+	return s
+}
+
+type GetExampleQueryResponseBody struct {
+	ExampleQuery *GetExampleQueryResponseBodyExampleQuery `json:"ExampleQuery,omitempty" xml:"ExampleQuery,omitempty" type:"Struct"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetExampleQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExampleQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetExampleQueryResponseBody) SetExampleQuery(v *GetExampleQueryResponseBodyExampleQuery) *GetExampleQueryResponseBody {
+	s.ExampleQuery = v
+	return s
+}
+
+func (s *GetExampleQueryResponseBody) SetRequestId(v string) *GetExampleQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetExampleQueryResponseBodyExampleQuery struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s GetExampleQueryResponseBodyExampleQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExampleQueryResponseBodyExampleQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GetExampleQueryResponseBodyExampleQuery) SetDescription(v string) *GetExampleQueryResponseBodyExampleQuery {
+	s.Description = &v
+	return s
+}
+
+func (s *GetExampleQueryResponseBodyExampleQuery) SetExpression(v string) *GetExampleQueryResponseBodyExampleQuery {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetExampleQueryResponseBodyExampleQuery) SetName(v string) *GetExampleQueryResponseBodyExampleQuery {
+	s.Name = &v
+	return s
+}
+
+func (s *GetExampleQueryResponseBodyExampleQuery) SetQueryId(v string) *GetExampleQueryResponseBodyExampleQuery {
+	s.QueryId = &v
+	return s
+}
+
+type GetExampleQueryResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetExampleQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetExampleQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExampleQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExampleQueryResponse) SetHeaders(v map[string]*string) *GetExampleQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExampleQueryResponse) SetStatusCode(v int32) *GetExampleQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetExampleQueryResponse) SetBody(v *GetExampleQueryResponseBody) *GetExampleQueryResponse {
 	s.Body = v
 	return s
 }
@@ -912,6 +1368,238 @@ func (s *GetResourceCountsResponse) SetBody(v *GetResourceCountsResponseBody) *G
 	return s
 }
 
+type GetSavedQueryRequest struct {
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s GetSavedQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavedQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavedQueryRequest) SetQueryId(v string) *GetSavedQueryRequest {
+	s.QueryId = &v
+	return s
+}
+
+type GetSavedQueryResponseBody struct {
+	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SavedQuery *GetSavedQueryResponseBodySavedQuery `json:"SavedQuery,omitempty" xml:"SavedQuery,omitempty" type:"Struct"`
+}
+
+func (s GetSavedQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavedQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavedQueryResponseBody) SetRequestId(v string) *GetSavedQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBody) SetSavedQuery(v *GetSavedQueryResponseBodySavedQuery) *GetSavedQueryResponseBody {
+	s.SavedQuery = v
+	return s
+}
+
+type GetSavedQueryResponseBodySavedQuery struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetSavedQueryResponseBodySavedQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavedQueryResponseBodySavedQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetCreateTime(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetDescription(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetExpression(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetName(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetQueryId(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.QueryId = &v
+	return s
+}
+
+func (s *GetSavedQueryResponseBodySavedQuery) SetUpdateTime(v string) *GetSavedQueryResponseBodySavedQuery {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetSavedQueryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSavedQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavedQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavedQueryResponse) SetHeaders(v map[string]*string) *GetSavedQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSavedQueryResponse) SetStatusCode(v int32) *GetSavedQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSavedQueryResponse) SetBody(v *GetSavedQueryResponseBody) *GetSavedQueryResponse {
+	s.Body = v
+	return s
+}
+
+type ListExampleQueriesRequest struct {
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListExampleQueriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExampleQueriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExampleQueriesRequest) SetMaxResults(v string) *ListExampleQueriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExampleQueriesRequest) SetNextToken(v string) *ListExampleQueriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListExampleQueriesResponseBody struct {
+	ExampleQueries []*ListExampleQueriesResponseBodyExampleQueries `json:"ExampleQueries,omitempty" xml:"ExampleQueries,omitempty" type:"Repeated"`
+	MaxResults     *string                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListExampleQueriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExampleQueriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExampleQueriesResponseBody) SetExampleQueries(v []*ListExampleQueriesResponseBodyExampleQueries) *ListExampleQueriesResponseBody {
+	s.ExampleQueries = v
+	return s
+}
+
+func (s *ListExampleQueriesResponseBody) SetMaxResults(v string) *ListExampleQueriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListExampleQueriesResponseBody) SetNextToken(v string) *ListExampleQueriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListExampleQueriesResponseBody) SetRequestId(v string) *ListExampleQueriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListExampleQueriesResponseBodyExampleQueries struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s ListExampleQueriesResponseBodyExampleQueries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExampleQueriesResponseBodyExampleQueries) GoString() string {
+	return s.String()
+}
+
+func (s *ListExampleQueriesResponseBodyExampleQueries) SetDescription(v string) *ListExampleQueriesResponseBodyExampleQueries {
+	s.Description = &v
+	return s
+}
+
+func (s *ListExampleQueriesResponseBodyExampleQueries) SetName(v string) *ListExampleQueriesResponseBodyExampleQueries {
+	s.Name = &v
+	return s
+}
+
+func (s *ListExampleQueriesResponseBodyExampleQueries) SetQueryId(v string) *ListExampleQueriesResponseBodyExampleQueries {
+	s.QueryId = &v
+	return s
+}
+
+type ListExampleQueriesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListExampleQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListExampleQueriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExampleQueriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExampleQueriesResponse) SetHeaders(v map[string]*string) *ListExampleQueriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExampleQueriesResponse) SetStatusCode(v int32) *ListExampleQueriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExampleQueriesResponse) SetBody(v *ListExampleQueriesResponseBody) *ListExampleQueriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListMultiAccountResourceGroupsRequest struct {
 	// The ID of the management account or member of the resource directory.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
@@ -1450,6 +2138,134 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 	return s
 }
 
+type ListSavedQueriesRequest struct {
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListSavedQueriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSavedQueriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSavedQueriesRequest) SetMaxResults(v string) *ListSavedQueriesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSavedQueriesRequest) SetNextToken(v string) *ListSavedQueriesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListSavedQueriesResponseBody struct {
+	MaxResults   *string                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SavedQueries []*ListSavedQueriesResponseBodySavedQueries `json:"SavedQueries,omitempty" xml:"SavedQueries,omitempty" type:"Repeated"`
+}
+
+func (s ListSavedQueriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSavedQueriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSavedQueriesResponseBody) SetMaxResults(v string) *ListSavedQueriesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBody) SetNextToken(v string) *ListSavedQueriesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBody) SetRequestId(v string) *ListSavedQueriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBody) SetSavedQueries(v []*ListSavedQueriesResponseBodySavedQueries) *ListSavedQueriesResponseBody {
+	s.SavedQueries = v
+	return s
+}
+
+type ListSavedQueriesResponseBodySavedQueries struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListSavedQueriesResponseBodySavedQueries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSavedQueriesResponseBodySavedQueries) GoString() string {
+	return s.String()
+}
+
+func (s *ListSavedQueriesResponseBodySavedQueries) SetCreateTime(v string) *ListSavedQueriesResponseBodySavedQueries {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBodySavedQueries) SetDescription(v string) *ListSavedQueriesResponseBodySavedQueries {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBodySavedQueries) SetName(v string) *ListSavedQueriesResponseBodySavedQueries {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBodySavedQueries) SetQueryId(v string) *ListSavedQueriesResponseBodySavedQueries {
+	s.QueryId = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponseBodySavedQueries) SetUpdateTime(v string) *ListSavedQueriesResponseBodySavedQueries {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListSavedQueriesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSavedQueriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSavedQueriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSavedQueriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSavedQueriesResponse) SetHeaders(v map[string]*string) *ListSavedQueriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSavedQueriesResponse) SetStatusCode(v int32) *ListSavedQueriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSavedQueriesResponse) SetBody(v *ListSavedQueriesResponseBody) *ListSavedQueriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// The matching mode. Valid values:
 	//
@@ -1892,7 +2708,9 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	// The time when the resource was created.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime          *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string                                                                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IpAddressAttributes []*SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -1933,6 +2751,16 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetCreateTime(v strin
 	return s
 }
 
+func (s *SearchMultiAccountResourcesResponseBodyResources) SetExpireTime(v string) *SearchMultiAccountResourcesResponseBodyResources {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *SearchMultiAccountResourcesResponseBodyResources) SetIpAddressAttributes(v []*SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) *SearchMultiAccountResourcesResponseBodyResources {
+	s.IpAddressAttributes = v
+	return s
+}
+
 func (s *SearchMultiAccountResourcesResponseBodyResources) SetIpAddresses(v []*string) *SearchMultiAccountResourcesResponseBodyResources {
 	s.IpAddresses = v
 	return s
@@ -1970,6 +2798,35 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetTags(v []*SearchMu
 
 func (s *SearchMultiAccountResourcesResponseBodyResources) SetZoneId(v string) *SearchMultiAccountResourcesResponseBodyResources {
 	s.ZoneId = &v
+	return s
+}
+
+type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct {
+	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	NetworkType *string   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Version     *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v []*string) *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes {
+	s.IpAddress = v
+	return s
+}
+
+func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) SetNetworkType(v string) *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) SetVersion(v string) *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes {
+	s.Version = &v
 	return s
 }
 
@@ -2030,7 +2887,7 @@ func (s *SearchMultiAccountResourcesResponse) SetBody(v *SearchMultiAccountResou
 type SearchResourcesRequest struct {
 	// The filter conditions.
 	Filter []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100.
 	//
@@ -2227,7 +3084,9 @@ type SearchResourcesResponseBodyResources struct {
 	// The time when the resource was created.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime          *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IpAddressAttributes []*SearchResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -2268,6 +3127,16 @@ func (s *SearchResourcesResponseBodyResources) SetCreateTime(v string) *SearchRe
 	return s
 }
 
+func (s *SearchResourcesResponseBodyResources) SetExpireTime(v string) *SearchResourcesResponseBodyResources {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *SearchResourcesResponseBodyResources) SetIpAddressAttributes(v []*SearchResourcesResponseBodyResourcesIpAddressAttributes) *SearchResourcesResponseBodyResources {
+	s.IpAddressAttributes = v
+	return s
+}
+
 func (s *SearchResourcesResponseBodyResources) SetIpAddresses(v []*string) *SearchResourcesResponseBodyResources {
 	s.IpAddresses = v
 	return s
@@ -2305,6 +3174,35 @@ func (s *SearchResourcesResponseBodyResources) SetTags(v []*SearchResourcesRespo
 
 func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResourcesResponseBodyResources {
 	s.ZoneId = &v
+	return s
+}
+
+type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {
+	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
+	NetworkType *string   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Version     *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s SearchResourcesResponseBodyResourcesIpAddressAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResourcesResponseBodyResourcesIpAddressAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v []*string) *SearchResourcesResponseBodyResourcesIpAddressAttributes {
+	s.IpAddress = v
+	return s
+}
+
+func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetNetworkType(v string) *SearchResourcesResponseBodyResourcesIpAddressAttributes {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetVersion(v string) *SearchResourcesResponseBodyResourcesIpAddressAttributes {
+	s.Version = &v
 	return s
 }
 
@@ -2362,6 +3260,87 @@ func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *Searc
 	return s
 }
 
+type UpdateSavedQueryRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s UpdateSavedQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSavedQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSavedQueryRequest) SetDescription(v string) *UpdateSavedQueryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSavedQueryRequest) SetExpression(v string) *UpdateSavedQueryRequest {
+	s.Expression = &v
+	return s
+}
+
+func (s *UpdateSavedQueryRequest) SetName(v string) *UpdateSavedQueryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSavedQueryRequest) SetQueryId(v string) *UpdateSavedQueryRequest {
+	s.QueryId = &v
+	return s
+}
+
+type UpdateSavedQueryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateSavedQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSavedQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSavedQueryResponseBody) SetRequestId(v string) *UpdateSavedQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateSavedQueryResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSavedQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSavedQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSavedQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSavedQueryResponse) SetHeaders(v map[string]*string) *UpdateSavedQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSavedQueryResponse) SetStatusCode(v int32) *UpdateSavedQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSavedQueryResponse) SetBody(v *UpdateSavedQueryResponseBody) *UpdateSavedQueryResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2402,6 +3381,102 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryRequest, runtime *util.RuntimeOptions) (_result *CreateSavedQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSavedQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_result *CreateSavedQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSavedQueryResponse{}
+	_body, _err := client.CreateSavedQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSavedQueryWithOptions(request *DeleteSavedQueryRequest, runtime *util.RuntimeOptions) (_result *DeleteSavedQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		query["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSavedQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSavedQuery(request *DeleteSavedQueryRequest) (_result *DeleteSavedQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSavedQueryResponse{}
+	_body, _err := client.DeleteSavedQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2546,6 +3621,146 @@ func (client *Client) EnableResourceCenter() (_result *EnableResourceCenterRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableResourceCenterResponse{}
 	_body, _err := client.EnableResourceCenterWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMultiAccountSQLQueryRequest, runtime *util.RuntimeOptions) (_result *ExecuteMultiAccountSQLQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteMultiAccountSQLQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteMultiAccountSQLQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteMultiAccountSQLQuery(request *ExecuteMultiAccountSQLQueryRequest) (_result *ExecuteMultiAccountSQLQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteMultiAccountSQLQueryResponse{}
+	_body, _err := client.ExecuteMultiAccountSQLQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest, runtime *util.RuntimeOptions) (_result *ExecuteSQLQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSQLQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteSQLQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecuteSQLQuery(request *ExecuteSQLQueryRequest) (_result *ExecuteSQLQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteSQLQueryResponse{}
+	_body, _err := client.ExecuteSQLQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetExampleQueryWithOptions(request *GetExampleQueryRequest, runtime *util.RuntimeOptions) (_result *GetExampleQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		query["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExampleQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExampleQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetExampleQuery(request *GetExampleQueryRequest) (_result *GetExampleQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetExampleQueryResponse{}
+	_body, _err := client.GetExampleQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2768,6 +3983,98 @@ func (client *Client) GetResourceCounts(request *GetResourceCountsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceCountsResponse{}
 	_body, _err := client.GetResourceCountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSavedQueryWithOptions(request *GetSavedQueryRequest, runtime *util.RuntimeOptions) (_result *GetSavedQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		query["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSavedQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSavedQuery(request *GetSavedQueryRequest) (_result *GetSavedQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSavedQueryResponse{}
+	_body, _err := client.GetSavedQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListExampleQueriesWithOptions(request *ListExampleQueriesRequest, runtime *util.RuntimeOptions) (_result *ListExampleQueriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExampleQueries"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExampleQueriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListExampleQueries(request *ListExampleQueriesRequest) (_result *ListExampleQueriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExampleQueriesResponse{}
+	_body, _err := client.ListExampleQueriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3007,6 +4314,54 @@ func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListSavedQueriesWithOptions(request *ListSavedQueriesRequest, runtime *util.RuntimeOptions) (_result *ListSavedQueriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSavedQueries"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSavedQueriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSavedQueries(request *ListSavedQueriesRequest) (_result *ListSavedQueriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSavedQueriesResponse{}
+	_body, _err := client.ListSavedQueriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3123,6 +4478,18 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+/**
+ * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+ * *   Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](~~600556~~).
+ * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+ * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+ * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+ * *   You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+ *
+ * @param request SearchMultiAccountResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SearchMultiAccountResourcesResponse
+ */
 func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMultiAccountResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchMultiAccountResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3172,6 +4539,17 @@ func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMult
 	return _result, _err
 }
 
+/**
+ * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+ * *   Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](~~600556~~).
+ * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+ * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+ * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+ * *   You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+ *
+ * @param request SearchMultiAccountResourcesRequest
+ * @return SearchMultiAccountResourcesResponse
+ */
 func (client *Client) SearchMultiAccountResources(request *SearchMultiAccountResourcesRequest) (_result *SearchMultiAccountResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchMultiAccountResourcesResponse{}
@@ -3183,6 +4561,17 @@ func (client *Client) SearchMultiAccountResources(request *SearchMultiAccountRes
 	return _result, _err
 }
 
+/**
+ * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+ * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+ * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+ * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+ * *   You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+ *
+ * @param request SearchResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SearchResourcesResponse
+ */
 func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3232,10 +4621,76 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 	return _result, _err
 }
 
+/**
+ * *   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](~~477798~~).
+ * *   By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+ * *   If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+ * *   You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+ * *   You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+ *
+ * @param request SearchResourcesRequest
+ * @return SearchResourcesResponse
+ */
 func (client *Client) SearchResources(request *SearchResourcesRequest) (_result *SearchResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchResourcesResponse{}
 	_body, _err := client.SearchResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSavedQueryWithOptions(request *UpdateSavedQueryRequest, runtime *util.RuntimeOptions) (_result *UpdateSavedQueryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expression)) {
+		query["Expression"] = request.Expression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		query["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSavedQuery"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSavedQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSavedQuery(request *UpdateSavedQueryRequest) (_result *UpdateSavedQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSavedQueryResponse{}
+	_body, _err := client.UpdateSavedQueryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
