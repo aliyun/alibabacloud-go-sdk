@@ -26467,6 +26467,7 @@ func (s *FlightOrderQueryResponseBodyModule) SetPriceInfoList(v []*FlightOrderQu
 }
 
 type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
+	ApplyId          *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	ArrTime          *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
 	ChangeCabin      *string  `json:"change_cabin,omitempty" xml:"change_cabin,omitempty"`
 	ChangeCabinLevel *string  `json:"change_cabin_level,omitempty" xml:"change_cabin_level,omitempty"`
@@ -26479,7 +26480,10 @@ type FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList struct {
 	GmtCreate        *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify        *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
 	OriginTicketNo   *string  `json:"origin_ticket_no,omitempty" xml:"origin_ticket_no,omitempty"`
+	OutApplyId       *string  `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 	TicketNo         *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketStatus     *string  `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
+	TicketStatusCode *int32   `json:"ticket_status_code,omitempty" xml:"ticket_status_code,omitempty"`
 	UpgradeFee       *float64 `json:"upgrade_fee,omitempty" xml:"upgrade_fee,omitempty"`
 }
 
@@ -26489,6 +26493,11 @@ func (s FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) String() s
 
 func (s FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) GoString() string {
 	return s.String()
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.ApplyId = &v
+	return s
 }
 
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetArrTime(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
@@ -26551,8 +26560,23 @@ func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetOrigin
 	return s
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetOutApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.OutApplyId = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetTicketNo(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
 	s.TicketNo = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetTicketStatus(v string) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.TicketStatus = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList) SetTicketStatusCode(v int32) *FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList {
+	s.TicketStatusCode = &v
 	return s
 }
 
@@ -26681,8 +26705,10 @@ func (s *FlightOrderQueryResponseBodyModuleFlightInfoList) SetFlightNo(v string)
 }
 
 type FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList struct {
+	ApplyId         *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	GmtCreate       *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify       *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	OutApplyId      *string  `json:"out_apply_id,omitempty" xml:"out_apply_id,omitempty"`
 	RefundOrderId   *int64   `json:"refund_order_id,omitempty" xml:"refund_order_id,omitempty"`
 	RefundReason    *string  `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
 	RefundTicketFee *float64 `json:"refund_ticket_fee,omitempty" xml:"refund_ticket_fee,omitempty"`
@@ -26698,6 +26724,11 @@ func (s FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) GoString()
 	return s.String()
 }
 
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.ApplyId = &v
+	return s
+}
+
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetGmtCreate(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.GmtCreate = &v
 	return s
@@ -26705,6 +26736,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetGmtCre
 
 func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetGmtModify(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
 	s.GmtModify = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList) SetOutApplyId(v string) *FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList {
+	s.OutApplyId = &v
 	return s
 }
 
@@ -26737,6 +26773,7 @@ type FlightOrderQueryResponseBodyModuleFlightTicketInfoList struct {
 	BuildPrice       *float64 `json:"build_price,omitempty" xml:"build_price,omitempty"`
 	Changed          *bool    `json:"changed,omitempty" xml:"changed,omitempty"`
 	Discount         *int32   `json:"discount,omitempty" xml:"discount,omitempty"`
+	FlightNo         *string  `json:"flight_no,omitempty" xml:"flight_no,omitempty"`
 	GmtCreate        *string  `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
 	GmtModify        *string  `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
 	OilPrice         *float64 `json:"oil_price,omitempty" xml:"oil_price,omitempty"`
@@ -26769,6 +26806,11 @@ func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetChanged(v bo
 
 func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetDiscount(v int32) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
 	s.Discount = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleFlightTicketInfoList) SetFlightNo(v string) *FlightOrderQueryResponseBodyModuleFlightTicketInfoList {
+	s.FlightNo = &v
 	return s
 }
 
@@ -26881,23 +26923,25 @@ func (s *FlightOrderQueryResponseBodyModuleInvoiceInfo) SetTitle(v string) *Flig
 }
 
 type FlightOrderQueryResponseBodyModuleOrderBaseInfo struct {
-	ApplyId              *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	BtripTitle           *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
-	ContactName          *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
-	CorpId               *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
-	CorpName             *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
-	DepartId             *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
-	DepartName           *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
-	GmtCreate            *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
-	GmtModify            *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
-	ItineraryId          *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
-	OrderId              *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderStatus          *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
-	ThirdpartApplyId     *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId      *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
-	ThirdpartItineraryId *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
-	TripType             *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
-	UserId               *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	ApplyId                *string `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	BtripTitle             *string `json:"btrip_title,omitempty" xml:"btrip_title,omitempty"`
+	ContactName            *string `json:"contact_name,omitempty" xml:"contact_name,omitempty"`
+	CorpId                 *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName               *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DepartId               *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName             *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	ExceedApplyId          *string `json:"exceed_apply_id,omitempty" xml:"exceed_apply_id,omitempty"`
+	ExceedThirdPartApplyId *string `json:"exceed_third_part_apply_id,omitempty" xml:"exceed_third_part_apply_id,omitempty"`
+	GmtCreate              *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	GmtModify              *string `json:"gmt_modify,omitempty" xml:"gmt_modify,omitempty"`
+	ItineraryId            *string `json:"itinerary_id,omitempty" xml:"itinerary_id,omitempty"`
+	OrderId                *int64  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderStatus            *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	ThirdpartApplyId       *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartCorpId        *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	ThirdpartItineraryId   *string `json:"thirdpart_itinerary_id,omitempty" xml:"thirdpart_itinerary_id,omitempty"`
+	TripType               *int32  `json:"trip_type,omitempty" xml:"trip_type,omitempty"`
+	UserId                 *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s FlightOrderQueryResponseBodyModuleOrderBaseInfo) String() string {
@@ -26940,6 +26984,16 @@ func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartId(v string) 
 
 func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetDepartName(v string) *FlightOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.DepartName = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetExceedApplyId(v string) *FlightOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExceedApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetExceedThirdPartApplyId(v string) *FlightOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ExceedThirdPartApplyId = &v
 	return s
 }
 
