@@ -2592,6 +2592,8 @@ func (s *Node) SetZoneId(v string) *Node {
 type NodeAttributes struct {
 	// ECS ssh登录秘钥。
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// MASTER节点root密码。
+	MasterRootPassword *string `json:"MasterRootPassword,omitempty" xml:"MasterRootPassword,omitempty"`
 	// ECS访问资源绑定的角色。
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// 安全组ID。EMR只支持普通安全组，不支持企业安全组。
@@ -2612,6 +2614,11 @@ func (s NodeAttributes) GoString() string {
 
 func (s *NodeAttributes) SetKeyPairName(v string) *NodeAttributes {
 	s.KeyPairName = &v
+	return s
+}
+
+func (s *NodeAttributes) SetMasterRootPassword(v string) *NodeAttributes {
+	s.MasterRootPassword = &v
 	return s
 }
 
@@ -5641,11 +5648,11 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateNodeGroupRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 节点组信息。
+	// The information about a machine group.
 	NodeGroup *NodeGroupConfig `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5673,8 +5680,9 @@ func (s *CreateNodeGroupRequest) SetRegionId(v string) *CreateNodeGroupRequest {
 }
 
 type CreateNodeGroupResponseBody struct {
+	// The ID of the machine group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5905,11 +5913,11 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type GetAutoScalingActivityRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 伸缩活动ID。
+	// The ID of the scaling activity.
 	ScalingActivityId *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 }
 
@@ -5937,7 +5945,7 @@ func (s *GetAutoScalingActivityRequest) SetScalingActivityId(v string) *GetAutoS
 }
 
 type GetAutoScalingActivityResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScalingActivity *GetAutoScalingActivityResponseBodyScalingActivity `json:"ScalingActivity,omitempty" xml:"ScalingActivity,omitempty" type:"Struct"`
 }
@@ -5961,39 +5969,41 @@ func (s *GetAutoScalingActivityResponseBody) SetScalingActivity(v *GetAutoScalin
 }
 
 type GetAutoScalingActivityResponseBodyScalingActivity struct {
-	// 伸缩活动ID。
+	// The ID of the scaling activity.
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// 本次伸缩活动对应的实例列表。
+	// The instances corresponding to this scaling activity.
 	ActivityResults []*ScalingActivityResult `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty" type:"Repeated"`
-	// 伸缩活动状态。取值范围：
-	// - REJECTED：拒绝
-	// - SUCCESSFUL：成功
-	// - FAILED：失败
-	// - IN_PROGRESS：进行中
+	// The status of the scaling activity. Valid values:
+	//
+	// *   REJECTED
+	// *   SUCCESSFUL
+	// *   FAILED
+	// *   IN_PROGRESS
 	ActivityState *string `json:"ActivityState,omitempty" xml:"ActivityState,omitempty"`
-	// 伸缩活动类型。取值范围：
-	// - SCALE_IN：缩容
-	// - SCALE_OUT：扩容
+	// The type of the scaling activity. Valid value:
+	//
+	// *   SCALE_OUT
+	// *   SCALE_IN
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 伸缩活动描述。
+	// The description of the scaling activity.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 伸缩结束时间。
+	// The time when scaling ended.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 本次扩缩数量。
+	// The number of added or removed instances.
 	ExpectNum *int32 `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点组名称。
+	// The name of the node group.
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// 操作ID。
+	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 伸缩规则详述。
+	// The description of the scaling rule.
 	RuleDetail *ScalingRule `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty"`
-	// 伸缩规则名称。
+	// The name of the scaling rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 伸缩启动时间。
+	// The time when scaling started.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6105,11 +6115,11 @@ func (s *GetAutoScalingActivityResponse) SetBody(v *GetAutoScalingActivityRespon
 }
 
 type GetAutoScalingPolicyRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6137,8 +6147,9 @@ func (s *GetAutoScalingPolicyRequest) SetRegionId(v string) *GetAutoScalingPolic
 }
 
 type GetAutoScalingPolicyResponseBody struct {
-	// 请求ID。
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the auto scaling policy.
 	ScalingPolicy *GetAutoScalingPolicyResponseBodyScalingPolicy `json:"ScalingPolicy,omitempty" xml:"ScalingPolicy,omitempty" type:"Struct"`
 }
 
@@ -6161,15 +6172,15 @@ func (s *GetAutoScalingPolicyResponseBody) SetScalingPolicy(v *GetAutoScalingPol
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicy struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 最大最小值约束
+	// The maximum and minimum numbers of node groups.
 	Constraints *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty" type:"Struct"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 伸缩策略ID。
+	// The ID of the scaling policy.
 	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
-	// 伸缩规则列表
+	// The scaling rules.
 	ScalingRules []*GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -6207,9 +6218,9 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicy) SetScalingRules(v []*Get
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyConstraints struct {
-	// 最大值
+	// The maximum number of nodes in the node group. Default value: 2000.
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// 最小值
+	// The minimum number of nodes in the node group. Default value: 0.
 	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
 }
 
@@ -6232,23 +6243,25 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints) SetMinCapacit
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
-	// 伸缩类型。取值范围：
-	// - SCALE_OUT：扩容
-	// - SCALE_IN：缩容
+	// The type of the scaling activity. Valid values:
+	//
+	// *   SCALE_OUT: scale-out rules
+	// *   SCALE_IN: scale-in rules
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// 调整类型。CHANGE_IN_CAPACITY/EXACT_CAPACITY。
+	// The adjustment type.
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+	// The adjustment value. The value must be a positive number, which indicates the number of instances to be scaled out or in.
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// 按照负载伸缩描述。
+	// The description of scaling by load.
 	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
-	// 弹性伸缩规则名称。
+	// The name of the auto scaling rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 按照时间伸缩描述。
+	// The description of scaling by time.
 	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// 伸缩规则类型。取值范围：
-	// - TIME_TRIGGER: 按时间伸缩。
-	// - METRICS_TRIGGER: 按负载伸缩。
+	// The type of the scaling rule. Valid values:
+	//
+	// *   TIME_TRIGGER: scaling by time.
+	// *   METRICS_TRIGGER: scaling by load.
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 }
 
@@ -6403,12 +6416,13 @@ func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterRespo
 }
 
 type GetDoctorApplicationRequest struct {
-	// app id
+	// The ID of the job that is submitted to YARN.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6441,8 +6455,9 @@ func (s *GetDoctorApplicationRequest) SetRegionId(v string) *GetDoctorApplicatio
 }
 
 type GetDoctorApplicationResponseBody struct {
+	// The details of the job.
 	Data *GetDoctorApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6465,16 +6480,26 @@ func (s *GetDoctorApplicationResponseBody) SetRequestId(v string) *GetDoctorAppl
 }
 
 type GetDoctorApplicationResponseBodyData struct {
-	Analysis  *GetDoctorApplicationResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	AppName   *string                                       `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	EndTime   *int64                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ids       []*string                                     `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	Metrics   *GetDoctorApplicationResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	QuerySql  *string                                       `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
-	Queue     *string                                       `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	StartTime *int64                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	User      *string                                       `json:"User,omitempty" xml:"User,omitempty"`
+	// The job analysis result.
+	Analysis *GetDoctorApplicationResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The name of the job.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The end time of the job. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job IDs. Multiple job IDs are separated with commas (,).
+	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *GetDoctorApplicationResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The SQL statement of the job. This parameter is left empty for non-SQL jobs.
+	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// The YARN queue to which the job was submitted.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the compute engine.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that is used to submit the job.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetDoctorApplicationResponseBodyData) String() string {
@@ -6536,7 +6561,9 @@ func (s *GetDoctorApplicationResponseBodyData) SetUser(v string) *GetDoctorAppli
 }
 
 type GetDoctorApplicationResponseBodyDataAnalysis struct {
-	Score      *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The score of the job.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The suggestion for running the job.
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -6559,9 +6586,13 @@ func (s *GetDoctorApplicationResponseBodyDataAnalysis) SetSuggestion(v string) *
 }
 
 type GetDoctorApplicationResponseBodyDataMetrics struct {
-	MemSeconds       *GetDoctorApplicationResponseBodyDataMetricsMemSeconds       `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
-	MemUtilization   *GetDoctorApplicationResponseBodyDataMetricsMemUtilization   `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
-	VcoreSeconds     *GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds     `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running.
+	MemSeconds *GetDoctorApplicationResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The memory usage.
+	MemUtilization *GetDoctorApplicationResponseBodyDataMetricsMemUtilization `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
+	// The aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running.
+	VcoreSeconds *GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The CPU utilization. The meaning is the same as that of the %CPU command in the output of the Linux top command.
 	VcoreUtilization *GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
 }
 
@@ -6594,10 +6625,14 @@ func (s *GetDoctorApplicationResponseBodyDataMetrics) SetVcoreUtilization(v *Get
 }
 
 type GetDoctorApplicationResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorApplicationResponseBodyDataMetricsMemSeconds) String() string {
@@ -6629,10 +6664,14 @@ func (s *GetDoctorApplicationResponseBodyDataMetricsMemSeconds) SetValue(v int64
 }
 
 type GetDoctorApplicationResponseBodyDataMetricsMemUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorApplicationResponseBodyDataMetricsMemUtilization) String() string {
@@ -6664,10 +6703,14 @@ func (s *GetDoctorApplicationResponseBodyDataMetricsMemUtilization) SetValue(v f
 }
 
 type GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -6699,10 +6742,14 @@ func (s *GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds) SetValue(v int
 }
 
 type GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization) String() string {
@@ -10019,10 +10066,11 @@ func (s *GetDoctorHBaseTableResponse) SetBody(v *GetDoctorHBaseTableResponseBody
 }
 
 type GetDoctorHDFSClusterRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10050,8 +10098,9 @@ func (s *GetDoctorHDFSClusterRequest) SetRegionId(v string) *GetDoctorHDFSCluste
 }
 
 type GetDoctorHDFSClusterResponseBody struct {
+	// The HDFS analysis results.
 	Data *GetDoctorHDFSClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10074,8 +10123,10 @@ func (s *GetDoctorHDFSClusterResponseBody) SetRequestId(v string) *GetDoctorHDFS
 }
 
 type GetDoctorHDFSClusterResponseBodyData struct {
+	// The analysis results.
 	Analysis *GetDoctorHDFSClusterResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Metrics  *GetDoctorHDFSClusterResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The metric information.
+	Metrics *GetDoctorHDFSClusterResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyData) String() string {
@@ -10097,6 +10148,7 @@ func (s *GetDoctorHDFSClusterResponseBodyData) SetMetrics(v *GetDoctorHDFSCluste
 }
 
 type GetDoctorHDFSClusterResponseBodyDataAnalysis struct {
+	// The overall score of HDFS storage resources.
 	HdfsScore *int32 `json:"HdfsScore,omitempty" xml:"HdfsScore,omitempty"`
 }
 
@@ -10114,48 +10166,90 @@ func (s *GetDoctorHDFSClusterResponseBodyDataAnalysis) SetHdfsScore(v int32) *Ge
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	SmallFileCount                *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TinyFileCount                 *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetrics) String() string {
@@ -10377,10 +10471,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetrics) SetWarmDataSizeDayGrowthRa
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -10412,10 +10510,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio) String() string {
@@ -10447,10 +10549,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio) SetValue(v fl
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize) String() string {
@@ -10482,10 +10588,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize) SetValue(v int
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -10517,10 +10627,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -10552,10 +10666,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount) SetValue(v i
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -10587,10 +10705,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -10622,10 +10744,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount) Set
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -10657,10 +10783,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio) SetValue(v f
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -10692,10 +10822,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize) Set
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -10727,10 +10861,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio) SetValue(v 
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -10762,10 +10900,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize) SetValue(v i
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -10797,10 +10939,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -10832,10 +10978,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize) SetVal
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio) String() string {
@@ -10867,10 +11017,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio) SetValue(v flo
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize) String() string {
@@ -10902,10 +11056,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize) SetValue(v int6
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -10937,10 +11095,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio) S
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount) String() string {
@@ -10972,10 +11134,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount) SetValue(v i
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -11007,10 +11173,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -11042,10 +11212,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount) Set
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -11077,10 +11251,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio) SetValue(v f
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount) String() string {
@@ -11112,10 +11290,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount) SetValue(v 
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -11147,10 +11329,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCountDayGrowthRati
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -11182,10 +11368,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount) Se
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -11217,10 +11407,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio) SetValue(v 
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount) String() string {
@@ -11252,10 +11446,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount) SetValue(v i
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -11287,10 +11485,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -11322,10 +11524,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount) Set
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -11357,10 +11563,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio) SetValue(v f
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount) String() string {
@@ -11392,10 +11602,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount) SetValue(v in
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -11427,10 +11641,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio)
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -11462,10 +11680,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount) SetV
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -11497,10 +11719,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio) SetValue(v fl
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -11532,10 +11758,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize) SetV
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize) String() string {
@@ -11567,10 +11797,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize) SetValue(v in
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -11602,10 +11836,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio)
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount) String() string {
@@ -11637,10 +11875,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount) SetValue(v i
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -11672,10 +11914,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -11707,10 +11953,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount) Set
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -11742,10 +11992,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -11777,10 +12031,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio) SetValue(v fl
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize) String() string {
@@ -11812,10 +12070,14 @@ func (s *GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize) SetValue(v int
 }
 
 type GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -11876,11 +12138,13 @@ func (s *GetDoctorHDFSClusterResponse) SetBody(v *GetDoctorHDFSClusterResponseBo
 }
 
 type GetDoctorHDFSDirectoryRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	DirPath   *string `json:"DirPath,omitempty" xml:"DirPath,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The directory name. The depth of the directory is not greater than five.
+	DirPath *string `json:"DirPath,omitempty" xml:"DirPath,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11913,8 +12177,9 @@ func (s *GetDoctorHDFSDirectoryRequest) SetRegionId(v string) *GetDoctorHDFSDire
 }
 
 type GetDoctorHDFSDirectoryResponseBody struct {
+	// The analysis results of the HDFS directory.
 	Data *GetDoctorHDFSDirectoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11937,10 +12202,14 @@ func (s *GetDoctorHDFSDirectoryResponseBody) SetRequestId(v string) *GetDoctorHD
 }
 
 type GetDoctorHDFSDirectoryResponseBodyData struct {
-	Depth   *int32                                         `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	Group   *string                                        `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The directory level.
+	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	// The group to which the directory belongs.
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The metric information.
 	Metrics *GetDoctorHDFSDirectoryResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	User    *string                                        `json:"User,omitempty" xml:"User,omitempty"`
+	// The directory owner.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyData) String() string {
@@ -11972,39 +12241,72 @@ func (s *GetDoctorHDFSDirectoryResponseBodyData) SetUser(v string) *GetDoctorHDF
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataSize                  *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataSize                *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataSize                   *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileCount               *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileCount                *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileCount                 *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataSize                  *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetrics) String() string {
@@ -12181,10 +12483,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetrics) SetWarmDataSizeDayGrowth
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -12216,10 +12522,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize) Set
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize) String() string {
@@ -12251,10 +12561,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize) SetValue(v i
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -12286,10 +12600,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -12321,10 +12639,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount) SetValue(v
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -12356,10 +12678,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRat
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -12391,10 +12717,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount) S
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -12426,10 +12756,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize) S
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -12461,10 +12795,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize) SetValue(v
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -12496,10 +12834,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRat
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -12531,10 +12873,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize) SetV
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize) String() string {
@@ -12566,10 +12912,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize) SetValue(v in
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -12601,10 +12951,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio)
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount) String() string {
@@ -12636,10 +12990,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount) SetValue(v
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -12671,10 +13029,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRat
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -12706,10 +13068,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount) S
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount) String() string {
@@ -12741,10 +13107,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount) SetValue(
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -12776,10 +13146,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCountDayGrowthRa
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -12811,10 +13185,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount) 
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount) String() string {
@@ -12846,10 +13224,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount) SetValue(v
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -12881,10 +13263,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRat
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -12916,10 +13302,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount) S
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount) String() string {
@@ -12951,10 +13341,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount) SetValue(v 
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -12986,10 +13380,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRati
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -13021,10 +13419,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount) Se
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -13056,10 +13458,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize) Se
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize) String() string {
@@ -13091,10 +13497,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize) SetValue(v 
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -13126,10 +13536,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRati
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount) String() string {
@@ -13161,10 +13575,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount) SetValue(v
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -13196,10 +13614,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRat
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -13231,10 +13653,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount) S
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -13266,10 +13692,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize) Set
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize) String() string {
@@ -13301,10 +13731,14 @@ func (s *GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize) SetValue(v i
 }
 
 type GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -13365,13 +13799,19 @@ func (s *GetDoctorHDFSDirectoryResponse) SetBody(v *GetDoctorHDFSDirectoryRespon
 }
 
 type GetDoctorHDFSUGIRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// Set this parameter based on the value of Type.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The filter condition. Valid values:
+	//
+	// *   user
+	// *   group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetDoctorHDFSUGIRequest) String() string {
@@ -13408,8 +13848,9 @@ func (s *GetDoctorHDFSUGIRequest) SetType(v string) *GetDoctorHDFSUGIRequest {
 }
 
 type GetDoctorHDFSUGIResponseBody struct {
+	// The results of HDFS analysis.
 	Data *GetDoctorHDFSUGIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13432,6 +13873,7 @@ func (s *GetDoctorHDFSUGIResponseBody) SetRequestId(v string) *GetDoctorHDFSUGIR
 }
 
 type GetDoctorHDFSUGIResponseBodyData struct {
+	// The metric information.
 	Metrics *GetDoctorHDFSUGIResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
@@ -13449,8 +13891,11 @@ func (s *GetDoctorHDFSUGIResponseBodyData) SetMetrics(v *GetDoctorHDFSUGIRespons
 }
 
 type GetDoctorHDFSUGIResponseBodyDataMetrics struct {
-	TotalDataSize  *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize  `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDirCount  *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount  `json:"TotalDirCount,omitempty" xml:"TotalDirCount,omitempty" type:"Struct"`
+	// The total data size.
+	TotalDataSize *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The total number of directories.
+	TotalDirCount *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount `json:"TotalDirCount,omitempty" xml:"TotalDirCount,omitempty" type:"Struct"`
+	// The total number of files.
 	TotalFileCount *GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
 }
 
@@ -13478,10 +13923,14 @@ func (s *GetDoctorHDFSUGIResponseBodyDataMetrics) SetTotalFileCount(v *GetDoctor
 }
 
 type GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) String() string {
@@ -13513,10 +13962,14 @@ func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetValue(v int64)
 }
 
 type GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) String() string {
@@ -13548,10 +14001,14 @@ func (s *GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetValue(v int64)
 }
 
 type GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) String() string {
@@ -13612,10 +14069,11 @@ func (s *GetDoctorHDFSUGIResponse) SetBody(v *GetDoctorHDFSUGIResponseBody) *Get
 }
 
 type GetDoctorHiveClusterRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -13643,8 +14101,9 @@ func (s *GetDoctorHiveClusterRequest) SetRegionId(v string) *GetDoctorHiveCluste
 }
 
 type GetDoctorHiveClusterResponseBody struct {
+	// The analysis results of the Hive cluster.
 	Data *GetDoctorHiveClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13667,9 +14126,12 @@ func (s *GetDoctorHiveClusterResponseBody) SetRequestId(v string) *GetDoctorHive
 }
 
 type GetDoctorHiveClusterResponseBodyData struct {
-	Analysis *GetDoctorHiveClusterResponseBodyDataAnalysis  `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Formats  []*GetDoctorHiveClusterResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	Metrics  *GetDoctorHiveClusterResponseBodyDataMetrics   `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The analysis results.
+	Analysis *GetDoctorHiveClusterResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The information from the perspective of storage formats.
+	Formats []*GetDoctorHiveClusterResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *GetDoctorHiveClusterResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyData) String() string {
@@ -13696,10 +14158,14 @@ func (s *GetDoctorHiveClusterResponseBodyData) SetMetrics(v *GetDoctorHiveCluste
 }
 
 type GetDoctorHiveClusterResponseBodyDataAnalysis struct {
+	// The score for the distribution of files of different sizes stored in the Hive cluster.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	HiveFormatScore       *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
-	HiveFrequencyScore    *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
-	HiveScore             *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
+	// The score for the distribution of files stored in different formats in the Hive cluster.
+	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
+	// The score for the access frequency of the Hive cluster.
+	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
+	// The overall score of the Hive cluster.
+	HiveScore *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataAnalysis) String() string {
@@ -13731,10 +14197,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataAnalysis) SetHiveScore(v int32) *Ge
 }
 
 type GetDoctorHiveClusterResponseBodyDataFormats struct {
-	FormatName     *string  `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatRatio    *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	FormatSize     *int64   `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
-	FormatSizeUnit *string  `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
+	// The name of the storage format.
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The proportion of data in a specific storage format.
+	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
+	// The size of storage format-specific data.
+	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The unit of the data size.
+	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataFormats) String() string {
@@ -13766,51 +14236,96 @@ func (s *GetDoctorHiveClusterResponseBodyDataFormats) SetFormatSizeUnit(v string
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	DatabaseCount                 *GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount                 `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty" type:"Struct"`
-	EmptyFileCount                *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of databases.
+	DatabaseCount *GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	PartitionNum                  *GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
-	SmallFileCount                *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TableCount                    *GetDoctorHiveClusterResponseBodyDataMetricsTableCount                    `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
-	TinyFileCount                 *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of partitions.
+	PartitionNum *GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of tables.
+	TableCount *GetDoctorHiveClusterResponseBodyDataMetricsTableCount `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetrics) String() string {
@@ -14047,10 +14562,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetrics) SetWarmDataSizeDayGrowthRa
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -14082,10 +14601,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio) String() string {
@@ -14117,10 +14640,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio) SetValue(v fl
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize) String() string {
@@ -14152,10 +14679,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize) SetValue(v int
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -14187,10 +14718,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount) String() string {
@@ -14222,10 +14757,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount) SetValue(v in
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -14257,10 +14796,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount) SetValue(v i
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -14292,10 +14835,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -14327,10 +14874,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount) Set
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -14362,10 +14913,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio) SetValue(v f
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -14397,10 +14952,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize) Set
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -14432,10 +14991,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio) SetValue(v 
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -14467,10 +15030,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize) SetValue(v i
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -14502,10 +15069,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -14537,10 +15108,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize) SetVal
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio) String() string {
@@ -14572,10 +15147,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio) SetValue(v flo
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize) String() string {
@@ -14607,10 +15186,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize) SetValue(v int6
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -14642,10 +15225,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio) S
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount) String() string {
@@ -14677,10 +15264,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount) SetValue(v i
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -14712,10 +15303,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -14747,10 +15342,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount) Set
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -14782,10 +15381,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio) SetValue(v f
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount) String() string {
@@ -14817,10 +15420,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount) SetValue(v 
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -14852,10 +15459,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCountDayGrowthRati
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -14887,10 +15498,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount) Se
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -14922,10 +15537,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio) SetValue(v 
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum) String() string {
@@ -14957,10 +15576,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum) SetValue(v int
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount) String() string {
@@ -14992,10 +15615,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount) SetValue(v i
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -15027,10 +15654,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -15062,10 +15693,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount) Set
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -15097,10 +15732,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio) SetValue(v f
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTableCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTableCount) String() string {
@@ -15132,10 +15771,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTableCount) SetValue(v int64
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount) String() string {
@@ -15167,10 +15810,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount) SetValue(v in
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -15202,10 +15849,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio)
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -15237,10 +15888,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount) SetV
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -15272,10 +15927,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio) SetValue(v fl
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -15307,10 +15966,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize) SetV
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize) String() string {
@@ -15342,10 +16005,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize) SetValue(v in
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -15377,10 +16044,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio)
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount) String() string {
@@ -15412,10 +16083,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount) SetValue(v i
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -15447,10 +16122,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -15482,10 +16161,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount) Set
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -15517,10 +16200,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -15552,10 +16239,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio) SetValue(v fl
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize) String() string {
@@ -15587,10 +16278,14 @@ func (s *GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize) SetValue(v int
 }
 
 type GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -15651,11 +16346,13 @@ func (s *GetDoctorHiveClusterResponse) SetBody(v *GetDoctorHiveClusterResponseBo
 }
 
 type GetDoctorHiveDatabaseRequest struct {
-	// 集群ID。
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database name.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DateTime     *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
+	// The query date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -15688,8 +16385,9 @@ func (s *GetDoctorHiveDatabaseRequest) SetRegionId(v string) *GetDoctorHiveDatab
 }
 
 type GetDoctorHiveDatabaseResponseBody struct {
+	// The analysis results of the Hive database.
 	Data *GetDoctorHiveDatabaseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15712,9 +16410,12 @@ func (s *GetDoctorHiveDatabaseResponseBody) SetRequestId(v string) *GetDoctorHiv
 }
 
 type GetDoctorHiveDatabaseResponseBodyData struct {
-	Analysis *GetDoctorHiveDatabaseResponseBodyDataAnalysis  `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Formats  []*GetDoctorHiveDatabaseResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	Metrics  *GetDoctorHiveDatabaseResponseBodyDataMetrics   `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The analysis results.
+	Analysis *GetDoctorHiveDatabaseResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The information from the perspective of storage formats.
+	Formats []*GetDoctorHiveDatabaseResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *GetDoctorHiveDatabaseResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyData) String() string {
@@ -15741,10 +16442,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyData) SetMetrics(v *GetDoctorHiveDatab
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataAnalysis struct {
+	// The score for the distribution of files of different sizes stored in the Hive database.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	HiveFormatScore       *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
-	HiveFrequencyScore    *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
-	HiveScore             *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
+	// The score for the distribution of files stored in different formats in the Hive database.
+	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
+	// The score for the access frequency of the Hive database.
+	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
+	// The overall score of the Hive database.
+	HiveScore *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataAnalysis) String() string {
@@ -15776,12 +16481,18 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataAnalysis) SetHiveScore(v int32) *G
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataFormats struct {
-	FormatDayGrowthSize      *int64   `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
-	FormatName               *string  `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatRatio              *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	FormatSize               *int64   `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The daily increment of storage format-specific data.
+	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
+	// The name of the storage format.
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The proportion of data in a specific storage format.
+	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
+	// The amount of storage format-specific data.
+	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The day-to-day growth rate of storage format-specific data.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	FormatSizeUnit           *string  `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
+	// The unit of the amount of storage format-specific data.
+	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataFormats) String() string {
@@ -15823,50 +16534,94 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataFormats) SetFormatSizeUnit(v strin
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	PartitionNum                  *GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
-	SmallFileCount                *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TableCount                    *GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount                    `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
-	TinyFileCount                 *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of partitions.
+	PartitionNum *GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of tables.
+	TableCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetrics) String() string {
@@ -16098,10 +16853,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetrics) SetWarmDataSizeDayGrowthR
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -16133,10 +16892,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize) SetV
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio) String() string {
@@ -16168,10 +16931,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio) SetValue(v f
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize) String() string {
@@ -16203,10 +16970,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize) SetValue(v in
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -16238,10 +17009,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio)
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -16273,10 +17048,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -16308,10 +17087,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRati
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -16343,10 +17126,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount) Se
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -16378,10 +17165,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -16413,10 +17204,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize) Se
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -16448,10 +17243,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio) SetValue(v
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -16483,10 +17282,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -16518,10 +17321,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRati
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -16553,10 +17360,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio) String() string {
@@ -16588,10 +17399,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio) SetValue(v fl
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize) String() string {
@@ -16623,10 +17438,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize) SetValue(v int
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -16658,10 +17477,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount) String() string {
@@ -16693,10 +17516,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -16728,10 +17555,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRati
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -16763,10 +17594,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount) Se
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -16798,10 +17633,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount) String() string {
@@ -16833,10 +17672,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount) SetValue(v
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -16868,10 +17711,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCountDayGrowthRat
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -16903,10 +17750,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount) S
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -16938,10 +17789,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio) SetValue(v
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum) String() string {
@@ -16973,10 +17828,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum) SetValue(v in
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount) String() string {
@@ -17008,10 +17867,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -17043,10 +17906,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRati
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -17078,10 +17945,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount) Se
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -17113,10 +17984,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount) String() string {
@@ -17148,10 +18023,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount) SetValue(v int6
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount) String() string {
@@ -17183,10 +18062,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount) SetValue(v i
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -17218,10 +18101,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -17253,10 +18140,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount) Set
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -17288,10 +18179,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio) SetValue(v f
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -17323,10 +18218,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize) Set
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize) String() string {
@@ -17358,10 +18257,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize) SetValue(v i
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -17393,10 +18296,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount) String() string {
@@ -17428,10 +18335,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount) SetValue(v 
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -17463,10 +18374,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRati
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -17498,10 +18413,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount) Se
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -17533,10 +18452,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize) SetV
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -17568,10 +18491,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio) SetValue(v f
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize) String() string {
@@ -17603,10 +18530,14 @@ func (s *GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize) SetValue(v in
 }
 
 type GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -17667,11 +18598,13 @@ func (s *GetDoctorHiveDatabaseResponse) SetBody(v *GetDoctorHiveDatabaseResponse
 }
 
 type GetDoctorHiveTableRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 区域ID。
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The table name. The table name must follow the rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -17704,8 +18637,9 @@ func (s *GetDoctorHiveTableRequest) SetTableName(v string) *GetDoctorHiveTableRe
 }
 
 type GetDoctorHiveTableResponseBody struct {
+	// The analysis results of the Hive table.
 	Data *GetDoctorHiveTableResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17728,10 +18662,14 @@ func (s *GetDoctorHiveTableResponseBody) SetRequestId(v string) *GetDoctorHiveTa
 }
 
 type GetDoctorHiveTableResponseBodyData struct {
-	Analysis *GetDoctorHiveTableResponseBodyDataAnalysis  `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Formats  []*GetDoctorHiveTableResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	Metrics  *GetDoctorHiveTableResponseBodyDataMetrics   `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	Owner    *string                                      `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The analysis results.
+	Analysis *GetDoctorHiveTableResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The information from the perspective of formats.
+	Formats []*GetDoctorHiveTableResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *GetDoctorHiveTableResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyData) String() string {
@@ -17763,10 +18701,14 @@ func (s *GetDoctorHiveTableResponseBodyData) SetOwner(v string) *GetDoctorHiveTa
 }
 
 type GetDoctorHiveTableResponseBodyDataAnalysis struct {
+	// The score for the distribution of files of different sizes stored in the Hive table.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	HiveFormatScore       *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
-	HiveFrequencyScore    *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
-	HiveScore             *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
+	// The score for the distribution of files stored in different formats in the Hive table.
+	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
+	// The score for the access frequency of the Hive table.
+	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
+	// The overall score of the Hive table.
+	HiveScore *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataAnalysis) String() string {
@@ -17798,12 +18740,18 @@ func (s *GetDoctorHiveTableResponseBodyDataAnalysis) SetHiveScore(v int32) *GetD
 }
 
 type GetDoctorHiveTableResponseBodyDataFormats struct {
-	FormatDayGrowthSize      *int64   `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
-	FormatName               *string  `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatRatio              *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	FormatSize               *int64   `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The daily amount increment of the data in a specific storage format.
+	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
+	// The name of the storage format.
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The ratio of the data in a specific storage format.
+	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
+	// The size of storage format-specific data.
+	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The day-to-day growth rate of the amount of the data in a specific storage format.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	FormatSizeUnit           *string  `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
+	// The unit of the data size.
+	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataFormats) String() string {
@@ -17845,49 +18793,92 @@ func (s *GetDoctorHiveTableResponseBodyDataFormats) SetFormatSizeUnit(v string) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *GetDoctorHiveTableResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *GetDoctorHiveTableResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *GetDoctorHiveTableResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *GetDoctorHiveTableResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	PartitionNum                  *GetDoctorHiveTableResponseBodyDataMetricsPartitionNum                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
-	SmallFileCount                *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TinyFileCount                 *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of partitions.
+	PartitionNum *GetDoctorHiveTableResponseBodyDataMetricsPartitionNum `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetrics) String() string {
@@ -18114,10 +19105,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetrics) SetWarmDataSizeDayGrowthRati
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -18149,10 +19144,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize) SetValu
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio) String() string {
@@ -18184,10 +19183,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio) SetValue(v floa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsColdDataSize) String() string {
@@ -18219,10 +19222,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsColdDataSize) SetValue(v int64
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -18254,10 +19261,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio) Se
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -18289,10 +19300,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount) SetValue(v int
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -18324,10 +19339,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -18359,10 +19378,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount) SetVa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -18394,10 +19417,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio) SetValue(v flo
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -18429,10 +19456,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize) SetVa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -18464,10 +19495,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio) SetValue(v fl
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -18499,10 +19534,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize) SetValue(v int
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -18534,10 +19573,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -18569,10 +19612,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize) SetValue
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio) String() string {
@@ -18604,10 +19651,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio) SetValue(v float
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsHotDataSize) String() string {
@@ -18639,10 +19690,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsHotDataSize) SetValue(v int64)
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -18674,10 +19729,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio) Set
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount) String() string {
@@ -18709,10 +19768,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount) SetValue(v int
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -18744,10 +19807,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -18779,10 +19846,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount) SetVa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -18814,10 +19885,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio) SetValue(v flo
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount) String() string {
@@ -18849,10 +19924,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount) SetValue(v in
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -18884,10 +19963,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsMediumFileCountDayGrowthRatio)
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -18919,10 +20002,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount) SetV
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -18954,10 +20041,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio) SetValue(v fl
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsPartitionNum struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsPartitionNum) String() string {
@@ -18989,10 +20080,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsPartitionNum) SetValue(v int64
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount) String() string {
@@ -19024,10 +20119,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount) SetValue(v int
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -19059,10 +20158,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -19094,10 +20197,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount) SetVa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -19129,10 +20236,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio) SetValue(v flo
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount) String() string {
@@ -19164,10 +20275,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount) SetValue(v int6
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -19199,10 +20314,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio) S
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -19234,10 +20353,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount) SetVal
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -19269,10 +20392,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio) SetValue(v floa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -19304,10 +20431,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize) SetVal
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize) String() string {
@@ -19339,10 +20470,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize) SetValue(v int6
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -19374,10 +20509,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) S
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount) String() string {
@@ -19409,10 +20548,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount) SetValue(v int
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -19444,10 +20587,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio) 
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -19479,10 +20626,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount) SetVa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -19514,10 +20665,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize) SetValu
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -19549,10 +20704,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio) SetValue(v floa
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize) String() string {
@@ -19584,10 +20743,14 @@ func (s *GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize) SetValue(v int64
 }
 
 type GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -19648,11 +20811,11 @@ func (s *GetDoctorHiveTableResponse) SetBody(v *GetDoctorHiveTableResponseBody) 
 }
 
 type GetDoctorJobRequest struct {
-	// app id
+	// The ID of the job that is submitted to YARN.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -19680,8 +20843,9 @@ func (s *GetDoctorJobRequest) SetRegionId(v string) *GetDoctorJobRequest {
 }
 
 type GetDoctorJobResponseBody struct {
+	// The information about the job.
 	Data *GetDoctorJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19704,18 +20868,40 @@ func (s *GetDoctorJobResponseBody) SetRequestId(v string) *GetDoctorJobResponseB
 }
 
 type GetDoctorJobResponseBodyData struct {
-	AppId       *string                              `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName     *string                              `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ElapsedTime *int64                               `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	FinalStatus *string                              `json:"FinalStatus,omitempty" xml:"FinalStatus,omitempty"`
-	FinishTime  *int64                               `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	LaunchTime  *int64                               `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	Metrics     *GetDoctorJobResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	Queue       *string                              `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	StartTime   *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State       *string                              `json:"State,omitempty" xml:"State,omitempty"`
-	Type        *string                              `json:"Type,omitempty" xml:"Type,omitempty"`
-	User        *string                              `json:"User,omitempty" xml:"User,omitempty"`
+	// The ID of the job that was submitted to YARN.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the job.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The total running time of the job. Unit: milliseconds.
+	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The final state of the job. Valid values:
+	//
+	// *   SUCCEEDED
+	// *   FAILED
+	// *   KILLED
+	// *   ENDED
+	// *   UNDEFINED
+	FinalStatus *string `json:"FinalStatus,omitempty" xml:"FinalStatus,omitempty"`
+	// The time when the job ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The time when the job was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	LaunchTime *int64 `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
+	// The data about metrics.
+	Metrics *GetDoctorJobResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The YARN queue to which the job was submitted.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The running state of the job. Valid values:
+	//
+	// *   FINISHED
+	// *   FAILED
+	// *   KILLED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The type of the compute engine.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that was used to submit the job.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetDoctorJobResponseBodyData) String() string {
@@ -19787,7 +20973,9 @@ func (s *GetDoctorJobResponseBodyData) SetUser(v string) *GetDoctorJobResponseBo
 }
 
 type GetDoctorJobResponseBodyDataMetrics struct {
-	MemSeconds   *GetDoctorJobResponseBodyDataMetricsMemSeconds   `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The amount of memory consumed.
+	MemSeconds *GetDoctorJobResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The CPU usage.
 	VcoreSeconds *GetDoctorJobResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
 }
 
@@ -19810,10 +20998,14 @@ func (s *GetDoctorJobResponseBodyDataMetrics) SetVcoreSeconds(v *GetDoctorJobRes
 }
 
 type GetDoctorJobResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorJobResponseBodyDataMetricsMemSeconds) String() string {
@@ -19845,10 +21037,14 @@ func (s *GetDoctorJobResponseBodyDataMetricsMemSeconds) SetValue(v int64) *GetDo
 }
 
 type GetDoctorJobResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s GetDoctorJobResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -20418,25 +21614,25 @@ func (s *JoinResourceGroupResponse) SetBody(v *JoinResourceGroupResponseBody) *J
 }
 
 type ListApplicationConfigsRequest struct {
-	// 应用名称。
+	// The name of the application.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 配置文件名称。
+	// The name of the configuration file.
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// 配置键值，支持模糊查询。
+	// The name of the configuration item.
 	ConfigItemKey *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
-	// 配置项值。
+	// The value of the configuration item.
 	ConfigItemValue *string `json:"ConfigItemValue,omitempty" xml:"ConfigItemValue,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The page number of the next page returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点ID。
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -20499,14 +21695,15 @@ func (s *ListApplicationConfigsRequest) SetRegionId(v string) *ListApplicationCo
 }
 
 type ListApplicationConfigsResponseBody struct {
+	// The application configurations.
 	ApplicationConfigs []*ListApplicationConfigsResponseBodyApplicationConfigs `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The page number of the next page returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of pages.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20544,31 +21741,31 @@ func (s *ListApplicationConfigsResponseBody) SetTotalCount(v int32) *ListApplica
 }
 
 type ListApplicationConfigsResponseBodyApplicationConfigs struct {
-	// 应用名称。
+	// The name of the application.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 配置值生效状态。
+	// The status of the configuration value.
 	ConfigEffectState *string `json:"ConfigEffectState,omitempty" xml:"ConfigEffectState,omitempty"`
-	// 配置文件名称。
+	// The name of the configuration file.
 	ConfigFileName *string `json:"ConfigFileName,omitempty" xml:"ConfigFileName,omitempty"`
-	// 配置项键。
+	// The name of the configuration item.
 	ConfigItemKey *string `json:"ConfigItemKey,omitempty" xml:"ConfigItemKey,omitempty"`
-	// 配置项值。
+	// The value of the configuration item.
 	ConfigItemValue *string `json:"ConfigItemValue,omitempty" xml:"ConfigItemValue,omitempty"`
-	// 创建时间。
+	// The time when the application was created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 是否是自定义配置。
+	// Indicates whether the configurations are custom.
 	Custom *bool `json:"Custom,omitempty" xml:"Custom,omitempty"`
-	// 描述。
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 初始值。
+	// The initial value.
 	InitValue *string `json:"InitValue,omitempty" xml:"InitValue,omitempty"`
-	// 修改人。
+	// The person who modified the configurations.
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点ID。
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 更新时间。
+	// The time when the application was updated.
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -20675,15 +21872,15 @@ func (s *ListApplicationConfigsResponse) SetBody(v *ListApplicationConfigsRespon
 }
 
 type ListApplicationsRequest struct {
-	// 应用名称列表。
+	// The application names.
 	ApplicationNames []*string `json:"ApplicationNames,omitempty" xml:"ApplicationNames,omitempty" type:"Repeated"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The total number of pages.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The page number of the next page returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -20721,14 +21918,15 @@ func (s *ListApplicationsRequest) SetRegionId(v string) *ListApplicationsRequest
 }
 
 type ListApplicationsResponseBody struct {
+	// The information about applications.
 	Applications []*ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The number of entries per page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// The page number of the next page returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of pages.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20766,14 +21964,14 @@ func (s *ListApplicationsResponseBody) SetTotalCount(v int32) *ListApplicationsR
 }
 
 type ListApplicationsResponseBodyApplications struct {
-	// 应用名称。
+	// The application name.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 应用操作状态
+	// The status of the application operation.
 	ApplicationState *string `json:"ApplicationState,omitempty" xml:"ApplicationState,omitempty"`
 	// Deprecated
-	// 应用版本。
+	// The version of the application.
 	ApplicationVersion *string `json:"ApplicationVersion,omitempty" xml:"ApplicationVersion,omitempty"`
-	// 社区版本。
+	// The community edition.
 	CommunityVersion *string `json:"CommunityVersion,omitempty" xml:"CommunityVersion,omitempty"`
 }
 
@@ -20835,31 +22033,28 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 }
 
 type ListAutoScalingActivitiesRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 查询伸缩活动创建时间的结束时间戳。单位为毫秒。
+	// The end of the time range to query. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 伸缩活动状态。数组元数个数N的取值范围：1~20。默认取值：
-	// - REJECTED：拒绝。
-	// - SUCCESSFUL：成功。
-	// - FAILED：失败。
-	// - IN_PROGRESS：进行中。
+	// The status of the scaling activity. Number of elements in the array: 1-20.
 	ScalingActivityStates []*string `json:"ScalingActivityStates,omitempty" xml:"ScalingActivityStates,omitempty" type:"Repeated"`
-	// 伸缩活动类型。数组元数个数N的取值范围：1~20。取值范围：
-	// - SCALE_OUT：扩容。
-	// - SCALE_IN：缩容。
+	// The type of the scaling activity. Valid values:
+	//
+	// *   SCALE_OUT
+	// *   SCALE_IN
 	ScalingActivityType *string `json:"ScalingActivityType,omitempty" xml:"ScalingActivityType,omitempty"`
-	// 伸缩规则名称。
+	// The name of the scaling rule.
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
-	// 查询伸缩活动创建时间的时间戳。单位为毫秒。
+	// The beginning of the time range to query. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -20922,14 +22117,15 @@ func (s *ListAutoScalingActivitiesRequest) SetStartTime(v int64) *ListAutoScalin
 }
 
 type ListAutoScalingActivitiesResponseBody struct {
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
-	RequestId         *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scaling activities.
 	ScalingActivities []*ListAutoScalingActivitiesResponseBodyScalingActivities `json:"ScalingActivities,omitempty" xml:"ScalingActivities,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20967,35 +22163,37 @@ func (s *ListAutoScalingActivitiesResponseBody) SetTotalCount(v int32) *ListAuto
 }
 
 type ListAutoScalingActivitiesResponseBodyScalingActivities struct {
-	// 伸缩活动ID。
+	// The ID of the scaling activity.
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// 伸缩活动状态。取值范围：
-	// - REJECTED：拒绝
-	// - SUCCESSFUL：成功
-	// - FAILED：失败
-	// - IN_PROGRESS：进行中
+	// The status of the scaling activity. Valid values:
+	//
+	// *   REJECTED
+	// *   SUCCESSFUL
+	// *   FAILED
+	// *   IN_PROGRESS
 	ActivityState *string `json:"ActivityState,omitempty" xml:"ActivityState,omitempty"`
-	// 伸缩活动类型。取值范围：
-	// - SCALE_IN：缩容
-	// - SCALE_OUT：扩容
+	// The type of the scaling activity. Valid values:
+	//
+	// *   SCALE_OUT
+	// *   SCALE_IN
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 伸缩活动描述。
+	// The description of the scaling activity.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 伸缩结束时间。
+	// The end time of the scaling. Unit: milliseconds.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 本次扩缩数量。
+	// The number of added or removed instances.
 	ExpectNum *int32 `json:"ExpectNum,omitempty" xml:"ExpectNum,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点组名称。
+	// The name of the node group.
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// 操作ID。
+	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 伸缩规则名称。
+	// The name of the scaling rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// 伸缩启动时间。
+	// The start time of the scaling. Unit: milliseconds.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -21279,21 +22477,39 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListDoctorApplicationsRequest struct {
+	// The IDs of jobs that are submitted to YARN.
 	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OrderType *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Queues    []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
-	// 区域ID。
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Types    []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	Users    []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The pagination token that is used in the request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The field that you use to sort the query results. Valid values:
+	//
+	// 1.  startTime: the time when the job starts
+	// 2.  endTime: the time when the job ends
+	// 3.  vcoreUtilization: the vCPU utilization of the job
+	// 4.  memUtilization: the memory usage of the job
+	// 5.  vcoreSeconds: the aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running
+	// 6.  memSeconds: the aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running
+	// 7.  score: the score of the job
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: the ascending order
+	// *   DESC: the descending order
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The YARN queues to which the jobs are submitted.
+	Queues []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The YARN engines to which the jobs are submitted.
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+	// The users who submit the jobs.
+	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListDoctorApplicationsRequest) String() string {
@@ -21360,14 +22576,15 @@ func (s *ListDoctorApplicationsRequest) SetUsers(v []*string) *ListDoctorApplica
 }
 
 type ListDoctorApplicationsResponseBody struct {
+	// The details of jobs.
 	Data []*ListDoctorApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21405,17 +22622,28 @@ func (s *ListDoctorApplicationsResponseBody) SetTotalCount(v int32) *ListDoctorA
 }
 
 type ListDoctorApplicationsResponseBodyData struct {
-	Analysis  *ListDoctorApplicationsResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	AppId     *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName   *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	EndTime   *int64                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Ids       []*string                                       `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
-	Metrics   *ListDoctorApplicationsResponseBodyDataMetrics  `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	QuerySql  *string                                         `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
-	Queue     *string                                         `json:"Queue,omitempty" xml:"Queue,omitempty"`
-	StartTime *int64                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string                                         `json:"Type,omitempty" xml:"Type,omitempty"`
-	User      *string                                         `json:"User,omitempty" xml:"User,omitempty"`
+	// The analysis results of the jobs.
+	Analysis *ListDoctorApplicationsResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The job ID in YARN. The value of QueryID or SessionID is returned for a Hive job.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the job.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the job ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job IDs. Multiple job IDs are separated with commas (,).
+	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The data about metrics.
+	Metrics *ListDoctorApplicationsResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The query statement. This parameter is left empty for non-SQL jobs.
+	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// The YARN queue to which the job was submitted.
+	Queue *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	// The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the compute engine.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that was used to submit the job.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponseBodyData) String() string {
@@ -21482,7 +22710,9 @@ func (s *ListDoctorApplicationsResponseBodyData) SetUser(v string) *ListDoctorAp
 }
 
 type ListDoctorApplicationsResponseBodyDataAnalysis struct {
-	Score      *int32  `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The score of the job.
+	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The suggestion on executing the job.
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -21505,9 +22735,13 @@ func (s *ListDoctorApplicationsResponseBodyDataAnalysis) SetSuggestion(v string)
 }
 
 type ListDoctorApplicationsResponseBodyDataMetrics struct {
-	MemSeconds       *ListDoctorApplicationsResponseBodyDataMetricsMemSeconds       `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
-	MemUtilization   *ListDoctorApplicationsResponseBodyDataMetricsMemUtilization   `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
-	VcoreSeconds     *ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds     `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The amount of memory consumed.
+	MemSeconds *ListDoctorApplicationsResponseBodyDataMetricsMemSeconds `json:"MemSeconds,omitempty" xml:"MemSeconds,omitempty" type:"Struct"`
+	// The memory usage
+	MemUtilization *ListDoctorApplicationsResponseBodyDataMetricsMemUtilization `json:"MemUtilization,omitempty" xml:"MemUtilization,omitempty" type:"Struct"`
+	// The CPU usage.
+	VcoreSeconds *ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds `json:"VcoreSeconds,omitempty" xml:"VcoreSeconds,omitempty" type:"Struct"`
+	// The CPU utilization. This parameter has the same meaning as %CPU in the Linux top command.
 	VcoreUtilization *ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization `json:"VcoreUtilization,omitempty" xml:"VcoreUtilization,omitempty" type:"Struct"`
 }
 
@@ -21540,10 +22774,14 @@ func (s *ListDoctorApplicationsResponseBodyDataMetrics) SetVcoreUtilization(v *L
 }
 
 type ListDoctorApplicationsResponseBodyDataMetricsMemSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponseBodyDataMetricsMemSeconds) String() string {
@@ -21575,10 +22813,14 @@ func (s *ListDoctorApplicationsResponseBodyDataMetricsMemSeconds) SetValue(v int
 }
 
 type ListDoctorApplicationsResponseBodyDataMetricsMemUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponseBodyDataMetricsMemUtilization) String() string {
@@ -21610,10 +22852,14 @@ func (s *ListDoctorApplicationsResponseBodyDataMetricsMemUtilization) SetValue(v
 }
 
 type ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds) String() string {
@@ -21645,10 +22891,14 @@ func (s *ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds) SetValue(v i
 }
 
 type ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization) String() string {
@@ -25598,18 +26848,32 @@ func (s *ListDoctorHDFSDirectoriesResponse) SetBody(v *ListDoctorHDFSDirectories
 }
 
 type ListDoctorHDFSUGIRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The basis on which you want to sort the query results. Valid values:
+	//
+	// *   totalFileCount: the total number of files
+	// *   totalDataSize: the total data size
+	// *   totalDirCount: the total number of directories
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The filter condition. Valid values:
+	//
+	// *   user
+	// *   group
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIRequest) String() string {
@@ -25661,14 +26925,15 @@ func (s *ListDoctorHDFSUGIRequest) SetType(v string) *ListDoctorHDFSUGIRequest {
 }
 
 type ListDoctorHDFSUGIResponseBody struct {
+	// The results of batch HDFS analysis.
 	Data []*ListDoctorHDFSUGIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -25706,8 +26971,10 @@ func (s *ListDoctorHDFSUGIResponseBody) SetTotalCount(v int32) *ListDoctorHDFSUG
 }
 
 type ListDoctorHDFSUGIResponseBodyData struct {
+	// The metric information.
 	Metrics *ListDoctorHDFSUGIResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	Name    *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The actual name of the owner or group returned based on the value of Type.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIResponseBodyData) String() string {
@@ -25729,8 +26996,11 @@ func (s *ListDoctorHDFSUGIResponseBodyData) SetName(v string) *ListDoctorHDFSUGI
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetrics struct {
-	TotalDataSize  *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize  `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDirCount  *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount  `json:"TotalDirCount,omitempty" xml:"TotalDirCount,omitempty" type:"Struct"`
+	// The total data size.
+	TotalDataSize *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The total number of directories.
+	TotalDirCount *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount `json:"TotalDirCount,omitempty" xml:"TotalDirCount,omitempty" type:"Struct"`
+	// The total number of files.
 	TotalFileCount *ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
 }
 
@@ -25758,10 +27028,14 @@ func (s *ListDoctorHDFSUGIResponseBodyDataMetrics) SetTotalFileCount(v *ListDoct
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) String() string {
@@ -25793,10 +27067,14 @@ func (s *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize) SetValue(v int64
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) String() string {
@@ -25828,10 +27106,14 @@ func (s *ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount) SetValue(v int64
 }
 
 type ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount) String() string {
@@ -25892,17 +27174,26 @@ func (s *ListDoctorHDFSUGIResponse) SetBody(v *ListDoctorHDFSUGIResponseBody) *L
 }
 
 type ListDoctorHiveDatabasesRequest struct {
-	// 集群ID。
-	ClusterId     *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster ID.
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The database names.
 	DatabaseNames []*string `json:"DatabaseNames,omitempty" xml:"DatabaseNames,omitempty" type:"Repeated"`
-	DateTime      *string   `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The query date.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The basis on which you want to sort the query results. Valid values:
+	//
+	// *   tableCount: the number of tables
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid values:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -25955,14 +27246,15 @@ func (s *ListDoctorHiveDatabasesRequest) SetRegionId(v string) *ListDoctorHiveDa
 }
 
 type ListDoctorHiveDatabasesResponseBody struct {
+	// The analysis results of Hive databases.
 	Data []*ListDoctorHiveDatabasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -26000,10 +27292,14 @@ func (s *ListDoctorHiveDatabasesResponseBody) SetTotalCount(v int32) *ListDoctor
 }
 
 type ListDoctorHiveDatabasesResponseBodyData struct {
-	Analysis     *ListDoctorHiveDatabasesResponseBodyDataAnalysis  `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	DatabaseName *string                                           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	Formats      []*ListDoctorHiveDatabasesResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	Metrics      *ListDoctorHiveDatabasesResponseBodyDataMetrics   `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The analysis results.
+	Analysis *ListDoctorHiveDatabasesResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The database name.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The information from the perspective of storage formats.
+	Formats []*ListDoctorHiveDatabasesResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *ListDoctorHiveDatabasesResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyData) String() string {
@@ -26035,10 +27331,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyData) SetMetrics(v *ListDoctorHiveDa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataAnalysis struct {
+	// The score for the distribution of files of different sizes stored in the Hive database.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	HiveFormatScore       *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
-	HiveFrequencyScore    *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
-	HiveScore             *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
+	// The score for the distribution of files stored in different formats in the Hive database.
+	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
+	// The score for the access frequency of the Hive database.
+	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
+	// The overall score of the Hive database.
+	HiveScore *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataAnalysis) String() string {
@@ -26070,12 +27370,18 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataAnalysis) SetHiveScore(v int32) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataFormats struct {
-	FormatDayGrowthSize      *int64   `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
-	FormatName               *string  `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatRatio              *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	FormatSize               *int64   `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The daily increment of storage format-specific data.
+	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
+	// The name of the storage format.
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The proportion of data in a specific storage format.
+	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
+	// The amount of storage format-specific data.
+	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The day-to-day growth rate of storage format-specific data.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	FormatSizeUnit           *string  `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
+	// The unit of the amount of storage format-specific data.
+	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataFormats) String() string {
@@ -26117,50 +27423,94 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataFormats) SetFormatSizeUnit(v str
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	PartitionNum                  *ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
-	SmallFileCount                *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TableCount                    *ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount                    `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
-	TinyFileCount                 *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of partitions.
+	PartitionNum *ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of tables.
+	TableCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount `json:"TableCount,omitempty" xml:"TableCount,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetrics) String() string {
@@ -26392,10 +27742,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetrics) SetWarmDataSizeDayGrowt
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -26427,10 +27781,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize) Se
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio) String() string {
@@ -26462,10 +27820,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio) SetValue(v
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize) String() string {
@@ -26497,10 +27859,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize) SetValue(v 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -26532,10 +27898,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRati
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -26567,10 +27937,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -26602,10 +27976,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -26637,10 +28015,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -26672,10 +28054,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -26707,10 +28093,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -26742,10 +28132,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio) SetValue
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -26777,10 +28171,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -26812,10 +28210,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -26847,10 +28249,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize) Set
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio) String() string {
@@ -26882,10 +28288,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio) SetValue(v 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize) String() string {
@@ -26917,10 +28327,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize) SetValue(v i
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -26952,10 +28366,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount) String() string {
@@ -26987,10 +28405,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -27022,10 +28444,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -27057,10 +28483,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -27092,10 +28522,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount) String() string {
@@ -27127,10 +28561,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount) SetValue
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -27162,10 +28600,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCountDayGrowthR
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -27197,10 +28639,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount)
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -27232,10 +28678,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio) SetValue
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum) String() string {
@@ -27267,10 +28717,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum) SetValue(v 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount) String() string {
@@ -27302,10 +28756,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -27337,10 +28795,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -27372,10 +28834,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -27407,10 +28873,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount) String() string {
@@ -27442,10 +28912,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount) SetValue(v in
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount) String() string {
@@ -27477,10 +28951,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount) SetValue(v
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -27512,10 +28990,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRat
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -27547,10 +29029,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount) S
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -27582,10 +29068,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio) SetValue(v
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -27617,10 +29107,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize) S
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize) String() string {
@@ -27652,10 +29146,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize) SetValue(v
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -27687,10 +29185,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRat
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount) String() string {
@@ -27722,10 +29224,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount) SetValue(
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -27757,10 +29263,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRa
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -27792,10 +29302,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount) 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -27827,10 +29341,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize) Se
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -27862,10 +29380,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio) SetValue(v
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize) String() string {
@@ -27897,10 +29419,14 @@ func (s *ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize) SetValue(v 
 }
 
 type ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -27961,17 +29487,68 @@ func (s *ListDoctorHiveDatabasesResponse) SetBody(v *ListDoctorHiveDatabasesResp
 }
 
 type ListDoctorHiveTablesRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	DateTime  *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+	DateTime *string `json:"DateTime,omitempty" xml:"DateTime,omitempty"`
+	// The maximum number of entries to return on each page.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OrderBy   *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The basis on which you want to sort the query results. Valid value:
+	//
+	// *   partitionNum: the number of partitions.
+	// *   totalFileCount: the total number of files.
+	// *   largeFileCount: the number of large files. Large files are those with a size greater than 1 GB.
+	// *   mediumFileCount: the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	// *   smallFileCount: the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	// *   tinyFileCount: the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	// *   emptyFileCount: the number of empty files. Empty files are those with a size of 0 MB.
+	// *   largeFileRatio: the proportion of large files. Large files are those with a size greater than 1 GB.
+	// *   mediumFileRatio: the proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	// *   smallFileRatio: the proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	// *   tinyFileRatio: the proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	// *   emptyFileRatio: the proportion of empty files. Empty files are those with a size of 0 MB.
+	// *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// *   warmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   freezeDataSize: the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	// *   totalDataSize: the total amount of data.
+	// *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	// *   awmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   freezeDataRatio: the proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	// *   totalFileDayGrowthCount: the daily increment of the total number of files.
+	// *   largeFileDayGrowthCount: the daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	// *   mediumFileDayGrowthCount: the daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	// *   smallFileDayGrowthCount: the daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	// *   tinyFileDayGrowthCount: the daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	// *   emptyFileDayGrowthCount: the daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	// *   hotDataDayGrowthSize: The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// *   coldDataDayGrowthSize: The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   freezeDataDayGrowthSize: The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	// *   totalDataDayGrowthSize: the daily incremental of the total data volume.
+	// *   totalFileCountDayGrowthRatio: the day-to-day growth rate of the total number of files.
+	// *   largeFileCountDayGrowthRatio: the day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	// *   mediumFileCountDayGrowthRatio: the day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	// *   smallFileCountDayGrowthRatio: the day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	// *   tinyFileCountDayGrowthRatio: the day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	// *   emptyFileCountDayGrowthRatio: the day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	// *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	// *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	// *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	// *   freezeDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	// *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total data volume.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The order in which you want to sort the query results. Valid value:
+	//
+	// *   ASC: in ascending order
+	// *   DESC: in descending order
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// 区域ID。
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The table names, which are used to filter the query results.
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
@@ -28024,14 +29601,15 @@ func (s *ListDoctorHiveTablesRequest) SetTableNames(v []*string) *ListDoctorHive
 }
 
 type ListDoctorHiveTablesResponseBody struct {
+	// The analysis results of Hive tables.
 	Data []*ListDoctorHiveTablesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries that are returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -28069,11 +29647,16 @@ func (s *ListDoctorHiveTablesResponseBody) SetTotalCount(v int32) *ListDoctorHiv
 }
 
 type ListDoctorHiveTablesResponseBodyData struct {
-	Analysis  *ListDoctorHiveTablesResponseBodyDataAnalysis  `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
-	Formats   []*ListDoctorHiveTablesResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	Metrics   *ListDoctorHiveTablesResponseBodyDataMetrics   `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	Owner     *string                                        `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	TableName *string                                        `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The analysis results.
+	Analysis *ListDoctorHiveTablesResponseBodyDataAnalysis `json:"Analysis,omitempty" xml:"Analysis,omitempty" type:"Struct"`
+	// The information from the perspective of formats.
+	Formats []*ListDoctorHiveTablesResponseBodyDataFormats `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The metric information.
+	Metrics *ListDoctorHiveTablesResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// The owner.
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The table name. The table name must follow the naming rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyData) String() string {
@@ -28110,10 +29693,14 @@ func (s *ListDoctorHiveTablesResponseBodyData) SetTableName(v string) *ListDocto
 }
 
 type ListDoctorHiveTablesResponseBodyDataAnalysis struct {
+	// The score for the distribution of files of different sizes stored in the Hive table.
 	HiveDistributionScore *int32 `json:"HiveDistributionScore,omitempty" xml:"HiveDistributionScore,omitempty"`
-	HiveFormatScore       *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
-	HiveFrequencyScore    *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
-	HiveScore             *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
+	// The score for the distribution of files stored in different formats in the Hive table.
+	HiveFormatScore *int32 `json:"HiveFormatScore,omitempty" xml:"HiveFormatScore,omitempty"`
+	// The score for the access frequency of the Hive table.
+	HiveFrequencyScore *int32 `json:"HiveFrequencyScore,omitempty" xml:"HiveFrequencyScore,omitempty"`
+	// The overall score of the Hive table.
+	HiveScore *int32 `json:"HiveScore,omitempty" xml:"HiveScore,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataAnalysis) String() string {
@@ -28145,12 +29732,18 @@ func (s *ListDoctorHiveTablesResponseBodyDataAnalysis) SetHiveScore(v int32) *Li
 }
 
 type ListDoctorHiveTablesResponseBodyDataFormats struct {
-	FormatDayGrowthSize      *int64   `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
-	FormatName               *string  `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
-	FormatRatio              *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
-	FormatSize               *int64   `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The daily amount increment of the data in a specific storage format.
+	FormatDayGrowthSize *int64 `json:"FormatDayGrowthSize,omitempty" xml:"FormatDayGrowthSize,omitempty"`
+	// The name of the storage format.
+	FormatName *string `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
+	// The proportion of the data in a specific storage format.
+	FormatRatio *float32 `json:"FormatRatio,omitempty" xml:"FormatRatio,omitempty"`
+	// The size of storage format-specific data.
+	FormatSize *int64 `json:"FormatSize,omitempty" xml:"FormatSize,omitempty"`
+	// The day-to-day growth rate of the amount of the data in a specific storage format.
 	FormatSizeDayGrowthRatio *float32 `json:"FormatSizeDayGrowthRatio,omitempty" xml:"FormatSizeDayGrowthRatio,omitempty"`
-	FormatSizeUnit           *string  `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
+	// The unit of the data size.
+	FormatSizeUnit *string `json:"FormatSizeUnit,omitempty" xml:"FormatSizeUnit,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataFormats) String() string {
@@ -28192,49 +29785,92 @@ func (s *ListDoctorHiveTablesResponseBodyDataFormats) SetFormatSizeUnit(v string
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetrics struct {
-	ColdDataDayGrowthSize         *ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize         `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
-	ColdDataRatio                 *ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio                 `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
-	ColdDataSize                  *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize                  `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
-	ColdDataSizeDayGrowthRatio    *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio    `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileCount                *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount                `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
-	EmptyFileCountDayGrowthRatio  *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio  `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	EmptyFileDayGrowthCount       *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount       `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
-	EmptyFileRatio                *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio                `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
-	FreezeDataDayGrowthSize       *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize       `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
-	FreezeDataRatio               *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio               `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
-	FreezeDataSize                *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize                `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
-	FreezeDataSizeDayGrowthRatio  *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio  `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	HotDataDayGrowthSize          *ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize          `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
-	HotDataRatio                  *ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio                  `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
-	HotDataSize                   *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize                   `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
-	HotDataSizeDayGrowthRatio     *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio     `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileCount                *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount                `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
-	LargeFileCountDayGrowthRatio  *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio  `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	LargeFileDayGrowthCount       *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount       `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
-	LargeFileRatio                *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio                `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
-	MediumFileCount               *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount               `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize `json:"ColdDataDayGrowthSize,omitempty" xml:"ColdDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio `json:"ColdDataRatio,omitempty" xml:"ColdDataRatio,omitempty" type:"Struct"`
+	// The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSize *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+	ColdDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio `json:"ColdDataSizeDayGrowthRatio,omitempty" xml:"ColdDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCount *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount `json:"EmptyFileCount,omitempty" xml:"EmptyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio `json:"EmptyFileCountDayGrowthRatio,omitempty" xml:"EmptyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount `json:"EmptyFileDayGrowthCount,omitempty" xml:"EmptyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of empty files. Empty files are those with a size of 0 MB.
+	EmptyFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio `json:"EmptyFileRatio,omitempty" xml:"EmptyFileRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize `json:"FreezeDataDayGrowthSize,omitempty" xml:"FreezeDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio `json:"FreezeDataRatio,omitempty" xml:"FreezeDataRatio,omitempty" type:"Struct"`
+	// The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSize *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize `json:"FreezeDataSize,omitempty" xml:"FreezeDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+	FreezeDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio `json:"FreezeDataSizeDayGrowthRatio,omitempty" xml:"FreezeDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize `json:"HotDataDayGrowthSize,omitempty" xml:"HotDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio `json:"HotDataRatio,omitempty" xml:"HotDataRatio,omitempty" type:"Struct"`
+	// The amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSize *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+	HotDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio `json:"HotDataSizeDayGrowthRatio,omitempty" xml:"HotDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCount *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount `json:"LargeFileCount,omitempty" xml:"LargeFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio `json:"LargeFileCountDayGrowthRatio,omitempty" xml:"LargeFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+	LargeFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount `json:"LargeFileDayGrowthCount,omitempty" xml:"LargeFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of large files. Large files are those with a size greater than 1 GB.
+	LargeFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio `json:"LargeFileRatio,omitempty" xml:"LargeFileRatio,omitempty" type:"Struct"`
+	// The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileCount *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount `json:"MediumFileCount,omitempty" xml:"MediumFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
 	MediumFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCountDayGrowthRatio `json:"MediumFileCountDayGrowthRatio,omitempty" xml:"MediumFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	MediumFileDayGrowthCount      *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount      `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
-	MediumFileRatio               *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio               `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
-	PartitionNum                  *ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum                  `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
-	SmallFileCount                *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount                `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
-	SmallFileCountDayGrowthRatio  *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio  `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	SmallFileDayGrowthCount       *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount       `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
-	SmallFileRatio                *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio                `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
-	TinyFileCount                 *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount                 `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
-	TinyFileCountDayGrowthRatio   *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio   `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TinyFileDayGrowthCount        *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount        `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
-	TinyFileRatio                 *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio                 `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
-	TotalDataDayGrowthSize        *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize        `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
-	TotalDataSize                 *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize                 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
-	TotalDataSizeDayGrowthRatio   *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio   `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileCount                *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount                `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
-	TotalFileCountDayGrowthRatio  *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio  `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
-	TotalFileDayGrowthCount       *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount       `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
-	WarmDataDayGrowthSize         *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize         `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
-	WarmDataRatio                 *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio                 `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
-	WarmDataSize                  *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize                  `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
-	WarmDataSizeDayGrowthRatio    *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio    `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount `json:"MediumFileDayGrowthCount,omitempty" xml:"MediumFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+	MediumFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio `json:"MediumFileRatio,omitempty" xml:"MediumFileRatio,omitempty" type:"Struct"`
+	// The number of partitions.
+	PartitionNum *ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum `json:"PartitionNum,omitempty" xml:"PartitionNum,omitempty" type:"Struct"`
+	// The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCount *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount `json:"SmallFileCount,omitempty" xml:"SmallFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio `json:"SmallFileCountDayGrowthRatio,omitempty" xml:"SmallFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount `json:"SmallFileDayGrowthCount,omitempty" xml:"SmallFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+	SmallFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio `json:"SmallFileRatio,omitempty" xml:"SmallFileRatio,omitempty" type:"Struct"`
+	// The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCount *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount `json:"TinyFileCount,omitempty" xml:"TinyFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio `json:"TinyFileCountDayGrowthRatio,omitempty" xml:"TinyFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount `json:"TinyFileDayGrowthCount,omitempty" xml:"TinyFileDayGrowthCount,omitempty" type:"Struct"`
+	// The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+	TinyFileRatio *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio `json:"TinyFileRatio,omitempty" xml:"TinyFileRatio,omitempty" type:"Struct"`
+	// The daily incremental of the total data volume.
+	TotalDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize `json:"TotalDataDayGrowthSize,omitempty" xml:"TotalDataDayGrowthSize,omitempty" type:"Struct"`
+	// The total amount of data.
+	TotalDataSize *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total data volume.
+	TotalDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio `json:"TotalDataSizeDayGrowthRatio,omitempty" xml:"TotalDataSizeDayGrowthRatio,omitempty" type:"Struct"`
+	// The total number of files.
+	TotalFileCount *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount `json:"TotalFileCount,omitempty" xml:"TotalFileCount,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the total number of files.
+	TotalFileCountDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio `json:"TotalFileCountDayGrowthRatio,omitempty" xml:"TotalFileCountDayGrowthRatio,omitempty" type:"Struct"`
+	// The daily increment of the total number of files.
+	TotalFileDayGrowthCount *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount `json:"TotalFileDayGrowthCount,omitempty" xml:"TotalFileDayGrowthCount,omitempty" type:"Struct"`
+	// The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataDayGrowthSize *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize `json:"WarmDataDayGrowthSize,omitempty" xml:"WarmDataDayGrowthSize,omitempty" type:"Struct"`
+	// The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataRatio *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio `json:"WarmDataRatio,omitempty" xml:"WarmDataRatio,omitempty" type:"Struct"`
+	// The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSize *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize `json:"WarmDataSize,omitempty" xml:"WarmDataSize,omitempty" type:"Struct"`
+	// The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+	WarmDataSizeDayGrowthRatio *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio `json:"WarmDataSizeDayGrowthRatio,omitempty" xml:"WarmDataSizeDayGrowthRatio,omitempty" type:"Struct"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetrics) String() string {
@@ -28461,10 +30097,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetrics) SetWarmDataSizeDayGrowthRa
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize) String() string {
@@ -28496,10 +30136,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize) SetVa
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio) String() string {
@@ -28531,10 +30175,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio) SetValue(v fl
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize) String() string {
@@ -28566,10 +30214,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize) SetValue(v int
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio) String() string {
@@ -28601,10 +30253,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio) 
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount) String() string {
@@ -28636,10 +30292,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount) SetValue(v i
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio) String() string {
@@ -28671,10 +30331,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount) String() string {
@@ -28706,10 +30370,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount) Set
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio) String() string {
@@ -28741,10 +30409,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio) SetValue(v f
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize) String() string {
@@ -28776,10 +30448,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize) Set
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio) String() string {
@@ -28811,10 +30487,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio) SetValue(v 
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize) String() string {
@@ -28846,10 +30526,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize) SetValue(v i
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio) String() string {
@@ -28881,10 +30565,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize) String() string {
@@ -28916,10 +30604,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize) SetVal
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio) String() string {
@@ -28951,10 +30643,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio) SetValue(v flo
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize) String() string {
@@ -28986,10 +30682,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize) SetValue(v int6
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio) String() string {
@@ -29021,10 +30721,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio) S
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount) String() string {
@@ -29056,10 +30760,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount) SetValue(v i
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio) String() string {
@@ -29091,10 +30799,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount) String() string {
@@ -29126,10 +30838,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount) Set
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio) String() string {
@@ -29161,10 +30877,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio) SetValue(v f
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount) String() string {
@@ -29196,10 +30916,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount) SetValue(v 
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCountDayGrowthRatio) String() string {
@@ -29231,10 +30955,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCountDayGrowthRati
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount) String() string {
@@ -29266,10 +30994,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount) Se
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio) String() string {
@@ -29301,10 +31033,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio) SetValue(v 
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum) String() string {
@@ -29336,10 +31072,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum) SetValue(v int
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount) String() string {
@@ -29371,10 +31111,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount) SetValue(v i
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio) String() string {
@@ -29406,10 +31150,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount) String() string {
@@ -29441,10 +31189,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount) Set
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio) String() string {
@@ -29476,10 +31228,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio) SetValue(v f
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount) String() string {
@@ -29511,10 +31267,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount) SetValue(v in
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio) String() string {
@@ -29546,10 +31306,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio)
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount) String() string {
@@ -29581,10 +31345,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount) SetV
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio) String() string {
@@ -29616,10 +31384,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio) SetValue(v fl
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize) String() string {
@@ -29651,10 +31423,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize) SetV
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize) String() string {
@@ -29686,10 +31462,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize) SetValue(v in
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio) String() string {
@@ -29721,10 +31501,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio)
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount) String() string {
@@ -29756,10 +31540,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount) SetValue(v i
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio) String() string {
@@ -29791,10 +31579,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount) String() string {
@@ -29826,10 +31618,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount) Set
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize) String() string {
@@ -29861,10 +31657,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize) SetVa
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio) String() string {
@@ -29896,10 +31696,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio) SetValue(v fl
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize struct {
+	// The description of the metric.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize) String() string {
@@ -29931,10 +31735,14 @@ func (s *ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize) SetValue(v int
 }
 
 type ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	Unit        *string  `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	Value       *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The description of the metric.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the metric.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The unit of the metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The value of the metric.
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio) String() string {
@@ -31074,21 +32882,21 @@ func (s *ListInstanceTypesResponse) SetBody(v *ListInstanceTypesResponseBody) *L
 }
 
 type ListNodeGroupsRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 一次获取的最大记录数。取值范围：1~100。
+	// The number of maximum number of records to obtain at a time. Valid values: 1 to 100.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// Marks the current position where reading starts. If you set this value to null, you can start from the beginning.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 节点组ID列表。
+	// The IDs of node groups. Valid values of the number of array elements N: 1 to 100.
 	NodeGroupIds []*string `json:"NodeGroupIds,omitempty" xml:"NodeGroupIds,omitempty" type:"Repeated"`
-	// 节点组名称列表。
+	// The list of node group names. Valid values of the number of array elements N: 1 to 100.
 	NodeGroupNames []*string `json:"NodeGroupNames,omitempty" xml:"NodeGroupNames,omitempty" type:"Repeated"`
-	// 节点组状态。
+	// The status of the node group. Valid values of the number of array elements N: 1 to 100.
 	NodeGroupStates []*string `json:"NodeGroupStates,omitempty" xml:"NodeGroupStates,omitempty" type:"Repeated"`
-	// 节点组类型列表。
+	// The list of node group types. Valid values of the number of array elements N: 1 to 100.
 	NodeGroupTypes []*string `json:"NodeGroupTypes,omitempty" xml:"NodeGroupTypes,omitempty" type:"Repeated"`
-	// 区域ID。
+	// The ID of the region in which you want to create the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -31141,14 +32949,15 @@ func (s *ListNodeGroupsRequest) SetRegionId(v string) *ListNodeGroupsRequest {
 }
 
 type ListNodeGroupsResponseBody struct {
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
-	NextToken  *string      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Returns the location of the data that was read. Empty indicates that the data has been read.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The array of node groups.
 	NodeGroups []*NodeGroup `json:"NodeGroups,omitempty" xml:"NodeGroups,omitempty" type:"Repeated"`
-	// 请求ID。
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -31779,11 +33588,11 @@ func (s *PutAutoScalingPolicyResponse) SetBody(v *PutAutoScalingPolicyResponseBo
 }
 
 type RemoveAutoScalingPolicyRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -31811,7 +33620,7 @@ func (s *RemoveAutoScalingPolicyRequest) SetRegionId(v string) *RemoveAutoScalin
 }
 
 type RemoveAutoScalingPolicyResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31858,28 +33667,32 @@ func (s *RemoveAutoScalingPolicyResponse) SetBody(v *RemoveAutoScalingPolicyResp
 }
 
 type RunApplicationActionRequest struct {
-	// 操作名称。取值范围：
-	// - start：启动。
-	// - stop：停止。
-	// - config: 下发配置。
-	// - refresh_queues: 刷新yarn队列。
-	// 等
+	// The name of the action. Valid values:
+	//
+	// *   start
+	// *   stop
+	// *   config
+	// *   restart
+	// *   refresh_queues
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// 每批数量。
+	// The number of applications in each batch.
 	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 组件实例选择器。
+	// The name of the operation.
 	ComponentInstanceSelector *ComponentInstanceSelector `json:"ComponentInstanceSelector,omitempty" xml:"ComponentInstanceSelector,omitempty"`
-	// 描述。
+	// The description of the execution.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 运行策略。
+	// The execution policy. Valid values:
+	//
+	// *   FAILED_BLOCK: The system stops the execution if the execution fails.
+	// *   FAILED_CONTINUE: The system continues the execution if the execution fails.
 	ExecuteStrategy *string `json:"ExecuteStrategy,omitempty" xml:"ExecuteStrategy,omitempty"`
-	// 间隔时间。
+	// The interval for rolling execution. Unit: seconds.
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 是否滚动执行。
+	// Specifies whether to enable rolling execution.
 	RollingExecute *bool `json:"RollingExecute,omitempty" xml:"RollingExecute,omitempty"`
 }
 
@@ -31937,9 +33750,9 @@ func (s *RunApplicationActionRequest) SetRollingExecute(v bool) *RunApplicationA
 }
 
 type RunApplicationActionResponseBody struct {
-	// 操作ID。
+	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32177,28 +33990,30 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateApplicationConfigsRequest struct {
-	// 应用配置列表。
+	// The list of application configurations.
 	ApplicationConfigs []*UpdateApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
-	// 应用名称。
+	// The application name.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 集群ID。
+	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 配置项操作。取值范围：
-	// - ADD：添加。
-	// - DELETE：删除。
-	// - UPDATE：更新。
+	// The operation performed on configuration items. Valid values:
+	//
+	// *   ADD
+	// *   UPDATE
+	// *   DELETE
 	ConfigAction *string `json:"ConfigAction,omitempty" xml:"ConfigAction,omitempty"`
-	// 配置操作范围。取值范围：
-	// - CLUSTER：集群范围。
-	// - NODE_GROUP：节点组范围。
+	// The operation scope. Valid values:
+	//
+	// *   CLUSTER
+	// *   NODE_GROUP
 	ConfigScope *string `json:"ConfigScope,omitempty" xml:"ConfigScope,omitempty"`
-	// 本次更新操作描述。
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 节点组ID。
+	// The ID of the node group.
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	// 节点ID。
+	// The node ID.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -32256,9 +34071,9 @@ func (s *UpdateApplicationConfigsRequest) SetRegionId(v string) *UpdateApplicati
 }
 
 type UpdateApplicationConfigsResponseBody struct {
-	// 操作ID。
+	// The operation ID.
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
