@@ -709,8 +709,9 @@ func (s *JobMetric) SetTotalMemoryByte(v int64) *JobMetric {
 }
 
 type JobStartParameters struct {
-	DeploymentId    *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
+	DeploymentId      *string                    `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	ResourceQueueName *string                    `json:"resourceQueueName,omitempty" xml:"resourceQueueName,omitempty"`
+	RestoreStrategy   *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
 
 func (s JobStartParameters) String() string {
@@ -723,6 +724,11 @@ func (s JobStartParameters) GoString() string {
 
 func (s *JobStartParameters) SetDeploymentId(v string) *JobStartParameters {
 	s.DeploymentId = &v
+	return s
+}
+
+func (s *JobStartParameters) SetResourceQueueName(v string) *JobStartParameters {
+	s.ResourceQueueName = &v
 	return s
 }
 
