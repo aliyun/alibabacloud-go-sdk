@@ -11838,6 +11838,7 @@ func (s *DeleteEnvServiceMonitorResponse) SetBody(v *DeleteEnvServiceMonitorResp
 }
 
 type DeleteEnvironmentRequest struct {
+	DeletePromInstance *bool `json:"DeletePromInstance,omitempty" xml:"DeletePromInstance,omitempty"`
 	// Environment instance ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The ID of the region.
@@ -11850,6 +11851,11 @@ func (s DeleteEnvironmentRequest) String() string {
 
 func (s DeleteEnvironmentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteEnvironmentRequest) SetDeletePromInstance(v bool) *DeleteEnvironmentRequest {
+	s.DeletePromInstance = &v
+	return s
 }
 
 func (s *DeleteEnvironmentRequest) SetEnvironmentId(v string) *DeleteEnvironmentRequest {
@@ -13493,9 +13499,12 @@ func (s *DeleteSyntheticTaskResponse) SetBody(v *DeleteSyntheticTaskResponseBody
 }
 
 type DeleteTimingSyntheticTaskRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ID of the synthetic monitoring task.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteTimingSyntheticTaskRequest) String() string {
@@ -13522,9 +13531,13 @@ func (s *DeleteTimingSyntheticTaskRequest) SetTaskId(v string) *DeleteTimingSynt
 }
 
 type DeleteTimingSyntheticTaskResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the synthetic monitoring task was deleted. true: The synthetic monitoring task was deleted. false: The synthetic monitoring task failed to be deleted.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15490,7 +15503,7 @@ func (s *DescribeEnvServiceMonitorResponse) SetBody(v *DescribeEnvServiceMonitor
 }
 
 type DescribeEnvironmentRequest struct {
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -15515,13 +15528,13 @@ func (s *DescribeEnvironmentRequest) SetRegionId(v string) *DescribeEnvironmentR
 }
 
 type DescribeEnvironmentResponseBody struct {
-	// The status code or error code.
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
 	Data *DescribeEnvironmentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15554,41 +15567,46 @@ func (s *DescribeEnvironmentResponseBody) SetRequestId(v string) *DescribeEnviro
 }
 
 type DescribeEnvironmentResponseBodyData struct {
-	// Resource instance ID bound to the environment, including container instance ID or VpcId.
+	// The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
-	// Profile of bound resources.
+	// The profile of the resource.
 	BindResourceProfile *string `json:"BindResourceProfile,omitempty" xml:"BindResourceProfile,omitempty"`
-	// The state of the bound resource.
+	// The status of the resource.
 	BindResourceStatus *string `json:"BindResourceStatus,omitempty" xml:"BindResourceStatus,omitempty"`
-	// The storage duration of bound resources (days).
+	// The retention period of the resource. Unit: days.
 	BindResourceStoreDuration *string `json:"BindResourceStoreDuration,omitempty" xml:"BindResourceStoreDuration,omitempty"`
-	// The bound resource type.
+	// The resource type.
 	BindResourceType *string `json:"BindResourceType,omitempty" xml:"BindResourceType,omitempty"`
-	// Bind the network segment of the vpc.
+	// The VPC CIDR block.
 	BindVpcCidr *string `json:"BindVpcCidr,omitempty" xml:"BindVpcCidr,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Environment name.
-	EnvironmentName    *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// The environment name.
+	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
+	// Environment subtypes:
+	// - CS: Currently supports ACK.
+	// - ECS: ECS is currently supported.
+	// - Cloud: Currently supports Cloud.
 	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
-	// Environment type:
-	// - CS: Container Service.
-	// - ECS.
-	// - Cloud: cloud service.
+	// The type of the environment. Valid values:
+	//
+	// *   CS: Container Service for Kubernetes (ACK)
+	// *   ECS: Elastic Compute Service
+	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
-	// Grafana data source name.
+	// The name of the Grafana data source.
 	GrafaDataSourceName *string `json:"GrafaDataSourceName,omitempty" xml:"GrafaDataSourceName,omitempty"`
-	// Grafana data source unique ID.
+	// The unique ID of the Grafana data source.
 	GrafanaDatasourceUid *string `json:"GrafanaDatasourceUid,omitempty" xml:"GrafanaDatasourceUid,omitempty"`
-	// Grafana directory name.
+	// The name of the Grafana directory.
 	GrafanaFolderTitle *string `json:"GrafanaFolderTitle,omitempty" xml:"GrafanaFolderTitle,omitempty"`
-	// Grafana directory unique ID.
+	// The unique ID of the Grafana directory.
 	GrafanaFolderUid *string `json:"GrafanaFolderUid,omitempty" xml:"GrafanaFolderUid,omitempty"`
-	// Grafana directory URL.
+	// The URL of the Grafana directory.
 	GrafanaFolderUrl *string `json:"GrafanaFolderUrl,omitempty" xml:"GrafanaFolderUrl,omitempty"`
-	// The bound prometheus instance ID.
+	// The ID of the Prometheus instance.
 	PrometheusInstanceId *string `json:"PrometheusInstanceId,omitempty" xml:"PrometheusInstanceId,omitempty"`
-	// The name of the bound prometheus instance.
+	// The name of the Prometheus instance.
 	PrometheusInstanceName *string `json:"PrometheusInstanceName,omitempty" xml:"PrometheusInstanceName,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -15596,9 +15614,10 @@ type DescribeEnvironmentResponseBodyData struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tags []*DescribeEnvironmentResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// UserId.
+	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VpcId  *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// VPC ID。
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeEnvironmentResponseBodyData) String() string {
@@ -15720,7 +15739,9 @@ func (s *DescribeEnvironmentResponseBodyData) SetVpcId(v string) *DescribeEnviro
 }
 
 type DescribeEnvironmentResponseBodyDataTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag的键。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag的值
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18333,6 +18354,135 @@ func (s *GetClusterAllUrlResponse) SetStatusCode(v int32) *GetClusterAllUrlRespo
 }
 
 func (s *GetClusterAllUrlResponse) SetBody(v *GetClusterAllUrlResponseBody) *GetClusterAllUrlResponse {
+	s.Body = v
+	return s
+}
+
+type GetCommercialStatusRequest struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetCommercialStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommercialStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommercialStatusRequest) SetCommodityCode(v string) *GetCommercialStatusRequest {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetCommercialStatusRequest) SetRegionId(v string) *GetCommercialStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetCommercialStatusResponseBody struct {
+	// Id of the request
+	RequestId              *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserAndCommodityStatus *GetCommercialStatusResponseBodyUserAndCommodityStatus `json:"UserAndCommodityStatus,omitempty" xml:"UserAndCommodityStatus,omitempty" type:"Struct"`
+}
+
+func (s GetCommercialStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommercialStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommercialStatusResponseBody) SetRequestId(v string) *GetCommercialStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBody) SetUserAndCommodityStatus(v *GetCommercialStatusResponseBodyUserAndCommodityStatus) *GetCommercialStatusResponseBody {
+	s.UserAndCommodityStatus = v
+	return s
+}
+
+type GetCommercialStatusResponseBodyUserAndCommodityStatus struct {
+	Basic      *bool                  `json:"Basic,omitempty" xml:"Basic,omitempty"`
+	ChargeType *string                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Enable     *bool                  `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ExtraInfo  map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	FreeDays   *int64                 `json:"FreeDays,omitempty" xml:"FreeDays,omitempty"`
+	Lable      *string                `json:"Lable,omitempty" xml:"Lable,omitempty"`
+	Status     *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCommercialStatusResponseBodyUserAndCommodityStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommercialStatusResponseBodyUserAndCommodityStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetBasic(v bool) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.Basic = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetChargeType(v string) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetEnable(v bool) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetExtraInfo(v map[string]interface{}) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetFreeDays(v int64) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.FreeDays = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetLable(v string) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.Lable = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponseBodyUserAndCommodityStatus) SetStatus(v string) *GetCommercialStatusResponseBodyUserAndCommodityStatus {
+	s.Status = &v
+	return s
+}
+
+type GetCommercialStatusResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCommercialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCommercialStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCommercialStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCommercialStatusResponse) SetHeaders(v map[string]*string) *GetCommercialStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCommercialStatusResponse) SetStatusCode(v int32) *GetCommercialStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCommercialStatusResponse) SetBody(v *GetCommercialStatusResponseBody) *GetCommercialStatusResponse {
 	s.Body = v
 	return s
 }
@@ -46985,6 +47135,10 @@ func (client *Client) DeleteEnvironmentWithOptions(request *DeleteEnvironmentReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletePromInstance)) {
+		query["DeletePromInstance"] = request.DeletePromInstance
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
 		query["EnvironmentId"] = request.EnvironmentId
 	}
@@ -49102,6 +49256,54 @@ func (client *Client) GetClusterAllUrl(request *GetClusterAllUrlRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetClusterAllUrlResponse{}
 	_body, _err := client.GetClusterAllUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCommercialStatusWithOptions(request *GetCommercialStatusRequest, runtime *util.RuntimeOptions) (_result *GetCommercialStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCommercialStatus"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCommercialStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCommercialStatus(request *GetCommercialStatusRequest) (_result *GetCommercialStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCommercialStatusResponse{}
+	_body, _err := client.GetCommercialStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
