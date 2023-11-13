@@ -1490,7 +1490,8 @@ type CreateServiceMeshRequest struct {
 	//
 	// *   `PayOnDemand`: pay-as-you-go.
 	// *   `PrePay`: subscription.
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType    *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterDomain *string `json:"ClusterDomain,omitempty" xml:"ClusterDomain,omitempty"`
 	// The edition of the ASM instance. Valid values:
 	//
 	// - `standard`: Standard Edition
@@ -1817,6 +1818,11 @@ func (s *CreateServiceMeshRequest) SetCRAggregationEnabled(v bool) *CreateServic
 
 func (s *CreateServiceMeshRequest) SetChargeType(v string) *CreateServiceMeshRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateServiceMeshRequest) SetClusterDomain(v string) *CreateServiceMeshRequest {
+	s.ClusterDomain = &v
 	return s
 }
 
@@ -17786,6 +17792,10 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		body["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterDomain)) {
+		body["ClusterDomain"] = request.ClusterDomain
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
