@@ -8829,6 +8829,134 @@ func (s *DescribeInstanceDetailsResponse) SetBody(v *DescribeInstanceDetailsResp
 	return s
 }
 
+type DescribeInstanceExtRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeInstanceExtRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceExtRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceExtRequest) SetInstanceId(v string) *DescribeInstanceExtRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceExtRequest) SetPageNumber(v string) *DescribeInstanceExtRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstanceExtRequest) SetPageSize(v string) *DescribeInstanceExtRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeInstanceExtResponseBody struct {
+	InstanceExtSpecs []*DescribeInstanceExtResponseBodyInstanceExtSpecs `json:"InstanceExtSpecs,omitempty" xml:"InstanceExtSpecs,omitempty" type:"Repeated"`
+	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceExtResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceExtResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceExtResponseBody) SetInstanceExtSpecs(v []*DescribeInstanceExtResponseBodyInstanceExtSpecs) *DescribeInstanceExtResponseBody {
+	s.InstanceExtSpecs = v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBody) SetRequestId(v string) *DescribeInstanceExtResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBody) SetTotalCount(v int64) *DescribeInstanceExtResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
+	FunctionVersion *int64  `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NormalBandwidth *int64  `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
+	ProductPlan     *int64  `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
+	ServicePartner  *string `json:"ServicePartner,omitempty" xml:"ServicePartner,omitempty"`
+}
+
+func (s DescribeInstanceExtResponseBodyInstanceExtSpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceExtResponseBodyInstanceExtSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceExtResponseBodyInstanceExtSpecs) SetFunctionVersion(v int64) *DescribeInstanceExtResponseBodyInstanceExtSpecs {
+	s.FunctionVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBodyInstanceExtSpecs) SetInstanceId(v string) *DescribeInstanceExtResponseBodyInstanceExtSpecs {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBodyInstanceExtSpecs) SetNormalBandwidth(v int64) *DescribeInstanceExtResponseBodyInstanceExtSpecs {
+	s.NormalBandwidth = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBodyInstanceExtSpecs) SetProductPlan(v int64) *DescribeInstanceExtResponseBodyInstanceExtSpecs {
+	s.ProductPlan = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponseBodyInstanceExtSpecs) SetServicePartner(v string) *DescribeInstanceExtResponseBodyInstanceExtSpecs {
+	s.ServicePartner = &v
+	return s
+}
+
+type DescribeInstanceExtResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceExtResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceExtResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceExtResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceExtResponse) SetHeaders(v map[string]*string) *DescribeInstanceExtResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceExtResponse) SetStatusCode(v int32) *DescribeInstanceExtResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceExtResponse) SetBody(v *DescribeInstanceExtResponseBody) *DescribeInstanceExtResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceIdsRequest struct {
 	Edition         *int32    `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -24684,6 +24812,58 @@ func (client *Client) DescribeInstanceDetails(request *DescribeInstanceDetailsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDetailsResponse{}
 	_body, _err := client.DescribeInstanceDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceExtWithOptions(request *DescribeInstanceExtRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceExtResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceExt"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceExtResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceExt(request *DescribeInstanceExtRequest) (_result *DescribeInstanceExtResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceExtResponse{}
+	_body, _err := client.DescribeInstanceExtWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
