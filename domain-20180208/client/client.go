@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -459,6 +459,134 @@ func (s *CheckDomainStatusResponse) SetBody(v *CheckDomainStatusResponseBody) *C
 	return s
 }
 
+type CheckSelectedDomainStatusRequest struct {
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+}
+
+func (s CheckSelectedDomainStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSelectedDomainStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSelectedDomainStatusRequest) SetDomain(v string) *CheckSelectedDomainStatusRequest {
+	s.Domain = &v
+	return s
+}
+
+type CheckSelectedDomainStatusResponseBody struct {
+	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         *CheckSelectedDomainStatusResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckSelectedDomainStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSelectedDomainStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSelectedDomainStatusResponseBody) SetErrorCode(v string) *CheckSelectedDomainStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBody) SetHttpStatusCode(v int32) *CheckSelectedDomainStatusResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBody) SetModule(v *CheckSelectedDomainStatusResponseBodyModule) *CheckSelectedDomainStatusResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBody) SetRequestId(v string) *CheckSelectedDomainStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBody) SetSuccess(v bool) *CheckSelectedDomainStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckSelectedDomainStatusResponseBodyModule struct {
+	DeadDate *int64   `json:"DeadDate,omitempty" xml:"DeadDate,omitempty"`
+	Domain   *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	EndTime  *int64   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Price    *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	RegDate  *int64   `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
+}
+
+func (s CheckSelectedDomainStatusResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSelectedDomainStatusResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetDeadDate(v int64) *CheckSelectedDomainStatusResponseBodyModule {
+	s.DeadDate = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetDomain(v string) *CheckSelectedDomainStatusResponseBodyModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetEndTime(v int64) *CheckSelectedDomainStatusResponseBodyModule {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetPrice(v float64) *CheckSelectedDomainStatusResponseBodyModule {
+	s.Price = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponseBodyModule) SetRegDate(v int64) *CheckSelectedDomainStatusResponseBodyModule {
+	s.RegDate = &v
+	return s
+}
+
+type CheckSelectedDomainStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckSelectedDomainStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckSelectedDomainStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckSelectedDomainStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckSelectedDomainStatusResponse) SetHeaders(v map[string]*string) *CheckSelectedDomainStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponse) SetStatusCode(v int32) *CheckSelectedDomainStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckSelectedDomainStatusResponse) SetBody(v *CheckSelectedDomainStatusResponseBody) *CheckSelectedDomainStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFixedPriceDemandOrderRequest struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
@@ -589,6 +717,146 @@ func (s *CreateFixedPriceDemandOrderResponse) SetStatusCode(v int32) *CreateFixe
 }
 
 func (s *CreateFixedPriceDemandOrderResponse) SetBody(v *CreateFixedPriceDemandOrderResponseBody) *CreateFixedPriceDemandOrderResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFixedPriceSelectedOrderRequest struct {
+	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	ContactId     *string  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	DomainName    *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ExpectedPrice *float64 `json:"ExpectedPrice,omitempty" xml:"ExpectedPrice,omitempty"`
+	Source        *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CreateFixedPriceSelectedOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFixedPriceSelectedOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFixedPriceSelectedOrderRequest) SetCode(v string) *CreateFixedPriceSelectedOrderRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderRequest) SetContactId(v string) *CreateFixedPriceSelectedOrderRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderRequest) SetDomainName(v string) *CreateFixedPriceSelectedOrderRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderRequest) SetExpectedPrice(v float64) *CreateFixedPriceSelectedOrderRequest {
+	s.ExpectedPrice = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderRequest) SetSource(v string) *CreateFixedPriceSelectedOrderRequest {
+	s.Source = &v
+	return s
+}
+
+type CreateFixedPriceSelectedOrderResponseBody struct {
+	ErrorCode      *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	HttpStatusCode *int32                                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Module         *CreateFixedPriceSelectedOrderResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateFixedPriceSelectedOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFixedPriceSelectedOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBody) SetErrorCode(v string) *CreateFixedPriceSelectedOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBody) SetHttpStatusCode(v int32) *CreateFixedPriceSelectedOrderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBody) SetModule(v *CreateFixedPriceSelectedOrderResponseBodyModule) *CreateFixedPriceSelectedOrderResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBody) SetRequestId(v string) *CreateFixedPriceSelectedOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBody) SetSuccess(v bool) *CreateFixedPriceSelectedOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFixedPriceSelectedOrderResponseBodyModule struct {
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OrderNo *string `json:"OrderNo,omitempty" xml:"OrderNo,omitempty"`
+	Price   *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
+}
+
+func (s CreateFixedPriceSelectedOrderResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFixedPriceSelectedOrderResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetDomain(v string) *CreateFixedPriceSelectedOrderResponseBodyModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetOrderNo(v string) *CreateFixedPriceSelectedOrderResponseBodyModule {
+	s.OrderNo = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponseBodyModule) SetPrice(v int64) *CreateFixedPriceSelectedOrderResponseBodyModule {
+	s.Price = &v
+	return s
+}
+
+type CreateFixedPriceSelectedOrderResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFixedPriceSelectedOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFixedPriceSelectedOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFixedPriceSelectedOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFixedPriceSelectedOrderResponse) SetHeaders(v map[string]*string) *CreateFixedPriceSelectedOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponse) SetStatusCode(v int32) *CreateFixedPriceSelectedOrderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFixedPriceSelectedOrderResponse) SetBody(v *CreateFixedPriceSelectedOrderResponseBody) *CreateFixedPriceSelectedOrderResponse {
 	s.Body = v
 	return s
 }
@@ -1834,6 +2102,7 @@ type QueryBrokerDemandResponseBodyData struct {
 	PayTime             *int64   `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
 	ProduceType         *int32   `json:"ProduceType,omitempty" xml:"ProduceType,omitempty"`
 	PublishTime         *int64   `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PurchaseStatus      *int32   `json:"PurchaseStatus,omitempty" xml:"PurchaseStatus,omitempty"`
 	ServicePayPrice     *float32 `json:"ServicePayPrice,omitempty" xml:"ServicePayPrice,omitempty"`
 	Status              *string  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -1918,6 +2187,11 @@ func (s *QueryBrokerDemandResponseBodyData) SetProduceType(v int32) *QueryBroker
 
 func (s *QueryBrokerDemandResponseBodyData) SetPublishTime(v int64) *QueryBrokerDemandResponseBodyData {
 	s.PublishTime = &v
+	return s
+}
+
+func (s *QueryBrokerDemandResponseBodyData) SetPurchaseStatus(v int32) *QueryBrokerDemandResponseBodyData {
+	s.PurchaseStatus = &v
 	return s
 }
 
@@ -2199,6 +2473,194 @@ func (s *QueryDomainTransferStatusResponse) SetStatusCode(v int32) *QueryDomainT
 }
 
 func (s *QueryDomainTransferStatusResponse) SetBody(v *QueryDomainTransferStatusResponseBody) *QueryDomainTransferStatusResponse {
+	s.Body = v
+	return s
+}
+
+type QueryPurchasedDomainsRequest struct {
+	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndOperationTime   *string `json:"EndOperationTime,omitempty" xml:"EndOperationTime,omitempty"`
+	OpTimeOrder        *bool   `json:"OpTimeOrder,omitempty" xml:"OpTimeOrder,omitempty"`
+	OperationStatus    *int32  `json:"OperationStatus,omitempty" xml:"OperationStatus,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType        *int32  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	StartOperationTime *string `json:"StartOperationTime,omitempty" xml:"StartOperationTime,omitempty"`
+	UpdateTimeOrder    *bool   `json:"UpdateTimeOrder,omitempty" xml:"UpdateTimeOrder,omitempty"`
+}
+
+func (s QueryPurchasedDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedDomainsRequest) SetCurrentPage(v int32) *QueryPurchasedDomainsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetDomainName(v string) *QueryPurchasedDomainsRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetEndOperationTime(v string) *QueryPurchasedDomainsRequest {
+	s.EndOperationTime = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetOpTimeOrder(v bool) *QueryPurchasedDomainsRequest {
+	s.OpTimeOrder = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetOperationStatus(v int32) *QueryPurchasedDomainsRequest {
+	s.OperationStatus = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetPageSize(v int32) *QueryPurchasedDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetProductType(v int32) *QueryPurchasedDomainsRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetStartOperationTime(v string) *QueryPurchasedDomainsRequest {
+	s.StartOperationTime = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsRequest) SetUpdateTimeOrder(v bool) *QueryPurchasedDomainsRequest {
+	s.UpdateTimeOrder = &v
+	return s
+}
+
+type QueryPurchasedDomainsResponseBody struct {
+	CurrentPageNum *int32                                   `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
+	Data           []*QueryPurchasedDomainsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	PageSize       *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalItemNum   *int32                                   `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	TotalPageNum   *int32                                   `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+}
+
+func (s QueryPurchasedDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetCurrentPageNum(v int32) *QueryPurchasedDomainsResponseBody {
+	s.CurrentPageNum = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetData(v []*QueryPurchasedDomainsResponseBodyData) *QueryPurchasedDomainsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetPageSize(v int32) *QueryPurchasedDomainsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetRequestId(v string) *QueryPurchasedDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetTotalItemNum(v int32) *QueryPurchasedDomainsResponseBody {
+	s.TotalItemNum = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBody) SetTotalPageNum(v int32) *QueryPurchasedDomainsResponseBody {
+	s.TotalPageNum = &v
+	return s
+}
+
+type QueryPurchasedDomainsResponseBodyData struct {
+	DeliveryTime    *string  `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DomainName      *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OperationStatus *string  `json:"OperationStatus,omitempty" xml:"OperationStatus,omitempty"`
+	OperationTime   *string  `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	ProductType     *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	TradeMoney      *float64 `json:"TradeMoney,omitempty" xml:"TradeMoney,omitempty"`
+}
+
+func (s QueryPurchasedDomainsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedDomainsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetDeliveryTime(v string) *QueryPurchasedDomainsResponseBodyData {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetDomainName(v string) *QueryPurchasedDomainsResponseBodyData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetOperationStatus(v string) *QueryPurchasedDomainsResponseBodyData {
+	s.OperationStatus = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetOperationTime(v string) *QueryPurchasedDomainsResponseBodyData {
+	s.OperationTime = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetProductType(v string) *QueryPurchasedDomainsResponseBodyData {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponseBodyData) SetTradeMoney(v float64) *QueryPurchasedDomainsResponseBodyData {
+	s.TradeMoney = &v
+	return s
+}
+
+type QueryPurchasedDomainsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryPurchasedDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryPurchasedDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryPurchasedDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryPurchasedDomainsResponse) SetHeaders(v map[string]*string) *QueryPurchasedDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponse) SetStatusCode(v int32) *QueryPurchasedDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryPurchasedDomainsResponse) SetBody(v *QueryPurchasedDomainsResponseBody) *QueryPurchasedDomainsResponse {
 	s.Body = v
 	return s
 }
@@ -2626,6 +3088,186 @@ func (s *ReserveIntlDomainResponse) SetBody(v *ReserveIntlDomainResponseBody) *R
 	return s
 }
 
+type SelectedDomainListRequest struct {
+	ListDate *string `json:"ListDate,omitempty" xml:"ListDate,omitempty"`
+}
+
+func (s SelectedDomainListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectedDomainListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SelectedDomainListRequest) SetListDate(v string) *SelectedDomainListRequest {
+	s.ListDate = &v
+	return s
+}
+
+type SelectedDomainListResponseBody struct {
+	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Module    *SelectedDomainListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SelectedDomainListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectedDomainListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SelectedDomainListResponseBody) SetErrorCode(v string) *SelectedDomainListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SelectedDomainListResponseBody) SetModule(v *SelectedDomainListResponseBodyModule) *SelectedDomainListResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *SelectedDomainListResponseBody) SetRequestId(v string) *SelectedDomainListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SelectedDomainListResponseBody) SetSuccess(v bool) *SelectedDomainListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SelectedDomainListResponseBodyModule struct {
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+}
+
+func (s SelectedDomainListResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectedDomainListResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *SelectedDomainListResponseBodyModule) SetDownloadUrl(v string) *SelectedDomainListResponseBodyModule {
+	s.DownloadUrl = &v
+	return s
+}
+
+type SelectedDomainListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SelectedDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SelectedDomainListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SelectedDomainListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SelectedDomainListResponse) SetHeaders(v map[string]*string) *SelectedDomainListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SelectedDomainListResponse) SetStatusCode(v int32) *SelectedDomainListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SelectedDomainListResponse) SetBody(v *SelectedDomainListResponseBody) *SelectedDomainListResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePartnerReservePriceRequest struct {
+	BiddingId    *int32   `json:"BiddingId,omitempty" xml:"BiddingId,omitempty"`
+	DomainName   *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PartnerType  *string  `json:"PartnerType,omitempty" xml:"PartnerType,omitempty"`
+	ReservePrice *float64 `json:"ReservePrice,omitempty" xml:"ReservePrice,omitempty"`
+}
+
+func (s UpdatePartnerReservePriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePartnerReservePriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePartnerReservePriceRequest) SetBiddingId(v int32) *UpdatePartnerReservePriceRequest {
+	s.BiddingId = &v
+	return s
+}
+
+func (s *UpdatePartnerReservePriceRequest) SetDomainName(v string) *UpdatePartnerReservePriceRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdatePartnerReservePriceRequest) SetPartnerType(v string) *UpdatePartnerReservePriceRequest {
+	s.PartnerType = &v
+	return s
+}
+
+func (s *UpdatePartnerReservePriceRequest) SetReservePrice(v float64) *UpdatePartnerReservePriceRequest {
+	s.ReservePrice = &v
+	return s
+}
+
+type UpdatePartnerReservePriceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePartnerReservePriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePartnerReservePriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePartnerReservePriceResponseBody) SetRequestId(v string) *UpdatePartnerReservePriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePartnerReservePriceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePartnerReservePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePartnerReservePriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePartnerReservePriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePartnerReservePriceResponse) SetHeaders(v map[string]*string) *UpdatePartnerReservePriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePartnerReservePriceResponse) SetStatusCode(v int32) *UpdatePartnerReservePriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePartnerReservePriceResponse) SetBody(v *UpdatePartnerReservePriceResponseBody) *UpdatePartnerReservePriceResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2857,6 +3499,50 @@ func (client *Client) CheckDomainStatus(request *CheckDomainStatusRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CheckSelectedDomainStatusWithOptions(request *CheckSelectedDomainStatusRequest, runtime *util.RuntimeOptions) (_result *CheckSelectedDomainStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckSelectedDomainStatus"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckSelectedDomainStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckSelectedDomainStatus(request *CheckSelectedDomainStatusRequest) (_result *CheckSelectedDomainStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckSelectedDomainStatusResponse{}
+	_body, _err := client.CheckSelectedDomainStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFixedPriceDemandOrderWithOptions(request *CreateFixedPriceDemandOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFixedPriceDemandOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2906,6 +3592,66 @@ func (client *Client) CreateFixedPriceDemandOrder(request *CreateFixedPriceDeman
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFixedPriceDemandOrderResponse{}
 	_body, _err := client.CreateFixedPriceDemandOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFixedPriceSelectedOrderWithOptions(request *CreateFixedPriceSelectedOrderRequest, runtime *util.RuntimeOptions) (_result *CreateFixedPriceSelectedOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		query["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectedPrice)) {
+		query["ExpectedPrice"] = request.ExpectedPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFixedPriceSelectedOrder"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFixedPriceSelectedOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFixedPriceSelectedOrder(request *CreateFixedPriceSelectedOrderRequest) (_result *CreateFixedPriceSelectedOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFixedPriceSelectedOrderResponse{}
+	_body, _err := client.CreateFixedPriceSelectedOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3471,6 +4217,82 @@ func (client *Client) QueryDomainTransferStatus(request *QueryDomainTransferStat
 	return _result, _err
 }
 
+func (client *Client) QueryPurchasedDomainsWithOptions(request *QueryPurchasedDomainsRequest, runtime *util.RuntimeOptions) (_result *QueryPurchasedDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndOperationTime)) {
+		body["EndOperationTime"] = request.EndOperationTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpTimeOrder)) {
+		body["OpTimeOrder"] = request.OpTimeOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationStatus)) {
+		body["OperationStatus"] = request.OperationStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartOperationTime)) {
+		body["StartOperationTime"] = request.StartOperationTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTimeOrder)) {
+		body["UpdateTimeOrder"] = request.UpdateTimeOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPurchasedDomains"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryPurchasedDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryPurchasedDomains(request *QueryPurchasedDomainsRequest) (_result *QueryPurchasedDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryPurchasedDomainsResponse{}
+	_body, _err := client.QueryPurchasedDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RecordDemandWithOptions(request *RecordDemandRequest, runtime *util.RuntimeOptions) (_result *RecordDemandResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3712,6 +4534,106 @@ func (client *Client) ReserveIntlDomain(request *ReserveIntlDomainRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ReserveIntlDomainResponse{}
 	_body, _err := client.ReserveIntlDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SelectedDomainListWithOptions(request *SelectedDomainListRequest, runtime *util.RuntimeOptions) (_result *SelectedDomainListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ListDate)) {
+		query["ListDate"] = request.ListDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SelectedDomainList"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SelectedDomainListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SelectedDomainList(request *SelectedDomainListRequest) (_result *SelectedDomainListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SelectedDomainListResponse{}
+	_body, _err := client.SelectedDomainListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePartnerReservePriceWithOptions(request *UpdatePartnerReservePriceRequest, runtime *util.RuntimeOptions) (_result *UpdatePartnerReservePriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BiddingId)) {
+		body["BiddingId"] = request.BiddingId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartnerType)) {
+		body["PartnerType"] = request.PartnerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReservePrice)) {
+		body["ReservePrice"] = request.ReservePrice
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePartnerReservePrice"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePartnerReservePriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePartnerReservePrice(request *UpdatePartnerReservePriceRequest) (_result *UpdatePartnerReservePriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePartnerReservePriceResponse{}
+	_body, _err := client.UpdatePartnerReservePriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
