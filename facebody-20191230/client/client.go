@@ -2219,6 +2219,260 @@ func (s *CreateFaceDbResponse) SetBody(v *CreateFaceDbResponseBody) *CreateFaceD
 	return s
 }
 
+type DeepfakeFaceRequest struct {
+	Tasks []*DeepfakeFaceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s DeepfakeFaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceRequest) SetTasks(v []*DeepfakeFaceRequestTasks) *DeepfakeFaceRequest {
+	s.Tasks = v
+	return s
+}
+
+type DeepfakeFaceRequestTasks struct {
+	ImageData *string `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURL  *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DeepfakeFaceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceRequestTasks) SetImageData(v string) *DeepfakeFaceRequestTasks {
+	s.ImageData = &v
+	return s
+}
+
+func (s *DeepfakeFaceRequestTasks) SetImageURL(v string) *DeepfakeFaceRequestTasks {
+	s.ImageURL = &v
+	return s
+}
+
+type DeepfakeFaceAdvanceRequest struct {
+	Tasks []*DeepfakeFaceAdvanceRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s DeepfakeFaceAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceAdvanceRequest) SetTasks(v []*DeepfakeFaceAdvanceRequestTasks) *DeepfakeFaceAdvanceRequest {
+	s.Tasks = v
+	return s
+}
+
+type DeepfakeFaceAdvanceRequestTasks struct {
+	ImageData      *string   `json:"ImageData,omitempty" xml:"ImageData,omitempty"`
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s DeepfakeFaceAdvanceRequestTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceAdvanceRequestTasks) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceAdvanceRequestTasks) SetImageData(v string) *DeepfakeFaceAdvanceRequestTasks {
+	s.ImageData = &v
+	return s
+}
+
+func (s *DeepfakeFaceAdvanceRequestTasks) SetImageURLObject(v io.Reader) *DeepfakeFaceAdvanceRequestTasks {
+	s.ImageURLObject = v
+	return s
+}
+
+type DeepfakeFaceResponseBody struct {
+	Data      *DeepfakeFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeepfakeFaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponseBody) SetData(v *DeepfakeFaceResponseBodyData) *DeepfakeFaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBody) SetRequestId(v string) *DeepfakeFaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeepfakeFaceResponseBodyData struct {
+	Elements []*DeepfakeFaceResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+}
+
+func (s DeepfakeFaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponseBodyData) SetElements(v []*DeepfakeFaceResponseBodyDataElements) *DeepfakeFaceResponseBodyData {
+	s.Elements = v
+	return s
+}
+
+type DeepfakeFaceResponseBodyDataElements struct {
+	FaceNumber *int64                                         `json:"FaceNumber,omitempty" xml:"FaceNumber,omitempty"`
+	ImageURL   *string                                        `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	Results    []*DeepfakeFaceResponseBodyDataElementsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	TaskId     *string                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeepfakeFaceResponseBodyDataElements) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponseBodyDataElements) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponseBodyDataElements) SetFaceNumber(v int64) *DeepfakeFaceResponseBodyDataElements {
+	s.FaceNumber = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElements) SetImageURL(v string) *DeepfakeFaceResponseBodyDataElements {
+	s.ImageURL = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElements) SetResults(v []*DeepfakeFaceResponseBodyDataElementsResults) *DeepfakeFaceResponseBodyDataElements {
+	s.Results = v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElements) SetTaskId(v string) *DeepfakeFaceResponseBodyDataElements {
+	s.TaskId = &v
+	return s
+}
+
+type DeepfakeFaceResponseBodyDataElementsResults struct {
+	Confidence  *float32                                         `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label       *string                                          `json:"Label,omitempty" xml:"Label,omitempty"`
+	MessageTips *string                                          `json:"MessageTips,omitempty" xml:"MessageTips,omitempty"`
+	Rect        *DeepfakeFaceResponseBodyDataElementsResultsRect `json:"Rect,omitempty" xml:"Rect,omitempty" type:"Struct"`
+}
+
+func (s DeepfakeFaceResponseBodyDataElementsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponseBodyDataElementsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResults) SetConfidence(v float32) *DeepfakeFaceResponseBodyDataElementsResults {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResults) SetLabel(v string) *DeepfakeFaceResponseBodyDataElementsResults {
+	s.Label = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResults) SetMessageTips(v string) *DeepfakeFaceResponseBodyDataElementsResults {
+	s.MessageTips = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResults) SetRect(v *DeepfakeFaceResponseBodyDataElementsResultsRect) *DeepfakeFaceResponseBodyDataElementsResults {
+	s.Rect = v
+	return s
+}
+
+type DeepfakeFaceResponseBodyDataElementsResultsRect struct {
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	Left   *int64 `json:"Left,omitempty" xml:"Left,omitempty"`
+	Top    *int64 `json:"Top,omitempty" xml:"Top,omitempty"`
+	Width  *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s DeepfakeFaceResponseBodyDataElementsResultsRect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponseBodyDataElementsResultsRect) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResultsRect) SetHeight(v int64) *DeepfakeFaceResponseBodyDataElementsResultsRect {
+	s.Height = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResultsRect) SetLeft(v int64) *DeepfakeFaceResponseBodyDataElementsResultsRect {
+	s.Left = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResultsRect) SetTop(v int64) *DeepfakeFaceResponseBodyDataElementsResultsRect {
+	s.Top = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponseBodyDataElementsResultsRect) SetWidth(v int64) *DeepfakeFaceResponseBodyDataElementsResultsRect {
+	s.Width = &v
+	return s
+}
+
+type DeepfakeFaceResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeepfakeFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeepfakeFaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeFaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeFaceResponse) SetHeaders(v map[string]*string) *DeepfakeFaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeepfakeFaceResponse) SetStatusCode(v int32) *DeepfakeFaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeepfakeFaceResponse) SetBody(v *DeepfakeFaceResponseBody) *DeepfakeFaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFaceRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	FaceId *string `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
@@ -11334,6 +11588,164 @@ func (client *Client) CreateFaceDb(request *CreateFaceDbRequest) (_result *Creat
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeepfakeFaceWithOptions(request *DeepfakeFaceRequest, runtime *util.RuntimeOptions) (_result *DeepfakeFaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		body["Tasks"] = request.Tasks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeepfakeFace"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeepfakeFaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeepfakeFace(request *DeepfakeFaceRequest) (_result *DeepfakeFaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeepfakeFaceResponse{}
+	_body, _err := client.DeepfakeFaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeepfakeFaceAdvance(request *DeepfakeFaceAdvanceRequest, runtime *util.RuntimeOptions) (_result *DeepfakeFaceResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("facebody"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	deepfakeFaceReq := &DeepfakeFaceRequest{}
+	openapiutil.Convert(request, deepfakeFaceReq)
+	if !tea.BoolValue(util.IsUnset(request.Tasks)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.Tasks {
+			if !tea.BoolValue(util.IsUnset(item0.ImageURLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.ImageURLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := deepfakeFaceReq.Tasks[tea.IntValue(i0)]
+				tmp.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	deepfakeFaceResp, _err := client.DeepfakeFaceWithOptions(deepfakeFaceReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = deepfakeFaceResp
 	return _result, _err
 }
 
