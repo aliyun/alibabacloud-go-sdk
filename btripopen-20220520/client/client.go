@@ -5309,6 +5309,7 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	HotelNormalInvoiceFee         *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
 	HotelSpecialInvoiceFee        *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
 	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
+	InternationalHotelInvoiceFee  *string `json:"international_hotel_invoice_fee,omitempty" xml:"international_hotel_invoice_fee,omitempty"`
 	InvoiceThirdPartId            *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
 	MailAddress                   *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
 	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
@@ -5362,6 +5363,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetHotelSpecialInvoiceFee(v str
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInternationalFlightInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.InternationalFlightInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInternationalHotelInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.InternationalHotelInvoiceFee = &v
 	return s
 }
 
@@ -61681,6 +61687,7 @@ type WaitApplyInvoiceTaskDetailQueryResponseBodyModule struct {
 	HotelNormalInvoiceFee         *string `json:"hotel_normal_invoice_fee,omitempty" xml:"hotel_normal_invoice_fee,omitempty"`
 	HotelSpecialInvoiceFee        *string `json:"hotel_special_invoice_fee,omitempty" xml:"hotel_special_invoice_fee,omitempty"`
 	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
+	InternationalHotelInvoiceFee  *string `json:"international_hotel_invoice_fee,omitempty" xml:"international_hotel_invoice_fee,omitempty"`
 	InvoiceThirdPartId            *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
 	InvoiceTitle                  *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
 	MailAddress                   *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
@@ -61735,6 +61742,11 @@ func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetHotelSpecialInvoi
 
 func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetInternationalFlightInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
 	s.InternationalFlightInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetInternationalHotelInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.InternationalHotelInvoiceFee = &v
 	return s
 }
 
