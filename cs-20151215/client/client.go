@@ -13311,6 +13311,89 @@ func (s *FixNodePoolVulsResponse) SetBody(v *FixNodePoolVulsResponseBody) *FixNo
 	return s
 }
 
+type GetClusterCheckResponseBody struct {
+	// Id of the request
+	CheckId    *string                             `json:"check_id,omitempty" xml:"check_id,omitempty"`
+	CheckItems map[string][]map[string]interface{} `json:"check_items,omitempty" xml:"check_items,omitempty"`
+	CreatedAt  *string                             `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	FinishedAt *string                             `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
+	Message    *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	Status     *string                             `json:"status,omitempty" xml:"status,omitempty"`
+	Type       *string                             `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetClusterCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckResponseBody) SetCheckId(v string) *GetClusterCheckResponseBody {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetCheckItems(v map[string][]map[string]interface{}) *GetClusterCheckResponseBody {
+	s.CheckItems = v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetCreatedAt(v string) *GetClusterCheckResponseBody {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetFinishedAt(v string) *GetClusterCheckResponseBody {
+	s.FinishedAt = &v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetMessage(v string) *GetClusterCheckResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetStatus(v string) *GetClusterCheckResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetClusterCheckResponseBody) SetType(v string) *GetClusterCheckResponseBody {
+	s.Type = &v
+	return s
+}
+
+type GetClusterCheckResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClusterCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClusterCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckResponse) SetHeaders(v map[string]*string) *GetClusterCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterCheckResponse) SetStatusCode(v int32) *GetClusterCheckResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterCheckResponse) SetBody(v *GetClusterCheckResponseBody) *GetClusterCheckResponse {
+	s.Body = v
+	return s
+}
+
 type GetKubernetesTriggerRequest struct {
 	// The application name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -13754,6 +13837,116 @@ func (s *InstallClusterAddonsResponse) SetHeaders(v map[string]*string) *Install
 
 func (s *InstallClusterAddonsResponse) SetStatusCode(v int32) *InstallClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type ListClusterChecksRequest struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListClusterChecksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterChecksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterChecksRequest) SetType(v string) *ListClusterChecksRequest {
+	s.Type = &v
+	return s
+}
+
+type ListClusterChecksResponseBody struct {
+	Checks []*ListClusterChecksResponseBodyChecks `json:"checks,omitempty" xml:"checks,omitempty" type:"Repeated"`
+}
+
+func (s ListClusterChecksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterChecksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterChecksResponseBody) SetChecks(v []*ListClusterChecksResponseBodyChecks) *ListClusterChecksResponseBody {
+	s.Checks = v
+	return s
+}
+
+type ListClusterChecksResponseBodyChecks struct {
+	CheckId    *string `json:"check_id,omitempty" xml:"check_id,omitempty"`
+	CreatedAt  *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
+	FinishedAt *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
+	Message    *string `json:"message,omitempty" xml:"message,omitempty"`
+	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListClusterChecksResponseBodyChecks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterChecksResponseBodyChecks) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetCheckId(v string) *ListClusterChecksResponseBodyChecks {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetCreatedAt(v string) *ListClusterChecksResponseBodyChecks {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetFinishedAt(v string) *ListClusterChecksResponseBodyChecks {
+	s.FinishedAt = &v
+	return s
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetMessage(v string) *ListClusterChecksResponseBodyChecks {
+	s.Message = &v
+	return s
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetStatus(v string) *ListClusterChecksResponseBodyChecks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListClusterChecksResponseBodyChecks) SetType(v string) *ListClusterChecksResponseBodyChecks {
+	s.Type = &v
+	return s
+}
+
+type ListClusterChecksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClusterChecksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClusterChecksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterChecksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterChecksResponse) SetHeaders(v map[string]*string) *ListClusterChecksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClusterChecksResponse) SetStatusCode(v int32) *ListClusterChecksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClusterChecksResponse) SetBody(v *ListClusterChecksResponseBody) *ListClusterChecksResponse {
+	s.Body = v
 	return s
 }
 
@@ -15828,6 +16021,7 @@ func (s *RemoveWorkflowResponse) SetStatusCode(v int32) *RemoveWorkflowResponse 
 }
 
 type RepairClusterNodePoolRequest struct {
+	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
 	// The list of nodes. If you do not specify nodes, all nodes in the node pool are selected.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 }
@@ -15838,6 +16032,11 @@ func (s RepairClusterNodePoolRequest) String() string {
 
 func (s RepairClusterNodePoolRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RepairClusterNodePoolRequest) SetAutoRestart(v bool) *RepairClusterNodePoolRequest {
+	s.AutoRestart = &v
+	return s
 }
 
 func (s *RepairClusterNodePoolRequest) SetNodes(v []*string) *RepairClusterNodePoolRequest {
@@ -17407,10 +17606,18 @@ func (s *UpdateContactGroupForAlertResponse) SetStatusCode(v int32) *UpdateConta
 }
 
 type UpdateControlPlaneLogRequest struct {
-	Aliuid     *string   `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	Aliuid *string `json:"aliuid,omitempty" xml:"aliuid,omitempty"`
+	// The control plane components for which you want to enable log collection.
 	Components []*string `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	LogProject *string   `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	LogTtl     *string   `json:"log_ttl,omitempty" xml:"log_ttl,omitempty"`
+	// The name of the Simple Log Service project that you want to use to store the logs of control plane components.
+	//
+	// Default value: k8s-log-$Cluster ID.
+	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	// The retention period of the log data stored in the Logstore. Valid values: 1 to 3000. Unit: days.
+	//
+	// Default value: 30.
+	LogTtl *string `json:"log_ttl,omitempty" xml:"log_ttl,omitempty"`
 }
 
 func (s UpdateControlPlaneLogRequest) String() string {
@@ -17590,12 +17797,12 @@ type UpgradeClusterRequest struct {
 	// Deprecated
 	// The name of the component. Set the value to `k8s`.
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
-	// Specifies whether to upgrade only master nodes. Valid values:
+	// Specifies whether to update only master nodes. Valid values:
 	//
-	// *   true: upgrade only master nodes.
-	// *   false: upgrade master and worker nodes.
+	// *   true: update only master nodes.
+	// *   false: update master and worker nodes.
 	MasterOnly *bool `json:"master_only,omitempty" xml:"master_only,omitempty"`
-	// The Kubernetes version to which the cluster can be upgraded.
+	// The Kubernetes version to which the cluster can be updated.
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// Deprecated
 	// The current Kubernetes version of the cluster. For more information, see [Kubernetes versions](~~185269~~).
@@ -21698,6 +21905,42 @@ func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, req
 	return _result, _err
 }
 
+func (client *Client) GetClusterCheckWithOptions(clusterId *string, checkId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetClusterCheckResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterCheck"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/%5Bcluster_id%5D/checks/%5Bcheck_id%5D"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClusterCheck(clusterId *string, checkId *string) (_result *GetClusterCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetClusterCheckResponse{}
+	_body, _err := client.GetClusterCheckWithOptions(clusterId, checkId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetKubernetesTriggerWithOptions(ClusterId *string, request *GetKubernetesTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetKubernetesTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21887,6 +22130,52 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 	headers := make(map[string]*string)
 	_result = &InstallClusterAddonsResponse{}
 	_body, _err := client.InstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClusterChecksWithOptions(clusterId *string, request *ListClusterChecksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListClusterChecksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusterChecks"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/%5Bcluster_id%5D/checks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClusterChecksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClusterChecks(clusterId *string, request *ListClusterChecksRequest) (_result *ListClusterChecksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListClusterChecksResponse{}
+	_body, _err := client.ListClusterChecksWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22829,6 +23118,10 @@ func (client *Client) RepairClusterNodePoolWithOptions(clusterId *string, nodepo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRestart)) {
+		body["auto_restart"] = request.AutoRestart
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
 		body["nodes"] = request.Nodes
 	}
