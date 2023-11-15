@@ -12345,24 +12345,25 @@ func (s *QueryTradeMarkApplicationLogsResponse) SetBody(v *QueryTradeMarkApplica
 }
 
 type QueryTradeMarkApplicationsRequest struct {
-	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	ClassificationCode *string `json:"ClassificationCode,omitempty" xml:"ClassificationCode,omitempty"`
-	Hidden             *int32  `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
-	IntentionBizId     *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	LogisticsNo        *string `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
-	MaterialName       *string `json:"MaterialName,omitempty" xml:"MaterialName,omitempty"`
-	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType        *int32  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SortFiled          *string `json:"SortFiled,omitempty" xml:"SortFiled,omitempty"`
-	SortOrder          *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	Specification      *int32  `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplementStatus   *int32  `json:"SupplementStatus,omitempty" xml:"SupplementStatus,omitempty"`
-	TmName             *string `json:"TmName,omitempty" xml:"TmName,omitempty"`
-	TmNumber           *string `json:"TmNumber,omitempty" xml:"TmNumber,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	BizId              *string  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ClassificationCode *string  `json:"ClassificationCode,omitempty" xml:"ClassificationCode,omitempty"`
+	Hidden             *int32   `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
+	IntentionBizId     *string  `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	LogisticsNo        *string  `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
+	MaterialName       *string  `json:"MaterialName,omitempty" xml:"MaterialName,omitempty"`
+	OrderId            *string  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNum            *int32   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize           *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType        *int32   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SortFiled          *string  `json:"SortFiled,omitempty" xml:"SortFiled,omitempty"`
+	SortOrder          *string  `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Specification      *int32   `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status             *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusList         []*int32 `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	SupplementStatus   *int32   `json:"SupplementStatus,omitempty" xml:"SupplementStatus,omitempty"`
+	TmName             *string  `json:"TmName,omitempty" xml:"TmName,omitempty"`
+	TmNumber           *string  `json:"TmNumber,omitempty" xml:"TmNumber,omitempty"`
+	Type               *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QueryTradeMarkApplicationsRequest) String() string {
@@ -12443,6 +12444,11 @@ func (s *QueryTradeMarkApplicationsRequest) SetStatus(v int32) *QueryTradeMarkAp
 	return s
 }
 
+func (s *QueryTradeMarkApplicationsRequest) SetStatusList(v []*int32) *QueryTradeMarkApplicationsRequest {
+	s.StatusList = v
+	return s
+}
+
 func (s *QueryTradeMarkApplicationsRequest) SetSupplementStatus(v int32) *QueryTradeMarkApplicationsRequest {
 	s.SupplementStatus = &v
 	return s
@@ -12459,6 +12465,131 @@ func (s *QueryTradeMarkApplicationsRequest) SetTmNumber(v string) *QueryTradeMar
 }
 
 func (s *QueryTradeMarkApplicationsRequest) SetType(v string) *QueryTradeMarkApplicationsRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryTradeMarkApplicationsShrinkRequest struct {
+	BizId              *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	ClassificationCode *string `json:"ClassificationCode,omitempty" xml:"ClassificationCode,omitempty"`
+	Hidden             *int32  `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
+	IntentionBizId     *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	LogisticsNo        *string `json:"LogisticsNo,omitempty" xml:"LogisticsNo,omitempty"`
+	MaterialName       *string `json:"MaterialName,omitempty" xml:"MaterialName,omitempty"`
+	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PageNum            *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductType        *int32  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SortFiled          *string `json:"SortFiled,omitempty" xml:"SortFiled,omitempty"`
+	SortOrder          *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	Specification      *int32  `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusListShrink   *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	SupplementStatus   *int32  `json:"SupplementStatus,omitempty" xml:"SupplementStatus,omitempty"`
+	TmName             *string `json:"TmName,omitempty" xml:"TmName,omitempty"`
+	TmNumber           *string `json:"TmNumber,omitempty" xml:"TmNumber,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryTradeMarkApplicationsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTradeMarkApplicationsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetBizId(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetClassificationCode(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.ClassificationCode = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetHidden(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.Hidden = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetIntentionBizId(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.IntentionBizId = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetLogisticsNo(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.LogisticsNo = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetMaterialName(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.MaterialName = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetOrderId(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetPageNum(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetPageSize(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetProductType(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetSortFiled(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.SortFiled = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetSortOrder(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetSpecification(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.Specification = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetStatus(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetStatusListShrink(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.StatusListShrink = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetSupplementStatus(v int32) *QueryTradeMarkApplicationsShrinkRequest {
+	s.SupplementStatus = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetTmName(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.TmName = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetTmNumber(v string) *QueryTradeMarkApplicationsShrinkRequest {
+	s.TmNumber = &v
+	return s
+}
+
+func (s *QueryTradeMarkApplicationsShrinkRequest) SetType(v string) *QueryTradeMarkApplicationsShrinkRequest {
 	s.Type = &v
 	return s
 }
@@ -26401,11 +26532,17 @@ func (client *Client) QueryTradeMarkApplicationLogs(request *QueryTradeMarkAppli
 	return _result, _err
 }
 
-func (client *Client) QueryTradeMarkApplicationsWithOptions(request *QueryTradeMarkApplicationsRequest, runtime *util.RuntimeOptions) (_result *QueryTradeMarkApplicationsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryTradeMarkApplicationsWithOptions(tmpReq *QueryTradeMarkApplicationsRequest, runtime *util.RuntimeOptions) (_result *QueryTradeMarkApplicationsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &QueryTradeMarkApplicationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.StatusList)) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, tea.String("StatusList"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BizId)) {
 		query["BizId"] = request.BizId
@@ -26461,6 +26598,10 @@ func (client *Client) QueryTradeMarkApplicationsWithOptions(request *QueryTradeM
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusListShrink)) {
+		query["StatusList"] = request.StatusListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SupplementStatus)) {
