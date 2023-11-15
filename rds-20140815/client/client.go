@@ -18317,6 +18317,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	DBInstanceClassType *string `json:"DBInstanceClassType,omitempty" xml:"DBInstanceClassType,omitempty"`
 	// The description of the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	DBInstanceDiskUsed    *string `json:"DBInstanceDiskUsed,omitempty" xml:"DBInstanceDiskUsed,omitempty"`
 	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The memory capacity of the instance. Unit: MB.
@@ -18576,6 +18577,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBI
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceDescription(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.DBInstanceDescription = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetDBInstanceDiskUsed(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.DBInstanceDiskUsed = &v
 	return s
 }
 
