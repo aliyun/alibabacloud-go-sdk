@@ -1718,6 +1718,437 @@ func (s *DescribeAlertTypeResponse) SetBody(v *DescribeAlertTypeResponseBody) *D
 	return s
 }
 
+type DescribeAlertsRequest struct {
+	AlertTitle  *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	AlertUuid   *string   `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	CurrentPage *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsDefend    *string   `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	Level       []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
+	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source      *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubUserId   *string   `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeAlertsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsRequest) SetAlertTitle(v string) *DescribeAlertsRequest {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetAlertUuid(v string) *DescribeAlertsRequest {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetCurrentPage(v int32) *DescribeAlertsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetEndTime(v int64) *DescribeAlertsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetIsDefend(v string) *DescribeAlertsRequest {
+	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetLevel(v []*string) *DescribeAlertsRequest {
+	s.Level = v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetPageSize(v int32) *DescribeAlertsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetRegionId(v string) *DescribeAlertsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetSource(v string) *DescribeAlertsRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetStartTime(v int64) *DescribeAlertsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeAlertsRequest) SetSubUserId(v string) *DescribeAlertsRequest {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeAlertsResponseBody struct {
+	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeAlertsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAlertsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponseBody) SetCode(v int32) *DescribeAlertsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBody) SetData(v *DescribeAlertsResponseBodyData) *DescribeAlertsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAlertsResponseBody) SetMessage(v string) *DescribeAlertsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBody) SetRequestId(v string) *DescribeAlertsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBody) SetSuccess(v bool) *DescribeAlertsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAlertsResponseBodyData struct {
+	PageInfo     *DescribeAlertsResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ResponseData []*DescribeAlertsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponseBodyData) SetPageInfo(v *DescribeAlertsResponseBodyDataPageInfo) *DescribeAlertsResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyData) SetResponseData(v []*DescribeAlertsResponseBodyDataResponseData) *DescribeAlertsResponseBodyData {
+	s.ResponseData = v
+	return s
+}
+
+type DescribeAlertsResponseBodyDataPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAlertsResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponseBodyDataPageInfo) SetCurrentPage(v int32) *DescribeAlertsResponseBodyDataPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataPageInfo) SetPageSize(v int32) *DescribeAlertsResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataPageInfo) SetTotalCount(v int64) *DescribeAlertsResponseBodyDataPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAlertsResponseBodyDataResponseData struct {
+	AlertDesc          *string                                                    `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	AlertDescCode      *string                                                    `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	AlertDescEn        *string                                                    `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	AlertDetail        *string                                                    `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertInfoList      []*DescribeAlertsResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	AlertLevel         *string                                                    `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName          *string                                                    `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertNameCode      *string                                                    `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	AlertNameEn        *string                                                    `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	AlertSrcProd       *string                                                    `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	AlertSrcProdModule *string                                                    `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	AlertTitle         *string                                                    `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	AlertTitleEn       *string                                                    `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	AlertType          *string                                                    `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeCode      *string                                                    `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	AlertTypeEn        *string                                                    `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	AlertUuid          *string                                                    `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	AssetList          *string                                                    `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	AttCk              *string                                                    `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	CloudCode          *string                                                    `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	EndTime            *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate          *string                                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncidentUuid       *string                                                    `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IsDefend           *string                                                    `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	LogTime            *string                                                    `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	LogUuid            *string                                                    `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	MainUserId         *int64                                                     `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	OccurTime          *string                                                    `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	StartTime          *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubUserId          *int64                                                     `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeAlertsResponseBodyDataResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponseBodyDataResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertDesc(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertDesc = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertDescCode(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertDescCode = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertDescEn(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertDescEn = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertDetail(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertDetail = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertInfoList(v []*DescribeAlertsResponseBodyDataResponseDataAlertInfoList) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertInfoList = v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertLevel(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertLevel = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertName(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertNameCode(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertNameCode = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertNameEn(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertNameEn = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertSrcProd(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertSrcProd = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertSrcProdModule(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertSrcProdModule = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertTitle(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertTitleEn(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertTitleEn = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertType(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertTypeCode(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertTypeCode = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertTypeEn(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertTypeEn = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAlertUuid(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAssetList(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AssetList = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetAttCk(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetCloudCode(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetEndTime(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetGmtModified(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetId(v int64) *DescribeAlertsResponseBodyDataResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetIsDefend(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetLogTime(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.LogTime = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetLogUuid(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.LogUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetMainUserId(v int64) *DescribeAlertsResponseBodyDataResponseData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetOccurTime(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.OccurTime = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetStartTime(v string) *DescribeAlertsResponseBodyDataResponseData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsResponseBodyDataResponseData {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeAlertsResponseBodyDataResponseDataAlertInfoList struct {
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeAlertsResponseBodyDataResponseDataAlertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponseBodyDataResponseDataAlertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseDataAlertInfoList) SetKey(v string) *DescribeAlertsResponseBodyDataResponseDataAlertInfoList {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseDataAlertInfoList) SetKeyName(v string) *DescribeAlertsResponseBodyDataResponseDataAlertInfoList {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DescribeAlertsResponseBodyDataResponseDataAlertInfoList) SetValues(v string) *DescribeAlertsResponseBodyDataResponseDataAlertInfoList {
+	s.Values = &v
+	return s
+}
+
+type DescribeAlertsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlertsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsResponse) SetHeaders(v map[string]*string) *DescribeAlertsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertsResponse) SetStatusCode(v int32) *DescribeAlertsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAlertsResponse) SetBody(v *DescribeAlertsResponseBody) *DescribeAlertsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAlertsCountRequest struct {
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1854,6 +2285,826 @@ func (s *DescribeAlertsCountResponse) SetStatusCode(v int32) *DescribeAlertsCoun
 }
 
 func (s *DescribeAlertsCountResponse) SetBody(v *DescribeAlertsCountResponseBody) *DescribeAlertsCountResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAlertsWithEntityRequest struct {
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
+}
+
+func (s DescribeAlertsWithEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetCurrentPage(v int32) *DescribeAlertsWithEntityRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetEntityId(v int64) *DescribeAlertsWithEntityRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetIncidentUuid(v string) *DescribeAlertsWithEntityRequest {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetPageSize(v int32) *DescribeAlertsWithEntityRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetRegionId(v string) *DescribeAlertsWithEntityRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityRequest) SetSophonTaskId(v string) *DescribeAlertsWithEntityRequest {
+	s.SophonTaskId = &v
+	return s
+}
+
+type DescribeAlertsWithEntityResponseBody struct {
+	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeAlertsWithEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAlertsWithEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponseBody) SetCode(v int32) *DescribeAlertsWithEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBody) SetData(v *DescribeAlertsWithEntityResponseBodyData) *DescribeAlertsWithEntityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBody) SetMessage(v string) *DescribeAlertsWithEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBody) SetRequestId(v string) *DescribeAlertsWithEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBody) SetSuccess(v bool) *DescribeAlertsWithEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAlertsWithEntityResponseBodyData struct {
+	PageInfo     *DescribeAlertsWithEntityResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ResponseData []*DescribeAlertsWithEntityResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertsWithEntityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyData) SetPageInfo(v *DescribeAlertsWithEntityResponseBodyDataPageInfo) *DescribeAlertsWithEntityResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyData) SetResponseData(v []*DescribeAlertsWithEntityResponseBodyDataResponseData) *DescribeAlertsWithEntityResponseBodyData {
+	s.ResponseData = v
+	return s
+}
+
+type DescribeAlertsWithEntityResponseBodyDataPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataPageInfo) SetCurrentPage(v int32) *DescribeAlertsWithEntityResponseBodyDataPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataPageInfo) SetPageSize(v int32) *DescribeAlertsWithEntityResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataPageInfo) SetTotalCount(v int64) *DescribeAlertsWithEntityResponseBodyDataPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
+	AlertDesc          *string                                                              `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	AlertDescCode      *string                                                              `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	AlertDescEn        *string                                                              `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	AlertDetail        *string                                                              `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertInfoList      []*DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	AlertLevel         *string                                                              `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName          *string                                                              `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertNameCode      *string                                                              `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	AlertNameEn        *string                                                              `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	AlertSrcProd       *string                                                              `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	AlertSrcProdModule *string                                                              `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	AlertTitle         *string                                                              `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	AlertTitleEn       *string                                                              `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	AlertType          *string                                                              `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeCode      *string                                                              `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	AlertTypeEn        *string                                                              `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	AlertUuid          *string                                                              `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	AssetList          *string                                                              `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	AttCk              *string                                                              `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	CloudCode          *string                                                              `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	EndTime            *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate          *string                                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncidentUuid       *string                                                              `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IsDefend           *string                                                              `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	LogTime            *string                                                              `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	LogUuid            *string                                                              `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	MainUserId         *int64                                                               `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	OccurTime          *string                                                              `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	StartTime          *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubUserId          *int64                                                               `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertDesc(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertDesc = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertDescCode(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertDescCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertDescEn(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertDescEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertDetail(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertDetail = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertInfoList(v []*DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertInfoList = v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertLevel(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertLevel = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertName(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertNameCode(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertNameCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertNameEn(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertNameEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertSrcProd(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertSrcProd = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertSrcProdModule(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertSrcProdModule = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertTitle(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertTitleEn(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertTitleEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertType(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertTypeCode(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertTypeCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertTypeEn(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertTypeEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAlertUuid(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAssetList(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AssetList = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetAttCk(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetCloudCode(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetEndTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetGmtModified(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetId(v int64) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetIsDefend(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetLogTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.LogTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetLogUuid(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.LogUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetMainUserId(v int64) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetOccurTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.OccurTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetStartTime(v string) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsWithEntityResponseBodyDataResponseData {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList struct {
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) SetKey(v string) *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) SetKeyName(v string) *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) SetValues(v string) *DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList {
+	s.Values = &v
+	return s
+}
+
+type DescribeAlertsWithEntityResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertsWithEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlertsWithEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEntityResponse) SetHeaders(v map[string]*string) *DescribeAlertsWithEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponse) SetStatusCode(v int32) *DescribeAlertsWithEntityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEntityResponse) SetBody(v *DescribeAlertsWithEntityResponseBody) *DescribeAlertsWithEntityResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAlertsWithEventRequest struct {
+	AlertTitle   *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	IncidentUuid *string   `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IsDefend     *string   `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	Level        []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source       *string   `json:"Source,omitempty" xml:"Source,omitempty"`
+	SubUserId    *int64    `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeAlertsWithEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventRequest) SetAlertTitle(v string) *DescribeAlertsWithEventRequest {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetCurrentPage(v int32) *DescribeAlertsWithEventRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetIncidentUuid(v string) *DescribeAlertsWithEventRequest {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetIsDefend(v string) *DescribeAlertsWithEventRequest {
+	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetLevel(v []*string) *DescribeAlertsWithEventRequest {
+	s.Level = v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetPageSize(v int32) *DescribeAlertsWithEventRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetRegionId(v string) *DescribeAlertsWithEventRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetSource(v string) *DescribeAlertsWithEventRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventRequest) SetSubUserId(v int64) *DescribeAlertsWithEventRequest {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeAlertsWithEventResponseBody struct {
+	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeAlertsWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAlertsWithEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponseBody) SetCode(v int32) *DescribeAlertsWithEventResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBody) SetData(v *DescribeAlertsWithEventResponseBodyData) *DescribeAlertsWithEventResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBody) SetMessage(v string) *DescribeAlertsWithEventResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBody) SetRequestId(v string) *DescribeAlertsWithEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBody) SetSuccess(v bool) *DescribeAlertsWithEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAlertsWithEventResponseBodyData struct {
+	PageInfo     *DescribeAlertsWithEventResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ResponseData []*DescribeAlertsWithEventResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertsWithEventResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponseBodyData) SetPageInfo(v *DescribeAlertsWithEventResponseBodyDataPageInfo) *DescribeAlertsWithEventResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyData) SetResponseData(v []*DescribeAlertsWithEventResponseBodyDataResponseData) *DescribeAlertsWithEventResponseBodyData {
+	s.ResponseData = v
+	return s
+}
+
+type DescribeAlertsWithEventResponseBodyDataPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataPageInfo) SetCurrentPage(v int32) *DescribeAlertsWithEventResponseBodyDataPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataPageInfo) SetPageSize(v int32) *DescribeAlertsWithEventResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataPageInfo) SetTotalCount(v int64) *DescribeAlertsWithEventResponseBodyDataPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAlertsWithEventResponseBodyDataResponseData struct {
+	AlertDesc          *string                                                             `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	AlertDescCode      *string                                                             `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	AlertDescEn        *string                                                             `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	AlertDetail        *string                                                             `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	AlertInfoList      []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	AlertLevel         *string                                                             `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	AlertName          *string                                                             `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertNameCode      *string                                                             `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	AlertNameEn        *string                                                             `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	AlertSrcProd       *string                                                             `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	AlertSrcProdModule *string                                                             `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	AlertTitle         *string                                                             `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	AlertTitleEn       *string                                                             `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	AlertType          *string                                                             `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeCode      *string                                                             `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	AlertTypeEn        *string                                                             `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	AlertUuid          *string                                                             `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	AssetList          *string                                                             `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	AttCk              *string                                                             `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	CloudCode          *string                                                             `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	EndTime            *string                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate          *string                                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                 *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncidentUuid       *string                                                             `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	IsDefend           *string                                                             `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	LogTime            *string                                                             `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	LogUuid            *string                                                             `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	MainUserId         *int64                                                              `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	OccurTime          *string                                                             `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	StartTime          *string                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SubUserId          *int64                                                              `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertDesc(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertDesc = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertDescCode(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertDescCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertDescEn(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertDescEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertDetail(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertDetail = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertInfoList(v []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertInfoList = v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertLevel(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertLevel = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertName(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertNameCode(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertNameCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertNameEn(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertNameEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertSrcProd(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertSrcProd = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertSrcProdModule(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertSrcProdModule = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertTitle(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertTitle = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertTitleEn(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertTitleEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertType(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertTypeCode(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertTypeCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertTypeEn(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertTypeEn = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAlertUuid(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAssetList(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AssetList = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetAttCk(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.AttCk = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetCloudCode(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetEndTime(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetGmtModified(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetId(v int64) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetIsDefend(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.IsDefend = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetLogTime(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.LogTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetLogUuid(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.LogUuid = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetMainUserId(v int64) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetOccurTime(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.OccurTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetStartTime(v string) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetSubUserId(v int64) *DescribeAlertsWithEventResponseBodyDataResponseData {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList struct {
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) SetKey(v string) *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) SetKeyName(v string) *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) SetValues(v string) *DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList {
+	s.Values = &v
+	return s
+}
+
+type DescribeAlertsWithEventResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertsWithEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlertsWithEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertsWithEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertsWithEventResponse) SetHeaders(v map[string]*string) *DescribeAlertsWithEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponse) SetStatusCode(v int32) *DescribeAlertsWithEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAlertsWithEventResponse) SetBody(v *DescribeAlertsWithEventResponseBody) *DescribeAlertsWithEventResponse {
 	s.Body = v
 	return s
 }
@@ -11801,6 +13052,90 @@ func (client *Client) DescribeAlertType(request *DescribeAlertTypeRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeAlertsWithOptions(request *DescribeAlertsRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertTitle)) {
+		body["AlertTitle"] = request.AlertTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUuid)) {
+		body["AlertUuid"] = request.AlertUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefend)) {
+		body["IsDefend"] = request.IsDefend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		body["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlerts"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlertsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlerts(request *DescribeAlertsRequest) (_result *DescribeAlertsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlertsResponse{}
+	_body, _err := client.DescribeAlertsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAlertsCountWithOptions(request *DescribeAlertsCountRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11846,6 +13181,146 @@ func (client *Client) DescribeAlertsCount(request *DescribeAlertsCountRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlertsCountResponse{}
 	_body, _err := client.DescribeAlertsCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAlertsWithEntityWithOptions(request *DescribeAlertsWithEntityRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsWithEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SophonTaskId)) {
+		body["SophonTaskId"] = request.SophonTaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlertsWithEntity"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlertsWithEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlertsWithEntity(request *DescribeAlertsWithEntityRequest) (_result *DescribeAlertsWithEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlertsWithEntityResponse{}
+	_body, _err := client.DescribeAlertsWithEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAlertsWithEventWithOptions(request *DescribeAlertsWithEventRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertsWithEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertTitle)) {
+		body["AlertTitle"] = request.AlertTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDefend)) {
+		body["IsDefend"] = request.IsDefend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		body["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		body["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlertsWithEvent"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlertsWithEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlertsWithEvent(request *DescribeAlertsWithEventRequest) (_result *DescribeAlertsWithEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlertsWithEventResponse{}
+	_body, _err := client.DescribeAlertsWithEventWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
