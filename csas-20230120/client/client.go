@@ -4943,6 +4943,7 @@ type ListPrivateAccessTagsRequest struct {
 	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PolicyId      *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SimpleMode    *bool     `json:"SimpleMode,omitempty" xml:"SimpleMode,omitempty"`
 	TagIds        []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 
@@ -4976,6 +4977,11 @@ func (s *ListPrivateAccessTagsRequest) SetPageSize(v int32) *ListPrivateAccessTa
 
 func (s *ListPrivateAccessTagsRequest) SetPolicyId(v string) *ListPrivateAccessTagsRequest {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *ListPrivateAccessTagsRequest) SetSimpleMode(v bool) *ListPrivateAccessTagsRequest {
+	s.SimpleMode = &v
 	return s
 }
 
@@ -6101,6 +6107,7 @@ type ListUserDevicesRequest struct {
 	PageSize       *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SaseUserId     *string   `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
 	SharingStatus  *bool     `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
+	SortBy         *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	Username       *string   `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -6189,6 +6196,11 @@ func (s *ListUserDevicesRequest) SetSaseUserId(v string) *ListUserDevicesRequest
 
 func (s *ListUserDevicesRequest) SetSharingStatus(v bool) *ListUserDevicesRequest {
 	s.SharingStatus = &v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetSortBy(v string) *ListUserDevicesRequest {
+	s.SortBy = &v
 	return s
 }
 
