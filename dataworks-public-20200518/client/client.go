@@ -5708,7 +5708,8 @@ type CreateQualityRuleRequest struct {
 	// The name of the monitoring rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The type of the monitoring rule. Valid values: 0, 1, and 2. 0 indicates that the monitoring rule is created by the system. 1 indicates that the monitoring rule is created by a user. 2 indicates that the monitoring rule is a workspace-level rule.
-	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
 	// The ID of the template that is used to create the monitoring rule.
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The trend of the monitoring result. Valid values:
@@ -5803,6 +5804,11 @@ func (s *CreateQualityRuleRequest) SetRuleName(v string) *CreateQualityRuleReque
 
 func (s *CreateQualityRuleRequest) SetRuleType(v int32) *CreateQualityRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *CreateQualityRuleRequest) SetTaskSetting(v string) *CreateQualityRuleRequest {
+	s.TaskSetting = &v
 	return s
 }
 
@@ -53574,7 +53580,8 @@ type UpdateQualityRuleRequest struct {
 	// *   0: The monitoring rule is created by the system.
 	// *   1: The monitoring rule is created by a user.
 	// *   2: The monitoring rule is a workspace-level rule.
-	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	RuleType    *int32  `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	TaskSetting *string `json:"TaskSetting,omitempty" xml:"TaskSetting,omitempty"`
 	// The ID of the monitoring template. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring template that is used to create the monitoring rule.
 	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The trend of the monitoring result. Valid values:
@@ -53679,6 +53686,11 @@ func (s *UpdateQualityRuleRequest) SetRuleName(v string) *UpdateQualityRuleReque
 
 func (s *UpdateQualityRuleRequest) SetRuleType(v int32) *UpdateQualityRuleRequest {
 	s.RuleType = &v
+	return s
+}
+
+func (s *UpdateQualityRuleRequest) SetTaskSetting(v string) *UpdateQualityRuleRequest {
+	s.TaskSetting = &v
 	return s
 }
 
@@ -57941,6 +57953,10 @@ func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		body["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskSetting)) {
+		body["TaskSetting"] = request.TaskSetting
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -71550,6 +71566,10 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
 		body["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskSetting)) {
+		body["TaskSetting"] = request.TaskSetting
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
