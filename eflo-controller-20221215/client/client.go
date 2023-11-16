@@ -1159,16 +1159,17 @@ type DescribeNodeResponseBody struct {
 	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 镜像名称
-	ImageName      *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	MachineType    *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	Networks       []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
-	NodeGroupId    *string                             `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	NodeGroupName  *string                             `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	NodeId         *string                             `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OperatingState *string                             `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
-	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sn             *string                             `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	ZoneId         *string                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ImageName       *string                             `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	MachineType     *string                             `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	Networks        []*DescribeNodeResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	NodeGroupId     *string                             `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupName   *string                             `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	NodeId          *string                             `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	OperatingState  *string                             `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
+	RequestId       *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sn              *string                             `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	ZoneId          *string                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeNodeResponseBody) String() string {
@@ -1251,6 +1252,11 @@ func (s *DescribeNodeResponseBody) SetOperatingState(v string) *DescribeNodeResp
 
 func (s *DescribeNodeResponseBody) SetRequestId(v string) *DescribeNodeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetResourceGroupId(v string) *DescribeNodeResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2524,10 +2530,11 @@ func (s *ListClustersResponse) SetBody(v *ListClustersResponseBody) *ListCluster
 }
 
 type ListFreeNodesRequest struct {
-	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	HpnZone         *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	MachineType     *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	MaxResults      *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListFreeNodesRequest) String() string {
@@ -2555,6 +2562,11 @@ func (s *ListFreeNodesRequest) SetMaxResults(v int64) *ListFreeNodesRequest {
 
 func (s *ListFreeNodesRequest) SetNextToken(v string) *ListFreeNodesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListFreeNodesRequest) SetResourceGroupId(v string) *ListFreeNodesRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -2588,13 +2600,14 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 type ListFreeNodesResponseBodyNodes struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HpnZone     *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
-	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Sn          *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpiredTime     *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HpnZone         *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
+	MachineType     *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sn              *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListFreeNodesResponseBodyNodes) String() string {
@@ -2627,6 +2640,11 @@ func (s *ListFreeNodesResponseBodyNodes) SetMachineType(v string) *ListFreeNodes
 
 func (s *ListFreeNodesResponseBodyNodes) SetNodeId(v string) *ListFreeNodesResponseBodyNodes {
 	s.NodeId = &v
+	return s
+}
+
+func (s *ListFreeNodesResponseBodyNodes) SetResourceGroupId(v string) *ListFreeNodesResponseBodyNodes {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4173,6 +4191,10 @@ func (client *Client) ListFreeNodesWithOptions(request *ListFreeNodesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
