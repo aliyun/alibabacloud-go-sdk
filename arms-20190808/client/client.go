@@ -15616,7 +15616,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	Tags []*DescribeEnvironmentResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// VPC ID。
+	// VPC ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -15739,9 +15739,9 @@ func (s *DescribeEnvironmentResponseBodyData) SetVpcId(v string) *DescribeEnviro
 }
 
 type DescribeEnvironmentResponseBodyDataTags struct {
-	// Tag的键。
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag的值
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15915,7 +15915,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// Name of Feature.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Status of Feature.
+	// Installation status of Feature.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Version of Feature.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -15987,8 +15987,8 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	// Namespace.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// Running status.
-	// - Success: Normal operation
-	// - Failed: running exception
+	// - Success: Running normal
+	// - Failed: Running exception
 	// - Not Found: Not installed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -18696,7 +18696,7 @@ func (s *GetIntegrationStateResponse) SetBody(v *GetIntegrationStateResponseBody
 type GetManagedPrometheusStatusRequest struct {
 	// The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of the monitoring object. Valid values: ask and ecs.
+	// The type of the monitoring object. Valid values: ask , acs , one and ecs.
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -39382,6 +39382,7 @@ func (s *UninstallManagedPrometheusResponse) SetBody(v *UninstallManagedPromethe
 }
 
 type UninstallPromClusterRequest struct {
+	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The region ID. Default value: cn-hangzhou.
@@ -39394,6 +39395,11 @@ func (s UninstallPromClusterRequest) String() string {
 
 func (s UninstallPromClusterRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UninstallPromClusterRequest) SetAliyunLang(v string) *UninstallPromClusterRequest {
+	s.AliyunLang = &v
+	return s
 }
 
 func (s *UninstallPromClusterRequest) SetClusterId(v string) *UninstallPromClusterRequest {
@@ -55096,6 +55102,10 @@ func (client *Client) UninstallPromClusterWithOptions(request *UninstallPromClus
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunLang)) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
 		query["ClusterId"] = request.ClusterId
 	}
