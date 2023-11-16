@@ -12276,6 +12276,7 @@ func (s *CostCenterModifyHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterM
 
 type CostCenterModifyRequest struct {
 	AlipayNo    *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
+	Disable     *int64  `json:"disable,omitempty" xml:"disable,omitempty"`
 	Number      *string `json:"number,omitempty" xml:"number,omitempty"`
 	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
@@ -12292,6 +12293,11 @@ func (s CostCenterModifyRequest) GoString() string {
 
 func (s *CostCenterModifyRequest) SetAlipayNo(v string) *CostCenterModifyRequest {
 	s.AlipayNo = &v
+	return s
+}
+
+func (s *CostCenterModifyRequest) SetDisable(v int64) *CostCenterModifyRequest {
+	s.Disable = &v
 	return s
 }
 
@@ -12409,6 +12415,7 @@ func (s *CostCenterQueryHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterQu
 }
 
 type CostCenterQueryRequest struct {
+	Disable       *int64  `json:"disable,omitempty" xml:"disable,omitempty"`
 	NeedOrgEntity *bool   `json:"need_org_entity,omitempty" xml:"need_org_entity,omitempty"`
 	ThirdpartId   *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
 	Title         *string `json:"title,omitempty" xml:"title,omitempty"`
@@ -12421,6 +12428,11 @@ func (s CostCenterQueryRequest) String() string {
 
 func (s CostCenterQueryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CostCenterQueryRequest) SetDisable(v int64) *CostCenterQueryRequest {
+	s.Disable = &v
+	return s
 }
 
 func (s *CostCenterQueryRequest) SetNeedOrgEntity(v bool) *CostCenterQueryRequest {
@@ -12500,6 +12512,7 @@ func (s *CostCenterQueryResponseBody) SetTraceId(v string) *CostCenterQueryRespo
 type CostCenterQueryResponseBodyModule struct {
 	AlipayNo  *string                                       `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
 	CorpId    *string                                       `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Disable   *int64                                        `json:"disable,omitempty" xml:"disable,omitempty"`
 	EntityDOS []*CostCenterQueryResponseBodyModuleEntityDOS `json:"entity_d_o_s,omitempty" xml:"entity_d_o_s,omitempty" type:"Repeated"`
 	Id        *int64                                        `json:"id,omitempty" xml:"id,omitempty"`
 	Number    *string                                       `json:"number,omitempty" xml:"number,omitempty"`
@@ -12525,6 +12538,11 @@ func (s *CostCenterQueryResponseBodyModule) SetAlipayNo(v string) *CostCenterQue
 
 func (s *CostCenterQueryResponseBodyModule) SetCorpId(v string) *CostCenterQueryResponseBodyModule {
 	s.CorpId = &v
+	return s
+}
+
+func (s *CostCenterQueryResponseBodyModule) SetDisable(v int64) *CostCenterQueryResponseBodyModule {
+	s.Disable = &v
 	return s
 }
 
@@ -12658,6 +12676,7 @@ func (s *CostCenterSaveHeaders) SetXAcsBtripSoCorpToken(v string) *CostCenterSav
 
 type CostCenterSaveRequest struct {
 	AlipayNo    *string `json:"alipay_no,omitempty" xml:"alipay_no,omitempty"`
+	Disable     *int64  `json:"disable,omitempty" xml:"disable,omitempty"`
 	Number      *string `json:"number,omitempty" xml:"number,omitempty"`
 	Scope       *int64  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdpartId *string `json:"thirdpart_id,omitempty" xml:"thirdpart_id,omitempty"`
@@ -12674,6 +12693,11 @@ func (s CostCenterSaveRequest) GoString() string {
 
 func (s *CostCenterSaveRequest) SetAlipayNo(v string) *CostCenterSaveRequest {
 	s.AlipayNo = &v
+	return s
+}
+
+func (s *CostCenterSaveRequest) SetDisable(v int64) *CostCenterSaveRequest {
+	s.Disable = &v
 	return s
 }
 
@@ -63925,6 +63949,10 @@ func (client *Client) CostCenterModifyWithOptions(request *CostCenterModifyReque
 		body["alipay_no"] = request.AlipayNo
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Disable)) {
+		body["disable"] = request.Disable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Number)) {
 		body["number"] = request.Number
 	}
@@ -63992,6 +64020,10 @@ func (client *Client) CostCenterQueryWithOptions(request *CostCenterQueryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Disable)) {
+		query["disable"] = request.Disable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NeedOrgEntity)) {
 		query["need_org_entity"] = request.NeedOrgEntity
 	}
@@ -64061,6 +64093,10 @@ func (client *Client) CostCenterSaveWithOptions(request *CostCenterSaveRequest, 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AlipayNo)) {
 		body["alipay_no"] = request.AlipayNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Disable)) {
+		body["disable"] = request.Disable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Number)) {
