@@ -1329,7 +1329,8 @@ type CreateDBClusterRequest struct {
 	//
 	// *   **Year**: annual subscription. Unit: years.
 	// *   **Month**: monthly subscription. Unit: months.
-	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	ProvisionedIops *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// 标准版数据库代理规格。
 	ProxyClass *string `json:"ProxyClass,omitempty" xml:"ProxyClass,omitempty"`
 	// 数据库代理类型，取值范围如下：
@@ -1571,6 +1572,11 @@ func (s *CreateDBClusterRequest) SetPayType(v string) *CreateDBClusterRequest {
 
 func (s *CreateDBClusterRequest) SetPeriod(v string) *CreateDBClusterRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetProvisionedIops(v int64) *CreateDBClusterRequest {
+	s.ProvisionedIops = &v
 	return s
 }
 
@@ -26295,6 +26301,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
 		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedIops)) {
+		query["ProvisionedIops"] = request.ProvisionedIops
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProxyClass)) {
