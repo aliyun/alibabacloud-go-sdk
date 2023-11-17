@@ -156,6 +156,7 @@ type Instance struct {
 	InstanceName     *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstancePort     *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
 	IsSpot           *bool                    `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	Isolated         *bool                    `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
 	LastState        []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
 	Namespace        *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OriginalAmount   *float32                 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
@@ -211,6 +212,11 @@ func (s *Instance) SetInstancePort(v int32) *Instance {
 
 func (s *Instance) SetIsSpot(v bool) *Instance {
 	s.IsSpot = &v
+	return s
+}
+
+func (s *Instance) SetIsolated(v bool) *Instance {
+	s.Isolated = &v
 	return s
 }
 
@@ -608,6 +614,10 @@ func (s *ResourceInstanceWorker) SetStatus(v string) *ResourceInstanceWorker {
 
 type Service struct {
 	AccessToken               *string          `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	AppConfig                 *string          `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
+	AppSpecName               *string          `json:"AppSpecName,omitempty" xml:"AppSpecName,omitempty"`
+	AppType                   *string          `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppVersion                *string          `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	CallerUid                 *string          `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	Cpu                       *int32           `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	CreateTime                *string          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -645,6 +655,7 @@ type Service struct {
 	TotalInstance             *int32           `json:"TotalInstance,omitempty" xml:"TotalInstance,omitempty"`
 	UpdateTime                *string          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Weight                    *int32           `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	WorkspaceId               *string          `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Service) String() string {
@@ -657,6 +668,26 @@ func (s Service) GoString() string {
 
 func (s *Service) SetAccessToken(v string) *Service {
 	s.AccessToken = &v
+	return s
+}
+
+func (s *Service) SetAppConfig(v string) *Service {
+	s.AppConfig = &v
+	return s
+}
+
+func (s *Service) SetAppSpecName(v string) *Service {
+	s.AppSpecName = &v
+	return s
+}
+
+func (s *Service) SetAppType(v string) *Service {
+	s.AppType = &v
+	return s
+}
+
+func (s *Service) SetAppVersion(v string) *Service {
+	s.AppVersion = &v
 	return s
 }
 
@@ -845,6 +876,11 @@ func (s *Service) SetWeight(v int32) *Service {
 	return s
 }
 
+func (s *Service) SetWorkspaceId(v string) *Service {
+	s.WorkspaceId = &v
+	return s
+}
+
 type ServiceLabels struct {
 	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
 	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
@@ -916,6 +952,147 @@ func (s *CommitServiceResponse) SetStatusCode(v int32) *CommitServiceResponse {
 }
 
 func (s *CommitServiceResponse) SetBody(v *CommitServiceResponseBody) *CommitServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAppServiceRequest struct {
+	QuotaId     *string                `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	WorkspaceId *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppType     *string                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppVersion  *string                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Config      map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Replicas    *int32                 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ServiceName *string                `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceSpec *string                `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s CreateAppServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppServiceRequest) SetQuotaId(v string) *CreateAppServiceRequest {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetWorkspaceId(v string) *CreateAppServiceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetAppType(v string) *CreateAppServiceRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetAppVersion(v string) *CreateAppServiceRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetConfig(v map[string]interface{}) *CreateAppServiceRequest {
+	s.Config = v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetReplicas(v int32) *CreateAppServiceRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetServiceName(v string) *CreateAppServiceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateAppServiceRequest) SetServiceSpec(v string) *CreateAppServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type CreateAppServiceResponseBody struct {
+	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateAppServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppServiceResponseBody) SetInternetEndpoint(v string) *CreateAppServiceResponseBody {
+	s.InternetEndpoint = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetIntranetEndpoint(v string) *CreateAppServiceResponseBody {
+	s.IntranetEndpoint = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetRegion(v string) *CreateAppServiceResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetRequestId(v string) *CreateAppServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetServiceId(v string) *CreateAppServiceResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetServiceName(v string) *CreateAppServiceResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *CreateAppServiceResponseBody) SetStatus(v string) *CreateAppServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateAppServiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAppServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAppServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppServiceResponse) SetHeaders(v map[string]*string) *CreateAppServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppServiceResponse) SetStatusCode(v int32) *CreateAppServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppServiceResponse) SetBody(v *CreateAppServiceResponseBody) *CreateAppServiceResponse {
 	s.Body = v
 	return s
 }
@@ -1001,18 +1178,201 @@ func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody
 	return s
 }
 
+type CreateGatewayRequest struct {
+	ResourceName   *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	EnableInternet *bool   `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
+	EnableIntranet *bool   `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayRequest) SetResourceName(v string) *CreateGatewayRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetEnableInternet(v bool) *CreateGatewayRequest {
+	s.EnableInternet = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetEnableIntranet(v bool) *CreateGatewayRequest {
+	s.EnableIntranet = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetInstanceType(v string) *CreateGatewayRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateGatewayResponseBody struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayResponseBody) SetClusterId(v string) *CreateGatewayResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateGatewayResponseBody) SetGatewayId(v string) *CreateGatewayResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayResponseBody) SetMessage(v string) *CreateGatewayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateGatewayResponseBody) SetRequestId(v string) *CreateGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayResponse) SetHeaders(v map[string]*string) *CreateGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayResponse) SetStatusCode(v int32) *CreateGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayResponse) SetBody(v *CreateGatewayResponseBody) *CreateGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcRequest struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcRequest) SetVSwitchId(v string) *CreateGatewayIntranetLinkedVpcRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcRequest) SetVpcId(v string) *CreateGatewayIntranetLinkedVpcRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcResponseBody struct {
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponseBody) SetGatewayId(v string) *CreateGatewayIntranetLinkedVpcResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponseBody) SetMessage(v string) *CreateGatewayIntranetLinkedVpcResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *CreateGatewayIntranetLinkedVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGatewayIntranetLinkedVpcResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayIntranetLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGatewayIntranetLinkedVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewayIntranetLinkedVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponse) SetHeaders(v map[string]*string) *CreateGatewayIntranetLinkedVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *CreateGatewayIntranetLinkedVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGatewayIntranetLinkedVpcResponse) SetBody(v *CreateGatewayIntranetLinkedVpcResponseBody) *CreateGatewayIntranetLinkedVpcResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceRequest struct {
-	AutoRenewal       *bool                                   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType        *string                                 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	EcsInstanceCount  *int32                                  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	EcsInstanceType   *string                                 `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	ExternalClusterId *string                                 `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	NodeMatchLabels   map[string]*string                      `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	NodeTolerations   []*CreateResourceRequestNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	ResourceType      *string                                 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RoleName          *string                                 `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	SystemDiskSize    *int32                                  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	Zone              *string                                 `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	AutoRenewal                *bool                                            `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ChargeType                 *string                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	EcsInstanceCount           *int32                                           `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
+	EcsInstanceType            *string                                          `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	ResourceType               *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SelfManagedResourceOptions *CreateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
+	SystemDiskSize             *int32                                           `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Zone                       *string                                          `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -1043,28 +1403,13 @@ func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequ
 	return s
 }
 
-func (s *CreateResourceRequest) SetExternalClusterId(v string) *CreateResourceRequest {
-	s.ExternalClusterId = &v
-	return s
-}
-
-func (s *CreateResourceRequest) SetNodeMatchLabels(v map[string]*string) *CreateResourceRequest {
-	s.NodeMatchLabels = v
-	return s
-}
-
-func (s *CreateResourceRequest) SetNodeTolerations(v []*CreateResourceRequestNodeTolerations) *CreateResourceRequest {
-	s.NodeTolerations = v
-	return s
-}
-
 func (s *CreateResourceRequest) SetResourceType(v string) *CreateResourceRequest {
 	s.ResourceType = &v
 	return s
 }
 
-func (s *CreateResourceRequest) SetRoleName(v string) *CreateResourceRequest {
-	s.RoleName = &v
+func (s *CreateResourceRequest) SetSelfManagedResourceOptions(v *CreateResourceRequestSelfManagedResourceOptions) *CreateResourceRequest {
+	s.SelfManagedResourceOptions = v
 	return s
 }
 
@@ -1078,37 +1423,72 @@ func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
 	return s
 }
 
-type CreateResourceRequestNodeTolerations struct {
+type CreateResourceRequestSelfManagedResourceOptions struct {
+	ExternalClusterId *string                                                           `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
+	NodeMatchLabels   map[string]*string                                                `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	NodeTolerations   []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+	RoleName          *string                                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+}
+
+func (s CreateResourceRequestSelfManagedResourceOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRequestSelfManagedResourceOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRequestSelfManagedResourceOptions) SetExternalClusterId(v string) *CreateResourceRequestSelfManagedResourceOptions {
+	s.ExternalClusterId = &v
+	return s
+}
+
+func (s *CreateResourceRequestSelfManagedResourceOptions) SetNodeMatchLabels(v map[string]*string) *CreateResourceRequestSelfManagedResourceOptions {
+	s.NodeMatchLabels = v
+	return s
+}
+
+func (s *CreateResourceRequestSelfManagedResourceOptions) SetNodeTolerations(v []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) *CreateResourceRequestSelfManagedResourceOptions {
+	s.NodeTolerations = v
+	return s
+}
+
+func (s *CreateResourceRequestSelfManagedResourceOptions) SetRoleName(v string) *CreateResourceRequestSelfManagedResourceOptions {
+	s.RoleName = &v
+	return s
+}
+
+type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
 	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s CreateResourceRequestNodeTolerations) String() string {
+func (s CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateResourceRequestNodeTolerations) GoString() string {
+func (s CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) GoString() string {
 	return s.String()
 }
 
-func (s *CreateResourceRequestNodeTolerations) SetEffect(v string) *CreateResourceRequestNodeTolerations {
+func (s *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetEffect(v string) *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Effect = &v
 	return s
 }
 
-func (s *CreateResourceRequestNodeTolerations) SetKey(v string) *CreateResourceRequestNodeTolerations {
+func (s *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetKey(v string) *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Key = &v
 	return s
 }
 
-func (s *CreateResourceRequestNodeTolerations) SetOperator(v string) *CreateResourceRequestNodeTolerations {
+func (s *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetOperator(v string) *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Operator = &v
 	return s
 }
 
-func (s *CreateResourceRequestNodeTolerations) SetValue(v string) *CreateResourceRequestNodeTolerations {
+func (s *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetValue(v string) *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Value = &v
 	return s
 }
@@ -1376,9 +1756,10 @@ func (s *CreateResourceLogResponse) SetBody(v *CreateResourceLogResponseBody) *C
 }
 
 type CreateServiceRequest struct {
-	Develop *string            `json:"Develop,omitempty" xml:"Develop,omitempty"`
-	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Body    *string            `json:"body,omitempty" xml:"body,omitempty"`
+	Develop     *string            `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	Labels      map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	WorkspaceId *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Body        *string            `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -1399,6 +1780,11 @@ func (s *CreateServiceRequest) SetLabels(v map[string]*string) *CreateServiceReq
 	return s
 }
 
+func (s *CreateServiceRequest) SetWorkspaceId(v string) *CreateServiceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 func (s *CreateServiceRequest) SetBody(v string) *CreateServiceRequest {
 	s.Body = &v
 	return s
@@ -1407,6 +1793,7 @@ func (s *CreateServiceRequest) SetBody(v string) *CreateServiceRequest {
 type CreateServiceShrinkRequest struct {
 	Develop      *string `json:"Develop,omitempty" xml:"Develop,omitempty"`
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1425,6 +1812,11 @@ func (s *CreateServiceShrinkRequest) SetDevelop(v string) *CreateServiceShrinkRe
 
 func (s *CreateServiceShrinkRequest) SetLabelsShrink(v string) *CreateServiceShrinkRequest {
 	s.LabelsShrink = &v
+	return s
+}
+
+func (s *CreateServiceShrinkRequest) SetWorkspaceId(v string) *CreateServiceShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -1944,6 +2336,145 @@ func (s *DeleteBenchmarkTaskResponse) SetStatusCode(v int32) *DeleteBenchmarkTas
 }
 
 func (s *DeleteBenchmarkTaskResponse) SetBody(v *DeleteBenchmarkTaskResponseBody) *DeleteBenchmarkTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayResponseBody struct {
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayResponseBody) SetGatewayId(v string) *DeleteGatewayResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeleteGatewayResponseBody) SetMessage(v string) *DeleteGatewayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayResponseBody) SetRequestId(v string) *DeleteGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayResponse) SetHeaders(v map[string]*string) *DeleteGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayResponse) SetStatusCode(v int32) *DeleteGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGatewayResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcRequest struct {
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcRequest) SetVSwitchId(v string) *DeleteGatewayIntranetLinkedVpcRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcRequest) SetVpcId(v string) *DeleteGatewayIntranetLinkedVpcRequest {
+	s.VpcId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcResponseBody struct {
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponseBody) SetGatewayId(v string) *DeleteGatewayIntranetLinkedVpcResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponseBody) SetMessage(v string) *DeleteGatewayIntranetLinkedVpcResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *DeleteGatewayIntranetLinkedVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayIntranetLinkedVpcResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayIntranetLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayIntranetLinkedVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayIntranetLinkedVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponse) SetHeaders(v map[string]*string) *DeleteGatewayIntranetLinkedVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *DeleteGatewayIntranetLinkedVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGatewayIntranetLinkedVpcResponse) SetBody(v *DeleteGatewayIntranetLinkedVpcResponseBody) *DeleteGatewayIntranetLinkedVpcResponse {
 	s.Body = v
 	return s
 }
@@ -2750,6 +3281,227 @@ func (s *DescribeBenchmarkTaskReportResponse) SetStatusCode(v int32) *DescribeBe
 }
 
 func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskReportResponseBody) *DescribeBenchmarkTaskReportResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGatewayResponseBody struct {
+	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	// 网关创建时间
+	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
+	// 网关ID
+	GatewayId   *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// 网关创建的实例种类
+	InstanceType          *string                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetAclPolicyList []*DescribeGatewayResponseBodyInternetAclPolicyList `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
+	// 网关内部域名
+	InternetDomain  *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// 网关外部域名
+	IntranetDomain        *string                                             `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetEnabled       *bool                                               `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
+	IntranetLinkedVpcList []*DescribeGatewayResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
+	// 创建网关的用户ID
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	// 网关所在地域
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 网关现在的状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 网关最后一次的更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayResponseBody) SetCallerUid(v string) *DescribeGatewayResponseBody {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetCreateTime(v string) *DescribeGatewayResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetExternalClusterId(v string) *DescribeGatewayResponseBody {
+	s.ExternalClusterId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetGatewayId(v string) *DescribeGatewayResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetGatewayName(v string) *DescribeGatewayResponseBody {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetInstanceType(v string) *DescribeGatewayResponseBody {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetInternetAclPolicyList(v []*DescribeGatewayResponseBodyInternetAclPolicyList) *DescribeGatewayResponseBody {
+	s.InternetAclPolicyList = v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetInternetDomain(v string) *DescribeGatewayResponseBody {
+	s.InternetDomain = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetInternetEnabled(v bool) *DescribeGatewayResponseBody {
+	s.InternetEnabled = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetIntranetDomain(v string) *DescribeGatewayResponseBody {
+	s.IntranetDomain = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetIntranetEnabled(v bool) *DescribeGatewayResponseBody {
+	s.IntranetEnabled = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetIntranetLinkedVpcList(v []*DescribeGatewayResponseBodyIntranetLinkedVpcList) *DescribeGatewayResponseBody {
+	s.IntranetLinkedVpcList = v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetParentUid(v string) *DescribeGatewayResponseBody {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetRegion(v string) *DescribeGatewayResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetRequestId(v string) *DescribeGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetStatus(v string) *DescribeGatewayResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetUpdateTime(v string) *DescribeGatewayResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeGatewayResponseBodyInternetAclPolicyList struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeGatewayResponseBodyInternetAclPolicyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayResponseBodyInternetAclPolicyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetComment(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
+	s.Comment = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetEntry(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
+	s.Entry = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetStatus(v string) *DescribeGatewayResponseBodyInternetAclPolicyList {
+	s.Status = &v
+	return s
+}
+
+type DescribeGatewayResponseBodyIntranetLinkedVpcList struct {
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s DescribeGatewayResponseBodyIntranetLinkedVpcList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayResponseBodyIntranetLinkedVpcList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetIp(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetSecurityGroupId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetStatus(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetVSwitchId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBodyIntranetLinkedVpcList) SetVpcId(v string) *DescribeGatewayResponseBodyIntranetLinkedVpcList {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeGatewayResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayResponse) SetHeaders(v map[string]*string) *DescribeGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayResponse) SetStatusCode(v int32) *DescribeGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGatewayResponse) SetBody(v *DescribeGatewayResponseBody) *DescribeGatewayResponse {
 	s.Body = v
 	return s
 }
@@ -4104,10 +4856,110 @@ func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *L
 	return s
 }
 
+type ListGatewayIntranetLinkedVpcResponseBody struct {
+	GatewayId             *string                                                          `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	IntranetLinkedVpcList []*ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
+	RequestId             *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBody) SetGatewayId(v string) *ListGatewayIntranetLinkedVpcResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBody) SetIntranetLinkedVpcList(v []*ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) *ListGatewayIntranetLinkedVpcResponseBody {
+	s.IntranetLinkedVpcList = v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *ListGatewayIntranetLinkedVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
+	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetIp(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetSecurityGroupId(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetStatus(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetVSwitchId(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList) SetVpcId(v string) *ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList {
+	s.VpcId = &v
+	return s
+}
+
+type ListGatewayIntranetLinkedVpcResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGatewayIntranetLinkedVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGatewayIntranetLinkedVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayIntranetLinkedVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponse) SetHeaders(v map[string]*string) *ListGatewayIntranetLinkedVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponse) SetStatusCode(v int32) *ListGatewayIntranetLinkedVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGatewayIntranetLinkedVpcResponse) SetBody(v *ListGatewayIntranetLinkedVpcResponseBody) *ListGatewayIntranetLinkedVpcResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupsRequest struct {
-	Filter     *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListGroupsRequest) String() string {
@@ -4130,6 +4982,11 @@ func (s *ListGroupsRequest) SetPageNumber(v string) *ListGroupsRequest {
 
 func (s *ListGroupsRequest) SetPageSize(v string) *ListGroupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupsRequest) SetWorkspaceId(v string) *ListGroupsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -5066,7 +5923,8 @@ type ListServicesRequest struct {
 	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
 	// 服务的类型定义。
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -5139,6 +5997,11 @@ func (s *ListServicesRequest) SetServiceUid(v string) *ListServicesRequest {
 
 func (s *ListServicesRequest) SetSort(v string) *ListServicesRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetWorkspaceId(v string) *ListServicesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -5216,7 +6079,8 @@ type ListServicesShrinkRequest struct {
 	ServiceType   *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ServiceUid    *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
 	// 服务的类型定义。
-	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesShrinkRequest) String() string {
@@ -5289,6 +6153,11 @@ func (s *ListServicesShrinkRequest) SetServiceUid(v string) *ListServicesShrinkR
 
 func (s *ListServicesShrinkRequest) SetSort(v string) *ListServicesShrinkRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetWorkspaceId(v string) *ListServicesShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -5700,6 +6569,111 @@ func (s *StopServiceResponse) SetBody(v *StopServiceResponseBody) *StopServiceRe
 	return s
 }
 
+type UpdateAppServiceRequest struct {
+	QuotaId     *string                `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	WorkspaceId *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	AppType     *string                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppVersion  *string                `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	Config      map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
+	Replicas    *string                `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	ServiceSpec *string                `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
+}
+
+func (s UpdateAppServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppServiceRequest) SetQuotaId(v string) *UpdateAppServiceRequest {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetWorkspaceId(v string) *UpdateAppServiceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetAppType(v string) *UpdateAppServiceRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetAppVersion(v string) *UpdateAppServiceRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetConfig(v map[string]interface{}) *UpdateAppServiceRequest {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetReplicas(v string) *UpdateAppServiceRequest {
+	s.Replicas = &v
+	return s
+}
+
+func (s *UpdateAppServiceRequest) SetServiceSpec(v string) *UpdateAppServiceRequest {
+	s.ServiceSpec = &v
+	return s
+}
+
+type UpdateAppServiceResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAppServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppServiceResponseBody) SetMessage(v string) *UpdateAppServiceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAppServiceResponseBody) SetRequestId(v string) *UpdateAppServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAppServiceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAppServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAppServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAppServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAppServiceResponse) SetHeaders(v map[string]*string) *UpdateAppServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppServiceResponse) SetStatusCode(v int32) *UpdateAppServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAppServiceResponse) SetBody(v *UpdateAppServiceResponseBody) *UpdateAppServiceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBenchmarkTaskRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5769,10 +6743,102 @@ func (s *UpdateBenchmarkTaskResponse) SetBody(v *UpdateBenchmarkTaskResponseBody
 	return s
 }
 
+type UpdateGatewayRequest struct {
+	EnableInternet *bool   `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
+	EnableIntranet *bool   `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
+	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRequest) SetEnableInternet(v bool) *UpdateGatewayRequest {
+	s.EnableInternet = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetEnableIntranet(v bool) *UpdateGatewayRequest {
+	s.EnableIntranet = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetInstanceType(v string) *UpdateGatewayRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateGatewayResponseBody struct {
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayResponseBody) SetGatewayId(v string) *UpdateGatewayResponseBody {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayResponseBody) SetMessage(v string) *UpdateGatewayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayResponseBody) SetRequestId(v string) *UpdateGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGatewayResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayResponse) SetHeaders(v map[string]*string) *UpdateGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayResponse) SetStatusCode(v int32) *UpdateGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayResponse) SetBody(v *UpdateGatewayResponseBody) *UpdateGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateResourceRequest struct {
-	NodeMatchLabels map[string]*string                      `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	NodeTolerations []*UpdateResourceRequestNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	ResourceName    *string                                 `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceName               *string                                          `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	SelfManagedResourceOptions *UpdateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
 }
 
 func (s UpdateResourceRequest) String() string {
@@ -5783,52 +6849,70 @@ func (s UpdateResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceRequest) SetNodeMatchLabels(v map[string]*string) *UpdateResourceRequest {
-	s.NodeMatchLabels = v
-	return s
-}
-
-func (s *UpdateResourceRequest) SetNodeTolerations(v []*UpdateResourceRequestNodeTolerations) *UpdateResourceRequest {
-	s.NodeTolerations = v
-	return s
-}
-
 func (s *UpdateResourceRequest) SetResourceName(v string) *UpdateResourceRequest {
 	s.ResourceName = &v
 	return s
 }
 
-type UpdateResourceRequestNodeTolerations struct {
+func (s *UpdateResourceRequest) SetSelfManagedResourceOptions(v *UpdateResourceRequestSelfManagedResourceOptions) *UpdateResourceRequest {
+	s.SelfManagedResourceOptions = v
+	return s
+}
+
+type UpdateResourceRequestSelfManagedResourceOptions struct {
+	NodeMatchLabels map[string]*string                                                `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	NodeTolerations []*UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+}
+
+func (s UpdateResourceRequestSelfManagedResourceOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRequestSelfManagedResourceOptions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRequestSelfManagedResourceOptions) SetNodeMatchLabels(v map[string]*string) *UpdateResourceRequestSelfManagedResourceOptions {
+	s.NodeMatchLabels = v
+	return s
+}
+
+func (s *UpdateResourceRequestSelfManagedResourceOptions) SetNodeTolerations(v []*UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) *UpdateResourceRequestSelfManagedResourceOptions {
+	s.NodeTolerations = v
+	return s
+}
+
+type UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
 	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
-func (s UpdateResourceRequestNodeTolerations) String() string {
+func (s UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpdateResourceRequestNodeTolerations) GoString() string {
+func (s UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateResourceRequestNodeTolerations) SetEffect(v string) *UpdateResourceRequestNodeTolerations {
+func (s *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetEffect(v string) *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Effect = &v
 	return s
 }
 
-func (s *UpdateResourceRequestNodeTolerations) SetKey(v string) *UpdateResourceRequestNodeTolerations {
+func (s *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetKey(v string) *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Key = &v
 	return s
 }
 
-func (s *UpdateResourceRequestNodeTolerations) SetOperator(v string) *UpdateResourceRequestNodeTolerations {
+func (s *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetOperator(v string) *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Operator = &v
 	return s
 }
 
-func (s *UpdateResourceRequestNodeTolerations) SetValue(v string) *UpdateResourceRequestNodeTolerations {
+func (s *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetValue(v string) *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations {
 	s.Value = &v
 	return s
 }
@@ -6428,6 +7512,75 @@ func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResp
 	return s
 }
 
+type UpdateServiceInstanceRequest struct {
+	Isolate *bool `json:"Isolate,omitempty" xml:"Isolate,omitempty"`
+}
+
+func (s UpdateServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceRequest) SetIsolate(v bool) *UpdateServiceInstanceRequest {
+	s.Isolate = &v
+	return s
+}
+
+type UpdateServiceInstanceResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceResponseBody) SetMessage(v string) *UpdateServiceInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceResponseBody) SetRequestId(v string) *UpdateServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceResponse) SetHeaders(v map[string]*string) *UpdateServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceInstanceResponse) SetStatusCode(v int32) *UpdateServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceResponse) SetBody(v *UpdateServiceInstanceResponseBody) *UpdateServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceLabelRequest struct {
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
@@ -6810,6 +7963,82 @@ func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_re
 	return _result, _err
 }
 
+func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QuotaId)) {
+		query["QuotaId"] = request.QuotaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		body["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppService"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/app_services"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAppService(request *CreateAppServiceRequest) (_result *CreateAppServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAppServiceResponse{}
+	_body, _err := client.CreateAppServiceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBenchmarkTaskWithOptions(request *CreateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBenchmarkTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6851,6 +8080,120 @@ func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableInternet)) {
+		body["EnableInternet"] = request.EnableInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIntranet)) {
+		body["EnableIntranet"] = request.EnableIntranet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGateway"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *CreateGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGatewayResponse{}
+	_body, _err := client.CreateGatewayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayIntranetLinkedVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewayIntranetLinkedVpc"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcRequest) (_result *CreateGatewayIntranetLinkedVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.CreateGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6873,24 +8216,12 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 		body["EcsInstanceType"] = request.EcsInstanceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ExternalClusterId)) {
-		body["ExternalClusterId"] = request.ExternalClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeMatchLabels)) {
-		body["NodeMatchLabels"] = request.NodeMatchLabels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeTolerations)) {
-		body["NodeTolerations"] = request.NodeTolerations
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		body["ResourceType"] = request.ResourceType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
-		body["RoleName"] = request.RoleName
+	if !tea.BoolValue(util.IsUnset(request.SelfManagedResourceOptions)) {
+		body["SelfManagedResourceOptions"] = request.SelfManagedResourceOptions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
@@ -7075,6 +8406,10 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.LabelsShrink)) {
 		query["Labels"] = request.LabelsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7301,6 +8636,92 @@ func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (
 	headers := make(map[string]*string)
 	_result = &DeleteBenchmarkTaskResponse{}
 	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGateway"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGateway(ClusterId *string, GatewayId *string) (_result *DeleteGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGatewayResponse{}
+	_body, _err := client.DeleteGatewayWithOptions(ClusterId, GatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayIntranetLinkedVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayIntranetLinkedVpc"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcRequest) (_result *DeleteGatewayIntranetLinkedVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.DeleteGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7791,6 +9212,42 @@ func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *s
 	headers := make(map[string]*string)
 	_result = &DescribeBenchmarkTaskReportResponse{}
 	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeGatewayResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGateway"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string) (_result *DescribeGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeGatewayResponse{}
+	_body, _err := client.DescribeGatewayWithOptions(ClusterId, GatewayId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8406,6 +9863,42 @@ func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGatewayIntranetLinkedVpc"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId)) + "/intranet_endpoint_linked_vpc"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListGatewayIntranetLinkedVpcResponse{}
+	_body, _err := client.ListGatewayIntranetLinkedVpcWithOptions(ClusterId, GatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8422,6 +9915,10 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8948,6 +10445,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 		query["Sort"] = request.Sort
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9214,6 +10715,78 @@ func (client *Client) StopService(ClusterId *string, ServiceName *string) (_resu
 	return _result, _err
 }
 
+func (client *Client) UpdateAppServiceWithOptions(ClusterId *string, ServiceName *string, request *UpdateAppServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QuotaId)) {
+		query["QuotaId"] = request.QuotaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		body["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replicas)) {
+		body["Replicas"] = request.Replicas
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSpec)) {
+		body["ServiceSpec"] = request.ServiceSpec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAppService"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/app_services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAppServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAppService(ClusterId *string, ServiceName *string, request *UpdateAppServiceRequest) (_result *UpdateAppServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAppServiceResponse{}
+	_body, _err := client.UpdateAppServiceWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBenchmarkTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9255,22 +10828,76 @@ func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, r
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewayWithOptions(GatewayId *string, ClusterId *string, request *UpdateGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableInternet)) {
+		body["EnableInternet"] = request.EnableInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIntranet)) {
+		body["EnableIntranet"] = request.EnableIntranet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGateway"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/gateways/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GatewayId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, request *UpdateGatewayRequest) (_result *UpdateGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGatewayResponse{}
+	_body, _err := client.UpdateGatewayWithOptions(GatewayId, ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *string, request *UpdateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NodeMatchLabels)) {
-		body["NodeMatchLabels"] = request.NodeMatchLabels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeTolerations)) {
-		body["NodeTolerations"] = request.NodeTolerations
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
 		body["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelfManagedResourceOptions)) {
+		body["SelfManagedResourceOptions"] = request.SelfManagedResourceOptions
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9555,6 +11182,52 @@ func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *st
 	headers := make(map[string]*string)
 	_result = &UpdateServiceCronScalerResponse{}
 	_body, _err := client.UpdateServiceCronScalerWithOptions(ClusterId, ServiceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceInstanceWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, request *UpdateServiceInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Isolate)) {
+		body["Isolate"] = request.Isolate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceInstance"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/services/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(ServiceName)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceInstance(ClusterId *string, ServiceName *string, InstanceName *string, request *UpdateServiceInstanceRequest) (_result *UpdateServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateServiceInstanceResponse{}
+	_body, _err := client.UpdateServiceInstanceWithOptions(ClusterId, ServiceName, InstanceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
