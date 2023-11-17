@@ -45,8 +45,10 @@ func (s *DataResultValue) SetCount(v int32) *DataResultValue {
 }
 
 type DataSessionStatClientStatsValue struct {
+	// The number of clients whose IP addresses are active.
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of IP addresses of clients.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DataSessionStatClientStatsValue) String() string {
@@ -68,8 +70,10 @@ func (s *DataSessionStatClientStatsValue) SetTotalCount(v int64) *DataSessionSta
 }
 
 type DataSessionStatDbStatsValue struct {
+	// The number of active namespaces.
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of namespaces.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DataSessionStatDbStatsValue) String() string {
@@ -2525,10 +2529,20 @@ func (s *DescribeAutoScalingConfigResponse) SetBody(v *DescribeAutoScalingConfig
 }
 
 type DescribeAutoScalingHistoryRequest struct {
+	// The type of the auto scaling task that you want to query. Set the value to **SPEC**, which indicates that you can query the history of only automatic performance scaling tasks.
 	AutoScalingTaskType *string `json:"AutoScalingTaskType,omitempty" xml:"AutoScalingTaskType,omitempty"`
-	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > The end time must be later than the start time.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
+	// > Only ApsaraDB RDS for MySQL instances are supported.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > The maximum time range that can be specified is 45 days.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeAutoScalingHistoryRequest) String() string {
@@ -2560,12 +2574,21 @@ func (s *DescribeAutoScalingHistoryRequest) SetStartTime(v int64) *DescribeAutoS
 }
 
 type DescribeAutoScalingHistoryResponseBody struct {
+	// The HTTP status code returned. The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// AutoScalingInstanceHistory
-	Data      *DescribeAutoScalingHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The history of auto scaling.
+	Data *DescribeAutoScalingHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAutoScalingHistoryResponseBody) String() string {
@@ -2602,12 +2625,18 @@ func (s *DescribeAutoScalingHistoryResponseBody) SetSuccess(v string) *DescribeA
 }
 
 type DescribeAutoScalingHistoryResponseBodyData struct {
-	Bandwidth   []map[string]interface{}                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Repeated"`
-	InstanceId  *string                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Resource    []map[string]interface{}                                 `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
-	Shard       []map[string]interface{}                                 `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
+	// The history of automatic bandwidth scaling of ApsaraDB for Redis instances. This feature is not supported.
+	Bandwidth []map[string]interface{} `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Repeated"`
+	// The instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The history of resource scale-out of ApsaraDB for Redis instances. This feature is not supported.
+	Resource []map[string]interface{} `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	// The history of automatic shard scale-out of ApsaraDB for Redis instances. This feature is not supported.
+	Shard []map[string]interface{} `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
+	// The history of automatic performance scaling.
 	SpecHistory []*DescribeAutoScalingHistoryResponseBodyDataSpecHistory `json:"SpecHistory,omitempty" xml:"SpecHistory,omitempty" type:"Repeated"`
-	Storage     []map[string]interface{}                                 `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Repeated"`
+	// The history of storage expansion. This feature is not supported.
+	Storage []map[string]interface{} `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAutoScalingHistoryResponseBodyData) String() string {
@@ -2649,16 +2678,37 @@ func (s *DescribeAutoScalingHistoryResponseBodyData) SetStorage(v []map[string]i
 }
 
 type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {
-	ErrorCode           *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	OriginCore          *int32   `json:"OriginCore,omitempty" xml:"OriginCore,omitempty"`
-	OriginInstanceClass *string  `json:"OriginInstanceClass,omitempty" xml:"OriginInstanceClass,omitempty"`
-	OriginMemory        *float64 `json:"OriginMemory,omitempty" xml:"OriginMemory,omitempty"`
-	ScaleType           *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	TargetCore          *int32   `json:"TargetCore,omitempty" xml:"TargetCore,omitempty"`
-	TargetInstanceClass *string  `json:"TargetInstanceClass,omitempty" xml:"TargetInstanceClass,omitempty"`
-	TargetMemory        *float64 `json:"TargetMemory,omitempty" xml:"TargetMemory,omitempty"`
-	TaskExcuteStatus    *bool    `json:"TaskExcuteStatus,omitempty" xml:"TaskExcuteStatus,omitempty"`
-	TaskTime            *int64   `json:"TaskTime,omitempty" xml:"TaskTime,omitempty"`
+	// The error code returned by the scaling task. Valid values:
+	//
+	// *   **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
+	// *   **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
+	// *   **Control_Error_Timeout_Msg**: The management task timed out.
+	// *   **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The original number of CPU cores of the instance.
+	OriginCore *int32 `json:"OriginCore,omitempty" xml:"OriginCore,omitempty"`
+	// The original instance type.
+	OriginInstanceClass *string `json:"OriginInstanceClass,omitempty" xml:"OriginInstanceClass,omitempty"`
+	// The original memory size of the instance. Unit: GB.
+	OriginMemory *float64 `json:"OriginMemory,omitempty" xml:"OriginMemory,omitempty"`
+	// The type of the automatic performance scaling task. Valid values:
+	//
+	// *   **SCALE_UP**: automatic instance type scale-up task.
+	// *   **SCALE_DOWN**: automatic instance type scale-down task.
+	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	// The destination number of CPU cores of the instance.
+	TargetCore *int32 `json:"TargetCore,omitempty" xml:"TargetCore,omitempty"`
+	// The destination instance type.
+	TargetInstanceClass *string `json:"TargetInstanceClass,omitempty" xml:"TargetInstanceClass,omitempty"`
+	// The destination memory size of the instance. Unit: GB.
+	TargetMemory *float64 `json:"TargetMemory,omitempty" xml:"TargetMemory,omitempty"`
+	// The status of the task. Valid values:
+	//
+	// *   **true**: The task was successful.
+	// *   **false**: The task failed.
+	TaskExcuteStatus *bool `json:"TaskExcuteStatus,omitempty" xml:"TaskExcuteStatus,omitempty"`
+	// The time when the task was run. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	TaskTime *int64 `json:"TaskTime,omitempty" xml:"TaskTime,omitempty"`
 }
 
 func (s DescribeAutoScalingHistoryResponseBodyDataSpecHistory) String() string {
@@ -9017,8 +9067,10 @@ func (s *GetAutonomousNotifyEventsInRangeResponse) SetBody(v *GetAutonomousNotif
 }
 
 type GetDBInstanceConnectivityDiagnosisRequest struct {
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SrcIp      *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
+	// The source IP address.
+	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 
 func (s GetDBInstanceConnectivityDiagnosisRequest) String() string {
@@ -9040,11 +9092,21 @@ func (s *GetDBInstanceConnectivityDiagnosisRequest) SetSrcIp(v string) *GetDBIns
 }
 
 type GetDBInstanceConnectivityDiagnosisResponseBody struct {
-	Code      *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetDBInstanceConnectivityDiagnosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The detailed information.
+	Data *GetDBInstanceConnectivityDiagnosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDBInstanceConnectivityDiagnosisResponseBody) String() string {
@@ -9081,11 +9143,34 @@ func (s *GetDBInstanceConnectivityDiagnosisResponseBody) SetSuccess(v string) *G
 }
 
 type GetDBInstanceConnectivityDiagnosisResponseBodyData struct {
-	ConnCheckErrorCode    *string `json:"connCheckErrorCode,omitempty" xml:"connCheckErrorCode,omitempty"`
+	// The exception detection items:
+	//
+	// *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	// *   **VIP_NOT_EXISTS**: The Application Load Balancer (ALB) instance corresponding to the virtual IP address (VIP) does not exist.
+	// *   **RS_NOT_EXISTS**: The resource sharing (RS) is not properly mounted.
+	// *   **VIP_TUNNEL_ID_NOT_CONSISTENT**: The tunnel ID used by the VIP of the virtual private cloud (VPC) type is different from the tunnel ID of the VPC.
+	// *   **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VIP of the VPC type does not exist.
+	// *   **VIP_IS_NOT_NGLB**: The NGLB mode is disabled for the VIP.
+	// *   **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: No security group is associated with the instance.
+	// *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	// *   **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the whitelist of the instance.
+	// *   **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group that is associated with the instance.
+	// *   **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The IP address in the VPC is in an abnormal state.
+	ConnCheckErrorCode *string `json:"connCheckErrorCode,omitempty" xml:"connCheckErrorCode,omitempty"`
+	// The details of the exception detection.
 	ConnCheckErrorMessage *string `json:"connCheckErrorMessage,omitempty" xml:"connCheckErrorMessage,omitempty"`
-	FailType              *string `json:"failType,omitempty" xml:"failType,omitempty"`
-	InstanceId            *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Success               *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The type of the exception:
+	//
+	// *   **0**: an exception that can be handled by the user.
+	// *   **1**: an exception that can be handled by a technical engineer.
+	FailType *string `json:"failType,omitempty" xml:"failType,omitempty"`
+	// The instance ID.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Indicates whether the connectivity test was passed:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDBInstanceConnectivityDiagnosisResponseBodyData) String() string {
@@ -13363,10 +13448,16 @@ func (s *GetKillInstanceSessionTaskResultResponse) SetBody(v *GetKillInstanceSes
 }
 
 type GetMongoDBCurrentOpRequest struct {
-	FilterDoc  *string `json:"FilterDoc,omitempty" xml:"FilterDoc,omitempty"`
+	// The condition used to filter sessions during the query. For more information, see the currentOp command of MongoDB.
+	FilterDoc *string `json:"FilterDoc,omitempty" xml:"FilterDoc,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The node ID.
+	//
+	// >  If you do not specify a node ID, the sessions of the primary node are queried by default.
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// A reserved parameter. You do not need to specify the parameter.
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpRequest) String() string {
@@ -13398,11 +13489,21 @@ func (s *GetMongoDBCurrentOpRequest) SetRole(v string) *GetMongoDBCurrentOpReque
 }
 
 type GetMongoDBCurrentOpResponseBody struct {
-	Code      *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetMongoDBCurrentOpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the sessions.
+	Data *GetMongoDBCurrentOpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpResponseBody) String() string {
@@ -13439,9 +13540,12 @@ func (s *GetMongoDBCurrentOpResponseBody) SetSuccess(v bool) *GetMongoDBCurrentO
 }
 
 type GetMongoDBCurrentOpResponseBodyData struct {
+	// The sessions.
 	SessionList []*GetMongoDBCurrentOpResponseBodyDataSessionList `json:"SessionList,omitempty" xml:"SessionList,omitempty" type:"Repeated"`
-	SessionStat *GetMongoDBCurrentOpResponseBodyDataSessionStat   `json:"SessionStat,omitempty" xml:"SessionStat,omitempty" type:"Struct"`
-	Timestamp   *int64                                            `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The statistics on the sessions.
+	SessionStat *GetMongoDBCurrentOpResponseBodyDataSessionStat `json:"SessionStat,omitempty" xml:"SessionStat,omitempty" type:"Struct"`
+	// The time when the database sessions were returned. The value is in the UNIX timestamp format. Unit: milliseconds.
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpResponseBodyData) String() string {
@@ -13468,24 +13572,42 @@ func (s *GetMongoDBCurrentOpResponseBodyData) SetTimestamp(v int64) *GetMongoDBC
 }
 
 type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
-	Active       *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	Client       *string `json:"Client,omitempty" xml:"Client,omitempty"`
-	Command      *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	ConnectionId *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	Desc         *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Driver       *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	KillPending  *bool   `json:"KillPending,omitempty" xml:"KillPending,omitempty"`
-	Ns           *string `json:"Ns,omitempty" xml:"Ns,omitempty"`
-	Op           *string `json:"Op,omitempty" xml:"Op,omitempty"`
-	OpId         *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
-	OsArch       *string `json:"OsArch,omitempty" xml:"OsArch,omitempty"`
-	OsName       *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
-	OsType       *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PlanSummary  *string `json:"PlanSummary,omitempty" xml:"PlanSummary,omitempty"`
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	SecsRunning  *int64  `json:"SecsRunning,omitempty" xml:"SecsRunning,omitempty"`
-	Shard        *string `json:"Shard,omitempty" xml:"Shard,omitempty"`
+	// Indicates whether the operation is active.
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The IP address of the client.
+	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
+	// The document that contains the complete command object associated with the operation.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The connection ID.
+	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// The description of the connection.
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The driver.
+	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The host.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Indicates whether the operation is marked as terminated. If the operation is marked as terminated, true is returned.
+	KillPending *bool `json:"KillPending,omitempty" xml:"KillPending,omitempty"`
+	// The namespace.
+	Ns *string `json:"Ns,omitempty" xml:"Ns,omitempty"`
+	// The type of the operation.
+	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	// The operation ID.
+	OpId *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
+	// The architecture of the operating system.
+	OsArch *string `json:"OsArch,omitempty" xml:"OsArch,omitempty"`
+	// The name of the operating system.
+	OsName *string `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	// The type of the operating system.
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The description of the execution plan.
+	PlanSummary *string `json:"PlanSummary,omitempty" xml:"PlanSummary,omitempty"`
+	// The platform.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The duration of the operation. Unit: seconds.
+	SecsRunning *int64 `json:"SecsRunning,omitempty" xml:"SecsRunning,omitempty"`
+	// The shard.
+	Shard *string `json:"Shard,omitempty" xml:"Shard,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpResponseBodyDataSessionList) String() string {
@@ -13587,11 +13709,16 @@ func (s *GetMongoDBCurrentOpResponseBodyDataSessionList) SetShard(v string) *Get
 }
 
 type GetMongoDBCurrentOpResponseBodyDataSessionStat struct {
-	ActiveCount        *int64                                      `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	ClientStats        map[string]*DataSessionStatClientStatsValue `json:"ClientStats,omitempty" xml:"ClientStats,omitempty"`
-	DbStats            map[string]*DataSessionStatDbStatsValue     `json:"DbStats,omitempty" xml:"DbStats,omitempty"`
-	LongestSecsRunning *int64                                      `json:"LongestSecsRunning,omitempty" xml:"LongestSecsRunning,omitempty"`
-	TotalCount         *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of active sessions.
+	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
+	// The statistics on the IP addresses of the clients.
+	ClientStats map[string]*DataSessionStatClientStatsValue `json:"ClientStats,omitempty" xml:"ClientStats,omitempty"`
+	// The statistics on the namespaces.
+	DbStats map[string]*DataSessionStatDbStatsValue `json:"DbStats,omitempty" xml:"DbStats,omitempty"`
+	// The longest duration of a session. Unit: seconds.
+	LongestSecsRunning *int64 `json:"LongestSecsRunning,omitempty" xml:"LongestSecsRunning,omitempty"`
+	// The total number of sessions.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetMongoDBCurrentOpResponseBodyDataSessionStat) String() string {
@@ -13659,7 +13786,7 @@ func (s *GetMongoDBCurrentOpResponse) SetBody(v *GetMongoDBCurrentOpResponseBody
 type GetMySQLAllSessionAsyncRequest struct {
 	// The instance ID.
 	//
-	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+	// >  Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
@@ -13827,7 +13954,7 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionData struct {
 	DbStats []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats `json:"DbStats,omitempty" xml:"DbStats,omitempty" type:"Repeated"`
 	// The maximum execution duration of an active session. Unit: seconds.
 	MaxActiveTime *int64 `json:"MaxActiveTime,omitempty" xml:"MaxActiveTime,omitempty"`
-	// The list of sessions.
+	// The sessions.
 	SessionList []*GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList `json:"SessionList,omitempty" xml:"SessionList,omitempty" type:"Repeated"`
 	// The time when the session was queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	TimeStamp *int64 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
@@ -13888,7 +14015,7 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) SetUserStats(v []*G
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats struct {
 	// The number of active sessions that belong to the client IP address.
 	//
-	// > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
 	// The IP address of the client.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -13936,9 +14063,9 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) SetUserL
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats struct {
 	// The number of active sessions of the database.
 	//
-	// > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The name of the database.
+	// The database name.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IDs of the sessions of the database.
 	ThreadIdList []*int64 `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
@@ -13986,10 +14113,13 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The type of the command executed in the session.
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The name of the database.
+	// The database name.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The session ID.
-	SessionId     *int64  `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The SQL template ID.
+	//
+	// >  This parameter is returned only when you use a PolarDB-X 2.0 instance.
 	SqlTemplateId *string `json:"SqlTemplateId,omitempty" xml:"SqlTemplateId,omitempty"`
 	// The SQL statement executed in the session.
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
@@ -14001,7 +14131,7 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
 	TrxDuration *int64 `json:"TrxDuration,omitempty" xml:"TrxDuration,omitempty"`
 	// The ID of the transaction to which the session belongs.
 	TrxId *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
-	// The username of the database.
+	// The username of the database account.
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 	// The alias of the IP address of the client.
 	UserClientAlias *string `json:"UserClientAlias,omitempty" xml:"UserClientAlias,omitempty"`
@@ -14078,9 +14208,9 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) SetUserC
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats struct {
 	// The number of active sessions within the account.
 	//
-	//  > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The account of the database.
+	// The database account.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The IDs of the sessions within the account.
 	ThreadIdList []*int64 `json:"ThreadIdList,omitempty" xml:"ThreadIdList,omitempty" type:"Repeated"`
@@ -17847,38 +17977,38 @@ type GetRedisAllSessionResponseBodyDataSessions struct {
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The alias of the client.
 	ClientDesc *string `json:"ClientDesc,omitempty" xml:"ClientDesc,omitempty"`
-	// The command that is last executed.
+	// The command that was last run.
 	Cmd *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
 	// The ID of the database that the client is using.
 	Db *int64 `json:"Db,omitempty" xml:"Db,omitempty"`
 	// The file descriptor event. Valid values:
 	//
-	// * **r**: Client sockets are readable in the event loop.
-	// * **w**: Client sockets are writable in the event loop.
+	// *   **r**: Client sockets are readable in the event loop.
+	// *   **w**: Client sockets are writable in the event loop.
 	Events *string `json:"Events,omitempty" xml:"Events,omitempty"`
 	// The file descriptor that is used by sockets.
 	Fd *int64 `json:"Fd,omitempty" xml:"Fd,omitempty"`
 	// The client flag. Valid values:
 	//
-	// * **A**: The connection needs to be closed at the earliest opportunity.
-	// * **b**: The client is waiting for blocked events.
-	// * **c**: The connection is closed after all replies are written.
-	// * **d**: The monitored keys have been modified, and the *`EXEC`* command is about to fail.
-	// * **i**: The client is waiting for VM I/O operations. This value is deprecated.
-	// * **M**: The client is the primary node.
-	// * **N**: Special flags are not configured.
-	// * **O**: The client is in monitor mode.
-	// * **r**: The client is a cluster node in read-only mode.
-	// * **S**: The client is a replica node in normal mode.
-	// * **u**: The client is not blocked.
-	// * **U**: The client is connected by using UNIX domain sockets.
-	// * **x**: The client is executing a transaction.
+	// *   **A**: The connection needs to be closed at the earliest opportunity.
+	// *   **b**: The client is waiting for blocked events.
+	// *   **c**: The connection is closed after all replies are written.
+	// *   **d**: The monitored keys have been modified, and the `EXEC` command is about to fail.
+	// *   **i**: The client is waiting for VM I/O operations. This value is no longer used.
+	// *   **M**: The client is the primary node.
+	// *   **N**: No special flags are configured.
+	// *   **O**: The client is in monitor mode.
+	// *   **r**: The client is a cluster node in read-only mode.
+	// *   **S**: The client is a replica node in normal mode.
+	// *   **u**: The client is not blocked.
+	// *   **U**: The client is connected by using UNIX domain sockets.
+	// *   **x**: The client is executing a transaction.
 	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
 	// The client ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The duration during which the session is in the idle state. Unit: seconds.
 	Idle *int64 `json:"Idle,omitempty" xml:"Idle,omitempty"`
-	// The number of commands in *`MULTI`* or *`EXEC`*.
+	// The number of commands in `MULTI` or `EXEC`.
 	Multi *int64 `json:"Multi,omitempty" xml:"Multi,omitempty"`
 	// The name of the client.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -18016,7 +18146,7 @@ func (s *GetRedisAllSessionResponseBodyDataSessions) SetSub(v int64) *GetRedisAl
 type GetRedisAllSessionResponseBodyDataSourceStats struct {
 	// The total number of sessions from the access source.
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The client ID data.
+	// The client IDs.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The access source.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -22833,6 +22963,15 @@ func (client *Client) DescribeAutoScalingConfig(request *DescribeAutoScalingConf
 	return _result, _err
 }
 
+/**
+ * *   You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ *
+ * @param request DescribeAutoScalingHistoryRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeAutoScalingHistoryResponse
+ */
 func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAutoScalingHistoryRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoScalingHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22862,6 +23001,14 @@ func (client *Client) DescribeAutoScalingHistoryWithOptions(request *DescribeAut
 	return _result, _err
 }
 
+/**
+ * *   You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ *
+ * @param request DescribeAutoScalingHistoryRequest
+ * @return DescribeAutoScalingHistoryResponse
+ */
 func (client *Client) DescribeAutoScalingHistory(request *DescribeAutoScalingHistoryRequest) (_result *DescribeAutoScalingHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoScalingHistoryResponse{}
@@ -24765,6 +24912,16 @@ func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNot
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   The database instance that you want to manage is connected to DAS.
+ *
+ * @param request GetDBInstanceConnectivityDiagnosisRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetDBInstanceConnectivityDiagnosisResponse
+ */
 func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *GetDBInstanceConnectivityDiagnosisRequest, runtime *util.RuntimeOptions) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24802,6 +24959,15 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithOptions(request *Get
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+ * *   The database instance that you want to manage is connected to DAS.
+ *
+ * @param request GetDBInstanceConnectivityDiagnosisRequest
+ * @return GetDBInstanceConnectivityDiagnosisResponse
+ */
 func (client *Client) GetDBInstanceConnectivityDiagnosis(request *GetDBInstanceConnectivityDiagnosisRequest) (_result *GetDBInstanceConnectivityDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDBInstanceConnectivityDiagnosisResponse{}
@@ -25963,6 +26129,15 @@ func (client *Client) GetKillInstanceSessionTaskResult(request *GetKillInstanceS
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to MongoDB instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ *
+ * @param request GetMongoDBCurrentOpRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMongoDBCurrentOpResponse
+ */
 func (client *Client) GetMongoDBCurrentOpWithOptions(request *GetMongoDBCurrentOpRequest, runtime *util.RuntimeOptions) (_result *GetMongoDBCurrentOpResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26008,6 +26183,14 @@ func (client *Client) GetMongoDBCurrentOpWithOptions(request *GetMongoDBCurrentO
 	return _result, _err
 }
 
+/**
+ * *   This operation is applicable only to MongoDB instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+ *
+ * @param request GetMongoDBCurrentOpRequest
+ * @return GetMongoDBCurrentOpResponse
+ */
 func (client *Client) GetMongoDBCurrentOp(request *GetMongoDBCurrentOpRequest) (_result *GetMongoDBCurrentOpResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMongoDBCurrentOpResponse{}
@@ -26020,9 +26203,10 @@ func (client *Client) GetMongoDBCurrentOp(request *GetMongoDBCurrentOpRequest) (
 }
 
 /**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetMySQLAllSessionAsyncRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -26070,9 +26254,10 @@ func (client *Client) GetMySQLAllSessionAsyncWithOptions(request *GetMySQLAllSes
 }
 
 /**
- * *   This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ * >  Asynchronous calls do not immediately return the complete results. You must use the value of **ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+ * *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request GetMySQLAllSessionAsyncRequest
  * @return GetMySQLAllSessionAsyncResponse
@@ -27620,16 +27805,16 @@ func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequ
 /**
  * You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
  * *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
- *     *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ *     *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
  * *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+ *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
  * *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
- *     *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+ *     *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
  * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
- *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request ModifyAutoScalingConfigRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -27691,16 +27876,16 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
 /**
  * You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
  * *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
- *     *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ *     *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
  * *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
- *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+ *     *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
  * *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
- *     *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+ *     *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
  * *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
- *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
- * *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
- * *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+ *     *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+ * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+ * *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
  *
  * @param request ModifyAutoScalingConfigRequest
  * @return ModifyAutoScalingConfigResponse
