@@ -15108,6 +15108,8 @@ type ListAudioFilesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Usage      *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListAudioFilesRequest) String() string {
@@ -15130,6 +15132,16 @@ func (s *ListAudioFilesRequest) SetPageNumber(v int32) *ListAudioFilesRequest {
 
 func (s *ListAudioFilesRequest) SetPageSize(v int32) *ListAudioFilesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAudioFilesRequest) SetStatus(v string) *ListAudioFilesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAudioFilesRequest) SetUsage(v string) *ListAudioFilesRequest {
+	s.Usage = &v
 	return s
 }
 
@@ -15212,11 +15224,14 @@ func (s *ListAudioFilesResponseBodyData) SetTotalCount(v int32) *ListAudioFilesR
 type ListAudioFilesResponseBodyDataList struct {
 	AudioFileName   *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	AuditResult     *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
 	CreatedTime     *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssFileKey      *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdatedTime     *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	Usage           *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListAudioFilesResponseBodyDataList) String() string {
@@ -15234,6 +15249,11 @@ func (s *ListAudioFilesResponseBodyDataList) SetAudioFileName(v string) *ListAud
 
 func (s *ListAudioFilesResponseBodyDataList) SetAudioResourceId(v string) *ListAudioFilesResponseBodyDataList {
 	s.AudioResourceId = &v
+	return s
+}
+
+func (s *ListAudioFilesResponseBodyDataList) SetAuditResult(v string) *ListAudioFilesResponseBodyDataList {
+	s.AuditResult = &v
 	return s
 }
 
@@ -15257,8 +15277,18 @@ func (s *ListAudioFilesResponseBodyDataList) SetOssFileKey(v string) *ListAudioF
 	return s
 }
 
+func (s *ListAudioFilesResponseBodyDataList) SetStatus(v string) *ListAudioFilesResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
 func (s *ListAudioFilesResponseBodyDataList) SetUpdatedTime(v string) *ListAudioFilesResponseBodyDataList {
 	s.UpdatedTime = &v
+	return s
+}
+
+func (s *ListAudioFilesResponseBodyDataList) SetUsage(v string) *ListAudioFilesResponseBodyDataList {
+	s.Usage = &v
 	return s
 }
 
@@ -15293,6 +15323,7 @@ func (s *ListAudioFilesResponse) SetBody(v *ListAudioFilesResponseBody) *ListAud
 
 type ListBriefSkillGroupsRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType     *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
@@ -15308,6 +15339,11 @@ func (s ListBriefSkillGroupsRequest) GoString() string {
 
 func (s *ListBriefSkillGroupsRequest) SetInstanceId(v string) *ListBriefSkillGroupsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBriefSkillGroupsRequest) SetMediaType(v string) *ListBriefSkillGroupsRequest {
+	s.MediaType = &v
 	return s
 }
 
@@ -15406,6 +15442,7 @@ type ListBriefSkillGroupsResponseBodyDataList struct {
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MediaType        *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	PhoneNumberCount *int32  `json:"PhoneNumberCount,omitempty" xml:"PhoneNumberCount,omitempty"`
 	SkillGroupId     *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
 	SkillGroupName   *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
@@ -15432,6 +15469,11 @@ func (s *ListBriefSkillGroupsResponseBodyDataList) SetDisplayName(v string) *Lis
 
 func (s *ListBriefSkillGroupsResponseBodyDataList) SetInstanceId(v string) *ListBriefSkillGroupsResponseBodyDataList {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBriefSkillGroupsResponseBodyDataList) SetMediaType(v string) *ListBriefSkillGroupsResponseBodyDataList {
+	s.MediaType = &v
 	return s
 }
 
@@ -16410,24 +16452,25 @@ func (s *ListCampaignsResponseBodyData) SetTotalCount(v int64) *ListCampaignsRes
 }
 
 type ListCampaignsResponseBodyDataList struct {
-	ActualEndTime      *int64  `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
-	ActualStartTime    *int64  `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
-	CampaignId         *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	CasesAborted       *int64  `json:"CasesAborted,omitempty" xml:"CasesAborted,omitempty"`
-	CasesConnected     *int64  `json:"CasesConnected,omitempty" xml:"CasesConnected,omitempty"`
-	CasesUncompleted   *int64  `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
-	MaxAttemptCount    *int64  `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
-	MinAttemptInterval *int64  `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PlanedEndTime      *int64  `json:"PlanedEndTime,omitempty" xml:"PlanedEndTime,omitempty"`
-	PlanedStartTime    *int64  `json:"PlanedStartTime,omitempty" xml:"PlanedStartTime,omitempty"`
-	QueueId            *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	QueueName          *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Simulation         *bool   `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
-	State              *string `json:"State,omitempty" xml:"State,omitempty"`
-	StrategyParameters *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
-	StrategyType       *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TotalCases         *int64  `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
+	ActualEndTime      *int64   `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
+	ActualStartTime    *int64   `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
+	CampaignId         *string  `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CasesAborted       *int64   `json:"CasesAborted,omitempty" xml:"CasesAborted,omitempty"`
+	CasesConnected     *int64   `json:"CasesConnected,omitempty" xml:"CasesConnected,omitempty"`
+	CasesUncompleted   *int64   `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
+	CompletionRate     *float32 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
+	MaxAttemptCount    *int64   `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
+	MinAttemptInterval *int64   `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	Name               *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	PlanedEndTime      *int64   `json:"PlanedEndTime,omitempty" xml:"PlanedEndTime,omitempty"`
+	PlanedStartTime    *int64   `json:"PlanedStartTime,omitempty" xml:"PlanedStartTime,omitempty"`
+	QueueId            *string  `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	QueueName          *string  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Simulation         *bool    `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
+	State              *string  `json:"State,omitempty" xml:"State,omitempty"`
+	StrategyParameters *string  `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
+	StrategyType       *string  `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TotalCases         *int64   `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
 }
 
 func (s ListCampaignsResponseBodyDataList) String() string {
@@ -16465,6 +16508,11 @@ func (s *ListCampaignsResponseBodyDataList) SetCasesConnected(v int64) *ListCamp
 
 func (s *ListCampaignsResponseBodyDataList) SetCasesUncompleted(v int64) *ListCampaignsResponseBodyDataList {
 	s.CasesUncompleted = &v
+	return s
+}
+
+func (s *ListCampaignsResponseBodyDataList) SetCompletionRate(v float32) *ListCampaignsResponseBodyDataList {
+	s.CompletionRate = &v
 	return s
 }
 
@@ -17563,6 +17611,7 @@ type ListDoNotCallNumbersResponseBody struct {
 	Data           *ListDoNotCallNumbersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                             `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17591,6 +17640,11 @@ func (s *ListDoNotCallNumbersResponseBody) SetHttpStatusCode(v int32) *ListDoNot
 
 func (s *ListDoNotCallNumbersResponseBody) SetMessage(v string) *ListDoNotCallNumbersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ListDoNotCallNumbersResponseBody) SetParams(v []*string) *ListDoNotCallNumbersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -17635,11 +17689,12 @@ func (s *ListDoNotCallNumbersResponseBodyData) SetTotalCount(v int32) *ListDoNot
 }
 
 type ListDoNotCallNumbersResponseBodyDataList struct {
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Creator    *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Number     *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedTime *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Number      *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Scope       *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s ListDoNotCallNumbersResponseBodyDataList) String() string {
@@ -17652,6 +17707,11 @@ func (s ListDoNotCallNumbersResponseBodyDataList) GoString() string {
 
 func (s *ListDoNotCallNumbersResponseBodyDataList) SetCreateTime(v int64) *ListDoNotCallNumbersResponseBodyDataList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDoNotCallNumbersResponseBodyDataList) SetCreatedTime(v int64) *ListDoNotCallNumbersResponseBodyDataList {
+	s.CreatedTime = &v
 	return s
 }
 
@@ -30197,6 +30257,7 @@ type ModifyAudioFileRequest struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssFileKey      *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
+	Usage           *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ModifyAudioFileRequest) String() string {
@@ -30229,6 +30290,11 @@ func (s *ModifyAudioFileRequest) SetName(v string) *ModifyAudioFileRequest {
 
 func (s *ModifyAudioFileRequest) SetOssFileKey(v string) *ModifyAudioFileRequest {
 	s.OssFileKey = &v
+	return s
+}
+
+func (s *ModifyAudioFileRequest) SetUsage(v string) *ModifyAudioFileRequest {
+	s.Usage = &v
 	return s
 }
 
@@ -30723,6 +30789,7 @@ func (s *ModifySkillLevelsOfUserRequest) SetUserId(v string) *ModifySkillLevelsO
 
 type ModifySkillLevelsOfUserResponseBody struct {
 	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -30738,6 +30805,11 @@ func (s ModifySkillLevelsOfUserResponseBody) GoString() string {
 
 func (s *ModifySkillLevelsOfUserResponseBody) SetCode(v string) *ModifySkillLevelsOfUserResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ModifySkillLevelsOfUserResponseBody) SetData(v string) *ModifySkillLevelsOfUserResponseBody {
+	s.Data = &v
 	return s
 }
 
@@ -30786,11 +30858,13 @@ func (s *ModifySkillLevelsOfUserResponse) SetBody(v *ModifySkillLevelsOfUserResp
 }
 
 type ModifyUserRequest struct {
+	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	DisplayId   *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Nickname    *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	RoleId      *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
 	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkMode    *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
@@ -30802,6 +30876,11 @@ func (s ModifyUserRequest) String() string {
 
 func (s ModifyUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyUserRequest) SetAvatarUrl(v string) *ModifyUserRequest {
+	s.AvatarUrl = &v
+	return s
 }
 
 func (s *ModifyUserRequest) SetDisplayId(v string) *ModifyUserRequest {
@@ -30829,6 +30908,11 @@ func (s *ModifyUserRequest) SetMobile(v string) *ModifyUserRequest {
 	return s
 }
 
+func (s *ModifyUserRequest) SetNickname(v string) *ModifyUserRequest {
+	s.Nickname = &v
+	return s
+}
+
 func (s *ModifyUserRequest) SetRoleId(v string) *ModifyUserRequest {
 	s.RoleId = &v
 	return s
@@ -30845,11 +30929,12 @@ func (s *ModifyUserRequest) SetWorkMode(v string) *ModifyUserRequest {
 }
 
 type ModifyUserResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyUserResponseBody) String() string {
@@ -30877,6 +30962,11 @@ func (s *ModifyUserResponseBody) SetHttpStatusCode(v int32) *ModifyUserResponseB
 
 func (s *ModifyUserResponseBody) SetMessage(v string) *ModifyUserResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *ModifyUserResponseBody) SetParams(v []*string) *ModifyUserResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -32075,9 +32165,10 @@ func (s *PollUserStatusResponseBody) SetRequestId(v string) *PollUserStatusRespo
 }
 
 type PollUserStatusResponseBodyData struct {
-	CallContext *PollUserStatusResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
-	ContextId   *int64                                     `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
-	UserContext *PollUserStatusResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
+	CallContext  *PollUserStatusResponseBodyDataCallContext    `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	ChatContexts []*PollUserStatusResponseBodyDataChatContexts `json:"ChatContexts,omitempty" xml:"ChatContexts,omitempty" type:"Repeated"`
+	ContextId    *int64                                        `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	UserContext  *PollUserStatusResponseBodyDataUserContext    `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
 func (s PollUserStatusResponseBodyData) String() string {
@@ -32090,6 +32181,11 @@ func (s PollUserStatusResponseBodyData) GoString() string {
 
 func (s *PollUserStatusResponseBodyData) SetCallContext(v *PollUserStatusResponseBodyDataCallContext) *PollUserStatusResponseBodyData {
 	s.CallContext = v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyData) SetChatContexts(v []*PollUserStatusResponseBodyDataChatContexts) *PollUserStatusResponseBodyData {
+	s.ChatContexts = v
 	return s
 }
 
@@ -32245,20 +32341,115 @@ func (s *PollUserStatusResponseBodyDataCallContextChannelContexts) SetUserId(v s
 	return s
 }
 
+type PollUserStatusResponseBodyDataChatContexts struct {
+	CallVariables *string                                              `json:"CallVariables,omitempty" xml:"CallVariables,omitempty"`
+	ChatType      *string                                              `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
+	InstanceId    *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId         *string                                              `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Members       []*PollUserStatusResponseBodyDataChatContextsMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+}
+
+func (s PollUserStatusResponseBodyDataChatContexts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PollUserStatusResponseBodyDataChatContexts) GoString() string {
+	return s.String()
+}
+
+func (s *PollUserStatusResponseBodyDataChatContexts) SetCallVariables(v string) *PollUserStatusResponseBodyDataChatContexts {
+	s.CallVariables = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContexts) SetChatType(v string) *PollUserStatusResponseBodyDataChatContexts {
+	s.ChatType = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContexts) SetInstanceId(v string) *PollUserStatusResponseBodyDataChatContexts {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContexts) SetJobId(v string) *PollUserStatusResponseBodyDataChatContexts {
+	s.JobId = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContexts) SetMembers(v []*PollUserStatusResponseBodyDataChatContextsMembers) *PollUserStatusResponseBodyDataChatContexts {
+	s.Members = v
+	return s
+}
+
+type PollUserStatusResponseBodyDataChatContextsMembers struct {
+	Index            *int32  `json:"Index,omitempty" xml:"Index,omitempty"`
+	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	ReleaseReason    *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	SkillGroupId     *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserType         *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s PollUserStatusResponseBodyDataChatContextsMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PollUserStatusResponseBodyDataChatContextsMembers) GoString() string {
+	return s.String()
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetIndex(v int32) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.Index = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetReleaseInitiator(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.ReleaseInitiator = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetReleaseReason(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.ReleaseReason = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetSkillGroupId(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetStatus(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.Status = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetUserId(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.UserId = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataChatContextsMembers) SetUserType(v string) *PollUserStatusResponseBodyDataChatContextsMembers {
+	s.UserType = &v
+	return s
+}
+
 type PollUserStatusResponseBodyDataUserContext struct {
-	BreakCode              *string   `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	DeviceId               *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Extension              *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	Heartbeat              *int64    `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
-	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId                  *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Mobile                 *string   `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
-	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
-	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserState              *string   `json:"UserState,omitempty" xml:"UserState,omitempty"`
-	WorkMode               *string   `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+	BreakCode              *string                                                     `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	DeviceId               *string                                                     `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Extension              *string                                                     `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	Heartbeat              *int64                                                      `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	InstanceId             *string                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                  *string                                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Mobile                 *string                                                     `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	OutboundScenario       *bool                                                       `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	ParallelJobList        []*PollUserStatusResponseBodyDataUserContextParallelJobList `json:"ParallelJobList,omitempty" xml:"ParallelJobList,omitempty" type:"Repeated"`
+	Reserved               *int64                                                      `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	SignedSkillGroupIdList []*string                                                   `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	UserId                 *string                                                     `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserState              *string                                                     `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	WorkMode               *string                                                     `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s PollUserStatusResponseBodyDataUserContext) String() string {
@@ -32309,6 +32500,11 @@ func (s *PollUserStatusResponseBodyDataUserContext) SetOutboundScenario(v bool) 
 	return s
 }
 
+func (s *PollUserStatusResponseBodyDataUserContext) SetParallelJobList(v []*PollUserStatusResponseBodyDataUserContextParallelJobList) *PollUserStatusResponseBodyDataUserContext {
+	s.ParallelJobList = v
+	return s
+}
+
 func (s *PollUserStatusResponseBodyDataUserContext) SetReserved(v int64) *PollUserStatusResponseBodyDataUserContext {
 	s.Reserved = &v
 	return s
@@ -32331,6 +32527,35 @@ func (s *PollUserStatusResponseBodyDataUserContext) SetUserState(v string) *Poll
 
 func (s *PollUserStatusResponseBodyDataUserContext) SetWorkMode(v string) *PollUserStatusResponseBodyDataUserContext {
 	s.WorkMode = &v
+	return s
+}
+
+type PollUserStatusResponseBodyDataUserContextParallelJobList struct {
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s PollUserStatusResponseBodyDataUserContextParallelJobList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PollUserStatusResponseBodyDataUserContextParallelJobList) GoString() string {
+	return s.String()
+}
+
+func (s *PollUserStatusResponseBodyDataUserContextParallelJobList) SetJobId(v string) *PollUserStatusResponseBodyDataUserContextParallelJobList {
+	s.JobId = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataUserContextParallelJobList) SetStatus(v string) *PollUserStatusResponseBodyDataUserContextParallelJobList {
+	s.Status = &v
+	return s
+}
+
+func (s *PollUserStatusResponseBodyDataUserContextParallelJobList) SetTimestamp(v int64) *PollUserStatusResponseBodyDataUserContextParallelJobList {
+	s.Timestamp = &v
 	return s
 }
 
@@ -33959,6 +34184,7 @@ type RemovePhoneNumbersResponseBody struct {
 	Data           []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -33987,6 +34213,11 @@ func (s *RemovePhoneNumbersResponseBody) SetHttpStatusCode(v int32) *RemovePhone
 
 func (s *RemovePhoneNumbersResponseBody) SetMessage(v string) *RemovePhoneNumbersResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *RemovePhoneNumbersResponseBody) SetParams(v []*string) *RemovePhoneNumbersResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -34217,9 +34448,11 @@ func (s *RemoveSkillGroupsFromUserResponse) SetBody(v *RemoveSkillGroupsFromUser
 }
 
 type RemoveUsersRequest struct {
-	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserIdList *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+	FilePath          *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	Force             *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NotificationEmail *string `json:"NotificationEmail,omitempty" xml:"NotificationEmail,omitempty"`
+	UserIdList        *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
 func (s RemoveUsersRequest) String() string {
@@ -34230,6 +34463,11 @@ func (s RemoveUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveUsersRequest) SetFilePath(v string) *RemoveUsersRequest {
+	s.FilePath = &v
+	return s
+}
+
 func (s *RemoveUsersRequest) SetForce(v bool) *RemoveUsersRequest {
 	s.Force = &v
 	return s
@@ -34237,6 +34475,11 @@ func (s *RemoveUsersRequest) SetForce(v bool) *RemoveUsersRequest {
 
 func (s *RemoveUsersRequest) SetInstanceId(v string) *RemoveUsersRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *RemoveUsersRequest) SetNotificationEmail(v string) *RemoveUsersRequest {
+	s.NotificationEmail = &v
 	return s
 }
 
@@ -36127,6 +36370,8 @@ func (s *SendDtmfSignalingResponse) SetBody(v *SendDtmfSignalingResponseBody) *S
 }
 
 type SignInGroupRequest struct {
+	Additivity             *bool   `json:"Additivity,omitempty" xml:"Additivity,omitempty"`
+	ChatDeviceId           *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
 	DeviceId               *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SignedSkillGroupIdList *string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty"`
@@ -36139,6 +36384,16 @@ func (s SignInGroupRequest) String() string {
 
 func (s SignInGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SignInGroupRequest) SetAdditivity(v bool) *SignInGroupRequest {
+	s.Additivity = &v
+	return s
+}
+
+func (s *SignInGroupRequest) SetChatDeviceId(v string) *SignInGroupRequest {
+	s.ChatDeviceId = &v
+	return s
 }
 
 func (s *SignInGroupRequest) SetDeviceId(v string) *SignInGroupRequest {
@@ -36210,6 +36465,7 @@ func (s *SignInGroupResponseBody) SetRequestId(v string) *SignInGroupResponseBod
 
 type SignInGroupResponseBodyData struct {
 	BreakCode              *string   `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	ChatDeviceId           *string   `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
 	DeviceId               *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Extension              *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -36231,6 +36487,11 @@ func (s SignInGroupResponseBodyData) GoString() string {
 
 func (s *SignInGroupResponseBodyData) SetBreakCode(v string) *SignInGroupResponseBodyData {
 	s.BreakCode = &v
+	return s
+}
+
+func (s *SignInGroupResponseBodyData) SetChatDeviceId(v string) *SignInGroupResponseBodyData {
+	s.ChatDeviceId = &v
 	return s
 }
 
@@ -39040,10 +39301,11 @@ func (s *UpdateConfigItemsRequest) SetObjectType(v string) *UpdateConfigItemsReq
 }
 
 type UpdateConfigItemsResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UpdateConfigItemsResponseBody) String() string {
@@ -39066,6 +39328,11 @@ func (s *UpdateConfigItemsResponseBody) SetHttpStatusCode(v int32) *UpdateConfig
 
 func (s *UpdateConfigItemsResponseBody) SetMessage(v string) *UpdateConfigItemsResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *UpdateConfigItemsResponseBody) SetParams(v []*string) *UpdateConfigItemsResponseBody {
+	s.Params = v
 	return s
 }
 
@@ -39720,6 +39987,14 @@ func (client *Client) AppendCases(request *AppendCasesRequest) (_result *AppendC
 	return _result, _err
 }
 
+/**
+ * @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+ *
+ * @param request AssignUsersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AssignUsersResponse
+ */
+// Deprecated
 func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtime *util.RuntimeOptions) (_result *AssignUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39769,6 +40044,13 @@ func (client *Client) AssignUsersWithOptions(request *AssignUsersRequest, runtim
 	return _result, _err
 }
 
+/**
+ * @deprecated : AssignUsers is deprecated, please use CCC::2020-07-01::ImportRamUsers instead.
+ *
+ * @param request AssignUsersRequest
+ * @return AssignUsersResponse
+ */
+// Deprecated
 func (client *Client) AssignUsers(request *AssignUsersRequest) (_result *AssignUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssignUsersResponse{}
@@ -41186,6 +41468,14 @@ func (client *Client) EndConference(request *EndConferenceRequest) (_result *End
 	return _result, _err
 }
 
+/**
+ * @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+ *
+ * @param request ExportCustomCallTaggingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ExportCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ExportCustomCallTaggingWithOptions(request *ExportCustomCallTaggingRequest, runtime *util.RuntimeOptions) (_result *ExportCustomCallTaggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41219,6 +41509,13 @@ func (client *Client) ExportCustomCallTaggingWithOptions(request *ExportCustomCa
 	return _result, _err
 }
 
+/**
+ * @deprecated : ExportCustomCallTagging is deprecated, please use CCC::2020-07-01::ExportCustomCallTaggings instead.
+ *
+ * @param request ExportCustomCallTaggingRequest
+ * @return ExportCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ExportCustomCallTagging(request *ExportCustomCallTaggingRequest) (_result *ExportCustomCallTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportCustomCallTaggingResponse{}
@@ -42822,6 +43119,14 @@ func (client *Client) ImportAdmins(request *ImportAdminsRequest) (_result *Impor
 	return _result, _err
 }
 
+/**
+ * @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+ *
+ * @param request ImportCustomCallTaggingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ImportCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ImportCustomCallTaggingWithOptions(request *ImportCustomCallTaggingRequest, runtime *util.RuntimeOptions) (_result *ImportCustomCallTaggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42859,6 +43164,13 @@ func (client *Client) ImportCustomCallTaggingWithOptions(request *ImportCustomCa
 	return _result, _err
 }
 
+/**
+ * @deprecated : ImportCustomCallTagging is deprecated, please use CCC::2020-07-01::ImportCustomCallTaggings instead.
+ *
+ * @param request ImportCustomCallTaggingRequest
+ * @return ImportCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ImportCustomCallTagging(request *ImportCustomCallTaggingRequest) (_result *ImportCustomCallTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportCustomCallTaggingResponse{}
@@ -43428,6 +43740,14 @@ func (client *Client) ListAudioFilesWithOptions(request *ListAudioFilesRequest, 
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -43470,6 +43790,10 @@ func (client *Client) ListBriefSkillGroupsWithOptions(request *ListBriefSkillGro
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -43994,6 +44318,14 @@ func (client *Client) ListContactFlows(request *ListContactFlowsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+ *
+ * @param request ListCustomCallTaggingRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ListCustomCallTaggingWithOptions(request *ListCustomCallTaggingRequest, runtime *util.RuntimeOptions) (_result *ListCustomCallTaggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44043,6 +44375,13 @@ func (client *Client) ListCustomCallTaggingWithOptions(request *ListCustomCallTa
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListCustomCallTagging is deprecated, please use CCC::2020-07-01::ListCustomCallTaggings instead.
+ *
+ * @param request ListCustomCallTaggingRequest
+ * @return ListCustomCallTaggingResponse
+ */
+// Deprecated
 func (client *Client) ListCustomCallTagging(request *ListCustomCallTaggingRequest) (_result *ListCustomCallTaggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCustomCallTaggingResponse{}
@@ -46236,6 +46575,10 @@ func (client *Client) ModifyAudioFileWithOptions(request *ModifyAudioFileRequest
 		query["OssFileKey"] = request.OssFileKey
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -46544,6 +46887,10 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		query["AvatarUrl"] = request.AvatarUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DisplayId)) {
 		query["DisplayId"] = request.DisplayId
 	}
@@ -46562,6 +46909,10 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
 		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nickname)) {
+		query["Nickname"] = request.Nickname
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RoleId)) {
@@ -47652,12 +48003,20 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["FilePath"] = request.FilePath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Force)) {
 		query["Force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotificationEmail)) {
+		query["NotificationEmail"] = request.NotificationEmail
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserIdList)) {
@@ -48344,6 +48703,14 @@ func (client *Client) SignInGroupWithOptions(request *SignInGroupRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Additivity)) {
+		query["Additivity"] = request.Additivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatDeviceId)) {
+		query["ChatDeviceId"] = request.ChatDeviceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		query["DeviceId"] = request.DeviceId
 	}
