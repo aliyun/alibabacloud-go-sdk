@@ -246,6 +246,7 @@ func (s *AttachDBInstancesResponse) SetBody(v *AttachDBInstancesResponseBody) *A
 }
 
 type AttachInstancesRequest struct {
+	ClientToken          *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Entrusted            *bool     `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
 	InstanceIds          []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	LifecycleHook        *bool     `json:"LifecycleHook,omitempty" xml:"LifecycleHook,omitempty"`
@@ -264,6 +265,11 @@ func (s AttachInstancesRequest) String() string {
 
 func (s AttachInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AttachInstancesRequest) SetClientToken(v string) *AttachInstancesRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *AttachInstancesRequest) SetEntrusted(v bool) *AttachInstancesRequest {
@@ -1304,7 +1310,11 @@ type CreateEciScalingConfigurationRequest struct {
 	// Number of physical CPU cores This parameter is not available for all instance types. For more information, see [Specify custom CPU options](~~197781~~).
 	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
 	// The number of threads per core. This parameter is not available for all instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
-	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	CpuOptionsThreadsPerCore *int32  `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	DataCacheBucket          *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
+	DataCacheBurstingEnabled *bool   `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
+	DataCachePL              *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
+	DataCacheProvisionedIops *int32  `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
 	// > This parameter is unavailable.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP addresses of the DNS servers.
@@ -1459,6 +1469,26 @@ func (s *CreateEciScalingConfigurationRequest) SetCpuOptionsCore(v int32) *Creat
 
 func (s *CreateEciScalingConfigurationRequest) SetCpuOptionsThreadsPerCore(v int32) *CreateEciScalingConfigurationRequest {
 	s.CpuOptionsThreadsPerCore = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetDataCacheBucket(v string) *CreateEciScalingConfigurationRequest {
+	s.DataCacheBucket = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetDataCacheBurstingEnabled(v bool) *CreateEciScalingConfigurationRequest {
+	s.DataCacheBurstingEnabled = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetDataCachePL(v string) *CreateEciScalingConfigurationRequest {
+	s.DataCachePL = &v
+	return s
+}
+
+func (s *CreateEciScalingConfigurationRequest) SetDataCacheProvisionedIops(v int32) *CreateEciScalingConfigurationRequest {
+	s.DataCacheProvisionedIops = &v
 	return s
 }
 
@@ -5807,7 +5837,8 @@ func (s *CreateScalingGroupRequestServerGroups) SetWeight(v int32) *CreateScalin
 
 type CreateScalingGroupRequestTags struct {
 	// The tag key that you want to add to the scaling group.
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Propagate *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
 	// The tag value that you want to add to the scaling group.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
@@ -5822,6 +5853,11 @@ func (s CreateScalingGroupRequestTags) GoString() string {
 
 func (s *CreateScalingGroupRequestTags) SetKey(v string) *CreateScalingGroupRequestTags {
 	s.Key = &v
+	return s
+}
+
+func (s *CreateScalingGroupRequestTags) SetPropagate(v bool) *CreateScalingGroupRequestTags {
+	s.Propagate = &v
 	return s
 }
 
@@ -7729,7 +7765,11 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	// The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
 	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
 	// The ID of the security group with which the elastic container instance is associated. Elastic container instances that are associated with the same security group can access each other.
-	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime             *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DataCacheBucket          *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
+	DataCacheBurstingEnabled *bool   `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
+	DataCachePL              *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
+	DataCacheProvisionedIops *int32  `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
 	// The ID of the image cache snapshot.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The DNS lookup domains.
@@ -7889,6 +7929,26 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetC
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetCreationTime(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetDataCacheBucket(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DataCacheBucket = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetDataCacheBurstingEnabled(v bool) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DataCacheBurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetDataCachePL(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DataCachePL = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetDataCacheProvisionedIops(v int32) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations {
+	s.DataCacheProvisionedIops = &v
 	return s
 }
 
@@ -8910,7 +8970,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	// The FlexVolume driver name of the volume.
 	FlexVolumeFsType *string `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
 	// The name of the volume.
-	FlexVolumeOptions *string `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
+	FlexVolumeOptions  *string `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
+	HostPathVolumePath *string `json:"HostPathVolumePath,omitempty" xml:"HostPathVolumePath,omitempty"`
+	HostPathVolumeType *string `json:"HostPathVolumeType,omitempty" xml:"HostPathVolumeType,omitempty"`
 	// Indicates whether the NFS volume is read-only.
 	//
 	// Default value: false.
@@ -8980,6 +9042,16 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolume
 
 func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) SetFlexVolumeOptions(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes {
 	s.FlexVolumeOptions = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) SetHostPathVolumePath(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes {
+	s.HostPathVolumePath = &v
+	return s
+}
+
+func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes) SetHostPathVolumeType(v string) *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes {
+	s.HostPathVolumeType = &v
 	return s
 }
 
@@ -12001,8 +12073,9 @@ func (s *DescribeScalingGroupsResponseBodyScalingGroupsServerGroups) SetWeight(v
 }
 
 type DescribeScalingGroupsResponseBodyScalingGroupsTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	Propagate *bool   `json:"Propagate,omitempty" xml:"Propagate,omitempty"`
+	TagKey    *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue  *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsTags) String() string {
@@ -12011,6 +12084,11 @@ func (s DescribeScalingGroupsResponseBodyScalingGroupsTags) String() string {
 
 func (s DescribeScalingGroupsResponseBodyScalingGroupsTags) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeScalingGroupsResponseBodyScalingGroupsTags) SetPropagate(v bool) *DescribeScalingGroupsResponseBodyScalingGroupsTags {
+	s.Propagate = &v
+	return s
 }
 
 func (s *DescribeScalingGroupsResponseBodyScalingGroupsTags) SetTagKey(v string) *DescribeScalingGroupsResponseBodyScalingGroupsTags {
@@ -12110,6 +12188,7 @@ type DescribeScalingInstancesRequest struct {
 	HealthStatus           *string   `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
 	InstanceIds            []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	LifecycleState         *string   `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
+	LifecycleStates        []*string `json:"LifecycleStates,omitempty" xml:"LifecycleStates,omitempty" type:"Repeated"`
 	OwnerAccount           *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PageNumber             *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -12152,6 +12231,11 @@ func (s *DescribeScalingInstancesRequest) SetInstanceIds(v []*string) *DescribeS
 
 func (s *DescribeScalingInstancesRequest) SetLifecycleState(v string) *DescribeScalingInstancesRequest {
 	s.LifecycleState = &v
+	return s
+}
+
+func (s *DescribeScalingInstancesRequest) SetLifecycleStates(v []*string) *DescribeScalingInstancesRequest {
+	s.LifecycleStates = v
 	return s
 }
 
@@ -12263,9 +12347,11 @@ type DescribeScalingInstancesResponseBodyScalingInstances struct {
 	LaunchTemplateVersion  *string `json:"LaunchTemplateVersion,omitempty" xml:"LaunchTemplateVersion,omitempty"`
 	LifecycleState         *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
 	LoadBalancerWeight     *int32  `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
+	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ScalingActivityId      *string `json:"ScalingActivityId,omitempty" xml:"ScalingActivityId,omitempty"`
 	ScalingConfigurationId *string `json:"ScalingConfigurationId,omitempty" xml:"ScalingConfigurationId,omitempty"`
 	ScalingGroupId         *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	ScalingInstanceId      *string `json:"ScalingInstanceId,omitempty" xml:"ScalingInstanceId,omitempty"`
 	SpotStrategy           *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	WarmupState            *string `json:"WarmupState,omitempty" xml:"WarmupState,omitempty"`
 	WeightedCapacity       *int32  `json:"WeightedCapacity,omitempty" xml:"WeightedCapacity,omitempty"`
@@ -12330,6 +12416,11 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetLoadBalancerWe
 	return s
 }
 
+func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetPrivateIpAddress(v string) *DescribeScalingInstancesResponseBodyScalingInstances {
+	s.PrivateIpAddress = &v
+	return s
+}
+
 func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetScalingActivityId(v string) *DescribeScalingInstancesResponseBodyScalingInstances {
 	s.ScalingActivityId = &v
 	return s
@@ -12342,6 +12433,11 @@ func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetScalingConfigu
 
 func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetScalingGroupId(v string) *DescribeScalingInstancesResponseBodyScalingInstances {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeScalingInstancesResponseBodyScalingInstances) SetScalingInstanceId(v string) *DescribeScalingInstancesResponseBodyScalingInstances {
+	s.ScalingInstanceId = &v
 	return s
 }
 
@@ -15600,7 +15696,11 @@ type ModifyEciScalingConfigurationRequest struct {
 	// The number of physical CPU cores. This parameter is not available for all instance types. For more information, see [Specify custom CPU options](~~197781~~).
 	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
 	// The number of threads per core. This parameter is not available for all instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
-	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	CpuOptionsThreadsPerCore *int32  `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
+	DataCacheBucket          *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
+	DataCacheBurstingEnabled *bool   `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
+	DataCachePL              *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
+	DataCacheProvisionedIops *int32  `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
 	// > This parameter is unavailable.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP addresses of the DNS servers.
@@ -15757,6 +15857,26 @@ func (s *ModifyEciScalingConfigurationRequest) SetCpuOptionsCore(v int32) *Modif
 
 func (s *ModifyEciScalingConfigurationRequest) SetCpuOptionsThreadsPerCore(v int32) *ModifyEciScalingConfigurationRequest {
 	s.CpuOptionsThreadsPerCore = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetDataCacheBucket(v string) *ModifyEciScalingConfigurationRequest {
+	s.DataCacheBucket = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetDataCacheBurstingEnabled(v bool) *ModifyEciScalingConfigurationRequest {
+	s.DataCacheBurstingEnabled = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetDataCachePL(v string) *ModifyEciScalingConfigurationRequest {
+	s.DataCachePL = &v
+	return s
+}
+
+func (s *ModifyEciScalingConfigurationRequest) SetDataCacheProvisionedIops(v int32) *ModifyEciScalingConfigurationRequest {
+	s.DataCacheProvisionedIops = &v
 	return s
 }
 
@@ -21745,6 +21865,10 @@ func (client *Client) AttachInstancesWithOptions(request *AttachInstancesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Entrusted)) {
 		query["Entrusted"] = request.Entrusted
 	}
@@ -22344,6 +22468,22 @@ func (client *Client) CreateEciScalingConfigurationWithOptions(request *CreateEc
 
 	if !tea.BoolValue(util.IsUnset(request.CpuOptionsThreadsPerCore)) {
 		query["CpuOptionsThreadsPerCore"] = request.CpuOptionsThreadsPerCore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheBucket)) {
+		query["DataCacheBucket"] = request.DataCacheBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheBurstingEnabled)) {
+		query["DataCacheBurstingEnabled"] = request.DataCacheBurstingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCachePL)) {
+		query["DataCachePL"] = request.DataCachePL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheProvisionedIops)) {
+		query["DataCacheProvisionedIops"] = request.DataCacheProvisionedIops
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -24922,6 +25062,10 @@ func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScali
 		query["LifecycleState"] = request.LifecycleState
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LifecycleStates)) {
+		query["LifecycleStates"] = request.LifecycleStates
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -26490,6 +26634,22 @@ func (client *Client) ModifyEciScalingConfigurationWithOptions(request *ModifyEc
 
 	if !tea.BoolValue(util.IsUnset(request.CpuOptionsThreadsPerCore)) {
 		query["CpuOptionsThreadsPerCore"] = request.CpuOptionsThreadsPerCore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheBucket)) {
+		query["DataCacheBucket"] = request.DataCacheBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheBurstingEnabled)) {
+		query["DataCacheBurstingEnabled"] = request.DataCacheBurstingEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCachePL)) {
+		query["DataCachePL"] = request.DataCachePL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataCacheProvisionedIops)) {
+		query["DataCacheProvisionedIops"] = request.DataCacheProvisionedIops
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
