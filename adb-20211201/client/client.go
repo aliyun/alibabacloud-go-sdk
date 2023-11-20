@@ -643,6 +643,106 @@ func (s *LogAnalyzeResult) SetAppErrorLog(v string) *LogAnalyzeResult {
 	return s
 }
 
+type OperatorNode struct {
+	Children   []*OperatorNode    `json:"children,omitempty" xml:"children,omitempty" type:"Repeated"`
+	Id         *int32             `json:"id,omitempty" xml:"id,omitempty"`
+	LevelWidth *int32             `json:"levelWidth,omitempty" xml:"levelWidth,omitempty"`
+	NodeDepth  *int32             `json:"nodeDepth,omitempty" xml:"nodeDepth,omitempty"`
+	NodeName   *string            `json:"nodeName,omitempty" xml:"nodeName,omitempty"`
+	NodeWidth  *int32             `json:"nodeWidth,omitempty" xml:"nodeWidth,omitempty"`
+	ParentId   *int32             `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	Stats      *OperatorNodeStats `json:"stats,omitempty" xml:"stats,omitempty" type:"Struct"`
+}
+
+func (s OperatorNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperatorNode) GoString() string {
+	return s.String()
+}
+
+func (s *OperatorNode) SetChildren(v []*OperatorNode) *OperatorNode {
+	s.Children = v
+	return s
+}
+
+func (s *OperatorNode) SetId(v int32) *OperatorNode {
+	s.Id = &v
+	return s
+}
+
+func (s *OperatorNode) SetLevelWidth(v int32) *OperatorNode {
+	s.LevelWidth = &v
+	return s
+}
+
+func (s *OperatorNode) SetNodeDepth(v int32) *OperatorNode {
+	s.NodeDepth = &v
+	return s
+}
+
+func (s *OperatorNode) SetNodeName(v string) *OperatorNode {
+	s.NodeName = &v
+	return s
+}
+
+func (s *OperatorNode) SetNodeWidth(v int32) *OperatorNode {
+	s.NodeWidth = &v
+	return s
+}
+
+func (s *OperatorNode) SetParentId(v int32) *OperatorNode {
+	s.ParentId = &v
+	return s
+}
+
+func (s *OperatorNode) SetStats(v *OperatorNodeStats) *OperatorNode {
+	s.Stats = v
+	return s
+}
+
+type OperatorNodeStats struct {
+	Bytes      *int64  `json:"bytes,omitempty" xml:"bytes,omitempty"`
+	OutputRows *int64  `json:"outputRows,omitempty" xml:"outputRows,omitempty"`
+	Parameters *string `json:"parameters,omitempty" xml:"parameters,omitempty"`
+	PeakMemory *int64  `json:"peakMemory,omitempty" xml:"peakMemory,omitempty"`
+	TimeCost   *int64  `json:"timeCost,omitempty" xml:"timeCost,omitempty"`
+}
+
+func (s OperatorNodeStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperatorNodeStats) GoString() string {
+	return s.String()
+}
+
+func (s *OperatorNodeStats) SetBytes(v int64) *OperatorNodeStats {
+	s.Bytes = &v
+	return s
+}
+
+func (s *OperatorNodeStats) SetOutputRows(v int64) *OperatorNodeStats {
+	s.OutputRows = &v
+	return s
+}
+
+func (s *OperatorNodeStats) SetParameters(v string) *OperatorNodeStats {
+	s.Parameters = &v
+	return s
+}
+
+func (s *OperatorNodeStats) SetPeakMemory(v int64) *OperatorNodeStats {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *OperatorNodeStats) SetTimeCost(v int64) *OperatorNodeStats {
+	s.TimeCost = &v
+	return s
+}
+
 type SerDeInfoModel struct {
 	Name             *string            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Parameters       map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
@@ -840,6 +940,29 @@ func (s *SparkAttemptInfo) SetPriority(v string) *SparkAttemptInfo {
 
 func (s *SparkAttemptInfo) SetState(v string) *SparkAttemptInfo {
 	s.State = &v
+	return s
+}
+
+type SparkOperatorInfo struct {
+	MetricValue  *int64 `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	OperatorName []byte `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+}
+
+func (s SparkOperatorInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SparkOperatorInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SparkOperatorInfo) SetMetricValue(v int64) *SparkOperatorInfo {
+	s.MetricValue = &v
+	return s
+}
+
+func (s *SparkOperatorInfo) SetOperatorName(v []byte) *SparkOperatorInfo {
+	s.OperatorName = v
 	return s
 }
 
@@ -11643,7 +11766,13 @@ func (s *EnableElasticPlanResponse) SetBody(v *EnableElasticPlanResponseBody) *E
 }
 
 type ExistRunningSQLEngineRequest struct {
-	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](~~612397~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the resource group.
+	//
+	// >  You can call the [DescribeDBResourceGroup](~~459446~~) operation to query the name of the resource group for a cluster.
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
@@ -11666,7 +11795,14 @@ func (s *ExistRunningSQLEngineRequest) SetResourceGroupName(v string) *ExistRunn
 }
 
 type ExistRunningSQLEngineResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Indicates whether a running SQL engine exists in the resource group.
+	//
+	// Valid values:
+	//
+	// *   **True**
+	// *   **False**
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14752,9 +14888,17 @@ func (s *ListSparkAppAttemptsResponse) SetBody(v *ListSparkAppAttemptsResponseBo
 }
 
 type ListSparkAppsRequest struct {
-	DBClusterId       *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	PageNumber        *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 10. Valid values:
+	//
+	// - **10**
+	// - **50**
+	// - **100**
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the job resource group.
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
@@ -14787,11 +14931,16 @@ func (s *ListSparkAppsRequest) SetResourceGroupName(v string) *ListSparkAppsRequ
 }
 
 type ListSparkAppsResponseBody struct {
-	Data       *ListSparkAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	PageNumber *int64                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The data returned.
+	Data *ListSparkAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSparkAppsResponseBody) String() string {
@@ -14828,10 +14977,27 @@ func (s *ListSparkAppsResponseBody) SetTotalCount(v int64) *ListSparkAppsRespons
 }
 
 type ListSparkAppsResponseBodyData struct {
+	// Details of the applications. Fields in the response parameter:
+	//
+	// - **Data**: the data of the Spark application template.
+	// - **EstimateExecutionCpuTimeInSeconds**: the amount of time it takes to consume CPU resources for running the Spark application. Unit: milliseconds.
+	// - **LogRootPath**: the storage path of log files.
+	// - **LastAttemptId**: the most recent attempt ID.
+	// - **WebUiAddress**: the web UI URL.
+	// - **SubmittedTimeInMillis**: the time when the Spark application was submitted. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **StartedTimeInMillis**: the time when the Spark application was created. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **TerminatedTimeInMillis**: the time when the Spark application task was terminated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+	// - **DBClusterId**: the ID of the cluster on which the Spark application runs.
+	// - **ResourceGroupName**: the name of the job resource group.
+	// - **DurationInMillis**: the amount of time it takes to run the Spark application. Unit: milliseconds.
 	AppInfoList []*SparkAppInfo `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
-	PageNumber  *int64          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSparkAppsResponseBodyData) String() string {
@@ -15692,12 +15858,18 @@ func (s *ModifyClusterConnectionStringResponse) SetBody(v *ModifyClusterConnecti
 }
 
 type ModifyDBClusterRequest struct {
-	// The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
-	// >  You must specify a value with the unit for this parameter.
+	// >  This parameter must be specified with a unit.
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-	DBClusterId               *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	//
+	// >  You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
+	//
+	// *   true (default)
+	// *   false
 	EnableDefaultResourcePool *bool   `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
 	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15706,9 +15878,9 @@ type ModifyDBClusterRequest struct {
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The reserved storage resources. Unit: AnalyticDB Compute Units (ACUs). Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
-	// >  You must specify a value with the unit for this parameter.
+	// >  This parameter must be specified with a unit.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 }
 
@@ -15763,9 +15935,9 @@ func (s *ModifyDBClusterRequest) SetStorageResource(v string) *ModifyDBClusterRe
 type ModifyDBClusterResponseBody struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16423,9 +16595,12 @@ func (s *ReleaseClusterPublicConnectionResponse) SetBody(v *ReleaseClusterPublic
 }
 
 type RenameSparkTemplateFileRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template file ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the template file that you want to rename.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s RenameSparkTemplateFileRequest) String() string {
@@ -16452,8 +16627,10 @@ func (s *RenameSparkTemplateFileRequest) SetName(v string) *RenameSparkTemplateF
 }
 
 type RenameSparkTemplateFileResponseBody struct {
-	Data      *RenameSparkTemplateFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	Data *RenameSparkTemplateFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenameSparkTemplateFileResponseBody) String() string {
@@ -16475,6 +16652,10 @@ func (s *RenameSparkTemplateFileResponseBody) SetRequestId(v string) *RenameSpar
 }
 
 type RenameSparkTemplateFileResponseBodyData struct {
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   True
+	// *   False
 	Succeeded *bool `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
 }
 
@@ -22985,9 +23166,12 @@ func (client *Client) ModifyClusterConnectionString(request *ModifyClusterConnec
 }
 
 /**
- * *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous tasks. If your business requires asynchronous tasks, perform scaling during appropriate periods.
- * *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time required for data migration is proportional to the volume of data. During a scale-up or scale-down event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+ * ### [](#)
+ * *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+ * *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
  * *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+ * *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+ * *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
  *
  * @param request ModifyDBClusterRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -23055,9 +23239,12 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 }
 
 /**
- * *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous tasks. If your business requires asynchronous tasks, perform scaling during appropriate periods.
- * *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time required for data migration is proportional to the volume of data. During a scale-up or scale-down event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+ * ### [](#)
+ * *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+ * *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
  * *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+ * *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+ * *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
  *
  * @param request ModifyDBClusterRequest
  * @return ModifyDBClusterResponse
