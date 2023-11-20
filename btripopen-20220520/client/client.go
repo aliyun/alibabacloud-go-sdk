@@ -51332,6 +51332,7 @@ func (s *InvoiceRuleSaveHeaders) SetXAcsBtripSoCorpToken(v string) *InvoiceRuleS
 type InvoiceRuleSaveRequest struct {
 	AllEmploye  *bool                             `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	Entities    []*InvoiceRuleSaveRequestEntities `json:"entities,omitempty" xml:"entities,omitempty" type:"Repeated"`
+	Scope       *int32                            `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdPartId *string                           `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -51350,6 +51351,11 @@ func (s *InvoiceRuleSaveRequest) SetAllEmploye(v bool) *InvoiceRuleSaveRequest {
 
 func (s *InvoiceRuleSaveRequest) SetEntities(v []*InvoiceRuleSaveRequestEntities) *InvoiceRuleSaveRequest {
 	s.Entities = v
+	return s
+}
+
+func (s *InvoiceRuleSaveRequest) SetScope(v int32) *InvoiceRuleSaveRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -51390,6 +51396,7 @@ func (s *InvoiceRuleSaveRequestEntities) SetType(v int32) *InvoiceRuleSaveReques
 type InvoiceRuleSaveShrinkRequest struct {
 	AllEmploye     *bool   `json:"all_employe,omitempty" xml:"all_employe,omitempty"`
 	EntitiesShrink *string `json:"entities,omitempty" xml:"entities,omitempty"`
+	Scope          *int32  `json:"scope,omitempty" xml:"scope,omitempty"`
 	ThirdPartId    *string `json:"third_part_id,omitempty" xml:"third_part_id,omitempty"`
 }
 
@@ -51408,6 +51415,11 @@ func (s *InvoiceRuleSaveShrinkRequest) SetAllEmploye(v bool) *InvoiceRuleSaveShr
 
 func (s *InvoiceRuleSaveShrinkRequest) SetEntitiesShrink(v string) *InvoiceRuleSaveShrinkRequest {
 	s.EntitiesShrink = &v
+	return s
+}
+
+func (s *InvoiceRuleSaveShrinkRequest) SetScope(v int32) *InvoiceRuleSaveShrinkRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -70109,6 +70121,10 @@ func (client *Client) InvoiceRuleSaveWithOptions(tmpReq *InvoiceRuleSaveRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.EntitiesShrink)) {
 		body["entities"] = request.EntitiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdPartId)) {
