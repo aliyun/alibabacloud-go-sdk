@@ -13215,6 +13215,7 @@ func (s *EdgeClusterAddEdgeMachineResponse) SetBody(v *EdgeClusterAddEdgeMachine
 }
 
 type FixNodePoolVulsRequest struct {
+	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
 	// The names of the nodes to be patched.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// The batch patching policy.
@@ -13229,6 +13230,11 @@ func (s FixNodePoolVulsRequest) String() string {
 
 func (s FixNodePoolVulsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *FixNodePoolVulsRequest) SetAutoRestart(v bool) *FixNodePoolVulsRequest {
+	s.AutoRestart = &v
+	return s
 }
 
 func (s *FixNodePoolVulsRequest) SetNodes(v []*string) *FixNodePoolVulsRequest {
@@ -21848,6 +21854,10 @@ func (client *Client) FixNodePoolVulsWithOptions(clusterId *string, nodepoolId *
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRestart)) {
+		body["auto_restart"] = request.AutoRestart
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
 		body["nodes"] = request.Nodes
 	}
