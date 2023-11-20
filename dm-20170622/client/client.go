@@ -5020,6 +5020,295 @@ func (s *SingleSendMailResponse) SetBody(v *SingleSendMailResponseBody) *SingleS
 	return s
 }
 
+type SingleSendMailV2Request struct {
+	AccountName          *string                                        `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AddressType          *int32                                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClickTrace           *string                                        `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias            *string                                        `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	HtmlBody             *string                                        `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	HtmlBodyPlaceHolders []*SingleSendMailV2RequestHtmlBodyPlaceHolders `json:"HtmlBodyPlaceHolders,omitempty" xml:"HtmlBodyPlaceHolders,omitempty" type:"Repeated"`
+	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplyAddress         *string                                        `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias    *string                                        `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	ReplyToAddress       *bool                                          `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Subject              *string                                        `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TagName              *string                                        `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TextBody             *string                                        `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	ToAddress            *string                                        `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+}
+
+func (s SingleSendMailV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailV2Request) SetAccountName(v string) *SingleSendMailV2Request {
+	s.AccountName = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetAddressType(v int32) *SingleSendMailV2Request {
+	s.AddressType = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetClickTrace(v string) *SingleSendMailV2Request {
+	s.ClickTrace = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetFromAlias(v string) *SingleSendMailV2Request {
+	s.FromAlias = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetHtmlBody(v string) *SingleSendMailV2Request {
+	s.HtmlBody = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetHtmlBodyPlaceHolders(v []*SingleSendMailV2RequestHtmlBodyPlaceHolders) *SingleSendMailV2Request {
+	s.HtmlBodyPlaceHolders = v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetOwnerId(v int64) *SingleSendMailV2Request {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetReplyAddress(v string) *SingleSendMailV2Request {
+	s.ReplyAddress = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetReplyAddressAlias(v string) *SingleSendMailV2Request {
+	s.ReplyAddressAlias = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetReplyToAddress(v bool) *SingleSendMailV2Request {
+	s.ReplyToAddress = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetResourceOwnerAccount(v string) *SingleSendMailV2Request {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetResourceOwnerId(v int64) *SingleSendMailV2Request {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetSubject(v string) *SingleSendMailV2Request {
+	s.Subject = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetTagName(v string) *SingleSendMailV2Request {
+	s.TagName = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetTextBody(v string) *SingleSendMailV2Request {
+	s.TextBody = &v
+	return s
+}
+
+func (s *SingleSendMailV2Request) SetToAddress(v string) *SingleSendMailV2Request {
+	s.ToAddress = &v
+	return s
+}
+
+type SingleSendMailV2RequestHtmlBodyPlaceHolders struct {
+	PlaceHolders map[string]*string `json:"PlaceHolders,omitempty" xml:"PlaceHolders,omitempty"`
+	ToAddress    *string            `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+}
+
+func (s SingleSendMailV2RequestHtmlBodyPlaceHolders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailV2RequestHtmlBodyPlaceHolders) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailV2RequestHtmlBodyPlaceHolders) SetPlaceHolders(v map[string]*string) *SingleSendMailV2RequestHtmlBodyPlaceHolders {
+	s.PlaceHolders = v
+	return s
+}
+
+func (s *SingleSendMailV2RequestHtmlBodyPlaceHolders) SetToAddress(v string) *SingleSendMailV2RequestHtmlBodyPlaceHolders {
+	s.ToAddress = &v
+	return s
+}
+
+type SingleSendMailV2ShrinkRequest struct {
+	AccountName                *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AddressType                *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClickTrace                 *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias                  *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	HtmlBody                   *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	HtmlBodyPlaceHoldersShrink *string `json:"HtmlBodyPlaceHolders,omitempty" xml:"HtmlBodyPlaceHolders,omitempty"`
+	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplyAddress               *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias          *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	ReplyToAddress             *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Subject                    *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TagName                    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TextBody                   *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	ToAddress                  *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+}
+
+func (s SingleSendMailV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetAccountName(v string) *SingleSendMailV2ShrinkRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetAddressType(v int32) *SingleSendMailV2ShrinkRequest {
+	s.AddressType = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetClickTrace(v string) *SingleSendMailV2ShrinkRequest {
+	s.ClickTrace = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetFromAlias(v string) *SingleSendMailV2ShrinkRequest {
+	s.FromAlias = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetHtmlBody(v string) *SingleSendMailV2ShrinkRequest {
+	s.HtmlBody = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetHtmlBodyPlaceHoldersShrink(v string) *SingleSendMailV2ShrinkRequest {
+	s.HtmlBodyPlaceHoldersShrink = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetOwnerId(v int64) *SingleSendMailV2ShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetReplyAddress(v string) *SingleSendMailV2ShrinkRequest {
+	s.ReplyAddress = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetReplyAddressAlias(v string) *SingleSendMailV2ShrinkRequest {
+	s.ReplyAddressAlias = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetReplyToAddress(v bool) *SingleSendMailV2ShrinkRequest {
+	s.ReplyToAddress = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetResourceOwnerAccount(v string) *SingleSendMailV2ShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetResourceOwnerId(v int64) *SingleSendMailV2ShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetSubject(v string) *SingleSendMailV2ShrinkRequest {
+	s.Subject = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetTagName(v string) *SingleSendMailV2ShrinkRequest {
+	s.TagName = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetTextBody(v string) *SingleSendMailV2ShrinkRequest {
+	s.TextBody = &v
+	return s
+}
+
+func (s *SingleSendMailV2ShrinkRequest) SetToAddress(v string) *SingleSendMailV2ShrinkRequest {
+	s.ToAddress = &v
+	return s
+}
+
+type SingleSendMailV2ResponseBody struct {
+	EnvId     *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SingleSendMailV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailV2ResponseBody) SetEnvId(v string) *SingleSendMailV2ResponseBody {
+	s.EnvId = &v
+	return s
+}
+
+func (s *SingleSendMailV2ResponseBody) SetRequestId(v string) *SingleSendMailV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SingleSendMailV2Response struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SingleSendMailV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SingleSendMailV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SingleSendMailV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *SingleSendMailV2Response) SetHeaders(v map[string]*string) *SingleSendMailV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *SingleSendMailV2Response) SetStatusCode(v int32) *SingleSendMailV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SingleSendMailV2Response) SetBody(v *SingleSendMailV2ResponseBody) *SingleSendMailV2Response {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -7451,6 +7740,116 @@ func (client *Client) SingleSendMail(request *SingleSendMailRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleSendMailResponse{}
 	_body, _err := client.SingleSendMailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SingleSendMailV2WithOptions(tmpReq *SingleSendMailV2Request, runtime *util.RuntimeOptions) (_result *SingleSendMailV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SingleSendMailV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.HtmlBodyPlaceHolders)) {
+		request.HtmlBodyPlaceHoldersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HtmlBodyPlaceHolders, tea.String("HtmlBodyPlaceHolders"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AddressType)) {
+		query["AddressType"] = request.AddressType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClickTrace)) {
+		query["ClickTrace"] = request.ClickTrace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromAlias)) {
+		query["FromAlias"] = request.FromAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HtmlBody)) {
+		query["HtmlBody"] = request.HtmlBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HtmlBodyPlaceHoldersShrink)) {
+		query["HtmlBodyPlaceHolders"] = request.HtmlBodyPlaceHoldersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplyAddress)) {
+		query["ReplyAddress"] = request.ReplyAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplyAddressAlias)) {
+		query["ReplyAddressAlias"] = request.ReplyAddressAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplyToAddress)) {
+		query["ReplyToAddress"] = request.ReplyToAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		query["Subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextBody)) {
+		query["TextBody"] = request.TextBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToAddress)) {
+		query["ToAddress"] = request.ToAddress
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SingleSendMailV2"),
+		Version:     tea.String("2017-06-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SingleSendMailV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SingleSendMailV2(request *SingleSendMailV2Request) (_result *SingleSendMailV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SingleSendMailV2Response{}
+	_body, _err := client.SingleSendMailV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
