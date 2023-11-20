@@ -3486,6 +3486,206 @@ func (s *QueryBatchStatusResponse) SetBody(v *QueryBatchStatusResponseBody) *Que
 	return s
 }
 
+type QueryDeviceDetailRequest struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId      *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s QueryDeviceDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDetailRequest) SetDeviceName(v string) *QueryDeviceDetailRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceDetailRequest) SetIotId(v string) *QueryDeviceDetailRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDeviceDetailRequest) SetProductKey(v string) *QueryDeviceDetailRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDeviceDetailRequest) SetProjectId(v string) *QueryDeviceDetailRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type QueryDeviceDetailResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDeviceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDeviceDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDetailResponseBody) SetCode(v string) *QueryDeviceDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBody) SetData(v *QueryDeviceDetailResponseBodyData) *QueryDeviceDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBody) SetErrorMessage(v string) *QueryDeviceDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBody) SetRequestId(v string) *QueryDeviceDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBody) SetSuccess(v bool) *QueryDeviceDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDeviceDetailResponseBodyData struct {
+	ActiveTime      *int64  `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DeviceSecret    *string `json:"DeviceSecret,omitempty" xml:"DeviceSecret,omitempty"`
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" xml:"FirmwareVersion,omitempty"`
+	IotId           *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IpAddress       *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Nickname        *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	NodeType        *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OnlineTime      *int64  `json:"OnlineTime,omitempty" xml:"OnlineTime,omitempty"`
+	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryDeviceDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetActiveTime(v int64) *QueryDeviceDetailResponseBodyData {
+	s.ActiveTime = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetCreateTime(v int64) *QueryDeviceDetailResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetDeviceName(v string) *QueryDeviceDetailResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetDeviceSecret(v string) *QueryDeviceDetailResponseBodyData {
+	s.DeviceSecret = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetFirmwareVersion(v string) *QueryDeviceDetailResponseBodyData {
+	s.FirmwareVersion = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetIotId(v string) *QueryDeviceDetailResponseBodyData {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetIpAddress(v string) *QueryDeviceDetailResponseBodyData {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetNickname(v string) *QueryDeviceDetailResponseBodyData {
+	s.Nickname = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetNodeType(v int32) *QueryDeviceDetailResponseBodyData {
+	s.NodeType = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetOnlineTime(v int64) *QueryDeviceDetailResponseBodyData {
+	s.OnlineTime = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetProductKey(v string) *QueryDeviceDetailResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetProductName(v string) *QueryDeviceDetailResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetRegion(v string) *QueryDeviceDetailResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponseBodyData) SetStatus(v string) *QueryDeviceDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type QueryDeviceDetailResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryDeviceDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceDetailResponse) SetHeaders(v map[string]*string) *QueryDeviceDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceDetailResponse) SetStatusCode(v int32) *QueryDeviceDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDeviceDetailResponse) SetBody(v *QueryDeviceDetailResponseBody) *QueryDeviceDetailResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDevicesDownloadUrlRequest struct {
 	BatchId    *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
@@ -6958,6 +7158,62 @@ func (client *Client) QueryBatchStatus(request *QueryBatchStatusRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBatchStatusResponse{}
 	_body, _err := client.QueryBatchStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDetailWithOptions(request *QueryDeviceDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceDetail"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDeviceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceDetail(request *QueryDeviceDetailRequest) (_result *QueryDeviceDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceDetailResponse{}
+	_body, _err := client.QueryDeviceDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
