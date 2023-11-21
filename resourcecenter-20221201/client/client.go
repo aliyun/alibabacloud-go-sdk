@@ -13,9 +13,18 @@ import (
 )
 
 type CreateSavedQueryRequest struct {
+	// The description of the template.
+	//
+	// The description must be 1 to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The query statement in the template.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The name of the template.
+	//
+	// *   The name must be 1 to 64 characters in length.
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must be unique.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateSavedQueryRequest) String() string {
@@ -42,7 +51,9 @@ func (s *CreateSavedQueryRequest) SetName(v string) *CreateSavedQueryRequest {
 }
 
 type CreateSavedQueryResponseBody struct {
-	QueryId   *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The query ID.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -94,6 +105,9 @@ func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *Cre
 }
 
 type DeleteSavedQueryRequest struct {
+	// The ID of the template.
+	//
+	// You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -111,6 +125,7 @@ func (s *DeleteSavedQueryRequest) SetQueryId(v string) *DeleteSavedQueryRequest 
 }
 
 type DeleteSavedQueryResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -365,8 +380,22 @@ func (s *EnableResourceCenterResponse) SetBody(v *EnableResourceCenterResponseBo
 }
 
 type ExecuteMultiAccountSQLQueryRequest struct {
+	// The SQL statement to be executed.
+	//
+	// The number of characters in the SQL statement must be less than 2,000.
+	//
+	// For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The search scope. The value of this parameter can be one of the following items:
+	//
+	// *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+	// *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+	// *   ID of a folder: Resources within all members in the folder are searched.
+	// *   ID of a member: Resources within the member are searched.
+	// *   ID of a member/ID of a Resource group: Resources within the member in the resource group are searched.
+	//
+	// For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](~~159995~~), [ListFoldersForParent](~~159997~~), [ListFoldersForParent](~~159997~~), [ListAccounts](~~160016~~), or [ListResourceGroups](~~158855~~).
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s ExecuteMultiAccountSQLQueryRequest) String() string {
@@ -388,9 +417,12 @@ func (s *ExecuteMultiAccountSQLQueryRequest) SetScope(v string) *ExecuteMultiAcc
 }
 
 type ExecuteMultiAccountSQLQueryResponseBody struct {
-	Columns   []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rows      []interface{}                                     `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// The columns.
+	Columns []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of search results.
+	Rows []interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 
 func (s ExecuteMultiAccountSQLQueryResponseBody) String() string {
@@ -417,7 +449,9 @@ func (s *ExecuteMultiAccountSQLQueryResponseBody) SetRows(v []interface{}) *Exec
 }
 
 type ExecuteMultiAccountSQLQueryResponseBodyColumns struct {
+	// The name of the column.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the column.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -469,8 +503,18 @@ func (s *ExecuteMultiAccountSQLQueryResponse) SetBody(v *ExecuteMultiAccountSQLQ
 }
 
 type ExecuteSQLQueryRequest struct {
+	// The SQL statement to be executed.
+	//
+	// The number of characters in the SQL statement must be less than 2,000.
+	//
+	// For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The search scope.
+	//
+	// Set this parameter to the ID of a resource group.
+	//
+	// For information about how to obtain the ID of a resource group, see [ListResourceGroups](~~158855~~).
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s ExecuteSQLQueryRequest) String() string {
@@ -492,9 +536,12 @@ func (s *ExecuteSQLQueryRequest) SetScope(v string) *ExecuteSQLQueryRequest {
 }
 
 type ExecuteSQLQueryResponseBody struct {
-	Columns   []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rows      []interface{}                         `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// The columns.
+	Columns []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// An array of search results.
+	Rows []interface{} `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 
 func (s ExecuteSQLQueryResponseBody) String() string {
@@ -521,7 +568,9 @@ func (s *ExecuteSQLQueryResponseBody) SetRows(v []interface{}) *ExecuteSQLQueryR
 }
 
 type ExecuteSQLQueryResponseBodyColumns struct {
+	// The name of the column.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the column.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -573,6 +622,9 @@ func (s *ExecuteSQLQueryResponse) SetBody(v *ExecuteSQLQueryResponseBody) *Execu
 }
 
 type GetExampleQueryRequest struct {
+	// The ID of the template.
+	//
+	// >  You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -590,8 +642,10 @@ func (s *GetExampleQueryRequest) SetQueryId(v string) *GetExampleQueryRequest {
 }
 
 type GetExampleQueryResponseBody struct {
+	// The information about the sample query template.
 	ExampleQuery *GetExampleQueryResponseBodyExampleQuery `json:"ExampleQuery,omitempty" xml:"ExampleQuery,omitempty" type:"Struct"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetExampleQueryResponseBody) String() string {
@@ -613,10 +667,14 @@ func (s *GetExampleQueryResponseBody) SetRequestId(v string) *GetExampleQueryRes
 }
 
 type GetExampleQueryResponseBodyExampleQuery struct {
+	// The description of the template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The query statement in the template.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
 func (s GetExampleQueryResponseBodyExampleQuery) String() string {
@@ -788,7 +846,9 @@ type GetMultiAccountResourceConfigurationResponseBody struct {
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime          *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string                                                                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IpAddressAttributes []*GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -834,6 +894,16 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetCreateTime(v strin
 	return s
 }
 
+func (s *GetMultiAccountResourceConfigurationResponseBody) SetExpireTime(v string) *GetMultiAccountResourceConfigurationResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceConfigurationResponseBody) SetIpAddressAttributes(v []*GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) *GetMultiAccountResourceConfigurationResponseBody {
+	s.IpAddressAttributes = v
+	return s
+}
+
 func (s *GetMultiAccountResourceConfigurationResponseBody) SetIpAddresses(v []*string) *GetMultiAccountResourceConfigurationResponseBody {
 	s.IpAddresses = v
 	return s
@@ -876,6 +946,35 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetTags(v []*GetMulti
 
 func (s *GetMultiAccountResourceConfigurationResponseBody) SetZoneId(v string) *GetMultiAccountResourceConfigurationResponseBody {
 	s.ZoneId = &v
+	return s
+}
+
+type GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes struct {
+	IpAddress   *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) SetIpAddress(v string) *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) SetNetworkType(v string) *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) SetVersion(v string) *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes {
+	s.Version = &v
 	return s
 }
 
@@ -1040,7 +1139,9 @@ type GetResourceConfigurationResponseBody struct {
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime          *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExpireTime          *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IpAddressAttributes []*GetResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
 	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -1086,6 +1187,16 @@ func (s *GetResourceConfigurationResponseBody) SetCreateTime(v string) *GetResou
 	return s
 }
 
+func (s *GetResourceConfigurationResponseBody) SetExpireTime(v string) *GetResourceConfigurationResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetResourceConfigurationResponseBody) SetIpAddressAttributes(v []*GetResourceConfigurationResponseBodyIpAddressAttributes) *GetResourceConfigurationResponseBody {
+	s.IpAddressAttributes = v
+	return s
+}
+
 func (s *GetResourceConfigurationResponseBody) SetIpAddresses(v []*string) *GetResourceConfigurationResponseBody {
 	s.IpAddresses = v
 	return s
@@ -1128,6 +1239,35 @@ func (s *GetResourceConfigurationResponseBody) SetTags(v []*GetResourceConfigura
 
 func (s *GetResourceConfigurationResponseBody) SetZoneId(v string) *GetResourceConfigurationResponseBody {
 	s.ZoneId = &v
+	return s
+}
+
+type GetResourceConfigurationResponseBodyIpAddressAttributes struct {
+	IpAddress   *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetResourceConfigurationResponseBodyIpAddressAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceConfigurationResponseBodyIpAddressAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceConfigurationResponseBodyIpAddressAttributes) SetIpAddress(v string) *GetResourceConfigurationResponseBodyIpAddressAttributes {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *GetResourceConfigurationResponseBodyIpAddressAttributes) SetNetworkType(v string) *GetResourceConfigurationResponseBodyIpAddressAttributes {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *GetResourceConfigurationResponseBodyIpAddressAttributes) SetVersion(v string) *GetResourceConfigurationResponseBodyIpAddressAttributes {
+	s.Version = &v
 	return s
 }
 
@@ -1369,6 +1509,9 @@ func (s *GetResourceCountsResponse) SetBody(v *GetResourceCountsResponseBody) *G
 }
 
 type GetSavedQueryRequest struct {
+	// The ID of the template.
+	//
+	// >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -1386,7 +1529,9 @@ func (s *GetSavedQueryRequest) SetQueryId(v string) *GetSavedQueryRequest {
 }
 
 type GetSavedQueryResponseBody struct {
-	RequestId  *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the custom query template.
 	SavedQuery *GetSavedQueryResponseBodySavedQuery `json:"SavedQuery,omitempty" xml:"SavedQuery,omitempty" type:"Struct"`
 }
 
@@ -1409,12 +1554,18 @@ func (s *GetSavedQueryResponseBody) SetSavedQuery(v *GetSavedQueryResponseBodySa
 }
 
 type GetSavedQueryResponseBodySavedQuery struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The query statement in the template.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The time when the template was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetSavedQueryResponseBodySavedQuery) String() string {
@@ -1485,8 +1636,14 @@ func (s *GetSavedQueryResponse) SetBody(v *GetSavedQueryResponseBody) *GetSavedQ
 }
 
 type ListExampleQueriesRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 50.
+	//
+	// Default value: 50.
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListExampleQueriesRequest) String() string {
@@ -1508,10 +1665,14 @@ func (s *ListExampleQueriesRequest) SetNextToken(v string) *ListExampleQueriesRe
 }
 
 type ListExampleQueriesResponseBody struct {
+	// The information about the sample query templates.
 	ExampleQueries []*ListExampleQueriesResponseBodyExampleQueries `json:"ExampleQueries,omitempty" xml:"ExampleQueries,omitempty" type:"Repeated"`
-	MaxResults     *string                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of entries per page.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListExampleQueriesResponseBody) String() string {
@@ -1543,9 +1704,12 @@ func (s *ListExampleQueriesResponseBody) SetRequestId(v string) *ListExampleQuer
 }
 
 type ListExampleQueriesResponseBodyExampleQueries struct {
+	// The description of the template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
 func (s ListExampleQueriesResponseBodyExampleQueries) String() string {
@@ -2139,8 +2303,14 @@ func (s *ListResourceTypesResponse) SetBody(v *ListResourceTypesResponseBody) *L
 }
 
 type ListSavedQueriesRequest struct {
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 50.
+	//
+	// Default value: 50.
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
 func (s ListSavedQueriesRequest) String() string {
@@ -2162,9 +2332,13 @@ func (s *ListSavedQueriesRequest) SetNextToken(v string) *ListSavedQueriesReques
 }
 
 type ListSavedQueriesResponseBody struct {
-	MaxResults   *string                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum number of entries per page.
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the custom query templates.
 	SavedQueries []*ListSavedQueriesResponseBodySavedQueries `json:"SavedQueries,omitempty" xml:"SavedQueries,omitempty" type:"Repeated"`
 }
 
@@ -2197,11 +2371,16 @@ func (s *ListSavedQueriesResponseBody) SetSavedQueries(v []*ListSavedQueriesResp
 }
 
 type ListSavedQueriesResponseBodySavedQueries struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the template was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the template.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The name of the template.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The time when the template was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListSavedQueriesResponseBodySavedQueries) String() string {
@@ -2707,29 +2886,31 @@ type SearchMultiAccountResourcesResponseBodyResources struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
-	CreateTime          *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime          *string                                                                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The attributes of the IP address.
 	IpAddressAttributes []*SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The region ID of the resource.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the resource belongs.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the resource.
+	// The tags.
 	Tags []*SearchMultiAccountResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The zone ID of the resource.
+	// The zone ID.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2802,9 +2983,15 @@ func (s *SearchMultiAccountResourcesResponseBodyResources) SetZoneId(v string) *
 }
 
 type SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes struct {
-	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
-	NetworkType *string   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Version     *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The IP address.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Public**: the Internet
+	// *   **Private**: internal network
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) String() string {
@@ -2815,8 +3002,8 @@ func (s SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) GoS
 	return s.String()
 }
 
-func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v []*string) *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes {
-	s.IpAddress = v
+func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v string) *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes {
+	s.IpAddress = &v
 	return s
 }
 
@@ -2831,9 +3018,9 @@ func (s *SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes) Se
 }
 
 type SearchMultiAccountResourcesResponseBodyResourcesTags struct {
-	// The key of the tag.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3079,33 +3266,35 @@ func (s *SearchResourcesResponseBodyFilters) SetValues(v []*string) *SearchResou
 }
 
 type SearchResourcesResponseBodyResources struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The ID of the Alibaba Cloud account.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The time when the resource was created.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
-	CreateTime          *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime          *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The attributes of the IP address.
 	IpAddressAttributes []*SearchResourcesResponseBodyResourcesIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	IpAddresses []*string `json:"IpAddresses,omitempty" xml:"IpAddresses,omitempty" type:"Repeated"`
-	// The region ID of the resource.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the resource belongs.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags of the resource.
+	// The tags.
 	Tags []*SearchResourcesResponseBodyResourcesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The zone ID of the resource.
+	// The zone ID.
 	//
-	// > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+	// >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3178,9 +3367,15 @@ func (s *SearchResourcesResponseBodyResources) SetZoneId(v string) *SearchResour
 }
 
 type SearchResourcesResponseBodyResourcesIpAddressAttributes struct {
-	IpAddress   []*string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty" type:"Repeated"`
-	NetworkType *string   `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Version     *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The IP address.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Public**: the Internet
+	// *   **Private**: internal network
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s SearchResourcesResponseBodyResourcesIpAddressAttributes) String() string {
@@ -3191,8 +3386,8 @@ func (s SearchResourcesResponseBodyResourcesIpAddressAttributes) GoString() stri
 	return s.String()
 }
 
-func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v []*string) *SearchResourcesResponseBodyResourcesIpAddressAttributes {
-	s.IpAddress = v
+func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetIpAddress(v string) *SearchResourcesResponseBodyResourcesIpAddressAttributes {
+	s.IpAddress = &v
 	return s
 }
 
@@ -3207,9 +3402,9 @@ func (s *SearchResourcesResponseBodyResourcesIpAddressAttributes) SetVersion(v s
 }
 
 type SearchResourcesResponseBodyResourcesTags struct {
-	// The tag key.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3261,10 +3456,20 @@ func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *Searc
 }
 
 type UpdateSavedQueryRequest struct {
+	// The description of the template.
+	//
+	// The description must be 1 to 256 characters in length.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expression  *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	QueryId     *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The query statement in the template.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The name of the template.
+	//
+	// *   The name must be 1 to 64 characters in length.
+	// *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// *   The name must be unique.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the template.
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
 func (s UpdateSavedQueryRequest) String() string {
@@ -3296,6 +3501,7 @@ func (s *UpdateSavedQueryRequest) SetQueryId(v string) *UpdateSavedQueryRequest 
 }
 
 type UpdateSavedQueryResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
