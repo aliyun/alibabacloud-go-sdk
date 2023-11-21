@@ -2306,6 +2306,8 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
 	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
+	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
@@ -2340,7 +2342,8 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// *   **static**
 	// *   **dynamic**
-	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	UrlType        *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	NavigateScreen *string `json:"navigateScreen,omitempty" xml:"navigateScreen,omitempty"`
 }
 
 func (s CreateChatappTemplateRequestComponentsButtons) String() string {
@@ -2358,6 +2361,16 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetAutofillText(v string
 
 func (s *CreateChatappTemplateRequestComponentsButtons) SetCouponCode(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.CouponCode = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponentsButtons) SetFlowAction(v string) *CreateChatappTemplateRequestComponentsButtons {
+	s.FlowAction = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponentsButtons) SetFlowId(v string) *CreateChatappTemplateRequestComponentsButtons {
+	s.FlowId = &v
 	return s
 }
 
@@ -2398,6 +2411,11 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetUrl(v string) *Create
 
 func (s *CreateChatappTemplateRequestComponentsButtons) SetUrlType(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *CreateChatappTemplateRequestComponentsButtons {
+	s.NavigateScreen = &v
 	return s
 }
 
@@ -3497,8 +3515,11 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
 	// 扩展字段
 	ExtendAttrs *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs `json:"ExtendAttrs,omitempty" xml:"ExtendAttrs,omitempty" type:"Struct"`
+	FlowAction  *string                                                               `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	FlowId      *string                                                               `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// Whatsapp模板，在Category为Marketing,并且Button type为QUICK_REPLY时有效，表示按钮为营销退订按钮，客户如果点击了此按钮，并且在chatapp平台上配置了发送控制操作，则后续Marketing消息则不会发送到客户
-	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的包名
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// The phone number. This parameter is valid only if the returned value of the Type parameter is **PHONE_NUMBER**.
@@ -3553,8 +3574,23 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetExtendAtt
 	return s
 }
 
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetFlowAction(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.FlowAction = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetFlowId(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.FlowId = &v
+	return s
+}
+
 func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetIsOptOut(v bool) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
 	s.IsOptOut = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetNavigateScreen(v string) *GetChatappTemplateDetailResponseBodyDataComponentsButtons {
+	s.NavigateScreen = &v
 	return s
 }
 
@@ -4889,6 +4925,7 @@ func (s *GetWhatsappConnectionCatalogResponse) SetBody(v *GetWhatsappConnectionC
 }
 
 type IsvGetAppIdRequest struct {
+	Permissions *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The type of the application. Set the value to WHATSAPP.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -4899,6 +4936,11 @@ func (s IsvGetAppIdRequest) String() string {
 
 func (s IsvGetAppIdRequest) GoString() string {
 	return s.String()
+}
+
+func (s *IsvGetAppIdRequest) SetPermissions(v string) *IsvGetAppIdRequest {
+	s.Permissions = &v
+	return s
 }
 
 func (s *IsvGetAppIdRequest) SetType(v string) *IsvGetAppIdRequest {
@@ -4914,7 +4956,8 @@ type IsvGetAppIdResponseBody struct {
 	//
 	// *   A value of OK indicates that the call is successful.
 	// *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code     *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
@@ -4941,6 +4984,11 @@ func (s *IsvGetAppIdResponseBody) SetAppId(v string) *IsvGetAppIdResponseBody {
 
 func (s *IsvGetAppIdResponseBody) SetCode(v string) *IsvGetAppIdResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *IsvGetAppIdResponseBody) SetConfigId(v string) *IsvGetAppIdResponseBody {
+	s.ConfigId = &v
 	return s
 }
 
@@ -6019,6 +6067,8 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	// The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	AutofillText *string `json:"AutofillText,omitempty" xml:"AutofillText,omitempty"`
 	CouponCode   *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
+	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
+	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The unsubscribe button. This parameter is valid only when Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
 	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
@@ -6053,7 +6103,8 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// *   **static**
 	// *   **dynamic**
-	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	UrlType        *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
+	NavigateScreen *string `json:"navigateScreen,omitempty" xml:"navigateScreen,omitempty"`
 }
 
 func (s ModifyChatappTemplateRequestComponentsButtons) String() string {
@@ -6071,6 +6122,16 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetAutofillText(v string
 
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetCouponCode(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.CouponCode = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetFlowAction(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.FlowAction = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetFlowId(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.FlowId = &v
 	return s
 }
 
@@ -6111,6 +6172,11 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrl(v string) *Modify
 
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.NavigateScreen = &v
 	return s
 }
 
@@ -7407,6 +7473,7 @@ func (s *SendChatappMassMessageRequest) SetTtl(v int64) *SendChatappMassMessageR
 }
 
 type SendChatappMassMessageRequestSenderList struct {
+	FlowAction *SendChatappMassMessageRequestSenderListFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
 	// payload
 	Payload       []*string                                             `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
 	ProductAction *SendChatappMassMessageRequestSenderListProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
@@ -7422,6 +7489,11 @@ func (s SendChatappMassMessageRequestSenderList) String() string {
 
 func (s SendChatappMassMessageRequestSenderList) GoString() string {
 	return s.String()
+}
+
+func (s *SendChatappMassMessageRequestSenderList) SetFlowAction(v *SendChatappMassMessageRequestSenderListFlowAction) *SendChatappMassMessageRequestSenderList {
+	s.FlowAction = v
+	return s
 }
 
 func (s *SendChatappMassMessageRequestSenderList) SetPayload(v []*string) *SendChatappMassMessageRequestSenderList {
@@ -7441,6 +7513,29 @@ func (s *SendChatappMassMessageRequestSenderList) SetTemplateParams(v map[string
 
 func (s *SendChatappMassMessageRequestSenderList) SetTo(v string) *SendChatappMassMessageRequestSenderList {
 	s.To = &v
+	return s
+}
+
+type SendChatappMassMessageRequestSenderListFlowAction struct {
+	FlowActionData map[string]*string `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
+	FlowToken      *string            `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
+}
+
+func (s SendChatappMassMessageRequestSenderListFlowAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendChatappMassMessageRequestSenderListFlowAction) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatappMassMessageRequestSenderListFlowAction) SetFlowActionData(v map[string]*string) *SendChatappMassMessageRequestSenderListFlowAction {
+	s.FlowActionData = v
+	return s
+}
+
+func (s *SendChatappMassMessageRequestSenderListFlowAction) SetFlowToken(v string) *SendChatappMassMessageRequestSenderListFlowAction {
+	s.FlowToken = &v
 	return s
 }
 
@@ -7751,8 +7846,9 @@ type SendChatappMessageRequest struct {
 	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	FallBackId   *string                              `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule *string                              `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	FlowAction   *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
 	// The phone number of the message sender.
 	//
 	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -7870,6 +7966,11 @@ func (s *SendChatappMessageRequest) SetFallBackRule(v string) *SendChatappMessag
 	return s
 }
 
+func (s *SendChatappMessageRequest) SetFlowAction(v *SendChatappMessageRequestFlowAction) *SendChatappMessageRequest {
+	s.FlowAction = v
+	return s
+}
+
 func (s *SendChatappMessageRequest) SetFrom(v string) *SendChatappMessageRequest {
 	s.From = &v
 	return s
@@ -7942,6 +8043,29 @@ func (s *SendChatappMessageRequest) SetTtl(v int32) *SendChatappMessageRequest {
 
 func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest {
 	s.Type = &v
+	return s
+}
+
+type SendChatappMessageRequestFlowAction struct {
+	FlowActionData map[string]*string `json:"FlowActionData,omitempty" xml:"FlowActionData,omitempty"`
+	FlowToken      *string            `json:"FlowToken,omitempty" xml:"FlowToken,omitempty"`
+}
+
+func (s SendChatappMessageRequestFlowAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendChatappMessageRequestFlowAction) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatappMessageRequestFlowAction) SetFlowActionData(v map[string]*string) *SendChatappMessageRequestFlowAction {
+	s.FlowActionData = v
+	return s
+}
+
+func (s *SendChatappMessageRequestFlowAction) SetFlowToken(v string) *SendChatappMessageRequestFlowAction {
+	s.FlowToken = &v
 	return s
 }
 
@@ -8057,8 +8181,9 @@ type SendChatappMessageShrinkRequest struct {
 	FallBackContent  *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
 	FallBackDuration *int32  `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
 	// The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
-	FallBackId   *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	FallBackId       *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
+	FallBackRule     *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
+	FlowActionShrink *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	// The phone number of the message sender.
 	//
 	// > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -8173,6 +8298,11 @@ func (s *SendChatappMessageShrinkRequest) SetFallBackId(v string) *SendChatappMe
 
 func (s *SendChatappMessageShrinkRequest) SetFallBackRule(v string) *SendChatappMessageShrinkRequest {
 	s.FallBackRule = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetFlowActionShrink(v string) *SendChatappMessageShrinkRequest {
+	s.FlowActionShrink = &v
 	return s
 }
 
@@ -10492,6 +10622,10 @@ func (client *Client) IsvGetAppIdWithOptions(request *IsvGetAppIdRequest, runtim
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		body["Permissions"] = request.Permissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["Type"] = request.Type
 	}
@@ -11388,6 +11522,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 	}
 	request := &SendChatappMessageShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FlowAction)) {
+		request.FlowActionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FlowAction, tea.String("FlowAction"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Payload)) {
 		request.PayloadShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Payload, tea.String("Payload"), tea.String("json"))
 	}
@@ -11440,6 +11578,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !tea.BoolValue(util.IsUnset(request.FallBackRule)) {
 		body["FallBackRule"] = request.FallBackRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowActionShrink)) {
+		body["FlowAction"] = request.FlowActionShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
