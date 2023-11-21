@@ -1557,13 +1557,13 @@ func (s *CreateVpcFirewallCenConfigureResponse) SetBody(v *CreateVpcFirewallCenC
 type CreateVpcFirewallConfigureRequest struct {
 	// The status of the VPC firewall after you create the firewall. Valid values:
 	//
-	// *   **open**: After you create the VPC firewall, the firewall is automatically enabled. This is the default value.
-	// *   **close**: After you create the VPC firewall, the firewall is not automatically enabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
+	// *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
+	// *   **close**: After you create the VPC firewall, the VPC firewall is disabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
 	FirewallSwitch *string `json:"FirewallSwitch,omitempty" xml:"FirewallSwitch,omitempty"`
-	// The natural language of the request and response. Valid values:
+	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
-	// *   **en**: English
+	// *   **en**: English.
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
 	//
@@ -1574,7 +1574,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	LocalVpcId *string `json:"LocalVpcId,omitempty" xml:"LocalVpcId,omitempty"`
 	// The region ID of the local VPC.
 	//
-	// >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	// >  For more information about the regions in which Cloud Firewall is available, see [Supported regions](~~195657~~).
 	LocalVpcRegion *string `json:"LocalVpcRegion,omitempty" xml:"LocalVpcRegion,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
@@ -1587,7 +1587,7 @@ type CreateVpcFirewallConfigureRequest struct {
 	PeerVpcId *string `json:"PeerVpcId,omitempty" xml:"PeerVpcId,omitempty"`
 	// The region ID of the peer VPC.
 	//
-	// >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+	// >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
 	PeerVpcRegion *string `json:"PeerVpcRegion,omitempty" xml:"PeerVpcRegion,omitempty"`
 	// The instance name of the VPC firewall.
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
@@ -1652,7 +1652,7 @@ func (s *CreateVpcFirewallConfigureRequest) SetVpcFirewallName(v string) *Create
 }
 
 type CreateVpcFirewallConfigureResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The instance ID of the VPC firewall.
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
@@ -2403,8 +2403,13 @@ func (s *DeleteNatFirewallControlPolicyResponse) SetBody(v *DeleteNatFirewallCon
 }
 
 type DeleteTrFirewallV2Request struct {
+	// The instance ID of the VPC firewall.
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteTrFirewallV2Request) String() string {
@@ -2426,6 +2431,7 @@ func (s *DeleteTrFirewallV2Request) SetLang(v string) *DeleteTrFirewallV2Request
 }
 
 type DeleteTrFirewallV2ResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4527,19 +4533,40 @@ func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResp
 }
 
 type DescribeInternetOpenIpRequest struct {
-	AssetsInstanceId   *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The instance ID.
+	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The instance name.
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	AssetsType         *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	CurrentPage        *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize           *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Port               *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	PublicIp           *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	RegionNo           *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	ServiceName        *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The asset type of the instance.
+	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	// The page number.
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The port number.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The public IP address of the instance.
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The region ID of the instance.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The risk level. If you leave this parameter empty, all risk levels are queried. Valid values:
+	//
+	// *   **3**: high risk
+	// *   **2**: medium risk
+	// *   **1**: low risk
+	// *   **0**: no risk
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The application.
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeInternetOpenIpRequest) String() string {
@@ -4616,9 +4643,12 @@ func (s *DescribeInternetOpenIpRequest) SetStartTime(v string) *DescribeInternet
 }
 
 type DescribeInternetOpenIpResponseBody struct {
-	DataList  []*DescribeInternetOpenIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	PageInfo  *DescribeInternetOpenIpResponseBodyPageInfo   `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data returned.
+	DataList []*DescribeInternetOpenIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The pagination information.
+	PageInfo *DescribeInternetOpenIpResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInternetOpenIpResponseBody) String() string {
@@ -4645,21 +4675,49 @@ func (s *DescribeInternetOpenIpResponseBody) SetRequestId(v string) *DescribeInt
 }
 
 type DescribeInternetOpenIpResponseBodyDataList struct {
-	AclRecommendDetail  *string   `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
-	AssetsInstanceId    *string   `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
-	AssetsName          *string   `json:"AssetsName,omitempty" xml:"AssetsName,omitempty"`
-	AssetsType          *string   `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	DetailNum           *int32    `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
-	HasAclRecommend     *bool     `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	PortList            []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	PublicIp            *string   `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
-	RegionNo            *string   `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	RiskLevel           *int32    `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskReason          *string   `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
-	ServiceNameList     []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
-	TrafficPercent1Day  *string   `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	TrafficPercent30Day *string   `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	TrafficPercent7Day  *string   `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
+	// The reason why recommended intelligent policies are unavailable. Valid values:
+	//
+	// *   No recommended intelligent policies are available.
+	// *   This feature is available only to some users.
+	// *   The policy configuration has been modified. No recommended intelligent policies are available.
+	// *   The recommended intelligent policies have been configured. No new recommended intelligent policies are available.
+	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	// The instance ID.
+	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// The instance name.
+	AssetsName *string `json:"AssetsName,omitempty" xml:"AssetsName,omitempty"`
+	// The asset type of the instance.
+	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	// The total number of ports.
+	DetailNum *int32 `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
+	// Specifies whether an access control policy is recommended. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	// The list of ports.
+	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// The public IP address of the instance.
+	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
+	// The region ID of the instance.
+	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   **3**: high risk
+	// *   **2**: medium risk
+	// *   **1**: low risk
+	// *   **0**: no risk
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// The reason for the risk.
+	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
+	// The list of applications.
+	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
+	// The percentage of traffic of a day. Unit: percent (%).
+	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
+	// The percentage of traffic of 30 days. Unit: percent (%).
+	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
+	// The percentage of traffic of seven days. Unit: percent (%).
+	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
 }
 
 func (s DescribeInternetOpenIpResponseBodyDataList) String() string {
@@ -4746,9 +4804,12 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent7Day(v str
 }
 
 type DescribeInternetOpenIpResponseBodyPageInfo struct {
+	// The page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInternetOpenIpResponseBodyPageInfo) String() string {
@@ -4804,16 +4865,36 @@ func (s *DescribeInternetOpenIpResponse) SetBody(v *DescribeInternetOpenIpRespon
 }
 
 type DescribeInternetTrafficTrendRequest struct {
-	Direction  *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The direction of the internet traffic.
+	//
+	// Valid values:
+	//
+	// *   **in**: inbound traffic
+	// *   **out**: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content in the request and response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The source code.
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
 	// Deprecated
-	SourceIp     *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The IP address of the access source.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The private IP address of the source.
 	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
-	SrcPublicIP  *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TrafficType  *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
+	// The public IP address of the source.
+	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the traffic that is captured. Valid values:
+	//
+	// *   **max** (default): peak traffic
+	// *   **avg**: average traffic
+	TrafficType *string `json:"TrafficType,omitempty" xml:"TrafficType,omitempty"`
 }
 
 func (s DescribeInternetTrafficTrendRequest) String() string {
@@ -4870,21 +4951,36 @@ func (s *DescribeInternetTrafficTrendRequest) SetTrafficType(v string) *Describe
 }
 
 type DescribeInternetTrafficTrendResponseBody struct {
-	AvgInBps         *int64                                              `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
-	AvgOutBps        *int64                                              `json:"AvgOutBps,omitempty" xml:"AvgOutBps,omitempty"`
-	AvgSession       *int64                                              `json:"AvgSession,omitempty" xml:"AvgSession,omitempty"`
-	AvgTotalBps      *int64                                              `json:"AvgTotalBps,omitempty" xml:"AvgTotalBps,omitempty"`
-	DataList         []*DescribeInternetTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	MaxBandwidthTime *int64                                              `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
-	MaxInBps         *int64                                              `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	MaxOutBps        *int64                                              `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	MaxSession       *int64                                              `json:"MaxSession,omitempty" xml:"MaxSession,omitempty"`
-	MaxTotalBps      *int64                                              `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalBytes       *int64                                              `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	TotalInBytes     *int64                                              `json:"TotalInBytes,omitempty" xml:"TotalInBytes,omitempty"`
-	TotalOutBytes    *int64                                              `json:"TotalOutBytes,omitempty" xml:"TotalOutBytes,omitempty"`
-	TotalSession     *int64                                              `json:"TotalSession,omitempty" xml:"TotalSession,omitempty"`
+	// The average inbound network throughput, which indicates the average number of bits that are sent inbound per second. Unit: bit/s.
+	AvgInBps *int64 `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
+	// The average outbound network throughput, which indicates the average number of bits that are sent outbound per second. Unit: bit/s.
+	AvgOutBps *int64 `json:"AvgOutBps,omitempty" xml:"AvgOutBps,omitempty"`
+	// The average number of requests.
+	AvgSession *int64 `json:"AvgSession,omitempty" xml:"AvgSession,omitempty"`
+	// The total average inbound and outbound network throughput, which indicates the average number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	AvgTotalBps *int64 `json:"AvgTotalBps,omitempty" xml:"AvgTotalBps,omitempty"`
+	// The statistics on traffic.
+	DataList []*DescribeInternetTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The timestamp generated when the bandwidth reaches the peak value. The value is a UNIX timestamp. Unit: seconds.
+	MaxBandwidthTime *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
+	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
+	// The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
+	// The number of requests during the peak hour of the network throughout.
+	MaxSession *int64 `json:"MaxSession,omitempty" xml:"MaxSession,omitempty"`
+	// The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
+	// The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+	TotalInBytes *int64 `json:"TotalInBytes,omitempty" xml:"TotalInBytes,omitempty"`
+	// The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+	TotalOutBytes *int64 `json:"TotalOutBytes,omitempty" xml:"TotalOutBytes,omitempty"`
+	// The total number of requests.
+	TotalSession *int64 `json:"TotalSession,omitempty" xml:"TotalSession,omitempty"`
 }
 
 func (s DescribeInternetTrafficTrendResponseBody) String() string {
@@ -4971,16 +5067,26 @@ func (s *DescribeInternetTrafficTrendResponseBody) SetTotalSession(v int64) *Des
 }
 
 type DescribeInternetTrafficTrendResponseBodyDataList struct {
-	InBps        *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	InBytes      *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	InPps        *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	NewConn      *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	OutBps       *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	OutBytes     *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	OutPps       *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	// The inbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
+	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	// The number of new connections.
+	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	// The outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	// The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
+	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	// The number of requests.
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	Time         *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
-	TotalBps     *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
+	// The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
+	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The total inbound and outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+	TotalBps *int64 `json:"TotalBps,omitempty" xml:"TotalBps,omitempty"`
 }
 
 func (s DescribeInternetTrafficTrendResponseBodyDataList) String() string {
@@ -5658,7 +5764,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The time at which the access control policy was created.
+	// The time when the access control policy was created.
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -5673,7 +5779,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **port**: port
 	// *   **group**: port address book
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
-	// The destination address in the access control policy. The value of this parameter varies based on the value of the DestinationType parameter. Valid values:
+	// The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
 	//
 	// *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
 	// *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
@@ -5692,24 +5798,24 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	// *   **domain**: domain name
-	// *   **location**
+	// *   **location**: location
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The DNS resolution result.
 	DnsResult *string `json:"DnsResult,omitempty" xml:"DnsResult,omitempty"`
-	// The time of the DNS resolution result. The value is a timestamp. Unit: seconds.
+	// The time when the Domain Name System (DNS) resolution was performed. The value is a UNIX timestamp. Unit: seconds.
 	DnsResultTime *int64 `json:"DnsResultTime,omitempty" xml:"DnsResultTime,omitempty"`
 	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
-	// *   **1**: Fully qualified domain name (FQDN)-based
-	// *   **2**: Domain Name System (DNS)-based
-	// *   **3**: FQDN and DNS-based
+	// *   **0**: fully qualified domain name (FQDN) resolution
+	// *   **1**: dynamic DNS resolution
+	// *   **2**: FQDN resolution and dynamic DNS resolution
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
 	EndTime           *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The times when the access control policy was last hit. The value is a timestamp. Unit: seconds.
+	// The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
 	HitLastTime *int64 `json:"HitLastTime,omitempty" xml:"HitLastTime,omitempty"`
 	// The number of hits for the access control policy.
 	HitTimes *int32 `json:"HitTimes,omitempty" xml:"HitTimes,omitempty"`
-	// The time at which the access control policy was modified.
+	// The time when the access control policy was modified.
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
@@ -5717,7 +5823,7 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	//
 	// The priority value starts from 1. A smaller priority value indicates a higher priority.
 	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The type of the protocol in the access control policy. Valid values:
+	// The protocol type in the access control policy. Valid values:
 	//
 	// *   **ANY**
 	// *   **TCP**
@@ -5743,13 +5849,13 @@ type DescribeNatFirewallControlPolicyResponseBodyPolicys struct {
 	SourceGroupCidrs []*string `json:"SourceGroupCidrs,omitempty" xml:"SourceGroupCidrs,omitempty" type:"Repeated"`
 	// The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
 	SourceGroupType *string `json:"SourceGroupType,omitempty" xml:"SourceGroupType,omitempty"`
-	// The type of the source address book in the access control policy. Valid values:
+	// The type of the source address in the access control policy. Valid values:
 	//
 	// *   **net**: CIDR block
 	// *   **group**: address book
 	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated based on the following formula: Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, regions, or resolved domain names × *Number of applications* × Number of ports.
+	// The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
 	SpreadCnt *string `json:"SpreadCnt,omitempty" xml:"SpreadCnt,omitempty"`
 	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -5972,7 +6078,7 @@ type DescribeNatFirewallPolicyPriorUsedRequest struct {
 	//
 	// *   **4**: IPv4 (default)
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
@@ -8303,11 +8409,19 @@ func (s *DescribeTrFirewallPolicyBackUpAssociationListResponse) SetBody(v *Descr
 }
 
 type DescribeTrFirewallV2RoutePolicyListRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	FirewallId  *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The page number. Default value: 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The instance ID of the VPC firewall.
+	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
+	// The language of the content within the response. Valid values:
+	//
+	// *   **zh**: Chinese (default)
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The number of entries per page. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the routing policy.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 
 func (s DescribeTrFirewallV2RoutePolicyListRequest) String() string {
@@ -8344,8 +8458,11 @@ func (s *DescribeTrFirewallV2RoutePolicyListRequest) SetPolicyId(v string) *Desc
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBody struct {
-	RequestId               *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount              *string                                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The routing policies.
 	TrFirewallRoutePolicies []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies `json:"TrFirewallRoutePolicies,omitempty" xml:"TrFirewallRoutePolicies,omitempty" type:"Repeated"`
 }
 
@@ -8373,13 +8490,31 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBody) SetTrFirewallRoutePoli
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies struct {
-	DestCandidateList       []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
-	PolicyDescription       *string                                                                                    `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	PolicyName              *string                                                                                    `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	PolicyStatus            *string                                                                                    `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	PolicyType              *string                                                                                    `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	SrcCandidateList        []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList  `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
-	TrFirewallRoutePolicyId *string                                                                                    `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
+	// The secondary traffic redirection instances.
+	DestCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty" type:"Repeated"`
+	// The description of the routing policy.
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// The name of the routing policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	// The status of the routing policy. Valid values:
+	//
+	// *   creating: The policy is being created.
+	// *   deleting: The policy is being deleted.
+	// *   opening: The policy is being enabled.
+	// *   opened: The policy is enabled.
+	// *   closing: The policy is being disabled.
+	// *   closed: The policy is disabled.
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	// The type of the traffic redirection scenario of the VPC firewall. Valid values:
+	//
+	// *   **fullmesh**: interconnected instances
+	// *   **one_to_one**: instance to instance
+	// *   **end_to_end**: instance to instances
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The primary traffic redirection instances.
+	SrcCandidateList []*DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty" type:"Repeated"`
+	// The ID of the routing policy.
+	TrFirewallRoutePolicyId *string `json:"TrFirewallRoutePolicyId,omitempty" xml:"TrFirewallRoutePolicyId,omitempty"`
 }
 
 func (s DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies) String() string {
@@ -8426,7 +8561,9 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies)
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDestCandidateList struct {
-	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The ID of the secondary traffic redirection instance.
+	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The type of the secondary traffic redirection instance.
 	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
 }
 
@@ -8449,7 +8586,9 @@ func (s *DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesD
 }
 
 type DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList struct {
-	CandidateId   *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The ID of the primary traffic redirection instance.
+	CandidateId *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	// The type of the primary traffic redirection instance.
 	CandidateType *string `json:"CandidateType,omitempty" xml:"CandidateType,omitempty"`
 }
 
@@ -12913,9 +13052,9 @@ type ModifyControlPolicyRequest struct {
 	// *   **drop**: denies the traffic.
 	// *   **log**: monitors the traffic.
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
-	// The ID of the access control policy.
+	// The UUID of the access control policy.
 	//
-	// >  If you want to modify the configurations of an access control policy, you must provide the ID of the policy. You can call the [DescribeControlPolicy](~~138866~~) operation to query the ID.
+	// >  To modify an access control policy, you must specify the UUID of the policy. You can call the [DescribeControlPolicy](~~138866~~) interface to query the UUID.
 	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
 	// The type of the application that the access control policy supports. Valid values:
 	//
@@ -12934,9 +13073,9 @@ type ModifyControlPolicyRequest struct {
 	// *   **Memcache**
 	// *   **SSL**
 	//
-	// >  The value **ANY** indicates all types of applications.
+	// >  The value ANY** indicates all types of applications.
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// The application names. You can specify multiple application names.
+	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The description of the access control policy.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -12951,17 +13090,17 @@ type ModifyControlPolicyRequest struct {
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	// The destination address in the access control policy.
 	//
-	// *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.XX.XX/24
-	// *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
-	// *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com
-	// *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
+	// *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.XX.XX/24.
+	// *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group.
+	// *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com.
+	// *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"].
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The type of the destination address in the access control policy. Valid values:
 	//
-	// *   **net**: destination CIDR block
-	// *   **group**: destination address book
-	// *   **domain**: destination domain name
-	// *   **location**: destination location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **domain**: domain name
+	// *   **location**: location
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The direction of the traffic to which the access control policy applies. Valid values:
 	//
@@ -12969,19 +13108,19 @@ type ModifyControlPolicyRequest struct {
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
 	// *   **en**: English
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the protocol in the access control policy. Valid values:
+	// The protocol type supported by the access control policy. Valid values:
 	//
 	// *   **ANY**
 	// *   **TCP**
 	// *   **UDP**
 	// *   **ICMP**
 	//
-	// >  The value **ANY** indicates all types of protocols.
+	// >  The value ANY** indicates all types of applications.
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// The status of the access control policy. Valid values:
 	//
@@ -12994,15 +13133,15 @@ type ModifyControlPolicyRequest struct {
 	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
-	// *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24
-	// *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group
+	// *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24.
+	// *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group.
 	// *   If **SourceType** is set to location, the value of **Source** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
-	// *   **net**: source CIDR block
-	// *   **group**: source address book
-	// *   **location**: source location
+	// *   **net**: CIDR block
+	// *   **group**: address book
+	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -13126,7 +13265,7 @@ func (s *ModifyControlPolicyRequest) SetStartTime(v int64) *ModifyControlPolicyR
 }
 
 type ModifyControlPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16658,8 +16797,8 @@ func (client *Client) CreateVpcFirewallCenConfigure(request *CreateVpcFirewallCe
 }
 
 /**
- * You can call the CreateVpcFirewallConfigure operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [Limits on VPC firewalls](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
- * ### Limits
+ * You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+ * ### [](#qps)QPS limit
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateVpcFirewallConfigureRequest
@@ -16736,8 +16875,8 @@ func (client *Client) CreateVpcFirewallConfigureWithOptions(request *CreateVpcFi
 }
 
 /**
- * You can call the CreateVpcFirewallConfigure operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [Limits on VPC firewalls](https://www.alibabacloud.com/help/en/cloud-firewall/latest/vpc-firewall-limits).
- * ### Limits
+ * You can call this operation to create a VPC firewall. The VPC firewall controls traffic between two VPCs that are connected by using an Express Connect circuit. The VPC firewall does not control the mutual access traffic between VPCs that reside in different regions or belong to different Alibaba Cloud accounts. The firewall also does not control the mutual access traffic between VPCs and virtual border routers (VBRs). For more information, see [VPC firewall limits](~~172295~~).
+ * ### [](#qps)QPS limit
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request CreateVpcFirewallConfigureRequest
@@ -20332,8 +20471,8 @@ func (client *Client) ModifyAddressBook(request *ModifyAddressBookRequest) (_res
 }
 
 /**
- * You can call the ModifyControlPolicy operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
- * ## Limits
+ * You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+ * ## [](#qps)Limit
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyControlPolicyRequest
@@ -20458,8 +20597,8 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 }
 
 /**
- * You can call the ModifyControlPolicy operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
- * ## Limits
+ * You can call this operation to modify the configurations of an access control policy. The policy allows Cloud Firewall to allow, deny, or monitor the traffic that passes through Cloud Firewall.
+ * ## [](#qps)Limit
  * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
  * @param request ModifyControlPolicyRequest
