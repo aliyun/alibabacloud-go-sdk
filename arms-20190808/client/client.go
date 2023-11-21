@@ -3523,6 +3523,82 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CheckCommercialStatusRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Service  *string `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s CheckCommercialStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCommercialStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCommercialStatusRequest) SetRegionId(v string) *CheckCommercialStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CheckCommercialStatusRequest) SetService(v string) *CheckCommercialStatusRequest {
+	s.Service = &v
+	return s
+}
+
+type CheckCommercialStatusResponseBody struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckCommercialStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCommercialStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCommercialStatusResponseBody) SetData(v string) *CheckCommercialStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckCommercialStatusResponseBody) SetRequestId(v string) *CheckCommercialStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckCommercialStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckCommercialStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckCommercialStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCommercialStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCommercialStatusResponse) SetHeaders(v map[string]*string) *CheckCommercialStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckCommercialStatusResponse) SetStatusCode(v int32) *CheckCommercialStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckCommercialStatusResponse) SetBody(v *CheckCommercialStatusResponseBody) *CheckCommercialStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CheckServiceStatusRequest struct {
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -39382,6 +39458,7 @@ func (s *UninstallManagedPrometheusResponse) SetBody(v *UninstallManagedPromethe
 }
 
 type UninstallPromClusterRequest struct {
+	// 语言环境, 默认为中文 zh | en
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -44439,6 +44516,46 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckCommercialStatusWithOptions(request *CheckCommercialStatusRequest, runtime *util.RuntimeOptions) (_result *CheckCommercialStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckCommercialStatus"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckCommercialStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckCommercialStatus(request *CheckCommercialStatusRequest) (_result *CheckCommercialStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckCommercialStatusResponse{}
+	_body, _err := client.CheckCommercialStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
