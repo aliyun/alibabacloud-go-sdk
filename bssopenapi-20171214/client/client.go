@@ -2006,17 +2006,41 @@ func (s *CreateResourcePackageResponse) SetBody(v *CreateResourcePackageResponse
 }
 
 type CreateSavingsPlansInstanceRequest struct {
-	CommodityCode *string            `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Duration      *string            `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The code of the service.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The service duration. This parameter is used together with the PricingCycle parameter.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	EffectiveDate *string            `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	ExtendMap     map[string]*string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
-	PayMode       *string            `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	PoolValue     *string            `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	PricingCycle  *string            `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region        *string            `json:"Region,omitempty" xml:"Region,omitempty"`
-	SpecType      *string            `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Specification *string            `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Type          *string            `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The payment mode. Valid values:
+	//
+	// *   total: all upfront
+	// *   half: partial upfront
+	// *   zero: no upfront
+	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	// The contracted amount. unit: CNY
+	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+	//
+	// *   Year
+	// *   Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
+	//
+	// *   group: specification group
+	// *   family: specification family
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The specifications of the savings plan. This parameter is used together with the SpecType parameter.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The type of the savings plan. Valid values:
+	//
+	// *   universal: general-purpose type
+	// *   ecs: ECS compute type
+	// *   elasticy: elastic type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceRequest) String() string {
@@ -2083,17 +2107,41 @@ func (s *CreateSavingsPlansInstanceRequest) SetType(v string) *CreateSavingsPlan
 }
 
 type CreateSavingsPlansInstanceShrinkRequest struct {
-	CommodityCode   *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Duration        *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The code of the service.
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The service duration. This parameter is used together with the PricingCycle parameter.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	EffectiveDate   *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	ExtendMapShrink *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
-	PayMode         *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
-	PoolValue       *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
-	PricingCycle    *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SpecType        *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
-	Specification   *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The payment mode. Valid values:
+	//
+	// *   total: all upfront
+	// *   half: partial upfront
+	// *   zero: no upfront
+	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	// The contracted amount. unit: CNY
+	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
+	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+	//
+	// *   Year
+	// *   Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
+	//
+	// *   group: specification group
+	// *   family: specification family
+	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	// The specifications of the savings plan. This parameter is used together with the SpecType parameter.
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The type of the savings plan. Valid values:
+	//
+	// *   universal: general-purpose type
+	// *   ecs: ECS compute type
+	// *   elasticy: elastic type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceShrinkRequest) String() string {
@@ -2160,11 +2208,16 @@ func (s *CreateSavingsPlansInstanceShrinkRequest) SetType(v string) *CreateSavin
 }
 
 type CreateSavingsPlansInstanceResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The status code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSavingsPlansInstanceResponseBody) String() string {
@@ -2201,6 +2254,7 @@ func (s *CreateSavingsPlansInstanceResponseBody) SetSuccess(v bool) *CreateSavin
 }
 
 type CreateSavingsPlansInstanceResponseBodyData struct {
+	// The ID of the order.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -9212,7 +9266,8 @@ type DescribeSplitItemBillRequest struct {
 	// If you specify DAILY for this parameter, the BillingDate parameter is required.
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The ID of the instance.
-	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	InstanceID       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	// The maximum number of entries to query. Default value: 20. Maximum value: 300.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. The parameter must be left empty or set to the value of the NextToken parameter returned in the last call. Otherwise, an error is returned. If the parameter is left empty, the data is queried from the first entry.
@@ -9260,6 +9315,11 @@ func (s *DescribeSplitItemBillRequest) SetGranularity(v string) *DescribeSplitIt
 
 func (s *DescribeSplitItemBillRequest) SetInstanceID(v string) *DescribeSplitItemBillRequest {
 	s.InstanceID = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillRequest) SetIsHideZeroCharge(v bool) *DescribeSplitItemBillRequest {
+	s.IsHideZeroCharge = &v
 	return s
 }
 
@@ -10530,7 +10590,7 @@ func (s *GetOrderDetailResponseBodyDataOrderList) SetOrder(v []*GetOrderDetailRe
 }
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
-	// The aftertaxt amount of the order.
+	// The after-tax amount of the order.
 	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	// The service code.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
@@ -12541,25 +12601,32 @@ func (s *QueryAccountBalanceResponse) SetBody(v *QueryAccountBalanceResponseBody
 }
 
 type QueryAccountBillRequest struct {
+	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	// The billing cycle. Format: YYYY-MM.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing date. This parameter is required only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The granularity at which bills are queried. Valid values:
+	//
+	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
+	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// You must set the BillingDate parameter before you can set the Granularity parameter to DAILY.
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// Specifies whether to summarize bills based on service codes. Valid values:
 	//
 	// *   true: summarizes bills based on service codes.
 	// *   false: does not summarize bills based on service codes.
 	//
 	// Default value: false.
-	BillOwnerId  *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
-	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The code of the service.
-	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The number of the page to return. Default value: 1.
 	IsGroupByProduct *bool  `json:"IsGroupByProduct,omitempty" xml:"IsGroupByProduct,omitempty"`
 	OwnerID          *int64 `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	PageNum          *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of the page to return. Default value: 1.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The code of the service.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -12617,20 +12684,15 @@ func (s *QueryAccountBillRequest) SetProductCode(v string) *QueryAccountBillRequ
 }
 
 type QueryAccountBillResponseBody struct {
-	// The granularity at which bills are queried. Valid values:
-	//
-	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
-	//
-	// You must set the BillingDate parameter before you can set the Granularity parameter to DAILY.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the request.
-	Data *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The billing date. This parameter is required only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The status code returned.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12668,19 +12730,19 @@ func (s *QueryAccountBillResponseBody) SetSuccess(v bool) *QueryAccountBillRespo
 }
 
 type QueryAccountBillResponseBodyData struct {
-	// The page number of the returned page.
-	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	// The number of entries returned per page.
-	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The data returned.
-	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The total number of returned entries.
-	Items *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// Indicates whether the request is successful.
-	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The billing cycle. Format: YYYY-MM.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of your Alibaba Cloud account.
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// The name of the Alibaba Cloud account.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The billing cycle. Format: YYYY-MM.
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The details of the bills.
+	Items *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of returned entries.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12745,64 +12807,62 @@ func (s *QueryAccountBillResponseBodyDataItems) SetItem(v []*QueryAccountBillRes
 }
 
 type QueryAccountBillResponseBodyDataItemsItem struct {
-	// The billing date.
-	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	// The amount deducted by using prepaid cards.
-	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	// The name of the member.
-	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	// The code of the service. The service code is consistent with that displayed in User Center.
-	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
-	// The billing method. Valid values:
-	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
-	//
-	// **
-	//
-	// ****A value is returned only if the IsGroupByProduct parameter is set to true.
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Not allocated
-	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	// The discount amount.
-	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The amount deducted by using credit refunds.
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The name of the account to which the bill belongs.
-	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	// The ID of the member.
-	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	// The business type.
-	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
-	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
-	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	// The amount deducted by using vouchers.
-	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	// The name of the service.
-	//
-	// **
-	//
-	// ****A value is returned only if the **IsGroupByProduct **parameter is set to true.
-	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The amount deducted by using coupons.
-	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	// The name of the Alibaba Cloud account.
-	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	// The details of the bills.
-	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// The name of the account to which the bill belongs.
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// The billing date.
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The business type.
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The cost center.
-	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	// The pretax gross amount.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The pretax amount.
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of the currency. Valid values:
 	//
 	// *   CNY
 	// *   USD
 	// *   JPY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount deducted by using vouchers.
+	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// The amount deducted by using coupons.
+	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// The amount deducted by using prepaid cards.
+	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// The discount amount.
+	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// The unsettled amount or the amount settled with credits.
+	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	// The ID of the member.
+	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	// The name of the member.
+	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// The code of the service. The service code is consistent with that displayed in User Center.
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// The pretax amount.
+	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The pretax gross amount.
+	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// The code of the service.
+	//
+	// >A value is returned only if the **IsGroupByProduct** parameter is set to true.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the service.
+	//
+	// > A value is returned only if the **IsGroupByProduct** parameter is set to true.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   Subscription: the subscription billing method
+	// *   PayAsYouGo: the pay-as-you-go billing method
+	//
+	// > A value is returned only if the IsGroupByProduct parameter is set to true.
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -28662,6 +28722,10 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceID)) {
 		query["InstanceID"] = request.InstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
