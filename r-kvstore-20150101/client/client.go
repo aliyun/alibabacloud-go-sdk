@@ -20272,7 +20272,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type TransformInstanceChargeTypeRequest struct {
 	// true
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay         *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew       *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod *int64  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// Specifies whether to enable automatic payment. Default value: true. Valid values:
 	//
 	// *   **true**: Automatic payment is enabled.
@@ -20301,6 +20303,16 @@ func (s TransformInstanceChargeTypeRequest) GoString() string {
 
 func (s *TransformInstanceChargeTypeRequest) SetAutoPay(v bool) *TransformInstanceChargeTypeRequest {
 	s.AutoPay = &v
+	return s
+}
+
+func (s *TransformInstanceChargeTypeRequest) SetAutoRenew(v string) *TransformInstanceChargeTypeRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *TransformInstanceChargeTypeRequest) SetAutoRenewPeriod(v int64) *TransformInstanceChargeTypeRequest {
+	s.AutoRenewPeriod = &v
 	return s
 }
 
@@ -30354,6 +30366,14 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
