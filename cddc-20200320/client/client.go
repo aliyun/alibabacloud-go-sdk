@@ -13,23 +13,74 @@ import (
 )
 
 type CreateDedicatedHostRequest struct {
-	AutoRenew            *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable the auto-renewal feature. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  If you do not specify this parameter, the default value **false** is used.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
+	//
+	// >  The database engine of the host is the same as the database engine of the cluster.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	HostClass            *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
-	HostStorage          *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
-	HostStorageType      *string `json:"HostStorageType,omitempty" xml:"HostStorageType,omitempty"`
-	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	OsPassword           *string `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
+	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
+	// The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
+	//
+	// *   512
+	// *   1024
+	// *   1536
+	// *   2048
+	// *   2560
+	// *   3072
+	// *   3584
+	// *   4096
+	HostStorage *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
+	// The disk type of the host. This parameter takes effect only for dedicated clusters that run Tair. Valid values:
+	//
+	// *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+	// *   **cloud_essd0**: PL0 ESSD.
+	HostStorageType *string `json:"HostStorageType,omitempty" xml:"HostStorageType,omitempty"`
+	// The image of the host. Valid values:
+	//
+	// *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+	// *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+	// *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+	// *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+	// *   **AliLinux**: other images.
+	//
+	// >  When you create a host that runs SQL Server, you must specify a host image.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
+	//
+	// *   The password must be 8 to 30 characters in length.
+	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /
+	OsPassword *string `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the host. Set the value to **prepaid**.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// *   **Year**
+	// *   **Month**
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The [region ID](~~198326~~) of the dedicated cluster.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	UsedTime             *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The subscription duration of the host.
+	//
+	// *   Valid values when **Period** is set to **Year**: **1** to **5**.****
+	// *   Valid values when **Period** is set to **Month**: **1** to **9**.
+	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDedicatedHostRequest) String() string {
@@ -126,9 +177,12 @@ func (s *CreateDedicatedHostRequest) SetZoneId(v string) *CreateDedicatedHostReq
 }
 
 type CreateDedicatedHostResponseBody struct {
+	// The created hosts.
 	DedicateHostList *CreateDedicatedHostResponseBodyDedicateHostList `json:"DedicateHostList,omitempty" xml:"DedicateHostList,omitempty" type:"Struct"`
-	OrderId          *int64                                           `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDedicatedHostResponseBody) String() string {
@@ -172,6 +226,7 @@ func (s *CreateDedicatedHostResponseBodyDedicateHostList) SetDedicateHostList(v 
 }
 
 type CreateDedicatedHostResponseBodyDedicateHostListDedicateHostList struct {
+	// The host ID.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
 }
 
@@ -218,13 +273,35 @@ func (s *CreateDedicatedHostResponse) SetBody(v *CreateDedicatedHostResponseBody
 }
 
 type CreateDedicatedHostAccountRequest struct {
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	BastionInstanceId    *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the host account.
+	//
+	// *   The name must be 2 to 16 characters in length.
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the host account.
+	//
+	// *   The password must be 6 to 32 characters in length.
+	// *   The password must contain three of the following character types: upper letters, lower letters, digits, and special characters.
+	// *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
+	//
+	// >  If your host runs SQL Server, the password cannot contain the account name (case-insensitive).
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The type of the host account. Valid values:
+	//
+	// *   **Normal**: standard account.
+	// *   **Admin**: administrator account.
+	//
+	// For more information, see [Host permissions](~~176240~~).
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The ID of the bastion host with which the host is associated. You can log on to the ApsaraDB for MyBase console and go to the **Bastion Hosts** page to view the bastion host ID.
+	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -289,6 +366,7 @@ func (s *CreateDedicatedHostAccountRequest) SetResourceOwnerId(v int64) *CreateD
 }
 
 type CreateDedicatedHostAccountResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -335,20 +413,53 @@ func (s *CreateDedicatedHostAccountResponse) SetBody(v *CreateDedicatedHostAccou
 }
 
 type CreateDedicatedHostGroupRequest struct {
-	AllocationPolicy       *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
-	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CpuAllocationRatio     *int32  `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	// The policy that is used to allocate resources in the dedicated cluster. Valid values:
+	//
+	// *   **Evenly** (default): The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+	// *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
+	AllocationPolicy *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The CPU overcommit ratio of the dedicated cluster.
+	//
+	// >  Unit: %. Valid values: **100** to **300**. Default value: **200**, which specifies that the total amount of CPU resources allocated to all instances is twice the amount of actual CPU resources. This helps you maximize CPU utilization.
+	CpuAllocationRatio *int32 `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	// The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
 	DedicatedHostGroupDesc *string `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
-	DiskAllocationRatio    *int32  `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	Engine                 *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	HostReplacePolicy      *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
-	MemAllocationRatio     *int32  `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	OpenPermission         *int32  `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	VPCId                  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The storage overcommit ratio of the dedicated cluster.
+	//
+	// >  Unit: %. Valid values: **100** to **300**. Default value: **200**, which specifies that the total amount of storage resources allocated to all instances is twice the amount of actual storage resources. This helps you maximize storage usage. This parameter does not take effect for dedicated clusters that run SQL Server.
+	DiskAllocationRatio *int32 `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	// The database engine of the dedicated cluster. Valid values:
+	//
+	// *   **MySQL**
+	// *   **SQL Server**
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The policy that is used to handle host failures. Valid values:
+	//
+	// *   **Auto** (default): The system automatically replaces faulty hosts.
+	// *   **Manual**: You must manually replace faulty hosts.
+	//
+	// >  When you create a dedicated cluster that runs **MySQL**, you can select a policy based on your business requirements. For dedicated clusters that run other database engines, the default value **Auto** is used.
+	HostReplacePolicy *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
+	// The maximum memory usage of each host in the dedicated cluster.
+	//
+	// >  Unit: %. Valid values: **0** to **100**. Default value: **100**.
+	MemAllocationRatio *int32 `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	// Specifies whether to grant the host OS permissions. Valid values:
+	//
+	// *   **0**: no.
+	// *   **1**: yes.
+	//
+	// >  When you create a dedicated cluster that runs **MySQL or SQL Server**, you can grant the host OS permissions based on your business requirements. For dedicated clusters that run other database engines, the default value **0** is used. When you create an ApsaraDB MyBase for SQL Server dedicated cluster, you must set this parameter to 1.
+	OpenPermission *int32 `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	OwnerId        *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. For more information, see [Region IDs](~~198326~~).
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the virtual private cloud (VPC) where you want to create the dedicated cluster. You can log on to the VPC console and click **VPCs** in the left-side navigation pane to view the VPC ID.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 }
 
 func (s CreateDedicatedHostGroupRequest) String() string {
@@ -430,8 +541,10 @@ func (s *CreateDedicatedHostGroupRequest) SetVPCId(v string) *CreateDedicatedHos
 }
 
 type CreateDedicatedHostGroupResponseBody struct {
+	// The dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDedicatedHostGroupResponseBody) String() string {
@@ -482,6 +595,7 @@ func (s *CreateDedicatedHostGroupResponse) SetBody(v *CreateDedicatedHostGroupRe
 }
 
 type CreateMyBaseRequest struct {
+	AutoPay                       *bool                              `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenew                     *string                            `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ClientToken                   *string                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DedicatedHostGroupDescription *string                            `json:"DedicatedHostGroupDescription,omitempty" xml:"DedicatedHostGroupDescription,omitempty"`
@@ -493,6 +607,8 @@ type CreateMyBaseRequest struct {
 	EcsUniqueSuffix               *string                            `json:"EcsUniqueSuffix,omitempty" xml:"EcsUniqueSuffix,omitempty"`
 	Engine                        *string                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ImageId                       *string                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InternetChargeType            *string                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut       *int32                             `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	KeyPairName                   *string                            `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OsPassword                    *string                            `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
 	OwnerId                       *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -501,9 +617,13 @@ type CreateMyBaseRequest struct {
 	Period                        *string                            `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodType                    *string                            `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	RegionId                      *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount          *string                            `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId               *int64                             `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityGroupId               *string                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tags                          []*CreateMyBaseRequestTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserData                      *string                            `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserDataInBase64              *bool                              `json:"UserDataInBase64,omitempty" xml:"UserDataInBase64,omitempty"`
 	VSwitchId                     *string                            `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                         *string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId                        *string                            `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -515,6 +635,11 @@ func (s CreateMyBaseRequest) String() string {
 
 func (s CreateMyBaseRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMyBaseRequest) SetAutoPay(v bool) *CreateMyBaseRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *CreateMyBaseRequest) SetAutoRenew(v string) *CreateMyBaseRequest {
@@ -572,6 +697,16 @@ func (s *CreateMyBaseRequest) SetImageId(v string) *CreateMyBaseRequest {
 	return s
 }
 
+func (s *CreateMyBaseRequest) SetInternetChargeType(v string) *CreateMyBaseRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetInternetMaxBandwidthOut(v int32) *CreateMyBaseRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
 func (s *CreateMyBaseRequest) SetKeyPairName(v string) *CreateMyBaseRequest {
 	s.KeyPairName = &v
 	return s
@@ -612,6 +747,11 @@ func (s *CreateMyBaseRequest) SetRegionId(v string) *CreateMyBaseRequest {
 	return s
 }
 
+func (s *CreateMyBaseRequest) SetResourceGroupId(v string) *CreateMyBaseRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateMyBaseRequest) SetResourceOwnerAccount(v string) *CreateMyBaseRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -624,6 +764,21 @@ func (s *CreateMyBaseRequest) SetResourceOwnerId(v int64) *CreateMyBaseRequest {
 
 func (s *CreateMyBaseRequest) SetSecurityGroupId(v string) *CreateMyBaseRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetTags(v []*CreateMyBaseRequestTags) *CreateMyBaseRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetUserData(v string) *CreateMyBaseRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *CreateMyBaseRequest) SetUserDataInBase64(v bool) *CreateMyBaseRequest {
+	s.UserDataInBase64 = &v
 	return s
 }
 
@@ -643,15 +798,21 @@ func (s *CreateMyBaseRequest) SetZoneId(v string) *CreateMyBaseRequest {
 }
 
 type CreateMyBaseRequestECSClassList struct {
-	DataDiskPerformanceLevel   *string `json:"dataDiskPerformanceLevel,omitempty" xml:"dataDiskPerformanceLevel,omitempty"`
-	DiskCapacity               *int32  `json:"diskCapacity,omitempty" xml:"diskCapacity,omitempty"`
-	DiskCount                  *int32  `json:"diskCount,omitempty" xml:"diskCount,omitempty"`
-	DiskType                   *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	InstanceType               *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	NodeCount                  *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
-	SysDiskCapacity            *int32  `json:"sysDiskCapacity,omitempty" xml:"sysDiskCapacity,omitempty"`
-	SysDiskType                *string `json:"sysDiskType,omitempty" xml:"sysDiskType,omitempty"`
-	SystemDiskPerformanceLevel *string `json:"systemDiskPerformanceLevel,omitempty" xml:"systemDiskPerformanceLevel,omitempty"`
+	DataDiskAutoSnapshotPolicyId *string `json:"dataDiskAutoSnapshotPolicyId,omitempty" xml:"dataDiskAutoSnapshotPolicyId,omitempty"`
+	DataDiskEncrypted            *bool   `json:"dataDiskEncrypted,omitempty" xml:"dataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId             *string `json:"dataDiskKMSKeyId,omitempty" xml:"dataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel     *string `json:"dataDiskPerformanceLevel,omitempty" xml:"dataDiskPerformanceLevel,omitempty"`
+	DiskCapacity                 *int32  `json:"diskCapacity,omitempty" xml:"diskCapacity,omitempty"`
+	DiskCount                    *int32  `json:"diskCount,omitempty" xml:"diskCount,omitempty"`
+	DiskType                     *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	InstanceType                 *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	NodeCount                    *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+	SysDiskAutoSnapshotPolicyId  *string `json:"sysDiskAutoSnapshotPolicyId,omitempty" xml:"sysDiskAutoSnapshotPolicyId,omitempty"`
+	SysDiskCapacity              *int32  `json:"sysDiskCapacity,omitempty" xml:"sysDiskCapacity,omitempty"`
+	SysDiskEncrypted             *bool   `json:"sysDiskEncrypted,omitempty" xml:"sysDiskEncrypted,omitempty"`
+	SysDiskKMSKeyId              *string `json:"sysDiskKMSKeyId,omitempty" xml:"sysDiskKMSKeyId,omitempty"`
+	SysDiskType                  *string `json:"sysDiskType,omitempty" xml:"sysDiskType,omitempty"`
+	SystemDiskPerformanceLevel   *string `json:"systemDiskPerformanceLevel,omitempty" xml:"systemDiskPerformanceLevel,omitempty"`
 }
 
 func (s CreateMyBaseRequestECSClassList) String() string {
@@ -660,6 +821,21 @@ func (s CreateMyBaseRequestECSClassList) String() string {
 
 func (s CreateMyBaseRequestECSClassList) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetDataDiskAutoSnapshotPolicyId(v string) *CreateMyBaseRequestECSClassList {
+	s.DataDiskAutoSnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetDataDiskEncrypted(v bool) *CreateMyBaseRequestECSClassList {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetDataDiskKMSKeyId(v string) *CreateMyBaseRequestECSClassList {
+	s.DataDiskKMSKeyId = &v
+	return s
 }
 
 func (s *CreateMyBaseRequestECSClassList) SetDataDiskPerformanceLevel(v string) *CreateMyBaseRequestECSClassList {
@@ -692,8 +868,23 @@ func (s *CreateMyBaseRequestECSClassList) SetNodeCount(v int32) *CreateMyBaseReq
 	return s
 }
 
+func (s *CreateMyBaseRequestECSClassList) SetSysDiskAutoSnapshotPolicyId(v string) *CreateMyBaseRequestECSClassList {
+	s.SysDiskAutoSnapshotPolicyId = &v
+	return s
+}
+
 func (s *CreateMyBaseRequestECSClassList) SetSysDiskCapacity(v int32) *CreateMyBaseRequestECSClassList {
 	s.SysDiskCapacity = &v
+	return s
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetSysDiskEncrypted(v bool) *CreateMyBaseRequestECSClassList {
+	s.SysDiskEncrypted = &v
+	return s
+}
+
+func (s *CreateMyBaseRequestECSClassList) SetSysDiskKMSKeyId(v string) *CreateMyBaseRequestECSClassList {
+	s.SysDiskKMSKeyId = &v
 	return s
 }
 
@@ -707,7 +898,31 @@ func (s *CreateMyBaseRequestECSClassList) SetSystemDiskPerformanceLevel(v string
 	return s
 }
 
+type CreateMyBaseRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateMyBaseRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMyBaseRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMyBaseRequestTags) SetKey(v string) *CreateMyBaseRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateMyBaseRequestTags) SetValue(v string) *CreateMyBaseRequestTags {
+	s.Value = &v
+	return s
+}
+
 type CreateMyBaseShrinkRequest struct {
+	AutoPay                       *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenew                     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ClientToken                   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DedicatedHostGroupDescription *string `json:"DedicatedHostGroupDescription,omitempty" xml:"DedicatedHostGroupDescription,omitempty"`
@@ -719,6 +934,8 @@ type CreateMyBaseShrinkRequest struct {
 	EcsUniqueSuffix               *string `json:"EcsUniqueSuffix,omitempty" xml:"EcsUniqueSuffix,omitempty"`
 	Engine                        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ImageId                       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InternetChargeType            *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut       *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
 	KeyPairName                   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	OsPassword                    *string `json:"OsPassword,omitempty" xml:"OsPassword,omitempty"`
 	OwnerId                       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -727,9 +944,13 @@ type CreateMyBaseShrinkRequest struct {
 	Period                        *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	PeriodType                    *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	RegionId                      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId               *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount          *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId               *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityGroupId               *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	TagsShrink                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData                      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserDataInBase64              *bool   `json:"UserDataInBase64,omitempty" xml:"UserDataInBase64,omitempty"`
 	VSwitchId                     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId                        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -741,6 +962,11 @@ func (s CreateMyBaseShrinkRequest) String() string {
 
 func (s CreateMyBaseShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateMyBaseShrinkRequest) SetAutoPay(v bool) *CreateMyBaseShrinkRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *CreateMyBaseShrinkRequest) SetAutoRenew(v string) *CreateMyBaseShrinkRequest {
@@ -798,6 +1024,16 @@ func (s *CreateMyBaseShrinkRequest) SetImageId(v string) *CreateMyBaseShrinkRequ
 	return s
 }
 
+func (s *CreateMyBaseShrinkRequest) SetInternetChargeType(v string) *CreateMyBaseShrinkRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetInternetMaxBandwidthOut(v int32) *CreateMyBaseShrinkRequest {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
 func (s *CreateMyBaseShrinkRequest) SetKeyPairName(v string) *CreateMyBaseShrinkRequest {
 	s.KeyPairName = &v
 	return s
@@ -838,6 +1074,11 @@ func (s *CreateMyBaseShrinkRequest) SetRegionId(v string) *CreateMyBaseShrinkReq
 	return s
 }
 
+func (s *CreateMyBaseShrinkRequest) SetResourceGroupId(v string) *CreateMyBaseShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *CreateMyBaseShrinkRequest) SetResourceOwnerAccount(v string) *CreateMyBaseShrinkRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -850,6 +1091,21 @@ func (s *CreateMyBaseShrinkRequest) SetResourceOwnerId(v int64) *CreateMyBaseShr
 
 func (s *CreateMyBaseShrinkRequest) SetSecurityGroupId(v string) *CreateMyBaseShrinkRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetTagsShrink(v string) *CreateMyBaseShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetUserData(v string) *CreateMyBaseShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *CreateMyBaseShrinkRequest) SetUserDataInBase64(v bool) *CreateMyBaseShrinkRequest {
+	s.UserDataInBase64 = &v
 	return s
 }
 
@@ -973,12 +1229,22 @@ func (s *CreateMyBaseResponse) SetBody(v *CreateMyBaseResponseBody) *CreateMyBas
 }
 
 type DeleteDedicatedHostAccountRequest struct {
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the host account.
+	//
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name must be 2 to 16 characters in length.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The ID of the account to which the AccessKey pair belongs.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ResourceOwnerAccount
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the asset owner.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteDedicatedHostAccountRequest) String() string {
@@ -1020,6 +1286,7 @@ func (s *DeleteDedicatedHostAccountRequest) SetResourceOwnerId(v int64) *DeleteD
 }
 
 type DeleteDedicatedHostAccountResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1066,11 +1333,16 @@ func (s *DeleteDedicatedHostAccountResponse) SetBody(v *DeleteDedicatedHostAccou
 }
 
 type DeleteDedicatedHostGroupRequest struct {
+	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 账号ID。
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源主账号的账号名称。
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the asset owner.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s DeleteDedicatedHostGroupRequest) String() string {
@@ -1107,6 +1379,7 @@ func (s *DeleteDedicatedHostGroupRequest) SetResourceOwnerId(v int64) *DeleteDed
 }
 
 type DeleteDedicatedHostGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1153,9 +1426,12 @@ func (s *DeleteDedicatedHostGroupResponse) SetBody(v *DeleteDedicatedHostGroupRe
 }
 
 type DescribeDedicatedHostAttributeRequest struct {
+	// The ID of the dedicated cluster in which the host is created. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// [The region ID](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1200,43 +1476,113 @@ func (s *DescribeDedicatedHostAttributeRequest) SetResourceOwnerId(v int64) *Des
 }
 
 type DescribeDedicatedHostAttributeResponseBody struct {
-	AccountName            *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType            *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AllocationStatus       *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	AutoRenew              *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CPUAllocationRatio     *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
-	CpuUsed                *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	CreatedTime            *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DedicatedHostGroupId   *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DedicatedHostId        *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	DiskAllocationRatio    *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	DistributionTag        *string `json:"DistributionTag,omitempty" xml:"DistributionTag,omitempty"`
-	EcsClassCode           *string `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
-	ExpiredTime            *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HostCPU                *int32  `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
-	HostClass              *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
-	HostMem                *int32  `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
-	HostName               *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	HostStatus             *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	HostStorage            *int32  `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
-	HostType               *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	IPAddress              *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	ImageCategory          *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	InstanceNumber         *int32  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	InstanceNumberMaster   *int32  `json:"InstanceNumberMaster,omitempty" xml:"InstanceNumberMaster,omitempty"`
-	InstanceNumberROMaster *int32  `json:"InstanceNumberROMaster,omitempty" xml:"InstanceNumberROMaster,omitempty"`
-	InstanceNumberROSlave  *int32  `json:"InstanceNumberROSlave,omitempty" xml:"InstanceNumberROSlave,omitempty"`
-	InstanceNumberSlave    *int32  `json:"InstanceNumberSlave,omitempty" xml:"InstanceNumberSlave,omitempty"`
-	MemAllocationRatio     *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	MemoryUsed             *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	OpenPermission         *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StorageUsed            *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	VPCId                  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// VSwitch ID。
+	// The account name of the host.
+	//
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name must be 2 to 16 characters in length.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account type of the host. Valid values:
+	//
+	// *   **Normal**: standard account.
+	// *   **Admin**: administrator account.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Indicates whether instances can be deployed on the host. Valid values:
+	//
+	// *   **Allocatable**: yes.
+	// *   **Suspended**: no.
+	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// Indicates whether auto-renewal is enabled on the host. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The CPU overcommit ratio of the dedicated cluster. Unit: %. The value is accurate to the tens digit.
+	CPUAllocationRatio *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
+	// The number of CPU cores used by the host.
+	CpuUsed *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The time when the host was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the dedicated cluster in which the host is created.
+	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	// The host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The storage overcommit ratio of the dedicated cluster.
+	DiskAllocationRatio *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	// The distribution tag of the host.
+	DistributionTag *string `json:"DistributionTag,omitempty" xml:"DistributionTag,omitempty"`
+	// The instance type of the Elastic Compute Service (ECS) instance.
+	EcsClassCode *string `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
+	// The expiration time of the host. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The number of CPU cores of the host.
+	HostCPU *int32 `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
+	// The instance type of the host.
+	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
+	// The memory size of the host. Unit: MB.
+	HostMem *int32 `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The state of the host. Valid values:
+	//
+	// *   **0**: The host is being created.
+	// *   **1**: The host is running.
+	// *   **2**: The host is faulty.
+	// *   **3**: The host is ready for disabling.
+	// *   **4**: The host is being maintained.
+	// *   **5**: The host is disabled.
+	// *   **6**: The host is restarting.
+	// *   **7**: The host is locked.
+	//
+	// >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host. This ensures data integrity.
+	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
+	// The total storage of the host. Unit: GB.
+	HostStorage *int32 `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
+	// The storage type of the host. Valid values:
+	//
+	// *   **dhg_cloud_ssd** or **dhg_cloud_essd**: enhanced SSD (ESSD).
+	// *   **dhg_local_ssd**: local SSD.
+	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// The IP address of the host.
+	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	// The image of the host. This parameter is returned only when the database engine is **SQL Server**. Valid values:
+	//
+	// *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition (AlwaysOn).
+	// *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+	// *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+	// *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The number of instances deployed on the host.
+	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	// The number of primary instances deployed on the host.
+	InstanceNumberMaster *int32 `json:"InstanceNumberMaster,omitempty" xml:"InstanceNumberMaster,omitempty"`
+	// The number of primary instances of the read-only instance deployed on the host.
+	InstanceNumberROMaster *int32 `json:"InstanceNumberROMaster,omitempty" xml:"InstanceNumberROMaster,omitempty"`
+	// The number of secondary instances of the read-only instance deployed on the host.
+	InstanceNumberROSlave *int32 `json:"InstanceNumberROSlave,omitempty" xml:"InstanceNumberROSlave,omitempty"`
+	// The number of secondary instances deployed on the host.
+	InstanceNumberSlave *int32 `json:"InstanceNumberSlave,omitempty" xml:"InstanceNumberSlave,omitempty"`
+	// The memory usage of the host. Unit: %.
+	MemAllocationRatio *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	// The amount of memory used by the host. Unit: GB.
+	MemoryUsed *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	// Indicates whether the host OS permissions are grated. Valid values:
+	//
+	// *   **0**: no.
+	// *   **1**: yes.
+	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	// [The region ID](~~198326~~).
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The storage usage of the host. Unit: GB.
+	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostAttributeResponseBody) String() string {
@@ -1457,8 +1803,10 @@ func (s *DescribeDedicatedHostAttributeResponse) SetBody(v *DescribeDedicatedHos
 }
 
 type DescribeDedicatedHostDisksRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1498,9 +1846,12 @@ func (s *DescribeDedicatedHostDisksRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeDedicatedHostDisksResponseBody struct {
-	DedicatedHostId *string                                        `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	Disks           []*DescribeDedicatedHostDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The queried disks.
+	Disks []*DescribeDedicatedHostDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDedicatedHostDisksResponseBody) String() string {
@@ -1527,18 +1878,48 @@ func (s *DescribeDedicatedHostDisksResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeDedicatedHostDisksResponseBodyDisks struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DBInstanceId     *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Device           *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DiskId           *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	HasDBInstance    *bool   `json:"HasDBInstance,omitempty" xml:"HasDBInstance,omitempty"`
-	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	MaxThroughput    *int32  `json:"MaxThroughput,omitempty" xml:"MaxThroughput,omitempty"`
+	// The storage type of the host. Valid values:
+	//
+	// *   **cloud_ssd**: local SSD.
+	// *   **cloud_essd**: ESSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the instance that uses the disk.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The device name of the instance to which the ESSD or local SSD is attached.
+	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	// The ID of the ESSD or local SSD.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// Indicates whether the disk is attached to instances. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	HasDBInstance *bool `json:"HasDBInstance,omitempty" xml:"HasDBInstance,omitempty"`
+	// The maximum IOPS of the disk, which is displayed after being divided by 10,000.
+	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
+	// The maximum throughput of the disk. Unit: MB/s.
+	MaxThroughput *int32 `json:"MaxThroughput,omitempty" xml:"MaxThroughput,omitempty"`
+	// The performance level of the ESSD.
+	//
+	// >  ApsaraDB for MyBase provides the following types of ESSDs: **ESSD**, **PL2 ESSD**, and **PL3 ESSD**. The higher performance level delivers better ESSD performance.
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The size of the ESSD or local SSD. Unit: GB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The state of the ESSD. Valid values:
+	//
+	// *   **In_use**
+	// *   **Available**
+	// *   **Attaching**
+	// *   **Detaching**
+	// *   **Creating**
+	// *   **ReIniting**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The disk type of the enhanced SSD (ESSD) or local SSD. Valid values:
+	//
+	// *   **system**: system disk.
+	// *   **data**: data disk.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The zone ID of the ESSD or local SSD.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostDisksResponseBodyDisks) String() string {
@@ -1639,10 +2020,41 @@ func (s *DescribeDedicatedHostDisksResponse) SetBody(v *DescribeDedicatedHostDis
 }
 
 type DescribeDedicatedHostGroupsRequest struct {
+	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
+	//
+	// *   If you leave this parameter empty, the information about all hosts within the region is returned.
+	// *   If you specify a dedicated cluster ID, the information about all hosts in the dedicated cluster within the region is returned.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The database engine used to filter hosts. Valid values:
+	//
+	// *   MySQL
+	// *   SQL Server
+	// *   PosgreSQL
+	//
+	// *   Redis
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The image of the host. Valid values:
+	//
+	// *   **WindowsWithMssqlEntAlwaysonLicense**: SQL
+	//
+	// Server Cluster Edition.
+	//
+	// *   **WindowsWithMssqlStdLicense**: SQL
+	//
+	// Server Standard Edition.
+	//
+	// *   **WindowsWithMssqlEntLicense**: SQL
+	//
+	// Server Enterprise Edition.
+	//
+	// *   **WindowsWithMssqlWebLicense**: SQL
+	//
+	// Server Web Edition.
+	//
+	// *   **AliLinux**: other images.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. For more information, see [Region IDs](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1692,8 +2104,10 @@ func (s *DescribeDedicatedHostGroupsRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeDedicatedHostGroupsResponseBody struct {
+	// The queried hosts.
 	DedicatedHostGroups *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups `json:"DedicatedHostGroups,omitempty" xml:"DedicatedHostGroups,omitempty" type:"Struct"`
-	RequestId           *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDedicatedHostGroupsResponseBody) String() string {
@@ -1732,35 +2146,73 @@ func (s *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups) SetDedicate
 }
 
 type DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups struct {
-	AllocationPolicy                  *string                                                                                  `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
-	BastionInstanceId                 *string                                                                                  `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	Category                          *string                                                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
-	CpuAllocateRation                 *float32                                                                                 `json:"CpuAllocateRation,omitempty" xml:"CpuAllocateRation,omitempty"`
-	CpuAllocatedAmount                *float32                                                                                 `json:"CpuAllocatedAmount,omitempty" xml:"CpuAllocatedAmount,omitempty"`
-	CpuAllocationRatio                *int32                                                                                   `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
-	CreateTime                        *string                                                                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DedicatedHostCountGroupByHostType map[string]interface{}                                                                   `json:"DedicatedHostCountGroupByHostType,omitempty" xml:"DedicatedHostCountGroupByHostType,omitempty"`
-	DedicatedHostGroupDesc            *string                                                                                  `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
-	DedicatedHostGroupId              *string                                                                                  `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DeployType                        *string                                                                                  `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	DiskAllocateRation                *float32                                                                                 `json:"DiskAllocateRation,omitempty" xml:"DiskAllocateRation,omitempty"`
-	DiskAllocatedAmount               *float32                                                                                 `json:"DiskAllocatedAmount,omitempty" xml:"DiskAllocatedAmount,omitempty"`
-	DiskAllocationRatio               *int32                                                                                   `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	DiskUsedAmount                    *float32                                                                                 `json:"DiskUsedAmount,omitempty" xml:"DiskUsedAmount,omitempty"`
-	DiskUtility                       *float32                                                                                 `json:"DiskUtility,omitempty" xml:"DiskUtility,omitempty"`
-	Engine                            *string                                                                                  `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	HostNumber                        *int32                                                                                   `json:"HostNumber,omitempty" xml:"HostNumber,omitempty"`
-	HostReplacePolicy                 *string                                                                                  `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
-	InstanceNumber                    *int32                                                                                   `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	MemAllocateRation                 *float32                                                                                 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
-	MemAllocatedAmount                *float32                                                                                 `json:"MemAllocatedAmount,omitempty" xml:"MemAllocatedAmount,omitempty"`
-	MemAllocationRatio                *int32                                                                                   `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	MemUsedAmount                     *float32                                                                                 `json:"MemUsedAmount,omitempty" xml:"MemUsedAmount,omitempty"`
-	MemUtility                        *float32                                                                                 `json:"MemUtility,omitempty" xml:"MemUtility,omitempty"`
-	OpenPermission                    *string                                                                                  `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	Text                              *string                                                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
-	VPCId                             *string                                                                                  `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	ZoneIDList                        *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
+	// The policy that is used to allocate host resources. Valid values:
+	//
+	// *   **Evenly**: The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+	// *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
+	AllocationPolicy *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
+	// The ID of the primary instance deployed on the host. If no primary instance is deployed on the host, an empty string is returned.
+	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
+	Category          *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The CPU allocation ratio of the host.
+	CpuAllocateRation *float32 `json:"CpuAllocateRation,omitempty" xml:"CpuAllocateRation,omitempty"`
+	// The number of CPU cores allocated to the host.
+	CpuAllocatedAmount *float32 `json:"CpuAllocatedAmount,omitempty" xml:"CpuAllocatedAmount,omitempty"`
+	// The CPU overcommit ratio of the host.
+	CpuAllocationRatio *int32 `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	// The time when the host was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of hosts by storage type.
+	DedicatedHostCountGroupByHostType map[string]interface{} `json:"DedicatedHostCountGroupByHostType,omitempty" xml:"DedicatedHostCountGroupByHostType,omitempty"`
+	// The name of the dedicated cluster in which the host is created.
+	DedicatedHostGroupDesc *string `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
+	// The ID of the dedicated cluster in which the host is created.
+	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	// The instance deployment mode of the host.
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The disk allocation rate of the host.
+	DiskAllocateRation *float32 `json:"DiskAllocateRation,omitempty" xml:"DiskAllocateRation,omitempty"`
+	// The disk storage allocated to the host.
+	DiskAllocatedAmount *float32 `json:"DiskAllocatedAmount,omitempty" xml:"DiskAllocatedAmount,omitempty"`
+	// The storage overcommit ratio of the host.
+	DiskAllocationRatio *int32 `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	// The disk storage used by the host.
+	DiskUsedAmount *float32 `json:"DiskUsedAmount,omitempty" xml:"DiskUsedAmount,omitempty"`
+	// The disk usage of the host.
+	DiskUtility *float32 `json:"DiskUtility,omitempty" xml:"DiskUtility,omitempty"`
+	// The database engine of the host.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The number of hosts.
+	HostNumber *int32 `json:"HostNumber,omitempty" xml:"HostNumber,omitempty"`
+	// The policy that is used for host troubleshooting. Valid values:
+	//
+	// *   Auto (default): The system automatically replaces faulty hosts.
+	// *   Manual: You must manually replace faulty hosts.
+	HostReplacePolicy *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
+	// The number of instances deployed on the host.
+	InstanceNumber *int32 `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	// The memory allocation ratio of the host.
+	MemAllocateRation *float32 `json:"MemAllocateRation,omitempty" xml:"MemAllocateRation,omitempty"`
+	// The amount of memory allocated to the host.
+	MemAllocatedAmount *float32 `json:"MemAllocatedAmount,omitempty" xml:"MemAllocatedAmount,omitempty"`
+	// The memory overcommit ratio of the host.
+	MemAllocationRatio *int32 `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	// The amount of used memory.
+	MemUsedAmount *float32 `json:"MemUsedAmount,omitempty" xml:"MemUsedAmount,omitempty"`
+	// The memory usage.
+	MemUtility *float32 `json:"MemUtility,omitempty" xml:"MemUtility,omitempty"`
+	// Indicates whether the host OS permissions are granted. Valid values:
+	//
+	// *   **0 or 1**: no.
+	// *   **2 or 3** (default): yes.
+	//
+	// >  When you create a dedicated cluster that runs **MySQL**, **SQL Server**, or **PostgreSQL**, you can grant the host OS permissions based on your business requirements.
+	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	// The description of the host.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The virtual private cloud (VPC) ID of the dedicated cluster in which the host is created.
+	VPCId      *string                                                                                  `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	ZoneIDList *DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList `json:"ZoneIDList,omitempty" xml:"ZoneIDList,omitempty" type:"Struct"`
 }
 
 func (s DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroups) String() string {
@@ -1963,20 +2415,50 @@ func (s *DescribeDedicatedHostGroupsResponse) SetBody(v *DescribeDedicatedHostGr
 }
 
 type DescribeDedicatedHostsRequest struct {
-	AllocationStatus     *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// Specifies whether instances can be deployed on the host. Valid values:
+	//
+	// *   **Allocatable**: Instances can be deployed on the host.
+	// *   **Suspended**: Instances cannot be deployed on the host.
+	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	HostStatus           *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	HostType             *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	OrderId              *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumbers          *int32  `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the host in the dedicated cluster. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The state of the host. Valid values:
+	//
+	// *   **0**: The host is being created.
+	// *   **1**: The host is running.
+	// *   **2**: The host is faulty.
+	// *   **3**: The host is ready for disabling.
+	// *   **4**: The host is being maintained.
+	// *   **5**: The host is disabled.
+	// *   **6**: The host is restarting.
+	// *   **7**: The host is locked.
+	//
+	// >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host.
+	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
+	// The storage type of the host. Valid values:
+	//
+	// *   **dhg_local_ssd**: local SSD.
+	// *   **dhg_cloud_ssd** or **dhg_cloud_essd**: enhanced SSD (ESSD).
+	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// The order ID. You can log on to the Billing Management console and go to the **Orders** page to view the order ID.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// [The region ID](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The tags that are added to the host. Each tag is a key-value pair that consists of TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: {"key1":"value1","key2":"value2"...}.
+	//
+	// >  If you want to filter hosts based on tags, do not specify the **DedicatedHostId** parameter. Otherwise, the **DedicatedHostId** parameter is used to filter hosts.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostsRequest) String() string {
@@ -2058,13 +2540,20 @@ func (s *DescribeDedicatedHostsRequest) SetZoneId(v string) *DescribeDedicatedHo
 }
 
 type DescribeDedicatedHostsResponseBody struct {
-	DedicatedHostGroupId    *string                                           `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DedicatedHosts          *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	MaxAutoScaleHostStorage *int64                                            `json:"MaxAutoScaleHostStorage,omitempty" xml:"MaxAutoScaleHostStorage,omitempty"`
-	PageNumbers             *int32                                            `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
-	PageSize                *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId               *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecords            *int32                                            `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
+	// The dedicated cluster ID.
+	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	// The queried hosts.
+	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
+	// The maximum storage of local SSDs for auto scaling. Unit: GB.
+	MaxAutoScaleHostStorage *int64 `json:"MaxAutoScaleHostStorage,omitempty" xml:"MaxAutoScaleHostStorage,omitempty"`
+	// The page number.
+	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalRecords *int32 `json:"TotalRecords,omitempty" xml:"TotalRecords,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponseBody) String() string {
@@ -2128,43 +2617,116 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHosts) SetDedicatedHosts(v [
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts struct {
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountType          *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AllocationStatus     *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	BastionInstanceId    *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	CPUAllocationRatio   *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CpuUsed              *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
-	CreatedTime          *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The custom account name of the host.
+	//
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name must be 2 to 16 characters in length.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The account type of the host. Valid values:
+	//
+	// **Normal**: standard account.
+	//
+	// **Admin**: administrator account.
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// Specifies whether instances can be deployed on the host. Valid values:
+	//
+	// *   **Allocatable**: Instances can be deployed on the host.
+	// *   **Suspended**: Instances cannot be deployed on the host.
+	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// The ID of the bastion host with which the host is associated.
+	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
+	// The CPU utilization of the host.
+	CPUAllocationRatio *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
+	// The type of the dedicated cluster. Valid values:
+	//
+	// *   **Pro**: Proprietary MyBase.
+	// *   **Standard**: Managed MyBase.
+	//
+	// >  This parameter is returned only for the China site (aliyun.com).
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The billing method.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of used CPU cores.
+	CpuUsed *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
+	// The time when the host was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The ID of the dedicated cluster in which the host is created.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	DiskAllocationRatio  *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	DiskInfo             *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
-	DistributionSymbol   *string `json:"DistributionSymbol,omitempty" xml:"DistributionSymbol,omitempty"`
-	DistributionTag      *string `json:"DistributionTag,omitempty" xml:"DistributionTag,omitempty"`
-	EcsClassCode         *string `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
-	EcsId                *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	HostCPU              *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
-	HostClass            *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
-	HostMem              *string `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
-	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	HostStatus           *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	HostStorage          *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
-	HostType             *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	IPAddress            *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	InstanceNumber       *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	MemAllocationRatio   *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	MemoryUsed           *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	MssqlSupportVersion  *string `json:"MssqlSupportVersion,omitempty" xml:"MssqlSupportVersion,omitempty"`
-	OpenPermission       *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	StorageUsed          *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The disk usage of the host. Unit: %.
+	DiskAllocationRatio *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	// The disk information of the ECS instance.
+	//
+	// >  This parameter is returned only for the China site (aliyun.com) when the dedicated cluster is of the **Proprietary MyBase** type.
+	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
+	// The distribution symbol of the host.
+	//
+	// >  This parameter is returned only when the host runs **Tair**.
+	DistributionSymbol *string `json:"DistributionSymbol,omitempty" xml:"DistributionSymbol,omitempty"`
+	// The distribution tag of the host.
+	DistributionTag *string `json:"DistributionTag,omitempty" xml:"DistributionTag,omitempty"`
+	// The instance type of the Elastic Compute Service (ECS) instance. For more information, see [Overview of instance families](~~25378~~).
+	EcsClassCode *string `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
+	// The ID of the ECS instance.
+	//
+	// >  This parameter is returned only for the China site (aliyun.com) when the dedicated cluster is of the **Proprietary MyBase** type.
+	EcsId *string `json:"EcsId,omitempty" xml:"EcsId,omitempty"`
+	// The expiration time of the host. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The database engine of the host.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The number of CPU cores of the host.
+	HostCPU *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
+	// The instance type of the host.
+	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
+	// The memory size of the host. Unit: GB.
+	HostMem *string `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The state of the host. Valid values:
+	//
+	// *   **0**: The host is being created.
+	// *   **1**: The host is running.
+	// *   **2**: The host is faulty.
+	// *   **3**: The host is ready for disabling.
+	// *   **4**: The host is being maintained.
+	// *   **5**: The host is disabled.
+	// *   **6**: The host is restarting.
+	// *   **7**: The host is locked.
+	//
+	// >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host.
+	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
+	// The total storage of the host. Unit: GB.
+	HostStorage *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
+	// The storage type of the host.
+	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
+	// The IP address of the host.
+	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
+	// The image type of the host.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	// The number of instances deployed on the host.
+	InstanceNumber *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	// The memory usage of the host. Unit: %.
+	MemAllocationRatio *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	// The amount of memory used by the host. Unit: GB.
+	MemoryUsed *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
+	// The versions supported by hosts in ApsaraDB MyBase for SQL Server.
+	MssqlSupportVersion *string `json:"MssqlSupportVersion,omitempty" xml:"MssqlSupportVersion,omitempty"`
+	// Indicates whether the host OS permissions are granted. Valid values:
+	//
+	// *   **0**: no.
+	// *   **1** (default): yes.
+	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	// The amount of storage used by the host. Unit: GB.
+	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	// The virtual private cloud (VPC) ID of the dedicated cluster in which the host is created.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The ID of the vSwitch to which the host is connected.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the zone in which the host resides.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts) String() string {
@@ -2390,14 +2952,35 @@ func (s *DescribeDedicatedHostsResponse) SetBody(v *DescribeDedicatedHostsRespon
 }
 
 type DescribeHostEcsLevelInfoRequest struct {
-	DbType               *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	ImageCategory        *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The database engine. Valid values:
+	//
+	// *   **mysql**
+	// *   **mssql**
+	// *   **pgsql**
+	// *   **redis**
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The image of the host. Valid values:
+	//
+	// *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+	// *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+	// *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+	// *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+	// *   **AliLinux**: other images.
+	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. For more information, see [Region IDs](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StorageType          *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The storage type. Valid values:
+	//
+	// *   **local_ssd**: standard SSD.
+	// *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+	// *   **cloud_essd2**: PL2 ESSD.
+	// *   **cloud_essd3**: PL3 ESSD.
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeHostEcsLevelInfoRequest) String() string {
@@ -2449,8 +3032,10 @@ func (s *DescribeHostEcsLevelInfoRequest) SetZoneId(v string) *DescribeHostEcsLe
 }
 
 type DescribeHostEcsLevelInfoResponseBody struct {
+	// The queried host.
 	HostEcsLevelInfos []*DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos `json:"HostEcsLevelInfos,omitempty" xml:"HostEcsLevelInfos,omitempty" type:"Repeated"`
-	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeHostEcsLevelInfoResponseBody) String() string {
@@ -2472,8 +3057,15 @@ func (s *DescribeHostEcsLevelInfoResponseBody) SetRequestId(v string) *DescribeH
 }
 
 type DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos struct {
-	CddcHostType *string                                                       `json:"CddcHostType,omitempty" xml:"CddcHostType,omitempty"`
-	Items        []*DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The category of the host. Valid values:
+	//
+	// *   **general**: general-purpose.
+	// *   **compute**: compute-optimized.
+	// *   **ram**: memory-optimized.
+	// *   **dragon**: ECS Bare Metal Instance.
+	CddcHostType *string `json:"CddcHostType,omitempty" xml:"CddcHostType,omitempty"`
+	// The queried host specifications.
+	Items []*DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
 func (s DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos) String() string {
@@ -2495,20 +3087,34 @@ func (s *DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos) SetItems(v []*De
 }
 
 type DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems struct {
+	// The disk bandwidth. Unit: Gbit/s.
 	CloudStorageBandwidth *float32 `json:"CloudStorageBandwidth,omitempty" xml:"CloudStorageBandwidth,omitempty"`
-	Cpu                   *int32   `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CpuFrequency          *string  `json:"CpuFrequency,omitempty" xml:"CpuFrequency,omitempty"`
-	CpuVersion            *string  `json:"CpuVersion,omitempty" xml:"CpuVersion,omitempty"`
-	Description           *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	EcsClass              *string  `json:"EcsClass,omitempty" xml:"EcsClass,omitempty"`
-	EcsClassCode          *string  `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
-	IsCloudDisk           *int32   `json:"IsCloudDisk,omitempty" xml:"IsCloudDisk,omitempty"`
-	LocalStorage          *string  `json:"LocalStorage,omitempty" xml:"LocalStorage,omitempty"`
-	Memory                *int32   `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NetBandWidth          *float32 `json:"NetBandWidth,omitempty" xml:"NetBandWidth,omitempty"`
-	NetPackage            *int32   `json:"NetPackage,omitempty" xml:"NetPackage,omitempty"`
-	RdsClassCode          *string  `json:"RdsClassCode,omitempty" xml:"RdsClassCode,omitempty"`
-	StorageIops           *int32   `json:"StorageIops,omitempty" xml:"StorageIops,omitempty"`
+	// The number of CPU cores of the host.
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The processor frequency. Unit: GHz.
+	CpuFrequency *string `json:"CpuFrequency,omitempty" xml:"CpuFrequency,omitempty"`
+	// The CPU model of the host.
+	CpuVersion *string `json:"CpuVersion,omitempty" xml:"CpuVersion,omitempty"`
+	// The name of the host.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance family of the host.
+	EcsClass *string `json:"EcsClass,omitempty" xml:"EcsClass,omitempty"`
+	// The instance type of the host.
+	EcsClassCode *string `json:"EcsClassCode,omitempty" xml:"EcsClassCode,omitempty"`
+	// Indicates whether the host uses cloud disks.
+	IsCloudDisk *int32 `json:"IsCloudDisk,omitempty" xml:"IsCloudDisk,omitempty"`
+	// The local storage.
+	LocalStorage *string `json:"LocalStorage,omitempty" xml:"LocalStorage,omitempty"`
+	// The memory size of the host. Unit: GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The internal bandwidth of the host. Unit: Gbit/s.
+	NetBandWidth *float32 `json:"NetBandWidth,omitempty" xml:"NetBandWidth,omitempty"`
+	// The packet forwarding rate over the internal network, which is displayed after being divided by 10,000. Unit: packets per second (PPS).
+	NetPackage *int32 `json:"NetPackage,omitempty" xml:"NetPackage,omitempty"`
+	// The instance type of the instance.
+	RdsClassCode *string `json:"RdsClassCode,omitempty" xml:"RdsClassCode,omitempty"`
+	// The storage IOPS of the host, which is displayed after being divided by 10,000.
+	StorageIops *int32 `json:"StorageIops,omitempty" xml:"StorageIops,omitempty"`
 }
 
 func (s DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems) String() string {
@@ -2619,12 +3225,18 @@ func (s *DescribeHostEcsLevelInfoResponse) SetBody(v *DescribeHostEcsLevelInfoRe
 }
 
 type DescribeHostWebShellRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// ResourceOwnerAccount
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the asset owner.
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The zone ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeHostWebShellRequest) String() string {
@@ -2666,7 +3278,9 @@ func (s *DescribeHostWebShellRequest) SetZoneId(v string) *DescribeHostWebShellR
 }
 
 type DescribeHostWebShellResponseBody struct {
-	LoginUrl  *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The URL of the webshell.
+	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2718,6 +3332,7 @@ func (s *DescribeHostWebShellResponse) SetBody(v *DescribeHostWebShellResponseBo
 }
 
 type DescribeRegionsRequest struct {
+	// The ID of the asset owner.
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
@@ -2735,8 +3350,10 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried regions.
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -2775,8 +3392,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRDSRegion(v []*DescribeRegionsRe
 }
 
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRDSRegion) String() string {
@@ -2827,13 +3446,17 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type ListTagResourcesRequest struct {
-	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of host N. You can specify multiple host IDs.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Set the value to DEDICATEDHOST.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -2880,7 +3503,23 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// *   **N** specifies the serial number of the tag. Examples:
+	//
+	//     *   **Tag.1.Key** specifies the key of the first tag.
+	//     *   **Tag.2.Key** specifies the key of the second tag.
+	//
+	// *   You must specify one of this parameter and **ResourceId.N**.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// *   **N** specifies the serial number of the tag. Examples:
+	//
+	//     *   **Tag.1.Value** specifies the value of the first tag.
+	//     *   **Tag.2.Value** specifies the value of the second tag.
+	//
+	// *   If no tag value exists, a value is automatically created.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2903,7 +3542,9 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -2926,10 +3567,16 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The host ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// ALIYUN::CDDC::DEDICATEDHOST is returned, which indicates an ApsaraDB for MyBase host.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of tag N.
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -2990,13 +3637,20 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyDedicatedHostAccountRequest struct {
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The account name of the host.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The new account password of the host.
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// 账号ID。
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 资源主账号的账号名称。
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// ResourceOwnerId
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyDedicatedHostAccountRequest) String() string {
@@ -3043,6 +3697,7 @@ func (s *ModifyDedicatedHostAccountRequest) SetResourceOwnerId(v int64) *ModifyD
 }
 
 type ModifyDedicatedHostAccountResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3089,10 +3744,17 @@ func (s *ModifyDedicatedHostAccountResponse) SetBody(v *ModifyDedicatedHostAccou
 }
 
 type ModifyDedicatedHostAttributeRequest struct {
-	AllocationStatus     *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Indicates whether instances can be deployed on the host. Valid values:
+	//
+	// *   **1**: yes.
+	// *   **0**: no.
+	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The [region ID](~~198326~~) of the host.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3142,6 +3804,7 @@ func (s *ModifyDedicatedHostAttributeRequest) SetResourceOwnerId(v int64) *Modif
 }
 
 type ModifyDedicatedHostAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3188,14 +3851,26 @@ func (s *ModifyDedicatedHostAttributeResponse) SetBody(v *ModifyDedicatedHostAtt
 }
 
 type ModifyDedicatedHostClassRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The [region ID](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	SwitchTimeMode       *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
-	TargetClassCode      *string `json:"TargetClassCode,omitempty" xml:"TargetClassCode,omitempty"`
+	// The time when you want to upgrade the specifications of the host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// >  This parameter must be specified only when SwitchTimeMode is set to 2.
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The execution mode that is used to upgrade host specifications. Valid values:
+	//
+	// *   **0** (default): immediately upgrades host specifications.
+	// *   **2**: upgrades host specifications at a specified point in time.
+	//
+	// >  If you set this parameter to **2**, you must specify **SwitchTime**.
+	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+	// The instance type to which you want the host to be upgraded. For more information, see [Host specification details](~~206343~~).
+	TargetClassCode *string `json:"TargetClassCode,omitempty" xml:"TargetClassCode,omitempty"`
 }
 
 func (s ModifyDedicatedHostClassRequest) String() string {
@@ -3247,9 +3922,12 @@ func (s *ModifyDedicatedHostClassRequest) SetTargetClassCode(v string) *ModifyDe
 }
 
 type ModifyDedicatedHostClassResponseBody struct {
+	// The host ID.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDedicatedHostClassResponseBody) String() string {
@@ -3305,18 +3983,44 @@ func (s *ModifyDedicatedHostClassResponse) SetBody(v *ModifyDedicatedHostClassRe
 }
 
 type ModifyDedicatedHostGroupAttributeRequest struct {
-	AllocationPolicy       *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
-	CpuAllocationRatio     *int32  `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	// The policy that is used to allocate resources in the dedicated cluster. Valid values:
+	//
+	// *   **Evenly**: The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+	// *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
+	AllocationPolicy *string `json:"AllocationPolicy,omitempty" xml:"AllocationPolicy,omitempty"`
+	// The CPU overcommit ratio of the dedicated cluster. Valid values: **100** to **300**.
+	//
+	// >  If you change the CPU overcommit ratio to **300%**, the total CPU resources of all instances are three times the actual CPU resources. This maximizes the use of CPU resources.
+	CpuAllocationRatio *int32 `json:"CpuAllocationRatio,omitempty" xml:"CpuAllocationRatio,omitempty"`
+	// The name of the dedicated cluster.
 	DedicatedHostGroupDesc *string `json:"DedicatedHostGroupDesc,omitempty" xml:"DedicatedHostGroupDesc,omitempty"`
-	DedicatedHostGroupId   *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	DiskAllocationRatio    *int32  `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
-	HostReplacePolicy      *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
-	MemAllocationRatio     *int32  `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	OpenPermission         *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The dedicated cluster ID.
+	//
+	// >  You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
+	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
+	// The storage overcommit ratio of the dedicated cluster. Valid values: **100** to **200**.
+	DiskAllocationRatio *int32 `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
+	// The policy that is used to handle host failures. Valid values:
+	//
+	// *   **Auto**: The system automatically replaces faulty hosts.
+	// *   **Manual**: You must manually replace faulty hosts.
+	//
+	// >  You can select a policy based on your business requirements only for dedicated clusters that run **MySQL**. For dedicated clusters that run other database engines, the default value Auto is used.
+	HostReplacePolicy *string `json:"HostReplacePolicy,omitempty" xml:"HostReplacePolicy,omitempty"`
+	// The maximum memory usage of each host in the dedicated cluster. Valid values: **0** to **100**.
+	MemAllocationRatio *int32 `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
+	// Specifies whether to grant the host OS permissions. Valid values:
+	//
+	// *   **0**: no.
+	// *   **1**: yes.
+	//
+	// >  You can grant the host OS permissions based on your business requirements only when you create dedicated clusters that run **MySQL, SQL Server, or PostgreSQL**. For dedicated clusters that run other database engines, the default value 0 is used.
+	OpenPermission *string `json:"OpenPermission,omitempty" xml:"OpenPermission,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyDedicatedHostGroupAttributeRequest) String() string {
@@ -3388,6 +4092,7 @@ func (s *ModifyDedicatedHostGroupAttributeRequest) SetResourceOwnerId(v int64) *
 }
 
 type ModifyDedicatedHostGroupAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3434,9 +4139,18 @@ func (s *ModifyDedicatedHostGroupAttributeResponse) SetBody(v *ModifyDedicatedHo
 }
 
 type ModifyDedicatedHostPasswordRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	NewPassword          *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The new password.
+	//
+	// *   The password must be 8 to 32 characters in length.
+	// *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
+	//
+	// >  If your dedicated cluster runs SQL Server, the password cannot contain the account name (case-insensitive).
+	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3481,8 +4195,10 @@ func (s *ModifyDedicatedHostPasswordRequest) SetResourceOwnerId(v int64) *Modify
 }
 
 type ModifyDedicatedHostPasswordResponseBody struct {
+	// The name of the host.
 	DedicatedHostName *string `json:"DedicatedHostName,omitempty" xml:"DedicatedHostName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDedicatedHostPasswordResponseBody) String() string {
@@ -3533,8 +4249,10 @@ func (s *ModifyDedicatedHostPasswordResponse) SetBody(v *ModifyDedicatedHostPass
 }
 
 type QueryHostBaseInfoByInstanceRequest struct {
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The instance ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. For more information, see [Region IDs](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3574,8 +4292,10 @@ func (s *QueryHostBaseInfoByInstanceRequest) SetResourceOwnerId(v int64) *QueryH
 }
 
 type QueryHostBaseInfoByInstanceResponseBody struct {
+	// The queried host and instance information.
 	HostInstanceConsoleInfos []*QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos `json:"HostInstanceConsoleInfos,omitempty" xml:"HostInstanceConsoleInfos,omitempty" type:"Repeated"`
-	RequestId                *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryHostBaseInfoByInstanceResponseBody) String() string {
@@ -3597,16 +4317,26 @@ func (s *QueryHostBaseInfoByInstanceResponseBody) SetRequestId(v string) *QueryH
 }
 
 type QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos struct {
-	ClusterName   *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The instance type of the instance.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The database engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ExpiredTime   *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HostName      *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The expiration time of the instance.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The name of the host on which the instance is deployed.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The IP address of the host on which the instance is deployed.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number of the host on which the instance is deployed.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The role of the instance.
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The state of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The virtual private cloud (VPC) ID of the host on which the instance is deployed.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos) String() string {
@@ -3697,8 +4427,10 @@ func (s *QueryHostBaseInfoByInstanceResponse) SetBody(v *QueryHostBaseInfoByInst
 }
 
 type QueryHostInstanceConsoleInfoRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3738,8 +4470,10 @@ func (s *QueryHostInstanceConsoleInfoRequest) SetResourceOwnerId(v int64) *Query
 }
 
 type QueryHostInstanceConsoleInfoResponseBody struct {
+	// The queried instances.
 	HostInstanceConsoleInfos []*QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos `json:"HostInstanceConsoleInfos,omitempty" xml:"HostInstanceConsoleInfos,omitempty" type:"Repeated"`
-	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryHostInstanceConsoleInfoResponseBody) String() string {
@@ -3761,22 +4495,38 @@ func (s *QueryHostInstanceConsoleInfoResponseBody) SetRequestId(v string) *Query
 }
 
 type QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos struct {
-	CpuCores                  *int32                                                                    `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	CpuIncreaseRatioValue     *int32                                                                    `json:"CpuIncreaseRatioValue,omitempty" xml:"CpuIncreaseRatioValue,omitempty"`
-	DBInstanceDescription     *string                                                                   `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DBInstanceId              *string                                                                   `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	DiskSize                  *int32                                                                    `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	Engine                    *string                                                                   `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion             *string                                                                   `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	Ip                        *string                                                                   `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	LevelName                 *string                                                                   `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
-	MaxConnIncreaseRatioValue *int32                                                                    `json:"MaxConnIncreaseRatioValue,omitempty" xml:"MaxConnIncreaseRatioValue,omitempty"`
-	MemSize                   *int32                                                                    `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
-	MemoryIncreaseRatioValue  *int32                                                                    `json:"MemoryIncreaseRatioValue,omitempty" xml:"MemoryIncreaseRatioValue,omitempty"`
-	PerfInfo                  *QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfosPerfInfo `json:"PerfInfo,omitempty" xml:"PerfInfo,omitempty" type:"Struct"`
-	Port                      *string                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
-	Role                      *string                                                                   `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status                    *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of CPU cores of the instance.
+	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
+	// The maximum number of CPU cores of the instance.
+	CpuIncreaseRatioValue *int32 `json:"CpuIncreaseRatioValue,omitempty" xml:"CpuIncreaseRatioValue,omitempty"`
+	// The description of the instance.
+	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
+	// The instance ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The storage capacity of the instance. Unit: GB.
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The database engine of the instance.
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The IP address of the host on which the instance is deployed.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The instance type of the instance.
+	LevelName *string `json:"LevelName,omitempty" xml:"LevelName,omitempty"`
+	// The maximum number of connections to the instance.
+	MaxConnIncreaseRatioValue *int32 `json:"MaxConnIncreaseRatioValue,omitempty" xml:"MaxConnIncreaseRatioValue,omitempty"`
+	// The memory size of the instance. Unit: GB.
+	MemSize *int32 `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
+	// The maximum memory size of the instance.
+	MemoryIncreaseRatioValue *int32 `json:"MemoryIncreaseRatioValue,omitempty" xml:"MemoryIncreaseRatioValue,omitempty"`
+	// The performance information of the host on which the instance is deployed.
+	PerfInfo *QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfosPerfInfo `json:"PerfInfo,omitempty" xml:"PerfInfo,omitempty" type:"Struct"`
+	// The port number of the host.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The role of the instance.
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The state of the instance.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos) String() string {
@@ -3868,9 +4618,13 @@ func (s *QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos) SetSt
 }
 
 type QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfosPerfInfo struct {
-	CpuRatio   *float32 `json:"CpuRatio,omitempty" xml:"CpuRatio,omitempty"`
-	DiskCurr   *float32 `json:"DiskCurr,omitempty" xml:"DiskCurr,omitempty"`
-	MemRatio   *float32 `json:"MemRatio,omitempty" xml:"MemRatio,omitempty"`
+	// The number of CPU cores of the host.
+	CpuRatio *float32 `json:"CpuRatio,omitempty" xml:"CpuRatio,omitempty"`
+	// The disk storage of the host. Unit: GB.
+	DiskCurr *float32 `json:"DiskCurr,omitempty" xml:"DiskCurr,omitempty"`
+	// The memory size of the host. Unit: GB.
+	MemRatio *float32 `json:"MemRatio,omitempty" xml:"MemRatio,omitempty"`
+	// The number of physical I/O operations performed on the host.
 	PerfIdbPio *float32 `json:"PerfIdbPio,omitempty" xml:"PerfIdbPio,omitempty"`
 }
 
@@ -3932,9 +4686,15 @@ func (s *QueryHostInstanceConsoleInfoResponse) SetBody(v *QueryHostInstanceConso
 }
 
 type ReplaceDedicatedHostRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	FailoverMode         *string `json:"FailoverMode,omitempty" xml:"FailoverMode,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The switchover method of the primary instance. Valid values:
+	//
+	// *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
+	// *   **Immediate**: The system immediately restarts the host.
+	FailoverMode *string `json:"FailoverMode,omitempty" xml:"FailoverMode,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3979,9 +4739,12 @@ func (s *ReplaceDedicatedHostRequest) SetResourceOwnerId(v int64) *ReplaceDedica
 }
 
 type ReplaceDedicatedHostResponseBody struct {
+	// The ID of the host in the dedicated cluster.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId          *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ReplaceDedicatedHostResponseBody) String() string {
@@ -4037,10 +4800,22 @@ func (s *ReplaceDedicatedHostResponse) SetBody(v *ReplaceDedicatedHostResponseBo
 }
 
 type RestartDedicatedHostRequest struct {
-	DedicatedHostId      *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	FailoverMode         *string `json:"FailoverMode,omitempty" xml:"FailoverMode,omitempty"`
-	ForceStop            *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
+	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
+	// The switchover method of the primary instance. Valid values:
+	//
+	// *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
+	// *   **Immediate**: The system immediately restarts the host.
+	FailoverMode *string `json:"FailoverMode,omitempty" xml:"FailoverMode,omitempty"`
+	// Specifies whether to forcefully restart the host. Valid values:
+	//
+	// *   true: The system forcefully restarts the host. If this value is used, the system powers off the host. This results in the loss of cached data that is not written to storage. Exercise caution when you select this value.
+	// *   false (default): The system restarts the host normally.
+	//
+	// >  This parameter takes effect only for hosts that are created in ApsaraDB MyBase for Redis dedicated clusters of the Enhanced Edition (Tair). Hosts that are created in ApsaraDB MyBase dedicated clusters that run other database engines can be restarted normally.
+	ForceStop *bool  `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// [The region ID](~~198326~~) of the host.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4090,9 +4865,12 @@ func (s *RestartDedicatedHostRequest) SetResourceOwnerId(v int64) *RestartDedica
 }
 
 type RestartDedicatedHostResponseBody struct {
+	// The host ID.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId          *int32  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RestartDedicatedHostResponseBody) String() string {
@@ -4148,13 +4926,17 @@ func (s *RestartDedicatedHostResponse) SetBody(v *RestartDedicatedHostResponseBo
 }
 
 type TagResourcesRequest struct {
-	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of host N. You can specify multiple host IDs.
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Set the value to DEDICATEDHOST.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4201,7 +4983,23 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N.
+	//
+	// *   **N** specifies the serial number of the tag. Examples:
+	//
+	//     *   **Tag.1.Key** specifies the key of the first tag.
+	//     *   **Tag.2.Key** specifies the key of the second tag.
+	//
+	// *   If no tag key exists, a key is automatically created.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N.
+	//
+	// *   **N** specifies the serial number of the tag. Examples:
+	//
+	//     *   **Tag.1.Value** specifies the value of the first tag.
+	//     *   **Tag.2.Value** specifies the value of the second tag.
+	//
+	// *   If no tag value exists, a value is automatically created.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4224,6 +5022,7 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4270,14 +5069,24 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to remove all tags from the host. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  If you specify both this parameter and the TagKey.N parameter, this parameter does not take effect.
+	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the host.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of host N. You can specify multiple host IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// The resource type. Set the value to DEDICATEDHOST.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The key of tag N.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4329,6 +5138,7 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4529,6 +5339,13 @@ func (client *Client) CreateDedicatedHost(request *CreateDedicatedHostRequest) (
 	return _result, _err
 }
 
+/**
+ * Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+ *
+ * @param request CreateDedicatedHostAccountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDedicatedHostAccountResponse
+ */
 func (client *Client) CreateDedicatedHostAccountWithOptions(request *CreateDedicatedHostAccountRequest, runtime *util.RuntimeOptions) (_result *CreateDedicatedHostAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4598,6 +5415,12 @@ func (client *Client) CreateDedicatedHostAccountWithOptions(request *CreateDedic
 	return _result, _err
 }
 
+/**
+ * Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+ *
+ * @param request CreateDedicatedHostAccountRequest
+ * @return CreateDedicatedHostAccountResponse
+ */
 func (client *Client) CreateDedicatedHostAccount(request *CreateDedicatedHostAccountRequest) (_result *CreateDedicatedHostAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDedicatedHostAccountResponse{}
@@ -4716,7 +5539,15 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 		request.ECSClassListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ECSClassList, tea.String("ECSClassList"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
 	}
@@ -4761,6 +5592,14 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 		query["ImageId"] = request.ImageId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
+		query["InternetChargeType"] = request.InternetChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
+		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
 		query["KeyPairName"] = request.KeyPairName
 	}
@@ -4793,6 +5632,10 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -4803,6 +5646,18 @@ func (client *Client) CreateMyBaseWithOptions(tmpReq *CreateMyBaseRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
 		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDataInBase64)) {
+		query["UserDataInBase64"] = request.UserDataInBase64
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -4915,6 +5770,13 @@ func (client *Client) DeleteDedicatedHostAccount(request *DeleteDedicatedHostAcc
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+ *
+ * @param request DeleteDedicatedHostGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDedicatedHostGroupResponse
+ */
 func (client *Client) DeleteDedicatedHostGroupWithOptions(request *DeleteDedicatedHostGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDedicatedHostGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4964,6 +5826,12 @@ func (client *Client) DeleteDedicatedHostGroupWithOptions(request *DeleteDedicat
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+ *
+ * @param request DeleteDedicatedHostGroupRequest
+ * @return DeleteDedicatedHostGroupResponse
+ */
 func (client *Client) DeleteDedicatedHostGroup(request *DeleteDedicatedHostGroupRequest) (_result *DeleteDedicatedHostGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDedicatedHostGroupResponse{}
@@ -5167,6 +6035,13 @@ func (client *Client) DescribeDedicatedHostGroups(request *DescribeDedicatedHost
 	return _result, _err
 }
 
+/**
+ * After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+ *
+ * @param request DescribeDedicatedHostsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDedicatedHostsResponse
+ */
 func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicatedHostsRequest, runtime *util.RuntimeOptions) (_result *DescribeDedicatedHostsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5252,6 +6127,12 @@ func (client *Client) DescribeDedicatedHostsWithOptions(request *DescribeDedicat
 	return _result, _err
 }
 
+/**
+ * After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+ *
+ * @param request DescribeDedicatedHostsRequest
+ * @return DescribeDedicatedHostsResponse
+ */
 func (client *Client) DescribeDedicatedHosts(request *DescribeDedicatedHostsRequest) (_result *DescribeDedicatedHostsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDedicatedHostsResponse{}
@@ -5263,6 +6144,13 @@ func (client *Client) DescribeDedicatedHosts(request *DescribeDedicatedHostsRequ
 	return _result, _err
 }
 
+/**
+ * After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+ *
+ * @param request DescribeHostEcsLevelInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeHostEcsLevelInfoResponse
+ */
 func (client *Client) DescribeHostEcsLevelInfoWithOptions(request *DescribeHostEcsLevelInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeHostEcsLevelInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5324,6 +6212,12 @@ func (client *Client) DescribeHostEcsLevelInfoWithOptions(request *DescribeHostE
 	return _result, _err
 }
 
+/**
+ * After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+ *
+ * @param request DescribeHostEcsLevelInfoRequest
+ * @return DescribeHostEcsLevelInfoResponse
+ */
 func (client *Client) DescribeHostEcsLevelInfo(request *DescribeHostEcsLevelInfoRequest) (_result *DescribeHostEcsLevelInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHostEcsLevelInfoResponse{}
@@ -5335,6 +6229,13 @@ func (client *Client) DescribeHostEcsLevelInfo(request *DescribeHostEcsLevelInfo
 	return _result, _err
 }
 
+/**
+ * You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+ *
+ * @param request DescribeHostWebShellRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeHostWebShellResponse
+ */
 func (client *Client) DescribeHostWebShellWithOptions(request *DescribeHostWebShellRequest, runtime *util.RuntimeOptions) (_result *DescribeHostWebShellResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5388,6 +6289,12 @@ func (client *Client) DescribeHostWebShellWithOptions(request *DescribeHostWebSh
 	return _result, _err
 }
 
+/**
+ * You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+ *
+ * @param request DescribeHostWebShellRequest
+ * @return DescribeHostWebShellResponse
+ */
 func (client *Client) DescribeHostWebShell(request *DescribeHostWebShellRequest) (_result *DescribeHostWebShellResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHostWebShellResponse{}
@@ -5399,6 +6306,13 @@ func (client *Client) DescribeHostWebShell(request *DescribeHostWebShellRequest)
 	return _result, _err
 }
 
+/**
+ * For more information about region IDs, see [Region IDs](~~198326~~).
+ *
+ * @param request DescribeRegionsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5432,6 +6346,12 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+/**
+ * For more information about region IDs, see [Region IDs](~~198326~~).
+ *
+ * @param request DescribeRegionsRequest
+ * @return DescribeRegionsResponse
+ */
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -5647,6 +6567,14 @@ func (client *Client) ModifyDedicatedHostAttribute(request *ModifyDedicatedHostA
 	return _result, _err
 }
 
+/**
+ * After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+ * >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+ *
+ * @param request ModifyDedicatedHostClassRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDedicatedHostClassResponse
+ */
 func (client *Client) ModifyDedicatedHostClassWithOptions(request *ModifyDedicatedHostClassRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedHostClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5708,6 +6636,13 @@ func (client *Client) ModifyDedicatedHostClassWithOptions(request *ModifyDedicat
 	return _result, _err
 }
 
+/**
+ * After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+ * >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+ *
+ * @param request ModifyDedicatedHostClassRequest
+ * @return ModifyDedicatedHostClassResponse
+ */
 func (client *Client) ModifyDedicatedHostClass(request *ModifyDedicatedHostClassRequest) (_result *ModifyDedicatedHostClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDedicatedHostClassResponse{}
@@ -5719,6 +6654,13 @@ func (client *Client) ModifyDedicatedHostClass(request *ModifyDedicatedHostClass
 	return _result, _err
 }
 
+/**
+ * For more information, see [Manage dedicated clusters](~~182328~~).
+ *
+ * @param request ModifyDedicatedHostGroupAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDedicatedHostGroupAttributeResponse
+ */
 func (client *Client) ModifyDedicatedHostGroupAttributeWithOptions(request *ModifyDedicatedHostGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedHostGroupAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5796,6 +6738,12 @@ func (client *Client) ModifyDedicatedHostGroupAttributeWithOptions(request *Modi
 	return _result, _err
 }
 
+/**
+ * For more information, see [Manage dedicated clusters](~~182328~~).
+ *
+ * @param request ModifyDedicatedHostGroupAttributeRequest
+ * @return ModifyDedicatedHostGroupAttributeResponse
+ */
 func (client *Client) ModifyDedicatedHostGroupAttribute(request *ModifyDedicatedHostGroupAttributeRequest) (_result *ModifyDedicatedHostGroupAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDedicatedHostGroupAttributeResponse{}
@@ -5807,6 +6755,13 @@ func (client *Client) ModifyDedicatedHostGroupAttribute(request *ModifyDedicated
 	return _result, _err
 }
 
+/**
+ * This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+ *
+ * @param request ModifyDedicatedHostPasswordRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyDedicatedHostPasswordResponse
+ */
 func (client *Client) ModifyDedicatedHostPasswordWithOptions(request *ModifyDedicatedHostPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyDedicatedHostPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5860,6 +6815,12 @@ func (client *Client) ModifyDedicatedHostPasswordWithOptions(request *ModifyDedi
 	return _result, _err
 }
 
+/**
+ * This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+ *
+ * @param request ModifyDedicatedHostPasswordRequest
+ * @return ModifyDedicatedHostPasswordResponse
+ */
 func (client *Client) ModifyDedicatedHostPassword(request *ModifyDedicatedHostPasswordRequest) (_result *ModifyDedicatedHostPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDedicatedHostPasswordResponse{}
@@ -5991,6 +6952,14 @@ func (client *Client) QueryHostInstanceConsoleInfo(request *QueryHostInstanceCon
 	return _result, _err
 }
 
+/**
+ * If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a **faulty** host in the dedicated cluster.
+ * >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+ *
+ * @param request ReplaceDedicatedHostRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReplaceDedicatedHostResponse
+ */
 func (client *Client) ReplaceDedicatedHostWithOptions(request *ReplaceDedicatedHostRequest, runtime *util.RuntimeOptions) (_result *ReplaceDedicatedHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6044,6 +7013,13 @@ func (client *Client) ReplaceDedicatedHostWithOptions(request *ReplaceDedicatedH
 	return _result, _err
 }
 
+/**
+ * If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a **faulty** host in the dedicated cluster.
+ * >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+ *
+ * @param request ReplaceDedicatedHostRequest
+ * @return ReplaceDedicatedHostResponse
+ */
 func (client *Client) ReplaceDedicatedHost(request *ReplaceDedicatedHostRequest) (_result *ReplaceDedicatedHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReplaceDedicatedHostResponse{}
