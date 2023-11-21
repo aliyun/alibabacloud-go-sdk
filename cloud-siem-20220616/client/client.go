@@ -1183,6 +1183,181 @@ func (s *DescribeAggregateFunctionResponse) SetBody(v *DescribeAggregateFunction
 	return s
 }
 
+type DescribeAlertSceneRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAlertSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertSceneRequest) SetRegionId(v string) *DescribeAlertSceneRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAlertSceneResponseBody struct {
+	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*DescribeAlertSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeAlertSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertSceneResponseBody) SetCode(v int32) *DescribeAlertSceneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBody) SetData(v []*DescribeAlertSceneResponseBodyData) *DescribeAlertSceneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBody) SetMessage(v string) *DescribeAlertSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBody) SetRequestId(v string) *DescribeAlertSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBody) SetSuccess(v bool) *DescribeAlertSceneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeAlertSceneResponseBodyData struct {
+	AlertName   *string                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertNameId *string                                      `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
+	AlertTile   *string                                      `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
+	AlertTileId *string                                      `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
+	AlertType   *string                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeId *string                                      `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
+	Targets     []*DescribeAlertSceneResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertSceneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertSceneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertName(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertNameId(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertNameId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertTile(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertTile = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertTileId(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertTileId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertType(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetAlertTypeId(v string) *DescribeAlertSceneResponseBodyData {
+	s.AlertTypeId = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyData) SetTargets(v []*DescribeAlertSceneResponseBodyDataTargets) *DescribeAlertSceneResponseBodyData {
+	s.Targets = v
+	return s
+}
+
+type DescribeAlertSceneResponseBodyDataTargets struct {
+	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAlertSceneResponseBodyDataTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertSceneResponseBodyDataTargets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertSceneResponseBodyDataTargets) SetName(v string) *DescribeAlertSceneResponseBodyDataTargets {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyDataTargets) SetType(v string) *DescribeAlertSceneResponseBodyDataTargets {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyDataTargets) SetValue(v string) *DescribeAlertSceneResponseBodyDataTargets {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponseBodyDataTargets) SetValues(v []*string) *DescribeAlertSceneResponseBodyDataTargets {
+	s.Values = v
+	return s
+}
+
+type DescribeAlertSceneResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlertSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlertSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlertSceneResponse) SetHeaders(v map[string]*string) *DescribeAlertSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertSceneResponse) SetStatusCode(v int32) *DescribeAlertSceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAlertSceneResponse) SetBody(v *DescribeAlertSceneResponseBody) *DescribeAlertSceneResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAlertSceneByEventRequest struct {
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7462,6 +7637,410 @@ func (s *DescribeWafScopeResponse) SetBody(v *DescribeWafScopeResponseBody) *Des
 	return s
 }
 
+type DescribeWhiteRuleListRequest struct {
+	AlertName    *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertType    *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeWhiteRuleListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListRequest) SetAlertName(v string) *DescribeWhiteRuleListRequest {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetAlertType(v string) *DescribeWhiteRuleListRequest {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetCurrentPage(v int32) *DescribeWhiteRuleListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetIncidentUuid(v string) *DescribeWhiteRuleListRequest {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetPageSize(v int32) *DescribeWhiteRuleListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListRequest) SetRegionId(v string) *DescribeWhiteRuleListRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBody struct {
+	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeWhiteRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBody) SetCode(v int32) *DescribeWhiteRuleListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBody) SetData(v *DescribeWhiteRuleListResponseBodyData) *DescribeWhiteRuleListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBody) SetMessage(v string) *DescribeWhiteRuleListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBody) SetRequestId(v string) *DescribeWhiteRuleListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBody) SetSuccess(v bool) *DescribeWhiteRuleListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyData struct {
+	PageInfo     *DescribeWhiteRuleListResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	ResponseData []*DescribeWhiteRuleListResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyData) SetPageInfo(v *DescribeWhiteRuleListResponseBodyDataPageInfo) *DescribeWhiteRuleListResponseBodyData {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyData) SetResponseData(v []*DescribeWhiteRuleListResponseBodyDataResponseData) *DescribeWhiteRuleListResponseBodyData {
+	s.ResponseData = v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataPageInfo struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataPageInfo) SetCurrentPage(v int32) *DescribeWhiteRuleListResponseBodyDataPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataPageInfo) SetPageSize(v int32) *DescribeWhiteRuleListResponseBodyDataPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataPageInfo) SetTotalCount(v int64) *DescribeWhiteRuleListResponseBodyDataPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataResponseData struct {
+	AlertName    *string                                                      `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertNameId  *string                                                      `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
+	AlertType    *string                                                      `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertTypeId  *string                                                      `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
+	AlertUuid    *string                                                      `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	Aliuid       *int64                                                       `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Expression   *DescribeWhiteRuleListResponseBodyDataResponseDataExpression `json:"Expression,omitempty" xml:"Expression,omitempty" type:"Struct"`
+	GmtCreate    *string                                                      `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified  *string                                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id           *int64                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	IncidentUuid *string                                                      `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	Status       *int32                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubAliuid    *int64                                                       `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAlertName(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.AlertName = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAlertNameId(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.AlertNameId = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAlertType(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.AlertType = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAlertTypeId(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.AlertTypeId = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAlertUuid(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.AlertUuid = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetAliuid(v int64) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetExpression(v *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.Expression = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetGmtCreate(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetGmtModified(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetId(v int64) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetIncidentUuid(v string) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.IncidentUuid = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetStatus(v int32) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseData) SetSubAliuid(v int64) *DescribeWhiteRuleListResponseBodyDataResponseData {
+	s.SubAliuid = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataResponseDataExpression struct {
+	Conditions []*DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	Logic      *string                                                                  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpression) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpression) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) SetConditions(v []*DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) *DescribeWhiteRuleListResponseBodyDataResponseDataExpression {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpression) SetLogic(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpression {
+	s.Logic = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions struct {
+	IsNot    *bool                                                                       `json:"IsNot,omitempty" xml:"IsNot,omitempty"`
+	ItemId   *int32                                                                      `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	Left     *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft  `json:"Left,omitempty" xml:"Left,omitempty" type:"Struct"`
+	Operator *string                                                                     `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Right    *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight `json:"Right,omitempty" xml:"Right,omitempty" type:"Struct"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) SetIsNot(v bool) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions {
+	s.IsNot = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) SetItemId(v int32) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions {
+	s.ItemId = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) SetLeft(v *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions {
+	s.Left = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) SetOperator(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions) SetRight(v *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions {
+	s.Right = v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft struct {
+	IsVar         *bool                  `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
+	Modifier      *string                `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
+	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value         *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) SetIsVar(v bool) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft {
+	s.IsVar = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) SetModifier(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft {
+	s.Modifier = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) SetModifierParam(v map[string]interface{}) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft {
+	s.ModifierParam = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) SetType(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft) SetValue(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft {
+	s.Value = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight struct {
+	IsVar         *bool                  `json:"IsVar,omitempty" xml:"IsVar,omitempty"`
+	Modifier      *string                `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	ModifierParam map[string]interface{} `json:"ModifierParam,omitempty" xml:"ModifierParam,omitempty"`
+	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value         *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) SetIsVar(v bool) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight {
+	s.IsVar = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) SetModifier(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight {
+	s.Modifier = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) SetModifierParam(v map[string]interface{}) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight {
+	s.ModifierParam = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) SetType(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight) SetValue(v string) *DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight {
+	s.Value = &v
+	return s
+}
+
+type DescribeWhiteRuleListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWhiteRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWhiteRuleListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWhiteRuleListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWhiteRuleListResponse) SetHeaders(v map[string]*string) *DescribeWhiteRuleListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponse) SetStatusCode(v int32) *DescribeWhiteRuleListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWhiteRuleListResponse) SetBody(v *DescribeWhiteRuleListResponseBody) *DescribeWhiteRuleListResponse {
+	s.Body = v
+	return s
+}
+
 type DoQuickFieldRequest struct {
 	From     *int32  `json:"From,omitempty" xml:"From,omitempty"`
 	Index    *string `json:"Index,omitempty" xml:"Index,omitempty"`
@@ -12856,6 +13435,50 @@ func (client *Client) DescribeAggregateFunction(request *DescribeAggregateFuncti
 	return _result, _err
 }
 
+func (client *Client) DescribeAlertSceneWithOptions(request *DescribeAlertSceneRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlertScene"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlertSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlertScene(request *DescribeAlertSceneRequest) (_result *DescribeAlertSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlertSceneResponse{}
+	_body, _err := client.DescribeAlertSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAlertSceneByEventWithOptions(request *DescribeAlertSceneByEventRequest, runtime *util.RuntimeOptions) (_result *DescribeAlertSceneByEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14649,6 +15272,70 @@ func (client *Client) DescribeWafScope(request *DescribeWafScopeRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWafScopeResponse{}
 	_body, _err := client.DescribeWafScopeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWhiteRuleListWithOptions(request *DescribeWhiteRuleListRequest, runtime *util.RuntimeOptions) (_result *DescribeWhiteRuleListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertName)) {
+		body["AlertName"] = request.AlertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertType)) {
+		body["AlertType"] = request.AlertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncidentUuid)) {
+		body["IncidentUuid"] = request.IncidentUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWhiteRuleList"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWhiteRuleListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWhiteRuleList(request *DescribeWhiteRuleListRequest) (_result *DescribeWhiteRuleListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWhiteRuleListResponse{}
+	_body, _err := client.DescribeWhiteRuleListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
