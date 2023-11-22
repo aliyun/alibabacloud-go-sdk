@@ -119,6 +119,7 @@ func (s *VerifyCaptchaResponse) SetBody(v *VerifyCaptchaResponseBody) *VerifyCap
 
 type VerifyIntelligentCaptchaRequest struct {
 	CaptchaVerifyParam *string `json:"CaptchaVerifyParam,omitempty" xml:"CaptchaVerifyParam,omitempty"`
+	SceneId            *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
 
 func (s VerifyIntelligentCaptchaRequest) String() string {
@@ -131,6 +132,11 @@ func (s VerifyIntelligentCaptchaRequest) GoString() string {
 
 func (s *VerifyIntelligentCaptchaRequest) SetCaptchaVerifyParam(v string) *VerifyIntelligentCaptchaRequest {
 	s.CaptchaVerifyParam = &v
+	return s
+}
+
+func (s *VerifyIntelligentCaptchaRequest) SetSceneId(v string) *VerifyIntelligentCaptchaRequest {
+	s.SceneId = &v
 	return s
 }
 
@@ -321,6 +327,10 @@ func (client *Client) VerifyIntelligentCaptchaWithOptions(request *VerifyIntelli
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CaptchaVerifyParam)) {
 		body["CaptchaVerifyParam"] = request.CaptchaVerifyParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
 	}
 
 	req := &openapi.OpenApiRequest{
