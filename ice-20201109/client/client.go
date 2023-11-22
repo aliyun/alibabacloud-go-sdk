@@ -832,6 +832,82 @@ func (s *AddTemplateResponse) SetBody(v *AddTemplateResponseBody) *AddTemplateRe
 	return s
 }
 
+type AlterSearchIndexRequest struct {
+	IndexConfig   *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s AlterSearchIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlterSearchIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AlterSearchIndexRequest) SetIndexConfig(v string) *AlterSearchIndexRequest {
+	s.IndexConfig = &v
+	return s
+}
+
+func (s *AlterSearchIndexRequest) SetIndexType(v string) *AlterSearchIndexRequest {
+	s.IndexType = &v
+	return s
+}
+
+func (s *AlterSearchIndexRequest) SetSearchLibName(v string) *AlterSearchIndexRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type AlterSearchIndexResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AlterSearchIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlterSearchIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AlterSearchIndexResponseBody) SetRequestId(v string) *AlterSearchIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AlterSearchIndexResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AlterSearchIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AlterSearchIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AlterSearchIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AlterSearchIndexResponse) SetHeaders(v map[string]*string) *AlterSearchIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AlterSearchIndexResponse) SetStatusCode(v int32) *AlterSearchIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AlterSearchIndexResponse) SetBody(v *AlterSearchIndexResponseBody) *AlterSearchIndexResponse {
+	s.Body = v
+	return s
+}
+
 type BatchGetMediaInfosRequest struct {
 	AdditionType *string `json:"AdditionType,omitempty" xml:"AdditionType,omitempty"`
 	MediaIds     *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
@@ -1314,7 +1390,6 @@ func (s *CancelFavoritePublicMediaResponse) SetBody(v *CancelFavoritePublicMedia
 }
 
 type CreateAuditRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AuditContent *string `json:"AuditContent,omitempty" xml:"AuditContent,omitempty"`
 }
 
@@ -1324,11 +1399,6 @@ func (s CreateAuditRequest) String() string {
 
 func (s CreateAuditRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateAuditRequest) SetAppId(v string) *CreateAuditRequest {
-	s.AppId = &v
-	return s
 }
 
 func (s *CreateAuditRequest) SetAuditContent(v string) *CreateAuditRequest {
@@ -2775,6 +2845,151 @@ func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreateP
 	return s
 }
 
+type CreateSearchIndexRequest struct {
+	IndexConfig   *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s CreateSearchIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchIndexRequest) SetIndexConfig(v string) *CreateSearchIndexRequest {
+	s.IndexConfig = &v
+	return s
+}
+
+func (s *CreateSearchIndexRequest) SetIndexType(v string) *CreateSearchIndexRequest {
+	s.IndexType = &v
+	return s
+}
+
+func (s *CreateSearchIndexRequest) SetSearchLibName(v string) *CreateSearchIndexRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type CreateSearchIndexResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSearchIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchIndexResponseBody) SetRequestId(v string) *CreateSearchIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSearchIndexResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSearchIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSearchIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchIndexResponse) SetHeaders(v map[string]*string) *CreateSearchIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSearchIndexResponse) SetStatusCode(v int32) *CreateSearchIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSearchIndexResponse) SetBody(v *CreateSearchIndexResponseBody) *CreateSearchIndexResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSearchLibRequest struct {
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s CreateSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchLibRequest) SetSearchLibName(v string) *CreateSearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type CreateSearchLibResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s CreateSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchLibResponseBody) SetRequestId(v string) *CreateSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSearchLibResponseBody) SetSearchLibName(v string) *CreateSearchLibResponseBody {
+	s.SearchLibName = &v
+	return s
+}
+
+type CreateSearchLibResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSearchLibResponse) SetHeaders(v map[string]*string) *CreateSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSearchLibResponse) SetStatusCode(v int32) *CreateSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSearchLibResponse) SetBody(v *CreateSearchLibResponseBody) *CreateSearchLibResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUploadMediaRequest struct {
 	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	EntityId           *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
@@ -4215,6 +4430,87 @@ func (s *DeleteLiveTranscodeTemplateResponse) SetBody(v *DeleteLiveTranscodeTemp
 	return s
 }
 
+type DeleteMediaFromSearchLibRequest struct {
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MsgBody       *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s DeleteMediaFromSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaFromSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaFromSearchLibRequest) SetMediaId(v string) *DeleteMediaFromSearchLibRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibRequest) SetMsgBody(v string) *DeleteMediaFromSearchLibRequest {
+	s.MsgBody = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibRequest) SetSearchLibName(v string) *DeleteMediaFromSearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type DeleteMediaFromSearchLibResponseBody struct {
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMediaFromSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaFromSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaFromSearchLibResponseBody) SetMediaId(v string) *DeleteMediaFromSearchLibResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibResponseBody) SetRequestId(v string) *DeleteMediaFromSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMediaFromSearchLibResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMediaFromSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMediaFromSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMediaFromSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMediaFromSearchLibResponse) SetHeaders(v map[string]*string) *DeleteMediaFromSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibResponse) SetStatusCode(v int32) *DeleteMediaFromSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibResponse) SetBody(v *DeleteMediaFromSearchLibResponseBody) *DeleteMediaFromSearchLibResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteMediaInfosRequest struct {
 	DeletePhysicalFiles *bool   `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
 	InputURLs           *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
@@ -4666,695 +4962,6 @@ func (s *DeleteTemplateResponse) SetBody(v *DeleteTemplateResponseBody) *DeleteT
 	return s
 }
 
-type DescribeFilterConfigsRequest struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeFilterConfigsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFilterConfigsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFilterConfigsRequest) SetType(v string) *DescribeFilterConfigsRequest {
-	s.Type = &v
-	return s
-}
-
-type DescribeFilterConfigsResponseBody struct {
-	FilterConfigs []*DescribeFilterConfigsResponseBodyFilterConfigs `json:"FilterConfigs,omitempty" xml:"FilterConfigs,omitempty" type:"Repeated"`
-	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeFilterConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFilterConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFilterConfigsResponseBody) SetFilterConfigs(v []*DescribeFilterConfigsResponseBodyFilterConfigs) *DescribeFilterConfigsResponseBody {
-	s.FilterConfigs = v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponseBody) SetRequestId(v string) *DescribeFilterConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeFilterConfigsResponseBodyFilterConfigs struct {
-	FilterName  *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
-	ItemConfigs *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UuId        *string `json:"UuId,omitempty" xml:"UuId,omitempty"`
-}
-
-func (s DescribeFilterConfigsResponseBodyFilterConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFilterConfigsResponseBodyFilterConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetFilterName(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
-	s.FilterName = &v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetItemConfigs(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetType(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
-	s.Type = &v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponseBodyFilterConfigs) SetUuId(v string) *DescribeFilterConfigsResponseBodyFilterConfigs {
-	s.UuId = &v
-	return s
-}
-
-type DescribeFilterConfigsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeFilterConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeFilterConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeFilterConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeFilterConfigsResponse) SetHeaders(v map[string]*string) *DescribeFilterConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponse) SetStatusCode(v int32) *DescribeFilterConfigsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeFilterConfigsResponse) SetBody(v *DescribeFilterConfigsResponseBody) *DescribeFilterConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterIceEditUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterIceEditUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceEditUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceEditUsageRequest) SetEndTs(v int64) *DescribeMeterIceEditUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageRequest) SetInterval(v int64) *DescribeMeterIceEditUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageRequest) SetRegion(v string) *DescribeMeterIceEditUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageRequest) SetStartTs(v int64) *DescribeMeterIceEditUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterIceEditUsageResponseBody struct {
-	Data []*DescribeMeterIceEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterIceEditUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceEditUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceEditUsageResponseBody) SetData(v []*DescribeMeterIceEditUsageResponseBodyData) *DescribeMeterIceEditUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageResponseBody) SetRequestId(v string) *DescribeMeterIceEditUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterIceEditUsageResponseBodyData struct {
-	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Profile  *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterIceEditUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceEditUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceEditUsageResponseBodyData) SetDuration(v int64) *DescribeMeterIceEditUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageResponseBodyData) SetProfile(v string) *DescribeMeterIceEditUsageResponseBodyData {
-	s.Profile = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageResponseBodyData) SetTime(v int64) *DescribeMeterIceEditUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterIceEditUsageResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceEditUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterIceEditUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceEditUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceEditUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterIceEditUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageResponse) SetStatusCode(v int32) *DescribeMeterIceEditUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterIceEditUsageResponse) SetBody(v *DescribeMeterIceEditUsageResponseBody) *DescribeMeterIceEditUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterIceLiveMediaConvertUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetEndTs(v int64) *DescribeMeterIceLiveMediaConvertUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetInterval(v int64) *DescribeMeterIceLiveMediaConvertUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetRegion(v string) *DescribeMeterIceLiveMediaConvertUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageRequest) SetStartTs(v int64) *DescribeMeterIceLiveMediaConvertUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterIceLiveMediaConvertUsageResponseBody struct {
-	Data []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponseBody) SetData(v []*DescribeMeterIceLiveMediaConvertUsageResponseBodyData) *DescribeMeterIceLiveMediaConvertUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponseBody) SetRequestId(v string) *DescribeMeterIceLiveMediaConvertUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterIceLiveMediaConvertUsageResponseBodyData struct {
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponseBodyData) SetDuration(v int64) *DescribeMeterIceLiveMediaConvertUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponseBodyData) SetSpecification(v string) *DescribeMeterIceLiveMediaConvertUsageResponseBodyData {
-	s.Specification = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponseBodyData) SetTime(v int64) *DescribeMeterIceLiveMediaConvertUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterIceLiveMediaConvertUsageResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceLiveMediaConvertUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceLiveMediaConvertUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterIceLiveMediaConvertUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponse) SetStatusCode(v int32) *DescribeMeterIceLiveMediaConvertUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterIceLiveMediaConvertUsageResponse) SetBody(v *DescribeMeterIceLiveMediaConvertUsageResponseBody) *DescribeMeterIceLiveMediaConvertUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUHDUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetEndTs(v int64) *DescribeMeterIceMediaConvertUHDUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetInterval(v string) *DescribeMeterIceMediaConvertUHDUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetRegionId(v string) *DescribeMeterIceMediaConvertUHDUsageRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageRequest) SetStartTs(v int64) *DescribeMeterIceMediaConvertUHDUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUHDUsageResponseBody struct {
-	Data []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponseBody) SetData(v []*DescribeMeterIceMediaConvertUHDUsageResponseBodyData) *DescribeMeterIceMediaConvertUHDUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponseBody) SetRequestId(v string) *DescribeMeterIceMediaConvertUHDUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUHDUsageResponseBodyData struct {
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponseBodyData) SetDuration(v int64) *DescribeMeterIceMediaConvertUHDUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponseBodyData) SetSpecification(v string) *DescribeMeterIceMediaConvertUHDUsageResponseBodyData {
-	s.Specification = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponseBodyData) SetTime(v int64) *DescribeMeterIceMediaConvertUHDUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUHDUsageResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceMediaConvertUHDUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUHDUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterIceMediaConvertUHDUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponse) SetStatusCode(v int32) *DescribeMeterIceMediaConvertUHDUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUHDUsageResponse) SetBody(v *DescribeMeterIceMediaConvertUHDUsageResponseBody) *DescribeMeterIceMediaConvertUHDUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUsageRequest) SetEndTs(v int64) *DescribeMeterIceMediaConvertUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageRequest) SetInterval(v int64) *DescribeMeterIceMediaConvertUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageRequest) SetRegion(v string) *DescribeMeterIceMediaConvertUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageRequest) SetStartTs(v int64) *DescribeMeterIceMediaConvertUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUsageResponseBody struct {
-	Data []*DescribeMeterIceMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponseBody) SetData(v []*DescribeMeterIceMediaConvertUsageResponseBodyData) *DescribeMeterIceMediaConvertUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponseBody) SetRequestId(v string) *DescribeMeterIceMediaConvertUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUsageResponseBodyData struct {
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponseBodyData) SetDuration(v int64) *DescribeMeterIceMediaConvertUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponseBodyData) SetSpecification(v string) *DescribeMeterIceMediaConvertUsageResponseBodyData {
-	s.Specification = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponseBodyData) SetTime(v int64) *DescribeMeterIceMediaConvertUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterIceMediaConvertUsageResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceMediaConvertUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMediaConvertUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterIceMediaConvertUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponse) SetStatusCode(v int32) *DescribeMeterIceMediaConvertUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterIceMediaConvertUsageResponse) SetBody(v *DescribeMeterIceMediaConvertUsageResponseBody) *DescribeMeterIceMediaConvertUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterIceMpsAiUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterIceMpsAiUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMpsAiUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMpsAiUsageRequest) SetEndTs(v int64) *DescribeMeterIceMpsAiUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageRequest) SetInterval(v int64) *DescribeMeterIceMpsAiUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageRequest) SetRegion(v string) *DescribeMeterIceMpsAiUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageRequest) SetStartTs(v int64) *DescribeMeterIceMpsAiUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterIceMpsAiUsageResponseBody struct {
-	Data []*DescribeMeterIceMpsAiUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterIceMpsAiUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMpsAiUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponseBody) SetData(v []*DescribeMeterIceMpsAiUsageResponseBodyData) *DescribeMeterIceMpsAiUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponseBody) SetRequestId(v string) *DescribeMeterIceMpsAiUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterIceMpsAiUsageResponseBodyData struct {
-	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeMeterIceMpsAiUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMpsAiUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponseBodyData) SetDuration(v int64) *DescribeMeterIceMpsAiUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponseBodyData) SetTime(v int64) *DescribeMeterIceMpsAiUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponseBodyData) SetType(v string) *DescribeMeterIceMpsAiUsageResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-type DescribeMeterIceMpsAiUsageResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterIceMpsAiUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterIceMpsAiUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterIceMpsAiUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterIceMpsAiUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponse) SetStatusCode(v int32) *DescribeMeterIceMpsAiUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterIceMpsAiUsageResponse) SetBody(v *DescribeMeterIceMpsAiUsageResponseBody) *DescribeMeterIceMpsAiUsageResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeMeterImsEditUsageRequest struct {
 	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
 	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
@@ -5467,470 +5074,6 @@ func (s *DescribeMeterImsEditUsageResponse) SetStatusCode(v int32) *DescribeMete
 }
 
 func (s *DescribeMeterImsEditUsageResponse) SetBody(v *DescribeMeterImsEditUsageResponseBody) *DescribeMeterImsEditUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterImsLiveEditUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterImsLiveEditUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveEditUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveEditUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveEditUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveEditUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageRequest) SetRegion(v string) *DescribeMeterImsLiveEditUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveEditUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterImsLiveEditUsageResponseBody struct {
-	Data      []*DescribeMeterImsLiveEditUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterImsLiveEditUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveEditUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponseBody) SetData(v []*DescribeMeterImsLiveEditUsageResponseBodyData) *DescribeMeterImsLiveEditUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveEditUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterImsLiveEditUsageResponseBodyData struct {
-	Duration *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Profile  *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
-	Time     *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterImsLiveEditUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveEditUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveEditUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetProfile(v string) *DescribeMeterImsLiveEditUsageResponseBodyData {
-	s.Profile = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveEditUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterImsLiveEditUsageResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterImsLiveEditUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterImsLiveEditUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveEditUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveEditUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveEditUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveEditUsageResponse) SetBody(v *DescribeMeterImsLiveEditUsageResponseBody) *DescribeMeterImsLiveEditUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterImsLiveMediaConvertUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetRegion(v string) *DescribeMeterImsLiveMediaConvertUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveMediaConvertUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterImsLiveMediaConvertUsageResponseBody struct {
-	Data      []*DescribeMeterImsLiveMediaConvertUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponseBody) SetData(v []*DescribeMeterImsLiveMediaConvertUsageResponseBodyData) *DescribeMeterImsLiveMediaConvertUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveMediaConvertUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterImsLiveMediaConvertUsageResponseBodyData struct {
-	Duration      *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	Time          *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetSpecification(v string) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
-	s.Specification = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveMediaConvertUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterImsLiveMediaConvertUsageResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterImsLiveMediaConvertUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveMediaConvertUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveMediaConvertUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveMediaConvertUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveMediaConvertUsageResponse) SetBody(v *DescribeMeterImsLiveMediaConvertUsageResponseBody) *DescribeMeterImsLiveMediaConvertUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterImsLiveRecordUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterImsLiveRecordUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveRecordUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveRecordUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveRecordUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveRecordUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageRequest) SetRegion(v string) *DescribeMeterImsLiveRecordUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveRecordUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterImsLiveRecordUsageResponseBody struct {
-	Data      []*DescribeMeterImsLiveRecordUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBody) SetData(v []*DescribeMeterImsLiveRecordUsageResponseBodyData) *DescribeMeterImsLiveRecordUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveRecordUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterImsLiveRecordUsageResponseBodyData struct {
-	Channels *float64 `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	Duration *int64   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Time     *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type     *string  `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetChannels(v float64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
-	s.Channels = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetDuration(v int64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveRecordUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponseBodyData) SetType(v string) *DescribeMeterImsLiveRecordUsageResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-type DescribeMeterImsLiveRecordUsageResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterImsLiveRecordUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveRecordUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveRecordUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveRecordUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveRecordUsageResponse) SetBody(v *DescribeMeterImsLiveRecordUsageResponseBody) *DescribeMeterImsLiveRecordUsageResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeMeterImsLiveSnapshotUsageRequest struct {
-	EndTs    *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	Interval *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	StartTs  *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetEndTs(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetInterval(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetRegion(v string) *DescribeMeterImsLiveSnapshotUsageRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageRequest) SetStartTs(v int64) *DescribeMeterImsLiveSnapshotUsageRequest {
-	s.StartTs = &v
-	return s
-}
-
-type DescribeMeterImsLiveSnapshotUsageResponseBody struct {
-	Data      []*DescribeMeterImsLiveSnapshotUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponseBody) SetData(v []*DescribeMeterImsLiveSnapshotUsageResponseBodyData) *DescribeMeterImsLiveSnapshotUsageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponseBody) SetRequestId(v string) *DescribeMeterImsLiveSnapshotUsageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeMeterImsLiveSnapshotUsageResponseBodyData struct {
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	Time  *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponseBodyData) SetCount(v int64) *DescribeMeterImsLiveSnapshotUsageResponseBodyData {
-	s.Count = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponseBodyData) SetTime(v int64) *DescribeMeterImsLiveSnapshotUsageResponseBodyData {
-	s.Time = &v
-	return s
-}
-
-type DescribeMeterImsLiveSnapshotUsageResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeterImsLiveSnapshotUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeterImsLiveSnapshotUsageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetHeaders(v map[string]*string) *DescribeMeterImsLiveSnapshotUsageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetStatusCode(v int32) *DescribeMeterImsLiveSnapshotUsageResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeterImsLiveSnapshotUsageResponse) SetBody(v *DescribeMeterImsLiveSnapshotUsageResponseBody) *DescribeMeterImsLiveSnapshotUsageResponse {
 	s.Body = v
 	return s
 }
@@ -6423,486 +5566,6 @@ func (s *DescribeMeterImsSummaryResponse) SetBody(v *DescribeMeterImsSummaryResp
 	return s
 }
 
-type DescribePlayDetailRequest struct {
-	PlayTs    *string `json:"PlayTs,omitempty" xml:"PlayTs,omitempty"`
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-}
-
-func (s DescribePlayDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayDetailRequest) SetPlayTs(v string) *DescribePlayDetailRequest {
-	s.PlayTs = &v
-	return s
-}
-
-func (s *DescribePlayDetailRequest) SetSessionId(v string) *DescribePlayDetailRequest {
-	s.SessionId = &v
-	return s
-}
-
-type DescribePlayDetailResponseBody struct {
-	BaseInfos []*DescribePlayDetailResponseBodyBaseInfos `json:"BaseInfos,omitempty" xml:"BaseInfos,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribePlayDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayDetailResponseBody) SetBaseInfos(v []*DescribePlayDetailResponseBodyBaseInfos) *DescribePlayDetailResponseBody {
-	s.BaseInfos = v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBody) SetRequestId(v string) *DescribePlayDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePlayDetailResponseBodyBaseInfos struct {
-	AppName               *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Bps                   *string `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	BroadcastPace         *string `json:"BroadcastPace,omitempty" xml:"BroadcastPace,omitempty"`
-	ClientIP              *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	Codec                 *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
-	DecodeStuckTime       *string `json:"DecodeStuckTime,omitempty" xml:"DecodeStuckTime,omitempty"`
-	Definition            *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	FirstFrameDuration    *string `json:"FirstFrameDuration,omitempty" xml:"FirstFrameDuration,omitempty"`
-	Fps                   *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	IsHardDecode          *string `json:"IsHardDecode,omitempty" xml:"IsHardDecode,omitempty"`
-	Mdat                  *string `json:"Mdat,omitempty" xml:"Mdat,omitempty"`
-	Moov                  *string `json:"Moov,omitempty" xml:"Moov,omitempty"`
-	Network               *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	NetworkDuration       *string `json:"NetworkDuration,omitempty" xml:"NetworkDuration,omitempty"`
-	NetworkStuckTime      *string `json:"NetworkStuckTime,omitempty" xml:"NetworkStuckTime,omitempty"`
-	Os                    *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PlayTs                *string `json:"PlayTs,omitempty" xml:"PlayTs,omitempty"`
-	PlayerLoadDuration    *string `json:"PlayerLoadDuration,omitempty" xml:"PlayerLoadDuration,omitempty"`
-	PlayerPreDealDuration *string `json:"PlayerPreDealDuration,omitempty" xml:"PlayerPreDealDuration,omitempty"`
-	PlayerReadyDuration   *string `json:"PlayerReadyDuration,omitempty" xml:"PlayerReadyDuration,omitempty"`
-	SdkVersion            *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	SessionId             *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TerminalType          *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayDetailResponseBodyBaseInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayDetailResponseBodyBaseInfos) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetAppName(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetBps(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Bps = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetBroadcastPace(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.BroadcastPace = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetClientIP(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.ClientIP = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetCodec(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Codec = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetDecodeStuckTime(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.DecodeStuckTime = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetDefinition(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetFirstFrameDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.FirstFrameDuration = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetFps(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Fps = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetIsHardDecode(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.IsHardDecode = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetMdat(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Mdat = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetMoov(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Moov = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetwork(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetworkDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.NetworkDuration = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetNetworkStuckTime(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.NetworkStuckTime = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetOs(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayTs(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.PlayTs = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerLoadDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.PlayerLoadDuration = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerPreDealDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.PlayerPreDealDuration = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetPlayerReadyDuration(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.PlayerReadyDuration = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetSdkVersion(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.SdkVersion = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetSessionId(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.SessionId = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetStatus(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponseBodyBaseInfos) SetTerminalType(v string) *DescribePlayDetailResponseBodyBaseInfos {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayDetailResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayDetailResponse) SetHeaders(v map[string]*string) *DescribePlayDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayDetailResponse) SetStatusCode(v int32) *DescribePlayDetailResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayDetailResponse) SetBody(v *DescribePlayDetailResponseBody) *DescribePlayDetailResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePlayEventListRequest struct {
-	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlayTs    *string `json:"PlayTs,omitempty" xml:"PlayTs,omitempty"`
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-}
-
-func (s DescribePlayEventListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayEventListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayEventListRequest) SetPageNo(v int32) *DescribePlayEventListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayEventListRequest) SetPageSize(v int32) *DescribePlayEventListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayEventListRequest) SetPlayTs(v string) *DescribePlayEventListRequest {
-	s.PlayTs = &v
-	return s
-}
-
-func (s *DescribePlayEventListRequest) SetSessionId(v string) *DescribePlayEventListRequest {
-	s.SessionId = &v
-	return s
-}
-
-type DescribePlayEventListResponseBody struct {
-	EventList  []*DescribePlayEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	PageNo     *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribePlayEventListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayEventListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayEventListResponseBody) SetEventList(v []*DescribePlayEventListResponseBodyEventList) *DescribePlayEventListResponseBody {
-	s.EventList = v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBody) SetPageNo(v int64) *DescribePlayEventListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBody) SetPageSize(v int64) *DescribePlayEventListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBody) SetRequestId(v string) *DescribePlayEventListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBody) SetTotalCount(v int64) *DescribePlayEventListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribePlayEventListResponseBodyEventList struct {
-	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EventName   *string  `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	Time        *int64   `json:"Time,omitempty" xml:"Time,omitempty"`
-	Topic       *string  `json:"Topic,omitempty" xml:"Topic,omitempty"`
-}
-
-func (s DescribePlayEventListResponseBodyEventList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayEventListResponseBodyEventList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayEventListResponseBodyEventList) SetDescription(v string) *DescribePlayEventListResponseBodyEventList {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBodyEventList) SetDuration(v float32) *DescribePlayEventListResponseBodyEventList {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBodyEventList) SetEventName(v string) *DescribePlayEventListResponseBodyEventList {
-	s.EventName = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBodyEventList) SetTime(v int64) *DescribePlayEventListResponseBodyEventList {
-	s.Time = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponseBodyEventList) SetTopic(v string) *DescribePlayEventListResponseBodyEventList {
-	s.Topic = &v
-	return s
-}
-
-type DescribePlayEventListResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayEventListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayEventListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayEventListResponse) SetHeaders(v map[string]*string) *DescribePlayEventListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayEventListResponse) SetStatusCode(v int32) *DescribePlayEventListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayEventListResponse) SetBody(v *DescribePlayEventListResponseBody) *DescribePlayEventListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePlayFirstFrameDurationMetricDataRequest struct {
-	BeginTs *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	EndTs   *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataRequest) SetBeginTs(v string) *DescribePlayFirstFrameDurationMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataRequest) SetEndTs(v string) *DescribePlayFirstFrameDurationMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataRequest) SetTraceId(v string) *DescribePlayFirstFrameDurationMetricDataRequest {
-	s.TraceId = &v
-	return s
-}
-
-type DescribePlayFirstFrameDurationMetricDataResponseBody struct {
-	Nodes     []*DescribePlayFirstFrameDurationMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBody) SetNodes(v []*DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) *DescribePlayFirstFrameDurationMetricDataResponseBody {
-	s.Nodes = v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBody) SetRequestId(v string) *DescribePlayFirstFrameDurationMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribePlayFirstFrameDurationMetricDataResponseBodyNodes struct {
-	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
-	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetX(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
-	s.X = &v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes) SetY(v int64) *DescribePlayFirstFrameDurationMetricDataResponseBodyNodes {
-	s.Y = &v
-	return s
-}
-
-type DescribePlayFirstFrameDurationMetricDataResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayFirstFrameDurationMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayFirstFrameDurationMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponse) SetHeaders(v map[string]*string) *DescribePlayFirstFrameDurationMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponse) SetStatusCode(v int32) *DescribePlayFirstFrameDurationMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayFirstFrameDurationMetricDataResponse) SetBody(v *DescribePlayFirstFrameDurationMetricDataResponseBody) *DescribePlayFirstFrameDurationMetricDataResponse {
-	s.Body = v
-	return s
-}
-
 type DescribePlayListRequest struct {
 	BeginTs   *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
 	EndTs     *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
@@ -6969,11 +5632,12 @@ func (s *DescribePlayListRequest) SetTraceId(v string) *DescribePlayListRequest 
 }
 
 type DescribePlayListResponseBody struct {
-	PageNum   *int64                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize  *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlayList  []*DescribePlayListResponseBodyPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Repeated"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalNum  *int64                                  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	PageNum  *int64                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PlayList []*DescribePlayListResponseBodyPlayList `json:"PlayList,omitempty" xml:"PlayList,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalNum  *int64  `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
 }
 
 func (s DescribePlayListResponseBody) String() string {
@@ -7109,870 +5773,6 @@ func (s *DescribePlayListResponse) SetBody(v *DescribePlayListResponseBody) *Des
 	return s
 }
 
-type DescribePlayMetricDataRequest struct {
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs         *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition      *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs           *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ExperienceLevel *string `json:"ExperienceLevel,omitempty" xml:"ExperienceLevel,omitempty"`
-	ItemConfigs     *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricType      *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Os              *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	SdkVersion      *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
-	TerminalType    *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayMetricDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayMetricDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayMetricDataRequest) SetAppName(v string) *DescribePlayMetricDataRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetBeginTs(v int64) *DescribePlayMetricDataRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetDefinition(v string) *DescribePlayMetricDataRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetEndTs(v int64) *DescribePlayMetricDataRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetExperienceLevel(v string) *DescribePlayMetricDataRequest {
-	s.ExperienceLevel = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetItemConfigs(v string) *DescribePlayMetricDataRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetMetricType(v string) *DescribePlayMetricDataRequest {
-	s.MetricType = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetNetwork(v string) *DescribePlayMetricDataRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetOs(v string) *DescribePlayMetricDataRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetSdkVersion(v string) *DescribePlayMetricDataRequest {
-	s.SdkVersion = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataRequest) SetTerminalType(v string) *DescribePlayMetricDataRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayMetricDataResponseBody struct {
-	Nodes       []*DescribePlayMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SummaryData *string                                    `json:"SummaryData,omitempty" xml:"SummaryData,omitempty"`
-}
-
-func (s DescribePlayMetricDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayMetricDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayMetricDataResponseBody) SetNodes(v []*DescribePlayMetricDataResponseBodyNodes) *DescribePlayMetricDataResponseBody {
-	s.Nodes = v
-	return s
-}
-
-func (s *DescribePlayMetricDataResponseBody) SetRequestId(v string) *DescribePlayMetricDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataResponseBody) SetSummaryData(v string) *DescribePlayMetricDataResponseBody {
-	s.SummaryData = &v
-	return s
-}
-
-type DescribePlayMetricDataResponseBodyNodes struct {
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
-}
-
-func (s DescribePlayMetricDataResponseBodyNodes) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayMetricDataResponseBodyNodes) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayMetricDataResponseBodyNodes) SetX(v string) *DescribePlayMetricDataResponseBodyNodes {
-	s.X = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataResponseBodyNodes) SetY(v string) *DescribePlayMetricDataResponseBodyNodes {
-	s.Y = &v
-	return s
-}
-
-type DescribePlayMetricDataResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayMetricDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayMetricDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayMetricDataResponse) SetHeaders(v map[string]*string) *DescribePlayMetricDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayMetricDataResponse) SetStatusCode(v int32) *DescribePlayMetricDataResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayMetricDataResponse) SetBody(v *DescribePlayMetricDataResponseBody) *DescribePlayMetricDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePlayQoeListRequest struct {
-	AppName      *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs      *int64    `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition   *string   `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs        *int64    `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs  *string   `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricTypes  []*string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty" type:"Repeated"`
-	Network      *string   `json:"Network,omitempty" xml:"Network,omitempty"`
-	OrderName    *string   `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
-	OrderType    *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Os           *string   `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo       *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType *string   `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayQoeListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQoeListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQoeListRequest) SetAppName(v string) *DescribePlayQoeListRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetBeginTs(v int64) *DescribePlayQoeListRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetDefinition(v string) *DescribePlayQoeListRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetEndTs(v int64) *DescribePlayQoeListRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetItemConfigs(v string) *DescribePlayQoeListRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetMetricTypes(v []*string) *DescribePlayQoeListRequest {
-	s.MetricTypes = v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetNetwork(v string) *DescribePlayQoeListRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetOrderName(v string) *DescribePlayQoeListRequest {
-	s.OrderName = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetOrderType(v string) *DescribePlayQoeListRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetOs(v string) *DescribePlayQoeListRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetPageNo(v int32) *DescribePlayQoeListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetPageSize(v int32) *DescribePlayQoeListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQoeListRequest) SetTerminalType(v string) *DescribePlayQoeListRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayQoeListShrinkRequest struct {
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs           *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs             *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs       *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricTypesShrink *string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty"`
-	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	OrderName         *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType      *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayQoeListShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQoeListShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetAppName(v string) *DescribePlayQoeListShrinkRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetBeginTs(v int64) *DescribePlayQoeListShrinkRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetDefinition(v string) *DescribePlayQoeListShrinkRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetEndTs(v int64) *DescribePlayQoeListShrinkRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetItemConfigs(v string) *DescribePlayQoeListShrinkRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetMetricTypesShrink(v string) *DescribePlayQoeListShrinkRequest {
-	s.MetricTypesShrink = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetNetwork(v string) *DescribePlayQoeListShrinkRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetOrderName(v string) *DescribePlayQoeListShrinkRequest {
-	s.OrderName = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetOrderType(v string) *DescribePlayQoeListShrinkRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetOs(v string) *DescribePlayQoeListShrinkRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetPageNo(v int32) *DescribePlayQoeListShrinkRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetPageSize(v int32) *DescribePlayQoeListShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQoeListShrinkRequest) SetTerminalType(v string) *DescribePlayQoeListShrinkRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayQoeListResponseBody struct {
-	PageNo      *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QoeInfoList []*DescribePlayQoeListResponseBodyQoeInfoList `json:"QoeInfoList,omitempty" xml:"QoeInfoList,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribePlayQoeListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQoeListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQoeListResponseBody) SetPageNo(v int64) *DescribePlayQoeListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBody) SetPageSize(v int64) *DescribePlayQoeListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBody) SetQoeInfoList(v []*DescribePlayQoeListResponseBodyQoeInfoList) *DescribePlayQoeListResponseBody {
-	s.QoeInfoList = v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBody) SetRequestId(v string) *DescribePlayQoeListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBody) SetTotalCount(v int64) *DescribePlayQoeListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribePlayQoeListResponseBodyQoeInfoList struct {
-	QoeFinishedVV      *float32 `json:"QoeFinishedVV,omitempty" xml:"QoeFinishedVV,omitempty"`
-	QoeFinishedVVRate  *float32 `json:"QoeFinishedVVRate,omitempty" xml:"QoeFinishedVVRate,omitempty"`
-	QoeUFinishedVVTime *float32 `json:"QoeUFinishedVVTime,omitempty" xml:"QoeUFinishedVVTime,omitempty"`
-	QoeUV              *float32 `json:"QoeUV,omitempty" xml:"QoeUV,omitempty"`
-	QoeUVVDuration     *float32 `json:"QoeUVVDuration,omitempty" xml:"QoeUVVDuration,omitempty"`
-	QoeUVVTime         *float32 `json:"QoeUVVTime,omitempty" xml:"QoeUVVTime,omitempty"`
-	QoeVDuration       *float32 `json:"QoeVDuration,omitempty" xml:"QoeVDuration,omitempty"`
-	QoeVVDuration      *float32 `json:"QoeVVDuration,omitempty" xml:"QoeVVDuration,omitempty"`
-	TraceId            *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s DescribePlayQoeListResponseBodyQoeInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQoeListResponseBodyQoeInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeFinishedVV(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeFinishedVV = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeFinishedVVRate(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeFinishedVVRate = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeUFinishedVVTime(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeUFinishedVVTime = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeUV(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeUV = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeUVVDuration(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeUVVDuration = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeUVVTime(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeUVVTime = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeVDuration(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeVDuration = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetQoeVVDuration(v float32) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.QoeVVDuration = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponseBodyQoeInfoList) SetTraceId(v string) *DescribePlayQoeListResponseBodyQoeInfoList {
-	s.TraceId = &v
-	return s
-}
-
-type DescribePlayQoeListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayQoeListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayQoeListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQoeListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQoeListResponse) SetHeaders(v map[string]*string) *DescribePlayQoeListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayQoeListResponse) SetStatusCode(v int32) *DescribePlayQoeListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayQoeListResponse) SetBody(v *DescribePlayQoeListResponseBody) *DescribePlayQoeListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribePlayQosListRequest struct {
-	AppName      *string   `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs      *string   `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition   *string   `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs        *string   `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs  *string   `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricTypes  []*string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty" type:"Repeated"`
-	Network      *string   `json:"Network,omitempty" xml:"Network,omitempty"`
-	OrderName    *string   `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
-	OrderType    *string   `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Os           *string   `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo       *int32    `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType *string   `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayQosListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQosListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQosListRequest) SetAppName(v string) *DescribePlayQosListRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetBeginTs(v string) *DescribePlayQosListRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetDefinition(v string) *DescribePlayQosListRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetEndTs(v string) *DescribePlayQosListRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetItemConfigs(v string) *DescribePlayQosListRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetMetricTypes(v []*string) *DescribePlayQosListRequest {
-	s.MetricTypes = v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetNetwork(v string) *DescribePlayQosListRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetOrderName(v string) *DescribePlayQosListRequest {
-	s.OrderName = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetOrderType(v string) *DescribePlayQosListRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetOs(v string) *DescribePlayQosListRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetPageNo(v int32) *DescribePlayQosListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetPageSize(v int32) *DescribePlayQosListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQosListRequest) SetTerminalType(v string) *DescribePlayQosListRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayQosListShrinkRequest struct {
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BeginTs           *string `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
-	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
-	EndTs             *string `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	ItemConfigs       *string `json:"ItemConfigs,omitempty" xml:"ItemConfigs,omitempty"`
-	MetricTypesShrink *string `json:"MetricTypes,omitempty" xml:"MetricTypes,omitempty"`
-	Network           *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	OrderName         *string `json:"OrderName,omitempty" xml:"OrderName,omitempty"`
-	OrderType         *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TerminalType      *string `json:"TerminalType,omitempty" xml:"TerminalType,omitempty"`
-}
-
-func (s DescribePlayQosListShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQosListShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetAppName(v string) *DescribePlayQosListShrinkRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetBeginTs(v string) *DescribePlayQosListShrinkRequest {
-	s.BeginTs = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetDefinition(v string) *DescribePlayQosListShrinkRequest {
-	s.Definition = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetEndTs(v string) *DescribePlayQosListShrinkRequest {
-	s.EndTs = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetItemConfigs(v string) *DescribePlayQosListShrinkRequest {
-	s.ItemConfigs = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetMetricTypesShrink(v string) *DescribePlayQosListShrinkRequest {
-	s.MetricTypesShrink = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetNetwork(v string) *DescribePlayQosListShrinkRequest {
-	s.Network = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetOrderName(v string) *DescribePlayQosListShrinkRequest {
-	s.OrderName = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetOrderType(v string) *DescribePlayQosListShrinkRequest {
-	s.OrderType = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetOs(v string) *DescribePlayQosListShrinkRequest {
-	s.Os = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetPageNo(v int32) *DescribePlayQosListShrinkRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetPageSize(v int32) *DescribePlayQosListShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQosListShrinkRequest) SetTerminalType(v string) *DescribePlayQosListShrinkRequest {
-	s.TerminalType = &v
-	return s
-}
-
-type DescribePlayQosListResponseBody struct {
-	PageNo      *int64                                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int64                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QosInfoList []*DescribePlayQosListResponseBodyQosInfoList `json:"QosInfoList,omitempty" xml:"QosInfoList,omitempty" type:"Repeated"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribePlayQosListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQosListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQosListResponseBody) SetPageNo(v int64) *DescribePlayQosListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBody) SetPageSize(v int64) *DescribePlayQosListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBody) SetQosInfoList(v []*DescribePlayQosListResponseBodyQosInfoList) *DescribePlayQosListResponseBody {
-	s.QosInfoList = v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBody) SetRequestId(v string) *DescribePlayQosListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBody) SetTotalCount(v int64) *DescribePlayQosListResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribePlayQosListResponseBodyQosInfoList struct {
-	QosFirstFrame   *string `json:"QosFirstFrame,omitempty" xml:"QosFirstFrame,omitempty"`
-	QosKbps         *string `json:"QosKbps,omitempty" xml:"QosKbps,omitempty"`
-	QosPlay         *string `json:"QosPlay,omitempty" xml:"QosPlay,omitempty"`
-	QosPlayFail     *string `json:"QosPlayFail,omitempty" xml:"QosPlayFail,omitempty"`
-	QosRealPlay     *string `json:"QosRealPlay,omitempty" xml:"QosRealPlay,omitempty"`
-	QosSeedFailRate *string `json:"QosSeedFailRate,omitempty" xml:"QosSeedFailRate,omitempty"`
-	QosStuckRate    *string `json:"QosStuckRate,omitempty" xml:"QosStuckRate,omitempty"`
-	TraceId         *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-}
-
-func (s DescribePlayQosListResponseBodyQosInfoList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQosListResponseBodyQosInfoList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosFirstFrame(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosFirstFrame = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosKbps(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosKbps = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosPlay(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosPlay = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosPlayFail(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosPlayFail = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosRealPlay(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosRealPlay = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosSeedFailRate(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosSeedFailRate = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetQosStuckRate(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.QosStuckRate = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponseBodyQosInfoList) SetTraceId(v string) *DescribePlayQosListResponseBodyQosInfoList {
-	s.TraceId = &v
-	return s
-}
-
-type DescribePlayQosListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePlayQosListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribePlayQosListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribePlayQosListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribePlayQosListResponse) SetHeaders(v map[string]*string) *DescribePlayQosListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribePlayQosListResponse) SetStatusCode(v int32) *DescribePlayQosListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribePlayQosListResponse) SetBody(v *DescribePlayQosListResponseBody) *DescribePlayQosListResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeQueryConfigsRequest struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeQueryConfigsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQueryConfigsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQueryConfigsRequest) SetType(v string) *DescribeQueryConfigsRequest {
-	s.Type = &v
-	return s
-}
-
-type DescribeQueryConfigsResponseBody struct {
-	Configs   []*DescribeQueryConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeQueryConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQueryConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQueryConfigsResponseBody) SetConfigs(v []*DescribeQueryConfigsResponseBodyConfigs) *DescribeQueryConfigsResponseBody {
-	s.Configs = v
-	return s
-}
-
-func (s *DescribeQueryConfigsResponseBody) SetRequestId(v string) *DescribeQueryConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeQueryConfigsResponseBodyConfigs struct {
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeQueryConfigsResponseBodyConfigs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQueryConfigsResponseBodyConfigs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQueryConfigsResponseBodyConfigs) SetValue(v string) *DescribeQueryConfigsResponseBodyConfigs {
-	s.Value = &v
-	return s
-}
-
-type DescribeQueryConfigsResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeQueryConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeQueryConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeQueryConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeQueryConfigsResponse) SetHeaders(v map[string]*string) *DescribeQueryConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeQueryConfigsResponse) SetStatusCode(v int32) *DescribeQueryConfigsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeQueryConfigsResponse) SetBody(v *DescribeQueryConfigsResponseBody) *DescribeQueryConfigsResponse {
-	s.Body = v
-	return s
-}
-
 type DetectAudioForCustomizedVoiceJobRequest struct {
 	AudioRecordId *int32  `json:"AudioRecordId,omitempty" xml:"AudioRecordId,omitempty"`
 	RecordUrl     *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
@@ -8079,6 +5879,139 @@ func (s *DetectAudioForCustomizedVoiceJobResponse) SetStatusCode(v int32) *Detec
 }
 
 func (s *DetectAudioForCustomizedVoiceJobResponse) SetBody(v *DetectAudioForCustomizedVoiceJobResponseBody) *DetectAudioForCustomizedVoiceJobResponse {
+	s.Body = v
+	return s
+}
+
+type DropSearchIndexRequest struct {
+	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s DropSearchIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchIndexRequest) SetIndexType(v string) *DropSearchIndexRequest {
+	s.IndexType = &v
+	return s
+}
+
+func (s *DropSearchIndexRequest) SetSearchLibName(v string) *DropSearchIndexRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type DropSearchIndexResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DropSearchIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchIndexResponseBody) SetRequestId(v string) *DropSearchIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DropSearchIndexResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DropSearchIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DropSearchIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchIndexResponse) SetHeaders(v map[string]*string) *DropSearchIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DropSearchIndexResponse) SetStatusCode(v int32) *DropSearchIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DropSearchIndexResponse) SetBody(v *DropSearchIndexResponseBody) *DropSearchIndexResponse {
+	s.Body = v
+	return s
+}
+
+type DropSearchLibRequest struct {
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s DropSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchLibRequest) SetSearchLibName(v string) *DropSearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type DropSearchLibResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DropSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchLibResponseBody) SetRequestId(v string) *DropSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DropSearchLibResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DropSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DropSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DropSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DropSearchLibResponse) SetHeaders(v map[string]*string) *DropSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DropSearchLibResponse) SetStatusCode(v int32) *DropSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DropSearchLibResponse) SetBody(v *DropSearchLibResponseBody) *DropSearchLibResponse {
 	s.Body = v
 	return s
 }
@@ -8232,9 +6165,11 @@ type GetAvatarResponseBodyDataAvatar struct {
 	AvatarId          *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
 	AvatarName        *string `json:"AvatarName,omitempty" xml:"AvatarName,omitempty"`
 	AvatarType        *string `json:"AvatarType,omitempty" xml:"AvatarType,omitempty"`
+	Height            *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
 	Portrait          *string `json:"Portrait,omitempty" xml:"Portrait,omitempty"`
 	Thumbnail         *string `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty"`
 	Transparent       *bool   `json:"Transparent,omitempty" xml:"Transparent,omitempty"`
+	Width             *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s GetAvatarResponseBodyDataAvatar) String() string {
@@ -8265,6 +6200,11 @@ func (s *GetAvatarResponseBodyDataAvatar) SetAvatarType(v string) *GetAvatarResp
 	return s
 }
 
+func (s *GetAvatarResponseBodyDataAvatar) SetHeight(v int32) *GetAvatarResponseBodyDataAvatar {
+	s.Height = &v
+	return s
+}
+
 func (s *GetAvatarResponseBodyDataAvatar) SetPortrait(v string) *GetAvatarResponseBodyDataAvatar {
 	s.Portrait = &v
 	return s
@@ -8277,6 +6217,11 @@ func (s *GetAvatarResponseBodyDataAvatar) SetThumbnail(v string) *GetAvatarRespo
 
 func (s *GetAvatarResponseBodyDataAvatar) SetTransparent(v bool) *GetAvatarResponseBodyDataAvatar {
 	s.Transparent = &v
+	return s
+}
+
+func (s *GetAvatarResponseBodyDataAvatar) SetWidth(v int32) *GetAvatarResponseBodyDataAvatar {
+	s.Width = &v
 	return s
 }
 
@@ -18451,6 +16396,231 @@ func (s *GetUrlUploadInfosResponse) SetBody(v *GetUrlUploadInfosResponseBody) *G
 	return s
 }
 
+type GetVideoListRequest struct {
+	CateId    *int64  `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNo    *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetVideoListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoListRequest) SetCateId(v int64) *GetVideoListRequest {
+	s.CateId = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetEndTime(v string) *GetVideoListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetPageNo(v int32) *GetVideoListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetPageSize(v int32) *GetVideoListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetSortBy(v string) *GetVideoListRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetStartTime(v string) *GetVideoListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetVideoListRequest) SetStatus(v string) *GetVideoListRequest {
+	s.Status = &v
+	return s
+}
+
+type GetVideoListResponseBody struct {
+	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaList []*GetVideoListResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total     *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetVideoListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoListResponseBody) SetCode(v string) *GetVideoListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetVideoListResponseBody) SetMediaList(v []*GetVideoListResponseBodyMediaList) *GetVideoListResponseBody {
+	s.MediaList = v
+	return s
+}
+
+func (s *GetVideoListResponseBody) SetRequestId(v string) *GetVideoListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetVideoListResponseBody) SetSuccess(v string) *GetVideoListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetVideoListResponseBody) SetTotal(v int64) *GetVideoListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type GetVideoListResponseBodyMediaList struct {
+	AppId            *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CateId           *int64    `json:"CateId,omitempty" xml:"CateId,omitempty"`
+	CateName         *string   `json:"CateName,omitempty" xml:"CateName,omitempty"`
+	CoverUrl         *string   `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreationTime     *string   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration         *float32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MediaId          *string   `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	ModificationTime *string   `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Size             *int64    `json:"Size,omitempty" xml:"Size,omitempty"`
+	Snapshots        []*string `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageLocation  *string   `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Tags             *string   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title            *string   `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetVideoListResponseBodyMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoListResponseBodyMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetAppId(v string) *GetVideoListResponseBodyMediaList {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetCateId(v int64) *GetVideoListResponseBodyMediaList {
+	s.CateId = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetCateName(v string) *GetVideoListResponseBodyMediaList {
+	s.CateName = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetCoverUrl(v string) *GetVideoListResponseBodyMediaList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetCreationTime(v string) *GetVideoListResponseBodyMediaList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetDescription(v string) *GetVideoListResponseBodyMediaList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetDuration(v float32) *GetVideoListResponseBodyMediaList {
+	s.Duration = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetMediaId(v string) *GetVideoListResponseBodyMediaList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetModificationTime(v string) *GetVideoListResponseBodyMediaList {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetSize(v int64) *GetVideoListResponseBodyMediaList {
+	s.Size = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetSnapshots(v []*string) *GetVideoListResponseBodyMediaList {
+	s.Snapshots = v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetStatus(v string) *GetVideoListResponseBodyMediaList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetStorageLocation(v string) *GetVideoListResponseBodyMediaList {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetTags(v string) *GetVideoListResponseBodyMediaList {
+	s.Tags = &v
+	return s
+}
+
+func (s *GetVideoListResponseBodyMediaList) SetTitle(v string) *GetVideoListResponseBodyMediaList {
+	s.Title = &v
+	return s
+}
+
+type GetVideoListResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVideoListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetVideoListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVideoListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVideoListResponse) SetHeaders(v map[string]*string) *GetVideoListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVideoListResponse) SetStatusCode(v int32) *GetVideoListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVideoListResponse) SetBody(v *GetVideoListResponseBody) *GetVideoListResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkflowTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -18623,6 +16793,100 @@ func (s *GetWorkflowTaskResponse) SetStatusCode(v int32) *GetWorkflowTaskRespons
 }
 
 func (s *GetWorkflowTaskResponse) SetBody(v *GetWorkflowTaskResponseBody) *GetWorkflowTaskResponse {
+	s.Body = v
+	return s
+}
+
+type InsertMediaToSearchLibRequest struct {
+	Input         *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaType     *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	MsgBody       *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s InsertMediaToSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMediaToSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMediaToSearchLibRequest) SetInput(v string) *InsertMediaToSearchLibRequest {
+	s.Input = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibRequest) SetMediaId(v string) *InsertMediaToSearchLibRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibRequest) SetMediaType(v string) *InsertMediaToSearchLibRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibRequest) SetMsgBody(v string) *InsertMediaToSearchLibRequest {
+	s.MsgBody = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibRequest) SetSearchLibName(v string) *InsertMediaToSearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type InsertMediaToSearchLibResponseBody struct {
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InsertMediaToSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMediaToSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMediaToSearchLibResponseBody) SetMediaId(v string) *InsertMediaToSearchLibResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibResponseBody) SetRequestId(v string) *InsertMediaToSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InsertMediaToSearchLibResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertMediaToSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertMediaToSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMediaToSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMediaToSearchLibResponse) SetHeaders(v map[string]*string) *InsertMediaToSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertMediaToSearchLibResponse) SetStatusCode(v int32) *InsertMediaToSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibResponse) SetBody(v *InsertMediaToSearchLibResponseBody) *InsertMediaToSearchLibResponse {
 	s.Body = v
 	return s
 }
@@ -24039,8 +22303,9 @@ func (s *ListSmartJobsResponse) SetBody(v *ListSmartJobsResponseBody) *ListSmart
 }
 
 type ListSmartSysAvatarModelsRequest struct {
-	PageNo   *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNo     *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
 }
 
 func (s ListSmartSysAvatarModelsRequest) String() string {
@@ -24058,6 +22323,11 @@ func (s *ListSmartSysAvatarModelsRequest) SetPageNo(v int64) *ListSmartSysAvatar
 
 func (s *ListSmartSysAvatarModelsRequest) SetPageSize(v int64) *ListSmartSysAvatarModelsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListSmartSysAvatarModelsRequest) SetSdkVersion(v string) *ListSmartSysAvatarModelsRequest {
+	s.SdkVersion = &v
 	return s
 }
 
@@ -24174,6 +22444,135 @@ func (s *ListSmartSysAvatarModelsResponse) SetStatusCode(v int32) *ListSmartSysA
 }
 
 func (s *ListSmartSysAvatarModelsResponse) SetBody(v *ListSmartSysAvatarModelsResponseBody) *ListSmartSysAvatarModelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSmartVoiceGroupsResponseBody struct {
+	// Id of the request
+	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VoiceGroups []*ListSmartVoiceGroupsResponseBodyVoiceGroups `json:"VoiceGroups,omitempty" xml:"VoiceGroups,omitempty" type:"Repeated"`
+}
+
+func (s ListSmartVoiceGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartVoiceGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartVoiceGroupsResponseBody) SetRequestId(v string) *ListSmartVoiceGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBody) SetVoiceGroups(v []*ListSmartVoiceGroupsResponseBodyVoiceGroups) *ListSmartVoiceGroupsResponseBody {
+	s.VoiceGroups = v
+	return s
+}
+
+type ListSmartVoiceGroupsResponseBodyVoiceGroups struct {
+	Type      *string                                                 `json:"Type,omitempty" xml:"Type,omitempty"`
+	VoiceList []*ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList `json:"VoiceList,omitempty" xml:"VoiceList,omitempty" type:"Repeated"`
+}
+
+func (s ListSmartVoiceGroupsResponseBodyVoiceGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartVoiceGroupsResponseBodyVoiceGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) SetType(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroups {
+	s.Type = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) SetVoiceList(v []*ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) *ListSmartVoiceGroupsResponseBodyVoiceGroups {
+	s.VoiceList = v
+	return s
+}
+
+type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {
+	Desc      *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Tag       *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Voice     *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	VoiceType *string `json:"VoiceType,omitempty" xml:"VoiceType,omitempty"`
+	VoiceUrl  *string `json:"VoiceUrl,omitempty" xml:"VoiceUrl,omitempty"`
+}
+
+func (s ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetDesc(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetName(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetRemark(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.Remark = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetTag(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.Tag = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetVoice(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.Voice = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetVoiceType(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.VoiceType = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetVoiceUrl(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.VoiceUrl = &v
+	return s
+}
+
+type ListSmartVoiceGroupsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSmartVoiceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSmartVoiceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSmartVoiceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSmartVoiceGroupsResponse) SetHeaders(v map[string]*string) *ListSmartVoiceGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponse) SetStatusCode(v int32) *ListSmartVoiceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponse) SetBody(v *ListSmartVoiceGroupsResponseBody) *ListSmartVoiceGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -27724,6 +26123,170 @@ func (s *QueryMediaCensorJobListResponse) SetBody(v *QueryMediaCensorJobListResp
 	return s
 }
 
+type QuerySearchIndexRequest struct {
+	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s QuerySearchIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchIndexRequest) SetIndexType(v string) *QuerySearchIndexRequest {
+	s.IndexType = &v
+	return s
+}
+
+func (s *QuerySearchIndexRequest) SetSearchLibName(v string) *QuerySearchIndexRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type QuerySearchIndexResponseBody struct {
+	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	IndexType   *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s QuerySearchIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchIndexResponseBody) SetIndexConfig(v string) *QuerySearchIndexResponseBody {
+	s.IndexConfig = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetIndexType(v string) *QuerySearchIndexResponseBody {
+	s.IndexType = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetRequestId(v string) *QuerySearchIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetSearchLibName(v string) *QuerySearchIndexResponseBody {
+	s.SearchLibName = &v
+	return s
+}
+
+type QuerySearchIndexResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySearchIndexResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySearchIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchIndexResponse) SetHeaders(v map[string]*string) *QuerySearchIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySearchIndexResponse) SetStatusCode(v int32) *QuerySearchIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponse) SetBody(v *QuerySearchIndexResponseBody) *QuerySearchIndexResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySearchLibRequest struct {
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s QuerySearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchLibRequest) SetSearchLibName(v string) *QuerySearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type QuerySearchLibResponseBody struct {
+	// Id of the request
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QuerySearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchLibResponseBody) SetRequestId(v string) *QuerySearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBody) SetSearchLibName(v string) *QuerySearchLibResponseBody {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBody) SetStatus(v string) *QuerySearchLibResponseBody {
+	s.Status = &v
+	return s
+}
+
+type QuerySearchLibResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySearchLibResponse) SetHeaders(v map[string]*string) *QuerySearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySearchLibResponse) SetStatusCode(v int32) *QuerySearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySearchLibResponse) SetBody(v *QuerySearchLibResponseBody) *QuerySearchLibResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySmarttagJobRequest struct {
 	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
@@ -28409,12 +26972,13 @@ func (s *SearchEditingProjectResponse) SetBody(v *SearchEditingProjectResponseBo
 }
 
 type SearchMediaRequest struct {
-	EntityId    *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	Match       *string `json:"Match,omitempty" xml:"Match,omitempty"`
-	PageNo      *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	EntityId      *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	Match         *string `json:"Match,omitempty" xml:"Match,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScrollToken   *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 }
 
 func (s SearchMediaRequest) String() string {
@@ -28447,6 +27011,11 @@ func (s *SearchMediaRequest) SetPageSize(v int32) *SearchMediaRequest {
 
 func (s *SearchMediaRequest) SetScrollToken(v string) *SearchMediaRequest {
 	s.ScrollToken = &v
+	return s
+}
+
+func (s *SearchMediaRequest) SetSearchLibName(v string) *SearchMediaRequest {
+	s.SearchLibName = &v
 	return s
 }
 
@@ -29134,12 +27703,508 @@ func (s *SearchMediaResponse) SetBody(v *SearchMediaResponseBody) *SearchMediaRe
 	return s
 }
 
+type SearchMediaByAILabelRequest struct {
+	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaType            *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	MultimodalSearchType *string `json:"MultimodalSearchType,omitempty" xml:"MultimodalSearchType,omitempty"`
+	PageNo               *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchLibName        *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	SortBy               *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SpecificSearch       *bool   `json:"SpecificSearch,omitempty" xml:"SpecificSearch,omitempty"`
+	Text                 *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SearchMediaByAILabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelRequest) SetMediaId(v string) *SearchMediaByAILabelRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetMediaType(v string) *SearchMediaByAILabelRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetMultimodalSearchType(v string) *SearchMediaByAILabelRequest {
+	s.MultimodalSearchType = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetPageNo(v int32) *SearchMediaByAILabelRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetPageSize(v int32) *SearchMediaByAILabelRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetSearchLibName(v string) *SearchMediaByAILabelRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetSortBy(v string) *SearchMediaByAILabelRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetSpecificSearch(v bool) *SearchMediaByAILabelRequest {
+	s.SpecificSearch = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelRequest) SetText(v string) *SearchMediaByAILabelRequest {
+	s.Text = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaList []*SearchMediaByAILabelResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total     *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBody) SetCode(v string) *SearchMediaByAILabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBody) SetMediaList(v []*SearchMediaByAILabelResponseBodyMediaList) *SearchMediaByAILabelResponseBody {
+	s.MediaList = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBody) SetRequestId(v string) *SearchMediaByAILabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBody) SetSuccess(v string) *SearchMediaByAILabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBody) SetTotal(v int64) *SearchMediaByAILabelResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaList struct {
+	AiData           *SearchMediaByAILabelResponseBodyMediaListAiData `json:"AiData,omitempty" xml:"AiData,omitempty" type:"Struct"`
+	AppId            *string                                          `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CoverUrl         *string                                          `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	CreationTime     *string                                          `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description      *string                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	Duration         *float32                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MediaId          *string                                          `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	ModificationTime *string                                          `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
+	Size             *int64                                           `json:"Size,omitempty" xml:"Size,omitempty"`
+	Snapshots        []*string                                        `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	Status           *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageLocation  *string                                          `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	Tags             *string                                          `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Title            *string                                          `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetAiData(v *SearchMediaByAILabelResponseBodyMediaListAiData) *SearchMediaByAILabelResponseBodyMediaList {
+	s.AiData = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetAppId(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.AppId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetCoverUrl(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.CoverUrl = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetCreationTime(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetDescription(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Description = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetDuration(v float32) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Duration = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetMediaId(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetModificationTime(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.ModificationTime = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetSize(v int64) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Size = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetSnapshots(v []*string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Snapshots = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetStatus(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Status = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetStorageLocation(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetTags(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Tags = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaList) SetTitle(v string) *SearchMediaByAILabelResponseBodyMediaList {
+	s.Title = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiData struct {
+	AiLabelInfo []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo `json:"AiLabelInfo,omitempty" xml:"AiLabelInfo,omitempty" type:"Repeated"`
+	AsrInfo     []*SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo     `json:"AsrInfo,omitempty" xml:"AsrInfo,omitempty" type:"Repeated"`
+	OcrInfo     []*SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo     `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty" type:"Repeated"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiData) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiData) SetAiLabelInfo(v []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) *SearchMediaByAILabelResponseBodyMediaListAiData {
+	s.AiLabelInfo = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiData) SetAsrInfo(v []*SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) *SearchMediaByAILabelResponseBodyMediaListAiData {
+	s.AsrInfo = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiData) SetOcrInfo(v []*SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) *SearchMediaByAILabelResponseBodyMediaListAiData {
+	s.OcrInfo = v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo struct {
+	Category    *string                                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	FaceId      *string                                                                  `json:"FaceId,omitempty" xml:"FaceId,omitempty"`
+	LabelId     *string                                                                  `json:"LabelId,omitempty" xml:"LabelId,omitempty"`
+	LabelName   *string                                                                  `json:"LabelName,omitempty" xml:"LabelName,omitempty"`
+	LabelType   *string                                                                  `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
+	Occurrences []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences `json:"Occurrences,omitempty" xml:"Occurrences,omitempty" type:"Repeated"`
+	Source      *string                                                                  `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetCategory(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetFaceId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.FaceId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetLabelId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.LabelId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetLabelName(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.LabelName = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetLabelType(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.LabelType = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetOccurrences(v []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.Occurrences = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo) SetSource(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfo {
+	s.Source = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences struct {
+	ClipId          *string                                                                        `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	Content         *string                                                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	FinegrainId     *string                                                                        `json:"FinegrainId,omitempty" xml:"FinegrainId,omitempty"`
+	FinegrainName   *string                                                                        `json:"FinegrainName,omitempty" xml:"FinegrainName,omitempty"`
+	From            *float64                                                                       `json:"From,omitempty" xml:"From,omitempty"`
+	Image           *string                                                                        `json:"Image,omitempty" xml:"Image,omitempty"`
+	Score           *float64                                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	TableBatchSeqId *string                                                                        `json:"TableBatchSeqId,omitempty" xml:"TableBatchSeqId,omitempty"`
+	To              *float64                                                                       `json:"To,omitempty" xml:"To,omitempty"`
+	Tracks          []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks `json:"Tracks,omitempty" xml:"Tracks,omitempty" type:"Repeated"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetClipId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.ClipId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetContent(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetFinegrainId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.FinegrainId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetFinegrainName(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.FinegrainName = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetFrom(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetImage(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.Image = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetScore(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetTableBatchSeqId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.TableBatchSeqId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetTo(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.To = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences) SetTracks(v []*SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrences {
+	s.Tracks = v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks struct {
+	Position  *string  `json:"Position,omitempty" xml:"Position,omitempty"`
+	Size      *float64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) SetPosition(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks {
+	s.Position = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) SetSize(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks {
+	s.Size = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks) SetTimestamp(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAiLabelInfoOccurrencesTracks {
+	s.Timestamp = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo struct {
+	ClipId    *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	Content   *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	From      *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	To        *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetClipId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo {
+	s.ClipId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetContent(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetFrom(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetTimestamp(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo) SetTo(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataAsrInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo struct {
+	ClipId    *string  `json:"ClipId,omitempty" xml:"ClipId,omitempty"`
+	Content   *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	From      *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	Timestamp *float64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	To        *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) SetClipId(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo {
+	s.ClipId = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) SetContent(v string) *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) SetFrom(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) SetTimestamp(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo) SetTo(v float64) *SearchMediaByAILabelResponseBodyMediaListAiDataOcrInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaByAILabelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchMediaByAILabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchMediaByAILabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByAILabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByAILabelResponse) SetHeaders(v map[string]*string) *SearchMediaByAILabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponse) SetStatusCode(v int32) *SearchMediaByAILabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchMediaByAILabelResponse) SetBody(v *SearchMediaByAILabelResponseBody) *SearchMediaByAILabelResponse {
+	s.Body = v
+	return s
+}
+
 type SearchMediaByFaceRequest struct {
 	EntityId        *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
+	MediaType       *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PersonImageUrl  *string `json:"PersonImageUrl,omitempty" xml:"PersonImageUrl,omitempty"`
+	SearchLibName   *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
 
 func (s SearchMediaByFaceRequest) String() string {
@@ -29160,6 +28225,11 @@ func (s *SearchMediaByFaceRequest) SetFaceSearchToken(v string) *SearchMediaByFa
 	return s
 }
 
+func (s *SearchMediaByFaceRequest) SetMediaType(v string) *SearchMediaByFaceRequest {
+	s.MediaType = &v
+	return s
+}
+
 func (s *SearchMediaByFaceRequest) SetPageNo(v int32) *SearchMediaByFaceRequest {
 	s.PageNo = &v
 	return s
@@ -29172,6 +28242,11 @@ func (s *SearchMediaByFaceRequest) SetPageSize(v int32) *SearchMediaByFaceReques
 
 func (s *SearchMediaByFaceRequest) SetPersonImageUrl(v string) *SearchMediaByFaceRequest {
 	s.PersonImageUrl = &v
+	return s
+}
+
+func (s *SearchMediaByFaceRequest) SetSearchLibName(v string) *SearchMediaByFaceRequest {
+	s.SearchLibName = &v
 	return s
 }
 
@@ -29262,12 +28337,176 @@ func (s *SearchMediaByFaceResponse) SetBody(v *SearchMediaByFaceResponseBody) *S
 	return s
 }
 
+type SearchMediaByMultimodalRequest struct {
+	MediaType     *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SearchMediaByMultimodalRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByMultimodalRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByMultimodalRequest) SetMediaType(v string) *SearchMediaByMultimodalRequest {
+	s.MediaType = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetPageNo(v int32) *SearchMediaByMultimodalRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetPageSize(v int32) *SearchMediaByMultimodalRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetSearchLibName(v string) *SearchMediaByMultimodalRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalRequest) SetText(v string) *SearchMediaByMultimodalRequest {
+	s.Text = &v
+	return s
+}
+
+type SearchMediaByMultimodalResponseBody struct {
+	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	MediaList []*SearchMediaByMultimodalResponseBodyMediaList `json:"MediaList,omitempty" xml:"MediaList,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total     *int64                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s SearchMediaByMultimodalResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByMultimodalResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByMultimodalResponseBody) SetCode(v string) *SearchMediaByMultimodalResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBody) SetMediaList(v []*SearchMediaByMultimodalResponseBodyMediaList) *SearchMediaByMultimodalResponseBody {
+	s.MediaList = v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBody) SetRequestId(v string) *SearchMediaByMultimodalResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBody) SetSuccess(v string) *SearchMediaByMultimodalResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBody) SetTotal(v int64) *SearchMediaByMultimodalResponseBody {
+	s.Total = &v
+	return s
+}
+
+type SearchMediaByMultimodalResponseBodyMediaList struct {
+	ClipInfo []*SearchMediaByMultimodalResponseBodyMediaListClipInfo `json:"ClipInfo,omitempty" xml:"ClipInfo,omitempty" type:"Repeated"`
+	MediaId  *string                                                 `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+}
+
+func (s SearchMediaByMultimodalResponseBodyMediaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByMultimodalResponseBodyMediaList) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByMultimodalResponseBodyMediaList) SetClipInfo(v []*SearchMediaByMultimodalResponseBodyMediaListClipInfo) *SearchMediaByMultimodalResponseBodyMediaList {
+	s.ClipInfo = v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBodyMediaList) SetMediaId(v string) *SearchMediaByMultimodalResponseBodyMediaList {
+	s.MediaId = &v
+	return s
+}
+
+type SearchMediaByMultimodalResponseBodyMediaListClipInfo struct {
+	From  *float64 `json:"From,omitempty" xml:"From,omitempty"`
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	To    *float64 `json:"To,omitempty" xml:"To,omitempty"`
+}
+
+func (s SearchMediaByMultimodalResponseBodyMediaListClipInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByMultimodalResponseBodyMediaListClipInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByMultimodalResponseBodyMediaListClipInfo) SetFrom(v float64) *SearchMediaByMultimodalResponseBodyMediaListClipInfo {
+	s.From = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBodyMediaListClipInfo) SetScore(v float64) *SearchMediaByMultimodalResponseBodyMediaListClipInfo {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponseBodyMediaListClipInfo) SetTo(v float64) *SearchMediaByMultimodalResponseBodyMediaListClipInfo {
+	s.To = &v
+	return s
+}
+
+type SearchMediaByMultimodalResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchMediaByMultimodalResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchMediaByMultimodalResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchMediaByMultimodalResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchMediaByMultimodalResponse) SetHeaders(v map[string]*string) *SearchMediaByMultimodalResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponse) SetStatusCode(v int32) *SearchMediaByMultimodalResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchMediaByMultimodalResponse) SetBody(v *SearchMediaByMultimodalResponseBody) *SearchMediaByMultimodalResponse {
+	s.Body = v
+	return s
+}
+
 type SearchMediaClipByFaceRequest struct {
 	EntityId        *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
 	FaceSearchToken *string `json:"FaceSearchToken,omitempty" xml:"FaceSearchToken,omitempty"`
 	MediaId         *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchLibName   *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
 
 func (s SearchMediaClipByFaceRequest) String() string {
@@ -29300,6 +28539,11 @@ func (s *SearchMediaClipByFaceRequest) SetPageNo(v int32) *SearchMediaClipByFace
 
 func (s *SearchMediaClipByFaceRequest) SetPageSize(v int32) *SearchMediaClipByFaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMediaClipByFaceRequest) SetSearchLibName(v string) *SearchMediaClipByFaceRequest {
+	s.SearchLibName = &v
 	return s
 }
 
@@ -30517,6 +29761,7 @@ func (s *SubmitAudioProduceJobRequest) SetUserData(v string) *SubmitAudioProduce
 
 type SubmitAudioProduceJobResponseBody struct {
 	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 }
@@ -30531,6 +29776,11 @@ func (s SubmitAudioProduceJobResponseBody) GoString() string {
 
 func (s *SubmitAudioProduceJobResponseBody) SetJobId(v string) *SubmitAudioProduceJobResponseBody {
 	s.JobId = &v
+	return s
+}
+
+func (s *SubmitAudioProduceJobResponseBody) SetMediaId(v string) *SubmitAudioProduceJobResponseBody {
+	s.MediaId = &v
 	return s
 }
 
@@ -35189,6 +34439,7 @@ func (s *SubmitSyncMediaInfoJobResponse) SetBody(v *SubmitSyncMediaInfoJobRespon
 }
 
 type SubmitTranscodeJobRequest struct {
+	ClientToken    *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InputGroup     []*SubmitTranscodeJobRequestInputGroup   `json:"InputGroup,omitempty" xml:"InputGroup,omitempty" type:"Repeated"`
 	Name           *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	OutputGroup    []*SubmitTranscodeJobRequestOutputGroup  `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty" type:"Repeated"`
@@ -35202,6 +34453,11 @@ func (s SubmitTranscodeJobRequest) String() string {
 
 func (s SubmitTranscodeJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTranscodeJobRequest) SetClientToken(v string) *SubmitTranscodeJobRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *SubmitTranscodeJobRequest) SetInputGroup(v []*SubmitTranscodeJobRequestInputGroup) *SubmitTranscodeJobRequest {
@@ -35314,7 +34570,6 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfig struct {
 	CombineConfigs  []*SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	IsInheritTags   *bool                                                               `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -35340,11 +34595,6 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetEncryption(v *Sub
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetImageWatermarks(v []*SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks) *SubmitTranscodeJobRequestOutputGroupProcessConfig {
 	s.ImageWatermarks = v
-	return s
-}
-
-func (s *SubmitTranscodeJobRequestOutputGroupProcessConfig) SetIsInheritTags(v bool) *SubmitTranscodeJobRequestOutputGroupProcessConfig {
-	s.IsInheritTags = &v
 	return s
 }
 
@@ -35751,7 +35001,6 @@ type SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams s
 	Audio       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig   *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags        map[string]*string                                                                    `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TransConfig *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
 	Video       *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
@@ -35776,11 +35025,6 @@ func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwritePara
 
 func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsMuxConfig) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
-	return s
-}
-
-func (s *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams) SetTags(v map[string]*string) *SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams {
-	s.Tags = v
 	return s
 }
 
@@ -36141,6 +35385,7 @@ func (s *SubmitTranscodeJobRequestScheduleConfig) SetPriority(v int32) *SubmitTr
 }
 
 type SubmitTranscodeJobShrinkRequest struct {
+	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	InputGroupShrink     *string `json:"InputGroup,omitempty" xml:"InputGroup,omitempty"`
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OutputGroupShrink    *string `json:"OutputGroup,omitempty" xml:"OutputGroup,omitempty"`
@@ -36154,6 +35399,11 @@ func (s SubmitTranscodeJobShrinkRequest) String() string {
 
 func (s SubmitTranscodeJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTranscodeJobShrinkRequest) SetClientToken(v string) *SubmitTranscodeJobShrinkRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *SubmitTranscodeJobShrinkRequest) SetInputGroupShrink(v string) *SubmitTranscodeJobShrinkRequest {
@@ -37724,7 +36974,6 @@ type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConf
 	CombineConfigs  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigCombineConfigs  `json:"CombineConfigs,omitempty" xml:"CombineConfigs,omitempty" type:"Repeated"`
 	Encryption      *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigEncryption        `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
 	ImageWatermarks []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks `json:"ImageWatermarks,omitempty" xml:"ImageWatermarks,omitempty" type:"Repeated"`
-	IsInheritTags   *string                                                                                         `json:"IsInheritTags,omitempty" xml:"IsInheritTags,omitempty"`
 	Subtitles       []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigSubtitles       `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	TextWatermarks  []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTextWatermarks  `json:"TextWatermarks,omitempty" xml:"TextWatermarks,omitempty" type:"Repeated"`
 	Transcode       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscode         `json:"Transcode,omitempty" xml:"Transcode,omitempty" type:"Struct"`
@@ -37750,11 +36999,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetImageWatermarks(v []*SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigImageWatermarks) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
 	s.ImageWatermarks = v
-	return s
-}
-
-func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig) SetIsInheritTags(v string) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig {
-	s.IsInheritTags = &v
 	return s
 }
 
@@ -38161,7 +37405,6 @@ type SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConf
 	Audio       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsAudio       `json:"Audio,omitempty" xml:"Audio,omitempty" type:"Struct"`
 	Container   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsContainer   `json:"Container,omitempty" xml:"Container,omitempty" type:"Struct"`
 	MuxConfig   *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig   `json:"MuxConfig,omitempty" xml:"MuxConfig,omitempty" type:"Struct"`
-	Tags        map[string]interface{}                                                                                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	TransConfig *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsTransConfig `json:"TransConfig,omitempty" xml:"TransConfig,omitempty" type:"Struct"`
 	Video       *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsVideo       `json:"Video,omitempty" xml:"Video,omitempty" type:"Struct"`
 }
@@ -38186,11 +37429,6 @@ func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcess
 
 func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetMuxConfig(v *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParamsMuxConfig) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
 	s.MuxConfig = v
-	return s
-}
-
-func (s *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams) SetTags(v map[string]interface{}) *SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfigTranscodeOverwriteParams {
-	s.Tags = v
 	return s
 }
 
@@ -39914,6 +39152,87 @@ func (s *UpdateMediaMarksResponse) SetBody(v *UpdateMediaMarksResponseBody) *Upd
 	return s
 }
 
+type UpdateMediaToSearchLibRequest struct {
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MsgBody       *string `json:"MsgBody,omitempty" xml:"MsgBody,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s UpdateMediaToSearchLibRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaToSearchLibRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaToSearchLibRequest) SetMediaId(v string) *UpdateMediaToSearchLibRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibRequest) SetMsgBody(v string) *UpdateMediaToSearchLibRequest {
+	s.MsgBody = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibRequest) SetSearchLibName(v string) *UpdateMediaToSearchLibRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type UpdateMediaToSearchLibResponseBody struct {
+	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMediaToSearchLibResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaToSearchLibResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaToSearchLibResponseBody) SetMediaId(v string) *UpdateMediaToSearchLibResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibResponseBody) SetRequestId(v string) *UpdateMediaToSearchLibResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMediaToSearchLibResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMediaToSearchLibResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMediaToSearchLibResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMediaToSearchLibResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMediaToSearchLibResponse) SetHeaders(v map[string]*string) *UpdateMediaToSearchLibResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibResponse) SetStatusCode(v int32) *UpdateMediaToSearchLibResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibResponse) SetBody(v *UpdateMediaToSearchLibResponseBody) *UpdateMediaToSearchLibResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePipelineRequest struct {
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
@@ -39997,87 +39316,6 @@ func (s *UpdatePipelineResponse) SetStatusCode(v int32) *UpdatePipelineResponse 
 }
 
 func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdatePipelineResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateSmartJobRequest struct {
-	FEExtend *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-}
-
-func (s UpdateSmartJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSmartJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSmartJobRequest) SetFEExtend(v string) *UpdateSmartJobRequest {
-	s.FEExtend = &v
-	return s
-}
-
-func (s *UpdateSmartJobRequest) SetJobId(v string) *UpdateSmartJobRequest {
-	s.JobId = &v
-	return s
-}
-
-type UpdateSmartJobResponseBody struct {
-	FEExtend  *string `json:"FEExtend,omitempty" xml:"FEExtend,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateSmartJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSmartJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSmartJobResponseBody) SetFEExtend(v string) *UpdateSmartJobResponseBody {
-	s.FEExtend = &v
-	return s
-}
-
-func (s *UpdateSmartJobResponseBody) SetJobId(v string) *UpdateSmartJobResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *UpdateSmartJobResponseBody) SetRequestId(v string) *UpdateSmartJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateSmartJobResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateSmartJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateSmartJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateSmartJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateSmartJobResponse) SetHeaders(v map[string]*string) *UpdateSmartJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateSmartJobResponse) SetStatusCode(v int32) *UpdateSmartJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdateSmartJobResponse) SetBody(v *UpdateSmartJobResponseBody) *UpdateSmartJobResponse {
 	s.Body = v
 	return s
 }
@@ -40808,6 +40046,58 @@ func (client *Client) AddTemplate(request *AddTemplateRequest) (_result *AddTemp
 	return _result, _err
 }
 
+func (client *Client) AlterSearchIndexWithOptions(request *AlterSearchIndexRequest, runtime *util.RuntimeOptions) (_result *AlterSearchIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexConfig)) {
+		query["IndexConfig"] = request.IndexConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
+		query["IndexType"] = request.IndexType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AlterSearchIndex"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AlterSearchIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AlterSearchIndex(request *AlterSearchIndexRequest) (_result *AlterSearchIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AlterSearchIndexResponse{}
+	_body, _err := client.AlterSearchIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchGetMediaInfosWithOptions(request *BatchGetMediaInfosRequest, runtime *util.RuntimeOptions) (_result *BatchGetMediaInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40966,10 +40256,6 @@ func (client *Client) CreateAuditWithOptions(request *CreateAuditRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.AuditContent)) {
 		query["AuditContent"] = request.AuditContent
 	}
@@ -41553,6 +40839,102 @@ func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePipelineResponse{}
 	_body, _err := client.CreatePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSearchIndexWithOptions(request *CreateSearchIndexRequest, runtime *util.RuntimeOptions) (_result *CreateSearchIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexConfig)) {
+		query["IndexConfig"] = request.IndexConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
+		query["IndexType"] = request.IndexType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSearchIndex"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSearchIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSearchIndex(request *CreateSearchIndexRequest) (_result *CreateSearchIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSearchIndexResponse{}
+	_body, _err := client.CreateSearchIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSearchLibWithOptions(request *CreateSearchLibRequest, runtime *util.RuntimeOptions) (_result *CreateSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSearchLib(request *CreateSearchLibRequest) (_result *CreateSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSearchLibResponse{}
+	_body, _err := client.CreateSearchLibWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42410,6 +41792,58 @@ func (client *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTe
 	return _result, _err
 }
 
+func (client *Client) DeleteMediaFromSearchLibWithOptions(request *DeleteMediaFromSearchLibRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaFromSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgBody)) {
+		query["MsgBody"] = request.MsgBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMediaFromSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMediaFromSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMediaFromSearchLib(request *DeleteMediaFromSearchLibRequest) (_result *DeleteMediaFromSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMediaFromSearchLibResponse{}
+	_body, _err := client.DeleteMediaFromSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteMediaInfosWithOptions(request *DeleteMediaInfosRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42690,330 +42124,6 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DescribeFilterConfigsWithOptions(request *DescribeFilterConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeFilterConfigsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeFilterConfigs"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeFilterConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeFilterConfigs(request *DescribeFilterConfigsRequest) (_result *DescribeFilterConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeFilterConfigsResponse{}
-	_body, _err := client.DescribeFilterConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceEditUsageWithOptions(request *DescribeMeterIceEditUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceEditUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceEditUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterIceEditUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceEditUsage(request *DescribeMeterIceEditUsageRequest) (_result *DescribeMeterIceEditUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceEditUsageResponse{}
-	_body, _err := client.DescribeMeterIceEditUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceLiveMediaConvertUsageWithOptions(request *DescribeMeterIceLiveMediaConvertUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceLiveMediaConvertUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceLiveMediaConvertUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterIceLiveMediaConvertUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceLiveMediaConvertUsage(request *DescribeMeterIceLiveMediaConvertUsageRequest) (_result *DescribeMeterIceLiveMediaConvertUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceLiveMediaConvertUsageResponse{}
-	_body, _err := client.DescribeMeterIceLiveMediaConvertUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMediaConvertUHDUsageWithOptions(request *DescribeMeterIceMediaConvertUHDUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceMediaConvertUHDUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceMediaConvertUHDUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterIceMediaConvertUHDUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMediaConvertUHDUsage(request *DescribeMeterIceMediaConvertUHDUsageRequest) (_result *DescribeMeterIceMediaConvertUHDUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceMediaConvertUHDUsageResponse{}
-	_body, _err := client.DescribeMeterIceMediaConvertUHDUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMediaConvertUsageWithOptions(request *DescribeMeterIceMediaConvertUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceMediaConvertUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceMediaConvertUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterIceMediaConvertUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMediaConvertUsage(request *DescribeMeterIceMediaConvertUsageRequest) (_result *DescribeMeterIceMediaConvertUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceMediaConvertUsageResponse{}
-	_body, _err := client.DescribeMeterIceMediaConvertUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMpsAiUsageWithOptions(request *DescribeMeterIceMpsAiUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterIceMpsAiUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterIceMpsAiUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterIceMpsAiUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterIceMpsAiUsage(request *DescribeMeterIceMpsAiUsageRequest) (_result *DescribeMeterIceMpsAiUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterIceMpsAiUsageResponse{}
-	_body, _err := client.DescribeMeterIceMpsAiUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeMeterImsEditUsageWithOptions(request *DescribeMeterImsEditUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsEditUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43063,230 +42173,6 @@ func (client *Client) DescribeMeterImsEditUsage(request *DescribeMeterImsEditUsa
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMeterImsEditUsageResponse{}
 	_body, _err := client.DescribeMeterImsEditUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveEditUsageWithOptions(request *DescribeMeterImsLiveEditUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveEditUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterImsLiveEditUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterImsLiveEditUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveEditUsage(request *DescribeMeterImsLiveEditUsageRequest) (_result *DescribeMeterImsLiveEditUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterImsLiveEditUsageResponse{}
-	_body, _err := client.DescribeMeterImsLiveEditUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveMediaConvertUsageWithOptions(request *DescribeMeterImsLiveMediaConvertUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveMediaConvertUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterImsLiveMediaConvertUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterImsLiveMediaConvertUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveMediaConvertUsage(request *DescribeMeterImsLiveMediaConvertUsageRequest) (_result *DescribeMeterImsLiveMediaConvertUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterImsLiveMediaConvertUsageResponse{}
-	_body, _err := client.DescribeMeterImsLiveMediaConvertUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveRecordUsageWithOptions(request *DescribeMeterImsLiveRecordUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveRecordUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterImsLiveRecordUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterImsLiveRecordUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveRecordUsage(request *DescribeMeterImsLiveRecordUsageRequest) (_result *DescribeMeterImsLiveRecordUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterImsLiveRecordUsageResponse{}
-	_body, _err := client.DescribeMeterImsLiveRecordUsageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveSnapshotUsageWithOptions(request *DescribeMeterImsLiveSnapshotUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImsLiveSnapshotUsageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
-		query["StartTs"] = request.StartTs
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeterImsLiveSnapshotUsage"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeterImsLiveSnapshotUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeterImsLiveSnapshotUsage(request *DescribeMeterImsLiveSnapshotUsageRequest) (_result *DescribeMeterImsLiveSnapshotUsageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeterImsLiveSnapshotUsageResponse{}
-	_body, _err := client.DescribeMeterImsLiveSnapshotUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43514,162 +42400,6 @@ func (client *Client) DescribeMeterImsSummary(request *DescribeMeterImsSummaryRe
 	return _result, _err
 }
 
-func (client *Client) DescribePlayDetailWithOptions(request *DescribePlayDetailRequest, runtime *util.RuntimeOptions) (_result *DescribePlayDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PlayTs)) {
-		query["PlayTs"] = request.PlayTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
-		query["SessionId"] = request.SessionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayDetail"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayDetail(request *DescribePlayDetailRequest) (_result *DescribePlayDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayDetailResponse{}
-	_body, _err := client.DescribePlayDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePlayEventListWithOptions(request *DescribePlayEventListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayEventListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PlayTs)) {
-		query["PlayTs"] = request.PlayTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
-		query["SessionId"] = request.SessionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayEventList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayEventListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayEventList(request *DescribePlayEventListRequest) (_result *DescribePlayEventListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayEventListResponse{}
-	_body, _err := client.DescribePlayEventListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePlayFirstFrameDurationMetricDataWithOptions(request *DescribePlayFirstFrameDurationMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribePlayFirstFrameDurationMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TraceId)) {
-		query["TraceId"] = request.TraceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayFirstFrameDurationMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayFirstFrameDurationMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayFirstFrameDurationMetricData(request *DescribePlayFirstFrameDurationMetricDataRequest) (_result *DescribePlayFirstFrameDurationMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayFirstFrameDurationMetricDataResponse{}
-	_body, _err := client.DescribePlayFirstFrameDurationMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribePlayListWithOptions(request *DescribePlayListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43746,330 +42476,6 @@ func (client *Client) DescribePlayList(request *DescribePlayListRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DescribePlayMetricDataWithOptions(request *DescribePlayMetricDataRequest, runtime *util.RuntimeOptions) (_result *DescribePlayMetricDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Definition)) {
-		query["Definition"] = request.Definition
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ExperienceLevel)) {
-		query["ExperienceLevel"] = request.ExperienceLevel
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItemConfigs)) {
-		query["ItemConfigs"] = request.ItemConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
-		query["MetricType"] = request.MetricType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Network)) {
-		query["Network"] = request.Network
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SdkVersion)) {
-		query["SdkVersion"] = request.SdkVersion
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayMetricData"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayMetricDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayMetricData(request *DescribePlayMetricDataRequest) (_result *DescribePlayMetricDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayMetricDataResponse{}
-	_body, _err := client.DescribePlayMetricDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePlayQoeListWithOptions(tmpReq *DescribePlayQoeListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQoeListResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &DescribePlayQoeListShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.MetricTypes)) {
-		request.MetricTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricTypes, tea.String("MetricTypes"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Definition)) {
-		query["Definition"] = request.Definition
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItemConfigs)) {
-		query["ItemConfigs"] = request.ItemConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricTypesShrink)) {
-		query["MetricTypes"] = request.MetricTypesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Network)) {
-		query["Network"] = request.Network
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
-		query["OrderName"] = request.OrderName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
-		query["OrderType"] = request.OrderType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayQoeList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayQoeListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayQoeList(request *DescribePlayQoeListRequest) (_result *DescribePlayQoeListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayQoeListResponse{}
-	_body, _err := client.DescribePlayQoeListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribePlayQosListWithOptions(tmpReq *DescribePlayQosListRequest, runtime *util.RuntimeOptions) (_result *DescribePlayQosListResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &DescribePlayQosListShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.MetricTypes)) {
-		request.MetricTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MetricTypes, tea.String("MetricTypes"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BeginTs)) {
-		query["BeginTs"] = request.BeginTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Definition)) {
-		query["Definition"] = request.Definition
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
-		query["EndTs"] = request.EndTs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ItemConfigs)) {
-		query["ItemConfigs"] = request.ItemConfigs
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MetricTypesShrink)) {
-		query["MetricTypes"] = request.MetricTypesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Network)) {
-		query["Network"] = request.Network
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderName)) {
-		query["OrderName"] = request.OrderName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
-		query["OrderType"] = request.OrderType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Os)) {
-		query["Os"] = request.Os
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TerminalType)) {
-		query["TerminalType"] = request.TerminalType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribePlayQosList"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribePlayQosListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribePlayQosList(request *DescribePlayQosListRequest) (_result *DescribePlayQosListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribePlayQosListResponse{}
-	_body, _err := client.DescribePlayQosListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeQueryConfigsWithOptions(request *DescribeQueryConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeQueryConfigsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeQueryConfigs"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeQueryConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeQueryConfigs(request *DescribeQueryConfigsRequest) (_result *DescribeQueryConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeQueryConfigsResponse{}
-	_body, _err := client.DescribeQueryConfigsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DetectAudioForCustomizedVoiceJobWithOptions(request *DetectAudioForCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *DetectAudioForCustomizedVoiceJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44115,6 +42521,98 @@ func (client *Client) DetectAudioForCustomizedVoiceJob(request *DetectAudioForCu
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectAudioForCustomizedVoiceJobResponse{}
 	_body, _err := client.DetectAudioForCustomizedVoiceJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DropSearchIndexWithOptions(request *DropSearchIndexRequest, runtime *util.RuntimeOptions) (_result *DropSearchIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
+		query["IndexType"] = request.IndexType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DropSearchIndex"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DropSearchIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DropSearchIndex(request *DropSearchIndexRequest) (_result *DropSearchIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DropSearchIndexResponse{}
+	_body, _err := client.DropSearchIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DropSearchLibWithOptions(request *DropSearchLibRequest, runtime *util.RuntimeOptions) (_result *DropSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DropSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DropSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DropSearchLib(request *DropSearchLibRequest) (_result *DropSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DropSearchLibResponse{}
+	_body, _err := client.DropSearchLibWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45439,7 +43937,11 @@ func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobReq
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -45448,7 +43950,7 @@ func (client *Client) GetSmartHandleJobWithOptions(request *GetSmartHandleJobReq
 		Version:     tea.String("2020-11-09"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -45850,6 +44352,74 @@ func (client *Client) GetUrlUploadInfos(request *GetUrlUploadInfosRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetVideoListWithOptions(request *GetVideoListRequest, runtime *util.RuntimeOptions) (_result *GetVideoListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CateId)) {
+		query["CateId"] = request.CateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVideoList"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVideoListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetVideoList(request *GetVideoListRequest) (_result *GetVideoListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetVideoListResponse{}
+	_body, _err := client.GetVideoListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetWorkflowTaskWithOptions(request *GetWorkflowTaskRequest, runtime *util.RuntimeOptions) (_result *GetWorkflowTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45887,6 +44457,66 @@ func (client *Client) GetWorkflowTask(request *GetWorkflowTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWorkflowTaskResponse{}
 	_body, _err := client.GetWorkflowTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertMediaToSearchLibWithOptions(request *InsertMediaToSearchLibRequest, runtime *util.RuntimeOptions) (_result *InsertMediaToSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgBody)) {
+		query["MsgBody"] = request.MsgBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertMediaToSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertMediaToSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertMediaToSearchLib(request *InsertMediaToSearchLibRequest) (_result *InsertMediaToSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertMediaToSearchLibResponse{}
+	_body, _err := client.InsertMediaToSearchLibWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47238,6 +45868,39 @@ func (client *Client) ListSmartSysAvatarModels(request *ListSmartSysAvatarModels
 	return _result, _err
 }
 
+func (client *Client) ListSmartVoiceGroupsWithOptions(runtime *util.RuntimeOptions) (_result *ListSmartVoiceGroupsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListSmartVoiceGroups"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSmartVoiceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSmartVoiceGroups() (_result *ListSmartVoiceGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSmartVoiceGroupsResponse{}
+	_body, _err := client.ListSmartVoiceGroupsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListSnapshotJobsWithOptions(request *ListSnapshotJobsRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotJobsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47770,6 +46433,98 @@ func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRe
 	return _result, _err
 }
 
+func (client *Client) QuerySearchIndexWithOptions(request *QuerySearchIndexRequest, runtime *util.RuntimeOptions) (_result *QuerySearchIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
+		query["IndexType"] = request.IndexType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySearchIndex"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySearchIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySearchIndex(request *QuerySearchIndexRequest) (_result *QuerySearchIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySearchIndexResponse{}
+	_body, _err := client.QuerySearchIndexWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySearchLibWithOptions(request *QuerySearchLibRequest, runtime *util.RuntimeOptions) (_result *QuerySearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySearchLib(request *QuerySearchLibRequest) (_result *QuerySearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySearchLibResponse{}
+	_body, _err := client.QuerySearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySmarttagJobWithOptions(request *QuerySmarttagJobRequest, runtime *util.RuntimeOptions) (_result *QuerySmarttagJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48112,6 +46867,10 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 		query["ScrollToken"] = request.ScrollToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
 	}
@@ -48150,6 +46909,82 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 	return _result, _err
 }
 
+func (client *Client) SearchMediaByAILabelWithOptions(request *SearchMediaByAILabelRequest, runtime *util.RuntimeOptions) (_result *SearchMediaByAILabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultimodalSearchType)) {
+		query["MultimodalSearchType"] = request.MultimodalSearchType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecificSearch)) {
+		query["SpecificSearch"] = request.SpecificSearch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMediaByAILabel"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchMediaByAILabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchMediaByAILabel(request *SearchMediaByAILabelRequest) (_result *SearchMediaByAILabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchMediaByAILabelResponse{}
+	_body, _err := client.SearchMediaByAILabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceRequest, runtime *util.RuntimeOptions) (_result *SearchMediaByFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48164,6 +46999,10 @@ func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceReq
 		query["FaceSearchToken"] = request.FaceSearchToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		query["PageNo"] = request.PageNo
 	}
@@ -48174,6 +47013,10 @@ func (client *Client) SearchMediaByFaceWithOptions(request *SearchMediaByFaceReq
 
 	if !tea.BoolValue(util.IsUnset(request.PersonImageUrl)) {
 		query["PersonImageUrl"] = request.PersonImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -48210,6 +47053,66 @@ func (client *Client) SearchMediaByFace(request *SearchMediaByFaceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) SearchMediaByMultimodalWithOptions(request *SearchMediaByMultimodalRequest, runtime *util.RuntimeOptions) (_result *SearchMediaByMultimodalResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		query["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchMediaByMultimodal"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchMediaByMultimodalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchMediaByMultimodal(request *SearchMediaByMultimodalRequest) (_result *SearchMediaByMultimodalResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchMediaByMultimodalResponse{}
+	_body, _err := client.SearchMediaByMultimodalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchMediaClipByFaceWithOptions(request *SearchMediaClipByFaceRequest, runtime *util.RuntimeOptions) (_result *SearchMediaClipByFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48234,6 +47137,10 @@ func (client *Client) SearchMediaClipByFaceWithOptions(request *SearchMediaClipB
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -50289,6 +49196,10 @@ func (client *Client) SubmitTranscodeJobWithOptions(tmpReq *SubmitTranscodeJobRe
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputGroupShrink)) {
 		query["InputGroup"] = request.InputGroupShrink
 	}
@@ -51017,6 +49928,58 @@ func (client *Client) UpdateMediaMarks(request *UpdateMediaMarksRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) UpdateMediaToSearchLibWithOptions(request *UpdateMediaToSearchLibRequest, runtime *util.RuntimeOptions) (_result *UpdateMediaToSearchLibResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MsgBody)) {
+		query["MsgBody"] = request.MsgBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMediaToSearchLib"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMediaToSearchLibResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMediaToSearchLib(request *UpdateMediaToSearchLibRequest) (_result *UpdateMediaToSearchLibResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMediaToSearchLibResponse{}
+	_body, _err := client.UpdateMediaToSearchLibWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdatePipelineWithOptions(request *UpdatePipelineRequest, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51066,69 +50029,6 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePipelineResponse{}
 	_body, _err := client.UpdatePipelineWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request UpdateSmartJobRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateSmartJobResponse
- */
-// Deprecated
-func (client *Client) UpdateSmartJobWithOptions(request *UpdateSmartJobRequest, runtime *util.RuntimeOptions) (_result *UpdateSmartJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.FEExtend)) {
-		query["FEExtend"] = request.FEExtend
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateSmartJob"),
-		Version:     tea.String("2020-11-09"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateSmartJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-/**
- * @deprecated
- *
- * @param request UpdateSmartJobRequest
- * @return UpdateSmartJobResponse
- */
-// Deprecated
-func (client *Client) UpdateSmartJob(request *UpdateSmartJobRequest) (_result *UpdateSmartJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateSmartJobResponse{}
-	_body, _err := client.UpdateSmartJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
