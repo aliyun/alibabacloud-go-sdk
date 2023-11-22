@@ -2309,7 +2309,8 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
-	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// The phone number. This parameter is valid only when the Type sub-parameter of the Buttons parameter is set to **PHONE_NUMBER**.
@@ -2342,8 +2343,7 @@ type CreateChatappTemplateRequestComponentsButtons struct {
 	//
 	// *   **static**
 	// *   **dynamic**
-	UrlType        *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
-	NavigateScreen *string `json:"navigateScreen,omitempty" xml:"navigateScreen,omitempty"`
+	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
 }
 
 func (s CreateChatappTemplateRequestComponentsButtons) String() string {
@@ -2379,6 +2379,11 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetIsOptOut(v bool) *Cre
 	return s
 }
 
+func (s *CreateChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *CreateChatappTemplateRequestComponentsButtons {
+	s.NavigateScreen = &v
+	return s
+}
+
 func (s *CreateChatappTemplateRequestComponentsButtons) SetPackageName(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.PackageName = &v
 	return s
@@ -2411,11 +2416,6 @@ func (s *CreateChatappTemplateRequestComponentsButtons) SetUrl(v string) *Create
 
 func (s *CreateChatappTemplateRequestComponentsButtons) SetUrlType(v string) *CreateChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
-	return s
-}
-
-func (s *CreateChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *CreateChatappTemplateRequestComponentsButtons {
-	s.NavigateScreen = &v
 	return s
 }
 
@@ -2736,6 +2736,306 @@ func (s *CreateChatappTemplateResponse) SetBody(v *CreateChatappTemplateResponse
 	return s
 }
 
+type CreateFlowRequest struct {
+	Categories  []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowName    *string   `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s CreateFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowRequest) SetCategories(v []*string) *CreateFlowRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *CreateFlowRequest) SetCustSpaceId(v string) *CreateFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreateFlowRequest) SetFlowName(v string) *CreateFlowRequest {
+	s.FlowName = &v
+	return s
+}
+
+type CreateFlowShrinkRequest struct {
+	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s CreateFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowShrinkRequest) SetCategoriesShrink(v string) *CreateFlowShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *CreateFlowShrinkRequest) SetCustSpaceId(v string) *CreateFlowShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreateFlowShrinkRequest) SetFlowName(v string) *CreateFlowShrinkRequest {
+	s.FlowName = &v
+	return s
+}
+
+type CreateFlowResponseBody struct {
+	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *CreateFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowResponseBody) SetCode(v string) *CreateFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFlowResponseBody) SetData(v *CreateFlowResponseBodyData) *CreateFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateFlowResponseBody) SetMessage(v string) *CreateFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateFlowResponseBody) SetRequestId(v string) *CreateFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFlowResponseBodyData struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// flow ID。
+	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s CreateFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowResponseBodyData) SetCategories(v []*string) *CreateFlowResponseBodyData {
+	s.Categories = v
+	return s
+}
+
+func (s *CreateFlowResponseBodyData) SetFlowId(v string) *CreateFlowResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+func (s *CreateFlowResponseBodyData) SetFlowName(v string) *CreateFlowResponseBodyData {
+	s.FlowName = &v
+	return s
+}
+
+type CreateFlowResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFlowResponse) SetHeaders(v map[string]*string) *CreateFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFlowResponse) SetStatusCode(v int32) *CreateFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFlowResponse) SetBody(v *CreateFlowResponseBody) *CreateFlowResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePhoneMessageQrdlRequest struct {
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	GenerateQrImage  *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+}
+
+func (s CreatePhoneMessageQrdlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneMessageQrdlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneMessageQrdlRequest) SetCustSpaceId(v string) *CreatePhoneMessageQrdlRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlRequest) SetGenerateQrImage(v string) *CreatePhoneMessageQrdlRequest {
+	s.GenerateQrImage = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlRequest) SetPhoneNumber(v string) *CreatePhoneMessageQrdlRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlRequest) SetPrefilledMessage(v string) *CreatePhoneMessageQrdlRequest {
+	s.PrefilledMessage = &v
+	return s
+}
+
+type CreatePhoneMessageQrdlResponseBody struct {
+	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *CreatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePhoneMessageQrdlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneMessageQrdlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneMessageQrdlResponseBody) SetCode(v string) *CreatePhoneMessageQrdlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBody) SetData(v *CreatePhoneMessageQrdlResponseBodyData) *CreatePhoneMessageQrdlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBody) SetMessage(v string) *CreatePhoneMessageQrdlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBody) SetRequestId(v string) *CreatePhoneMessageQrdlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePhoneMessageQrdlResponseBodyData struct {
+	DeepLinkUrl      *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	GenerateQrImage  *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	QrImageUrl       *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	QrdlCode         *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
+}
+
+func (s CreatePhoneMessageQrdlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneMessageQrdlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetDeepLinkUrl(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.DeepLinkUrl = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetGenerateQrImage(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.GenerateQrImage = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetPhoneNumber(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetPrefilledMessage(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.PrefilledMessage = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetQrImageUrl(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.QrImageUrl = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *CreatePhoneMessageQrdlResponseBodyData {
+	s.QrdlCode = &v
+	return s
+}
+
+type CreatePhoneMessageQrdlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePhoneMessageQrdlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneMessageQrdlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneMessageQrdlResponse) SetHeaders(v map[string]*string) *CreatePhoneMessageQrdlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponse) SetStatusCode(v int32) *CreatePhoneMessageQrdlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePhoneMessageQrdlResponse) SetBody(v *CreatePhoneMessageQrdlResponseBody) *CreatePhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteChatappTemplateRequest struct {
 	// The space ID of the user under the ISV account.
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
@@ -2842,6 +3142,260 @@ func (s *DeleteChatappTemplateResponse) SetStatusCode(v int32) *DeleteChatappTem
 }
 
 func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponseBody) *DeleteChatappTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFlowRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s DeleteFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowRequest) SetCustSpaceId(v string) *DeleteFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeleteFlowRequest) SetFlowId(v string) *DeleteFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+type DeleteFlowResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowResponseBody) SetCode(v string) *DeleteFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFlowResponseBody) SetMessage(v string) *DeleteFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFlowResponseBody) SetRequestId(v string) *DeleteFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFlowResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFlowResponse) SetHeaders(v map[string]*string) *DeleteFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFlowResponse) SetStatusCode(v int32) *DeleteFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFlowResponse) SetBody(v *DeleteFlowResponseBody) *DeleteFlowResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePhoneMessageQrdlRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	QrdlCode    *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
+}
+
+func (s DeletePhoneMessageQrdlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePhoneMessageQrdlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePhoneMessageQrdlRequest) SetCustSpaceId(v string) *DeletePhoneMessageQrdlRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlRequest) SetPhoneNumber(v string) *DeletePhoneMessageQrdlRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlRequest) SetQrdlCode(v string) *DeletePhoneMessageQrdlRequest {
+	s.QrdlCode = &v
+	return s
+}
+
+type DeletePhoneMessageQrdlResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePhoneMessageQrdlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePhoneMessageQrdlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePhoneMessageQrdlResponseBody) SetCode(v string) *DeletePhoneMessageQrdlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlResponseBody) SetMessage(v string) *DeletePhoneMessageQrdlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlResponseBody) SetRequestId(v string) *DeletePhoneMessageQrdlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePhoneMessageQrdlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePhoneMessageQrdlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePhoneMessageQrdlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePhoneMessageQrdlResponse) SetHeaders(v map[string]*string) *DeletePhoneMessageQrdlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlResponse) SetStatusCode(v int32) *DeletePhoneMessageQrdlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePhoneMessageQrdlResponse) SetBody(v *DeletePhoneMessageQrdlResponseBody) *DeletePhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
+type DeprecateFlowRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s DeprecateFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprecateFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeprecateFlowRequest) SetCustSpaceId(v string) *DeprecateFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *DeprecateFlowRequest) SetFlowId(v string) *DeprecateFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+type DeprecateFlowResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeprecateFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprecateFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeprecateFlowResponseBody) SetCode(v string) *DeprecateFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeprecateFlowResponseBody) SetMessage(v string) *DeprecateFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeprecateFlowResponseBody) SetRequestId(v string) *DeprecateFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeprecateFlowResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeprecateFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeprecateFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprecateFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeprecateFlowResponse) SetHeaders(v map[string]*string) *DeprecateFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeprecateFlowResponse) SetStatusCode(v int32) *DeprecateFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeprecateFlowResponse) SetBody(v *DeprecateFlowResponseBody) *DeprecateFlowResponse {
 	s.Body = v
 	return s
 }
@@ -4426,6 +4980,387 @@ func (s *GetCommerceSettingResponse) SetBody(v *GetCommerceSettingResponseBody) 
 	return s
 }
 
+type GetFlowRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowRequest) SetCustSpaceId(v string) *GetFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetFlowRequest) SetFlowId(v string) *GetFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+type GetFlowResponseBody struct {
+	Code    *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowResponseBody) SetCode(v string) *GetFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetData(v *GetFlowResponseBodyData) *GetFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetMessage(v string) *GetFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFlowResponseBody) SetRequestId(v string) *GetFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFlowResponseBodyData struct {
+	Categories     []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	DataApiVersion *string   `json:"DataApiVersion,omitempty" xml:"DataApiVersion,omitempty"`
+	// flow ID。
+	FlowId            *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName          *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	JSONVersion       *string `json:"JSONVersion,omitempty" xml:"JSONVersion,omitempty"`
+	PreviewUrl        *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	PreviewUrlExpires *int64  `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowResponseBodyData) SetCategories(v []*string) *GetFlowResponseBodyData {
+	s.Categories = v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetDataApiVersion(v string) *GetFlowResponseBodyData {
+	s.DataApiVersion = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetFlowId(v string) *GetFlowResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetFlowName(v string) *GetFlowResponseBodyData {
+	s.FlowName = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetJSONVersion(v string) *GetFlowResponseBodyData {
+	s.JSONVersion = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetPreviewUrl(v string) *GetFlowResponseBodyData {
+	s.PreviewUrl = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetPreviewUrlExpires(v int64) *GetFlowResponseBodyData {
+	s.PreviewUrlExpires = &v
+	return s
+}
+
+func (s *GetFlowResponseBodyData) SetStatus(v string) *GetFlowResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetFlowResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowResponse) SetHeaders(v map[string]*string) *GetFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFlowResponse) SetStatusCode(v int32) *GetFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFlowResponse) SetBody(v *GetFlowResponseBody) *GetFlowResponse {
+	s.Body = v
+	return s
+}
+
+type GetFlowJSONAssestRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetFlowJSONAssestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowJSONAssestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowJSONAssestRequest) SetCustSpaceId(v string) *GetFlowJSONAssestRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetFlowJSONAssestRequest) SetFlowId(v string) *GetFlowJSONAssestRequest {
+	s.FlowId = &v
+	return s
+}
+
+type GetFlowJSONAssestResponseBody struct {
+	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetFlowJSONAssestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFlowJSONAssestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowJSONAssestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowJSONAssestResponseBody) SetCode(v string) *GetFlowJSONAssestResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponseBody) SetData(v *GetFlowJSONAssestResponseBodyData) *GetFlowJSONAssestResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponseBody) SetMessage(v string) *GetFlowJSONAssestResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponseBody) SetRequestId(v string) *GetFlowJSONAssestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFlowJSONAssestResponseBodyData struct {
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetFlowJSONAssestResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowJSONAssestResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowJSONAssestResponseBodyData) SetFilePath(v string) *GetFlowJSONAssestResponseBodyData {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponseBodyData) SetFlowId(v string) *GetFlowJSONAssestResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+type GetFlowJSONAssestResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFlowJSONAssestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFlowJSONAssestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowJSONAssestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowJSONAssestResponse) SetHeaders(v map[string]*string) *GetFlowJSONAssestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponse) SetStatusCode(v int32) *GetFlowJSONAssestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFlowJSONAssestResponse) SetBody(v *GetFlowJSONAssestResponseBody) *GetFlowJSONAssestResponse {
+	s.Body = v
+	return s
+}
+
+type GetFlowPreviewUrlRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s GetFlowPreviewUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowPreviewUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowPreviewUrlRequest) SetCustSpaceId(v string) *GetFlowPreviewUrlRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlRequest) SetFlowId(v string) *GetFlowPreviewUrlRequest {
+	s.FlowId = &v
+	return s
+}
+
+type GetFlowPreviewUrlResponseBody struct {
+	Code    *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetFlowPreviewUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetFlowPreviewUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowPreviewUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowPreviewUrlResponseBody) SetCode(v string) *GetFlowPreviewUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponseBody) SetData(v *GetFlowPreviewUrlResponseBodyData) *GetFlowPreviewUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponseBody) SetMessage(v string) *GetFlowPreviewUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponseBody) SetRequestId(v string) *GetFlowPreviewUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetFlowPreviewUrlResponseBodyData struct {
+	// flow ID。
+	FlowId            *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	PreviewUrl        *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
+	PreviewUrlExpires *int64  `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
+}
+
+func (s GetFlowPreviewUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowPreviewUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowPreviewUrlResponseBodyData) SetFlowId(v string) *GetFlowPreviewUrlResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponseBodyData) SetPreviewUrl(v string) *GetFlowPreviewUrlResponseBodyData {
+	s.PreviewUrl = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponseBodyData) SetPreviewUrlExpires(v int64) *GetFlowPreviewUrlResponseBodyData {
+	s.PreviewUrlExpires = &v
+	return s
+}
+
+type GetFlowPreviewUrlResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFlowPreviewUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFlowPreviewUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFlowPreviewUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFlowPreviewUrlResponse) SetHeaders(v map[string]*string) *GetFlowPreviewUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponse) SetStatusCode(v int32) *GetFlowPreviewUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFlowPreviewUrlResponse) SetBody(v *GetFlowPreviewUrlResponseBody) *GetFlowPreviewUrlResponse {
+	s.Body = v
+	return s
+}
+
 type GetMigrationVerifyCodeRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	Locale      *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
@@ -4550,6 +5485,240 @@ func (s *GetMigrationVerifyCodeResponse) SetStatusCode(v int32) *GetMigrationVer
 }
 
 func (s *GetMigrationVerifyCodeResponse) SetBody(v *GetMigrationVerifyCodeResponseBody) *GetMigrationVerifyCodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPermissionByCodeRequest struct {
+	Code        *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	Permissions []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+}
+
+func (s GetPermissionByCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionByCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionByCodeRequest) SetCode(v string) *GetPermissionByCodeRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPermissionByCodeRequest) SetCustSpaceId(v string) *GetPermissionByCodeRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetPermissionByCodeRequest) SetPermissions(v []*string) *GetPermissionByCodeRequest {
+	s.Permissions = v
+	return s
+}
+
+type GetPermissionByCodeShrinkRequest struct {
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+}
+
+func (s GetPermissionByCodeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionByCodeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionByCodeShrinkRequest) SetCode(v string) *GetPermissionByCodeShrinkRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPermissionByCodeShrinkRequest) SetCustSpaceId(v string) *GetPermissionByCodeShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetPermissionByCodeShrinkRequest) SetPermissionsShrink(v string) *GetPermissionByCodeShrinkRequest {
+	s.PermissionsShrink = &v
+	return s
+}
+
+type GetPermissionByCodeResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPermissionByCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionByCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionByCodeResponseBody) SetCode(v string) *GetPermissionByCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPermissionByCodeResponseBody) SetMessage(v string) *GetPermissionByCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPermissionByCodeResponseBody) SetRequestId(v string) *GetPermissionByCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPermissionByCodeResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPermissionByCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPermissionByCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPermissionByCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPermissionByCodeResponse) SetHeaders(v map[string]*string) *GetPermissionByCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPermissionByCodeResponse) SetStatusCode(v int32) *GetPermissionByCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPermissionByCodeResponse) SetBody(v *GetPermissionByCodeResponseBody) *GetPermissionByCodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPhoneEncryptionPublicKeyRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetPhoneEncryptionPublicKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneEncryptionPublicKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneEncryptionPublicKeyRequest) SetCustSpaceId(v string) *GetPhoneEncryptionPublicKeyRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyRequest) SetPhoneNumber(v string) *GetPhoneEncryptionPublicKeyRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetPhoneEncryptionPublicKeyResponseBody struct {
+	Code    *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetPhoneEncryptionPublicKeyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPhoneEncryptionPublicKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneEncryptionPublicKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBody) SetCode(v string) *GetPhoneEncryptionPublicKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBody) SetData(v *GetPhoneEncryptionPublicKeyResponseBodyData) *GetPhoneEncryptionPublicKeyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBody) SetMessage(v string) *GetPhoneEncryptionPublicKeyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBody) SetRequestId(v string) *GetPhoneEncryptionPublicKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPhoneEncryptionPublicKeyResponseBodyData struct {
+	EncryptionPublicKey       *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
+	EncryptionPublicKeyStatus *string `json:"EncryptionPublicKeyStatus,omitempty" xml:"EncryptionPublicKeyStatus,omitempty"`
+	PhoneNumber               *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s GetPhoneEncryptionPublicKeyResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneEncryptionPublicKeyResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBodyData) SetEncryptionPublicKey(v string) *GetPhoneEncryptionPublicKeyResponseBodyData {
+	s.EncryptionPublicKey = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBodyData) SetEncryptionPublicKeyStatus(v string) *GetPhoneEncryptionPublicKeyResponseBodyData {
+	s.EncryptionPublicKeyStatus = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponseBodyData) SetPhoneNumber(v string) *GetPhoneEncryptionPublicKeyResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+type GetPhoneEncryptionPublicKeyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPhoneEncryptionPublicKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPhoneEncryptionPublicKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponse) SetHeaders(v map[string]*string) *GetPhoneEncryptionPublicKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponse) SetStatusCode(v int32) *GetPhoneEncryptionPublicKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPhoneEncryptionPublicKeyResponse) SetBody(v *GetPhoneEncryptionPublicKeyResponseBody) *GetPhoneEncryptionPublicKeyResponse {
 	s.Body = v
 	return s
 }
@@ -5364,6 +6533,317 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 	return s
 }
 
+type ListFlowRequest struct {
+	CustSpaceId *string              `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowName    *string              `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	Page        *ListFlowRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+}
+
+func (s ListFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowRequest) SetCustSpaceId(v string) *ListFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListFlowRequest) SetFlowName(v string) *ListFlowRequest {
+	s.FlowName = &v
+	return s
+}
+
+func (s *ListFlowRequest) SetPage(v *ListFlowRequestPage) *ListFlowRequest {
+	s.Page = v
+	return s
+}
+
+type ListFlowRequestPage struct {
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	Size  *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListFlowRequestPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowRequestPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowRequestPage) SetIndex(v int32) *ListFlowRequestPage {
+	s.Index = &v
+	return s
+}
+
+func (s *ListFlowRequestPage) SetSize(v int32) *ListFlowRequestPage {
+	s.Size = &v
+	return s
+}
+
+type ListFlowShrinkRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowName    *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	PageShrink  *string `json:"Page,omitempty" xml:"Page,omitempty"`
+}
+
+func (s ListFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowShrinkRequest) SetCustSpaceId(v string) *ListFlowShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListFlowShrinkRequest) SetFlowName(v string) *ListFlowShrinkRequest {
+	s.FlowName = &v
+	return s
+}
+
+func (s *ListFlowShrinkRequest) SetPageShrink(v string) *ListFlowShrinkRequest {
+	s.PageShrink = &v
+	return s
+}
+
+type ListFlowResponseBody struct {
+	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*ListFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowResponseBody) SetCode(v string) *ListFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFlowResponseBody) SetData(v []*ListFlowResponseBodyData) *ListFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFlowResponseBody) SetMessage(v string) *ListFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFlowResponseBody) SetRequestId(v string) *ListFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFlowResponseBodyData struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// flow ID。
+	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s ListFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowResponseBodyData) SetCategories(v []*string) *ListFlowResponseBodyData {
+	s.Categories = v
+	return s
+}
+
+func (s *ListFlowResponseBodyData) SetFlowId(v string) *ListFlowResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ListFlowResponseBodyData) SetFlowName(v string) *ListFlowResponseBodyData {
+	s.FlowName = &v
+	return s
+}
+
+type ListFlowResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowResponse) SetHeaders(v map[string]*string) *ListFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlowResponse) SetStatusCode(v int32) *ListFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
+	s.Body = v
+	return s
+}
+
+type ListPhoneMessageQrdlRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s ListPhoneMessageQrdlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPhoneMessageQrdlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPhoneMessageQrdlRequest) SetCustSpaceId(v string) *ListPhoneMessageQrdlRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlRequest) SetPhoneNumber(v string) *ListPhoneMessageQrdlRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type ListPhoneMessageQrdlResponseBody struct {
+	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*ListPhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPhoneMessageQrdlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPhoneMessageQrdlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPhoneMessageQrdlResponseBody) SetCode(v string) *ListPhoneMessageQrdlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBody) SetData(v []*ListPhoneMessageQrdlResponseBodyData) *ListPhoneMessageQrdlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBody) SetMessage(v string) *ListPhoneMessageQrdlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBody) SetRequestId(v string) *ListPhoneMessageQrdlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPhoneMessageQrdlResponseBodyData struct {
+	DeepLinkUrl      *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	GenerateQrImage  *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	QrImageUrl       *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	QrdlCode         *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
+}
+
+func (s ListPhoneMessageQrdlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPhoneMessageQrdlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetDeepLinkUrl(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.DeepLinkUrl = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetGenerateQrImage(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.GenerateQrImage = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetPhoneNumber(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetPrefilledMessage(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.PrefilledMessage = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetQrImageUrl(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.QrImageUrl = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *ListPhoneMessageQrdlResponseBodyData {
+	s.QrdlCode = &v
+	return s
+}
+
+type ListPhoneMessageQrdlResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListPhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListPhoneMessageQrdlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPhoneMessageQrdlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPhoneMessageQrdlResponse) SetHeaders(v map[string]*string) *ListPhoneMessageQrdlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponse) SetStatusCode(v int32) *ListPhoneMessageQrdlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPhoneMessageQrdlResponse) SetBody(v *ListPhoneMessageQrdlResponseBody) *ListPhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
 type ListProductRequest struct {
 	// The cursor that points to the end of the page of the returned data.
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
@@ -6070,7 +7550,8 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	FlowAction   *string `json:"FlowAction,omitempty" xml:"FlowAction,omitempty"`
 	FlowId       *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The unsubscribe button. This parameter is valid only when Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
-	IsOptOut *bool `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	IsOptOut       *bool   `json:"IsOptOut,omitempty" xml:"IsOptOut,omitempty"`
+	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
 	// The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
 	// The phone number.
@@ -6103,8 +7584,7 @@ type ModifyChatappTemplateRequestComponentsButtons struct {
 	//
 	// *   **static**
 	// *   **dynamic**
-	UrlType        *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
-	NavigateScreen *string `json:"navigateScreen,omitempty" xml:"navigateScreen,omitempty"`
+	UrlType *string `json:"UrlType,omitempty" xml:"UrlType,omitempty"`
 }
 
 func (s ModifyChatappTemplateRequestComponentsButtons) String() string {
@@ -6140,6 +7620,11 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetIsOptOut(v bool) *Mod
 	return s
 }
 
+func (s *ModifyChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *ModifyChatappTemplateRequestComponentsButtons {
+	s.NavigateScreen = &v
+	return s
+}
+
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetPackageName(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.PackageName = &v
 	return s
@@ -6172,11 +7657,6 @@ func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrl(v string) *Modify
 
 func (s *ModifyChatappTemplateRequestComponentsButtons) SetUrlType(v string) *ModifyChatappTemplateRequestComponentsButtons {
 	s.UrlType = &v
-	return s
-}
-
-func (s *ModifyChatappTemplateRequestComponentsButtons) SetNavigateScreen(v string) *ModifyChatappTemplateRequestComponentsButtons {
-	s.NavigateScreen = &v
 	return s
 }
 
@@ -6486,6 +7966,171 @@ func (s *ModifyChatappTemplateResponse) SetBody(v *ModifyChatappTemplateResponse
 	return s
 }
 
+type ModifyFlowRequest struct {
+	Categories  []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	CustSpaceId *string   `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowId      *string   `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName    *string   `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s ModifyFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowRequest) SetCategories(v []*string) *ModifyFlowRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *ModifyFlowRequest) SetCustSpaceId(v string) *ModifyFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyFlowRequest) SetFlowId(v string) *ModifyFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ModifyFlowRequest) SetFlowName(v string) *ModifyFlowRequest {
+	s.FlowName = &v
+	return s
+}
+
+type ModifyFlowShrinkRequest struct {
+	CategoriesShrink *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName         *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s ModifyFlowShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowShrinkRequest) SetCategoriesShrink(v string) *ModifyFlowShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *ModifyFlowShrinkRequest) SetCustSpaceId(v string) *ModifyFlowShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ModifyFlowShrinkRequest) SetFlowId(v string) *ModifyFlowShrinkRequest {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ModifyFlowShrinkRequest) SetFlowName(v string) *ModifyFlowShrinkRequest {
+	s.FlowName = &v
+	return s
+}
+
+type ModifyFlowResponseBody struct {
+	Code    *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *ModifyFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowResponseBody) SetCode(v string) *ModifyFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyFlowResponseBody) SetData(v *ModifyFlowResponseBodyData) *ModifyFlowResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyFlowResponseBody) SetMessage(v string) *ModifyFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyFlowResponseBody) SetRequestId(v string) *ModifyFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyFlowResponseBodyData struct {
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// flow ID。
+	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+}
+
+func (s ModifyFlowResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowResponseBodyData) SetCategories(v []*string) *ModifyFlowResponseBodyData {
+	s.Categories = v
+	return s
+}
+
+func (s *ModifyFlowResponseBodyData) SetFlowId(v string) *ModifyFlowResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+func (s *ModifyFlowResponseBodyData) SetFlowName(v string) *ModifyFlowResponseBodyData {
+	s.FlowName = &v
+	return s
+}
+
+type ModifyFlowResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowResponse) SetHeaders(v map[string]*string) *ModifyFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFlowResponse) SetStatusCode(v int32) *ModifyFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFlowResponse) SetBody(v *ModifyFlowResponseBody) *ModifyFlowResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyPhoneBusinessProfileRequest struct {
 	// The space ID of the user under the independent software vendor (ISV) account.
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
@@ -6687,6 +8332,89 @@ func (s *ModifyPhoneBusinessProfileResponse) SetStatusCode(v int32) *ModifyPhone
 }
 
 func (s *ModifyPhoneBusinessProfileResponse) SetBody(v *ModifyPhoneBusinessProfileResponseBody) *ModifyPhoneBusinessProfileResponse {
+	s.Body = v
+	return s
+}
+
+type PublishFlowRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s PublishFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishFlowRequest) SetCustSpaceId(v string) *PublishFlowRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *PublishFlowRequest) SetFlowId(v string) *PublishFlowRequest {
+	s.FlowId = &v
+	return s
+}
+
+type PublishFlowResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PublishFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishFlowResponseBody) SetCode(v string) *PublishFlowResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PublishFlowResponseBody) SetMessage(v string) *PublishFlowResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PublishFlowResponseBody) SetRequestId(v string) *PublishFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PublishFlowResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishFlowResponse) SetHeaders(v map[string]*string) *PublishFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishFlowResponse) SetStatusCode(v int32) *PublishFlowResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishFlowResponse) SetBody(v *PublishFlowResponseBody) *PublishFlowResponse {
 	s.Body = v
 	return s
 }
@@ -8795,6 +10523,360 @@ func (s *UpdateCommerceSettingResponse) SetBody(v *UpdateCommerceSettingResponse
 	return s
 }
 
+type UpdateFlowJSONAssetRequest struct {
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	FilePath    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s UpdateFlowJSONAssetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowJSONAssetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowJSONAssetRequest) SetCustSpaceId(v string) *UpdateFlowJSONAssetRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetRequest) SetFilePath(v string) *UpdateFlowJSONAssetRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetRequest) SetFlowId(v string) *UpdateFlowJSONAssetRequest {
+	s.FlowId = &v
+	return s
+}
+
+type UpdateFlowJSONAssetResponseBody struct {
+	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *UpdateFlowJSONAssetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateFlowJSONAssetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowJSONAssetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowJSONAssetResponseBody) SetCode(v string) *UpdateFlowJSONAssetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetResponseBody) SetData(v *UpdateFlowJSONAssetResponseBodyData) *UpdateFlowJSONAssetResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetResponseBody) SetMessage(v string) *UpdateFlowJSONAssetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetResponseBody) SetRequestId(v string) *UpdateFlowJSONAssetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFlowJSONAssetResponseBodyData struct {
+	// Flow ID。
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+}
+
+func (s UpdateFlowJSONAssetResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowJSONAssetResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowJSONAssetResponseBodyData) SetFlowId(v string) *UpdateFlowJSONAssetResponseBodyData {
+	s.FlowId = &v
+	return s
+}
+
+type UpdateFlowJSONAssetResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFlowJSONAssetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFlowJSONAssetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFlowJSONAssetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFlowJSONAssetResponse) SetHeaders(v map[string]*string) *UpdateFlowJSONAssetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetResponse) SetStatusCode(v int32) *UpdateFlowJSONAssetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFlowJSONAssetResponse) SetBody(v *UpdateFlowJSONAssetResponseBody) *UpdateFlowJSONAssetResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePhoneEncryptionPublicKeyRequest struct {
+	CustSpaceId         *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" xml:"EncryptionPublicKey,omitempty"`
+	PhoneNumber         *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+}
+
+func (s UpdatePhoneEncryptionPublicKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneEncryptionPublicKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyRequest) SetCustSpaceId(v string) *UpdatePhoneEncryptionPublicKeyRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyRequest) SetEncryptionPublicKey(v string) *UpdatePhoneEncryptionPublicKeyRequest {
+	s.EncryptionPublicKey = &v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyRequest) SetPhoneNumber(v string) *UpdatePhoneEncryptionPublicKeyRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+type UpdatePhoneEncryptionPublicKeyResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePhoneEncryptionPublicKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneEncryptionPublicKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponseBody) SetCode(v string) *UpdatePhoneEncryptionPublicKeyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponseBody) SetMessage(v string) *UpdatePhoneEncryptionPublicKeyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponseBody) SetRequestId(v string) *UpdatePhoneEncryptionPublicKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePhoneEncryptionPublicKeyResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePhoneEncryptionPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePhoneEncryptionPublicKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneEncryptionPublicKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponse) SetHeaders(v map[string]*string) *UpdatePhoneEncryptionPublicKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponse) SetStatusCode(v int32) *UpdatePhoneEncryptionPublicKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePhoneEncryptionPublicKeyResponse) SetBody(v *UpdatePhoneEncryptionPublicKeyResponseBody) *UpdatePhoneEncryptionPublicKeyResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePhoneMessageQrdlRequest struct {
+	CustSpaceId      *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	GenerateQrImage  *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	QrdlCode         *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
+}
+
+func (s UpdatePhoneMessageQrdlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneMessageQrdlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneMessageQrdlRequest) SetCustSpaceId(v string) *UpdatePhoneMessageQrdlRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlRequest) SetGenerateQrImage(v string) *UpdatePhoneMessageQrdlRequest {
+	s.GenerateQrImage = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlRequest) SetPhoneNumber(v string) *UpdatePhoneMessageQrdlRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlRequest) SetPrefilledMessage(v string) *UpdatePhoneMessageQrdlRequest {
+	s.PrefilledMessage = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlRequest) SetQrdlCode(v string) *UpdatePhoneMessageQrdlRequest {
+	s.QrdlCode = &v
+	return s
+}
+
+type UpdatePhoneMessageQrdlResponseBody struct {
+	Code    *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *UpdatePhoneMessageQrdlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdatePhoneMessageQrdlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneMessageQrdlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBody) SetCode(v string) *UpdatePhoneMessageQrdlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBody) SetData(v *UpdatePhoneMessageQrdlResponseBodyData) *UpdatePhoneMessageQrdlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBody) SetMessage(v string) *UpdatePhoneMessageQrdlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBody) SetRequestId(v string) *UpdatePhoneMessageQrdlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePhoneMessageQrdlResponseBodyData struct {
+	DeepLinkUrl      *string `json:"DeepLinkUrl,omitempty" xml:"DeepLinkUrl,omitempty"`
+	GenerateQrImage  *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
+	PhoneNumber      *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
+	QrImageUrl       *string `json:"QrImageUrl,omitempty" xml:"QrImageUrl,omitempty"`
+	QrdlCode         *string `json:"QrdlCode,omitempty" xml:"QrdlCode,omitempty"`
+}
+
+func (s UpdatePhoneMessageQrdlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneMessageQrdlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetDeepLinkUrl(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.DeepLinkUrl = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetGenerateQrImage(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.GenerateQrImage = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetPhoneNumber(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetPrefilledMessage(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.PrefilledMessage = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetQrImageUrl(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.QrImageUrl = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponseBodyData) SetQrdlCode(v string) *UpdatePhoneMessageQrdlResponseBodyData {
+	s.QrdlCode = &v
+	return s
+}
+
+type UpdatePhoneMessageQrdlResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePhoneMessageQrdlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePhoneMessageQrdlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePhoneMessageQrdlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePhoneMessageQrdlResponse) SetHeaders(v map[string]*string) *UpdatePhoneMessageQrdlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponse) SetStatusCode(v int32) *UpdatePhoneMessageQrdlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePhoneMessageQrdlResponse) SetBody(v *UpdatePhoneMessageQrdlResponseBody) *UpdatePhoneMessageQrdlResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePhoneWebhookRequest struct {
 	CustSpaceId       *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	HttpFlag          *string `json:"HttpFlag,omitempty" xml:"HttpFlag,omitempty"`
@@ -9850,6 +11932,120 @@ func (client *Client) CreateChatappTemplate(request *CreateChatappTemplateReques
 	return _result, _err
 }
 
+func (client *Client) CreateFlowWithOptions(tmpReq *CreateFlowRequest, runtime *util.RuntimeOptions) (_result *CreateFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Categories)) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, tea.String("Categories"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoriesShrink)) {
+		body["Categories"] = request.CategoriesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFlow(request *CreateFlowRequest) (_result *CreateFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFlowResponse{}
+	_body, _err := client.CreateFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePhoneMessageQrdlWithOptions(request *CreatePhoneMessageQrdlRequest, runtime *util.RuntimeOptions) (_result *CreatePhoneMessageQrdlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateQrImage)) {
+		body["GenerateQrImage"] = request.GenerateQrImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrefilledMessage)) {
+		body["PrefilledMessage"] = request.PrefilledMessage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePhoneMessageQrdl"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePhoneMessageQrdlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePhoneMessageQrdl(request *CreatePhoneMessageQrdlRequest) (_result *CreatePhoneMessageQrdlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePhoneMessageQrdlResponse{}
+	_body, _err := client.CreatePhoneMessageQrdlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ### QPS limit
  * You can call this operation up to five times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -9914,6 +12110,154 @@ func (client *Client) DeleteChatappTemplate(request *DeleteChatappTemplateReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteChatappTemplateResponse{}
 	_body, _err := client.DeleteChatappTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFlow(request *DeleteFlowRequest) (_result *DeleteFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFlowResponse{}
+	_body, _err := client.DeleteFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePhoneMessageQrdlWithOptions(request *DeletePhoneMessageQrdlRequest, runtime *util.RuntimeOptions) (_result *DeletePhoneMessageQrdlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QrdlCode)) {
+		body["QrdlCode"] = request.QrdlCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePhoneMessageQrdl"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePhoneMessageQrdlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePhoneMessageQrdl(request *DeletePhoneMessageQrdlRequest) (_result *DeletePhoneMessageQrdlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePhoneMessageQrdlResponse{}
+	_body, _err := client.DeletePhoneMessageQrdlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeprecateFlowWithOptions(request *DeprecateFlowRequest, runtime *util.RuntimeOptions) (_result *DeprecateFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeprecateFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeprecateFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeprecateFlow(request *DeprecateFlowRequest) (_result *DeprecateFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeprecateFlowResponse{}
+	_body, _err := client.DeprecateFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10358,6 +12702,150 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetFlowWithOptions(request *GetFlowRequest, runtime *util.RuntimeOptions) (_result *GetFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFlow(request *GetFlowRequest) (_result *GetFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFlowResponse{}
+	_body, _err := client.GetFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFlowJSONAssestWithOptions(request *GetFlowJSONAssestRequest, runtime *util.RuntimeOptions) (_result *GetFlowJSONAssestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFlowJSONAssest"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFlowJSONAssestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFlowJSONAssest(request *GetFlowJSONAssestRequest) (_result *GetFlowJSONAssestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFlowJSONAssestResponse{}
+	_body, _err := client.GetFlowJSONAssestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFlowPreviewUrlWithOptions(request *GetFlowPreviewUrlRequest, runtime *util.RuntimeOptions) (_result *GetFlowPreviewUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFlowPreviewUrl"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFlowPreviewUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFlowPreviewUrl(request *GetFlowPreviewUrlRequest) (_result *GetFlowPreviewUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFlowPreviewUrlResponse{}
+	_body, _err := client.GetFlowPreviewUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * The ID of the phone number.
  *
@@ -10420,6 +12908,112 @@ func (client *Client) GetMigrationVerifyCode(request *GetMigrationVerifyCodeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMigrationVerifyCodeResponse{}
 	_body, _err := client.GetMigrationVerifyCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPermissionByCodeWithOptions(tmpReq *GetPermissionByCodeRequest, runtime *util.RuntimeOptions) (_result *GetPermissionByCodeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetPermissionByCodeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Permissions)) {
+		request.PermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Permissions, tea.String("Permissions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["Code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionsShrink)) {
+		body["Permissions"] = request.PermissionsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPermissionByCode"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPermissionByCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPermissionByCode(request *GetPermissionByCodeRequest) (_result *GetPermissionByCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPermissionByCodeResponse{}
+	_body, _err := client.GetPermissionByCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPhoneEncryptionPublicKeyWithOptions(request *GetPhoneEncryptionPublicKeyRequest, runtime *util.RuntimeOptions) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPhoneEncryptionPublicKey"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPhoneEncryptionPublicKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPhoneEncryptionPublicKey(request *GetPhoneEncryptionPublicKeyRequest) (_result *GetPhoneEncryptionPublicKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPhoneEncryptionPublicKeyResponse{}
+	_body, _err := client.GetPhoneEncryptionPublicKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10763,6 +13357,112 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListFlowWithOptions(tmpReq *ListFlowRequest, runtime *util.RuntimeOptions) (_result *ListFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Page)) {
+		request.PageShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Page, tea.String("Page"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageShrink)) {
+		body["Page"] = request.PageShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFlowResponse{}
+	_body, _err := client.ListFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListPhoneMessageQrdlWithOptions(request *ListPhoneMessageQrdlRequest, runtime *util.RuntimeOptions) (_result *ListPhoneMessageQrdlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPhoneMessageQrdl"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPhoneMessageQrdlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListPhoneMessageQrdl(request *ListPhoneMessageQrdlRequest) (_result *ListPhoneMessageQrdlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPhoneMessageQrdlResponse{}
+	_body, _err := client.ListPhoneMessageQrdlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
  *
@@ -11048,6 +13748,68 @@ func (client *Client) ModifyChatappTemplate(request *ModifyChatappTemplateReques
 	return _result, _err
 }
 
+func (client *Client) ModifyFlowWithOptions(tmpReq *ModifyFlowRequest, runtime *util.RuntimeOptions) (_result *ModifyFlowResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Categories)) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, tea.String("Categories"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoriesShrink)) {
+		body["Categories"] = request.CategoriesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyFlow(request *ModifyFlowRequest) (_result *ModifyFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFlowResponse{}
+	_body, _err := client.ModifyFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * ModifyPhoneBusinessProfile
  *
@@ -11132,6 +13894,54 @@ func (client *Client) ModifyPhoneBusinessProfile(request *ModifyPhoneBusinessPro
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPhoneBusinessProfileResponse{}
 	_body, _err := client.ModifyPhoneBusinessProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishFlowWithOptions(request *PublishFlowRequest, runtime *util.RuntimeOptions) (_result *PublishFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishFlow"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishFlow(request *PublishFlowRequest) (_result *PublishFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishFlowResponse{}
+	_body, _err := client.PublishFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11880,6 +14690,170 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCommerceSettingResponse{}
 	_body, _err := client.UpdateCommerceSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFlowJSONAssetWithOptions(request *UpdateFlowJSONAssetRequest, runtime *util.RuntimeOptions) (_result *UpdateFlowJSONAssetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["FilePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		body["FlowId"] = request.FlowId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFlowJSONAsset"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFlowJSONAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFlowJSONAsset(request *UpdateFlowJSONAssetRequest) (_result *UpdateFlowJSONAssetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFlowJSONAssetResponse{}
+	_body, _err := client.UpdateFlowJSONAssetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneEncryptionPublicKeyWithOptions(request *UpdatePhoneEncryptionPublicKeyRequest, runtime *util.RuntimeOptions) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionPublicKey)) {
+		body["EncryptionPublicKey"] = request.EncryptionPublicKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePhoneEncryptionPublicKey"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePhoneEncryptionPublicKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneEncryptionPublicKey(request *UpdatePhoneEncryptionPublicKeyRequest) (_result *UpdatePhoneEncryptionPublicKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePhoneEncryptionPublicKeyResponse{}
+	_body, _err := client.UpdatePhoneEncryptionPublicKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneMessageQrdlWithOptions(request *UpdatePhoneMessageQrdlRequest, runtime *util.RuntimeOptions) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		body["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GenerateQrImage)) {
+		body["GenerateQrImage"] = request.GenerateQrImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		body["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrefilledMessage)) {
+		body["PrefilledMessage"] = request.PrefilledMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QrdlCode)) {
+		body["QrdlCode"] = request.QrdlCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePhoneMessageQrdl"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePhoneMessageQrdlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePhoneMessageQrdl(request *UpdatePhoneMessageQrdlRequest) (_result *UpdatePhoneMessageQrdlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePhoneMessageQrdlResponse{}
+	_body, _err := client.UpdatePhoneMessageQrdlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
