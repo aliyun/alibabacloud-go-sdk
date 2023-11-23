@@ -3424,7 +3424,7 @@ type CreateDBInstanceRequest struct {
 	// Valid values: **1** to **20**. Default value: **1**.
 	//
 	// > *   If you want to create multiple ApsaraDB RDS for MySQL instances at a time by using a single request, you can add tags to all the instances by using the **Tag.Key** parameter and the **Tag.Value** parameter. After the instances are created, you can manage the instances based on the tags.
-	// > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the details of an instance.
+	// > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the details of an instance.
 	// > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to automatically complete the payment. Default value: true. Valid values:
@@ -3537,9 +3537,9 @@ type CreateDBInstanceRequest struct {
 	// *   **true**: Table names are not case-sensitive. This is the default value.
 	// *   **false**: Table names are case-sensitive.
 	DBIsIgnoreCase *string `json:"DBIsIgnoreCase,omitempty" xml:"DBIsIgnoreCase,omitempty"`
-	// The ID of the parameter template. You can call the [DescribeParameterGroups](~~610588~~) operation to query the ID of the parameter template.
+	// The ID of the parameter template. You can call the DescribeParameterGroups operation to query the ID of the parameter template.
 	//
-	// > : This parameter is available if you want to create an instance that runs MySQL or PostgreSQL . If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template. For more information, see [Create a parameter template](~~610585~~).
+	// > : This parameter is available if you want to create an instance that runs MySQL or PostgreSQL . If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template.
 	DBParamGroupId *string `json:"DBParamGroupId,omitempty" xml:"DBParamGroupId,omitempty"`
 	// The time zone of the instance. This parameter takes effect only when you set the **Engine** parameter to **MySQL** or **PostgreSQL**.
 	//
@@ -3560,8 +3560,8 @@ type CreateDBInstanceRequest struct {
 	//
 	// If you create the instance in a dedicated cluster, you must specify this parameter.
 	//
-	// *   You can call the [DescribeDedicatedHostGroups](~~610640~~) operation to query the details of a dedicated cluster.
-	// *   If no dedicated clusters are created, you can call the [CreateDedicatedHostGroup](~~209828~~) operation to create a dedicated cluster.
+	// *   You can call the DescribeDedicatedHostGroups operation to query the details of a dedicated cluster.
+	// *   If no dedicated clusters are created, you can call the CreateDedicatedHostGroup operation to create a dedicated cluster.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the instance. This feature is available only for pay-as-you-go instances. Valid values:
 	//
@@ -3649,12 +3649,12 @@ type CreateDBInstanceRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address of the instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. ApsaraDB RDS automatically assigns a private IP address to the instance based on the values of the **VPCId** and **vSwitchId** parameters.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the [CheckCloudResourceAuthorized](~~610408~~) operation to query the ARN.
+	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](~~43185~~). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
 	//
@@ -3670,7 +3670,7 @@ type CreateDBInstanceRequest struct {
 	// *   **Enable**
 	// *   **Disable** (default)
 	//
-	// >  After the instance is created, you can call the [ModifyDasInstanceConfig](~~610391~~) operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion for an ApsaraDB RDS for MySQL instance](~~173826~~).
+	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion for an ApsaraDB RDS for MySQL instance](~~173826~~).
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The threshold in percentage based on which automatic storage expansion is triggered.
 	//
@@ -3695,22 +3695,22 @@ type CreateDBInstanceRequest struct {
 	//
 	// If you want to create an instance that runs RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHosts](~~610641~~) operation to query the details of the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHosts operation to query the details of the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForLog *string `json:"TargetDedicatedHostIdForLog,omitempty" xml:"TargetDedicatedHostIdForLog,omitempty"`
 	// The ID of the host to which the instance belongs in the specified dedicated cluster.
 	//
 	// If you create the instance in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHost](~~610641~~) operation to query the details about the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHost operation to query the details about the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
 	// The ID of the host to which the secondary instance belongs in the specified dedicated cluster.
 	//
 	// If you want to create an instance that runs RDS High-availability Edition or RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHosts](~~610641~~) operation to query the details of the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHosts operation to query the details of the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
 	// The minor engine version of the instance. This parameter is required only when you create an instance that runs MySQL or PostgreSQL. The value format varies based on the database engine of the instance.
 	//
@@ -3722,12 +3722,12 @@ type CreateDBInstanceRequest struct {
 	//
 	//     **
 	//
-	//     **Note** You can call the [DescribeDBMiniEngineVersions](~~610643~~) operation to query the minor engine version. For more information about minor engine versions, see [Release notes of minor AliSQL versions](~~96060~~).
+	//     **Note** You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about minor engine versions, see [Release notes of minor AliSQL versions](~~96060~~).
 	//
 	// *   If you create an instance that runs PostgreSQL, the value is in the following format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1400_20220830`. The following list describes the fields in the example values:
 	//
 	//     *   1400: The major engine version is PostgreSQL 14.
-	//     *   20220830: the AliPG version. You can call the [DescribeDBMiniEngineVersions](~~610643~~) operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+	//     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
 	//
 	//     **
 	//
@@ -3740,7 +3740,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The ID of the backup file. You can call the [ListUserBackupFiles](~~610600~~) operation to query backup files. If you want to create an instance by using the data of a backup file, you must specify this parameter.
+	// The ID of the backup file. You can call the ListUserBackupFiles operation to query backup files. If you want to create an instance by using the data of a backup file, you must specify this parameter.
 	//
 	// This parameter is supported only when the following requirements are met:
 	//
@@ -4116,14 +4116,14 @@ func (s *CreateDBInstanceRequestServerlessConfig) SetSwitchForce(v bool) *Create
 type CreateDBInstanceRequestTag struct {
 	// The key of the tag that you want to add to the instance. You can use this parameter to add tags to the instance.
 	//
-	// *   If the specified tag key is an existing key, the system directly adds the tag key to the instance. You can call the [ListTagResources](~~610627~~) operation to query the details of the existing tags.
+	// *   If the specified tag key is an existing key, the system directly adds the tag key to the instance. You can call the ListTagResources operation to query the details of the existing tags.
 	// *   If the specified tag key is not an existing key, the system creates the tag key and adds the tag key to the instance.
 	// *   A tag key cannot be an empty string.
 	// *   This parameter must be used together with the **Tag.Value** parameter.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value that is associated with the specified tag key. You can use this parameter to add tags to the instance.
 	//
-	// *   If the specified tag value is found in the specified tag key, the system directly adds the tag value to the instance. You can call the [ListTagResources](~~610627~~) operation to query the details of the existing tags.
+	// *   If the specified tag value is found in the specified tag key, the system directly adds the tag value to the instance. You can call the ListTagResources operation to query the details of the existing tags.
 	// *   If the specified tag value is not found in the specified tag key, the system creates the tag value and adds the tag value to the instance.
 	// *   This parameter must be used together with the **Tag.Key** parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -4153,7 +4153,7 @@ type CreateDBInstanceShrinkRequest struct {
 	// Valid values: **1** to **20**. Default value: **1**.
 	//
 	// > *   If you want to create multiple ApsaraDB RDS for MySQL instances at a time by using a single request, you can add tags to all the instances by using the **Tag.Key** parameter and the **Tag.Value** parameter. After the instances are created, you can manage the instances based on the tags.
-	// > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the details of an instance.
+	// > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the details of an instance.
 	// > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to automatically complete the payment. Default value: true. Valid values:
@@ -4266,9 +4266,9 @@ type CreateDBInstanceShrinkRequest struct {
 	// *   **true**: Table names are not case-sensitive. This is the default value.
 	// *   **false**: Table names are case-sensitive.
 	DBIsIgnoreCase *string `json:"DBIsIgnoreCase,omitempty" xml:"DBIsIgnoreCase,omitempty"`
-	// The ID of the parameter template. You can call the [DescribeParameterGroups](~~610588~~) operation to query the ID of the parameter template.
+	// The ID of the parameter template. You can call the DescribeParameterGroups operation to query the ID of the parameter template.
 	//
-	// > : This parameter is available if you want to create an instance that runs MySQL or PostgreSQL . If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template. For more information, see [Create a parameter template](~~610585~~).
+	// > : This parameter is available if you want to create an instance that runs MySQL or PostgreSQL . If you do not configure this parameter, the default parameter template is used. If you want to use a custom parameter template, you can customize a parameter template and set this parameter to the ID of the custom template.
 	DBParamGroupId *string `json:"DBParamGroupId,omitempty" xml:"DBParamGroupId,omitempty"`
 	// The time zone of the instance. This parameter takes effect only when you set the **Engine** parameter to **MySQL** or **PostgreSQL**.
 	//
@@ -4289,8 +4289,8 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// If you create the instance in a dedicated cluster, you must specify this parameter.
 	//
-	// *   You can call the [DescribeDedicatedHostGroups](~~610640~~) operation to query the details of a dedicated cluster.
-	// *   If no dedicated clusters are created, you can call the [CreateDedicatedHostGroup](~~209828~~) operation to create a dedicated cluster.
+	// *   You can call the DescribeDedicatedHostGroups operation to query the details of a dedicated cluster.
+	// *   If no dedicated clusters are created, you can call the CreateDedicatedHostGroup operation to create a dedicated cluster.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// Specifies whether to enable the release protection feature for the instance. This feature is available only for pay-as-you-go instances. Valid values:
 	//
@@ -4378,12 +4378,12 @@ type CreateDBInstanceShrinkRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address of the instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. ApsaraDB RDS automatically assigns a private IP address to the instance based on the values of the **VPCId** and **vSwitchId** parameters.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the [CheckCloudResourceAuthorized](~~610408~~) operation to query the ARN.
+	// The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
 	RoleARN *string `json:"RoleARN,omitempty" xml:"RoleARN,omitempty"`
 	// The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](~~43185~~). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
 	//
@@ -4399,7 +4399,7 @@ type CreateDBInstanceShrinkRequest struct {
 	// *   **Enable**
 	// *   **Disable** (default)
 	//
-	// >  After the instance is created, you can call the [ModifyDasInstanceConfig](~~610391~~) operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion for an ApsaraDB RDS for MySQL instance](~~173826~~).
+	// >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion for an ApsaraDB RDS for MySQL instance](~~173826~~).
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The threshold in percentage based on which automatic storage expansion is triggered.
 	//
@@ -4424,22 +4424,22 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// If you want to create an instance that runs RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHosts](~~610641~~) operation to query the details of the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHosts operation to query the details of the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForLog *string `json:"TargetDedicatedHostIdForLog,omitempty" xml:"TargetDedicatedHostIdForLog,omitempty"`
 	// The ID of the host to which the instance belongs in the specified dedicated cluster.
 	//
 	// If you create the instance in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHost](~~610641~~) operation to query the details about the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHost operation to query the details about the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForMaster *string `json:"TargetDedicatedHostIdForMaster,omitempty" xml:"TargetDedicatedHostIdForMaster,omitempty"`
 	// The ID of the host to which the secondary instance belongs in the specified dedicated cluster.
 	//
 	// If you want to create an instance that runs RDS High-availability Edition or RDS Enterprise Edition in a dedicated cluster, you must specify this parameter. If you do not specify this parameter, the system automatically assigns a host.
 	//
-	// *   You can call the [DescribeDedicatedHosts](~~610641~~) operation to query the details of the hosts in a dedicated cluster.
-	// *   If no hosts are created, you can call the [CreateDedicatedHost](~~210864~~) operation to create a host.
+	// *   You can call the DescribeDedicatedHosts operation to query the details of the hosts in a dedicated cluster.
+	// *   If no hosts are created, you can call the CreateDedicatedHost operation to create a host.
 	TargetDedicatedHostIdForSlave *string `json:"TargetDedicatedHostIdForSlave,omitempty" xml:"TargetDedicatedHostIdForSlave,omitempty"`
 	// The minor engine version of the instance. This parameter is required only when you create an instance that runs MySQL or PostgreSQL. The value format varies based on the database engine of the instance.
 	//
@@ -4451,12 +4451,12 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	//     **
 	//
-	//     **Note** You can call the [DescribeDBMiniEngineVersions](~~610643~~) operation to query the minor engine version. For more information about minor engine versions, see [Release notes of minor AliSQL versions](~~96060~~).
+	//     **Note** You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about minor engine versions, see [Release notes of minor AliSQL versions](~~96060~~).
 	//
 	// *   If you create an instance that runs PostgreSQL, the value is in the following format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1400_20220830`. The following list describes the fields in the example values:
 	//
 	//     *   1400: The major engine version is PostgreSQL 14.
-	//     *   20220830: the AliPG version. You can call the [DescribeDBMiniEngineVersions](~~610643~~) operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+	//     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
 	//
 	//     **
 	//
@@ -4469,7 +4469,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// >  If you set the PayType parameter to **Prepaid**, you must specify the UsedTime parameter.
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The ID of the backup file. You can call the [ListUserBackupFiles](~~610600~~) operation to query backup files. If you want to create an instance by using the data of a backup file, you must specify this parameter.
+	// The ID of the backup file. You can call the ListUserBackupFiles operation to query backup files. If you want to create an instance by using the data of a backup file, you must specify this parameter.
 	//
 	// This parameter is supported only when the following requirements are met:
 	//
@@ -4780,14 +4780,14 @@ func (s *CreateDBInstanceShrinkRequest) SetZoneIdSlave2(v string) *CreateDBInsta
 type CreateDBInstanceShrinkRequestTag struct {
 	// The key of the tag that you want to add to the instance. You can use this parameter to add tags to the instance.
 	//
-	// *   If the specified tag key is an existing key, the system directly adds the tag key to the instance. You can call the [ListTagResources](~~610627~~) operation to query the details of the existing tags.
+	// *   If the specified tag key is an existing key, the system directly adds the tag key to the instance. You can call the ListTagResources operation to query the details of the existing tags.
 	// *   If the specified tag key is not an existing key, the system creates the tag key and adds the tag key to the instance.
 	// *   A tag key cannot be an empty string.
 	// *   This parameter must be used together with the **Tag.Value** parameter.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value that is associated with the specified tag key. You can use this parameter to add tags to the instance.
 	//
-	// *   If the specified tag value is found in the specified tag key, the system directly adds the tag value to the instance. You can call the [ListTagResources](~~610627~~) operation to query the details of the existing tags.
+	// *   If the specified tag value is found in the specified tag key, the system directly adds the tag value to the instance. You can call the ListTagResources operation to query the details of the existing tags.
 	// *   If the specified tag value is not found in the specified tag key, the system creates the tag value and adds the tag value to the instance.
 	// *   This parameter must be used together with the **Tag.Key** parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -11009,7 +11009,7 @@ func (s *DeletePostgresExtensionsResponse) SetBody(v *DeletePostgresExtensionsRe
 type DeleteSecretRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+	// The ID of the instance. You can call the **DescribeDBInstances** operation to query the ID of the instance.
 	//
 	// > If you specify this parameter, you must also specify **SecretName**.
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
@@ -11018,23 +11018,20 @@ type DeleteSecretRequest struct {
 	// > Only MySQL is supported.
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~446624~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the **DescribeRegions** operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to obtain the ID of the resource group.
+	// The ID of the resource group. You can call the **DescribeDBInstanceAttribute** operation to obtain the ID of the resource group.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the [CreateSecret](~~446607~~) operation to obtain the value of this parameter.
+	// The Alibaba Cloud Resource Name (ARN) of the credential for the created Data API account. You can call the **CreateSecret** operation to obtain the value of this parameter.
 	//
 	// > You must specify one of **SecretName** and SecretArn.
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
 	// The name of the credential.
 	//
-	// >
-	//
-	// *   You must specify one of **SecretArn** and SecretName.
-	//
-	// *   If you specify this parameter, you must also specify **DbInstanceId**.
+	// > *   You must specify one of **SecretArn** and SecretName.
+	// > *   If you specify this parameter, you must also specify **DbInstanceId**.
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
@@ -35974,7 +35971,7 @@ func (s *DescribeRegionsResponseBodyRegions) SetRDSRegion(v []*DescribeRegionsRe
 type DescribeRegionsResponseBodyRegionsRDSRegion struct {
 	// The name of the region. The return value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value 华东1（杭州） is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value China (Hangzhou)  is returned for the LocalName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Request structure](~~26223~~).
@@ -35985,7 +35982,7 @@ type DescribeRegionsResponseBodyRegionsRDSRegion struct {
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	// The name of the zone. The return value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou-h, the following values are returned for the LocalName parameter:
 	//
-	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value 杭州 可用区H is returned for the LocalName parameter.
+	// *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value Hangzhou Zone H is returned for the LocalName parameter.
 	// *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the LocalName parameter.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
@@ -48283,9 +48280,10 @@ type ModifyDBNodeRequest struct {
 	//
 	// *   **true**: performs a dry run and does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to asynchronously perform the operation. Valid values:
 	//
 	// *   **true** (default): sends only the order. The operation is asynchronously performed.
@@ -48337,6 +48335,11 @@ func (s *ModifyDBNodeRequest) SetDBNode(v []*ModifyDBNodeRequestDBNode) *ModifyD
 
 func (s *ModifyDBNodeRequest) SetDryRun(v bool) *ModifyDBNodeRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyDBNodeRequest) SetEffectiveTime(v string) *ModifyDBNodeRequest {
+	s.EffectiveTime = &v
 	return s
 }
 
@@ -48418,9 +48421,10 @@ type ModifyDBNodeShrinkRequest struct {
 	//
 	// *   **true**: performs a dry run and does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
 	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
-	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
+	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to asynchronously perform the operation. Valid values:
 	//
 	// *   **true** (default): sends only the order. The operation is asynchronously performed.
@@ -48472,6 +48476,11 @@ func (s *ModifyDBNodeShrinkRequest) SetDBNodeShrink(v string) *ModifyDBNodeShrin
 
 func (s *ModifyDBNodeShrinkRequest) SetDryRun(v bool) *ModifyDBNodeShrinkRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyDBNodeShrinkRequest) SetEffectiveTime(v string) *ModifyDBNodeShrinkRequest {
+	s.EffectiveTime = &v
 	return s
 }
 
@@ -70286,8 +70295,8 @@ func (client *Client) DescribeLocalAvailableRecoveryTime(request *DescribeLocalA
 
 /**
  * ### [](#)Supported database engines
- * RDS SQL Server
- * >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+ * SQL Server
+ * >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
  *
  * @param request DescribeLogBackupFilesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -70360,8 +70369,8 @@ func (client *Client) DescribeLogBackupFilesWithOptions(request *DescribeLogBack
 
 /**
  * ### [](#)Supported database engines
- * RDS SQL Server
- * >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+ * SQL Server
+ * >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
  *
  * @param request DescribeLogBackupFilesRequest
  * @return DescribeLogBackupFilesResponse
@@ -78384,6 +78393,10 @@ func (client *Client) ModifyDBNodeWithOptions(tmpReq *ModifyDBNodeRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTime)) {
+		query["EffectiveTime"] = request.EffectiveTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
