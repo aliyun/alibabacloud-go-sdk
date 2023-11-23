@@ -15633,19 +15633,22 @@ func (s *QueryTrademarkModelEspDetailResponse) SetBody(v *QueryTrademarkModelEsp
 }
 
 type QueryTrademarkModelEspListRequest struct {
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Env             *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	OrderId         *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderIdsStr     *string `json:"OrderIdsStr,omitempty" xml:"OrderIdsStr,omitempty"`
-	OrderInstanceId *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
-	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrincipalKey    *string `json:"PrincipalKey,omitempty" xml:"PrincipalKey,omitempty"`
-	PrincipalName   *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmitStatus    *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
-	SubmitTime      *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	AdditionalSubmitStatus *string   `json:"AdditionalSubmitStatus,omitempty" xml:"AdditionalSubmitStatus,omitempty"`
+	AdditionalSubmitTime   *string   `json:"AdditionalSubmitTime,omitempty" xml:"AdditionalSubmitTime,omitempty"`
+	BizId                  *string   `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType                *string   `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	Env                    *string   `json:"Env,omitempty" xml:"Env,omitempty"`
+	ExistStatus            []*string `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty" type:"Repeated"`
+	OrderId                *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderIdsStr            *string   `json:"OrderIdsStr,omitempty" xml:"OrderIdsStr,omitempty"`
+	OrderInstanceId        *string   `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	PageNum                *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize               *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrincipalKey           *string   `json:"PrincipalKey,omitempty" xml:"PrincipalKey,omitempty"`
+	PrincipalName          *string   `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	Status                 *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitStatus           *string   `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
+	SubmitTime             *string   `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
 }
 
 func (s QueryTrademarkModelEspListRequest) String() string {
@@ -15654,6 +15657,16 @@ func (s QueryTrademarkModelEspListRequest) String() string {
 
 func (s QueryTrademarkModelEspListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryTrademarkModelEspListRequest) SetAdditionalSubmitStatus(v string) *QueryTrademarkModelEspListRequest {
+	s.AdditionalSubmitStatus = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListRequest) SetAdditionalSubmitTime(v string) *QueryTrademarkModelEspListRequest {
+	s.AdditionalSubmitTime = &v
+	return s
 }
 
 func (s *QueryTrademarkModelEspListRequest) SetBizId(v string) *QueryTrademarkModelEspListRequest {
@@ -15668,6 +15681,11 @@ func (s *QueryTrademarkModelEspListRequest) SetBizType(v string) *QueryTrademark
 
 func (s *QueryTrademarkModelEspListRequest) SetEnv(v string) *QueryTrademarkModelEspListRequest {
 	s.Env = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListRequest) SetExistStatus(v []*string) *QueryTrademarkModelEspListRequest {
+	s.ExistStatus = v
 	return s
 }
 
@@ -15717,6 +15735,113 @@ func (s *QueryTrademarkModelEspListRequest) SetSubmitStatus(v string) *QueryTrad
 }
 
 func (s *QueryTrademarkModelEspListRequest) SetSubmitTime(v string) *QueryTrademarkModelEspListRequest {
+	s.SubmitTime = &v
+	return s
+}
+
+type QueryTrademarkModelEspListShrinkRequest struct {
+	AdditionalSubmitStatus *string `json:"AdditionalSubmitStatus,omitempty" xml:"AdditionalSubmitStatus,omitempty"`
+	AdditionalSubmitTime   *string `json:"AdditionalSubmitTime,omitempty" xml:"AdditionalSubmitTime,omitempty"`
+	BizId                  *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType                *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	Env                    *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	ExistStatusShrink      *string `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
+	OrderId                *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderIdsStr            *string `json:"OrderIdsStr,omitempty" xml:"OrderIdsStr,omitempty"`
+	OrderInstanceId        *string `json:"OrderInstanceId,omitempty" xml:"OrderInstanceId,omitempty"`
+	PageNum                *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PrincipalKey           *string `json:"PrincipalKey,omitempty" xml:"PrincipalKey,omitempty"`
+	PrincipalName          *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubmitStatus           *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
+	SubmitTime             *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+}
+
+func (s QueryTrademarkModelEspListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTrademarkModelEspListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetAdditionalSubmitStatus(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.AdditionalSubmitStatus = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetAdditionalSubmitTime(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.AdditionalSubmitTime = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetBizId(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.BizId = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetBizType(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetEnv(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.Env = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetExistStatusShrink(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.ExistStatusShrink = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetOrderId(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetOrderIdsStr(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.OrderIdsStr = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetOrderInstanceId(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.OrderInstanceId = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetPageNum(v int32) *QueryTrademarkModelEspListShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetPageSize(v int32) *QueryTrademarkModelEspListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetPrincipalKey(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.PrincipalKey = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetPrincipalName(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetStatus(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetSubmitStatus(v string) *QueryTrademarkModelEspListShrinkRequest {
+	s.SubmitStatus = &v
+	return s
+}
+
+func (s *QueryTrademarkModelEspListShrinkRequest) SetSubmitTime(v string) *QueryTrademarkModelEspListShrinkRequest {
 	s.SubmitTime = &v
 	return s
 }
@@ -21257,9 +21382,10 @@ func (s *UpdateMaterialResponse) SetBody(v *UpdateMaterialResponseBody) *UpdateM
 }
 
 type UpdateProduceRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ExtMap  *string `json:"ExtMap,omitempty" xml:"ExtMap,omitempty"`
+	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ExtMap      *string `json:"ExtMap,omitempty" xml:"ExtMap,omitempty"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 }
 
 func (s UpdateProduceRequest) String() string {
@@ -21282,6 +21408,11 @@ func (s *UpdateProduceRequest) SetBizType(v string) *UpdateProduceRequest {
 
 func (s *UpdateProduceRequest) SetExtMap(v string) *UpdateProduceRequest {
 	s.ExtMap = &v
+	return s
+}
+
+func (s *UpdateProduceRequest) SetOperateType(v string) *UpdateProduceRequest {
+	s.OperateType = &v
 	return s
 }
 
@@ -27030,12 +27161,26 @@ func (client *Client) QueryTrademarkModelEspDetail(request *QueryTrademarkModelE
 	return _result, _err
 }
 
-func (client *Client) QueryTrademarkModelEspListWithOptions(request *QueryTrademarkModelEspListRequest, runtime *util.RuntimeOptions) (_result *QueryTrademarkModelEspListResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) QueryTrademarkModelEspListWithOptions(tmpReq *QueryTrademarkModelEspListRequest, runtime *util.RuntimeOptions) (_result *QueryTrademarkModelEspListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &QueryTrademarkModelEspListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExistStatus)) {
+		request.ExistStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExistStatus, tea.String("ExistStatus"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdditionalSubmitStatus)) {
+		query["AdditionalSubmitStatus"] = request.AdditionalSubmitStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdditionalSubmitTime)) {
+		query["AdditionalSubmitTime"] = request.AdditionalSubmitTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BizId)) {
 		query["BizId"] = request.BizId
 	}
@@ -27046,6 +27191,10 @@ func (client *Client) QueryTrademarkModelEspListWithOptions(request *QueryTradem
 
 	if !tea.BoolValue(util.IsUnset(request.Env)) {
 		query["Env"] = request.Env
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExistStatusShrink)) {
+		query["ExistStatus"] = request.ExistStatusShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
@@ -29316,6 +29465,10 @@ func (client *Client) UpdateProduceWithOptions(request *UpdateProduceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.ExtMap)) {
 		query["ExtMap"] = request.ExtMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
 	}
 
 	req := &openapi.OpenApiRequest{

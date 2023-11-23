@@ -1,3 +1,6 @@
+2023-11-23 Version: v1.0.3
+- Generated golang 2018-07-24 for Trademark.
+
 2023-11-15 Version: v1.0.2
 - Generated golang 2018-07-24 for Trademark.
 
