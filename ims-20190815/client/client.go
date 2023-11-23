@@ -863,7 +863,8 @@ type CreateApplicationRequest struct {
 	//
 	// *   For applications of the WebApp and ServerApp types, if this parameter is left empty, the value 2592000 is used. The value 2592000 indicates that the validity period of the refreshed token is 30 days.
 	// *   For applications of the NativeApp type, if this parameter is left empty, the value 7776000 is used. The value 7776000 indicates that the validity period of the refreshed token is 90 days.
-	RefreshTokenValidity *int32 `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	RefreshTokenValidity *int32  `json:"RefreshTokenValidity,omitempty" xml:"RefreshTokenValidity,omitempty"`
+	RequiredScopes       *string `json:"RequiredScopes,omitempty" xml:"RequiredScopes,omitempty"`
 	// Indicates whether a secret is required. Valid values:
 	//
 	// *   true
@@ -921,6 +922,11 @@ func (s *CreateApplicationRequest) SetRedirectUris(v string) *CreateApplicationR
 
 func (s *CreateApplicationRequest) SetRefreshTokenValidity(v int32) *CreateApplicationRequest {
 	s.RefreshTokenValidity = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetRequiredScopes(v string) *CreateApplicationRequest {
+	s.RequiredScopes = &v
 	return s
 }
 
@@ -1095,7 +1101,8 @@ type CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPrede
 	// The description of the permission scope.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the scope.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
@@ -1113,6 +1120,11 @@ func (s *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesP
 
 func (s *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetRequired(v bool) *CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Required = &v
 	return s
 }
 
@@ -1577,7 +1589,7 @@ type CreateOIDCProviderResponseBodyOIDCProvider struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
 	IssuanceLimitTime *int64 `json:"IssuanceLimitTime,omitempty" xml:"IssuanceLimitTime,omitempty"`
-	// The URL of the issuer,
+	// The URL of the issuer.
 	IssuerUrl *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	// The name of the OIDC IdP.
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
@@ -3785,7 +3797,8 @@ type GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefin
 	// The description of the permission.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the permission.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
@@ -3803,6 +3816,11 @@ func (s *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
 
 func (s *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
 	s.Name = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetRequired(v bool) *GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Required = &v
 	return s
 }
 
@@ -3853,7 +3871,11 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetCredentialReportRequest struct {
-	MaxItems  *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+	//
+	// Valid values: 1 to 3501. Default value: 3501.
+	MaxItems *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.``
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -3882,8 +3904,13 @@ type GetCredentialReportResponseBody struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The time when the user credential report was generated.
 	GeneratedTime *string `json:"GeneratedTime,omitempty" xml:"GeneratedTime,omitempty"`
-	IsTruncated   *string `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// *   true
+	// *   false
+	IsTruncated *string `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The parameter that is used to obtain the truncated part. This parameter takes effect only when `IsTruncated` is set to true.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5802,7 +5829,8 @@ type ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefined
 	// The description of the permission.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the permission.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
@@ -5820,6 +5848,11 @@ func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredef
 
 func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope {
 	s.Name = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope) SetRequired(v bool) *ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Required = &v
 	return s
 }
 
@@ -7065,11 +7098,11 @@ func (s *ListUserBasicInfosResponse) SetBody(v *ListUserBasicInfosResponseBody) 
 type ListUsersRequest struct {
 	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+	// The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
 	//
 	// Valid values: 1 to 1000. Default value: 1000.
 	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
-	// The tag value.
+	// The tags. A maximum number of 20 tags are supported.
 	Tag []*ListUsersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -7133,9 +7166,9 @@ type ListUsersResponseBody struct {
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the RAM user.
+	// The details of the RAM user.
 	Users *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -7187,19 +7220,19 @@ func (s *ListUsersResponseBodyUsers) SetUser(v []*ListUsersResponseBodyUsersUser
 type ListUsersResponseBodyUsersUser struct {
 	// The description.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user was created.
+	// The point in time when the RAM user was created. The time is displayed in UTC.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The display name of the RAM user.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter is valid only on the China site (aliyun.com).
+	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+	// The timestamp when the RAM user last logged on to the console.
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// >  This parameter is valid only on the China site (aliyun.com).
+	// >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
 	// The source of the RAM user. Valid values:
 	//
@@ -7207,9 +7240,9 @@ type ListUsersResponseBodyUsersUser struct {
 	// *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
 	// *   CloudSSO: The RAM user is mapped from a CloudSSO user.
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// An array that consists of tags.
+	// The tags.
 	Tags *ListUsersResponseBodyUsersUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The time when the information about the RAM user was updated.
+	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 	// The ID of the RAM user.
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -7298,9 +7331,9 @@ func (s *ListUsersResponseBodyUsersUserTags) SetTag(v []*ListUsersResponseBodyUs
 }
 
 type ListUsersResponseBodyUsersUserTagsTag struct {
-	// The tag key.
+	// The key of the tag.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -8471,14 +8504,14 @@ type SetSecurityPreferenceRequest struct {
 	// *   true
 	// *   false (default)
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). This parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
 	//
 	// *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
 	// *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
 	//
 	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
 	//
-	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	// You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 	// The validity period of the logon session of RAM users.
 	//
@@ -8585,14 +8618,14 @@ type SetSecurityPreferenceShrinkRequest struct {
 	// *   true
 	// *   false (default)
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+	// The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). This parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
 	//
 	// *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
 	// *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
 	//
 	// If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
 	//
-	// You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+	// You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
 	LoginNetworkMasks *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
 	// The validity period of the logon session of RAM users.
 	//
@@ -9459,7 +9492,8 @@ type UpdateApplicationRequest struct {
 	// The validity period of the refreshed token.
 	//
 	// Valid values: 7200 to 31536000. Unit: seconds.
-	NewRefreshTokenValidity *int32 `json:"NewRefreshTokenValidity,omitempty" xml:"NewRefreshTokenValidity,omitempty"`
+	NewRefreshTokenValidity *int32  `json:"NewRefreshTokenValidity,omitempty" xml:"NewRefreshTokenValidity,omitempty"`
+	NewRequiredScopes       *string `json:"NewRequiredScopes,omitempty" xml:"NewRequiredScopes,omitempty"`
 	// Specifies whether a secret is required. Valid values:
 	//
 	// *   true
@@ -9512,6 +9546,11 @@ func (s *UpdateApplicationRequest) SetNewRedirectUris(v string) *UpdateApplicati
 
 func (s *UpdateApplicationRequest) SetNewRefreshTokenValidity(v int32) *UpdateApplicationRequest {
 	s.NewRefreshTokenValidity = &v
+	return s
+}
+
+func (s *UpdateApplicationRequest) SetNewRequiredScopes(v string) *UpdateApplicationRequest {
+	s.NewRequiredScopes = &v
 	return s
 }
 
@@ -9686,7 +9725,8 @@ type UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPrede
 	// The description of the permission scope.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the scope.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
@@ -9704,6 +9744,11 @@ func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesP
 
 func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope) SetRequired(v bool) *UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Required = &v
 	return s
 }
 
@@ -11072,6 +11117,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["RefreshTokenValidity"] = request.RefreshTokenValidity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RequiredScopes)) {
+		query["RequiredScopes"] = request.RequiredScopes
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecretRequired)) {
 		query["SecretRequired"] = request.SecretRequired
 	}
@@ -11223,13 +11272,13 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 }
 
 /**
- * ### [](#)Prerequisite
- * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
- * ### [](#)Limits
+ * ### Prerequisites
+ * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
+ * ### Limits
  * *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
  * *   You can add a maximum of 20 client IDs to an OIDC IdP.
  * *   You can add a maximum of five fingerprints to an OIDC IdP.
- * ### [](#)
+ * ###
  * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
  *
  * @param request CreateOIDCProviderRequest
@@ -11290,13 +11339,13 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 }
 
 /**
- * ### [](#)Prerequisite
- * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external IdP, such as Google G Suite or Okta.
- * ### [](#)Limits
+ * ### Prerequisites
+ * Before you call this operation, make sure that the information such as the URL of the issuer, the fingerprints of HTTPS certificates, and the client IDs are obtained from an external (IdP, such as Google G Suite or Okta.
+ * ### Limits
  * *   You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
  * *   You can add a maximum of 20 client IDs to an OIDC IdP.
  * *   You can add a maximum of five fingerprints to an OIDC IdP.
- * ### [](#)
+ * ###
  * This topic provides an example on how to create an IdP named `TestOIDCProvider` to configure a trust relationship between the external IdP and Alibaba Cloud.
  *
  * @param request CreateOIDCProviderRequest
@@ -13266,8 +13315,8 @@ func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_r
 }
 
 /**
- * ## Description
- * You can call the following API operations to query the information about all RAM users:
+ * ### [](#)
+ * You can call the following API operations to query the details of all RAM users:
  * *   ListUsers: queries the details of all RAM users.
  * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
  *
@@ -13317,8 +13366,8 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 }
 
 /**
- * ## Description
- * You can call the following API operations to query the information about all RAM users:
+ * ### [](#)
+ * You can call the following API operations to query the details of all RAM users:
  * *   ListUsers: queries the details of all RAM users.
  * *   ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
  *
@@ -14135,6 +14184,10 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NewRefreshTokenValidity)) {
 		query["NewRefreshTokenValidity"] = request.NewRefreshTokenValidity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewRequiredScopes)) {
+		query["NewRequiredScopes"] = request.NewRequiredScopes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NewSecretRequired)) {
