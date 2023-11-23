@@ -12,6 +12,29 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ACS struct {
+	ACSQuotaId         *string   `json:"ACSQuotaId,omitempty" xml:"ACSQuotaId,omitempty"`
+	AssociatedProducts []*string `json:"AssociatedProducts,omitempty" xml:"AssociatedProducts,omitempty" type:"Repeated"`
+}
+
+func (s ACS) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ACS) GoString() string {
+	return s.String()
+}
+
+func (s *ACS) SetACSQuotaId(v string) *ACS {
+	s.ACSQuotaId = &v
+	return s
+}
+
+func (s *ACS) SetAssociatedProducts(v []*string) *ACS {
+	s.AssociatedProducts = v
+	return s
+}
+
 type AlgorithmSpec struct {
 	CodeDir              *Location                         `json:"CodeDir,omitempty" xml:"CodeDir,omitempty"`
 	Command              []*string                         `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
@@ -234,6 +257,23 @@ func (s *AlgorithmSpecProgressDefinitionsRemainingTime) SetRegex(v string) *Algo
 	return s
 }
 
+type AllocateStrategySpec struct {
+	NodeSpecs []*NodeSpec `json:"NodeSpecs,omitempty" xml:"NodeSpecs,omitempty" type:"Repeated"`
+}
+
+func (s AllocateStrategySpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AllocateStrategySpec) GoString() string {
+	return s.String()
+}
+
+func (s *AllocateStrategySpec) SetNodeSpecs(v []*NodeSpec) *AllocateStrategySpec {
+	s.NodeSpecs = v
+	return s
+}
+
 type Channel struct {
 	Description           *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name                  *string                `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -389,6 +429,40 @@ func (s *ConditionExpression) SetOperator(v string) *ConditionExpression {
 
 func (s *ConditionExpression) SetValues(v []*string) *ConditionExpression {
 	s.Values = v
+	return s
+}
+
+type Features struct {
+	Quota *FeaturesQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
+}
+
+func (s Features) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Features) GoString() string {
+	return s.String()
+}
+
+func (s *Features) SetQuota(v *FeaturesQuota) *Features {
+	s.Quota = v
+	return s
+}
+
+type FeaturesQuota struct {
+	IsEnabled *bool `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+}
+
+func (s FeaturesQuota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FeaturesQuota) GoString() string {
+	return s.String()
+}
+
+func (s *FeaturesQuota) SetIsEnabled(v bool) *FeaturesQuota {
+	s.IsEnabled = &v
 	return s
 }
 
@@ -857,6 +931,137 @@ func (s *MetricDefinition) SetRegex(v string) *MetricDefinition {
 	return s
 }
 
+type Node struct {
+	AcceleratorType   *string        `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	BoundQuotas       []*QuotaIdName `json:"BoundQuotas,omitempty" xml:"BoundQuotas,omitempty" type:"Repeated"`
+	CPU               *string        `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	CreatorId         *string        `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	GPU               *string        `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType           *string        `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GmtCreateTime     *string        `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtExpiredTime    *string        `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
+	GmtModifiedTime   *string        `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	IsBound           *bool          `json:"IsBound,omitempty" xml:"IsBound,omitempty"`
+	MachineGroupId    *string        `json:"MachineGroupId,omitempty" xml:"MachineGroupId,omitempty"`
+	Memory            *string        `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NodeName          *string        `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeStatus        *string        `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeType          *string        `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OrderStatus       *string        `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	ReasonCode        *string        `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage     *string        `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceGroupId   *string        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupName *string        `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s Node) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Node) GoString() string {
+	return s.String()
+}
+
+func (s *Node) SetAcceleratorType(v string) *Node {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *Node) SetBoundQuotas(v []*QuotaIdName) *Node {
+	s.BoundQuotas = v
+	return s
+}
+
+func (s *Node) SetCPU(v string) *Node {
+	s.CPU = &v
+	return s
+}
+
+func (s *Node) SetCreatorId(v string) *Node {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *Node) SetGPU(v string) *Node {
+	s.GPU = &v
+	return s
+}
+
+func (s *Node) SetGPUType(v string) *Node {
+	s.GPUType = &v
+	return s
+}
+
+func (s *Node) SetGmtCreateTime(v string) *Node {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *Node) SetGmtExpiredTime(v string) *Node {
+	s.GmtExpiredTime = &v
+	return s
+}
+
+func (s *Node) SetGmtModifiedTime(v string) *Node {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Node) SetIsBound(v bool) *Node {
+	s.IsBound = &v
+	return s
+}
+
+func (s *Node) SetMachineGroupId(v string) *Node {
+	s.MachineGroupId = &v
+	return s
+}
+
+func (s *Node) SetMemory(v string) *Node {
+	s.Memory = &v
+	return s
+}
+
+func (s *Node) SetNodeName(v string) *Node {
+	s.NodeName = &v
+	return s
+}
+
+func (s *Node) SetNodeStatus(v string) *Node {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *Node) SetNodeType(v string) *Node {
+	s.NodeType = &v
+	return s
+}
+
+func (s *Node) SetOrderStatus(v string) *Node {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *Node) SetReasonCode(v string) *Node {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *Node) SetReasonMessage(v string) *Node {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *Node) SetResourceGroupId(v string) *Node {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *Node) SetResourceGroupName(v string) *Node {
+	s.ResourceGroupName = &v
+	return s
+}
+
 type NodeMetric struct {
 	GPUType *string   `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
@@ -883,6 +1088,105 @@ func (s *NodeMetric) SetMetrics(v []*Metric) *NodeMetric {
 
 func (s *NodeMetric) SetNodeID(v string) *NodeMetric {
 	s.NodeID = &v
+	return s
+}
+
+type NodeSpec struct {
+	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s NodeSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *NodeSpec) SetCount(v int64) *NodeSpec {
+	s.Count = &v
+	return s
+}
+
+func (s *NodeSpec) SetType(v string) *NodeSpec {
+	s.Type = &v
+	return s
+}
+
+type NodeType struct {
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	CPU             *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU             *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType         *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory          *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+}
+
+func (s NodeType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeType) GoString() string {
+	return s.String()
+}
+
+func (s *NodeType) SetAcceleratorType(v string) *NodeType {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *NodeType) SetCPU(v string) *NodeType {
+	s.CPU = &v
+	return s
+}
+
+func (s *NodeType) SetGPU(v string) *NodeType {
+	s.GPU = &v
+	return s
+}
+
+func (s *NodeType) SetGPUType(v string) *NodeType {
+	s.GPUType = &v
+	return s
+}
+
+func (s *NodeType) SetMemory(v string) *NodeType {
+	s.Memory = &v
+	return s
+}
+
+func (s *NodeType) SetNodeType(v string) *NodeType {
+	s.NodeType = &v
+	return s
+}
+
+type NodeTypeStatistic struct {
+	CanBeBoundCount *int32  `json:"CanBeBoundCount,omitempty" xml:"CanBeBoundCount,omitempty"`
+	NodeType        *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	TotalCount      *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s NodeTypeStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodeTypeStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *NodeTypeStatistic) SetCanBeBoundCount(v int32) *NodeTypeStatistic {
+	s.CanBeBoundCount = &v
+	return s
+}
+
+func (s *NodeTypeStatistic) SetNodeType(v string) *NodeTypeStatistic {
+	s.NodeType = &v
+	return s
+}
+
+func (s *NodeTypeStatistic) SetTotalCount(v int32) *NodeTypeStatistic {
+	s.TotalCount = &v
 	return s
 }
 
@@ -1052,6 +1356,705 @@ func (s *Permission) SetResourceType(v string) *Permission {
 	return s
 }
 
+type Quota struct {
+	AllocateStrategy  *string            `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	CreatorId         *string            `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description       *string            `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreatedTime    *string            `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime   *string            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels            []*Label           `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestOperationId *string            `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
+	Min               *ResourceSpec      `json:"Min,omitempty" xml:"Min,omitempty"`
+	ParentQuotaId     *string            `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	QueueStrategy     *string            `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaConfig       *QuotaConfig       `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	QuotaDetails      *QuotaDetails      `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
+	QuotaId           *string            `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName         *string            `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	ReasonCode        *string            `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage     *string            `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	ResourceGroupIds  []*string          `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	ResourceType      *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status            *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubQuotas         []*QuotaIdName     `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
+	Workspaces        []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
+}
+
+func (s Quota) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Quota) GoString() string {
+	return s.String()
+}
+
+func (s *Quota) SetAllocateStrategy(v string) *Quota {
+	s.AllocateStrategy = &v
+	return s
+}
+
+func (s *Quota) SetCreatorId(v string) *Quota {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *Quota) SetDescription(v string) *Quota {
+	s.Description = &v
+	return s
+}
+
+func (s *Quota) SetGmtCreatedTime(v string) *Quota {
+	s.GmtCreatedTime = &v
+	return s
+}
+
+func (s *Quota) SetGmtModifiedTime(v string) *Quota {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Quota) SetLabels(v []*Label) *Quota {
+	s.Labels = v
+	return s
+}
+
+func (s *Quota) SetLatestOperationId(v string) *Quota {
+	s.LatestOperationId = &v
+	return s
+}
+
+func (s *Quota) SetMin(v *ResourceSpec) *Quota {
+	s.Min = v
+	return s
+}
+
+func (s *Quota) SetParentQuotaId(v string) *Quota {
+	s.ParentQuotaId = &v
+	return s
+}
+
+func (s *Quota) SetQueueStrategy(v string) *Quota {
+	s.QueueStrategy = &v
+	return s
+}
+
+func (s *Quota) SetQuotaConfig(v *QuotaConfig) *Quota {
+	s.QuotaConfig = v
+	return s
+}
+
+func (s *Quota) SetQuotaDetails(v *QuotaDetails) *Quota {
+	s.QuotaDetails = v
+	return s
+}
+
+func (s *Quota) SetQuotaId(v string) *Quota {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *Quota) SetQuotaName(v string) *Quota {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *Quota) SetReasonCode(v string) *Quota {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *Quota) SetReasonMessage(v string) *Quota {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *Quota) SetResourceGroupIds(v []*string) *Quota {
+	s.ResourceGroupIds = v
+	return s
+}
+
+func (s *Quota) SetResourceType(v string) *Quota {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *Quota) SetStatus(v string) *Quota {
+	s.Status = &v
+	return s
+}
+
+func (s *Quota) SetSubQuotas(v []*QuotaIdName) *Quota {
+	s.SubQuotas = v
+	return s
+}
+
+func (s *Quota) SetWorkspaces(v []*WorkspaceIdName) *Quota {
+	s.Workspaces = v
+	return s
+}
+
+type QuotaConfig struct {
+	ACS               *ACS      `json:"ACS,omitempty" xml:"ACS,omitempty"`
+	ClusterId         *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DefaultGPUDriver  *string   `json:"DefaultGPUDriver,omitempty" xml:"DefaultGPUDriver,omitempty"`
+	SupportGPUDrivers []*string `json:"SupportGPUDrivers,omitempty" xml:"SupportGPUDrivers,omitempty" type:"Repeated"`
+	SupportRDMA       *bool     `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
+	UserVpc           *UserVpc  `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
+}
+
+func (s QuotaConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaConfig) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaConfig) SetACS(v *ACS) *QuotaConfig {
+	s.ACS = v
+	return s
+}
+
+func (s *QuotaConfig) SetClusterId(v string) *QuotaConfig {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *QuotaConfig) SetDefaultGPUDriver(v string) *QuotaConfig {
+	s.DefaultGPUDriver = &v
+	return s
+}
+
+func (s *QuotaConfig) SetSupportGPUDrivers(v []*string) *QuotaConfig {
+	s.SupportGPUDrivers = v
+	return s
+}
+
+func (s *QuotaConfig) SetSupportRDMA(v bool) *QuotaConfig {
+	s.SupportRDMA = &v
+	return s
+}
+
+func (s *QuotaConfig) SetUserVpc(v *UserVpc) *QuotaConfig {
+	s.UserVpc = v
+	return s
+}
+
+type QuotaDetails struct {
+	ActualMinQuota  *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
+	DesiredMinQuota *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
+	RequestedQuota  *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
+	UsedQuota       *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
+}
+
+func (s QuotaDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaDetails) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaDetails) SetActualMinQuota(v *ResourceAmount) *QuotaDetails {
+	s.ActualMinQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetDesiredMinQuota(v *ResourceAmount) *QuotaDetails {
+	s.DesiredMinQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetRequestedQuota(v *ResourceAmount) *QuotaDetails {
+	s.RequestedQuota = v
+	return s
+}
+
+func (s *QuotaDetails) SetUsedQuota(v *ResourceAmount) *QuotaDetails {
+	s.UsedQuota = v
+	return s
+}
+
+type QuotaIdName struct {
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+}
+
+func (s QuotaIdName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaIdName) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaIdName) SetQuotaId(v string) *QuotaIdName {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *QuotaIdName) SetQuotaName(v string) *QuotaIdName {
+	s.QuotaName = &v
+	return s
+}
+
+type QuotaJobViewMetric struct {
+	CPUUsageRate      *string   `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	DiskReadRate      *string   `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string   `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUUsageRate      *string   `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
+	JobId             *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobType           *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MemoryUsageRate   *string   `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	RequestCPU        *int32    `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int32    `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64    `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	TotalCPU          *int32    `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int32    `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64    `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QuotaJobViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaJobViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaJobViewMetric) SetCPUUsageRate(v string) *QuotaJobViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetDiskReadRate(v string) *QuotaJobViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetDiskWriteRate(v string) *QuotaJobViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetGPUUsageRate(v string) *QuotaJobViewMetric {
+	s.GPUUsageRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetJobId(v string) *QuotaJobViewMetric {
+	s.JobId = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetJobType(v string) *QuotaJobViewMetric {
+	s.JobType = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetMemoryUsageRate(v string) *QuotaJobViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetNetworkInputRate(v string) *QuotaJobViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetNetworkOutputRate(v string) *QuotaJobViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetNodeNames(v []*string) *QuotaJobViewMetric {
+	s.NodeNames = v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetRequestCPU(v int32) *QuotaJobViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetRequestGPU(v int32) *QuotaJobViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetRequestMemory(v int64) *QuotaJobViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetTotalCPU(v int32) *QuotaJobViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetTotalGPU(v int32) *QuotaJobViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetTotalMemory(v int64) *QuotaJobViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *QuotaJobViewMetric) SetUserId(v string) *QuotaJobViewMetric {
+	s.UserId = &v
+	return s
+}
+
+type QuotaMetric struct {
+	GPUType *string   `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Metrics []*Metric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+}
+
+func (s QuotaMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaMetric) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaMetric) SetGPUType(v string) *QuotaMetric {
+	s.GPUType = &v
+	return s
+}
+
+func (s *QuotaMetric) SetMetrics(v []*Metric) *QuotaMetric {
+	s.Metrics = v
+	return s
+}
+
+type QuotaNodeViewMetric struct {
+	CPUUsageRate      *string                `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	CreatedTime       *string                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DiskReadRate      *string                `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string                `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUType           *string                `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	MemoryUsageRate   *string                `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string                `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string                `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeID            *string                `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+	NodeStatus        *string                `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeType          *string                `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	QuotaId           *string                `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	RequestCPU        *int64                 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int64                 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64                 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	TaskIdMap         map[string]interface{} `json:"TaskIdMap,omitempty" xml:"TaskIdMap,omitempty"`
+	TotalCPU          *int64                 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int64                 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64                 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	TotalTasks        *int64                 `json:"TotalTasks,omitempty" xml:"TotalTasks,omitempty"`
+	UserIDs           []*string              `json:"UserIDs,omitempty" xml:"UserIDs,omitempty" type:"Repeated"`
+	UserNumber        *string                `json:"UserNumber,omitempty" xml:"UserNumber,omitempty"`
+}
+
+func (s QuotaNodeViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaNodeViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaNodeViewMetric) SetCPUUsageRate(v string) *QuotaNodeViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetCreatedTime(v string) *QuotaNodeViewMetric {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetDiskReadRate(v string) *QuotaNodeViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetDiskWriteRate(v string) *QuotaNodeViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetGPUType(v string) *QuotaNodeViewMetric {
+	s.GPUType = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetMemoryUsageRate(v string) *QuotaNodeViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetNetworkInputRate(v string) *QuotaNodeViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetNetworkOutputRate(v string) *QuotaNodeViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetNodeID(v string) *QuotaNodeViewMetric {
+	s.NodeID = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetNodeStatus(v string) *QuotaNodeViewMetric {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetNodeType(v string) *QuotaNodeViewMetric {
+	s.NodeType = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetQuotaId(v string) *QuotaNodeViewMetric {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetRequestCPU(v int64) *QuotaNodeViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetRequestGPU(v int64) *QuotaNodeViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetRequestMemory(v int64) *QuotaNodeViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetTaskIdMap(v map[string]interface{}) *QuotaNodeViewMetric {
+	s.TaskIdMap = v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetTotalCPU(v int64) *QuotaNodeViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetTotalGPU(v int64) *QuotaNodeViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetTotalMemory(v int64) *QuotaNodeViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetTotalTasks(v int64) *QuotaNodeViewMetric {
+	s.TotalTasks = &v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetUserIDs(v []*string) *QuotaNodeViewMetric {
+	s.UserIDs = v
+	return s
+}
+
+func (s *QuotaNodeViewMetric) SetUserNumber(v string) *QuotaNodeViewMetric {
+	s.UserNumber = &v
+	return s
+}
+
+type QuotaUserViewMetric struct {
+	CPUNodeNumber     *int32    `json:"CPUNodeNumber,omitempty" xml:"CPUNodeNumber,omitempty"`
+	CPUUsageRate      *string   `json:"CPUUsageRate,omitempty" xml:"CPUUsageRate,omitempty"`
+	CpuJobNames       []*string `json:"CpuJobNames,omitempty" xml:"CpuJobNames,omitempty" type:"Repeated"`
+	CpuNodeNames      []*string `json:"CpuNodeNames,omitempty" xml:"CpuNodeNames,omitempty" type:"Repeated"`
+	DiskReadRate      *string   `json:"DiskReadRate,omitempty" xml:"DiskReadRate,omitempty"`
+	DiskWriteRate     *string   `json:"DiskWriteRate,omitempty" xml:"DiskWriteRate,omitempty"`
+	GPUNodeNumber     *int32    `json:"GPUNodeNumber,omitempty" xml:"GPUNodeNumber,omitempty"`
+	GPUUsageRate      *string   `json:"GPUUsageRate,omitempty" xml:"GPUUsageRate,omitempty"`
+	GpuJobNames       []*string `json:"GpuJobNames,omitempty" xml:"GpuJobNames,omitempty" type:"Repeated"`
+	GpuNodeNames      []*string `json:"GpuNodeNames,omitempty" xml:"GpuNodeNames,omitempty" type:"Repeated"`
+	JobType           *string   `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MemoryUsageRate   *string   `json:"MemoryUsageRate,omitempty" xml:"MemoryUsageRate,omitempty"`
+	NetworkInputRate  *string   `json:"NetworkInputRate,omitempty" xml:"NetworkInputRate,omitempty"`
+	NetworkOutputRate *string   `json:"NetworkOutputRate,omitempty" xml:"NetworkOutputRate,omitempty"`
+	NodeNames         []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	RequestCPU        *int32    `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestGPU        *int32    `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	RequestMemory     *int64    `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	TotalCPU          *int32    `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	TotalGPU          *int32    `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	TotalMemory       *int64    `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+	UserId            *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QuotaUserViewMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaUserViewMetric) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaUserViewMetric) SetCPUNodeNumber(v int32) *QuotaUserViewMetric {
+	s.CPUNodeNumber = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetCPUUsageRate(v string) *QuotaUserViewMetric {
+	s.CPUUsageRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetCpuJobNames(v []*string) *QuotaUserViewMetric {
+	s.CpuJobNames = v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetCpuNodeNames(v []*string) *QuotaUserViewMetric {
+	s.CpuNodeNames = v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetDiskReadRate(v string) *QuotaUserViewMetric {
+	s.DiskReadRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetDiskWriteRate(v string) *QuotaUserViewMetric {
+	s.DiskWriteRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetGPUNodeNumber(v int32) *QuotaUserViewMetric {
+	s.GPUNodeNumber = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetGPUUsageRate(v string) *QuotaUserViewMetric {
+	s.GPUUsageRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetGpuJobNames(v []*string) *QuotaUserViewMetric {
+	s.GpuJobNames = v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetGpuNodeNames(v []*string) *QuotaUserViewMetric {
+	s.GpuNodeNames = v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetJobType(v string) *QuotaUserViewMetric {
+	s.JobType = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetMemoryUsageRate(v string) *QuotaUserViewMetric {
+	s.MemoryUsageRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetNetworkInputRate(v string) *QuotaUserViewMetric {
+	s.NetworkInputRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetNetworkOutputRate(v string) *QuotaUserViewMetric {
+	s.NetworkOutputRate = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetNodeNames(v []*string) *QuotaUserViewMetric {
+	s.NodeNames = v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetRequestCPU(v int32) *QuotaUserViewMetric {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetRequestGPU(v int32) *QuotaUserViewMetric {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetRequestMemory(v int64) *QuotaUserViewMetric {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetTotalCPU(v int32) *QuotaUserViewMetric {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetTotalGPU(v int32) *QuotaUserViewMetric {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetTotalMemory(v int64) *QuotaUserViewMetric {
+	s.TotalMemory = &v
+	return s
+}
+
+func (s *QuotaUserViewMetric) SetUserId(v string) *QuotaUserViewMetric {
+	s.UserId = &v
+	return s
+}
+
+type ResourceAmount struct {
+	CPU     *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU     *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory  *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ResourceAmount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceAmount) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceAmount) SetCPU(v string) *ResourceAmount {
+	s.CPU = &v
+	return s
+}
+
+func (s *ResourceAmount) SetGPU(v string) *ResourceAmount {
+	s.GPU = &v
+	return s
+}
+
+func (s *ResourceAmount) SetGPUType(v string) *ResourceAmount {
+	s.GPUType = &v
+	return s
+}
+
+func (s *ResourceAmount) SetMemory(v string) *ResourceAmount {
+	s.Memory = &v
+	return s
+}
+
 type ResourceGroup struct {
 	CreatorID       *string  `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	GmtCreatedTime  *string  `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
@@ -1137,6 +2140,118 @@ func (s *ResourceGroupMetric) SetMetrics(v []*Metric) *ResourceGroupMetric {
 
 func (s *ResourceGroupMetric) SetResourceGroupID(v string) *ResourceGroupMetric {
 	s.ResourceGroupID = &v
+	return s
+}
+
+type ResourceOperation struct {
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	GmtCreatedTime       *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtEndTime           *string `json:"GmtEndTime,omitempty" xml:"GmtEndTime,omitempty"`
+	GmtModifiedTime      *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtStartTime         *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	ObjectId             *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType           *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	OperationDescription *string `json:"OperationDescription,omitempty" xml:"OperationDescription,omitempty"`
+	OperationId          *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	OperationSpecJson    *string `json:"OperationSpecJson,omitempty" xml:"OperationSpecJson,omitempty"`
+	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ReasonCode           *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage        *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ResourceOperation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceOperation) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceOperation) SetCreatorId(v string) *ResourceOperation {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ResourceOperation) SetGmtCreatedTime(v string) *ResourceOperation {
+	s.GmtCreatedTime = &v
+	return s
+}
+
+func (s *ResourceOperation) SetGmtEndTime(v string) *ResourceOperation {
+	s.GmtEndTime = &v
+	return s
+}
+
+func (s *ResourceOperation) SetGmtModifiedTime(v string) *ResourceOperation {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ResourceOperation) SetGmtStartTime(v string) *ResourceOperation {
+	s.GmtStartTime = &v
+	return s
+}
+
+func (s *ResourceOperation) SetObjectId(v string) *ResourceOperation {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *ResourceOperation) SetObjectType(v string) *ResourceOperation {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *ResourceOperation) SetOperationDescription(v string) *ResourceOperation {
+	s.OperationDescription = &v
+	return s
+}
+
+func (s *ResourceOperation) SetOperationId(v string) *ResourceOperation {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ResourceOperation) SetOperationSpecJson(v string) *ResourceOperation {
+	s.OperationSpecJson = &v
+	return s
+}
+
+func (s *ResourceOperation) SetOperationType(v string) *ResourceOperation {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ResourceOperation) SetReasonCode(v string) *ResourceOperation {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ResourceOperation) SetReasonMessage(v string) *ResourceOperation {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ResourceOperation) SetStatus(v string) *ResourceOperation {
+	s.Status = &v
+	return s
+}
+
+type ResourceSpec struct {
+	NodeSpecs []*NodeSpec `json:"NodeSpecs,omitempty" xml:"NodeSpecs,omitempty" type:"Repeated"`
+}
+
+func (s ResourceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceSpec) SetNodeSpecs(v []*NodeSpec) *ResourceSpec {
+	s.NodeSpecs = v
 	return s
 }
 
@@ -1336,6 +2451,23 @@ func (s *UserVpc) SetVpcId(v string) *UserVpc {
 	return s
 }
 
+type WorkspaceIdName struct {
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s WorkspaceIdName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WorkspaceIdName) GoString() string {
+	return s.String()
+}
+
+func (s *WorkspaceIdName) SetWorkspaceId(v string) *WorkspaceIdName {
+	s.WorkspaceId = &v
+	return s
+}
+
 type CreateAlgorithmRequest struct {
 	AlgorithmDescription *string `json:"AlgorithmDescription,omitempty" xml:"AlgorithmDescription,omitempty"`
 	AlgorithmName        *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
@@ -1505,6 +2637,130 @@ func (s *CreateAlgorithmVersionResponse) SetStatusCode(v int32) *CreateAlgorithm
 }
 
 func (s *CreateAlgorithmVersionResponse) SetBody(v *CreateAlgorithmVersionResponseBody) *CreateAlgorithmVersionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateQuotaRequest struct {
+	AllocateStrategy *string       `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	Description      *string       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Min              *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
+	ParentQuotaId    *string       `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	QueueStrategy    *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaConfig      *QuotaConfig  `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	QuotaName        *string       `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	ResourceGroupIds []*string     `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	ResourceType     *string       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaRequest) SetAllocateStrategy(v string) *CreateQuotaRequest {
+	s.AllocateStrategy = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetDescription(v string) *CreateQuotaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetLabels(v []*Label) *CreateQuotaRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetMin(v *ResourceSpec) *CreateQuotaRequest {
+	s.Min = v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetParentQuotaId(v string) *CreateQuotaRequest {
+	s.ParentQuotaId = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetQueueStrategy(v string) *CreateQuotaRequest {
+	s.QueueStrategy = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetQuotaConfig(v *QuotaConfig) *CreateQuotaRequest {
+	s.QuotaConfig = v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetQuotaName(v string) *CreateQuotaRequest {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetResourceGroupIds(v []*string) *CreateQuotaRequest {
+	s.ResourceGroupIds = v
+	return s
+}
+
+func (s *CreateQuotaRequest) SetResourceType(v string) *CreateQuotaRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateQuotaResponseBody struct {
+	// Quota Id
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaResponseBody) SetQuotaId(v string) *CreateQuotaResponseBody {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *CreateQuotaResponseBody) SetRequestId(v string) *CreateQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateQuotaResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateQuotaResponse) SetHeaders(v map[string]*string) *CreateQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateQuotaResponse) SetStatusCode(v int32) *CreateQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateQuotaResponse) SetBody(v *CreateQuotaResponseBody) *CreateQuotaResponse {
 	s.Body = v
 	return s
 }
@@ -1710,11 +2966,11 @@ func (s *CreateTrainingJobRequest) SetWorkspaceId(v string) *CreateTrainingJobRe
 }
 
 type CreateTrainingJobRequestComputeResource struct {
-	EcsCount        *int64                                               `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec         *string                                              `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
-	InstanceCount   *int64                                               `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceSpec    *CreateTrainingJobRequestComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
-	ResourceGroupId *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	EcsCount      *int64                                               `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec       *string                                              `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	InstanceCount *int64                                               `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceSpec  *CreateTrainingJobRequestComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	ResourceId    *string                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s CreateTrainingJobRequestComputeResource) String() string {
@@ -1745,8 +3001,8 @@ func (s *CreateTrainingJobRequestComputeResource) SetInstanceSpec(v *CreateTrain
 	return s
 }
 
-func (s *CreateTrainingJobRequestComputeResource) SetResourceGroupId(v string) *CreateTrainingJobRequestComputeResource {
-	s.ResourceGroupId = &v
+func (s *CreateTrainingJobRequestComputeResource) SetResourceId(v string) *CreateTrainingJobRequestComputeResource {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2047,6 +3303,59 @@ func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupR
 }
 
 func (s *DeleteMachineGroupResponse) SetBody(v *DeleteMachineGroupResponseBody) *DeleteMachineGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteQuotaResponseBody struct {
+	// Quota Id
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteQuotaResponseBody) SetQuotaId(v string) *DeleteQuotaResponseBody {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *DeleteQuotaResponseBody) SetRequestId(v string) *DeleteQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteQuotaResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteQuotaResponse) SetHeaders(v map[string]*string) *DeleteQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteQuotaResponse) SetStatusCode(v int32) *DeleteQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteQuotaResponse) SetBody(v *DeleteQuotaResponseBody) *DeleteQuotaResponse {
 	s.Body = v
 	return s
 }
@@ -2592,6 +3901,179 @@ func (s *GetNodeMetricsResponse) SetStatusCode(v int32) *GetNodeMetricsResponse 
 }
 
 func (s *GetNodeMetricsResponse) SetBody(v *GetNodeMetricsResponseBody) *GetNodeMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type GetQuotaResponseBody struct {
+	AllocateStrategy  *string       `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
+	CreatorId         *string       `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description       *string       `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreatedTime    *string       `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
+	GmtModifiedTime   *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels            []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestOperationId *string       `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
+	Min               *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
+	ParentQuotaId     *string       `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	QueueStrategy     *string       `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
+	QuotaConfig       *QuotaConfig  `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
+	QuotaDetails      *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
+	// Quota Id
+	QuotaId          *string            `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName        *string            `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	ReasonCode       *string            `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage    *string            `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	RequestId        *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupIds []*string          `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	ResourceType     *string            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status           *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubQuotas        []*QuotaIdName     `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
+	Workspaces       []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
+}
+
+func (s GetQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaResponseBody) SetAllocateStrategy(v string) *GetQuotaResponseBody {
+	s.AllocateStrategy = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetCreatorId(v string) *GetQuotaResponseBody {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetDescription(v string) *GetQuotaResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetGmtCreatedTime(v string) *GetQuotaResponseBody {
+	s.GmtCreatedTime = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetGmtModifiedTime(v string) *GetQuotaResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetLabels(v []*Label) *GetQuotaResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetLatestOperationId(v string) *GetQuotaResponseBody {
+	s.LatestOperationId = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetMin(v *ResourceSpec) *GetQuotaResponseBody {
+	s.Min = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetParentQuotaId(v string) *GetQuotaResponseBody {
+	s.ParentQuotaId = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetQueueStrategy(v string) *GetQuotaResponseBody {
+	s.QueueStrategy = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetQuotaConfig(v *QuotaConfig) *GetQuotaResponseBody {
+	s.QuotaConfig = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetQuotaDetails(v *QuotaDetails) *GetQuotaResponseBody {
+	s.QuotaDetails = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetQuotaId(v string) *GetQuotaResponseBody {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetQuotaName(v string) *GetQuotaResponseBody {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetReasonCode(v string) *GetQuotaResponseBody {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetReasonMessage(v string) *GetQuotaResponseBody {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetRequestId(v string) *GetQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetResourceGroupIds(v []*string) *GetQuotaResponseBody {
+	s.ResourceGroupIds = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetResourceType(v string) *GetQuotaResponseBody {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetStatus(v string) *GetQuotaResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetSubQuotas(v []*QuotaIdName) *GetQuotaResponseBody {
+	s.SubQuotas = v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetWorkspaces(v []*WorkspaceIdName) *GetQuotaResponseBody {
+	s.Workspaces = v
+	return s
+}
+
+type GetQuotaResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaResponse) SetHeaders(v map[string]*string) *GetQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQuotaResponse) SetStatusCode(v int32) *GetQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQuotaResponse) SetBody(v *GetQuotaResponseBody) *GetQuotaResponse {
 	s.Body = v
 	return s
 }
@@ -4041,6 +5523,135 @@ func (s *ListAlgorithmsResponse) SetBody(v *ListAlgorithmsResponseBody) *ListAlg
 	return s
 }
 
+type ListQuotasRequest struct {
+	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
+	QuotaIds      *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	QuotaName     *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Statuses      *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	WorkspaceIds  *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+}
+
+func (s ListQuotasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotasRequest) SetLabels(v string) *ListQuotasRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetOrder(v string) *ListQuotasRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetPageNumber(v int32) *ListQuotasRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetPageSize(v int32) *ListQuotasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetParentQuotaId(v string) *ListQuotasRequest {
+	s.ParentQuotaId = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetQuotaIds(v string) *ListQuotasRequest {
+	s.QuotaIds = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetQuotaName(v string) *ListQuotasRequest {
+	s.QuotaName = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetResourceType(v string) *ListQuotasRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetSortBy(v string) *ListQuotasRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetStatuses(v string) *ListQuotasRequest {
+	s.Statuses = &v
+	return s
+}
+
+func (s *ListQuotasRequest) SetWorkspaceIds(v string) *ListQuotasRequest {
+	s.WorkspaceIds = &v
+	return s
+}
+
+type ListQuotasResponseBody struct {
+	Quotas    []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListQuotasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotasResponseBody) SetQuotas(v []*Quota) *ListQuotasResponseBody {
+	s.Quotas = v
+	return s
+}
+
+func (s *ListQuotasResponseBody) SetRequestId(v string) *ListQuotasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListQuotasResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListQuotasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListQuotasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotasResponse) SetHeaders(v map[string]*string) *ListQuotasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListQuotasResponse) SetStatusCode(v int32) *ListQuotasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceGroupMachineGroupsRequest struct {
 	CreatorID           *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	EcsSpec             *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
@@ -4301,6 +5912,7 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 
 type ListTrainingJobLogsRequest struct {
 	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -4317,6 +5929,11 @@ func (s ListTrainingJobLogsRequest) GoString() string {
 
 func (s *ListTrainingJobLogsRequest) SetEndTime(v string) *ListTrainingJobLogsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ListTrainingJobLogsRequest) SetInstanceId(v string) *ListTrainingJobLogsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -4895,8 +6512,11 @@ func (s *ListTrainingJobsResponseBodyTrainingJobs) SetWorkspaceId(v string) *Lis
 }
 
 type ListTrainingJobsResponseBodyTrainingJobsComputeResource struct {
-	EcsCount *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec  *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsCount      *int64                                                               `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec       *string                                                              `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	InstanceCount *int64                                                               `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceSpec  *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	ResourceId    *string                                                              `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s ListTrainingJobsResponseBodyTrainingJobsComputeResource) String() string {
@@ -4914,6 +6534,62 @@ func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetEcsCount(v 
 
 func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetEcsSpec(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetInstanceCount(v int64) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetInstanceSpec(v *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
+	s.InstanceSpec = v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResource) SetResourceId(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResource {
+	s.ResourceId = &v
+	return s
+}
+
+type ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec struct {
+	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetCPU(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
+	s.CPU = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetGPU(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
+	s.GPU = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetGPUType(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
+	s.GPUType = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetMemory(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec) SetSharedMemory(v string) *ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec {
+	s.SharedMemory = &v
 	return s
 }
 
@@ -5143,6 +6819,82 @@ func (s *ListTrainingJobsResponse) SetBody(v *ListTrainingJobsResponseBody) *Lis
 	return s
 }
 
+type ScaleQuotaRequest struct {
+	Min              *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
+	ResourceGroupIds []*string     `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s ScaleQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleQuotaRequest) SetMin(v *ResourceSpec) *ScaleQuotaRequest {
+	s.Min = v
+	return s
+}
+
+func (s *ScaleQuotaRequest) SetResourceGroupIds(v []*string) *ScaleQuotaRequest {
+	s.ResourceGroupIds = v
+	return s
+}
+
+type ScaleQuotaResponseBody struct {
+	// Quota Id
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ScaleQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleQuotaResponseBody) SetQuotaId(v string) *ScaleQuotaResponseBody {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *ScaleQuotaResponseBody) SetRequestId(v string) *ScaleQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ScaleQuotaResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScaleQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ScaleQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleQuotaResponse) SetHeaders(v map[string]*string) *ScaleQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ScaleQuotaResponse) SetStatusCode(v int32) *ScaleQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ScaleQuotaResponse) SetBody(v *ScaleQuotaResponseBody) *ScaleQuotaResponse {
+	s.Body = v
+	return s
+}
+
 type StopTrainingJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -5346,6 +7098,82 @@ func (s *UpdateAlgorithmVersionResponse) SetStatusCode(v int32) *UpdateAlgorithm
 }
 
 func (s *UpdateAlgorithmVersionResponse) SetBody(v *UpdateAlgorithmVersionResponseBody) *UpdateAlgorithmVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateQuotaRequest struct {
+	Description *string  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQuotaRequest) SetDescription(v string) *UpdateQuotaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateQuotaRequest) SetLabels(v []*Label) *UpdateQuotaRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateQuotaResponseBody struct {
+	// Quota Id
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQuotaResponseBody) SetQuotaId(v string) *UpdateQuotaResponseBody {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *UpdateQuotaResponseBody) SetRequestId(v string) *UpdateQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateQuotaResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateQuotaResponse) SetHeaders(v map[string]*string) *UpdateQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateQuotaResponse) SetStatusCode(v int32) *UpdateQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateQuotaResponse) SetBody(v *UpdateQuotaResponseBody) *UpdateQuotaResponse {
 	s.Body = v
 	return s
 }
@@ -5686,6 +7514,88 @@ func (client *Client) CreateAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 	return _result, _err
 }
 
+func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllocateStrategy)) {
+		body["AllocateStrategy"] = request.AllocateStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Min)) {
+		body["Min"] = request.Min
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentQuotaId)) {
+		body["ParentQuotaId"] = request.ParentQuotaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueStrategy)) {
+		body["QueueStrategy"] = request.QueueStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaConfig)) {
+		body["QuotaConfig"] = request.QuotaConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaName)) {
+		body["QuotaName"] = request.QuotaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
+		body["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateQuota"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateQuota(request *CreateQuotaRequest) (_result *CreateQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateQuotaResponse{}
+	_body, _err := client.CreateQuotaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5883,6 +7793,42 @@ func (client *Client) DeleteMachineGroup(MachineGroupID *string) (_result *Delet
 	headers := make(map[string]*string)
 	_result = &DeleteMachineGroupResponse{}
 	_body, _err := client.DeleteMachineGroupWithOptions(MachineGroupID, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteQuotaWithOptions(QuotaId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteQuotaResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteQuota"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteQuota(QuotaId *string) (_result *DeleteQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteQuotaResponse{}
+	_body, _err := client.DeleteQuotaWithOptions(QuotaId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6125,6 +8071,42 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 	headers := make(map[string]*string)
 	_result = &GetNodeMetricsResponse{}
 	_body, _err := client.GetNodeMetricsWithOptions(ResourceGroupID, MetricType, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetQuotaWithOptions(QuotaId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQuotaResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQuota"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetQuota(QuotaId *string) (_result *GetQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetQuotaResponse{}
+	_body, _err := client.GetQuotaWithOptions(QuotaId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6532,6 +8514,92 @@ func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *L
 	return _result, _err
 }
 
+func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListQuotasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentQuotaId)) {
+		query["ParentQuotaId"] = request.ParentQuotaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaIds)) {
+		query["QuotaIds"] = request.QuotaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaName)) {
+		query["QuotaName"] = request.QuotaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
+		query["Statuses"] = request.Statuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
+		query["WorkspaceIds"] = request.WorkspaceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListQuotas"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListQuotasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuotasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListQuotasResponse{}
+	_body, _err := client.ListQuotasWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListResourceGroupMachineGroupsWithOptions(ResourceGroupID *string, request *ListResourceGroupMachineGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceGroupMachineGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6704,6 +8772,10 @@ func (client *Client) ListTrainingJobLogsWithOptions(TrainingJobId *string, requ
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -6928,6 +9000,56 @@ func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ScaleQuotaWithOptions(QuotaId *string, request *ScaleQuotaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ScaleQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Min)) {
+		body["Min"] = request.Min
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
+		body["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScaleQuota"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId)) + "/action/scale"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ScaleQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ScaleQuota(QuotaId *string, request *ScaleQuotaRequest) (_result *ScaleQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ScaleQuotaResponse{}
+	_body, _err := client.ScaleQuotaWithOptions(QuotaId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopTrainingJobWithOptions(TrainingJobId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTrainingJobResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7059,6 +9181,56 @@ func (client *Client) UpdateAlgorithmVersion(AlgorithmId *string, AlgorithmVersi
 	headers := make(map[string]*string)
 	_result = &UpdateAlgorithmVersionResponse{}
 	_body, _err := client.UpdateAlgorithmVersionWithOptions(AlgorithmId, AlgorithmVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateQuotaWithOptions(QuotaId *string, request *UpdateQuotaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateQuota"),
+		Version:     tea.String("2022-01-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/quotas/" + tea.StringValue(openapiutil.GetEncodeParam(QuotaId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateQuota(QuotaId *string, request *UpdateQuotaRequest) (_result *UpdateQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateQuotaResponse{}
+	_body, _err := client.UpdateQuotaWithOptions(QuotaId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
