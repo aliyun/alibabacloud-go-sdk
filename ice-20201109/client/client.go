@@ -834,6 +834,7 @@ func (s *AddTemplateResponse) SetBody(v *AddTemplateResponseBody) *AddTemplateRe
 
 type AlterSearchIndexRequest struct {
 	IndexConfig   *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	IndexStatus   *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
 	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
@@ -851,6 +852,11 @@ func (s *AlterSearchIndexRequest) SetIndexConfig(v string) *AlterSearchIndexRequ
 	return s
 }
 
+func (s *AlterSearchIndexRequest) SetIndexStatus(v string) *AlterSearchIndexRequest {
+	s.IndexStatus = &v
+	return s
+}
+
 func (s *AlterSearchIndexRequest) SetIndexType(v string) *AlterSearchIndexRequest {
 	s.IndexType = &v
 	return s
@@ -862,8 +868,10 @@ func (s *AlterSearchIndexRequest) SetSearchLibName(v string) *AlterSearchIndexRe
 }
 
 type AlterSearchIndexResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AlterSearchIndexResponseBody) String() string {
@@ -874,8 +882,18 @@ func (s AlterSearchIndexResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AlterSearchIndexResponseBody) SetCode(v string) *AlterSearchIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *AlterSearchIndexResponseBody) SetRequestId(v string) *AlterSearchIndexResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AlterSearchIndexResponseBody) SetSuccess(v string) *AlterSearchIndexResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2847,6 +2865,7 @@ func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreateP
 
 type CreateSearchIndexRequest struct {
 	IndexConfig   *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	IndexStatus   *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
 	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 }
@@ -2864,6 +2883,11 @@ func (s *CreateSearchIndexRequest) SetIndexConfig(v string) *CreateSearchIndexRe
 	return s
 }
 
+func (s *CreateSearchIndexRequest) SetIndexStatus(v string) *CreateSearchIndexRequest {
+	s.IndexStatus = &v
+	return s
+}
+
 func (s *CreateSearchIndexRequest) SetIndexType(v string) *CreateSearchIndexRequest {
 	s.IndexType = &v
 	return s
@@ -2875,7 +2899,9 @@ func (s *CreateSearchIndexRequest) SetSearchLibName(v string) *CreateSearchIndex
 }
 
 type CreateSearchIndexResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSearchIndexResponseBody) String() string {
@@ -2886,8 +2912,18 @@ func (s CreateSearchIndexResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSearchIndexResponseBody) SetCode(v string) *CreateSearchIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateSearchIndexResponseBody) SetRequestId(v string) *CreateSearchIndexResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSearchIndexResponseBody) SetSuccess(v string) *CreateSearchIndexResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2938,9 +2974,11 @@ func (s *CreateSearchLibRequest) SetSearchLibName(v string) *CreateSearchLibRequ
 }
 
 type CreateSearchLibResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Id of the request
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	Success       *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateSearchLibResponseBody) String() string {
@@ -2951,6 +2989,11 @@ func (s CreateSearchLibResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSearchLibResponseBody) SetCode(v string) *CreateSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *CreateSearchLibResponseBody) SetRequestId(v string) *CreateSearchLibResponseBody {
 	s.RequestId = &v
 	return s
@@ -2958,6 +3001,11 @@ func (s *CreateSearchLibResponseBody) SetRequestId(v string) *CreateSearchLibRes
 
 func (s *CreateSearchLibResponseBody) SetSearchLibName(v string) *CreateSearchLibResponseBody {
 	s.SearchLibName = &v
+	return s
+}
+
+func (s *CreateSearchLibResponseBody) SetSuccess(v string) *CreateSearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4460,8 +4508,10 @@ func (s *DeleteMediaFromSearchLibRequest) SetSearchLibName(v string) *DeleteMedi
 }
 
 type DeleteMediaFromSearchLibResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteMediaFromSearchLibResponseBody) String() string {
@@ -4472,6 +4522,11 @@ func (s DeleteMediaFromSearchLibResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteMediaFromSearchLibResponseBody) SetCode(v string) *DeleteMediaFromSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DeleteMediaFromSearchLibResponseBody) SetMediaId(v string) *DeleteMediaFromSearchLibResponseBody {
 	s.MediaId = &v
 	return s
@@ -4479,6 +4534,11 @@ func (s *DeleteMediaFromSearchLibResponseBody) SetMediaId(v string) *DeleteMedia
 
 func (s *DeleteMediaFromSearchLibResponseBody) SetRequestId(v string) *DeleteMediaFromSearchLibResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMediaFromSearchLibResponseBody) SetSuccess(v string) *DeleteMediaFromSearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5907,7 +5967,9 @@ func (s *DropSearchIndexRequest) SetSearchLibName(v string) *DropSearchIndexRequ
 }
 
 type DropSearchIndexResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSearchIndexResponseBody) String() string {
@@ -5918,8 +5980,18 @@ func (s DropSearchIndexResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DropSearchIndexResponseBody) SetCode(v string) *DropSearchIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DropSearchIndexResponseBody) SetRequestId(v string) *DropSearchIndexResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DropSearchIndexResponseBody) SetSuccess(v string) *DropSearchIndexResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -5970,8 +6042,10 @@ func (s *DropSearchLibRequest) SetSearchLibName(v string) *DropSearchLibRequest 
 }
 
 type DropSearchLibResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DropSearchLibResponseBody) String() string {
@@ -5982,8 +6056,18 @@ func (s DropSearchLibResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DropSearchLibResponseBody) SetCode(v string) *DropSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DropSearchLibResponseBody) SetRequestId(v string) *DropSearchLibResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DropSearchLibResponseBody) SetSuccess(v string) *DropSearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -7087,10 +7171,16 @@ func (s *GetCustomizedVoiceJobResponseBodyData) SetCustomizedVoiceJob(v *GetCust
 }
 
 type GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob struct {
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Gender     *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VoiceDesc  *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId    *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName  *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
 func (s GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) String() string {
@@ -7099,6 +7189,16 @@ func (s GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) String() string
 
 func (s GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) GoString() string {
 	return s.String()
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetCreateTime(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetGender(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.Gender = &v
+	return s
 }
 
 func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetJobId(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
@@ -7111,13 +7211,33 @@ func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetMessage(v s
 	return s
 }
 
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetScenario(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.Scenario = &v
+	return s
+}
+
 func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetStatus(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
 	s.Status = &v
 	return s
 }
 
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetType(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.Type = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetVoiceDesc(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.VoiceDesc = &v
+	return s
+}
+
 func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetVoiceId(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
 	s.VoiceId = &v
+	return s
+}
+
+func (s *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob) SetVoiceName(v string) *GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob {
+	s.VoiceName = &v
 	return s
 }
 
@@ -16839,9 +16959,11 @@ func (s *InsertMediaToSearchLibRequest) SetSearchLibName(v string) *InsertMediaT
 }
 
 type InsertMediaToSearchLibResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s InsertMediaToSearchLibResponseBody) String() string {
@@ -16852,6 +16974,11 @@ func (s InsertMediaToSearchLibResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *InsertMediaToSearchLibResponseBody) SetCode(v string) *InsertMediaToSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *InsertMediaToSearchLibResponseBody) SetMediaId(v string) *InsertMediaToSearchLibResponseBody {
 	s.MediaId = &v
 	return s
@@ -16859,6 +16986,11 @@ func (s *InsertMediaToSearchLibResponseBody) SetMediaId(v string) *InsertMediaTo
 
 func (s *InsertMediaToSearchLibResponseBody) SetRequestId(v string) *InsertMediaToSearchLibResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *InsertMediaToSearchLibResponseBody) SetSuccess(v string) *InsertMediaToSearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -17569,8 +17701,9 @@ func (s *ListCustomTemplatesResponse) SetBody(v *ListCustomTemplatesResponseBody
 }
 
 type ListCustomizedVoiceJobsRequest struct {
-	PageNo   *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCustomizedVoiceJobsRequest) String() string {
@@ -17588,6 +17721,11 @@ func (s *ListCustomizedVoiceJobsRequest) SetPageNo(v int32) *ListCustomizedVoice
 
 func (s *ListCustomizedVoiceJobsRequest) SetPageSize(v int32) *ListCustomizedVoiceJobsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsRequest) SetType(v string) *ListCustomizedVoiceJobsRequest {
+	s.Type = &v
 	return s
 }
 
@@ -17644,15 +17782,17 @@ func (s *ListCustomizedVoiceJobsResponseBodyData) SetTotalCount(v int32) *ListCu
 }
 
 type ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList struct {
-	Gender    *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Scenario  *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VoiceDesc *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
-	VoiceId   *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
-	VoiceName *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Gender     *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	GmtCreate  *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Scenario   *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VoiceDesc  *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
+	VoiceId    *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+	VoiceName  *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
 }
 
 func (s ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) String() string {
@@ -17661,6 +17801,11 @@ func (s ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) String() 
 
 func (s ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetCreateTime(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetGender(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
@@ -17690,6 +17835,11 @@ func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetScena
 
 func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetStatus(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
 	s.Status = &v
+	return s
+}
+
+func (s *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList) SetType(v string) *ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList {
+	s.Type = &v
 	return s
 }
 
@@ -17738,8 +17888,9 @@ func (s *ListCustomizedVoiceJobsResponse) SetBody(v *ListCustomizedVoiceJobsResp
 }
 
 type ListCustomizedVoicesRequest struct {
-	PageNo   *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNo   *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCustomizedVoicesRequest) String() string {
@@ -17757,6 +17908,11 @@ func (s *ListCustomizedVoicesRequest) SetPageNo(v int32) *ListCustomizedVoicesRe
 
 func (s *ListCustomizedVoicesRequest) SetPageSize(v int32) *ListCustomizedVoicesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesRequest) SetType(v string) *ListCustomizedVoicesRequest {
+	s.Type = &v
 	return s
 }
 
@@ -17816,6 +17972,7 @@ type ListCustomizedVoicesResponseBodyDataCustomizedVoiceList struct {
 	DemoAudioMediaId *string `json:"DemoAudioMediaId,omitempty" xml:"DemoAudioMediaId,omitempty"`
 	Gender           *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
 	Scenario         *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VoiceDesc        *string `json:"VoiceDesc,omitempty" xml:"VoiceDesc,omitempty"`
 	VoiceId          *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
 	VoiceName        *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
@@ -17841,6 +17998,11 @@ func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetGender(v st
 
 func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetScenario(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
 	s.Scenario = &v
+	return s
+}
+
+func (s *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList) SetType(v string) *ListCustomizedVoicesResponseBodyDataCustomizedVoiceList {
+	s.Type = &v
 	return s
 }
 
@@ -26123,6 +26285,128 @@ func (s *QueryMediaCensorJobListResponse) SetBody(v *QueryMediaCensorJobListResp
 	return s
 }
 
+type QueryMediaIndexJobRequest struct {
+	MediaId       *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+}
+
+func (s QueryMediaIndexJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaIndexJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaIndexJobRequest) SetMediaId(v string) *QueryMediaIndexJobRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobRequest) SetSearchLibName(v string) *QueryMediaIndexJobRequest {
+	s.SearchLibName = &v
+	return s
+}
+
+type QueryMediaIndexJobResponseBody struct {
+	Code             *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	IndexJobInfoList []*QueryMediaIndexJobResponseBodyIndexJobInfoList `json:"IndexJobInfoList,omitempty" xml:"IndexJobInfoList,omitempty" type:"Repeated"`
+	RequestId        *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *string                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryMediaIndexJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaIndexJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaIndexJobResponseBody) SetCode(v string) *QueryMediaIndexJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBody) SetIndexJobInfoList(v []*QueryMediaIndexJobResponseBodyIndexJobInfoList) *QueryMediaIndexJobResponseBody {
+	s.IndexJobInfoList = v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBody) SetRequestId(v string) *QueryMediaIndexJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBody) SetSuccess(v string) *QueryMediaIndexJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryMediaIndexJobResponseBodyIndexJobInfoList struct {
+	GmtFinish *string `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
+	GmtSubmit *string `json:"GmtSubmit,omitempty" xml:"GmtSubmit,omitempty"`
+	IndexType *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryMediaIndexJobResponseBodyIndexJobInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaIndexJobResponseBodyIndexJobInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaIndexJobResponseBodyIndexJobInfoList) SetGmtFinish(v string) *QueryMediaIndexJobResponseBodyIndexJobInfoList {
+	s.GmtFinish = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBodyIndexJobInfoList) SetGmtSubmit(v string) *QueryMediaIndexJobResponseBodyIndexJobInfoList {
+	s.GmtSubmit = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBodyIndexJobInfoList) SetIndexType(v string) *QueryMediaIndexJobResponseBodyIndexJobInfoList {
+	s.IndexType = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponseBodyIndexJobInfoList) SetStatus(v string) *QueryMediaIndexJobResponseBodyIndexJobInfoList {
+	s.Status = &v
+	return s
+}
+
+type QueryMediaIndexJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryMediaIndexJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryMediaIndexJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryMediaIndexJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMediaIndexJobResponse) SetHeaders(v map[string]*string) *QueryMediaIndexJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponse) SetStatusCode(v int32) *QueryMediaIndexJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryMediaIndexJobResponse) SetBody(v *QueryMediaIndexJobResponseBody) *QueryMediaIndexJobResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySearchIndexRequest struct {
 	IndexType     *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
@@ -26147,11 +26431,14 @@ func (s *QuerySearchIndexRequest) SetSearchLibName(v string) *QuerySearchIndexRe
 }
 
 type QuerySearchIndexResponseBody struct {
-	IndexConfig *string `json:"IndexConfig,omitempty" xml:"IndexConfig,omitempty"`
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IndexStatus *string `json:"IndexStatus,omitempty" xml:"IndexStatus,omitempty"`
 	IndexType   *string `json:"IndexType,omitempty" xml:"IndexType,omitempty"`
+	MediaTotal  *string `json:"MediaTotal,omitempty" xml:"MediaTotal,omitempty"`
 	// Id of the request
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
+	Success       *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySearchIndexResponseBody) String() string {
@@ -26162,13 +26449,23 @@ func (s QuerySearchIndexResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QuerySearchIndexResponseBody) SetIndexConfig(v string) *QuerySearchIndexResponseBody {
-	s.IndexConfig = &v
+func (s *QuerySearchIndexResponseBody) SetCode(v string) *QuerySearchIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetIndexStatus(v string) *QuerySearchIndexResponseBody {
+	s.IndexStatus = &v
 	return s
 }
 
 func (s *QuerySearchIndexResponseBody) SetIndexType(v string) *QuerySearchIndexResponseBody {
 	s.IndexType = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetMediaTotal(v string) *QuerySearchIndexResponseBody {
+	s.MediaTotal = &v
 	return s
 }
 
@@ -26179,6 +26476,11 @@ func (s *QuerySearchIndexResponseBody) SetRequestId(v string) *QuerySearchIndexR
 
 func (s *QuerySearchIndexResponseBody) SetSearchLibName(v string) *QuerySearchIndexResponseBody {
 	s.SearchLibName = &v
+	return s
+}
+
+func (s *QuerySearchIndexResponseBody) SetSuccess(v string) *QuerySearchIndexResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -26229,10 +26531,12 @@ func (s *QuerySearchLibRequest) SetSearchLibName(v string) *QuerySearchLibReques
 }
 
 type QuerySearchLibResponseBody struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Id of the request
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SearchLibName *string `json:"SearchLibName,omitempty" xml:"SearchLibName,omitempty"`
 	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Success       *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySearchLibResponseBody) String() string {
@@ -26241,6 +26545,11 @@ func (s QuerySearchLibResponseBody) String() string {
 
 func (s QuerySearchLibResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySearchLibResponseBody) SetCode(v string) *QuerySearchLibResponseBody {
+	s.Code = &v
+	return s
 }
 
 func (s *QuerySearchLibResponseBody) SetRequestId(v string) *QuerySearchLibResponseBody {
@@ -26255,6 +26564,11 @@ func (s *QuerySearchLibResponseBody) SetSearchLibName(v string) *QuerySearchLibR
 
 func (s *QuerySearchLibResponseBody) SetStatus(v string) *QuerySearchLibResponseBody {
 	s.Status = &v
+	return s
+}
+
+func (s *QuerySearchLibResponseBody) SetSuccess(v string) *QuerySearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -33661,6 +33975,122 @@ func (s *SubmitSnapshotJobResponse) SetBody(v *SubmitSnapshotJobResponseBody) *S
 	return s
 }
 
+type SubmitStandardCustomizedVoiceJobRequest struct {
+	Audios            *string `json:"Audios,omitempty" xml:"Audios,omitempty"`
+	Authentication    *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
+	DemoAudioMediaURL *string `json:"DemoAudioMediaURL,omitempty" xml:"DemoAudioMediaURL,omitempty"`
+	Gender            *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	VoiceName         *string `json:"VoiceName,omitempty" xml:"VoiceName,omitempty"`
+}
+
+func (s SubmitStandardCustomizedVoiceJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitStandardCustomizedVoiceJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitStandardCustomizedVoiceJobRequest) SetAudios(v string) *SubmitStandardCustomizedVoiceJobRequest {
+	s.Audios = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobRequest) SetAuthentication(v string) *SubmitStandardCustomizedVoiceJobRequest {
+	s.Authentication = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobRequest) SetDemoAudioMediaURL(v string) *SubmitStandardCustomizedVoiceJobRequest {
+	s.DemoAudioMediaURL = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobRequest) SetGender(v string) *SubmitStandardCustomizedVoiceJobRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobRequest) SetVoiceName(v string) *SubmitStandardCustomizedVoiceJobRequest {
+	s.VoiceName = &v
+	return s
+}
+
+type SubmitStandardCustomizedVoiceJobResponseBody struct {
+	Data      *SubmitStandardCustomizedVoiceJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponseBody) SetData(v *SubmitStandardCustomizedVoiceJobResponseBodyData) *SubmitStandardCustomizedVoiceJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponseBody) SetRequestId(v string) *SubmitStandardCustomizedVoiceJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponseBody) SetSuccess(v bool) *SubmitStandardCustomizedVoiceJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitStandardCustomizedVoiceJobResponseBodyData struct {
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponseBodyData) SetJobId(v string) *SubmitStandardCustomizedVoiceJobResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitStandardCustomizedVoiceJobResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitStandardCustomizedVoiceJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitStandardCustomizedVoiceJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponse) SetHeaders(v map[string]*string) *SubmitStandardCustomizedVoiceJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponse) SetStatusCode(v int32) *SubmitStandardCustomizedVoiceJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitStandardCustomizedVoiceJobResponse) SetBody(v *SubmitStandardCustomizedVoiceJobResponseBody) *SubmitStandardCustomizedVoiceJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitSubtitleProduceJobRequest struct {
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	EditingConfig *string `json:"EditingConfig,omitempty" xml:"EditingConfig,omitempty"`
@@ -39182,8 +39612,10 @@ func (s *UpdateMediaToSearchLibRequest) SetSearchLibName(v string) *UpdateMediaT
 }
 
 type UpdateMediaToSearchLibResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateMediaToSearchLibResponseBody) String() string {
@@ -39194,6 +39626,11 @@ func (s UpdateMediaToSearchLibResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateMediaToSearchLibResponseBody) SetCode(v string) *UpdateMediaToSearchLibResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *UpdateMediaToSearchLibResponseBody) SetMediaId(v string) *UpdateMediaToSearchLibResponseBody {
 	s.MediaId = &v
 	return s
@@ -39201,6 +39638,11 @@ func (s *UpdateMediaToSearchLibResponseBody) SetMediaId(v string) *UpdateMediaTo
 
 func (s *UpdateMediaToSearchLibResponseBody) SetRequestId(v string) *UpdateMediaToSearchLibResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMediaToSearchLibResponseBody) SetSuccess(v string) *UpdateMediaToSearchLibResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -39980,10 +40422,6 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CoverUrl)) {
 		query["CoverUrl"] = request.CoverUrl
 	}
@@ -40012,8 +40450,14 @@ func (client *Client) AddTemplateWithOptions(request *AddTemplateRequest, runtim
 		query["Type"] = request.Type
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTemplate"),
@@ -40054,6 +40498,10 @@ func (client *Client) AlterSearchIndexWithOptions(request *AlterSearchIndexReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IndexConfig)) {
 		query["IndexConfig"] = request.IndexConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexStatus)) {
+		query["IndexStatus"] = request.IndexStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
@@ -40584,16 +41032,18 @@ func (client *Client) CreateEditingProjectWithOptions(request *CreateEditingProj
 		query["TemplateType"] = request.TemplateType
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
-		query["Timeline"] = request.Timeline
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		query["Title"] = request.Title
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		body["Timeline"] = request.Timeline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateEditingProject"),
@@ -40854,6 +41304,10 @@ func (client *Client) CreateSearchIndexWithOptions(request *CreateSearchIndexReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IndexConfig)) {
 		query["IndexConfig"] = request.IndexConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexStatus)) {
+		query["IndexStatus"] = request.IndexStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IndexType)) {
@@ -44758,6 +45212,10 @@ func (client *Client) ListCustomizedVoiceJobsWithOptions(request *ListCustomized
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -44804,6 +45262,10 @@ func (client *Client) ListCustomizedVoicesWithOptions(request *ListCustomizedVoi
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -46426,6 +46888,54 @@ func (client *Client) QueryMediaCensorJobList(request *QueryMediaCensorJobListRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMediaCensorJobListResponse{}
 	_body, _err := client.QueryMediaCensorJobListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryMediaIndexJobWithOptions(request *QueryMediaIndexJobRequest, runtime *util.RuntimeOptions) (_result *QueryMediaIndexJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
+		query["MediaId"] = request.MediaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchLibName)) {
+		query["SearchLibName"] = request.SearchLibName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMediaIndexJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryMediaIndexJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryMediaIndexJob(request *QueryMediaIndexJobRequest) (_result *QueryMediaIndexJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryMediaIndexJobResponse{}
+	_body, _err := client.QueryMediaIndexJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48735,16 +49245,18 @@ func (client *Client) SubmitMediaProducingJobWithOptions(request *SubmitMediaPro
 		query["TemplateId"] = request.TemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
-		query["Timeline"] = request.Timeline
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		query["UserData"] = request.UserData
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		body["Timeline"] = request.Timeline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitMediaProducingJob"),
@@ -49016,6 +49528,66 @@ func (client *Client) SubmitSnapshotJob(request *SubmitSnapshotJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSnapshotJobResponse{}
 	_body, _err := client.SubmitSnapshotJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitStandardCustomizedVoiceJobWithOptions(request *SubmitStandardCustomizedVoiceJobRequest, runtime *util.RuntimeOptions) (_result *SubmitStandardCustomizedVoiceJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Audios)) {
+		query["Audios"] = request.Audios
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Authentication)) {
+		query["Authentication"] = request.Authentication
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DemoAudioMediaURL)) {
+		query["DemoAudioMediaURL"] = request.DemoAudioMediaURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		query["Gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VoiceName)) {
+		query["VoiceName"] = request.VoiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitStandardCustomizedVoiceJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitStandardCustomizedVoiceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitStandardCustomizedVoiceJob(request *SubmitStandardCustomizedVoiceJobRequest) (_result *SubmitStandardCustomizedVoiceJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitStandardCustomizedVoiceJobResponse{}
+	_body, _err := client.SubmitStandardCustomizedVoiceJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49500,16 +50072,18 @@ func (client *Client) UpdateEditingProjectWithOptions(request *UpdateEditingProj
 		query["TemplateId"] = request.TemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
-		query["Timeline"] = request.Timeline
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Title)) {
 		query["Title"] = request.Title
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Timeline)) {
+		body["Timeline"] = request.Timeline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateEditingProject"),
@@ -50042,10 +50616,6 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CoverUrl)) {
 		query["CoverUrl"] = request.CoverUrl
 	}
@@ -50074,8 +50644,14 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		query["TemplateId"] = request.TemplateId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTemplate"),
