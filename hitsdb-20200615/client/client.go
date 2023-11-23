@@ -2964,6 +2964,8 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 
 type UpdateInstanceIpWhiteListRequest struct {
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
+	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2987,6 +2989,11 @@ func (s UpdateInstanceIpWhiteListRequest) GoString() string {
 
 func (s *UpdateInstanceIpWhiteListRequest) SetDelete(v bool) *UpdateInstanceIpWhiteListRequest {
 	s.Delete = &v
+	return s
+}
+
+func (s *UpdateInstanceIpWhiteListRequest) SetGroupName(v string) *UpdateInstanceIpWhiteListRequest {
+	s.GroupName = &v
 	return s
 }
 
@@ -4686,6 +4693,10 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Delete)) {
 		query["Delete"] = request.Delete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
