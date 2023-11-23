@@ -12,58 +12,281 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateLdpsNamespaceRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateLdpsNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsNamespaceRequest) SetInstanceId(v string) *CreateLdpsNamespaceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetNamespace(v string) *CreateLdpsNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetOwnerAccount(v string) *CreateLdpsNamespaceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetOwnerId(v int64) *CreateLdpsNamespaceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetRegionId(v string) *CreateLdpsNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetResourceOwnerAccount(v string) *CreateLdpsNamespaceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetResourceOwnerId(v int64) *CreateLdpsNamespaceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceRequest) SetSecurityToken(v string) *CreateLdpsNamespaceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateLdpsNamespaceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLdpsNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsNamespaceResponseBody) SetRequestId(v string) *CreateLdpsNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLdpsNamespaceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLdpsNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLdpsNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsNamespaceResponse) SetHeaders(v map[string]*string) *CreateLdpsNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLdpsNamespaceResponse) SetStatusCode(v int32) *CreateLdpsNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLdpsNamespaceResponse) SetBody(v *CreateLdpsNamespaceResponseBody) *CreateLdpsNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLindormInstanceRequest struct {
-	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	ColdStorage          *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CoreSingleStorage    *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	CoreSpec             *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
-	DiskCategory         *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	Duration             *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FilestoreNum         *int32  `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
-	FilestoreSpec        *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
-	InstanceAlias        *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceStorage      *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	LindormNum           *int32  `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
-	LindormSpec          *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
-	LogDiskCategory      *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
-	LogNum               *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
-	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	// The ID of the vSwitch that is specified for the zone for the coordinate node of the instance. The vSwitch must be deployed in the zone specified by the ArbiterZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// The ID of the zone for the coordinate node of the instance. **This parameter is required if you want to create a multi-zone instance**.
+	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// The architecture of the instance. Valid values:
+	//
+	// *   **1.0**: The instance that you want to create is a single-zone instance.
+	// *   **2.0**: The instance that you want to create is a multi-zone instance.
+	//
+	// By default, the value of this parameter is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required if you want to create a multi-zone instance**.
+	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800** to **1000000**.
+	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	// The storage capacity of the disk of a single core node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
+	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	// The specification of the nodes in the instance if you set DiskCategory to local_ssd_pro or local_hdd_pro.
+	//
+	// When DiskCategory is set to local_ssd_pro, you can set this parameter to the following values:
+	//
+	// *   **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
+	// *   **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
+	//
+	// When DiskCategory is set to local_hdd_pro, you can set this parameter to the following values:
+	//
+	// *   **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
+	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
+	// The storage type of the instance. Valid values:
+	//
+	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
+	// *   **cloud_ssd**: This instance uses the Performance type of storage.
+	// *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
+	// *   **local_ssd_pro**: This instance uses local SSDs.
+	// *   **local_hdd_pro**: This instance uses local HDDs.
+	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	// The subscription period of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+	//
+	// *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
+	// *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+	//
+	// > This parameter is available and required when the PayType parameter is set to **PREPAY**.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The number of LindormDFS nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+	//
+	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **60**.
+	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **8**.
+	FilestoreNum *int32 `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
+	// The specification of LindormDFS nodes in the instance. Set the value of this parameter to **lindorm.c.xlarge**, which indicates that each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	FilestoreSpec *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
+	// The name of the instance that you want to create.
+	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	// The storage capacity of the instance you want to create. Unit: GB.
+	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	// The number of LindormTable nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+	//
+	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **90**.
+	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **400**.
+	//
+	// **This parameter is required if you want to create a multi-zone instance**.  The valid values of this parameter range from 4 to 400 if you want to create a multi-zone instance.
+	LindormNum *int32 `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
+	// The specification of LindormTable nodes in the instance. Valid values:
+	//
+	// *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	// *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	LindormSpec *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
+	// The disk type of the log nodes. Valid values:
+	//
+	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
+	// *   **cloud_ssd**: This instance uses the Performance type of storage.
+	//
+	// **This parameter is required if you want to create a multi-zone instance**.
+	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
+	// The number of the log nodes. Valid values: 4 to 400. **This parameter is required if you want to create a multi-zone instance**.
+	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	// The storage capacity of the disk of a single log node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
+	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	// The type of the log nodes. Valid values:
+	//
+	// *   **lindorm.sn1.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	// *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// **This parameter is required if you want to create a multi-zone instance**.
+	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	// The combinations of zones that are available for the multi-zone instance. You can go to the purchase page of Lindorm to view the supported zone combinations.
+	//
+	// *   **ap-southeast-5abc-aliyun**: Zone A+B+C in the Indonesia (Jakarta) region.
+	// *   **cn-hangzhou-ehi-aliyun**: Zone E+H+I in the China (Hangzhou) region.
+	// *   **cn-beijing-acd-aliyun**: Zone A+C+D in the China (Beijing) region.
+	// *   **ap-southeast-1-abc-aliyun**: Zone A+B+C in the Singapore region.
+	// *   **cn-zhangjiakou-abc-aliyun**: Zone A+B+C in the China (Zhangjiakou) region.
+	// *   **cn-shanghai-efg-aliyun**: Zone E+F+G in the China (Shanghai) region.
+	// *   **cn-shanghai-abd-aliyun**: Zone A+B+D in the China (Shanghai) region.
+	// *   **cn-hangzhou-bef-aliyun**: Zone B+E+F in the China (Hangzhou) region.
+	// *   **cn-hangzhou-bce-aliyun**: Zone B+C+E in the China (Hangzhou) region.
+	// *   **cn-beijing-fgh-aliyun**: Zone F+G+H in the China (Beijing) region.
+	// *   **cn-shenzhen-abc-aliyun**: Zone A+B+C in the China (Shenzhen) region.
+	//
+	// **This parameter is required if you want to create a multi-zone instance**.
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The billing method of the instance you want to create. Valid values:
+	//
+	// *   **PREPAY**: subscription.
+	// *   **POSTPAY**: pay-as-you-go.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The period based on which you are charged for the instance. Valid values:
+	//
+	// *   **Month**: You are charged for the instance on a monthly basis.
+	// *   **Year**: You are charged for the instance on a yearly basis.
+	//
+	// > This parameter is available and required when the PayType parameter is set to **PREPAY**.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// 多可用区实例，主可用区的可用区ID。**如果需要创建多可用区实例，该参数必填。**
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// The ID of the region in which you want to create the instance. You can call the [DescribeRegions](~~426062~~) operation to query the region in which you can create the instance.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the Lindorm instance belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SolrNum              *int32  `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
-	SolrSpec             *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	// 实例的流引擎节点数量，取值：**0**~**60**。
-	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
-	// 实例的流引擎节点规格，取值：
+	// The number of LindormSearch nodes in the instance. Valid values: integers from **0** to **60**.
+	SolrNum *int32 `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
+	// The specification of the LindormSearch nodes in the instance. Valid values:
 	//
-	// - **lindorm.g.xlarge**：表示4核16GB（独享规格）。
-	// - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
-	// - **lindorm.g.2xlarge**：表示8核32GB（独享规格）。
-	// - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
-	// - **lindorm.g.4xlarge**：表示16核64GB（独享规格）。
-	// - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
-	// - **lindorm.g.8xlarge**：表示32核128GB（独享规格）。
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	SolrSpec *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
+	// The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// The ID of the secondary zone of the instance. **This parameter is required if you want to create a multi-zone instance**.
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// The number of LindormStream nodes in the instance. Valid values: integers from **0** to **60**.
+	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	// The specification of the LindormStream nodes in the instance. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
 	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
-	TsdbNum    *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
-	TsdbSpec   *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
-	VPCId      *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+	//
+	// *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **24**.
+	// *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **32**.
+	TsdbNum *int32 `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
+	// The specification of the LindormTSDB nodes in the instance. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	TsdbSpec *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
+	// The ID of the VPC in which you want to create the instance.
+	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	// The ID of the vSwitch to which you want the instance to connect.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the zone in which you want to create the instance.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateLindormInstanceRequest) String() string {
@@ -280,9 +503,12 @@ func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanc
 }
 
 type CreateLindormInstanceResponseBody struct {
+	// The ID of the Lindorm instance that is created.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateLindormInstanceResponseBody) String() string {
@@ -470,8 +696,6 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetInstanceIpWhiteListRequest struct {
-	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the instance whose whitelist you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to query the instance ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -487,11 +711,6 @@ func (s GetInstanceIpWhiteListRequest) String() string {
 
 func (s GetInstanceIpWhiteListRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetInstanceIpWhiteListRequest) SetGroupName(v string) *GetInstanceIpWhiteListRequest {
-	s.GroupName = &v
-	return s
 }
 
 func (s *GetInstanceIpWhiteListRequest) SetInstanceId(v string) *GetInstanceIpWhiteListRequest {
@@ -525,6 +744,7 @@ func (s *GetInstanceIpWhiteListRequest) SetSecurityToken(v string) *GetInstanceI
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
+	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The ID of the Lindorm instance.
 	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpList     []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
@@ -540,6 +760,11 @@ func (s GetInstanceIpWhiteListResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetInstanceIpWhiteListResponseBody) SetGroupList(v []*GetInstanceIpWhiteListResponseBodyGroupList) *GetInstanceIpWhiteListResponseBody {
+	s.GroupList = v
+	return s
+}
+
 func (s *GetInstanceIpWhiteListResponseBody) SetInstanceId(v string) *GetInstanceIpWhiteListResponseBody {
 	s.InstanceId = &v
 	return s
@@ -552,6 +777,29 @@ func (s *GetInstanceIpWhiteListResponseBody) SetIpList(v []*string) *GetInstance
 
 func (s *GetInstanceIpWhiteListResponseBody) SetRequestId(v string) *GetInstanceIpWhiteListResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type GetInstanceIpWhiteListResponseBodyGroupList struct {
+	GroupName      *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
+}
+
+func (s GetInstanceIpWhiteListResponseBodyGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceIpWhiteListResponseBodyGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceIpWhiteListResponseBodyGroupList) SetGroupName(v string) *GetInstanceIpWhiteListResponseBodyGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetInstanceIpWhiteListResponseBodyGroupList) SetSecurityIpList(v string) *GetInstanceIpWhiteListResponseBodyGroupList {
+	s.SecurityIpList = &v
 	return s
 }
 
@@ -580,6 +828,158 @@ func (s *GetInstanceIpWhiteListResponse) SetStatusCode(v int32) *GetInstanceIpWh
 }
 
 func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListResponseBody) *GetInstanceIpWhiteListResponse {
+	s.Body = v
+	return s
+}
+
+type GetLdpsNamespacedQuotaRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLdpsNamespacedQuotaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsNamespacedQuotaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetInstanceId(v string) *GetLdpsNamespacedQuotaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetNamespace(v string) *GetLdpsNamespacedQuotaRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetOwnerAccount(v string) *GetLdpsNamespacedQuotaRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetOwnerId(v int64) *GetLdpsNamespacedQuotaRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetRegionId(v string) *GetLdpsNamespacedQuotaRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetResourceOwnerAccount(v string) *GetLdpsNamespacedQuotaRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetResourceOwnerId(v int64) *GetLdpsNamespacedQuotaRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaRequest) SetSecurityToken(v string) *GetLdpsNamespacedQuotaRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLdpsNamespacedQuotaResponseBody struct {
+	NamespacedQuotas []*GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas `json:"NamespacedQuotas,omitempty" xml:"NamespacedQuotas,omitempty" type:"Repeated"`
+	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLdpsNamespacedQuotaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsNamespacedQuotaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBody) SetNamespacedQuotas(v []*GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) *GetLdpsNamespacedQuotaResponseBody {
+	s.NamespacedQuotas = v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBody) SetRequestId(v string) *GetLdpsNamespacedQuotaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas struct {
+	CpuAmount    *string `json:"CpuAmount,omitempty" xml:"CpuAmount,omitempty"`
+	MemoryAmount *string `json:"MemoryAmount,omitempty" xml:"MemoryAmount,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UsedCpu      *string `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+	UsedMemory   *string `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+}
+
+func (s GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) SetCpuAmount(v string) *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas {
+	s.CpuAmount = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) SetMemoryAmount(v string) *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas {
+	s.MemoryAmount = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) SetName(v string) *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) SetUsedCpu(v string) *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas {
+	s.UsedCpu = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas) SetUsedMemory(v string) *GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas {
+	s.UsedMemory = &v
+	return s
+}
+
+type GetLdpsNamespacedQuotaResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLdpsNamespacedQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLdpsNamespacedQuotaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsNamespacedQuotaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsNamespacedQuotaResponse) SetHeaders(v map[string]*string) *GetLdpsNamespacedQuotaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponse) SetStatusCode(v int32) *GetLdpsNamespacedQuotaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLdpsNamespacedQuotaResponse) SetBody(v *GetLdpsNamespacedQuotaResponseBody) *GetLdpsNamespacedQuotaResponse {
 	s.Body = v
 	return s
 }
@@ -805,6 +1205,7 @@ type GetLindormInstanceResponseBody struct {
 	EnableCompute        *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	EnableKms            *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
 	EnableLTS            *bool                                       `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
+	EnableLsqlVersionV3  *bool                                       `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
 	EnableMLCtrl         *bool                                       `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
 	EnableSSL            *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	EnableShs            *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
@@ -952,6 +1353,11 @@ func (s *GetLindormInstanceResponseBody) SetEnableKms(v bool) *GetLindormInstanc
 
 func (s *GetLindormInstanceResponseBody) SetEnableLTS(v bool) *GetLindormInstanceResponseBody {
 	s.EnableLTS = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableLsqlVersionV3(v bool) *GetLindormInstanceResponseBody {
+	s.EnableLsqlVersionV3 = &v
 	return s
 }
 
@@ -2051,6 +2457,7 @@ func (s *ModifyInstancePayTypeResponse) SetBody(v *ModifyInstancePayTypeResponse
 }
 
 type ReleaseLindormInstanceRequest struct {
+	// Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
 	Immediately          *bool   `json:"Immediately,omitempty" xml:"Immediately,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2150,11 +2557,21 @@ func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceRespon
 }
 
 type RenewLindormInstanceRequest struct {
-	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+	//
+	// *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
+	// *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the instance ID.
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The period based on which you are charged for the instance. Valid values:
+	//
+	// *   **Month**: You are charged for the instance based on months.
+	// *   **Year**: You are charged for the instance based on years.
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2215,9 +2632,12 @@ func (s *RenewLindormInstanceRequest) SetSecurityToken(v string) *RenewLindormIn
 }
 
 type RenewLindormInstanceResponseBody struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenewLindormInstanceResponseBody) String() string {
@@ -2543,8 +2963,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceIpWhiteListRequest struct {
-	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
 	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2566,8 +2985,8 @@ func (s UpdateInstanceIpWhiteListRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateInstanceIpWhiteListRequest) SetGroupName(v string) *UpdateInstanceIpWhiteListRequest {
-	s.GroupName = &v
+func (s *UpdateInstanceIpWhiteListRequest) SetDelete(v bool) *UpdateInstanceIpWhiteListRequest {
+	s.Delete = &v
 	return s
 }
 
@@ -2654,41 +3073,90 @@ func (s *UpdateInstanceIpWhiteListResponse) SetBody(v *UpdateInstanceIpWhiteList
 }
 
 type UpgradeLindormInstanceRequest struct {
-	ClusterStorage       *int32  `json:"ClusterStorage,omitempty" xml:"ClusterStorage,omitempty"`
-	ColdStorage          *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CoreSingleStorage    *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	FilestoreNum         *int32  `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
-	FilestoreSpec        *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LindormNum           *int32  `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
-	LindormSpec          *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
-	LogNum               *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
-	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	LtsCoreNum           *int32  `json:"LtsCoreNum,omitempty" xml:"LtsCoreNum,omitempty"`
-	LtsCoreSpec          *string `json:"LtsCoreSpec,omitempty" xml:"LtsCoreSpec,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PhoenixCoreNum       *int32  `json:"PhoenixCoreNum,omitempty" xml:"PhoenixCoreNum,omitempty"`
-	PhoenixCoreSpec      *string `json:"PhoenixCoreSpec,omitempty" xml:"PhoenixCoreSpec,omitempty"`
+	// The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480** to **1017600**.
+	ClusterStorage *int32 `json:"ClusterStorage,omitempty" xml:"ClusterStorage,omitempty"`
+	// The cold storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **800** to **1000000**.
+	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	// The storage capacity of a single core node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional**.
+	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
+	// The number of LindormDFS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	FilestoreNum *int32 `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
+	// The specification of LindormDFS nodes in the instance after the instance is upgraded. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	FilestoreSpec *string `json:"FilestoreSpec,omitempty" xml:"FilestoreSpec,omitempty"`
+	// The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](~~426069~~) operation to query the instance ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **90**.
+	//
+	// > This parameter must be specified together with the LindormSpec parameter.
+	LindormNum *int32 `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
+	// The specification of LindormTable nodes in the instance after the instance is upgraded. Valid values:
+	//
+	// *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	// *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
+	LindormSpec *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
+	// The number of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	// The storage capacity of a single log node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
+	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	// The specification of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Valid values:
+	//
+	// *   **lindorm.sn1.large**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+	// *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
+	// **This parameter is optional**.
+	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	// The number of LTS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **50**.
+	LtsCoreNum *int32 `json:"LtsCoreNum,omitempty" xml:"LtsCoreNum,omitempty"`
+	// The specification of Lindorm Tunnel Service (LTS) nodes in the instance after the instance is upgraded. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	LtsCoreSpec  *string `json:"LtsCoreSpec,omitempty" xml:"LtsCoreSpec,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SolrNum              *int32  `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
-	SolrSpec             *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
-	// 变配后实例的流引擎节点数量，取值：**0**~**90**。
-	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
-	// 变配后实例的流引擎节点规格，取值：
+	// The number of LindormSearch nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	SolrNum *int32 `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
+	// The specification of LindormSearch nodes in the instance after the instance is upgraded. Valid values:
 	//
-	// - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
-	// - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
-	// - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
-	StreamSpec  *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
-	TsdbNum     *int32  `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
-	TsdbSpec    *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	SolrSpec *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
+	// The number of LindormStream nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
+	// The specification of LindormStream nodes in the instance after the instance is upgraded. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	// The number of LindormTSDB nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **24**.
+	TsdbNum *int32 `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
+	// The specification of LindormTSDB nodes in the instance after the instance is upgraded. Valid values:
+	//
+	// *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+	// *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+	TsdbSpec *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
+	// The upgrade type of the operation. For more information about upgrade types, see the UpgradeType parameters section.
 	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](~~426067~~) operation to query the zone ID.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpgradeLindormInstanceRequest) String() string {
@@ -2774,16 +3242,6 @@ func (s *UpgradeLindormInstanceRequest) SetOwnerId(v int64) *UpgradeLindormInsta
 	return s
 }
 
-func (s *UpgradeLindormInstanceRequest) SetPhoenixCoreNum(v int32) *UpgradeLindormInstanceRequest {
-	s.PhoenixCoreNum = &v
-	return s
-}
-
-func (s *UpgradeLindormInstanceRequest) SetPhoenixCoreSpec(v string) *UpgradeLindormInstanceRequest {
-	s.PhoenixCoreSpec = &v
-	return s
-}
-
 func (s *UpgradeLindormInstanceRequest) SetRegionId(v string) *UpgradeLindormInstanceRequest {
 	s.RegionId = &v
 	return s
@@ -2845,7 +3303,9 @@ func (s *UpgradeLindormInstanceRequest) SetZoneId(v string) *UpgradeLindormInsta
 }
 
 type UpgradeLindormInstanceResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2943,6 +3403,85 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateLdpsNamespaceWithOptions(request *CreateLdpsNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLdpsNamespace"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLdpsNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLdpsNamespace(request *CreateLdpsNamespaceRequest) (_result *CreateLdpsNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLdpsNamespaceResponse{}
+	_body, _err := client.CreateLdpsNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+ *
+ * @param request CreateLindormInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLindormInstanceResponse
+ */
 func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3136,6 +3675,12 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 	return _result, _err
 }
 
+/**
+ * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+ *
+ * @param request CreateLindormInstanceRequest
+ * @return CreateLindormInstanceResponse
+ */
 func (client *Client) CreateLindormInstance(request *CreateLindormInstanceRequest) (_result *CreateLindormInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLindormInstanceResponse{}
@@ -3217,10 +3762,6 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
-		query["GroupName"] = request.GroupName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -3272,6 +3813,78 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceIpWhiteListResponse{}
 	_body, _err := client.GetInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespacedQuotaRequest, runtime *util.RuntimeOptions) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLdpsNamespacedQuota"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLdpsNamespacedQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLdpsNamespacedQuota(request *GetLdpsNamespacedQuotaRequest) (_result *GetLdpsNamespacedQuotaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLdpsNamespacedQuotaResponse{}
+	_body, _err := client.GetLdpsNamespacedQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3823,7 +4436,8 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 }
 
 /**
- * The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+ * You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+ * Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
  *
  * @param request RenewLindormInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3895,7 +4509,8 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 }
 
 /**
- * The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+ * You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+ * Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
  *
  * @param request RenewLindormInstanceRequest
  * @return RenewLindormInstanceResponse
@@ -4063,21 +4678,14 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-/**
- * ***
- *
- * @param request UpdateInstanceIpWhiteListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateInstanceIpWhiteListResponse
- */
 func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
-		query["GroupName"] = request.GroupName
+	if !tea.BoolValue(util.IsUnset(request.Delete)) {
+		query["Delete"] = request.Delete
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -4131,12 +4739,6 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 	return _result, _err
 }
 
-/**
- * ***
- *
- * @param request UpdateInstanceIpWhiteListRequest
- * @return UpdateInstanceIpWhiteListResponse
- */
 func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteListRequest) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceIpWhiteListResponse{}
@@ -4149,7 +4751,7 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 }
 
 /**
- * Upgrades, scales up, or enable cold storage for a Lindorm instance.
+ * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
  *
  * @param request UpgradeLindormInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4219,14 +4821,6 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhoenixCoreNum)) {
-		query["PhoenixCoreNum"] = request.PhoenixCoreNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PhoenixCoreSpec)) {
-		query["PhoenixCoreSpec"] = request.PhoenixCoreSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -4301,7 +4895,7 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 }
 
 /**
- * Upgrades, scales up, or enable cold storage for a Lindorm instance.
+ * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
  *
  * @param request UpgradeLindormInstanceRequest
  * @return UpgradeLindormInstanceResponse

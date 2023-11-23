@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/hitsdb-20200615/v4
+module github.com/alibabacloud-go/hitsdb-20200615/v5
 
 go 1.15
 
