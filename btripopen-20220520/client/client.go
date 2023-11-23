@@ -5311,6 +5311,7 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	InternationalFlightInvoiceFee *string `json:"international_flight_invoice_fee,omitempty" xml:"international_flight_invoice_fee,omitempty"`
 	InternationalHotelInvoiceFee  *string `json:"international_hotel_invoice_fee,omitempty" xml:"international_hotel_invoice_fee,omitempty"`
 	InvoiceThirdPartId            *string `json:"invoice_third_part_id,omitempty" xml:"invoice_third_part_id,omitempty"`
+	InvoiceType                   *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
 	MailAddress                   *string `json:"mail_address,omitempty" xml:"mail_address,omitempty"`
 	MailCity                      *string `json:"mail_city,omitempty" xml:"mail_city,omitempty"`
 	MailFullAddress               *string `json:"mail_full_address,omitempty" xml:"mail_full_address,omitempty"`
@@ -5373,6 +5374,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInternationalHotelInvoiceFee
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInvoiceThirdPartId(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.InvoiceThirdPartId = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetInvoiceType(v int32) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.InvoiceType = &v
 	return s
 }
 
