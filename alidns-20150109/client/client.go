@@ -283,59 +283,59 @@ func (s *AddDnsCacheDomainResponse) SetBody(v *AddDnsCacheDomainResponseBody) *A
 
 type AddDnsGtmAccessStrategyRequest struct {
 	DefaultAddrPool []*AddDnsGtmAccessStrategyRequestDefaultAddrPool `json:"DefaultAddrPool,omitempty" xml:"DefaultAddrPool,omitempty" type:"Repeated"`
-	// The load balancing policy of the primary address pool group. Valid values:
-	//
-	// *   ALL_RR: returns all addresses.
-	// *   RATIO: returns addresses by weight.
-	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
-	// The type of the secondary address pool. Valid values:
-	//
-	// *   IPV4
-	// *   IPV6
-	// *   DOMAIN
-	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
-	// The minimum number of available addresses in the primary address pool group.
-	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
-	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
-	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
-	// The maximum number of addresses returned from the primary address pool group.
-	DefaultMinAvailableAddrNum *int32                                            `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
-	FailoverAddrPool           []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
-	// The load balancing policy of the secondary address pool group. Valid values:
-	//
-	// *   ALL_RR: returns all addresses.
-	// *   RATIO: returns addresses by weight.
-	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
-	// The type of the access policy. Valid values:
-	//
-	// *   GEO: geographical location-based
-	// *   LATENCY: latency-based
-	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
-	// The minimum number of available addresses in the secondary address pool group.
-	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
-	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
-	//
-	// *   OPEN: enable
-	// *   CLOSE: disable
-	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
-	// The maximum number of addresses returned from the secondary address pool group.
-	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
-	// The name of the access policy.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the instance.
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The type of the primary address pool. Valid values:
 	//
 	// *   IPV4
 	// *   IPV6
 	// *   DOMAIN
-	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
-	// The weight of the address pool in the primary address pool group.
-	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	DefaultAddrPoolType *string `json:"DefaultAddrPoolType,omitempty" xml:"DefaultAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	DefaultLatencyOptimization *string `json:"DefaultLatencyOptimization,omitempty" xml:"DefaultLatencyOptimization,omitempty"`
+	// The load balancing policy of the primary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	DefaultLbaStrategy *string `json:"DefaultLbaStrategy,omitempty" xml:"DefaultLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the primary address pool group.
+	DefaultMaxReturnAddrNum *int32 `json:"DefaultMaxReturnAddrNum,omitempty" xml:"DefaultMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the primary address pool group.
+	DefaultMinAvailableAddrNum *int32                                            `json:"DefaultMinAvailableAddrNum,omitempty" xml:"DefaultMinAvailableAddrNum,omitempty"`
+	FailoverAddrPool           []*AddDnsGtmAccessStrategyRequestFailoverAddrPool `json:"FailoverAddrPool,omitempty" xml:"FailoverAddrPool,omitempty" type:"Repeated"`
+	// The type of the secondary address pool. Valid values:
+	//
+	// *   IPV4
+	// *   IPV6
+	// *   DOMAIN
+	FailoverAddrPoolType *string `json:"FailoverAddrPoolType,omitempty" xml:"FailoverAddrPoolType,omitempty"`
+	// Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values:
+	//
+	// *   OPEN: enable
+	// *   CLOSE: disable
+	FailoverLatencyOptimization *string `json:"FailoverLatencyOptimization,omitempty" xml:"FailoverLatencyOptimization,omitempty"`
+	// The load balancing policy of the secondary address pool group. Valid values:
+	//
+	// *   ALL_RR: returns all addresses.
+	// *   RATIO: returns addresses by weight.
+	FailoverLbaStrategy *string `json:"FailoverLbaStrategy,omitempty" xml:"FailoverLbaStrategy,omitempty"`
+	// The maximum number of addresses returned from the secondary address pool group.
+	FailoverMaxReturnAddrNum *int32 `json:"FailoverMaxReturnAddrNum,omitempty" xml:"FailoverMaxReturnAddrNum,omitempty"`
+	// The minimum number of available addresses in the secondary address pool group.
+	FailoverMinAvailableAddrNum *int32 `json:"FailoverMinAvailableAddrNum,omitempty" xml:"FailoverMinAvailableAddrNum,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The line codes of source regions. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Telecom & Media Group.
+	Lines *string `json:"Lines,omitempty" xml:"Lines,omitempty"`
+	// The type of the access policy. Valid values:
+	//
+	// *   GEO: geographical location-based
+	// *   LATENCY: latency-based
+	StrategyMode *string `json:"StrategyMode,omitempty" xml:"StrategyMode,omitempty"`
+	// The name of the access policy.
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
 }
 
@@ -433,9 +433,9 @@ func (s *AddDnsGtmAccessStrategyRequest) SetStrategyName(v string) *AddDnsGtmAcc
 }
 
 type AddDnsGtmAccessStrategyRequestDefaultAddrPool struct {
-	// The weight of the address pool in the secondary address pool group.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the address pool in the primary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the primary address pool group.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -458,9 +458,9 @@ func (s *AddDnsGtmAccessStrategyRequestDefaultAddrPool) SetLbaWeight(v int32) *A
 }
 
 type AddDnsGtmAccessStrategyRequestFailoverAddrPool struct {
-	// The ID of the access policy.
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the address pool in the secondary address pool group.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The weight of the address pool in the secondary address pool group.
 	LbaWeight *int32 `json:"LbaWeight,omitempty" xml:"LbaWeight,omitempty"`
 }
 
@@ -483,8 +483,9 @@ func (s *AddDnsGtmAccessStrategyRequestFailoverAddrPool) SetLbaWeight(v int32) *
 }
 
 type AddDnsGtmAccessStrategyResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the access policy.
 	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
@@ -11476,7 +11477,8 @@ type DescribeDomainRecordInfoResponseBody struct {
 	RR *string `json:"RR,omitempty" xml:"RR,omitempty"`
 	// The ID of the DNS record.
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remark of the DNS record.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the DNS record. Valid values: Enable and Disable.
@@ -14891,7 +14893,7 @@ type DescribeGtmLogsRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on per page. Maximum value: **100**. Default value: **20**.
+	// The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query.
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
@@ -29418,6 +29420,14 @@ func (client *Client) DescribeDomainNs(request *DescribeDomainNsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+ *
+ * @param request DescribeDomainRecordInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeDomainRecordInfoResponse
+ */
 func (client *Client) DescribeDomainRecordInfoWithOptions(request *DescribeDomainRecordInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDomainRecordInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29459,6 +29469,13 @@ func (client *Client) DescribeDomainRecordInfoWithOptions(request *DescribeDomai
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+ *
+ * @param request DescribeDomainRecordInfoRequest
+ * @return DescribeDomainRecordInfoResponse
+ */
 func (client *Client) DescribeDomainRecordInfo(request *DescribeDomainRecordInfoRequest) (_result *DescribeDomainRecordInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDomainRecordInfoResponse{}
