@@ -8678,6 +8678,29 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) SetInstanceId(v strin
 	return s
 }
 
+type DescribeClusterTasksRequest struct {
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	PageSize   *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s DescribeClusterTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterTasksRequest) SetPageNumber(v int32) *DescribeClusterTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClusterTasksRequest) SetPageSize(v int32) *DescribeClusterTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
 type DescribeClusterTasksResponseBody struct {
 	// The pagination information.
 	PageInfo *DescribeClusterTasksResponseBodyPageInfo `json:"page_info,omitempty" xml:"page_info,omitempty" type:"Struct"`
@@ -20457,9 +20480,23 @@ func (client *Client) DescribeClusterResources(ClusterId *string) (_result *Desc
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterTasksResponse, _err error) {
+func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, request *DescribeClusterTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["page_number"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeClusterTasks"),
@@ -20481,11 +20518,11 @@ func (client *Client) DescribeClusterTasksWithOptions(clusterId *string, headers
 	return _result, _err
 }
 
-func (client *Client) DescribeClusterTasks(clusterId *string) (_result *DescribeClusterTasksResponse, _err error) {
+func (client *Client) DescribeClusterTasks(clusterId *string, request *DescribeClusterTasksRequest) (_result *DescribeClusterTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DescribeClusterTasksResponse{}
-	_body, _err := client.DescribeClusterTasksWithOptions(clusterId, headers, runtime)
+	_body, _err := client.DescribeClusterTasksWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
