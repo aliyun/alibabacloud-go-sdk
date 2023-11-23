@@ -1,3 +1,6 @@
+2023-11-23 Version: v2.10.0
+- Generated golang 2018-01-15 for dcdn.
+
 2023-11-22 Version: v2.9.0
 - Generated golang 2018-01-15 for dcdn.
 

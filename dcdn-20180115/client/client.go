@@ -8381,6 +8381,111 @@ func (s *DescribeDcdnDomainLogResponse) SetBody(v *DescribeDcdnDomainLogResponse
 	return s
 }
 
+type DescribeDcdnDomainLogExTtlRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainLogExTtlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlRequest) SetDomainName(v string) *DescribeDcdnDomainLogExTtlRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlRequest) SetEndTime(v string) *DescribeDcdnDomainLogExTtlRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlRequest) SetPageNumber(v int64) *DescribeDcdnDomainLogExTtlRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlRequest) SetPageSize(v int64) *DescribeDcdnDomainLogExTtlRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlRequest) SetStartTime(v string) *DescribeDcdnDomainLogExTtlRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponseBody struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBody) SetMaxResults(v int32) *DescribeDcdnDomainLogExTtlResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBody) SetNextToken(v string) *DescribeDcdnDomainLogExTtlResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBody) SetRequestId(v string) *DescribeDcdnDomainLogExTtlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBody) SetTotalCount(v int32) *DescribeDcdnDomainLogExTtlResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnDomainLogExTtlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainLogExTtlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponse) SetStatusCode(v int32) *DescribeDcdnDomainLogExTtlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponse) SetBody(v *DescribeDcdnDomainLogExTtlResponseBody) *DescribeDcdnDomainLogExTtlResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnDomainMultiUsageDataRequest struct {
 	// If this parameter is not set, data of all your accelerated domain names is queried.
 	//
@@ -34537,6 +34642,66 @@ func (client *Client) DescribeDcdnDomainLog(request *DescribeDcdnDomainLogReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainLogResponse{}
 	_body, _err := client.DescribeDcdnDomainLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainLogExTtlWithOptions(request *DescribeDcdnDomainLogExTtlRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainLogExTtlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainLogExTtl"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainLogExTtlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainLogExTtl(request *DescribeDcdnDomainLogExTtlRequest) (_result *DescribeDcdnDomainLogExTtlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainLogExTtlResponse{}
+	_body, _err := client.DescribeDcdnDomainLogExTtlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
