@@ -1989,16 +1989,17 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetLabelTableResponseBody struct {
-	DatasourceId    *string                            `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	DatasourceName  *string                            `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	Fields          []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	GmtCreateTime   *string                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime *string                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Name            *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Owner           *string                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ProjectId       *string                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId       *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	DatasourceId         *string                            `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	DatasourceName       *string                            `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	Fields               []*GetLabelTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	GmtCreateTime        *string                            `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime      *string                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Name                 *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner                *string                            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ProjectId            *string                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName          *string                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	RelatedModelFeatures []*string                          `json:"RelatedModelFeatures,omitempty" xml:"RelatedModelFeatures,omitempty" type:"Repeated"`
+	RequestId            *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetLabelTableResponseBody) String() string {
@@ -2051,6 +2052,11 @@ func (s *GetLabelTableResponseBody) SetProjectId(v string) *GetLabelTableRespons
 
 func (s *GetLabelTableResponseBody) SetProjectName(v string) *GetLabelTableResponseBody {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *GetLabelTableResponseBody) SetRelatedModelFeatures(v []*string) *GetLabelTableResponseBody {
+	s.RelatedModelFeatures = v
 	return s
 }
 
