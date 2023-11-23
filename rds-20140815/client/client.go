@@ -25597,7 +25597,8 @@ type DescribeDBProxyResponseBody struct {
 	// *   2: dedicated proxy
 	//
 	// >  ApsaraDB RDS for PostgreSQL instances support only dedicated proxies.
-	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyInstanceType                *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyPersistentConnectionSupport *string `json:"DBProxyPersistentConnectionSupport,omitempty" xml:"DBProxyPersistentConnectionSupport,omitempty"`
 	// The status of the database proxy.
 	//
 	// *   Shutdown: disabled
@@ -25666,6 +25667,11 @@ func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceStatus(v string) *Descri
 
 func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceType(v string) *DescribeDBProxyResponseBody {
 	s.DBProxyInstanceType = &v
+	return s
+}
+
+func (s *DescribeDBProxyResponseBody) SetDBProxyPersistentConnectionSupport(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyPersistentConnectionSupport = &v
 	return s
 }
 
@@ -48593,7 +48599,8 @@ type ModifyDBProxyRequest struct {
 	// The number of proxy instances that are enabled. Valid values: **1** to **16**. Default value: **1**.
 	//
 	// >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
-	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
+	DBProxyInstanceNum  *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
+	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
 	// The network type of the instance. Set the value to **VPC**.
 	//
 	// > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
@@ -48640,6 +48647,11 @@ func (s *ModifyDBProxyRequest) SetDBProxyEngineType(v string) *ModifyDBProxyRequ
 
 func (s *ModifyDBProxyRequest) SetDBProxyInstanceNum(v string) *ModifyDBProxyRequest {
 	s.DBProxyInstanceNum = &v
+	return s
+}
+
+func (s *ModifyDBProxyRequest) SetDBProxyInstanceType(v string) *ModifyDBProxyRequest {
+	s.DBProxyInstanceType = &v
 	return s
 }
 
@@ -78501,6 +78513,10 @@ func (client *Client) ModifyDBProxyWithOptions(request *ModifyDBProxyRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DBProxyInstanceNum)) {
 		query["DBProxyInstanceNum"] = request.DBProxyInstanceNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBProxyInstanceType)) {
+		query["DBProxyInstanceType"] = request.DBProxyInstanceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceNetworkType)) {
