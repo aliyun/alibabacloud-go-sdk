@@ -1280,8 +1280,10 @@ func (s *CompileSortScriptResponse) SetBody(v *CompileSortScriptResponseBody) *C
 }
 
 type CreateABTestExperimentRequest struct {
-	Body   *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body.
+	Body *ABTestExperiment `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateABTestExperimentRequest) String() string {
@@ -1303,9 +1305,9 @@ func (s *CreateABTestExperimentRequest) SetDryRun(v bool) *CreateABTestExperimen
 }
 
 type CreateABTestExperimentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test.
+	// The experiment details.
 	Result *CreateABTestExperimentResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -1328,22 +1330,22 @@ func (s *CreateABTestExperimentResponseBody) SetResult(v *CreateABTestExperiment
 }
 
 type CreateABTestExperimentResponseBodyResult struct {
-	// The time when the test was created.
+	// The time when the experiment was created.
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The ID of the test.
+	// The experiment ID.
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the test.
+	// The experiment alias.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the test. Valid values:
+	// Indicates whether the experiment is in effect. Valid values:
 	//
-	// *   true: in effect
-	// *   false: not in effect
+	// *   true
+	// *   false
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
-	// The parameters of the test.
+	// The experiment parameters.
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The percentage of traffic that is routed to the test.
+	// The percentage of traffic that is routed to the experiment.
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
-	// The time when the test was last modified.
+	// The time when the experiment was last modified.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -1679,8 +1681,9 @@ func (s *CreateABTestSceneResponse) SetBody(v *CreateABTestSceneResponseBody) *C
 }
 
 type CreateAppRequest struct {
+	// The request body.
 	Body *App `json:"body,omitempty" xml:"body,omitempty"`
-	// true
+	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -1703,9 +1706,9 @@ func (s *CreateAppRequest) SetDryRun(v bool) *CreateAppRequest {
 }
 
 type CreateAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
+	// The returned results.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -2079,8 +2082,9 @@ func (s *CreateAppGroupResponse) SetBody(v *CreateAppGroupResponseBody) *CreateA
 }
 
 type CreateFirstRankRequest struct {
+	// The request body that contains the parameters of the rough sort expression.
 	Body *FirstRank `json:"body,omitempty" xml:"body,omitempty"`
-	// true
+	// Specifies whether to perform a dry run.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -2103,7 +2107,7 @@ func (s *CreateFirstRankRequest) SetDryRun(v bool) *CreateFirstRankRequest {
 }
 
 type CreateFirstRankResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the rough sort expression.
 	Result *CreateFirstRankResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -2162,11 +2166,9 @@ func (s *CreateFirstRankResponseBodyResult) SetName(v string) *CreateFirstRankRe
 type CreateFirstRankResponseBodyResultMeta struct {
 	// The parameters that are used by a function in the expression.
 	Arg *string `json:"arg,omitempty" xml:"arg,omitempty"`
-	// The attribute, feature function, or field to be searched for.
+	// The attribute, feature functions, or field to be searched for.
 	Attribute *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// The weight.
-	//
-	// Valid values: \[-100000,100000] (excluding 0).
+	// The weight. Valid values: \[-100000,100000]. The value cannot be 0.
 	Weight *float32 `json:"weight,omitempty" xml:"weight,omitempty"`
 }
 
@@ -2425,6 +2427,209 @@ func (s *CreateFunctionInstanceResponse) SetBody(v *CreateFunctionInstanceRespon
 	return s
 }
 
+type CreateFunctionResourceRequest struct {
+	Data         *CreateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Description  *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ResourceName *string                            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType *string                            `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s CreateFunctionResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceRequest) SetData(v *CreateFunctionResourceRequestData) *CreateFunctionResourceRequest {
+	s.Data = v
+	return s
+}
+
+func (s *CreateFunctionResourceRequest) SetDescription(v string) *CreateFunctionResourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateFunctionResourceRequest) SetResourceName(v string) *CreateFunctionResourceRequest {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *CreateFunctionResourceRequest) SetResourceType(v string) *CreateFunctionResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type CreateFunctionResourceRequestData struct {
+	Content    *string                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	Generators []*CreateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
+}
+
+func (s CreateFunctionResourceRequestData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceRequestData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceRequestData) SetContent(v string) *CreateFunctionResourceRequestData {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateFunctionResourceRequestData) SetGenerators(v []*CreateFunctionResourceRequestDataGenerators) *CreateFunctionResourceRequestData {
+	s.Generators = v
+	return s
+}
+
+type CreateFunctionResourceRequestDataGenerators struct {
+	Generator *string                                           `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	Input     *CreateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Output    *string                                           `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s CreateFunctionResourceRequestDataGenerators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceRequestDataGenerators) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceRequestDataGenerators) SetGenerator(v string) *CreateFunctionResourceRequestDataGenerators {
+	s.Generator = &v
+	return s
+}
+
+func (s *CreateFunctionResourceRequestDataGenerators) SetInput(v *CreateFunctionResourceRequestDataGeneratorsInput) *CreateFunctionResourceRequestDataGenerators {
+	s.Input = v
+	return s
+}
+
+func (s *CreateFunctionResourceRequestDataGenerators) SetOutput(v string) *CreateFunctionResourceRequestDataGenerators {
+	s.Output = &v
+	return s
+}
+
+type CreateFunctionResourceRequestDataGeneratorsInput struct {
+	Features []*CreateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+}
+
+func (s CreateFunctionResourceRequestDataGeneratorsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceRequestDataGeneratorsInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceRequestDataGeneratorsInput) SetFeatures(v []*CreateFunctionResourceRequestDataGeneratorsInputFeatures) *CreateFunctionResourceRequestDataGeneratorsInput {
+	s.Features = v
+	return s
+}
+
+type CreateFunctionResourceRequestDataGeneratorsInputFeatures struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFunctionResourceRequestDataGeneratorsInputFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceRequestDataGeneratorsInputFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceRequestDataGeneratorsInputFeatures) SetName(v string) *CreateFunctionResourceRequestDataGeneratorsInputFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFunctionResourceRequestDataGeneratorsInputFeatures) SetType(v string) *CreateFunctionResourceRequestDataGeneratorsInputFeatures {
+	s.Type = &v
+	return s
+}
+
+type CreateFunctionResourceResponseBody struct {
+	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateFunctionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceResponseBody) SetCode(v string) *CreateFunctionResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponseBody) SetHttpCode(v int64) *CreateFunctionResourceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponseBody) SetLatency(v float64) *CreateFunctionResourceResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponseBody) SetMessage(v string) *CreateFunctionResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponseBody) SetRequestId(v string) *CreateFunctionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponseBody) SetStatus(v string) *CreateFunctionResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateFunctionResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFunctionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionResourceResponse) SetHeaders(v map[string]*string) *CreateFunctionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFunctionResourceResponse) SetStatusCode(v int32) *CreateFunctionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFunctionResourceResponse) SetBody(v *CreateFunctionResourceResponseBody) *CreateFunctionResourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFunctionTaskResponseBody struct {
 	// The error code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -2508,10 +2713,36 @@ func (s *CreateFunctionTaskResponse) SetBody(v *CreateFunctionTaskResponseBody) 
 }
 
 type CreateInterventionDictionaryRequest struct {
+	// The type of the analyzer. Valid values:
+	//
+	// *   MODEL: model-based custom analyzer.
+	// *   SYSTEM: system analyzer.
+	// *   USER: custom analyzer.
 	AnalyzerType *string `json:"analyzerType,omitempty" xml:"analyzerType,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-	DryRun       *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The name of the intervention dictionary.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the intervention dictionary. Valid values:
+	//
+	// *   stopword: an intervention dictionary for stop word filtering.
+	// *   synonym: an intervention dictionary for synonym configuration.
+	// *   correction: an intervention dictionary for spelling correction.
+	// *   category_prediction: an intervention dictionary for category prediction.
+	// *   ner: an intervention dictionary for named entity recognition (NER).
+	// *   term_weighting: an intervention dictionary for term weight analysis.
+	// *   suggest_allowlist: a drop-down suggestion whitelist.
+	// *   suggest_denylist: a drop-down suggestion blacklist.
+	// *   hot_allowlist: a top search whitelist.
+	// *   hot_denylist: a top search blacklist.
+	// *   hint_allowlist: a hint whitelist.
+	// *   hint_denylist: a hint blacklist.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Default value: false.
+	//
+	// Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateInterventionDictionaryRequest) String() string {
@@ -2654,8 +2885,9 @@ func (s *CreateInterventionDictionaryResponse) SetBody(v *CreateInterventionDict
 }
 
 type CreateQueryProcessorRequest struct {
+	// The request body.
 	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
-	// true
+	// Specifies whether to perform a dry run.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -2678,7 +2910,7 @@ func (s *CreateQueryProcessorRequest) SetDryRun(v bool) *CreateQueryProcessorReq
 }
 
 type CreateQueryProcessorResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The information about the query analysis rule.
 	Result *CreateQueryProcessorResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -2707,19 +2939,21 @@ type CreateQueryProcessorResponseBodyResult struct {
 	Active *bool `json:"active,omitempty" xml:"active,omitempty"`
 	// The time when the query analysis rule was created.
 	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
-	// The type of the industry. Valid values:
+	// The type of the industry to which the query analysis rule was applied. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// *   GENERAL: general.
+	// *   ECOMMERCE: e-commerce.
+	// *   IT_CONTENT: IT content.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The indexes to which the query analysis rule applies.
+	// The indexes to which the query analysis rule was applied.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 	// The name of the query analysis rule.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The features that are used in the query analysis rule.
+	//
+	// For more information, see [QueryProcessor](~~170014~~).
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The time when the query analysis rule was last updated.
+	// The time when the query analysis rule was last modified.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -2796,6 +3030,7 @@ func (s *CreateQueryProcessorResponse) SetBody(v *CreateQueryProcessorResponseBo
 }
 
 type CreateScheduledTaskRequest struct {
+	// 请求体
 	Body *ScheduledTask `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3007,9 +3242,43 @@ func (s *CreateSecondRankResponse) SetBody(v *CreateSecondRankResponseBody) *Cre
 	return s
 }
 
+type CreateSortScriptRequest struct {
+	// 脚本的作用范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 脚本名称
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	// 脚本的类型，目前只支持cava_script
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateSortScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSortScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSortScriptRequest) SetScope(v string) *CreateSortScriptRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateSortScriptRequest) SetScriptName(v string) *CreateSortScriptRequest {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *CreateSortScriptRequest) SetType(v string) *CreateSortScriptRequest {
+	s.Type = &v
+	return s
+}
+
 type CreateSortScriptResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 返回结果
+	Result *CreateSortScriptResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s CreateSortScriptResponseBody) String() string {
@@ -3022,6 +3291,43 @@ func (s CreateSortScriptResponseBody) GoString() string {
 
 func (s *CreateSortScriptResponseBody) SetRequestId(v string) *CreateSortScriptResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSortScriptResponseBody) SetResult(v *CreateSortScriptResponseBodyResult) *CreateSortScriptResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateSortScriptResponseBodyResult struct {
+	// 脚本的作用范围
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// 脚本名称
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
+	// 脚本的类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateSortScriptResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSortScriptResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSortScriptResponseBodyResult) SetScope(v string) *CreateSortScriptResponseBodyResult {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateSortScriptResponseBodyResult) SetScriptName(v string) *CreateSortScriptResponseBodyResult {
+	s.ScriptName = &v
+	return s
+}
+
+func (s *CreateSortScriptResponseBodyResult) SetType(v string) *CreateSortScriptResponseBodyResult {
+	s.Type = &v
 	return s
 }
 
@@ -3055,16 +3361,12 @@ func (s *CreateSortScriptResponse) SetBody(v *CreateSortScriptResponseBody) *Cre
 }
 
 type CreateUserAnalyzerRequest struct {
-	// 基础分词器
 	Business           *string `json:"business,omitempty" xml:"business,omitempty"`
 	BusinessAppGroupId *string `json:"businessAppGroupId,omitempty" xml:"businessAppGroupId,omitempty"`
-	// 基础分词器类型 (AUTO, MODEL, SYSTEM, USER)
-	BusinessType *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
-	// 名称
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 引擎类型 (HA3, ES)
-	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
-	DryRun *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	BusinessType       *string `json:"businessType,omitempty" xml:"businessType,omitempty"`
+	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	Type               *string `json:"type,omitempty" xml:"type,omitempty"`
+	DryRun             *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateUserAnalyzerRequest) String() string {
@@ -3106,8 +3408,10 @@ func (s *CreateUserAnalyzerRequest) SetDryRun(v bool) *CreateUserAnalyzerRequest
 }
 
 type CreateUserAnalyzerResponseBody struct {
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The custom analyzer.
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s CreateUserAnalyzerResponseBody) String() string {
@@ -3265,9 +3569,9 @@ func (s *DeleteABTestGroupResponse) SetBody(v *DeleteABTestGroupResponseBody) *D
 }
 
 type DeleteABTestSceneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The returned results.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -3399,6 +3703,82 @@ func (s *DeleteFunctionInstanceResponse) SetStatusCode(v int32) *DeleteFunctionI
 }
 
 func (s *DeleteFunctionInstanceResponse) SetBody(v *DeleteFunctionInstanceResponseBody) *DeleteFunctionInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFunctionResourceResponseBody struct {
+	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteFunctionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFunctionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetCode(v string) *DeleteFunctionResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetHttpCode(v int64) *DeleteFunctionResourceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetLatency(v float64) *DeleteFunctionResourceResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetMessage(v string) *DeleteFunctionResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetRequestId(v string) *DeleteFunctionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponseBody) SetStatus(v string) *DeleteFunctionResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteFunctionResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFunctionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFunctionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFunctionResourceResponse) SetHeaders(v map[string]*string) *DeleteFunctionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponse) SetStatusCode(v int32) *DeleteFunctionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFunctionResourceResponse) SetBody(v *DeleteFunctionResourceResponseBody) *DeleteFunctionResourceResponse {
 	s.Body = v
 	return s
 }
@@ -3818,7 +4198,7 @@ func (s *DescribeABTestGroupResponse) SetBody(v *DescribeABTestGroupResponseBody
 }
 
 type DescribeABTestSceneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The details of the test scenario.
 	Result *DescribeABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
@@ -3851,12 +4231,12 @@ type DescribeABTestSceneResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test scenario. Valid values:
 	//
-	// *   0: not in effect
-	// *   1: in effect
+	// *   0: The test is stopped.
+	// *   1: The test is started.
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the test scenario was last modified.
+	// The time when the test was last modified.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The tag of the test scenario.
+	// The indicators of the test scenarios.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -5140,113 +5520,6 @@ func (s *DescribeQueryProcessorResponse) SetStatusCode(v int32) *DescribeQueryPr
 }
 
 func (s *DescribeQueryProcessorResponse) SetBody(v *DescribeQueryProcessorResponseBody) *DescribeQueryProcessorResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRegionResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
-	Result *DescribeRegionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
-}
-
-func (s DescribeRegionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionResponseBody) SetRequestId(v string) *DescribeRegionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeRegionResponseBody) SetResult(v *DescribeRegionResponseBodyResult) *DescribeRegionResponseBody {
-	s.Result = v
-	return s
-}
-
-type DescribeRegionResponseBodyResult struct {
-	// The configurations.
-	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The ID of the region. Valid values:
-	//
-	// cn-hangzhou: China (Hangzhou)
-	//
-	// cn-shanghai: China (Shanghai)
-	//
-	// cn-qingdao: China (Qingdao)
-	//
-	// cn-beijing: China (Beijing)
-	//
-	// cn-zhangjiakou: China (Zhangjiakou)
-	//
-	// cn-shenzhen: China (Shenzhen)
-	//
-	// ap-southeast-1: Singapore (Singapore)
-	//
-	// cn-internal: Internal Center
-	//
-	// cn-zhangbei-in: Internal Center (Zhangjiakou)
-	//
-	// us-west-1-in: Internal Center (US)
-	//
-	// rus-west-1-in: Internal Center (Russia)
-	//
-	// cn-daily: Daily Environment
-	//
-	// cn-test: Joint Debugging
-	//
-	// pre-hangzhou: China (Hangzhou)-Staging
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-}
-
-func (s DescribeRegionResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionResponseBodyResult) SetConfig(v map[string]interface{}) *DescribeRegionResponseBodyResult {
-	s.Config = v
-	return s
-}
-
-func (s *DescribeRegionResponseBodyResult) SetRegionId(v string) *DescribeRegionResponseBodyResult {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRegionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRegionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionResponse) SetHeaders(v map[string]*string) *DescribeRegionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRegionResponse) SetStatusCode(v int32) *DescribeRegionResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRegionResponse) SetBody(v *DescribeRegionResponseBody) *DescribeRegionResponse {
 	s.Body = v
 	return s
 }
@@ -6761,6 +7034,256 @@ func (s *GetFunctionInstanceResponse) SetBody(v *GetFunctionInstanceResponseBody
 	return s
 }
 
+type GetFunctionResourceRequest struct {
+	Output *string `json:"output,omitempty" xml:"output,omitempty"`
+}
+
+func (s GetFunctionResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceRequest) SetOutput(v string) *GetFunctionResourceRequest {
+	s.Output = &v
+	return s
+}
+
+type GetFunctionResourceResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64                                 `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *float64                               `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetFunctionResourceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status    *string                                `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetFunctionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBody) SetCode(v string) *GetFunctionResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetHttpCode(v int64) *GetFunctionResourceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetLatency(v float64) *GetFunctionResourceResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetMessage(v string) *GetFunctionResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetRequestId(v string) *GetFunctionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetResult(v *GetFunctionResourceResponseBodyResult) *GetFunctionResourceResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBody) SetStatus(v string) *GetFunctionResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetFunctionResourceResponseBodyResult struct {
+	CreateTime          *int64                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data                *GetFunctionResourceResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Description         *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	FunctionName        *string                                    `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ModifyTime          *int64                                     `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ReferencedInstances []*string                                  `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
+	ResourceName        *string                                    `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType        *string                                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetFunctionResourceResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetCreateTime(v int64) *GetFunctionResourceResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetData(v *GetFunctionResourceResponseBodyResultData) *GetFunctionResourceResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetDescription(v string) *GetFunctionResourceResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetFunctionName(v string) *GetFunctionResourceResponseBodyResult {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetModifyTime(v int64) *GetFunctionResourceResponseBodyResult {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetReferencedInstances(v []*string) *GetFunctionResourceResponseBodyResult {
+	s.ReferencedInstances = v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetResourceName(v string) *GetFunctionResourceResponseBodyResult {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResult) SetResourceType(v string) *GetFunctionResourceResponseBodyResult {
+	s.ResourceType = &v
+	return s
+}
+
+type GetFunctionResourceResponseBodyResultData struct {
+	Content    *string                                                `json:"Content,omitempty" xml:"Content,omitempty"`
+	Generators []*GetFunctionResourceResponseBodyResultDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
+}
+
+func (s GetFunctionResourceResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBodyResultData) SetContent(v string) *GetFunctionResourceResponseBodyResultData {
+	s.Content = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResultData) SetGenerators(v []*GetFunctionResourceResponseBodyResultDataGenerators) *GetFunctionResourceResponseBodyResultData {
+	s.Generators = v
+	return s
+}
+
+type GetFunctionResourceResponseBodyResultDataGenerators struct {
+	Generator *string                                                   `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	Input     *GetFunctionResourceResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Output    *string                                                   `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGenerators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGenerators) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGenerators) SetGenerator(v string) *GetFunctionResourceResponseBodyResultDataGenerators {
+	s.Generator = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGenerators) SetInput(v *GetFunctionResourceResponseBodyResultDataGeneratorsInput) *GetFunctionResourceResponseBodyResultDataGenerators {
+	s.Input = v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGenerators) SetOutput(v string) *GetFunctionResourceResponseBodyResultDataGenerators {
+	s.Output = &v
+	return s
+}
+
+type GetFunctionResourceResponseBodyResultDataGeneratorsInput struct {
+	Features []*GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGeneratorsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGeneratorsInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInput) SetFeatures(v []*GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) *GetFunctionResourceResponseBodyResultDataGeneratorsInput {
+	s.Features = v
+	return s
+}
+
+type GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) SetName(v string) *GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures) SetType(v string) *GetFunctionResourceResponseBodyResultDataGeneratorsInputFeatures {
+	s.Type = &v
+	return s
+}
+
+type GetFunctionResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFunctionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionResourceResponse) SetHeaders(v map[string]*string) *GetFunctionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFunctionResourceResponse) SetStatusCode(v int32) *GetFunctionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFunctionResourceResponse) SetBody(v *GetFunctionResourceResponseBody) *GetFunctionResourceResponse {
+	s.Body = v
+	return s
+}
+
 type GetFunctionTaskResponseBody struct {
 	// The error code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -7180,60 +7703,6 @@ func (s *GetFunctionVersionResponse) SetBody(v *GetFunctionVersionResponseBody) 
 	return s
 }
 
-type GetModelReportResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
-	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-}
-
-func (s GetModelReportResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetModelReportResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetModelReportResponseBody) SetRequestId(v string) *GetModelReportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetModelReportResponseBody) SetResult(v map[string]interface{}) *GetModelReportResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetModelReportResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetModelReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetModelReportResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetModelReportResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetModelReportResponse) SetHeaders(v map[string]*string) *GetModelReportResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetModelReportResponse) SetStatusCode(v int32) *GetModelReportResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetModelReportResponse) SetBody(v *GetModelReportResponseBody) *GetModelReportResponse {
-	s.Body = v
-	return s
-}
-
 type GetScriptFileNamesResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
@@ -7404,7 +7873,8 @@ type GetSortScriptResponseBodyResult struct {
 	// The time when the script was last modified.
 	ModifyTime *string `json:"modifyTime,omitempty" xml:"modifyTime,omitempty"`
 	// The sort phase to which the script applies.
-	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	Scope      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ScriptName *string `json:"scriptName,omitempty" xml:"scriptName,omitempty"`
 	// The status of the script. For more information, see the Script status table.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The type of the script.
@@ -7431,6 +7901,11 @@ func (s *GetSortScriptResponseBodyResult) SetModifyTime(v string) *GetSortScript
 
 func (s *GetSortScriptResponseBodyResult) SetScope(v string) *GetSortScriptResponseBodyResult {
 	s.Scope = &v
+	return s
+}
+
+func (s *GetSortScriptResponseBodyResult) SetScriptName(v string) *GetSortScriptResponseBodyResult {
+	s.ScriptName = &v
 	return s
 }
 
@@ -8459,61 +8934,6 @@ func (s *ListAppGroupsResponse) SetBody(v *ListAppGroupsResponseBody) *ListAppGr
 	return s
 }
 
-type ListAppsRequest struct {
-	// true
-	Group *bool `json:"group,omitempty" xml:"group,omitempty"`
-	// 0
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 0
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ListAppsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAppsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListAppsRequest) SetGroup(v bool) *ListAppsRequest {
-	s.Group = &v
-	return s
-}
-
-func (s *ListAppsRequest) SetPage(v int32) *ListAppsRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *ListAppsRequest) SetSize(v int32) *ListAppsRequest {
-	s.Size = &v
-	return s
-}
-
-type ListAppsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-}
-
-func (s ListAppsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListAppsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListAppsResponse) SetHeaders(v map[string]*string) *ListAppsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListAppsResponse) SetStatusCode(v int32) *ListAppsResponse {
-	s.StatusCode = &v
-	return s
-}
-
 type ListDataCollectionsRequest struct {
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
@@ -8695,7 +9115,15 @@ func (s *ListDataCollectionsResponse) SetBody(v *ListDataCollectionsResponseBody
 }
 
 type ListDataSourceTableFieldsRequest struct {
-	// {}
+	// The parameters of the data source. The value of the params parameter is a JSON string. The value must be URL-encoded.
+	//
+	// Different types of data sources use different parameters. For more information, see the following sections of the "DataSource" topic:
+	//
+	// *   [rds](~~170005~~)
+	// *   [polardb](~~170005~~)
+	// *   [odps](~~170005~~)
+	// *   [mysql](~~173627~~)
+	// *   [drds](~~173627~~)
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
 	// Whether to return the original field type of the data source
 	RawType *bool `json:"rawType,omitempty" xml:"rawType,omitempty"`
@@ -8720,9 +9148,9 @@ func (s *ListDataSourceTableFieldsRequest) SetRawType(v bool) *ListDataSourceTab
 }
 
 type ListDataSourceTableFieldsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// The returned result.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -9340,6 +9768,280 @@ func (s *ListFunctionInstancesResponse) SetStatusCode(v int32) *ListFunctionInst
 }
 
 func (s *ListFunctionInstancesResponse) SetBody(v *ListFunctionInstancesResponseBody) *ListFunctionInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListFunctionResourcesRequest struct {
+	Output       *string `json:"output,omitempty" xml:"output,omitempty"`
+	PageNumber   *int32  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize     *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s ListFunctionResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesRequest) SetOutput(v string) *ListFunctionResourcesRequest {
+	s.Output = &v
+	return s
+}
+
+func (s *ListFunctionResourcesRequest) SetPageNumber(v int32) *ListFunctionResourcesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFunctionResourcesRequest) SetPageSize(v int32) *ListFunctionResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFunctionResourcesRequest) SetResourceType(v string) *ListFunctionResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListFunctionResourcesResponseBody struct {
+	Code       *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode   *int64                                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency    *float64                                   `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message    *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListFunctionResourcesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Status     *string                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFunctionResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBody) SetCode(v string) *ListFunctionResourcesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetHttpCode(v int64) *ListFunctionResourcesResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetLatency(v float64) *ListFunctionResourcesResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetMessage(v string) *ListFunctionResourcesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetRequestId(v string) *ListFunctionResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetResult(v []*ListFunctionResourcesResponseBodyResult) *ListFunctionResourcesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetStatus(v string) *ListFunctionResourcesResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBody) SetTotalCount(v int64) *ListFunctionResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFunctionResourcesResponseBodyResult struct {
+	CreateTime          *int64                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Data                *ListFunctionResourcesResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Description         *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	FunctionName        *string                                      `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ModifyTime          *int64                                       `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ReferencedInstances []*string                                    `json:"ReferencedInstances,omitempty" xml:"ReferencedInstances,omitempty" type:"Repeated"`
+	ResourceName        *string                                      `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceType        *string                                      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListFunctionResourcesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetCreateTime(v int64) *ListFunctionResourcesResponseBodyResult {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetData(v *ListFunctionResourcesResponseBodyResultData) *ListFunctionResourcesResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetDescription(v string) *ListFunctionResourcesResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetFunctionName(v string) *ListFunctionResourcesResponseBodyResult {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetModifyTime(v int64) *ListFunctionResourcesResponseBodyResult {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetReferencedInstances(v []*string) *ListFunctionResourcesResponseBodyResult {
+	s.ReferencedInstances = v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetResourceName(v string) *ListFunctionResourcesResponseBodyResult {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResult) SetResourceType(v string) *ListFunctionResourcesResponseBodyResult {
+	s.ResourceType = &v
+	return s
+}
+
+type ListFunctionResourcesResponseBodyResultData struct {
+	Content    *string                                                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	Generators []*ListFunctionResourcesResponseBodyResultDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
+}
+
+func (s ListFunctionResourcesResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBodyResultData) SetContent(v string) *ListFunctionResourcesResponseBodyResultData {
+	s.Content = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResultData) SetGenerators(v []*ListFunctionResourcesResponseBodyResultDataGenerators) *ListFunctionResourcesResponseBodyResultData {
+	s.Generators = v
+	return s
+}
+
+type ListFunctionResourcesResponseBodyResultDataGenerators struct {
+	Generator *string                                                     `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	Input     *ListFunctionResourcesResponseBodyResultDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Output    *string                                                     `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGenerators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGenerators) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGenerators) SetGenerator(v string) *ListFunctionResourcesResponseBodyResultDataGenerators {
+	s.Generator = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGenerators) SetInput(v *ListFunctionResourcesResponseBodyResultDataGeneratorsInput) *ListFunctionResourcesResponseBodyResultDataGenerators {
+	s.Input = v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGenerators) SetOutput(v string) *ListFunctionResourcesResponseBodyResultDataGenerators {
+	s.Output = &v
+	return s
+}
+
+type ListFunctionResourcesResponseBodyResultDataGeneratorsInput struct {
+	Features []*ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGeneratorsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGeneratorsInput) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGeneratorsInput) SetFeatures(v []*ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) *ListFunctionResourcesResponseBodyResultDataGeneratorsInput {
+	s.Features = v
+	return s
+}
+
+type ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) SetName(v string) *ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures) SetType(v string) *ListFunctionResourcesResponseBodyResultDataGeneratorsInputFeatures {
+	s.Type = &v
+	return s
+}
+
+type ListFunctionResourcesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFunctionResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFunctionResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionResourcesResponse) SetHeaders(v map[string]*string) *ListFunctionResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFunctionResourcesResponse) SetStatusCode(v int32) *ListFunctionResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFunctionResourcesResponse) SetBody(v *ListFunctionResourcesResponseBody) *ListFunctionResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -10156,94 +10858,6 @@ func (s *ListInterventionDictionaryRelatedEntitiesResponse) SetStatusCode(v int3
 }
 
 func (s *ListInterventionDictionaryRelatedEntitiesResponse) SetBody(v *ListInterventionDictionaryRelatedEntitiesResponseBody) *ListInterventionDictionaryRelatedEntitiesResponse {
-	s.Body = v
-	return s
-}
-
-type ListModelsRequest struct {
-	// 1
-	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// pop
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s ListModelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListModelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListModelsRequest) SetPageNumber(v int32) *ListModelsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListModelsRequest) SetPageSize(v int32) *ListModelsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListModelsRequest) SetType(v string) *ListModelsRequest {
-	s.Type = &v
-	return s
-}
-
-type ListModelsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the models.
-	//
-	// For more information, see [Model](~~180898~~).
-	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-}
-
-func (s ListModelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListModelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListModelsResponseBody) SetRequestId(v string) *ListModelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListModelsResponseBody) SetResult(v []map[string]interface{}) *ListModelsResponseBody {
-	s.Result = v
-	return s
-}
-
-type ListModelsResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListModelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListModelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListModelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListModelsResponse) SetHeaders(v map[string]*string) *ListModelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListModelsResponse) SetStatusCode(v int32) *ListModelsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsResponse {
 	s.Body = v
 	return s
 }
@@ -11998,11 +12612,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserAnalyzerEntriesRequest struct {
-	// 1
+	// The page number. Default value: 1.
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// 10
+	// The number of entries per page. Default value: 10.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// kevintest
+	// The key to be used to query entries.
 	Word *string `json:"word,omitempty" xml:"word,omitempty"`
 }
 
@@ -12030,11 +12644,9 @@ func (s *ListUserAnalyzerEntriesRequest) SetWord(v string) *ListUserAnalyzerEntr
 }
 
 type ListUserAnalyzerEntriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The entries of the custom analyzer.
-	//
-	// For more information, see [UserAnalyzerEntry](~~178932~~).
+	// The entries of the custom analyzer. For more information, see UserAnalyzerEntry.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -12311,19 +12923,21 @@ func (s *ListUserAnalyzersResponse) SetBody(v *ListUserAnalyzersResponseBody) *L
 }
 
 type ModifyAppGroupRequest struct {
-	// currentVersion
+	// The online version of the application.
 	CurrentVersion *string `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	// The description of the instance.
+	// The description of the application.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The type of the industry. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// *   general: general.
+	// *   ecommerce: e-commerce.
+	// *   education: education.
+	// *   esports: electronic sports.
+	// *   community: content community.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// true
+	// Specifies whether to verify the application before modification. Valid values: true and false.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -12361,9 +12975,9 @@ func (s *ModifyAppGroupRequest) SetDryRun(v bool) *ModifyAppGroupRequest {
 }
 
 type ModifyAppGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Response parameters
+	// The returned data.
 	Result *ModifyAppGroupResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -12386,15 +13000,15 @@ func (s *ModifyAppGroupResponseBody) SetResult(v *ModifyAppGroupResponseBodyResu
 }
 
 type ModifyAppGroupResponseBodyResult struct {
-	// The billing method of the application. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// *   POSTPAY: pay-as-you-go.
+	// *   PREPAY: subscription.
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billing model. Valid values:
+	// The billable item. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// *   1: computing resources.
+	// *   2: QPS.
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
@@ -12406,36 +13020,39 @@ type ModifyAppGroupResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The type of the industry. Valid values:
 	//
-	// *   GENERAL
-	// *   ECOMMERCE
-	// *   IT_CONTENT
+	// *   GENERAL: general.
+	// *   ECOMMERCE: e-commerce.
+	// *   IT_CONTENT: IT content.
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The expiration time.
+	// The time when the application expired.
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the created rough sort expression.
+	// The ID of the rough sort expression.
 	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
 	// The approval status of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
-	// *   1: The quotas are being approved.
+	// *   0: normal.
+	// *   1: being approved.
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock mode of the instance. Valid values:
+	// The lock status. Valid values:
 	//
-	// *   Unlock: The instance is not locked.
+	// *   Unlock: The instance is unlocked.
 	// *   LockByExpiration: The instance is automatically locked after it expires.
 	// *   ManualLock: The instance is manually locked.
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// Indicates whether the instance is automatically locked after it expires.
+	// Indicates whether the instance expires and is automatically locked. Valid values:
+	//
+	// *   0: no.
+	// *   1: yes.
 	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
 	// The name of the application.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the fine sort expression that is being created.
 	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
+	// The ID of the order that is not complete for the instance.
 	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
 	// Indicates whether the order is complete. Valid values:
 	//
@@ -12446,25 +13063,25 @@ type ModifyAppGroupResponseBodyResult struct {
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	// The information about the quotas of the application.
 	Quota *ModifyAppGroupResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the created fine sort expression.
+	// The ID of the fine sort expression.
 	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	// The status of the application. Valid values:
+	// The state of the application. Valid values:
 	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// *   producing: being produced.
+	// *   review_pending: being approved.
+	// *   config_pending: to be configured.
+	// *   normal: normal.
+	// *   frozen: frozen.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
 	// The type of the application. Valid values:
 	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// *   standard: a standard edition application.
+	// *   advance: an advanced edition application of an old version. New versions are not supported for this edition.
+	// *   enhanced: an advanced edition application of a new version.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The timestamp when the application was last updated.
+	// The timestamp when the application was last modified.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
 }
 
@@ -12602,21 +13219,19 @@ func (s *ModifyAppGroupResponseBodyResult) SetUpdated(v int32) *ModifyAppGroupRe
 }
 
 type ModifyAppGroupResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing units (LCUs).
+	// The computing resources. Unit: logical computing unit (LCU).
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
-	// The storage capacity.
-	//
-	// Unit: GB )
+	// The storage capacity. Unit: GB.
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The specifications of the application. Valid values:
+	// The specifications. Valid values:
 	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// *   opensearch.share.junior: basic.
+	// *   opensearch.share.common: shared general-purpose.
+	// *   opensearch.share.compute: shared computing.
+	// *   opensearch.share.storage: shared storage.
+	// *   opensearch.private.common: exclusive general-purpose.
+	// *   opensearch.private.compute: exclusive computing.
+	// *   opensearch.private.storage: exclusive storage.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -13518,85 +14133,6 @@ func (s *ModifySecondRankResponse) SetBody(v *ModifySecondRankResponseBody) *Mod
 	return s
 }
 
-type PreviewModelRequest struct {
-	// query
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-}
-
-func (s PreviewModelRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreviewModelRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PreviewModelRequest) SetQuery(v string) *PreviewModelRequest {
-	s.Query = &v
-	return s
-}
-
-type PreviewModelResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
-	Result []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
-	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-}
-
-func (s PreviewModelResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreviewModelResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PreviewModelResponseBody) SetRequestId(v string) *PreviewModelResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *PreviewModelResponseBody) SetResult(v []map[string]interface{}) *PreviewModelResponseBody {
-	s.Result = v
-	return s
-}
-
-func (s *PreviewModelResponseBody) SetTotalCount(v int64) *PreviewModelResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type PreviewModelResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PreviewModelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s PreviewModelResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PreviewModelResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PreviewModelResponse) SetHeaders(v map[string]*string) *PreviewModelResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PreviewModelResponse) SetStatusCode(v int32) *PreviewModelResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PreviewModelResponse) SetBody(v *PreviewModelResponseBody) *PreviewModelResponse {
-	s.Body = v
-	return s
-}
-
 type PushInterventionDictionaryEntriesRequest struct {
 	Body   []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 	DryRun *bool                    `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
@@ -13673,8 +14209,10 @@ func (s *PushInterventionDictionaryEntriesResponse) SetBody(v *PushInterventionD
 }
 
 type PushUserAnalyzerEntriesRequest struct {
+	// The entries of the custom analyzer.
 	Entries []*PushUserAnalyzerEntriesRequestEntries `json:"entries,omitempty" xml:"entries,omitempty" type:"Repeated"`
-	DryRun  *bool                                    `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s PushUserAnalyzerEntriesRequest) String() string {
@@ -13696,10 +14234,21 @@ func (s *PushUserAnalyzerEntriesRequest) SetDryRun(v bool) *PushUserAnalyzerEntr
 }
 
 type PushUserAnalyzerEntriesRequestEntries struct {
-	Cmd          *string `json:"cmd,omitempty" xml:"cmd,omitempty"`
-	Key          *string `json:"key,omitempty" xml:"key,omitempty"`
-	SplitEnabled *bool   `json:"splitEnabled,omitempty" xml:"splitEnabled,omitempty"`
-	Value        *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The operation to be performed on the entries.
+	//
+	// Valid values:
+	//
+	// *   add
+	// *   delete
+	Cmd *string `json:"cmd,omitempty" xml:"cmd,omitempty"`
+	// The key to be used to query entries.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Specifies whether to further analyze the terms that are generated after the search query is analyzed.
+	//
+	// Default value: true.
+	SplitEnabled *bool `json:"splitEnabled,omitempty" xml:"splitEnabled,omitempty"`
+	// The analysis result.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s PushUserAnalyzerEntriesRequestEntries) String() string {
@@ -13731,9 +14280,9 @@ func (s *PushUserAnalyzerEntriesRequestEntries) SetValue(v string) *PushUserAnal
 }
 
 type PushUserAnalyzerEntriesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// N/A
+	// The result returned.
 	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -13879,7 +14428,7 @@ func (s *ReleaseSortScriptResponse) SetBody(v *ReleaseSortScriptResponseBody) *R
 }
 
 type RemoveAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// N/A
 	Result []*int32 `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
@@ -14540,8 +15089,9 @@ func (s *RemoveUserAnalyzerResponse) SetBody(v *RemoveUserAnalyzerResponseBody) 
 }
 
 type RenewAppGroupRequest struct {
+	// The renewal request body.
 	Body *PrepayOrderInfo `json:"body,omitempty" xml:"body,omitempty"`
-	// Guaranteed request idempotence
+	// The client token that is used to ensure the idempotence of the request.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -14564,9 +15114,9 @@ func (s *RenewAppGroupRequest) SetClientToken(v string) *RenewAppGroupRequest {
 }
 
 type RenewAppGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The return result.
+	// Indicates whether the application was renewed.
 	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -14618,9 +15168,9 @@ func (s *RenewAppGroupResponse) SetBody(v *RenewAppGroupResponseBody) *RenewAppG
 }
 
 type ReplaceAppGroupCommodityCodeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result that was returned.
+	// The returned result.
 	Result *ReplaceAppGroupCommodityCodeResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -14643,15 +15193,15 @@ func (s *ReplaceAppGroupCommodityCodeResponseBody) SetResult(v *ReplaceAppGroupC
 }
 
 type ReplaceAppGroupCommodityCodeResponseBodyResult struct {
-	// The billing method of the application. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   POSTPAY: pay-as-you-go
-	// *   PREPAY: subscription
+	// *   POSTPAY: pay-as-you-go.
+	// *   PREPAY: subscription.
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The billing model. Valid values:
+	// The billing type. Valid values:
 	//
-	// *   1: computing resources
-	// *   2: queries per second (QPS)
+	// *   1: computing resources.
+	// *   2: queries per second (QPS).
 	ChargingWay *int32 `json:"chargingWay,omitempty" xml:"chargingWay,omitempty"`
 	// The code of the commodity.
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
@@ -14663,61 +15213,51 @@ type ReplaceAppGroupCommodityCodeResponseBodyResult struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The expiration time.
 	ExpireOn *string `json:"expireOn,omitempty" xml:"expireOn,omitempty"`
-	// The ID of the created rough sort expression.
+	// The ID of the rough sort expression.
 	FirstRankAlgoDeploymentId *int32 `json:"firstRankAlgoDeploymentId,omitempty" xml:"firstRankAlgoDeploymentId,omitempty"`
-	// The approval status of the quotas. Valid values:
+	// The approval state of the quotas. Valid values:
 	//
-	// *   0: The quotas are approved.
+	// *   0: The approval status is normal.
 	// *   1: The quotas are being approved.
 	HasPendingQuotaReviewTask *int32 `json:"hasPendingQuotaReviewTask,omitempty" xml:"hasPendingQuotaReviewTask,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock mode of the instance. Valid values:
+	// The lock state. Valid values:
 	//
-	// *   Unlock: The instance is not locked.
+	// *   Unlock: The instance is unlocked.
 	// *   LockByExpiration: The instance is automatically locked after it expires.
 	// *   ManualLock: The instance is manually locked.
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// Indicates whether the instance is automatically locked after it expires.
+	// Indicates whether the instance is automatically locked after it expires. Valid values:
+	//
+	// *   0: The instance is not automatically locked after it expires.
+	// *   1: The instance is automatically locked after it expires.
 	LockedByExpiration *int32 `json:"lockedByExpiration,omitempty" xml:"lockedByExpiration,omitempty"`
-	// The name of the application.
+	// The name of the order.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the fine sort expression that is being created.
 	PendingSecondRankAlgoDeploymentId *int32 `json:"pendingSecondRankAlgoDeploymentId,omitempty" xml:"pendingSecondRankAlgoDeploymentId,omitempty"`
-	// The ID of the order that is not complete for the instance. For example, an order is one that is initiated to create the instance or change the quotas or billing method.
+	// The ID of the order that is in progress.
 	ProcessingOrderId *string `json:"processingOrderId,omitempty" xml:"processingOrderId,omitempty"`
-	// Indicates whether the order is complete. Valid values:
-	//
-	// *   0: The order is in progress.
-	// *   1: The order is complete.
+	// Indicates whether the order is produced.
 	Produced *int32 `json:"produced,omitempty" xml:"produced,omitempty"`
 	// The name of the A/B test group.
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The quota information.
+	// The configuration information.
 	Quota *ReplaceAppGroupCommodityCodeResponseBodyResultQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
-	// The ID of the created fine sort expression.
+	// The ID of the fine sort expression.
 	SecondRankAlgoDeploymentId *int32 `json:"secondRankAlgoDeploymentId,omitempty" xml:"secondRankAlgoDeploymentId,omitempty"`
-	// The status of the application. Valid values:
-	//
-	// *   producing
-	// *   review_pending
-	// *   config_pending
-	// *   normal
-	// *   frozen
+	// The status of the application.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The timestamp when the current online version was published.
 	SwitchedTime *int32 `json:"switchedTime,omitempty" xml:"switchedTime,omitempty"`
-	// The type of the application. Valid values:
-	//
-	// *   standard: a standard application.
-	// *   advance: an advanced application which is of an old application type. New applications cannot be of this type.
-	// *   enhanced: an advanced application which is of a new application type.
+	// The type of the application.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The time when the test group was last modified.
+	// The timestamp when the application was updated.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The status information.
+	// The versions.
 	Versions []*string `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -14855,19 +15395,11 @@ func (s *ReplaceAppGroupCommodityCodeResponseBodyResult) SetVersions(v []*string
 }
 
 type ReplaceAppGroupCommodityCodeResponseBodyResultQuota struct {
-	// The computing resources. Unit: logical computing units (LCUs).
+	// The number of computing resources configured.
 	ComputeResource *int32 `json:"computeResource,omitempty" xml:"computeResource,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage capacity.
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The specifications of the application. Valid values:
-	//
-	// *   opensearch.share.junior: basic
-	// *   opensearch.share.common: shared general-purpose
-	// *   opensearch.share.compute: shared computing
-	// *   opensearch.share.storage: shared storage
-	// *   opensearch.private.common: exclusive general-purpose
-	// *   opensearch.private.compute: exclusive computing
-	// *   opensearch.private.storage: exclusive storage
+	// The specifications configured.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -15739,8 +16271,10 @@ func (s *UpdateABTestGroupResponse) SetBody(v *UpdateABTestGroupResponseBody) *U
 }
 
 type UpdateABTestSceneRequest struct {
-	Body   *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
-	DryRun *bool        `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The request body.
+	Body *ABTestScene `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpdateABTestSceneRequest) String() string {
@@ -15762,9 +16296,9 @@ func (s *UpdateABTestSceneRequest) SetDryRun(v bool) *UpdateABTestSceneRequest {
 }
 
 type UpdateABTestSceneResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The details of the test scenario. For more information, see [ABTestScene](https://www.alibabacloud.com/help/en/opensearch/latest/abtestscene).
+	// The details of the test scenario. For more information, see [ABTestScene](~~173618~~).
 	Result *UpdateABTestSceneResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -15794,12 +16328,13 @@ type UpdateABTestSceneResponseBodyResult struct {
 	// The name of the test scenario.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The status of the test. Valid values:
-	// - true: enabled
-	// - false: stopped
+	//
+	// *   true: The test is started.
+	// *   false: The test is stopped.
 	Online *bool `json:"online,omitempty" xml:"online,omitempty"`
 	// The parameters of the A/B test.
 	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
-	// The percentage of traffic that is allocated to the A/B test. Valid values: [0,100].
+	// The percentage of traffic that is allocated to the A/B test. Valid values: 0 to 100.
 	Traffic *int32 `json:"traffic,omitempty" xml:"traffic,omitempty"`
 	// The time when the test scenario was last modified.
 	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
@@ -16225,6 +16760,197 @@ func (s *UpdateFunctionInstanceResponse) SetStatusCode(v int32) *UpdateFunctionI
 }
 
 func (s *UpdateFunctionInstanceResponse) SetBody(v *UpdateFunctionInstanceResponseBody) *UpdateFunctionInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFunctionResourceRequest struct {
+	Data        *UpdateFunctionResourceRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Description *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s UpdateFunctionResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceRequest) SetData(v *UpdateFunctionResourceRequestData) *UpdateFunctionResourceRequest {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateFunctionResourceRequest) SetDescription(v string) *UpdateFunctionResourceRequest {
+	s.Description = &v
+	return s
+}
+
+type UpdateFunctionResourceRequestData struct {
+	Content    *string                                        `json:"Content,omitempty" xml:"Content,omitempty"`
+	Generators []*UpdateFunctionResourceRequestDataGenerators `json:"Generators,omitempty" xml:"Generators,omitempty" type:"Repeated"`
+}
+
+func (s UpdateFunctionResourceRequestData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceRequestData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceRequestData) SetContent(v string) *UpdateFunctionResourceRequestData {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceRequestData) SetGenerators(v []*UpdateFunctionResourceRequestDataGenerators) *UpdateFunctionResourceRequestData {
+	s.Generators = v
+	return s
+}
+
+type UpdateFunctionResourceRequestDataGenerators struct {
+	Generator *string                                           `json:"Generator,omitempty" xml:"Generator,omitempty"`
+	Input     *UpdateFunctionResourceRequestDataGeneratorsInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Struct"`
+	Output    *string                                           `json:"Output,omitempty" xml:"Output,omitempty"`
+}
+
+func (s UpdateFunctionResourceRequestDataGenerators) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceRequestDataGenerators) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceRequestDataGenerators) SetGenerator(v string) *UpdateFunctionResourceRequestDataGenerators {
+	s.Generator = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceRequestDataGenerators) SetInput(v *UpdateFunctionResourceRequestDataGeneratorsInput) *UpdateFunctionResourceRequestDataGenerators {
+	s.Input = v
+	return s
+}
+
+func (s *UpdateFunctionResourceRequestDataGenerators) SetOutput(v string) *UpdateFunctionResourceRequestDataGenerators {
+	s.Output = &v
+	return s
+}
+
+type UpdateFunctionResourceRequestDataGeneratorsInput struct {
+	Features []*UpdateFunctionResourceRequestDataGeneratorsInputFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+}
+
+func (s UpdateFunctionResourceRequestDataGeneratorsInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceRequestDataGeneratorsInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceRequestDataGeneratorsInput) SetFeatures(v []*UpdateFunctionResourceRequestDataGeneratorsInputFeatures) *UpdateFunctionResourceRequestDataGeneratorsInput {
+	s.Features = v
+	return s
+}
+
+type UpdateFunctionResourceRequestDataGeneratorsInputFeatures struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateFunctionResourceRequestDataGeneratorsInputFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceRequestDataGeneratorsInputFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceRequestDataGeneratorsInputFeatures) SetName(v string) *UpdateFunctionResourceRequestDataGeneratorsInputFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceRequestDataGeneratorsInputFeatures) SetType(v string) *UpdateFunctionResourceRequestDataGeneratorsInputFeatures {
+	s.Type = &v
+	return s
+}
+
+type UpdateFunctionResourceResponseBody struct {
+	Code      *string  `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64   `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *float64 `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateFunctionResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetCode(v string) *UpdateFunctionResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetHttpCode(v int64) *UpdateFunctionResourceResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetLatency(v float64) *UpdateFunctionResourceResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetMessage(v string) *UpdateFunctionResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetRequestId(v string) *UpdateFunctionResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponseBody) SetStatus(v string) *UpdateFunctionResourceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type UpdateFunctionResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFunctionResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFunctionResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionResourceResponse) SetHeaders(v map[string]*string) *UpdateFunctionResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponse) SetStatusCode(v int32) *UpdateFunctionResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFunctionResourceResponse) SetBody(v *UpdateFunctionResourceResponseBody) *UpdateFunctionResourceResponse {
 	s.Body = v
 	return s
 }
@@ -16898,9 +17624,9 @@ func (client *Client) CreateABTestScene(appGroupIdentity *string, request *Creat
 
 /**
  * *   When you create a standard application, a new version of the application is created if the specified application name already exists.
- * *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+ * *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
  * *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
- * *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+ * *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
  *
  * @param request CreateAppRequest
  * @param headers map
@@ -16944,9 +17670,9 @@ func (client *Client) CreateAppWithOptions(appGroupIdentity *string, request *Cr
 
 /**
  * *   When you create a standard application, a new version of the application is created if the specified application name already exists.
- * *   When you create a version of an existing application, you must set the autoSwitch and realtimeShared parameters.
+ * *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
  * *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
- * *   When you create a version of an existing application, the modification of the quota parameter does not take effect.
+ * *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
  *
  * @param request CreateAppRequest
  * @return CreateAppResponse
@@ -17135,6 +17861,64 @@ func (client *Client) CreateFunctionInstance(appGroupIdentity *string, functionN
 	return _result, _err
 }
 
+func (client *Client) CreateFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, request *CreateFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		body["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFunctionResource"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/resources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFunctionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFunctionResource(appGroupIdentity *string, functionName *string, request *CreateFunctionResourceRequest) (_result *CreateFunctionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFunctionResourceResponse{}
+	_body, _err := client.CreateFunctionResourceWithOptions(appGroupIdentity, functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -17278,14 +18062,6 @@ func (client *Client) CreateQueryProcessor(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request CreateScheduledTaskRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateScheduledTaskResponse
- */
 func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, request *CreateScheduledTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateScheduledTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17315,12 +18091,6 @@ func (client *Client) CreateScheduledTaskWithOptions(appGroupIdentity *string, r
 	return _result, _err
 }
 
-/**
- * ****
- *
- * @param request CreateScheduledTaskRequest
- * @return CreateScheduledTaskResponse
- */
 func (client *Client) CreateScheduledTask(appGroupIdentity *string, request *CreateScheduledTaskRequest) (_result *CreateScheduledTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17421,9 +18191,27 @@ func (client *Client) CreateSecondRank(appGroupIdentity *string, appId *string, 
 	return _result, _err
 }
 
-func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSortScriptResponse, _err error) {
+func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appVersionId *string, request *CreateSortScriptRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSortScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptName)) {
+		body["scriptName"] = request.ScriptName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSortScript"),
@@ -17445,11 +18233,11 @@ func (client *Client) CreateSortScriptWithOptions(appGroupIdentity *string, appV
 	return _result, _err
 }
 
-func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *string) (_result *CreateSortScriptResponse, _err error) {
+func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *string, request *CreateSortScriptRequest) (_result *CreateSortScriptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateSortScriptResponse{}
-	_body, _err := client.CreateSortScriptWithOptions(appGroupIdentity, appVersionId, headers, runtime)
+	_body, _err := client.CreateSortScriptWithOptions(appGroupIdentity, appVersionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17457,6 +18245,15 @@ func (client *Client) CreateSortScript(appGroupIdentity *string, appVersionId *s
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
+ *
+ * @param request CreateUserAnalyzerRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateUserAnalyzerResponse
+ */
 func (client *Client) CreateUserAnalyzerWithOptions(request *CreateUserAnalyzerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateUserAnalyzerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17513,6 +18310,13 @@ func (client *Client) CreateUserAnalyzerWithOptions(request *CreateUserAnalyzerR
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
+ *
+ * @param request CreateUserAnalyzerRequest
+ * @return CreateUserAnalyzerResponse
+ */
 func (client *Client) CreateUserAnalyzer(request *CreateUserAnalyzerRequest) (_result *CreateUserAnalyzerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17662,6 +18466,42 @@ func (client *Client) DeleteFunctionInstance(appGroupIdentity *string, functionN
 	headers := make(map[string]*string)
 	_result = &DeleteFunctionInstanceResponse{}
 	_body, _err := client.DeleteFunctionInstanceWithOptions(appGroupIdentity, functionName, instanceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFunctionResource"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(resourceName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFunctionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string) (_result *DeleteFunctionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFunctionResourceResponse{}
+	_body, _err := client.DeleteFunctionResourceWithOptions(appGroupIdentity, functionName, resourceName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18173,42 +19013,6 @@ func (client *Client) DescribeQueryProcessor(appGroupIdentity *string, appId *st
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRegion"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/region"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRegionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRegion() (_result *DescribeRegionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRegionResponse{}
-	_body, _err := client.DescribeRegionWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18704,6 +19508,52 @@ func (client *Client) GetFunctionInstance(appGroupIdentity *string, functionName
 	return _result, _err
 }
 
+func (client *Client) GetFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, request *GetFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["output"] = request.Output
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunctionResource"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(resourceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFunctionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string, request *GetFunctionResourceRequest) (_result *GetFunctionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFunctionResourceResponse{}
+	_body, _err := client.GetFunctionResourceWithOptions(appGroupIdentity, functionName, resourceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -18769,42 +19619,6 @@ func (client *Client) GetFunctionVersion(functionName *string, versionId *string
 	headers := make(map[string]*string)
 	_result = &GetFunctionVersionResponse{}
 	_body, _err := client.GetFunctionVersionWithOptions(functionName, versionId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetModelReportWithOptions(appGroupIdentity *string, modelName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetModelReportResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetModelReport"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/report"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetModelReportResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetModelReport(appGroupIdentity *string, modelName *string) (_result *GetModelReportResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetModelReportResponse{}
-	_body, _err := client.GetModelReportWithOptions(appGroupIdentity, modelName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19198,60 +20012,6 @@ func (client *Client) ListAppGroups(request *ListAppGroupsRequest) (_result *Lis
 	return _result, _err
 }
 
-func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAppsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Group)) {
-		query["group"] = request.Group
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Page)) {
-		query["page"] = request.Page
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListApps"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/apps"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &ListAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListAppsResponse{}
-	_body, _err := client.ListAppsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListDataCollectionsWithOptions(appGroupIdentity *string, request *ListDataCollectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDataCollectionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19493,6 +20253,64 @@ func (client *Client) ListFunctionInstances(appGroupIdentity *string, functionNa
 	headers := make(map[string]*string)
 	_result = &ListFunctionInstancesResponse{}
 	_body, _err := client.ListFunctionInstancesWithOptions(appGroupIdentity, functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFunctionResourcesWithOptions(appGroupIdentity *string, functionName *string, request *ListFunctionResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFunctionResources"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/resources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFunctionResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFunctionResources(appGroupIdentity *string, functionName *string, request *ListFunctionResourcesRequest) (_result *ListFunctionResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFunctionResourcesResponse{}
+	_body, _err := client.ListFunctionResourcesWithOptions(appGroupIdentity, functionName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19745,60 +20563,6 @@ func (client *Client) ListInterventionDictionaryRelatedEntities(name *string) (_
 	headers := make(map[string]*string)
 	_result = &ListInterventionDictionaryRelatedEntitiesResponse{}
 	_body, _err := client.ListInterventionDictionaryRelatedEntitiesWithOptions(name, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListModelsWithOptions(appGroupIdentity *string, request *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["pageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListModels"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListModelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListModels(appGroupIdentity *string, request *ListModelsRequest) (_result *ListModelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListModelsResponse{}
-	_body, _err := client.ListModelsWithOptions(appGroupIdentity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20622,15 +21386,6 @@ func (client *Client) ListUserAnalyzers(request *ListUserAnalyzersRequest) (_res
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
- *
- * @param request ModifyAppGroupRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyAppGroupResponse
- */
 func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, request *ModifyAppGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAppGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20683,13 +21438,6 @@ func (client *Client) ModifyAppGroupWithOptions(appGroupIdentity *string, reques
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=ModifyAppGroup\\&type=ROA\\&version=2017-12-25)
- *
- * @param request ModifyAppGroupRequest
- * @return ModifyAppGroupResponse
- */
 func (client *Client) ModifyAppGroup(appGroupIdentity *string, request *ModifyAppGroupRequest) (_result *ModifyAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -20931,52 +21679,6 @@ func (client *Client) ModifySecondRank(appGroupIdentity *string, appId *string, 
 	return _result, _err
 }
 
-func (client *Client) PreviewModelWithOptions(appGroupIdentity *string, modelName *string, request *PreviewModelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PreviewModelResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		query["query"] = request.Query
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PreviewModel"),
-		Version:     tea.String("2017-12-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/algorithm/models/" + tea.StringValue(openapiutil.GetEncodeParam(modelName)) + "/actions/preview"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PreviewModelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PreviewModel(appGroupIdentity *string, modelName *string, request *PreviewModelRequest) (_result *PreviewModelResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &PreviewModelResponse{}
-	_body, _err := client.PreviewModelWithOptions(appGroupIdentity, modelName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) PushInterventionDictionaryEntriesWithOptions(name *string, request *PushInterventionDictionaryEntriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PushInterventionDictionaryEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21148,13 +21850,6 @@ func (client *Client) ReleaseSortScript(appGroupIdentity *string, scriptName *st
 	return _result, _err
 }
 
-/**
- * > If an application has two versions, you can delete only the offline version.
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveAppResponse
- */
 func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21179,11 +21874,6 @@ func (client *Client) RemoveAppWithOptions(appGroupIdentity *string, appId *stri
 	return _result, _err
 }
 
-/**
- * > If an application has two versions, you can delete only the offline version.
- *
- * @return RemoveAppResponse
- */
 func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_result *RemoveAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -21196,14 +21886,6 @@ func (client *Client) RemoveApp(appGroupIdentity *string, appId *string) (_resul
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
- *
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveAppGroupResponse
- */
 func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveAppGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -21228,12 +21910,6 @@ func (client *Client) RemoveAppGroupWithOptions(appGroupIdentity *string, header
 	return _result, _err
 }
 
-/**
- * ## Debugging
- * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=RemoveAppGroup\\&type=ROA\\&version=2017-12-25)
- *
- * @return RemoveAppGroupResponse
- */
 func (client *Client) RemoveAppGroup(appGroupIdentity *string) (_result *RemoveAppGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -22242,6 +22918,56 @@ func (client *Client) UpdateFunctionInstance(appGroupIdentity *string, functionN
 	headers := make(map[string]*string)
 	_result = &UpdateFunctionInstanceResponse{}
 	_body, _err := client.UpdateFunctionInstanceWithOptions(appGroupIdentity, functionName, instanceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFunctionResourceWithOptions(appGroupIdentity *string, functionName *string, resourceName *string, request *UpdateFunctionResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFunctionResource"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(openapiutil.GetEncodeParam(appGroupIdentity)) + "/functions/" + tea.StringValue(openapiutil.GetEncodeParam(functionName)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(resourceName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFunctionResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFunctionResource(appGroupIdentity *string, functionName *string, resourceName *string, request *UpdateFunctionResourceRequest) (_result *UpdateFunctionResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateFunctionResourceResponse{}
+	_body, _err := client.UpdateFunctionResourceWithOptions(appGroupIdentity, functionName, resourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
