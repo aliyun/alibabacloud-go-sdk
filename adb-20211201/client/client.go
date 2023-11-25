@@ -12174,7 +12174,8 @@ type GetSparkAppInfoRequest struct {
 	// The ID of the application.
 	//
 	// >  You can call the [ListSparkApps](~~612475~~) operation to query the Spark application ID.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s GetSparkAppInfoRequest) String() string {
@@ -12187,6 +12188,11 @@ func (s GetSparkAppInfoRequest) GoString() string {
 
 func (s *GetSparkAppInfoRequest) SetAppId(v string) *GetSparkAppInfoRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkAppInfoRequest) SetDBClusterId(v string) *GetSparkAppInfoRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -12261,7 +12267,8 @@ type GetSparkAppLogRequest struct {
 	// The Spark application ID.
 	//
 	// > You can call the [ListSparkApps](~~612475~~) operation to query the Spark application ID.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The number of log entries to return. Valid values: 1 to 500. Default value: 300.
 	LogLength *int64 `json:"LogLength,omitempty" xml:"LogLength,omitempty"`
 }
@@ -12276,6 +12283,11 @@ func (s GetSparkAppLogRequest) GoString() string {
 
 func (s *GetSparkAppLogRequest) SetAppId(v string) *GetSparkAppLogRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkAppLogRequest) SetDBClusterId(v string) *GetSparkAppLogRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -12372,7 +12384,8 @@ func (s *GetSparkAppLogResponse) SetBody(v *GetSparkAppLogResponseBody) *GetSpar
 
 type GetSparkAppMetricsRequest struct {
 	// The ID of the Spark application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s GetSparkAppMetricsRequest) String() string {
@@ -12385,6 +12398,11 @@ func (s GetSparkAppMetricsRequest) GoString() string {
 
 func (s *GetSparkAppMetricsRequest) SetAppId(v string) *GetSparkAppMetricsRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkAppMetricsRequest) SetDBClusterId(v string) *GetSparkAppMetricsRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -12518,7 +12536,8 @@ func (s *GetSparkAppMetricsResponse) SetBody(v *GetSparkAppMetricsResponseBody) 
 
 type GetSparkAppStateRequest struct {
 	// The ID of the application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s GetSparkAppStateRequest) String() string {
@@ -12531,6 +12550,11 @@ func (s GetSparkAppStateRequest) GoString() string {
 
 func (s *GetSparkAppStateRequest) SetAppId(v string) *GetSparkAppStateRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkAppStateRequest) SetDBClusterId(v string) *GetSparkAppStateRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -12648,7 +12672,8 @@ func (s *GetSparkAppStateResponse) SetBody(v *GetSparkAppStateResponseBody) *Get
 
 type GetSparkAppWebUiAddressRequest struct {
 	// The ID of the Spark application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s GetSparkAppWebUiAddressRequest) String() string {
@@ -12661,6 +12686,11 @@ func (s GetSparkAppWebUiAddressRequest) GoString() string {
 
 func (s *GetSparkAppWebUiAddressRequest) SetAppId(v string) *GetSparkAppWebUiAddressRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *GetSparkAppWebUiAddressRequest) SetDBClusterId(v string) *GetSparkAppWebUiAddressRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -13615,17 +13645,17 @@ func (s *GetTableResponse) SetBody(v *GetTableResponseBody) *GetTableResponse {
 type GetTableColumnsRequest struct {
 	// The name of the column.
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The number of the page to return. The value is an integer that is greater than 0. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the cluster resides.
+	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
@@ -13677,17 +13707,17 @@ func (s *GetTableColumnsRequest) SetTableName(v string) *GetTableColumnsRequest 
 }
 
 type GetTableColumnsResponseBody struct {
-	// The data returned.
+	// The queried data.
 	Data *GetTableColumnsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number of the returned page. The value is an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -13727,15 +13757,15 @@ func (s *GetTableColumnsResponseBody) SetTotalCount(v int64) *GetTableColumnsRes
 }
 
 type GetTableColumnsResponseBodyData struct {
-	// The page number of the returned page. The value is an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// *   **30**
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Details of the table.
+	// The information about the table.
 	Table *TableDetailModel `json:"Table,omitempty" xml:"Table,omitempty"`
 	// The total number of entries returned.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -14441,7 +14471,8 @@ func (s *GetViewObjectsResponse) SetBody(v *GetViewObjectsResponseBody) *GetView
 
 type KillSparkAppRequest struct {
 	// The ID of the Spark application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s KillSparkAppRequest) String() string {
@@ -14454,6 +14485,11 @@ func (s KillSparkAppRequest) GoString() string {
 
 func (s *KillSparkAppRequest) SetAppId(v string) *KillSparkAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *KillSparkAppRequest) SetDBClusterId(v string) *KillSparkAppRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -14718,7 +14754,8 @@ type ListSparkAppAttemptsRequest struct {
 	// The ID of the Spark application.
 	//
 	// > You can call the [ListSparkApps](~~455888~~) operation to query all application IDs.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
@@ -14739,6 +14776,11 @@ func (s ListSparkAppAttemptsRequest) GoString() string {
 
 func (s *ListSparkAppAttemptsRequest) SetAppId(v string) *ListSparkAppAttemptsRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *ListSparkAppAttemptsRequest) SetDBClusterId(v string) *ListSparkAppAttemptsRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -16385,7 +16427,8 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 
 type PreloadSparkAppMetricsRequest struct {
 	// The ID of the Spark application.
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
 func (s PreloadSparkAppMetricsRequest) String() string {
@@ -16398,6 +16441,11 @@ func (s PreloadSparkAppMetricsRequest) GoString() string {
 
 func (s *PreloadSparkAppMetricsRequest) SetAppId(v string) *PreloadSparkAppMetricsRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *PreloadSparkAppMetricsRequest) SetDBClusterId(v string) *PreloadSparkAppMetricsRequest {
+	s.DBClusterId = &v
 	return s
 }
 
@@ -21572,13 +21620,19 @@ func (client *Client) GetSparkAppInfoWithOptions(request *GetSparkAppInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppInfo"),
@@ -21616,6 +21670,11 @@ func (client *Client) GetSparkAppLogWithOptions(request *GetSparkAppLogRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
@@ -21626,7 +21685,8 @@ func (client *Client) GetSparkAppLogWithOptions(request *GetSparkAppLogRequest, 
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppLog"),
@@ -21664,13 +21724,19 @@ func (client *Client) GetSparkAppMetricsWithOptions(request *GetSparkAppMetricsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppMetrics"),
@@ -21708,13 +21774,19 @@ func (client *Client) GetSparkAppStateWithOptions(request *GetSparkAppStateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppState"),
@@ -21752,13 +21824,19 @@ func (client *Client) GetSparkAppWebUiAddressWithOptions(request *GetSparkAppWeb
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSparkAppWebUiAddress"),
@@ -22532,13 +22610,19 @@ func (client *Client) KillSparkAppWithOptions(request *KillSparkAppRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("KillSparkApp"),
@@ -22671,6 +22755,10 @@ func (client *Client) ListSparkAppAttemptsWithOptions(request *ListSparkAppAttem
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -23501,13 +23589,19 @@ func (client *Client) PreloadSparkAppMetricsWithOptions(request *PreloadSparkApp
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PreloadSparkAppMetrics"),
