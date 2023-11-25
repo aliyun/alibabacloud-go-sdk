@@ -9510,6 +9510,7 @@ func (s *DescribeClustersResponseBodyTags) SetValue(v string) *DescribeClustersR
 }
 
 type DescribeClustersV1Request struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The cluster type, which is available only when the cluster type is set to `ManagedKubernetes`. Valid values:
 	//
 	// *   `ack.pro.small`: ACK Pro cluster
@@ -9552,6 +9553,11 @@ func (s DescribeClustersV1Request) String() string {
 
 func (s DescribeClustersV1Request) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeClustersV1Request) SetClusterId(v string) *DescribeClustersV1Request {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeClustersV1Request) SetClusterSpec(v string) *DescribeClustersV1Request {
@@ -20750,6 +20756,10 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
 		query["cluster_spec"] = request.ClusterSpec
 	}
