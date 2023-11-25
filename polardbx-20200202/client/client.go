@@ -3469,8 +3469,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
+	CanNotCreateColumnar    *bool                                                         `json:"CanNotCreateColumnar,omitempty" xml:"CanNotCreateColumnar,omitempty"`
 	CnNodeClassCode         *string                                                       `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
 	CnNodeCount             *int32                                                        `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	ColumnarInstanceName    *string                                                       `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	ColumnarReadDBInstances []*string                                                     `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
 	CommodityCode           *string                                                       `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	ConnAddrs               []*DescribeDBInstanceAttributeResponseBodyDBInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
 	ConnectionString        *string                                                       `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
@@ -3482,6 +3485,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	DBType                  *string                                                       `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	DBVersion               *string                                                       `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	Description             *string                                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	DifferentDNSpec         *bool                                                         `json:"DifferentDNSpec,omitempty" xml:"DifferentDNSpec,omitempty"`
 	DnNodeClassCode         *string                                                       `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
 	DnNodeCount             *int32                                                        `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
 	Engine                  *string                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -3498,16 +3502,27 @@ type DescribeDBInstanceAttributeResponseBodyDBInstance struct {
 	Network                 *string                                                       `json:"Network,omitempty" xml:"Network,omitempty"`
 	PayType                 *string                                                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Port                    *string                                                       `json:"Port,omitempty" xml:"Port,omitempty"`
-	ReadDBInstances         []*string                                                     `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	RegionId                *string                                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId         *string                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RightsSeparationEnabled *bool                                                         `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
-	RightsSeparationStatus  *string                                                       `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
-	Series                  *string                                                       `json:"Series,omitempty" xml:"Series,omitempty"`
-	Status                  *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed             *int64                                                        `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	TagSet                  []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet    `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	Type                    *string                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 主可用区。
+	PrimaryZone             *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	ReadDBInstances         []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	RegionId                *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId         *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RightsSeparationEnabled *bool     `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
+	RightsSeparationStatus  *string   `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
+	// 次可用区。
+	SecondaryZone *string                                                    `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	Series        *string                                                    `json:"Series,omitempty" xml:"Series,omitempty"`
+	Status        *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageUsed   *int64                                                     `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	TagSet        []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	// 第三可用区。
+	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// 拓扑类型：
+	//
+	// - **3azones**：三可用区；
+	// - **1azone**：单可用区。
+	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
 	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -3522,6 +3537,11 @@ func (s DescribeDBInstanceAttributeResponseBodyDBInstance) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetCanNotCreateColumnar(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.CanNotCreateColumnar = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetCnNodeClassCode(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.CnNodeClassCode = &v
 	return s
@@ -3529,6 +3549,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetCnNodeClassCode(v
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetCnNodeCount(v int32) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.CnNodeCount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetColumnarInstanceName(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.ColumnarInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetColumnarReadDBInstances(v []*string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.ColumnarReadDBInstances = v
 	return s
 }
 
@@ -3584,6 +3614,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDBVersion(v strin
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDescription(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetDifferentDNSpec(v bool) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.DifferentDNSpec = &v
 	return s
 }
 
@@ -3667,6 +3702,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetPort(v string) *D
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetPrimaryZone(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.PrimaryZone = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetReadDBInstances(v []*string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.ReadDBInstances = v
 	return s
@@ -3692,6 +3732,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetRightsSeparationS
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSecondaryZone(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.SecondaryZone = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetSeries(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.Series = &v
 	return s
@@ -3709,6 +3754,16 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetStorageUsed(v int
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetTagSet(v []*DescribeDBInstanceAttributeResponseBodyDBInstanceTagSet) *DescribeDBInstanceAttributeResponseBodyDBInstance {
 	s.TagSet = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetTertiaryZone(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.TertiaryZone = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstance) SetTopologyType(v string) *DescribeDBInstanceAttributeResponseBodyDBInstance {
+	s.TopologyType = &v
 	return s
 }
 
@@ -5366,39 +5421,52 @@ func (s *DescribeDBInstancesResponseBody) SetTotalNumber(v int32) *DescribeDBIns
 }
 
 type DescribeDBInstancesResponseBodyDBInstances struct {
-	CdcInstanceName *string                                             `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
-	CnNodeClassCode *string                                             `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	CnNodeCount     *int32                                              `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	CommodityCode   *string                                             `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	ContainBinlogX  *bool                                               `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
-	CreateTime      *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DBInstanceName  *string                                             `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DBType          *string                                             `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion       *string                                             `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	Description     *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnNodeClassCode *string                                             `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	DnNodeCount     *int32                                              `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	Engine          *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime      *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Expired         *bool                                               `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Id              *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	LockMode        *string                                             `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	LockReason      *string                                             `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	MinorVersion    *string                                             `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Network         *string                                             `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodeClass       *string                                             `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	NodeCount       *int32                                              `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	Nodes           []*DescribeDBInstancesResponseBodyDBInstancesNodes  `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	PayType         *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ReadDBInstances []*string                                           `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
-	RegionId        *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Series          *string                                             `json:"Series,omitempty" xml:"Series,omitempty"`
-	Status          *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageUsed     *int64                                              `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	SupportBinlogX  *bool                                               `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
-	TagSet          []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	Type            *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	CdcInstanceName         *string                                            `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
+	CnNodeClassCode         *string                                            `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
+	CnNodeCount             *int32                                             `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
+	ColumnarInstanceName    *string                                            `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
+	ColumnarReadDBInstances []*string                                          `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
+	CommodityCode           *string                                            `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	ContainBinlogX          *bool                                              `json:"ContainBinlogX,omitempty" xml:"ContainBinlogX,omitempty"`
+	CreateTime              *string                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DBInstanceName          *string                                            `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBType                  *string                                            `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion               *string                                            `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	Description             *string                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	DnNodeClassCode         *string                                            `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
+	DnNodeCount             *int32                                             `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
+	Engine                  *string                                            `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime              *string                                            `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Expired                 *bool                                              `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Id                      *string                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	LockMode                *string                                            `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LockReason              *string                                            `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
+	MinorVersion            *string                                            `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	Network                 *string                                            `json:"Network,omitempty" xml:"Network,omitempty"`
+	NodeClass               *string                                            `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
+	NodeCount               *int32                                             `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	Nodes                   []*DescribeDBInstancesResponseBodyDBInstancesNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	PayType                 *string                                            `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// 主可用区。
+	PrimaryZone     *string   `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 次可用区。
+	SecondaryZone  *string                                             `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	Series         *string                                             `json:"Series,omitempty" xml:"Series,omitempty"`
+	Status         *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageUsed    *int64                                              `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
+	SupportBinlogX *bool                                               `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
+	TagSet         []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
+	// 第三可用区。
+	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	// 拓扑类型：
+	//
+	// - **3azones**：三可用区；
+	// - **1azone**：单可用区。
+	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// VPC ID。
 	VPCId  *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -5424,6 +5492,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetCnNodeClassCode(v string
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetCnNodeCount(v int32) *DescribeDBInstancesResponseBodyDBInstances {
 	s.CnNodeCount = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetColumnarInstanceName(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.ColumnarInstanceName = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetColumnarReadDBInstances(v []*string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.ColumnarReadDBInstances = v
 	return s
 }
 
@@ -5532,6 +5610,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetPayType(v string) *Descr
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetPrimaryZone(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.PrimaryZone = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetReadDBInstances(v []*string) *DescribeDBInstancesResponseBodyDBInstances {
 	s.ReadDBInstances = v
 	return s
@@ -5544,6 +5627,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetRegionId(v string) *Desc
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetResourceGroupId(v string) *DescribeDBInstancesResponseBodyDBInstances {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetSecondaryZone(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.SecondaryZone = &v
 	return s
 }
 
@@ -5569,6 +5657,16 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) SetSupportBinlogX(v bool) *
 
 func (s *DescribeDBInstancesResponseBodyDBInstances) SetTagSet(v []*DescribeDBInstancesResponseBodyDBInstancesTagSet) *DescribeDBInstancesResponseBodyDBInstances {
 	s.TagSet = v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetTertiaryZone(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.TertiaryZone = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstances) SetTopologyType(v string) *DescribeDBInstancesResponseBodyDBInstances {
+	s.TopologyType = &v
 	return s
 }
 
