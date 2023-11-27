@@ -1748,8 +1748,9 @@ type CreateResourceAccountRequest struct {
 	// *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
 	//
 	// >  This parameter is available only for resellers at the international site (alibabacloud.com).
-	ResellAccountType *string                            `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
-	Tag               []*CreateResourceAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
+	// The tag key and value.
+	Tag []*CreateResourceAccountRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateResourceAccountRequest) String() string {
@@ -3650,6 +3651,52 @@ func (s *DetachPolicyResponse) SetBody(v *DetachPolicyResponseBody) *DetachPolic
 	return s
 }
 
+type DisableAssociatedTransferResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableAssociatedTransferResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAssociatedTransferResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAssociatedTransferResponseBody) SetRequestId(v string) *DisableAssociatedTransferResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableAssociatedTransferResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableAssociatedTransferResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableAssociatedTransferResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAssociatedTransferResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAssociatedTransferResponse) SetHeaders(v map[string]*string) *DisableAssociatedTransferResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAssociatedTransferResponse) SetStatusCode(v int32) *DisableAssociatedTransferResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAssociatedTransferResponse) SetBody(v *DisableAssociatedTransferResponseBody) *DisableAssociatedTransferResponse {
+	s.Body = v
+	return s
+}
+
 type DisableControlPolicyResponseBody struct {
 	// The status of the Control Policy feature. Valid values:
 	//
@@ -3705,6 +3752,52 @@ func (s *DisableControlPolicyResponse) SetStatusCode(v int32) *DisableControlPol
 }
 
 func (s *DisableControlPolicyResponse) SetBody(v *DisableControlPolicyResponseBody) *DisableControlPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type EnableAssociatedTransferResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableAssociatedTransferResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAssociatedTransferResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAssociatedTransferResponseBody) SetRequestId(v string) *EnableAssociatedTransferResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableAssociatedTransferResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableAssociatedTransferResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableAssociatedTransferResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAssociatedTransferResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAssociatedTransferResponse) SetHeaders(v map[string]*string) *EnableAssociatedTransferResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAssociatedTransferResponse) SetStatusCode(v int32) *EnableAssociatedTransferResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAssociatedTransferResponse) SetBody(v *EnableAssociatedTransferResponseBody) *EnableAssociatedTransferResponse {
 	s.Body = v
 	return s
 }
@@ -4349,6 +4442,7 @@ func (s *GetAccountDeletionCheckResultResponse) SetBody(v *GetAccountDeletionChe
 }
 
 type GetAccountDeletionStatusRequest struct {
+	// The Alibaba Cloud account ID of the member.
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 }
 
@@ -4366,8 +4460,10 @@ func (s *GetAccountDeletionStatusRequest) SetAccountId(v string) *GetAccountDele
 }
 
 type GetAccountDeletionStatusResponseBody struct {
+	// The deletion status of the member.
 	RdAccountDeletionStatus *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus `json:"RdAccountDeletionStatus,omitempty" xml:"RdAccountDeletionStatus,omitempty" type:"Struct"`
-	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBody) String() string {
@@ -4389,12 +4485,27 @@ func (s *GetAccountDeletionStatusResponseBody) SetRequestId(v string) *GetAccoun
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus struct {
-	AccountId      *string                                                                      `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	CreateTime     *string                                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionTime   *string                                                                      `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
-	DeletionType   *string                                                                      `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
+	// The Alibaba Cloud account ID of the member.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The start time of the deletion.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time of the deletion.
+	DeletionTime *string `json:"DeletionTime,omitempty" xml:"DeletionTime,omitempty"`
+	// The type of the deletion. Valid values:
+	//
+	// *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
+	// *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+	DeletionType *string `json:"DeletionType,omitempty" xml:"DeletionType,omitempty"`
+	// The reasons why the member fails to be deleted.
 	FailReasonList []*GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList `json:"FailReasonList,omitempty" xml:"FailReasonList,omitempty" type:"Repeated"`
-	Status         *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status. Valid values:
+	//
+	// *   Success: The member is deleted.
+	// *   Checking: A deletion check is being performed for the member.
+	// *   Deleting: The member is being deleted.
+	// *   CheckFailed: The deletion check for the member fails.
+	// *   DeleteFailed: The member fails to be deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) String() string {
@@ -4436,8 +4547,10 @@ func (s *GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus) SetStatus(
 }
 
 type GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList struct {
+	// The description of the check item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the cloud service to which the check item belongs.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList) String() string {
@@ -6231,8 +6344,9 @@ type InviteAccountToResourceDirectoryRequest struct {
 	// The comment on the invitation.
 	//
 	// The comment can be up to 1,024 characters in length.
-	Note *string                                       `json:"Note,omitempty" xml:"Note,omitempty"`
-	Tag  []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// The tag key and value.
+	Tag []*InviteAccountToResourceDirectoryRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID or logon email address of the account that you want to invite.
 	TargetEntity *string `json:"TargetEntity,omitempty" xml:"TargetEntity,omitempty"`
 	// The type of the account. Valid values:
@@ -6459,8 +6573,9 @@ type ListAccountsRequest struct {
 	// The number of entries to return on each page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
-	PageSize *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Tag      []*ListAccountsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The tag key and value.
+	Tag []*ListAccountsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAccountsRequest) String() string {
@@ -6772,8 +6887,9 @@ type ListAccountsForParentRequest struct {
 	// The keyword used for the query, such as the display name of a member.
 	//
 	// Fuzzy match is supported.
-	QueryKeyword *string                            `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
-	Tag          []*ListAccountsForParentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	QueryKeyword *string `json:"QueryKeyword,omitempty" xml:"QueryKeyword,omitempty"`
+	// The tag key and value.
+	Tag []*ListAccountsForParentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListAccountsForParentRequest) String() string {
@@ -9387,11 +9503,11 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 }
 
 type ListResourcesRequest struct {
-	// The number of the page to return.
+	// The page number.
 	//
 	// Pages start from page 1. Default value: 1.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -9403,12 +9519,15 @@ type ListResourcesRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
 	//
-	// For more information about the supported resource types, see the **Resource type** column in [Alibaba Cloud services that support resource groups](~~94479~~).
-	ResourceType  *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource types. A maximum of 50 resource types are supported.
+	//
+	// >  If you configure `ResourceTypes`, you must configure both `Service` and `ResourceType`. Otherwise, the configured Service or ResourceType does not take effect.
 	ResourceTypes []*ListResourcesRequestResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud service.
 	//
-	// You can obtain the ID from the **Service code** column in [Alibaba Cloud services that support resource groups](~~94479~~).
+	// You can obtain the ID from the **Service code** column in [Services that work with Resource Group](~~94479~~).
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
@@ -9461,8 +9580,22 @@ func (s *ListResourcesRequest) SetService(v string) *ListResourcesRequest {
 }
 
 type ListResourcesRequestResourceTypes struct {
+	// The resource type.
+	//
+	// Valid values of N: 1 to 50.
+	//
+	// For more information about the supported resource types, see the **Resource type** column in [Services that work with Resource Group](~~94479~~).
+	//
+	// >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Service      *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The ID of the Alibaba Cloud service.
+	//
+	// Valid values of N: 1 to 50.
+	//
+	// You can obtain the ID from the **Service code** column in [Services that work with Resource Group](~~94479~~).
+	//
+	// >  You must configure both `Service` and `ResourceType` in `ResourceTypes`. Otherwise, the two parameters do not take effect.
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
 }
 
 func (s ListResourcesRequestResourceTypes) String() string {
@@ -9484,13 +9617,13 @@ func (s *ListResourcesRequestResourceTypes) SetService(v string) *ListResourcesR
 }
 
 type ListResourcesResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resources.
+	// The information about the resources.
 	Resources *ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
 	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -9555,7 +9688,7 @@ type ListResourcesResponseBodyResourcesResource struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the Alibaba Cloud service.
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
@@ -9997,14 +10130,16 @@ type ListTagResourcesRequest struct {
 	// Valid values: 1 to 100. Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to start the next query.
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the objects whose tags you want to query. This parameter specifies a filter condition for the query. Valid values:
 	//
 	// *   ResourceGroup: resource group. This is the default value.
 	// *   Account: member.
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key and value.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -12079,7 +12214,10 @@ type UntagResourcesRequest struct {
 	//
 	// *   false (default value)
 	// *   true
-	All        *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The ID of a resource group or member.
+	//
+	// You can specify a maximum of 50 IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the objects from which you want to remove tags. Valid values:
 	//
@@ -12087,8 +12225,13 @@ type UntagResourcesRequest struct {
 	// *   Account: member.
 	//
 	// >  This parameter is required if you remove tags from members in a resource directory.
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// A tag key.
+	//
+	// You can specify a maximum of 20 tag keys.
+	//
+	// >  If you set the `All` parameter to `true`, you do not need to configure this parameter.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -14856,6 +14999,39 @@ func (client *Client) DetachPolicy(request *DetachPolicyRequest) (_result *Detac
 	return _result, _err
 }
 
+func (client *Client) DisableAssociatedTransferWithOptions(runtime *util.RuntimeOptions) (_result *DisableAssociatedTransferResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAssociatedTransfer"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableAssociatedTransferResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableAssociatedTransfer() (_result *DisableAssociatedTransferResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAssociatedTransferResponse{}
+	_body, _err := client.DisableAssociatedTransferWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
  * >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
@@ -14896,6 +15072,39 @@ func (client *Client) DisableControlPolicy() (_result *DisableControlPolicyRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableControlPolicyResponse{}
 	_body, _err := client.DisableControlPolicyWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAssociatedTransferWithOptions(runtime *util.RuntimeOptions) (_result *EnableAssociatedTransferResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAssociatedTransfer"),
+		Version:     tea.String("2020-03-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableAssociatedTransferResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAssociatedTransfer() (_result *EnableAssociatedTransferResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAssociatedTransferResponse{}
+	_body, _err := client.EnableAssociatedTransferWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15139,6 +15348,13 @@ func (client *Client) GetAccountDeletionCheckResult(request *GetAccountDeletionC
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551****`. The response shows that the member is deleted.
+ *
+ * @param request GetAccountDeletionStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAccountDeletionStatusResponse
+ */
 func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDeletionStatusRequest, runtime *util.RuntimeOptions) (_result *GetAccountDeletionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15172,6 +15388,12 @@ func (client *Client) GetAccountDeletionStatusWithOptions(request *GetAccountDel
 	return _result, _err
 }
 
+/**
+ * This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551****`. The response shows that the member is deleted.
+ *
+ * @param request GetAccountDeletionStatusRequest
+ * @return GetAccountDeletionStatusResponse
+ */
 func (client *Client) GetAccountDeletionStatus(request *GetAccountDeletionStatusRequest) (_result *GetAccountDeletionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountDeletionStatusResponse{}
@@ -16750,7 +16972,7 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 
 /**
  * >  You can use a RAM role that is not associated with a session policy to call this API operation.
- * This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+ * This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
  *
  * @param request ListResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -16819,7 +17041,7 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, ru
 
 /**
  * >  You can use a RAM role that is not associated with a session policy to call this API operation.
- * This topic provides an example on how to call the API operation to query the resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
+ * This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38****` in the resource group `rg-uPJpP****`.
  *
  * @param request ListResourcesRequest
  * @return ListResourcesResponse
