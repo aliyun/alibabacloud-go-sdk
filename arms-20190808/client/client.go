@@ -1099,6 +1099,71 @@ func (s *GrafanaWorkspaceIntegrationPreview) SetThumbnail(v string) *GrafanaWork
 	return s
 }
 
+type GrafanaWorkspaceMoveProcess struct {
+	GmtCreate          *int64  `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	GmtModified        *int64  `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	GrafanaWorkspaceId *string `json:"grafanaWorkspaceId,omitempty" xml:"grafanaWorkspaceId,omitempty"`
+	Id                 *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Msg                *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	ProcessName        *string `json:"processName,omitempty" xml:"processName,omitempty"`
+	ProcessStatus      *string `json:"processStatus,omitempty" xml:"processStatus,omitempty"`
+	SubType            *string `json:"subType,omitempty" xml:"subType,omitempty"`
+	UserId             *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GrafanaWorkspaceMoveProcess) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GrafanaWorkspaceMoveProcess) GoString() string {
+	return s.String()
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetGmtCreate(v int64) *GrafanaWorkspaceMoveProcess {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetGmtModified(v int64) *GrafanaWorkspaceMoveProcess {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetGrafanaWorkspaceId(v string) *GrafanaWorkspaceMoveProcess {
+	s.GrafanaWorkspaceId = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetId(v int64) *GrafanaWorkspaceMoveProcess {
+	s.Id = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetMsg(v string) *GrafanaWorkspaceMoveProcess {
+	s.Msg = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetProcessName(v string) *GrafanaWorkspaceMoveProcess {
+	s.ProcessName = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetProcessStatus(v string) *GrafanaWorkspaceMoveProcess {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetSubType(v string) *GrafanaWorkspaceMoveProcess {
+	s.SubType = &v
+	return s
+}
+
+func (s *GrafanaWorkspaceMoveProcess) SetUserId(v string) *GrafanaWorkspaceMoveProcess {
+	s.UserId = &v
+	return s
+}
+
 type GrafanaWorkspaceNews struct {
 	Date        *int64  `json:"date,omitempty" xml:"date,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -34371,6 +34436,199 @@ func (s *QueryAppMetadataResponse) SetBody(v *QueryAppMetadataResponseBody) *Que
 	return s
 }
 
+type QueryCommercialUsageRequest struct {
+	AdvancedFilters []*QueryCommercialUsageRequestAdvancedFilters `json:"AdvancedFilters,omitempty" xml:"AdvancedFilters,omitempty" type:"Repeated"`
+	Dimensions      []*string                                     `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	EndTime         *int64                                        `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IntervalInSec   *int32                                        `json:"IntervalInSec,omitempty" xml:"IntervalInSec,omitempty"`
+	Measures        []*string                                     `json:"Measures,omitempty" xml:"Measures,omitempty" type:"Repeated"`
+	Metric          *string                                       `json:"Metric,omitempty" xml:"Metric,omitempty"`
+	Order           *string                                       `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderBy         *string                                       `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	QueryType       *string                                       `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	StartTime       *int64                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryCommercialUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCommercialUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCommercialUsageRequest) SetAdvancedFilters(v []*QueryCommercialUsageRequestAdvancedFilters) *QueryCommercialUsageRequest {
+	s.AdvancedFilters = v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetDimensions(v []*string) *QueryCommercialUsageRequest {
+	s.Dimensions = v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetEndTime(v int64) *QueryCommercialUsageRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetIntervalInSec(v int32) *QueryCommercialUsageRequest {
+	s.IntervalInSec = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetMeasures(v []*string) *QueryCommercialUsageRequest {
+	s.Measures = v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetMetric(v string) *QueryCommercialUsageRequest {
+	s.Metric = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetOrder(v string) *QueryCommercialUsageRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetOrderBy(v string) *QueryCommercialUsageRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetQueryType(v string) *QueryCommercialUsageRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequest) SetStartTime(v int64) *QueryCommercialUsageRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryCommercialUsageRequestAdvancedFilters struct {
+	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s QueryCommercialUsageRequestAdvancedFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCommercialUsageRequestAdvancedFilters) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCommercialUsageRequestAdvancedFilters) SetKey(v string) *QueryCommercialUsageRequestAdvancedFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequestAdvancedFilters) SetOpType(v string) *QueryCommercialUsageRequestAdvancedFilters {
+	s.OpType = &v
+	return s
+}
+
+func (s *QueryCommercialUsageRequestAdvancedFilters) SetValue(v string) *QueryCommercialUsageRequestAdvancedFilters {
+	s.Value = &v
+	return s
+}
+
+type QueryCommercialUsageResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCommercialUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCommercialUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCommercialUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCommercialUsageResponseBody) SetCode(v string) *QueryCommercialUsageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBody) SetData(v *QueryCommercialUsageResponseBodyData) *QueryCommercialUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBody) SetMessage(v string) *QueryCommercialUsageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBody) SetRequestId(v string) *QueryCommercialUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBody) SetSuccess(v bool) *QueryCommercialUsageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCommercialUsageResponseBodyData struct {
+	Complete *bool                    `json:"Complete,omitempty" xml:"Complete,omitempty"`
+	Items    []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QueryCommercialUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCommercialUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCommercialUsageResponseBodyData) SetComplete(v bool) *QueryCommercialUsageResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBodyData) SetItems(v []map[string]interface{}) *QueryCommercialUsageResponseBodyData {
+	s.Items = v
+	return s
+}
+
+type QueryCommercialUsageResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCommercialUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCommercialUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCommercialUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCommercialUsageResponse) SetHeaders(v map[string]*string) *QueryCommercialUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCommercialUsageResponse) SetStatusCode(v int32) *QueryCommercialUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCommercialUsageResponse) SetBody(v *QueryCommercialUsageResponseBody) *QueryCommercialUsageResponse {
+	s.Body = v
+	return s
+}
+
 type QueryMetricByPageRequest struct {
 	// The number of the page to return. Default value: `1`.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -53438,6 +53696,86 @@ func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAppMetadataResponse{}
 	_body, _err := client.QueryAppMetadataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCommercialUsageWithOptions(request *QueryCommercialUsageRequest, runtime *util.RuntimeOptions) (_result *QueryCommercialUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedFilters)) {
+		query["AdvancedFilters"] = request.AdvancedFilters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
+		query["Dimensions"] = request.Dimensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntervalInSec)) {
+		query["IntervalInSec"] = request.IntervalInSec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Measures)) {
+		query["Measures"] = request.Measures
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metric)) {
+		query["Metric"] = request.Metric
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCommercialUsage"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCommercialUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCommercialUsage(request *QueryCommercialUsageRequest) (_result *QueryCommercialUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCommercialUsageResponse{}
+	_body, _err := client.QueryCommercialUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
