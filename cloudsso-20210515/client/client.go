@@ -2349,6 +2349,81 @@ func (s *DeleteUserProvisioningResponse) SetBody(v *DeleteUserProvisioningRespon
 	return s
 }
 
+type DeleteUserProvisioningEventRequest struct {
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EventId            *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s DeleteUserProvisioningEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningEventRequest) SetDirectoryId(v string) *DeleteUserProvisioningEventRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningEventRequest) SetEventId(v string) *DeleteUserProvisioningEventRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningEventRequest) SetUserProvisioningId(v string) *DeleteUserProvisioningEventRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type DeleteUserProvisioningEventResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserProvisioningEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningEventResponseBody) SetRequestId(v string) *DeleteUserProvisioningEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserProvisioningEventResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserProvisioningEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserProvisioningEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserProvisioningEventResponse) SetHeaders(v map[string]*string) *DeleteUserProvisioningEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserProvisioningEventResponse) SetStatusCode(v int32) *DeleteUserProvisioningEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserProvisioningEventResponse) SetBody(v *DeleteUserProvisioningEventResponseBody) *DeleteUserProvisioningEventResponse {
+	s.Body = v
+	return s
+}
+
 type DeprovisionAccessConfigurationRequest struct {
 	// The ID of the access configuration.
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
@@ -2432,7 +2507,7 @@ type DeprovisionAccessConfigurationResponseBodyTasks struct {
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task object in your resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates an accounts in your resource directory.
+	// The type of the task object. The value is fixed as RD-Account, which indicates an account in your resource directory.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The ID of the task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -2932,13 +3007,16 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBody) SetSAMLServiceProvider
 
 type GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider struct {
 	// The Assertion Consumer Service (ACS) URL of the SP.
-	AcsUrl *string `json:"AcsUrl,omitempty" xml:"AcsUrl,omitempty"`
+	AcsUrl          *string `json:"AcsUrl,omitempty" xml:"AcsUrl,omitempty"`
+	AuthnSignAlgo   *string `json:"AuthnSignAlgo,omitempty" xml:"AuthnSignAlgo,omitempty"`
+	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The metadata file of the SP. The value of this parameter is Base64-encoded.
 	EncodedMetadataDocument *string `json:"EncodedMetadataDocument,omitempty" xml:"EncodedMetadataDocument,omitempty"`
 	// The entity ID of the SP.
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	EntityId                  *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	SupportEncryptedAssertion *bool   `json:"SupportEncryptedAssertion,omitempty" xml:"SupportEncryptedAssertion,omitempty"`
 }
 
 func (s GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) String() string {
@@ -2954,6 +3032,16 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) Set
 	return s
 }
 
+func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) SetAuthnSignAlgo(v string) *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider {
+	s.AuthnSignAlgo = &v
+	return s
+}
+
+func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) SetCertificateType(v string) *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider {
+	s.CertificateType = &v
+	return s
+}
+
 func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) SetDirectoryId(v string) *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider {
 	s.DirectoryId = &v
 	return s
@@ -2966,6 +3054,11 @@ func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) Set
 
 func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) SetEntityId(v string) *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider {
 	s.EntityId = &v
+	return s
+}
+
+func (s *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider) SetSupportEncryptedAssertion(v bool) *GetDirectorySAMLServiceProviderInfoResponseBodySAMLServiceProvider {
+	s.SupportEncryptedAssertion = &v
 	return s
 }
 
@@ -4705,6 +4798,554 @@ func (s *GetUserProvisioningResponse) SetStatusCode(v int32) *GetUserProvisionin
 }
 
 func (s *GetUserProvisioningResponse) SetBody(v *GetUserProvisioningResponseBody) *GetUserProvisioningResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserProvisioningConfigurationRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+}
+
+func (s GetUserProvisioningConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningConfigurationRequest) SetDirectoryId(v string) *GetUserProvisioningConfigurationRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+type GetUserProvisioningConfigurationResponseBody struct {
+	RequestId                     *string                                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioningConfiguration *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
+}
+
+func (s GetUserProvisioningConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningConfigurationResponseBody) SetRequestId(v string) *GetUserProvisioningConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponseBody) SetUserProvisioningConfiguration(v *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) *GetUserProvisioningConfigurationResponseBody {
+	s.UserProvisioningConfiguration = v
+	return s
+}
+
+type GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	SessionDuration    *int32  `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetCreateTime(v string) *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetDefaultLandingPage(v string) *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.DefaultLandingPage = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetDirectoryId(v string) *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetSessionDuration(v int32) *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.SessionDuration = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetUpdateTime(v string) *GetUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetUserProvisioningConfigurationResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserProvisioningConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningConfigurationResponse) SetHeaders(v map[string]*string) *GetUserProvisioningConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponse) SetStatusCode(v int32) *GetUserProvisioningConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserProvisioningConfigurationResponse) SetBody(v *GetUserProvisioningConfigurationResponseBody) *GetUserProvisioningConfigurationResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserProvisioningEventRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s GetUserProvisioningEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningEventRequest) SetDirectoryId(v string) *GetUserProvisioningEventRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventRequest) SetEventId(v string) *GetUserProvisioningEventRequest {
+	s.EventId = &v
+	return s
+}
+
+type GetUserProvisioningEventResponseBody struct {
+	RequestId             *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioningEvent *GetUserProvisioningEventResponseBodyUserProvisioningEvent `json:"UserProvisioningEvent,omitempty" xml:"UserProvisioningEvent,omitempty" type:"Struct"`
+}
+
+func (s GetUserProvisioningEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningEventResponseBody) SetRequestId(v string) *GetUserProvisioningEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBody) SetUserProvisioningEvent(v *GetUserProvisioningEventResponseBodyUserProvisioningEvent) *GetUserProvisioningEventResponseBody {
+	s.UserProvisioningEvent = v
+	return s
+}
+
+type GetUserProvisioningEventResponseBodyUserProvisioningEvent struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	ErrorCount          *int64  `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	ErrorInfo           *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	LatestAsyncTime     *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s GetUserProvisioningEventResponseBodyUserProvisioningEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningEventResponseBodyUserProvisioningEvent) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetCreateTime(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetDeletionStrategy(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetDirectoryId(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetDuplicationStrategy(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetErrorCount(v int64) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetErrorInfo(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetEventId(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetLatestAsyncTime(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.LatestAsyncTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetPrincipalId(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetPrincipalName(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetPrincipalType(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetSourceType(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.SourceType = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetTargetId(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetTargetName(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.TargetName = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetTargetPath(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetTargetType(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.TargetType = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetUpdateTime(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponseBodyUserProvisioningEvent) SetUserProvisioningId(v string) *GetUserProvisioningEventResponseBodyUserProvisioningEvent {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type GetUserProvisioningEventResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserProvisioningEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningEventResponse) SetHeaders(v map[string]*string) *GetUserProvisioningEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponse) SetStatusCode(v int32) *GetUserProvisioningEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserProvisioningEventResponse) SetBody(v *GetUserProvisioningEventResponseBody) *GetUserProvisioningEventResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserProvisioningRdAccountStatisticsRequest struct {
+	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	RdMemberId  *string `json:"RdMemberId,omitempty" xml:"RdMemberId,omitempty"`
+}
+
+func (s GetUserProvisioningRdAccountStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningRdAccountStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsRequest) SetDirectoryId(v string) *GetUserProvisioningRdAccountStatisticsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsRequest) SetRdMemberId(v string) *GetUserProvisioningRdAccountStatisticsRequest {
+	s.RdMemberId = &v
+	return s
+}
+
+type GetUserProvisioningRdAccountStatisticsResponseBody struct {
+	RequestId                  *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioningStatistics *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBody) SetRequestId(v string) *GetUserProvisioningRdAccountStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBody) SetUserProvisioningStatistics(v *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) *GetUserProvisioningRdAccountStatisticsResponseBody {
+	s.UserProvisioningStatistics = v
+	return s
+}
+
+type GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics struct {
+	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EntityId         *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	FailedEventCount *int64  `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
+	LatestAsyncTime  *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	OwnerPk          *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetDirectoryId(v string) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetEntityId(v string) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.EntityId = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetFailedEventCount(v int64) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.FailedEventCount = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetLatestAsyncTime(v string) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.LatestAsyncTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetOwnerPk(v string) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics) SetType(v string) *GetUserProvisioningRdAccountStatisticsResponseBodyUserProvisioningStatistics {
+	s.Type = &v
+	return s
+}
+
+type GetUserProvisioningRdAccountStatisticsResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserProvisioningRdAccountStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningRdAccountStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponse) SetHeaders(v map[string]*string) *GetUserProvisioningRdAccountStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponse) SetStatusCode(v int32) *GetUserProvisioningRdAccountStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserProvisioningRdAccountStatisticsResponse) SetBody(v *GetUserProvisioningRdAccountStatisticsResponseBody) *GetUserProvisioningRdAccountStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserProvisioningStatisticsRequest struct {
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s GetUserProvisioningStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningStatisticsRequest) SetDirectoryId(v string) *GetUserProvisioningStatisticsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsRequest) SetUserProvisioningId(v string) *GetUserProvisioningStatisticsRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type GetUserProvisioningStatisticsResponseBody struct {
+	RequestId                  *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioningStatistics *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics `json:"UserProvisioningStatistics,omitempty" xml:"UserProvisioningStatistics,omitempty" type:"Struct"`
+}
+
+func (s GetUserProvisioningStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningStatisticsResponseBody) SetRequestId(v string) *GetUserProvisioningStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBody) SetUserProvisioningStatistics(v *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) *GetUserProvisioningStatisticsResponseBody {
+	s.UserProvisioningStatistics = v
+	return s
+}
+
+type GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics struct {
+	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EntityId         *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	FailedEventCount *int64  `json:"FailedEventCount,omitempty" xml:"FailedEventCount,omitempty"`
+	LatestAsyncTime  *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	OwnerPk          *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetDirectoryId(v string) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetEntityId(v string) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.EntityId = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetFailedEventCount(v int64) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.FailedEventCount = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetLatestAsyncTime(v string) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.LatestAsyncTime = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetOwnerPk(v string) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.OwnerPk = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics) SetType(v string) *GetUserProvisioningStatisticsResponseBodyUserProvisioningStatistics {
+	s.Type = &v
+	return s
+}
+
+type GetUserProvisioningStatisticsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserProvisioningStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserProvisioningStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserProvisioningStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserProvisioningStatisticsResponse) SetHeaders(v map[string]*string) *GetUserProvisioningStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponse) SetStatusCode(v int32) *GetUserProvisioningStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserProvisioningStatisticsResponse) SetBody(v *GetUserProvisioningStatisticsResponseBody) *GetUserProvisioningStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -7091,6 +7732,236 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 	return s
 }
 
+type ListUserProvisioningEventsRequest struct {
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	UserProvisioningId *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s ListUserProvisioningEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningEventsRequest) SetDirectoryId(v string) *ListUserProvisioningEventsRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsRequest) SetMaxResults(v int32) *ListUserProvisioningEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsRequest) SetNextToken(v string) *ListUserProvisioningEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsRequest) SetUserProvisioningId(v string) *ListUserProvisioningEventsRequest {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type ListUserProvisioningEventsResponseBody struct {
+	IsTruncated            *bool                                                           `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	MaxResults             *int32                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken              *string                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCounts            *int32                                                          `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	UserProvisioningEvents []*ListUserProvisioningEventsResponseBodyUserProvisioningEvents `json:"UserProvisioningEvents,omitempty" xml:"UserProvisioningEvents,omitempty" type:"Repeated"`
+}
+
+func (s ListUserProvisioningEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetIsTruncated(v bool) *ListUserProvisioningEventsResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetMaxResults(v int32) *ListUserProvisioningEventsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetNextToken(v string) *ListUserProvisioningEventsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetRequestId(v string) *ListUserProvisioningEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetTotalCounts(v int32) *ListUserProvisioningEventsResponseBody {
+	s.TotalCounts = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBody) SetUserProvisioningEvents(v []*ListUserProvisioningEventsResponseBodyUserProvisioningEvents) *ListUserProvisioningEventsResponseBody {
+	s.UserProvisioningEvents = v
+	return s
+}
+
+type ListUserProvisioningEventsResponseBodyUserProvisioningEvents struct {
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionStrategy    *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	ErrorCount          *int64  `json:"ErrorCount,omitempty" xml:"ErrorCount,omitempty"`
+	ErrorInfo           *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	LatestAsyncTime     *string `json:"LatestAsyncTime,omitempty" xml:"LatestAsyncTime,omitempty"`
+	PrincipalId         *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	PrincipalName       *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
+	PrincipalType       *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetId            *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	TargetName          *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
+	TargetPath          *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UpdateTime          *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserProvisioningId  *string `json:"UserProvisioningId,omitempty" xml:"UserProvisioningId,omitempty"`
+}
+
+func (s ListUserProvisioningEventsResponseBodyUserProvisioningEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningEventsResponseBodyUserProvisioningEvents) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetCreateTime(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetDeletionStrategy(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.DeletionStrategy = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetDirectoryId(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetDuplicationStrategy(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetErrorCount(v int64) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.ErrorCount = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetErrorInfo(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetEventId(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.EventId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetLatestAsyncTime(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.LatestAsyncTime = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetPrincipalId(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetPrincipalName(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.PrincipalName = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetPrincipalType(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.PrincipalType = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetSourceType(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetTargetId(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetTargetName(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.TargetName = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetTargetPath(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetTargetType(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetUpdateTime(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponseBodyUserProvisioningEvents) SetUserProvisioningId(v string) *ListUserProvisioningEventsResponseBodyUserProvisioningEvents {
+	s.UserProvisioningId = &v
+	return s
+}
+
+type ListUserProvisioningEventsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserProvisioningEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserProvisioningEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProvisioningEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProvisioningEventsResponse) SetHeaders(v map[string]*string) *ListUserProvisioningEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponse) SetStatusCode(v int32) *ListUserProvisioningEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserProvisioningEventsResponse) SetBody(v *ListUserProvisioningEventsResponseBody) *ListUserProvisioningEventsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserProvisioningsRequest struct {
 	DirectoryId   *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	MaxResults    *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -7342,7 +8213,7 @@ type ListUsersRequest struct {
 	//
 	// Default value: 10.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken` .
+	// The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
 	//
 	// When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -8107,6 +8978,81 @@ func (s *ResetUserPasswordResponse) SetStatusCode(v int32) *ResetUserPasswordRes
 }
 
 func (s *ResetUserPasswordResponse) SetBody(v *ResetUserPasswordResponseBody) *ResetUserPasswordResponse {
+	s.Body = v
+	return s
+}
+
+type RetryUserProvisioningEventRequest struct {
+	DirectoryId         *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
+	EventId             *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+}
+
+func (s RetryUserProvisioningEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryUserProvisioningEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetryUserProvisioningEventRequest) SetDirectoryId(v string) *RetryUserProvisioningEventRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *RetryUserProvisioningEventRequest) SetDuplicationStrategy(v string) *RetryUserProvisioningEventRequest {
+	s.DuplicationStrategy = &v
+	return s
+}
+
+func (s *RetryUserProvisioningEventRequest) SetEventId(v string) *RetryUserProvisioningEventRequest {
+	s.EventId = &v
+	return s
+}
+
+type RetryUserProvisioningEventResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RetryUserProvisioningEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryUserProvisioningEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetryUserProvisioningEventResponseBody) SetRequestId(v string) *RetryUserProvisioningEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RetryUserProvisioningEventResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetryUserProvisioningEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetryUserProvisioningEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetryUserProvisioningEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetryUserProvisioningEventResponse) SetHeaders(v map[string]*string) *RetryUserProvisioningEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetryUserProvisioningEventResponse) SetStatusCode(v int32) *RetryUserProvisioningEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RetryUserProvisioningEventResponse) SetBody(v *RetryUserProvisioningEventResponseBody) *RetryUserProvisioningEventResponse {
 	s.Body = v
 	return s
 }
@@ -9731,6 +10677,128 @@ func (s *UpdateUserProvisioningResponse) SetBody(v *UpdateUserProvisioningRespon
 	return s
 }
 
+type UpdateUserProvisioningConfigurationRequest struct {
+	DirectoryId           *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	NewDefaultLandingPage *string `json:"NewDefaultLandingPage,omitempty" xml:"NewDefaultLandingPage,omitempty"`
+	NewSessionDuration    *int32  `json:"NewSessionDuration,omitempty" xml:"NewSessionDuration,omitempty"`
+}
+
+func (s UpdateUserProvisioningConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningConfigurationRequest) SetDirectoryId(v string) *UpdateUserProvisioningConfigurationRequest {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationRequest) SetNewDefaultLandingPage(v string) *UpdateUserProvisioningConfigurationRequest {
+	s.NewDefaultLandingPage = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationRequest) SetNewSessionDuration(v int32) *UpdateUserProvisioningConfigurationRequest {
+	s.NewSessionDuration = &v
+	return s
+}
+
+type UpdateUserProvisioningConfigurationResponseBody struct {
+	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserProvisioningConfiguration *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration `json:"UserProvisioningConfiguration,omitempty" xml:"UserProvisioningConfiguration,omitempty" type:"Struct"`
+}
+
+func (s UpdateUserProvisioningConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBody) SetRequestId(v string) *UpdateUserProvisioningConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBody) SetUserProvisioningConfiguration(v *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) *UpdateUserProvisioningConfigurationResponseBody {
+	s.UserProvisioningConfiguration = v
+	return s
+}
+
+type UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration struct {
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DefaultLandingPage *string `json:"DefaultLandingPage,omitempty" xml:"DefaultLandingPage,omitempty"`
+	DirectoryId        *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	SessionDuration    *int32  `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
+	UpdateTime         *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetCreateTime(v string) *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetDefaultLandingPage(v string) *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.DefaultLandingPage = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetDirectoryId(v string) *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetSessionDuration(v int32) *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.SessionDuration = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration) SetUpdateTime(v string) *UpdateUserProvisioningConfigurationResponseBodyUserProvisioningConfiguration {
+	s.UpdateTime = &v
+	return s
+}
+
+type UpdateUserProvisioningConfigurationResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUserProvisioningConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUserProvisioningConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUserProvisioningConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUserProvisioningConfigurationResponse) SetHeaders(v map[string]*string) *UpdateUserProvisioningConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponse) SetStatusCode(v int32) *UpdateUserProvisioningConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUserProvisioningConfigurationResponse) SetBody(v *UpdateUserProvisioningConfigurationResponseBody) *UpdateUserProvisioningConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateUserStatusRequest struct {
 	// The ID of the directory.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
@@ -11171,6 +12239,58 @@ func (client *Client) DeleteUserProvisioning(request *DeleteUserProvisioningRequ
 	return _result, _err
 }
 
+func (client *Client) DeleteUserProvisioningEventWithOptions(request *DeleteUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *DeleteUserProvisioningEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserProvisioningEvent"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserProvisioningEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUserProvisioningEvent(request *DeleteUserProvisioningEventRequest) (_result *DeleteUserProvisioningEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserProvisioningEventResponse{}
+	_body, _err := client.DeleteUserProvisioningEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](~~340670~~) operation to query the progress of the task based on the value of the `TaskId` response parameter.
  * This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
@@ -12251,8 +13371,196 @@ func (client *Client) GetUserProvisioning(request *GetUserProvisioningRequest) (
 	return _result, _err
 }
 
+func (client *Client) GetUserProvisioningConfigurationWithOptions(request *GetUserProvisioningConfigurationRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserProvisioningConfiguration"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserProvisioningConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningConfiguration(request *GetUserProvisioningConfigurationRequest) (_result *GetUserProvisioningConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserProvisioningConfigurationResponse{}
+	_body, _err := client.GetUserProvisioningConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningEventWithOptions(request *GetUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserProvisioningEvent"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserProvisioningEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningEvent(request *GetUserProvisioningEventRequest) (_result *GetUserProvisioningEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserProvisioningEventResponse{}
+	_body, _err := client.GetUserProvisioningEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningRdAccountStatisticsWithOptions(request *GetUserProvisioningRdAccountStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningRdAccountStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdMemberId)) {
+		query["RdMemberId"] = request.RdMemberId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserProvisioningRdAccountStatistics"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserProvisioningRdAccountStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningRdAccountStatistics(request *GetUserProvisioningRdAccountStatisticsRequest) (_result *GetUserProvisioningRdAccountStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserProvisioningRdAccountStatisticsResponse{}
+	_body, _err := client.GetUserProvisioningRdAccountStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningStatisticsWithOptions(request *GetUserProvisioningStatisticsRequest, runtime *util.RuntimeOptions) (_result *GetUserProvisioningStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserProvisioningStatistics"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserProvisioningStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserProvisioningStatistics(request *GetUserProvisioningStatisticsRequest) (_result *GetUserProvisioningStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserProvisioningStatisticsResponse{}
+	_body, _err := client.GetUserProvisioningStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
  *
  * @param request ListAccessAssignmentsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -12320,7 +13628,7 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 }
 
 /**
- * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+ * This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory are assigned to one user.
  *
  * @param request ListAccessAssignmentsRequest
  * @return ListAccessAssignmentsResponse
@@ -13085,6 +14393,62 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 	return _result, _err
 }
 
+func (client *Client) ListUserProvisioningEventsWithOptions(request *ListUserProvisioningEventsRequest, runtime *util.RuntimeOptions) (_result *ListUserProvisioningEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProvisioningId)) {
+		query["UserProvisioningId"] = request.UserProvisioningId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserProvisioningEvents"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserProvisioningEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserProvisioningEvents(request *ListUserProvisioningEventsRequest) (_result *ListUserProvisioningEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserProvisioningEventsResponse{}
+	_body, _err := client.ListUserProvisioningEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListUserProvisioningsWithOptions(request *ListUserProvisioningsRequest, runtime *util.RuntimeOptions) (_result *ListUserProvisioningsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13570,6 +14934,58 @@ func (client *Client) ResetUserPassword(request *ResetUserPasswordRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetUserPasswordResponse{}
 	_body, _err := client.ResetUserPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetryUserProvisioningEventWithOptions(request *RetryUserProvisioningEventRequest, runtime *util.RuntimeOptions) (_result *RetryUserProvisioningEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DuplicationStrategy)) {
+		query["DuplicationStrategy"] = request.DuplicationStrategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetryUserProvisioningEvent"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetryUserProvisioningEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetryUserProvisioningEvent(request *RetryUserProvisioningEventRequest) (_result *RetryUserProvisioningEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetryUserProvisioningEventResponse{}
+	_body, _err := client.RetryUserProvisioningEventWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14423,6 +15839,58 @@ func (client *Client) UpdateUserProvisioning(request *UpdateUserProvisioningRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUserProvisioningResponse{}
 	_body, _err := client.UpdateUserProvisioningWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUserProvisioningConfigurationWithOptions(request *UpdateUserProvisioningConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateUserProvisioningConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDefaultLandingPage)) {
+		query["NewDefaultLandingPage"] = request.NewDefaultLandingPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSessionDuration)) {
+		query["NewSessionDuration"] = request.NewSessionDuration
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUserProvisioningConfiguration"),
+		Version:     tea.String("2021-05-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUserProvisioningConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUserProvisioningConfiguration(request *UpdateUserProvisioningConfigurationRequest) (_result *UpdateUserProvisioningConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUserProvisioningConfigurationResponse{}
+	_body, _err := client.UpdateUserProvisioningConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
