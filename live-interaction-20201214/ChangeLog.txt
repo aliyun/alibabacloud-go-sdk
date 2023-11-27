@@ -1,6 +1,9 @@
 2023-11-27 Version: v2.1.6
 - Generated golang 2020-12-14 for live-interaction.
 
+2023-11-27 Version: v2.1.6
+- Generated golang 2020-12-14 for live-interaction.
+
 2021-10-22 Version: v2.1.5
 - Feature Add Interconnection Uid And Cid Bind API.
 
