@@ -1619,6 +1619,7 @@ type CreateHostRequest struct {
 	//
 	// > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+	NetworkDomainId  *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The operating system of the host that you want to create. Valid values:
 	//
 	// *   **Linux**
@@ -1680,6 +1681,11 @@ func (s *CreateHostRequest) SetInstanceId(v string) *CreateHostRequest {
 
 func (s *CreateHostRequest) SetInstanceRegionId(v string) *CreateHostRequest {
 	s.InstanceRegionId = &v
+	return s
+}
+
+func (s *CreateHostRequest) SetNetworkDomainId(v string) *CreateHostRequest {
+	s.NetworkDomainId = &v
 	return s
 }
 
@@ -3134,6 +3140,7 @@ func (s *DescribeInstanceAttributeRequest) SetRegionId(v string) *DescribeInstan
 }
 
 type DescribeInstanceAttributeResponseBody struct {
+	// The attribute information about the bastion host.
 	InstanceAttribute *DescribeInstanceAttributeResponseBodyInstanceAttribute `json:"InstanceAttribute,omitempty" xml:"InstanceAttribute,omitempty" type:"Struct"`
 	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3157,35 +3164,37 @@ func (s *DescribeInstanceAttributeResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttribute struct {
-	AuthorizedSecurityGroups []*string                                                      `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
-	Bandwidth                *string                                                        `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	BandwidthPackage         *string                                                        `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
-	DbOperationModule        *string                                                        `json:"DbOperationModule,omitempty" xml:"DbOperationModule,omitempty"`
-	Description              *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EniInstanceId            *string                                                        `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
-	ExpireTime               *int64                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	InstanceId               *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus           *string                                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InternetEndpoint         *string                                                        `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
-	IntranetEndpoint         *string                                                        `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	LicenseCode              *string                                                        `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	ModifyPasswordModule     *string                                                        `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
-	NetworkProxyModule       *string                                                        `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
-	Ports                    []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	PrivateExportIps         []*string                                                      `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
-	PrivateWhiteList         []*string                                                      `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
-	PublicExportIps          []*string                                                      `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
-	PublicIps                []*string                                                      `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
-	PublicNetworkAccess      *bool                                                          `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
-	PublicWhiteList          []*string                                                      `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
-	RegionId                 *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId          *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroupIds         []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	StartTime                *int64                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Storage                  *int64                                                         `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	VpcId                    *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId                *string                                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	WebTerminalModule        *string                                                        `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
+	AuthorizedSecurityGroups []*string `json:"AuthorizedSecurityGroups,omitempty" xml:"AuthorizedSecurityGroups,omitempty" type:"Repeated"`
+	// The total bandwidth of the bastion host.
+	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The extra bandwidth plan of the bastion host.
+	BandwidthPackage     *string                                                        `json:"BandwidthPackage,omitempty" xml:"BandwidthPackage,omitempty"`
+	DbOperationModule    *string                                                        `json:"DbOperationModule,omitempty" xml:"DbOperationModule,omitempty"`
+	Description          *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	EniInstanceId        *string                                                        `json:"EniInstanceId,omitempty" xml:"EniInstanceId,omitempty"`
+	ExpireTime           *int64                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InstanceId           *string                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus       *string                                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InternetEndpoint     *string                                                        `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	IntranetEndpoint     *string                                                        `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
+	LicenseCode          *string                                                        `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	ModifyPasswordModule *string                                                        `json:"ModifyPasswordModule,omitempty" xml:"ModifyPasswordModule,omitempty"`
+	NetworkProxyModule   *string                                                        `json:"NetworkProxyModule,omitempty" xml:"NetworkProxyModule,omitempty"`
+	Ports                []*DescribeInstanceAttributeResponseBodyInstanceAttributePorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	PrivateExportIps     []*string                                                      `json:"PrivateExportIps,omitempty" xml:"PrivateExportIps,omitempty" type:"Repeated"`
+	PrivateWhiteList     []*string                                                      `json:"PrivateWhiteList,omitempty" xml:"PrivateWhiteList,omitempty" type:"Repeated"`
+	PublicExportIps      []*string                                                      `json:"PublicExportIps,omitempty" xml:"PublicExportIps,omitempty" type:"Repeated"`
+	PublicIps            []*string                                                      `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
+	PublicNetworkAccess  *bool                                                          `json:"PublicNetworkAccess,omitempty" xml:"PublicNetworkAccess,omitempty"`
+	PublicWhiteList      []*string                                                      `json:"PublicWhiteList,omitempty" xml:"PublicWhiteList,omitempty" type:"Repeated"`
+	RegionId             *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds     []*string                                                      `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	StartTime            *int64                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Storage              *int64                                                         `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	VpcId                *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	WebTerminalModule    *string                                                        `json:"WebTerminalModule,omitempty" xml:"WebTerminalModule,omitempty"`
 }
 
 func (s DescribeInstanceAttributeResponseBodyInstanceAttribute) String() string {
@@ -3342,7 +3351,15 @@ func (s *DescribeInstanceAttributeResponseBodyInstanceAttribute) SetWebTerminalM
 }
 
 type DescribeInstanceAttributeResponseBodyInstanceAttributePorts struct {
-	CustomPort   *int32 `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
+	// The custom port.
+	//
+	// >  You can change only the SSH and RDP ports. If O\&M ports are not specified, the value of the StandardPort parameter is returned.
+	CustomPort *int32 `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
+	// The standard port of the bastion host. Valid values:
+	//
+	// *   **SSH**: 60022
+	// *   **RDP**: 63389
+	// *   **HTTPS**: 443
 	StandardPort *int32 `json:"StandardPort,omitempty" xml:"StandardPort,omitempty"`
 }
 
@@ -4775,9 +4792,11 @@ func (s *DisableInstancePublicAccessResponse) SetBody(v *DisableInstancePublicAc
 }
 
 type EnableInstancePublicAccessRequest struct {
-	// The operation that you want to perform. Set the value to **EnableInstancePublicAccess**.
+	// The ID of the bastion host.
+	//
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the bastion host whose Internet access is enabled.
+	// The region ID of the bastion host.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4800,8 +4819,10 @@ func (s *EnableInstancePublicAccessRequest) SetRegionId(v string) *EnableInstanc
 }
 
 type EnableInstancePublicAccessResponseBody struct {
+	// The ID of the bastion host whose Internet access is enabled.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableInstancePublicAccessResponseBody) String() string {
@@ -4937,6 +4958,7 @@ type GetHostResponseBodyHost struct {
 	//
 	// - **Release**: The host is released.
 	HostPublicAddress *string `json:"HostPublicAddress,omitempty" xml:"HostPublicAddress,omitempty"`
+	NetworkDomainId   *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The operating system of the host. Valid values:
 	//
 	// *   **Linux**
@@ -4989,6 +5011,11 @@ func (s *GetHostResponseBodyHost) SetHostPrivateAddress(v string) *GetHostRespon
 
 func (s *GetHostResponseBodyHost) SetHostPublicAddress(v string) *GetHostResponseBodyHost {
 	s.HostPublicAddress = &v
+	return s
+}
+
+func (s *GetHostResponseBodyHost) SetNetworkDomainId(v string) *GetHostResponseBodyHost {
+	s.NetworkDomainId = &v
 	return s
 }
 
@@ -10019,7 +10046,8 @@ type ModifyHostRequest struct {
 	// You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
 	//
 	// >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkDomainId *string `json:"NetworkDomainId,omitempty" xml:"NetworkDomainId,omitempty"`
 	// The ID of the host.
 	//
 	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
@@ -10066,6 +10094,11 @@ func (s *ModifyHostRequest) SetHostPublicAddress(v string) *ModifyHostRequest {
 
 func (s *ModifyHostRequest) SetInstanceId(v string) *ModifyHostRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHostRequest) SetNetworkDomainId(v string) *ModifyHostRequest {
+	s.NetworkDomainId = &v
 	return s
 }
 
@@ -10450,16 +10483,22 @@ func (s *ModifyHostShareKeyResponse) SetBody(v *ModifyHostShareKeyResponseBody) 
 }
 
 type ModifyHostsActiveAddressTypeRequest struct {
+	// The new portal type of the host. Valid values:
+	//
+	// *   **Public**: public portal
+	// *   **Private**: internal portal
 	ActiveAddressType *string `json:"ActiveAddressType,omitempty" xml:"ActiveAddressType,omitempty"`
-	// All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+	// The ID of the host for which you want to change the portal type. The value is a JSON string. You can add up to 100 host IDs.
 	//
-	// For more information about sample requests, see the "Examples" section of this topic.
+	// >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
 	HostIds *string `json:"HostIds,omitempty" xml:"HostIds,omitempty"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform.
+	// The ID of the bastion host for which you want to change the portal type of the host.
 	//
-	// Set the value to **ModifyHostsActiveAddressType**.
+	// >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID of the bastion host for which you want to change the portal type of the host.
+	//
+	// >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10492,8 +10531,10 @@ func (s *ModifyHostsActiveAddressTypeRequest) SetRegionId(v string) *ModifyHosts
 }
 
 type ModifyHostsActiveAddressTypeResponseBody struct {
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results   []*ModifyHostsActiveAddressTypeResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the call.
+	Results []*ModifyHostsActiveAddressTypeResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s ModifyHostsActiveAddressTypeResponseBody) String() string {
@@ -10515,8 +10556,17 @@ func (s *ModifyHostsActiveAddressTypeResponseBody) SetResults(v []*ModifyHostsAc
 }
 
 type ModifyHostsActiveAddressTypeResponseBodyResults struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// The return code that indicates whether the call was successful. Valid values:
+	//
+	// *   **OK**: The call was successful.
+	// *   **UNEXPECTED**: An unknown error occurred.
+	// *   **INVALID_ARGUMENT**: A request parameter is invalid.
+	// *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+	// *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the host.
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// This parameter is deprecated.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -13385,6 +13435,10 @@ func (client *Client) CreateHostWithOptions(request *CreateHostRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceRegionId)) {
 		query["InstanceRegionId"] = request.InstanceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OSType)) {
@@ -16758,6 +16812,10 @@ func (client *Client) ModifyHostWithOptions(request *ModifyHostRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkDomainId)) {
+		query["NetworkDomainId"] = request.NetworkDomainId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OSType)) {
