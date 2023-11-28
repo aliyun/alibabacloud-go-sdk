@@ -1003,6 +1003,152 @@ func (s *MasterNodeConfiguration) SetSpec(v string) *MasterNodeConfiguration {
 	return s
 }
 
+type MigrationJob struct {
+	CurrentState             *string                     `json:"currentState,omitempty" xml:"currentState,omitempty"`
+	DisableSourceClusterAuth *bool                       `json:"disableSourceClusterAuth,omitempty" xml:"disableSourceClusterAuth,omitempty"`
+	DisableTargetClusterAuth *bool                       `json:"disableTargetClusterAuth,omitempty" xml:"disableTargetClusterAuth,omitempty"`
+	EndTime                  *int64                      `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	MigrationJobId           *string                     `json:"migrationJobId,omitempty" xml:"migrationJobId,omitempty"`
+	Phase                    *string                     `json:"phase,omitempty" xml:"phase,omitempty"`
+	SourceCluster            *MigrationJobSourceCluster  `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
+	StartTime                *int64                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StatusResult             []*MigrationJobStatusResult `json:"statusResult,omitempty" xml:"statusResult,omitempty" type:"Repeated"`
+	TargetCluster            *MigrationJobTargetCluster  `json:"targetCluster,omitempty" xml:"targetCluster,omitempty" type:"Struct"`
+	UpdateTime               *int64                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s MigrationJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrationJob) GoString() string {
+	return s.String()
+}
+
+func (s *MigrationJob) SetCurrentState(v string) *MigrationJob {
+	s.CurrentState = &v
+	return s
+}
+
+func (s *MigrationJob) SetDisableSourceClusterAuth(v bool) *MigrationJob {
+	s.DisableSourceClusterAuth = &v
+	return s
+}
+
+func (s *MigrationJob) SetDisableTargetClusterAuth(v bool) *MigrationJob {
+	s.DisableTargetClusterAuth = &v
+	return s
+}
+
+func (s *MigrationJob) SetEndTime(v int64) *MigrationJob {
+	s.EndTime = &v
+	return s
+}
+
+func (s *MigrationJob) SetMigrationJobId(v string) *MigrationJob {
+	s.MigrationJobId = &v
+	return s
+}
+
+func (s *MigrationJob) SetPhase(v string) *MigrationJob {
+	s.Phase = &v
+	return s
+}
+
+func (s *MigrationJob) SetSourceCluster(v *MigrationJobSourceCluster) *MigrationJob {
+	s.SourceCluster = v
+	return s
+}
+
+func (s *MigrationJob) SetStartTime(v int64) *MigrationJob {
+	s.StartTime = &v
+	return s
+}
+
+func (s *MigrationJob) SetStatusResult(v []*MigrationJobStatusResult) *MigrationJob {
+	s.StatusResult = v
+	return s
+}
+
+func (s *MigrationJob) SetTargetCluster(v *MigrationJobTargetCluster) *MigrationJob {
+	s.TargetCluster = v
+	return s
+}
+
+func (s *MigrationJob) SetUpdateTime(v int64) *MigrationJob {
+	s.UpdateTime = &v
+	return s
+}
+
+type MigrationJobSourceCluster struct {
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s MigrationJobSourceCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrationJobSourceCluster) GoString() string {
+	return s.String()
+}
+
+func (s *MigrationJobSourceCluster) SetInstanceId(v string) *MigrationJobSourceCluster {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MigrationJobSourceCluster) SetType(v string) *MigrationJobSourceCluster {
+	s.Type = &v
+	return s
+}
+
+type MigrationJobStatusResult struct {
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s MigrationJobStatusResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrationJobStatusResult) GoString() string {
+	return s.String()
+}
+
+func (s *MigrationJobStatusResult) SetCode(v string) *MigrationJobStatusResult {
+	s.Code = &v
+	return s
+}
+
+func (s *MigrationJobStatusResult) SetSuccess(v bool) *MigrationJobStatusResult {
+	s.Success = &v
+	return s
+}
+
+type MigrationJobTargetCluster struct {
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s MigrationJobTargetCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MigrationJobTargetCluster) GoString() string {
+	return s.String()
+}
+
+func (s *MigrationJobTargetCluster) SetInstanceId(v string) *MigrationJobTargetCluster {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *MigrationJobTargetCluster) SetType(v string) *MigrationJobTargetCluster {
+	s.Type = &v
+	return s
+}
+
 type NetworkConfig struct {
 	Type             *string         `json:"type,omitempty" xml:"type,omitempty"`
 	VpcId            *string         `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
@@ -1307,7 +1453,8 @@ func (s *ZoneInfo) SetZoneId(v string) *ZoneInfo {
 }
 
 type ActivateZonesRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -1330,8 +1477,13 @@ func (s *ActivateZonesRequest) SetClientToken(v string) *ActivateZonesRequest {
 }
 
 type ActivateZonesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the nodes in disabled zones are restored. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ActivateZonesResponseBody) String() string {
@@ -1382,8 +1534,7 @@ func (s *ActivateZonesResponse) SetBody(v *ActivateZonesResponseBody) *ActivateZ
 }
 
 type AddConnectableClusterRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -1406,13 +1557,8 @@ func (s *AddConnectableClusterRequest) SetClientToken(v string) *AddConnectableC
 }
 
 type AddConnectableClusterResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The following information is returned:
-	//
-	// *   true: The configuration is successful.
-	// *   false: The configuration failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s AddConnectableClusterResponseBody) String() string {
@@ -1537,6 +1683,7 @@ func (s *AddSnapshotRepoResponse) SetBody(v *AddSnapshotRepoResponseBody) *AddSn
 }
 
 type CancelDeletionRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -1554,8 +1701,13 @@ func (s *CancelDeletionRequest) SetClientToken(v string) *CancelDeletionRequest 
 }
 
 type CancelDeletionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the cluster is restored. Valid values:
+	//
+	// *   true: The cluster is restored.
+	// *   false: The cluster fails to be restored.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CancelDeletionResponseBody) String() string {
@@ -1606,6 +1758,7 @@ func (s *CancelDeletionResponse) SetBody(v *CancelDeletionResponseBody) *CancelD
 }
 
 type CancelLogstashDeletionRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -1623,8 +1776,13 @@ func (s *CancelLogstashDeletionRequest) SetClientToken(v string) *CancelLogstash
 }
 
 type CancelLogstashDeletionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the cluster is restored. Valid values:
+	//
+	// *   true: The cluster is restored.
+	// *   false: The cluster is not restored.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CancelLogstashDeletionResponseBody) String() string {
@@ -1886,9 +2044,9 @@ func (s *CapacityPlanRequestMetric) SetType(v string) *CapacityPlanRequestMetric
 }
 
 type CapacityPlanResponseBody struct {
-	// The ID of the current request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The response of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The extension configuration information.
 	Result *CapacityPlanResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -1911,21 +2069,15 @@ func (s *CapacityPlanResponseBody) SetResult(v *CapacityPlanResponseBodyResult) 
 }
 
 type CapacityPlanResponseBodyResult struct {
-	// The extension configuration information.
+	// The type of the configuration. Set the value to sharedDisk.
+	//
+	// >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
 	ExtendConfigs []*CapacityPlanResponseBodyResultExtendConfigs `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
-	// The version type. Valid values:
-	//
-	// *   advanced: enhanced edition
-	// *   x-pack: Commercial Edition
-	// *   community: community version
-	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
 	// The node information.
+	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
+	// The number of cores.
 	NodeConfigurations []*CapacityPlanResponseBodyResultNodeConfigurations `json:"NodeConfigurations,omitempty" xml:"NodeConfigurations,omitempty" type:"Repeated"`
-	// The result calculated based on the capacity planning. No default value is available. The values are as follows:
-	//
-	// *   true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
-	// *   false: The number of data nodes calculated by capacity planning is less than 50.
-	OversizedCluster *bool `json:"OversizedCluster,omitempty" xml:"OversizedCluster,omitempty"`
+	OversizedCluster   *bool                                               `json:"OversizedCluster,omitempty" xml:"OversizedCluster,omitempty"`
 }
 
 func (s CapacityPlanResponseBodyResult) String() string {
@@ -1957,15 +2109,17 @@ func (s *CapacityPlanResponseBodyResult) SetOversizedCluster(v bool) *CapacityPl
 }
 
 type CapacityPlanResponseBodyResultExtendConfigs struct {
-	// The type of the configuration. Set the value to sharedDisk.
-	//
-	// >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
-	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	// The size of the disk. Unit: GiB.
-	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	// The type of the disk. Valid value: CPFS_PREMIUM.
 	//
 	// >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The version type. Valid values:
+	//
+	// *   advanced: enhanced edition
+	// *   x-pack: Commercial Edition
+	// *   community: community version
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 }
 
@@ -1993,12 +2147,10 @@ func (s *CapacityPlanResponseBodyResultExtendConfigs) SetDiskType(v string) *Cap
 }
 
 type CapacityPlanResponseBodyResultNodeConfigurations struct {
-	// The number of cores.
-	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The number of CPUs of the cloud desktop.
-	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The size of the disk. Unit: GiB.
-	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The type of the hard disk. Valid values:
 	//
 	// *   cloud_essd: enhanced SSD (ESSD)
@@ -2006,9 +2158,9 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	// *   cloud_efficiency: ultra disk
 	// *   local_ssd: local SSD
 	// *   local_efficiency: local ultra disk
-	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Disk *int64 `json:"Disk,omitempty" xml:"Disk,omitempty"`
 	// The memory size of the current node role.
-	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The type of the node. Supported types are as follows:
 	//
 	// *   WORKER: data node
@@ -2017,6 +2169,11 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	// *   KIBANA: Kibana node
 	// *   COORDINATING: client node
 	// *   ELASTIC_WORKER: elastic node
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The result calculated based on the capacity planning. No default value is available. The values are as follows:
+	//
+	// *   true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
+	// *   false: The number of data nodes calculated by capacity planning is less than 50.
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -2088,10 +2245,9 @@ func (s *CapacityPlanResponse) SetBody(v *CapacityPlanResponseBody) *CapacityPla
 }
 
 type CloseDiagnosisRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// spanish
-	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	Lang        *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
 func (s CloseDiagnosisRequest) String() string {
@@ -2113,13 +2269,8 @@ func (s *CloseDiagnosisRequest) SetLang(v string) *CloseDiagnosisRequest {
 }
 
 type CloseDiagnosisResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether intelligent O\&M is successfully disabled. Valid values:
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CloseDiagnosisResponseBody) String() string {
@@ -2170,7 +2321,6 @@ func (s *CloseDiagnosisResponse) SetBody(v *CloseDiagnosisResponseBody) *CloseDi
 }
 
 type CloseHttpsRequest struct {
-	// A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -2188,13 +2338,8 @@ func (s *CloseHttpsRequest) SetClientToken(v string) *CloseHttpsRequest {
 }
 
 type CloseHttpsResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Return results:
-	//
-	// *   true: HTTPS protocol closed successfully
-	// *   false: HTTPS protocol closed failed
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CloseHttpsResponseBody) String() string {
@@ -2322,7 +2467,7 @@ type CreateCollectorRequest struct {
 	ResType        *string                          `json:"resType,omitempty" xml:"resType,omitempty"`
 	ResVersion     *string                          `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
 	VpcId          *string                          `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The ID of the created crawer.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -2403,10 +2548,8 @@ func (s *CreateCollectorRequestConfigs) SetFileName(v string) *CreateCollectorRe
 }
 
 type CreateCollectorResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
-	Result *CreateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CreateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s CreateCollectorResponseBody) String() string {
@@ -2428,7 +2571,6 @@ func (s *CreateCollectorResponseBody) SetResult(v *CreateCollectorResponseBodyRe
 }
 
 type CreateCollectorResponseBodyResult struct {
-	// The ID of the created crawer.
 	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
 }
 
@@ -2671,7 +2813,7 @@ func (s *CreateDataStreamResponse) SetBody(v *CreateDataStreamResponseBody) *Cre
 }
 
 type CreateDataTasksRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// es-cn-n6w1o1x0w001c\*\*\*\*
 	ClientToken *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        []*CreateDataTasksRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
@@ -2865,9 +3007,9 @@ func (s *CreateDataTasksRequestBodySourceCluster) SetVpcInstancePort(v int32) *C
 }
 
 type CreateDataTasksResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the source cluster.
 	Result []*CreateDataTasksResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -2890,9 +3032,9 @@ func (s *CreateDataTasksResponseBody) SetResult(v []*CreateDataTasksResponseBody
 }
 
 type CreateDataTasksResponseBodyResult struct {
-	// The information about the target cluster.
+	// The access password of the target cluster.
 	SinkCluster *CreateDataTasksResponseBodyResultSinkCluster `json:"sinkCluster,omitempty" xml:"sinkCluster,omitempty" type:"Struct"`
-	// The information about the source cluster.
+	// The access password of the source cluster.
 	SourceCluster *CreateDataTasksResponseBodyResultSourceCluster `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
 }
 
@@ -2915,27 +3057,26 @@ func (s *CreateDataTasksResponseBodyResult) SetSourceCluster(v *CreateDataTasksR
 }
 
 type CreateDataTasksResponseBodyResultSinkCluster struct {
-	// The type of the target cluster.
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The name of the target index.
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// Mapping configuration.
-	Mapping *string `json:"mapping,omitempty" xml:"mapping,omitempty"`
-	// The access password of the target cluster.
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The routing field. The primary key field is used by default.
-	Routing *string `json:"routing,omitempty" xml:"routing,omitempty"`
 	// The settings configuration.
-	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
 	// The type of the target index.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Mapping *string `json:"mapping,omitempty" xml:"mapping,omitempty"`
+	// The name of the target index.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 	// The username of the destination cluster.
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	Routing *string `json:"routing,omitempty" xml:"routing,omitempty"`
+	// Mapping configuration.
+	Settings *string `json:"settings,omitempty" xml:"settings,omitempty"`
+	// The routing field. The primary key field is used by default.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The ID of the Virtual Private Cloud to which the cluster belongs. If the cluster access address is a public domain name, you can not specify the private endpoint.
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
-	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 	// The access port number of the cluster.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The type of the target cluster.
+	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	// The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
 	VpcInstancePort *string `json:"vpcInstancePort,omitempty" xml:"vpcInstancePort,omitempty"`
 }
 
@@ -3003,23 +3144,23 @@ func (s *CreateDataTasksResponseBodyResultSinkCluster) SetVpcInstancePort(v stri
 }
 
 type CreateDataTasksResponseBodyResultSourceCluster struct {
-	// The type of the source cluster. Default value: Elasticsearch.
+	// The information about the target cluster.
 	DataSourceType *string `json:"dataSourceType,omitempty" xml:"dataSourceType,omitempty"`
-	// The public domain name of the cluster.
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// Specifies the indexes to be migrated.
-	Index *string `json:"index,omitempty" xml:"index,omitempty"`
-	// The access password of the source cluster.
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The type of the specified index.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The username of the source cluster.
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The type of the specified index.
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// Specifies the indexes to be migrated.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The public domain name of the cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The ID of the Virtual Private Cloud where the source cluster resides. If the cluster access address is a public domain name, you can not specify the private endpoint.
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
 	// The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
-	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// The access port number of the source cluster.
+	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
+	// The type of the source cluster. Default value: Elasticsearch.
 	VpcInstancePort *int32 `json:"vpcInstancePort,omitempty" xml:"vpcInstancePort,omitempty"`
 }
 
@@ -3323,8 +3464,7 @@ type CreateLogstashRequest struct {
 	PaymentType     *string                             `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	ResourceGroupId *string                             `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	Version         *string                             `json:"version,omitempty" xml:"version,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ClientToken     *string                             `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s CreateLogstashRequest) String() string {
@@ -3480,10 +3620,8 @@ func (s *CreateLogstashRequestPaymentInfo) SetPricingCycle(v string) *CreateLogs
 }
 
 type CreateLogstashResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
-	Result *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CreateLogstashResponseBody) String() string {
@@ -3534,11 +3672,9 @@ func (s *CreateLogstashResponse) SetBody(v *CreateLogstashResponseBody) *CreateL
 }
 
 type CreatePipelinesRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
 	ClientToken *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        []*CreatePipelinesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// false
-	Trigger *bool `json:"trigger,omitempty" xml:"trigger,omitempty"`
+	Trigger     *bool                         `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
 func (s CreatePipelinesRequest) String() string {
@@ -3630,13 +3766,8 @@ func (s *CreatePipelinesRequestBody) SetWorkers(v int32) *CreatePipelinesRequest
 }
 
 type CreatePipelinesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the pipeline is created. Valor:
-	//
-	// *   true: The task is created.
-	// *   false: The instance failed to be created.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CreatePipelinesResponseBody) String() string {
@@ -3768,11 +3899,11 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateVpcEndpointRequest struct {
-	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\*\*\*
+	// The returned result details.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ServiceId   *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 	ZoneId      *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
-	// false
+	// The ID of the user endpoint service associated with the endpoint.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -3805,9 +3936,9 @@ func (s *CreateVpcEndpointRequest) SetDryRun(v bool) *CreateVpcEndpointRequest {
 }
 
 type CreateVpcEndpointResponseBody struct {
-	// The ID of the request.
+	// The endpoint domain name, which is used to configure the connection.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result details.
+	// The ID of the endpoint on the service VPC side.
 	Result *CreateVpcEndpointResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -3830,13 +3961,10 @@ func (s *CreateVpcEndpointResponseBody) SetResult(v *CreateVpcEndpointResponseBo
 }
 
 type CreateVpcEndpointResponseBodyResult struct {
-	// The endpoint domain name, which is used to configure the connection.
 	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
-	// The ID of the endpoint on the service VPC side.
-	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	EndpointId     *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	EndpointName   *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	// The name of the service VPC-side endpoint.
-	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	// The ID of the user endpoint service associated with the endpoint.
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
 }
 
@@ -3979,6 +4107,7 @@ func (s *DeactivateZonesResponse) SetBody(v *DeactivateZonesResponseBody) *Deact
 }
 
 type DeleteCollectorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -3996,8 +4125,13 @@ func (s *DeleteCollectorRequest) SetClientToken(v string) *DeleteCollectorReques
 }
 
 type DeleteCollectorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the shipper is deleted. Valid values:
+	//
+	// *   true: The shipper is deleted.
+	// *   false: The shipper fails to be deleted.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteCollectorResponseBody) String() string {
@@ -4557,8 +4691,13 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteLogstashRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	DeleteType  *string `json:"deleteType,omitempty" xml:"deleteType,omitempty"`
+	// The type of the release operation. Valid values:
+	//
+	// *   immediate: The cluster is immediately deleted when it is released. After the cluster is deleted, the data stored in the cluster is deleted, and the system removes the cluster from the Logstash cluster list.
+	// *   protective: The cluster is released 24 hours later. During the period of 24 hours, you can still find the cluster in the Logstash cluster list, and [restore the cluster](~~202205~~) or [immediately release the cluster](~~160591~~). After 24 hours elapse, the data stored in the cluster is deleted.
+	DeleteType *string `json:"deleteType,omitempty" xml:"deleteType,omitempty"`
 }
 
 func (s DeleteLogstashRequest) String() string {
@@ -4580,6 +4719,7 @@ func (s *DeleteLogstashRequest) SetDeleteType(v string) *DeleteLogstashRequest {
 }
 
 type DeleteLogstashResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4626,7 +4766,9 @@ func (s *DeleteLogstashResponse) SetBody(v *DeleteLogstashResponseBody) *DeleteL
 }
 
 type DeletePipelinesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the pipeline.
 	PipelineIds *string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty"`
 }
 
@@ -4649,8 +4791,13 @@ func (s *DeletePipelinesRequest) SetPipelineIds(v string) *DeletePipelinesReques
 }
 
 type DeletePipelinesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the pipeline is deleted. Valid values:
+	//
+	// *   true: The pipeline is deleted.
+	// *   false: The pipeline fails to be deleted.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeletePipelinesResponseBody) String() string {
@@ -4852,8 +4999,10 @@ func (s *DeleteVpcEndpointResponse) SetBody(v *DeleteVpcEndpointResponseBody) *D
 }
 
 type DescribeAckOperatorResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeAckOperatorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeAckOperatorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeAckOperatorResponseBody) String() string {
@@ -4875,7 +5024,14 @@ func (s *DescribeAckOperatorResponseBody) SetResult(v *DescribeAckOperatorRespon
 }
 
 type DescribeAckOperatorResponseBodyResult struct {
-	Status  *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The installation status of ES-operator. Valid values:
+	//
+	// *   deployed: ES-operator is installed.
+	// *   not-deploy: ES-operator is not installed.
+	// *   failed: ES-operator fails to be installed.
+	// *   unknown: The installation status of ES-operator is unknown.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The version of ES-operator.
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -5104,8 +5260,10 @@ func (s *DescribeApmResponse) SetBody(v *DescribeApmResponseBody) *DescribeApmRe
 }
 
 type DescribeCollectorResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeCollectorResponseBody) String() string {
@@ -5127,19 +5285,37 @@ func (s *DescribeCollectorResponseBody) SetResult(v *DescribeCollectorResponseBo
 }
 
 type DescribeCollectorResponseBodyResult struct {
-	CollectorPaths []*string                                           `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	Configs        []*DescribeCollectorResponseBodyResultConfigs       `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	DryRun         *bool                                               `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	ExtendConfigs  []*DescribeCollectorResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	GmtCreatedTime *string                                             `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	GmtUpdateTime  *string                                             `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	Name           *string                                             `json:"name,omitempty" xml:"name,omitempty"`
-	OwnerId        *string                                             `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	ResId          *string                                             `json:"resId,omitempty" xml:"resId,omitempty"`
-	ResType        *string                                             `json:"resType,omitempty" xml:"resType,omitempty"`
-	ResVersion     *string                                             `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	Status         *string                                             `json:"status,omitempty" xml:"status,omitempty"`
-	VpcId          *string                                             `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	// The information about the configuration file of the shipper.
+	Configs []*DescribeCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Indicates whether a dry run is performed. Valid values:
+	//
+	// *   true
+	// *   false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The extended configurations of the shipper.
+	ExtendConfigs []*DescribeCollectorResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The time when the shipper was created.
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// The time when the shipper was updated.
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// The name of the shipper.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The account ID.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The ID of the shipper.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The version of the shipper.
+	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The status of the shipper. Valid values:
+	//
+	// *   activating
+	// *   active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the shipper resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s DescribeCollectorResponseBodyResult) String() string {
@@ -5216,7 +5392,9 @@ func (s *DescribeCollectorResponseBodyResult) SetVpcId(v string) *DescribeCollec
 }
 
 type DescribeCollectorResponseBodyResultConfigs struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -5239,20 +5417,43 @@ func (s *DescribeCollectorResponseBodyResultConfigs) SetFileName(v string) *Desc
 }
 
 type DescribeCollectorResponseBodyResultExtendConfigs struct {
-	ConfigType       *string                                                     `json:"configType,omitempty" xml:"configType,omitempty"`
-	EnableMonitoring *bool                                                       `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	GroupId          *string                                                     `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Host             *string                                                     `json:"host,omitempty" xml:"host,omitempty"`
-	Hosts            []*string                                                   `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	InstanceId       *string                                                     `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType     *string                                                     `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	KibanaHost       *string                                                     `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	Machines         []*DescribeCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	Protocol         *string                                                     `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	SuccessPodsCount *string                                                     `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	TotalPodsCount   *string                                                     `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	Type             *string                                                     `json:"type,omitempty" xml:"type,omitempty"`
-	UserName         *string                                                     `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// *   collectorTargetInstance
+	// *   collectorDeployMachine
+	// *   collectorElasticsearchForKibana
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance**. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
+	// The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The private endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
+	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	// The ID of the resource that is associated with the shipper. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachines** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
+	// The information about the Elastic Compute Service (ECS) instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachines** and the value of **type** is **ECSInstanceId**.
+	Machines []*DescribeCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// The transmission protocol, which must be the same as the access protocol of the resource specified in the output configuration part of the shipper. Valid values: HTTP and HTTPS. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The number of pods from which data is succcessfully collected in the Container Service for Kubernetes (ACK) cluster.
+	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
+	// The total number of pods from which data is collected in the ACK cluster.
+	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
+	// The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+	//
+	// *   ECSInstanceId
+	// *   ACKCluster
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s DescribeCollectorResponseBodyResultExtendConfigs) String() string {
@@ -5334,8 +5535,15 @@ func (s *DescribeCollectorResponseBodyResultExtendConfigs) SetUserName(v string)
 }
 
 type DescribeCollectorResponseBodyResultExtendConfigsMachines struct {
+	// The status of the shipper on the ECS instance. Valid values:
+	//
+	// *   heartOk: The heartbeat is normal.
+	// *   heartLost: The heartbeat is abnormal.
+	// *   uninstalled: The shipper is not installed.
+	// *   failed: The shipper fails to be installed.
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IDs of the ECS instances.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
 func (s DescribeCollectorResponseBodyResultExtendConfigsMachines) String() string {
@@ -5490,7 +5698,7 @@ func (s *DescribeComponentIndexResponse) SetBody(v *DescribeComponentIndexRespon
 }
 
 type DescribeConnectableClustersRequest struct {
-	// true
+	// The ID of the instance that can communicate with each other.
 	AlreadySetItems *bool `json:"alreadySetItems,omitempty" xml:"alreadySetItems,omitempty"`
 }
 
@@ -5508,10 +5716,8 @@ func (s *DescribeConnectableClustersRequest) SetAlreadySetItems(v bool) *Describ
 }
 
 type DescribeConnectableClustersResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
-	Result []*DescribeConnectableClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeConnectableClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeConnectableClustersResponseBody) String() string {
@@ -5533,9 +5739,7 @@ func (s *DescribeConnectableClustersResponseBody) SetResult(v []*DescribeConnect
 }
 
 type DescribeConnectableClustersResponseBodyResult struct {
-	// The ID of the instance that can communicate with each other.
-	Instances *string `json:"instances,omitempty" xml:"instances,omitempty"`
-	// The network type of the instance.
+	Instances   *string `json:"instances,omitempty" xml:"instances,omitempty"`
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
 }
 
@@ -5715,7 +5919,6 @@ func (s *DescribeDeprecatedTemplateResponse) SetBody(v *DescribeDeprecatedTempla
 }
 
 type DescribeDiagnoseReportRequest struct {
-	// en
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
@@ -5733,10 +5936,8 @@ func (s *DescribeDiagnoseReportRequest) SetLang(v string) *DescribeDiagnoseRepor
 }
 
 type DescribeDiagnoseReportResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
-	Result *DescribeDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DescribeDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeDiagnoseReportResponseBody) String() string {
@@ -5758,20 +5959,13 @@ func (s *DescribeDiagnoseReportResponseBody) SetResult(v *DescribeDiagnoseReport
 }
 
 type DescribeDiagnoseReportResponseBodyResult struct {
-	// The timestamp when the report was created. Unit: ms.
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Reports the list of diagnostic item information.
+	CreateTime    *int64                                                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	DiagnoseItems []*DescribeDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	// The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
-	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The ID of the instance for diagnosis.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ID of the report.
-	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	// The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The trigger mode of health diagnostics. Supported: SYSTEM (automatic system trigger), INNER (internal trigger), and USER (manual user trigger).
-	Trigger *string `json:"trigger,omitempty" xml:"trigger,omitempty"`
+	Health        *string                                                  `json:"health,omitempty" xml:"health,omitempty"`
+	InstanceId    *string                                                  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	ReportId      *string                                                  `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	State         *string                                                  `json:"state,omitempty" xml:"state,omitempty"`
+	Trigger       *string                                                  `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
 func (s DescribeDiagnoseReportResponseBodyResult) String() string {
@@ -5818,12 +6012,9 @@ func (s *DescribeDiagnoseReportResponseBodyResult) SetTrigger(v string) *Describ
 }
 
 type DescribeDiagnoseReportResponseBodyResultDiagnoseItems struct {
-	// The details of the diagnostic item.
 	Detail *DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail `json:"detail,omitempty" xml:"detail,omitempty" type:"Struct"`
-	// The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
-	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The name of the item.
-	Item *string `json:"item,omitempty" xml:"item,omitempty"`
+	Health *string                                                      `json:"health,omitempty" xml:"health,omitempty"`
+	Item   *string                                                      `json:"item,omitempty" xml:"item,omitempty"`
 }
 
 func (s DescribeDiagnoseReportResponseBodyResultDiagnoseItems) String() string {
@@ -5850,16 +6041,11 @@ func (s *DescribeDiagnoseReportResponseBodyResultDiagnoseItems) SetItem(v string
 }
 
 type DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
-	// The description of the diagnostic item.
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The full name of the diagnostic item.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The diagnosis.
-	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The suggestion for the diagnosis.
+	Desc    *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	Result  *string `json:"result,omitempty" xml:"result,omitempty"`
 	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
-	// The type of the diagnostic result. Supported: TEXT (text description), CONSOLE_API (console trigger), ES_API(API trigger).
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail) String() string {
@@ -6074,10 +6260,14 @@ func (s *DescribeDynamicSettingsResponse) SetBody(v *DescribeDynamicSettingsResp
 }
 
 type DescribeElasticsearchHealthResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The color that indicates the health status of the cluster.
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeElasticsearchHealthResponseBody) String() string {
@@ -7211,10 +7401,8 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeKibanaSettingsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Some configurable Kibana settings information. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
-	Result map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeKibanaSettingsResponseBody) String() string {
@@ -7265,9 +7453,9 @@ func (s *DescribeKibanaSettingsResponse) SetBody(v *DescribeKibanaSettingsRespon
 }
 
 type DescribeLogstashResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Detailed information about the instance.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the instance.
 	Result *DescribeLogstashResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -7290,47 +7478,50 @@ func (s *DescribeLogstashResponseBody) SetResult(v *DescribeLogstashResponseBody
 }
 
 type DescribeLogstashResponseBodyResult struct {
-	// The configuration of cluster extension parameters.
-	ExtendConfigs []map[string]interface{} `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags added to the ALB instance.
-	Tags []*DescribeLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The information about the zones.
-	ZoneInfos []*DescribeLogstashResponseBodyResultZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Repeated"`
-	// The configurations of the instance.
-	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The time when the instance was created.
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the instance.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The access information of the node.
-	EndpointList []*DescribeLogstashResponseBodyResultEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The network configurations.
-	NetworkConfig *DescribeLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The number of data nodes.
-	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
 	// The configuration information of the node.
-	NodeSpec *DescribeLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	ExtendConfigs []map[string]interface{} `json:"ExtendConfigs,omitempty" xml:"ExtendConfigs,omitempty" type:"Repeated"`
+	// The number of data nodes.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The key of the tag.
+	Tags []*DescribeLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The status of the zone. Valid values:
+	//
+	// *   ISOLATION: offline
+	// *   NORMAL
+	ZoneInfos []*DescribeLogstashResponseBodyResultZoneInfos `json:"ZoneInfos,omitempty" xml:"ZoneInfos,omitempty" type:"Repeated"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   prepaid: subscription
 	// *   postpaid: pay-as-you-go
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The state of the instance. Four states are supported:
 	//
 	// *   Normal: active
 	// *   Active: activating
 	// *   Freeze: inactive
 	// *   Invalid: invalid
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the instance was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The edition of the dedicated KMS instance.
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The time when the instance was created.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the zone where the node resides.
+	EndpointList []*DescribeLogstashResponseBodyResultEndpointList `json:"endpointList,omitempty" xml:"endpointList,omitempty" type:"Repeated"`
+	// The access information of the node.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	NetworkConfig *DescribeLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The name of the instance.
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The specifications of the node.
+	NodeSpec *DescribeLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The ID of the resource group to which the instance belongs.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the elastic container instances belong.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The edition of the dedicated KMS instance.
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The ID of the instance.
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	// The time when the instance was last updated.
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
 }
 
@@ -7428,9 +7619,9 @@ func (s *DescribeLogstashResponseBodyResult) SetVpcInstanceId(v string) *Describ
 }
 
 type DescribeLogstashResponseBodyResultTags struct {
-	// The key of the tag.
-	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
 	// The value of the tag.
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The information about the zones.
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -7453,12 +7644,9 @@ func (s *DescribeLogstashResponseBodyResultTags) SetTagValue(v string) *Describe
 }
 
 type DescribeLogstashResponseBodyResultZoneInfos struct {
-	// The status of the zone. Valid values:
-	//
-	// *   ISOLATION: offline
-	// *   NORMAL
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The zone ID of the new instance.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The configuration of cluster extension parameters.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -7481,11 +7669,11 @@ func (s *DescribeLogstashResponseBodyResultZoneInfos) SetZoneId(v string) *Descr
 }
 
 type DescribeLogstashResponseBodyResultEndpointList struct {
-	// The IP address of the node.
+	// The tags added to the ALB instance.
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The port number.
+	// The IP address of the node.
 	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// The ID of the zone where the node resides.
+	// The port number.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -7513,13 +7701,12 @@ func (s *DescribeLogstashResponseBodyResultEndpointList) SetZoneId(v string) *De
 }
 
 type DescribeLogstashResponseBodyResultNetworkConfig struct {
-	// The network type of the instance. Valid values: Currently, only Virtual Private Cloud (VPC) are supported.
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the virtual private cloud (VPC).
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the cluster resides.
-	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	// The ID of the vSwitch to which the instance is connected.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The zone where the cluster resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The network type of the instance. Valid values: Currently, only Virtual Private Cloud (VPC) are supported.
+	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -7552,16 +7739,16 @@ func (s *DescribeLogstashResponseBodyResultNetworkConfig) SetVswitchId(v string)
 }
 
 type DescribeLogstashResponseBodyResultNodeSpec struct {
-	// The disk size of the node.
-	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// Whether to use disk encryption:
 	//
 	// *   true
 	// *   false
-	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
 	// The disk type of the node.
+	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	// The network configurations.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The specifications of the node.
+	// The disk size of the node.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -7623,9 +7810,12 @@ func (s *DescribeLogstashResponse) SetBody(v *DescribeLogstashResponseBody) *Des
 }
 
 type DescribePipelineResponseBody struct {
-	// The ID of the request.
+	// The time when the pipeline was updated.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the returned pipeline. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
+	// The type of the queue. Valid values:
+	//
+	// *   MEMORY: a traditional memory-based queue.
+	// *   PERSISTED: disk-based ACKed queue (persistent queue).
 	Result *DescribePipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -7648,36 +7838,30 @@ func (s *DescribePipelineResponseBody) SetResult(v *DescribePipelineResponseBody
 }
 
 type DescribePipelineResponseBodyResult struct {
-	// Pipeline batch delay. Unit: milliseconds.
-	BatchDelay *int32 `json:"batchDelay,omitempty" xml:"batchDelay,omitempty"`
-	// The size of the pipeline batch.
-	BatchSize *int32 `json:"batchSize,omitempty" xml:"batchSize,omitempty"`
-	// The specific configuration of the pipeline.
-	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The description of the pipeline.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The time when the pipeline was created.
-	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the pipeline was updated.
-	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
-	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	BatchDelay *int32 `json:"batchDelay,omitempty" xml:"batchDelay,omitempty"`
+	BatchSize  *int32 `json:"batchSize,omitempty" xml:"batchSize,omitempty"`
+	// The description of the pipeline.
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The state of the MPS queue. Valid values:
 	//
 	// *   NOT_DEPLOYED: The node is not deployed.
 	// *   RUNNING
 	// *   DELETED: Deleted. The console does not display this status.
-	PipelineStatus *string `json:"pipelineStatus,omitempty" xml:"pipelineStatus,omitempty"`
-	// Number of queue checkpoint writes.
-	QueueCheckPointWrites *int32 `json:"queueCheckPointWrites,omitempty" xml:"queueCheckPointWrites,omitempty"`
+	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
 	// The total capacity of the queue in bytes. Unit: MB.
-	QueueMaxBytes *int32 `json:"queueMaxBytes,omitempty" xml:"queueMaxBytes,omitempty"`
-	// The type of the queue. Valid values:
-	//
-	// *   MEMORY: a traditional memory-based queue.
-	// *   PERSISTED: disk-based ACKed queue (persistent queue).
-	QueueType *string `json:"queueType,omitempty" xml:"queueType,omitempty"`
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// Number of queue checkpoint writes.
+	PipelineId     *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	PipelineStatus *string `json:"pipelineStatus,omitempty" xml:"pipelineStatus,omitempty"`
+	// Pipeline batch delay. Unit: milliseconds.
+	QueueCheckPointWrites *int32 `json:"queueCheckPointWrites,omitempty" xml:"queueCheckPointWrites,omitempty"`
 	// The number of pipeline workers.
+	QueueMaxBytes *int32 `json:"queueMaxBytes,omitempty" xml:"queueMaxBytes,omitempty"`
+	// The specific configuration of the pipeline.
+	QueueType *string `json:"queueType,omitempty" xml:"queueType,omitempty"`
+	// The size of the pipeline batch.
 	Workers *int32 `json:"workers,omitempty" xml:"workers,omitempty"`
 }
 
@@ -7779,6 +7963,7 @@ func (s *DescribePipelineResponse) SetBody(v *DescribePipelineResponseBody) *Des
 }
 
 type DescribePipelineManagementConfigRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -7796,8 +7981,10 @@ func (s *DescribePipelineManagementConfigRequest) SetClientToken(v string) *Desc
 }
 
 type DescribePipelineManagementConfigResponseBody struct {
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribePipelineManagementConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribePipelineManagementConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribePipelineManagementConfigResponseBody) String() string {
@@ -7819,11 +8006,15 @@ func (s *DescribePipelineManagementConfigResponseBody) SetResult(v *DescribePipe
 }
 
 type DescribePipelineManagementConfigResponseBodyResult struct {
-	Endpoints              *string   `json:"endpoints,omitempty" xml:"endpoints,omitempty"`
-	EsInstanceId           *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
-	PipelineIds            []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
-	PipelineManagementType *string   `json:"pipelineManagementType,omitempty" xml:"pipelineManagementType,omitempty"`
-	UserName               *string   `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The access addresses of the Elasticsearch cluster. Specify each address in the `http://Endpoint of the Elasticsearch cluster:Port number` format.
+	Endpoints *string `json:"endpoints,omitempty" xml:"endpoints,omitempty"`
+	// The ID of the Elasticsearch cluster.
+	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
+	PipelineIds  []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
+	// The pipeline management method. Valid values: Kibana and MULTIPLE_PIPELINE.
+	PipelineManagementType *string `json:"pipelineManagementType,omitempty" xml:"pipelineManagementType,omitempty"`
+	// The username that is used to access the Elasticsearch cluster.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s DescribePipelineManagementConfigResponseBodyResult) String() string {
@@ -7889,9 +8080,9 @@ func (s *DescribePipelineManagementConfigResponse) SetBody(v *DescribePipelineMa
 }
 
 type DescribeRegionsResponseBody struct {
-	// The ID of the request.
+	// The available status of the region.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of returned database shards.
+	// The endpoint of the region.
 	Result []*DescribeRegionsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -7914,15 +8105,12 @@ func (s *DescribeRegionsResponseBody) SetResult(v []*DescribeRegionsResponseBody
 }
 
 type DescribeRegionsResponseBodyResult struct {
-	// The endpoint of the region that is exposed in the console.
 	ConsoleEndpoint *string `json:"consoleEndpoint,omitempty" xml:"consoleEndpoint,omitempty"`
+	LocalName       *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	RegionEndpoint  *string `json:"regionEndpoint,omitempty" xml:"regionEndpoint,omitempty"`
 	// The name of the region.
-	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
-	// The endpoint of the region.
-	RegionEndpoint *string `json:"regionEndpoint,omitempty" xml:"regionEndpoint,omitempty"`
-	// The region ID of the cluster.
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The available status of the region.
+	// The endpoint of the region that is exposed in the console.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -8143,8 +8331,10 @@ func (s *DescribeTemplatesResponse) SetBody(v *DescribeTemplatesResponseBody) *D
 }
 
 type DescribeXpackMonitorConfigResponseBody struct {
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *DescribeXpackMonitorConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *DescribeXpackMonitorConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s DescribeXpackMonitorConfigResponseBody) String() string {
@@ -8166,11 +8356,17 @@ func (s *DescribeXpackMonitorConfigResponseBody) SetResult(v *DescribeXpackMonit
 }
 
 type DescribeXpackMonitorConfigResponseBodyResult struct {
-	Enable       *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
-	Endpoints    []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// Indicates whether the X-Pack Monitoring feature is enabled. Valid values:
+	//
+	// *   true: enabled
+	// *   false: disabled
+	Enable    *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
+	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	// The ID of the associated Elasticsearch cluster.
 	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
 	PipelineIds  []*string `json:"pipelineIds,omitempty" xml:"pipelineIds,omitempty" type:"Repeated"`
-	UserName     *string   `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The username that is used to access the associated Elasticsearch cluster.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s DescribeXpackMonitorConfigResponseBodyResult) String() string {
@@ -8236,12 +8432,12 @@ func (s *DescribeXpackMonitorConfigResponse) SetBody(v *DescribeXpackMonitorConf
 }
 
 type DiagnoseInstanceRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The timestamp when the diagnostic report was generated.
 	ClientToken   *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DiagnoseItems []*string `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
 	Indices       []*string `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
 	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
-	// en
+	// The returned data.
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
@@ -8279,9 +8475,9 @@ func (s *DiagnoseInstanceRequest) SetLang(v string) *DiagnoseInstanceRequest {
 }
 
 type DiagnoseInstanceResponseBody struct {
-	// The ID of the request.
+	// The ID of the report.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
 	Result *DiagnoseInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -8304,14 +8500,11 @@ func (s *DiagnoseInstanceResponseBody) SetResult(v *DiagnoseInstanceResponseBody
 }
 
 type DiagnoseInstanceResponseBodyResult struct {
-	// The timestamp when the diagnostic report was generated.
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The ID of the diagnostic instance.
+	CreateTime *int64  `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ID of the report.
-	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
-	// The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	ReportId   *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s DiagnoseInstanceResponseBodyResult) String() string {
@@ -8372,8 +8565,9 @@ func (s *DiagnoseInstanceResponse) SetBody(v *DiagnoseInstanceResponseBody) *Dia
 }
 
 type EstimatedLogstashRestartTimeRequest struct {
-	Body  *string `json:"body,omitempty" xml:"body,omitempty"`
-	Force *bool   `json:"force,omitempty" xml:"force,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to forcibly restart the cluster. Default value: false.
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s EstimatedLogstashRestartTimeRequest) String() string {
@@ -8395,8 +8589,10 @@ func (s *EstimatedLogstashRestartTimeRequest) SetForce(v bool) *EstimatedLogstas
 }
 
 type EstimatedLogstashRestartTimeResponseBody struct {
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *EstimatedLogstashRestartTimeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *EstimatedLogstashRestartTimeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s EstimatedLogstashRestartTimeResponseBody) String() string {
@@ -8418,8 +8614,10 @@ func (s *EstimatedLogstashRestartTimeResponseBody) SetResult(v *EstimatedLogstas
 }
 
 type EstimatedLogstashRestartTimeResponseBodyResult struct {
-	Unit  *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value *int64  `json:"value,omitempty" xml:"value,omitempty"`
+	// The unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The estimated restart time.
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s EstimatedLogstashRestartTimeResponseBodyResult) String() string {
@@ -8470,8 +8668,9 @@ func (s *EstimatedLogstashRestartTimeResponse) SetBody(v *EstimatedLogstashResta
 }
 
 type EstimatedRestartTimeRequest struct {
-	Body  *string `json:"body,omitempty" xml:"body,omitempty"`
-	Force *bool   `json:"force,omitempty" xml:"force,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Specifies whether to forcibly restart the cluster. Default value: false.
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s EstimatedRestartTimeRequest) String() string {
@@ -8493,8 +8692,10 @@ func (s *EstimatedRestartTimeRequest) SetForce(v bool) *EstimatedRestartTimeRequ
 }
 
 type EstimatedRestartTimeResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *EstimatedRestartTimeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *EstimatedRestartTimeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s EstimatedRestartTimeResponseBody) String() string {
@@ -8516,8 +8717,10 @@ func (s *EstimatedRestartTimeResponseBody) SetResult(v *EstimatedRestartTimeResp
 }
 
 type EstimatedRestartTimeResponseBodyResult struct {
-	Unit  *string `json:"unit,omitempty" xml:"unit,omitempty"`
-	Value *int64  `json:"value,omitempty" xml:"value,omitempty"`
+	// The unit.
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The estimated restart time.
+	Value *int64 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s EstimatedRestartTimeResponseBodyResult) String() string {
@@ -10209,6 +10412,7 @@ func (s *GetTransferableNodesResponse) SetBody(v *GetTransferableNodesResponseBo
 }
 
 type InitializeOperationRoleRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -10232,8 +10436,13 @@ func (s *InitializeOperationRoleRequest) SetBody(v string) *InitializeOperationR
 }
 
 type InitializeOperationRoleResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the service-linked role is created. Valid values:
+	//
+	// *   true: The service-linked role is created.
+	// *   false: The service-linked role fails to be created.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s InitializeOperationRoleResponseBody) String() string {
@@ -10284,6 +10493,7 @@ func (s *InitializeOperationRoleResponse) SetBody(v *InitializeOperationRoleResp
 }
 
 type InstallAckOperatorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -10307,8 +10517,13 @@ func (s *InstallAckOperatorRequest) SetBody(v string) *InstallAckOperatorRequest
 }
 
 type InstallAckOperatorResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether ES-operator is installed. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s InstallAckOperatorResponseBody) String() string {
@@ -10437,8 +10652,7 @@ func (s *InstallKibanaSystemPluginResponse) SetBody(v *InstallKibanaSystemPlugin
 }
 
 type InstallLogstashSystemPluginRequest struct {
-	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// ls-cn-oew1qbgl\*\*\*\*
+	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -10461,10 +10675,8 @@ func (s *InstallLogstashSystemPluginRequest) SetClientToken(v string) *InstallLo
 }
 
 type InstallLogstashSystemPluginResponseBody struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the request.
-	Result []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s InstallLogstashSystemPluginResponseBody) String() string {
@@ -10610,6 +10822,7 @@ func (s *InstallUserPluginsRequest) SetBody(v string) *InstallUserPluginsRequest
 }
 
 type InstallUserPluginsResponseBody struct {
+	// The request ID.
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -10751,6 +10964,7 @@ func (s *InterruptElasticsearchTaskResponse) SetBody(v *InterruptElasticsearchTa
 }
 
 type InterruptLogstashTaskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -10768,10 +10982,17 @@ func (s *InterruptLogstashTaskRequest) SetClientToken(v string) *InterruptLogsta
 }
 
 type InterruptLogstashTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code returned. If the API operation is successfully called, this parameter is not returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned. If the API operation is successfully called, this parameter is not returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the task is suspended. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s InterruptLogstashTaskResponseBody) String() string {
@@ -10832,8 +11053,11 @@ func (s *InterruptLogstashTaskResponse) SetBody(v *InterruptLogstashTaskResponse
 }
 
 type ListAckClustersRequest struct {
-	Page  *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Size  *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of the page to return.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The ID of the virtual private cloud (VPC) to which the ACK clusters belong.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -10861,8 +11085,10 @@ func (s *ListAckClustersRequest) SetVpcId(v string) *ListAckClustersRequest {
 }
 
 type ListAckClustersResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListAckClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListAckClustersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListAckClustersResponseBody) String() string {
@@ -10884,10 +11110,14 @@ func (s *ListAckClustersResponseBody) SetResult(v []*ListAckClustersResponseBody
 }
 
 type ListAckClustersResponseBodyResult struct {
-	ClusterId   *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The ID of cluster.
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
+	// The type of the cluster. The value is fixed as ManagedKubernetes.
 	ClusterType *string `json:"clusterType,omitempty" xml:"clusterType,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	VpcId       *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The name of the cluster.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the VPC to which the cluster belongs.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s ListAckClustersResponseBodyResult) String() string {
@@ -10948,7 +11178,9 @@ func (s *ListAckClustersResponse) SetBody(v *ListAckClustersResponseBody) *ListA
 }
 
 type ListAckNamespacesRequest struct {
+	// The number of the page to return.
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries to return on each page.
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -10971,8 +11203,10 @@ func (s *ListAckNamespacesRequest) SetSize(v int32) *ListAckNamespacesRequest {
 }
 
 type ListAckNamespacesResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListAckNamespacesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListAckNamespacesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListAckNamespacesResponseBody) String() string {
@@ -10994,8 +11228,10 @@ func (s *ListAckNamespacesResponseBody) SetResult(v []*ListAckNamespacesResponse
 }
 
 type ListAckNamespacesResponseBodyResult struct {
+	// The namespace of the cluster.
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The status of the namespace.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAckNamespacesResponseBodyResult) String() string {
@@ -11412,7 +11648,7 @@ func (s *ListActionRecordsResponse) SetBody(v *ListActionRecordsResponseBody) *L
 }
 
 type ListAllNodeRequest struct {
-	// false
+	// The Java Virtual Machine (JVM) heap memory usage of the node.
 	Extended *bool `json:"extended,omitempty" xml:"extended,omitempty"`
 }
 
@@ -11430,9 +11666,11 @@ func (s *ListAllNodeRequest) SetExtended(v bool) *ListAllNodeRequest {
 }
 
 type ListAllNodeResponseBody struct {
-	// The ID of the request.
+	// The zone ID of the node.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
+	// The CPU utilization.
+	//
+	// >  If the **extended** request parameter is set to **true** and the monitoring information of the nodes in the cluster is being synchronized, the value of the cpuPercent parameter is null. In this case, you need to send a request again after 10 seconds to obtain the value of the cpuPercent parameter.
 	Result []*ListAllNodeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -11455,20 +11693,19 @@ func (s *ListAllNodeResponseBody) SetResult(v []*ListAllNodeResponseBodyResult) 
 }
 
 type ListAllNodeResponseBodyResult struct {
-	// The CPU utilization.
-	//
-	// >  If the **extended** request parameter is set to **true** and the monitoring information of the nodes in the cluster is being synchronized, the value of the cpuPercent parameter is null. In this case, you need to send a request again after 10 seconds to obtain the value of the cpuPercent parameter.
-	CpuPercent *string `json:"cpuPercent,omitempty" xml:"cpuPercent,omitempty"`
 	// The disk usage.
-	DiskUsedPercent *string `json:"diskUsedPercent,omitempty" xml:"diskUsedPercent,omitempty"`
+	CpuPercent *string `json:"cpuPercent,omitempty" xml:"cpuPercent,omitempty"`
 	// The health status of the node. Valid values: GREEN, YELLOW, RED, and GRAY.
-	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The Java Virtual Machine (JVM) heap memory usage of the node.
-	HeapPercent *string `json:"heapPercent,omitempty" xml:"heapPercent,omitempty"`
+	DiskUsedPercent *string `json:"diskUsedPercent,omitempty" xml:"diskUsedPercent,omitempty"`
+	Health          *string `json:"health,omitempty" xml:"health,omitempty"`
 	// The IP address of the node.
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The 1-minute load of the node.
+	HeapPercent *string `json:"heapPercent,omitempty" xml:"heapPercent,omitempty"`
+	// The port that is used to connect to the node.
+	Host     *string `json:"host,omitempty" xml:"host,omitempty"`
 	LoadOneM *string `json:"loadOneM,omitempty" xml:"loadOneM,omitempty"`
+	// The 1-minute load of the node.
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Port     *int32  `json:"port,omitempty" xml:"port,omitempty"`
 	// The type of the nodes. Valid values:
 	//
 	// *   MASTER: dedicated master node
@@ -11476,10 +11713,6 @@ type ListAllNodeResponseBodyResult struct {
 	// *   WORKER_WARM: warm node
 	// *   COORDINATING: client node
 	// *   KIBANA: Kibana node
-	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// The port that is used to connect to the node.
-	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The zone ID of the node.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -11892,8 +12125,10 @@ func (s *ListApmResponse) SetBody(v *ListApmResponseBody) *ListApmResponse {
 }
 
 type ListAvailableEsInstanceIdsResponseBody struct {
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListAvailableEsInstanceIdsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListAvailableEsInstanceIdsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListAvailableEsInstanceIdsResponseBody) String() string {
@@ -11915,9 +12150,13 @@ func (s *ListAvailableEsInstanceIdsResponseBody) SetResult(v []*ListAvailableEsI
 }
 
 type ListAvailableEsInstanceIdsResponseBodyResult struct {
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
-	Endpoint       *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	EsInstanceId   *string `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
+	// The name of the Elasticsearch cluster.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The address that is used to access the Elasticsearch cluster over the Internet.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The ID of the Elasticsearch cluster.
+	EsInstanceId *string `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
+	// The address that is used to access the Kibana console of the Elasticsearch cluster over the Internet.
 	KibanaEndpoint *string `json:"kibanaEndpoint,omitempty" xml:"kibanaEndpoint,omitempty"`
 }
 
@@ -11979,11 +12218,20 @@ func (s *ListAvailableEsInstanceIdsResponse) SetBody(v *ListAvailableEsInstanceI
 }
 
 type ListCollectorsRequest struct {
+	// The ID of the resource with which the shipper is associated.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Page       *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	ResId      *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The name of the shipper.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of the page to return. Valid values: 1 to 200. Default value: 1.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The ID of the shipper.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 500. Default value: 20.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The type of the machine on which the shipper is deployed. If you leave this parameter empty, shippers deployed on all types of machines are returned. Valid values:
+	//
+	// *   ECS
+	// *   ACK
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
@@ -12026,9 +12274,12 @@ func (s *ListCollectorsRequest) SetSourceType(v string) *ListCollectorsRequest {
 }
 
 type ListCollectorsResponseBody struct {
-	Headers   *ListCollectorsResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListCollectorsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The header of the response.
+	Headers *ListCollectorsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListCollectorsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListCollectorsResponseBody) String() string {
@@ -12055,6 +12306,7 @@ func (s *ListCollectorsResponseBody) SetResult(v []*ListCollectorsResponseBodyRe
 }
 
 type ListCollectorsResponseBodyHeaders struct {
+	// The total number of entries returned.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -12072,19 +12324,37 @@ func (s *ListCollectorsResponseBodyHeaders) SetXTotalCount(v int32) *ListCollect
 }
 
 type ListCollectorsResponseBodyResult struct {
-	CollectorPaths []*string                                        `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	Configs        []*ListCollectorsResponseBodyResultConfigs       `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	DryRun         *bool                                            `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	ExtendConfigs  []*ListCollectorsResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	GmtCreatedTime *string                                          `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	GmtUpdateTime  *string                                          `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	Name           *string                                          `json:"name,omitempty" xml:"name,omitempty"`
-	OwnerId        *string                                          `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	ResId          *string                                          `json:"resId,omitempty" xml:"resId,omitempty"`
-	ResType        *string                                          `json:"resType,omitempty" xml:"resType,omitempty"`
-	ResVersion     *string                                          `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	Status         *string                                          `json:"status,omitempty" xml:"status,omitempty"`
-	VpcId          *string                                          `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	// The information about the configuration file of the shipper.
+	Configs []*ListCollectorsResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Indicates whether a dry run is performed. Valid values:
+	//
+	// *   true
+	// *   false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The extended configurations of the shipper.
+	ExtendConfigs []*ListCollectorsResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The time when the shipper was created.
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// The time when the shipper was updated.
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// The name of the shipper.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The account ID.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The ID of the shipper.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The version of the shipper.
+	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The status of the shipper. Valid values:
+	//
+	// *   activating
+	// *   active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the shipper resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s ListCollectorsResponseBodyResult) String() string {
@@ -12161,7 +12431,9 @@ func (s *ListCollectorsResponseBodyResult) SetVpcId(v string) *ListCollectorsRes
 }
 
 type ListCollectorsResponseBodyResultConfigs struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -12184,20 +12456,43 @@ func (s *ListCollectorsResponseBodyResultConfigs) SetFileName(v string) *ListCol
 }
 
 type ListCollectorsResponseBodyResultExtendConfigs struct {
-	ConfigType       *string                                                  `json:"configType,omitempty" xml:"configType,omitempty"`
-	EnableMonitoring *bool                                                    `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	GroupId          *string                                                  `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Host             *string                                                  `json:"host,omitempty" xml:"host,omitempty"`
-	Hosts            []*string                                                `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	InstanceId       *string                                                  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType     *string                                                  `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	KibanaHost       *string                                                  `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	Machines         []*ListCollectorsResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	Protocol         *string                                                  `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	SuccessPodsCount *string                                                  `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	TotalPodsCount   *string                                                  `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	Type             *string                                                  `json:"type,omitempty" xml:"type,omitempty"`
-	UserName         *string                                                  `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// *   collectorTargetInstance
+	// *   collectorDeployMachine
+	// *   collectorElasticsearchForKibana
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance** and the value of **instanceType** is **elasticsearch**. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
+	// The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The internal endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
+	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	// The ID of the resource with which the shipper is associated. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
+	// The information about the ECS instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ECSInstanceId**.
+	Machines []*ListCollectorsResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// The transmission protocol, which must be the same as the access protocol of the resource specified in the output configuration part of the shipper. Valid values: HTTP and HTTPS. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The number of pods from which data is successfully collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
+	// The total number of pods from which data is collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
+	// The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+	//
+	// *   ECSInstanceId
+	// *   ACKCluster
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s ListCollectorsResponseBodyResultExtendConfigs) String() string {
@@ -12279,8 +12574,15 @@ func (s *ListCollectorsResponseBodyResultExtendConfigs) SetUserName(v string) *L
 }
 
 type ListCollectorsResponseBodyResultExtendConfigsMachines struct {
+	// The status of the shipper on the ECS instance. Valid values:
+	//
+	// *   heartOk
+	// *   heartLost
+	// *   uninstalled
+	// *   failed
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IDs of the ECS instances.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
 func (s ListCollectorsResponseBodyResultExtendConfigsMachines) String() string {
@@ -13080,8 +13382,22 @@ func (s *ListDataTasksResponse) SetBody(v *ListDataTasksResponseBody) *ListDataT
 }
 
 type ListDefaultCollectorConfigurationsRequest struct {
-	ResType    *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The shipper type. Valid values:
+	//
+	// *   fileBeat
+	// *   metricBeat
+	// *   heartBeat
+	// *   auditBeat
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The shipper version. The shipper version varies based on the type of the machine on which the shipper is deployed. Valid values:
+	//
+	// *   ECS: 6.8.5\_with_community
+	// *   ACK: 6.8.13\_with_community
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The type of the machine on which the shipper is deployed. If you do not configure this parameter, the default configuration files of shippers deployed on all types of machines are returned. Valid values:
+	//
+	// *   ECS: ECS instance
+	// *   ACK: ACK cluster
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
@@ -13109,8 +13425,10 @@ func (s *ListDefaultCollectorConfigurationsRequest) SetSourceType(v string) *Lis
 }
 
 type ListDefaultCollectorConfigurationsResponseBody struct {
-	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDefaultCollectorConfigurationsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListDefaultCollectorConfigurationsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDefaultCollectorConfigurationsResponseBody) String() string {
@@ -13132,7 +13450,9 @@ func (s *ListDefaultCollectorConfigurationsResponseBody) SetResult(v []*ListDefa
 }
 
 type ListDefaultCollectorConfigurationsResponseBodyResult struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the configuration file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the configuration file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -13364,6 +13684,7 @@ func (s *ListDeprecatedTemplatesResponse) SetBody(v *ListDeprecatedTemplatesResp
 }
 
 type ListDiagnoseIndicesRequest struct {
+	// The language. Multiple languages are supported.
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
@@ -13381,6 +13702,7 @@ func (s *ListDiagnoseIndicesRequest) SetLang(v string) *ListDiagnoseIndicesReque
 }
 
 type ListDiagnoseIndicesResponseBody struct {
+	// The request ID.
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
@@ -13433,19 +13755,19 @@ func (s *ListDiagnoseIndicesResponse) SetBody(v *ListDiagnoseIndicesResponseBody
 }
 
 type ListDiagnoseReportRequest struct {
-	// true
-	Detail *bool `json:"detail,omitempty" xml:"detail,omitempty"`
-	// 1595174399999
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// spanish
-	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 20
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// 1594569600000
-	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// SYSTEM
+	Detail *bool `json:"detail,omitempty" xml:"detail,omitempty"`
+	// 1
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// 1594569600000
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// 20
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// true
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// 1595174399999
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The ID of the request.
 	Trigger *string `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
@@ -13493,11 +13815,15 @@ func (s *ListDiagnoseReportRequest) SetTrigger(v string) *ListDiagnoseReportRequ
 }
 
 type ListDiagnoseReportResponseBody struct {
-	// The header of the response.
+	// The total number of entries returned.
 	Headers *ListDiagnoseReportResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The header of the response.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The trigger mode of health diagnostics. Valid values:
+	//
+	// *   SYSTEM: The system is automatically triggered.
+	// *   INNER: internal trigger
+	// *   USER: manually triggered by the user
 	Result []*ListDiagnoseReportResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -13525,7 +13851,7 @@ func (s *ListDiagnoseReportResponseBody) SetResult(v []*ListDiagnoseReportRespon
 }
 
 type ListDiagnoseReportResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The returned results.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -13543,23 +13869,19 @@ func (s *ListDiagnoseReportResponseBodyHeaders) SetXTotalCount(v int32) *ListDia
 }
 
 type ListDiagnoseReportResponseBodyResult struct {
-	// The timestamp when the report was created.
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Reports the list of diagnostic item information.
-	DiagnoseItems []*ListDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
-	// The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
-	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The ID of the instance for diagnosis.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The ID of the report.
-	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The name of the item.
+	DiagnoseItems []*ListDiagnoseReportResponseBodyResultDiagnoseItems `json:"diagnoseItems,omitempty" xml:"diagnoseItems,omitempty" type:"Repeated"`
+	// Reports the list of diagnostic item information.
+	Health *string `json:"health,omitempty" xml:"health,omitempty"`
+	// The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
+	ReportId *string `json:"reportId,omitempty" xml:"reportId,omitempty"`
+	// The ID of the instance for diagnosis.
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The trigger mode of health diagnostics. Valid values:
-	//
-	// *   SYSTEM: The system is automatically triggered.
-	// *   INNER: internal trigger
-	// *   USER: manually triggered by the user
+	// The timestamp when the report was created.
 	Trigger *string `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
@@ -13607,11 +13929,15 @@ func (s *ListDiagnoseReportResponseBodyResult) SetTrigger(v string) *ListDiagnos
 }
 
 type ListDiagnoseReportResponseBodyResultDiagnoseItems struct {
-	// The details of the diagnostic item.
+	// The type of the diagnostic result. Valid values:
+	//
+	// *   TEXT: text description
+	// *   CONSOLE_API: console-triggered
+	// *   ES_API: API triggered
 	Detail *ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail `json:"detail,omitempty" xml:"detail,omitempty" type:"Struct"`
-	// The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
+	// The details of the diagnostic item.
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The name of the item.
+	// The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
 	Item *string `json:"item,omitempty" xml:"item,omitempty"`
 }
 
@@ -13639,19 +13965,14 @@ func (s *ListDiagnoseReportResponseBodyResultDiagnoseItems) SetItem(v string) *L
 }
 
 type ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail struct {
-	// The description of the diagnostic item.
-	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The full name of the diagnostic item.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The diagnosis.
-	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The description of the diagnostic item.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The suggestion for the diagnosis.
+	Result  *string `json:"result,omitempty" xml:"result,omitempty"`
 	Suggest *string `json:"suggest,omitempty" xml:"suggest,omitempty"`
-	// The type of the diagnostic result. Valid values:
-	//
-	// *   TEXT: text description
-	// *   CONSOLE_API: console-triggered
-	// *   ES_API: API triggered
+	// The full name of the diagnostic item.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -13718,12 +14039,18 @@ func (s *ListDiagnoseReportResponse) SetBody(v *ListDiagnoseReportResponseBody) 
 }
 
 type ListDiagnoseReportIdsRequest struct {
-	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Lang      *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	Page      *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Size      *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Trigger   *string `json:"trigger,omitempty" xml:"trigger,omitempty"`
+	// The end of the time range to query. The value must be a UNIX timestamp.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The language of the reports.
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	// The number of the page to return. Valid values: 1 to 200. Default value: 1.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 500. Default value: 10.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The beginning of the time range to query. The value must be a UNIX timestamp.
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The method that is used to trigger health diagnostics. Valid values: SYSTEM, INNER, and USER.
+	Trigger *string `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
 func (s ListDiagnoseReportIdsRequest) String() string {
@@ -13765,9 +14092,11 @@ func (s *ListDiagnoseReportIdsRequest) SetTrigger(v string) *ListDiagnoseReportI
 }
 
 type ListDiagnoseReportIdsResponseBody struct {
-	Headers   *ListDiagnoseReportIdsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*string                                 `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The header of the response.
+	Headers *ListDiagnoseReportIdsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*string `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDiagnoseReportIdsResponseBody) String() string {
@@ -13794,6 +14123,7 @@ func (s *ListDiagnoseReportIdsResponseBody) SetResult(v []*string) *ListDiagnose
 }
 
 type ListDiagnoseReportIdsResponseBodyHeaders struct {
+	// The total number of entries returned.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -14077,8 +14407,15 @@ func (s *ListDictInformationResponse) SetBody(v *ListDictInformationResponseBody
 }
 
 type ListDictsRequest struct {
+	// The type of the dictionary. Valid values:
+	//
+	// *   IK: IK dictionary after a standard update
+	// *   IK_HOT: IK dictionary after a rolling update
+	// *   SYNONYMS: synonym dictionary
+	// *   ALIWS: Alibaba Cloud dictionary
 	AnalyzerType *string `json:"analyzerType,omitempty" xml:"analyzerType,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s ListDictsRequest) String() string {
@@ -14100,9 +14437,12 @@ func (s *ListDictsRequest) SetName(v string) *ListDictsRequest {
 }
 
 type ListDictsResponseBody struct {
-	Headers   *ListDictsResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The header of the response.
+	Headers *ListDictsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListDictsResponseBody) String() string {
@@ -14129,6 +14469,7 @@ func (s *ListDictsResponseBody) SetResult(v []*ListDictsResponseBodyResult) *Lis
 }
 
 type ListDictsResponseBodyHeaders struct {
+	// The total number of entries returned.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -14146,11 +14487,19 @@ func (s *ListDictsResponseBodyHeaders) SetXTotalCount(v int32) *ListDictsRespons
 }
 
 type ListDictsResponseBodyResult struct {
+	// The link that is used to download the dictionary over the Internet. The link is valid for 90s.
 	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
-	FileSize    *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
-	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The size of the dictionary file. Unit: byte.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type.
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The type of the IK dictionary. Valid values:
+	//
+	// *   MAIN: main dictionary
+	// *   STOP: stopword list
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s ListDictsResponseBodyResult) String() string {
@@ -14216,17 +14565,17 @@ func (s *ListDictsResponse) SetBody(v *ListDictsResponseBody) *ListDictsResponse
 }
 
 type ListEcsInstancesRequest struct {
-	// \["i-bp13y63575oypr9d\*\*\*\*","i-bp1gyhphjaj73jsr\*\*\*\*"]
-	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
 	// test
-	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
 	// \[{ "tagKey":"a","tagValue":"b"}]
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
+	// 10
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// \["i-bp13y63575oypr9d\*\*\*\*","i-bp1gyhphjaj73jsr\*\*\*\*"]
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 	// vpc-bp16k1dvzxtmagcva\*\*\*\*
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The ID of the request.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -14269,11 +14618,14 @@ func (s *ListEcsInstancesRequest) SetVpcId(v string) *ListEcsInstancesRequest {
 }
 
 type ListEcsInstancesResponseBody struct {
-	// The header of the response.
+	// The number of returned records.
 	Headers *ListEcsInstancesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The header of the response.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// Cloud Assistant the installation status, support:
+	//
+	// *   true: The Prometheus agent was installed.
+	// *   false: The Prometheus agent was not installed.
 	Result []*ListEcsInstancesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -14301,7 +14653,7 @@ func (s *ListEcsInstancesResponseBody) SetResult(v []*ListEcsInstancesResponseBo
 }
 
 type ListEcsInstancesResponseBodyHeaders struct {
-	// The number of returned records.
+	// The returned data.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -14319,32 +14671,32 @@ func (s *ListEcsInstancesResponseBodyHeaders) SetXTotalCount(v int32) *ListEcsIn
 }
 
 type ListEcsInstancesResponseBodyResult struct {
-	// Cloud Assistant the installation status, support:
-	//
-	// *   true: The Prometheus agent was installed.
-	// *   false: The Prometheus agent was not installed.
-	CloudAssistantStatus *string `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
-	// The information about the collectors on the ECS instance.
-	Collectors []*ListEcsInstancesResponseBodyResultCollectors `json:"collectors,omitempty" xml:"collectors,omitempty" type:"Repeated"`
-	// The ID of the ECS instance.
-	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
 	// The name of the ECS instance.
+	CloudAssistantStatus *string `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
+	// The ID of the collector instance.
+	Collectors []*ListEcsInstancesResponseBodyResultCollectors `json:"collectors,omitempty" xml:"collectors,omitempty" type:"Repeated"`
+	// The tags of the ECS instance.
+	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
+	// The ID of the ECS instance.
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// The IP address of the ECS instance.
-	IpAddress []*ListEcsInstancesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
-	// The operating system type of the ECS instance. Valid values:
+	// The type of the IP address that is used by the instance. Valid values:
 	//
-	// *   windows:Windows operating system
-	// *   linux:Linux operating system
-	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// *   public: public endpoint
+	// *   private: private network address
+	IpAddress []*ListEcsInstancesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
 	// The status of the ECS instance. Valid values:
 	//
 	// *   running: The master instance is running
 	// *   starting
 	// *   stopping: The task is being stopped.
 	// *   stopped: The node is stopped.
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// The IP address of the ECS instance.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the ECS instance.
+	// The operating system type of the ECS instance. Valid values:
+	//
+	// *   windows:Windows operating system
+	// *   linux:Linux operating system
 	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -14397,37 +14749,39 @@ func (s *ListEcsInstancesResponseBodyResult) SetTags(v string) *ListEcsInstances
 }
 
 type ListEcsInstancesResponseBodyResultCollectors struct {
-	// The path in which Filebeat is collected.
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	// The configuration file information of the collector.
+	// The content of the file.
 	Configs []*ListEcsInstancesResponseBodyResultCollectorsConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Specifies whether to verify and create a crawer. Valid values:
-	//
-	// *   true: only verifies and does not create a
-	// *   false: verifies and creates a
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The information about the extended parameter.
-	ExtendConfigs []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	// The time when the crawl collector was created.
-	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the collector was updated.
-	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The name of the collector.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the Alibaba Cloud account.
-	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	// The ID of the collector instance.
-	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
-	// The type of the collector. FileBeat, metricBeat, heartBeat, and auditBeat are supported.
-	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
-	// The version of the collector. If the machine type of the collector is ECS, only **6.8.5\_with_community** is supported.
-	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// Whether Monitoring is enabled. This field is displayed when the **configType** is **collectorTargetInstance** and the **instanceType** is **Elasticsearch**. Valid values:
+	//
+	// *   true
+	// *   false
+	ExtendConfigs []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
 	// The status of the collector. Valid values:
 	//
 	// *   activating: The project is taking effect.
 	// *   active: The instance has taken effect.
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// Specifies whether to verify and create a crawer. Valid values:
+	//
+	// *   true: only verifies and does not create a
+	// *   false: verifies and creates a
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// The configuration file information of the collector.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the Virtual Private Cloud to which the collector belongs.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The time when the collector was updated.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The version of the collector. If the machine type of the collector is ECS, only **6.8.5\_with_community** is supported.
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The time when the crawl collector was created.
+	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The name of the collector.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The type of the collector. FileBeat, metricBeat, heartBeat, and auditBeat are supported.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -14505,9 +14859,9 @@ func (s *ListEcsInstancesResponseBodyResultCollectors) SetVpcId(v string) *ListE
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsConfigs struct {
-	// The content of the file.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The name of the file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The information about the extended parameter.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -14530,35 +14884,37 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsConfigs) SetFileName(v stri
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigs struct {
+	// The instance type specified by Collector Output. Supports Elasticsearch and Logstash. Displayed when the **configType** is **collectorTargetInstance**.
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// The ID of the host group. Displayed when the **configType** is **collectorDeployMachine**.
+	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
 	// The configuration type. Valid values:
 	//
 	// *   collectorTargetInstance: Collector Output
 	// *   collectorDeployMachine: Collector Deployment Machine
 	// *   Collector Elasticsearch ForKibana: Elasticsearch instance information that supports the Kibana dashboard
-	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// Whether Monitoring is enabled. This field is displayed when the **configType** is **collectorTargetInstance** and the **instanceType** is **Elasticsearch**. Valid values:
-	//
-	// *   true
-	// *   false
-	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	// The ID of the host group. Displayed when the **configType** is **collectorDeployMachine**.
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The list of access addresses of the specified instance for the output of the collector. Displayed when the **configType** is **collectorTargetInstance**.
+	// The path in which Filebeat is collected.
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	// The ID of the instance that is associated with the crawker. If the **configType** parameter is set to **collectorTargetInstance**, the value of this parameter is the ID of the output collector. If the **configType** parameter is set to **collectorDeployMachines** and the **type** parameter is set to **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The instance type specified by Collector Output. Supports Elasticsearch and Logstash. Displayed when the **configType** is **collectorTargetInstance**.
-	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The list of ECS instances on which the collector is deployed. Displayed when the **configType** is **collectorDeployMachines** and the **type** is **ECSInstanceId**.
-	Machines []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The transmission protocol, which must be the same as the access protocol of the instance specified by Output. HTTP and HTTPS. Displayed when the **configType** is **collectorTargetInstance**.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The status of each crawl on the ECS instance. Valid values:
+	//
+	// *   heartOk: The heartbeat is normal.
+	// *   heartLost: The heartbeat is abnormal.
+	// *   uninstalled
+	// *   failed: The installation failed.
+	Machines []*ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// The username that is used to access the instance. The default value is elastic. Displayed when the **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The ID of the instance that is associated with the crawker. If the **configType** parameter is set to **collectorTargetInstance**, the value of this parameter is the ID of the output collector. If the **configType** parameter is set to **collectorDeployMachines** and the **type** parameter is set to **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The type of the machine on which the Collector is deployed. This parameter is displayed when the **configType** is **collectorDeployMachine**. Valid values:
 	//
 	// *   ECSInstanceId:ECS
 	// *   ACKCluster: Container Kubernetes
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The username that is used to access the instance. The default value is elastic. Displayed when the **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
@@ -14621,14 +14977,9 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigs) SetUserName(
 }
 
 type ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines struct {
-	// The status of each crawl on the ECS instance. Valid values:
-	//
-	// *   heartOk: The heartbeat is normal.
-	// *   heartLost: The heartbeat is abnormal.
-	// *   uninstalled
-	// *   failed: The installation failed.
-	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
 	// The IDs of ECS instances.
+	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
+	// The list of access addresses of the specified instance for the output of the collector. Displayed when the **configType** is **collectorTargetInstance**.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
@@ -14651,12 +15002,9 @@ func (s *ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines) SetI
 }
 
 type ListEcsInstancesResponseBodyResultIpAddress struct {
-	// The IP address of the endpoint.
+	// The information about the collectors on the ECS instance.
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The type of the IP address that is used by the instance. Valid values:
-	//
-	// *   public: public endpoint
-	// *   private: private network address
+	// The IP address of the endpoint.
 	IpType *string `json:"ipType,omitempty" xml:"ipType,omitempty"`
 }
 
@@ -14708,8 +15056,10 @@ func (s *ListEcsInstancesResponse) SetBody(v *ListEcsInstancesResponseBody) *Lis
 }
 
 type ListExtendfilesResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListExtendfilesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListExtendfilesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListExtendfilesResponseBody) String() string {
@@ -14731,9 +15081,13 @@ func (s *ListExtendfilesResponseBody) SetResult(v []*ListExtendfilesResponseBody
 }
 
 type ListExtendfilesResponseBodyResult struct {
-	FilePath   *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The path of the driver file.
+	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	// The size of the driver file.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the driver file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type.
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
@@ -15044,27 +15398,30 @@ func (s *ListIndexTemplatesResponse) SetBody(v *ListIndexTemplatesResponseBody) 
 }
 
 type ListInstanceRequest struct {
-	// aliyunes_test1
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 6.7\_with_X-Pack
-	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// advanced
-	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
-	// es-cn-v641a0ta3000g\*\*\*\*
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// postpaid
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// rg-aekzvowej3i\*\*\*\*
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// \[{"tagKey":"key1","tagValue":"value1"}]
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// vpc-bp16k1dvzxtmagcva\*\*\*\*
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 	// cn-hangzhou-i
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// advanced
+	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The number of data nodes.
+	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
+	// postpaid
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// \[{"tagKey":"key1","tagValue":"value1"}]
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Specifies whether to include dedicated master nodes. Valid values:
+	//
+	// *   true: The files contain data that is dumped to the IA storage medium.
+	// *   false: The files do not contain data that is dumped to the IA storage medium.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The ID of the request.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// vpc-bp16k1dvzxtmagcva\*\*\*\*
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The header of the response.
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The number of entries returned per page.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The returned data.
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 
@@ -15132,11 +15489,16 @@ func (s *ListInstanceRequest) SetZoneId(v string) *ListInstanceRequest {
 }
 
 type ListInstanceResponseBody struct {
-	// The header of the response.
+	// The status of the instance. Valid values:
+	//
+	// *   active: normal
+	// *   activating: taking effect
+	// *   inactive: frozen
+	// *   invalid: invalid
 	Headers *ListInstanceResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The time when the node is created.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// Indicates whether it is a service VPC.
 	Result []*ListInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -15164,7 +15526,10 @@ func (s *ListInstanceResponseBody) SetResult(v []*ListInstanceResponseBodyResult
 }
 
 type ListInstanceResponseBodyHeaders struct {
-	// The number of entries returned per page.
+	// Specifies whether to include dedicated master nodes (obsolete). Valid values:
+	//
+	// *   true: The files contain data that is dumped to the IA storage medium.
+	// *   false: The files do not contain data that is dumped to the IA storage medium.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -15182,73 +15547,61 @@ func (s *ListInstanceResponseBodyHeaders) SetXTotalCount(v int32) *ListInstanceR
 }
 
 type ListInstanceResponseBodyResult struct {
-	// Specifies whether to include dedicated master nodes. Valid values:
-	//
-	// *   true: The files contain data that is dumped to the IA storage medium.
-	// *   false: The files do not contain data that is dumped to the IA storage medium.
-	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
-	// Coordination node configuration.
-	ClientNodeConfiguration *ListInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
-	// The time when the node is created.
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// Specifies whether to include dedicated master nodes (obsolete). Valid values:
-	//
-	// *   true: The files contain data that is dumped to the IA storage medium.
-	// *   false: The files do not contain data that is dumped to the IA storage medium.
-	DedicateMaster *bool `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
-	// The name of the instance.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The configurations of elastic data nodes.
-	ElasticDataNodeConfiguration *ListInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
-	// The edition of the dedicated KMS instance.
-	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The configuration of cluster extension parameters.
-	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Specifies whether to deploy the new architecture.
-	IsNewDeployment *string `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
-	// The configuration of Kibana nodes.
-	KibanaConfiguration      *ListInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	KibanaIPWhitelist        []*string                                          `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	KibanaPrivateIPWhitelist []*string                                          `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
-	// The configuration of dedicated master nodes.
-	MasterConfiguration *ListInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The network configurations.
-	NetworkConfig *ListInstanceResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The number of data nodes.
-	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The configuration of data nodes.
-	NodeSpec *ListInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   **prepaid**: subscription
 	// *   **postpaid**: pay-as-you-go
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	AdvancedDedicateMaster *bool `json:"advancedDedicateMaster,omitempty" xml:"advancedDedicateMaster,omitempty"`
+	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	ClientNodeConfiguration *ListInstanceResponseBodyResultClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty" type:"Struct"`
 	// The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
 	//
 	// *   **active**: normal
 	// *   **closed**: Close
 	// *   **indebt**: Overdue payments are frozen
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The edition of the dedicated KMS instance.
+	DedicateMaster *bool `json:"dedicateMaster,omitempty" xml:"dedicateMaster,omitempty"`
+	// The key of the tag.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The configuration of Kibana nodes.
+	ElasticDataNodeConfiguration *ListInstanceResponseBodyResultElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty" type:"Struct"`
+	// The value of the tag.
+	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The configurations of elastic data nodes.
+	ExtendConfigs []map[string]interface{} `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The configuration of cluster extension parameters.
+	IsNewDeployment *string `json:"isNewDeployment,omitempty" xml:"isNewDeployment,omitempty"`
+	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	KibanaConfiguration      *ListInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
+	KibanaIPWhitelist        []*string                                          `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	KibanaPrivateIPWhitelist []*string                                          `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	// The VPC ID of the cluster.
+	MasterConfiguration *ListInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
+	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	NetworkConfig *ListInstanceResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The ID of the resource group.
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The VPC ID of the cluster.
+	NodeSpec *ListInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The time when the instance was last updated.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The tags of the instance. Each tag is a key-value pair.
 	PostpaidServiceStatus     *string   `json:"postpaidServiceStatus,omitempty" xml:"postpaidServiceStatus,omitempty"`
 	PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
 	PublicIpWhitelist         []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
-	// The ID of the resource group.
+	// The ID of the instance.
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Indicates whether it is a service VPC.
+	// Specifies whether to deploy the new architecture.
 	ServiceVpc *bool `json:"serviceVpc,omitempty" xml:"serviceVpc,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// *   active: normal
-	// *   activating: taking effect
-	// *   inactive: frozen
-	// *   invalid: invalid
+	// The name of the instance.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the instance. Each tag is a key-value pair.
+	// The number of nodes.
 	Tags []*ListInstanceResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The time when the instance was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The VPC ID of the cluster.
+	// Coordination node configuration.
+	UpdatedAt     *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	VpcInstanceId *string `json:"vpcInstanceId,omitempty" xml:"vpcInstanceId,omitempty"`
 }
 
@@ -15396,13 +15749,20 @@ func (s *ListInstanceResponseBodyResult) SetVpcInstanceId(v string) *ListInstanc
 }
 
 type ListInstanceResponseBodyResultClientNodeConfiguration struct {
-	// The number of nodes.
-	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The size of the node storage space. Unit: GB.
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// Specifies whether to enable disk encryption for the node. Valid values:
+	//
+	// *   true: enables instant image cache.
+	// *   false: disables reuse of image cache layers.
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
+	// The storage type of the node. Valid values:
+	//
+	// *   cloud_ssd: SSD.
+	// *   cloud_essd: ESSD.
+	// *   cloud_efficiency: ultra disk
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	// The number of nodes.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -15439,16 +15799,9 @@ type ListInstanceResponseBodyResultElasticDataNodeConfiguration struct {
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The size of the node storage space. Unit: GB.
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Specifies whether to enable disk encryption for the node. Valid values:
-	//
-	// *   true: enables instant image cache.
-	// *   false: disables reuse of image cache layers.
+	// The storage type of the node.
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	// The storage type of the node. Valid values:
-	//
-	// *   cloud_ssd: SSD.
-	// *   cloud_essd: ESSD.
-	// *   cloud_efficiency: ultra disk
+	// The configuration of dedicated master nodes.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	// The instance type of the node. For more information, see [Specifications](~~271718~~).
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
@@ -15488,13 +15841,13 @@ func (s *ListInstanceResponseBodyResultElasticDataNodeConfiguration) SetSpec(v s
 }
 
 type ListInstanceResponseBodyResultKibanaConfiguration struct {
-	// The number of nodes.
-	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
 	// The size of the node storage space. Unit: GB.
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node.
+	// The network configurations.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	// The number of nodes.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -15527,13 +15880,13 @@ func (s *ListInstanceResponseBodyResultKibanaConfiguration) SetSpec(v string) *L
 }
 
 type ListInstanceResponseBodyResultMasterConfiguration struct {
-	// The number of nodes.
+	// The network type. Only Virtual Private Cloud (VPC) is supported.
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The size of the node storage space. Unit: GB.
+	// The vSwitch ID of the cluster.
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
+	// The configuration of data nodes.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The instance type of the node. For more information, see [Specifications](~~271718~~).
+	// The zone where the cluster resides.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -15566,13 +15919,19 @@ func (s *ListInstanceResponseBodyResultMasterConfiguration) SetSpec(v string) *L
 }
 
 type ListInstanceResponseBodyResultNetworkConfig struct {
-	// The network type. Only Virtual Private Cloud (VPC) is supported.
+	// The storage type of the node. Valid values:
+	//
+	// *   cloud_ssd: standard SSD
+	// *   cloud_efficiency: ultra disk
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The VPC ID of the cluster.
+	// The storage space of the node. Unit: GB.
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the cluster resides.
+	// Specifies whether to use disk encryption. Valid values:
+	//
+	// *   true
+	// *   false
 	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	// The vSwitch ID of the cluster.
+	// The performance level of the ESSD. This parameter is required when the diskType parameter is set to cloud_essd. Valid values: PL1, PL2, and PL3.
 	VswitchId        *string                                                        `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 	WhiteIpGroupList []*ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
@@ -15640,22 +15999,11 @@ func (s *ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList) SetWhiteIp
 }
 
 type ListInstanceResponseBodyResultNodeSpec struct {
-	// The storage space of the node. Unit: GB.
-	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Specifies whether to use disk encryption. Valid values:
-	//
-	// *   true
-	// *   false
-	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	// The storage type of the node. Valid values:
-	//
-	// *   cloud_ssd: standard SSD
-	// *   cloud_efficiency: ultra disk
-	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The performance level of the ESSD. This parameter is required when the diskType parameter is set to cloud_essd. Valid values: PL1, PL2, and PL3.
+	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
-	// The instance type of the node. For more information, see [Specifications](~~271718~~).
-	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	Spec             *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s ListInstanceResponseBodyResultNodeSpec) String() string {
@@ -15692,9 +16040,9 @@ func (s *ListInstanceResponseBodyResultNodeSpec) SetSpec(v string) *ListInstance
 }
 
 type ListInstanceResponseBodyResultTags struct {
-	// The key of the tag.
+	// The size of the node storage space. Unit: GB.
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The value of the tag.
+	// The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -16142,15 +16490,15 @@ func (s *ListInstanceHistoryEventsResponse) SetBody(v *ListInstanceHistoryEvents
 type ListInstanceIndicesRequest struct {
 	// false
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// false
-	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// false
-	IsOpenstore *bool `json:"isOpenstore,omitempty" xml:"isOpenstore,omitempty"`
-	// log-0001
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// 15
+	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
+	// The ID of the request.
+	IsOpenstore *bool `json:"isOpenstore,omitempty" xml:"isOpenstore,omitempty"`
+	// 1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The header of the response.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The total size of the index in Cloud Hosting. Unit: bytes.
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -16193,11 +16541,11 @@ func (s *ListInstanceIndicesRequest) SetSize(v int32) *ListInstanceIndicesReques
 }
 
 type ListInstanceIndicesResponseBody struct {
-	// The header of the response.
+	// The total size of the OpenStore cold stage index for this instance. Unit: bytes.
 	Headers *ListInstanceIndicesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The total number of indexes in Cloud Hosting.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the index list.
+	// The total storage space occupied by the current index. Unit: bytes.
 	Result []*ListInstanceIndicesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -16225,13 +16573,13 @@ func (s *ListInstanceIndicesResponseBody) SetResult(v []*ListInstanceIndicesResp
 }
 
 type ListInstanceIndicesResponseBodyHeaders struct {
-	// The total number of indexes in Cloud Hosting.
+	// The details of the index list.
 	XManagedCount *int32 `json:"X-Managed-Count,omitempty" xml:"X-Managed-Count,omitempty"`
-	// The total size of the index in Cloud Hosting. Unit: bytes.
-	XManagedStorageSize *int64 `json:"X-Managed-StorageSize,omitempty" xml:"X-Managed-StorageSize,omitempty"`
 	// The total number of indexes in the OpenStore cold phase.
+	XManagedStorageSize *int64 `json:"X-Managed-StorageSize,omitempty" xml:"X-Managed-StorageSize,omitempty"`
+	// The time when the index list was queried.
 	XOSSCount *int32 `json:"X-OSS-Count,omitempty" xml:"X-OSS-Count,omitempty"`
-	// The total size of the OpenStore cold stage index for this instance. Unit: bytes.
+	// This parameter is deprecated.
 	XOSSStorageSize *int64 `json:"X-OSS-StorageSize,omitempty" xml:"X-OSS-StorageSize,omitempty"`
 }
 
@@ -16264,26 +16612,16 @@ func (s *ListInstanceIndicesResponseBodyHeaders) SetXOSSStorageSize(v int64) *Li
 }
 
 type ListInstanceIndicesResponseBodyResult struct {
-	// The time when the index list was queried.
+	// The name of the Elasticsearch index.
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The running status of the index. The following three statuses are supported:
-	//
-	// *   green: healthy.
-	// *   yellow: alerts.
-	// *   red: an exception.
-	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The full lifecycle status of the current index.
+	Health     *string `json:"health,omitempty" xml:"health,omitempty"`
 	IlmExplain *string `json:"ilmExplain,omitempty" xml:"ilmExplain,omitempty"`
-	// This parameter is deprecated.
-	IsManaged *string `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
 	// The managed status of the index. The following three statuses are supported:
 	//
 	// *   following: Hosting.
 	// *   closing: The instance is being unhosted.
 	// *   closed: unmanaged.
-	ManagedStatus *string `json:"managedStatus,omitempty" xml:"managedStatus,omitempty"`
-	// The name of the Elasticsearch index.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	IsManaged *string `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
 	// The current storage lifecycle. Value meaning:
 	//
 	// *   warm: warm.
@@ -16292,8 +16630,15 @@ type ListInstanceIndicesResponseBodyResult struct {
 	// *   delete: deletes a stage.
 	//
 	// >  If this parameter is empty, the current index is not managed by the lifecycle.
+	ManagedStatus *string `json:"managedStatus,omitempty" xml:"managedStatus,omitempty"`
+	// The full lifecycle status of the current index.
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The total storage space occupied by the current index. Unit: bytes.
+	// The running status of the index. The following three statuses are supported:
+	//
+	// *   green: healthy.
+	// *   yellow: alerts.
+	// *   red: an exception.
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -16375,8 +16720,10 @@ func (s *ListInstanceIndicesResponse) SetBody(v *ListInstanceIndicesResponseBody
 }
 
 type ListKibanaPluginsRequest struct {
+	// The number of the page to return. Default value: 1.
 	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	Size *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListKibanaPluginsRequest) String() string {
@@ -16398,9 +16745,12 @@ func (s *ListKibanaPluginsRequest) SetSize(v int32) *ListKibanaPluginsRequest {
 }
 
 type ListKibanaPluginsResponseBody struct {
-	Headers   *ListKibanaPluginsResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListKibanaPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request header.
+	Headers *ListKibanaPluginsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the plug-ins.
+	Result []*ListKibanaPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListKibanaPluginsResponseBody) String() string {
@@ -16427,6 +16777,7 @@ func (s *ListKibanaPluginsResponseBody) SetResult(v []*ListKibanaPluginsResponse
 }
 
 type ListKibanaPluginsResponseBodyHeaders struct {
+	// The total number of entries returned.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -16444,11 +16795,16 @@ func (s *ListKibanaPluginsResponseBodyHeaders) SetXTotalCount(v int32) *ListKiba
 }
 
 type ListKibanaPluginsResponseBodyResult struct {
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
-	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
-	Source           *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The description of the plug-in.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the plug-in.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source of the plug-in.
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The URL of the introduction to the plug-in. The value null is supported.
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
-	State            *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The installation status of the plug-in.
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s ListKibanaPluginsResponseBodyResult) String() string {
@@ -16514,19 +16870,19 @@ func (s *ListKibanaPluginsResponse) SetBody(v *ListKibanaPluginsResponseBody) *L
 }
 
 type ListLogstashRequest struct {
-	// ls-cn-abc
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// ls-cn-n6w1o5jq\*\*\*\*
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// rg-acfm2h5vbzd\*\*\*\*
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// \[{"tagKey":"key1","tagValue":"value1"}]
-	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// ls-cn-n6w1o5jq\*\*\*\*
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// Details of the request header.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// 5.5.3\_with_X-Pack
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries returned per page.
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The ID of the request.
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -16574,11 +16930,11 @@ func (s *ListLogstashRequest) SetVersion(v string) *ListLogstashRequest {
 }
 
 type ListLogstashResponseBody struct {
-	// Details of the request header.
+	// The billing method of the instance. Supported: prepaid (subscription) and postpaid (pay-as-you-go).
 	Headers *ListLogstashResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Detailed information about the matching instances.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the VPC.
 	Result []*ListLogstashResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -16606,7 +16962,7 @@ func (s *ListLogstashResponseBody) SetResult(v []*ListLogstashResponseBodyResult
 }
 
 type ListLogstashResponseBodyHeaders struct {
-	// The number of entries returned per page.
+	// The number of data nodes.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -16624,28 +16980,31 @@ func (s *ListLogstashResponseBodyHeaders) SetXTotalCount(v int32) *ListLogstashR
 }
 
 type ListLogstashResponseBodyResult struct {
-	// The tag of the instance. Valid values:
-	Tags []*ListLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the instance was created.
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the VPC.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The network configurations.
-	NetworkConfig *ListLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	// The number of data nodes.
-	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
 	// The configuration information of the data node.
+	Tags []*ListLogstashResponseBodyResultTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the instance.
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The time when the instance was last updated.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The tag value of the cloud disk.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	NetworkConfig *ListLogstashResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The state of the instance. Valid values: Normal, Active, Inactive, and Invalid.
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// Specifies whether to use disk encryption. Valid values:
+	//
+	// *   true: Enables the concurrent query feature for queries other than aggregate queries.
+	// *   false: Disables the concurrent query feature for queries other than aggregate queries.
 	NodeSpec *ListLogstashResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// The billing method of the instance. Supported: prepaid (subscription) and postpaid (pay-as-you-go).
+	// The time when the instance was created.
 	PaymentType     *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The state of the instance. Valid values: Normal, Active, Inactive, and Invalid.
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the instance was last updated.
-	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 	// The version of the instance. Currently, only 6.7.0\_with_X-Pack and 7.4.0\_with_X-Pack are supported.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tag of the instance. Valid values:
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The tag key of the cloud disk.
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -16718,9 +17077,9 @@ func (s *ListLogstashResponseBodyResult) SetVersion(v string) *ListLogstashRespo
 }
 
 type ListLogstashResponseBodyResultTags struct {
-	// The tag key of the cloud disk.
+	// The disk size of the node.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the cloud disk.
+	// The instance type of the ECS instance.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -16743,13 +17102,10 @@ func (s *ListLogstashResponseBodyResultTags) SetTagValue(v string) *ListLogstash
 }
 
 type ListLogstashResponseBodyResultNetworkConfig struct {
-	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the VPC.
-	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone where the cluster resides.
-	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	// The ID of the vSwitch.
+	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -16782,16 +17138,13 @@ func (s *ListLogstashResponseBodyResultNetworkConfig) SetVswitchId(v string) *Li
 }
 
 type ListLogstashResponseBodyResultNodeSpec struct {
-	// The disk size of the node.
+	// The network configurations.
 	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// Specifies whether to use disk encryption. Valid values:
-	//
-	// *   true: Enables the concurrent query feature for queries other than aggregate queries.
-	// *   false: Disables the concurrent query feature for queries other than aggregate queries.
+	// The ID of the VPC.
 	DiskEncryption *bool `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
-	// The type of the disk.
+	// The zone where the cluster resides.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The instance type of the ECS instance.
+	// The type of the disk.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -16853,17 +17206,17 @@ func (s *ListLogstashResponse) SetBody(v *ListLogstashResponseBody) *ListLogstas
 }
 
 type ListLogstashLogRequest struct {
-	// 1531910852074
-	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// 1531910852074
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// host:10.7.xx.xx AND level:info AND content:opening
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// 20
+	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// The ID of the request.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The returned data.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// 1
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// LOGSTASH_INSTANCE_LOG
+	// 1531910852074
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -16906,9 +17259,9 @@ func (s *ListLogstashLogRequest) SetType(v string) *ListLogstashLogRequest {
 }
 
 type ListLogstashLogResponseBody struct {
-	// The ID of the request.
+	// The details of the log.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// The timestamp of log generation. Unit: ms.
 	Result []*ListLogstashLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -16931,16 +17284,13 @@ func (s *ListLogstashLogResponseBody) SetResult(v []*ListLogstashLogResponseBody
 }
 
 type ListLogstashLogResponseBodyResult struct {
-	// The details of the log.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The IP address of the node that generates the log.
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The ID of the instance.
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The timestamp of log generation. Unit: ms.
-	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// The ID of the instance.
+	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	Timestamp *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s ListLogstashLogResponseBodyResult) String() string {
@@ -17006,13 +17356,13 @@ func (s *ListLogstashLogResponse) SetBody(v *ListLogstashLogResponseBody) *ListL
 }
 
 type ListLogstashPluginsRequest struct {
-	// logstash-filter-clone
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 10
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 3
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 	// USER
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the request.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The returned results.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The description of the plug-in.
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
@@ -17045,9 +17395,17 @@ func (s *ListLogstashPluginsRequest) SetSource(v string) *ListLogstashPluginsReq
 }
 
 type ListLogstashPluginsResponseBody struct {
-	// The ID of the request.
+	// The address of the documentation for the plug-in.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The status of the plug-in. Valid values:
+	//
+	// *   INSTALLED: Installed
+	// *   UNINSTALLED: Not installed
+	// *   INSTALLING: The instance is being installed.
+	// *   UNINSTALLING: The instance is being uninstalled.
+	// *   UPGRADING: The backup gateway is being upgraded.
+	// *   FAILED: Installation failed
+	// *   UNKNOWN: The cluster is lost and cannot be created.
 	Result []*ListLogstashPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -17070,24 +17428,13 @@ func (s *ListLogstashPluginsResponseBody) SetResult(v []*ListLogstashPluginsResp
 }
 
 type ListLogstashPluginsResponseBodyResult struct {
-	// The description of the plug-in.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the plug-in.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source of the plug-in.
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The address of the documentation for the plug-in.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The name of the plug-in.
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
-	// The status of the plug-in. Valid values:
-	//
-	// *   INSTALLED: Installed
-	// *   UNINSTALLED: Not installed
-	// *   INSTALLING: The instance is being installed.
-	// *   UNINSTALLING: The instance is being uninstalled.
-	// *   UPGRADING: The backup gateway is being upgraded.
-	// *   FAILED: Installation failed
-	// *   UNKNOWN: The cluster is lost and cannot be created.
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	State            *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s ListLogstashPluginsResponseBodyResult) String() string {
@@ -17153,11 +17500,16 @@ func (s *ListLogstashPluginsResponse) SetBody(v *ListLogstashPluginsResponseBody
 }
 
 type ListNodesRequest struct {
-	EcsInstanceIds  *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
+	// The IDs of the ECS instances.
+	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
+	// The name of the ECS instance.
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	Page            *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	Size            *int32  `json:"size,omitempty" xml:"size,omitempty"`
-	Tags            *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The number of the page to return.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries to return on each page.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The tags of the ECS instance. You must configure tagKey and tagValue.
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListNodesRequest) String() string {
@@ -17194,9 +17546,12 @@ func (s *ListNodesRequest) SetTags(v string) *ListNodesRequest {
 }
 
 type ListNodesResponseBody struct {
-	Headers   *ListNodesResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The header of the response.
+	Headers *ListNodesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListNodesResponseBody) String() string {
@@ -17223,6 +17578,7 @@ func (s *ListNodesResponseBody) SetResult(v []*ListNodesResponseBodyResult) *Lis
 }
 
 type ListNodesResponseBodyHeaders struct {
+	// The number of entries returned.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -17240,14 +17596,38 @@ func (s *ListNodesResponseBodyHeaders) SetXTotalCount(v int32) *ListNodesRespons
 }
 
 type ListNodesResponseBodyResult struct {
-	AgentStatus          *string                                 `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	CloudAssistantStatus *string                                 `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
-	EcsInstanceId        *string                                 `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
-	EcsInstanceName      *string                                 `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	IpAddress            []*ListNodesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
-	OsType               *string                                 `json:"osType,omitempty" xml:"osType,omitempty"`
-	Status               *string                                 `json:"status,omitempty" xml:"status,omitempty"`
-	Tags                 []*ListNodesResponseBodyResultTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The status of the shipper on the ECS instance. Valid values:
+	//
+	// *   heartOk: The heartbeat is normal.
+	// *   heartLost: The heartbeat is abnormal.
+	// *   uninstalled: The shipper is not installed.
+	// *   failed: The shipper fails to be installed.
+	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
+	// Indicates whether the Cloud Assistant client is installed. Valid values:
+	//
+	// *   true: installed
+	// *   false: not installed
+	CloudAssistantStatus *string `json:"cloudAssistantStatus,omitempty" xml:"cloudAssistantStatus,omitempty"`
+	// The ID of the ECS instance.
+	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
+	// The name of the ECS instance.
+	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
+	// The IP addresses of the ECS instance.
+	IpAddress []*ListNodesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
+	// The operating system type of the ECS instance. Valid values:
+	//
+	// *   windows: Windows Server
+	// *   linux: Linux
+	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
+	// The status of the ECS instance. Valid values:
+	//
+	// *   running: The instance is running.
+	// *   starting: The instance is being started.
+	// *   stopping: The instance is being stopped.
+	// *   stopped: The instance is stopped.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The tags of the ECS instance.
+	Tags []*ListNodesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListNodesResponseBodyResult) String() string {
@@ -17299,7 +17679,12 @@ func (s *ListNodesResponseBodyResult) SetTags(v []*ListNodesResponseBodyResultTa
 }
 
 type ListNodesResponseBodyResultIpAddress struct {
-	Host   *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The IP address.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The type of the IP address. Valid values:
+	//
+	// *   public: public IP address
+	// *   private: private IP address
 	IpType *string `json:"ipType,omitempty" xml:"ipType,omitempty"`
 }
 
@@ -17322,7 +17707,9 @@ func (s *ListNodesResponseBodyResultIpAddress) SetIpType(v string) *ListNodesRes
 }
 
 type ListNodesResponseBodyResultTags struct {
-	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The value of the tag.
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
@@ -17374,11 +17761,11 @@ func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse
 }
 
 type ListPipelineRequest struct {
-	// 1
+	// The header of the response.
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// pipeline_test
+	// The ID of the request.
 	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
-	// 15
+	// The total number of returned entries.
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -17406,11 +17793,11 @@ func (s *ListPipelineRequest) SetSize(v int32) *ListPipelineRequest {
 }
 
 type ListPipelineResponseBody struct {
-	// The header of the response.
+	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
 	Headers *ListPipelineResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The response.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the pipeline was created.
 	Result []*ListPipelineResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -17438,7 +17825,7 @@ func (s *ListPipelineResponseBody) SetResult(v []*ListPipelineResponseBodyResult
 }
 
 type ListPipelineResponseBodyHeaders struct {
-	// The total number of returned entries.
+	// The time when the pipeline was updated.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -17456,17 +17843,14 @@ func (s *ListPipelineResponseBodyHeaders) SetXTotalCount(v int32) *ListPipelineR
 }
 
 type ListPipelineResponseBodyResult struct {
-	// The time when the pipeline was created.
 	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	// The time when the pipeline was updated.
-	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	// The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
-	PipelineId *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	GmtUpdateTime  *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
 	// The status of the pipeline. Supported:
 	//
 	// *   NOT_DEPLOYED: The node is not deployed.
 	// *   RUNNING
 	// *   DELETED: Deleted. The console does not display this status.
+	PipelineId     *string `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
 	PipelineStatus *string `json:"pipelineStatus,omitempty" xml:"pipelineStatus,omitempty"`
 }
 
@@ -17632,13 +18016,13 @@ func (s *ListPipelineIdsResponse) SetBody(v *ListPipelineIdsResponseBody) *ListP
 }
 
 type ListPluginsRequest struct {
-	// analysis-ik
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 1
-	Page *string `json:"page,omitempty" xml:"page,omitempty"`
-	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 	// SYSTEM
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the request.
+	Page *string `json:"page,omitempty" xml:"page,omitempty"`
+	// The header of the response.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The total number of entries returned.
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 }
 
@@ -17671,11 +18055,11 @@ func (s *ListPluginsRequest) SetSource(v string) *ListPluginsRequest {
 }
 
 type ListPluginsResponseBody struct {
-	// The header of the response.
+	// The description of the plug-in.
 	Headers *ListPluginsResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The return results.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the plug-in.
 	Result []*ListPluginsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -17703,7 +18087,7 @@ func (s *ListPluginsResponseBody) SetResult(v []*ListPluginsResponseBodyResult) 
 }
 
 type ListPluginsResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The address of the plug-in description document.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -17721,16 +18105,13 @@ func (s *ListPluginsResponseBodyHeaders) SetXTotalCount(v int32) *ListPluginsRes
 }
 
 type ListPluginsResponseBodyResult struct {
-	// The description of the plug-in.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the plug-in.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source type of the plug-in.
-	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The address of the plug-in description document.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Source      *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The name of the plug-in.
 	SpecificationUrl *string `json:"specificationUrl,omitempty" xml:"specificationUrl,omitempty"`
-	// The status of the plug-in.
-	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	State            *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s ListPluginsResponseBodyResult) String() string {
@@ -17796,17 +18177,17 @@ func (s *ListPluginsResponse) SetBody(v *ListPluginsResponseBody) *ListPluginsRe
 }
 
 type ListSearchLogRequest struct {
-	// 1531910852074
-	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	// 1531910852074
-	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 1
-	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// host:172.16.\*\*.\*\* AND content:netty
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// 20
+	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// The ID of the request.
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The header of the response.
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// 1
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The number of entries returned per page.
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// INSTANCELOG
+	// 1531910852074
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -17849,11 +18230,19 @@ func (s *ListSearchLogRequest) SetType(v string) *ListSearchLogRequest {
 }
 
 type ListSearchLogResponseBody struct {
-	// The header of the response.
+	// The level of the log. Valid values:
+	//
+	// *   warn: warning log
+	// *   info: information log
+	// *   error: error log
+	// *   trace: trace logs
+	// *   debug: debug logs
+	//
+	// The level information has been migrated to the contentCollection field.
 	Headers *ListSearchLogResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of logs returned by the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The content of the log entry. Migrated to the contentCollection field.
 	Result []*ListSearchLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -17881,7 +18270,7 @@ func (s *ListSearchLogResponseBody) SetResult(v []*ListSearchLogResponseBodyResu
 }
 
 type ListSearchLogResponseBodyHeaders struct {
-	// The number of entries returned per page.
+	// The IP address of the node that generates the log.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -17899,26 +18288,15 @@ func (s *ListSearchLogResponseBodyHeaders) SetXTotalCount(v int32) *ListSearchLo
 }
 
 type ListSearchLogResponseBodyResult struct {
-	// The content of the log entry. Migrated to the contentCollection field.
-	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Details of the log entry. Different content fields are returned for different log types.
-	ContentCollection map[string]interface{} `json:"contentCollection,omitempty" xml:"contentCollection,omitempty"`
-	// The IP address of the node that generates the log.
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The ID of the instance.
+	Content           *string                `json:"content,omitempty" xml:"content,omitempty"`
+	ContentCollection map[string]interface{} `json:"contentCollection,omitempty" xml:"contentCollection,omitempty"`
+	// Details of the log entry. Different content fields are returned for different log types.
+	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The level of the log. Valid values:
-	//
-	// *   warn: warning log
-	// *   info: information log
-	// *   error: error log
-	// *   trace: trace logs
-	// *   debug: debug logs
-	//
-	// The level information has been migrated to the contentCollection field.
-	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 	// The timestamp when the log is generated. Unit: ms.
-	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	Timestamp *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s ListSearchLogResponseBodyResult) String() string {
@@ -17989,6 +18367,10 @@ func (s *ListSearchLogResponse) SetBody(v *ListSearchLogResponseBody) *ListSearc
 }
 
 type ListShardRecoveriesRequest struct {
+	// Specifies whether to return information about data restoration of shards. Valid values:
+	//
+	// *   true: returns information about data restoration of shards that are being restored.
+	// *   false: returns information about data restoration of all shards.
 	ActiveOnly *bool `json:"activeOnly,omitempty" xml:"activeOnly,omitempty"`
 }
 
@@ -18006,8 +18388,10 @@ func (s *ListShardRecoveriesRequest) SetActiveOnly(v bool) *ListShardRecoveriesR
 }
 
 type ListShardRecoveriesResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListShardRecoveriesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*ListShardRecoveriesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListShardRecoveriesResponseBody) String() string {
@@ -18029,17 +18413,36 @@ func (s *ListShardRecoveriesResponseBody) SetResult(v []*ListShardRecoveriesResp
 }
 
 type ListShardRecoveriesResponseBodyResult struct {
-	BytesPercent       *string `json:"bytesPercent,omitempty" xml:"bytesPercent,omitempty"`
-	BytesTotal         *int64  `json:"bytesTotal,omitempty" xml:"bytesTotal,omitempty"`
-	FilesPercent       *string `json:"filesPercent,omitempty" xml:"filesPercent,omitempty"`
-	FilesTotal         *int64  `json:"filesTotal,omitempty" xml:"filesTotal,omitempty"`
-	Index              *string `json:"index,omitempty" xml:"index,omitempty"`
-	SourceHost         *string `json:"sourceHost,omitempty" xml:"sourceHost,omitempty"`
-	SourceNode         *string `json:"sourceNode,omitempty" xml:"sourceNode,omitempty"`
-	Stage              *string `json:"stage,omitempty" xml:"stage,omitempty"`
-	TargetHost         *string `json:"targetHost,omitempty" xml:"targetHost,omitempty"`
-	TargetNode         *string `json:"targetNode,omitempty" xml:"targetNode,omitempty"`
-	TranslogOps        *int64  `json:"translogOps,omitempty" xml:"translogOps,omitempty"`
+	// The data restoration progress.
+	BytesPercent *string `json:"bytesPercent,omitempty" xml:"bytesPercent,omitempty"`
+	// The total amount of data that is restored.
+	BytesTotal *int64 `json:"bytesTotal,omitempty" xml:"bytesTotal,omitempty"`
+	// The file execution progress.
+	FilesPercent *string `json:"filesPercent,omitempty" xml:"filesPercent,omitempty"`
+	// The total number of files.
+	FilesTotal *int64 `json:"filesTotal,omitempty" xml:"filesTotal,omitempty"`
+	// The name of the index.
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// The IP address of the source node.
+	SourceHost *string `json:"sourceHost,omitempty" xml:"sourceHost,omitempty"`
+	// The name of the source node.
+	SourceNode *string `json:"sourceNode,omitempty" xml:"sourceNode,omitempty"`
+	// The data restoration status. Valid values:
+	//
+	// *   done: Data restoration is complete.
+	// *   finalize: Data is being cleared.
+	// *   index: Index metadata is being read, and bytes are being copied from source to destination.
+	// *   init: Data restoration is not started.
+	// *   start: Data restoration is started.
+	// *   translog: Translogs are being redone.
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+	// The IP address of the destination node.
+	TargetHost *string `json:"targetHost,omitempty" xml:"targetHost,omitempty"`
+	// The name of the destination node.
+	TargetNode *string `json:"targetNode,omitempty" xml:"targetNode,omitempty"`
+	// The number of translog operations to be restored.
+	TranslogOps *int64 `json:"translogOps,omitempty" xml:"translogOps,omitempty"`
+	// The restoration progress of translog operations.
 	TranslogOpsPercent *string `json:"translogOpsPercent,omitempty" xml:"translogOpsPercent,omitempty"`
 }
 
@@ -18234,19 +18637,21 @@ func (s *ListSnapshotReposByInstanceIdResponse) SetBody(v *ListSnapshotReposByIn
 }
 
 type ListTagResourcesRequest struct {
-	// 1d2db86sca4384811e0b5e8707e\*\*\*\*\*\*
+	// The number of the returned page.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
-	// 1
+	// 1d2db86sca4384811e0b5e8707e\*\*\*\*\*\*
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// \["es-cn-aaa","es-cn-bbb"]
+	// The ID of the request.
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// INSTANCE
+	// \[{"key":"env","value","dev"},{"key":"dev", "value":"IT"}]
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// Deprecated
-	// 10
+	// \["es-cn-aaa","es-cn-bbb"]
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// \[{"key":"env","value","dev"},{"key":"dev", "value":"IT"}]
+	// The header of the response. This parameter is empty and is for reference only. You cannot force this parameter to be relied on in the program.
+	//
+	// >  The return examples does not contain this parameter.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -18289,15 +18694,13 @@ func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The header of the response. This parameter is empty and is for reference only. You cannot force this parameter to be relied on in the program.
-	//
-	// >  The return examples does not contain this parameter.
+	// The labels of the resource.
 	Headers *ListTagResourcesResponseBodyHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The number of resources to query.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A list of resources that have tags.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -18330,7 +18733,7 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesRespon
 }
 
 type ListTagResourcesResponseBodyHeaders struct {
-	// The number of resources to query.
+	// The value of the tag.
 	XTotalCount *int32 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
 }
 
@@ -18348,7 +18751,7 @@ func (s *ListTagResourcesResponseBodyHeaders) SetXTotalCount(v int32) *ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The labels of the resource.
+	// Indicates the ID of a resource.
 	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
 }
 
@@ -18366,13 +18769,10 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// Indicates the ID of a resource.
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The tag key.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -18434,9 +18834,9 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagsRequest struct {
-	// 20
+	// The return results.
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// INSTANCE
+	// The tag value of the ENI.
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 
@@ -18459,10 +18859,9 @@ func (s *ListTagsRequest) SetResourceType(v string) *ListTagsRequest {
 }
 
 type ListTagsResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The return results.
-	Result []*ListTagsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The key of the tag.
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListTagsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListTagsResponseBody) String() string {
@@ -18484,9 +18883,7 @@ func (s *ListTagsResponseBody) SetResult(v []*ListTagsResponseBodyResult) *ListT
 }
 
 type ListTagsResponseBodyResult struct {
-	// The key of the tag.
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the ENI.
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -18538,7 +18935,11 @@ func (s *ListTagsResponse) SetBody(v *ListTagsResponseBody) *ListTagsResponse {
 }
 
 type ListVpcEndpointsRequest struct {
+	// The number of the page to return.
+	//
+	// Pages start from page 1. Default value: 1.
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -18561,8 +18962,10 @@ func (s *ListVpcEndpointsRequest) SetSize(v int32) *ListVpcEndpointsRequest {
 }
 
 type ListVpcEndpointsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListVpcEndpointsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the endpoints.
+	Result []*ListVpcEndpointsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcEndpointsResponseBody) String() string {
@@ -18584,15 +18987,40 @@ func (s *ListVpcEndpointsResponseBody) SetResult(v []*ListVpcEndpointsResponseBo
 }
 
 type ListVpcEndpointsResponseBodyResult struct {
-	ConnectionStatus       *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
-	CreateTime             *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The status of the endpoint connection. Valid values:
+	//
+	// *   Pending
+	// *   Connecting
+	// *   Connected
+	// *   Disconnecting
+	// *   Disconnected
+	// *   Deleting
+	// *   ServiceDeleted
+	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
+	// The time when the endpoint was created.
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The business status of the endpoint. Valid values:
+	//
+	// *   Normal
+	// *   FinancialLocked
 	EndpointBusinessStatus *string `json:"endpointBusinessStatus,omitempty" xml:"endpointBusinessStatus,omitempty"`
-	EndpointDomain         *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
-	EndpointId             *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
-	EndpointName           *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
-	EndpointStatus         *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
-	ServiceId              *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	ServiceName            *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The domain name of the endpoint. The domain name is used for connection configuration.
+	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
+	// The ID of the endpoint.
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	// The name of the endpoint.
+	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+	// The status of the endpoint. Valid values:
+	//
+	// *   Creating
+	// *   Active
+	// *   Pending
+	// *   Deleting
+	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	// The ID of the endpoint service with which the endpoint is associated.
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The name of the endpoint service with which the endpoint is associated.
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListVpcEndpointsResponseBodyResult) String() string {
@@ -18759,6 +19187,7 @@ func (s *MigrateToOtherZoneResponse) SetBody(v *MigrateToOtherZoneResponseBody) 
 }
 
 type ModifyDeployMachineRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -18782,8 +19211,13 @@ func (s *ModifyDeployMachineRequest) SetBody(v string) *ModifyDeployMachineReque
 }
 
 type ModifyDeployMachineResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the ECS instances are changed. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ModifyDeployMachineResponseBody) String() string {
@@ -19008,7 +19442,6 @@ func (s *ModifyElastictaskResponse) SetBody(v *ModifyElastictaskResponseBody) *M
 }
 
 type ModifyInstanceMaintainTimeRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -19032,10 +19465,8 @@ func (s *ModifyInstanceMaintainTimeRequest) SetBody(v string) *ModifyInstanceMai
 }
 
 type ModifyInstanceMaintainTimeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ModifyInstanceMaintainTimeResponseBody) String() string {
@@ -19086,12 +19517,24 @@ func (s *ModifyInstanceMaintainTimeResponse) SetBody(v *ModifyInstanceMaintainTi
 }
 
 type ModifyWhiteIpsRequest struct {
-	ModifyMode   *string                            `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
-	NetworkType  *string                            `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	NodeType     *string                            `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	// The information about the IP address whitelist that you want to update. You can specify only one whitelist.
+	//
+	// > You cannot configure both the whiteIpList and whiteIpGroup parameters.
+	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	// The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+	//
+	// > You cannot configure both the whiteIpList and whiteIpGroup parameters.
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	// The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	// The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
 	WhiteIpGroup *ModifyWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
-	WhiteIpList  []*string                          `json:"whiteIpList,omitempty" xml:"whiteIpList,omitempty" type:"Repeated"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
+	WhiteIpList []*string `json:"whiteIpList,omitempty" xml:"whiteIpList,omitempty" type:"Repeated"`
+	// The network type. This parameter is required if you configure the whiteIpList parameter. Valid values:
+	//
+	// *   PRIVATE
+	// *   PUBLIC
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -19134,9 +19577,17 @@ func (s *ModifyWhiteIpsRequest) SetClientToken(v string) *ModifyWhiteIpsRequest 
 }
 
 type ModifyWhiteIpsRequestWhiteIpGroup struct {
-	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+	// The type of the IP address whitelist. Valid values:
+	//
+	// *   PRIVATE_KIBANA
+	// *   PRIVATE_ES
+	// *   PUBLIC_ES
+	// *   PUBLIC_KIBANA
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The returned result.
+	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// The request ID.
+	WhiteIpType *string `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
 
 func (s ModifyWhiteIpsRequestWhiteIpGroup) String() string {
@@ -19163,13 +19614,8 @@ func (s *ModifyWhiteIpsRequestWhiteIpGroup) SetWhiteIpType(v string) *ModifyWhit
 }
 
 type ModifyWhiteIpsResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Response:
-	//
-	// *   true: The whitelist is updated.
-	// *   false: The whitelist failed to be updated.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ModifyWhiteIpsResponseBody) String() string {
@@ -19220,7 +19666,8 @@ func (s *ModifyWhiteIpsResponse) SetBody(v *ModifyWhiteIpsResponseBody) *ModifyW
 }
 
 type MoveResourceGroupRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -19243,8 +19690,10 @@ func (s *MoveResourceGroupRequest) SetClientToken(v string) *MoveResourceGroupRe
 }
 
 type MoveResourceGroupResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *MoveResourceGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *MoveResourceGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s MoveResourceGroupResponseBody) String() string {
@@ -19266,25 +19715,52 @@ func (s *MoveResourceGroupResponseBody) SetResult(v *MoveResourceGroupResponseBo
 }
 
 type MoveResourceGroupResponseBodyResult struct {
-	CreatedAt           *string                                                 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description         *string                                                 `json:"description,omitempty" xml:"description,omitempty"`
-	DictList            []*MoveResourceGroupResponseBodyResultDictList          `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
-	Domain              *string                                                 `json:"domain,omitempty" xml:"domain,omitempty"`
-	EsVersion           *string                                                 `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	InstanceId          *string                                                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The time when the cluster was created.
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The name of the cluster.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The configurations of IK dictionaries.
+	DictList []*MoveResourceGroupResponseBodyResultDictList `json:"dictList,omitempty" xml:"dictList,omitempty" type:"Repeated"`
+	// The internal endpoint of the cluster.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The version of the cluster.
+	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The ID of the cluster.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The configurations of Kibana nodes.
 	KibanaConfiguration *MoveResourceGroupResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	KibanaDomain        *string                                                 `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
-	KibanaPort          *int32                                                  `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+	// The public endpoint of the Kibana console of the cluster.
+	KibanaDomain *string `json:"kibanaDomain,omitempty" xml:"kibanaDomain,omitempty"`
+	// The port number that is used to access the Kibana console of the cluster over the Internet.
+	KibanaPort *int32 `json:"kibanaPort,omitempty" xml:"kibanaPort,omitempty"`
+	// The configurations of dedicated master nodes.
 	MasterConfiguration *MoveResourceGroupResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	NetworkConfig       *MoveResourceGroupResponseBodyResultNetworkConfig       `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
-	NodeAmount          *int32                                                  `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	NodeSpec            *MoveResourceGroupResponseBodyResultNodeSpec            `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	PaymentType         *string                                                 `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	PublicDomain        *string                                                 `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
-	PublicPort          *int32                                                  `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
-	Status              *string                                                 `json:"status,omitempty" xml:"status,omitempty"`
-	SynonymsDicts       []*MoveResourceGroupResponseBodyResultSynonymsDicts     `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
-	UpdatedAt           *string                                                 `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The network configurations.
+	NetworkConfig *MoveResourceGroupResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The number of data nodes in the cluster.
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The configurations of data nodes.
+	NodeSpec *MoveResourceGroupResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The billing method of the cluster. Valid values:
+	//
+	// *   prepaid: subscription
+	// *   postpaid: pay-as-you-go
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The public endpoint of the cluster.
+	PublicDomain *string `json:"publicDomain,omitempty" xml:"publicDomain,omitempty"`
+	// The port number that is used to access the cluster over the Internet.
+	PublicPort *int32 `json:"publicPort,omitempty" xml:"publicPort,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// *   active: The cluster is normal.
+	// *   activating: The cluster is being activated.
+	// *   Inactive: The cluster is frozen.
+	// *   invalid: The cluster is valid.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The configurations of synonym dictionaries.
+	SynonymsDicts []*MoveResourceGroupResponseBodyResultSynonymsDicts `json:"synonymsDicts,omitempty" xml:"synonymsDicts,omitempty" type:"Repeated"`
+	// The time when the cluster was last updated.
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResult) String() string {
@@ -19391,10 +19867,22 @@ func (s *MoveResourceGroupResponseBodyResult) SetUpdatedAt(v string) *MoveResour
 }
 
 type MoveResourceGroupResponseBodyResultDictList struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the source of the dictionary file. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS). You must make sure that the access control list (ACL) of the related OSS bucket is public read.
+	// *   ORIGIN: previously uploaded dictionary.
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of the dictionary. Valid values:
+	//
+	// *   STOP: stopword list
+	// *   MAIN: main dictionary
+	// *   SYNONYMS: synonym dictionary
+	// *   ALI_WS: Alibaba Cloud dictionary
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResultDictList) String() string {
@@ -19426,10 +19914,14 @@ func (s *MoveResourceGroupResponseBodyResultDictList) SetType(v string) *MoveRes
 }
 
 type MoveResourceGroupResponseBodyResultKibanaConfiguration struct {
-	Amount   *int32  `json:"amount,omitempty" xml:"amount,omitempty"`
-	Disk     *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The number of nodes.
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage capacity. Unit: GB.
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The specification category.
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResultKibanaConfiguration) String() string {
@@ -19461,10 +19953,14 @@ func (s *MoveResourceGroupResponseBodyResultKibanaConfiguration) SetSpec(v strin
 }
 
 type MoveResourceGroupResponseBodyResultMasterConfiguration struct {
-	Amount   *int32  `json:"amount,omitempty" xml:"amount,omitempty"`
-	Disk     *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The number of nodes.
+	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The storage capacity. Unit: GB.
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The specification category.
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResultMasterConfiguration) String() string {
@@ -19496,9 +19992,13 @@ func (s *MoveResourceGroupResponseBodyResultMasterConfiguration) SetSpec(v strin
 }
 
 type MoveResourceGroupResponseBodyResultNetworkConfig struct {
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
-	VpcId     *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VsArea    *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The network type. Only the VPC is supported.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The zone where the cluster resides.
+	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The ID of the vSwitch.
 	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
 }
 
@@ -19531,9 +20031,12 @@ func (s *MoveResourceGroupResponseBodyResultNetworkConfig) SetVswitchId(v string
 }
 
 type MoveResourceGroupResponseBodyResultNodeSpec struct {
-	Disk     *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage capacity. Unit: GB.
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The storage type.
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	Spec     *string `json:"spec,omitempty" xml:"spec,omitempty"`
+	// The specification category.
+	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResultNodeSpec) String() string {
@@ -19560,10 +20063,22 @@ func (s *MoveResourceGroupResponseBodyResultNodeSpec) SetSpec(v string) *MoveRes
 }
 
 type MoveResourceGroupResponseBodyResultSynonymsDicts struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the source of the dictionary file. Valid values:
+	//
+	// *   OSS: Object Storage Service (OSS). You must make sure that the ACL of the related OSS bucket is public read.
+	// *   ORIGIN: previously uploaded dictionary.
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of the dictionary. Valid values:
+	//
+	// *   STOP: stopword list
+	// *   MAIN: main dictionary
+	// *   SYNONYMS: synonym dictionary
+	// *   ALI_WS: Alibaba Cloud dictionary
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MoveResourceGroupResponseBodyResultSynonymsDicts) String() string {
@@ -19624,10 +20139,9 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type OpenDiagnosisRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The ID of the request.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// en
-	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
+	Lang        *string `json:"lang,omitempty" xml:"lang,omitempty"`
 }
 
 func (s OpenDiagnosisRequest) String() string {
@@ -19649,13 +20163,8 @@ func (s *OpenDiagnosisRequest) SetLang(v string) *OpenDiagnosisRequest {
 }
 
 type OpenDiagnosisResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the intelligent O\&M feature is enabled. Valid values:
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s OpenDiagnosisResponseBody) String() string {
@@ -19862,6 +20371,15 @@ func (s *PostEmonTryAlarmRuleResponse) SetBody(v *PostEmonTryAlarmRuleResponseBo
 }
 
 type RecommendTemplatesRequest struct {
+	// *
+	// *
+	// *
+	// *
+	// *
+	//
+	// **
+	//
+	// ****
 	UsageScenario *string `json:"usageScenario,omitempty" xml:"usageScenario,omitempty"`
 }
 
@@ -19902,7 +20420,15 @@ func (s *RecommendTemplatesResponseBody) SetResult(v []*RecommendTemplatesRespon
 }
 
 type RecommendTemplatesResponseBodyResult struct {
-	Content      *string `json:"content,omitempty" xml:"content,omitempty"`
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// *
+	// *
+	// *
+	// *
+	//
+	// **
+	//
+	// ****
 	TemplateName *string `json:"templateName,omitempty" xml:"templateName,omitempty"`
 }
 
@@ -19954,8 +20480,13 @@ func (s *RecommendTemplatesResponse) SetBody(v *RecommendTemplatesResponseBody) 
 }
 
 type ReinstallCollectorRequest struct {
+	// The request body parameters. For more information, see the Request body section in this topic.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	// Indicates whether the shipper is installed. Valid values:
+	//
+	// *   true: The shipper is installed.
+	// *   false: The shipper fails to be installed.
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ReinstallCollectorRequest) String() string {
@@ -19978,7 +20509,8 @@ func (s *ReinstallCollectorRequest) SetBody(v string) *ReinstallCollectorRequest
 
 type ReinstallCollectorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The ID of the request.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ReinstallCollectorResponseBody) String() string {
@@ -20162,7 +20694,8 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type RenewLogstashRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -20185,8 +20718,13 @@ func (s *RenewLogstashRequest) SetClientToken(v string) *RenewLogstashRequest {
 }
 
 type RenewLogstashResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result. Valid values:
+	//
+	// *   true: The cluster is renewed.
+	// *   false: The cluster fails to be renewed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RenewLogstashResponseBody) String() string {
@@ -20237,6 +20775,7 @@ func (s *RenewLogstashResponse) SetBody(v *RenewLogstashResponseBody) *RenewLogs
 }
 
 type RestartCollectorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -20254,8 +20793,13 @@ func (s *RestartCollectorRequest) SetClientToken(v string) *RestartCollectorRequ
 }
 
 type RestartCollectorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the shipper is restarted. Valid values:
+	//
+	// *   true: The shipper is restarted.
+	// *   false: The shipper fails to be restarted.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RestartCollectorResponseBody) String() string {
@@ -20789,10 +21333,8 @@ type RestartLogstashRequest struct {
 	NodeTypes    []*string `json:"nodeTypes,omitempty" xml:"nodeTypes,omitempty" type:"Repeated"`
 	Nodes        []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	RestartType  *string   `json:"restartType,omitempty" xml:"restartType,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// true
-	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+	ClientToken  *string   `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Force        *bool     `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s RestartLogstashRequest) String() string {
@@ -20839,10 +21381,8 @@ func (s *RestartLogstashRequest) SetForce(v bool) *RestartLogstashRequest {
 }
 
 type RestartLogstashResponseBody struct {
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the current instance.
-	Result *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *Logstash `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RestartLogstashResponseBody) String() string {
@@ -20968,6 +21508,7 @@ func (s *ResumeElasticsearchTaskResponse) SetBody(v *ResumeElasticsearchTaskResp
 }
 
 type ResumeLogstashTaskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -20985,10 +21526,17 @@ func (s *ResumeLogstashTaskRequest) SetClientToken(v string) *ResumeLogstashTask
 }
 
 type ResumeLogstashTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code returned. If the API operation is successfully called, this parameter is not returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned. If the API operation is successfully called, this parameter is not returned.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the change task is resumed. Valid values:
+	//
+	// *   true: The change task is resumed.
+	// *   false: The change task fails to be resumed.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ResumeLogstashTaskResponseBody) String() string {
@@ -21118,6 +21666,7 @@ func (s *RolloverDataStreamResponse) SetBody(v *RolloverDataStreamResponseBody) 
 }
 
 type RunPipelinesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -21141,8 +21690,13 @@ func (s *RunPipelinesRequest) SetBody(v string) *RunPipelinesRequest {
 }
 
 type RunPipelinesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result. Valid values:
+	//
+	// *   true: successful
+	// *   false: failed
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s RunPipelinesResponseBody) String() string {
@@ -21193,15 +21747,11 @@ func (s *RunPipelinesResponse) SetBody(v *RunPipelinesResponseBody) *RunPipeline
 }
 
 type ShrinkNodeRequest struct {
-	Body []*ShrinkNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// 2
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// false
-	IgnoreStatus *bool `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	// WORKER
-	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body         []*ShrinkNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ClientToken  *string                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Count        *int32                   `json:"count,omitempty" xml:"count,omitempty"`
+	IgnoreStatus *bool                    `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
+	NodeType     *string                  `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s ShrinkNodeRequest) String() string {
@@ -21279,13 +21829,8 @@ func (s *ShrinkNodeRequestBody) SetZoneId(v string) *ShrinkNodeRequestBody {
 }
 
 type ShrinkNodeResponseBody struct {
-	// The ID of the region.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Command output:
-	//
-	// *   true: The scale-in is successful.
-	// *   false: The scale-in failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ShrinkNodeResponseBody) String() string {
@@ -21388,6 +21933,7 @@ func (s *StartApmResponse) SetBody(v *StartApmResponseBody) *StartApmResponse {
 }
 
 type StartCollectorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -21405,8 +21951,10 @@ func (s *StartCollectorRequest) SetClientToken(v string) *StartCollectorRequest 
 }
 
 type StartCollectorResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StartCollectorResponseBody) String() string {
@@ -21509,6 +22057,7 @@ func (s *StopApmResponse) SetBody(v *StopApmResponseBody) *StopApmResponse {
 }
 
 type StopCollectorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
@@ -21526,8 +22075,10 @@ func (s *StopCollectorRequest) SetClientToken(v string) *StopCollectorRequest {
 }
 
 type StopCollectorResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StopCollectorResponseBody) String() string {
@@ -21578,6 +22129,7 @@ func (s *StopCollectorResponse) SetBody(v *StopCollectorResponseBody) *StopColle
 }
 
 type StopPipelinesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -21601,8 +22153,13 @@ func (s *StopPipelinesRequest) SetBody(v string) *StopPipelinesRequest {
 }
 
 type StopPipelinesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result. Valid values:
+	//
+	// *   true: The pipelines are stopped.
+	// *   false: The pipelines fail to be stopped.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s StopPipelinesResponseBody) String() string {
@@ -21653,9 +22210,12 @@ func (s *StopPipelinesResponse) SetBody(v *StopPipelinesResponseBody) *StopPipel
 }
 
 type TagResourcesRequest struct {
-	ResourceIds  []*string                  `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string                    `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tags         []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// A tag.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The request ID.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The value of the tag.
+	Tags []*TagResourcesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -21682,7 +22242,12 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The returned object.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// Indicates whether tags are added to the clusters. Valid values:
+	//
+	// *   true
+	// *   false
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -21705,13 +22270,8 @@ func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
 }
 
 type TagResourcesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned results:
-	//
-	// *   true: The tag resource relationship is created.
-	// *   false: The tag resource relationship fails to be created.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s TagResourcesResponseBody) String() string {
@@ -21762,11 +22322,9 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type TransferNodeRequest struct {
-	Body []*TransferNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// WORKER
-	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
+	Body        []*TransferNodeRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	ClientToken *string                    `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NodeType    *string                    `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
 func (s TransferNodeRequest) String() string {
@@ -21822,13 +22380,8 @@ func (s *TransferNodeRequestBody) SetZoneId(v string) *TransferNodeRequestBody {
 }
 
 type TransferNodeResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Output:
-	//
-	// *   true: The task is successfully executed.
-	// *   false: The task failed to be executed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s TransferNodeResponseBody) String() string {
@@ -22128,6 +22681,7 @@ type UninstallPluginRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	Force       *bool   `json:"force,omitempty" xml:"force,omitempty"`
 }
 
 func (s UninstallPluginRequest) String() string {
@@ -22145,6 +22699,11 @@ func (s *UninstallPluginRequest) SetBody(v string) *UninstallPluginRequest {
 
 func (s *UninstallPluginRequest) SetClientToken(v string) *UninstallPluginRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UninstallPluginRequest) SetForce(v bool) *UninstallPluginRequest {
+	s.Force = &v
 	return s
 }
 
@@ -22306,7 +22865,10 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 
 type UpdateAdminPasswordRequest struct {
 	EsAdminPassword *string `json:"esAdminPassword,omitempty" xml:"esAdminPassword,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// Indicates whether the password was updated. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -22329,13 +22891,8 @@ func (s *UpdateAdminPasswordRequest) SetClientToken(v string) *UpdateAdminPasswo
 }
 
 type UpdateAdminPasswordResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the password was updated. Valid values:
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateAdminPasswordResponseBody) String() string {
@@ -22467,7 +23024,8 @@ func (s *UpdateAdvancedSettingResponse) SetBody(v *UpdateAdvancedSettingResponse
 }
 
 type UpdateAliwsDictRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -22490,8 +23048,10 @@ func (s *UpdateAliwsDictRequest) SetClientToken(v string) *UpdateAliwsDictReques
 }
 
 type UpdateAliwsDictResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*UpdateAliwsDictResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*UpdateAliwsDictResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAliwsDictResponseBody) String() string {
@@ -22513,10 +23073,17 @@ func (s *UpdateAliwsDictResponseBody) SetResult(v []*UpdateAliwsDictResponseBody
 }
 
 type UpdateAliwsDictResponseBodyResult struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the uploaded dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type of the dictionary file. Valid values:
+	//
+	// *   OSS
+	// *   ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The dictionary type. The value is fixed as ALI_WS.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateAliwsDictResponseBodyResult) String() string {
@@ -22756,6 +23323,7 @@ func (s *UpdateBlackIpsResponse) SetBody(v *UpdateBlackIpsResponseBody) *UpdateB
 }
 
 type UpdateCollectorRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -22779,8 +23347,10 @@ func (s *UpdateCollectorRequest) SetBody(v string) *UpdateCollectorRequest {
 }
 
 type UpdateCollectorResponseBody struct {
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *UpdateCollectorResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateCollectorResponseBody) String() string {
@@ -22802,19 +23372,37 @@ func (s *UpdateCollectorResponseBody) SetResult(v *UpdateCollectorResponseBodyRe
 }
 
 type UpdateCollectorResponseBodyResult struct {
-	CollectorPaths []*string                                         `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	Configs        []*UpdateCollectorResponseBodyResultConfigs       `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	DryRun         *bool                                             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	ExtendConfigs  []*UpdateCollectorResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	GmtCreatedTime *string                                           `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	GmtUpdateTime  *string                                           `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	Name           *string                                           `json:"name,omitempty" xml:"name,omitempty"`
-	OwnerId        *string                                           `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	ResId          *string                                           `json:"resId,omitempty" xml:"resId,omitempty"`
-	ResType        *string                                           `json:"resType,omitempty" xml:"resType,omitempty"`
-	ResVersion     *string                                           `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	Status         *string                                           `json:"status,omitempty" xml:"status,omitempty"`
-	VpcId          *string                                           `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	// The information about the configuration file for the shipper.
+	Configs []*UpdateCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Indicates whether the shipper is checked and updated. Valid values:
+	//
+	// *   true: The shipper is only checked.
+	// *   false: The shipper is checked and updated.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The extended parameters that are configured for the shipper.
+	ExtendConfigs []*UpdateCollectorResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The time when the shipper was created.
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// The time when the shipper was updated.
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// The name of the shipper.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The account ID.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The shipper ID.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The version of the shipper.
+	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The status of the shipper. Valid values:
+	//
+	// *   activing: The shipper is being initialized.
+	// *   active: The shipper is in effect.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the VPC in which the shipper resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s UpdateCollectorResponseBodyResult) String() string {
@@ -22891,7 +23479,9 @@ func (s *UpdateCollectorResponseBodyResult) SetVpcId(v string) *UpdateCollectorR
 }
 
 type UpdateCollectorResponseBodyResultConfigs struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the configuration file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the configuration file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -22914,20 +23504,42 @@ func (s *UpdateCollectorResponseBodyResultConfigs) SetFileName(v string) *Update
 }
 
 type UpdateCollectorResponseBodyResultExtendConfigs struct {
-	ConfigType       *string                                                   `json:"configType,omitempty" xml:"configType,omitempty"`
-	EnableMonitoring *bool                                                     `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	GroupId          *string                                                   `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Host             *string                                                   `json:"host,omitempty" xml:"host,omitempty"`
-	Hosts            []*string                                                 `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	InstanceId       *string                                                   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType     *string                                                   `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	KibanaHost       *string                                                   `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	Machines         []*UpdateCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	Protocol         *string                                                   `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	SuccessPodsCount *string                                                   `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	TotalPodsCount   *string                                                   `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	Type             *string                                                   `json:"type,omitempty" xml:"type,omitempty"`
-	UserName         *string                                                   `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The type of the configuration items. Valid values:
+	//
+	// *   collectorTargetInstance: indicates the information about the output of the shipper.
+	// *   collectorDeployMachine: indicates the information about the machine on which the shipper is installed.
+	// *   collectorElasticsearchForKibana: indicates the information about the Elasticsearch cluster for which Kibana Dashboard is enabled.
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// Indicates whether Kibana Monitoring is enabled. This parameter is returned only when **configType** is set to **collectorTargetInstance** and **instanceType** is set to **elasticsearch**. Valid values: true and false.
+	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
+	// The machine group ID. This parameter is returned only when **configType** is set to **collectorDeployMachine**.
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The address that is used to access Kibana over an internal network after you enable Kibana Dashboard. This parameter is returned only when **configType** is set to **collectorElasticsearchForKibana**.
+	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
+	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	// The ID of the object that is associated with the shipper. If **configType** is set to **collectorTargetInstance**, the value of this parameter is the ID of the output of the shipper. If **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**, the value of this parameter is the ID of an ACK cluster.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The type of the output of the shipper. Valid values: elasticsearch and logstash. This parameter is returned only when **configType** is set to **collectorTargetInstance**.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The address that is used to access Kibana over the Internet after you enable Kibana Dashboard. This parameter is returned only when **configType** is set to **collectorElasticsearchForKibana**.
+	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
+	// This parameter is returned only when configType is set to collectorDeployMachine.
+	//
+	// This parameter indicates the information about the ECS instances or ACK clusters on which the shipper is installed.
+	Machines []*UpdateCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// The transfer protocol that is used. It is the same as the protocol over which you can access the output of the shipper. Valid values: HTTP and HTTPS. This parameter is returned only when **configType** is set to **collectorTargetInstance**.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The number of pods from which logs are successfully collected in the ACK cluster. This parameter is returned only when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
+	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
+	// The number of pods from which logs needed to be collected in the ACK cluster. This parameter is returned only when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
+	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
+	// The type of the machine on which the shipper is installed. This parameter is returned only when **configType** is set to **collectorDeployMachine**. Valid values:
+	//
+	// *   ECSInstanceId
+	// *   ACKCluster
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The username that is used to access the output of the shipper. Default value: elastic. This parameter is returned only when **configType** is set to **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s UpdateCollectorResponseBodyResultExtendConfigs) String() string {
@@ -23009,8 +23621,15 @@ func (s *UpdateCollectorResponseBodyResultExtendConfigs) SetUserName(v string) *
 }
 
 type UpdateCollectorResponseBodyResultExtendConfigsMachines struct {
+	// The installation status of the shipper on an ECS instance. Valid values:
+	//
+	// *   heartOk
+	// *   heartLost
+	// *   uninstalled
+	// *   failed
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The ID of the ECS instance on which the shipper is installed.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
 func (s UpdateCollectorResponseBodyResultExtendConfigsMachines) String() string {
@@ -23061,6 +23680,7 @@ func (s *UpdateCollectorResponse) SetBody(v *UpdateCollectorResponseBody) *Updat
 }
 
 type UpdateCollectorNameRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -23084,8 +23704,10 @@ func (s *UpdateCollectorNameRequest) SetBody(v string) *UpdateCollectorNameReque
 }
 
 type UpdateCollectorNameResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateCollectorNameResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result *UpdateCollectorNameResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateCollectorNameResponseBody) String() string {
@@ -23107,19 +23729,37 @@ func (s *UpdateCollectorNameResponseBody) SetResult(v *UpdateCollectorNameRespon
 }
 
 type UpdateCollectorNameResponseBodyResult struct {
-	CollectorPaths []*string                                             `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
-	Configs        []*UpdateCollectorNameResponseBodyResultConfigs       `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	DryRun         *bool                                                 `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	ExtendConfigs  []*UpdateCollectorNameResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
-	GmtCreatedTime *string                                               `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
-	GmtUpdateTime  *string                                               `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
-	Name           *string                                               `json:"name,omitempty" xml:"name,omitempty"`
-	OwnerId        *string                                               `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
-	ResId          *string                                               `json:"resId,omitempty" xml:"resId,omitempty"`
-	ResType        *string                                               `json:"resType,omitempty" xml:"resType,omitempty"`
-	ResVersion     *string                                               `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
-	Status         *string                                               `json:"status,omitempty" xml:"status,omitempty"`
-	VpcId          *string                                               `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
+	// The information about the configuration file of the shipper.
+	Configs []*UpdateCollectorNameResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Indicates whether a dry run is performed. Valid values:
+	//
+	// *   true
+	// *   false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	// The extended configurations of the shipper.
+	ExtendConfigs []*UpdateCollectorNameResponseBodyResultExtendConfigs `json:"extendConfigs,omitempty" xml:"extendConfigs,omitempty" type:"Repeated"`
+	// The time when the shipper was created.
+	GmtCreatedTime *string `json:"gmtCreatedTime,omitempty" xml:"gmtCreatedTime,omitempty"`
+	// The time when the shipper was updated.
+	GmtUpdateTime *string `json:"gmtUpdateTime,omitempty" xml:"gmtUpdateTime,omitempty"`
+	// The name of the shipper.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The account ID.
+	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// The ID of the shipper.
+	ResId *string `json:"resId,omitempty" xml:"resId,omitempty"`
+	// The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and audiBeat.
+	ResType *string `json:"resType,omitempty" xml:"resType,omitempty"`
+	// The version of the shipper. The version of a shipper depends on the type of the machine on which the shipper is deployed.
+	//
+	// *   Elastic Compute Service (ECS) instance: 6.8.5\_with_community
+	// *   Container Service for Kubernetes (ACK) cluster: 6.8.13\_with_community
+	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
+	// The status of the shipper. Valid values: activating and active.
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the virtual private cloud (VPC) where the shipper resides.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s UpdateCollectorNameResponseBodyResult) String() string {
@@ -23196,7 +23836,9 @@ func (s *UpdateCollectorNameResponseBodyResult) SetVpcId(v string) *UpdateCollec
 }
 
 type UpdateCollectorNameResponseBodyResultConfigs struct {
-	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The content of the file.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the file.
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
 }
 
@@ -23219,20 +23861,43 @@ func (s *UpdateCollectorNameResponseBodyResultConfigs) SetFileName(v string) *Up
 }
 
 type UpdateCollectorNameResponseBodyResultExtendConfigs struct {
-	ConfigType       *string                                                       `json:"configType,omitempty" xml:"configType,omitempty"`
-	EnableMonitoring *bool                                                         `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
-	GroupId          *string                                                       `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	Host             *string                                                       `json:"host,omitempty" xml:"host,omitempty"`
-	Hosts            []*string                                                     `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
-	InstanceId       *string                                                       `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType     *string                                                       `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	KibanaHost       *string                                                       `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
-	Machines         []*UpdateCollectorNameResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	Protocol         *string                                                       `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	SuccessPodsCount *string                                                       `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
-	TotalPodsCount   *string                                                       `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
-	Type             *string                                                       `json:"type,omitempty" xml:"type,omitempty"`
-	UserName         *string                                                       `json:"userName,omitempty" xml:"userName,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// *   collectorTargetInstance
+	// *   collectorDeployMachine
+	// *   collectorElasticsearchForKibana
+	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	// Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance** and the value of **instanceType** is **elasticsearch**. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableMonitoring *bool `json:"enableMonitoring,omitempty" xml:"enableMonitoring,omitempty"`
+	// The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// The private endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	Host  *string   `json:"host,omitempty" xml:"host,omitempty"`
+	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
+	// The ID of the resource that is associated with the shipper. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
+	// The information about the ECS instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ECSInstanceId**.
+	Machines []*UpdateCollectorNameResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// The transmission protocol. Valid values: **HTTP** and **HTTPS**.
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The number of pods from which data is successfully collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+	SuccessPodsCount *string `json:"successPodsCount,omitempty" xml:"successPodsCount,omitempty"`
+	// The total number of pods from which data is collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+	TotalPodsCount *string `json:"totalPodsCount,omitempty" xml:"totalPodsCount,omitempty"`
+	// The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+	//
+	// *   ECSInstanceId
+	// *   ACKCluster
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
 func (s UpdateCollectorNameResponseBodyResultExtendConfigs) String() string {
@@ -23314,8 +23979,10 @@ func (s *UpdateCollectorNameResponseBodyResultExtendConfigs) SetUserName(v strin
 }
 
 type UpdateCollectorNameResponseBodyResultExtendConfigsMachines struct {
+	// The status of the shipper on the ECS instance. Valid values: **heartOk**, **heartLost**, **uninstalled**, and **failed**.
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IDs of the ECS instances.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 }
 
 func (s UpdateCollectorNameResponseBodyResultExtendConfigsMachines) String() string {
@@ -23465,6 +24132,7 @@ func (s *UpdateComponentIndexResponse) SetBody(v *UpdateComponentIndexResponseBo
 
 type UpdateDescriptionRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The new name of the instance.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -23644,7 +24312,8 @@ func (s *UpdateDiagnosisSettingsResponse) SetBody(v *UpdateDiagnosisSettingsResp
 }
 
 type UpdateDictRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -23667,8 +24336,10 @@ func (s *UpdateDictRequest) SetClientToken(v string) *UpdateDictRequest {
 }
 
 type UpdateDictResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*UpdateDictResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*UpdateDictResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpdateDictResponseBody) String() string {
@@ -23690,10 +24361,20 @@ func (s *UpdateDictResponseBody) SetResult(v []*UpdateDictResponseBodyResult) *U
 }
 
 type UpdateDictResponseBodyResult struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type of the dictionary file. Valid values:
+	//
+	// *   OSS
+	// *   ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The dictionary type. Valid values:
+	//
+	// *   MAIN: IK main dicrionary
+	// *   STOP: IK stopword list
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateDictResponseBodyResult) String() string {
@@ -23916,6 +24597,7 @@ func (s *UpdateExtendConfigResponse) SetBody(v *UpdateExtendConfigResponseBody) 
 }
 
 type UpdateExtendfilesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -23939,8 +24621,10 @@ func (s *UpdateExtendfilesRequest) SetBody(v string) *UpdateExtendfilesRequest {
 }
 
 type UpdateExtendfilesResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*UpdateExtendfilesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*UpdateExtendfilesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpdateExtendfilesResponseBody) String() string {
@@ -23962,8 +24646,11 @@ func (s *UpdateExtendfilesResponseBody) SetResult(v []*UpdateExtendfilesResponse
 }
 
 type UpdateExtendfilesResponseBodyResult struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the driver file. Unit: byte.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the driver file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source of the driver file. This parameter is fixed as ORIGIN, which indicates that the driver file is retained.
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 }
 
@@ -24020,7 +24707,8 @@ func (s *UpdateExtendfilesResponse) SetBody(v *UpdateExtendfilesResponseBody) *U
 }
 
 type UpdateHotIkDictsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -24043,8 +24731,10 @@ func (s *UpdateHotIkDictsRequest) SetClientToken(v string) *UpdateHotIkDictsRequ
 }
 
 type UpdateHotIkDictsResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*UpdateHotIkDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*UpdateHotIkDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpdateHotIkDictsResponseBody) String() string {
@@ -24066,10 +24756,20 @@ func (s *UpdateHotIkDictsResponseBody) SetResult(v []*UpdateHotIkDictsResponseBo
 }
 
 type UpdateHotIkDictsResponseBodyResult struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type of the dictionary file. Valid values:
+	//
+	// *   OSS
+	// *   ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of the dictionaries. Valid values:
+	//
+	// *   MAIN: IK main dictionary
+	// *   STOP: IK stopword list
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateHotIkDictsResponseBodyResult) String() string {
@@ -24288,10 +24988,10 @@ type UpdateInstanceRequest struct {
 	NodeAmount                   *int32                        `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
 	NodeSpec                     *NodeSpec                     `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
 	WarmNodeConfiguration        *WarmNodeConfiguration        `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The result of the request.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	Force       *bool   `json:"force,omitempty" xml:"force,omitempty"`
-	// upgrade
+	// The number of data nodes.
 	OrderActionType *string `json:"orderActionType,omitempty" xml:"orderActionType,omitempty"`
 }
 
@@ -24361,9 +25061,14 @@ func (s *UpdateInstanceRequest) SetOrderActionType(v string) *UpdateInstanceRequ
 type UpdateInstanceResponseBody struct {
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The time when the instance was created.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the request.
+	// The state of the instance. Valid values:
+	//
+	// *   active: normal
+	// *   activating: taking effect
+	// *   inactive: frozen
+	// *   invalid: invalid
 	Result *UpdateInstanceResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -24396,35 +25101,33 @@ func (s *UpdateInstanceResponseBody) SetResult(v *UpdateInstanceResponseBodyResu
 }
 
 type UpdateInstanceResponseBodyResult struct {
-	// The time when the instance was created.
-	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The name of the instance.
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The private domain name of the instance.
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The edition of the dedicated KMS instance.
-	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The ID of the instance.
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The configuration of Kibana nodes.
-	KibanaConfiguration *UpdateInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
-	// The configuration of dedicated master nodes.
-	MasterConfiguration *UpdateInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
-	// The number of data nodes.
-	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// The configuration of data nodes.
-	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The ID of the instance.
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The node specifications.
+	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
+	// The storage space of the node. Unit: GB.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The size of the node storage space.
+	KibanaConfiguration *UpdateInstanceResponseBodyResultKibanaConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty" type:"Struct"`
+	// The storage space of the node. Unit: GB.
+	MasterConfiguration *UpdateInstanceResponseBodyResultMasterConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
 	// *   prepaid: subscription
 	// *   postpaid: pay-as-you-go
-	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The state of the instance. Valid values:
+	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	// The storage type of the node. Valid values:
 	//
-	// *   active: normal
-	// *   activating: taking effect
-	// *   inactive: frozen
-	// *   invalid: invalid
+	// *   cloud_ssd: standard SSD
+	// *   cloud_efficiency: ultra disk
+	NodeSpec *UpdateInstanceResponseBodyResultNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	// The edition of the dedicated KMS instance.
+	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The name of the instance.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -24492,13 +25195,13 @@ func (s *UpdateInstanceResponseBodyResult) SetStatus(v string) *UpdateInstanceRe
 }
 
 type UpdateInstanceResponseBodyResultKibanaConfiguration struct {
-	// The number of nodes.
+	// The configuration of dedicated master nodes.
 	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The size of the node storage space.
-	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. This parameter can be ignored.
-	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	// The node specifications.
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The number of nodes.
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The storage type of the node. This parameter can be ignored.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -24531,13 +25234,10 @@ func (s *UpdateInstanceResponseBodyResultKibanaConfiguration) SetSpec(v string) 
 }
 
 type UpdateInstanceResponseBodyResultMasterConfiguration struct {
-	// The number of nodes.
-	Amount *int32 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The storage space of the node. Unit: GB.
-	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
+	Amount   *int32  `json:"amount,omitempty" xml:"amount,omitempty"`
+	Disk     *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
 	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
-	// The node specifications.
+	// The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -24570,14 +25270,11 @@ func (s *UpdateInstanceResponseBodyResultMasterConfiguration) SetSpec(v string) 
 }
 
 type UpdateInstanceResponseBodyResultNodeSpec struct {
-	// The storage space of the node. Unit: GB.
-	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
-	// The storage type of the node. Valid values:
-	//
-	// *   cloud_ssd: standard SSD
-	// *   cloud_efficiency: ultra disk
-	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	// The node specifications.
+	Disk *int32 `json:"disk,omitempty" xml:"disk,omitempty"`
+	// The number of nodes.
+	DiskType *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
+	// The configuration of Kibana nodes.
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 }
 
@@ -24634,7 +25331,8 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateInstanceChargeTypeRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -24657,8 +25355,13 @@ func (s *UpdateInstanceChargeTypeRequest) SetClientToken(v string) *UpdateInstan
 }
 
 type UpdateInstanceChargeTypeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Return results:
+	//
+	// *   true: conversion successful
+	// *   false: conversion failed
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateInstanceChargeTypeResponseBody) String() string {
@@ -24780,7 +25483,8 @@ func (s *UpdateInstanceSettingsResponse) SetBody(v *UpdateInstanceSettingsRespon
 }
 
 type UpdateKibanaSettingsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// This parameter is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -24803,8 +25507,13 @@ func (s *UpdateKibanaSettingsRequest) SetClientToken(v string) *UpdateKibanaSett
 }
 
 type UpdateKibanaSettingsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Return results:
+	//
+	// *   true: The Kibana language modified successfully
+	// *   false: The Kibana language modified failed
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateKibanaSettingsResponseBody) String() string {
@@ -24855,10 +25564,20 @@ func (s *UpdateKibanaSettingsResponse) SetBody(v *UpdateKibanaSettingsResponseBo
 }
 
 type UpdateKibanaWhiteIpsRequest struct {
-	KibanaIPWhitelist []*string                                `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	WhiteIpGroup      *UpdateKibanaWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
-	ClientToken       *string                                  `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ModifyMode        *string                                  `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	// The IP address whitelists. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+	//
+	// You cannot configure both the kibanaIPWhitelist and whiteIpGroup parameters.
+	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	// The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
+	WhiteIpGroup *UpdateKibanaWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
+	// The update mode. Valid values:
+	//
+	// *   Cover: overwrites the IP addresses in the specified IP address whitelist with the IP addresses specified by using the ips parameter. This is the default value.
+	// *   Append: adds the IP addresses specified by using the ips parameter to the specified IP address whitelist.
+	// *   Delete: deletes the IP addresses specified by using the ips parameter from the specified IP address whitelist. At least one IP address must be retained for the whitelist.
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The body of the request.
+	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdateKibanaWhiteIpsRequest) String() string {
@@ -24890,9 +25609,12 @@ func (s *UpdateKibanaWhiteIpsRequest) SetModifyMode(v string) *UpdateKibanaWhite
 }
 
 type UpdateKibanaWhiteIpsRequestWhiteIpGroup struct {
-	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+	// The type of the whitelist. Set the value to PUBLIC_KIBANA. This value indicates a public IP address whitelist.
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
+	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// The IP addresses in the whitelist.
+	WhiteIpType *string `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
 
 func (s UpdateKibanaWhiteIpsRequestWhiteIpGroup) String() string {
@@ -24919,8 +25641,10 @@ func (s *UpdateKibanaWhiteIpsRequestWhiteIpGroup) SetWhiteIpType(v string) *Upda
 }
 
 type UpdateKibanaWhiteIpsResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateKibanaWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The details of the Elasticsearch cluster.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The private IP address whitelists for access to the Kibana console of the cluster.
+	Result *UpdateKibanaWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateKibanaWhiteIpsResponseBody) String() string {
@@ -24942,9 +25666,12 @@ func (s *UpdateKibanaWhiteIpsResponseBody) SetResult(v *UpdateKibanaWhiteIpsResp
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResult struct {
-	KibanaIPWhitelist        []*string                                            `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
-	KibanaPrivateIPWhitelist []*string                                            `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
-	NetworkConfig            *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
+	// The public IP address whitelists for access to the Kibana console of the cluster.
+	KibanaIPWhitelist []*string `json:"kibanaIPWhitelist,omitempty" xml:"kibanaIPWhitelist,omitempty" type:"Repeated"`
+	// The private IP address whitelists for access to the Kibana console of the cluster.
+	KibanaPrivateIPWhitelist []*string `json:"kibanaPrivateIPWhitelist,omitempty" xml:"kibanaPrivateIPWhitelist,omitempty" type:"Repeated"`
+	// The ID of the virtual private cloud (VPC).
+	NetworkConfig *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateKibanaWhiteIpsResponseBodyResult) String() string {
@@ -24971,10 +25698,15 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResult) SetNetworkConfig(v *UpdateKiban
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig struct {
-	Type             *string                                                                `json:"type,omitempty" xml:"type,omitempty"`
-	VpcId            *string                                                                `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	VsArea           *string                                                                `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
-	VswitchId        *string                                                                `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// The IP address whitelists.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the vSwitch.
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// The network type.
+	VsArea *string `json:"vsArea,omitempty" xml:"vsArea,omitempty"`
+	// The region ID.
+	VswitchId *string `json:"vswitchId,omitempty" xml:"vswitchId,omitempty"`
+	// The IP address whitelists.
 	WhiteIpGroupList []*UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -25012,7 +25744,9 @@ func (s *UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig) SetWhiteIpGroupLis
 }
 
 type UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
-	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The IP addresses in the whitelist.
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The IP addresses in the whitelist.
 	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
@@ -25070,10 +25804,9 @@ func (s *UpdateKibanaWhiteIpsResponse) SetBody(v *UpdateKibanaWhiteIpsResponseBo
 }
 
 type UpdateLogstashRequest struct {
-	NodeAmount *int32                         `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	NodeSpec   *UpdateLogstashRequestNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	NodeAmount  *int32                         `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
+	NodeSpec    *UpdateLogstashRequestNodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty" type:"Struct"`
+	ClientToken *string                        `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
 func (s UpdateLogstashRequest) String() string {
@@ -25129,13 +25862,8 @@ func (s *UpdateLogstashRequestNodeSpec) SetSpec(v string) *UpdateLogstashRequest
 }
 
 type UpdateLogstashResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance information is modified. Valid values:
-	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateLogstashResponseBody) String() string {
@@ -25186,7 +25914,8 @@ func (s *UpdateLogstashResponse) SetBody(v *UpdateLogstashResponseBody) *UpdateL
 }
 
 type UpdateLogstashChargeTypeRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -25209,8 +25938,13 @@ func (s *UpdateLogstashChargeTypeRequest) SetClientToken(v string) *UpdateLogsta
 }
 
 type UpdateLogstashChargeTypeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the billing method of the cluster is switched. Valid values:
+	//
+	// *   true: The billing method is switched.
+	// *   false: The billing method fails to be switched.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateLogstashChargeTypeResponseBody) String() string {
@@ -25262,6 +25996,7 @@ func (s *UpdateLogstashChargeTypeResponse) SetBody(v *UpdateLogstashChargeTypeRe
 
 type UpdateLogstashDescriptionRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -25284,8 +26019,10 @@ func (s *UpdateLogstashDescriptionRequest) SetClientToken(v string) *UpdateLogst
 }
 
 type UpdateLogstashDescriptionResponseBody struct {
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateLogstashDescriptionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result returned.
+	Result *UpdateLogstashDescriptionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateLogstashDescriptionResponseBody) String() string {
@@ -25307,6 +26044,7 @@ func (s *UpdateLogstashDescriptionResponseBody) SetResult(v *UpdateLogstashDescr
 }
 
 type UpdateLogstashDescriptionResponseBodyResult struct {
+	// The name of the cluster.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -25523,9 +26261,11 @@ func (s *UpdatePipelineManagementConfigResponse) SetBody(v *UpdatePipelineManage
 }
 
 type UpdatePipelinesRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	Trigger     *bool   `json:"trigger,omitempty" xml:"trigger,omitempty"`
+	// Specifies whether to deploy the pipeline immediately.
+	Trigger *bool `json:"trigger,omitempty" xml:"trigger,omitempty"`
 }
 
 func (s UpdatePipelinesRequest) String() string {
@@ -25552,8 +26292,13 @@ func (s *UpdatePipelinesRequest) SetTrigger(v bool) *UpdatePipelinesRequest {
 }
 
 type UpdatePipelinesResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the pipeline is updated. Valid values:
+	//
+	// *   true: The pipeline is updated.
+	// *   false: The pipeline fails to be updated.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdatePipelinesResponseBody) String() string {
@@ -25604,9 +26349,11 @@ func (s *UpdatePipelinesResponse) SetBody(v *UpdatePipelinesResponseBody) *Updat
 }
 
 type UpdatePrivateNetworkWhiteIpsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The ID of the request.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ModifyMode  *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	// The results that are returned.
+	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdatePrivateNetworkWhiteIpsRequest) String() string {
@@ -25702,7 +26449,8 @@ func (s *UpdatePrivateNetworkWhiteIpsResponse) SetBody(v *UpdatePrivateNetworkWh
 }
 
 type UpdatePublicNetworkRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -25725,8 +26473,10 @@ func (s *UpdatePublicNetworkRequest) SetClientToken(v string) *UpdatePublicNetwo
 }
 
 type UpdatePublicNetworkResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdatePublicNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return results.
+	Result *UpdatePublicNetworkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdatePublicNetworkResponseBody) String() string {
@@ -25748,6 +26498,7 @@ func (s *UpdatePublicNetworkResponseBody) SetResult(v *UpdatePublicNetworkRespon
 }
 
 type UpdatePublicNetworkResponseBodyResult struct {
+	// The status of the public network access switch.
 	EnablePublic *bool `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
 }
 
@@ -25794,9 +26545,11 @@ func (s *UpdatePublicNetworkResponse) SetBody(v *UpdatePublicNetworkResponseBody
 }
 
 type UpdatePublicWhiteIpsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The ID of the request.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ModifyMode  *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	// The results that are returned.
+	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdatePublicWhiteIpsRequest) String() string {
@@ -26063,7 +26816,8 @@ func (s *UpdateSnapshotSettingResponse) SetBody(v *UpdateSnapshotSettingResponse
 }
 
 type UpdateSynonymsDictsRequest struct {
-	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 }
 
@@ -26086,8 +26840,10 @@ func (s *UpdateSynonymsDictsRequest) SetClientToken(v string) *UpdateSynonymsDic
 }
 
 type UpdateSynonymsDictsResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*UpdateSynonymsDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned result.
+	Result []*UpdateSynonymsDictsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSynonymsDictsResponseBody) String() string {
@@ -26109,10 +26865,17 @@ func (s *UpdateSynonymsDictsResponseBody) SetResult(v []*UpdateSynonymsDictsResp
 }
 
 type UpdateSynonymsDictsResponseBodyResult struct {
-	FileSize   *int64  `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the dictionary file. Unit: bytes.
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// The name of the dictionary file.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The source type of the dictionary file. Valid values:
+	//
+	// *   OSS
+	// *   ORIGIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The dictionary type. The value is fixed as SYNONYMS.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateSynonymsDictsResponseBodyResult) String() string {
@@ -26248,10 +27011,16 @@ func (s *UpdateTemplateResponse) SetBody(v *UpdateTemplateResponseBody) *UpdateT
 }
 
 type UpdateWhiteIpsRequest struct {
-	EsIPWhitelist []*string                          `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
-	WhiteIpGroup  *UpdateWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
-	ClientToken   *string                            `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	ModifyMode    *string                            `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
+	// The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
+	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	// The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
+	WhiteIpGroup *UpdateWhiteIpsRequestWhiteIpGroup `json:"whiteIpGroup,omitempty" xml:"whiteIpGroup,omitempty" type:"Struct"`
+	// The IP addresses in the whitelist.
+	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+	//
+	// >  You cannot configure both the esIPWhitelist and whiteIpGroup parameters.
+	ModifyMode *string `json:"modifyMode,omitempty" xml:"modifyMode,omitempty"`
 }
 
 func (s UpdateWhiteIpsRequest) String() string {
@@ -26283,9 +27052,12 @@ func (s *UpdateWhiteIpsRequest) SetModifyMode(v string) *UpdateWhiteIpsRequest {
 }
 
 type UpdateWhiteIpsRequestWhiteIpGroup struct {
-	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
-	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
+	// The type of the whitelist. Set the value to **PRIVATE_ES**. This value indicates a private IP address whitelist.
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The returned result.
+	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// The returned result.
+	WhiteIpType *string `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
 
 func (s UpdateWhiteIpsRequestWhiteIpGroup) String() string {
@@ -26312,8 +27084,10 @@ func (s *UpdateWhiteIpsRequestWhiteIpGroup) SetWhiteIpType(v string) *UpdateWhit
 }
 
 type UpdateWhiteIpsResponseBody struct {
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *UpdateWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The updated whitelist.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The network configurations.
+	Result *UpdateWhiteIpsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s UpdateWhiteIpsResponseBody) String() string {
@@ -26335,7 +27109,9 @@ func (s *UpdateWhiteIpsResponseBody) SetResult(v *UpdateWhiteIpsResponseBodyResu
 }
 
 type UpdateWhiteIpsResponseBodyResult struct {
-	EsIPWhitelist []*string                                      `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	// The list of whitelists.
+	EsIPWhitelist []*string `json:"esIPWhitelist,omitempty" xml:"esIPWhitelist,omitempty" type:"Repeated"`
+	// The name of the whitelist. By default, the default whitelist is included.
 	NetworkConfig *UpdateWhiteIpsResponseBodyResultNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty" type:"Struct"`
 }
 
@@ -26358,6 +27134,7 @@ func (s *UpdateWhiteIpsResponseBodyResult) SetNetworkConfig(v *UpdateWhiteIpsRes
 }
 
 type UpdateWhiteIpsResponseBodyResultNetworkConfig struct {
+	// The IP addresses in the whitelist.
 	WhiteIpGroupList []*UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList `json:"whiteIpGroupList,omitempty" xml:"whiteIpGroupList,omitempty" type:"Repeated"`
 }
 
@@ -26375,6 +27152,7 @@ func (s *UpdateWhiteIpsResponseBodyResultNetworkConfig) SetWhiteIpGroupList(v []
 }
 
 type UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList struct {
+	// The type of the whitelist. The value of this parameter is fixed as PRIVATE_ES, which indicates a private IP address whitelist.
 	GroupName   *string   `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	Ips         []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
 	WhiteIpType *string   `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
@@ -26433,7 +27211,6 @@ func (s *UpdateWhiteIpsResponse) SetBody(v *UpdateWhiteIpsResponseBody) *UpdateW
 }
 
 type UpdateXpackMonitorConfigRequest struct {
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
 	ClientToken *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Enable      *bool     `json:"enable,omitempty" xml:"enable,omitempty"`
 	Endpoints   []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
@@ -26475,13 +27252,8 @@ func (s *UpdateXpackMonitorConfigRequest) SetUserName(v string) *UpdateXpackMoni
 }
 
 type UpdateXpackMonitorConfigResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned results:
-	//
-	// *   true: The update was successful.
-	// *   false: The update failed.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s UpdateXpackMonitorConfigResponseBody) String() string {
@@ -26534,9 +27306,14 @@ func (s *UpdateXpackMonitorConfigResponse) SetBody(v *UpdateXpackMonitorConfigRe
 type UpgradeEngineVersionRequest struct {
 	Type    *string `json:"type,omitempty" xml:"type,omitempty"`
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*
+	// The moderation results.
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// false
+	// The monitoring type. Valid values:
+	//
+	// *   checkClusterHealth: Cluster Health Status
+	// *   checkConfigCompatible: Configuration Compatibility Status
+	// *   checkClusterResource: resource space status
+	// *   checkClusterSnapshot: Whether a snapshot exists
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -26569,9 +27346,15 @@ func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionReq
 }
 
 type UpgradeEngineVersionResponseBody struct {
-	// The ID of the request.
+	// The verification information.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The moderation results.
+	// The type of the error. Valid values:
+	//
+	// *   clusterStatus: the health status of the cluster.
+	// *   clusterConfigYml: Cluster YML File
+	// *   clusterConfigPlugins: Cluster Configuration File
+	// *   clusterResource: cluster resources
+	// *   clusterSnapshot: cluster snapshot
 	Result []*UpgradeEngineVersionResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -26594,19 +27377,10 @@ func (s *UpgradeEngineVersionResponseBody) SetResult(v []*UpgradeEngineVersionRe
 }
 
 type UpgradeEngineVersionResponseBodyResult struct {
-	// The verification is passed. Valid values:
-	//
-	// *   success: through
-	// *   failed: failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The verification information.
+	// The error message returned.
 	ValidateResult []*UpgradeEngineVersionResponseBodyResultValidateResult `json:"validateResult,omitempty" xml:"validateResult,omitempty" type:"Repeated"`
-	// The monitoring type. Valid values:
-	//
-	// *   checkClusterHealth: Cluster Health Status
-	// *   checkConfigCompatible: Configuration Compatibility Status
-	// *   checkClusterResource: resource space status
-	// *   checkClusterSnapshot: Whether a snapshot exists
+	// The error code returned if the request failed.
 	ValidateType *string `json:"validateType,omitempty" xml:"validateType,omitempty"`
 }
 
@@ -26634,17 +27408,12 @@ func (s *UpgradeEngineVersionResponseBodyResult) SetValidateType(v string) *Upgr
 }
 
 type UpgradeEngineVersionResponseBodyResultValidateResult struct {
-	// The error code returned if the request failed.
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message returned.
-	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The type of the error. Valid values:
+	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The verification is passed. Valid values:
 	//
-	// *   clusterStatus: the health status of the cluster.
-	// *   clusterConfigYml: Cluster YML File
-	// *   clusterConfigPlugins: Cluster Configuration File
-	// *   clusterResource: cluster resources
-	// *   clusterSnapshot: cluster snapshot
+	// *   success: through
+	// *   failed: failed
 	ErrorType *string `json:"errorType,omitempty" xml:"errorType,omitempty"`
 }
 
@@ -26701,6 +27470,7 @@ func (s *UpgradeEngineVersionResponse) SetBody(v *UpgradeEngineVersionResponseBo
 }
 
 type ValidateConnectionRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -26724,8 +27494,13 @@ func (s *ValidateConnectionRequest) SetBody(v string) *ValidateConnectionRequest
 }
 
 type ValidateConnectionResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the connectivity is normal. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ValidateConnectionResponseBody) String() string {
@@ -26776,12 +27551,14 @@ func (s *ValidateConnectionResponse) SetBody(v *ValidateConnectionResponseBody) 
 }
 
 type ValidateShrinkNodesRequest struct {
-	Body []*ValidateShrinkNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
-	// 2
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// false
+	Body  []*ValidateShrinkNodesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Count *int32                            `json:"count,omitempty" xml:"count,omitempty"`
+	// The ID of the request.
 	IgnoreStatus *bool `json:"ignoreStatus,omitempty" xml:"ignoreStatus,omitempty"`
-	// WORKER
+	// Returned results:
+	//
+	// *   true: can be scaled in
+	// *   false: cannot be scaled in.
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
 }
 
@@ -26855,13 +27632,8 @@ func (s *ValidateShrinkNodesRequestBody) SetZoneId(v string) *ValidateShrinkNode
 }
 
 type ValidateShrinkNodesResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returned results:
-	//
-	// *   true: can be scaled in
-	// *   false: cannot be scaled in.
-	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s ValidateShrinkNodesResponseBody) String() string {
@@ -27105,6 +27877,7 @@ type CreateInstanceRequest struct {
 	PaymentInfo                  *PaymentInfo                  `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
 	PaymentType                  *string                       `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
 	ResourceGroupId              *string                       `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Tags                         []*CreateInstanceRequestTags  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	WarmNodeConfiguration        *WarmNodeConfiguration        `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
 	ZoneCount                    *int32                        `json:"zoneCount,omitempty" xml:"zoneCount,omitempty"`
 	ClientToken                  *string                       `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
@@ -27188,6 +27961,11 @@ func (s *CreateInstanceRequest) SetResourceGroupId(v string) *CreateInstanceRequ
 	return s
 }
 
+func (s *CreateInstanceRequest) SetTags(v []*CreateInstanceRequestTags) *CreateInstanceRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetWarmNodeConfiguration(v *WarmNodeConfiguration) *CreateInstanceRequest {
 	s.WarmNodeConfiguration = v
 	return s
@@ -27200,6 +27978,29 @@ func (s *CreateInstanceRequest) SetZoneCount(v int32) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+type CreateInstanceRequestTags struct {
+	TagKey   *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s CreateInstanceRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestTags) SetTagKey(v string) *CreateInstanceRequestTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *CreateInstanceRequestTags) SetTagValue(v string) *CreateInstanceRequestTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -27929,6 +28730,7 @@ func (client *Client) CreateDataStream(InstanceId *string, request *CreateDataSt
 }
 
 /**
+ * @deprecated
  * Before you call this operation, note that:
  * *   Currently, the one-click index migration feature only supports the China (Beijing) region.
  * *   The source and destination Elasticsearch clusters must meet the following requirements: a user-created or Alibaba Cloud Elasticsearch Elasticsearch cluster with a source of version 6.7.0 and a Alibaba Cloud Elasticsearch Elasticsearch cluster with a destination of version 6.3.2 or 6.7.0.
@@ -27938,6 +28740,7 @@ func (client *Client) CreateDataStream(InstanceId *string, request *CreateDataSt
  * @param runtime runtime options for this request RuntimeOptions
  * @return CreateDataTasksResponse
  */
+// Deprecated
 func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *CreateDataTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDataTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27974,6 +28777,7 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
 }
 
 /**
+ * @deprecated
  * Before you call this operation, note that:
  * *   Currently, the one-click index migration feature only supports the China (Beijing) region.
  * *   The source and destination Elasticsearch clusters must meet the following requirements: a user-created or Alibaba Cloud Elasticsearch Elasticsearch cluster with a source of version 6.7.0 and a Alibaba Cloud Elasticsearch Elasticsearch cluster with a destination of version 6.3.2 or 6.7.0.
@@ -27981,6 +28785,7 @@ func (client *Client) CreateDataTasksWithOptions(InstanceId *string, request *Cr
  * @param request CreateDataTasksRequest
  * @return CreateDataTasksResponse
  */
+// Deprecated
 func (client *Client) CreateDataTasks(InstanceId *string, request *CreateDataTasksRequest) (_result *CreateDataTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28112,16 +28917,6 @@ func (client *Client) CreateIndexTemplate(InstanceId *string, request *CreateInd
 	return _result, _err
 }
 
-/**
- * Before you call the API operation, note that:
- * *   Before you call this operation, make sure that you have fully understood the payment method and price of Logstash.
- * *   Before you create an instance, you must complete real-name verification.
- *
- * @param request CreateLogstashRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateLogstashResponse
- */
 func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLogstashResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28190,14 +28985,6 @@ func (client *Client) CreateLogstashWithOptions(request *CreateLogstashRequest, 
 	return _result, _err
 }
 
-/**
- * Before you call the API operation, note that:
- * *   Before you call this operation, make sure that you have fully understood the payment method and price of Logstash.
- * *   Before you create an instance, you must complete real-name verification.
- *
- * @param request CreateLogstashRequest
- * @return CreateLogstashResponse
- */
 func (client *Client) CreateLogstash(request *CreateLogstashRequest) (_result *CreateLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -28309,7 +29096,7 @@ func (client *Client) CreateSnapshot(InstanceId *string, request *CreateSnapshot
 }
 
 /**
- * For more information about this API operation, see [Configure a private connection to an instance](~~279559~~).
+ * 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\*\\*\\*
  *
  * @param request CreateVpcEndpointRequest
  * @param headers map
@@ -28365,7 +29152,7 @@ func (client *Client) CreateVpcEndpointWithOptions(InstanceId *string, request *
 }
 
 /**
- * For more information about this API operation, see [Configure a private connection to an instance](~~279559~~).
+ * 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\*\\*\\*
  *
  * @param request CreateVpcEndpointRequest
  * @return CreateVpcEndpointResponse
@@ -28816,8 +29603,7 @@ func (client *Client) DeleteInstance(InstanceId *string, request *DeleteInstance
 }
 
 /**
- * Before you call an interface, note the following:
- * After an instance is released, the physical resources used by the instance are recycled. All related data is lost and cannot be recovered. The Cloud disks attached to the instance nodes are also released. The corresponding snapshots are deleted.
+ * Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
  *
  * @param request DeleteLogstashRequest
  * @param headers map
@@ -28863,8 +29649,7 @@ func (client *Client) DeleteLogstashWithOptions(InstanceId *string, request *Del
 }
 
 /**
- * Before you call an interface, note the following:
- * After an instance is released, the physical resources used by the instance are recycled. All related data is lost and cannot be recovered. The Cloud disks attached to the instance nodes are also released. The corresponding snapshots are deleted.
+ * Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
  *
  * @param request DeleteLogstashRequest
  * @return DeleteLogstashResponse
@@ -29028,7 +29813,7 @@ func (client *Client) DeleteVpcEndpoint(InstanceId *string, EndpointId *string, 
 }
 
 /**
- * >  Before installing the collector on the ACK cluster, you can call this interface to view the installation status of the Elasticsearch Operator on the target cluster.
+ * > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -29059,7 +29844,7 @@ func (client *Client) DescribeAckOperatorWithOptions(ClusterId *string, headers 
 }
 
 /**
- * >  Before installing the collector on the ACK cluster, you can call this interface to view the installation status of the Elasticsearch Operator on the target cluster.
+ * > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
  *
  * @return DescribeAckOperatorResponse
  */
@@ -29394,10 +30179,10 @@ func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *Desc
 }
 
 /**
- * The instance health condition supports the following three states:
- * *   GREEN: The distribution of primary and secondary shards is normal.
- * *   YELLOW: The primary shard is normally allocated, but the replica is not normally allocated.
- * *   RED: The primary shard is not normally allocated.
+ * An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+ * *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+ * *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+ * *   RED: Primary shards are not normally allocated.
  *
  * @param headers map
  * @param runtime runtime options for this request RuntimeOptions
@@ -29428,10 +30213,10 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 }
 
 /**
- * The instance health condition supports the following three states:
- * *   GREEN: The distribution of primary and secondary shards is normal.
- * *   YELLOW: The primary shard is normally allocated, but the replica is not normally allocated.
- * *   RED: The primary shard is not normally allocated.
+ * An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+ * *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+ * *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+ * *   RED: Primary shards are not normally allocated.
  *
  * @return DescribeElasticsearchHealthResponse
  */
@@ -30398,7 +31183,7 @@ func (client *Client) GetTransferableNodes(InstanceId *string, request *GetTrans
 }
 
 /**
- * >  When using a collector to collect logs from different data sources or performing elastic cluster scaling tasks (for the China site), you must first grant permissions to create service linked roles.
+ * > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
  *
  * @param request InitializeOperationRoleRequest
  * @param headers map
@@ -30441,7 +31226,7 @@ func (client *Client) InitializeOperationRoleWithOptions(request *InitializeOper
 }
 
 /**
- * >  When using a collector to collect logs from different data sources or performing elastic cluster scaling tasks (for the China site), you must first grant permissions to create service linked roles.
+ * > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
  *
  * @param request InitializeOperationRoleRequest
  * @return InitializeOperationRoleResponse
@@ -30459,7 +31244,7 @@ func (client *Client) InitializeOperationRole(request *InitializeOperationRoleRe
 }
 
 /**
- * >  Before installing the collector on the ACK cluster, you need to call this interface and install the Elasticsearch Operator. on the target cluster.
+ * > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
  *
  * @param request InstallAckOperatorRequest
  * @param headers map
@@ -30502,7 +31287,7 @@ func (client *Client) InstallAckOperatorWithOptions(ClusterId *string, request *
 }
 
 /**
- * >  Before installing the collector on the ACK cluster, you need to call this interface and install the Elasticsearch Operator. on the target cluster.
+ * > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
  *
  * @param request InstallAckOperatorRequest
  * @return InstallAckOperatorResponse
@@ -30567,8 +31352,7 @@ func (client *Client) InstallKibanaSystemPlugin(InstanceId *string, request *Ins
 }
 
 /**
- * Before you call this operation, note that:
- * The plug-ins to be installed must be included in the [System Default Plug-ins](~~139626~~) list of Alibaba Cloud Logstash. External open-source plug-ins are not supported.
+ * ls-cn-oew1qbgl\\*\\*\\*\\*
  *
  * @param request InstallLogstashSystemPluginRequest
  * @param headers map
@@ -30611,8 +31395,7 @@ func (client *Client) InstallLogstashSystemPluginWithOptions(InstanceId *string,
 }
 
 /**
- * Before you call this operation, note that:
- * The plug-ins to be installed must be included in the [System Default Plug-ins](~~139626~~) list of Alibaba Cloud Logstash. External open-source plug-ins are not supported.
+ * ls-cn-oew1qbgl\\*\\*\\*\\*
  *
  * @param request InstallLogstashSystemPluginRequest
  * @return InstallLogstashSystemPluginResponse
@@ -30864,7 +31647,7 @@ func (client *Client) ListAckClusters(request *ListAckClustersRequest) (_result 
 }
 
 /**
- * >  When you create an ACK cluster-based collector, you need to specify the namespace of the cluster. You can call this interface to view all namespaces of the cluster and select the appropriate namespace based on this.
+ * > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
  *
  * @param request ListAckNamespacesRequest
  * @param headers map
@@ -30910,7 +31693,7 @@ func (client *Client) ListAckNamespacesWithOptions(ClusterId *string, request *L
 }
 
 /**
- * >  When you create an ACK cluster-based collector, you need to specify the namespace of the cluster. You can call this interface to view all namespaces of the cluster and select the appropriate namespace based on this.
+ * > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
  *
  * @param request ListAckNamespacesRequest
  * @return ListAckNamespacesResponse
@@ -32710,14 +33493,6 @@ func (client *Client) ListPipeline(InstanceId *string, request *ListPipelineRequ
 	return _result, _err
 }
 
-/**
- * >  Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not open in some regional consoles.
- *
- * @param request ListPipelineIdsRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ListPipelineIdsResponse
- */
 func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *ListPipelineIdsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32747,12 +33522,6 @@ func (client *Client) ListPipelineIdsWithOptions(InstanceId *string, request *Li
 	return _result, _err
 }
 
-/**
- * >  Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not open in some regional consoles.
- *
- * @param request ListPipelineIdsRequest
- * @return ListPipelineIdsResponse
- */
 func (client *Client) ListPipelineIds(InstanceId *string, request *ListPipelineIdsRequest) (_result *ListPipelineIdsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -32890,7 +33659,7 @@ func (client *Client) ListSearchLog(InstanceId *string, request *ListSearchLogRe
 }
 
 /**
- * >  Shard recovery is the process of synchronizing from primary to secondary shards. After the restoration is complete, the secondary parts are available for searching.
+ * > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
  *
  * @param request ListShardRecoveriesRequest
  * @param headers map
@@ -32932,7 +33701,7 @@ func (client *Client) ListShardRecoveriesWithOptions(InstanceId *string, request
 }
 
 /**
- * >  Shard recovery is the process of synchronizing from primary to secondary shards. After the restoration is complete, the secondary parts are available for searching.
+ * > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
  *
  * @param request ListShardRecoveriesRequest
  * @return ListShardRecoveriesResponse
@@ -33309,10 +34078,7 @@ func (client *Client) ModifyElastictask(InstanceId *string, request *ModifyElast
 }
 
 /**
- * Before you call this operation, note that:
- * *   Before maintenance is performed, the system sends SMS messages and emails to the contacts listed in your Alibaba Cloud account.
- * *   On the day of instance maintenance, to ensure the stability of the entire maintenance process, the instance enters the Active state before it can be maintenance window. In this case, you can still access the cluster and perform query operations such as performance monitoring. However, you cannot perform modification operations such as restart and configuration upgrades for the cluster.
- * *   The instance connection may be disconnected within the available maintenance window. Make sure that the application has a reconnection mechanism.
+ * es-cn-n6w1o1x0w001c\\*\\*\\*\\*
  *
  * @param request ModifyInstanceMaintainTimeRequest
  * @param headers map
@@ -33355,10 +34121,7 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 }
 
 /**
- * Before you call this operation, note that:
- * *   Before maintenance is performed, the system sends SMS messages and emails to the contacts listed in your Alibaba Cloud account.
- * *   On the day of instance maintenance, to ensure the stability of the entire maintenance process, the instance enters the Active state before it can be maintenance window. In this case, you can still access the cluster and perform query operations such as performance monitoring. However, you cannot perform modification operations such as restart and configuration upgrades for the cluster.
- * *   The instance connection may be disconnected within the available maintenance window. Make sure that the application has a reconnection mechanism.
+ * es-cn-n6w1o1x0w001c\\*\\*\\*\\*
  *
  * @param request ModifyInstanceMaintainTimeRequest
  * @return ModifyInstanceMaintainTimeResponse
@@ -33376,11 +34139,7 @@ func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *Mo
 }
 
 /**
- * *   The instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state and cannot be updated.
- * *   You can update the whitelist in two ways: IP address whitelist list and IP address whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters, as follows:
- *     *   IP address whitelist: whiteIpList, nodeType, and networkType
- *     *   IP address whitelist groups: modifyMode and whiteIpGroup
- * *   Public network access whitelists do not support configuring private IP addresses. Private network access whitelists do not support configuring public IP addresses.
+ * The ID of the cluster.
  *
  * @param request ModifyWhiteIpsRequest
  * @param headers map
@@ -33444,11 +34203,7 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 }
 
 /**
- * *   The instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state and cannot be updated.
- * *   You can update the whitelist in two ways: IP address whitelist list and IP address whitelist group. The two methods cannot be used at the same time. In addition to InstanceId and clientToken, the two methods support different parameters, as follows:
- *     *   IP address whitelist: whiteIpList, nodeType, and networkType
- *     *   IP address whitelist groups: modifyMode and whiteIpGroup
- * *   Public network access whitelists do not support configuring private IP addresses. Private network access whitelists do not support configuring public IP addresses.
+ * The ID of the cluster.
  *
  * @param request ModifyWhiteIpsRequest
  * @return ModifyWhiteIpsResponse
@@ -34254,15 +35009,6 @@ func (client *Client) RunPipelines(InstanceId *string, request *RunPipelinesRequ
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following items:
- * Before you remove data nodes, you must migrate the data stored on them to other nodes.
- *
- * @param request ShrinkNodeRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ShrinkNodeResponse
- */
 func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ShrinkNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34310,13 +35056,6 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following items:
- * Before you remove data nodes, you must migrate the data stored on them to other nodes.
- *
- * @param request ShrinkNodeRequest
- * @return ShrinkNodeResponse
- */
 func (client *Client) ShrinkNode(InstanceId *string, request *ShrinkNodeRequest) (_result *ShrinkNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -34809,6 +35548,10 @@ func (client *Client) UninstallPluginWithOptions(InstanceId *string, request *Un
 		query["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -34926,8 +35669,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 }
 
 /**
- * When you call this operation, take note of the following limits:
- * If the instance is in the Activating, Invalid, or Inactive state, the information cannot be updated.
+ * 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
  *
  * @param request UpdateAdminPasswordRequest
  * @param headers map
@@ -34975,8 +35717,7 @@ func (client *Client) UpdateAdminPasswordWithOptions(InstanceId *string, request
 }
 
 /**
- * When you call this operation, take note of the following limits:
- * If the instance is in the Activating, Invalid, or Inactive state, the information cannot be updated.
+ * 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
  *
  * @param request UpdateAdminPasswordRequest
  * @return UpdateAdminPasswordResponse
@@ -35041,10 +35782,10 @@ func (client *Client) UpdateAdvancedSetting(InstanceId *string, request *UpdateA
 }
 
 /**
- * Note the following when calling this interface:
- * *   Alibaba Cloud Elasticsearch V5.0 clusters do not support the analysis-aliws plug-in.
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateAliwsDictRequest
  * @param headers map
@@ -35087,10 +35828,10 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 }
 
 /**
- * Note the following when calling this interface:
- * *   Alibaba Cloud Elasticsearch V5.0 clusters do not support the analysis-aliws plug-in.
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateAliwsDictRequest
  * @return UpdateAliwsDictResponse
@@ -35478,6 +36219,16 @@ func (client *Client) UpdateDiagnosisSettings(InstanceId *string, request *Updat
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+ *
+ * @param request UpdateDictRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateDictResponse
+ */
 func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateDictRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDictResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35513,6 +36264,14 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+ *
+ * @param request UpdateDictRequest
+ * @return UpdateDictResponse
+ */
 func (client *Client) UpdateDict(InstanceId *string, request *UpdateDictRequest) (_result *UpdateDictResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -35628,8 +36387,7 @@ func (client *Client) UpdateExtendConfig(InstanceId *string, request *UpdateExte
 }
 
 /**
- * Note the following when calling this interface:
- * Currently, this operation only allows you to delete Logstash extension files that have been uploaded in the console. If you want to add or modify an identifier, perform the operations in the console.
+ * When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
  *
  * @param request UpdateExtendfilesRequest
  * @param headers map
@@ -35672,8 +36430,7 @@ func (client *Client) UpdateExtendfilesWithOptions(InstanceId *string, request *
 }
 
 /**
- * Note the following when calling this interface:
- * Currently, this operation only allows you to delete Logstash extension files that have been uploaded in the console. If you want to add or modify an identifier, perform the operations in the console.
+ * When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
  *
  * @param request UpdateExtendfilesRequest
  * @return UpdateExtendfilesResponse
@@ -35691,9 +36448,9 @@ func (client *Client) UpdateExtendfiles(InstanceId *string, request *UpdateExten
 }
 
 /**
- * Note the following when calling this interface:
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateHotIkDictsRequest
  * @param headers map
@@ -35736,9 +36493,9 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 }
 
 /**
- * Note the following when calling this interface:
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateHotIkDictsRequest
  * @return UpdateHotIkDictsResponse
@@ -35850,14 +36607,7 @@ func (client *Client) UpdateIndexTemplate(InstanceId *string, IndexTemplate *str
 }
 
 /**
- * When you call this operation, take note of the following items:
- * *   If the instance is in the Activating, Invalid, or Inactive state, you cannot change the configurations.
- * *   If the indexes of your cluster do not have replica shards, the load of the cluster is excessively high, and large amounts of data are written to or queried in your cluster, access to the cluster may time out during a cluster configuration upgrade or downgrade. We recommend that you configure an access retry mechanism for your client before you upgrade the configuration of your cluster. This reduces the impact on your business.
- * *   You can change the configurations of only one type of node at a time (data node, dedicated master node, cold data node, coordinator node, Kibana node, and elastic node).
- * *   Due to the health and stability of your cluster, Alibaba Cloud Elasticsearch does not support the purchase of 1-core 2 GB instances, 2-core 2 GB instances for dedicated master nodes, and 7.4 instances since May 2021. If you have confirmed that the purchased specifications are no longer available for sale, you must perform the following operations:
- *     *   For the 1-core 2 GB and 2-core 2 GB specifications, we recommend that you upgrade to the stable sales specifications that are available on the buy page in advance. For more information about the sales specifications available on the buy page, see [Purchase page parameters](~~163243~~).
- *     *   If your cluster is of V7.4, purchase a V7.10 cluster and migrate data from the original cluster to the V7.10 cluster.
- * For more information, see [Upgrade a cluster](~~96650~~) and [Downgrade a cluster](~~198887~~).
+ * es-cn-n6w1ptcb30009\\*\\*\\*\\*
  *
  * @param request UpdateInstanceRequest
  * @param headers map
@@ -35941,14 +36691,7 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 }
 
 /**
- * When you call this operation, take note of the following items:
- * *   If the instance is in the Activating, Invalid, or Inactive state, you cannot change the configurations.
- * *   If the indexes of your cluster do not have replica shards, the load of the cluster is excessively high, and large amounts of data are written to or queried in your cluster, access to the cluster may time out during a cluster configuration upgrade or downgrade. We recommend that you configure an access retry mechanism for your client before you upgrade the configuration of your cluster. This reduces the impact on your business.
- * *   You can change the configurations of only one type of node at a time (data node, dedicated master node, cold data node, coordinator node, Kibana node, and elastic node).
- * *   Due to the health and stability of your cluster, Alibaba Cloud Elasticsearch does not support the purchase of 1-core 2 GB instances, 2-core 2 GB instances for dedicated master nodes, and 7.4 instances since May 2021. If you have confirmed that the purchased specifications are no longer available for sale, you must perform the following operations:
- *     *   For the 1-core 2 GB and 2-core 2 GB specifications, we recommend that you upgrade to the stable sales specifications that are available on the buy page in advance. For more information about the sales specifications available on the buy page, see [Purchase page parameters](~~163243~~).
- *     *   If your cluster is of V7.4, purchase a V7.10 cluster and migrate data from the original cluster to the V7.10 cluster.
- * For more information, see [Upgrade a cluster](~~96650~~) and [Downgrade a cluster](~~198887~~).
+ * es-cn-n6w1ptcb30009\\*\\*\\*\\*
  *
  * @param request UpdateInstanceRequest
  * @return UpdateInstanceResponse
@@ -36122,6 +36865,18 @@ func (client *Client) UpdateKibanaSettings(InstanceId *string, request *UpdateKi
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+ * *   You can update an IP address whitelist by using the following parameters:
+ *     *   kibanaIPWhitelist
+ *     *   modifyMode and whiteIpGroup
+ * *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+ *
+ * @param request UpdateKibanaWhiteIpsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateKibanaWhiteIpsResponse
+ */
 func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, request *UpdateKibanaWhiteIpsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateKibanaWhiteIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36170,6 +36925,16 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+ * *   You can update an IP address whitelist by using the following parameters:
+ *     *   kibanaIPWhitelist
+ *     *   modifyMode and whiteIpGroup
+ * *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+ *
+ * @param request UpdateKibanaWhiteIpsRequest
+ * @return UpdateKibanaWhiteIpsResponse
+ */
 func (client *Client) UpdateKibanaWhiteIps(InstanceId *string, request *UpdateKibanaWhiteIpsRequest) (_result *UpdateKibanaWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36182,15 +36947,6 @@ func (client *Client) UpdateKibanaWhiteIps(InstanceId *string, request *UpdateKi
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following limits:
- * If the instance is in the Activating, Invalid, or Inactive state, you cannot modify the instance information.
- *
- * @param request UpdateLogstashRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpdateLogstashResponse
- */
 func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *UpdateLogstashRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogstashResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36235,13 +36991,6 @@ func (client *Client) UpdateLogstashWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
-/**
- * When you call this operation, take note of the following limits:
- * If the instance is in the Activating, Invalid, or Inactive state, you cannot modify the instance information.
- *
- * @param request UpdateLogstashRequest
- * @return UpdateLogstashResponse
- */
 func (client *Client) UpdateLogstash(InstanceId *string, request *UpdateLogstashRequest) (_result *UpdateLogstashResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36301,6 +37050,14 @@ func (client *Client) UpdateLogstashChargeType(InstanceId *string, request *Upda
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+ *
+ * @param request UpdateLogstashDescriptionRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateLogstashDescriptionResponse
+ */
 func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, request *UpdateLogstashDescriptionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogstashDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36341,6 +37098,12 @@ func (client *Client) UpdateLogstashDescriptionWithOptions(InstanceId *string, r
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+ *
+ * @param request UpdateLogstashDescriptionRequest
+ * @return UpdateLogstashDescriptionResponse
+ */
 func (client *Client) UpdateLogstashDescription(InstanceId *string, request *UpdateLogstashDescriptionRequest) (_result *UpdateLogstashDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36535,6 +37298,14 @@ func (client *Client) UpdatePipelines(InstanceId *string, request *UpdatePipelin
 	return _result, _err
 }
 
+/**
+ * >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+ *
+ * @param request UpdatePrivateNetworkWhiteIpsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdatePrivateNetworkWhiteIpsResponse
+ */
 func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string, request *UpdatePrivateNetworkWhiteIpsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePrivateNetworkWhiteIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36574,6 +37345,12 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithOptions(InstanceId *string
 	return _result, _err
 }
 
+/**
+ * >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+ *
+ * @param request UpdatePrivateNetworkWhiteIpsRequest
+ * @return UpdatePrivateNetworkWhiteIpsResponse
+ */
 func (client *Client) UpdatePrivateNetworkWhiteIps(InstanceId *string, request *UpdatePrivateNetworkWhiteIpsRequest) (_result *UpdatePrivateNetworkWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36586,6 +37363,15 @@ func (client *Client) UpdatePrivateNetworkWhiteIps(InstanceId *string, request *
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
+ *
+ * @param request UpdatePublicNetworkRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdatePublicNetworkResponse
+ */
 func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request *UpdatePublicNetworkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePublicNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36621,6 +37407,13 @@ func (client *Client) UpdatePublicNetworkWithOptions(InstanceId *string, request
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
+ *
+ * @param request UpdatePublicNetworkRequest
+ * @return UpdatePublicNetworkResponse
+ */
 func (client *Client) UpdatePublicNetwork(InstanceId *string, request *UpdatePublicNetworkRequest) (_result *UpdatePublicNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36633,6 +37426,14 @@ func (client *Client) UpdatePublicNetwork(InstanceId *string, request *UpdatePub
 	return _result, _err
 }
 
+/**
+ * >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+ *
+ * @param request UpdatePublicWhiteIpsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdatePublicWhiteIpsResponse
+ */
 func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, request *UpdatePublicWhiteIpsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePublicWhiteIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36672,6 +37473,12 @@ func (client *Client) UpdatePublicWhiteIpsWithOptions(InstanceId *string, reques
 	return _result, _err
 }
 
+/**
+ * >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+ *
+ * @param request UpdatePublicWhiteIpsRequest
+ * @return UpdatePublicWhiteIpsResponse
+ */
 func (client *Client) UpdatePublicWhiteIps(InstanceId *string, request *UpdatePublicWhiteIpsRequest) (_result *UpdatePublicWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -36773,9 +37580,9 @@ func (client *Client) UpdateSnapshotSetting(InstanceId *string, request *UpdateS
 }
 
 /**
- * Note the following when calling this interface:
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateSynonymsDictsRequest
  * @param headers map
@@ -36818,9 +37625,9 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 }
 
 /**
- * Note the following when calling this interface:
- * *   If the dictionary file is obtained from OSS, make sure that the OSS bucket is public-readable.
- * *   If the ORIGIN configuration is not added to an uploaded dictionary file, the dictionary file is deleted after you call this operation.
+ * Before you call this operation, take note of the following items:
+ * *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+ * *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
  *
  * @param request UpdateSynonymsDictsRequest
  * @return UpdateSynonymsDictsResponse
@@ -36884,6 +37691,14 @@ func (client *Client) UpdateTemplate(InstanceId *string, TemplateName *string, r
 	return _result, _err
 }
 
+/**
+ * > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+ *
+ * @param request UpdateWhiteIpsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateWhiteIpsResponse
+ */
 func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *UpdateWhiteIpsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWhiteIpsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36932,6 +37747,12 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 	return _result, _err
 }
 
+/**
+ * > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+ *
+ * @param request UpdateWhiteIpsRequest
+ * @return UpdateWhiteIpsResponse
+ */
 func (client *Client) UpdateWhiteIps(InstanceId *string, request *UpdateWhiteIpsRequest) (_result *UpdateWhiteIpsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -37009,7 +37830,7 @@ func (client *Client) UpdateXpackMonitorConfig(InstanceId *string, request *Upda
 }
 
 /**
- * >  You can upgrade an instance version only from version 5.5.3 to version 5.6.16, version 5.6.16 to version 6.3.2, and version 6.3.2 to version 6.7.0. For more information, see [Upgrade version](~~148786~~).
+ * 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
  *
  * @param request UpgradeEngineVersionRequest
  * @param headers map
@@ -37065,7 +37886,7 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 }
 
 /**
- * >  You can upgrade an instance version only from version 5.5.3 to version 5.6.16, version 5.6.16 to version 6.3.2, and version 6.3.2 to version 6.7.0. For more information, see [Upgrade version](~~148786~~).
+ * 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
  *
  * @param request UpgradeEngineVersionRequest
  * @return UpgradeEngineVersionResponse
@@ -37082,6 +37903,14 @@ func (client *Client) UpgradeEngineVersion(InstanceId *string, request *UpgradeE
 	return _result, _err
 }
 
+/**
+ * > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+ *
+ * @param request ValidateConnectionRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ValidateConnectionResponse
+ */
 func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request *ValidateConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ValidateConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37117,6 +37946,12 @@ func (client *Client) ValidateConnectionWithOptions(InstanceId *string, request 
 	return _result, _err
 }
 
+/**
+ * > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+ *
+ * @param request ValidateConnectionRequest
+ * @return ValidateConnectionResponse
+ */
 func (client *Client) ValidateConnection(InstanceId *string, request *ValidateConnectionRequest) (_result *ValidateConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -37184,14 +38019,6 @@ func (client *Client) ValidateShrinkNodes(InstanceId *string, request *ValidateS
 	return _result, _err
 }
 
-/**
- * >  Before you use the collector tool to collect logs from different data sources, you must be authorized to create service linked roles. You can call this operation to verify that it has been created.
- *
- * @param request ValidateSlrPermissionRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return ValidateSlrPermissionResponse
- */
 func (client *Client) ValidateSlrPermissionWithOptions(request *ValidateSlrPermissionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ValidateSlrPermissionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37230,12 +38057,6 @@ func (client *Client) ValidateSlrPermissionWithOptions(request *ValidateSlrPermi
 	return _result, _err
 }
 
-/**
- * >  Before you use the collector tool to collect logs from different data sources, you must be authorized to create service linked roles. You can call this operation to verify that it has been created.
- *
- * @param request ValidateSlrPermissionRequest
- * @return ValidateSlrPermissionResponse
- */
 func (client *Client) ValidateSlrPermission(request *ValidateSlrPermissionRequest) (_result *ValidateSlrPermissionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -37295,6 +38116,14 @@ func (client *Client) ValidateTransferableNodes(InstanceId *string, request *Val
 	return _result, _err
 }
 
+/**
+ * The configurations of warm nodes.
+ *
+ * @param request CreateInstanceRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37362,6 +38191,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["resourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WarmNodeConfiguration)) {
 		body["warmNodeConfiguration"] = request.WarmNodeConfiguration
 	}
@@ -37395,6 +38228,12 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * The configurations of warm nodes.
+ *
+ * @param request CreateInstanceRequest
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
