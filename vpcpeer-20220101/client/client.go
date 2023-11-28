@@ -129,6 +129,7 @@ type CreateVpcPeerConnectionRequest struct {
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	// The ID of the accepter VPC.
 	AcceptingVpcId *string `json:"AcceptingVpcId,omitempty" xml:"AcceptingVpcId,omitempty"`
+	Bandwidth      *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -180,6 +181,11 @@ func (s *CreateVpcPeerConnectionRequest) SetAcceptingRegionId(v string) *CreateV
 
 func (s *CreateVpcPeerConnectionRequest) SetAcceptingVpcId(v string) *CreateVpcPeerConnectionRequest {
 	s.AcceptingVpcId = &v
+	return s
+}
+
+func (s *CreateVpcPeerConnectionRequest) SetBandwidth(v int32) *CreateVpcPeerConnectionRequest {
+	s.Bandwidth = &v
 	return s
 }
 
@@ -1137,7 +1143,7 @@ func (s *ListVpcPeerConnectionsResponseBody) SetVpcPeerConnects(v []*ListVpcPeer
 
 type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-	AcceptingOwnerUid *int32 `json:"AcceptingOwnerUid,omitempty" xml:"AcceptingOwnerUid,omitempty"`
+	AcceptingOwnerUid *int64 `json:"AcceptingOwnerUid,omitempty" xml:"AcceptingOwnerUid,omitempty"`
 	// The region ID of the accepter VPC.
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	// The details of the accepter VPC.
@@ -1171,7 +1177,7 @@ type ListVpcPeerConnectionsResponseBodyVpcPeerConnects struct {
 	// The name of the VPC peering connection.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the Alibaba Cloud account to which the requester VPC belongs.
-	OwnerId *int32 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the requester VPC.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
@@ -1203,7 +1209,7 @@ func (s ListVpcPeerConnectionsResponseBodyVpcPeerConnects) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetAcceptingOwnerUid(v int32) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetAcceptingOwnerUid(v int64) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.AcceptingOwnerUid = &v
 	return s
 }
@@ -1258,7 +1264,7 @@ func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetName(v string) *L
 	return s
 }
 
-func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetOwnerId(v int32) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
+func (s *ListVpcPeerConnectionsResponseBodyVpcPeerConnects) SetOwnerId(v int64) *ListVpcPeerConnectionsResponseBodyVpcPeerConnects {
 	s.OwnerId = &v
 	return s
 }
@@ -2123,6 +2129,10 @@ func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.AcceptingVpcId)) {
 		body["AcceptingVpcId"] = request.AcceptingVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		body["Bandwidth"] = request.Bandwidth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
