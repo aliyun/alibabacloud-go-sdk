@@ -12,6 +12,278 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataExtraInfoSubCondsValue struct {
+	TenantName       *string   `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Database         *string   `json:"Database,omitempty" xml:"Database,omitempty"`
+	DestDatabase     *string   `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
+	TableName        *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	DestName         *string   `json:"DestName,omitempty" xml:"DestName,omitempty"`
+	WhereClause      *string   `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+	FilterColumns    []*string `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	ShardColumns     []*string `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	LogicTableId     *string   `json:"LogicTableId,omitempty" xml:"LogicTableId,omitempty"`
+	SourceEndpointId *string   `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	SourceClientId   *string   `json:"SourceClientId,omitempty" xml:"SourceClientId,omitempty"`
+}
+
+func (s DataExtraInfoSubCondsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataExtraInfoSubCondsValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataExtraInfoSubCondsValue) SetTenantName(v string) *DataExtraInfoSubCondsValue {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetDatabase(v string) *DataExtraInfoSubCondsValue {
+	s.Database = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetDestDatabase(v string) *DataExtraInfoSubCondsValue {
+	s.DestDatabase = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetTableName(v string) *DataExtraInfoSubCondsValue {
+	s.TableName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetDestName(v string) *DataExtraInfoSubCondsValue {
+	s.DestName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetWhereClause(v string) *DataExtraInfoSubCondsValue {
+	s.WhereClause = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetFilterColumns(v []*string) *DataExtraInfoSubCondsValue {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetShardColumns(v []*string) *DataExtraInfoSubCondsValue {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetLogicTableId(v string) *DataExtraInfoSubCondsValue {
+	s.LogicTableId = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetSourceEndpointId(v string) *DataExtraInfoSubCondsValue {
+	s.SourceEndpointId = &v
+	return s
+}
+
+func (s *DataExtraInfoSubCondsValue) SetSourceClientId(v string) *DataExtraInfoSubCondsValue {
+	s.SourceClientId = &v
+	return s
+}
+
+type DataExtraInfoSubDbsValue struct {
+	ClusterName         *string                           `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	TenantName          *string                           `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	DatabaseId          *string                           `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
+	DatabaseName        *string                           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	MappingDatabaseName *string                           `json:"MappingDatabaseName,omitempty" xml:"MappingDatabaseName,omitempty"`
+	SourceClientId      *string                           `json:"SourceClientId,omitempty" xml:"SourceClientId,omitempty"`
+	Tables              []*DataExtraInfoSubDbsValueTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s DataExtraInfoSubDbsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataExtraInfoSubDbsValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataExtraInfoSubDbsValue) SetClusterName(v string) *DataExtraInfoSubDbsValue {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetTenantName(v string) *DataExtraInfoSubDbsValue {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetDatabaseId(v string) *DataExtraInfoSubDbsValue {
+	s.DatabaseId = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetDatabaseName(v string) *DataExtraInfoSubDbsValue {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetMappingDatabaseName(v string) *DataExtraInfoSubDbsValue {
+	s.MappingDatabaseName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetSourceClientId(v string) *DataExtraInfoSubDbsValue {
+	s.SourceClientId = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValue) SetTables(v []*DataExtraInfoSubDbsValueTables) *DataExtraInfoSubDbsValue {
+	s.Tables = v
+	return s
+}
+
+type DataExtraInfoSubDbsValueTables struct {
+	TableId          *string                                  `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	Database         *string                                  `json:"Database,omitempty" xml:"Database,omitempty"`
+	TableName        *string                                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	MappingTableName *string                                  `json:"MappingTableName,omitempty" xml:"MappingTableName,omitempty"`
+	Instance         *string                                  `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	Columns          []*DataExtraInfoSubDbsValueTablesColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+}
+
+func (s DataExtraInfoSubDbsValueTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataExtraInfoSubDbsValueTables) GoString() string {
+	return s.String()
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetTableId(v string) *DataExtraInfoSubDbsValueTables {
+	s.TableId = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetDatabase(v string) *DataExtraInfoSubDbsValueTables {
+	s.Database = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetTableName(v string) *DataExtraInfoSubDbsValueTables {
+	s.TableName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetMappingTableName(v string) *DataExtraInfoSubDbsValueTables {
+	s.MappingTableName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetInstance(v string) *DataExtraInfoSubDbsValueTables {
+	s.Instance = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTables) SetColumns(v []*DataExtraInfoSubDbsValueTablesColumns) *DataExtraInfoSubDbsValueTables {
+	s.Columns = v
+	return s
+}
+
+type DataExtraInfoSubDbsValueTablesColumns struct {
+	ColumnName      *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	Position        *int32  `json:"Position,omitempty" xml:"Position,omitempty"`
+	ColumnType      *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	RecordFieldType *string `json:"RecordFieldType,omitempty" xml:"RecordFieldType,omitempty"`
+	RawColumnType   *string `json:"RawColumnType,omitempty" xml:"RawColumnType,omitempty"`
+	ColumnKey       *string `json:"ColumnKey,omitempty" xml:"ColumnKey,omitempty"`
+	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	DefaultValue    *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	DataLength      *int64  `json:"DataLength,omitempty" xml:"DataLength,omitempty"`
+	DataPrecision   *int32  `json:"DataPrecision,omitempty" xml:"DataPrecision,omitempty"`
+	DataScale       *int32  `json:"DataScale,omitempty" xml:"DataScale,omitempty"`
+	Encoding        *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
+	ColumnComment   *string `json:"ColumnComment,omitempty" xml:"ColumnComment,omitempty"`
+	IsGenerateField *bool   `json:"IsGenerateField,omitempty" xml:"IsGenerateField,omitempty"`
+}
+
+func (s DataExtraInfoSubDbsValueTablesColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataExtraInfoSubDbsValueTablesColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetColumnName(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetPosition(v int32) *DataExtraInfoSubDbsValueTablesColumns {
+	s.Position = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetColumnType(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetRecordFieldType(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.RecordFieldType = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetRawColumnType(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.RawColumnType = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetColumnKey(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.ColumnKey = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetNullable(v bool) *DataExtraInfoSubDbsValueTablesColumns {
+	s.Nullable = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetDefaultValue(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetDataLength(v int64) *DataExtraInfoSubDbsValueTablesColumns {
+	s.DataLength = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetDataPrecision(v int32) *DataExtraInfoSubDbsValueTablesColumns {
+	s.DataPrecision = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetDataScale(v int32) *DataExtraInfoSubDbsValueTablesColumns {
+	s.DataScale = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetEncoding(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.Encoding = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetColumnComment(v string) *DataExtraInfoSubDbsValueTablesColumns {
+	s.ColumnComment = &v
+	return s
+}
+
+func (s *DataExtraInfoSubDbsValueTablesColumns) SetIsGenerateField(v bool) *DataExtraInfoSubDbsValueTablesColumns {
+	s.IsGenerateField = &v
+	return s
+}
+
 type CreateDatabaseRequest struct {
 	// The name of the database.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -152,6 +424,7 @@ type CreateInstanceRequest struct {
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The return result of the request.
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	DryRun   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The specifications of the cluster.
 	// You can specify one of the following four plans:
 	//  - 8C32GB: indicates 8 CPU cores and 32 GB of memory.
@@ -162,7 +435,8 @@ type CreateInstanceRequest struct {
 	// The name of the OceanBase cluster.
 	// It must be 1 to 20 characters in length.
 	// If this parameter is not specified, the value is the instance ID of the cluster by default.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName          *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsolationOptimization *string `json:"IsolationOptimization,omitempty" xml:"IsolationOptimization,omitempty"`
 	// OceanBase Server version number.
 	ObVersion *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
 	// The valid duration of the purchased resources. The unit is specified by the PeriodUnit parameter.
@@ -174,7 +448,8 @@ type CreateInstanceRequest struct {
 	// The unit of the valid duration of the purchased resources.
 	// Valid value for subscription: Month or Year.
 	// Default value: Month for subscription, and Hour for pay-as-you-go.
-	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	ReplicaMode *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The series of the OceanBase cluster. Valid values:
@@ -220,6 +495,11 @@ func (s *CreateInstanceRequest) SetDiskType(v string) *CreateInstanceRequest {
 	return s
 }
 
+func (s *CreateInstanceRequest) SetDryRun(v bool) *CreateInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceRequest {
 	s.InstanceClass = &v
 	return s
@@ -227,6 +507,11 @@ func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceReques
 
 func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetIsolationOptimization(v string) *CreateInstanceRequest {
+	s.IsolationOptimization = &v
 	return s
 }
 
@@ -242,6 +527,11 @@ func (s *CreateInstanceRequest) SetPeriod(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPeriodUnit(v string) *CreateInstanceRequest {
 	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetReplicaMode(v string) *CreateInstanceRequest {
+	s.ReplicaMode = &v
 	return s
 }
 
@@ -286,6 +576,7 @@ func (s *CreateInstanceResponseBody) SetRequestId(v string) *CreateInstanceRespo
 }
 
 type CreateInstanceResponseBodyData struct {
+	DryRunResult *bool `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
 	// 订单ID。该参数只有创建包年包月ECS实例（请求参数InstanceChargeType=PrePaid）时有返回值。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 资源组ID
@@ -299,6 +590,11 @@ func (s CreateInstanceResponseBodyData) String() string {
 
 func (s CreateInstanceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceResponseBodyData) SetDryRunResult(v bool) *CreateInstanceResponseBodyData {
+	s.DryRunResult = &v
+	return s
 }
 
 func (s *CreateInstanceResponseBodyData) SetInstanceId(v string) *CreateInstanceResponseBodyData {
@@ -345,33 +641,835 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 	return s
 }
 
-type CreateOmsMysqlDataSourceRequest struct {
+type CreateLabelRequest struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLabelRequest) SetName(v string) *CreateLabelRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateLabelResponseBody struct {
+	Advice      *string                             `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                             `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                             `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateLabelResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLabelResponseBody) SetAdvice(v string) *CreateLabelResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetCode(v string) *CreateLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetCost(v string) *CreateLabelResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetData(v string) *CreateLabelResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetErrorDetail(v *CreateLabelResponseBodyErrorDetail) *CreateLabelResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetMessage(v string) *CreateLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetPageNumber(v int32) *CreateLabelResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetPageSize(v int32) *CreateLabelResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetRequestId(v string) *CreateLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetSuccess(v bool) *CreateLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateLabelResponseBody) SetTotalCount(v int64) *CreateLabelResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateLabelResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateLabelResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLabelResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetCode(v string) *CreateLabelResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateLabelResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetLevel(v string) *CreateLabelResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetMessage(v string) *CreateLabelResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateLabelResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateLabelResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetProposal(v string) *CreateLabelResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateLabelResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateLabelResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetReason(v string) *CreateLabelResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateLabelResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateLabelResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateLabelResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateLabelResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateLabelResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLabelResponse) SetHeaders(v map[string]*string) *CreateLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLabelResponse) SetStatusCode(v int32) *CreateLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLabelResponse) SetBody(v *CreateLabelResponseBody) *CreateLabelResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMySqlDataSourceRequest struct {
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DgDatabaseId *string `json:"DgDatabaseId,omitempty" xml:"DgDatabaseId,omitempty"`
+	DgInstanceId *string `json:"DgInstanceId,omitempty" xml:"DgInstanceId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// ```
-	// http(s)://[Endpoint]/?Action=CreateOmsMysqlDataSource
-	// &Name=oms-mysql
-	// &Type=INTERNET
-	// &VpcId=vpc-12345abcde*******
-	// &InstanceId=pc-12ab34cd56******
-	// &DgDatabaseId=dg-yhss6sdlaff****
-	// &Ip=10.0.****
-	// &Port=3306
-	// &Schema=test
-	// &Username=omsTestUser
-	// &Password=YWJjZDEyM0Ah
-	// &Description=MySQL data source for OMS testing
-	// &Common request parameters
-	// ```
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Schema       *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateMySqlDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMySqlDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMySqlDataSourceRequest) SetDescription(v string) *CreateMySqlDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetDgInstanceId(v string) *CreateMySqlDataSourceRequest {
+	s.DgInstanceId = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetInstanceId(v string) *CreateMySqlDataSourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetIp(v string) *CreateMySqlDataSourceRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetName(v string) *CreateMySqlDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetPassword(v string) *CreateMySqlDataSourceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetPort(v int32) *CreateMySqlDataSourceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetSchema(v string) *CreateMySqlDataSourceRequest {
+	s.Schema = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetType(v string) *CreateMySqlDataSourceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetUserName(v string) *CreateMySqlDataSourceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceRequest) SetVpcId(v string) *CreateMySqlDataSourceRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateMySqlDataSourceResponseBody struct {
+	Advice      *string                                       `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                       `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                                       `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateMySqlDataSourceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateMySqlDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMySqlDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetAdvice(v string) *CreateMySqlDataSourceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetCode(v string) *CreateMySqlDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetCost(v string) *CreateMySqlDataSourceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetData(v string) *CreateMySqlDataSourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetErrorDetail(v *CreateMySqlDataSourceResponseBodyErrorDetail) *CreateMySqlDataSourceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetMessage(v string) *CreateMySqlDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetPageNumber(v int32) *CreateMySqlDataSourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetPageSize(v int32) *CreateMySqlDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetRequestId(v string) *CreateMySqlDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetSuccess(v bool) *CreateMySqlDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBody) SetTotalCount(v int64) *CreateMySqlDataSourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateMySqlDataSourceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateMySqlDataSourceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMySqlDataSourceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetCode(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetLevel(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetMessage(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetProposal(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetReason(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateMySqlDataSourceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateMySqlDataSourceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMySqlDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMySqlDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMySqlDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMySqlDataSourceResponse) SetHeaders(v map[string]*string) *CreateMySqlDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponse) SetStatusCode(v int32) *CreateMySqlDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMySqlDataSourceResponse) SetBody(v *CreateMySqlDataSourceResponseBody) *CreateMySqlDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOceanBaseDataSourceRequest struct {
+	Cluster          *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	ConfigUrl        *string `json:"ConfigUrl,omitempty" xml:"ConfigUrl,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DrcPassword      *string `json:"DrcPassword,omitempty" xml:"DrcPassword,omitempty"`
+	DrcUserName      *string `json:"DrcUserName,omitempty" xml:"DrcUserName,omitempty"`
+	InnerDrcPassword *string `json:"InnerDrcPassword,omitempty" xml:"InnerDrcPassword,omitempty"`
+	Ip               *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// LogProxy IP。
+	LogProxyIp   *string `json:"LogProxyIp,omitempty" xml:"LogProxyIp,omitempty"`
+	LogProxyPort *string `json:"LogProxyPort,omitempty" xml:"LogProxyPort,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port         *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Tenant       *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserName     *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	VpcId        *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateOceanBaseDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOceanBaseDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetCluster(v string) *CreateOceanBaseDataSourceRequest {
+	s.Cluster = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetConfigUrl(v string) *CreateOceanBaseDataSourceRequest {
+	s.ConfigUrl = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetDescription(v string) *CreateOceanBaseDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetDrcPassword(v string) *CreateOceanBaseDataSourceRequest {
+	s.DrcPassword = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetDrcUserName(v string) *CreateOceanBaseDataSourceRequest {
+	s.DrcUserName = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetInnerDrcPassword(v string) *CreateOceanBaseDataSourceRequest {
+	s.InnerDrcPassword = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetIp(v string) *CreateOceanBaseDataSourceRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetLogProxyIp(v string) *CreateOceanBaseDataSourceRequest {
+	s.LogProxyIp = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetLogProxyPort(v string) *CreateOceanBaseDataSourceRequest {
+	s.LogProxyPort = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetName(v string) *CreateOceanBaseDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetPassword(v string) *CreateOceanBaseDataSourceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetPort(v int32) *CreateOceanBaseDataSourceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetTenant(v string) *CreateOceanBaseDataSourceRequest {
+	s.Tenant = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetType(v string) *CreateOceanBaseDataSourceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetUserName(v string) *CreateOceanBaseDataSourceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceRequest) SetVpcId(v string) *CreateOceanBaseDataSourceRequest {
+	s.VpcId = &v
+	return s
+}
+
+type CreateOceanBaseDataSourceResponseBody struct {
+	Advice      *string                                           `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                           `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                                           `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateOceanBaseDataSourceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateOceanBaseDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOceanBaseDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetAdvice(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetCode(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetCost(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetData(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetErrorDetail(v *CreateOceanBaseDataSourceResponseBodyErrorDetail) *CreateOceanBaseDataSourceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetMessage(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetPageNumber(v int32) *CreateOceanBaseDataSourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetPageSize(v int32) *CreateOceanBaseDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetRequestId(v string) *CreateOceanBaseDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetSuccess(v bool) *CreateOceanBaseDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBody) SetTotalCount(v int64) *CreateOceanBaseDataSourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateOceanBaseDataSourceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateOceanBaseDataSourceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOceanBaseDataSourceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetCode(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetLevel(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetMessage(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetProposal(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetReason(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateOceanBaseDataSourceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateOceanBaseDataSourceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOceanBaseDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOceanBaseDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOceanBaseDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOceanBaseDataSourceResponse) SetHeaders(v map[string]*string) *CreateOceanBaseDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponse) SetStatusCode(v int32) *CreateOceanBaseDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOceanBaseDataSourceResponse) SetBody(v *CreateOceanBaseDataSourceResponseBody) *CreateOceanBaseDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOmsMysqlDataSourceRequest struct {
+	// The description of the data source.
+	//
+	// It must be 2 to 256 characters in length. The default value is null.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the database gateway instance.
+	//
+	// > <br>If Type is set to DG, this parameter is required.
+	DgDatabaseId *string `json:"DgDatabaseId,omitempty" xml:"DgDatabaseId,omitempty"`
+	// The ID of the ECS instance of the data source.
+	//
+	// > <br>If Type is set to RDS, PolarDB, or DG, this parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the data source.
+	//
+	// > <br>If Type is set to INTERNET or VPC, this parameter is required.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The name of the data source.
+	// It must be 2 to 128 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+	//
+	// > <br>Invalid characters, such as slashes (/), are not allowed.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The password of the username that is used to access the database. It must be Base64 encoded.
+	// For example, for the password abcd123@!, the Base64-encoded value is YWJjZDEyM0Ah.
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Schema   *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The port number of the data source.
+	//
+	// > <br>If Type is set to INTERNET or VPC, this parameter is required.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The name of the database.
+	//
+	// > <br>If you specify this parameter, subsequent migration or synchronization operations will take effect on this database only.
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The type of the MySQL data source.
+	// Valid values: INTERNET, VPC, RDS, PolarDB, and DG.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The username that is used to access the database.
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The ID of the VPC to which the data source belongs.
+	//
+	// > <br>If Type is set to VPC, this parameter is required.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateOmsMysqlDataSourceRequest) String() string {
@@ -438,8 +1536,10 @@ func (s *CreateOmsMysqlDataSourceRequest) SetVpcId(v string) *CreateOmsMysqlData
 }
 
 type CreateOmsMysqlDataSourceResponseBody struct {
-	Data      *CreateOmsMysqlDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The return result of the request.
+	Data *CreateOmsMysqlDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOmsMysqlDataSourceResponseBody) String() string {
@@ -461,6 +1561,7 @@ func (s *CreateOmsMysqlDataSourceResponseBody) SetRequestId(v string) *CreateOms
 }
 
 type CreateOmsMysqlDataSourceResponseBodyData struct {
+	// The ID of the data source record.
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 }
 
@@ -1201,6 +2302,1496 @@ func (s *CreateOmsOpenAPIProjectResponse) SetBody(v *CreateOmsOpenAPIProjectResp
 	return s
 }
 
+type CreateProjectRequest struct {
+	CommonTransferConfig      *CreateProjectRequestCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	EnableFullTransfer        *bool                                     `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify          *bool                                     `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer        *bool                                     `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableReverseIncrTransfer *bool                                     `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer      *bool                                     `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	FullTransferConfig        *CreateProjectRequestFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	IncrTransferConfig        *CreateProjectRequestIncrTransferConfig   `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
+	LabelIds                  []*string                                 `json:"LabelIds,omitempty" xml:"LabelIds,omitempty" type:"Repeated"`
+	Name                      *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssKey                    *string                                   `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	SinkEndpointId            *string                                   `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
+	SourceEndpointId          *string                                   `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	StructTransferConfig      *CreateProjectRequestStructTransferConfig `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
+	TransferMapping           *CreateProjectRequestTransferMapping      `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
+	Type                      *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseOss                    *bool                                     `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
+	WorkerGradeId             *string                                   `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+}
+
+func (s CreateProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequest) SetCommonTransferConfig(v *CreateProjectRequestCommonTransferConfig) *CreateProjectRequest {
+	s.CommonTransferConfig = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEnableFullTransfer(v bool) *CreateProjectRequest {
+	s.EnableFullTransfer = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEnableFullVerify(v bool) *CreateProjectRequest {
+	s.EnableFullVerify = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEnableIncrTransfer(v bool) *CreateProjectRequest {
+	s.EnableIncrTransfer = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEnableReverseIncrTransfer(v bool) *CreateProjectRequest {
+	s.EnableReverseIncrTransfer = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetEnableStructTransfer(v bool) *CreateProjectRequest {
+	s.EnableStructTransfer = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetFullTransferConfig(v *CreateProjectRequestFullTransferConfig) *CreateProjectRequest {
+	s.FullTransferConfig = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetIncrTransferConfig(v *CreateProjectRequestIncrTransferConfig) *CreateProjectRequest {
+	s.IncrTransferConfig = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetLabelIds(v []*string) *CreateProjectRequest {
+	s.LabelIds = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetName(v string) *CreateProjectRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetOssKey(v string) *CreateProjectRequest {
+	s.OssKey = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetSinkEndpointId(v string) *CreateProjectRequest {
+	s.SinkEndpointId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetSourceEndpointId(v string) *CreateProjectRequest {
+	s.SourceEndpointId = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetStructTransferConfig(v *CreateProjectRequestStructTransferConfig) *CreateProjectRequest {
+	s.StructTransferConfig = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetTransferMapping(v *CreateProjectRequestTransferMapping) *CreateProjectRequest {
+	s.TransferMapping = v
+	return s
+}
+
+func (s *CreateProjectRequest) SetType(v string) *CreateProjectRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetUseOss(v bool) *CreateProjectRequest {
+	s.UseOss = &v
+	return s
+}
+
+func (s *CreateProjectRequest) SetWorkerGradeId(v string) *CreateProjectRequest {
+	s.WorkerGradeId = &v
+	return s
+}
+
+type CreateProjectRequestCommonTransferConfig struct {
+	ActiveActive           *bool   `json:"ActiveActive,omitempty" xml:"ActiveActive,omitempty"`
+	DataWorksBusinessName  *string `json:"DataWorksBusinessName,omitempty" xml:"DataWorksBusinessName,omitempty"`
+	DatahubTopicType       *string `json:"DatahubTopicType,omitempty" xml:"DatahubTopicType,omitempty"`
+	MqPartition            *int32  `json:"MqPartition,omitempty" xml:"MqPartition,omitempty"`
+	MqPartitionMode        *string `json:"MqPartitionMode,omitempty" xml:"MqPartitionMode,omitempty"`
+	MqSerializerType       *string `json:"MqSerializerType,omitempty" xml:"MqSerializerType,omitempty"`
+	RocketMqEnableMsgTrace *bool   `json:"RocketMqEnableMsgTrace,omitempty" xml:"RocketMqEnableMsgTrace,omitempty"`
+	RocketMqMsgTags        *string `json:"RocketMqMsgTags,omitempty" xml:"RocketMqMsgTags,omitempty"`
+	RocketMqProducerGroup  *string `json:"RocketMqProducerGroup,omitempty" xml:"RocketMqProducerGroup,omitempty"`
+	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	TableCategory          *string `json:"TableCategory,omitempty" xml:"TableCategory,omitempty"`
+}
+
+func (s CreateProjectRequestCommonTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestCommonTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetActiveActive(v bool) *CreateProjectRequestCommonTransferConfig {
+	s.ActiveActive = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetDataWorksBusinessName(v string) *CreateProjectRequestCommonTransferConfig {
+	s.DataWorksBusinessName = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetDatahubTopicType(v string) *CreateProjectRequestCommonTransferConfig {
+	s.DatahubTopicType = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetMqPartition(v int32) *CreateProjectRequestCommonTransferConfig {
+	s.MqPartition = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetMqPartitionMode(v string) *CreateProjectRequestCommonTransferConfig {
+	s.MqPartitionMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetMqSerializerType(v string) *CreateProjectRequestCommonTransferConfig {
+	s.MqSerializerType = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqEnableMsgTrace(v bool) *CreateProjectRequestCommonTransferConfig {
+	s.RocketMqEnableMsgTrace = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqMsgTags(v string) *CreateProjectRequestCommonTransferConfig {
+	s.RocketMqMsgTags = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqProducerGroup(v string) *CreateProjectRequestCommonTransferConfig {
+	s.RocketMqProducerGroup = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetRocketMqSendMsgTimeout(v int64) *CreateProjectRequestCommonTransferConfig {
+	s.RocketMqSendMsgTimeout = &v
+	return s
+}
+
+func (s *CreateProjectRequestCommonTransferConfig) SetTableCategory(v string) *CreateProjectRequestCommonTransferConfig {
+	s.TableCategory = &v
+	return s
+}
+
+type CreateProjectRequestFullTransferConfig struct {
+	AllowDestTableNotEmpty   *bool   `json:"AllowDestTableNotEmpty,omitempty" xml:"AllowDestTableNotEmpty,omitempty"`
+	FullTransferSpeedMode    *string `json:"FullTransferSpeedMode,omitempty" xml:"FullTransferSpeedMode,omitempty"`
+	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
+	NonePkUkTruncateDstTable *bool   `json:"NonePkUkTruncateDstTable,omitempty" xml:"NonePkUkTruncateDstTable,omitempty"`
+}
+
+func (s CreateProjectRequestFullTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestFullTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetAllowDestTableNotEmpty(v bool) *CreateProjectRequestFullTransferConfig {
+	s.AllowDestTableNotEmpty = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetFullTransferSpeedMode(v string) *CreateProjectRequestFullTransferConfig {
+	s.FullTransferSpeedMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetFullVerifySpeedMode(v string) *CreateProjectRequestFullTransferConfig {
+	s.FullVerifySpeedMode = &v
+	return s
+}
+
+func (s *CreateProjectRequestFullTransferConfig) SetNonePkUkTruncateDstTable(v bool) *CreateProjectRequestFullTransferConfig {
+	s.NonePkUkTruncateDstTable = &v
+	return s
+}
+
+type CreateProjectRequestIncrTransferConfig struct {
+	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
+	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
+	IncrSyncConcurrency       *int32    `json:"IncrSyncConcurrency,omitempty" xml:"IncrSyncConcurrency,omitempty"`
+	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
+	StartTimestamp            *string   `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+}
+
+func (s CreateProjectRequestIncrTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestIncrTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetEnableIncrSyncStatistics(v bool) *CreateProjectRequestIncrTransferConfig {
+	s.EnableIncrSyncStatistics = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetEnableSequencingWithinTxn(v bool) *CreateProjectRequestIncrTransferConfig {
+	s.EnableSequencingWithinTxn = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetIncrSyncConcurrency(v int32) *CreateProjectRequestIncrTransferConfig {
+	s.IncrSyncConcurrency = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetRecordTypeWhiteList(v []*string) *CreateProjectRequestIncrTransferConfig {
+	s.RecordTypeWhiteList = v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetStartTimestamp(v string) *CreateProjectRequestIncrTransferConfig {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *CreateProjectRequestIncrTransferConfig) SetStoreLogKeptHour(v int32) *CreateProjectRequestIncrTransferConfig {
+	s.StoreLogKeptHour = &v
+	return s
+}
+
+type CreateProjectRequestStructTransferConfig struct {
+	ByteCharConvertStrategy *string `json:"ByteCharConvertStrategy,omitempty" xml:"ByteCharConvertStrategy,omitempty"`
+	DeferIndexCreation      *bool   `json:"DeferIndexCreation,omitempty" xml:"DeferIndexCreation,omitempty"`
+}
+
+func (s CreateProjectRequestStructTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestStructTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestStructTransferConfig) SetByteCharConvertStrategy(v string) *CreateProjectRequestStructTransferConfig {
+	s.ByteCharConvertStrategy = &v
+	return s
+}
+
+func (s *CreateProjectRequestStructTransferConfig) SetDeferIndexCreation(v bool) *CreateProjectRequestStructTransferConfig {
+	s.DeferIndexCreation = &v
+	return s
+}
+
+type CreateProjectRequestTransferMapping struct {
+	Databases             []*CreateProjectRequestTransferMappingDatabases      `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	DatabasesBlack        []*CreateProjectRequestTransferMappingDatabasesBlack `json:"DatabasesBlack,omitempty" xml:"DatabasesBlack,omitempty" type:"Repeated"`
+	Mode                  *string                                              `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	TableAndViewBlackList []*string                                            `json:"TableAndViewBlackList,omitempty" xml:"TableAndViewBlackList,omitempty" type:"Repeated"`
+	TableAndViewWhiteList []*string                                            `json:"TableAndViewWhiteList,omitempty" xml:"TableAndViewWhiteList,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMapping) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMapping) SetDatabases(v []*CreateProjectRequestTransferMappingDatabases) *CreateProjectRequestTransferMapping {
+	s.Databases = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMapping) SetDatabasesBlack(v []*CreateProjectRequestTransferMappingDatabasesBlack) *CreateProjectRequestTransferMapping {
+	s.DatabasesBlack = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMapping) SetMode(v string) *CreateProjectRequestTransferMapping {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMapping) SetTableAndViewBlackList(v []*string) *CreateProjectRequestTransferMapping {
+	s.TableAndViewBlackList = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMapping) SetTableAndViewWhiteList(v []*string) *CreateProjectRequestTransferMapping {
+	s.TableAndViewWhiteList = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabases struct {
+	ClusterName    *string                                                       `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Id             *string                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                       `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectRequestTransferMappingDatabasesSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectRequestTransferMappingDatabasesSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectRequestTransferMappingDatabasesTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                       `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Views          []*CreateProjectRequestTransferMappingDatabasesViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetClusterName(v string) *CreateProjectRequestTransferMappingDatabases {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetId(v string) *CreateProjectRequestTransferMappingDatabases {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabases {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetName(v string) *CreateProjectRequestTransferMappingDatabases {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetSpecificTables(v []*CreateProjectRequestTransferMappingDatabasesSpecificTables) *CreateProjectRequestTransferMappingDatabases {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetSpecificViews(v []*CreateProjectRequestTransferMappingDatabasesSpecificViews) *CreateProjectRequestTransferMappingDatabases {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetTables(v []*CreateProjectRequestTransferMappingDatabasesTables) *CreateProjectRequestTransferMappingDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetTenantName(v string) *CreateProjectRequestTransferMappingDatabases {
+	s.TenantName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabases) SetViews(v []*CreateProjectRequestTransferMappingDatabasesViews) *CreateProjectRequestTransferMappingDatabases {
+	s.Views = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesSpecificTables struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                 `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                   `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                 `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                   `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetId(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetName(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTables) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesSpecificViews struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                  `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                  `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetId(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetName(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViews) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesTables struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                         `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                           `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                         `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                           `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetId(v string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetName(v string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTables) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesViews struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                        `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                          `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                        `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                          `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetId(v string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetName(v string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViews) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlack struct {
+	ClusterName    *string                                                            `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Id             *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                            `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*CreateProjectRequestTransferMappingDatabasesBlackSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*CreateProjectRequestTransferMappingDatabasesBlackSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*CreateProjectRequestTransferMappingDatabasesBlackTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                            `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Views          []*CreateProjectRequestTransferMappingDatabasesBlackViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlack) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetClusterName(v string) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetId(v string) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetName(v string) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetSpecificTables(v []*CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetSpecificViews(v []*CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetTables(v []*CreateProjectRequestTransferMappingDatabasesBlackTables) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.Tables = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetTenantName(v string) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.TenantName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlack) SetViews(v []*CreateProjectRequestTransferMappingDatabasesBlackViews) *CreateProjectRequestTransferMappingDatabasesBlack {
+	s.Views = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackSpecificTables struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                      `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                        `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                      `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                        `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetId(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetName(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackSpecificViews struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                     `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                       `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                     `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                       `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetId(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetName(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackTables struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                              `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                              `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetId(v string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetName(v string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTables) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesBlackTables {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackViews struct {
+	AdbTableSchema *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                             `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                               `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                             `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                               `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackViews) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetAdbTableSchema(v *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetFilterColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetId(v string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetMappedName(v string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetName(v string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetShardColumns(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViews) SetWhereClause(v string) *CreateProjectRequestTransferMappingDatabasesBlackViews {
+	s.WhereClause = &v
+	return s
+}
+
+type CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetDistributedKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionLifeCycle(v string) *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionStatement(v string) *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema) SetPrimaryKeys(v []*string) *CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type CreateProjectShrinkRequest struct {
+	CommonTransferConfigShrink *string `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty"`
+	EnableFullTransfer         *bool   `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify           *bool   `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer         *bool   `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableReverseIncrTransfer  *bool   `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer       *bool   `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	FullTransferConfigShrink   *string `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty"`
+	IncrTransferConfigShrink   *string `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty"`
+	LabelIdsShrink             *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
+	Name                       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OssKey                     *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	SinkEndpointId             *string `json:"SinkEndpointId,omitempty" xml:"SinkEndpointId,omitempty"`
+	SourceEndpointId           *string `json:"SourceEndpointId,omitempty" xml:"SourceEndpointId,omitempty"`
+	StructTransferConfigShrink *string `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty"`
+	TransferMappingShrink      *string `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty"`
+	Type                       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UseOss                     *bool   `json:"UseOss,omitempty" xml:"UseOss,omitempty"`
+	WorkerGradeId              *string `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+}
+
+func (s CreateProjectShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectShrinkRequest) SetCommonTransferConfigShrink(v string) *CreateProjectShrinkRequest {
+	s.CommonTransferConfigShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetEnableFullTransfer(v bool) *CreateProjectShrinkRequest {
+	s.EnableFullTransfer = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetEnableFullVerify(v bool) *CreateProjectShrinkRequest {
+	s.EnableFullVerify = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetEnableIncrTransfer(v bool) *CreateProjectShrinkRequest {
+	s.EnableIncrTransfer = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetEnableReverseIncrTransfer(v bool) *CreateProjectShrinkRequest {
+	s.EnableReverseIncrTransfer = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetEnableStructTransfer(v bool) *CreateProjectShrinkRequest {
+	s.EnableStructTransfer = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetFullTransferConfigShrink(v string) *CreateProjectShrinkRequest {
+	s.FullTransferConfigShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetIncrTransferConfigShrink(v string) *CreateProjectShrinkRequest {
+	s.IncrTransferConfigShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetLabelIdsShrink(v string) *CreateProjectShrinkRequest {
+	s.LabelIdsShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetName(v string) *CreateProjectShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetOssKey(v string) *CreateProjectShrinkRequest {
+	s.OssKey = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetSinkEndpointId(v string) *CreateProjectShrinkRequest {
+	s.SinkEndpointId = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetSourceEndpointId(v string) *CreateProjectShrinkRequest {
+	s.SourceEndpointId = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetStructTransferConfigShrink(v string) *CreateProjectShrinkRequest {
+	s.StructTransferConfigShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetTransferMappingShrink(v string) *CreateProjectShrinkRequest {
+	s.TransferMappingShrink = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetType(v string) *CreateProjectShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetUseOss(v bool) *CreateProjectShrinkRequest {
+	s.UseOss = &v
+	return s
+}
+
+func (s *CreateProjectShrinkRequest) SetWorkerGradeId(v string) *CreateProjectShrinkRequest {
+	s.WorkerGradeId = &v
+	return s
+}
+
+type CreateProjectResponseBody struct {
+	Advice      *string                               `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                               `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                               `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *CreateProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s CreateProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBody) SetAdvice(v string) *CreateProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetCode(v string) *CreateProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetCost(v string) *CreateProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetData(v string) *CreateProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetErrorDetail(v *CreateProjectResponseBodyErrorDetail) *CreateProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetMessage(v string) *CreateProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetPageNumber(v int32) *CreateProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetPageSize(v int32) *CreateProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateProjectResponseBody) SetTotalCount(v int64) *CreateProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type CreateProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s CreateProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetCode(v string) *CreateProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *CreateProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetLevel(v string) *CreateProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetMessage(v string) *CreateProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *CreateProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *CreateProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetProposal(v string) *CreateProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *CreateProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *CreateProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetReason(v string) *CreateProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *CreateProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *CreateProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *CreateProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *CreateProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type CreateProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSecurityIpGroupRequest struct {
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -1327,34 +3918,45 @@ func (s *CreateSecurityIpGroupResponse) SetBody(v *CreateSecurityIpGroupResponse
 }
 
 type CreateTenantRequest struct {
-	// The description of the database.
+	// The character set.
+	// For more information, see DescribeCharset.
 	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	// The number of resource distribution nodes in the tenant.
-	// The number is determined by the deployment mode of the cluster. If the cluster is deployed in 2-2-2 mode, the maximum number of resource distribution nodes is 2.
+	// The number of CPU cores of the tenant.
+	//
+	// > <br>The CPU specification of a single tenant cannot exceed that of the corresponding cluster. <br>For example, if the specification of the cluster is 14 CPU cores and 70 GB of memory, the CPU specification of the tenant cannot exceed 14 cores.
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// $.parameters[13].schema.example
+	// The description of the database.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the vSwitch.
-	// If no suitable vSwitch is available, create a vSwitch as prompted.
-	// For more information, see Use a vSwitch.
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The return result of the request.
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// $.parameters[12].schema.enumValueTitles
-	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	// The ID of the tenant.
-	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
-	// Alibaba Cloud CLI
-	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	LogDisk    *int64  `json:"LogDisk,omitempty" xml:"LogDisk,omitempty"`
 	// The memory size of the tenant, in GB.
 	//
 	// > <br>The memory size of a single tenant cannot exceed that of the corresponding cluster. <br>For example, if the specification of the cluster is 14 CPU cores and 70 GB of memory, the memory size of the tenant cannot exceed 70 GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The primary zone of the tenant.
+	// It is one of the zones in which the cluster is deployed.
+	PrimaryZone      *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	ReadOnlyZoneList *string `json:"ReadOnlyZoneList,omitempty" xml:"ReadOnlyZoneList,omitempty"`
+	// The tenant mode.
+	// Valid values: Oracle and MySQL.
+	// For more information, see [DescribeInstanceTenantModes](~~410354~~).
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	// The name of the tenant.
+	// It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The time zone of the tenant. For more information, see [DescribeTimeZones](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/api-oceanbasepro-2019-09-01-describetimezones).
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
-	// $.parameters[11].schema.description
+	// The number of resource distribution nodes in the tenant.
+	// The number is determined by the deployment mode of the cluster. If the cluster is deployed in 2-2-2 mode, the maximum number of resource distribution nodes is 2.
 	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
-	// $.parameters[12].schema.description
+	// The ID of the vSwitch.
+	// If no suitable vSwitch is available, create a vSwitch as prompted.
+	// For more information, see Use a vSwitch.
 	UserVSwitchId *string `json:"UserVSwitchId,omitempty" xml:"UserVSwitchId,omitempty"`
-	// The time zone of the tenant.  For more information, see [DescribeTimeZones](https://help.aliyun.com/document_detail/410361.html).
+	// The ID of the VPC.
+	//  If no suitable VPC is available, create a VPC as prompted.
+	// For more information, see "What is a VPC".
 	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
 }
 
@@ -1386,6 +3988,11 @@ func (s *CreateTenantRequest) SetInstanceId(v string) *CreateTenantRequest {
 	return s
 }
 
+func (s *CreateTenantRequest) SetLogDisk(v int64) *CreateTenantRequest {
+	s.LogDisk = &v
+	return s
+}
+
 func (s *CreateTenantRequest) SetMemory(v int32) *CreateTenantRequest {
 	s.Memory = &v
 	return s
@@ -1393,6 +4000,11 @@ func (s *CreateTenantRequest) SetMemory(v int32) *CreateTenantRequest {
 
 func (s *CreateTenantRequest) SetPrimaryZone(v string) *CreateTenantRequest {
 	s.PrimaryZone = &v
+	return s
+}
+
+func (s *CreateTenantRequest) SetReadOnlyZoneList(v string) *CreateTenantRequest {
+	s.ReadOnlyZoneList = &v
 	return s
 }
 
@@ -1427,9 +4039,9 @@ func (s *CreateTenantRequest) SetUserVpcId(v string) *CreateTenantRequest {
 }
 
 type CreateTenantResponseBody struct {
-	// WB01144930
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// You can call this operation to create a tenant.
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -1483,6 +4095,8 @@ func (s *CreateTenantResponse) SetBody(v *CreateTenantResponseBody) *CreateTenan
 type CreateTenantReadOnlyConnectionRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1501,6 +4115,16 @@ func (s *CreateTenantReadOnlyConnectionRequest) SetInstanceId(v string) *CreateT
 
 func (s *CreateTenantReadOnlyConnectionRequest) SetTenantId(v string) *CreateTenantReadOnlyConnectionRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *CreateTenantReadOnlyConnectionRequest) SetVSwitchId(v string) *CreateTenantReadOnlyConnectionRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateTenantReadOnlyConnectionRequest) SetVpcId(v string) *CreateTenantReadOnlyConnectionRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -1556,10 +4180,18 @@ func (s *CreateTenantReadOnlyConnectionResponse) SetBody(v *CreateTenantReadOnly
 }
 
 type CreateTenantSecurityIpGroupRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The group name of the whitelist group of IP addresses.
+	//
+	// It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The list of IP addresses in the whitelist group.
+	//
+	// It is a JSON array. Each object in the array is an IP address or a CIDR block. You can have up to 40 whitelists.
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s CreateTenantSecurityIpGroupRequest) String() string {
@@ -1591,7 +4223,9 @@ func (s *CreateTenantSecurityIpGroupRequest) SetTenantId(v string) *CreateTenant
 }
 
 type CreateTenantSecurityIpGroupResponseBody struct {
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the whitelist group.
 	SecurityIpGroup *CreateTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
 }
 
@@ -1614,10 +4248,16 @@ func (s *CreateTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *CreateTe
 }
 
 type CreateTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the whitelist group.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The list of IP addresses in the IP address whitelist group.
+	//
+	// It is a string separated by commas, and each object is an IP address or CIDR block.
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s CreateTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
@@ -1941,6 +4581,7 @@ func (s *DeleteDatabasesResponse) SetBody(v *DeleteDatabasesResponseBody) *Delet
 
 type DeleteInstancesRequest struct {
 	BackupRetainMode *string `json:"BackupRetainMode,omitempty" xml:"BackupRetainMode,omitempty"`
+	DryRun           *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceIds      *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 }
 
@@ -1957,13 +4598,19 @@ func (s *DeleteInstancesRequest) SetBackupRetainMode(v string) *DeleteInstancesR
 	return s
 }
 
+func (s *DeleteInstancesRequest) SetDryRun(v bool) *DeleteInstancesRequest {
+	s.DryRun = &v
+	return s
+}
+
 func (s *DeleteInstancesRequest) SetInstanceIds(v string) *DeleteInstancesRequest {
 	s.InstanceIds = &v
 	return s
 }
 
 type DeleteInstancesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data      *DeleteInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteInstancesResponseBody) String() string {
@@ -1974,8 +4621,30 @@ func (s DeleteInstancesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteInstancesResponseBody) SetData(v *DeleteInstancesResponseBodyData) *DeleteInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DeleteInstancesResponseBody) SetRequestId(v string) *DeleteInstancesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DeleteInstancesResponseBodyData struct {
+	DryRunResult *bool `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
+}
+
+func (s DeleteInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponseBodyData) SetDryRunResult(v bool) *DeleteInstancesResponseBodyData {
+	s.DryRunResult = &v
 	return s
 }
 
@@ -2197,6 +4866,218 @@ func (s *DeleteOmsOpenAPIProjectResponse) SetBody(v *DeleteOmsOpenAPIProjectResp
 	return s
 }
 
+type DeleteProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectRequest) SetId(v string) *DeleteProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteProjectResponseBody struct {
+	Advice      *string                               `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                               `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                           `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *DeleteProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DeleteProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBody) SetAdvice(v string) *DeleteProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetCode(v string) *DeleteProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetCost(v string) *DeleteProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetData(v interface{}) *DeleteProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetErrorDetail(v *DeleteProjectResponseBodyErrorDetail) *DeleteProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetMessage(v string) *DeleteProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetPageNumber(v int32) *DeleteProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetPageSize(v int32) *DeleteProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetSuccess(v bool) *DeleteProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBody) SetTotalCount(v int64) *DeleteProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DeleteProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DeleteProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetCode(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DeleteProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetLevel(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetMessage(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DeleteProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetProposal(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DeleteProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetReason(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DeleteProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DeleteProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DeleteProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DeleteProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DeleteProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSecurityIpGroupRequest struct {
 	// The name of the IP address whitelist group.
 	// It must be 2 to 32 characters in length, start with a lowercase letter, end with a lowercase letter or digit, and contain only lowercase letters, digits, and underscores (_).
@@ -2300,9 +5181,14 @@ func (s *DeleteSecurityIpGroupResponse) SetBody(v *DeleteSecurityIpGroupResponse
 }
 
 type DeleteTenantSecurityIpGroupRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The group name of the whitelist group of IP addresses.
+	//
+	// It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DeleteTenantSecurityIpGroupRequest) String() string {
@@ -2329,7 +5215,9 @@ func (s *DeleteTenantSecurityIpGroupRequest) SetTenantId(v string) *DeleteTenant
 }
 
 type DeleteTenantSecurityIpGroupResponseBody struct {
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the whitelist group.
 	SecurityIpGroup *DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
 }
 
@@ -2352,9 +5240,12 @@ func (s *DeleteTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *DeleteTe
 }
 
 type DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the whitelist group.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
@@ -2410,11 +5301,11 @@ func (s *DeleteTenantSecurityIpGroupResponse) SetBody(v *DeleteTenantSecurityIpG
 }
 
 type DeleteTenantUsersRequest struct {
-	// Example 1
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// $.parameters[4].schema.enumValueTitles
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// $.parameters[2].schema.example
+	// A list of usernames.
 	Users *string `json:"Users,omitempty" xml:"Users,omitempty"`
 }
 
@@ -2442,7 +5333,7 @@ func (s *DeleteTenantUsersRequest) SetUsers(v string) *DeleteTenantUsersRequest 
 }
 
 type DeleteTenantUsersResponseBody struct {
-	// DeleteTenantUsers
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2571,45 +5462,47 @@ func (s *DeleteTenantsResponse) SetBody(v *DeleteTenantsResponseBody) *DeleteTen
 }
 
 type DescribeAnomalySQLListRequest struct {
-	// The search value.
+	// The language of the returned data.
+	// Default value: CN for a China site and EN for an International site.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// {
-	//   "UserName":testUser
-	// }
+	// The name of the database.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// zh-CN
+	// The end time of the time range for querying suspicious SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter condition.
+	// > <br> - All fields in OceanBase Database support filtering. <br> - You can write the key-value pair of a parameter in a JSON string in the JSON format to filter the parameter.
+	FilterCondition map[string]interface{} `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	InstanceId      *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The number of the page to return.
 	// - Start value: 1
 	// - Default value: 1
-	FilterCondition map[string]interface{} `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of rows to return on each page.
 	// - Maximum value: 100
 	// - Default value: 10
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// desc
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The start time of the time range for querying suspicious SQL statements.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 1
+	// SQLID.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
 	// The search keyword.
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
-	// The ID of the tenant.
+	// The search parameter.
 	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
-	// Utilization above threshold
+	// The search rule.
+	// Valid values: "=", ">", ">=", "<", and "<="
 	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	// 10
+	// The search value.
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	// The end time of the time range for querying suspicious SQL statements.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	// The sorted column.
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	// The request time, in ms.
+	// The sorting rule.
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The total count.
+	// The start time of the time range for querying suspicious SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Alibaba Cloud CLI
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -2638,6 +5531,11 @@ func (s *DescribeAnomalySQLListRequest) SetEndTime(v string) *DescribeAnomalySQL
 
 func (s *DescribeAnomalySQLListRequest) SetFilterCondition(v map[string]interface{}) *DescribeAnomalySQLListRequest {
 	s.FilterCondition = v
+	return s
+}
+
+func (s *DescribeAnomalySQLListRequest) SetInstanceId(v string) *DescribeAnomalySQLListRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2702,45 +5600,47 @@ func (s *DescribeAnomalySQLListRequest) SetTenantId(v string) *DescribeAnomalySQ
 }
 
 type DescribeAnomalySQLListShrinkRequest struct {
-	// The search value.
+	// The language of the returned data.
+	// Default value: CN for a China site and EN for an International site.
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// {
-	//   "UserName":testUser
-	// }
+	// The name of the database.
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// zh-CN
+	// The end time of the time range for querying suspicious SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter condition.
+	// > <br> - All fields in OceanBase Database support filtering. <br> - You can write the key-value pair of a parameter in a JSON string in the JSON format to filter the parameter.
+	FilterConditionShrink *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The number of the page to return.
 	// - Start value: 1
 	// - Default value: 1
-	FilterConditionShrink *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of rows to return on each page.
 	// - Maximum value: 100
 	// - Default value: 10
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// desc
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The start time of the time range for querying suspicious SQL statements.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 1
+	// SQLID.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
 	// The search keyword.
 	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
-	// The ID of the tenant.
+	// The search parameter.
 	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
-	// Utilization above threshold
+	// The search rule.
+	// Valid values: "=", ">", ">=", "<", and "<="
 	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	// 10
+	// The search value.
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	// The end time of the time range for querying suspicious SQL statements.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	// The sorted column.
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	// The request time, in ms.
+	// The sorting rule.
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The total count.
+	// The start time of the time range for querying suspicious SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Alibaba Cloud CLI
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -2769,6 +5669,11 @@ func (s *DescribeAnomalySQLListShrinkRequest) SetEndTime(v string) *DescribeAnom
 
 func (s *DescribeAnomalySQLListShrinkRequest) SetFilterConditionShrink(v string) *DescribeAnomalySQLListShrinkRequest {
 	s.FilterConditionShrink = &v
+	return s
+}
+
+func (s *DescribeAnomalySQLListShrinkRequest) SetInstanceId(v string) *DescribeAnomalySQLListShrinkRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -2833,11 +5738,11 @@ func (s *DescribeAnomalySQLListShrinkRequest) SetTenantId(v string) *DescribeAno
 }
 
 type DescribeAnomalySQLListResponseBody struct {
-	// The diagnostic rule.
+	// The list of suspicious SQL statements.
 	AnomalySQLList []*DescribeAnomalySQLListResponseBodyAnomalySQLList `json:"AnomalySQLList,omitempty" xml:"AnomalySQLList,omitempty" type:"Repeated"`
-	// The sorting rule.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SQL text.
+	// The total count.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2865,59 +5770,30 @@ func (s *DescribeAnomalySQLListResponseBody) SetTotalCount(v int64) *DescribeAno
 }
 
 type DescribeAnomalySQLListResponseBodyAnomalySQLList struct {
-	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// {"name":"DescribeAnomalySQLList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":60000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeAnomalySQLList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"DbName\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SearchKeyWord\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"update\"},{\"name\":\"SearchParameter\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SearchRule\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\">\"},{\"name\":\"SearchValue\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"0.01\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"NodeIp\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp19y05uq6xpacyqnlrc\"},{\"name\":\"AcceptLanguage\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"zh-CN\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"FilterCondition\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"enumValueTitles\":{\"UserName\":\"UserName\",\"Event\":\"Event\",\"SQLType\":\"SQLType\",\"ClientIp\":\"ClientIp\"},\"title\":\"\",\"description\":\"\",\"example\":\"{\\n  \\\"UserName\\\":testUser\\n}\"},{\"name\":\"SortColumn\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SortOrder\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"enumValueTitles\":{\"{     \\\"dbname\\\":test,     \\\"SQLType\\\":null\\t\\t }\":\"{     \\\"dbname\\\":test,     \\\"SQLType\\\":null\\t\\t }\"},\"title\":\"\",\"description\":\"\",\"example\":\"desc\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"TotalCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"AnomalySQLList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\" \",\"children\":[{\"name\":\"Key\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"DiagnosisRule\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"SQLText\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC\"},{\"name\":\"Suggestion\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"database1\"},{\"name\":\"RequestTimeUTCString\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2022-01-11T07:08:00Z\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"SQLId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"99E9D3BF****B486239E6C7BC79B****\"},{\"name\":\"Diagnosis\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"RequestTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.00\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"89043\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"tester\"}],\"title\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
-	DbName    *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Diagnosis *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
-	// The list of suspicious SQL statements.
-	DiagnosisRule *string `json:"DiagnosisRule,omitempty" xml:"DiagnosisRule,omitempty"`
-	Executions    *int64  `json:"Executions,omitempty" xml:"Executions,omitempty"`
 	// The average CPU time, in ms.
-	Key                  *int64   `json:"Key,omitempty" xml:"Key,omitempty"`
-	RequestTime          *float32 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	RequestTimeUTCString *string  `json:"RequestTimeUTCString,omitempty" xml:"RequestTimeUTCString,omitempty"`
-	SQLId                *string  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// ```
-	// http(s)://[Endpoint]/?Action=DescribeAnomalySQLList
-	// &TenantId=t2mr3oae0****
-	// &StartTime=2021-06-13 15:40:43
-	// &EndTime=2021-06-13 15:40:43
-	// &DbName=testdb
-	// &SearchKeyWord=update
-	// &SearchParameter=cputime
-	// &SearchRule=>
-	// &SearchValue=0.01
-	// &SQLId=8D6E84****0B8FB1823D199E2CA1****
-	// &NodeIp=i-bp19y05uq6xpacyqnlrc
-	// &AcceptLanguage=zh-CN
-	// &PageSize=10
-	// &PageNumber=1
-	// &SortColumn=cputime
-	// &SortOrder=desc
-	// &Common request parameters
-	// ```
+	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The diagnosis information.
+	Diagnosis *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	// The diagnostic rule.
+	DiagnosisRule *string `json:"DiagnosisRule,omitempty" xml:"DiagnosisRule,omitempty"`
+	// The number of executions.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The sequence number of the returned SQL statement.
+	Key *int64 `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The request time, in ms.
+	RequestTime *float32 `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// The request time in UTC +0.
+	RequestTimeUTCString *string `json:"RequestTimeUTCString,omitempty" xml:"RequestTimeUTCString,omitempty"`
+	// SQLID.
+	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// The SQL text.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// {
-	//     "TotalCount": 2,
-	//     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-	//     "AnomalySQLList": [
-	//         {
-	//             "Key": 1,
-	//             "DiagnosisRule": "Utilization above threshold",
-	//             "SQLText": "SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC",
-	//             "Suggestion": "Check your business scenarios, data distribution changes, request surges, and execution plan changes.",
-	//             "DbName": "database1",
-	//             "RequestTimeUTCString": "2022-01-11T07:08:00Z",
-	//             "SQLId": "99E9D3BF****B486239E6C7BC79B****",
-	//             "Diagnosis": "Total number of executions = 80199, Average CPU time = 6.8 ms, Overall CPU utilization = 87%",
-	//             "RequestTime": 1641884880000,
-	//             "Executions": 89043,
-	//             "UserName": "tester"
-	//         }
-	//     ]
-	// }
+	// The suggestions.
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
-	UserName   *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeAnomalySQLListResponseBodyAnomalySQLList) String() string {
@@ -3211,8 +6087,9 @@ func (s *DescribeAvailableMemResourceResponseBody) SetRequestId(v string) *Descr
 type DescribeAvailableMemResourceResponseBodyData struct {
 	MaxMem *int64 `json:"MaxMem,omitempty" xml:"MaxMem,omitempty"`
 	// You can call this operation to query the available memory resource of an OceanBase Database tenant.
-	MinMem  *int64 `json:"MinMem,omitempty" xml:"MinMem,omitempty"`
-	UsedMem *int64 `json:"UsedMem,omitempty" xml:"UsedMem,omitempty"`
+	MinMem  *int64  `json:"MinMem,omitempty" xml:"MinMem,omitempty"`
+	SafeMem *string `json:"SafeMem,omitempty" xml:"SafeMem,omitempty"`
+	UsedMem *int64  `json:"UsedMem,omitempty" xml:"UsedMem,omitempty"`
 }
 
 func (s DescribeAvailableMemResourceResponseBodyData) String() string {
@@ -3230,6 +6107,11 @@ func (s *DescribeAvailableMemResourceResponseBodyData) SetMaxMem(v int64) *Descr
 
 func (s *DescribeAvailableMemResourceResponseBodyData) SetMinMem(v int64) *DescribeAvailableMemResourceResponseBodyData {
 	s.MinMem = &v
+	return s
+}
+
+func (s *DescribeAvailableMemResourceResponseBodyData) SetSafeMem(v string) *DescribeAvailableMemResourceResponseBodyData {
+	s.SafeMem = &v
 	return s
 }
 
@@ -3267,7 +6149,467 @@ func (s *DescribeAvailableMemResourceResponse) SetBody(v *DescribeAvailableMemRe
 	return s
 }
 
+type DescribeAvailableSpecRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Spec        *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
+}
+
+func (s DescribeAvailableSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecRequest) SetInstanceId(v string) *DescribeAvailableSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecRequest) SetSpec(v string) *DescribeAvailableSpecRequest {
+	s.Spec = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecRequest) SetUpgradeType(v string) *DescribeAvailableSpecRequest {
+	s.UpgradeType = &v
+	return s
+}
+
+type DescribeAvailableSpecResponseBody struct {
+	Data      *DescribeAvailableSpecResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAvailableSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponseBody) SetData(v *DescribeAvailableSpecResponseBodyData) *DescribeAvailableSpecResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBody) SetRequestId(v string) *DescribeAvailableSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAvailableSpecResponseBodyData struct {
+	AvailableSpecifications []*DescribeAvailableSpecResponseBodyDataAvailableSpecifications `json:"AvailableSpecifications,omitempty" xml:"AvailableSpecifications,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableSpecResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponseBodyData) SetAvailableSpecifications(v []*DescribeAvailableSpecResponseBodyDataAvailableSpecifications) *DescribeAvailableSpecResponseBodyData {
+	s.AvailableSpecifications = v
+	return s
+}
+
+type DescribeAvailableSpecResponseBodyDataAvailableSpecifications struct {
+	DiskSizeRange    *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange    `json:"DiskSizeRange,omitempty" xml:"DiskSizeRange,omitempty" type:"Struct"`
+	InstanceClass    *string                                                                       `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	LogDiskSizeRange *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange `json:"LogDiskSizeRange,omitempty" xml:"LogDiskSizeRange,omitempty" type:"Struct"`
+	NodeNum          []*int32                                                                      `json:"NodeNum,omitempty" xml:"NodeNum,omitempty" type:"Repeated"`
+	Spec             *string                                                                       `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecifications) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetDiskSizeRange(v *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.DiskSizeRange = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetInstanceClass(v string) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetLogDiskSizeRange(v *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.LogDiskSizeRange = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetNodeNum(v []*int32) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.NodeNum = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecifications) SetSpec(v string) *DescribeAvailableSpecResponseBodyDataAvailableSpecifications {
+	s.Spec = &v
+	return s
+}
+
+type DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange struct {
+	Max  *int64 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min  *int64 `json:"Min,omitempty" xml:"Min,omitempty"`
+	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) SetMax(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange {
+	s.Max = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) SetMin(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange {
+	s.Min = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange) SetStep(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange {
+	s.Step = &v
+	return s
+}
+
+type DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange struct {
+	Max  *int64 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min  *int64 `json:"Min,omitempty" xml:"Min,omitempty"`
+	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) SetMax(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange {
+	s.Max = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) SetMin(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange {
+	s.Min = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange) SetStep(v int64) *DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange {
+	s.Step = &v
+	return s
+}
+
+type DescribeAvailableSpecResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAvailableSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAvailableSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableSpecResponse) SetHeaders(v map[string]*string) *DescribeAvailableSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponse) SetStatusCode(v int32) *DescribeAvailableSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAvailableSpecResponse) SetBody(v *DescribeAvailableSpecResponseBody) *DescribeAvailableSpecResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAvailableZoneRequest struct {
+	DeployType   *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ObVersion    *string `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	Series       *string `json:"Series,omitempty" xml:"Series,omitempty"`
+	Spec         *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s DescribeAvailableZoneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneRequest) SetDeployType(v string) *DescribeAvailableZoneRequest {
+	s.DeployType = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneRequest) SetInstanceType(v string) *DescribeAvailableZoneRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneRequest) SetObVersion(v string) *DescribeAvailableZoneRequest {
+	s.ObVersion = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneRequest) SetSeries(v string) *DescribeAvailableZoneRequest {
+	s.Series = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneRequest) SetSpec(v string) *DescribeAvailableZoneRequest {
+	s.Spec = &v
+	return s
+}
+
+type DescribeAvailableZoneResponseBody struct {
+	Data      *DescribeAvailableZoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAvailableZoneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBody) SetData(v *DescribeAvailableZoneResponseBodyData) *DescribeAvailableZoneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBody) SetRequestId(v string) *DescribeAvailableZoneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAvailableZoneResponseBodyData struct {
+	AvailableZones []*DescribeAvailableZoneResponseBodyDataAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableZoneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBodyData) SetAvailableZones(v []*DescribeAvailableZoneResponseBodyDataAvailableZones) *DescribeAvailableZoneResponseBodyData {
+	s.AvailableZones = v
+	return s
+}
+
+type DescribeAvailableZoneResponseBodyDataAvailableZones struct {
+	Channel               *string                                                                     `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	DeployType            *string                                                                     `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	InstanceType          *string                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Region                *string                                                                     `json:"Region,omitempty" xml:"Region,omitempty"`
+	Series                *string                                                                     `json:"Series,omitempty" xml:"Series,omitempty"`
+	SupportSpecifications []*DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications `json:"SupportSpecifications,omitempty" xml:"SupportSpecifications,omitempty" type:"Repeated"`
+	Zones                 *string                                                                     `json:"Zones,omitempty" xml:"Zones,omitempty"`
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZones) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetChannel(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.Channel = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetDeployType(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.DeployType = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetInstanceType(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetRegion(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetSeries(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.Series = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetSupportSpecifications(v []*DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.SupportSpecifications = v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZones) SetZones(v string) *DescribeAvailableZoneResponseBodyDataAvailableZones {
+	s.Zones = &v
+	return s
+}
+
+type DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications struct {
+	DiskSizeRange         *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange           `json:"DiskSizeRange,omitempty" xml:"DiskSizeRange,omitempty" type:"Struct"`
+	DiskTypes             []*string                                                                                        `json:"DiskTypes,omitempty" xml:"DiskTypes,omitempty" type:"Repeated"`
+	InstanceClass         *string                                                                                          `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	Spec                  *string                                                                                          `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	SupportEngineVersions []*DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions `json:"SupportEngineVersions,omitempty" xml:"SupportEngineVersions,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) SetDiskSizeRange(v *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications {
+	s.DiskSizeRange = v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) SetDiskTypes(v []*string) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications {
+	s.DiskTypes = v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) SetInstanceClass(v string) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) SetSpec(v string) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications {
+	s.Spec = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications) SetSupportEngineVersions(v []*DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications {
+	s.SupportEngineVersions = v
+	return s
+}
+
+type DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange struct {
+	Max  *int64 `json:"Max,omitempty" xml:"Max,omitempty"`
+	Min  *int64 `json:"Min,omitempty" xml:"Min,omitempty"`
+	Step *int64 `json:"Step,omitempty" xml:"Step,omitempty"`
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) SetMax(v int64) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange {
+	s.Max = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) SetMin(v int64) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange {
+	s.Min = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange) SetStep(v int64) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange {
+	s.Step = &v
+	return s
+}
+
+type DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions struct {
+	ObVersion                    *string   `json:"ObVersion,omitempty" xml:"ObVersion,omitempty"`
+	SupportIsolationOptimization *bool     `json:"SupportIsolationOptimization,omitempty" xml:"SupportIsolationOptimization,omitempty"`
+	SupportReplicaModes          []*string `json:"SupportReplicaModes,omitempty" xml:"SupportReplicaModes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) SetObVersion(v string) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions {
+	s.ObVersion = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) SetSupportIsolationOptimization(v bool) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions {
+	s.SupportIsolationOptimization = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions) SetSupportReplicaModes(v []*string) *DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions {
+	s.SupportReplicaModes = v
+	return s
+}
+
+type DescribeAvailableZoneResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAvailableZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAvailableZoneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableZoneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableZoneResponse) SetHeaders(v map[string]*string) *DescribeAvailableZoneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponse) SetStatusCode(v int32) *DescribeAvailableZoneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAvailableZoneResponse) SetBody(v *DescribeAvailableZoneResponseBody) *DescribeAvailableZoneResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCharsetRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 实例的系列  - normal（默认）：标准集群版（云盘）  - normal_ssd：标准集群版（本地盘） - history：历史库集群版。
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// The return result of the request.
@@ -3280,6 +6622,11 @@ func (s DescribeCharsetRequest) String() string {
 
 func (s DescribeCharsetRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCharsetRequest) SetInstanceId(v string) *DescribeCharsetRequest {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeCharsetRequest) SetSeries(v string) *DescribeCharsetRequest {
@@ -3378,6 +6725,7 @@ func (s *DescribeCharsetResponse) SetBody(v *DescribeCharsetResponseBody) *Descr
 type DescribeDatabasesRequest struct {
 	// It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The return result of the request.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
@@ -3405,6 +6753,11 @@ func (s DescribeDatabasesRequest) GoString() string {
 
 func (s *DescribeDatabasesRequest) SetDatabaseName(v string) *DescribeDatabasesRequest {
 	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDatabasesRequest) SetInstanceId(v string) *DescribeDatabasesRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -3485,9 +6838,10 @@ type DescribeDatabasesResponseBodyDatabases struct {
 	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RequiredSize *float64 `json:"RequiredSize,omitempty" xml:"RequiredSize,omitempty"`
 	// The list of databases in the tenant.
-	Status   *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tables   []*DescribeDatabasesResponseBodyDatabasesTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	TenantId *string                                         `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Status     *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tables     []*DescribeDatabasesResponseBodyDatabasesTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantId   *string                                         `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName *string                                         `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
 	// The name of the database table.
 	Users []*DescribeDatabasesResponseBodyDatabasesUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -3560,6 +6914,11 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetTenantId(v string) *Describe
 	return s
 }
 
+func (s *DescribeDatabasesResponseBodyDatabases) SetTenantName(v string) *DescribeDatabasesResponseBodyDatabases {
+	s.TenantName = &v
+	return s
+}
+
 func (s *DescribeDatabasesResponseBodyDatabases) SetUsers(v []*DescribeDatabasesResponseBodyDatabasesUsers) *DescribeDatabasesResponseBodyDatabases {
 	s.Users = v
 	return s
@@ -3583,6 +6942,7 @@ func (s *DescribeDatabasesResponseBodyDatabasesTables) SetTableName(v string) *D
 }
 
 type DescribeDatabasesResponseBodyDatabasesUsers struct {
+	Privileges *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
 	// The request ID.
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// Example 1
@@ -3597,6 +6957,11 @@ func (s DescribeDatabasesResponseBodyDatabasesUsers) String() string {
 
 func (s DescribeDatabasesResponseBodyDatabasesUsers) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDatabasesResponseBodyDatabasesUsers) SetPrivileges(v string) *DescribeDatabasesResponseBodyDatabasesUsers {
+	s.Privileges = &v
+	return s
 }
 
 func (s *DescribeDatabasesResponseBodyDatabasesUsers) SetRole(v string) *DescribeDatabasesResponseBodyDatabasesUsers {
@@ -3648,8 +7013,6 @@ type DescribeInstanceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The information about the storage resources of the cluster.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The server with the highest disk usage.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeInstanceRequest) String() string {
@@ -3667,11 +7030,6 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 
 func (s *DescribeInstanceRequest) SetPageNumber(v int32) *DescribeInstanceRequest {
 	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeInstanceRequest) SetPageSize(v int32) *DescribeInstanceRequest {
-	s.PageSize = &v
 	return s
 }
 
@@ -3706,8 +7064,11 @@ type DescribeInstanceResponseBodyInstance struct {
 	// Example 1
 	AutoUpgradeObVersion *bool     `json:"AutoUpgradeObVersion,omitempty" xml:"AutoUpgradeObVersion,omitempty"`
 	AvailableZones       []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
+	CpuArchitecture      *string   `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
 	// Indicates whether the log disk specifications can be upgraded.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime              *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataDiskAutoScale       *bool                                                        `json:"DataDiskAutoScale,omitempty" xml:"DataDiskAutoScale,omitempty"`
+	DataDiskAutoScaleConfig *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig `json:"DataDiskAutoScaleConfig,omitempty" xml:"DataDiskAutoScaleConfig,omitempty" type:"Struct"`
 	// The total number of CPU cores of the cluster.
 	DataMergeTime *string `json:"DataMergeTime,omitempty" xml:"DataMergeTime,omitempty"`
 	// Alibaba Cloud CLI
@@ -3717,9 +7078,11 @@ type DescribeInstanceResponseBodyInstance struct {
 	// The total storage space of the cluster, in GB.
 	DiskType                    *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	EnableIsolationOptimization *bool   `json:"EnableIsolationOptimization,omitempty" xml:"EnableIsolationOptimization,omitempty"`
+	EnableProxyService          *bool   `json:"EnableProxyService,omitempty" xml:"EnableProxyService,omitempty"`
 	EnableUpgradeLogDisk        *bool   `json:"EnableUpgradeLogDisk,omitempty" xml:"EnableUpgradeLogDisk,omitempty"`
 	// The information of the OceanBase cluster.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InTempCapacityStatus *bool   `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
 	// The detailed information of the OBServer version.
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The information about the log disk space of the cluster.
@@ -3736,13 +7099,17 @@ type DescribeInstanceResponseBodyInstance struct {
 	NodeNum      *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 	ObRpmVersion *string `json:"ObRpmVersion,omitempty" xml:"ObRpmVersion,omitempty"`
 	// The list of zones.
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ProxyClusterId     *string `json:"ProxyClusterId,omitempty" xml:"ProxyClusterId,omitempty"`
+	ProxyServiceStatus *string `json:"ProxyServiceStatus,omitempty" xml:"ProxyServiceStatus,omitempty"`
+	ReplicaMode        *string `json:"ReplicaMode,omitempty" xml:"ReplicaMode,omitempty"`
 	// The size of used memory in the cluster, in GB.
 	Resource *DescribeInstanceResponseBodyInstanceResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// Indicates whether the OBServer version is the latest.
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// The information about cluster resources.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status          *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantCreatable *DescribeInstanceResponseBodyInstanceTenantCreatable `json:"TenantCreatable,omitempty" xml:"TenantCreatable,omitempty" type:"Struct"`
 	// You can call this operation to query the detailed information of an OceanBase cluster.
 	Version *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 	Zones   []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -3771,8 +7138,23 @@ func (s *DescribeInstanceResponseBodyInstance) SetAvailableZones(v []*string) *D
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetCpuArchitecture(v string) *DescribeInstanceResponseBodyInstance {
+	s.CpuArchitecture = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetCreateTime(v string) *DescribeInstanceResponseBodyInstance {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetDataDiskAutoScale(v bool) *DescribeInstanceResponseBodyInstance {
+	s.DataDiskAutoScale = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetDataDiskAutoScaleConfig(v *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) *DescribeInstanceResponseBodyInstance {
+	s.DataDiskAutoScaleConfig = v
 	return s
 }
 
@@ -3801,6 +7183,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetEnableIsolationOptimization(v 
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetEnableProxyService(v bool) *DescribeInstanceResponseBodyInstance {
+	s.EnableProxyService = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetEnableUpgradeLogDisk(v bool) *DescribeInstanceResponseBodyInstance {
 	s.EnableUpgradeLogDisk = &v
 	return s
@@ -3808,6 +7195,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetEnableUpgradeLogDisk(v bool) *
 
 func (s *DescribeInstanceResponseBodyInstance) SetExpireTime(v string) *DescribeInstanceResponseBodyInstance {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetInTempCapacityStatus(v bool) *DescribeInstanceResponseBodyInstance {
+	s.InTempCapacityStatus = &v
 	return s
 }
 
@@ -3866,6 +7258,21 @@ func (s *DescribeInstanceResponseBodyInstance) SetPayType(v string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetProxyClusterId(v string) *DescribeInstanceResponseBodyInstance {
+	s.ProxyClusterId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetProxyServiceStatus(v string) *DescribeInstanceResponseBodyInstance {
+	s.ProxyServiceStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetReplicaMode(v string) *DescribeInstanceResponseBodyInstance {
+	s.ReplicaMode = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetResource(v *DescribeInstanceResponseBodyInstanceResource) *DescribeInstanceResponseBodyInstance {
 	s.Resource = v
 	return s
@@ -3881,6 +7288,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetStatus(v string) *DescribeInst
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstance) SetTenantCreatable(v *DescribeInstanceResponseBodyInstanceTenantCreatable) *DescribeInstanceResponseBodyInstance {
+	s.TenantCreatable = v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstance) SetVersion(v string) *DescribeInstanceResponseBodyInstance {
 	s.Version = &v
 	return s
@@ -3891,7 +7303,61 @@ func (s *DescribeInstanceResponseBodyInstance) SetZones(v []*string) *DescribeIn
 	return s
 }
 
+type DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig struct {
+	AutoScale           *bool  `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	MaxDiskSize         *int64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	ScaleStepInMerge    *int64 `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
+	ScaleStepInNormal   *int64 `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
+	UpperMergeThreshold *int64 `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
+	UpperThreshold      *int64 `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
+	Upperbound          *int64 `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetAutoScale(v bool) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.AutoScale = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetMaxDiskSize(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.MaxDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetScaleStepInMerge(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.ScaleStepInMerge = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetScaleStepInNormal(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.ScaleStepInNormal = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperMergeThreshold(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.UpperMergeThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperThreshold(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.UpperThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig) SetUpperbound(v int64) *DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig {
+	s.Upperbound = &v
+	return s
+}
+
 type DescribeInstanceResponseBodyInstanceResource struct {
+	CapacityUnit *DescribeInstanceResponseBodyInstanceResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
 	// The information of the OceanBase cluster.
 	Cpu *DescribeInstanceResponseBodyInstanceResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
 	// The number of the page to return.
@@ -3912,6 +7378,11 @@ func (s DescribeInstanceResponseBodyInstanceResource) String() string {
 
 func (s DescribeInstanceResponseBodyInstanceResource) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResource) SetCapacityUnit(v *DescribeInstanceResponseBodyInstanceResourceCapacityUnit) *DescribeInstanceResponseBodyInstanceResource {
+	s.CapacityUnit = v
+	return s
 }
 
 func (s *DescribeInstanceResponseBodyInstanceResource) SetCpu(v *DescribeInstanceResponseBodyInstanceResourceCpu) *DescribeInstanceResponseBodyInstanceResource {
@@ -3939,7 +7410,37 @@ func (s *DescribeInstanceResponseBodyInstanceResource) SetUnitCount(v int64) *De
 	return s
 }
 
+type DescribeInstanceResponseBodyInstanceResourceCapacityUnit struct {
+	MaxCapacityUnit  *int32  `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	MinCapacityUnit  *int32  `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	UsedCapacityUnit *string `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceResourceCapacityUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceResourceCapacityUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceCapacityUnit) SetMaxCapacityUnit(v int32) *DescribeInstanceResponseBodyInstanceResourceCapacityUnit {
+	s.MaxCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceCapacityUnit) SetMinCapacityUnit(v int32) *DescribeInstanceResponseBodyInstanceResourceCapacityUnit {
+	s.MinCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceCapacityUnit) SetUsedCapacityUnit(v string) *DescribeInstanceResponseBodyInstanceResourceCapacityUnit {
+	s.UsedCapacityUnit = &v
+	return s
+}
+
 type DescribeInstanceResponseBodyInstanceResourceCpu struct {
+	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
 	// The series of the OceanBase cluster. Valid values:
 	// - NORMAL: the high availability edition.
 	// - BASIC: the basic edition.
@@ -3960,6 +7461,11 @@ func (s DescribeInstanceResponseBodyInstanceResourceCpu) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceResponseBodyInstanceResourceCpu) SetOriginalTotalCpu(v int64) *DescribeInstanceResponseBodyInstanceResourceCpu {
+	s.OriginalTotalCpu = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstanceResourceCpu) SetTotalCpu(v int64) *DescribeInstanceResponseBodyInstanceResourceCpu {
 	s.TotalCpu = &v
 	return s
@@ -3978,10 +7484,12 @@ func (s *DescribeInstanceResponseBodyInstanceResourceCpu) SetUsedCpu(v int64) *D
 type DescribeInstanceResponseBodyInstanceResourceDiskSize struct {
 	// The ID of the OceanBase cluster.
 	DataUsedSize *float64 `json:"DataUsedSize,omitempty" xml:"DataUsedSize,omitempty"`
+	MaxDiskSize  *float64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
 	// The time in UTC when the cluster expires.
 	MaxDiskUsedObServer []*string `json:"MaxDiskUsedObServer,omitempty" xml:"MaxDiskUsedObServer,omitempty" type:"Repeated"`
 	// The maximum disk usage, in percentage.
-	MaxDiskUsedPercent *float64 `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	MaxDiskUsedPercent    *float64 `json:"MaxDiskUsedPercent,omitempty" xml:"MaxDiskUsedPercent,omitempty"`
+	OriginalTotalDiskSize *int64   `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
 	// The data replica distribution mode of the cluster. Valid values:
 	// - n: indicates the single-IDC mode.
 	// - n-n: indicates the dual-IDC mode.
@@ -4012,6 +7520,11 @@ func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetDataUsedSize(v
 	return s
 }
 
+func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetMaxDiskSize(v float64) *DescribeInstanceResponseBodyInstanceResourceDiskSize {
+	s.MaxDiskSize = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetMaxDiskUsedObServer(v []*string) *DescribeInstanceResponseBodyInstanceResourceDiskSize {
 	s.MaxDiskUsedObServer = v
 	return s
@@ -4019,6 +7532,11 @@ func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetMaxDiskUsedObS
 
 func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetMaxDiskUsedPercent(v float64) *DescribeInstanceResponseBodyInstanceResourceDiskSize {
 	s.MaxDiskUsedPercent = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetOriginalTotalDiskSize(v int64) *DescribeInstanceResponseBodyInstanceResourceDiskSize {
+	s.OriginalTotalDiskSize = &v
 	return s
 }
 
@@ -4038,6 +7556,9 @@ func (s *DescribeInstanceResponseBodyInstanceResourceDiskSize) SetUsedDiskSize(v
 }
 
 type DescribeInstanceResponseBodyInstanceResourceLogDiskSize struct {
+	LogAssignedSize        *string   `json:"LogAssignedSize,omitempty" xml:"LogAssignedSize,omitempty"`
+	MaxLogAssignedObServer []*string `json:"MaxLogAssignedObServer,omitempty" xml:"MaxLogAssignedObServer,omitempty" type:"Repeated"`
+	MaxLogAssignedPercent  *string   `json:"MaxLogAssignedPercent,omitempty" xml:"MaxLogAssignedPercent,omitempty"`
 	// The ID of the region.
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
 	// The request ID.
@@ -4052,6 +7573,21 @@ func (s DescribeInstanceResponseBodyInstanceResourceLogDiskSize) GoString() stri
 	return s.String()
 }
 
+func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetLogAssignedSize(v string) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
+	s.LogAssignedSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetMaxLogAssignedObServer(v []*string) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
+	s.MaxLogAssignedObServer = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetMaxLogAssignedPercent(v string) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
+	s.MaxLogAssignedPercent = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetTotalDiskSize(v int64) *DescribeInstanceResponseBodyInstanceResourceLogDiskSize {
 	s.TotalDiskSize = &v
 	return s
@@ -4063,6 +7599,7 @@ func (s *DescribeInstanceResponseBodyInstanceResourceLogDiskSize) SetUnitDiskSiz
 }
 
 type DescribeInstanceResponseBodyInstanceResourceMemory struct {
+	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
 	// Indicates whether trusted ECS instances are used.
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
 	// The log disk space of each replica node in the cluster. Unit: GB.
@@ -4079,6 +7616,11 @@ func (s DescribeInstanceResponseBodyInstanceResourceMemory) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstanceResponseBodyInstanceResourceMemory) SetOriginalTotalMemory(v int64) *DescribeInstanceResponseBodyInstanceResourceMemory {
+	s.OriginalTotalMemory = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBodyInstanceResourceMemory) SetTotalMemory(v int64) *DescribeInstanceResponseBodyInstanceResourceMemory {
 	s.TotalMemory = &v
 	return s
@@ -4091,6 +7633,29 @@ func (s *DescribeInstanceResponseBodyInstanceResourceMemory) SetUnitMemory(v int
 
 func (s *DescribeInstanceResponseBodyInstanceResourceMemory) SetUsedMemory(v int64) *DescribeInstanceResponseBodyInstanceResourceMemory {
 	s.UsedMemory = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyInstanceTenantCreatable struct {
+	DisableCreateTenantReason *string `json:"DisableCreateTenantReason,omitempty" xml:"DisableCreateTenantReason,omitempty"`
+	EnableCreateTenant        *bool   `json:"EnableCreateTenant,omitempty" xml:"EnableCreateTenant,omitempty"`
+}
+
+func (s DescribeInstanceResponseBodyInstanceTenantCreatable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyInstanceTenantCreatable) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyInstanceTenantCreatable) SetDisableCreateTenantReason(v string) *DescribeInstanceResponseBodyInstanceTenantCreatable {
+	s.DisableCreateTenantReason = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstanceTenantCreatable) SetEnableCreateTenant(v bool) *DescribeInstanceResponseBodyInstanceTenantCreatable {
+	s.EnableCreateTenant = &v
 	return s
 }
 
@@ -4220,7 +7785,130 @@ func (s *DescribeInstanceCreatableZoneResponse) SetBody(v *DescribeInstanceCreat
 	return s
 }
 
+type DescribeInstanceSSLRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeInstanceSSLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSSLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSSLRequest) SetInstanceId(v string) *DescribeInstanceSSLRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeInstanceSSLResponseBody struct {
+	InstanceSSL *DescribeInstanceSSLResponseBodyInstanceSSL `json:"InstanceSSL,omitempty" xml:"InstanceSSL,omitempty" type:"Struct"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceSSLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSSLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSSLResponseBody) SetInstanceSSL(v *DescribeInstanceSSLResponseBodyInstanceSSL) *DescribeInstanceSSLResponseBody {
+	s.InstanceSSL = v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBody) SetRequestId(v string) *DescribeInstanceSSLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceSSLResponseBodyInstanceSSL struct {
+	CaUrl           *string `json:"CaUrl,omitempty" xml:"CaUrl,omitempty"`
+	EnableSSL       *string `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	ForceSSL        *string `json:"ForceSSL,omitempty" xml:"ForceSSL,omitempty"`
+	ForceSSLSupport *bool   `json:"ForceSSLSupport,omitempty" xml:"ForceSSLSupport,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ValidPeriod     *string `json:"ValidPeriod,omitempty" xml:"ValidPeriod,omitempty"`
+}
+
+func (s DescribeInstanceSSLResponseBodyInstanceSSL) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSSLResponseBodyInstanceSSL) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetCaUrl(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.CaUrl = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetEnableSSL(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.EnableSSL = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetForceSSL(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.ForceSSL = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetForceSSLSupport(v bool) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.ForceSSLSupport = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetInstanceId(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetStatus(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponseBodyInstanceSSL) SetValidPeriod(v string) *DescribeInstanceSSLResponseBodyInstanceSSL {
+	s.ValidPeriod = &v
+	return s
+}
+
+type DescribeInstanceSSLResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceSSLResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceSSLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceSSLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceSSLResponse) SetHeaders(v map[string]*string) *DescribeInstanceSSLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponse) SetStatusCode(v int32) *DescribeInstanceSSLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceSSLResponse) SetBody(v *DescribeInstanceSSLResponseBody) *DescribeInstanceSSLResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceSecurityConfigsRequest struct {
+	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4230,6 +7918,11 @@ func (s DescribeInstanceSecurityConfigsRequest) String() string {
 
 func (s DescribeInstanceSecurityConfigsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsRequest) SetCheckId(v string) *DescribeInstanceSecurityConfigsRequest {
+	s.CheckId = &v
+	return s
 }
 
 func (s *DescribeInstanceSecurityConfigsRequest) SetInstanceId(v string) *DescribeInstanceSecurityConfigsRequest {
@@ -4261,6 +7954,9 @@ func (s *DescribeInstanceSecurityConfigsResponseBody) SetRequestId(v string) *De
 }
 
 type DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs struct {
+	CheckId         *string                                                                              `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckTime       *string                                                                              `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
+	InstanceId      *string                                                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SecurityConfigs []*DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs `json:"SecurityConfigs,omitempty" xml:"SecurityConfigs,omitempty" type:"Repeated"`
 	TotalCheckCount *int32                                                                               `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
 	TotalRiskCount  *int32                                                                               `json:"TotalRiskCount,omitempty" xml:"TotalRiskCount,omitempty"`
@@ -4272,6 +7968,21 @@ func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) Stri
 
 func (s DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetCheckId(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetCheckTime(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.CheckTime = &v
+	return s
+}
+
+func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetInstanceId(v string) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs) SetSecurityConfigs(v []*DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs) *DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs {
@@ -5168,9 +8879,11 @@ type DescribeInstancesResponseBodyInstances struct {
 	// - oceanbase_oceanbasepre_public_cn: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in a China site.
 	// - oceanbase_oceanbasepost_public_cn: indicates an OceanBase cluster that is billed based on the pay-as-you-go plan and that is deployed in a China site.
 	// - oceanbase_obpre_public_intl: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in an international site.
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu             *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	CpuArchitecture *string `json:"CpuArchitecture,omitempty" xml:"CpuArchitecture,omitempty"`
 	// The number of OceanBase clusters queried.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime              *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataDiskAutoScaleConfig *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig `json:"DataDiskAutoScaleConfig,omitempty" xml:"DataDiskAutoScaleConfig,omitempty" type:"Struct"`
 	// The request ID.
 	DeployMode *string `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	// Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
@@ -5184,7 +8897,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	// The whitelist information of the cluster.
 	ExpireSeconds *int32 `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
 	// The information about the storage resources of the cluster.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	InTempCapacityStatus *bool   `json:"InTempCapacityStatus,omitempty" xml:"InTempCapacityStatus,omitempty"`
 	// The instance type.
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The total storage space of the cluster, in GB.
@@ -5205,11 +8919,6 @@ type DescribeInstancesResponseBodyInstances struct {
 	Resource *DescribeInstancesResponseBodyInstancesResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
 	// The number of OceanBase clusters queried.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The number of the page to return.
-	//
-	// - Start value: 1
-	// - Default value: 1
-	SecurityIps []*string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty" type:"Repeated"`
 	// The billing method for the OceanBase cluster. Valid values:
 	// - PREPAY: the subscription billing method.
 	// - POSTPAY: the pay-as-you-go billing method.
@@ -5247,8 +8956,18 @@ func (s *DescribeInstancesResponseBodyInstances) SetCpu(v int32) *DescribeInstan
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetCpuArchitecture(v string) *DescribeInstancesResponseBodyInstances {
+	s.CpuArchitecture = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetCreateTime(v string) *DescribeInstancesResponseBodyInstances {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetDataDiskAutoScaleConfig(v *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) *DescribeInstancesResponseBodyInstances {
+	s.DataDiskAutoScaleConfig = v
 	return s
 }
 
@@ -5284,6 +9003,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetExpireSeconds(v int32) *Desc
 
 func (s *DescribeInstancesResponseBodyInstances) SetExpireTime(v string) *DescribeInstancesResponseBodyInstances {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetInTempCapacityStatus(v bool) *DescribeInstancesResponseBodyInstances {
+	s.InTempCapacityStatus = &v
 	return s
 }
 
@@ -5337,11 +9061,6 @@ func (s *DescribeInstancesResponseBodyInstances) SetResourceGroupId(v string) *D
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstances) SetSecurityIps(v []*string) *DescribeInstancesResponseBodyInstances {
-	s.SecurityIps = v
-	return s
-}
-
 func (s *DescribeInstancesResponseBodyInstances) SetSeries(v string) *DescribeInstancesResponseBodyInstances {
 	s.Series = &v
 	return s
@@ -5367,7 +9086,61 @@ func (s *DescribeInstancesResponseBodyInstances) SetVpcId(v string) *DescribeIns
 	return s
 }
 
+type DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig struct {
+	AutoScale           *bool  `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
+	MaxDiskSize         *int64 `json:"MaxDiskSize,omitempty" xml:"MaxDiskSize,omitempty"`
+	ScaleStepInMerge    *int64 `json:"ScaleStepInMerge,omitempty" xml:"ScaleStepInMerge,omitempty"`
+	ScaleStepInNormal   *int64 `json:"ScaleStepInNormal,omitempty" xml:"ScaleStepInNormal,omitempty"`
+	UpperMergeThreshold *int64 `json:"UpperMergeThreshold,omitempty" xml:"UpperMergeThreshold,omitempty"`
+	UpperThreshold      *int64 `json:"UpperThreshold,omitempty" xml:"UpperThreshold,omitempty"`
+	Upperbound          *int64 `json:"Upperbound,omitempty" xml:"Upperbound,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetAutoScale(v bool) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.AutoScale = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetMaxDiskSize(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.MaxDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetScaleStepInMerge(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.ScaleStepInMerge = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetScaleStepInNormal(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.ScaleStepInNormal = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetUpperMergeThreshold(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.UpperMergeThreshold = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetUpperThreshold(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.UpperThreshold = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig) SetUpperbound(v int64) *DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig {
+	s.Upperbound = &v
+	return s
+}
+
 type DescribeInstancesResponseBodyInstancesResource struct {
+	CapacityUnit *DescribeInstancesResponseBodyInstancesResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
 	// Indicates whether new nodes can be added.
 	Cpu *DescribeInstancesResponseBodyInstancesResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
 	// The time elapsed since the expiration of the cluster, in seconds.
@@ -5400,6 +9173,11 @@ func (s DescribeInstancesResponseBodyInstancesResource) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesResponseBodyInstancesResource) SetCapacityUnit(v *DescribeInstancesResponseBodyInstancesResourceCapacityUnit) *DescribeInstancesResponseBodyInstancesResource {
+	s.CapacityUnit = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesResource) SetCpu(v *DescribeInstancesResponseBodyInstancesResourceCpu) *DescribeInstancesResponseBodyInstancesResource {
 	s.Cpu = v
 	return s
@@ -5420,7 +9198,37 @@ func (s *DescribeInstancesResponseBodyInstancesResource) SetUnitCount(v int64) *
 	return s
 }
 
+type DescribeInstancesResponseBodyInstancesResourceCapacityUnit struct {
+	MaxCapacityUnit  *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	MinCapacityUnit  *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	UsedCapacityUnit *int32 `json:"UsedCapacityUnit,omitempty" xml:"UsedCapacityUnit,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesResourceCapacityUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesResourceCapacityUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesResourceCapacityUnit) SetMaxCapacityUnit(v int32) *DescribeInstancesResponseBodyInstancesResourceCapacityUnit {
+	s.MaxCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesResourceCapacityUnit) SetMinCapacityUnit(v int32) *DescribeInstancesResponseBodyInstancesResourceCapacityUnit {
+	s.MinCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesResourceCapacityUnit) SetUsedCapacityUnit(v int32) *DescribeInstancesResponseBodyInstancesResourceCapacityUnit {
+	s.UsedCapacityUnit = &v
+	return s
+}
+
 type DescribeInstancesResponseBodyInstancesResourceCpu struct {
+	OriginalTotalCpu *int64 `json:"OriginalTotalCpu,omitempty" xml:"OriginalTotalCpu,omitempty"`
 	// The name of the OceanBase cluster.
 	// It must be 1 to 20 characters in length.
 	// If this parameter is not specified, the value is the instance ID of the cluster by default.
@@ -5443,6 +9251,11 @@ func (s DescribeInstancesResponseBodyInstancesResourceCpu) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesResponseBodyInstancesResourceCpu) SetOriginalTotalCpu(v int64) *DescribeInstancesResponseBodyInstancesResourceCpu {
+	s.OriginalTotalCpu = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesResourceCpu) SetTotalCpu(v int64) *DescribeInstancesResponseBodyInstancesResourceCpu {
 	s.TotalCpu = &v
 	return s
@@ -5459,6 +9272,7 @@ func (s *DescribeInstancesResponseBodyInstancesResourceCpu) SetUsedCpu(v int64) 
 }
 
 type DescribeInstancesResponseBodyInstancesResourceDiskSize struct {
+	OriginalTotalDiskSize *int64 `json:"OriginalTotalDiskSize,omitempty" xml:"OriginalTotalDiskSize,omitempty"`
 	// The request ID.
 	TotalDiskSize *int64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
 	// Example 1
@@ -5473,6 +9287,11 @@ func (s DescribeInstancesResponseBodyInstancesResourceDiskSize) String() string 
 
 func (s DescribeInstancesResponseBodyInstancesResourceDiskSize) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesResourceDiskSize) SetOriginalTotalDiskSize(v int64) *DescribeInstancesResponseBodyInstancesResourceDiskSize {
+	s.OriginalTotalDiskSize = &v
+	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstancesResourceDiskSize) SetTotalDiskSize(v int64) *DescribeInstancesResponseBodyInstancesResourceDiskSize {
@@ -5491,6 +9310,7 @@ func (s *DescribeInstancesResponseBodyInstancesResourceDiskSize) SetUsedDiskSize
 }
 
 type DescribeInstancesResponseBodyInstancesResourceMemory struct {
+	OriginalTotalMemory *int64 `json:"OriginalTotalMemory,omitempty" xml:"OriginalTotalMemory,omitempty"`
 	// The number of CPU cores of the cluster.
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
 	// The size of used storage space of the cluster, in GB.
@@ -5505,6 +9325,11 @@ func (s DescribeInstancesResponseBodyInstancesResourceMemory) String() string {
 
 func (s DescribeInstancesResponseBodyInstancesResourceMemory) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesResourceMemory) SetOriginalTotalMemory(v int64) *DescribeInstancesResponseBodyInstancesResourceMemory {
+	s.OriginalTotalMemory = &v
+	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstancesResourceMemory) SetTotalMemory(v int64) *DescribeInstancesResponseBodyInstancesResourceMemory {
@@ -5547,6 +9372,123 @@ func (s *DescribeInstancesResponse) SetStatusCode(v int32) *DescribeInstancesRes
 }
 
 func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *DescribeInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMetricsDataRequest struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GroupByLabels *string `json:"GroupByLabels,omitempty" xml:"GroupByLabels,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Labels        *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Limit         *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Metrics       *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	SortMetricKey *string `json:"SortMetricKey,omitempty" xml:"SortMetricKey,omitempty"`
+	SortOrder     *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeMetricsDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricsDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricsDataRequest) SetEndTime(v string) *DescribeMetricsDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetGroupByLabels(v string) *DescribeMetricsDataRequest {
+	s.GroupByLabels = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetInstanceId(v string) *DescribeMetricsDataRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetLabels(v string) *DescribeMetricsDataRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetLimit(v string) *DescribeMetricsDataRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetMetrics(v string) *DescribeMetricsDataRequest {
+	s.Metrics = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetSortMetricKey(v string) *DescribeMetricsDataRequest {
+	s.SortMetricKey = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetSortOrder(v string) *DescribeMetricsDataRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *DescribeMetricsDataRequest) SetStartTime(v string) *DescribeMetricsDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeMetricsDataResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMetricsDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricsDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricsDataResponseBody) SetData(v string) *DescribeMetricsDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeMetricsDataResponseBody) SetRequestId(v string) *DescribeMetricsDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMetricsDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMetricsDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricsDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricsDataResponse) SetHeaders(v map[string]*string) *DescribeMetricsDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricsDataResponse) SetStatusCode(v int32) *DescribeMetricsDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMetricsDataResponse) SetBody(v *DescribeMetricsDataResponseBody) *DescribeMetricsDataResponse {
 	s.Body = v
 	return s
 }
@@ -5698,23 +9640,47 @@ func (s *DescribeNodeMetricsResponse) SetBody(v *DescribeNodeMetricsResponseBody
 }
 
 type DescribeOasAnomalySQLListRequest struct {
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Current         *int64  `json:"Current,omitempty" xml:"Current,omitempty"`
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	// - zh: Chinese
+	// - en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The current page.
+	Current *int64 `json:"Current,omitempty" xml:"Current,omitempty"`
+	// The name of the database.
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of the monitoring data.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
 	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	// The ID of the OceanBase cluster.
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	PageSize        *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
-	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
-	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	// SQL ID。
-	SqlId         *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextLength *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	MergeDynamicSql *bool   `json:"MergeDynamicSql,omitempty" xml:"MergeDynamicSql,omitempty"`
+	// The node IP.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// Page size.
+	// - Start value: 1
+	// - Default value: 1
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search keyword.
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The search parameter.
+	SearchParam *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	// The search rule.
+	// Valid values: "=", ">", ">=", "<", and "<="
+	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	// The search value.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// SQL ID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// Max length of the returned SQL text.
+	SqlTextLength *int64 `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	// The start time of the monitoring data.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasAnomalySQLListRequest) String() string {
@@ -5740,6 +9706,11 @@ func (s *DescribeOasAnomalySQLListRequest) SetDbName(v string) *DescribeOasAnoma
 	return s
 }
 
+func (s *DescribeOasAnomalySQLListRequest) SetDynamicSql(v bool) *DescribeOasAnomalySQLListRequest {
+	s.DynamicSql = &v
+	return s
+}
+
 func (s *DescribeOasAnomalySQLListRequest) SetEndTime(v string) *DescribeOasAnomalySQLListRequest {
 	s.EndTime = &v
 	return s
@@ -5752,6 +9723,11 @@ func (s *DescribeOasAnomalySQLListRequest) SetFilterCondition(v string) *Describ
 
 func (s *DescribeOasAnomalySQLListRequest) SetInstanceId(v string) *DescribeOasAnomalySQLListRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListRequest) SetMergeDynamicSql(v bool) *DescribeOasAnomalySQLListRequest {
+	s.MergeDynamicSql = &v
 	return s
 }
 
@@ -5806,9 +9782,12 @@ func (s *DescribeOasAnomalySQLListRequest) SetTenantId(v string) *DescribeOasAno
 }
 
 type DescribeOasAnomalySQLListResponseBody struct {
-	Data       []*DescribeOasAnomalySQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of suspicious SQLs.
+	Data []*DescribeOasAnomalySQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOasAnomalySQLListResponseBody) String() string {
@@ -5835,22 +9814,40 @@ func (s *DescribeOasAnomalySQLListResponseBody) SetTotalCount(v int64) *Describe
 }
 
 type DescribeOasAnomalySQLListResponseBodyData struct {
-	AvgCpuTime       *float64  `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgElapsedTime   *float64  `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgGetPlanTime   *float64  `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
-	CpuTime          *float64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	DbName           *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DiagTypes        []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
-	Diagnosis        *string   `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
-	Executions       *float64  `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	LastExecutedTime *float64  `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
-	RiskLevel        *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// SQL ID。
-	SqlId          *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextShort   *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
-	Suggestion     *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// Average CPU time of the suspicious SQL.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime  *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// Average response time of the suspicious SQL.
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// Average time to obtain the execution plan of the suspicious SQL.
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// CPU time of the suspicious SQL.
+	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The type of the diagnosis.
+	DiagTypes []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
+	// The details of diagnosis.
+	Diagnosis  *string `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// Total execution count of the suspicious SQL.
+	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// Last execution time of the suspicious SQL.
+	LastExecutedTime *float64 `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
+	// Risk level.
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// SQL ID.
+	SqlId   *string                                             `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlList []*DescribeOasAnomalySQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
+	// Prefix of the SQL text.
+	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	// Suggestion for the suspicious SQL.
+	Suggestion *string  `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SumDbTime  *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	// Total response time of the suspicious SQL.
 	SumElapsedTime *string `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	UserName       *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeOasAnomalySQLListResponseBodyData) String() string {
@@ -5863,6 +9860,11 @@ func (s DescribeOasAnomalySQLListResponseBodyData) GoString() string {
 
 func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetAvgDbTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.AvgDbTime = &v
 	return s
 }
 
@@ -5896,6 +9898,11 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetDiagnosis(v string) *Desc
 	return s
 }
 
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetDynamicSql(v bool) *DescribeOasAnomalySQLListResponseBodyData {
+	s.DynamicSql = &v
+	return s
+}
+
 func (s *DescribeOasAnomalySQLListResponseBodyData) SetExecutions(v float64) *DescribeOasAnomalySQLListResponseBodyData {
 	s.Executions = &v
 	return s
@@ -5916,6 +9923,11 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetSqlId(v string) *Describe
 	return s
 }
 
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSqlList(v []*DescribeOasAnomalySQLListResponseBodyDataSqlList) *DescribeOasAnomalySQLListResponseBodyData {
+	s.SqlList = v
+	return s
+}
+
 func (s *DescribeOasAnomalySQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasAnomalySQLListResponseBodyData {
 	s.SqlTextShort = &v
 	return s
@@ -5926,12 +9938,130 @@ func (s *DescribeOasAnomalySQLListResponseBodyData) SetSuggestion(v string) *Des
 	return s
 }
 
+func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumDbTime(v float64) *DescribeOasAnomalySQLListResponseBodyData {
+	s.SumDbTime = &v
+	return s
+}
+
 func (s *DescribeOasAnomalySQLListResponseBodyData) SetSumElapsedTime(v string) *DescribeOasAnomalySQLListResponseBodyData {
 	s.SumElapsedTime = &v
 	return s
 }
 
 func (s *DescribeOasAnomalySQLListResponseBodyData) SetUserName(v string) *DescribeOasAnomalySQLListResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type DescribeOasAnomalySQLListResponseBodyDataSqlList struct {
+	AvgCpuTime       *float64  `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime        *float64  `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	AvgElapsedTime   *float64  `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgGetPlanTime   *float64  `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	CpuTime          *float64  `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	DbName           *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DiagTypes        []*string `json:"DiagTypes,omitempty" xml:"DiagTypes,omitempty" type:"Repeated"`
+	Diagnosis        *string   `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty"`
+	Executions       *float64  `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	LastExecutedTime *float64  `json:"LastExecutedTime,omitempty" xml:"LastExecutedTime,omitempty"`
+	RiskLevel        *string   `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	SqlId            *string   `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort     *string   `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	Suggestion       *string   `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SumDbTime        *float64  `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	SumElapsedTime   *string   `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	UserName         *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeOasAnomalySQLListResponseBodyDataSqlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasAnomalySQLListResponseBodyDataSqlList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgCpuTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgDbTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.AvgDbTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgElapsedTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetAvgGetPlanTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetCpuTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.CpuTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetDbName(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetDiagTypes(v []*string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.DiagTypes = v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetDiagnosis(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.Diagnosis = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetExecutions(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetLastExecutedTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.LastExecutedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetRiskLevel(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSqlId(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSqlTextShort(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSuggestion(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.Suggestion = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumDbTime(v float64) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.SumDbTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetSumElapsedTime(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasAnomalySQLListResponseBodyDataSqlList) SetUserName(v string) *DescribeOasAnomalySQLListResponseBodyDataSqlList {
 	s.UserName = &v
 	return s
 }
@@ -5966,13 +10096,21 @@ func (s *DescribeOasAnomalySQLListResponse) SetBody(v *DescribeOasAnomalySQLList
 }
 
 type DescribeOasSQLDetailsRequest struct {
+	// The name of the database.
 	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of querying the SQL execution plan.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// SQL ID。
-	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// SQL ID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The start time of querying the SQL execution plan.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasSQLDetailsRequest) String() string {
@@ -5985,6 +10123,11 @@ func (s DescribeOasSQLDetailsRequest) GoString() string {
 
 func (s *DescribeOasSQLDetailsRequest) SetDbName(v string) *DescribeOasSQLDetailsRequest {
 	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLDetailsRequest) SetDynamicSql(v bool) *DescribeOasSQLDetailsRequest {
+	s.DynamicSql = &v
 	return s
 }
 
@@ -6014,8 +10157,10 @@ func (s *DescribeOasSQLDetailsRequest) SetTenantId(v string) *DescribeOasSQLDeta
 }
 
 type DescribeOasSQLDetailsResponseBody struct {
-	Data      *DescribeOasSQLDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the SQL execution plan.
+	Data *DescribeOasSQLDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOasSQLDetailsResponseBody) String() string {
@@ -6037,11 +10182,16 @@ func (s *DescribeOasSQLDetailsResponseBody) SetRequestId(v string) *DescribeOasS
 }
 
 type DescribeOasSQLDetailsResponseBodyData struct {
-	DbName    *string   `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	Fulltext  *string   `json:"Fulltext,omitempty" xml:"Fulltext,omitempty"`
-	Statement *string   `json:"Statement,omitempty" xml:"Statement,omitempty"`
-	Tables    []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	UserName  *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// SQL text.
+	Fulltext *string `json:"Fulltext,omitempty" xml:"Fulltext,omitempty"`
+	// Parameterized text.
+	Statement *string `json:"Statement,omitempty" xml:"Statement,omitempty"`
+	// The table name related to the SQL.
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeOasSQLDetailsResponseBodyData) String() string {
@@ -6107,15 +10257,27 @@ func (s *DescribeOasSQLDetailsResponse) SetBody(v *DescribeOasSQLDetailsResponse
 }
 
 type DescribeOasSQLHistoryListRequest struct {
+	// The language of the response. Valid values:
+	// - zh: Chinese
+	// - en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeIp         *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// SQL ID。
-	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The name of the database.
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of querying the execution history of the SQL statement.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// SQL ID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The start time of querying the execution history of the SQL statement.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasSQLHistoryListRequest) String() string {
@@ -6133,6 +10295,11 @@ func (s *DescribeOasSQLHistoryListRequest) SetAcceptLanguage(v string) *Describe
 
 func (s *DescribeOasSQLHistoryListRequest) SetDbName(v string) *DescribeOasSQLHistoryListRequest {
 	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLHistoryListRequest) SetDynamicSql(v bool) *DescribeOasSQLHistoryListRequest {
+	s.DynamicSql = &v
 	return s
 }
 
@@ -6167,8 +10334,10 @@ func (s *DescribeOasSQLHistoryListRequest) SetTenantId(v string) *DescribeOasSQL
 }
 
 type DescribeOasSQLHistoryListResponseBody struct {
-	Data      []*DescribeOasSQLHistoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of SQL execution history.
+	Data []*DescribeOasSQLHistoryListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOasSQLHistoryListResponseBody) String() string {
@@ -6190,74 +10359,140 @@ func (s *DescribeOasSQLHistoryListResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeOasSQLHistoryListResponseBodyData struct {
-	AvgAffectedRows        *int64   `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average updated rows during the execution period.
+	AvgAffectedRows *int64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average Application event wait time (in milliseconds) during the client waiting period.
 	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
-	AvgBlockCacheHit       *int64   `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
-	AvgBlockIndexCacheHit  *int64   `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
-	AvgBloomFilterCacheHit *int64   `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	// Average BlockCache hit count during the execution period.
+	AvgBlockCacheHit *int64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	// Average BlockIndexCache hit count during the execution period.
+	AvgBlockIndexCacheHit *int64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	// Average BloomFilterCache hit count during the execution period.
+	AvgBloomFilterCacheHit *int64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	// Average Concurrency event wait time (in milliseconds) during the execution period.
 	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
-	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
-	AvgDiskReads           *int64   `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
-	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
-	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average CPU time (in milliseconds) during the execution period.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// Average syntax parsing time (in milliseconds) during the execution period.
+	AvgDecodeTime *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	// Average physical read count during the execution period.
+	AvgDiskReads *int64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	// Average response time (in milliseconds) during the execution period.
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// Average plan execution time (in milliseconds) during the execution period.
+	AvgExecuteTime *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	// Average number of RPC requests executed during the execution period.
+	AvgExecutorRpcCount *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average degree of parallelism during the execution period.
 	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
-	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
-	AvgLogicalReads        *int64   `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
-	AvgMemstoreReadRows    *int64   `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
-	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
-	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
-	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
-	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
-	AvgReturnRows          *int64   `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
-	AvgRowCacheHit         *int64   `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
-	AvgRpcCount            *int64   `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
-	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
-	AvgSsstoreReadRows     *int64   `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
-	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
-	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
-	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
-	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
-	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
-	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
-	Executions             *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FailCount              *int64   `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
-	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
-	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Average plan generation time (in milliseconds) during the execution period.
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// Average logical reads during the execution period.
+	AvgLogicalReads *int64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	// Average Memstore read rows during the execution period.
+	AvgMemstoreReadRows *int64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	// Average network transmission time (in milliseconds) during the execution period.
+	AvgNetTime *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	// Average network enqueue time (in milliseconds) during the network waiting period.
+	AvgNetWaitTime *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	// Average number of partition accessed during the execution period.
+	AvgPartitionCount *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	// Average queueing time (in milliseconds) during the execution period.
+	AvgQueueTime *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	// Average number of rows returned during the execution period.
+	AvgReturnRows *int64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	// Average RowCache hit count during the execution period.
+	AvgRowCacheHit *int64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	// Average number of RPC sent during the execution.
+	AvgRpcCount *int64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	// Average Schedule event wait time (in milliseconds) during the scheduling period.
+	AvgScheduleTime *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	// Average Ssstore read rows during the execution period.
+	AvgSsstoreReadRows *int64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	// Average number of threads used of the SQL during the execution period.
+	AvgUsedWorkerCount *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	// Average UserIO event wait time (in milliseconds) during the execution period.
+	AvgUserIoWaitTime *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	// Average number of waits during the execution period.
+	AvgWaitCount *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	// Average wait time (in milliseconds) during the execution period.
+	AvgWaitTime *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Distributed plan percentage during the execution period.
+	DistPlanPercentage *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	// Average execution count per second during the execution period.
+	ExecPs *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	// Total number of executions during the execution period.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The total number of errors during the execution period.
+	FailCount *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// Error percentage during the execution period.
+	FailPercentage *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	// Local plan percentage during the execution period.
+	LocalPlanPercentage *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	// Max updated rows during the execution period.
+	MaxAffectedRows *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Max Application event wait time (in milliseconds) during the execution period
 	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	// Max Concurrency event wait time (in milliseconds) during the execution period
 	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
-	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
-	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
-	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
-	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
-	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
-	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
-	MissPlans              *int64   `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
-	RemotePlans            *int64   `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
-	RetCode4012Count       *float64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
-	RetCode4013Count       *float64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
-	RetCode5001Count       *float64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
-	RetCode5024Count       *float64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
-	RetCode5167Count       *float64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
-	RetCode5217Count       *float64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
-	RetCode6002Count       *float64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
-	RetryCount             *int64   `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// SQL ID
-	SQLId                       *string  `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	// Max CPU time.
+	MaxCpuTime *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// Max physical read count during the execution period.
+	MaxDiskReads *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	// Max response time.
+	MaxElapsedTime *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// Max returned rows during the execution period.
+	MaxReturnRows *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	// Max UserIO event wait time (in milliseconds) during the execution period
+	MaxUserIoWaitTime *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	// Max wait time (in milliseconds) during the execution period.
+	MaxWaitTime *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	// Plan hit rage during the execution period.
+	MissPlanPercentage *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	// Missed plan count.
+	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	// Remote plan percentage during the execution period.
+	RemotePlanPercentage *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	// Remote plan count.
+	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// Number of occurrences of code 4012 during the execution period.
+	RetCode4012Count *float64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	// Number of occurrences of code 4013 during the execution period.
+	RetCode4013Count *float64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	// Number of occurrences of code 5001 during the execution period.
+	RetCode5001Count *float64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	// Number of occurrences of code 5024 during the execution period.
+	RetCode5024Count *float64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	// Number of occurrences of code 5167 during the execution period.
+	RetCode5167Count *float64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	// Number of occurrences of code 5217 during the execution period.
+	RetCode5217Count *float64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	// Number of occurrences of code 6002 during the execution period.
+	RetCode6002Count *float64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	// Total number of retries during the execution period.
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// SQL ID.
+	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// The server where the SQL is executed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// Strong consistent transaction percentage during the execution period.
 	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
-	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
-	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
-	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
-	Timestamp                   *string  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+	// Total response time (in milliseconds) during the execution period.
+	SumElapsedTime *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	// Total logical reads.
+	SumLogicalReads *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	// The total wait time (in milliseconds) during the internal waiting period.
+	SumWaitTime *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	// Table scan percentage during the execution period.
+	TableScanPercentage *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	// Timestamp for the sample.
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Eventually consistent transaction percentage during the execution period.
+	WeakConsistencyPercentage *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
 }
 
 func (s DescribeOasSQLHistoryListResponseBodyData) String() string {
@@ -6633,14 +10868,25 @@ func (s *DescribeOasSQLHistoryListResponse) SetBody(v *DescribeOasSQLHistoryList
 }
 
 type DescribeOasSQLPlansRequest struct {
+	// Supported language. Valid values:
+	// - zh-CN: Chinese
+	// - en-US: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// SQL ID。
-	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The name of the database.
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of querying the SQL execution plan.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// SQL ID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The start time of querying the SQL execution plan.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasSQLPlansRequest) String() string {
@@ -6658,6 +10904,11 @@ func (s *DescribeOasSQLPlansRequest) SetAcceptLanguage(v string) *DescribeOasSQL
 
 func (s *DescribeOasSQLPlansRequest) SetDbName(v string) *DescribeOasSQLPlansRequest {
 	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSQLPlansRequest) SetDynamicSql(v bool) *DescribeOasSQLPlansRequest {
+	s.DynamicSql = &v
 	return s
 }
 
@@ -6687,8 +10938,10 @@ func (s *DescribeOasSQLPlansRequest) SetTenantId(v string) *DescribeOasSQLPlansR
 }
 
 type DescribeOasSQLPlansResponseBody struct {
-	Data      []*DescribeOasSQLPlansResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of SQL execution plan.
+	Data []*DescribeOasSQLPlansResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOasSQLPlansResponseBody) String() string {
@@ -6710,19 +10963,32 @@ func (s *DescribeOasSQLPlansResponseBody) SetRequestId(v string) *DescribeOasSQL
 }
 
 type DescribeOasSQLPlansResponseBodyData struct {
-	AvgCpuTime    *float64                                        `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	Bounded       *bool                                           `json:"Bounded,omitempty" xml:"Bounded,omitempty"`
-	Executions    *int64                                          `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FirstLoadTime *string                                         `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
-	HitDiagnosis  *bool                                           `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
-	HitPercentage *float64                                        `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
-	MergedVersion *int64                                          `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	PlanExplain   *DescribeOasSQLPlansResponseBodyDataPlanExplain `json:"PlanExplain,omitempty" xml:"PlanExplain,omitempty" type:"Struct"`
-	PlanHash      *string                                         `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
-	PlanType      *string                                         `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	PlanUnionHash *string                                         `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
-	Plans         []*DescribeOasSQLPlansResponseBodyDataPlans     `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
-	QuerySql      *string                                         `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
+	// Average CPU time (in milliseconds) during the execution period.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// Whether to bind the execution plan.
+	Bounded *bool `json:"Bounded,omitempty" xml:"Bounded,omitempty"`
+	// Execution count.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// First loading time.
+	FirstLoadTime *string `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	// Whether to hit the diagnosis.
+	HitDiagnosis *bool `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
+	// Hit rate.
+	HitPercentage *float64 `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
+	// Merge version.
+	MergedVersion *int64 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// Execution plan.
+	PlanExplain *DescribeOasSQLPlansResponseBodyDataPlanExplain `json:"PlanExplain,omitempty" xml:"PlanExplain,omitempty" type:"Struct"`
+	// The internal identifier of the SQL execution plan in the diagnostic system.
+	PlanHash *string `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
+	// Execution plan type.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The internal unique identifier of the SQL execution plan in the diagnostic system.
+	PlanUnionHash *string `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
+	// The list of the execution plan.
+	Plans []*DescribeOasSQLPlansResponseBodyDataPlans `json:"Plans,omitempty" xml:"Plans,omitempty" type:"Repeated"`
+	// The SQL for the query.
+	QuerySql *string `json:"QuerySql,omitempty" xml:"QuerySql,omitempty"`
 }
 
 func (s DescribeOasSQLPlansResponseBodyData) String() string {
@@ -6799,6 +11065,7 @@ func (s *DescribeOasSQLPlansResponseBodyData) SetQuerySql(v string) *DescribeOas
 }
 
 type DescribeOasSQLPlansResponseBodyDataPlanExplain struct {
+	// JSON string of the SQL execution plan.
 	PlanJsonString *string `json:"PlanJsonString,omitempty" xml:"PlanJsonString,omitempty"`
 }
 
@@ -6816,42 +11083,75 @@ func (s *DescribeOasSQLPlansResponseBodyDataPlanExplain) SetPlanJsonString(v str
 }
 
 type DescribeOasSQLPlansResponseBodyDataPlans struct {
-	AvgApplicationWaitTime      *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
-	AvgBufferGets               *float64 `json:"AvgBufferGets,omitempty" xml:"AvgBufferGets,omitempty"`
-	AvgConcurrencyWaitTime      *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
-	AvgCpuTime                  *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDiskReads                *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
-	AvgDiskWrites               *float64 `json:"AvgDiskWrites,omitempty" xml:"AvgDiskWrites,omitempty"`
-	AvgElapsedTime              *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgRowProcessed             *float64 `json:"AvgRowProcessed,omitempty" xml:"AvgRowProcessed,omitempty"`
-	AvgUserIoWaitTime           *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
-	CollectTimeUs               *int64   `json:"CollectTimeUs,omitempty" xml:"CollectTimeUs,omitempty"`
+	// Average Application event waiting time (in milliseconds) during the execution period.
+	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	// Average cache read count during the execution period.
+	AvgBufferGets *float64 `json:"AvgBufferGets,omitempty" xml:"AvgBufferGets,omitempty"`
+	// Average Concurrency event waiting time (in milliseconds) during the execution period.
+	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	// Average CPU time (in milliseconds) during the execution period.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// The average physical read count during the execution period.
+	AvgDiskReads *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	// The average physical write count during the execution period.
+	AvgDiskWrites *float64 `json:"AvgDiskWrites,omitempty" xml:"AvgDiskWrites,omitempty"`
+	// Average interval waiting time (in milliseconds) during the execution period.
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// Average row processing waiting time (in milliseconds) during the execution period.
+	AvgRowProcessed *float64 `json:"AvgRowProcessed,omitempty" xml:"AvgRowProcessed,omitempty"`
+	// Average UserIo event waiting time (in milliseconds) during the execution period.
+	AvgUserIoWaitTime *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	// Collection time.
+	CollectTimeUs *int64 `json:"CollectTimeUs,omitempty" xml:"CollectTimeUs,omitempty"`
+	// Percentage of delayed long-running queries.
 	DelayedLargeQueryPercentage *float64 `json:"DelayedLargeQueryPercentage,omitempty" xml:"DelayedLargeQueryPercentage,omitempty"`
-	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
-	Executions                  *int64   `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FirstLoadTime               *string  `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
-	FirstLoadTimeUs             *int64   `json:"FirstLoadTimeUs,omitempty" xml:"FirstLoadTimeUs,omitempty"`
-	HitDiagnosis                *bool    `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
-	HitPercentage               *float64 `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
-	LargeQueryPercentage        *float64 `json:"LargeQueryPercentage,omitempty" xml:"LargeQueryPercentage,omitempty"`
-	MergedVersion               *int64   `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	ObDbId                      *int64   `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
-	// server  ID。
-	ObServerId  *int64  `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	// The average execution count per second during the execution period.
+	ExecPs *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	// The total number of executions during the execution period.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// First time to load the plan.
+	FirstLoadTime *string `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	// First loading time.
+	FirstLoadTimeUs *int64 `json:"FirstLoadTimeUs,omitempty" xml:"FirstLoadTimeUs,omitempty"`
+	// Whether to hit the diagnosis.
+	HitDiagnosis *bool `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
+	// Hit rate.
+	HitPercentage *float64 `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
+	// Percentage of completed long-running queries.
+	LargeQueryPercentage *float64 `json:"LargeQueryPercentage,omitempty" xml:"LargeQueryPercentage,omitempty"`
+	// Merge version.
+	MergedVersion *int64 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// Database ID.
+	ObDbId *int64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	// Server ID.
+	ObServerId *int64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	// The outline_data parameter of the SQL execution plan.
 	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
-	// Outline ID。
-	OutlineId         *int64   `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	PlanHash          *string  `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
-	PlanId            *int64   `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanSize          *int64   `json:"PlanSize,omitempty" xml:"PlanSize,omitempty"`
-	PlanType          *string  `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	PlanUnionHash     *string  `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
-	SchemaVersion     *int64   `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
-	Server            *string  `json:"Server,omitempty" xml:"Server,omitempty"`
-	ServerId          *int64   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	TableScan         *bool    `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	// Outline ID.
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The internal identifier of the SQL execution plan in the diagnostic system.
+	PlanHash *string `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
+	// The ID of the plan.
+	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// Plan size.
+	PlanSize *int64 `json:"PlanSize,omitempty" xml:"PlanSize,omitempty"`
+	// Plan type, including LOCAL, REMOTE, DIST.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// The internal unique identifier of the SQL execution plan in the diagnostic system.
+	PlanUnionHash *string `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
+	// Schema version.
+	SchemaVersion *int64 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// The server where the SQL is executed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The ID of the backend server instance.
+	ServerId *int64  `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	SqlId    *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// Whether a full table scan is performed.
+	TableScan *bool `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	// Percentage of timeouts.
 	TimeoutPercentage *float64 `json:"TimeoutPercentage,omitempty" xml:"TimeoutPercentage,omitempty"`
-	Uid               *string  `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The unique identifier of the plan.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s DescribeOasSQLPlansResponseBodyDataPlans) String() string {
@@ -7017,6 +11317,11 @@ func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetServerId(v int64) *Describ
 	return s
 }
 
+func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetSqlId(v string) *DescribeOasSQLPlansResponseBodyDataPlans {
+	s.SqlId = &v
+	return s
+}
+
 func (s *DescribeOasSQLPlansResponseBodyDataPlans) SetTableScan(v bool) *DescribeOasSQLPlansResponseBodyDataPlans {
 	s.TableScan = &v
 	return s
@@ -7062,20 +11367,38 @@ func (s *DescribeOasSQLPlansResponse) SetBody(v *DescribeOasSQLPlansResponseBody
 }
 
 type DescribeOasSlowSQLListRequest struct {
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response.
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the database.
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of querying slow SQL historical parameters.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
 	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	// The ID of the OceanBase cluster.
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
-	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
-	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	SqlId           *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextLength   *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	MergeDynamicSql *bool   `json:"MergeDynamicSql,omitempty" xml:"MergeDynamicSql,omitempty"`
+	// The IP of the database node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The search keyword.
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The search parameter.
+	SearchParam *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	// The search rule.
+	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	// The search value.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// SQL ID, the unique identifier of the SQL.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// Max length of the returned SQL text.
+	SqlTextLength *int64 `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	// The start time of querying slow SQL historical parameters.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasSlowSQLListRequest) String() string {
@@ -7096,6 +11419,11 @@ func (s *DescribeOasSlowSQLListRequest) SetDbName(v string) *DescribeOasSlowSQLL
 	return s
 }
 
+func (s *DescribeOasSlowSQLListRequest) SetDynamicSql(v bool) *DescribeOasSlowSQLListRequest {
+	s.DynamicSql = &v
+	return s
+}
+
 func (s *DescribeOasSlowSQLListRequest) SetEndTime(v string) *DescribeOasSlowSQLListRequest {
 	s.EndTime = &v
 	return s
@@ -7108,6 +11436,11 @@ func (s *DescribeOasSlowSQLListRequest) SetFilterCondition(v string) *DescribeOa
 
 func (s *DescribeOasSlowSQLListRequest) SetInstanceId(v string) *DescribeOasSlowSQLListRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListRequest) SetMergeDynamicSql(v bool) *DescribeOasSlowSQLListRequest {
+	s.MergeDynamicSql = &v
 	return s
 }
 
@@ -7157,8 +11490,10 @@ func (s *DescribeOasSlowSQLListRequest) SetTenantId(v string) *DescribeOasSlowSQ
 }
 
 type DescribeOasSlowSQLListResponseBody struct {
-	Data      []*DescribeOasSlowSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of slow queries.
+	Data []*DescribeOasSlowSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOasSlowSQLListResponseBody) String() string {
@@ -7180,82 +11515,160 @@ func (s *DescribeOasSlowSQLListResponseBody) SetRequestId(v string) *DescribeOas
 }
 
 type DescribeOasSlowSQLListResponseBodyData struct {
-	AvgAffectedRows        *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average updated rows during the execution period.
+	AvgAffectedRows *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average Application event wait time (in milliseconds) during the client waiting period.
 	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
-	AvgBlockCacheHit       *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
-	AvgBlockIndexCacheHit  *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	// Average BlockCache hit count during the execution period.
+	AvgBlockCacheHit *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	// Average BlockIndexCache hit count during the execution period.
+	AvgBlockIndexCacheHit *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	// Average BloomFilterCache hit count during the execution period.
 	AvgBloomFilterCacheHit *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	// Average Concurrency event wait time (in milliseconds) during the execution period.
 	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
-	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
-	AvgDiskReads           *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
-	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
-	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average CPU time (in milliseconds) during the execution period.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime  *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// Average syntax parsing time (in milliseconds) during the execution period.
+	AvgDecodeTime *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	// Average physical read count during the execution period.
+	AvgDiskReads *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	// Average response time (in milliseconds) during the execution period.
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// Average plan execution time (in milliseconds) during the execution period.
+	AvgExecuteTime *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	// Average number of RPC requests executed during the execution period.
+	AvgExecutorRpcCount *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average degree of parallelism during the execution period.
 	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
-	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
-	AvgLogicalReads        *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
-	AvgMemstoreReadRows    *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
-	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
-	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
-	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
-	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
-	AvgReturnRows          *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
-	AvgRowCacheHit         *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
-	AvgRpcCount            *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
-	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
-	AvgSsstoreReadRows     *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
-	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
-	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
-	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
-	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
-	ClientIp               *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
-	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
-	Executions             *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FailCount              *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
-	Inner                  *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
-	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
-	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Average plan generation time (in milliseconds) during the execution period.
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// Average logical reads of the SQL during the execution period.
+	AvgLogicalReads *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	// Strong consistent transaction percentage during the execution period.
+	AvgMemstoreReadRows *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	// Average network transmission time (in milliseconds) during the execution period.
+	AvgNetTime *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	// Average network enqueue time (in milliseconds) during the network waiting period.
+	AvgNetWaitTime *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	// Average number of partition accessed during the execution period.
+	AvgPartitionCount *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	// Average queueing time (in milliseconds) during the execution period.
+	AvgQueueTime *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	// Average number of rows returned during the execution period.
+	AvgReturnRows *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	// Average RowCache hit count during the execution period.
+	AvgRowCacheHit *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	// Average number of RPC sent during the execution.
+	AvgRpcCount *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	// Average Schedule event wait time (in milliseconds) during the scheduling period.
+	AvgScheduleTime *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	// Eventually consistent transaction percentage during the execution period.
+	AvgSsstoreReadRows *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	// Average number of threads used of the SQL during the execution period.
+	AvgUsedWorkerCount *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	// Average UserIO event wait time (in milliseconds) during the execution period.
+	AvgUserIoWaitTime *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	// Average number of waits during the execution period.
+	AvgWaitCount *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	// Average wait time (in milliseconds) during the execution period.
+	AvgWaitTime *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	// Client IP.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Distributed plan percentage during the execution period.
+	DistPlanPercentage *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	DynamicSql         *bool    `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// Average execution count per second during the execution period.
+	ExecPs *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	// Total number of executions during the execution period.
+	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// Average number of partition accessed during the execution period.
+	FailCount *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// Error percentage during the execution period.
+	FailPercentage *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	// Whether an internal SQL.
+	Inner *bool `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	// Local plan percentage during the execution period.
+	LocalPlanPercentage *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	// Max affected rows during the execution period.
+	MaxAffectedRows *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Max Application event wait time (in milliseconds) during the execution period
 	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	// Max Concurrency event wait time (in milliseconds) during the execution period
 	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
-	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
-	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
-	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
-	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
-	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
-	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
-	MissPlans              *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
-	RemotePlans            *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
-	RetCode4012Count       *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
-	RetCode4013Count       *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
-	RetCode5001Count       *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
-	RetCode5024Count       *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
-	RetCode5167Count       *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
-	RetCode5217Count       *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
-	RetCode6002Count       *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
-	RetryCount             *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	RpcCount               *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
-	Server                 *string  `json:"Server,omitempty" xml:"Server,omitempty"`
-	ServerIp               *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	ServerPort             *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
-	// SQL ID。
-	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
-	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Max CPU time.
+	MaxCpuTime *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// Max physical read count during the execution period.
+	MaxDiskReads *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	// Max response time during the execution period.
+	MaxElapsedTime *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// Max returned rows during the execution period.
+	MaxReturnRows *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	// Max UserIO event wait time (in milliseconds) during the execution period.
+	MaxUserIoWaitTime *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	// Max wait time (in milliseconds) during the execution period.
+	MaxWaitTime *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	// Plan hit rage during the execution period.
+	MissPlanPercentage *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	// Missed hit count of the execution plan during the execution period.
+	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	// Remote plan percentage during the execution period.
+	RemotePlanPercentage *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	// Remote execution count during the execution period.
+	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// Number of occurrences of code 4012 during the execution period.
+	RetCode4012Count *int64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	// Number of occurrences of code 4013 during the execution period.
+	RetCode4013Count *int64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	// Number of occurrences of code 5001 during the execution period.
+	RetCode5001Count *int64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	// Number of occurrences of code 5024 during the execution period.
+	RetCode5024Count *int64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	// Number of occurrences of code 5167 during the execution period.
+	RetCode5167Count *int64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	// Number of occurrences of code 5217 during the execution period.
+	RetCode5217Count *int64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	// Number of occurrences of code 6002 during the execution period.
+	RetCode6002Count *int64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	// Total number of retries during the execution period.
+	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// RPC count during the execution period.
+	RpcCount *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	// The server where the SQL is executed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The IP address of the server.
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The server port where the SQL is executed.
+	ServerPort *int64 `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	// SQL ID.
+	SqlId   *string                                          `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlList []*DescribeOasSlowSQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
+	// SQL text (the first 100 characters).
+	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	// SQL type.
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Strong consistent transaction percentage during the execution period.
 	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
-	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
-	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
-	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
-	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
-	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
-	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+	SumDbTime                   *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	// Total response time (in milliseconds) during the execution period.
+	SumElapsedTime *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	// Total logical reads of the SQL during the execution period.
+	SumLogicalReads *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	// The total wait time (in milliseconds) during the internal waiting period.
+	SumWaitTime *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	// Table scan percentage during the execution period.
+	TableScanPercentage *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	// Total wait time during the execution period.
+	TotalWaitTime *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	// Username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Longest wait event during the execution period.
+	WaitEvent *string `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	// Eventually consistent transaction percentage during the execution period.
+	WeakConsistencyPercentage *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
 }
 
 func (s DescribeOasSlowSQLListResponseBodyData) String() string {
@@ -7298,6 +11711,11 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgConcurrencyWaitTime(v flo
 
 func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
 	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetAvgDbTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.AvgDbTime = &v
 	return s
 }
 
@@ -7423,6 +11841,11 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetDbName(v string) *DescribeOa
 
 func (s *DescribeOasSlowSQLListResponseBodyData) SetDistPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
 	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetDynamicSql(v bool) *DescribeOasSlowSQLListResponseBodyData {
+	s.DynamicSql = &v
 	return s
 }
 
@@ -7586,6 +12009,11 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlId(v string) *DescribeOas
 	return s
 }
 
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlList(v []*DescribeOasSlowSQLListResponseBodyDataSqlList) *DescribeOasSlowSQLListResponseBodyData {
+	s.SqlList = v
+	return s
+}
+
 func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasSlowSQLListResponseBodyData {
 	s.SqlTextShort = &v
 	return s
@@ -7598,6 +12026,11 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetSqlType(v string) *DescribeO
 
 func (s *DescribeOasSlowSQLListResponseBodyData) SetStrongConsistencyPercentage(v float64) *DescribeOasSlowSQLListResponseBodyData {
 	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyData) SetSumDbTime(v float64) *DescribeOasSlowSQLListResponseBodyData {
+	s.SumDbTime = &v
 	return s
 }
 
@@ -7641,6 +12074,479 @@ func (s *DescribeOasSlowSQLListResponseBodyData) SetWeakConsistencyPercentage(v 
 	return s
 }
 
+type DescribeOasSlowSQLListResponseBodyDataSqlList struct {
+	AvgAffectedRows             *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgApplicationWaitTime      *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBlockCacheHit            *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockIndexCacheHit       *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBloomFilterCacheHit      *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgConcurrencyWaitTime      *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime                  *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime                   *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	AvgDecodeTime               *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	AvgDiskReads                *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgElapsedTime              *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgExecuteTime              *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	AvgExecutorRpcCount         *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	AvgExpectedWorkerCount      *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
+	AvgGetPlanTime              *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgLogicalReads             *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgMemstoreReadRows         *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgNetTime                  *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	AvgNetWaitTime              *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	AvgPartitionCount           *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	AvgQueueTime                *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	AvgReturnRows               *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgRowCacheHit              *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRpcCount                 *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgScheduleTime             *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	AvgSsstoreReadRows          *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgUsedWorkerCount          *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	AvgUserIoWaitTime           *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	AvgWaitCount                *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	AvgWaitTime                 *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	ClientIp                    *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	DbName                      *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DistPlanPercentage          *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions                  *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount                   *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailPercentage              *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	Inner                       *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	LocalPlanPercentage         *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	MaxAffectedRows             *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	MaxApplicationWaitTime      *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	MaxConcurrencyWaitTime      *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
+	MaxCpuTime                  *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	MaxDiskReads                *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	MaxElapsedTime              *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	MaxReturnRows               *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	MaxUserIoWaitTime           *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	MaxWaitTime                 *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	MissPlanPercentage          *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	MissPlans                   *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	RemotePlanPercentage        *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	RemotePlans                 *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RetCode4012Count            *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4013Count            *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode5001Count            *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5024Count            *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5167Count            *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5217Count            *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode6002Count            *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetryCount                  *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RpcCount                    *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	ServerIp                    *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerPort                  *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
+	SumDbTime                   *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+}
+
+func (s DescribeOasSlowSQLListResponseBodyDataSqlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasSlowSQLListResponseBodyDataSqlList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgAffectedRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgApplicationWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgBlockCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgBlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgBlockIndexCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgBlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgBloomFilterCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgBloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgConcurrencyWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgCpuTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgDbTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgDbTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgDecodeTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgDecodeTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgDiskReads(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgExecuteTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgExecuteTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgExecutorRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgExecutorRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgExpectedWorkerCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgGetPlanTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgLogicalReads(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgMemstoreReadRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgMemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgNetTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgNetTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgNetWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgNetWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgPartitionCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgPartitionCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgQueueTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgQueueTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgReturnRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgRowCacheHit(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgRowCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgScheduleTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgScheduleTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgSsstoreReadRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgSsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgUsedWorkerCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgUsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgUserIoWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgWaitCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgWaitCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetAvgWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.AvgWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetClientIp(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetDbName(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetDistPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetExecPs(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetExecutions(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetFailCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.FailCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetFailPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.FailPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetInner(v bool) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.Inner = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetLocalPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.LocalPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxAffectedRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxApplicationWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxConcurrencyWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxCpuTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxDiskReads(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxReturnRows(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxUserIoWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMaxWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MaxWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMissPlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MissPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetMissPlans(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.MissPlans = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRemotePlanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RemotePlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRemotePlans(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RemotePlans = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode4012Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode4012Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode4013Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode4013Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode5001Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode5001Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode5024Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode5024Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode5167Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode5167Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode5217Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode5217Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetCode6002Count(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetCode6002Count = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRetryCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetRpcCount(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.RpcCount = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetServer(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetServerIp(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetServerPort(v int64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.ServerPort = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSqlId(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSqlTextShort(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSqlType(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetStrongConsistencyPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSumDbTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SumDbTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSumElapsedTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSumLogicalReads(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SumLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetSumWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.SumWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetTableScanPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.TableScanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetTotalWaitTime(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.TotalWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetUserName(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetWaitEvent(v string) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.WaitEvent = &v
+	return s
+}
+
+func (s *DescribeOasSlowSQLListResponseBodyDataSqlList) SetWeakConsistencyPercentage(v float64) *DescribeOasSlowSQLListResponseBodyDataSqlList {
+	s.WeakConsistencyPercentage = &v
+	return s
+}
+
 type DescribeOasSlowSQLListResponse struct {
 	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -7671,20 +12577,42 @@ func (s *DescribeOasSlowSQLListResponse) SetBody(v *DescribeOasSlowSQLListRespon
 }
 
 type DescribeOasTopSQLListRequest struct {
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DbName          *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese
+	// - en: English
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the database.
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DynamicSql *bool   `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// The end time of querying the TOPSQL parameter.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
 	FilterCondition *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
+	// The ID of the OceanBase cluster.
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeIp          *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	SearchKeyWord   *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
-	SearchParam     *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
-	SearchRule      *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	SearchValue     *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
-	SqlId           *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextLength   *int64  `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
-	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	MergeDynamicSql *bool   `json:"MergeDynamicSql,omitempty" xml:"MergeDynamicSql,omitempty"`
+	// The node IP.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The search keyword.
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The search parameter.
+	SearchParam *string `json:"SearchParam,omitempty" xml:"SearchParam,omitempty"`
+	// The search rule.
+	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	// The search value.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// SQL ID.
+	// > When the SQL ID is provided, the system collects all the request data for the target SQL ID. When the SQL ID is empty, the system collects all the request data for the entire database instance.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// Max length of the returned SQL text.
+	SqlTextLength *int64 `json:"SqlTextLength,omitempty" xml:"SqlTextLength,omitempty"`
+	// The start time of querying the TOPSQL parameter.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeOasTopSQLListRequest) String() string {
@@ -7705,6 +12633,11 @@ func (s *DescribeOasTopSQLListRequest) SetDbName(v string) *DescribeOasTopSQLLis
 	return s
 }
 
+func (s *DescribeOasTopSQLListRequest) SetDynamicSql(v bool) *DescribeOasTopSQLListRequest {
+	s.DynamicSql = &v
+	return s
+}
+
 func (s *DescribeOasTopSQLListRequest) SetEndTime(v string) *DescribeOasTopSQLListRequest {
 	s.EndTime = &v
 	return s
@@ -7717,6 +12650,11 @@ func (s *DescribeOasTopSQLListRequest) SetFilterCondition(v string) *DescribeOas
 
 func (s *DescribeOasTopSQLListRequest) SetInstanceId(v string) *DescribeOasTopSQLListRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListRequest) SetMergeDynamicSql(v bool) *DescribeOasTopSQLListRequest {
+	s.MergeDynamicSql = &v
 	return s
 }
 
@@ -7766,8 +12704,10 @@ func (s *DescribeOasTopSQLListRequest) SetTenantId(v string) *DescribeOasTopSQLL
 }
 
 type DescribeOasTopSQLListResponseBody struct {
-	Data      []*DescribeOasTopSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of Top SQL.
+	Data []*DescribeOasTopSQLListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOasTopSQLListResponseBody) String() string {
@@ -7789,83 +12729,163 @@ func (s *DescribeOasTopSQLListResponseBody) SetRequestId(v string) *DescribeOasT
 }
 
 type DescribeOasTopSQLListResponseBodyData struct {
-	AvgAffectedRows        *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average updated rows during the execution period.
+	AvgAffectedRows *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	// Average Application event wait time (in milliseconds) during the execution period.
 	AvgApplicationWaitTime *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
-	AvgBlockCacheHit       *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
-	AvgBlockIndexCacheHit  *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	// Average BlockCache hit count during the execution period.
+	AvgBlockCacheHit *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	// Average BlockIndexCache hit count during the execution period.
+	AvgBlockIndexCacheHit *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	// Average BloomFilterCache hit count during the execution period.
 	AvgBloomFilterCacheHit *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	// Average Concurrency event wait time (in milliseconds) during the execution period.
 	AvgConcurrencyWaitTime *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
-	AvgCpuTime             *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	AvgDecodeTime          *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
-	AvgDiskReads           *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
-	AvgElapsedTime         *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
-	AvgExecuteTime         *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
-	AvgExecutorRpcCount    *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average CPU time (in milliseconds) during the execution period.
+	AvgCpuTime *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime  *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	// Average syntax parsing time (in milliseconds) during the execution period.
+	AvgDecodeTime *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	// Average physical read count during the execution period.
+	AvgDiskReads *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	// Average response time (in milliseconds) during the execution period.
+	AvgElapsedTime *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// Average plan execution time (in milliseconds) during the execution period.
+	AvgExecuteTime *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	// Average number of RPC requests executed during the execution period.
+	AvgExecutorRpcCount *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	// Average degree of parallelism during the execution period.
 	AvgExpectedWorkerCount *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
-	AvgGetPlanTime         *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
-	AvgLogicalReads        *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
-	AvgMemstoreReadRows    *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
-	AvgNetTime             *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
-	AvgNetWaitTime         *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
-	AvgPartitionCount      *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
-	AvgQueueTime           *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
-	AvgReturnRows          *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
-	AvgRowCacheHit         *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
-	AvgRpcCount            *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
-	AvgScheduleTime        *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
-	AvgSsstoreReadRows     *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
-	AvgUsedWorkerCount     *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
-	AvgUserIoWaitTime      *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
-	AvgWaitCount           *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
-	AvgWaitTime            *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
-	ClientIp               *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	CpuPercentage          *float64 `json:"CpuPercentage,omitempty" xml:"CpuPercentage,omitempty"`
-	DbName                 *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DistPlanPercentage     *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
-	ExecPs                 *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
-	Executions             *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	FailCount              *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	FailPercentage         *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
-	Inner                  *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
-	LocalPlanPercentage    *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
-	MaxAffectedRows        *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Average plan generation time (in milliseconds) during the execution period.
+	AvgGetPlanTime *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	// Average logical reads of the SQL during the execution period.
+	AvgLogicalReads *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	// Strong consistent transaction percentage during the execution period.
+	AvgMemstoreReadRows *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	// Average network transmission time (in milliseconds) during the execution period.
+	AvgNetTime *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	// Average network enqueue time (in milliseconds) during the execution period.
+	AvgNetWaitTime *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	// Average number of partition accessed during the execution period.
+	AvgPartitionCount *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	// Average queueing time (in milliseconds) during the execution period.
+	AvgQueueTime *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	// Average returned rows during the execution period.
+	AvgReturnRows *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	// Average RowCache hit count during the execution period.
+	AvgRowCacheHit *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	// Average count of RPC sent during the execution period.
+	AvgRpcCount *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	// Average Schedule event wait time (in milliseconds) during the execution period.
+	AvgScheduleTime *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	// Eventually consistent transaction percentage during the execution period.
+	AvgSsstoreReadRows *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	// Average number of threads used of the SQL during the execution period.
+	AvgUsedWorkerCount *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	// Average UserIO event wait time (in milliseconds) during the execution period.
+	AvgUserIoWaitTime *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	// Average wait count during the execution period.
+	AvgWaitCount *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	// Average wait time (in milliseconds) during the execution period.
+	AvgWaitTime *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	// Client IP.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// CPU percentage.
+	CpuPercentage *float64 `json:"CpuPercentage,omitempty" xml:"CpuPercentage,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Distributed plan percentage during the execution period.
+	DistPlanPercentage *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	DynamicSql         *bool    `json:"DynamicSql,omitempty" xml:"DynamicSql,omitempty"`
+	// Average execution count per second during the execution period.
+	ExecPs *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	// Total number of executions during the execution period.
+	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// Average number of partition accessed during the execution period.
+	FailCount *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	// Error percentage during the execution period.
+	FailPercentage *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	// Whether a internal SQL.
+	Inner        *bool  `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	LastFailCode *int64 `json:"LastFailCode,omitempty" xml:"LastFailCode,omitempty"`
+	// Local plan percentage during the execution period.
+	LocalPlanPercentage *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	// Max affected rows during the execution period.
+	MaxAffectedRows *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	// Max Application event wait time (in milliseconds) during the execution period.
 	MaxApplicationWaitTime *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	// Max Concurrency event wait time (in milliseconds) during the execution period.
 	MaxConcurrencyWaitTime *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
-	MaxCpuTime             *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	MaxDiskReads           *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
-	MaxElapsedTime         *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
-	MaxReturnRows          *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
-	MaxUserIoWaitTime      *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
-	MaxWaitTime            *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
-	MissPlanPercentage     *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
-	MissPlans              *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	RemotePlanPercentage   *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
-	RemotePlans            *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
-	RetCode4012Count       *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
-	RetCode4013Count       *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
-	RetCode5001Count       *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
-	RetCode5024Count       *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
-	RetCode5167Count       *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
-	RetCode5217Count       *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
-	RetCode6002Count       *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
-	RetryCount             *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	RpcCount               *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
-	Server                 *string  `json:"Server,omitempty" xml:"Server,omitempty"`
-	ServerIp               *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	ServerPort             *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
-	// SQL ID。
-	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
-	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Max CPU time (in milliseconds).
+	MaxCpuTime *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// Max physical read count during the execution period.
+	MaxDiskReads *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	// Max response time during the execution period.
+	MaxElapsedTime *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// Max returned rows during the execution period.
+	MaxReturnRows *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	// Max UserIO event wait time (in milliseconds) during the execution period.
+	MaxUserIoWaitTime *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	// Max wait time (in milliseconds) during the execution period.
+	MaxWaitTime *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	// Plan hit rage during the execution period.
+	MissPlanPercentage *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	// Missed hit count of the execution plan during the execution period.
+	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	// Remote plan percentage during the execution period.
+	RemotePlanPercentage *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	// Remote execution count during the execution period.
+	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// Number of occurrences of the code 4012 during the execution period.
+	RetCode4012Count *int64 `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	// Number of occurrences of the code 4013 during the execution period.
+	RetCode4013Count *int64 `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	// Number of occurrences of the code 5001 during the execution period.
+	RetCode5001Count *int64 `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	// Number of occurrences of the code 5024 during the execution period.
+	RetCode5024Count *int64 `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	// Number of occurrences of the code 5167 during the execution period.
+	RetCode5167Count *int64 `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	// Number of occurrences of the code 5217 during the execution period.
+	RetCode5217Count *int64 `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	// Number of occurrences of the code 6002 during the execution period.
+	RetCode6002Count *int64 `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	// Total retry count during the execution period.
+	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// RPC count during the execution period.
+	RpcCount *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	// The server where the SQL is executed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The server IP where the SQL is executed.
+	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The server port where the SQL is executed.
+	ServerPort *int64 `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	// SQL ID.
+	SqlId   *string                                         `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlList []*DescribeOasTopSQLListResponseBodyDataSqlList `json:"SqlList,omitempty" xml:"SqlList,omitempty" type:"Repeated"`
+	// SQL text (the first 100 characters).
+	SqlTextShort *string `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	// SQL type.
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Strong consistent transaction percentage during the execution period.
 	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
-	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
-	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
-	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
-	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
-	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
-	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
-	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+	SumDbTime                   *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	// Total response time (in milliseconds) during the execution period.
+	SumElapsedTime *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	// Total logical reads.
+	SumLogicalReads *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	// Total wait time (in milliseconds) during the execution period.
+	SumWaitTime *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	// Table scan percentage during the execution period.
+	TableScanPercentage *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	// Total wait time (in milliseconds) during the execution period.
+	TotalWaitTime *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	// Username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Longest wait event during the execution period.
+	WaitEvent *string `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	// Eventually consistent transaction percentage during the execution period.
+	WeakConsistencyPercentage *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
 }
 
 func (s DescribeOasTopSQLListResponseBodyData) String() string {
@@ -7908,6 +12928,11 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetAvgConcurrencyWaitTime(v floa
 
 func (s *DescribeOasTopSQLListResponseBodyData) SetAvgCpuTime(v float64) *DescribeOasTopSQLListResponseBodyData {
 	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetAvgDbTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.AvgDbTime = &v
 	return s
 }
 
@@ -8041,6 +13066,11 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetDistPlanPercentage(v float64)
 	return s
 }
 
+func (s *DescribeOasTopSQLListResponseBodyData) SetDynamicSql(v bool) *DescribeOasTopSQLListResponseBodyData {
+	s.DynamicSql = &v
+	return s
+}
+
 func (s *DescribeOasTopSQLListResponseBodyData) SetExecPs(v float64) *DescribeOasTopSQLListResponseBodyData {
 	s.ExecPs = &v
 	return s
@@ -8063,6 +13093,11 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetFailPercentage(v float64) *De
 
 func (s *DescribeOasTopSQLListResponseBodyData) SetInner(v bool) *DescribeOasTopSQLListResponseBodyData {
 	s.Inner = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetLastFailCode(v int64) *DescribeOasTopSQLListResponseBodyData {
+	s.LastFailCode = &v
 	return s
 }
 
@@ -8201,6 +13236,11 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetSqlId(v string) *DescribeOasT
 	return s
 }
 
+func (s *DescribeOasTopSQLListResponseBodyData) SetSqlList(v []*DescribeOasTopSQLListResponseBodyDataSqlList) *DescribeOasTopSQLListResponseBodyData {
+	s.SqlList = v
+	return s
+}
+
 func (s *DescribeOasTopSQLListResponseBodyData) SetSqlTextShort(v string) *DescribeOasTopSQLListResponseBodyData {
 	s.SqlTextShort = &v
 	return s
@@ -8213,6 +13253,11 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetSqlType(v string) *DescribeOa
 
 func (s *DescribeOasTopSQLListResponseBodyData) SetStrongConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
 	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyData) SetSumDbTime(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.SumDbTime = &v
 	return s
 }
 
@@ -8252,6 +13297,485 @@ func (s *DescribeOasTopSQLListResponseBodyData) SetWaitEvent(v string) *Describe
 }
 
 func (s *DescribeOasTopSQLListResponseBodyData) SetWeakConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyData {
+	s.WeakConsistencyPercentage = &v
+	return s
+}
+
+type DescribeOasTopSQLListResponseBodyDataSqlList struct {
+	AvgAffectedRows             *float64 `json:"AvgAffectedRows,omitempty" xml:"AvgAffectedRows,omitempty"`
+	AvgApplicationWaitTime      *float64 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	AvgBlockCacheHit            *float64 `json:"AvgBlockCacheHit,omitempty" xml:"AvgBlockCacheHit,omitempty"`
+	AvgBlockIndexCacheHit       *float64 `json:"AvgBlockIndexCacheHit,omitempty" xml:"AvgBlockIndexCacheHit,omitempty"`
+	AvgBloomFilterCacheHit      *float64 `json:"AvgBloomFilterCacheHit,omitempty" xml:"AvgBloomFilterCacheHit,omitempty"`
+	AvgConcurrencyWaitTime      *float64 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	AvgCpuTime                  *float64 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	AvgDbTime                   *float64 `json:"AvgDbTime,omitempty" xml:"AvgDbTime,omitempty"`
+	AvgDecodeTime               *float64 `json:"AvgDecodeTime,omitempty" xml:"AvgDecodeTime,omitempty"`
+	AvgDiskReads                *float64 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	AvgElapsedTime              *float64 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	AvgExecuteTime              *float64 `json:"AvgExecuteTime,omitempty" xml:"AvgExecuteTime,omitempty"`
+	AvgExecutorRpcCount         *float64 `json:"AvgExecutorRpcCount,omitempty" xml:"AvgExecutorRpcCount,omitempty"`
+	AvgExpectedWorkerCount      *float64 `json:"AvgExpectedWorkerCount,omitempty" xml:"AvgExpectedWorkerCount,omitempty"`
+	AvgGetPlanTime              *float64 `json:"AvgGetPlanTime,omitempty" xml:"AvgGetPlanTime,omitempty"`
+	AvgLogicalReads             *float64 `json:"AvgLogicalReads,omitempty" xml:"AvgLogicalReads,omitempty"`
+	AvgMemstoreReadRows         *float64 `json:"AvgMemstoreReadRows,omitempty" xml:"AvgMemstoreReadRows,omitempty"`
+	AvgNetTime                  *float64 `json:"AvgNetTime,omitempty" xml:"AvgNetTime,omitempty"`
+	AvgNetWaitTime              *float64 `json:"AvgNetWaitTime,omitempty" xml:"AvgNetWaitTime,omitempty"`
+	AvgPartitionCount           *float64 `json:"AvgPartitionCount,omitempty" xml:"AvgPartitionCount,omitempty"`
+	AvgQueueTime                *float64 `json:"AvgQueueTime,omitempty" xml:"AvgQueueTime,omitempty"`
+	AvgReturnRows               *float64 `json:"AvgReturnRows,omitempty" xml:"AvgReturnRows,omitempty"`
+	AvgRowCacheHit              *float64 `json:"AvgRowCacheHit,omitempty" xml:"AvgRowCacheHit,omitempty"`
+	AvgRpcCount                 *float64 `json:"AvgRpcCount,omitempty" xml:"AvgRpcCount,omitempty"`
+	AvgScheduleTime             *float64 `json:"AvgScheduleTime,omitempty" xml:"AvgScheduleTime,omitempty"`
+	AvgSsstoreReadRows          *float64 `json:"AvgSsstoreReadRows,omitempty" xml:"AvgSsstoreReadRows,omitempty"`
+	AvgUsedWorkerCount          *float64 `json:"AvgUsedWorkerCount,omitempty" xml:"AvgUsedWorkerCount,omitempty"`
+	AvgUserIoWaitTime           *float64 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	AvgWaitCount                *float64 `json:"AvgWaitCount,omitempty" xml:"AvgWaitCount,omitempty"`
+	AvgWaitTime                 *float64 `json:"AvgWaitTime,omitempty" xml:"AvgWaitTime,omitempty"`
+	ClientIp                    *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CpuPercentage               *float64 `json:"CpuPercentage,omitempty" xml:"CpuPercentage,omitempty"`
+	DbName                      *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	DistPlanPercentage          *float64 `json:"DistPlanPercentage,omitempty" xml:"DistPlanPercentage,omitempty"`
+	ExecPs                      *float64 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	Executions                  *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	FailCount                   *float64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
+	FailPercentage              *float64 `json:"FailPercentage,omitempty" xml:"FailPercentage,omitempty"`
+	Inner                       *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	LocalPlanPercentage         *float64 `json:"LocalPlanPercentage,omitempty" xml:"LocalPlanPercentage,omitempty"`
+	MaxAffectedRows             *float64 `json:"MaxAffectedRows,omitempty" xml:"MaxAffectedRows,omitempty"`
+	MaxApplicationWaitTime      *float64 `json:"MaxApplicationWaitTime,omitempty" xml:"MaxApplicationWaitTime,omitempty"`
+	MaxConcurrencyWaitTime      *float64 `json:"MaxConcurrencyWaitTime,omitempty" xml:"MaxConcurrencyWaitTime,omitempty"`
+	MaxCpuTime                  *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	MaxDiskReads                *float64 `json:"MaxDiskReads,omitempty" xml:"MaxDiskReads,omitempty"`
+	MaxElapsedTime              *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	MaxReturnRows               *float64 `json:"MaxReturnRows,omitempty" xml:"MaxReturnRows,omitempty"`
+	MaxUserIoWaitTime           *float64 `json:"MaxUserIoWaitTime,omitempty" xml:"MaxUserIoWaitTime,omitempty"`
+	MaxWaitTime                 *float64 `json:"MaxWaitTime,omitempty" xml:"MaxWaitTime,omitempty"`
+	MissPlanPercentage          *float64 `json:"MissPlanPercentage,omitempty" xml:"MissPlanPercentage,omitempty"`
+	MissPlans                   *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	RemotePlanPercentage        *float64 `json:"RemotePlanPercentage,omitempty" xml:"RemotePlanPercentage,omitempty"`
+	RemotePlans                 *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	RetCode4012Count            *int64   `json:"RetCode4012Count,omitempty" xml:"RetCode4012Count,omitempty"`
+	RetCode4013Count            *int64   `json:"RetCode4013Count,omitempty" xml:"RetCode4013Count,omitempty"`
+	RetCode5001Count            *int64   `json:"RetCode5001Count,omitempty" xml:"RetCode5001Count,omitempty"`
+	RetCode5024Count            *int64   `json:"RetCode5024Count,omitempty" xml:"RetCode5024Count,omitempty"`
+	RetCode5167Count            *int64   `json:"RetCode5167Count,omitempty" xml:"RetCode5167Count,omitempty"`
+	RetCode5217Count            *int64   `json:"RetCode5217Count,omitempty" xml:"RetCode5217Count,omitempty"`
+	RetCode6002Count            *int64   `json:"RetCode6002Count,omitempty" xml:"RetCode6002Count,omitempty"`
+	RetryCount                  *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	RpcCount                    *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	Server                      *string  `json:"Server,omitempty" xml:"Server,omitempty"`
+	ServerIp                    *string  `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	ServerPort                  *int64   `json:"ServerPort,omitempty" xml:"ServerPort,omitempty"`
+	SqlId                       *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlTextShort                *string  `json:"SqlTextShort,omitempty" xml:"SqlTextShort,omitempty"`
+	SqlType                     *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	StrongConsistencyPercentage *float64 `json:"StrongConsistencyPercentage,omitempty" xml:"StrongConsistencyPercentage,omitempty"`
+	SumDbTime                   *float64 `json:"SumDbTime,omitempty" xml:"SumDbTime,omitempty"`
+	SumElapsedTime              *float64 `json:"SumElapsedTime,omitempty" xml:"SumElapsedTime,omitempty"`
+	SumLogicalReads             *float64 `json:"SumLogicalReads,omitempty" xml:"SumLogicalReads,omitempty"`
+	SumWaitTime                 *float64 `json:"SumWaitTime,omitempty" xml:"SumWaitTime,omitempty"`
+	TableScanPercentage         *float64 `json:"TableScanPercentage,omitempty" xml:"TableScanPercentage,omitempty"`
+	TotalWaitTime               *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	UserName                    *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	WaitEvent                   *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	WeakConsistencyPercentage   *float64 `json:"WeakConsistencyPercentage,omitempty" xml:"WeakConsistencyPercentage,omitempty"`
+}
+
+func (s DescribeOasTopSQLListResponseBodyDataSqlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOasTopSQLListResponseBodyDataSqlList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgAffectedRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgApplicationWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgBlockCacheHit(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgBlockCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgBlockIndexCacheHit(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgBlockIndexCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgBloomFilterCacheHit(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgBloomFilterCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgConcurrencyWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgCpuTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgDbTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgDbTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgDecodeTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgDecodeTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgDiskReads(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgExecuteTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgExecuteTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgExecutorRpcCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgExecutorRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgExpectedWorkerCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgGetPlanTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgGetPlanTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgLogicalReads(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgMemstoreReadRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgMemstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgNetTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgNetTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgNetWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgNetWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgPartitionCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgPartitionCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgQueueTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgQueueTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgReturnRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgRowCacheHit(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgRowCacheHit = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgRpcCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgRpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgScheduleTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgScheduleTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgSsstoreReadRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgSsstoreReadRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgUsedWorkerCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgUsedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgUserIoWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgWaitCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgWaitCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetAvgWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.AvgWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetClientIp(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetCpuPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.CpuPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetDbName(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetDistPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.DistPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetExecPs(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetExecutions(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetFailCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.FailCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetFailPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.FailPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetInner(v bool) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.Inner = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetLocalPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.LocalPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxAffectedRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxAffectedRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxApplicationWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxConcurrencyWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxCpuTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxCpuTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxDiskReads(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxDiskReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxReturnRows(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxReturnRows = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxUserIoWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMaxWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MaxWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMissPlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MissPlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetMissPlans(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.MissPlans = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRemotePlanPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RemotePlanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRemotePlans(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RemotePlans = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode4012Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode4012Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode4013Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode4013Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode5001Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode5001Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode5024Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode5024Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode5167Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode5167Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode5217Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode5217Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetCode6002Count(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetCode6002Count = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRetryCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RetryCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetRpcCount(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.RpcCount = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetServer(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetServerIp(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.ServerIp = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetServerPort(v int64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.ServerPort = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSqlId(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSqlTextShort(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SqlTextShort = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSqlType(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SqlType = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetStrongConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.StrongConsistencyPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSumDbTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SumDbTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSumElapsedTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SumElapsedTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSumLogicalReads(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SumLogicalReads = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetSumWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.SumWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetTableScanPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.TableScanPercentage = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetTotalWaitTime(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.TotalWaitTime = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetUserName(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetWaitEvent(v string) *DescribeOasTopSQLListResponseBodyDataSqlList {
+	s.WaitEvent = &v
+	return s
+}
+
+func (s *DescribeOasTopSQLListResponseBodyDataSqlList) SetWeakConsistencyPercentage(v float64) *DescribeOasTopSQLListResponseBodyDataSqlList {
 	s.WeakConsistencyPercentage = &v
 	return s
 }
@@ -10009,19 +15533,19 @@ func (s *DescribeOmsOpenAPIProjectStepsResponse) SetBody(v *DescribeOmsOpenAPIPr
 }
 
 type DescribeOutlineBindingRequest struct {
+	// The name of the database.
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// - When the value is set to True, the throttling information in the database is queried based on the SQL ID.
 	// - When the value is set to False, the bound index or execution plan in the database is queried based on the SQL ID.
-	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// SQLID.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the tenant.
 	IsConcurrentLimit *bool `json:"IsConcurrentLimit,omitempty" xml:"IsConcurrentLimit,omitempty"`
-	// false
+	// SQLID.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The name of the database.
-	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	// The name of the tenant.
 	// It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_). It cannot be set to SYS.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -10064,18 +15588,10 @@ func (s *DescribeOutlineBindingRequest) SetTenantId(v string) *DescribeOutlineBi
 }
 
 type DescribeOutlineBindingResponseBody struct {
-	// ```
-	// http(s)://[Endpoint]/?Action=DescribeOutlineBinding
-	// &TenantId=t2mr3oae0****
-	// &TableName=pay_online
-	// &DatabaseName=testdb
-	// &SQLId=8D6E84****0B8FB1823D199E2CA1****
-	// &IsConcurrentLimit=false
-	// &InstanceId=ob317v4uif****
-	// &Common request parameters
-	// ```
+	// The binding information.
 	OutlineBinding *DescribeOutlineBindingResponseBodyOutlineBinding `json:"OutlineBinding,omitempty" xml:"OutlineBinding,omitempty" type:"Struct"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeOutlineBindingResponseBody) String() string {
@@ -10097,11 +15613,13 @@ func (s *DescribeOutlineBindingResponseBody) SetRequestId(v string) *DescribeOut
 }
 
 type DescribeOutlineBindingResponseBodyOutlineBinding struct {
+	// The bound index.
 	BindIndex *string `json:"BindIndex,omitempty" xml:"BindIndex,omitempty"`
-	// You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
-	BindPlan      *string `json:"BindPlan,omitempty" xml:"BindPlan,omitempty"`
-	MaxConcurrent *int32  `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
-	// {"name":"DescribeOutlineBinding","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeOutlineBinding\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"TableName\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"pay_online\"},{\"name\":\"DatabaseName\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"IsConcurrentLimit\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Boolean\",\"title\":\"\",\"description\":\"\",\"example\":\"false\"},{\"name\":\"InstanceId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"ob317v4uif****\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"OutlineBinding\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"children\":[{\"name\":\"BindPlan\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"PHY_TABLE_SCAN | bmsql_order_line | 40 ******\"},{\"name\":\"OutlineId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"OutlineID\",\"description\":\"OutlineID。\",\"example\":\"-1\"},{\"name\":\"BindIndex\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"PRIMARY\"},{\"name\":\"MaxConcurrent\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"}],\"title\":\"\",\"description\":\"\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
+	// The bound plan.
+	BindPlan *string `json:"BindPlan,omitempty" xml:"BindPlan,omitempty"`
+	// The maximum number of concurrent tasks.
+	MaxConcurrent *int32 `json:"MaxConcurrent,omitempty" xml:"MaxConcurrent,omitempty"`
+	// OutlineID.
 	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 	// 表名称
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -10269,6 +15787,7 @@ type DescribeParametersResponseBodyParameters struct {
 	//     ]
 	// }
 	RejectedValue []*string `json:"RejectedValue,omitempty" xml:"RejectedValue,omitempty" type:"Repeated"`
+	Unit          *string   `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The invalid value range of the parameter.
 	// It is an array with two string elements, which represents a range. The first element represents the minimum value and the second element represents the maximum value.
 	ValueType *string `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
@@ -10322,6 +15841,11 @@ func (s *DescribeParametersResponseBodyParameters) SetRejectedValue(v []*string)
 	return s
 }
 
+func (s *DescribeParametersResponseBodyParameters) SetUnit(v string) *DescribeParametersResponseBodyParameters {
+	s.Unit = &v
+	return s
+}
+
 func (s *DescribeParametersResponseBodyParameters) SetValueType(v string) *DescribeParametersResponseBodyParameters {
 	s.ValueType = &v
 	return s
@@ -10357,19 +15881,25 @@ func (s *DescribeParametersResponse) SetBody(v *DescribeParametersResponseBody) 
 }
 
 type DescribeParametersHistoryRequest struct {
-	// The value of the parameter after the modification.
+	// The type of the parameter.
+	// Valid values: CLUSTER and TENANT.
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The list of parameter modification records.
+	// The resource ID of the parameter type.
+	// You can leave this parameter unspecified when you call this operation to query the modification history of cluster parameters. In the case of tenant parameters, pass the tenant ID.
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
+	// The end time for the query of parameter modification history.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the parameter.
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Default value: 10.
+	// The number of the page to return.
+	// - Start value: 1
+	// - Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
+	// The number of rows to return on each page.
+	// - Maximum value: 100
+	// - Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// You can call this operation to query the modification history of cluster or tenant parameters.
+	// The start time of the time range for querying the parameter modification history.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -10417,11 +15947,9 @@ func (s *DescribeParametersHistoryRequest) SetStartTime(v string) *DescribeParam
 }
 
 type DescribeParametersHistoryResponseBody struct {
-	// The number of the page to return.
-	// - Start value: 1
-	// - Default value: 1
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the parameter modification took effect.
+	// The list of parameter modification records.
 	Respond []*DescribeParametersHistoryResponseBodyRespond `json:"Respond,omitempty" xml:"Respond,omitempty" type:"Repeated"`
 }
 
@@ -10444,13 +15972,11 @@ func (s *DescribeParametersHistoryResponseBody) SetRespond(v []*DescribeParamete
 }
 
 type DescribeParametersHistoryResponseBodyRespond struct {
-	// The end time for the query of parameter modification history.
+	// The number of returned entries on each page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows to return on each page.
-	// - Maximum value: 100
-	// - Default value: 10
+	// The parameter modification history.
 	Parameters []*DescribeParametersHistoryResponseBodyRespondParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The list of parameter modification records.
+	// The number of parameter modification records.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10478,28 +16004,23 @@ func (s *DescribeParametersHistoryResponseBodyRespond) SetTotalCount(v int32) *D
 }
 
 type DescribeParametersHistoryResponseBodyRespondParameters struct {
-	// The request ID.
+	// The time when the parameter modification was initiated.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// ```
-	// http(s)://[Endpoint]/?Action=DescribeParametersHistory
-	// &InstanceId=ob317v4uif****
-	// &Dimension=TENANT
-	// &DimensionValue=ob2mr3oae0****
-	// &StartTime=2021-06-13 15:40:43
-	// &EndTime=2021-09-13 15:40:43
-	// &PageSize=10
-	// &PageNumber=1
-	// &Common request parameters
-	// ```
+	// The resource ID of the parameter type.
+	// - When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE.
+	// - When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
 	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
-	// You can call this operation to query the modification history of cluster or tenant parameters.
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The start time of the time range for querying the parameter modification history.
-	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
-	// -
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the parameter.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value of the parameter after the modification.
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// The parameter value before modification.
+	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	// The modification status. Valid values:
+	// - APPLIED: The modification was successful.
+	// - SCHEDULING: The modification was to be made.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the parameter modification took effect.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -10571,6 +16092,4531 @@ func (s *DescribeParametersHistoryResponse) SetStatusCode(v int32) *DescribePara
 }
 
 func (s *DescribeParametersHistoryResponse) SetBody(v *DescribeParametersHistoryResponseBody) *DescribeParametersHistoryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectRequest) SetId(v string) *DescribeProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeProjectResponseBody struct {
+	Advice      *string                                 `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *DescribeProjectResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *DescribeProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBody) SetAdvice(v string) *DescribeProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetCode(v string) *DescribeProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetCost(v string) *DescribeProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetData(v *DescribeProjectResponseBodyData) *DescribeProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetErrorDetail(v *DescribeProjectResponseBodyErrorDetail) *DescribeProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetMessage(v string) *DescribeProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetPageNumber(v int32) *DescribeProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetPageSize(v int32) *DescribeProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetRequestId(v string) *DescribeProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetSuccess(v bool) *DescribeProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBody) SetTotalCount(v int64) *DescribeProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProjectResponseBodyData struct {
+	AlarmStats                *DescribeProjectResponseBodyDataAlarmStats           `json:"AlarmStats,omitempty" xml:"AlarmStats,omitempty" type:"Struct"`
+	CommonTransferConfig      *DescribeProjectResponseBodyDataCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	DestConnId                *string                                              `json:"DestConnId,omitempty" xml:"DestConnId,omitempty"`
+	EnableFullTransfer        *bool                                                `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify          *bool                                                `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer        *bool                                                `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableIncrVerify          *bool                                                `json:"EnableIncrVerify,omitempty" xml:"EnableIncrVerify,omitempty"`
+	EnableReverseIncrTransfer *bool                                                `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer      *bool                                                `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	ExtraInfo                 *DescribeProjectResponseBodyDataExtraInfo            `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FullTransferConfig        *DescribeProjectResponseBodyDataFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	GmtCreate                 *string                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtFinish                 *string                                              `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
+	GmtModified               *string                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtStart                  *string                                              `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	Id                        *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	Importance                *string                                              `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	IncrTransferConfig        *DescribeProjectResponseBodyDataIncrTransferConfig   `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
+	IsMerging                 *bool                                                `json:"IsMerging,omitempty" xml:"IsMerging,omitempty"`
+	IsModifying               *bool                                                `json:"IsModifying,omitempty" xml:"IsModifying,omitempty"`
+	IsSubProject              *bool                                                `json:"IsSubProject,omitempty" xml:"IsSubProject,omitempty"`
+	Labels                    []*DescribeProjectResponseBodyDataLabels             `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name                      *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner                     *string                                              `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SinkConnectInfo           *DescribeProjectResponseBodyDataSinkConnectInfo      `json:"SinkConnectInfo,omitempty" xml:"SinkConnectInfo,omitempty" type:"Struct"`
+	SinkEndpointType          *string                                              `json:"SinkEndpointType,omitempty" xml:"SinkEndpointType,omitempty"`
+	SourceConnectInfo         *DescribeProjectResponseBodyDataSourceConnectInfo    `json:"SourceConnectInfo,omitempty" xml:"SourceConnectInfo,omitempty" type:"Struct"`
+	SourceEndpointType        *string                                              `json:"SourceEndpointType,omitempty" xml:"SourceEndpointType,omitempty"`
+	Status                    *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Steps                     []*DescribeProjectResponseBodyDataSteps              `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	StructTransferConfig      *DescribeProjectResponseBodyDataStructTransferConfig `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
+	TransferMapping           *DescribeProjectResponseBodyDataTransferMapping      `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
+	Type                      *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkerGradeId             *string                                              `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyData) SetAlarmStats(v *DescribeProjectResponseBodyDataAlarmStats) *DescribeProjectResponseBodyData {
+	s.AlarmStats = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetCommonTransferConfig(v *DescribeProjectResponseBodyDataCommonTransferConfig) *DescribeProjectResponseBodyData {
+	s.CommonTransferConfig = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetDestConnId(v string) *DescribeProjectResponseBodyData {
+	s.DestConnId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableFullTransfer(v bool) *DescribeProjectResponseBodyData {
+	s.EnableFullTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableFullVerify(v bool) *DescribeProjectResponseBodyData {
+	s.EnableFullVerify = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableIncrTransfer(v bool) *DescribeProjectResponseBodyData {
+	s.EnableIncrTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableIncrVerify(v bool) *DescribeProjectResponseBodyData {
+	s.EnableIncrVerify = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableReverseIncrTransfer(v bool) *DescribeProjectResponseBodyData {
+	s.EnableReverseIncrTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetEnableStructTransfer(v bool) *DescribeProjectResponseBodyData {
+	s.EnableStructTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetExtraInfo(v *DescribeProjectResponseBodyDataExtraInfo) *DescribeProjectResponseBodyData {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetFullTransferConfig(v *DescribeProjectResponseBodyDataFullTransferConfig) *DescribeProjectResponseBodyData {
+	s.FullTransferConfig = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetGmtCreate(v string) *DescribeProjectResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetGmtFinish(v string) *DescribeProjectResponseBodyData {
+	s.GmtFinish = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetGmtModified(v string) *DescribeProjectResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetGmtStart(v string) *DescribeProjectResponseBodyData {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetId(v string) *DescribeProjectResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetImportance(v string) *DescribeProjectResponseBodyData {
+	s.Importance = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetIncrTransferConfig(v *DescribeProjectResponseBodyDataIncrTransferConfig) *DescribeProjectResponseBodyData {
+	s.IncrTransferConfig = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetIsMerging(v bool) *DescribeProjectResponseBodyData {
+	s.IsMerging = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetIsModifying(v bool) *DescribeProjectResponseBodyData {
+	s.IsModifying = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetIsSubProject(v bool) *DescribeProjectResponseBodyData {
+	s.IsSubProject = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetLabels(v []*DescribeProjectResponseBodyDataLabels) *DescribeProjectResponseBodyData {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetName(v string) *DescribeProjectResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetOwner(v string) *DescribeProjectResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetSinkConnectInfo(v *DescribeProjectResponseBodyDataSinkConnectInfo) *DescribeProjectResponseBodyData {
+	s.SinkConnectInfo = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetSinkEndpointType(v string) *DescribeProjectResponseBodyData {
+	s.SinkEndpointType = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetSourceConnectInfo(v *DescribeProjectResponseBodyDataSourceConnectInfo) *DescribeProjectResponseBodyData {
+	s.SourceConnectInfo = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetSourceEndpointType(v string) *DescribeProjectResponseBodyData {
+	s.SourceEndpointType = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetStatus(v string) *DescribeProjectResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetSteps(v []*DescribeProjectResponseBodyDataSteps) *DescribeProjectResponseBodyData {
+	s.Steps = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetStructTransferConfig(v *DescribeProjectResponseBodyDataStructTransferConfig) *DescribeProjectResponseBodyData {
+	s.StructTransferConfig = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetTransferMapping(v *DescribeProjectResponseBodyDataTransferMapping) *DescribeProjectResponseBodyData {
+	s.TransferMapping = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetType(v string) *DescribeProjectResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyData) SetWorkerGradeId(v string) *DescribeProjectResponseBodyData {
+	s.WorkerGradeId = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataAlarmStats struct {
+	AlarmContent               *string           `json:"AlarmContent,omitempty" xml:"AlarmContent,omitempty"`
+	Alarming                   *bool             `json:"Alarming,omitempty" xml:"Alarming,omitempty"`
+	OpenMonitor                *bool             `json:"OpenMonitor,omitempty" xml:"OpenMonitor,omitempty"`
+	RecentlyTriggerCount       *int32            `json:"RecentlyTriggerCount,omitempty" xml:"RecentlyTriggerCount,omitempty"`
+	RuleToRecentlyTriggerCount map[string]*int32 `json:"RuleToRecentlyTriggerCount,omitempty" xml:"RuleToRecentlyTriggerCount,omitempty"`
+	Target                     *string           `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataAlarmStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataAlarmStats) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetAlarmContent(v string) *DescribeProjectResponseBodyDataAlarmStats {
+	s.AlarmContent = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetAlarming(v bool) *DescribeProjectResponseBodyDataAlarmStats {
+	s.Alarming = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetOpenMonitor(v bool) *DescribeProjectResponseBodyDataAlarmStats {
+	s.OpenMonitor = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetRecentlyTriggerCount(v int32) *DescribeProjectResponseBodyDataAlarmStats {
+	s.RecentlyTriggerCount = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetRuleToRecentlyTriggerCount(v map[string]*int32) *DescribeProjectResponseBodyDataAlarmStats {
+	s.RuleToRecentlyTriggerCount = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataAlarmStats) SetTarget(v string) *DescribeProjectResponseBodyDataAlarmStats {
+	s.Target = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataCommonTransferConfig struct {
+	ActiveActive           *bool   `json:"ActiveActive,omitempty" xml:"ActiveActive,omitempty"`
+	DataWorksBusinessName  *string `json:"DataWorksBusinessName,omitempty" xml:"DataWorksBusinessName,omitempty"`
+	DatahubTopicType       *string `json:"DatahubTopicType,omitempty" xml:"DatahubTopicType,omitempty"`
+	MqPartition            *int32  `json:"MqPartition,omitempty" xml:"MqPartition,omitempty"`
+	MqPartitionMode        *string `json:"MqPartitionMode,omitempty" xml:"MqPartitionMode,omitempty"`
+	MqSerializerType       *string `json:"MqSerializerType,omitempty" xml:"MqSerializerType,omitempty"`
+	RocketMqEnableMsgTrace *bool   `json:"RocketMqEnableMsgTrace,omitempty" xml:"RocketMqEnableMsgTrace,omitempty"`
+	RocketMqMsgTags        *string `json:"RocketMqMsgTags,omitempty" xml:"RocketMqMsgTags,omitempty"`
+	RocketMqProducerGroup  *string `json:"RocketMqProducerGroup,omitempty" xml:"RocketMqProducerGroup,omitempty"`
+	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	TableCategory          *string `json:"TableCategory,omitempty" xml:"TableCategory,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataCommonTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataCommonTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetActiveActive(v bool) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.ActiveActive = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetDataWorksBusinessName(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.DataWorksBusinessName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetDatahubTopicType(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.DatahubTopicType = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetMqPartition(v int32) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.MqPartition = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetMqPartitionMode(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.MqPartitionMode = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetMqSerializerType(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.MqSerializerType = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqEnableMsgTrace(v bool) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.RocketMqEnableMsgTrace = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqMsgTags(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.RocketMqMsgTags = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqProducerGroup(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.RocketMqProducerGroup = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetRocketMqSendMsgTimeout(v int64) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.RocketMqSendMsgTimeout = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataCommonTransferConfig) SetTableCategory(v string) *DescribeProjectResponseBodyDataCommonTransferConfig {
+	s.TableCategory = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataExtraInfo struct {
+	AccessObSource            *bool                                    `json:"AccessObSource,omitempty" xml:"AccessObSource,omitempty"`
+	IgnoreUnsupportDdl        *bool                                    `json:"IgnoreUnsupportDdl,omitempty" xml:"IgnoreUnsupportDdl,omitempty"`
+	IncrSyncTimestamp         *int64                                   `json:"IncrSyncTimestamp,omitempty" xml:"IncrSyncTimestamp,omitempty"`
+	LogServiceStartCheckpoint *int64                                   `json:"LogServiceStartCheckpoint,omitempty" xml:"LogServiceStartCheckpoint,omitempty"`
+	MaxConnectorCount         *int32                                   `json:"MaxConnectorCount,omitempty" xml:"MaxConnectorCount,omitempty"`
+	MonitoringIncr            *bool                                    `json:"MonitoringIncr,omitempty" xml:"MonitoringIncr,omitempty"`
+	OverwriteConfig           *bool                                    `json:"OverwriteConfig,omitempty" xml:"OverwriteConfig,omitempty"`
+	ReverseSubtopics          []*string                                `json:"ReverseSubtopics,omitempty" xml:"ReverseSubtopics,omitempty" type:"Repeated"`
+	RunningProgress           *int32                                   `json:"RunningProgress,omitempty" xml:"RunningProgress,omitempty"`
+	RunningStep               *string                                  `json:"RunningStep,omitempty" xml:"RunningStep,omitempty"`
+	SourceStoreKeptHour       *int32                                   `json:"SourceStoreKeptHour,omitempty" xml:"SourceStoreKeptHour,omitempty"`
+	StoreIncr                 *bool                                    `json:"StoreIncr,omitempty" xml:"StoreIncr,omitempty"`
+	SubConds                  map[string][]*DataExtraInfoSubCondsValue `json:"SubConds,omitempty" xml:"SubConds,omitempty"`
+	SubDbs                    map[string][]*DataExtraInfoSubDbsValue   `json:"SubDbs,omitempty" xml:"SubDbs,omitempty"`
+	SubIds                    map[string]*string                       `json:"SubIds,omitempty" xml:"SubIds,omitempty"`
+	Subtopics                 []*string                                `json:"Subtopics,omitempty" xml:"Subtopics,omitempty" type:"Repeated"`
+	SyncDelay                 *int64                                   `json:"SyncDelay,omitempty" xml:"SyncDelay,omitempty"`
+	SyncDelaySampleTimestamp  *int64                                   `json:"SyncDelaySampleTimestamp,omitempty" xml:"SyncDelaySampleTimestamp,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetAccessObSource(v bool) *DescribeProjectResponseBodyDataExtraInfo {
+	s.AccessObSource = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetIgnoreUnsupportDdl(v bool) *DescribeProjectResponseBodyDataExtraInfo {
+	s.IgnoreUnsupportDdl = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetIncrSyncTimestamp(v int64) *DescribeProjectResponseBodyDataExtraInfo {
+	s.IncrSyncTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetLogServiceStartCheckpoint(v int64) *DescribeProjectResponseBodyDataExtraInfo {
+	s.LogServiceStartCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetMaxConnectorCount(v int32) *DescribeProjectResponseBodyDataExtraInfo {
+	s.MaxConnectorCount = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetMonitoringIncr(v bool) *DescribeProjectResponseBodyDataExtraInfo {
+	s.MonitoringIncr = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetOverwriteConfig(v bool) *DescribeProjectResponseBodyDataExtraInfo {
+	s.OverwriteConfig = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetReverseSubtopics(v []*string) *DescribeProjectResponseBodyDataExtraInfo {
+	s.ReverseSubtopics = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetRunningProgress(v int32) *DescribeProjectResponseBodyDataExtraInfo {
+	s.RunningProgress = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetRunningStep(v string) *DescribeProjectResponseBodyDataExtraInfo {
+	s.RunningStep = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSourceStoreKeptHour(v int32) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SourceStoreKeptHour = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetStoreIncr(v bool) *DescribeProjectResponseBodyDataExtraInfo {
+	s.StoreIncr = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSubConds(v map[string][]*DataExtraInfoSubCondsValue) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SubConds = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSubDbs(v map[string][]*DataExtraInfoSubDbsValue) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SubDbs = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSubIds(v map[string]*string) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SubIds = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSubtopics(v []*string) *DescribeProjectResponseBodyDataExtraInfo {
+	s.Subtopics = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSyncDelay(v int64) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SyncDelay = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataExtraInfo) SetSyncDelaySampleTimestamp(v int64) *DescribeProjectResponseBodyDataExtraInfo {
+	s.SyncDelaySampleTimestamp = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataFullTransferConfig struct {
+	AllowDestTableNotEmpty   *bool   `json:"AllowDestTableNotEmpty,omitempty" xml:"AllowDestTableNotEmpty,omitempty"`
+	FullTransferSpeedMode    *string `json:"FullTransferSpeedMode,omitempty" xml:"FullTransferSpeedMode,omitempty"`
+	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
+	NonePkUkTruncateDstTable *bool   `json:"NonePkUkTruncateDstTable,omitempty" xml:"NonePkUkTruncateDstTable,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataFullTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataFullTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetAllowDestTableNotEmpty(v bool) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.AllowDestTableNotEmpty = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetFullTransferSpeedMode(v string) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.FullTransferSpeedMode = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetFullVerifySpeedMode(v string) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.FullVerifySpeedMode = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataFullTransferConfig) SetNonePkUkTruncateDstTable(v bool) *DescribeProjectResponseBodyDataFullTransferConfig {
+	s.NonePkUkTruncateDstTable = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataIncrTransferConfig struct {
+	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
+	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
+	IncrSyncConcurrency       *int32    `json:"IncrSyncConcurrency,omitempty" xml:"IncrSyncConcurrency,omitempty"`
+	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
+	StartTimestamp            *int64    `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataIncrTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataIncrTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetEnableIncrSyncStatistics(v bool) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.EnableIncrSyncStatistics = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetEnableSequencingWithinTxn(v bool) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.EnableSequencingWithinTxn = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetIncrSyncConcurrency(v int32) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.IncrSyncConcurrency = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetRecordTypeWhiteList(v []*string) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.RecordTypeWhiteList = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetStartTimestamp(v int64) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataIncrTransferConfig) SetStoreLogKeptHour(v int32) *DescribeProjectResponseBodyDataIncrTransferConfig {
+	s.StoreLogKeptHour = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataLabels struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataLabels) SetId(v string) *DescribeProjectResponseBodyDataLabels {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataLabels) SetName(v string) *DescribeProjectResponseBodyDataLabels {
+	s.Name = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataSinkConnectInfo struct {
+	Charset             *string     `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	ConnExtraAttributes interface{} `json:"ConnExtraAttributes,omitempty" xml:"ConnExtraAttributes,omitempty"`
+	ConnectionInfo      *string     `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	DbEngine            *string     `json:"DbEngine,omitempty" xml:"DbEngine,omitempty"`
+	EndpointId          *string     `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName        *string     `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSide        *string     `json:"EndpointSide,omitempty" xml:"EndpointSide,omitempty"`
+	Host                *string     `json:"Host,omitempty" xml:"Host,omitempty"`
+	Id                  *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NlsLengthSemantics  *string     `json:"NlsLengthSemantics,omitempty" xml:"NlsLengthSemantics,omitempty"`
+	OcpName             *string     `json:"OcpName,omitempty" xml:"OcpName,omitempty"`
+	OperatingSystem     *string     `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	// Owner。
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	Timezone      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataSinkConnectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataSinkConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetCharset(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Charset = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetConnExtraAttributes(v interface{}) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.ConnExtraAttributes = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetConnectionInfo(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.ConnectionInfo = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetDbEngine(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.DbEngine = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetEndpointId(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetEndpointName(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetEndpointSide(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.EndpointSide = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetHost(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetId(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetNlsLengthSemantics(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.NlsLengthSemantics = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetOcpName(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.OcpName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetOperatingSystem(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.OperatingSystem = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetOwner(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetPort(v int32) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetRegion(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetResourceOwner(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetTimezone(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Timezone = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetUsername(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Username = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSinkConnectInfo) SetVersion(v string) *DescribeProjectResponseBodyDataSinkConnectInfo {
+	s.Version = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataSourceConnectInfo struct {
+	Charset             *string     `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	ConnExtraAttributes interface{} `json:"ConnExtraAttributes,omitempty" xml:"ConnExtraAttributes,omitempty"`
+	ConnectionInfo      *string     `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	DbEngine            *string     `json:"DbEngine,omitempty" xml:"DbEngine,omitempty"`
+	EndpointId          *string     `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName        *string     `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSide        *string     `json:"EndpointSide,omitempty" xml:"EndpointSide,omitempty"`
+	Host                *string     `json:"Host,omitempty" xml:"Host,omitempty"`
+	Id                  *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NlsLengthSemantics  *string     `json:"NlsLengthSemantics,omitempty" xml:"NlsLengthSemantics,omitempty"`
+	OcpName             *string     `json:"OcpName,omitempty" xml:"OcpName,omitempty"`
+	OperatingSystem     *string     `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	// Owner。
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	Timezone      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataSourceConnectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataSourceConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetCharset(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Charset = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetConnExtraAttributes(v interface{}) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.ConnExtraAttributes = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetConnectionInfo(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.ConnectionInfo = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetDbEngine(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.DbEngine = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetEndpointId(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetEndpointName(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetEndpointSide(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.EndpointSide = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetHost(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetId(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetNlsLengthSemantics(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.NlsLengthSemantics = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetOcpName(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.OcpName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetOperatingSystem(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.OperatingSystem = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetOwner(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetPort(v int32) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetRegion(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetResourceOwner(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetTimezone(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Timezone = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetUsername(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Username = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSourceConnectInfo) SetVersion(v string) *DescribeProjectResponseBodyDataSourceConnectInfo {
+	s.Version = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataSteps struct {
+	Description *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtraInfo   *DescribeProjectResponseBodyDataStepsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FinishTime  *string                                        `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Name        *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order       *int32                                         `json:"Order,omitempty" xml:"Order,omitempty"`
+	Progress    *int32                                         `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartTime   *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepInfo    map[string]interface{}                         `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataSteps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetDescription(v string) *DescribeProjectResponseBodyDataSteps {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetExtraInfo(v *DescribeProjectResponseBodyDataStepsExtraInfo) *DescribeProjectResponseBodyDataSteps {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetFinishTime(v string) *DescribeProjectResponseBodyDataSteps {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetName(v string) *DescribeProjectResponseBodyDataSteps {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetOrder(v int32) *DescribeProjectResponseBodyDataSteps {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetProgress(v int32) *DescribeProjectResponseBodyDataSteps {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetStartTime(v string) *DescribeProjectResponseBodyDataSteps {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetStatus(v string) *DescribeProjectResponseBodyDataSteps {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataSteps) SetStepInfo(v map[string]interface{}) *DescribeProjectResponseBodyDataSteps {
+	s.StepInfo = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataStepsExtraInfo struct {
+	ErrorCode    *string                                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorDetails []*DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	ErrorMsg     *string                                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorParam   map[string]*string                                           `json:"ErrorParam,omitempty" xml:"ErrorParam,omitempty"`
+	FailedTime   *string                                                      `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataStepsExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataStepsExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfo) SetErrorCode(v string) *DescribeProjectResponseBodyDataStepsExtraInfo {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfo) SetErrorDetails(v []*DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) *DescribeProjectResponseBodyDataStepsExtraInfo {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfo) SetErrorMsg(v string) *DescribeProjectResponseBodyDataStepsExtraInfo {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfo) SetErrorParam(v map[string]*string) *DescribeProjectResponseBodyDataStepsExtraInfo {
+	s.ErrorParam = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfo) SetFailedTime(v string) *DescribeProjectResponseBodyDataStepsExtraInfo {
+	s.FailedTime = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails struct {
+	Code         *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	// FATAL, ERROR, WARNING, CRITICAL
+	Level               *string            `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string            `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string            `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string            `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string            `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string            `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}        `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetCode(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetLevel(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetMessage(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetProposal(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetReason(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataStructTransferConfig struct {
+	ByteCharConvertStrategy *string `json:"ByteCharConvertStrategy,omitempty" xml:"ByteCharConvertStrategy,omitempty"`
+	DeferIndexCreation      *bool   `json:"DeferIndexCreation,omitempty" xml:"DeferIndexCreation,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataStructTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataStructTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataStructTransferConfig) SetByteCharConvertStrategy(v string) *DescribeProjectResponseBodyDataStructTransferConfig {
+	s.ByteCharConvertStrategy = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataStructTransferConfig) SetDeferIndexCreation(v bool) *DescribeProjectResponseBodyDataStructTransferConfig {
+	s.DeferIndexCreation = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMapping struct {
+	Databases             []*DescribeProjectResponseBodyDataTransferMappingDatabases      `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	DatabasesBlack        []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlack `json:"DatabasesBlack,omitempty" xml:"DatabasesBlack,omitempty" type:"Repeated"`
+	Mode                  *string                                                         `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	TableAndViewBlackList []*string                                                       `json:"TableAndViewBlackList,omitempty" xml:"TableAndViewBlackList,omitempty" type:"Repeated"`
+	TableAndViewWhiteList []*string                                                       `json:"TableAndViewWhiteList,omitempty" xml:"TableAndViewWhiteList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMapping) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMapping) SetDatabases(v []*DescribeProjectResponseBodyDataTransferMappingDatabases) *DescribeProjectResponseBodyDataTransferMapping {
+	s.Databases = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMapping) SetDatabasesBlack(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) *DescribeProjectResponseBodyDataTransferMapping {
+	s.DatabasesBlack = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMapping) SetMode(v string) *DescribeProjectResponseBodyDataTransferMapping {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMapping) SetTableAndViewBlackList(v []*string) *DescribeProjectResponseBodyDataTransferMapping {
+	s.TableAndViewBlackList = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMapping) SetTableAndViewWhiteList(v []*string) *DescribeProjectResponseBodyDataTransferMapping {
+	s.TableAndViewWhiteList = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabases struct {
+	Id             *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                  `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*DescribeProjectResponseBodyDataTransferMappingDatabasesTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                                  `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Type           *string                                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Views          []*DescribeProjectResponseBodyDataTransferMappingDatabasesViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetSpecificTables(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetSpecificViews(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetTables(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesTables) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetTenantName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetType(v string) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabases) SetViews(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesViews) *DescribeProjectResponseBodyDataTransferMappingDatabases {
+	s.Views = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                            `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                              `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                            `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                              `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                           `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                             `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                           `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                             `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesTables struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                    `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                      `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                    `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                      `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTables) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTables {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesViews struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                   `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                     `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                   `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                     `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesViews) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViews) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViews {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlack struct {
+	Id             *string                                                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                       `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpecificTables []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables `json:"SpecificTables,omitempty" xml:"SpecificTables,omitempty" type:"Repeated"`
+	SpecificViews  []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews  `json:"SpecificViews,omitempty" xml:"SpecificViews,omitempty" type:"Repeated"`
+	Tables         []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables         `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	TenantName     *string                                                                       `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	Type           *string                                                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	Views          []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews          `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetSpecificTables(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.SpecificTables = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetSpecificViews(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.SpecificViews = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetTables(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetTenantName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetType(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack) SetViews(v []*DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlack {
+	s.Views = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                                 `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                                   `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                                   `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                                 `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                                   `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                                `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                                  `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                                `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                                  `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                         `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                           `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                         `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                           `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews struct {
+	AdbTableSchema *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema `json:"AdbTableSchema,omitempty" xml:"AdbTableSchema,omitempty" type:"Struct"`
+	FilterColumns  []*string                                                                        `json:"FilterColumns,omitempty" xml:"FilterColumns,omitempty" type:"Repeated"`
+	Id             *string                                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	MappedName     *string                                                                          `json:"MappedName,omitempty" xml:"MappedName,omitempty"`
+	Name           *string                                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShardColumns   []*string                                                                        `json:"ShardColumns,omitempty" xml:"ShardColumns,omitempty" type:"Repeated"`
+	WhereClause    *string                                                                          `json:"WhereClause,omitempty" xml:"WhereClause,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetAdbTableSchema(v *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.AdbTableSchema = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetFilterColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.FilterColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetId(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetMappedName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.MappedName = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetName(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetShardColumns(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.ShardColumns = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews) SetWhereClause(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews {
+	s.WhereClause = &v
+	return s
+}
+
+type DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema struct {
+	DistributedKeys    []*string `json:"DistributedKeys,omitempty" xml:"DistributedKeys,omitempty" type:"Repeated"`
+	PartitionLifeCycle *string   `json:"PartitionLifeCycle,omitempty" xml:"PartitionLifeCycle,omitempty"`
+	PartitionStatement *string   `json:"PartitionStatement,omitempty" xml:"PartitionStatement,omitempty"`
+	PrimaryKeys        []*string `json:"PrimaryKeys,omitempty" xml:"PrimaryKeys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) SetDistributedKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.DistributedKeys = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionLifeCycle(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionLifeCycle = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) SetPartitionStatement(v string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PartitionStatement = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema) SetPrimaryKeys(v []*string) *DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema {
+	s.PrimaryKeys = v
+	return s
+}
+
+type DescribeProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetCode(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DescribeProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetLevel(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetMessage(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DescribeProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetProposal(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DescribeProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetReason(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DescribeProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DescribeProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DescribeProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectResponse) SetHeaders(v map[string]*string) *DescribeProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectResponse) SetStatusCode(v int32) *DescribeProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProjectResponse) SetBody(v *DescribeProjectResponseBody) *DescribeProjectResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProjectComponentsRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeProjectComponentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsRequest) SetId(v string) *DescribeProjectComponentsRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBody struct {
+	Advice      *string                                           `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                           `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *DescribeProjectComponentsResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *DescribeProjectComponentsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetAdvice(v string) *DescribeProjectComponentsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetCode(v string) *DescribeProjectComponentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetCost(v string) *DescribeProjectComponentsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetData(v *DescribeProjectComponentsResponseBodyData) *DescribeProjectComponentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetErrorDetail(v *DescribeProjectComponentsResponseBodyErrorDetail) *DescribeProjectComponentsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetMessage(v string) *DescribeProjectComponentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetPageNumber(v int32) *DescribeProjectComponentsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetPageSize(v int32) *DescribeProjectComponentsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetRequestId(v string) *DescribeProjectComponentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetSuccess(v bool) *DescribeProjectComponentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBody) SetTotalCount(v int64) *DescribeProjectComponentsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyData struct {
+	FullImportComponents      []*DescribeProjectComponentsResponseBodyDataFullImportComponents      `json:"FullImportComponents,omitempty" xml:"FullImportComponents,omitempty" type:"Repeated"`
+	FullVerifyComponents      []*DescribeProjectComponentsResponseBodyDataFullVerifyComponents      `json:"FullVerifyComponents,omitempty" xml:"FullVerifyComponents,omitempty" type:"Repeated"`
+	IncrSyncComponents        []*DescribeProjectComponentsResponseBodyDataIncrSyncComponents        `json:"IncrSyncComponents,omitempty" xml:"IncrSyncComponents,omitempty" type:"Repeated"`
+	ReverseIncrSyncComponents []*DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents `json:"ReverseIncrSyncComponents,omitempty" xml:"ReverseIncrSyncComponents,omitempty" type:"Repeated"`
+	ReverseStoreList          []*DescribeProjectComponentsResponseBodyDataReverseStoreList          `json:"ReverseStoreList,omitempty" xml:"ReverseStoreList,omitempty" type:"Repeated"`
+	StoreList                 []*DescribeProjectComponentsResponseBodyDataStoreList                 `json:"StoreList,omitempty" xml:"StoreList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeProjectComponentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetFullImportComponents(v []*DescribeProjectComponentsResponseBodyDataFullImportComponents) *DescribeProjectComponentsResponseBodyData {
+	s.FullImportComponents = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetFullVerifyComponents(v []*DescribeProjectComponentsResponseBodyDataFullVerifyComponents) *DescribeProjectComponentsResponseBodyData {
+	s.FullVerifyComponents = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetIncrSyncComponents(v []*DescribeProjectComponentsResponseBodyDataIncrSyncComponents) *DescribeProjectComponentsResponseBodyData {
+	s.IncrSyncComponents = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetReverseIncrSyncComponents(v []*DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) *DescribeProjectComponentsResponseBodyData {
+	s.ReverseIncrSyncComponents = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetReverseStoreList(v []*DescribeProjectComponentsResponseBodyDataReverseStoreList) *DescribeProjectComponentsResponseBodyData {
+	s.ReverseStoreList = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyData) SetStoreList(v []*DescribeProjectComponentsResponseBodyDataStoreList) *DescribeProjectComponentsResponseBodyData {
+	s.StoreList = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataFullImportComponents struct {
+	ErrorDetails []*DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	GmtCreate    *string                                                                      `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify    *string                                                                      `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Identity     *string                                                                      `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Ip           *string                                                                      `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name         *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress     *int32                                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Region       *string                                                                      `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status       *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullImportComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullImportComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetGmtCreate(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetGmtModify(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetIdentity(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Identity = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetIp(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetName(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetProgress(v int32) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponents) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponents {
+	s.Status = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataFullVerifyComponents struct {
+	ConsistentQuantity   *int64                                                                       `json:"ConsistentQuantity,omitempty" xml:"ConsistentQuantity,omitempty"`
+	ErrorDetails         []*DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	InconsistentQuantity *int64                                                                       `json:"InconsistentQuantity,omitempty" xml:"InconsistentQuantity,omitempty"`
+	Ip                   *string                                                                      `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name                 *string                                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Progress             *string                                                                      `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RecordProgress       *int32                                                                       `json:"RecordProgress,omitempty" xml:"RecordProgress,omitempty"`
+	Region               *string                                                                      `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status               *string                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId               *int64                                                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullVerifyComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullVerifyComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetConsistentQuantity(v int64) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.ConsistentQuantity = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetInconsistentQuantity(v int64) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.InconsistentQuantity = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetIp(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetName(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetProgress(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetRecordProgress(v int32) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.RecordProgress = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponents) SetTaskId(v int64) *DescribeProjectComponentsResponseBodyDataFullVerifyComponents {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataIncrSyncComponents struct {
+	Checkpoint                *string                                                                    `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	CheckpointSampleTimestamp *int64                                                                     `json:"CheckpointSampleTimestamp,omitempty" xml:"CheckpointSampleTimestamp,omitempty"`
+	Delay                     *int64                                                                     `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	ErrorDetails              []*DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	GmtCreate                 *string                                                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify                 *string                                                                    `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Identity                  *string                                                                    `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Ip                        *string                                                                    `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name                      *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region                    *string                                                                    `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status                    *string                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtopics                 []*string                                                                  `json:"Subtopics,omitempty" xml:"Subtopics,omitempty" type:"Repeated"`
+	Tps                       *int64                                                                     `json:"Tps,omitempty" xml:"Tps,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataIncrSyncComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataIncrSyncComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetCheckpointSampleTimestamp(v int64) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.CheckpointSampleTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetDelay(v int64) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetGmtCreate(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetGmtModify(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetIdentity(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Identity = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetIp(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetName(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetSubtopics(v []*string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Subtopics = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponents) SetTps(v int64) *DescribeProjectComponentsResponseBodyDataIncrSyncComponents {
+	s.Tps = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents struct {
+	Checkpoint                *string                                                                           `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	CheckpointSampleTimestamp *int64                                                                            `json:"CheckpointSampleTimestamp,omitempty" xml:"CheckpointSampleTimestamp,omitempty"`
+	Delay                     *int64                                                                            `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	ErrorDetails              []*DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	GmtCreate                 *string                                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModify                 *string                                                                           `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
+	Identity                  *string                                                                           `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Ip                        *string                                                                           `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name                      *string                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region                    *string                                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status                    *string                                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subtopics                 []*string                                                                         `json:"Subtopics,omitempty" xml:"Subtopics,omitempty" type:"Repeated"`
+	Tps                       *int64                                                                            `json:"Tps,omitempty" xml:"Tps,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetCheckpointSampleTimestamp(v int64) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.CheckpointSampleTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetDelay(v int64) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetGmtCreate(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetGmtModify(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.GmtModify = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetIdentity(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Identity = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetIp(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetName(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetSubtopics(v []*string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Subtopics = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents) SetTps(v int64) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents {
+	s.Tps = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataReverseStoreList struct {
+	BeginCheckpoint        *string                                                                  `json:"BeginCheckpoint,omitempty" xml:"BeginCheckpoint,omitempty"`
+	Conn                   *int64                                                                   `json:"Conn,omitempty" xml:"Conn,omitempty"`
+	Delay                  *int64                                                                   `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	EndCheckpoint          *string                                                                  `json:"EndCheckpoint,omitempty" xml:"EndCheckpoint,omitempty"`
+	ErrMsg                 *string                                                                  `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	ErrorDetails           []*DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	Gmt                    *int64                                                                   `json:"Gmt,omitempty" xml:"Gmt,omitempty"`
+	GmtCreate              *string                                                                  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string                                                                  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Ip                     *string                                                                  `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LatelyHeartbeatTimeSec *int64                                                                   `json:"LatelyHeartbeatTimeSec,omitempty" xml:"LatelyHeartbeatTimeSec,omitempty"`
+	Name                   *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port                   *int32                                                                   `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region                 *string                                                                  `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status                 *string                                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorePort              *int32                                                                   `json:"StorePort,omitempty" xml:"StorePort,omitempty"`
+	// SubTopic。
+	Subtopic *string `json:"Subtopic,omitempty" xml:"Subtopic,omitempty"`
+	ToSwitch *bool   `json:"ToSwitch,omitempty" xml:"ToSwitch,omitempty"`
+	// Topic。
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Tps   *int64  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseStoreList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseStoreList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetBeginCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.BeginCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetConn(v int64) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Conn = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetDelay(v int64) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetEndCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.EndCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetErrMsg(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetGmt(v int64) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Gmt = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetGmtCreate(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetGmtModified(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetIp(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetLatelyHeartbeatTimeSec(v int64) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.LatelyHeartbeatTimeSec = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetName(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetPort(v int32) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetStorePort(v int32) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.StorePort = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetSubtopic(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Subtopic = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetToSwitch(v bool) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.ToSwitch = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetTopic(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Topic = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreList) SetTps(v int64) *DescribeProjectComponentsResponseBodyDataReverseStoreList {
+	s.Tps = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataStoreList struct {
+	BeginCheckpoint        *string                                                           `json:"BeginCheckpoint,omitempty" xml:"BeginCheckpoint,omitempty"`
+	Conn                   *int64                                                            `json:"Conn,omitempty" xml:"Conn,omitempty"`
+	Delay                  *int64                                                            `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	EndCheckpoint          *string                                                           `json:"EndCheckpoint,omitempty" xml:"EndCheckpoint,omitempty"`
+	ErrMsg                 *string                                                           `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	ErrorDetails           []*DescribeProjectComponentsResponseBodyDataStoreListErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	Gmt                    *int64                                                            `json:"Gmt,omitempty" xml:"Gmt,omitempty"`
+	GmtCreate              *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified            *string                                                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Ip                     *string                                                           `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	LatelyHeartbeatTimeSec *int64                                                            `json:"LatelyHeartbeatTimeSec,omitempty" xml:"LatelyHeartbeatTimeSec,omitempty"`
+	Name                   *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port                   *int32                                                            `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region                 *string                                                           `json:"Region,omitempty" xml:"Region,omitempty"`
+	Status                 *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorePort              *int32                                                            `json:"StorePort,omitempty" xml:"StorePort,omitempty"`
+	// SubTopic。
+	Subtopic *string `json:"Subtopic,omitempty" xml:"Subtopic,omitempty"`
+	ToSwitch *bool   `json:"ToSwitch,omitempty" xml:"ToSwitch,omitempty"`
+	// Topic。
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	Tps   *int64  `json:"Tps,omitempty" xml:"Tps,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataStoreList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataStoreList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetBeginCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.BeginCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetConn(v int64) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Conn = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetDelay(v int64) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Delay = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetEndCheckpoint(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.EndCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetErrMsg(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetErrorDetails(v []*DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetGmt(v int64) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Gmt = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetGmtCreate(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetGmtModified(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetIp(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetLatelyHeartbeatTimeSec(v int64) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.LatelyHeartbeatTimeSec = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetName(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetPort(v int32) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetRegion(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetStatus(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetStorePort(v int32) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.StorePort = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetSubtopic(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Subtopic = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetToSwitch(v bool) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.ToSwitch = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetTopic(v string) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Topic = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreList) SetTps(v int64) *DescribeProjectComponentsResponseBodyDataStoreList {
+	s.Tps = &v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyDataStoreListErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetCode(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetLevel(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetMessage(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetProposal(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetReason(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyDataStoreListErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectComponentsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetCode(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetLevel(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetMessage(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetProposal(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetReason(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DescribeProjectComponentsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectComponentsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectComponentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProjectComponentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectComponentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectComponentsResponse) SetHeaders(v map[string]*string) *DescribeProjectComponentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponse) SetStatusCode(v int32) *DescribeProjectComponentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProjectComponentsResponse) SetBody(v *DescribeProjectComponentsResponseBody) *DescribeProjectComponentsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProjectProgressRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeProjectProgressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectProgressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectProgressRequest) SetId(v string) *DescribeProjectProgressRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeProjectProgressResponseBody struct {
+	Advice      *string                                         `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                         `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *DescribeProjectProgressResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *DescribeProjectProgressResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProjectProgressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectProgressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectProgressResponseBody) SetAdvice(v string) *DescribeProjectProgressResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetCode(v string) *DescribeProjectProgressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetCost(v string) *DescribeProjectProgressResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetData(v *DescribeProjectProgressResponseBodyData) *DescribeProjectProgressResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetErrorDetail(v *DescribeProjectProgressResponseBodyErrorDetail) *DescribeProjectProgressResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetMessage(v string) *DescribeProjectProgressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetPageNumber(v int32) *DescribeProjectProgressResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetPageSize(v int32) *DescribeProjectProgressResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetRequestId(v string) *DescribeProjectProgressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetSuccess(v bool) *DescribeProjectProgressResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBody) SetTotalCount(v int64) *DescribeProjectProgressResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProjectProgressResponseBodyData struct {
+	AlarmLevel                    *string `json:"AlarmLevel,omitempty" xml:"AlarmLevel,omitempty"`
+	CurrentStep                   *string `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
+	EnableFullTransfer            *bool   `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableIncrSync                *bool   `json:"EnableIncrSync,omitempty" xml:"EnableIncrSync,omitempty"`
+	EnableReverseIncrTransfer     *bool   `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer          *bool   `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	FullTransferProgress          *int32  `json:"FullTransferProgress,omitempty" xml:"FullTransferProgress,omitempty"`
+	IncrSyncCheckpoint            *int64  `json:"IncrSyncCheckpoint,omitempty" xml:"IncrSyncCheckpoint,omitempty"`
+	ProjectId                     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ReverseIncrTransferCheckpoint *int64  `json:"ReverseIncrTransferCheckpoint,omitempty" xml:"ReverseIncrTransferCheckpoint,omitempty"`
+	Status                        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StructTransferProgress        *int32  `json:"StructTransferProgress,omitempty" xml:"StructTransferProgress,omitempty"`
+}
+
+func (s DescribeProjectProgressResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectProgressResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetAlarmLevel(v string) *DescribeProjectProgressResponseBodyData {
+	s.AlarmLevel = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetCurrentStep(v string) *DescribeProjectProgressResponseBodyData {
+	s.CurrentStep = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetEnableFullTransfer(v bool) *DescribeProjectProgressResponseBodyData {
+	s.EnableFullTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetEnableIncrSync(v bool) *DescribeProjectProgressResponseBodyData {
+	s.EnableIncrSync = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetEnableReverseIncrTransfer(v bool) *DescribeProjectProgressResponseBodyData {
+	s.EnableReverseIncrTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetEnableStructTransfer(v bool) *DescribeProjectProgressResponseBodyData {
+	s.EnableStructTransfer = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetFullTransferProgress(v int32) *DescribeProjectProgressResponseBodyData {
+	s.FullTransferProgress = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetIncrSyncCheckpoint(v int64) *DescribeProjectProgressResponseBodyData {
+	s.IncrSyncCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetProjectId(v string) *DescribeProjectProgressResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetReverseIncrTransferCheckpoint(v int64) *DescribeProjectProgressResponseBodyData {
+	s.ReverseIncrTransferCheckpoint = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetStatus(v string) *DescribeProjectProgressResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyData) SetStructTransferProgress(v int32) *DescribeProjectProgressResponseBodyData {
+	s.StructTransferProgress = &v
+	return s
+}
+
+type DescribeProjectProgressResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectProgressResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectProgressResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetCode(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetLevel(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetMessage(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetProposal(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetReason(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DescribeProjectProgressResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectProgressResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProjectProgressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectProgressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectProgressResponse) SetHeaders(v map[string]*string) *DescribeProjectProgressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectProgressResponse) SetStatusCode(v int32) *DescribeProjectProgressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProjectProgressResponse) SetBody(v *DescribeProjectProgressResponseBody) *DescribeProjectProgressResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProjectStepMetricRequest struct {
+	Aggregator     *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
+	BeginTimestamp *int64  `json:"BeginTimestamp,omitempty" xml:"BeginTimestamp,omitempty"`
+	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	MaxPointNum    *int32  `json:"MaxPointNum,omitempty" xml:"MaxPointNum,omitempty"`
+	MetricType     *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	StepName       *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+}
+
+func (s DescribeProjectStepMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricRequest) SetAggregator(v string) *DescribeProjectStepMetricRequest {
+	s.Aggregator = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetBeginTimestamp(v int64) *DescribeProjectStepMetricRequest {
+	s.BeginTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetEndTimestamp(v int64) *DescribeProjectStepMetricRequest {
+	s.EndTimestamp = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetMaxPointNum(v int32) *DescribeProjectStepMetricRequest {
+	s.MaxPointNum = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetMetricType(v string) *DescribeProjectStepMetricRequest {
+	s.MetricType = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetProjectId(v string) *DescribeProjectStepMetricRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricRequest) SetStepName(v string) *DescribeProjectStepMetricRequest {
+	s.StepName = &v
+	return s
+}
+
+type DescribeProjectStepMetricResponseBody struct {
+	Advice      *string                                           `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                           `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *DescribeProjectStepMetricResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *DescribeProjectStepMetricResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProjectStepMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetAdvice(v string) *DescribeProjectStepMetricResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetCode(v string) *DescribeProjectStepMetricResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetCost(v string) *DescribeProjectStepMetricResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetData(v *DescribeProjectStepMetricResponseBodyData) *DescribeProjectStepMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetErrorDetail(v *DescribeProjectStepMetricResponseBodyErrorDetail) *DescribeProjectStepMetricResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetMessage(v string) *DescribeProjectStepMetricResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetPageNumber(v int32) *DescribeProjectStepMetricResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetPageSize(v int32) *DescribeProjectStepMetricResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetRequestId(v string) *DescribeProjectStepMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetSuccess(v bool) *DescribeProjectStepMetricResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBody) SetTotalCount(v int64) *DescribeProjectStepMetricResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProjectStepMetricResponseBodyData struct {
+	Aggregator     *string                                             `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
+	Metrics        []*DescribeProjectStepMetricResponseBodyDataMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	ReferenceValue *int64                                              `json:"ReferenceValue,omitempty" xml:"ReferenceValue,omitempty"`
+}
+
+func (s DescribeProjectStepMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponseBodyData) SetAggregator(v string) *DescribeProjectStepMetricResponseBodyData {
+	s.Aggregator = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyData) SetMetrics(v []*DescribeProjectStepMetricResponseBodyDataMetrics) *DescribeProjectStepMetricResponseBodyData {
+	s.Metrics = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyData) SetReferenceValue(v int64) *DescribeProjectStepMetricResponseBodyData {
+	s.ReferenceValue = &v
+	return s
+}
+
+type DescribeProjectStepMetricResponseBodyDataMetrics struct {
+	DataPoints []*DescribeProjectStepMetricResponseBodyDataMetricsDataPoints `json:"DataPoints,omitempty" xml:"DataPoints,omitempty" type:"Repeated"`
+	Name       *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Tags       map[string]*string                                            `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s DescribeProjectStepMetricResponseBodyDataMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponseBodyDataMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponseBodyDataMetrics) SetDataPoints(v []*DescribeProjectStepMetricResponseBodyDataMetricsDataPoints) *DescribeProjectStepMetricResponseBodyDataMetrics {
+	s.DataPoints = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyDataMetrics) SetName(v string) *DescribeProjectStepMetricResponseBodyDataMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyDataMetrics) SetTags(v map[string]*string) *DescribeProjectStepMetricResponseBodyDataMetrics {
+	s.Tags = v
+	return s
+}
+
+type DescribeProjectStepMetricResponseBodyDataMetricsDataPoints struct {
+	Timestamp *int64   `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Value     *float64 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeProjectStepMetricResponseBodyDataMetricsDataPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponseBodyDataMetricsDataPoints) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponseBodyDataMetricsDataPoints) SetTimestamp(v int64) *DescribeProjectStepMetricResponseBodyDataMetricsDataPoints {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyDataMetricsDataPoints) SetValue(v float64) *DescribeProjectStepMetricResponseBodyDataMetricsDataPoints {
+	s.Value = &v
+	return s
+}
+
+type DescribeProjectStepMetricResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectStepMetricResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetCode(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetLevel(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetMessage(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetProposal(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetReason(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DescribeProjectStepMetricResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectStepMetricResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectStepMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProjectStepMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepMetricResponse) SetHeaders(v map[string]*string) *DescribeProjectStepMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponse) SetStatusCode(v int32) *DescribeProjectStepMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProjectStepMetricResponse) SetBody(v *DescribeProjectStepMetricResponseBody) *DescribeProjectStepMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeProjectStepsRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeProjectStepsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsRequest) SetId(v string) *DescribeProjectStepsRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeProjectStepsResponseBody struct {
+	Advice      *string                                      `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                      `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*DescribeProjectStepsResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *DescribeProjectStepsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeProjectStepsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponseBody) SetAdvice(v string) *DescribeProjectStepsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetCode(v string) *DescribeProjectStepsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetCost(v string) *DescribeProjectStepsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetData(v []*DescribeProjectStepsResponseBodyData) *DescribeProjectStepsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetErrorDetail(v *DescribeProjectStepsResponseBodyErrorDetail) *DescribeProjectStepsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetMessage(v string) *DescribeProjectStepsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetPageNumber(v int32) *DescribeProjectStepsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetPageSize(v int32) *DescribeProjectStepsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetRequestId(v string) *DescribeProjectStepsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetSuccess(v bool) *DescribeProjectStepsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBody) SetTotalCount(v int64) *DescribeProjectStepsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeProjectStepsResponseBodyData struct {
+	Description *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtraInfo   *DescribeProjectStepsResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FinishTime  *string                                        `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Name        *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order       *int32                                         `json:"Order,omitempty" xml:"Order,omitempty"`
+	Progress    *int32                                         `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartTime   *string                                        `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepInfo    map[string]interface{}                         `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
+}
+
+func (s DescribeProjectStepsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetDescription(v string) *DescribeProjectStepsResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetExtraInfo(v *DescribeProjectStepsResponseBodyDataExtraInfo) *DescribeProjectStepsResponseBodyData {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetFinishTime(v string) *DescribeProjectStepsResponseBodyData {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetName(v string) *DescribeProjectStepsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetOrder(v int32) *DescribeProjectStepsResponseBodyData {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetProgress(v int32) *DescribeProjectStepsResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetStartTime(v string) *DescribeProjectStepsResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetStatus(v string) *DescribeProjectStepsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyData) SetStepInfo(v map[string]interface{}) *DescribeProjectStepsResponseBodyData {
+	s.StepInfo = v
+	return s
+}
+
+type DescribeProjectStepsResponseBodyDataExtraInfo struct {
+	ErrorCode    *string                                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorDetails []*DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	ErrorMsg     *string                                                      `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorParam   map[string]*string                                           `json:"ErrorParam,omitempty" xml:"ErrorParam,omitempty"`
+	FailedTime   *string                                                      `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
+}
+
+func (s DescribeProjectStepsResponseBodyDataExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponseBodyDataExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfo) SetErrorCode(v string) *DescribeProjectStepsResponseBodyDataExtraInfo {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfo) SetErrorDetails(v []*DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) *DescribeProjectStepsResponseBodyDataExtraInfo {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfo) SetErrorMsg(v string) *DescribeProjectStepsResponseBodyDataExtraInfo {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfo) SetErrorParam(v map[string]*string) *DescribeProjectStepsResponseBodyDataExtraInfo {
+	s.ErrorParam = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfo) SetFailedTime(v string) *DescribeProjectStepsResponseBodyDataExtraInfo {
+	s.FailedTime = &v
+	return s
+}
+
+type DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetCode(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetExtraContext(v map[string]interface{}) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetLevel(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetMessage(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetMessageMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetMessageMcmsKey(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetProposal(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetProposalMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetProposalMcmsKey(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetReason(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetReasonMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetReasonMcmsKey(v string) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails) SetUpstreamErrorDetail(v interface{}) *DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectStepsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s DescribeProjectStepsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetCode(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetLevel(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetMessage(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetProposal(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetReason(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *DescribeProjectStepsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type DescribeProjectStepsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectStepsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProjectStepsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProjectStepsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProjectStepsResponse) SetHeaders(v map[string]*string) *DescribeProjectStepsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectStepsResponse) SetStatusCode(v int32) *DescribeProjectStepsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProjectStepsResponse) SetBody(v *DescribeProjectStepsResponseBody) *DescribeProjectStepsResponse {
 	s.Body = v
 	return s
 }
@@ -10812,17 +20858,20 @@ func (s *DescribeSQLDetailsResponse) SetBody(v *DescribeSQLDetailsResponseBody) 
 }
 
 type DescribeSQLHistoryListRequest struct {
-	// The number of block index cache hits.
+	// The end time of the time range for querying the SQL execution history.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end time in UTC +0.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The end time.
+	// The number of entries returned on each page.
+	// Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of block index cache hits.
+	// SQLID.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The maximum response time.
+	// The start time of the time range for querying the SQL execution history.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The average CPU time.
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -10865,9 +20914,9 @@ func (s *DescribeSQLHistoryListRequest) SetTenantId(v string) *DescribeSQLHistor
 }
 
 type DescribeSQLHistoryListResponseBody struct {
-	// The IP address of the client.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of Bloom filter cache hits.
+	// The execution history of the SQL statement.
 	SQLHistoryList *DescribeSQLHistoryListResponseBodySQLHistoryList `json:"SQLHistoryList,omitempty" xml:"SQLHistoryList,omitempty" type:"Struct"`
 }
 
@@ -10890,9 +20939,9 @@ func (s *DescribeSQLHistoryListResponseBody) SetSQLHistoryList(v *DescribeSQLHis
 }
 
 type DescribeSQLHistoryListResponseBodySQLHistoryList struct {
-	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The I/O wait time.
-	List []*DescribeSQLHistoryListResponseBodySQLHistoryListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The quantity.
+	Count *int64                                                  `json:"Count,omitempty" xml:"Count,omitempty"`
+	List  []*DescribeSQLHistoryListResponseBodySQLHistoryListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSQLHistoryListResponseBodySQLHistoryList) String() string {
@@ -10914,80 +20963,81 @@ func (s *DescribeSQLHistoryListResponseBodySQLHistoryList) SetList(v []*Describe
 }
 
 type DescribeSQLHistoryListResponseBodySQLHistoryListList struct {
-	// The wait time of the client.
+	// The number of rows affected.
 	AffectedRows *int64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
-	// The IP address of the client.
+	// The wait time of the client.
 	AppWaitTime *float32 `json:"AppWaitTime,omitempty" xml:"AppWaitTime,omitempty"`
-	// The number of logical reads.
+	// The number of block cache hits.
 	BlockCacheHit *int64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
 	// The number of block index cache hits.
 	BlockIndexCacheHit *int64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
-	// The username.
-	BloomFilterCacheHit *int64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
-	// The number of remote plans.
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The number of block cache hits.
-	ConcurrencyWaitTime *float32 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
-	// The page number.
-	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The number of retries.
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The number of rows read from the disk.
-	DecodeTime *float32 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
-	// Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
-	DiskRead *int64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
-	// The number of row cache hits.
-	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The maximum CPU time.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of rows read from the memory.
-	EndTimeUTCString *string `json:"EndTimeUTCString,omitempty" xml:"EndTimeUTCString,omitempty"`
-	// The number of rows returned.
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The queuing time.
-	ExecPerSecond *int64 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
-	// The execution history of the SQL statement.
-	ExecuteTime *float32 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The wait time in concurrent execution.
-	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	// Example 1
-	FailTimes *int64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// The number of RPCs.
-	GetPlanTime *float32 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
-	// The number of rows affected.
-	IOWaitTime  *float32 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
-	LogicalRead *int64   `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	// The number of row cache hits.
-	MaxCpuTime *float32 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	// The scheduling duration.
-	MaxElapsedTime *float32 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
-	// The operation that you want to perform.
-	// Set the value to **DescribeSQLHistoryList**.
-	MemstoreReadRowCount *int64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
 	// The number of Bloom filter cache hits.
-	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	// The return result of the request.
-	NetWaitTime *float32 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
-	// It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
-	NodeIp    *string  `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	QueueTime *float32 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
-	// The quantity.
-	RPCCount *int64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
-	// The list.
-	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
-	// The number of executions.
-	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// The I/O wait time.
-	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	// {"name":"DescribeSQLHistoryList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeSQLHistoryList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"SQLHistoryList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"children\":[{\"name\":\"List\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\"  \",\"children\":[{\"name\":\"ExecPerSecond\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"163.0\"},{\"name\":\"MaxCpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"257.967\"},{\"name\":\"BlockCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"14\"},{\"name\":\"DecodeTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"RemotePlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"RPCCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NetWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DiskRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NodeIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"ConcurrencyWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"MemstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"527\"},{\"name\":\"AppWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"ElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"76.382\"},{\"name\":\"MissPlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"AffectedRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ScheduleTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"Event\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"mysql response wait client\"},{\"name\":\"TotalWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"10.966\"},{\"name\":\"ReturnRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecuteTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"61.044\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"tester\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"89403\"},{\"name\":\"GetPlanTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.052\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"MaxElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"260.44\"},{\"name\":\"BlockIndexCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"4\"},{\"name\":\"EndTimeUTCString\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-12-28T02:08:18Z\"},{\"name\":\"EndTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-12-28T02:08:18Z\"},{\"name\":\"RetryCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ClientIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"1*2.***.1*3.***\"},{\"name\":\"BloomFilterCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"IOWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"FailTimes\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"QueueTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"15.275\"},{\"name\":\"RowCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"LogicalRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"19\"},{\"name\":\"SsstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"43086\"}],\"title\":\"\"},{\"name\":\"Count\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"}],\"title\":\"\",\"description\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
-	RowCacheHit *int64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
-	// The end time of the time range for querying the SQL execution history.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
-	ScheduleTime        *float32 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	SsstoreReadRowCount *int64   `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
+	BloomFilterCacheHit *int64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
+	// The IP address of the client.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The wait time in concurrent execution.
+	ConcurrencyWaitTime *float32 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
+	// The average CPU time.
+	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The time to wait for decoding.
+	DecodeTime *float32 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
+	// The number of physical reads.
+	DiskRead *int64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
 	// The average response time.
-	TotalWaitTime *float32 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The end time.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time in UTC +0.
+	EndTimeUTCString *string `json:"EndTimeUTCString,omitempty" xml:"EndTimeUTCString,omitempty"`
+	// The wait event.
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The number of executions per second.
+	ExecPerSecond *int64 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
+	// The internal execution time.
+	ExecuteTime *float32 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The number of executions.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The number of failures.
+	FailTimes *int64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The time spent in hard parsing.
+	GetPlanTime *float32 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
+	// The I/O wait time.
+	IOWaitTime *float32 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
+	// The number of logical reads.
+	LogicalRead *int64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
+	// The maximum CPU time.
+	MaxCpuTime *float32 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// The maximum response time.
+	MaxElapsedTime *float32 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// The number of rows read from the memory.
+	MemstoreReadRowCount *int64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
+	// The number of plan misses.
+	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
 	// The network latency.
+	NetWaitTime *float32 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The queuing time.
+	QueueTime *float32 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// The number of RPCs.
+	RPCCount *int64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
+	// The number of remote plans.
+	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// The number of retries.
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// The number of rows returned.
+	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// The number of row cache hits.
+	RowCacheHit *int64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
+	// The scheduling duration.
+	ScheduleTime *float32 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The number of rows read from the disk.
+	SsstoreReadRowCount *int64 `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
+	// The internal wait time.
+	TotalWaitTime *float32 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	// The username.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -11219,9 +21269,9 @@ func (s *DescribeSQLHistoryListResponse) SetBody(v *DescribeSQLHistoryListRespon
 }
 
 type DescribeSQLPlansRequest struct {
-	// The time when the plan was loaded for the first time, .
+	// SQLID.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The time when the plan was loaded for the first time, .
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -11244,9 +21294,9 @@ func (s *DescribeSQLPlansRequest) SetTenantId(v string) *DescribeSQLPlansRequest
 }
 
 type DescribeSQLPlansResponseBody struct {
-	// The return result of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// master
+	// The information about the execution plan.
 	SQLPlans []*DescribeSQLPlansResponseBodySQLPlans `json:"SQLPlans,omitempty" xml:"SQLPlans,omitempty" type:"Repeated"`
 }
 
@@ -11269,35 +21319,37 @@ func (s *DescribeSQLPlansResponseBody) SetSQLPlans(v []*DescribeSQLPlansResponse
 }
 
 type DescribeSQLPlansResponseBodySQLPlans struct {
-	// The time when the plan was bound.
+	// The average execution duration, in ms.
 	AvgExecutionMS *float32 `json:"AvgExecutionMS,omitempty" xml:"AvgExecutionMS,omitempty"`
-	// The time when the plan was loaded for the first time, in UTC +0.
+	// The average execution duration when the database uses this execution plan, in ms.
 	AvgExecutionTimeMS *int64 `json:"AvgExecutionTimeMS,omitempty" xml:"AvgExecutionTimeMS,omitempty"`
-	FirstLoadTime      *int64 `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
-	// Example 1
+	// The time when the plan was loaded for the first time, .
+	FirstLoadTime *int64 `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	// The time when the plan was loaded for the first time, in UTC +0.
 	FirstLoadTimeUTCString *string `json:"FirstLoadTimeUTCString,omitempty" xml:"FirstLoadTimeUTCString,omitempty"`
-	// It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
+	// The number of hits.
 	HitCount *int32 `json:"HitCount,omitempty" xml:"HitCount,omitempty"`
-	// The unique identifier of the SQL execution plan in the diagnostic system.
-	MergedVersion *int32 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	// The complete execution plan of the SQL statement.
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// The information about the plan.
-	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
-	// SQLID.
-	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
-	// The ID of the SQL execution plan in the database.
-	OutlineTime *int64 `json:"OutlineTime,omitempty" xml:"OutlineTime,omitempty"`
 	// The major compaction version.
-	OutlineTimeUTCString *string `json:"OutlineTimeUTCString,omitempty" xml:"OutlineTimeUTCString,omitempty"`
-	// The information about the execution plan.
-	PlanFull *string `json:"PlanFull,omitempty" xml:"PlanFull,omitempty"`
+	MergedVersion *int32 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The outline data.
+	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
 	// OutlineID.
-	PlanId   *int32  `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// The time when the plan was bound.
+	OutlineTime *int64 `json:"OutlineTime,omitempty" xml:"OutlineTime,omitempty"`
+	// The time when the plan was bound, in UTC +0.
+	OutlineTimeUTCString *string `json:"OutlineTimeUTCString,omitempty" xml:"OutlineTimeUTCString,omitempty"`
+	// The complete execution plan of the SQL statement.
+	PlanFull *string `json:"PlanFull,omitempty" xml:"PlanFull,omitempty"`
+	// The ID of the SQL execution plan in the database.
+	PlanId *int32 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The information about the plan.
 	PlanInfo *string `json:"PlanInfo,omitempty" xml:"PlanInfo,omitempty"`
-	// The return result of the request.
+	// The unique identifier of the SQL execution plan in the diagnostic system.
 	PlanUnionHash *string `json:"PlanUnionHash,omitempty" xml:"PlanUnionHash,omitempty"`
-	// The request ID.
+	// The query SQL statement.
 	QuerySQL *string `json:"QuerySQL,omitempty" xml:"QuerySQL,omitempty"`
 }
 
@@ -11419,13 +21471,20 @@ func (s *DescribeSQLPlansResponse) SetBody(v *DescribeSQLPlansResponseBody) *Des
 }
 
 type DescribeSQLSamplesRequest struct {
-	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end time of querying the slow query execution.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// SQL ID。
-	SqlId     *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// SQL ID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The start time of querying the slow query execution.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tenant ID.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeSQLSamplesRequest) String() string {
@@ -11467,8 +21526,10 @@ func (s *DescribeSQLSamplesRequest) SetTenantId(v string) *DescribeSQLSamplesReq
 }
 
 type DescribeSQLSamplesResponseBody struct {
-	Data      []*DescribeSQLSamplesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of sample data of slow query execution details.
+	Data []*DescribeSQLSamplesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSQLSamplesResponseBody) String() string {
@@ -11490,59 +21551,109 @@ func (s *DescribeSQLSamplesResponseBody) SetRequestId(v string) *DescribeSQLSamp
 }
 
 type DescribeSQLSamplesResponseBodyData struct {
-	AffectedRows        *float64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+	// Average updated rows during the execution period.
+	AffectedRows *float64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+	// Application event waiting time (in milliseconds).
 	ApplicationWaitTime *float64 `json:"ApplicationWaitTime,omitempty" xml:"ApplicationWaitTime,omitempty"`
-	BlockCacheHit       *float64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
-	BlockIndexCacheHit  *float64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
+	// BlockCache hit count
+	BlockCacheHit *float64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
+	// BlockIndexCache hit count
+	BlockIndexCacheHit *float64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
+	// BloomFilterCache hit count.
 	BloomFilterCacheHit *float64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
-	ClientIp            *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientPort          *string  `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// Client IP.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// Client port.
+	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// Concurrency event waiting time (in milliseconds).
 	ConcurrencyWaitTime *float64 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
-	ConsistencyLevel    *string  `json:"ConsistencyLevel,omitempty" xml:"ConsistencyLevel,omitempty"`
-	CpuTime             *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	DbName              *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	DecodeTime          *float64 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
-	DiskReads           *float64 `json:"DiskReads,omitempty" xml:"DiskReads,omitempty"`
-	ElapsedTime         *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	ExecuteTime         *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	ExecutorRpc         *float64 `json:"ExecutorRpc,omitempty" xml:"ExecutorRpc,omitempty"`
+	// Consistency level.
+	ConsistencyLevel *string `json:"ConsistencyLevel,omitempty" xml:"ConsistencyLevel,omitempty"`
+	// CPU time (in milliseconds).
+	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// Database name.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// Syntax parsing time (in milliseconds).
+	DecodeTime *float64 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
+	// Disk read count.
+	DiskReads *float64 `json:"DiskReads,omitempty" xml:"DiskReads,omitempty"`
+	// Response time (in milliseconds).
+	ElapsedTime *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// Plan execution time (in milliseconds).
+	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// Whether to initiate RPC.
+	ExecutorRpc *float64 `json:"ExecutorRpc,omitempty" xml:"ExecutorRpc,omitempty"`
+	// Degree of parallelism.
 	ExpectedWorkerCount *float64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
-	GetPlanTime         *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
-	HitPlan             *float64 `json:"HitPlan,omitempty" xml:"HitPlan,omitempty"`
-	Inner               *bool    `json:"Inner,omitempty" xml:"Inner,omitempty"`
-	MemstoreReadRows    *float64 `json:"MemstoreReadRows,omitempty" xml:"MemstoreReadRows,omitempty"`
-	NetTime             *float64 `json:"NetTime,omitempty" xml:"NetTime,omitempty"`
-	NetWaitTime         *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
-	ObDbId              *float64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
-	// server  ID。
-	ObServerId      *float64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
-	ObUserId        *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
-	PartitionCount  *float64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	PlanId          *float64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanType        *string  `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	QueueTime       *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
-	RequestId       *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestTime     *string  `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
-	RetCode         *float64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	RetryCount      *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	ReturnRows      *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	RowCacheHit     *float64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
-	RpcCount        *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
-	ScheduleTime    *float64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	Server          *string  `json:"Server,omitempty" xml:"Server,omitempty"`
-	SqlType         *string  `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	FullSqlText         *string  `json:"FullSqlText,omitempty" xml:"FullSqlText,omitempty"`
+	// Plan generation time (in milliseconds).
+	GetPlanTime *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
+	// Whether to hit the execution plan.
+	HitPlan *float64 `json:"HitPlan,omitempty" xml:"HitPlan,omitempty"`
+	// Whether an internal SQL.
+	Inner *bool `json:"Inner,omitempty" xml:"Inner,omitempty"`
+	// Memstore read row count.
+	MemstoreReadRows *float64 `json:"MemstoreReadRows,omitempty" xml:"MemstoreReadRows,omitempty"`
+	// Network transmission time (in milliseconds).
+	NetTime *float64 `json:"NetTime,omitempty" xml:"NetTime,omitempty"`
+	// Network enqueue time (in milliseconds).
+	NetWaitTime *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
+	// Database ID.
+	ObDbId *float64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	// Server  ID.
+	ObServerId *float64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	// User ID.
+	ObUserId *float64 `json:"ObUserId,omitempty" xml:"ObUserId,omitempty"`
+	// Average number of partition accessed during the execution period.
+	PartitionCount *float64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// The execution plan ID.
+	PlanId *float64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// Plan type.
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// Queueing time (in milliseconds).
+	QueueTime *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// Request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// SQL request time.
+	RequestTime *string `json:"RequestTime,omitempty" xml:"RequestTime,omitempty"`
+	// Result code.
+	RetCode *float64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Retry count.
+	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// Average returned rows during the execution period.
+	ReturnRows *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// RowCache hit count.
+	RowCacheHit *float64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
+	// Number of RPC sent.
+	RpcCount *float64 `json:"RpcCount,omitempty" xml:"RpcCount,omitempty"`
+	// Schedule event waiting time (in milliseconds).
+	ScheduleTime *float64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The server where the SQL is executed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// SQL type.
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// Ssstore read row count.
 	SsstoreReadRows *float64 `json:"SsstoreReadRows,omitempty" xml:"SsstoreReadRows,omitempty"`
-	Statement       *string  `json:"Statement,omitempty" xml:"Statement,omitempty"`
-	TableScan       *float64 `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
-	TraceId         *string  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// transaction hash。
-	TransHash       *string  `json:"TransHash,omitempty" xml:"TransHash,omitempty"`
+	// Parameterized SQL text.
+	Statement *string `json:"Statement,omitempty" xml:"Statement,omitempty"`
+	// Whether to perform full table scan.
+	TableScan *float64 `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	// Trace ID.
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// Transaction hash.
+	TransHash *string `json:"TransHash,omitempty" xml:"TransHash,omitempty"`
+	// Actual number of SQL execution threads.
 	UsedWorkerCount *float64 `json:"UsedWorkerCount,omitempty" xml:"UsedWorkerCount,omitempty"`
-	UserIoWaitTime  *float64 `json:"UserIoWaitTime,omitempty" xml:"UserIoWaitTime,omitempty"`
-	UserName        *string  `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	WaitCount       *float64 `json:"WaitCount,omitempty" xml:"WaitCount,omitempty"`
-	WaitEvent       *string  `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
-	WaitTime        *float64 `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+	// UserIO event waiting time (in milliseconds).
+	UserIoWaitTime *float64 `json:"UserIoWaitTime,omitempty" xml:"UserIoWaitTime,omitempty"`
+	// Username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// Wait count.
+	WaitCount *float64 `json:"WaitCount,omitempty" xml:"WaitCount,omitempty"`
+	// Longest wait event during the execution period.
+	WaitEvent *string `json:"WaitEvent,omitempty" xml:"WaitEvent,omitempty"`
+	// Wait time (in milliseconds).
+	WaitTime *float64 `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
 func (s DescribeSQLSamplesResponseBodyData) String() string {
@@ -11635,6 +21746,11 @@ func (s *DescribeSQLSamplesResponseBodyData) SetExecutorRpc(v float64) *Describe
 
 func (s *DescribeSQLSamplesResponseBodyData) SetExpectedWorkerCount(v float64) *DescribeSQLSamplesResponseBodyData {
 	s.ExpectedWorkerCount = &v
+	return s
+}
+
+func (s *DescribeSQLSamplesResponseBodyData) SetFullSqlText(v string) *DescribeSQLSamplesResponseBodyData {
+	s.FullSqlText = &v
 	return s
 }
 
@@ -11939,15 +22055,21 @@ func (s *DescribeSecurityIpGroupsResponse) SetBody(v *DescribeSecurityIpGroupsRe
 }
 
 type DescribeSlowSQLHistoryListRequest struct {
-	// The number of RPCs.
+	// The end time of the time range for querying the execution history of the slow SQL statement.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum response time.
+	// The number of the page to return.
+	// - Start value: 1
+	// - Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of plan misses.
+	// The number of rows to return on each page.
+	// - Maximum value: 100
+	// - Default value: 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The wait time for network.
+	// The SQL ID, which uniquely identifies an SQL statement.
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The I/O wait time.
+	// The start time of the time range for querying the execution history of the slow SQL statement.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -11992,10 +22114,9 @@ func (s *DescribeSlowSQLHistoryListRequest) SetTenantId(v string) *DescribeSlowS
 }
 
 type DescribeSlowSQLHistoryListResponseBody struct {
-	// The end time of the time range for querying the execution history of the slow SQL statement.
-	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Hard parsing time。
+	// The execution history of the slow SQL statement.
 	SlowSQLHistoryList *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryList `json:"SlowSQLHistoryList,omitempty" xml:"SlowSQLHistoryList,omitempty" type:"Struct"`
 }
 
@@ -12018,8 +22139,9 @@ func (s *DescribeSlowSQLHistoryListResponseBody) SetSlowSQLHistoryList(v *Descri
 }
 
 type DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryList struct {
+	// The quantity.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The SQL ID, which uniquely identifies an SQL statement.
+	// The return result of the request.
 	List []*DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
@@ -12042,96 +22164,85 @@ func (s *DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryList) SetList(v []*
 }
 
 type DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList struct {
-	// The wait event.
+	// The number of rows affected.
 	AffectedRows *float64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
-	// The number of row cache hits.
-	AppWaitTime *float64 `json:"AppWaitTime,omitempty" xml:"AppWaitTime,omitempty"`
-	// The average CPU time.
-	BlockCacheHit *float64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
-	// The number of rows to return on each page.
-	// - Maximum value: 100
-	// - Default value: 10
-	BlockIndexCacheHit *float64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
-	// The number of executions.
-	BloomFilterCacheHit *float64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
-	// The number of retries.
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// $.parameters[6].schema.example
-	ConcurrencyWaitTime *float64 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
-	// $.parameters[6].schema.enumValueTitles
-	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The IP address of the node.
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// $.parameters[7].schema.description
-	DecodeTime *float64 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
-	// SQLID.
-	DiskRead *float64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
-	// The queuing time.
-	ElapsedTime      *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	EndTimeUTCString *string  `json:"EndTimeUTCString,omitempty" xml:"EndTimeUTCString,omitempty"`
-	// The internal wait time.
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The number of failures.
-	ExecPerSecond *float64 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
-	// The request ID.
-	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The maximum CPU time.
-	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	// The number of rows returned.
-	FailTimes *float64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// Example 1
-	GetPlanTime *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
-	// $.parameters[7].schema.enumValueTitles
-	IOWaitTime *float64 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
-	// The quantity.
-	LogicalRead *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	// DescribeSlowSQLHistoryList
-	MaxCpuTime *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	// ```
-	// http(s)://[Endpoint]/?Action=DescribeSlowSQLHistoryList
-	// &TenantId=t384tolsj****
-	// &StartTime=2021-12-14T02:34:49Z
-	// &EndTime=2021-12-14T08:34:49Z
-	// &SQLId=8D6E84735C0****1823D199E2CA1****
-	// &PageNumber=1
-	// &PageSize=10
-	// &Common request parameters
-	// ```
-	MaxElapsedTime *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
 	// The wait time of the client.
-	MemstoreReadRowCount *float64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
-	// The number of rows read from the disk.
-	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	// $.parameters[7].schema.example
-	NetWaitTime *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
-	// The number of the page to return.
-	// - Start value: 1
-	// - Default value: 1
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// $.parameters[6].schema.description
-	QueueTime *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
-	// The end time.
-	RPCCount *float64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
-	// The time to wait for decoding.
-	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	AppWaitTime *float64 `json:"AppWaitTime,omitempty" xml:"AppWaitTime,omitempty"`
+	// The number of block cache hits.
+	BlockCacheHit *float64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
 	// The number of block index cache hits.
-	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// The number of executions per second.
-	ReturnRows *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	// The execution history of the slow SQL statement.
-	RowCacheHit *float64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
-	// You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
-	ScheduleTime *float64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The return result of the request.
-	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	BlockIndexCacheHit *float64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
+	// The number of Bloom filter cache hits.
+	BloomFilterCacheHit *float64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
 	// The IP address of the client.
-	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The scheduling duration.
-	SsstoreReadRowCount *float64 `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
-	// The return result of the request.
-	TenantName    *string  `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	TotalWaitTime *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The wait time in concurrent execution.
+	ConcurrencyWaitTime *float64 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
+	// The average CPU time.
+	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The time to wait for decoding.
+	DecodeTime *float64 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
 	// The number of physical reads.
+	DiskRead *float64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
+	// The average response time.
+	ElapsedTime *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The end time.
+	EndTimeUTCString *string `json:"EndTimeUTCString,omitempty" xml:"EndTimeUTCString,omitempty"`
+	// The wait event.
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The number of executions per second.
+	ExecPerSecond *float64 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
+	// The internal execution time.
+	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// The number of executions.
+	Executions *float64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The number of failures.
+	FailTimes *float64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// Hard parsing time.
+	GetPlanTime *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
+	// The I/O wait time.
+	IOWaitTime *float64 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
+	// The number of logical reads.
+	LogicalRead *float64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
+	// The maximum CPU time.
+	MaxCpuTime *float64 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// The maximum response time.
+	MaxElapsedTime *float64 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// The number of rows read from the memory.
+	MemstoreReadRowCount *float64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
+	// The number of plan misses.
+	MissPlans *float64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	// The wait time for network.
+	NetWaitTime *float64 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The queuing time.
+	QueueTime *float64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// The number of RPCs.
+	RPCCount *float64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
+	// The number of remote plans.
+	RemotePlans *float64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// The number of retries.
+	RetryCount *float64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// The number of rows returned.
+	ReturnRows *float64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// The number of row cache hits.
+	RowCacheHit *float64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
+	// The scheduling duration.
+	ScheduleTime *float64 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// SQLID.
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The SQL type.
+	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// The number of rows read from the disk.
+	SsstoreReadRowCount *float64 `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
+	// The name of the tenant.
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	// The internal wait time.
+	TotalWaitTime *float64 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	// The username.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -12373,38 +22484,41 @@ func (s *DescribeSlowSQLHistoryListResponse) SetBody(v *DescribeSlowSQLHistoryLi
 }
 
 type DescribeSlowSQLListRequest struct {
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-	DbName  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end time of the time range for querying slow SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter condition.
 	FilterCondition map[string]interface{} `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
-	// The number of plan misses.
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// The number of the page to return.
-	// - Start value: 1
-	// - Default value: 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The return result of the request.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The internal wait time.
-	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// Alibaba Cloud CLI
-	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
 	// The IP address of the database node.
-	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
-	// The queuing time.
-	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	// The list of slow SQL statements.
-	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The number of rows to return on each page.
 	// - Maximum value: 100
 	// - Default value: 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of the page to return.
+	// - Start value: 1
+	// - Default value: 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The SQL ID, which uniquely identifies an SQL statement.
+	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// The search keyword.
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The search parameter.
+	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
+	// The search rule.
+	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	// The search value.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// The sorted column.
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	// The average CPU time.
+	// The sorting rule.
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The list of slow SQL statements.
+	// The start time of the time range for querying slow SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of logical reads.
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -12492,38 +22606,41 @@ func (s *DescribeSlowSQLListRequest) SetTenantId(v string) *DescribeSlowSQLListR
 }
 
 type DescribeSlowSQLListShrinkRequest struct {
-	// It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
-	DbName  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end time of the time range for querying slow SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter condition.
 	FilterConditionShrink *string `json:"FilterCondition,omitempty" xml:"FilterCondition,omitempty"`
-	// The number of plan misses.
-	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	// The number of the page to return.
-	// - Start value: 1
-	// - Default value: 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The return result of the request.
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The internal wait time.
-	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// Alibaba Cloud CLI
-	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
 	// The IP address of the database node.
-	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
-	// The queuing time.
-	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
-	// The list of slow SQL statements.
-	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
 	// The number of rows to return on each page.
 	// - Maximum value: 100
 	// - Default value: 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of the page to return.
+	// - Start value: 1
+	// - Default value: 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The SQL ID, which uniquely identifies an SQL statement.
+	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// The search keyword.
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// The search parameter.
+	SearchParameter *string `json:"SearchParameter,omitempty" xml:"SearchParameter,omitempty"`
+	// The search rule.
+	SearchRule *string `json:"SearchRule,omitempty" xml:"SearchRule,omitempty"`
+	// The search value.
+	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// The sorted column.
 	SortColumn *string `json:"SortColumn,omitempty" xml:"SortColumn,omitempty"`
-	// The average CPU time.
+	// The sorting rule.
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The list of slow SQL statements.
+	// The start time of the time range for querying slow SQL statements.
+	// The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of logical reads.
+	// The ID of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
@@ -12611,11 +22728,11 @@ func (s *DescribeSlowSQLListShrinkRequest) SetTenantId(v string) *DescribeSlowSQ
 }
 
 type DescribeSlowSQLListResponseBody struct {
-	// The SQL text.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sorting rule.
+	// The list of slow SQL statements.
 	SlowSQLList []*DescribeSlowSQLListResponseBodySlowSQLList `json:"SlowSQLList,omitempty" xml:"SlowSQLList,omitempty" type:"Repeated"`
-	// The name of the database.
+	// The total count.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12643,97 +22760,85 @@ func (s *DescribeSlowSQLListResponseBody) SetTotalCount(v int64) *DescribeSlowSQ
 }
 
 type DescribeSlowSQLListResponseBodySlowSQLList struct {
-	// The username.
+	// The number of rows affected.
 	AffectedRows *int64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
-	// The average response time.
-	AppWaitTime *float32 `json:"AppWaitTime,omitempty" xml:"AppWaitTime,omitempty"`
-	// The wait time in concurrent execution.
-	BlockCacheHit *int64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
-	// The request ID.
-	BlockIndexCacheHit  *int64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
-	BloomFilterCacheHit *int64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
-	// ```
-	// http(s)://[Endpoint]/?Action=DescribeSlowSQLList
-	// &TenantId=t2mr3oae0****
-	// &StartTime=2021-06-13 15:40:43
-	// &EndTime=2021-09-13 15:40:43
-	// &DbName=testdb
-	// &SearchKeyWord=update
-	// &SearchParameter=cputime
-	// &SearchRule=>
-	// &SearchValue=0.01
-	// &SQLId=8D6E84****0B8FB1823D199E2CA1****
-	// &NodeIp=i-bp18qljorblo8es*****
-	// &PageNumber=10
-	// &PageSize=1
-	// &SortColumn=cputime
-	// &SortOrder=desc
-	// &Common request parameters
-	// ```
-	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The sorted column.
-	ConcurrencyWaitTime *float32 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
-	// The wait event.
-	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The search value.
-	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The time spent in hard parsing.
-	DecodeTime *float32 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
-	// The IP address of the client.
-	DiskRead *int64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
-	// The search rule.
-	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The number of row cache hits.
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The total count.
-	ExecPerSecond *float32 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
-	// The number of block cache hits.
-	ExecuteTime *float32 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The IP address of the node.
-	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
-	// {"name":"DescribeSlowSQLList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"GET|POST","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeSlowSQLList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"DbName\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SearchKeyWord\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"update\"},{\"name\":\"SearchParameter\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SearchRule\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\">\"},{\"name\":\"SearchValue\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"0.01\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"NodeIp\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"FilterCondition\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"[dbName:sys]\"},{\"name\":\"SortColumn\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SortOrder\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"desc\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"TotalCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"SlowSQLList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\"  \",\"children\":[{\"name\":\"Key\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecPerSecond\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"163.0\"},{\"name\":\"SQLText\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC\"},{\"name\":\"MaxCpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"257.967\"},{\"name\":\"BlockCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"14\"},{\"name\":\"DecodeTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"RemotePlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"RPCCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NetWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DiskRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NodeIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"ConcurrencyWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"MemstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"527\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"AppWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"ElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"76.382\"},{\"name\":\"MissPlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"AffectedRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ScheduleTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"Event\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"mysql response wait client\"},{\"name\":\"TotalWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"10.966\"},{\"name\":\"ReturnRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecuteTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"61.044\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"tester\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"89403\"},{\"name\":\"GetPlanTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.052\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"MaxElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"260.044\"},{\"name\":\"SQLType\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"BlockIndexCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"4\"},{\"name\":\"RetryCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"SQLId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"ClientIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"1*2.***.1*3.***\"},{\"name\":\"BloomFilterCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"IOWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"FailTimes\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"QueueTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"15.275\"},{\"name\":\"RowCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"LogicalRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"19\"},{\"name\":\"SsstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"43086\"}],\"title\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{}"}
-	FailTimes *int64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
-	// The number of Bloom filter cache hits.
-	GetPlanTime *float32 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
-	// You can call this operation to query the list of slow SQL statements
-	IOWaitTime *float32 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
-	// The scheduling duration.
-	Key         *int64 `json:"Key,omitempty" xml:"Key,omitempty"`
-	LogicalRead *int64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
-	// The name of the database.
-	MaxCpuTime *float32 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
-	// The sequence number of the returned SQL statement.
-	MaxElapsedTime *float32 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
-	// The number of logical reads.
-	MemstoreReadRowCount *int64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
-	// The number of RPCs.
-	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
-	// The search parameter.
-	NetWaitTime *float32 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
-	// The number of failures.
-	NodeIp    *string  `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	QueueTime *float32 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
-	// The maximum response time.
-	RPCCount *int64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
-	// The search keyword.
-	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
-	// The number of physical reads.
-	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
 	// The wait time of the client.
-	ReturnRows  *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	RowCacheHit *int64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
-	// Example 1
-	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
-	// The network latency.
-	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// SQLID.
-	SQLType *int64 `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	AppWaitTime *float32 `json:"AppWaitTime,omitempty" xml:"AppWaitTime,omitempty"`
+	// The number of block cache hits.
+	BlockCacheHit *int64 `json:"BlockCacheHit,omitempty" xml:"BlockCacheHit,omitempty"`
+	// The number of block index cache hits.
+	BlockIndexCacheHit *int64 `json:"BlockIndexCacheHit,omitempty" xml:"BlockIndexCacheHit,omitempty"`
+	// The number of Bloom filter cache hits.
+	BloomFilterCacheHit *int64 `json:"BloomFilterCacheHit,omitempty" xml:"BloomFilterCacheHit,omitempty"`
+	// The IP address of the client.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The wait time in concurrent execution.
+	ConcurrencyWaitTime *float32 `json:"ConcurrencyWaitTime,omitempty" xml:"ConcurrencyWaitTime,omitempty"`
+	// The average CPU time.
+	CpuTime *float32 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The time to wait for decoding.
+	DecodeTime *float32 `json:"DecodeTime,omitempty" xml:"DecodeTime,omitempty"`
+	// The number of physical reads.
+	DiskRead *int64 `json:"DiskRead,omitempty" xml:"DiskRead,omitempty"`
+	// The average response time.
+	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The wait event.
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The number of executions per second.
+	ExecPerSecond *float32 `json:"ExecPerSecond,omitempty" xml:"ExecPerSecond,omitempty"`
 	// The internal execution time.
-	ScheduleTime        *float32 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	SsstoreReadRowCount *int64   `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
-	// The SQL ID, which uniquely identifies an SQL statement.
-	TotalWaitTime *float32 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	ExecuteTime *float32 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	// The number of executions.
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// The number of failures.
+	FailTimes *int64 `json:"FailTimes,omitempty" xml:"FailTimes,omitempty"`
+	// The time spent in hard parsing.
+	GetPlanTime *float32 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
+	// The I/O wait time.
+	IOWaitTime *float32 `json:"IOWaitTime,omitempty" xml:"IOWaitTime,omitempty"`
+	// The sequence number of the returned SQL statement.
+	Key *int64 `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The number of logical reads.
+	LogicalRead *int64 `json:"LogicalRead,omitempty" xml:"LogicalRead,omitempty"`
+	// The maximum CPU time.
+	MaxCpuTime *float32 `json:"MaxCpuTime,omitempty" xml:"MaxCpuTime,omitempty"`
+	// The maximum response time.
+	MaxElapsedTime *float32 `json:"MaxElapsedTime,omitempty" xml:"MaxElapsedTime,omitempty"`
+	// The number of rows read from the memory.
+	MemstoreReadRowCount *int64 `json:"MemstoreReadRowCount,omitempty" xml:"MemstoreReadRowCount,omitempty"`
+	// The number of plan misses.
+	MissPlans *int64 `json:"MissPlans,omitempty" xml:"MissPlans,omitempty"`
+	// The network latency.
+	NetWaitTime *float32 `json:"NetWaitTime,omitempty" xml:"NetWaitTime,omitempty"`
+	// The IP address of the node.
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// The queuing time.
+	QueueTime *float32 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// The number of RPCs.
+	RPCCount *int64 `json:"RPCCount,omitempty" xml:"RPCCount,omitempty"`
+	// The number of remote plans.
+	RemotePlans *int64 `json:"RemotePlans,omitempty" xml:"RemotePlans,omitempty"`
+	// The number of retries.
+	RetryCount *int64 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
+	// The number of rows returned.
+	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// The number of row cache hits.
+	RowCacheHit *int64 `json:"RowCacheHit,omitempty" xml:"RowCacheHit,omitempty"`
+	// SQLID.
+	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
+	// The SQL text.
+	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// The SQL type.
+	SQLType *int64 `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
+	// The scheduling duration.
+	ScheduleTime *float32 `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	// The number of rows read from the disk.
+	SsstoreReadRowCount *int64 `json:"SsstoreReadRowCount,omitempty" xml:"SsstoreReadRowCount,omitempty"`
+	// The internal wait time.
+	TotalWaitTime *float32 `json:"TotalWaitTime,omitempty" xml:"TotalWaitTime,omitempty"`
+	// The username.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -13053,6 +23158,7 @@ type DescribeTenantResponseBodyTenant struct {
 	EnableClogService *bool `json:"EnableClogService,omitempty" xml:"EnableClogService,omitempty"`
 	// The deployment type of the primary zone.
 	EnableInternetAddressService *bool `json:"EnableInternetAddressService,omitempty" xml:"EnableInternetAddressService,omitempty"`
+	EnableParallelQuery          *bool `json:"EnableParallelQuery,omitempty" xml:"EnableParallelQuery,omitempty"`
 	EnableReadWriteSplit         *bool `json:"EnableReadWriteSplit,omitempty" xml:"EnableReadWriteSplit,omitempty"`
 	// {
 	//     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
@@ -13119,6 +23225,7 @@ type DescribeTenantResponseBodyTenant struct {
 	// &Common request parameters
 	// ```
 	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
+	MaxParallelQueryDegree    *int64  `json:"MaxParallelQueryDegree,omitempty" xml:"MaxParallelQueryDegree,omitempty"`
 	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The type of the payment.
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
@@ -13201,6 +23308,7 @@ type DescribeTenantResponseBodyTenant struct {
 	TenantResource *DescribeTenantResponseBodyTenantTenantResource `json:"TenantResource,omitempty" xml:"TenantResource,omitempty" type:"Struct"`
 	// The standby zone corresponding to the address for accessing the tenant.
 	TenantZones []*DescribeTenantResponseBodyTenantTenantZones `json:"TenantZones,omitempty" xml:"TenantZones,omitempty" type:"Repeated"`
+	TimeZone    *string                                        `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	// Indicates whether the clog service is available. To enable the clog service, submit a ticket.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -13273,6 +23381,11 @@ func (s *DescribeTenantResponseBodyTenant) SetEnableInternetAddressService(v boo
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetEnableParallelQuery(v bool) *DescribeTenantResponseBodyTenant {
+	s.EnableParallelQuery = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetEnableReadWriteSplit(v bool) *DescribeTenantResponseBodyTenant {
 	s.EnableReadWriteSplit = &v
 	return s
@@ -13285,6 +23398,11 @@ func (s *DescribeTenantResponseBodyTenant) SetInstanceType(v string) *DescribeTe
 
 func (s *DescribeTenantResponseBodyTenant) SetMasterIntranetAddressZone(v string) *DescribeTenantResponseBodyTenant {
 	s.MasterIntranetAddressZone = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenant) SetMaxParallelQueryDegree(v int64) *DescribeTenantResponseBodyTenant {
+	s.MaxParallelQueryDegree = &v
 	return s
 }
 
@@ -13343,6 +23461,11 @@ func (s *DescribeTenantResponseBodyTenant) SetTenantZones(v []*DescribeTenantRes
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenant) SetTimeZone(v string) *DescribeTenantResponseBodyTenant {
+	s.TimeZone = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantResponseBodyTenant {
 	s.VpcId = &v
 	return s
@@ -13351,10 +23474,9 @@ func (s *DescribeTenantResponseBodyTenant) SetVpcId(v string) *DescribeTenantRes
 type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// The primary zone of the tenant.
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// 是否开启事务拆分
-	ConnectionRole *string `json:"ConnectionRole,omitempty" xml:"ConnectionRole,omitempty"`
 	// The Internet address for accessing the tenant.
-	ConnectionZones []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
+	ConnectionZones        []*string `json:"ConnectionZones,omitempty" xml:"ConnectionZones,omitempty" type:"Repeated"`
+	EnableTransactionSplit *bool     `json:"EnableTransactionSplit,omitempty" xml:"EnableTransactionSplit,omitempty"`
 	// The ID of the VPC.
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
 	// 实例系列
@@ -13373,7 +23495,10 @@ type DescribeTenantResponseBodyTenantTenantConnections struct {
 	// 付费类型
 	IntranetAddressStatus *string `json:"IntranetAddressStatus,omitempty" xml:"IntranetAddressStatus,omitempty"`
 	// The ID of the tenant.
-	IntranetPort *int32 `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	IntranetPort        *int32  `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	MaxConnectionNum    *int64  `json:"MaxConnectionNum,omitempty" xml:"MaxConnectionNum,omitempty"`
+	ParallelQueryDegree *int64  `json:"ParallelQueryDegree,omitempty" xml:"ParallelQueryDegree,omitempty"`
+	TenantEndpointId    *string `json:"TenantEndpointId,omitempty" xml:"TenantEndpointId,omitempty"`
 	// The primary zone corresponding to the address for accessing the tenant.
 	TransactionSplit *bool `json:"TransactionSplit,omitempty" xml:"TransactionSplit,omitempty"`
 	// The connection access information of the tenant.
@@ -13398,13 +23523,13 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetAddressType(v str
 	return s
 }
 
-func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionRole(v string) *DescribeTenantResponseBodyTenantTenantConnections {
-	s.ConnectionRole = &v
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionZones(v []*string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.ConnectionZones = v
 	return s
 }
 
-func (s *DescribeTenantResponseBodyTenantTenantConnections) SetConnectionZones(v []*string) *DescribeTenantResponseBodyTenantTenantConnections {
-	s.ConnectionZones = v
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetEnableTransactionSplit(v bool) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.EnableTransactionSplit = &v
 	return s
 }
 
@@ -13448,6 +23573,21 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetIntranetPort(v in
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetMaxConnectionNum(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.MaxConnectionNum = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetParallelQueryDegree(v int64) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.ParallelQueryDegree = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantConnections) SetTenantEndpointId(v string) *DescribeTenantResponseBodyTenantTenantConnections {
+	s.TenantEndpointId = &v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantConnections) SetTransactionSplit(v bool) *DescribeTenantResponseBodyTenantTenantConnections {
 	s.TransactionSplit = &v
 	return s
@@ -13464,13 +23604,15 @@ func (s *DescribeTenantResponseBodyTenantTenantConnections) SetVpcId(v string) *
 }
 
 type DescribeTenantResponseBodyTenantTenantResource struct {
+	CapacityUnit *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty" type:"Struct"`
 	// The enabling status of the Clog service.
 	// CLOSED: The Clog service is disabled.
 	// - ONLINE: The Clog service is running.
 	Cpu *DescribeTenantResponseBodyTenantTenantResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
 	// The status of the intranet address for accessing the tenant.
 	// The value ONLINE indicates that the address is in service.
-	DiskSize *DescribeTenantResponseBodyTenantTenantResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	DiskSize    *DescribeTenantResponseBodyTenantTenantResourceDiskSize    `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
+	LogDiskSize *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty" type:"Struct"`
 	// The description of the tenant.
 	Memory *DescribeTenantResponseBodyTenantTenantResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
 	// Alibaba Cloud CLI
@@ -13485,6 +23627,11 @@ func (s DescribeTenantResponseBodyTenantTenantResource) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantResource) SetCapacityUnit(v *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) *DescribeTenantResponseBodyTenantTenantResource {
+	s.CapacityUnit = v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantResource) SetCpu(v *DescribeTenantResponseBodyTenantTenantResourceCpu) *DescribeTenantResponseBodyTenantTenantResource {
 	s.Cpu = v
 	return s
@@ -13495,6 +23642,11 @@ func (s *DescribeTenantResponseBodyTenantTenantResource) SetDiskSize(v *Describe
 	return s
 }
 
+func (s *DescribeTenantResponseBodyTenantTenantResource) SetLogDiskSize(v *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) *DescribeTenantResponseBodyTenantTenantResource {
+	s.LogDiskSize = v
+	return s
+}
+
 func (s *DescribeTenantResponseBodyTenantTenantResource) SetMemory(v *DescribeTenantResponseBodyTenantTenantResourceMemory) *DescribeTenantResponseBodyTenantTenantResource {
 	s.Memory = v
 	return s
@@ -13502,6 +23654,35 @@ func (s *DescribeTenantResponseBodyTenantTenantResource) SetMemory(v *DescribeTe
 
 func (s *DescribeTenantResponseBodyTenantTenantResource) SetUnitNum(v int32) *DescribeTenantResponseBodyTenantTenantResource {
 	s.UnitNum = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantTenantResourceCapacityUnit struct {
+	MaxCapacityUnit *int32 `json:"MaxCapacityUnit,omitempty" xml:"MaxCapacityUnit,omitempty"`
+	MinCapacityUnit *int32 `json:"MinCapacityUnit,omitempty" xml:"MinCapacityUnit,omitempty"`
+	UsedCapacit     *int32 `json:"UsedCapacit,omitempty" xml:"UsedCapacit,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) SetMaxCapacityUnit(v int32) *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit {
+	s.MaxCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) SetMinCapacityUnit(v int32) *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit {
+	s.MinCapacityUnit = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit) SetUsedCapacit(v int32) *DescribeTenantResponseBodyTenantTenantResourceCapacityUnit {
+	s.UsedCapacit = &v
 	return s
 }
 
@@ -13560,6 +23741,29 @@ func (s DescribeTenantResponseBodyTenantTenantResourceDiskSize) GoString() strin
 
 func (s *DescribeTenantResponseBodyTenantTenantResourceDiskSize) SetUsedDiskSize(v float32) *DescribeTenantResponseBodyTenantTenantResourceDiskSize {
 	s.UsedDiskSize = &v
+	return s
+}
+
+type DescribeTenantResponseBodyTenantTenantResourceLogDiskSize struct {
+	TotalLogDisk *int32 `json:"TotalLogDisk,omitempty" xml:"TotalLogDisk,omitempty"`
+	UnitLogDisk  *int32 `json:"UnitLogDisk,omitempty" xml:"UnitLogDisk,omitempty"`
+}
+
+func (s DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) SetTotalLogDisk(v int32) *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize {
+	s.TotalLogDisk = &v
+	return s
+}
+
+func (s *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize) SetUnitLogDisk(v int32) *DescribeTenantResponseBodyTenantTenantResourceLogDiskSize {
+	s.UnitLogDisk = &v
 	return s
 }
 
@@ -13656,6 +23860,164 @@ func (s *DescribeTenantResponse) SetStatusCode(v int32) *DescribeTenantResponse 
 }
 
 func (s *DescribeTenantResponse) SetBody(v *DescribeTenantResponseBody) *DescribeTenantResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTenantEncryptionRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+}
+
+func (s DescribeTenantEncryptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantEncryptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantEncryptionRequest) SetInstanceId(v string) *DescribeTenantEncryptionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionRequest) SetPageNumber(v int64) *DescribeTenantEncryptionRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionRequest) SetPageSize(v int64) *DescribeTenantEncryptionRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionRequest) SetTenantId(v string) *DescribeTenantEncryptionRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionRequest) SetTenantName(v string) *DescribeTenantEncryptionRequest {
+	s.TenantName = &v
+	return s
+}
+
+type DescribeTenantEncryptionResponseBody struct {
+	RequestId         *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TenantEncryptions []*DescribeTenantEncryptionResponseBodyTenantEncryptions `json:"TenantEncryptions,omitempty" xml:"TenantEncryptions,omitempty" type:"Repeated"`
+	TotalCount        *int32                                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTenantEncryptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantEncryptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantEncryptionResponseBody) SetRequestId(v string) *DescribeTenantEncryptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBody) SetTenantEncryptions(v []*DescribeTenantEncryptionResponseBodyTenantEncryptions) *DescribeTenantEncryptionResponseBody {
+	s.TenantEncryptions = v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBody) SetTotalCount(v int32) *DescribeTenantEncryptionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTenantEncryptionResponseBodyTenantEncryptions struct {
+	EnableEncryption *bool   `json:"EnableEncryption,omitempty" xml:"EnableEncryption,omitempty"`
+	EncryptionKeyId  *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	EncryptionType   *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TenantId         *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	TenantMode       *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
+	TenantName       *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
+	TenantStatus     *string `json:"TenantStatus,omitempty" xml:"TenantStatus,omitempty"`
+}
+
+func (s DescribeTenantEncryptionResponseBodyTenantEncryptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantEncryptionResponseBodyTenantEncryptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetEnableEncryption(v bool) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.EnableEncryption = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetEncryptionKeyId(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.EncryptionKeyId = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetEncryptionType(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetStatus(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetTenantId(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetTenantMode(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.TenantMode = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetTenantName(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.TenantName = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponseBodyTenantEncryptions) SetTenantStatus(v string) *DescribeTenantEncryptionResponseBodyTenantEncryptions {
+	s.TenantStatus = &v
+	return s
+}
+
+type DescribeTenantEncryptionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTenantEncryptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeTenantEncryptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantEncryptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantEncryptionResponse) SetHeaders(v map[string]*string) *DescribeTenantEncryptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponse) SetStatusCode(v int32) *DescribeTenantEncryptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTenantEncryptionResponse) SetBody(v *DescribeTenantEncryptionResponseBody) *DescribeTenantEncryptionResponse {
 	s.Body = v
 	return s
 }
@@ -13792,6 +24154,7 @@ func (s *DescribeTenantMetricsResponse) SetBody(v *DescribeTenantMetricsResponse
 }
 
 type DescribeTenantSecurityConfigsRequest struct {
+	CheckId    *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
@@ -13802,6 +24165,11 @@ func (s DescribeTenantSecurityConfigsRequest) String() string {
 
 func (s DescribeTenantSecurityConfigsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsRequest) SetCheckId(v string) *DescribeTenantSecurityConfigsRequest {
+	s.CheckId = &v
+	return s
 }
 
 func (s *DescribeTenantSecurityConfigsRequest) SetInstanceId(v string) *DescribeTenantSecurityConfigsRequest {
@@ -13838,6 +24206,9 @@ func (s *DescribeTenantSecurityConfigsResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeTenantSecurityConfigsResponseBodyConfigs struct {
+	CheckId               *string                                                                  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckTime             *string                                                                  `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
+	InstanceId            *string                                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	TenantSecurityConfigs []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs `json:"TenantSecurityConfigs,omitempty" xml:"TenantSecurityConfigs,omitempty" type:"Repeated"`
 	TotalCheckCount       *int32                                                                   `json:"TotalCheckCount,omitempty" xml:"TotalCheckCount,omitempty"`
 	TotalRiskCount        *int32                                                                   `json:"TotalRiskCount,omitempty" xml:"TotalRiskCount,omitempty"`
@@ -13849,6 +24220,21 @@ func (s DescribeTenantSecurityConfigsResponseBodyConfigs) String() string {
 
 func (s DescribeTenantSecurityConfigsResponseBodyConfigs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetCheckId(v string) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetCheckTime(v string) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.CheckTime = &v
+	return s
+}
+
+func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetInstanceId(v string) *DescribeTenantSecurityConfigsResponseBodyConfigs {
+	s.InstanceId = &v
+	return s
 }
 
 func (s *DescribeTenantSecurityConfigsResponseBodyConfigs) SetTenantSecurityConfigs(v []*DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs) *DescribeTenantSecurityConfigsResponseBodyConfigs {
@@ -13972,8 +24358,10 @@ func (s *DescribeTenantSecurityConfigsResponse) SetBody(v *DescribeTenantSecurit
 }
 
 type DescribeTenantSecurityIpGroupsRequest struct {
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeTenantSecurityIpGroupsRequest) String() string {
@@ -13995,9 +24383,12 @@ func (s *DescribeTenantSecurityIpGroupsRequest) SetTenantId(v string) *DescribeT
 }
 
 type DescribeTenantSecurityIpGroupsResponseBody struct {
-	RequestId        *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of the whitelist groups.
 	SecurityIpGroups []*DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Repeated"`
-	TotalCount       *int32                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of the whitelist groups.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTenantSecurityIpGroupsResponseBody) String() string {
@@ -14024,10 +24415,16 @@ func (s *DescribeTenantSecurityIpGroupsResponseBody) SetTotalCount(v int32) *Des
 }
 
 type DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups struct {
+	// The group name.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
+	// The whitelist group type.
+	// - instance: the whitelist group from the cluster.
+	// - tenant: the whitelist group of the current tenant.
 	SecurityIpGroupType *string `json:"SecurityIpGroupType,omitempty" xml:"SecurityIpGroupType,omitempty"`
-	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The whitelist of IP addresses. It is a string separated by commas, and each object is an IP string or a CIDR block.
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups) String() string {
@@ -14088,9 +24485,12 @@ func (s *DescribeTenantSecurityIpGroupsResponse) SetBody(v *DescribeTenantSecuri
 }
 
 type DescribeTenantTagsRequest struct {
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TenantIds  *string `json:"TenantIds,omitempty" xml:"TenantIds,omitempty"`
+	// The tags.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The JSON string of the tenant ID.
+	TenantIds *string `json:"TenantIds,omitempty" xml:"TenantIds,omitempty"`
 }
 
 func (s DescribeTenantTagsRequest) String() string {
@@ -14117,7 +24517,9 @@ func (s *DescribeTenantTagsRequest) SetTenantIds(v string) *DescribeTenantTagsRe
 }
 
 type DescribeTenantTagsResponseBody struct {
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of tags.
 	TagResources []*DescribeTenantTagsResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -14140,9 +24542,12 @@ func (s *DescribeTenantTagsResponseBody) SetTagResources(v []*DescribeTenantTags
 }
 
 type DescribeTenantTagsResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag of the resource.
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s DescribeTenantTagsResponseBodyTagResources) String() string {
@@ -14194,6 +24599,23 @@ func (s *DescribeTenantTagsResponse) SetStatusCode(v int32) *DescribeTenantTagsR
 
 func (s *DescribeTenantTagsResponse) SetBody(v *DescribeTenantTagsResponseBody) *DescribeTenantTagsResponse {
 	s.Body = v
+	return s
+}
+
+type DescribeTenantUserRolesRequest struct {
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeTenantUserRolesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTenantUserRolesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTenantUserRolesRequest) SetTenantId(v string) *DescribeTenantUserRolesRequest {
+	s.TenantId = &v
 	return s
 }
 
@@ -14396,9 +24818,10 @@ func (s *DescribeTenantUsersResponseBodyTenantUsers) SetUserType(v string) *Desc
 }
 
 type DescribeTenantUsersResponseBodyTenantUsersDatabases struct {
-	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Table    *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Privileges *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
+	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Table      *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeTenantUsersResponseBodyTenantUsersDatabases) String() string {
@@ -14411,6 +24834,11 @@ func (s DescribeTenantUsersResponseBodyTenantUsersDatabases) GoString() string {
 
 func (s *DescribeTenantUsersResponseBodyTenantUsersDatabases) SetDatabase(v string) *DescribeTenantUsersResponseBodyTenantUsersDatabases {
 	s.Database = &v
+	return s
+}
+
+func (s *DescribeTenantUsersResponseBodyTenantUsersDatabases) SetPrivileges(v string) *DescribeTenantUsersResponseBodyTenantUsersDatabases {
+	s.Privileges = &v
 	return s
 }
 
@@ -14505,11 +24933,10 @@ func (s *DescribeTenantZonesReadResponseBody) SetTenantZones(v []*DescribeTenant
 
 type DescribeTenantZonesReadResponseBodyTenantZones struct {
 	// Example 1
-	IsElectable             *bool   `json:"IsElectable,omitempty" xml:"IsElectable,omitempty"`
-	IsPrimary               *bool   `json:"IsPrimary,omitempty" xml:"IsPrimary,omitempty"`
-	IsReadOnlyAddressMaster *bool   `json:"IsReadOnlyAddressMaster,omitempty" xml:"IsReadOnlyAddressMaster,omitempty"`
-	IsReadable              *string `json:"IsReadable,omitempty" xml:"IsReadable,omitempty"`
-	Zone                    *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	IsElectable *bool   `json:"IsElectable,omitempty" xml:"IsElectable,omitempty"`
+	IsPrimary   *bool   `json:"IsPrimary,omitempty" xml:"IsPrimary,omitempty"`
+	IsReadable  *string `json:"IsReadable,omitempty" xml:"IsReadable,omitempty"`
+	Zone        *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeTenantZonesReadResponseBodyTenantZones) String() string {
@@ -14527,11 +24954,6 @@ func (s *DescribeTenantZonesReadResponseBodyTenantZones) SetIsElectable(v bool) 
 
 func (s *DescribeTenantZonesReadResponseBodyTenantZones) SetIsPrimary(v bool) *DescribeTenantZonesReadResponseBodyTenantZones {
 	s.IsPrimary = &v
-	return s
-}
-
-func (s *DescribeTenantZonesReadResponseBodyTenantZones) SetIsReadOnlyAddressMaster(v bool) *DescribeTenantZonesReadResponseBodyTenantZones {
-	s.IsReadOnlyAddressMaster = &v
 	return s
 }
 
@@ -15689,6 +26111,253 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 	return s
 }
 
+type GetUploadOssUrlRequest struct {
+	EffectiveTimeMinutes *int32  `json:"EffectiveTimeMinutes,omitempty" xml:"EffectiveTimeMinutes,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetUploadOssUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadOssUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadOssUrlRequest) SetEffectiveTimeMinutes(v int32) *GetUploadOssUrlRequest {
+	s.EffectiveTimeMinutes = &v
+	return s
+}
+
+func (s *GetUploadOssUrlRequest) SetType(v string) *GetUploadOssUrlRequest {
+	s.Type = &v
+	return s
+}
+
+type GetUploadOssUrlResponseBody struct {
+	Advice      *string                                 `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *GetUploadOssUrlResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *GetUploadOssUrlResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetUploadOssUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadOssUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadOssUrlResponseBody) SetAdvice(v string) *GetUploadOssUrlResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetCode(v string) *GetUploadOssUrlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetCost(v string) *GetUploadOssUrlResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetData(v *GetUploadOssUrlResponseBodyData) *GetUploadOssUrlResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetErrorDetail(v *GetUploadOssUrlResponseBodyErrorDetail) *GetUploadOssUrlResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetMessage(v string) *GetUploadOssUrlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetPageNumber(v int32) *GetUploadOssUrlResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetPageSize(v int32) *GetUploadOssUrlResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetRequestId(v string) *GetUploadOssUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetSuccess(v bool) *GetUploadOssUrlResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBody) SetTotalCount(v int64) *GetUploadOssUrlResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetUploadOssUrlResponseBodyData struct {
+	ExpectedExpirationTime *string `json:"ExpectedExpirationTime,omitempty" xml:"ExpectedExpirationTime,omitempty"`
+	OssKey                 *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	OssUrl                 *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
+}
+
+func (s GetUploadOssUrlResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadOssUrlResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadOssUrlResponseBodyData) SetExpectedExpirationTime(v string) *GetUploadOssUrlResponseBodyData {
+	s.ExpectedExpirationTime = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyData) SetOssKey(v string) *GetUploadOssUrlResponseBodyData {
+	s.OssKey = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyData) SetOssUrl(v string) *GetUploadOssUrlResponseBodyData {
+	s.OssUrl = &v
+	return s
+}
+
+type GetUploadOssUrlResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s GetUploadOssUrlResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadOssUrlResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetCode(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetLevel(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetMessage(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetMessageMcmsKey(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetProposal(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetProposalMcmsKey(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetReason(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetReasonMcmsKey(v string) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *GetUploadOssUrlResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type GetUploadOssUrlResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUploadOssUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUploadOssUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUploadOssUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUploadOssUrlResponse) SetHeaders(v map[string]*string) *GetUploadOssUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUploadOssUrlResponse) SetStatusCode(v int32) *GetUploadOssUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUploadOssUrlResponse) SetBody(v *GetUploadOssUrlResponseBody) *GetUploadOssUrlResponse {
+	s.Body = v
+	return s
+}
+
 type KillProcessListRequest struct {
 	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -15859,6 +26528,2947 @@ func (s *KillProcessListResponse) SetStatusCode(v int32) *KillProcessListRespons
 }
 
 func (s *KillProcessListResponse) SetBody(v *KillProcessListResponseBody) *KillProcessListResponse {
+	s.Body = v
+	return s
+}
+
+type ListAllLabelsResponseBody struct {
+	Advice      *string                               `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                               `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*ListAllLabelsResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *ListAllLabelsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAllLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllLabelsResponseBody) SetAdvice(v string) *ListAllLabelsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetCode(v string) *ListAllLabelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetCost(v string) *ListAllLabelsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetData(v []*ListAllLabelsResponseBodyData) *ListAllLabelsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetErrorDetail(v *ListAllLabelsResponseBodyErrorDetail) *ListAllLabelsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetMessage(v string) *ListAllLabelsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetPageNumber(v int32) *ListAllLabelsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetPageSize(v int32) *ListAllLabelsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetRequestId(v string) *ListAllLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetSuccess(v bool) *ListAllLabelsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBody) SetTotalCount(v int64) *ListAllLabelsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAllLabelsResponseBodyData struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListAllLabelsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllLabelsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllLabelsResponseBodyData) SetId(v string) *ListAllLabelsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyData) SetName(v string) *ListAllLabelsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type ListAllLabelsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListAllLabelsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllLabelsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetCode(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListAllLabelsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetLevel(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetMessage(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListAllLabelsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetProposal(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListAllLabelsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetReason(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListAllLabelsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListAllLabelsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListAllLabelsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListAllLabelsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListAllLabelsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAllLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAllLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllLabelsResponse) SetHeaders(v map[string]*string) *ListAllLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAllLabelsResponse) SetStatusCode(v int32) *ListAllLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAllLabelsResponse) SetBody(v *ListAllLabelsResponseBody) *ListAllLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataSourceRequest struct {
+	Order      *string   `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *string   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey  *string   `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SortField  *string   `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	Types      []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceRequest) SetOrder(v string) *ListDataSourceRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetPageNumber(v string) *ListDataSourceRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetPageSize(v string) *ListDataSourceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetSearchKey(v string) *ListDataSourceRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetSortField(v string) *ListDataSourceRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListDataSourceRequest) SetTypes(v []*string) *ListDataSourceRequest {
+	s.Types = v
+	return s
+}
+
+type ListDataSourceShrinkRequest struct {
+	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey   *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SortField   *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListDataSourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceShrinkRequest) SetOrder(v string) *ListDataSourceShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDataSourceShrinkRequest) SetPageNumber(v string) *ListDataSourceShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourceShrinkRequest) SetPageSize(v string) *ListDataSourceShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourceShrinkRequest) SetSearchKey(v string) *ListDataSourceShrinkRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListDataSourceShrinkRequest) SetSortField(v string) *ListDataSourceShrinkRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListDataSourceShrinkRequest) SetTypesShrink(v string) *ListDataSourceShrinkRequest {
+	s.TypesShrink = &v
+	return s
+}
+
+type ListDataSourceResponseBody struct {
+	Advice      *string                                `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*ListDataSourceResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *ListDataSourceResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponseBody) SetAdvice(v string) *ListDataSourceResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetCode(v string) *ListDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetCost(v string) *ListDataSourceResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetData(v []*ListDataSourceResponseBodyData) *ListDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetErrorDetail(v *ListDataSourceResponseBodyErrorDetail) *ListDataSourceResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetMessage(v string) *ListDataSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetPageNumber(v int32) *ListDataSourceResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetPageSize(v int32) *ListDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetRequestId(v string) *ListDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetSuccess(v bool) *ListDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBody) SetTotalCount(v int64) *ListDataSourceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDataSourceResponseBodyData struct {
+	Charset                  *string     `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	Cluster                  *string     `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	ConnExtraAttributes      interface{} `json:"ConnExtraAttributes,omitempty" xml:"ConnExtraAttributes,omitempty"`
+	Description              *string     `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate                *string     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified              *string     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Id                       *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	Ip                       *string     `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Name                     *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	OperatingSystem          *string     `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	OracleNlsLengthSemantics *string     `json:"OracleNlsLengthSemantics,omitempty" xml:"OracleNlsLengthSemantics,omitempty"`
+	OracleSid                *string     `json:"OracleSid,omitempty" xml:"OracleSid,omitempty"`
+	Owner                    *string     `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PartnerId                *string     `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
+	Port                     *int32      `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region                   *string     `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwner            *string     `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	Role                     *string     `json:"Role,omitempty" xml:"Role,omitempty"`
+	Schema                   *string     `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	Tenant                   *string     `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+	Timezone                 *string     `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Type                     *string     `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserName                 *string     `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	Version                  *string     `json:"Version,omitempty" xml:"Version,omitempty"`
+	VpcId                    *string     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListDataSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponseBodyData) SetCharset(v string) *ListDataSourceResponseBodyData {
+	s.Charset = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetCluster(v string) *ListDataSourceResponseBodyData {
+	s.Cluster = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetConnExtraAttributes(v interface{}) *ListDataSourceResponseBodyData {
+	s.ConnExtraAttributes = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetDescription(v string) *ListDataSourceResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetGmtCreate(v string) *ListDataSourceResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetGmtModified(v string) *ListDataSourceResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetId(v string) *ListDataSourceResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetIp(v string) *ListDataSourceResponseBodyData {
+	s.Ip = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetName(v string) *ListDataSourceResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetOperatingSystem(v string) *ListDataSourceResponseBodyData {
+	s.OperatingSystem = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetOracleNlsLengthSemantics(v string) *ListDataSourceResponseBodyData {
+	s.OracleNlsLengthSemantics = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetOracleSid(v string) *ListDataSourceResponseBodyData {
+	s.OracleSid = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetOwner(v string) *ListDataSourceResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetPartnerId(v string) *ListDataSourceResponseBodyData {
+	s.PartnerId = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetPort(v int32) *ListDataSourceResponseBodyData {
+	s.Port = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetRegion(v string) *ListDataSourceResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetResourceOwner(v string) *ListDataSourceResponseBodyData {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetRole(v string) *ListDataSourceResponseBodyData {
+	s.Role = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetSchema(v string) *ListDataSourceResponseBodyData {
+	s.Schema = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetTenant(v string) *ListDataSourceResponseBodyData {
+	s.Tenant = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetTimezone(v string) *ListDataSourceResponseBodyData {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetType(v string) *ListDataSourceResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetUserName(v string) *ListDataSourceResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetVersion(v string) *ListDataSourceResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyData) SetVpcId(v string) *ListDataSourceResponseBodyData {
+	s.VpcId = &v
+	return s
+}
+
+type ListDataSourceResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListDataSourceResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetCode(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListDataSourceResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetLevel(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetMessage(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetProposal(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetReason(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListDataSourceResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListDataSourceResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListDataSourceResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListDataSourceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceResponse) SetHeaders(v map[string]*string) *ListDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceResponse) SetStatusCode(v int32) *ListDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourceResponse) SetBody(v *ListDataSourceResponseBody) *ListDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectFullVerifyResultRequest struct {
+	DestSchemas   []*string `json:"DestSchemas,omitempty" xml:"DestSchemas,omitempty" type:"Repeated"`
+	PageNumber    *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId     *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SourceSchemas []*string `json:"SourceSchemas,omitempty" xml:"SourceSchemas,omitempty" type:"Repeated"`
+	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetDestSchemas(v []*string) *ListProjectFullVerifyResultRequest {
+	s.DestSchemas = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetPageNumber(v int32) *ListProjectFullVerifyResultRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetPageSize(v int32) *ListProjectFullVerifyResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetProjectId(v string) *ListProjectFullVerifyResultRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetSourceSchemas(v []*string) *ListProjectFullVerifyResultRequest {
+	s.SourceSchemas = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultRequest) SetStatus(v string) *ListProjectFullVerifyResultRequest {
+	s.Status = &v
+	return s
+}
+
+type ListProjectFullVerifyResultShrinkRequest struct {
+	DestSchemasShrink   *string `json:"DestSchemas,omitempty" xml:"DestSchemas,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectId           *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SourceSchemasShrink *string `json:"SourceSchemas,omitempty" xml:"SourceSchemas,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetDestSchemasShrink(v string) *ListProjectFullVerifyResultShrinkRequest {
+	s.DestSchemasShrink = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetPageNumber(v int32) *ListProjectFullVerifyResultShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetPageSize(v int32) *ListProjectFullVerifyResultShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetProjectId(v string) *ListProjectFullVerifyResultShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetSourceSchemasShrink(v string) *ListProjectFullVerifyResultShrinkRequest {
+	s.SourceSchemasShrink = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultShrinkRequest) SetStatus(v string) *ListProjectFullVerifyResultShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type ListProjectFullVerifyResultResponseBody struct {
+	Advice      *string                                             `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                             `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *ListProjectFullVerifyResultResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *ListProjectFullVerifyResultResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetAdvice(v string) *ListProjectFullVerifyResultResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetCode(v string) *ListProjectFullVerifyResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetCost(v string) *ListProjectFullVerifyResultResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetData(v *ListProjectFullVerifyResultResponseBodyData) *ListProjectFullVerifyResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetErrorDetail(v *ListProjectFullVerifyResultResponseBodyErrorDetail) *ListProjectFullVerifyResultResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetMessage(v string) *ListProjectFullVerifyResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetPageNumber(v int32) *ListProjectFullVerifyResultResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetPageSize(v int32) *ListProjectFullVerifyResultResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetRequestId(v string) *ListProjectFullVerifyResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetSuccess(v bool) *ListProjectFullVerifyResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBody) SetTotalCount(v int64) *ListProjectFullVerifyResultResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectFullVerifyResultResponseBodyData struct {
+	DifferentNumber           *int64                                                                  `json:"DifferentNumber,omitempty" xml:"DifferentNumber,omitempty"`
+	FullVerifyTableStatistics []*ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics `json:"FullVerifyTableStatistics,omitempty" xml:"FullVerifyTableStatistics,omitempty" type:"Repeated"`
+}
+
+func (s ListProjectFullVerifyResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyData) SetDifferentNumber(v int64) *ListProjectFullVerifyResultResponseBodyData {
+	s.DifferentNumber = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyData) SetFullVerifyTableStatistics(v []*ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) *ListProjectFullVerifyResultResponseBodyData {
+	s.FullVerifyTableStatistics = v
+	return s
+}
+
+type ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics struct {
+	ConsistentCount  *int64                                                                              `json:"ConsistentCount,omitempty" xml:"ConsistentCount,omitempty"`
+	DestOnlyCount    *int64                                                                              `json:"DestOnlyCount,omitempty" xml:"DestOnlyCount,omitempty"`
+	DestSchemaName   *string                                                                             `json:"DestSchemaName,omitempty" xml:"DestSchemaName,omitempty"`
+	ErrorDetails     []*ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	Message          *string                                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	MismatchedCount  *int64                                                                              `json:"MismatchedCount,omitempty" xml:"MismatchedCount,omitempty"`
+	Progress         *string                                                                             `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ResultDesc       *string                                                                             `json:"ResultDesc,omitempty" xml:"ResultDesc,omitempty"`
+	ResultType       *string                                                                             `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SourceOnlyCount  *int64                                                                              `json:"SourceOnlyCount,omitempty" xml:"SourceOnlyCount,omitempty"`
+	SourceSchemaName *string                                                                             `json:"SourceSchemaName,omitempty" xml:"SourceSchemaName,omitempty"`
+	SourceTableName  *string                                                                             `json:"SourceTableName,omitempty" xml:"SourceTableName,omitempty"`
+	Status           *string                                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetConsistentCount(v int64) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.ConsistentCount = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetDestOnlyCount(v int64) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.DestOnlyCount = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetDestSchemaName(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.DestSchemaName = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetErrorDetails(v []*ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetMessage(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetMismatchedCount(v int64) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.MismatchedCount = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetProgress(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetResultDesc(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.ResultDesc = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetResultType(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.ResultType = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetSourceOnlyCount(v int64) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.SourceOnlyCount = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetSourceSchemaName(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.SourceSchemaName = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetSourceTableName(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.SourceTableName = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics) SetStatus(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics {
+	s.Status = &v
+	return s
+}
+
+type ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetCode(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetExtraContext(v map[string]interface{}) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetLevel(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetMessage(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetMessageMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetMessageMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetProposal(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetProposalMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetProposalMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetReason(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetReasonMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetReasonMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails) SetUpstreamErrorDetail(v interface{}) *ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectFullVerifyResultResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectFullVerifyResultResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetCode(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetLevel(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetMessage(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetProposal(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetReason(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListProjectFullVerifyResultResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectFullVerifyResultResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectFullVerifyResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectFullVerifyResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFullVerifyResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFullVerifyResultResponse) SetHeaders(v map[string]*string) *ListProjectFullVerifyResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponse) SetStatusCode(v int32) *ListProjectFullVerifyResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectFullVerifyResultResponse) SetBody(v *ListProjectFullVerifyResultResponseBody) *ListProjectFullVerifyResultResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectsRequest struct {
+	LabelIds            []*string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty" type:"Repeated"`
+	Order               *string   `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber          *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey           *string   `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SinkEndpointTypes   []*string `json:"SinkEndpointTypes,omitempty" xml:"SinkEndpointTypes,omitempty" type:"Repeated"`
+	SortField           *string   `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	SourceEndpointTypes []*string `json:"SourceEndpointTypes,omitempty" xml:"SourceEndpointTypes,omitempty" type:"Repeated"`
+	Status              []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	Type                *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	VisibleSubProject   *bool     `json:"VisibleSubProject,omitempty" xml:"VisibleSubProject,omitempty"`
+}
+
+func (s ListProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsRequest) SetLabelIds(v []*string) *ListProjectsRequest {
+	s.LabelIds = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetOrder(v string) *ListProjectsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPageNumber(v int32) *ListProjectsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetPageSize(v int32) *ListProjectsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSearchKey(v string) *ListProjectsRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSinkEndpointTypes(v []*string) *ListProjectsRequest {
+	s.SinkEndpointTypes = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSortField(v string) *ListProjectsRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetSourceEndpointTypes(v []*string) *ListProjectsRequest {
+	s.SourceEndpointTypes = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetStatus(v []*string) *ListProjectsRequest {
+	s.Status = v
+	return s
+}
+
+func (s *ListProjectsRequest) SetType(v string) *ListProjectsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetVisibleSubProject(v bool) *ListProjectsRequest {
+	s.VisibleSubProject = &v
+	return s
+}
+
+type ListProjectsShrinkRequest struct {
+	LabelIdsShrink            *string `json:"LabelIds,omitempty" xml:"LabelIds,omitempty"`
+	Order                     *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber                *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKey                 *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SinkEndpointTypesShrink   *string `json:"SinkEndpointTypes,omitempty" xml:"SinkEndpointTypes,omitempty"`
+	SortField                 *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	SourceEndpointTypesShrink *string `json:"SourceEndpointTypes,omitempty" xml:"SourceEndpointTypes,omitempty"`
+	StatusShrink              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type                      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VisibleSubProject         *bool   `json:"VisibleSubProject,omitempty" xml:"VisibleSubProject,omitempty"`
+}
+
+func (s ListProjectsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsShrinkRequest) SetLabelIdsShrink(v string) *ListProjectsShrinkRequest {
+	s.LabelIdsShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetOrder(v string) *ListProjectsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPageNumber(v int32) *ListProjectsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetPageSize(v int32) *ListProjectsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetSearchKey(v string) *ListProjectsShrinkRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetSinkEndpointTypesShrink(v string) *ListProjectsShrinkRequest {
+	s.SinkEndpointTypesShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetSortField(v string) *ListProjectsShrinkRequest {
+	s.SortField = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetSourceEndpointTypesShrink(v string) *ListProjectsShrinkRequest {
+	s.SourceEndpointTypesShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetStatusShrink(v string) *ListProjectsShrinkRequest {
+	s.StatusShrink = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetType(v string) *ListProjectsShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListProjectsShrinkRequest) SetVisibleSubProject(v bool) *ListProjectsShrinkRequest {
+	s.VisibleSubProject = &v
+	return s
+}
+
+type ListProjectsResponseBody struct {
+	Advice      *string                              `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                              `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*ListProjectsResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *ListProjectsResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBody) SetAdvice(v string) *ListProjectsResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetCode(v string) *ListProjectsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetCost(v string) *ListProjectsResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetData(v []*ListProjectsResponseBodyData) *ListProjectsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetErrorDetail(v *ListProjectsResponseBodyErrorDetail) *ListProjectsResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetMessage(v string) *ListProjectsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetPageNumber(v int32) *ListProjectsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetPageSize(v int32) *ListProjectsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetRequestId(v string) *ListProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetSuccess(v bool) *ListProjectsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListProjectsResponseBody) SetTotalCount(v int64) *ListProjectsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListProjectsResponseBodyData struct {
+	AlarmStats                *ListProjectsResponseBodyDataAlarmStats           `json:"AlarmStats,omitempty" xml:"AlarmStats,omitempty" type:"Struct"`
+	CommonTransferConfig      *ListProjectsResponseBodyDataCommonTransferConfig `json:"CommonTransferConfig,omitempty" xml:"CommonTransferConfig,omitempty" type:"Struct"`
+	DestConnId                *string                                           `json:"DestConnId,omitempty" xml:"DestConnId,omitempty"`
+	EnableFullTransfer        *bool                                             `json:"EnableFullTransfer,omitempty" xml:"EnableFullTransfer,omitempty"`
+	EnableFullVerify          *bool                                             `json:"EnableFullVerify,omitempty" xml:"EnableFullVerify,omitempty"`
+	EnableIncrTransfer        *bool                                             `json:"EnableIncrTransfer,omitempty" xml:"EnableIncrTransfer,omitempty"`
+	EnableIncrVerify          *bool                                             `json:"EnableIncrVerify,omitempty" xml:"EnableIncrVerify,omitempty"`
+	EnableReverseIncrTransfer *bool                                             `json:"EnableReverseIncrTransfer,omitempty" xml:"EnableReverseIncrTransfer,omitempty"`
+	EnableStructTransfer      *bool                                             `json:"EnableStructTransfer,omitempty" xml:"EnableStructTransfer,omitempty"`
+	ExtraInfo                 *ListProjectsResponseBodyDataExtraInfo            `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FullTransferConfig        *ListProjectsResponseBodyDataFullTransferConfig   `json:"FullTransferConfig,omitempty" xml:"FullTransferConfig,omitempty" type:"Struct"`
+	GmtCreate                 *string                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtFinish                 *string                                           `json:"GmtFinish,omitempty" xml:"GmtFinish,omitempty"`
+	GmtModified               *string                                           `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtStart                  *string                                           `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	Id                        *string                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Importance                *string                                           `json:"Importance,omitempty" xml:"Importance,omitempty"`
+	IncrTransferConfig        *ListProjectsResponseBodyDataIncrTransferConfig   `json:"IncrTransferConfig,omitempty" xml:"IncrTransferConfig,omitempty" type:"Struct"`
+	IsMerging                 *bool                                             `json:"IsMerging,omitempty" xml:"IsMerging,omitempty"`
+	IsModifying               *bool                                             `json:"IsModifying,omitempty" xml:"IsModifying,omitempty"`
+	IsSubProject              *bool                                             `json:"IsSubProject,omitempty" xml:"IsSubProject,omitempty"`
+	Labels                    []*ListProjectsResponseBodyDataLabels             `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Name                      *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner                     *string                                           `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SinkConnectInfo           *ListProjectsResponseBodyDataSinkConnectInfo      `json:"SinkConnectInfo,omitempty" xml:"SinkConnectInfo,omitempty" type:"Struct"`
+	SinkEndpointType          *string                                           `json:"SinkEndpointType,omitempty" xml:"SinkEndpointType,omitempty"`
+	SourceConnectInfo         *ListProjectsResponseBodyDataSourceConnectInfo    `json:"SourceConnectInfo,omitempty" xml:"SourceConnectInfo,omitempty" type:"Struct"`
+	SourceEndpointType        *string                                           `json:"SourceEndpointType,omitempty" xml:"SourceEndpointType,omitempty"`
+	Status                    *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Steps                     []*ListProjectsResponseBodyDataSteps              `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	StructTransferConfig      *ListProjectsResponseBodyDataStructTransferConfig `json:"StructTransferConfig,omitempty" xml:"StructTransferConfig,omitempty" type:"Struct"`
+	TransferMapping           *ListProjectsResponseBodyDataTransferMapping      `json:"TransferMapping,omitempty" xml:"TransferMapping,omitempty" type:"Struct"`
+	Type                      *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkerGradeId             *string                                           `json:"WorkerGradeId,omitempty" xml:"WorkerGradeId,omitempty"`
+}
+
+func (s ListProjectsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyData) SetAlarmStats(v *ListProjectsResponseBodyDataAlarmStats) *ListProjectsResponseBodyData {
+	s.AlarmStats = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetCommonTransferConfig(v *ListProjectsResponseBodyDataCommonTransferConfig) *ListProjectsResponseBodyData {
+	s.CommonTransferConfig = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetDestConnId(v string) *ListProjectsResponseBodyData {
+	s.DestConnId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableFullTransfer(v bool) *ListProjectsResponseBodyData {
+	s.EnableFullTransfer = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableFullVerify(v bool) *ListProjectsResponseBodyData {
+	s.EnableFullVerify = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableIncrTransfer(v bool) *ListProjectsResponseBodyData {
+	s.EnableIncrTransfer = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableIncrVerify(v bool) *ListProjectsResponseBodyData {
+	s.EnableIncrVerify = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableReverseIncrTransfer(v bool) *ListProjectsResponseBodyData {
+	s.EnableReverseIncrTransfer = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetEnableStructTransfer(v bool) *ListProjectsResponseBodyData {
+	s.EnableStructTransfer = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetExtraInfo(v *ListProjectsResponseBodyDataExtraInfo) *ListProjectsResponseBodyData {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetFullTransferConfig(v *ListProjectsResponseBodyDataFullTransferConfig) *ListProjectsResponseBodyData {
+	s.FullTransferConfig = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetGmtCreate(v string) *ListProjectsResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetGmtFinish(v string) *ListProjectsResponseBodyData {
+	s.GmtFinish = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetGmtModified(v string) *ListProjectsResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetGmtStart(v string) *ListProjectsResponseBodyData {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetId(v string) *ListProjectsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetImportance(v string) *ListProjectsResponseBodyData {
+	s.Importance = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetIncrTransferConfig(v *ListProjectsResponseBodyDataIncrTransferConfig) *ListProjectsResponseBodyData {
+	s.IncrTransferConfig = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetIsMerging(v bool) *ListProjectsResponseBodyData {
+	s.IsMerging = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetIsModifying(v bool) *ListProjectsResponseBodyData {
+	s.IsModifying = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetIsSubProject(v bool) *ListProjectsResponseBodyData {
+	s.IsSubProject = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetLabels(v []*ListProjectsResponseBodyDataLabels) *ListProjectsResponseBodyData {
+	s.Labels = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetName(v string) *ListProjectsResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetOwner(v string) *ListProjectsResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSinkConnectInfo(v *ListProjectsResponseBodyDataSinkConnectInfo) *ListProjectsResponseBodyData {
+	s.SinkConnectInfo = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSinkEndpointType(v string) *ListProjectsResponseBodyData {
+	s.SinkEndpointType = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSourceConnectInfo(v *ListProjectsResponseBodyDataSourceConnectInfo) *ListProjectsResponseBodyData {
+	s.SourceConnectInfo = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSourceEndpointType(v string) *ListProjectsResponseBodyData {
+	s.SourceEndpointType = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetStatus(v string) *ListProjectsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetSteps(v []*ListProjectsResponseBodyDataSteps) *ListProjectsResponseBodyData {
+	s.Steps = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetStructTransferConfig(v *ListProjectsResponseBodyDataStructTransferConfig) *ListProjectsResponseBodyData {
+	s.StructTransferConfig = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetTransferMapping(v *ListProjectsResponseBodyDataTransferMapping) *ListProjectsResponseBodyData {
+	s.TransferMapping = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetType(v string) *ListProjectsResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyData) SetWorkerGradeId(v string) *ListProjectsResponseBodyData {
+	s.WorkerGradeId = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataAlarmStats struct {
+	AlarmContent               *string           `json:"AlarmContent,omitempty" xml:"AlarmContent,omitempty"`
+	Alarming                   *bool             `json:"Alarming,omitempty" xml:"Alarming,omitempty"`
+	OpenMonitor                *bool             `json:"OpenMonitor,omitempty" xml:"OpenMonitor,omitempty"`
+	RecentlyTriggerCount       *int32            `json:"RecentlyTriggerCount,omitempty" xml:"RecentlyTriggerCount,omitempty"`
+	RuleToRecentlyTriggerCount map[string]*int32 `json:"RuleToRecentlyTriggerCount,omitempty" xml:"RuleToRecentlyTriggerCount,omitempty"`
+	Target                     *string           `json:"Target,omitempty" xml:"Target,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataAlarmStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataAlarmStats) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetAlarmContent(v string) *ListProjectsResponseBodyDataAlarmStats {
+	s.AlarmContent = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetAlarming(v bool) *ListProjectsResponseBodyDataAlarmStats {
+	s.Alarming = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetOpenMonitor(v bool) *ListProjectsResponseBodyDataAlarmStats {
+	s.OpenMonitor = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetRecentlyTriggerCount(v int32) *ListProjectsResponseBodyDataAlarmStats {
+	s.RecentlyTriggerCount = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetRuleToRecentlyTriggerCount(v map[string]*int32) *ListProjectsResponseBodyDataAlarmStats {
+	s.RuleToRecentlyTriggerCount = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataAlarmStats) SetTarget(v string) *ListProjectsResponseBodyDataAlarmStats {
+	s.Target = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataCommonTransferConfig struct {
+	ActiveActive           *bool   `json:"ActiveActive,omitempty" xml:"ActiveActive,omitempty"`
+	DataWorksBusinessName  *string `json:"DataWorksBusinessName,omitempty" xml:"DataWorksBusinessName,omitempty"`
+	DatahubTopicType       *string `json:"DatahubTopicType,omitempty" xml:"DatahubTopicType,omitempty"`
+	MqPartition            *int32  `json:"MqPartition,omitempty" xml:"MqPartition,omitempty"`
+	MqPartitionMode        *string `json:"MqPartitionMode,omitempty" xml:"MqPartitionMode,omitempty"`
+	MqSerializerType       *string `json:"MqSerializerType,omitempty" xml:"MqSerializerType,omitempty"`
+	RocketMqEnableMsgTrace *bool   `json:"RocketMqEnableMsgTrace,omitempty" xml:"RocketMqEnableMsgTrace,omitempty"`
+	RocketMqMsgTags        *string `json:"RocketMqMsgTags,omitempty" xml:"RocketMqMsgTags,omitempty"`
+	RocketMqProducerGroup  *string `json:"RocketMqProducerGroup,omitempty" xml:"RocketMqProducerGroup,omitempty"`
+	RocketMqSendMsgTimeout *int64  `json:"RocketMqSendMsgTimeout,omitempty" xml:"RocketMqSendMsgTimeout,omitempty"`
+	TableCategory          *string `json:"TableCategory,omitempty" xml:"TableCategory,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataCommonTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataCommonTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetActiveActive(v bool) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.ActiveActive = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetDataWorksBusinessName(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.DataWorksBusinessName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetDatahubTopicType(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.DatahubTopicType = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetMqPartition(v int32) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.MqPartition = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetMqPartitionMode(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.MqPartitionMode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetMqSerializerType(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.MqSerializerType = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetRocketMqEnableMsgTrace(v bool) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.RocketMqEnableMsgTrace = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetRocketMqMsgTags(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.RocketMqMsgTags = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetRocketMqProducerGroup(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.RocketMqProducerGroup = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetRocketMqSendMsgTimeout(v int64) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.RocketMqSendMsgTimeout = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataCommonTransferConfig) SetTableCategory(v string) *ListProjectsResponseBodyDataCommonTransferConfig {
+	s.TableCategory = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataExtraInfo struct {
+	AccessObSource            *bool                                    `json:"AccessObSource,omitempty" xml:"AccessObSource,omitempty"`
+	IgnoreUnsupportDdl        *bool                                    `json:"IgnoreUnsupportDdl,omitempty" xml:"IgnoreUnsupportDdl,omitempty"`
+	IncrSyncTimestamp         *int64                                   `json:"IncrSyncTimestamp,omitempty" xml:"IncrSyncTimestamp,omitempty"`
+	LogServiceStartCheckpoint *int64                                   `json:"LogServiceStartCheckpoint,omitempty" xml:"LogServiceStartCheckpoint,omitempty"`
+	MaxConnectorCount         *int32                                   `json:"MaxConnectorCount,omitempty" xml:"MaxConnectorCount,omitempty"`
+	MonitoringIncr            *bool                                    `json:"MonitoringIncr,omitempty" xml:"MonitoringIncr,omitempty"`
+	OverwriteConfig           *bool                                    `json:"OverwriteConfig,omitempty" xml:"OverwriteConfig,omitempty"`
+	ReverseSubtopics          []*string                                `json:"ReverseSubtopics,omitempty" xml:"ReverseSubtopics,omitempty" type:"Repeated"`
+	RunningProgress           *int32                                   `json:"RunningProgress,omitempty" xml:"RunningProgress,omitempty"`
+	RunningStep               *string                                  `json:"RunningStep,omitempty" xml:"RunningStep,omitempty"`
+	SourceStoreKeptHour       *int32                                   `json:"SourceStoreKeptHour,omitempty" xml:"SourceStoreKeptHour,omitempty"`
+	StoreIncr                 *bool                                    `json:"StoreIncr,omitempty" xml:"StoreIncr,omitempty"`
+	SubConds                  map[string][]*DataExtraInfoSubCondsValue `json:"SubConds,omitempty" xml:"SubConds,omitempty"`
+	SubDbs                    map[string][]*DataExtraInfoSubDbsValue   `json:"SubDbs,omitempty" xml:"SubDbs,omitempty"`
+	SubIds                    map[string]*string                       `json:"SubIds,omitempty" xml:"SubIds,omitempty"`
+	Subtopics                 []*string                                `json:"Subtopics,omitempty" xml:"Subtopics,omitempty" type:"Repeated"`
+	SyncDelay                 *int64                                   `json:"SyncDelay,omitempty" xml:"SyncDelay,omitempty"`
+	SyncDelaySampleTimestamp  *int64                                   `json:"SyncDelaySampleTimestamp,omitempty" xml:"SyncDelaySampleTimestamp,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetAccessObSource(v bool) *ListProjectsResponseBodyDataExtraInfo {
+	s.AccessObSource = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetIgnoreUnsupportDdl(v bool) *ListProjectsResponseBodyDataExtraInfo {
+	s.IgnoreUnsupportDdl = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetIncrSyncTimestamp(v int64) *ListProjectsResponseBodyDataExtraInfo {
+	s.IncrSyncTimestamp = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetLogServiceStartCheckpoint(v int64) *ListProjectsResponseBodyDataExtraInfo {
+	s.LogServiceStartCheckpoint = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetMaxConnectorCount(v int32) *ListProjectsResponseBodyDataExtraInfo {
+	s.MaxConnectorCount = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetMonitoringIncr(v bool) *ListProjectsResponseBodyDataExtraInfo {
+	s.MonitoringIncr = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetOverwriteConfig(v bool) *ListProjectsResponseBodyDataExtraInfo {
+	s.OverwriteConfig = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetReverseSubtopics(v []*string) *ListProjectsResponseBodyDataExtraInfo {
+	s.ReverseSubtopics = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetRunningProgress(v int32) *ListProjectsResponseBodyDataExtraInfo {
+	s.RunningProgress = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetRunningStep(v string) *ListProjectsResponseBodyDataExtraInfo {
+	s.RunningStep = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSourceStoreKeptHour(v int32) *ListProjectsResponseBodyDataExtraInfo {
+	s.SourceStoreKeptHour = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetStoreIncr(v bool) *ListProjectsResponseBodyDataExtraInfo {
+	s.StoreIncr = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSubConds(v map[string][]*DataExtraInfoSubCondsValue) *ListProjectsResponseBodyDataExtraInfo {
+	s.SubConds = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSubDbs(v map[string][]*DataExtraInfoSubDbsValue) *ListProjectsResponseBodyDataExtraInfo {
+	s.SubDbs = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSubIds(v map[string]*string) *ListProjectsResponseBodyDataExtraInfo {
+	s.SubIds = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSubtopics(v []*string) *ListProjectsResponseBodyDataExtraInfo {
+	s.Subtopics = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSyncDelay(v int64) *ListProjectsResponseBodyDataExtraInfo {
+	s.SyncDelay = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataExtraInfo) SetSyncDelaySampleTimestamp(v int64) *ListProjectsResponseBodyDataExtraInfo {
+	s.SyncDelaySampleTimestamp = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataFullTransferConfig struct {
+	AllowDestTableNotEmpty   *bool   `json:"AllowDestTableNotEmpty,omitempty" xml:"AllowDestTableNotEmpty,omitempty"`
+	FullTransferSpeedMode    *string `json:"FullTransferSpeedMode,omitempty" xml:"FullTransferSpeedMode,omitempty"`
+	FullVerifySpeedMode      *string `json:"FullVerifySpeedMode,omitempty" xml:"FullVerifySpeedMode,omitempty"`
+	NonePkUkTruncateDstTable *bool   `json:"NonePkUkTruncateDstTable,omitempty" xml:"NonePkUkTruncateDstTable,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataFullTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataFullTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataFullTransferConfig) SetAllowDestTableNotEmpty(v bool) *ListProjectsResponseBodyDataFullTransferConfig {
+	s.AllowDestTableNotEmpty = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataFullTransferConfig) SetFullTransferSpeedMode(v string) *ListProjectsResponseBodyDataFullTransferConfig {
+	s.FullTransferSpeedMode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataFullTransferConfig) SetFullVerifySpeedMode(v string) *ListProjectsResponseBodyDataFullTransferConfig {
+	s.FullVerifySpeedMode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataFullTransferConfig) SetNonePkUkTruncateDstTable(v bool) *ListProjectsResponseBodyDataFullTransferConfig {
+	s.NonePkUkTruncateDstTable = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataIncrTransferConfig struct {
+	EnableIncrSyncStatistics  *bool     `json:"EnableIncrSyncStatistics,omitempty" xml:"EnableIncrSyncStatistics,omitempty"`
+	EnableSequencingWithinTxn *bool     `json:"EnableSequencingWithinTxn,omitempty" xml:"EnableSequencingWithinTxn,omitempty"`
+	IncrSyncConcurrency       *int32    `json:"IncrSyncConcurrency,omitempty" xml:"IncrSyncConcurrency,omitempty"`
+	RecordTypeWhiteList       []*string `json:"RecordTypeWhiteList,omitempty" xml:"RecordTypeWhiteList,omitempty" type:"Repeated"`
+	StartTimestamp            *int64    `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	StoreLogKeptHour          *int32    `json:"StoreLogKeptHour,omitempty" xml:"StoreLogKeptHour,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataIncrTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataIncrTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetEnableIncrSyncStatistics(v bool) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.EnableIncrSyncStatistics = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetEnableSequencingWithinTxn(v bool) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.EnableSequencingWithinTxn = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetIncrSyncConcurrency(v int32) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.IncrSyncConcurrency = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetRecordTypeWhiteList(v []*string) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.RecordTypeWhiteList = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetStartTimestamp(v int64) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.StartTimestamp = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataIncrTransferConfig) SetStoreLogKeptHour(v int32) *ListProjectsResponseBodyDataIncrTransferConfig {
+	s.StoreLogKeptHour = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataLabels struct {
+	Count   *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type    *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataLabels) SetCount(v int32) *ListProjectsResponseBodyDataLabels {
+	s.Count = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataLabels) SetCreator(v string) *ListProjectsResponseBodyDataLabels {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataLabels) SetId(v string) *ListProjectsResponseBodyDataLabels {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataLabels) SetName(v string) *ListProjectsResponseBodyDataLabels {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataLabels) SetType(v int32) *ListProjectsResponseBodyDataLabels {
+	s.Type = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataSinkConnectInfo struct {
+	Charset             *string     `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	ConnExtraAttributes interface{} `json:"ConnExtraAttributes,omitempty" xml:"ConnExtraAttributes,omitempty"`
+	ConnectionInfo      *string     `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	DbEngine            *string     `json:"DbEngine,omitempty" xml:"DbEngine,omitempty"`
+	EndpointId          *string     `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName        *string     `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSide        *string     `json:"EndpointSide,omitempty" xml:"EndpointSide,omitempty"`
+	Host                *string     `json:"Host,omitempty" xml:"Host,omitempty"`
+	Id                  *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NlsLengthSemantics  *string     `json:"NlsLengthSemantics,omitempty" xml:"NlsLengthSemantics,omitempty"`
+	OcpName             *string     `json:"OcpName,omitempty" xml:"OcpName,omitempty"`
+	OperatingSystem     *string     `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	// Owner。
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	Timezone      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataSinkConnectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataSinkConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetCharset(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Charset = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetConnExtraAttributes(v interface{}) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.ConnExtraAttributes = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetConnectionInfo(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.ConnectionInfo = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetDbEngine(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.DbEngine = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetEndpointId(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetEndpointName(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetEndpointSide(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.EndpointSide = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetHost(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetId(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetNlsLengthSemantics(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.NlsLengthSemantics = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetOcpName(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.OcpName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetOperatingSystem(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.OperatingSystem = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetOwner(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetPort(v int32) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetRegion(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetResourceOwner(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetTimezone(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetUsername(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Username = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSinkConnectInfo) SetVersion(v string) *ListProjectsResponseBodyDataSinkConnectInfo {
+	s.Version = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataSourceConnectInfo struct {
+	Charset             *string     `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	ConnExtraAttributes interface{} `json:"ConnExtraAttributes,omitempty" xml:"ConnExtraAttributes,omitempty"`
+	ConnectionInfo      *string     `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	DbEngine            *string     `json:"DbEngine,omitempty" xml:"DbEngine,omitempty"`
+	EndpointId          *string     `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName        *string     `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointSide        *string     `json:"EndpointSide,omitempty" xml:"EndpointSide,omitempty"`
+	Host                *string     `json:"Host,omitempty" xml:"Host,omitempty"`
+	Id                  *string     `json:"Id,omitempty" xml:"Id,omitempty"`
+	NlsLengthSemantics  *string     `json:"NlsLengthSemantics,omitempty" xml:"NlsLengthSemantics,omitempty"`
+	OcpName             *string     `json:"OcpName,omitempty" xml:"OcpName,omitempty"`
+	OperatingSystem     *string     `json:"OperatingSystem,omitempty" xml:"OperatingSystem,omitempty"`
+	// Owner。
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	Timezone      *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataSourceConnectInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataSourceConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetCharset(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Charset = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetConnExtraAttributes(v interface{}) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.ConnExtraAttributes = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetConnectionInfo(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.ConnectionInfo = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetDbEngine(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.DbEngine = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetEndpointId(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetEndpointName(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetEndpointSide(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.EndpointSide = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetHost(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Host = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetId(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetNlsLengthSemantics(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.NlsLengthSemantics = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetOcpName(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.OcpName = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetOperatingSystem(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.OperatingSystem = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetOwner(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetPort(v int32) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Port = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetRegion(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Region = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetResourceOwner(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetTimezone(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetUsername(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Username = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSourceConnectInfo) SetVersion(v string) *ListProjectsResponseBodyDataSourceConnectInfo {
+	s.Version = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataSteps struct {
+	Description *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtraInfo   *ListProjectsResponseBodyDataStepsExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	FinishTime  *string                                     `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Name        *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order       *int32                                      `json:"Order,omitempty" xml:"Order,omitempty"`
+	Progress    *int32                                      `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartTime   *string                                     `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status      *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	StepInfo    map[string]interface{}                      `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataSteps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataSteps) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetDescription(v string) *ListProjectsResponseBodyDataSteps {
+	s.Description = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetExtraInfo(v *ListProjectsResponseBodyDataStepsExtraInfo) *ListProjectsResponseBodyDataSteps {
+	s.ExtraInfo = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetFinishTime(v string) *ListProjectsResponseBodyDataSteps {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetName(v string) *ListProjectsResponseBodyDataSteps {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetOrder(v int32) *ListProjectsResponseBodyDataSteps {
+	s.Order = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetProgress(v int32) *ListProjectsResponseBodyDataSteps {
+	s.Progress = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetStartTime(v string) *ListProjectsResponseBodyDataSteps {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetStatus(v string) *ListProjectsResponseBodyDataSteps {
+	s.Status = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataSteps) SetStepInfo(v map[string]interface{}) *ListProjectsResponseBodyDataSteps {
+	s.StepInfo = v
+	return s
+}
+
+type ListProjectsResponseBodyDataStepsExtraInfo struct {
+	ErrorCode    *string                                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorDetails []*ListProjectsResponseBodyDataStepsExtraInfoErrorDetails `json:"ErrorDetails,omitempty" xml:"ErrorDetails,omitempty" type:"Repeated"`
+	ErrorMsg     *string                                                   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorParam   map[string]*string                                        `json:"ErrorParam,omitempty" xml:"ErrorParam,omitempty"`
+	FailedTime   *string                                                   `json:"FailedTime,omitempty" xml:"FailedTime,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataStepsExtraInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataStepsExtraInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfo) SetErrorCode(v string) *ListProjectsResponseBodyDataStepsExtraInfo {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfo) SetErrorDetails(v []*ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) *ListProjectsResponseBodyDataStepsExtraInfo {
+	s.ErrorDetails = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfo) SetErrorMsg(v string) *ListProjectsResponseBodyDataStepsExtraInfo {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfo) SetErrorParam(v map[string]*string) *ListProjectsResponseBodyDataStepsExtraInfo {
+	s.ErrorParam = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfo) SetFailedTime(v string) *ListProjectsResponseBodyDataStepsExtraInfo {
+	s.FailedTime = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataStepsExtraInfoErrorDetails struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetCode(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetExtraContext(v map[string]interface{}) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetLevel(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetMessage(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetMessageMcmsContext(v map[string]*string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetMessageMcmsKey(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetProposal(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetProposalMcmsContext(v map[string]*string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetProposalMcmsKey(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetReason(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetReasonMcmsContext(v map[string]*string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetReasonMcmsKey(v string) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails) SetUpstreamErrorDetail(v interface{}) *ListProjectsResponseBodyDataStepsExtraInfoErrorDetails {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectsResponseBodyDataStructTransferConfig struct {
+	ByteCharConvertStrategy *string `json:"ByteCharConvertStrategy,omitempty" xml:"ByteCharConvertStrategy,omitempty"`
+	DeferIndexCreation      *bool   `json:"DeferIndexCreation,omitempty" xml:"DeferIndexCreation,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataStructTransferConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataStructTransferConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataStructTransferConfig) SetByteCharConvertStrategy(v string) *ListProjectsResponseBodyDataStructTransferConfig {
+	s.ByteCharConvertStrategy = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyDataStructTransferConfig) SetDeferIndexCreation(v bool) *ListProjectsResponseBodyDataStructTransferConfig {
+	s.DeferIndexCreation = &v
+	return s
+}
+
+type ListProjectsResponseBodyDataTransferMapping struct {
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+}
+
+func (s ListProjectsResponseBodyDataTransferMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyDataTransferMapping) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyDataTransferMapping) SetMode(v string) *ListProjectsResponseBodyDataTransferMapping {
+	s.Mode = &v
+	return s
+}
+
+type ListProjectsResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListProjectsResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetCode(v string) *ListProjectsResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListProjectsResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetLevel(v string) *ListProjectsResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetMessage(v string) *ListProjectsResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListProjectsResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListProjectsResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetProposal(v string) *ListProjectsResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListProjectsResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListProjectsResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetReason(v string) *ListProjectsResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListProjectsResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListProjectsResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListProjectsResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListProjectsResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListProjectsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectsResponse) SetHeaders(v map[string]*string) *ListProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWorkerInstancesRequest struct {
+	DestType     *string   `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	InstanceName *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OnlyBindable *bool     `json:"OnlyBindable,omitempty" xml:"OnlyBindable,omitempty"`
+	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SourceType   *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Specs        []*string `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkerInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesRequest) SetDestType(v string) *ListWorkerInstancesRequest {
+	s.DestType = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetInstanceName(v string) *ListWorkerInstancesRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetOnlyBindable(v bool) *ListWorkerInstancesRequest {
+	s.OnlyBindable = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetPageNumber(v int32) *ListWorkerInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetPageSize(v int32) *ListWorkerInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetSourceType(v string) *ListWorkerInstancesRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListWorkerInstancesRequest) SetSpecs(v []*string) *ListWorkerInstancesRequest {
+	s.Specs = v
+	return s
+}
+
+type ListWorkerInstancesShrinkRequest struct {
+	DestType     *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	OnlyBindable *bool   `json:"OnlyBindable,omitempty" xml:"OnlyBindable,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpecsShrink  *string `json:"Specs,omitempty" xml:"Specs,omitempty"`
+}
+
+func (s ListWorkerInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetDestType(v string) *ListWorkerInstancesShrinkRequest {
+	s.DestType = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetInstanceName(v string) *ListWorkerInstancesShrinkRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetOnlyBindable(v bool) *ListWorkerInstancesShrinkRequest {
+	s.OnlyBindable = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetPageNumber(v int32) *ListWorkerInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetPageSize(v int32) *ListWorkerInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetSourceType(v string) *ListWorkerInstancesShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListWorkerInstancesShrinkRequest) SetSpecsShrink(v string) *ListWorkerInstancesShrinkRequest {
+	s.SpecsShrink = &v
+	return s
+}
+
+type ListWorkerInstancesResponseBody struct {
+	Advice      *string                                     `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                     `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        []*ListWorkerInstancesResponseBodyData      `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorDetail *ListWorkerInstancesResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWorkerInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesResponseBody) SetAdvice(v string) *ListWorkerInstancesResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetCode(v string) *ListWorkerInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetCost(v string) *ListWorkerInstancesResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetData(v []*ListWorkerInstancesResponseBodyData) *ListWorkerInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetErrorDetail(v *ListWorkerInstancesResponseBodyErrorDetail) *ListWorkerInstancesResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetMessage(v string) *ListWorkerInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetPageNumber(v int32) *ListWorkerInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetPageSize(v int32) *ListWorkerInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetRequestId(v string) *ListWorkerInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetSuccess(v bool) *ListWorkerInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBody) SetTotalCount(v int64) *ListWorkerInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWorkerInstancesResponseBodyData struct {
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Spec        *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListWorkerInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetGmtCreate(v string) *ListWorkerInstancesResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetId(v string) *ListWorkerInstancesResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetName(v string) *ListWorkerInstancesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetProjectId(v string) *ListWorkerInstancesResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetProjectName(v string) *ListWorkerInstancesResponseBodyData {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetProjectType(v string) *ListWorkerInstancesResponseBodyData {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetRegion(v string) *ListWorkerInstancesResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetSpec(v string) *ListWorkerInstancesResponseBodyData {
+	s.Spec = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyData) SetStatus(v string) *ListWorkerInstancesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListWorkerInstancesResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ListWorkerInstancesResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetCode(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetLevel(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetMessage(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetProposal(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetReason(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ListWorkerInstancesResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ListWorkerInstancesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkerInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkerInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkerInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkerInstancesResponse) SetHeaders(v map[string]*string) *ListWorkerInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkerInstancesResponse) SetStatusCode(v int32) *ListWorkerInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkerInstancesResponse) SetBody(v *ListWorkerInstancesResponseBody) *ListWorkerInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -16119,8 +29729,6 @@ func (s *ModifyInstanceNameRequest) SetInstanceName(v string) *ModifyInstanceNam
 }
 
 type ModifyInstanceNameResponseBody struct {
-	// The name of the OceanBase cluster.
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The operation that you want to perform.
 	// Set the value to **ModifyInstanceName**.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -16132,11 +29740,6 @@ func (s ModifyInstanceNameResponseBody) String() string {
 
 func (s ModifyInstanceNameResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyInstanceNameResponseBody) SetInstanceName(v string) *ModifyInstanceNameResponseBody {
-	s.InstanceName = &v
-	return s
 }
 
 func (s *ModifyInstanceNameResponseBody) SetRequestId(v string) *ModifyInstanceNameResponseBody {
@@ -16174,6 +29777,7 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 }
 
 type ModifyInstanceNodeNumRequest struct {
+	DryRun     *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NodeNum    *string `json:"NodeNum,omitempty" xml:"NodeNum,omitempty"`
 }
@@ -16184,6 +29788,11 @@ func (s ModifyInstanceNodeNumRequest) String() string {
 
 func (s ModifyInstanceNodeNumRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumRequest) SetDryRun(v bool) *ModifyInstanceNodeNumRequest {
+	s.DryRun = &v
+	return s
 }
 
 func (s *ModifyInstanceNodeNumRequest) SetInstanceId(v string) *ModifyInstanceNodeNumRequest {
@@ -16220,7 +29829,8 @@ func (s *ModifyInstanceNodeNumResponseBody) SetRequestId(v string) *ModifyInstan
 }
 
 type ModifyInstanceNodeNumResponseBodyData struct {
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	DryRunResult *bool   `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
+	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s ModifyInstanceNodeNumResponseBodyData) String() string {
@@ -16229,6 +29839,11 @@ func (s ModifyInstanceNodeNumResponseBodyData) String() string {
 
 func (s ModifyInstanceNodeNumResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceNodeNumResponseBodyData) SetDryRunResult(v bool) *ModifyInstanceNodeNumResponseBodyData {
+	s.DryRunResult = &v
+	return s
 }
 
 func (s *ModifyInstanceNodeNumResponseBodyData) SetOrderId(v string) *ModifyInstanceNodeNumResponseBodyData {
@@ -16267,6 +29882,7 @@ func (s *ModifyInstanceNodeNumResponse) SetBody(v *ModifyInstanceNodeNumResponse
 
 type ModifyInstanceSpecRequest struct {
 	DiskSize      *int64  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DryRun        *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -16281,6 +29897,11 @@ func (s ModifyInstanceSpecRequest) GoString() string {
 
 func (s *ModifyInstanceSpecRequest) SetDiskSize(v int64) *ModifyInstanceSpecRequest {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetDryRun(v bool) *ModifyInstanceSpecRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -16318,7 +29939,8 @@ func (s *ModifyInstanceSpecResponseBody) SetRequestId(v string) *ModifyInstanceS
 }
 
 type ModifyInstanceSpecResponseBodyData struct {
-	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	DryRunResult *bool   `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty"`
+	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s ModifyInstanceSpecResponseBodyData) String() string {
@@ -16327,6 +29949,11 @@ func (s ModifyInstanceSpecResponseBodyData) String() string {
 
 func (s ModifyInstanceSpecResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyInstanceSpecResponseBodyData) SetDryRunResult(v bool) *ModifyInstanceSpecResponseBodyData {
+	s.DryRunResult = &v
+	return s
 }
 
 func (s *ModifyInstanceSpecResponseBodyData) SetOrderId(v string) *ModifyInstanceSpecResponseBodyData {
@@ -16674,6 +30301,124 @@ func (s *ModifySecurityIpsResponse) SetBody(v *ModifySecurityIpsResponseBody) *M
 	return s
 }
 
+type ModifyTenantEncryptionRequest struct {
+	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	EncryptionType  *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId        *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ModifyTenantEncryptionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantEncryptionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantEncryptionRequest) SetEncryptionKeyId(v string) *ModifyTenantEncryptionRequest {
+	s.EncryptionKeyId = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionRequest) SetEncryptionType(v string) *ModifyTenantEncryptionRequest {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionRequest) SetInstanceId(v string) *ModifyTenantEncryptionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionRequest) SetTenantId(v string) *ModifyTenantEncryptionRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ModifyTenantEncryptionResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// job
+	TenantEncryption *ModifyTenantEncryptionResponseBodyTenantEncryption `json:"TenantEncryption,omitempty" xml:"TenantEncryption,omitempty" type:"Struct"`
+}
+
+func (s ModifyTenantEncryptionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantEncryptionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantEncryptionResponseBody) SetRequestId(v string) *ModifyTenantEncryptionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionResponseBody) SetTenantEncryption(v *ModifyTenantEncryptionResponseBodyTenantEncryption) *ModifyTenantEncryptionResponseBody {
+	s.TenantEncryption = v
+	return s
+}
+
+type ModifyTenantEncryptionResponseBodyTenantEncryption struct {
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	TenantId       *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ModifyTenantEncryptionResponseBodyTenantEncryption) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantEncryptionResponseBodyTenantEncryption) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantEncryptionResponseBodyTenantEncryption) SetEncryptionType(v string) *ModifyTenantEncryptionResponseBodyTenantEncryption {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionResponseBodyTenantEncryption) SetInstanceId(v string) *ModifyTenantEncryptionResponseBodyTenantEncryption {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionResponseBodyTenantEncryption) SetTenantId(v string) *ModifyTenantEncryptionResponseBodyTenantEncryption {
+	s.TenantId = &v
+	return s
+}
+
+type ModifyTenantEncryptionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyTenantEncryptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTenantEncryptionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTenantEncryptionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTenantEncryptionResponse) SetHeaders(v map[string]*string) *ModifyTenantEncryptionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTenantEncryptionResponse) SetStatusCode(v int32) *ModifyTenantEncryptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTenantEncryptionResponse) SetBody(v *ModifyTenantEncryptionResponseBody) *ModifyTenantEncryptionResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyTenantPrimaryZoneRequest struct {
 	// The primary zone of the tenant.
 	// It is one of the zones in which the cluster is deployed.
@@ -16686,12 +30431,9 @@ type ModifyTenantPrimaryZoneRequest struct {
 	// &Common request parameters
 	// ```
 	MasterIntranetAddressZone *string `json:"MasterIntranetAddressZone,omitempty" xml:"MasterIntranetAddressZone,omitempty"`
-	// The switching mode.
-	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The ID of the vSwitch.
-	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	// Example 1
-	PrimaryZoneDeployType *string `json:"PrimaryZoneDeployType,omitempty" xml:"PrimaryZoneDeployType,omitempty"`
+	PrimaryZone      *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	TenantEndpointId *string `json:"TenantEndpointId,omitempty" xml:"TenantEndpointId,omitempty"`
 	// The return result of the request.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	// The request ID.
@@ -16716,18 +30458,13 @@ func (s *ModifyTenantPrimaryZoneRequest) SetMasterIntranetAddressZone(v string) 
 	return s
 }
 
-func (s *ModifyTenantPrimaryZoneRequest) SetModifyType(v string) *ModifyTenantPrimaryZoneRequest {
-	s.ModifyType = &v
-	return s
-}
-
 func (s *ModifyTenantPrimaryZoneRequest) SetPrimaryZone(v string) *ModifyTenantPrimaryZoneRequest {
 	s.PrimaryZone = &v
 	return s
 }
 
-func (s *ModifyTenantPrimaryZoneRequest) SetPrimaryZoneDeployType(v string) *ModifyTenantPrimaryZoneRequest {
-	s.PrimaryZoneDeployType = &v
+func (s *ModifyTenantPrimaryZoneRequest) SetTenantEndpointId(v string) *ModifyTenantPrimaryZoneRequest {
+	s.TenantEndpointId = &v
 	return s
 }
 
@@ -16793,8 +30530,10 @@ type ModifyTenantResourceRequest struct {
 	// The operation that you want to perform.
 	// Set the value to **ModifyTenantResource**.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LogDisk    *int64  `json:"LogDisk,omitempty" xml:"LogDisk,omitempty"`
 	// The ID of the tenant.
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory           *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	ReadOnlyZoneList *string `json:"ReadOnlyZoneList,omitempty" xml:"ReadOnlyZoneList,omitempty"`
 	// The information about the CPU resources of the tenant.
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
@@ -16817,8 +30556,18 @@ func (s *ModifyTenantResourceRequest) SetInstanceId(v string) *ModifyTenantResou
 	return s
 }
 
+func (s *ModifyTenantResourceRequest) SetLogDisk(v int64) *ModifyTenantResourceRequest {
+	s.LogDisk = &v
+	return s
+}
+
 func (s *ModifyTenantResourceRequest) SetMemory(v int32) *ModifyTenantResourceRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *ModifyTenantResourceRequest) SetReadOnlyZoneList(v string) *ModifyTenantResourceRequest {
+	s.ReadOnlyZoneList = &v
 	return s
 }
 
@@ -16880,10 +30629,18 @@ func (s *ModifyTenantResourceResponse) SetBody(v *ModifyTenantResourceResponseBo
 }
 
 type ModifyTenantSecurityIpGroupRequest struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The group name of the whitelist group of IP addresses.
+	//
+	// It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The list of IP addresses in the whitelist group.
+	//
+	// It is a JSON array. Each object in the array is an IP address or a CIDR block. You can have up to 40 whitelists.
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyTenantSecurityIpGroupRequest) String() string {
@@ -16915,7 +30672,9 @@ func (s *ModifyTenantSecurityIpGroupRequest) SetTenantId(v string) *ModifyTenant
 }
 
 type ModifyTenantSecurityIpGroupResponseBody struct {
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the IP address whitelist group.
 	SecurityIpGroup *ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup `json:"SecurityIpGroup,omitempty" xml:"SecurityIpGroup,omitempty" type:"Struct"`
 }
 
@@ -16938,10 +30697,16 @@ func (s *ModifyTenantSecurityIpGroupResponseBody) SetSecurityIpGroup(v *ModifyTe
 }
 
 type ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup struct {
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the OceanBase cluster.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the whitelist group.
 	SecurityIpGroupName *string `json:"SecurityIpGroupName,omitempty" xml:"SecurityIpGroupName,omitempty"`
-	SecurityIps         *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
-	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The list of IP addresses in the IP address whitelist group.
+	//
+	// It is a string separated by commas, and each object is an IP address or a CIDR block.
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup) String() string {
@@ -17002,9 +30767,12 @@ func (s *ModifyTenantSecurityIpGroupResponse) SetBody(v *ModifyTenantSecurityIpG
 }
 
 type ModifyTenantTagsRequest struct {
+	// The ID of the OceanBase cluster.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Tags       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tags.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the tenant.
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s ModifyTenantTagsRequest) String() string {
@@ -17031,7 +30799,9 @@ func (s *ModifyTenantTagsRequest) SetTenantId(v string) *ModifyTenantTagsRequest
 }
 
 type ModifyTenantTagsResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The update status of the tags.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17761,6 +31531,218 @@ func (s *ReleaseOmsOpenAPIProjectResponse) SetBody(v *ReleaseOmsOpenAPIProjectRe
 	return s
 }
 
+type ReleaseProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ReleaseProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProjectRequest) SetId(v string) *ReleaseProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type ReleaseProjectResponseBody struct {
+	Advice      *string                                `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                            `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *ReleaseProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ReleaseProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProjectResponseBody) SetAdvice(v string) *ReleaseProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetCode(v string) *ReleaseProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetCost(v string) *ReleaseProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetData(v interface{}) *ReleaseProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetErrorDetail(v *ReleaseProjectResponseBodyErrorDetail) *ReleaseProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetMessage(v string) *ReleaseProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetPageNumber(v int32) *ReleaseProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetPageSize(v int32) *ReleaseProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetRequestId(v string) *ReleaseProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetSuccess(v bool) *ReleaseProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBody) SetTotalCount(v int64) *ReleaseProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ReleaseProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ReleaseProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetCode(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ReleaseProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetLevel(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetMessage(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ReleaseProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetProposal(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ReleaseProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetReason(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ReleaseProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ReleaseProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ReleaseProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ReleaseProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ReleaseProjectResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseProjectResponse) SetHeaders(v map[string]*string) *ReleaseProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseProjectResponse) SetStatusCode(v int32) *ReleaseProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseProjectResponse) SetBody(v *ReleaseProjectResponseBody) *ReleaseProjectResponse {
+	s.Body = v
+	return s
+}
+
 type ResetOmsOpenAPIProjectRequest struct {
 	// The total count, which takes effect in a pagination query.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18136,6 +32118,218 @@ func (s *ResumeOmsOpenAPIProjectResponse) SetStatusCode(v int32) *ResumeOmsOpenA
 }
 
 func (s *ResumeOmsOpenAPIProjectResponse) SetBody(v *ResumeOmsOpenAPIProjectResponseBody) *ResumeOmsOpenAPIProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ResumeProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ResumeProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeProjectRequest) SetId(v string) *ResumeProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type ResumeProjectResponseBody struct {
+	Advice      *string                               `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                               `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        interface{}                           `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *ResumeProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ResumeProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeProjectResponseBody) SetAdvice(v string) *ResumeProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetCode(v string) *ResumeProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetCost(v string) *ResumeProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetData(v interface{}) *ResumeProjectResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetErrorDetail(v *ResumeProjectResponseBodyErrorDetail) *ResumeProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetMessage(v string) *ResumeProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetPageNumber(v int32) *ResumeProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetPageSize(v int32) *ResumeProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetRequestId(v string) *ResumeProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetSuccess(v bool) *ResumeProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBody) SetTotalCount(v int64) *ResumeProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ResumeProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s ResumeProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetCode(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *ResumeProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetLevel(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetMessage(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *ResumeProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetProposal(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *ResumeProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetReason(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *ResumeProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *ResumeProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *ResumeProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *ResumeProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type ResumeProjectResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResumeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResumeProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResumeProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResumeProjectResponse) SetHeaders(v map[string]*string) *ResumeProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResumeProjectResponse) SetStatusCode(v int32) *ResumeProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResumeProjectResponse) SetBody(v *ResumeProjectResponseBody) *ResumeProjectResponse {
 	s.Body = v
 	return s
 }
@@ -19849,6 +34043,459 @@ func (s *StartOmsOpenAPIProjectResponse) SetBody(v *StartOmsOpenAPIProjectRespon
 	return s
 }
 
+type StartProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s StartProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectRequest) SetId(v string) *StartProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type StartProjectResponseBody struct {
+	Advice      *string                              `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                              `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                              `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *StartProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s StartProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectResponseBody) SetAdvice(v string) *StartProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetCode(v string) *StartProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetCost(v string) *StartProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetData(v string) *StartProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetErrorDetail(v *StartProjectResponseBodyErrorDetail) *StartProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetMessage(v string) *StartProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetPageNumber(v int32) *StartProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetPageSize(v int32) *StartProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetRequestId(v string) *StartProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetSuccess(v bool) *StartProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StartProjectResponseBody) SetTotalCount(v int64) *StartProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type StartProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s StartProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetCode(v string) *StartProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *StartProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetLevel(v string) *StartProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetMessage(v string) *StartProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *StartProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *StartProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetProposal(v string) *StartProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *StartProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *StartProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetReason(v string) *StartProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *StartProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *StartProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *StartProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type StartProjectResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectResponse) SetHeaders(v map[string]*string) *StartProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartProjectResponse) SetStatusCode(v int32) *StartProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartProjectResponse) SetBody(v *StartProjectResponseBody) *StartProjectResponse {
+	s.Body = v
+	return s
+}
+
+type StartProjectsByLabelRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s StartProjectsByLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectsByLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectsByLabelRequest) SetId(v string) *StartProjectsByLabelRequest {
+	s.Id = &v
+	return s
+}
+
+type StartProjectsByLabelResponseBody struct {
+	Advice      *string                                      `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                      `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *StartProjectsByLabelResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *StartProjectsByLabelResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s StartProjectsByLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectsByLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectsByLabelResponseBody) SetAdvice(v string) *StartProjectsByLabelResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetCode(v string) *StartProjectsByLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetCost(v string) *StartProjectsByLabelResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetData(v *StartProjectsByLabelResponseBodyData) *StartProjectsByLabelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetErrorDetail(v *StartProjectsByLabelResponseBodyErrorDetail) *StartProjectsByLabelResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetMessage(v string) *StartProjectsByLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetPageNumber(v int32) *StartProjectsByLabelResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetPageSize(v int32) *StartProjectsByLabelResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetRequestId(v string) *StartProjectsByLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetSuccess(v bool) *StartProjectsByLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBody) SetTotalCount(v int64) *StartProjectsByLabelResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type StartProjectsByLabelResponseBodyData struct {
+	FailedProjectIds  []*string `json:"FailedProjectIds,omitempty" xml:"FailedProjectIds,omitempty" type:"Repeated"`
+	SucceedProjectIds []*string `json:"SucceedProjectIds,omitempty" xml:"SucceedProjectIds,omitempty" type:"Repeated"`
+	Total             *int32    `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s StartProjectsByLabelResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectsByLabelResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectsByLabelResponseBodyData) SetFailedProjectIds(v []*string) *StartProjectsByLabelResponseBodyData {
+	s.FailedProjectIds = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyData) SetSucceedProjectIds(v []*string) *StartProjectsByLabelResponseBodyData {
+	s.SucceedProjectIds = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyData) SetTotal(v int32) *StartProjectsByLabelResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type StartProjectsByLabelResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s StartProjectsByLabelResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectsByLabelResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetCode(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetLevel(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetMessage(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetMessageMcmsKey(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetProposal(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetProposalMcmsKey(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetReason(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetReasonMcmsKey(v string) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *StartProjectsByLabelResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type StartProjectsByLabelResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartProjectsByLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartProjectsByLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartProjectsByLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartProjectsByLabelResponse) SetHeaders(v map[string]*string) *StartProjectsByLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartProjectsByLabelResponse) SetStatusCode(v int32) *StartProjectsByLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartProjectsByLabelResponse) SetBody(v *StartProjectsByLabelResponseBody) *StartProjectsByLabelResponse {
+	s.Body = v
+	return s
+}
+
 type StopOmsOpenAPIProjectRequest struct {
 	// The suggestions (old).
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -20040,9 +34687,467 @@ func (s *StopOmsOpenAPIProjectResponse) SetBody(v *StopOmsOpenAPIProjectResponse
 	return s
 }
 
+type StopProjectRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s StopProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectRequest) SetId(v string) *StopProjectRequest {
+	s.Id = &v
+	return s
+}
+
+type StopProjectResponseBody struct {
+	Advice      *string                             `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                             `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *string                             `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorDetail *StopProjectResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s StopProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectResponseBody) SetAdvice(v string) *StopProjectResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetCode(v string) *StopProjectResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetCost(v string) *StopProjectResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetData(v string) *StopProjectResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetErrorDetail(v *StopProjectResponseBodyErrorDetail) *StopProjectResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetMessage(v string) *StopProjectResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetPageNumber(v int32) *StopProjectResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetPageSize(v int32) *StopProjectResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetRequestId(v string) *StopProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetSuccess(v bool) *StopProjectResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StopProjectResponseBody) SetTotalCount(v int64) *StopProjectResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type StopProjectResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s StopProjectResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetCode(v string) *StopProjectResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *StopProjectResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetLevel(v string) *StopProjectResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetMessage(v string) *StopProjectResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *StopProjectResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetMessageMcmsKey(v string) *StopProjectResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetProposal(v string) *StopProjectResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *StopProjectResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetProposalMcmsKey(v string) *StopProjectResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetReason(v string) *StopProjectResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *StopProjectResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetReasonMcmsKey(v string) *StopProjectResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *StopProjectResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type StopProjectResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectResponse) SetHeaders(v map[string]*string) *StopProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopProjectResponse) SetStatusCode(v int32) *StopProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopProjectResponse) SetBody(v *StopProjectResponseBody) *StopProjectResponse {
+	s.Body = v
+	return s
+}
+
+type StopProjectsByLabelRequest struct {
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s StopProjectsByLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectsByLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectsByLabelRequest) SetId(v string) *StopProjectsByLabelRequest {
+	s.Id = &v
+	return s
+}
+
+type StopProjectsByLabelResponseBody struct {
+	Advice      *string                                     `json:"Advice,omitempty" xml:"Advice,omitempty"`
+	Code        *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cost        *string                                     `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Data        *StopProjectsByLabelResponseBodyData        `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorDetail *StopProjectsByLabelResponseBodyErrorDetail `json:"ErrorDetail,omitempty" xml:"ErrorDetail,omitempty" type:"Struct"`
+	Message     *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s StopProjectsByLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectsByLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectsByLabelResponseBody) SetAdvice(v string) *StopProjectsByLabelResponseBody {
+	s.Advice = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetCode(v string) *StopProjectsByLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetCost(v string) *StopProjectsByLabelResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetData(v *StopProjectsByLabelResponseBodyData) *StopProjectsByLabelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetErrorDetail(v *StopProjectsByLabelResponseBodyErrorDetail) *StopProjectsByLabelResponseBody {
+	s.ErrorDetail = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetMessage(v string) *StopProjectsByLabelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetPageNumber(v int32) *StopProjectsByLabelResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetPageSize(v int32) *StopProjectsByLabelResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetRequestId(v string) *StopProjectsByLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetSuccess(v bool) *StopProjectsByLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBody) SetTotalCount(v int64) *StopProjectsByLabelResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type StopProjectsByLabelResponseBodyData struct {
+	FailedProjectIds  []*string `json:"FailedProjectIds,omitempty" xml:"FailedProjectIds,omitempty" type:"Repeated"`
+	SucceedProjectIds []*string `json:"SucceedProjectIds,omitempty" xml:"SucceedProjectIds,omitempty" type:"Repeated"`
+	Total             *int32    `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s StopProjectsByLabelResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectsByLabelResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectsByLabelResponseBodyData) SetFailedProjectIds(v []*string) *StopProjectsByLabelResponseBodyData {
+	s.FailedProjectIds = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyData) SetSucceedProjectIds(v []*string) *StopProjectsByLabelResponseBodyData {
+	s.SucceedProjectIds = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyData) SetTotal(v int32) *StopProjectsByLabelResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type StopProjectsByLabelResponseBodyErrorDetail struct {
+	Code                *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	ExtraContext        map[string]interface{} `json:"ExtraContext,omitempty" xml:"ExtraContext,omitempty"`
+	Level               *string                `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message             *string                `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageMcmsContext  map[string]*string     `json:"MessageMcmsContext,omitempty" xml:"MessageMcmsContext,omitempty"`
+	MessageMcmsKey      *string                `json:"MessageMcmsKey,omitempty" xml:"MessageMcmsKey,omitempty"`
+	Proposal            *string                `json:"Proposal,omitempty" xml:"Proposal,omitempty"`
+	ProposalMcmsContext map[string]*string     `json:"ProposalMcmsContext,omitempty" xml:"ProposalMcmsContext,omitempty"`
+	ProposalMcmsKey     *string                `json:"ProposalMcmsKey,omitempty" xml:"ProposalMcmsKey,omitempty"`
+	Reason              *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonMcmsContext   map[string]*string     `json:"ReasonMcmsContext,omitempty" xml:"ReasonMcmsContext,omitempty"`
+	ReasonMcmsKey       *string                `json:"ReasonMcmsKey,omitempty" xml:"ReasonMcmsKey,omitempty"`
+	UpstreamErrorDetail interface{}            `json:"UpstreamErrorDetail,omitempty" xml:"UpstreamErrorDetail,omitempty"`
+}
+
+func (s StopProjectsByLabelResponseBodyErrorDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectsByLabelResponseBodyErrorDetail) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetCode(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.Code = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetExtraContext(v map[string]interface{}) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.ExtraContext = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetLevel(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.Level = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetMessage(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetMessageMcmsContext(v map[string]*string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.MessageMcmsContext = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetMessageMcmsKey(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.MessageMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetProposal(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.Proposal = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetProposalMcmsContext(v map[string]*string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.ProposalMcmsContext = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetProposalMcmsKey(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.ProposalMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetReason(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.Reason = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetReasonMcmsContext(v map[string]*string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.ReasonMcmsContext = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetReasonMcmsKey(v string) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.ReasonMcmsKey = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponseBodyErrorDetail) SetUpstreamErrorDetail(v interface{}) *StopProjectsByLabelResponseBodyErrorDetail {
+	s.UpstreamErrorDetail = v
+	return s
+}
+
+type StopProjectsByLabelResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopProjectsByLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopProjectsByLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopProjectsByLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopProjectsByLabelResponse) SetHeaders(v map[string]*string) *StopProjectsByLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopProjectsByLabelResponse) SetStatusCode(v int32) *StopProjectsByLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopProjectsByLabelResponse) SetBody(v *StopProjectsByLabelResponseBody) *StopProjectsByLabelResponse {
+	s.Body = v
+	return s
+}
+
 type SwitchoverInstanceRequest struct {
-	Forced           *bool   `json:"Forced,omitempty" xml:"Forced,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Whether to force the switchover.
+	// - true: Force the switchover.
+	// - false: Do not force the switchover.
+	Forced *bool `json:"Forced,omitempty" xml:"Forced,omitempty"`
+	// The instance ID of the primary/standby instance. You can set the default value to the instance ID of the instance to be switched to the primary instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance ID of the instance to be switched to the primary instance.
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
 }
 
@@ -20070,8 +35175,10 @@ func (s *SwitchoverInstanceRequest) SetTargetInstanceId(v string) *SwitchoverIns
 }
 
 type SwitchoverInstanceResponseBody struct {
-	Data      *SwitchoverInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of data for the switchover.
+	Data *SwitchoverInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SwitchoverInstanceResponseBody) String() string {
@@ -20093,8 +35200,12 @@ func (s *SwitchoverInstanceResponseBody) SetRequestId(v string) *SwitchoverInsta
 }
 
 type SwitchoverInstanceResponseBodyData struct {
+	// The message of the switchover.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Whether the switchover is successful.
+	// - true: the switchover succeeded.
+	// - false: the switchover failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SwitchoverInstanceResponseBodyData) String() string {
@@ -20285,12 +35396,20 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["DiskType"] = request.DiskType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
 		body["InstanceClass"] = request.InstanceClass
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsolationOptimization)) {
+		body["IsolationOptimization"] = request.IsolationOptimization
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ObVersion)) {
@@ -20303,6 +35422,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
 		body["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReplicaMode)) {
+		body["ReplicaMode"] = request.ReplicaMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -20351,9 +35474,240 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateLabelWithOptions(request *CreateLabelRequest, runtime *util.RuntimeOptions) (_result *CreateLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLabel"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLabel(request *CreateLabelRequest) (_result *CreateLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLabelResponse{}
+	_body, _err := client.CreateLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMySqlDataSourceWithOptions(request *CreateMySqlDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateMySqlDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DgInstanceId)) {
+		body["DgInstanceId"] = request.DgInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		body["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		body["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		body["Schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMySqlDataSource"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMySqlDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMySqlDataSource(request *CreateMySqlDataSourceRequest) (_result *CreateMySqlDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMySqlDataSourceResponse{}
+	_body, _err := client.CreateMySqlDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOceanBaseDataSourceWithOptions(request *CreateOceanBaseDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateOceanBaseDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cluster)) {
+		body["Cluster"] = request.Cluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigUrl)) {
+		body["ConfigUrl"] = request.ConfigUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrcPassword)) {
+		body["DrcPassword"] = request.DrcPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DrcUserName)) {
+		body["DrcUserName"] = request.DrcUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InnerDrcPassword)) {
+		body["InnerDrcPassword"] = request.InnerDrcPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		body["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogProxyIp)) {
+		body["LogProxyIp"] = request.LogProxyIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogProxyPort)) {
+		body["LogProxyPort"] = request.LogProxyPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		body["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
+		body["Tenant"] = request.Tenant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOceanBaseDataSource"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOceanBaseDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOceanBaseDataSource(request *CreateOceanBaseDataSourceRequest) (_result *CreateOceanBaseDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOceanBaseDataSourceResponse{}
+	_body, _err := client.CreateOceanBaseDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
- * The description of the data source.
- * It must be 2 to 256 characters in length. The default value is null.
+ * To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
  *
  * @param request CreateOmsMysqlDataSourceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20433,8 +35787,7 @@ func (client *Client) CreateOmsMysqlDataSourceWithOptions(request *CreateOmsMysq
 }
 
 /**
- * The description of the data source.
- * It must be 2 to 256 characters in length. The default value is null.
+ * To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
  *
  * @param request CreateOmsMysqlDataSourceRequest
  * @return CreateOmsMysqlDataSourceResponse
@@ -20552,6 +35905,144 @@ func (client *Client) CreateOmsOpenAPIProject(request *CreateOmsOpenAPIProjectRe
 	return _result, _err
 }
 
+func (client *Client) CreateProjectWithOptions(tmpReq *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateProjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CommonTransferConfig)) {
+		request.CommonTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CommonTransferConfig, tea.String("CommonTransferConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FullTransferConfig)) {
+		request.FullTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FullTransferConfig, tea.String("FullTransferConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.IncrTransferConfig)) {
+		request.IncrTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncrTransferConfig, tea.String("IncrTransferConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelIds)) {
+		request.LabelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelIds, tea.String("LabelIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.StructTransferConfig)) {
+		request.StructTransferConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StructTransferConfig, tea.String("StructTransferConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TransferMapping)) {
+		request.TransferMappingShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TransferMapping, tea.String("TransferMapping"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommonTransferConfigShrink)) {
+		body["CommonTransferConfig"] = request.CommonTransferConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableFullTransfer)) {
+		body["EnableFullTransfer"] = request.EnableFullTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableFullVerify)) {
+		body["EnableFullVerify"] = request.EnableFullVerify
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableIncrTransfer)) {
+		body["EnableIncrTransfer"] = request.EnableIncrTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableReverseIncrTransfer)) {
+		body["EnableReverseIncrTransfer"] = request.EnableReverseIncrTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableStructTransfer)) {
+		body["EnableStructTransfer"] = request.EnableStructTransfer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullTransferConfigShrink)) {
+		body["FullTransferConfig"] = request.FullTransferConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncrTransferConfigShrink)) {
+		body["IncrTransferConfig"] = request.IncrTransferConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelIdsShrink)) {
+		body["LabelIds"] = request.LabelIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKey)) {
+		body["OssKey"] = request.OssKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SinkEndpointId)) {
+		body["SinkEndpointId"] = request.SinkEndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointId)) {
+		body["SourceEndpointId"] = request.SourceEndpointId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StructTransferConfigShrink)) {
+		body["StructTransferConfig"] = request.StructTransferConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferMappingShrink)) {
+		body["TransferMapping"] = request.TransferMappingShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseOss)) {
+		body["UseOss"] = request.UseOss
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkerGradeId)) {
+		body["WorkerGradeId"] = request.WorkerGradeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CreateProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSecurityIpGroupWithOptions(request *CreateSecurityIpGroupRequest, runtime *util.RuntimeOptions) (_result *CreateSecurityIpGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20626,12 +36117,20 @@ func (client *Client) CreateTenantWithOptions(request *CreateTenantRequest, runt
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogDisk)) {
+		body["LogDisk"] = request.LogDisk
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		body["Memory"] = request.Memory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PrimaryZone)) {
 		body["PrimaryZone"] = request.PrimaryZone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyZoneList)) {
+		body["ReadOnlyZoneList"] = request.ReadOnlyZoneList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantMode)) {
@@ -20704,6 +36203,14 @@ func (client *Client) CreateTenantReadOnlyConnectionWithOptions(request *CreateT
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		body["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		body["VpcId"] = request.VpcId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
@@ -20941,6 +36448,10 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 		body["BackupRetainMode"] = request.BackupRetainMode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
 		body["InstanceIds"] = request.InstanceIds
 	}
@@ -21034,6 +36545,50 @@ func (client *Client) DeleteOmsOpenAPIProject(request *DeleteOmsOpenAPIProjectRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOmsOpenAPIProjectResponse{}
 	_body, _err := client.DeleteOmsOpenAPIProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteProjectResponse{}
+	_body, _err := client.DeleteProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21269,6 +36824,10 @@ func (client *Client) DescribeAnomalySQLListWithOptions(tmpReq *DescribeAnomalyS
 		body["FilterCondition"] = request.FilterConditionShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
 		body["NodeIp"] = request.NodeIp
 	}
@@ -21459,12 +37018,128 @@ func (client *Client) DescribeAvailableMemResource(request *DescribeAvailableMem
 	return _result, _err
 }
 
+func (client *Client) DescribeAvailableSpecWithOptions(request *DescribeAvailableSpecRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		body["Spec"] = request.Spec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
+		body["UpgradeType"] = request.UpgradeType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableSpec"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAvailableSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAvailableSpec(request *DescribeAvailableSpecRequest) (_result *DescribeAvailableSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAvailableSpecResponse{}
+	_body, _err := client.DescribeAvailableSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAvailableZoneWithOptions(request *DescribeAvailableZoneRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableZoneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeployType)) {
+		body["DeployType"] = request.DeployType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObVersion)) {
+		body["ObVersion"] = request.ObVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Series)) {
+		body["Series"] = request.Series
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableZone"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAvailableZoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAvailableZone(request *DescribeAvailableZoneRequest) (_result *DescribeAvailableZoneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAvailableZoneResponse{}
+	_body, _err := client.DescribeAvailableZoneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCharsetWithOptions(request *DescribeCharsetRequest, runtime *util.RuntimeOptions) (_result *DescribeCharsetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Series)) {
 		body["Series"] = request.Series
 	}
@@ -21515,6 +37190,10 @@ func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesReq
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
 		body["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -21583,10 +37262,6 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -21667,12 +37342,60 @@ func (client *Client) DescribeInstanceCreatableZone(request *DescribeInstanceCre
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSSLRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSSLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceSSL"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceSSLResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (_result *DescribeInstanceSSLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceSSLResponse{}
+	_body, _err := client.DescribeInstanceSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeInstanceSecurityConfigsWithOptions(request *DescribeInstanceSecurityConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceSecurityConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		body["CheckId"] = request.CheckId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -21911,6 +37634,82 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeMetricsDataWithOptions(request *DescribeMetricsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeMetricsDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupByLabels)) {
+		query["GroupByLabels"] = request.GroupByLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metrics)) {
+		query["Metrics"] = request.Metrics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortMetricKey)) {
+		query["SortMetricKey"] = request.SortMetricKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMetricsData"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMetricsDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMetricsData(request *DescribeMetricsDataRequest) (_result *DescribeMetricsDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMetricsDataResponse{}
+	_body, _err := client.DescribeMetricsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNodeMetricsWithOptions(request *DescribeNodeMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeNodeMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22005,6 +37804,10 @@ func (client *Client) DescribeOasAnomalySQLListWithOptions(request *DescribeOasA
 		body["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
 	}
@@ -22015,6 +37818,10 @@ func (client *Client) DescribeOasAnomalySQLListWithOptions(request *DescribeOasA
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeDynamicSql)) {
+		body["MergeDynamicSql"] = request.MergeDynamicSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
@@ -22101,6 +37908,10 @@ func (client *Client) DescribeOasSQLDetailsWithOptions(request *DescribeOasSQLDe
 		body["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
 	}
@@ -22167,6 +37978,10 @@ func (client *Client) DescribeOasSQLHistoryListWithOptions(request *DescribeOasS
 
 	if !tea.BoolValue(util.IsUnset(request.DbName)) {
 		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
@@ -22241,6 +38056,10 @@ func (client *Client) DescribeOasSQLPlansWithOptions(request *DescribeOasSQLPlan
 		body["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
 	}
@@ -22309,6 +38128,10 @@ func (client *Client) DescribeOasSlowSQLListWithOptions(request *DescribeOasSlow
 		body["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
 	}
@@ -22319,6 +38142,10 @@ func (client *Client) DescribeOasSlowSQLListWithOptions(request *DescribeOasSlow
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeDynamicSql)) {
+		body["MergeDynamicSql"] = request.MergeDynamicSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
@@ -22405,6 +38232,10 @@ func (client *Client) DescribeOasTopSQLListWithOptions(request *DescribeOasTopSQ
 		body["DbName"] = request.DbName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicSql)) {
+		body["DynamicSql"] = request.DynamicSql
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
 	}
@@ -22415,6 +38246,10 @@ func (client *Client) DescribeOasTopSQLListWithOptions(request *DescribeOasTopSQ
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeDynamicSql)) {
+		body["MergeDynamicSql"] = request.MergeDynamicSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
@@ -22776,6 +38611,250 @@ func (client *Client) DescribeParametersHistory(request *DescribeParametersHisto
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParametersHistoryResponse{}
 	_body, _err := client.DescribeParametersHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectWithOptions(request *DescribeProjectRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProject(request *DescribeProjectRequest) (_result *DescribeProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProjectResponse{}
+	_body, _err := client.DescribeProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectComponentsWithOptions(request *DescribeProjectComponentsRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectComponentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProjectComponents"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProjectComponentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectComponents(request *DescribeProjectComponentsRequest) (_result *DescribeProjectComponentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProjectComponentsResponse{}
+	_body, _err := client.DescribeProjectComponentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectProgressWithOptions(request *DescribeProjectProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectProgressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProjectProgress"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProjectProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectProgress(request *DescribeProjectProgressRequest) (_result *DescribeProjectProgressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProjectProgressResponse{}
+	_body, _err := client.DescribeProjectProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectStepMetricWithOptions(request *DescribeProjectStepMetricRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectStepMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Aggregator)) {
+		body["Aggregator"] = request.Aggregator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTimestamp)) {
+		body["BeginTimestamp"] = request.BeginTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
+		body["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPointNum)) {
+		body["MaxPointNum"] = request.MaxPointNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		body["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StepName)) {
+		body["StepName"] = request.StepName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProjectStepMetric"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProjectStepMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectStepMetric(request *DescribeProjectStepMetricRequest) (_result *DescribeProjectStepMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProjectStepMetricResponse{}
+	_body, _err := client.DescribeProjectStepMetricWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectStepsWithOptions(request *DescribeProjectStepsRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectStepsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProjectSteps"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProjectStepsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProjectSteps(request *DescribeProjectStepsRequest) (_result *DescribeProjectStepsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProjectStepsResponse{}
+	_body, _err := client.DescribeProjectStepsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23321,6 +39400,66 @@ func (client *Client) DescribeTenant(request *DescribeTenantRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DescribeTenantEncryptionWithOptions(request *DescribeTenantEncryptionRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantEncryptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantName)) {
+		body["TenantName"] = request.TenantName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTenantEncryption"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTenantEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeTenantEncryption(request *DescribeTenantEncryptionRequest) (_result *DescribeTenantEncryptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTenantEncryptionResponse{}
+	_body, _err := client.DescribeTenantEncryptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeTenantMetricsWithOptions(request *DescribeTenantMetricsRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantMetricsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23403,6 +39542,10 @@ func (client *Client) DescribeTenantSecurityConfigsWithOptions(request *Describe
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
+		body["CheckId"] = request.CheckId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -23545,8 +39688,19 @@ func (client *Client) DescribeTenantTags(request *DescribeTenantTagsRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DescribeTenantUserRolesWithOptions(runtime *util.RuntimeOptions) (_result *DescribeTenantUserRolesResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) DescribeTenantUserRolesWithOptions(request *DescribeTenantUserRolesRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantUserRolesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTenantUserRoles"),
 		Version:     tea.String("2019-09-01"),
@@ -23567,10 +39721,10 @@ func (client *Client) DescribeTenantUserRolesWithOptions(runtime *util.RuntimeOp
 	return _result, _err
 }
 
-func (client *Client) DescribeTenantUserRoles() (_result *DescribeTenantUserRolesResponse, _err error) {
+func (client *Client) DescribeTenantUserRoles(request *DescribeTenantUserRolesRequest) (_result *DescribeTenantUserRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTenantUserRolesResponse{}
-	_body, _err := client.DescribeTenantUserRolesWithOptions(runtime)
+	_body, _err := client.DescribeTenantUserRolesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23937,6 +40091,54 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+func (client *Client) GetUploadOssUrlWithOptions(request *GetUploadOssUrlRequest, runtime *util.RuntimeOptions) (_result *GetUploadOssUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveTimeMinutes)) {
+		body["EffectiveTimeMinutes"] = request.EffectiveTimeMinutes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUploadOssUrl"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUploadOssUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUploadOssUrl(request *GetUploadOssUrlRequest) (_result *GetUploadOssUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUploadOssUrlResponse{}
+	_body, _err := client.GetUploadOssUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) KillProcessListWithOptions(request *KillProcessListRequest, runtime *util.RuntimeOptions) (_result *KillProcessListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23982,6 +40184,359 @@ func (client *Client) KillProcessList(request *KillProcessListRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &KillProcessListResponse{}
 	_body, _err := client.KillProcessListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAllLabelsWithOptions(runtime *util.RuntimeOptions) (_result *ListAllLabelsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllLabels"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAllLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAllLabels() (_result *ListAllLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAllLabelsResponse{}
+	_body, _err := client.ListAllLabelsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceWithOptions(tmpReq *ListDataSourceRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDataSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		body["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortField)) {
+		body["SortField"] = request.SortField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypesShrink)) {
+		body["Types"] = request.TypesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSource"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataSource(request *ListDataSourceRequest) (_result *ListDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceResponse{}
+	_body, _err := client.ListDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectFullVerifyResultWithOptions(tmpReq *ListProjectFullVerifyResultRequest, runtime *util.RuntimeOptions) (_result *ListProjectFullVerifyResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListProjectFullVerifyResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestSchemas)) {
+		request.DestSchemasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestSchemas, tea.String("DestSchemas"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceSchemas)) {
+		request.SourceSchemasShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceSchemas, tea.String("SourceSchemas"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestSchemasShrink)) {
+		body["DestSchemas"] = request.DestSchemasShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceSchemasShrink)) {
+		body["SourceSchemas"] = request.SourceSchemasShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectFullVerifyResult"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectFullVerifyResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectFullVerifyResult(request *ListProjectFullVerifyResultRequest) (_result *ListProjectFullVerifyResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectFullVerifyResultResponse{}
+	_body, _err := client.ListProjectFullVerifyResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListProjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelIds)) {
+		request.LabelIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelIds, tea.String("LabelIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SinkEndpointTypes)) {
+		request.SinkEndpointTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SinkEndpointTypes, tea.String("SinkEndpointTypes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceEndpointTypes)) {
+		request.SourceEndpointTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceEndpointTypes, tea.String("SourceEndpointTypes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Status)) {
+		request.StatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Status, tea.String("Status"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelIdsShrink)) {
+		body["LabelIds"] = request.LabelIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		body["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		body["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SinkEndpointTypesShrink)) {
+		body["SinkEndpointTypes"] = request.SinkEndpointTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortField)) {
+		body["SortField"] = request.SortField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEndpointTypesShrink)) {
+		body["SourceEndpointTypes"] = request.SourceEndpointTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusShrink)) {
+		body["Status"] = request.StatusShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibleSubProject)) {
+		body["VisibleSubProject"] = request.VisibleSubProject
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjects"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectsResponse{}
+	_body, _err := client.ListProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkerInstancesWithOptions(tmpReq *ListWorkerInstancesRequest, runtime *util.RuntimeOptions) (_result *ListWorkerInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWorkerInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Specs)) {
+		request.SpecsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Specs, tea.String("Specs"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestType)) {
+		body["DestType"] = request.DestType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyBindable)) {
+		body["OnlyBindable"] = request.OnlyBindable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecsShrink)) {
+		body["Specs"] = request.SpecsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkerInstances"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkerInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkerInstances(request *ListWorkerInstancesRequest) (_result *ListWorkerInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWorkerInstancesResponse{}
+	_body, _err := client.ListWorkerInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24155,6 +40710,10 @@ func (client *Client) ModifyInstanceNodeNumWithOptions(request *ModifyInstanceNo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -24205,6 +40764,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
 		body["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		body["DryRun"] = request.DryRun
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
@@ -24405,6 +40968,62 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ModifyTenantEncryptionWithOptions(request *ModifyTenantEncryptionRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantEncryptionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptionKeyId)) {
+		body["EncryptionKeyId"] = request.EncryptionKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionType)) {
+		body["EncryptionType"] = request.EncryptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTenantEncryption"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTenantEncryptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTenantEncryption(request *ModifyTenantEncryptionRequest) (_result *ModifyTenantEncryptionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTenantEncryptionResponse{}
+	_body, _err := client.ModifyTenantEncryptionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyTenantPrimaryZoneWithOptions(request *ModifyTenantPrimaryZoneRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantPrimaryZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24419,16 +41038,12 @@ func (client *Client) ModifyTenantPrimaryZoneWithOptions(request *ModifyTenantPr
 		body["MasterIntranetAddressZone"] = request.MasterIntranetAddressZone
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
-		body["ModifyType"] = request.ModifyType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PrimaryZone)) {
 		body["PrimaryZone"] = request.PrimaryZone
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneDeployType)) {
-		body["PrimaryZoneDeployType"] = request.PrimaryZoneDeployType
+	if !tea.BoolValue(util.IsUnset(request.TenantEndpointId)) {
+		body["TenantEndpointId"] = request.TenantEndpointId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
@@ -24487,8 +41102,16 @@ func (client *Client) ModifyTenantResourceWithOptions(request *ModifyTenantResou
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogDisk)) {
+		body["LogDisk"] = request.LogDisk
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		body["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyZoneList)) {
+		body["ReadOnlyZoneList"] = request.ReadOnlyZoneList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
@@ -24925,6 +41548,50 @@ func (client *Client) ReleaseOmsOpenAPIProject(request *ReleaseOmsOpenAPIProject
 	return _result, _err
 }
 
+func (client *Client) ReleaseProjectWithOptions(request *ReleaseProjectRequest, runtime *util.RuntimeOptions) (_result *ReleaseProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseProject(request *ReleaseProjectRequest) (_result *ReleaseProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseProjectResponse{}
+	_body, _err := client.ReleaseProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ResetOmsOpenAPIProjectWithOptions(request *ResetOmsOpenAPIProjectRequest, runtime *util.RuntimeOptions) (_result *ResetOmsOpenAPIProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25030,6 +41697,50 @@ func (client *Client) ResumeOmsOpenAPIProject(request *ResumeOmsOpenAPIProjectRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeOmsOpenAPIProjectResponse{}
 	_body, _err := client.ResumeOmsOpenAPIProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, runtime *util.RuntimeOptions) (_result *ResumeProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResumeProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResumeProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *ResumeProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResumeProjectResponse{}
+	_body, _err := client.ResumeProjectWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25255,6 +41966,94 @@ func (client *Client) StartOmsOpenAPIProject(request *StartOmsOpenAPIProjectRequ
 	return _result, _err
 }
 
+func (client *Client) StartProjectWithOptions(request *StartProjectRequest, runtime *util.RuntimeOptions) (_result *StartProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartProject(request *StartProjectRequest) (_result *StartProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartProjectResponse{}
+	_body, _err := client.StartProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartProjectsByLabelWithOptions(request *StartProjectsByLabelRequest, runtime *util.RuntimeOptions) (_result *StartProjectsByLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartProjectsByLabel"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartProjectsByLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartProjectsByLabel(request *StartProjectsByLabelRequest) (_result *StartProjectsByLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartProjectsByLabelResponse{}
+	_body, _err := client.StartProjectsByLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StopOmsOpenAPIProjectWithOptions(request *StopOmsOpenAPIProjectRequest, runtime *util.RuntimeOptions) (_result *StopOmsOpenAPIProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25304,6 +42103,94 @@ func (client *Client) StopOmsOpenAPIProject(request *StopOmsOpenAPIProjectReques
 	runtime := &util.RuntimeOptions{}
 	_result = &StopOmsOpenAPIProjectResponse{}
 	_body, _err := client.StopOmsOpenAPIProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopProjectWithOptions(request *StopProjectRequest, runtime *util.RuntimeOptions) (_result *StopProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopProject"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopProject(request *StopProjectRequest) (_result *StopProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopProjectResponse{}
+	_body, _err := client.StopProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopProjectsByLabelWithOptions(request *StopProjectsByLabelRequest, runtime *util.RuntimeOptions) (_result *StopProjectsByLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopProjectsByLabel"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopProjectsByLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopProjectsByLabel(request *StopProjectsByLabelRequest) (_result *StopProjectsByLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopProjectsByLabelResponse{}
+	_body, _err := client.StopProjectsByLabelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
