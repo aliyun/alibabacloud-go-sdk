@@ -238,8 +238,7 @@ type CreateLindormInstanceRequest struct {
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	// 多可用区实例，主可用区的可用区ID。**如果需要创建多可用区实例，该参数必填。**
-	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	PrimaryZoneId    *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
 	// The ID of the region in which you want to create the instance. You can call the [DescribeRegions](~~426062~~) operation to query the region in which you can create the instance.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the Lindorm instance belongs.
@@ -564,7 +563,10 @@ func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponse
 }
 
 type DescribeRegionsRequest struct {
-	// The ID of the region.
+	// The display language of the regions in the returned results. Valid values:
+	//
+	// *   **zh-CN** (default): Chinese.
+	// *   **en-US**: English.
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -612,7 +614,7 @@ func (s *DescribeRegionsRequest) SetSecurityToken(v string) *DescribeRegionsRequ
 }
 
 type DescribeRegionsResponseBody struct {
-	// China (Hangzhou)
+	// The regions supported by Lindorm.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -637,10 +639,12 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The name of the region.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// Queries the regions where Lindorm is available.
+	// The endpoint for the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -696,7 +700,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetInstanceIpWhiteListRequest struct {
-	// The ID of the instance whose whitelist you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to query the instance ID.
+	// The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to obtain the instance ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1183,49 +1187,98 @@ func (s *GetLindormInstanceRequest) SetSecurityToken(v string) *GetLindormInstan
 }
 
 type GetLindormInstanceResponseBody struct {
-	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ArbiterVSwitchId   *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId      *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	ArchVersion        *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	AutoRenew          *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ColdStorage        *int32  `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	AliUid           *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId    *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// 部署架构，取值：
+	//
+	// - **1.0**：单可用区。
+	// - **2.0**：多可用区。
+	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	AutoRenew   *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The Capacity storage size of the instance.
+	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	// The disk type of the core nodes. This parameter is returned only for multi-zone instances. Valid values:
+	//
+	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
+	// *   **cloud_ssd**: This instance uses the Performance type of storage.
+	// *   **cloud_essd**: This instance uses ESSDs for storage.
+	// *   **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
 	CoreDiskCategory   *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
 	CoreNum            *int32  `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
 	CoreSingleStorage  *int32  `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
 	CoreSpec           *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
 	CreateMilliseconds *int64  `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
 	// The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
-	CreateTime           *string                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeletionProtection   *string                                     `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DiskCategory         *string                                     `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	DiskThreshold        *string                                     `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
-	DiskUsage            *string                                     `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	EnableBlob           *bool                                       `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
-	EnableCdc            *bool                                       `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
-	EnableCompute        *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableKms            *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
-	EnableLTS            *bool                                       `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
-	EnableLsqlVersionV3  *bool                                       `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
-	EnableMLCtrl         *bool                                       `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
-	EnableSSL            *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	EnableShs            *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
-	EnableStream         *bool                                       `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
-	EngineList           []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	EngineType           *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ExpireTime           *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpiredMilliseconds  *int64                                      `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InstanceAlias        *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId           *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus       *string                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceStorage      *string                                     `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	LogDiskCategory      *string                                     `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
-	LogNum               *int32                                      `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
-	LogSingleStorage     *int32                                      `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	LogSpec              *string                                     `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	MaintainEndTime      *string                                     `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime    *string                                     `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MultiZoneCombination *string                                     `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	NetworkType          *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The storage type of the instance. Valid values:
+	//
+	// *   **cloud_efficiency**: This instance uses the Standard type of storage.
+	// *   **cloud_ssd**: This instance uses the Performance type of storage.
+	// *   **cloud_essd**: This instance uses ESSDs for storage.
+	// *   **cloud_essd_pl0**: This instance uses PL0 ESSDs for storage.
+	// *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
+	// *   **local_ssd_pro**: This instance uses local SSDs for storage.
+	// *   **local_hdd_pro**: This instance uses local HDDs for storage.
+	DiskCategory  *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskThreshold *string `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	DiskUsage     *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableBlob    *bool   `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
+	EnableCdc     *bool   `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
+	EnableCompute *bool   `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableKms     *bool   `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	// 实例是否开通LTS引擎，返回值：
+	//
+	// - **true**：开通LTS引擎。
+	// - **false**：未开通LTS引擎。
+	EnableLTS           *bool `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
+	EnableLsqlVersionV3 *bool `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
+	EnableMLCtrl        *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
+	EnableSSL           *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	EnableShs           *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	EnableStream        *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	// The latest version number of the engine.
+	EngineList          []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	EngineType          *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ExpireTime          *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpiredMilliseconds *int64                                      `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	InstanceAlias       *string                                     `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId          *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   **CREATING**: The instance is being created.
+	// *   **ACTIVATION**: The instance is running.
+	// *   **COLD_EXPANDING**: The Capacity storage of the instance is being scaled up.
+	// *   **MINOR_VERSION_TRANSING**: The minor version of the instance is being updated.
+	// *   **RESIZING**: The nodes in the instance are being scaled up.
+	// *   **SHRINKING**: The nodes in the instance are being scaled down.
+	// *   **CLASS_CHANGING**: The specification of the instance is being changed.
+	// *   **SSL_SWITCHING: SSL**: The SSL configurations of the instance are being changed.
+	// *   **CDC_OPENING**: Data subscription is being enabled for the instance.
+	// *   **TRANSFER**: The data of the instance is being transferred.
+	// *   **DATABASE_TRANSFER**: The data of the instance is being transferred to databases.
+	// *   **GUARD_CREATING**: A disaster recovery instance is being created.
+	// *   **BACKUP_RECOVERING**: The data of the instance is being restored from a backup.
+	// *   **DATABASE_IMPORTING**: Data is being imported to the instance.
+	// *   **NET_MODIFYING**: The network configurations of the instance are being changed.
+	// *   **NET_SWITCHING**: The network of the instance is being switched between a virtual private cloud (VPC) and the Internet.
+	// *   **NET_CREATING**: The connection to the instance is being created.
+	// *   **NET_DELETING**: The connection to the instance is being deleted.
+	// *   **DELETING**: The instance is being deleted.
+	// *   **RESTARTING**: The instance is restarting.
+	// *   **LOCKED**: The instance is locked because it expires.
+	InstanceStatus  *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
+	LogNum          *int32  `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
+	// The storage capacity of the disk of a single log node. This parameter is returned only for multi-zone instances.
+	LogSingleStorage     *int32  `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
+	LogSpec              *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
+	MaintainEndTime      *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime    *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// 400
 	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
@@ -2692,6 +2745,105 @@ func (s *RenewLindormInstanceResponse) SetBody(v *RenewLindormInstanceResponseBo
 	return s
 }
 
+type SwitchLSQLV3MySQLServiceRequest struct {
+	ActionType           *int32  `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SwitchLSQLV3MySQLServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchLSQLV3MySQLServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetActionType(v int32) *SwitchLSQLV3MySQLServiceRequest {
+	s.ActionType = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetInstanceId(v string) *SwitchLSQLV3MySQLServiceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetOwnerAccount(v string) *SwitchLSQLV3MySQLServiceRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetOwnerId(v int64) *SwitchLSQLV3MySQLServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetResourceOwnerAccount(v string) *SwitchLSQLV3MySQLServiceRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetResourceOwnerId(v int64) *SwitchLSQLV3MySQLServiceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceRequest) SetSecurityToken(v string) *SwitchLSQLV3MySQLServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SwitchLSQLV3MySQLServiceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SwitchLSQLV3MySQLServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchLSQLV3MySQLServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchLSQLV3MySQLServiceResponseBody) SetRequestId(v string) *SwitchLSQLV3MySQLServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SwitchLSQLV3MySQLServiceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchLSQLV3MySQLServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SwitchLSQLV3MySQLServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchLSQLV3MySQLServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchLSQLV3MySQLServiceResponse) SetHeaders(v map[string]*string) *SwitchLSQLV3MySQLServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceResponse) SetStatusCode(v int32) *SwitchLSQLV3MySQLServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchLSQLV3MySQLServiceResponse) SetBody(v *SwitchLSQLV3MySQLServiceResponseBody) *SwitchLSQLV3MySQLServiceResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2963,8 +3115,8 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceIpWhiteListRequest struct {
-	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
+	// Specifies whether to clear all IP addresses and CIDR blocks in the whitelist.
+	Delete    *bool   `json:"Delete,omitempty" xml:"Delete,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2972,9 +3124,9 @@ type UpdateInstanceIpWhiteListRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP addresses that you want to add to the whitelist. For example, if you add 192.168.0.0/24 to the whitelist, you can use all IP addresses within this CIDR block to access the Lindorm instance.
+	// The IP addresses or CIDR blocks that you want to add to the whitelist.
 	//
-	// > If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
+	// >  If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. If you add the CIDR block 192.168.0.0/24 to the whitelist, you can use all IP addresses in the CIDR block to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
 	SecurityIpList *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -3483,7 +3635,7 @@ func (client *Client) CreateLdpsNamespace(request *CreateLdpsNamespaceRequest) (
 }
 
 /**
- * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+ * You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
  *
  * @param request CreateLindormInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3683,7 +3835,7 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 }
 
 /**
- * For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+ * You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
  *
  * @param request CreateLindormInstanceRequest
  * @return CreateLindormInstanceResponse
@@ -4526,6 +4678,74 @@ func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewLindormInstanceResponse{}
 	_body, _err := client.RenewLindormInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3MySQLServiceRequest, runtime *util.RuntimeOptions) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionType)) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchLSQLV3MySQLService"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchLSQLV3MySQLServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SwitchLSQLV3MySQLService(request *SwitchLSQLV3MySQLServiceRequest) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SwitchLSQLV3MySQLServiceResponse{}
+	_body, _err := client.SwitchLSQLV3MySQLServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
