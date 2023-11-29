@@ -792,20 +792,17 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 }
 
 type Ticket struct {
-	CallerUid           *int64  `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
-	CreateDate          *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
-	ExpirationTime      *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
-	ExpireDate          *string `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
-	Extra               *string `json:"extra,omitempty" xml:"extra,omitempty"`
-	Name                *string `json:"name,omitempty" xml:"name,omitempty"`
-	Number              *int32  `json:"number,omitempty" xml:"number,omitempty"`
-	Ticket              *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
-	TicketId            *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
-	Type                *string `json:"type,omitempty" xml:"type,omitempty"`
-	UnlimitedExpiration *bool   `json:"unlimitedExpiration,omitempty" xml:"unlimitedExpiration,omitempty"`
-	UnlimitedNumber     *bool   `json:"unlimitedNumber,omitempty" xml:"unlimitedNumber,omitempty"`
-	UsedNumber          *int32  `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
-	Valid               *bool   `json:"valid,omitempty" xml:"valid,omitempty"`
+	CallerUid      *int64  `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+	CreateDate     *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
+	ExpirationTime *int64  `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	ExpireDate     *string `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
+	Extra          *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	Number         *int32  `json:"number,omitempty" xml:"number,omitempty"`
+	Ticket         *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+	TicketId       *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
+	UsedNumber     *int32  `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
+	Valid          *bool   `json:"valid,omitempty" xml:"valid,omitempty"`
 }
 
 func (s Ticket) String() string {
@@ -858,21 +855,6 @@ func (s *Ticket) SetTicket(v string) *Ticket {
 
 func (s *Ticket) SetTicketId(v string) *Ticket {
 	s.TicketId = &v
-	return s
-}
-
-func (s *Ticket) SetType(v string) *Ticket {
-	s.Type = &v
-	return s
-}
-
-func (s *Ticket) SetUnlimitedExpiration(v bool) *Ticket {
-	s.UnlimitedExpiration = &v
-	return s
-}
-
-func (s *Ticket) SetUnlimitedNumber(v bool) *Ticket {
-	s.UnlimitedNumber = &v
 	return s
 }
 
@@ -1800,12 +1782,24 @@ func (s *IndexKeysValue) SetDocValue(v bool) *IndexKeysValue {
 }
 
 type KeysValue struct {
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
-	Type          *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Alias         *string   `json:"alias,omitempty" xml:"alias,omitempty"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
-	DocValue      *bool     `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	// Specifies whether to enable case sensitivity. This parameter is required only when **type** is set to **text**. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Specifies whether to include Chinese characters. This parameter is required only when **type** is set to **text**. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The data type of the field value. Valid values: text, json, double, and long.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The alias of the field.
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// The delimiters that are used to split text.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// Specifies whether to turn on Enable Analytics for the field.
+	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
 }
 
 func (s KeysValue) String() string {
@@ -2100,9 +2094,20 @@ func (s *CreateConfigResponse) SetStatusCode(v int32) *CreateConfigResponse {
 }
 
 type CreateConsumerGroupRequest struct {
+	// The name of the consumer group. The name must be unique in a project.
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
-	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
-	Timeout       *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// Specifies whether to consume data in sequence. Valid values:
+	//
+	// *   true
+	//
+	//     *   In a shard, data is consumed in ascending order based on the value of the \*\*\__tag\_\_:\__receive_time\_\_\*\* field.
+	//     *   If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
+	//     *   If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
+	//
+	// *   false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
+	Order *bool `json:"order,omitempty" xml:"order,omitempty"`
+	// The timeout period. If the server does not receive heartbeats from a consumer within the timeout period, the server deletes the consumer. Unit: seconds.
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -2192,6 +2197,7 @@ func (s *CreateDashboardResponse) SetStatusCode(v int32) *CreateDashboardRespons
 }
 
 type CreateDomainRequest struct {
+	// The domain name.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
 }
 
@@ -2232,13 +2238,20 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 }
 
 type CreateIndexRequest struct {
-	Keys               map[string]*KeysValue   `json:"keys,omitempty" xml:"keys,omitempty"`
-	Line               *CreateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	LogReduce          *bool                   `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	LogReduceBlackList []*string               `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	LogReduceWhiteList []*string               `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	MaxTextLen         *int32                  `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	Ttl                *int32                  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify this parameter, the line parameter, or both parameters. For more information, see Example.
+	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
+	// The configuration of full-text indexes. You must specify this parameter, the keys parameter, or both parameters. For more information, see Example.
+	Line *CreateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	// Specifies whether to turn on LogReduce. After you turn on LogReduce, either the whitelist or blacklist takes effect.
+	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	// The fields in the blacklist that you want to use to cluster logs.
+	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	// The fields in the whitelist that you want to use to cluster logs.
+	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	// The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of max_text_len. Valid values: 64 to 16384.
+	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	// The retention period of logs. Unit: days. Valid values: 7, 30, and 90.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateIndexRequest) String() string {
@@ -2285,11 +2298,22 @@ func (s *CreateIndexRequest) SetTtl(v int32) *CreateIndexRequest {
 }
 
 type CreateIndexRequestLine struct {
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
-	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// Specifies whether to enable case sensitivity. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Specifies whether to include Chinese characters. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The excluded fields. You cannot specify both include_keys and exclude_keys.
+	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	// The included fields. You cannot specify both include_keys and exclude_keys.
+	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	// The delimiters. You can specify a delimiter to delimit the content of a field value. For more information about delimiters, see Example.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s CreateIndexRequestLine) String() string {
@@ -2349,17 +2373,54 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 type CreateLogStoreRequest struct {
-	AppendMeta     *bool        `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	AutoSplit      *bool        `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	EnableTracking *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	EncryptConf    *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
-	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// Specifies whether to record public IP addresses. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
+	// Specifies whether to enable automatic sharding. Valid values:
+	//
+	// *   true
+	// *   false
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
+	// The data structure of the encryption configuration.
+	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	// The retention period of data in the hot storage tier of the Logstore. Unit: days. You can specify a value that ranges from 30 to the value of ttl.
+	//
+	// Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The name of the Logstore. The name must meet the following requirements:
+	//
+	// *   The name must be unique in a project.
+	// *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// *   The name must start and end with a lowercase letter or a digit.
+	// *   The name must be 3 to 63 characters in length.
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	//
+	// > If you set autoSplit to true, you must configure this parameter.
+	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// The type of the Logstore. Log Service provides the following types of Logstores: Standard Logstores and Query Logstores. Valid values:
+	//
+	// *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The number of shards.
+	//
+	// > You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The type of the observable data. Valid values:
+	//
+	// *   None: logs
+	// *   Metrics: metrics
+	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
+	// The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateLogStoreRequest) String() string {
@@ -2449,8 +2510,10 @@ func (s *CreateLogStoreResponse) SetStatusCode(v int32) *CreateLogStoreResponse 
 }
 
 type CreateLoggingRequest struct {
+	// The configurations of service logs.
 	LoggingDetails []*CreateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
-	LoggingProject *string                               `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+	// The name of the project to which service logs are stored.
+	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
 }
 
 func (s CreateLoggingRequest) String() string {
@@ -2472,8 +2535,19 @@ func (s *CreateLoggingRequest) SetLoggingProject(v string) *CreateLoggingRequest
 }
 
 type CreateLoggingRequestLoggingDetails struct {
+	// The name of the Logstore to which service logs of the type are stored.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of service logs. Valid values:
+	//
+	// *   consumergroup_log: the consumption delay logs of consumer groups.
+	// *   logtail_alarm: the alert logs of Logtail.
+	// *   operation_log: the operation logs.
+	// *   logtail_profile: the collection logs of Logtail.
+	// *   metering: the metering logs.
+	// *   logtail_status: the status logs of Logtail.
+	// *   scheduledsqlalert: the run logs of Scheduled SQL jobs.
+	// *   etl_alert: the run logs of data transformation jobs.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s CreateLoggingRequestLoggingDetails) String() string {
@@ -2594,11 +2668,27 @@ func (s *CreateLogtailPipelineConfigResponse) SetStatusCode(v int32) *CreateLogt
 }
 
 type CreateMachineGroupRequest struct {
-	GroupAttribute      *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
-	GroupName           *string                                  `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	GroupType           *string                                  `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	MachineIdentifyType *string                                  `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
-	MachineList         []*string                                `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+	// The attributes of the machine group.
+	GroupAttribute *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	// The name of the machine group. The name must meet the following requirements:
+	//
+	// *   The name of each machine group in a project must be unique.
+	// *   It can contain only lowercase letters, digits, hyphens (-), and underscores (\_).
+	// *   It must start and end with a lowercase letter or a digit.
+	// *   It must be 3 to 128 characters in length.
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The type of the machine group. The parameter can be left empty.
+	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// The type of the machine group identifier. Valid values:
+	//
+	// *   ip: The machine group uses IP addresses as identifiers.
+	// *   userdefined: The machine group uses custom identifiers.
+	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	// The identifiers of machine group.
+	//
+	// *   If you set machineIdentifyType to ip, enter the IP address of the machine.
+	// *   If you set machineIdentifyType to userdefined, enter a custom identifier.
+	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
 
 func (s CreateMachineGroupRequest) String() string {
@@ -2635,8 +2725,10 @@ func (s *CreateMachineGroupRequest) SetMachineList(v []*string) *CreateMachineGr
 }
 
 type CreateMachineGroupRequestGroupAttribute struct {
+	// The identifier of the external management system on which the machine group depends.
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
-	GroupTopic   *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+	// The log topic of the machine group.
+	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
 func (s CreateMachineGroupRequestGroupAttribute) String() string {
@@ -2681,9 +2773,12 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 }
 
 type CreateOssExternalStoreRequest struct {
-	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	Parameter         *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The name of the external store.
+	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	// The parameters that are configured for the external store.
+	Parameter *CreateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The type of the external store. Set the value to oss.
+	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
 func (s CreateOssExternalStoreRequest) String() string {
@@ -2710,12 +2805,18 @@ func (s *CreateOssExternalStoreRequest) SetStoreType(v string) *CreateOssExterna
 }
 
 type CreateOssExternalStoreRequestParameter struct {
-	Accessid  *string                                          `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	Accesskey *string                                          `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
-	Bucket    *string                                          `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Columns   []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Endpoint  *string                                          `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Objects   []*string                                        `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
+	// The AccessKey ID of your account.
+	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
+	// The AccessKey secret of your account.
+	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
+	// The name of the OSS bucket.
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The associated fields.
+	Columns []*CreateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The OSS endpoint.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The associated objects.
+	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
 }
 
 func (s CreateOssExternalStoreRequestParameter) String() string {
@@ -2757,7 +2858,9 @@ func (s *CreateOssExternalStoreRequestParameter) SetObjects(v []*string) *Create
 }
 
 type CreateOssExternalStoreRequestParameterColumns struct {
+	// The name of the field.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the field.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -2803,10 +2906,19 @@ func (s *CreateOssExternalStoreResponse) SetStatusCode(v int32) *CreateOssExtern
 }
 
 type CreateProjectRequest struct {
+	// Data redundancy type
 	DataRedundancyType *string `json:"dataRedundancyType,omitempty" xml:"dataRedundancyType,omitempty"`
-	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
-	ProjectName        *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	ResourceGroupId    *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The description of the project.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the project. The name must be unique in a region. You cannot change the name after you create the project. The name must meet the following requirements:
+	//
+	// *   The name must be unique.
+	// *   It can contain only lowercase letters, digits, and hyphens (-).
+	// *   It must start and end with a lowercase letter or a digit.
+	// *   It must be 3 to 63 characters in length.
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// The ID of the resource group.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -2861,9 +2973,12 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 }
 
 type CreateRdsExternalStoreRequest struct {
-	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	Parameter         *CreateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The name of the external store. The name must be unique in a project and must be different from Logstore names.
+	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	// The parameter struct.
+	Parameter *CreateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
+	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
 func (s CreateRdsExternalStoreRequest) String() string {
@@ -2890,15 +3005,24 @@ func (s *CreateRdsExternalStoreRequest) SetStoreType(v string) *CreateRdsExterna
 }
 
 type CreateRdsExternalStoreRequestParameter struct {
-	Db         *string `json:"db,omitempty" xml:"db,omitempty"`
-	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The name of the database in the ApsaraDB RDS for MySQL instance.
+	Db *string `json:"db,omitempty" xml:"db,omitempty"`
+	// The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The ID of the ApsaraDB RDS for MySQL instance.
 	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
-	Password   *string `json:"password,omitempty" xml:"password,omitempty"`
-	Port       *string `json:"port,omitempty" xml:"port,omitempty"`
-	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
-	Table      *string `json:"table,omitempty" xml:"table,omitempty"`
-	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
-	VpcId      *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
+	// The password that is used to log on to the ApsaraDB RDS for MySQL instance.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The internal or public port of the ApsaraDB RDS for MySQL instance.
+	Port *string `json:"port,omitempty" xml:"port,omitempty"`
+	// The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The name of the database table in the ApsaraDB RDS for MySQL instance.
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// The username that is used to log on to the ApsaraDB RDS for MySQL instance.
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
+	VpcId *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
 }
 
 func (s CreateRdsExternalStoreRequestParameter) String() string {
@@ -2978,11 +3102,16 @@ func (s *CreateRdsExternalStoreResponse) SetStatusCode(v int32) *CreateRdsExtern
 }
 
 type CreateSavedSearchRequest struct {
-	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The display name.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the Logstore to which the saved search belongs.
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the saved search. The name must be 3 to 63 characters in length.
 	SavedsearchName *string `json:"savedsearchName,omitempty" xml:"savedsearchName,omitempty"`
-	SearchQuery     *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
-	Topic           *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// The query statement of the saved search. A query statement consists of a search statement and an analytic statement in the `Search statement|Analytic statement` format. For more information about search statements and analytic statements, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~).
+	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
+	// The topic of the log.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s CreateSavedSearchRequest) String() string {
@@ -3038,75 +3167,6 @@ func (s *CreateSavedSearchResponse) SetHeaders(v map[string]*string) *CreateSave
 
 func (s *CreateSavedSearchResponse) SetStatusCode(v int32) *CreateSavedSearchResponse {
 	s.StatusCode = &v
-	return s
-}
-
-type CreateTicketRequest struct {
-	PlayAccessKeyId     *string `json:"playAccessKeyId,omitempty" xml:"playAccessKeyId,omitempty"`
-	PlayAccessKeySecret *string `json:"playAccessKeySecret,omitempty" xml:"playAccessKeySecret,omitempty"`
-}
-
-func (s CreateTicketRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTicketRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTicketRequest) SetPlayAccessKeyId(v string) *CreateTicketRequest {
-	s.PlayAccessKeyId = &v
-	return s
-}
-
-func (s *CreateTicketRequest) SetPlayAccessKeySecret(v string) *CreateTicketRequest {
-	s.PlayAccessKeySecret = &v
-	return s
-}
-
-type CreateTicketResponseBody struct {
-	Ticket *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
-}
-
-func (s CreateTicketResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTicketResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTicketResponseBody) SetTicket(v string) *CreateTicketResponseBody {
-	s.Ticket = &v
-	return s
-}
-
-type CreateTicketResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateTicketResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateTicketResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateTicketResponse) SetHeaders(v map[string]*string) *CreateTicketResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
-	s.Body = v
 	return s
 }
 
@@ -3658,8 +3718,10 @@ func (s *GetAnnotationLabelResponse) SetBody(v *MLLabelParam) *GetAnnotationLabe
 }
 
 type GetAppliedConfigsResponseBody struct {
+	// The names of the Logtail configurations.
 	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	Count   *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of Logtail configurations.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s GetAppliedConfigsResponseBody) String() string {
@@ -3710,7 +3772,9 @@ func (s *GetAppliedConfigsResponse) SetBody(v *GetAppliedConfigsResponseBody) *G
 }
 
 type GetAppliedMachineGroupsResponseBody struct {
-	Count         *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of returned machine groups.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The names of the returned machine groups.
 	Machinegroups []*string `json:"machinegroups,omitempty" xml:"machinegroups,omitempty" type:"Repeated"`
 }
 
@@ -3762,6 +3826,10 @@ func (s *GetAppliedMachineGroupsResponse) SetBody(v *GetAppliedMachineGroupsResp
 }
 
 type GetCheckPointRequest struct {
+	// The shard ID.
+	//
+	// *   If the specified shard does not exist, an empty list is returned.
+	// *   If no shard ID is specified, the checkpoints of all shards are returned.
 	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
 }
 
@@ -3808,11 +3876,14 @@ func (s *GetCheckPointResponse) SetBody(v []*GetCheckPointResponseBody) *GetChec
 }
 
 type GetCheckPointResponseBody struct {
-	// Shard ID。
-	Shard      *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
+	// The shard ID.
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+	// The value of the checkpoint.
 	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	UpdateTime *int64  `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	Consumer   *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	// The time when the checkpoint was last updated. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The consumer at the checkpoint.
+	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
 }
 
 func (s GetCheckPointResponseBody) String() string {
@@ -4094,11 +4165,16 @@ func (s *GetConfigResponse) SetBody(v *LogtailConfig) *GetConfigResponse {
 }
 
 type GetContextLogsRequest struct {
-	BackLines    *int64  `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
-	ForwardLines *int64  `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
-	PackId       *string `json:"pack_id,omitempty" xml:"pack_id,omitempty"`
-	PackMeta     *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: (0,100].
+	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	// The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: (0,100].
+	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	// The unique identifier of the log group to which the start log belongs.
+	PackId *string `json:"pack_id,omitempty" xml:"pack_id,omitempty"`
+	// The unique context identifier of the start log in the log group.
+	PackMeta *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
+	// The type of the data in the Logstore. Set the value to context_log.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetContextLogsRequest) String() string {
@@ -4135,11 +4211,19 @@ func (s *GetContextLogsRequest) SetType(v string) *GetContextLogsRequest {
 }
 
 type GetContextLogsResponseBody struct {
-	BackLines    *int64                   `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
-	ForwardLines *int64                   `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
-	Logs         []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
-	Progress     *string                  `json:"progress,omitempty" xml:"progress,omitempty"`
-	TotalLines   *int64                   `json:"total_lines,omitempty" xml:"total_lines,omitempty"`
+	// The number of logs that are generated before the generation time of the start log.
+	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	// The number of logs that are generated after the generation time of the start log.
+	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	// The logs that are returned.
+	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	// Indicates whether the query and analysis results are complete. Valid values:
+	//
+	// *   Complete: The query is successful, and the complete query and analysis results are returned.
+	// *   Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The total number of logs that are returned. The logs include the start log that is specified in the request.
+	TotalLines *int64 `json:"total_lines,omitempty" xml:"total_lines,omitempty"`
 }
 
 func (s GetContextLogsResponseBody) String() string {
@@ -4205,6 +4289,7 @@ func (s *GetContextLogsResponse) SetBody(v *GetContextLogsResponseBody) *GetCont
 }
 
 type GetCursorRequest struct {
+	// The point in time that you want to use to query a cursor. Set the value to a UNIX timestamp or a string such as `begin` and `end`.
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
 }
 
@@ -4222,6 +4307,7 @@ func (s *GetCursorRequest) SetFrom(v string) *GetCursorRequest {
 }
 
 type GetCursorResponseBody struct {
+	// The value of the cursor.
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 }
 
@@ -4268,6 +4354,7 @@ func (s *GetCursorResponse) SetBody(v *GetCursorResponseBody) *GetCursorResponse
 }
 
 type GetCursorTimeRequest struct {
+	// The cursor.
 	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
 }
 
@@ -4285,6 +4372,7 @@ func (s *GetCursorTimeRequest) SetCursor(v string) *GetCursorTimeRequest {
 }
 
 type GetCursorTimeResponseBody struct {
+	// The server time that is queried based on the cursor. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	CursorTime *string `json:"cursor_time,omitempty" xml:"cursor_time,omitempty"`
 }
 
@@ -4389,9 +4477,13 @@ func (s *GetExternalStoreResponse) SetBody(v *ExternalStore) *GetExternalStoreRe
 }
 
 type GetHistogramsRequest struct {
-	From  *int64  `json:"from,omitempty" xml:"from,omitempty"`
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Log search overview](~~43772~~).
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	To    *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
+	// The topic of the logs.
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -4453,9 +4545,21 @@ func (s *GetHistogramsResponse) SetBody(v []*GetHistogramsResponseBody) *GetHist
 }
 
 type GetHistogramsResponseBody struct {
-	From     *int64  `json:"from,omitempty" xml:"from,omitempty"`
-	To       *int64  `json:"to,omitempty" xml:"to,omitempty"`
-	Count    *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	//
+	// The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
+	// The number of logs that are generated within the subinterval.
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// Indicates whether the query and analysis results in the subinterval is complete. Valid values:
+	//
+	// Complete: The query is successful, and the complete query and analysis results are returned.
+	//
+	// Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
 	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
 }
 
@@ -4488,16 +4592,26 @@ func (s *GetHistogramsResponseBody) SetProgress(v string) *GetHistogramsResponse
 }
 
 type GetIndexResponseBody struct {
-	IndexMode          *string                   `json:"index_mode,omitempty" xml:"index_mode,omitempty"`
-	Keys               map[string]*KeysValue     `json:"keys,omitempty" xml:"keys,omitempty"`
-	LastModifyTime     *int64                    `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	Line               *GetIndexResponseBodyLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	LogReduce          *bool                     `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	LogReduceBlackList []*string                 `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	LogReduceWhiteList []*string                 `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	MaxTextLen         *int32                    `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	Storage            *string                   `json:"storage,omitempty" xml:"storage,omitempty"`
-	Ttl                *int32                    `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The type of the index.
+	IndexMode *string `json:"index_mode,omitempty" xml:"index_mode,omitempty"`
+	// The configurations of field indexes. A field index is in the key-value format in which the key specifies the name of the field and the value specifies the index configuration of the field.
+	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
+	// The time when the index configurations were last updated. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The configurations of full-text indexes.
+	Line *GetIndexResponseBodyLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	// Indicates whether the log clustering feature is enabled.
+	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	// The fields in the blacklist that are used to cluster logs. This parameter is valid only if the log clustering feature is enabled.
+	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	// The fields in the whitelist that are used to cluster logs. This parameter is valid only if the log clustering feature is enabled.
+	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	// The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of the max_text_len parameter. Valid values: 64 to 16384. Unit: bytes.
+	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	// The storage type. The value is fixed as pg.
+	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The lifecycle of the index file. Valid values: 7, 30, and 90. Unit: day.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s GetIndexResponseBody) String() string {
@@ -4559,11 +4673,22 @@ func (s *GetIndexResponseBody) SetTtl(v int32) *GetIndexResponseBody {
 }
 
 type GetIndexResponseBodyLine struct {
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
-	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// Indicates whether case sensitivity is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Indicates whether Chinese characters are included. Valid values:
+	//
+	// *   true
+	// *   false
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The excluded fields.
+	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	// The included fields.
+	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	// The delimiters.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s GetIndexResponseBodyLine) String() string {
@@ -4733,14 +4858,57 @@ func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
 }
 
 type GetLogsRequest struct {
-	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
-	Line     *int64  `json:"line,omitempty" xml:"line,omitempty"`
-	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
-	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	To       *int32  `json:"to,omitempty" xml:"to,omitempty"`
-	Topic    *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
+	//
+	// *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you specify the same value for the **from** and **to** parameters, the interval is invalid, and an error message is returned.
+	// *   The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
+	//
+	// If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](~~63451~~) and [to_unixtime function](~~63451~~). Examples:
+	//
+	// *   `* | SELECT * FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
+	// *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\"2022-10-19 15:46:05\", \"%Y-%m-%d %H:%i:%s\")) AND __time__ < to_unixtime(now())`
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
+	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
+	// The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](~~223777~~). Valid values:
+	//
+	// *   true: enables the Dedicated SQL feature.
+	// *   false (default): enables the Standard SQL feature.
+	//
+	// You can use the powerSql or **query** parameter to configure Dedicated SQL.
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// The search statement or the query statement. For more information, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~). If you add `set session parallel_sql=true;` to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to `* | set session parallel_sql=true; select count(*) as pv`. For more information about common errors that may occur during log query and analysis, see [How do I resolve common errors that occur when I query and analyze logs?](~~61628~~)
+	//
+	// > If you specify an analytic statement in the value of the query parameter, the line and offset parameters do not take effect. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see [Paged query](~~89994~~).
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
+	//
+	// *   true: returns logs in reverse chronological order of log timestamps.
+	// *   false (default): returns logs in chronological order of log timestamps.
+	//
+	// >
+	//
+	// *   The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs.
+	// *   If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	// The end of the time range to query. The value is the log time that is specified when log data is written.
+	//
+	// *   The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the **from** parameter, but does not include the end time specified by the **to** parameter. If you specify the same value for the **from** and **to** parameters, the interval is invalid, and an error message is returned.
+	// *   The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// > To ensure that full data can be queried, specify a query time range that is accurate to the minute. If you also specify a time range in an analytic statement, Simple Log Service uses the time range specified in the analytic statement for query and analysis.
+	//
+	// If you want to specify a time range that is accurate to the second in your analytic statement, you must use the from_unixtime or to_unixtime function to convert the time format. For more information about the functions, see [from_unixtime function](~~63451~~) and [to_unixtime function](~~63451~~). Examples:
+	//
+	// *   `* | SELECT * FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
+	// *   `* | SELECT * FROM log WHERE __time__ > to_unixtime(date_parse(\"2022-10-19 15:46:05\", \"%Y-%m-%d %H:%i:%s\")) AND __time__ < to_unixtime(now())`
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
+	// The topic of the logs. The default value is double quotation marks (""). For more information, see [Topic](~~48881~~).
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s GetLogsRequest) String() string {
@@ -4821,8 +4989,9 @@ func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
 }
 
 type GetLogsV2Headers struct {
-	CommonHeaders  map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	AcceptEncoding *string            `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The compression method.
+	AcceptEncoding *string `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
 }
 
 func (s GetLogsV2Headers) String() string {
@@ -4844,17 +5013,36 @@ func (s *GetLogsV2Headers) SetAcceptEncoding(v string) *GetLogsV2Headers {
 }
 
 type GetLogsV2Request struct {
-	Forward  *bool   `json:"forward,omitempty" xml:"forward,omitempty"`
-	From     *int32  `json:"from,omitempty" xml:"from,omitempty"`
-	Line     *int64  `json:"line,omitempty" xml:"line,omitempty"`
-	Offset   *int64  `json:"offset,omitempty" xml:"offset,omitempty"`
-	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
-	Reverse  *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	Session  *string `json:"session,omitempty" xml:"session,omitempty"`
-	// Shard ID。
-	Shard *int32  `json:"shard,omitempty" xml:"shard,omitempty"`
-	To    *int32  `json:"to,omitempty" xml:"to,omitempty"`
+	// Specifies whether to page forward or backward for the scan-based query or the phrase query.
+	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
+	// The beginning of the time range to query. The value is the log time that is specified when log data is written.
+	//
+	// The time range specified by the from and to parameters is a left-closed and right-open interval. Each interval includes the specified start time but does not include the specified end time. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	// The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
+	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
+	// The row from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// The search statement or the query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+	//
+	// If you add set session parallel_sql=true; to the analytic statement in the query parameter, the dedicated SQL feature is enabled. Example: \* | set session parallel_sql=true; select count(\*) as pv.
+	//
+	// Note: If you specify an analytic statement in the query parameter, the line and offset parameters are invalid for this operation. In this case, we recommend that you set the line and offset parameters to 0 and use a LIMIT clause to limit the number of entries to return on each page. For more information, see the "Perform paged queries" topic.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
+	//
+	// true: returns logs in reverse chronological order of log timestamps. false (default): returns logs in chronological order of log timestamps. Note The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort the returned logs. If the query parameter is set to a query statement, which consists of a search statement and an analytic statement, the reverse parameter does not take effect. The method used to sort the returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+	Reverse *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	Session *string `json:"session,omitempty" xml:"session,omitempty"`
+	// The ID of the shard.
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+	// The end of the time range to query. The value is the log time that is specified when log data is written.
+	//
+	// The time range specified by the from and to parameters is a left-closed and right-open interval. Each interval includes the specified start time but does not include the specified end time. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
+	// The topic of the logs. Default value: double quotation marks ("").
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -4922,7 +5110,9 @@ func (s *GetLogsV2Request) SetTopic(v string) *GetLogsV2Request {
 }
 
 type GetLogsV2ResponseBody struct {
-	Data []map[string]*string       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The returned result.
+	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The metadata that is returned.
 	Meta *GetLogsV2ResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
 }
 
@@ -4945,18 +5135,33 @@ func (s *GetLogsV2ResponseBody) SetMeta(v *GetLogsV2ResponseBodyMeta) *GetLogsV2
 }
 
 type GetLogsV2ResponseBodyMeta struct {
-	AggQuery           *string                  `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
-	Count              *int32                   `json:"count,omitempty" xml:"count,omitempty"`
-	ElapsedMillisecond *int64                   `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
-	HasSQL             *bool                    `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
-	IsAccurate         *bool                    `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
-	Keys               []*string                `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	ProcessedBytes     *int64                   `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
-	ProcessedRows      *int32                   `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	Progress           *string                  `json:"progress,omitempty" xml:"progress,omitempty"`
-	TelementryType     *string                  `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
-	Terms              []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
-	WhereQuery         *string                  `json:"whereQuery,omitempty" xml:"whereQuery,omitempty"`
+	// The SQL statement after | in the query statement.
+	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	// The number of rows that are returned.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The amount of time that is consumed by the request. Unit: milliseconds.
+	ElapsedMillisecond *int64 `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
+	// Indicates whether the query is an SQL query.
+	HasSQL *bool `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	// Indicates whether the returned result is accurate.
+	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
+	// All keys in the query result.
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	// The number of logs that are processed in the request.
+	ProcessedBytes *int64 `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
+	// The number of rows that are processed in the request.
+	ProcessedRows *int32 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
+	// Indicates whether the query result is complete. Valid values:
+	//
+	// *   Complete: The query was successful, and the complete result is returned.
+	// *   Incomplete: The query was successful, but the query result is incomplete. To obtain the complete result, you must call the operation again.
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The type of observable data.
+	TelementryType *string `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
+	// All terms in the query statement.
+	Terms []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
+	// The part before | in the query statement.
+	WhereQuery *string `json:"whereQuery,omitempty" xml:"whereQuery,omitempty"`
 }
 
 func (s GetLogsV2ResponseBodyMeta) String() string {
@@ -5085,6 +5290,81 @@ func (s *GetLogtailPipelineConfigResponse) SetBody(v *LogtailPipelineConfig) *Ge
 	return s
 }
 
+type GetMLServiceResultsRequest struct {
+	AllowBuiltin *bool                   `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
+	Body         *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMLServiceResultsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMLServiceResultsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMLServiceResultsRequest) SetAllowBuiltin(v bool) *GetMLServiceResultsRequest {
+	s.AllowBuiltin = &v
+	return s
+}
+
+func (s *GetMLServiceResultsRequest) SetBody(v *MLServiceAnalysisParam) *GetMLServiceResultsRequest {
+	s.Body = v
+	return s
+}
+
+type GetMLServiceResultsResponseBody struct {
+	Data   []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Status map[string]*string   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetMLServiceResultsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMLServiceResultsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMLServiceResultsResponseBody) SetData(v []map[string]*string) *GetMLServiceResultsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMLServiceResultsResponseBody) SetStatus(v map[string]*string) *GetMLServiceResultsResponseBody {
+	s.Status = v
+	return s
+}
+
+type GetMLServiceResultsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMLServiceResultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMLServiceResultsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMLServiceResultsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMLServiceResultsResponse) SetHeaders(v map[string]*string) *GetMLServiceResultsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMLServiceResultsResponse) SetStatusCode(v int32) *GetMLServiceResultsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMLServiceResultsResponse) SetBody(v *GetMLServiceResultsResponseBody) *GetMLServiceResultsResponse {
+	s.Body = v
+	return s
+}
+
 type GetMachineGroupResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -5144,8 +5424,15 @@ func (s *GetProjectResponse) SetBody(v *Project) *GetProjectResponse {
 }
 
 type GetProjectLogsRequest struct {
-	PowerSql *bool   `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	Query    *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to enable the Dedicated SQL feature. For more information, see [Enable Dedicated SQL](~~223777~~). Valid values:
+	//
+	// *   true
+	// *   false (default): enables the Standard SQL feature.
+	//
+	// You can use the powerSql or **query** parameter to configure Dedicated SQL.
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// The standard SQL statement. In this example, the SQL statement queries the number of page views (PVs) from 2022-03-01 10:41:40 to 2022-03-01 10:56:40 in a Logstore whose name is nginx-moni.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s GetProjectLogsRequest) String() string {
@@ -5254,11 +5541,16 @@ func (s *GetSavedSearchResponse) SetBody(v *SavedSearch) *GetSavedSearchResponse
 }
 
 type GetShipperStatusRequest struct {
-	From   *int64  `json:"from,omitempty" xml:"from,omitempty"`
-	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Default value: 100. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The status of the log shipping job. This parameter is empty by default, which indicates that log shipping jobs in all states are returned. Valid values: success, fail, and running.
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	To     *int64  `json:"to,omitempty" xml:"to,omitempty"`
+	// The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
 }
 
 func (s GetShipperStatusRequest) String() string {
@@ -5295,10 +5587,14 @@ func (s *GetShipperStatusRequest) SetTo(v int64) *GetShipperStatusRequest {
 }
 
 type GetShipperStatusResponseBody struct {
-	Count      *int64                                  `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of log shipping jobs returned on the current page.
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The statistics about log shipping jobs.
 	Statistics *GetShipperStatusResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Struct"`
-	Tasks      *GetShipperStatusResponseBodyTasks      `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Struct"`
-	Total      *int64                                  `json:"total,omitempty" xml:"total,omitempty"`
+	// The details of log shipping jobs.
+	Tasks *GetShipperStatusResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Struct"`
+	// The total number of log shipping jobs.
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s GetShipperStatusResponseBody) String() string {
@@ -5330,8 +5626,11 @@ func (s *GetShipperStatusResponseBody) SetTotal(v int64) *GetShipperStatusRespon
 }
 
 type GetShipperStatusResponseBodyStatistics struct {
-	Fail    *int64 `json:"fail,omitempty" xml:"fail,omitempty"`
+	// The number of log shipping jobs that are in the fail state.
+	Fail *int64 `json:"fail,omitempty" xml:"fail,omitempty"`
+	// The number of log shipping jobs that are in the running state.
 	Running *int64 `json:"running,omitempty" xml:"running,omitempty"`
+	// The number of log shipping jobs that are in the success state.
 	Success *int64 `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -5359,14 +5658,22 @@ func (s *GetShipperStatusResponseBodyStatistics) SetSuccess(v int64) *GetShipper
 }
 
 type GetShipperStatusResponseBodyTasks struct {
-	Id                      *string `json:"id,omitempty" xml:"id,omitempty"`
-	TaskCode                *string `json:"taskCode,omitempty" xml:"taskCode,omitempty"`
-	TaskCreateTime          *int64  `json:"taskCreateTime,omitempty" xml:"taskCreateTime,omitempty"`
-	TaskDataLines           *int32  `json:"taskDataLines,omitempty" xml:"taskDataLines,omitempty"`
-	TaskFinishTime          *int64  `json:"taskFinishTime,omitempty" xml:"taskFinishTime,omitempty"`
-	TaskLastDataReceiveTime *int64  `json:"taskLastDataReceiveTime,omitempty" xml:"taskLastDataReceiveTime,omitempty"`
-	TaskMessage             *string `json:"taskMessage,omitempty" xml:"taskMessage,omitempty"`
-	TaskStatus              *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
+	// The ID of the log shipping job.
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The error code of the log shipping job.
+	TaskCode *string `json:"taskCode,omitempty" xml:"taskCode,omitempty"`
+	// The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	TaskCreateTime *int64 `json:"taskCreateTime,omitempty" xml:"taskCreateTime,omitempty"`
+	// The number of logs that are shipped in the log shipping job.
+	TaskDataLines *int32 `json:"taskDataLines,omitempty" xml:"taskDataLines,omitempty"`
+	// The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	TaskFinishTime *int64 `json:"taskFinishTime,omitempty" xml:"taskFinishTime,omitempty"`
+	// The time when Simple Log Service receives the most recent log of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	TaskLastDataReceiveTime *int64 `json:"taskLastDataReceiveTime,omitempty" xml:"taskLastDataReceiveTime,omitempty"`
+	// The error message of the log shipping job.
+	TaskMessage *string `json:"taskMessage,omitempty" xml:"taskMessage,omitempty"`
+	// The status of the log shipping job. Valid values: running, success, and fail.
+	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
 }
 
 func (s GetShipperStatusResponseBodyTasks) String() string {
@@ -6231,9 +6538,12 @@ func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashb
 }
 
 type ListDomainsRequest struct {
+	// The domain name that is used to match custom domain names. For example, if you set domainName to `example.com`, the matched domain names are `a.example.com` and `b.example.com`.
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Default value: 500. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListDomainsRequest) String() string {
@@ -6260,9 +6570,12 @@ func (s *ListDomainsRequest) SetSize(v int32) *ListDomainsRequest {
 }
 
 type ListDomainsResponseBody struct {
-	Count   *int64    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of domain names that are returned on the current page.
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The domain names.
 	Domains []*string `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
-	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of domain names that are returned.
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListDomainsResponseBody) String() string {
@@ -6318,9 +6631,12 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListExternalStoreRequest struct {
+	// The name of the external store. You can query external stores that contain a specified string.
 	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	Offset            *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Sizs              *int32  `json:"sizs,omitempty" xml:"sizs,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 500.
+	Sizs *int32 `json:"sizs,omitempty" xml:"sizs,omitempty"`
 }
 
 func (s ListExternalStoreRequest) String() string {
@@ -6347,9 +6663,12 @@ func (s *ListExternalStoreRequest) SetSizs(v int32) *ListExternalStoreRequest {
 }
 
 type ListExternalStoreResponseBody struct {
-	Count          *int32           `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of external stores returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The names of the external stores.
 	Externalstores []*ExternalStore `json:"externalstores,omitempty" xml:"externalstores,omitempty" type:"Repeated"`
-	Total          *int32           `json:"total,omitempty" xml:"total,omitempty"`
+	// The number of external stores that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListExternalStoreResponseBody) String() string {
@@ -6405,10 +6724,21 @@ func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *L
 }
 
 type ListLogStoresRequest struct {
-	LogstoreName  *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	Mode          *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	Offset        *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size          *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The name of the Logstore. Fuzzy match is supported. For example, if you enter test, Logstores whose name contains test are returned.
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// The type of the Logstore. Valid values: standard and query.
+	//
+	// *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 500. Default value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The type of the data that you want to query. Valid values:
+	//
+	// *   None: logs
+	// *   Metrics: metrics
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 }
 
@@ -6446,9 +6776,12 @@ func (s *ListLogStoresRequest) SetTelemetryType(v string) *ListLogStoresRequest 
 }
 
 type ListLogStoresResponseBody struct {
-	Count     *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of entries that are returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The Logstores that meet the query conditions.
 	Logstores []*string `json:"logstores,omitempty" xml:"logstores,omitempty" type:"Repeated"`
-	Total     *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The number of the Logstores that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListLogStoresResponseBody) String() string {
@@ -6597,9 +6930,12 @@ func (s *ListLogtailPipelineConfigResponse) SetBody(v *ListLogtailPipelineConfig
 }
 
 type ListMachineGroupRequest struct {
+	// The name of the machine group. This parameter is used to filter machine groups. Partial match is supported.
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	Offset    *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size      *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMachineGroupRequest) String() string {
@@ -6626,9 +6962,12 @@ func (s *ListMachineGroupRequest) SetSize(v int32) *ListMachineGroupRequest {
 }
 
 type ListMachineGroupResponseBody struct {
-	Count         *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of machine groups that are returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The machine groups that meet the query conditions.
 	Machinegroups []*string `json:"machinegroups,omitempty" xml:"machinegroups,omitempty" type:"Repeated"`
-	Total         *int32    `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of machine groups that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMachineGroupResponseBody) String() string {
@@ -6684,8 +7023,10 @@ func (s *ListMachineGroupResponse) SetBody(v *ListMachineGroupResponseBody) *Lis
 }
 
 type ListMachinesRequest struct {
+	// The line from which the query starts. Default value: 0.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page. Default value: 100. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMachinesRequest) String() string {
@@ -6707,9 +7048,12 @@ func (s *ListMachinesRequest) SetSize(v int32) *ListMachinesRequest {
 }
 
 type ListMachinesResponseBody struct {
-	Count    *int32     `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of machines that are returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The machines that are returned.
 	Machines []*Machine `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	Total    *int32     `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of machines.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMachinesResponseBody) String() string {
@@ -6765,9 +7109,13 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 }
 
 type ListProjectRequest struct {
-	Offset      *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The name of the project.
+	ProjectName     *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// The number of entries per page. Default value: 100. This operation can return up to 500 projects.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListProjectRequest) String() string {
@@ -6788,15 +7136,23 @@ func (s *ListProjectRequest) SetProjectName(v string) *ListProjectRequest {
 	return s
 }
 
+func (s *ListProjectRequest) SetResourceGroupId(v string) *ListProjectRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *ListProjectRequest) SetSize(v int32) *ListProjectRequest {
 	s.Size = &v
 	return s
 }
 
 type ListProjectResponseBody struct {
-	Count    *int64     `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of returned projects on the current page.
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The projects that meet the query conditions.
 	Projects []*Project `json:"projects,omitempty" xml:"projects,omitempty" type:"Repeated"`
-	Total    *int64     `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of projects that meet the query conditions.
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListProjectResponseBody) String() string {
@@ -6852,8 +7208,10 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 }
 
 type ListSavedSearchRequest struct {
+	// The line from which the query starts. Default value: 0.
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The number of entries per page. Maximum value: 500.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListSavedSearchRequest) String() string {
@@ -6875,9 +7233,12 @@ func (s *ListSavedSearchRequest) SetSize(v int32) *ListSavedSearchRequest {
 }
 
 type ListSavedSearchResponseBody struct {
-	Count            *int32         `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of saved searches returned on the current page.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The saved searches.
 	SavedsearchItems []*SavedSearch `json:"savedsearchItems,omitempty" xml:"savedsearchItems,omitempty" type:"Repeated"`
-	Total            *int32         `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of saved searches that meet the query conditions.
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListSavedSearchResponseBody) String() string {
@@ -6962,9 +7323,12 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 }
 
 type ListShipperResponseBody struct {
-	Count   *int64    `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of log shipping jobs returned.
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The names of the log shipping jobs.
 	Shipper []*string `json:"shipper,omitempty" xml:"shipper,omitempty" type:"Repeated"`
-	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of log shipping jobs.
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListShipperResponseBody) String() string {
@@ -7020,9 +7384,14 @@ func (s *ListShipperResponse) SetBody(v *ListShipperResponseBody) *ListShipperRe
 }
 
 type ListTagResourcesRequest struct {
-	ResourceId   []*string                      `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	ResourceType *string                        `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tags         []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Set the value to project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tags that you want to use to filter resources based on exact match. Each tag is a key-value pair. You must specify at least one of resourceId and tags.
+	//
+	// You can enter up to 20 tags.
+	Tags []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -7049,7 +7418,9 @@ func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *Lis
 }
 
 type ListTagResourcesRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of the tag that you want to use to filter resources. For example, if you set the key to `"test-key"`, only resources to which the key is added are returned.``
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag that you want to use to filter resources. If you set the value to null, resources are filtered based only on the key of the tag.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -7072,9 +7443,14 @@ func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesReques
 }
 
 type ListTagResourcesShrinkRequest struct {
+	// The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	ResourceType     *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	TagsShrink       *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// The type of the resource. Set the value to project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tags that you want to use to filter resources based on exact match. Each tag is a key-value pair. You must specify at least one of resourceId and tags.
+	//
+	// You can enter up to 20 tags.
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListTagResourcesShrinkRequest) String() string {
@@ -7101,7 +7477,9 @@ func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResource
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The returned tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
 }
 
@@ -7124,10 +7502,14 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The ID of the resource.
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	TagKey       *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	TagValue     *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+	// The key of the tag.
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// The value of the tag.
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -7240,6 +7622,7 @@ func (s *PutAnnotationDataResponse) SetStatusCode(v int32) *PutAnnotationDataRes
 }
 
 type PutProjectPolicyRequest struct {
+	// The project policy.
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -7436,8 +7819,10 @@ func (s *RemoveConfigFromMachineGroupResponse) SetStatusCode(v int32) *RemoveCon
 }
 
 type SplitShardRequest struct {
-	Key        *string `json:"key,omitempty" xml:"key,omitempty"`
-	ShardCount *int32  `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The position where the shard is split.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The number of new shards that are generated after splitting.
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
 }
 
 func (s SplitShardRequest) String() string {
@@ -7488,9 +7873,12 @@ func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 }
 
 type TagResourcesRequest struct {
-	ResourceId   []*string                  `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	ResourceType *string                    `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tags         []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The resource IDs. You can specify only one resource and add tags to the resource.
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Set the value to project.
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tags that you want to add to the resource. Up to 20 tags are supported at a time. Each tag is a key-value pair.
+	Tags []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -7517,7 +7905,16 @@ func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResource
 }
 
 type TagResourcesRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The key of the tag. The key must meet the following requirements:
+	//
+	// *   The key must be `1 to 128` characters in length.
+	// *   The key cannot contain `"http://"` or `"https://"`.
+	// *   The key cannot start with `"acs:"` or `"aliyun"`.
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag. The value must meet the following requirements:
+	//
+	// *   The value must be `1 to 128` characters in length.
+	// *   The value cannot contain `"http://"` or `"https://"`.
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -7741,7 +8138,12 @@ func (s *UpdateConfigResponse) SetStatusCode(v int32) *UpdateConfigResponse {
 }
 
 type UpdateConsumerGroupRequest struct {
-	Order   *bool  `json:"order,omitempty" xml:"order,omitempty"`
+	// Specifies whether to consume data in sequence. Valid values:
+	//
+	// *   true: If a shard is split, the data in the original shard is consumed first. Then, the data in the new shards is consumed at the same time. If shards are merged, the data in the original shards is consumed first. Then, the data in the new shard is consumed.
+	// *   false: The data in all shards is consumed at the same time. If a new shard is generated after a shard is split or shards are merged, the data in the new shard is immediately consumed.
+	Order *bool `json:"order,omitempty" xml:"order,omitempty"`
+	// The timeout period. If Simple Log Service does not receive heartbeats from a consumer within the timeout period, Simple Log Service deletes the consumer. Unit: seconds.
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
@@ -7851,13 +8253,20 @@ func (s *UpdateDashboardResponse) SetStatusCode(v int32) *UpdateDashboardRespons
 }
 
 type UpdateIndexRequest struct {
-	Keys               map[string]*KeysValue   `json:"keys,omitempty" xml:"keys,omitempty"`
-	Line               *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
-	LogReduce          *bool                   `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
-	LogReduceBlackList []*string               `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
-	LogReduceWhiteList []*string               `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
-	MaxTextLen         *int32                  `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
-	Ttl                *int32                  `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field.
+	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
+	// The configuration of full-text indexes.
+	Line *UpdateIndexRequestLine `json:"line,omitempty" xml:"line,omitempty" type:"Struct"`
+	// Specifies whether to turn on LogReduce. If you turn on LogReduce, only one of `log_reduce_white_list` and `log_reduce_black_list` takes effect.
+	LogReduce *bool `json:"log_reduce,omitempty" xml:"log_reduce,omitempty"`
+	// The fields in the blacklist that you want to use to cluster logs.
+	LogReduceBlackList []*string `json:"log_reduce_black_list,omitempty" xml:"log_reduce_black_list,omitempty" type:"Repeated"`
+	// The fields in the whitelist that you want to use to cluster logs.
+	LogReduceWhiteList []*string `json:"log_reduce_white_list,omitempty" xml:"log_reduce_white_list,omitempty" type:"Repeated"`
+	// The maximum length of a field value that can be retained.
+	MaxTextLen *int32 `json:"max_text_len,omitempty" xml:"max_text_len,omitempty"`
+	// The retention period of data. Unit: days. Valid values: 7, 30, and 90.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s UpdateIndexRequest) String() string {
@@ -7904,11 +8313,22 @@ func (s *UpdateIndexRequest) SetTtl(v int32) *UpdateIndexRequest {
 }
 
 type UpdateIndexRequestLine struct {
-	CaseSensitive *bool     `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
-	Chn           *bool     `json:"chn,omitempty" xml:"chn,omitempty"`
-	ExcludeKeys   []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
-	IncludeKeys   []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
-	Token         []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
+	// Specifies whether to enable case sensitivity. Valid values:
+	//
+	// *   true
+	// *   false
+	CaseSensitive *bool `json:"caseSensitive,omitempty" xml:"caseSensitive,omitempty"`
+	// Specifies whether to include Chinese characters. Valid values:
+	//
+	// *   true
+	// *   false
+	Chn *bool `json:"chn,omitempty" xml:"chn,omitempty"`
+	// The excluded fields. You cannot specify both include_keys and exclude_keys.
+	ExcludeKeys []*string `json:"exclude_keys,omitempty" xml:"exclude_keys,omitempty" type:"Repeated"`
+	// The included fields. You cannot specify both include_keys and exclude_keys.
+	IncludeKeys []*string `json:"include_keys,omitempty" xml:"include_keys,omitempty" type:"Repeated"`
+	// The delimiters that are used to split text.
+	Token []*string `json:"token,omitempty" xml:"token,omitempty" type:"Repeated"`
 }
 
 func (s UpdateIndexRequestLine) String() string {
@@ -7968,17 +8388,47 @@ func (s *UpdateIndexResponse) SetStatusCode(v int32) *UpdateIndexResponse {
 }
 
 type UpdateLogStoreRequest struct {
-	AppendMeta     *bool        `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	AutoSplit      *bool        `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	EnableTracking *bool        `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	EncryptConf    *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	HotTtl         *int32       `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	LogstoreName   *string      `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	MaxSplitShard  *int32       `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	Mode           *string      `json:"mode,omitempty" xml:"mode,omitempty"`
-	ShardCount     *int32       `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	TelemetryType  *string      `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	Ttl            *int32       `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// Specifies whether to record public IP addresses. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
+	// Specifies whether to enable automatic sharding. Valid values:
+	//
+	// *   true
+	// *   false
+	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
+	// The data structure of the encryption configuration.
+	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
+	// The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](~~308645~~).
+	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
+	// The name of the Logstore.
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+	//
+	// > If you set autoSplit to true, you must specify maxSplitShard.
+	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
+	// The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores.
+	//
+	// *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+	// *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// The number of shards.
+	//
+	// > You cannot call the UpdateLogstore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The type of the log that you want to query. Valid values:
+	//
+	// *   None: all types of logs.
+	// *   Metrics: metrics.
+	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
+	// The retention period of data. Unit: day. Valid values: 1 to 3650. If you set ttl to 3650, data is permanently stored.
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s UpdateLogStoreRequest) String() string {
@@ -8108,8 +8558,10 @@ func (s *UpdateLogStoreMeteringModeResponse) SetStatusCode(v int32) *UpdateLogSt
 }
 
 type UpdateLoggingRequest struct {
+	// The configurations of service logs.
 	LoggingDetails []*UpdateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
-	LoggingProject *string                               `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+	// The name of the project to which you want to save service logs.
+	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
 }
 
 func (s UpdateLoggingRequest) String() string {
@@ -8131,8 +8583,19 @@ func (s *UpdateLoggingRequest) SetLoggingProject(v string) *UpdateLoggingRequest
 }
 
 type UpdateLoggingRequestLoggingDetails struct {
+	// The name of the Logstore to which you want to save service logs.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Type     *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The type of service logs. Valid values:
+	//
+	// *   consumergroup_log: the consumption delay logs of consumer groups.
+	// *   logtail_alarm: the alert logs of Logtail.
+	// *   operation_log: the operation logs.
+	// *   logtail_profile: the collection logs of Logtail.
+	// *   metering: the metering logs.
+	// *   logtail_status: the status logs of Logtail.
+	// *   scheduledsqlalert: the operational logs of Scheduled SQL jobs.
+	// *   etl_alert: the operational logs of data transformation jobs.
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s UpdateLoggingRequestLoggingDetails) String() string {
@@ -8253,11 +8716,22 @@ func (s *UpdateLogtailPipelineConfigResponse) SetStatusCode(v int32) *UpdateLogt
 }
 
 type UpdateMachineGroupRequest struct {
-	GroupAttribute      *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
-	GroupName           *string                                  `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	GroupType           *string                                  `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	MachineIdentifyType *string                                  `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
-	MachineList         []*string                                `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+	// The attribute of the machine group. This parameter is empty by default.
+	GroupAttribute *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	// The name of the machine group.
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The type of the machine group. Set the value to an empty string.
+	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// The identifier type of the machine group. Valid values:
+	//
+	// *   ip: The machine group uses IP addresses as identifiers.
+	// *   userdefined: The machine group uses custom identifiers.
+	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	// The identifiers of the machines in the machine group.
+	//
+	// *   If you set machineIdentifyType to ip, enter the IP addresses of the machines.
+	// *   If you set machineIdentifyType to userdefined, enter a custom identifier.
+	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMachineGroupRequest) String() string {
@@ -8294,8 +8768,10 @@ func (s *UpdateMachineGroupRequest) SetMachineList(v []*string) *UpdateMachineGr
 }
 
 type UpdateMachineGroupRequestGroupAttribute struct {
+	// The identifier of the external management system on which the machine group depends. This parameter is empty by default.
 	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
-	GroupTopic   *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+	// The topic of the machine group. This parameter is empty by default.
+	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
 }
 
 func (s UpdateMachineGroupRequestGroupAttribute) String() string {
@@ -8340,8 +8816,10 @@ func (s *UpdateMachineGroupResponse) SetStatusCode(v int32) *UpdateMachineGroupR
 }
 
 type UpdateMachineGroupMachineRequest struct {
-	Action *string   `json:"action,omitempty" xml:"action,omitempty"`
-	Body   []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The operation on the machine. Valid values: add and delete. A value of add specifies to add the machine to the machine group. A value of delete specifies to remove the machine from the machine group.
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The machines to be added or removed.
+	Body []*string `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMachineGroupMachineRequest) String() string {
@@ -8386,9 +8864,12 @@ func (s *UpdateMachineGroupMachineResponse) SetStatusCode(v int32) *UpdateMachin
 }
 
 type UpdateOssExternalStoreRequest struct {
-	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	Parameter         *UpdateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The name of the external store.
+	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	// The parameters that are configured for the external store.
+	Parameter *UpdateOssExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The type of the external store. Set the value to oss.
+	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
 func (s UpdateOssExternalStoreRequest) String() string {
@@ -8415,12 +8896,18 @@ func (s *UpdateOssExternalStoreRequest) SetStoreType(v string) *UpdateOssExterna
 }
 
 type UpdateOssExternalStoreRequestParameter struct {
-	Accessid  *string                                          `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	Accesskey *string                                          `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
-	Bucket    *string                                          `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Columns   []*UpdateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
-	Endpoint  *string                                          `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Objects   []*string                                        `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
+	// The AccessKey ID of your account.
+	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
+	// The AccessKey secret of your account.
+	Accesskey *string `json:"accesskey,omitempty" xml:"accesskey,omitempty"`
+	// The name of the OSS bucket.
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The associated fields.
+	Columns []*UpdateOssExternalStoreRequestParameterColumns `json:"columns,omitempty" xml:"columns,omitempty" type:"Repeated"`
+	// The OSS endpoint.
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The associated objects.
+	Objects []*string `json:"objects,omitempty" xml:"objects,omitempty" type:"Repeated"`
 }
 
 func (s UpdateOssExternalStoreRequestParameter) String() string {
@@ -8462,7 +8949,9 @@ func (s *UpdateOssExternalStoreRequestParameter) SetObjects(v []*string) *Update
 }
 
 type UpdateOssExternalStoreRequestParameterColumns struct {
+	// The key of the field.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The type of the field.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -8508,6 +8997,7 @@ func (s *UpdateOssExternalStoreResponse) SetStatusCode(v int32) *UpdateOssExtern
 }
 
 type UpdateProjectRequest struct {
+	// The description of the project. The default value is an empty string.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -8548,9 +9038,12 @@ func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
 }
 
 type UpdateRdsExternalStoreRequest struct {
-	ExternalStoreName *string                                 `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	Parameter         *UpdateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	StoreType         *string                                 `json:"storeType,omitempty" xml:"storeType,omitempty"`
+	// The name of the external store.
+	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
+	// The parameter struct.
+	Parameter *UpdateRdsExternalStoreRequestParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
+	// The storage type. Set the value to rds-vpc, which indicates an ApsaraDB RDS for MySQL database in a virtual private cloud (VPC).
+	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
 func (s UpdateRdsExternalStoreRequest) String() string {
@@ -8577,15 +9070,24 @@ func (s *UpdateRdsExternalStoreRequest) SetStoreType(v string) *UpdateRdsExterna
 }
 
 type UpdateRdsExternalStoreRequestParameter struct {
-	Db         *string `json:"db,omitempty" xml:"db,omitempty"`
-	Host       *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The name of the database in the ApsaraDB RDS for MySQL instance.
+	Db *string `json:"db,omitempty" xml:"db,omitempty"`
+	// The internal or public endpoint of the ApsaraDB RDS for MySQL instance.
+	Host *string `json:"host,omitempty" xml:"host,omitempty"`
+	// The ID of the ApsaraDB RDS for MySQL instance.
 	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
-	Password   *string `json:"password,omitempty" xml:"password,omitempty"`
-	Port       *string `json:"port,omitempty" xml:"port,omitempty"`
-	Region     *string `json:"region,omitempty" xml:"region,omitempty"`
-	Table      *string `json:"table,omitempty" xml:"table,omitempty"`
-	Username   *string `json:"username,omitempty" xml:"username,omitempty"`
-	VpcId      *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
+	// The password that is used to log on to the ApsaraDB RDS for MySQL instance.
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The internal or public port of the ApsaraDB RDS for MySQL instance.
+	Port *string `json:"port,omitempty" xml:"port,omitempty"`
+	// The region where the ApsaraDB RDS for MySQL instance resides. Valid values: cn-qingdao, cn-beijing, and cn-hangzhou.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The name of the database table in the ApsaraDB RDS for MySQL instance.
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
+	// The username that is used to log on to the ApsaraDB RDS for MySQL instance.
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The ID of the VPC to which the ApsaraDB RDS for MySQL instance belongs.
+	VpcId *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
 }
 
 func (s UpdateRdsExternalStoreRequestParameter) String() string {
@@ -8665,11 +9167,18 @@ func (s *UpdateRdsExternalStoreResponse) SetStatusCode(v int32) *UpdateRdsExtern
 }
 
 type UpdateSavedSearchRequest struct {
-	DisplayName     *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The display name.
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The name of the Logstore to which the saved search belongs.
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The name of the saved search. The name must be 3 to 63 characters in length.
 	SavedsearchName *string `json:"savedsearchName,omitempty" xml:"savedsearchName,omitempty"`
-	SearchQuery     *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
-	Topic           *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// The search statement or the query statement of the saved search. A query statement consists of a search statement and an analytic statement in the Search statement|Analytic statement format.
+	//
+	// For more information, see Log search overview and Log analysis overview.
+	SearchQuery *string `json:"searchQuery,omitempty" xml:"searchQuery,omitempty"`
+	// The topic of the logs.
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
 func (s UpdateSavedSearchRequest) String() string {
@@ -8951,6 +9460,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ApplyConfigToMachineGroupResponse
+ */
 func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyConfigToMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -8978,6 +9494,11 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return ApplyConfigToMachineGroupResponse
+ */
 func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *string, configName *string) (_result *ApplyConfigToMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9229,6 +9750,17 @@ func (client *Client) CreateConfig(project *string, request *CreateConfigRequest
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   You can create up to 30 consumer groups for a Logstore.
+ * *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+ *
+ * @param request CreateConsumerGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateConsumerGroupResponse
+ */
 func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *string, request *CreateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9274,6 +9806,15 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   You can create up to 30 consumer groups for a Logstore.
+ * *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+ *
+ * @param request CreateConsumerGroupRequest
+ * @return CreateConsumerGroupResponse
+ */
 func (client *Client) CreateConsumerGroup(project *string, logstore *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9330,6 +9871,14 @@ func (client *Client) CreateDashboard(project *string, request *CreateDashboardR
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateDomainRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateDomainResponse
+ */
 func (client *Client) CreateDomainWithOptions(project *string, request *CreateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9367,6 +9916,12 @@ func (client *Client) CreateDomainWithOptions(project *string, request *CreateDo
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateDomainRequest
+ * @return CreateDomainResponse
+ */
 func (client *Client) CreateDomain(project *string, request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9379,6 +9934,14 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateIndexRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateIndexResponse
+ */
 func (client *Client) CreateIndexWithOptions(project *string, logstore *string, request *CreateIndexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateIndexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9440,6 +10003,12 @@ func (client *Client) CreateIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateIndexRequest
+ * @return CreateIndexResponse
+ */
 func (client *Client) CreateIndex(project *string, logstore *string, request *CreateIndexRequest) (_result *CreateIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9452,6 +10021,15 @@ func (client *Client) CreateIndex(project *string, logstore *string, request *Cr
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateLogStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLogStoreResponse
+ */
 func (client *Client) CreateLogStoreWithOptions(project *string, request *CreateLogStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLogStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9529,6 +10107,13 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateLogStoreRequest
+ * @return CreateLogStoreResponse
+ */
 func (client *Client) CreateLogStore(project *string, request *CreateLogStoreRequest) (_result *CreateLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9541,6 +10126,14 @@ func (client *Client) CreateLogStore(project *string, request *CreateLogStoreReq
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateLoggingRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoggingResponse
+ */
 func (client *Client) CreateLoggingWithOptions(project *string, request *CreateLoggingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLoggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9582,6 +10175,12 @@ func (client *Client) CreateLoggingWithOptions(project *string, request *CreateL
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateLoggingRequest
+ * @return CreateLoggingResponse
+ */
 func (client *Client) CreateLogging(project *string, request *CreateLoggingRequest) (_result *CreateLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9667,6 +10266,15 @@ func (client *Client) CreateLogtailPipelineConfig(project *string, request *Crea
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateMachineGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateMachineGroupResponse
+ */
 func (client *Client) CreateMachineGroupWithOptions(project *string, request *CreateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMachineGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9720,6 +10328,13 @@ func (client *Client) CreateMachineGroupWithOptions(project *string, request *Cr
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateMachineGroupRequest
+ * @return CreateMachineGroupResponse
+ */
 func (client *Client) CreateMachineGroup(project *string, request *CreateMachineGroupRequest) (_result *CreateMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9732,6 +10347,14 @@ func (client *Client) CreateMachineGroup(project *string, request *CreateMachine
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateOssExternalStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateOssExternalStoreResponse
+ */
 func (client *Client) CreateOssExternalStoreWithOptions(project *string, request *CreateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOssExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9777,6 +10400,12 @@ func (client *Client) CreateOssExternalStoreWithOptions(project *string, request
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateOssExternalStoreRequest
+ * @return CreateOssExternalStoreResponse
+ */
 func (client *Client) CreateOssExternalStore(project *string, request *CreateOssExternalStoreRequest) (_result *CreateOssExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9847,6 +10476,14 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateRdsExternalStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateRdsExternalStoreResponse
+ */
 func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request *CreateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRdsExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9892,6 +10529,12 @@ func (client *Client) CreateRdsExternalStoreWithOptions(project *string, request
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateRdsExternalStoreRequest
+ * @return CreateRdsExternalStoreResponse
+ */
 func (client *Client) CreateRdsExternalStore(project *string, request *CreateRdsExternalStoreRequest) (_result *CreateRdsExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9904,6 +10547,15 @@ func (client *Client) CreateRdsExternalStore(project *string, request *CreateRds
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateSavedSearchRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateSavedSearchResponse
+ */
 func (client *Client) CreateSavedSearchWithOptions(project *string, request *CreateSavedSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSavedSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9957,61 +10609,18 @@ func (client *Client) CreateSavedSearchWithOptions(project *string, request *Cre
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request CreateSavedSearchRequest
+ * @return CreateSavedSearchResponse
+ */
 func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSearchRequest) (_result *CreateSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &CreateSavedSearchResponse{}
 	_body, _err := client.CreateSavedSearchWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PlayAccessKeyId)) {
-		body["playAccessKeyId"] = request.PlayAccessKeyId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PlayAccessKeySecret)) {
-		body["playAccessKeySecret"] = request.PlayAccessKeySecret
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateTicket"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/tickets"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateTicketResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateTicketResponse{}
-	_body, _err := client.CreateTicketWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10216,6 +10825,13 @@ func (client *Client) DeleteConfig(project *string, configName *string) (_result
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteConsumerGroupResponse
+ */
 func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10243,6 +10859,11 @@ func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteConsumerGroupResponse
+ */
 func (client *Client) DeleteConsumerGroup(project *string, logstore *string, consumerGroup *string) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10294,6 +10915,13 @@ func (client *Client) DeleteDashboard(project *string, dashboardName *string) (_
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDomainResponse
+ */
 func (client *Client) DeleteDomainWithOptions(project *string, domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10321,6 +10949,11 @@ func (client *Client) DeleteDomainWithOptions(project *string, domainName *strin
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteDomainResponse
+ */
 func (client *Client) DeleteDomain(project *string, domainName *string) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10333,6 +10966,13 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteExternalStoreResponse
+ */
 func (client *Client) DeleteExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteExternalStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10360,6 +11000,11 @@ func (client *Client) DeleteExternalStoreWithOptions(project *string, externalSt
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteExternalStoreResponse
+ */
 func (client *Client) DeleteExternalStore(project *string, externalStoreName *string) (_result *DeleteExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10372,6 +11017,14 @@ func (client *Client) DeleteExternalStore(project *string, externalStoreName *st
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteIndexResponse
+ */
 func (client *Client) DeleteIndexWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10399,6 +11052,12 @@ func (client *Client) DeleteIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteIndexResponse
+ */
 func (client *Client) DeleteIndex(project *string, logstore *string) (_result *DeleteIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10411,6 +11070,14 @@ func (client *Client) DeleteIndex(project *string, logstore *string) (_result *D
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteLogStoreResponse
+ */
 func (client *Client) DeleteLogStoreWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLogStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10438,6 +11105,12 @@ func (client *Client) DeleteLogStoreWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteLogStoreResponse
+ */
 func (client *Client) DeleteLogStore(project *string, logstore *string) (_result *DeleteLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10528,6 +11201,14 @@ func (client *Client) DeleteLogtailPipelineConfig(project *string, configName *s
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteMachineGroupResponse
+ */
 func (client *Client) DeleteMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10555,6 +11236,12 @@ func (client *Client) DeleteMachineGroupWithOptions(project *string, machineGrou
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteMachineGroupResponse
+ */
 func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) (_result *DeleteMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10606,6 +11293,14 @@ func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResp
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteProjectPolicyResponse
+ */
 func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProjectPolicyResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10633,6 +11328,12 @@ func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers ma
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteProjectPolicyResponse
+ */
 func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10645,6 +11346,14 @@ func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProje
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteSavedSearchResponse
+ */
 func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSavedSearchResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10672,6 +11381,12 @@ func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchN
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteSavedSearchResponse
+ */
 func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string) (_result *DeleteSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10684,6 +11399,13 @@ func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteShipperResponse
+ */
 func (client *Client) DeleteShipperWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10711,6 +11433,11 @@ func (client *Client) DeleteShipperWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return DeleteShipperResponse
+ */
 func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10831,6 +11558,13 @@ func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotatio
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAppliedConfigsResponse
+ */
 func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedConfigsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10858,6 +11592,11 @@ func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetAppliedConfigsResponse
+ */
 func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (_result *GetAppliedConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10870,6 +11609,13 @@ func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetAppliedMachineGroupsResponse
+ */
 func (client *Client) GetAppliedMachineGroupsWithOptions(project *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedMachineGroupsResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -10897,6 +11643,11 @@ func (client *Client) GetAppliedMachineGroupsWithOptions(project *string, config
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetAppliedMachineGroupsResponse
+ */
 func (client *Client) GetAppliedMachineGroups(project *string, configName *string) (_result *GetAppliedMachineGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10909,6 +11660,14 @@ func (client *Client) GetAppliedMachineGroups(project *string, configName *strin
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetCheckPointRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCheckPointResponse
+ */
 func (client *Client) GetCheckPointWithOptions(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCheckPointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10946,6 +11705,12 @@ func (client *Client) GetCheckPointWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetCheckPointRequest
+ * @return GetCheckPointResponse
+ */
 func (client *Client) GetCheckPoint(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest) (_result *GetCheckPointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11047,6 +11812,15 @@ func (client *Client) GetConfig(project *string, configName *string) (_result *G
 	return _result, _err
 }
 
+/**
+ * *   You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetContextLogsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetContextLogsResponse
+ */
 func (client *Client) GetContextLogsWithOptions(project *string, logstore *string, request *GetContextLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContextLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11100,6 +11874,13 @@ func (client *Client) GetContextLogsWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
+/**
+ * *   You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetContextLogsRequest
+ * @return GetContextLogsResponse
+ */
 func (client *Client) GetContextLogs(project *string, logstore *string, request *GetContextLogsRequest) (_result *GetContextLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11112,6 +11893,19 @@ func (client *Client) GetContextLogs(project *string, logstore *string, request 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+ *     *   A project can have multiple Logstores.
+ *     *   A Logstore can have multiple shards.
+ *     *   You can use a cursor to obtain a log in a shard.
+ *
+ * @param request GetCursorRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetCursorResponse
+ */
 func (client *Client) GetCursorWithOptions(project *string, logstore *string, shardId *string, request *GetCursorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCursorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11149,6 +11943,17 @@ func (client *Client) GetCursorWithOptions(project *string, logstore *string, sh
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+ *     *   A project can have multiple Logstores.
+ *     *   A Logstore can have multiple shards.
+ *     *   You can use a cursor to obtain a log in a shard.
+ *
+ * @param request GetCursorRequest
+ * @return GetCursorResponse
+ */
 func (client *Client) GetCursor(project *string, logstore *string, shardId *string, request *GetCursorRequest) (_result *GetCursorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11249,6 +12054,14 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 	return _result, _err
 }
 
+/**
+ * *   The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetExternalStoreResponse
+ */
 func (client *Client) GetExternalStoreWithOptions(project *string, externalStoreName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExternalStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11276,6 +12089,12 @@ func (client *Client) GetExternalStoreWithOptions(project *string, externalStore
 	return _result, _err
 }
 
+/**
+ * *   The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetExternalStoreResponse
+ */
 func (client *Client) GetExternalStore(project *string, externalStoreName *string) (_result *GetExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11288,6 +12107,23 @@ func (client *Client) GetExternalStore(project *string, externalStoreName *strin
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+ *     *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+ *     *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+ *     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ * > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+ * *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+ *
+ * @param request GetHistogramsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetHistogramsResponse
+ */
 func (client *Client) GetHistogramsWithOptions(project *string, logstore *string, request *GetHistogramsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetHistogramsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11337,6 +12173,21 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+ *     *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+ *     *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+ *     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ * > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+ * *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+ *
+ * @param request GetHistogramsRequest
+ * @return GetHistogramsResponse
+ */
 func (client *Client) GetHistograms(project *string, logstore *string, request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11349,6 +12200,14 @@ func (client *Client) GetHistograms(project *string, logstore *string, request *
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetIndexResponse
+ */
 func (client *Client) GetIndexWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetIndexResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11376,6 +12235,12 @@ func (client *Client) GetIndexWithOptions(project *string, logstore *string, hea
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetIndexResponse
+ */
 func (client *Client) GetIndex(project *string, logstore *string) (_result *GetIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11388,6 +12253,14 @@ func (client *Client) GetIndex(project *string, logstore *string) (_result *GetI
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLogStoreResponse
+ */
 func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogStoreResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11415,6 +12288,12 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetLogStoreResponse
+ */
 func (client *Client) GetLogStore(project *string, logstore *string) (_result *GetLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11466,6 +12345,13 @@ func (client *Client) GetLogStoreMeteringMode(project *string, logstore *string)
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLoggingResponse
+ */
 func (client *Client) GetLoggingWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLoggingResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11493,6 +12379,11 @@ func (client *Client) GetLoggingWithOptions(project *string, headers map[string]
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetLoggingResponse
+ */
 func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11505,6 +12396,23 @@ func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+ *         Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+ *     *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+ *     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ * > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+ * *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+ *
+ * @param request GetLogsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLogsResponse
+ */
 func (client *Client) GetLogsWithOptions(project *string, logstore *string, request *GetLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11570,6 +12478,21 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+ *         Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+ *     *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+ *     After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ * > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+ * *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+ *
+ * @param request GetLogsRequest
+ * @return GetLogsResponse
+ */
 func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11582,6 +12505,18 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 	return _result, _err
 }
 
+/**
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+ * 1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+ * 2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ *
+ * @param request GetLogsV2Request
+ * @param headers GetLogsV2Headers
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetLogsV2Response
+ */
 func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, request *GetLogsV2Request, headers *GetLogsV2Headers, runtime *util.RuntimeOptions) (_result *GetLogsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11668,6 +12603,16 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 	return _result, _err
 }
 
+/**
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+ * *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+ * 1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+ * 2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+ *
+ * @param request GetLogsV2Request
+ * @return GetLogsV2Response
+ */
 func (client *Client) GetLogsV2(project *string, logstore *string, request *GetLogsV2Request) (_result *GetLogsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &GetLogsV2Headers{}
@@ -11719,6 +12664,60 @@ func (client *Client) GetLogtailPipelineConfig(project *string, configName *stri
 	return _result, _err
 }
 
+func (client *Client) GetMLServiceResultsWithOptions(serviceName *string, request *GetMLServiceResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMLServiceResultsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowBuiltin)) {
+		query["allowBuiltin"] = request.AllowBuiltin
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMLServiceResults"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ml/service/" + tea.StringValue(serviceName) + "/analysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMLServiceResultsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMLServiceResults(serviceName *string, request *GetMLServiceResultsRequest) (_result *GetMLServiceResultsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMLServiceResultsResponse{}
+	_body, _err := client.GetMLServiceResultsWithOptions(serviceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetMachineGroupResponse
+ */
 func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11746,6 +12745,11 @@ func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetMachineGroupResponse
+ */
 func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_result *GetMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11758,6 +12762,14 @@ func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_r
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetProjectResponse
+ */
 func (client *Client) GetProjectWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11785,6 +12797,12 @@ func (client *Client) GetProjectWithOptions(project *string, headers map[string]
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetProjectResponse
+ */
 func (client *Client) GetProject(project *string) (_result *GetProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11797,6 +12815,19 @@ func (client *Client) GetProject(project *string) (_result *GetProjectResponse, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   You can use the query parameter to specify a standard SQL statement.
+ * *   You must specify a project in the domain name of the request.
+ * *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+ * *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetProjectLogsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetProjectLogsResponse
+ */
 func (client *Client) GetProjectLogsWithOptions(project *string, request *GetProjectLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11838,6 +12869,17 @@ func (client *Client) GetProjectLogsWithOptions(project *string, request *GetPro
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   You can use the query parameter to specify a standard SQL statement.
+ * *   You must specify a project in the domain name of the request.
+ * *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+ * *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetProjectLogsRequest
+ * @return GetProjectLogsResponse
+ */
 func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsRequest) (_result *GetProjectLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11850,6 +12892,14 @@ func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsReq
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetProjectPolicyResponse
+ */
 func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectPolicyResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11877,6 +12927,12 @@ func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[s
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetProjectPolicyResponse
+ */
 func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11889,6 +12945,14 @@ func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPoli
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetSavedSearchResponse
+ */
 func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSavedSearchResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -11916,6 +12980,12 @@ func (client *Client) GetSavedSearchWithOptions(project *string, savedsearchName
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return GetSavedSearchResponse
+ */
 func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (_result *GetSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11928,6 +12998,14 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetShipperStatusRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetShipperStatusResponse
+ */
 func (client *Client) GetShipperStatusWithOptions(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11981,6 +13059,12 @@ func (client *Client) GetShipperStatusWithOptions(project *string, logstore *str
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request GetShipperStatusRequest
+ * @return GetShipperStatusResponse
+ */
 func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12280,6 +13364,14 @@ func (client *Client) ListConfig(project *string, request *ListConfigRequest) (_
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListConsumerGroupResponse
+ */
 func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConsumerGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12307,6 +13399,12 @@ func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *st
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return ListConsumerGroupResponse
+ */
 func (client *Client) ListConsumerGroup(project *string, logstore *string) (_result *ListConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12372,6 +13470,15 @@ func (client *Client) ListDashboard(project *string, request *ListDashboardReque
 	return _result, _err
 }
 
+/**
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Only one custom domain name can be bound to each project.
+ *
+ * @param request ListDomainsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListDomainsResponse
+ */
 func (client *Client) ListDomainsWithOptions(project *string, request *ListDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12417,6 +13524,13 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 	return _result, _err
 }
 
+/**
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Only one custom domain name can be bound to each project.
+ *
+ * @param request ListDomainsRequest
+ * @return ListDomainsResponse
+ */
 func (client *Client) ListDomains(project *string, request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12429,6 +13543,14 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListExternalStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListExternalStoreResponse
+ */
 func (client *Client) ListExternalStoreWithOptions(project *string, request *ListExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12474,6 +13596,12 @@ func (client *Client) ListExternalStoreWithOptions(project *string, request *Lis
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListExternalStoreRequest
+ * @return ListExternalStoreResponse
+ */
 func (client *Client) ListExternalStore(project *string, request *ListExternalStoreRequest) (_result *ListExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12486,6 +13614,15 @@ func (client *Client) ListExternalStore(project *string, request *ListExternalSt
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListLogStoresRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListLogStoresResponse
+ */
 func (client *Client) ListLogStoresWithOptions(project *string, request *ListLogStoresRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogStoresResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12539,6 +13676,13 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListLogStoresRequest
+ * @return ListLogStoresResponse
+ */
 func (client *Client) ListLogStores(project *string, request *ListLogStoresRequest) (_result *ListLogStoresResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12612,6 +13756,14 @@ func (client *Client) ListLogtailPipelineConfig(project *string, request *ListLo
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListMachineGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListMachineGroupResponse
+ */
 func (client *Client) ListMachineGroupWithOptions(project *string, request *ListMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMachineGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12657,6 +13809,12 @@ func (client *Client) ListMachineGroupWithOptions(project *string, request *List
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListMachineGroupRequest
+ * @return ListMachineGroupResponse
+ */
 func (client *Client) ListMachineGroup(project *string, request *ListMachineGroupRequest) (_result *ListMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12669,6 +13827,14 @@ func (client *Client) ListMachineGroup(project *string, request *ListMachineGrou
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListMachinesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListMachinesResponse
+ */
 func (client *Client) ListMachinesWithOptions(project *string, machineGroup *string, request *ListMachinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMachinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12710,6 +13876,12 @@ func (client *Client) ListMachinesWithOptions(project *string, machineGroup *str
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListMachinesRequest
+ * @return ListMachinesResponse
+ */
 func (client *Client) ListMachines(project *string, machineGroup *string, request *ListMachinesRequest) (_result *ListMachinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12722,7 +13894,16 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 	return _result, _err
 }
 
-func (client *Client) ListProjectWithOptions(resourceGroupId *string, request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListProjectRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListProjectResponse
+ */
+func (client *Client) ListProjectWithOptions(request *ListProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -12734,6 +13915,10 @@ func (client *Client) ListProjectWithOptions(resourceGroupId *string, request *L
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
 		query["projectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["resourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
@@ -12764,11 +13949,18 @@ func (client *Client) ListProjectWithOptions(resourceGroupId *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListProject(resourceGroupId *string, request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListProjectRequest
+ * @return ListProjectResponse
+ */
+func (client *Client) ListProject(request *ListProjectRequest) (_result *ListProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListProjectResponse{}
-	_body, _err := client.ListProjectWithOptions(resourceGroupId, request, headers, runtime)
+	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12776,6 +13968,15 @@ func (client *Client) ListProject(resourceGroupId *string, request *ListProjectR
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListSavedSearchRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSavedSearchResponse
+ */
 func (client *Client) ListSavedSearchWithOptions(project *string, request *ListSavedSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSavedSearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12817,6 +14018,13 @@ func (client *Client) ListSavedSearchWithOptions(project *string, request *ListS
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListSavedSearchRequest
+ * @return ListSavedSearchResponse
+ */
 func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchRequest) (_result *ListSavedSearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12868,6 +14076,13 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListShipperResponse
+ */
 func (client *Client) ListShipperWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShipperResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -12895,6 +14110,11 @@ func (client *Client) ListShipperWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return ListShipperResponse
+ */
 func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12907,6 +14127,15 @@ func (client *Client) ListShipper(project *string, logstore *string) (_result *L
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param tmpReq ListTagResourcesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12959,6 +14188,13 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request ListTagResourcesRequest
+ * @return ListTagResourcesResponse
+ */
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13027,6 +14263,19 @@ func (client *Client) PutAnnotationData(datasetId *string, request *PutAnnotatio
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+ *     *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+ *     *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+ *     *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+ *
+ * @param request PutProjectPolicyRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PutProjectPolicyResponse
+ */
 func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutProjectPolicyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProjectPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13059,6 +14308,17 @@ func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutP
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+ *     *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+ *     *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+ *     *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+ *
+ * @param request PutProjectPolicyRequest
+ * @return PutProjectPolicyResponse
+ */
 func (client *Client) PutProjectPolicy(project *string, request *PutProjectPolicyRequest) (_result *PutProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13132,6 +14392,15 @@ func (client *Client) PutWebtracking(project *string, logstoreName *string, requ
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request QueryMLServiceResultsRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryMLServiceResultsResponse
+ */
+// Deprecated
 func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, request *QueryMLServiceResultsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryMLServiceResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13167,6 +14436,13 @@ func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, requ
 	return _result, _err
 }
 
+/**
+ * @deprecated
+ *
+ * @param request QueryMLServiceResultsRequest
+ * @return QueryMLServiceResultsResponse
+ */
+// Deprecated
 func (client *Client) QueryMLServiceResults(serviceName *string, request *QueryMLServiceResultsRequest) (_result *QueryMLServiceResultsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13179,6 +14455,13 @@ func (client *Client) QueryMLServiceResults(serviceName *string, request *QueryM
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveConfigFromMachineGroupResponse
+ */
 func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
@@ -13206,6 +14489,11 @@ func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, m
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @return RemoveConfigFromMachineGroupResponse
+ */
 func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13218,6 +14506,16 @@ func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+ *
+ * @param request SplitShardRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SplitShardResponse
+ */
 func (client *Client) SplitShardWithOptions(project *string, logstore *string, shard *string, request *SplitShardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitShardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13259,6 +14557,14 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ * *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+ *
+ * @param request SplitShardRequest
+ * @return SplitShardResponse
+ */
 func (client *Client) SplitShard(project *string, logstore *string, shard *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13271,6 +14577,15 @@ func (client *Client) SplitShard(project *string, logstore *string, shard *strin
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request TagResourcesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13313,6 +14628,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13325,6 +14647,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UntagResourcesRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13371,6 +14702,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UntagResourcesRequest
+ * @return UntagResourcesResponse
+ */
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13509,6 +14847,15 @@ func (client *Client) UpdateConfig(project *string, configName *string, request 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateConsumerGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateConsumerGroupResponse
+ */
 func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13550,6 +14897,13 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateConsumerGroupRequest
+ * @return UpdateConsumerGroupResponse
+ */
 func (client *Client) UpdateConsumerGroup(project *string, logstore *string, consumerGroup *string, request *UpdateConsumerGroupRequest) (_result *UpdateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13627,6 +14981,15 @@ func (client *Client) UpdateDashboard(project *string, dashboardName *string, re
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateIndexRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateIndexResponse
+ */
 func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, request *UpdateIndexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateIndexResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13688,6 +15051,13 @@ func (client *Client) UpdateIndexWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateIndexRequest
+ * @return UpdateIndexResponse
+ */
 func (client *Client) UpdateIndex(project *string, logstore *string, request *UpdateIndexRequest) (_result *UpdateIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13700,6 +15070,16 @@ func (client *Client) UpdateIndex(project *string, logstore *string, request *Up
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ * *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+ *
+ * @param request UpdateLogStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateLogStoreResponse
+ */
 func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *string, request *UpdateLogStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLogStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13777,6 +15157,14 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ * *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+ *
+ * @param request UpdateLogStoreRequest
+ * @return UpdateLogStoreResponse
+ */
 func (client *Client) UpdateLogStore(project *string, logstore *string, request *UpdateLogStoreRequest) (_result *UpdateLogStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13838,6 +15226,14 @@ func (client *Client) UpdateLogStoreMeteringMode(project *string, logstore *stri
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateLoggingRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateLoggingResponse
+ */
 func (client *Client) UpdateLoggingWithOptions(project *string, request *UpdateLoggingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLoggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13879,6 +15275,12 @@ func (client *Client) UpdateLoggingWithOptions(project *string, request *UpdateL
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateLoggingRequest
+ * @return UpdateLoggingResponse
+ */
 func (client *Client) UpdateLogging(project *string, request *UpdateLoggingRequest) (_result *UpdateLoggingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13964,6 +15366,14 @@ func (client *Client) UpdateLogtailPipelineConfig(project *string, configName *s
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateMachineGroupRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateMachineGroupResponse
+ */
 func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *string, request *UpdateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14017,6 +15427,12 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateMachineGroupRequest
+ * @return UpdateMachineGroupResponse
+ */
 func (client *Client) UpdateMachineGroup(project *string, groupName *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14029,6 +15445,14 @@ func (client *Client) UpdateMachineGroup(project *string, groupName *string, req
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateMachineGroupMachineRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateMachineGroupMachineResponse
+ */
 func (client *Client) UpdateMachineGroupMachineWithOptions(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupMachineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14067,6 +15491,12 @@ func (client *Client) UpdateMachineGroupMachineWithOptions(project *string, mach
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateMachineGroupMachineRequest
+ * @return UpdateMachineGroupMachineResponse
+ */
 func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *string, request *UpdateMachineGroupMachineRequest) (_result *UpdateMachineGroupMachineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14079,6 +15509,14 @@ func (client *Client) UpdateMachineGroupMachine(project *string, machineGroup *s
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateOssExternalStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateOssExternalStoreResponse
+ */
 func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateOssExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14124,6 +15562,12 @@ func (client *Client) UpdateOssExternalStoreWithOptions(project *string, externa
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateOssExternalStoreRequest
+ * @return UpdateOssExternalStoreResponse
+ */
 func (client *Client) UpdateOssExternalStore(project *string, externalStoreName *string, request *UpdateOssExternalStoreRequest) (_result *UpdateOssExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14136,6 +15580,15 @@ func (client *Client) UpdateOssExternalStore(project *string, externalStoreName 
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateProjectRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateProjectResponse
+ */
 func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateProjectRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14173,6 +15626,13 @@ func (client *Client) UpdateProjectWithOptions(project *string, request *UpdateP
 	return _result, _err
 }
 
+/**
+ * ### Usage notes
+ * Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateProjectRequest
+ * @return UpdateProjectResponse
+ */
 func (client *Client) UpdateProject(project *string, request *UpdateProjectRequest) (_result *UpdateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14185,6 +15645,14 @@ func (client *Client) UpdateProject(project *string, request *UpdateProjectReque
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateRdsExternalStoreRequest
+ * @param headers map
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UpdateRdsExternalStoreResponse
+ */
 func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRdsExternalStoreResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14230,6 +15698,12 @@ func (client *Client) UpdateRdsExternalStoreWithOptions(project *string, externa
 	return _result, _err
 }
 
+/**
+ * Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+ *
+ * @param request UpdateRdsExternalStoreRequest
+ * @return UpdateRdsExternalStoreResponse
+ */
 func (client *Client) UpdateRdsExternalStore(project *string, externalStoreName *string, request *UpdateRdsExternalStoreRequest) (_result *UpdateRdsExternalStoreResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
