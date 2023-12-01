@@ -54,11 +54,13 @@ func (s *CreateTaskRequest) SetType(v string) *CreateTaskRequest {
 }
 
 type CreateTaskRequestInput struct {
-	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Format         *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	SampleRate     *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
-	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	TaskKey        *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Format                      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	ProgressiveCallbacksEnabled *bool   `json:"ProgressiveCallbacksEnabled,omitempty" xml:"ProgressiveCallbacksEnabled,omitempty"`
+	SampleRate                  *int32  `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
+	SourceLanguage              *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	TaskId                      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskKey                     *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
 }
 
 func (s CreateTaskRequestInput) String() string {
@@ -79,6 +81,11 @@ func (s *CreateTaskRequestInput) SetFormat(v string) *CreateTaskRequestInput {
 	return s
 }
 
+func (s *CreateTaskRequestInput) SetProgressiveCallbacksEnabled(v bool) *CreateTaskRequestInput {
+	s.ProgressiveCallbacksEnabled = &v
+	return s
+}
+
 func (s *CreateTaskRequestInput) SetSampleRate(v int32) *CreateTaskRequestInput {
 	s.SampleRate = &v
 	return s
@@ -86,6 +93,11 @@ func (s *CreateTaskRequestInput) SetSampleRate(v int32) *CreateTaskRequestInput 
 
 func (s *CreateTaskRequestInput) SetSourceLanguage(v string) *CreateTaskRequestInput {
 	s.SourceLanguage = &v
+	return s
+}
+
+func (s *CreateTaskRequestInput) SetTaskId(v string) *CreateTaskRequestInput {
+	s.TaskId = &v
 	return s
 }
 
@@ -97,6 +109,7 @@ func (s *CreateTaskRequestInput) SetTaskKey(v string) *CreateTaskRequestInput {
 type CreateTaskRequestParameters struct {
 	AutoChaptersEnabled      *bool                                     `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
 	MeetingAssistanceEnabled *bool                                     `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
+	PptExtractionEnabled     *bool                                     `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
 	Summarization            *CreateTaskRequestParametersSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
 	SummarizationEnabled     *bool                                     `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
 	Transcoding              *CreateTaskRequestParametersTranscoding   `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
@@ -120,6 +133,11 @@ func (s *CreateTaskRequestParameters) SetAutoChaptersEnabled(v bool) *CreateTask
 
 func (s *CreateTaskRequestParameters) SetMeetingAssistanceEnabled(v bool) *CreateTaskRequestParameters {
 	s.MeetingAssistanceEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetPptExtractionEnabled(v bool) *CreateTaskRequestParameters {
+	s.PptExtractionEnabled = &v
 	return s
 }
 
@@ -209,6 +227,7 @@ type CreateTaskRequestParametersTranscription struct {
 	AudioEventDetectionEnabled *bool                                                `json:"AudioEventDetectionEnabled,omitempty" xml:"AudioEventDetectionEnabled,omitempty"`
 	Diarization                *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
 	DiarizationEnabled         *bool                                                `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	OutputLevel                *int32                                               `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscription) String() string {
@@ -234,6 +253,11 @@ func (s *CreateTaskRequestParametersTranscription) SetDiarizationEnabled(v bool)
 	return s
 }
 
+func (s *CreateTaskRequestParametersTranscription) SetOutputLevel(v int32) *CreateTaskRequestParametersTranscription {
+	s.OutputLevel = &v
+	return s
+}
+
 type CreateTaskRequestParametersTranscriptionDiarization struct {
 	SpeakerCount *int32 `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
 }
@@ -252,6 +276,7 @@ func (s *CreateTaskRequestParametersTranscriptionDiarization) SetSpeakerCount(v 
 }
 
 type CreateTaskRequestParametersTranslation struct {
+	OutputLevel     *int32                 `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
 	TargetLanguages map[string]interface{} `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty"`
 }
 
@@ -261,6 +286,11 @@ func (s CreateTaskRequestParametersTranslation) String() string {
 
 func (s CreateTaskRequestParametersTranslation) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTaskRequestParametersTranslation) SetOutputLevel(v int32) *CreateTaskRequestParametersTranslation {
+	s.OutputLevel = &v
+	return s
 }
 
 func (s *CreateTaskRequestParametersTranslation) SetTargetLanguages(v map[string]interface{}) *CreateTaskRequestParametersTranslation {
