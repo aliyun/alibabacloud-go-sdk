@@ -171,6 +171,71 @@ func (s *AlgorithmDefinition) SetUpdateTime(v string) *AlgorithmDefinition {
 	return s
 }
 
+type App struct {
+	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppRegion      *int64  `json:"AppRegion,omitempty" xml:"AppRegion,omitempty"`
+	AppType        *int64  `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	EnglishName    *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
+	OwnerId        *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PackageName    *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+}
+
+func (s App) String() string {
+	return tea.Prettify(s)
+}
+
+func (s App) GoString() string {
+	return s.String()
+}
+
+func (s *App) SetAppDescription(v string) *App {
+	s.AppDescription = &v
+	return s
+}
+
+func (s *App) SetAppId(v string) *App {
+	s.AppId = &v
+	return s
+}
+
+func (s *App) SetAppKey(v string) *App {
+	s.AppKey = &v
+	return s
+}
+
+func (s *App) SetAppName(v string) *App {
+	s.AppName = &v
+	return s
+}
+
+func (s *App) SetAppRegion(v int64) *App {
+	s.AppRegion = &v
+	return s
+}
+
+func (s *App) SetAppType(v int64) *App {
+	s.AppType = &v
+	return s
+}
+
+func (s *App) SetEnglishName(v string) *App {
+	s.EnglishName = &v
+	return s
+}
+
+func (s *App) SetOwnerId(v string) *App {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *App) SetPackageName(v string) *App {
+	s.PackageName = &v
+	return s
+}
+
 type AssumeRoleChain struct {
 	Chain  []*AssumeRoleChainNode `json:"Chain,omitempty" xml:"Chain,omitempty" type:"Repeated"`
 	Policy *string                `json:"Policy,omitempty" xml:"Policy,omitempty"`
@@ -734,6 +799,7 @@ type DataIngestion struct {
 	Input        *Input                     `json:"Input,omitempty" xml:"Input,omitempty"`
 	Marker       *string                    `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	Notification *DataIngestionNotification `json:"Notification,omitempty" xml:"Notification,omitempty" type:"Struct"`
+	Phase        *string                    `json:"Phase,omitempty" xml:"Phase,omitempty"`
 	State        *string                    `json:"State,omitempty" xml:"State,omitempty"`
 	Statistic    *DataIngestionStatistic    `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
 	Tags         map[string]interface{}     `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -783,6 +849,11 @@ func (s *DataIngestion) SetNotification(v *DataIngestionNotification) *DataInges
 	return s
 }
 
+func (s *DataIngestion) SetPhase(v string) *DataIngestion {
+	s.Phase = &v
+	return s
+}
+
 func (s *DataIngestion) SetState(v string) *DataIngestion {
 	s.State = &v
 	return s
@@ -804,8 +875,9 @@ func (s *DataIngestion) SetUpdateTime(v string) *DataIngestion {
 }
 
 type DataIngestionActions struct {
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
+	Name           *string         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters     []*string       `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s DataIngestionActions) String() string {
@@ -814,6 +886,11 @@ func (s DataIngestionActions) String() string {
 
 func (s DataIngestionActions) GoString() string {
 	return s.String()
+}
+
+func (s *DataIngestionActions) SetFastFailPolicy(v *FastFailPolicy) *DataIngestionActions {
+	s.FastFailPolicy = v
+	return s
 }
 
 func (s *DataIngestionActions) SetName(v string) *DataIngestionActions {
@@ -964,6 +1041,23 @@ func (s *Dataset) SetTotalFileSize(v int64) *Dataset {
 
 func (s *Dataset) SetUpdateTime(v string) *Dataset {
 	s.UpdateTime = &v
+	return s
+}
+
+type FastFailPolicy struct {
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+}
+
+func (s FastFailPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FastFailPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *FastFailPolicy) SetAction(v string) *FastFailPolicy {
+	s.Action = &v
 	return s
 }
 
@@ -1988,8 +2082,10 @@ type InputFile struct {
 	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	Figures      []*InputFileFigures    `json:"Figures,omitempty" xml:"Figures,omitempty" type:"Repeated"`
 	FileHash     *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
+	LatLong      *string                `json:"LatLong,omitempty" xml:"LatLong,omitempty"`
 	MediaType    *string                `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OSSURI       *string                `json:"OSSURI,omitempty" xml:"OSSURI,omitempty"`
+	ProduceTime  *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
 	URI          *string                `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -2026,6 +2122,11 @@ func (s *InputFile) SetFileHash(v string) *InputFile {
 	return s
 }
 
+func (s *InputFile) SetLatLong(v string) *InputFile {
+	s.LatLong = &v
+	return s
+}
+
 func (s *InputFile) SetMediaType(v string) *InputFile {
 	s.MediaType = &v
 	return s
@@ -2033,6 +2134,11 @@ func (s *InputFile) SetMediaType(v string) *InputFile {
 
 func (s *InputFile) SetOSSURI(v string) *InputFile {
 	s.OSSURI = &v
+	return s
+}
+
+func (s *InputFile) SetProduceTime(v string) *InputFile {
+	s.ProduceTime = &v
 	return s
 }
 
@@ -4835,6 +4941,7 @@ func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryF
 }
 
 type AttachOSSBucketRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OSSBucket   *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
@@ -4845,6 +4952,11 @@ func (s AttachOSSBucketRequest) String() string {
 
 func (s AttachOSSBucketRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AttachOSSBucketRequest) SetDescription(v string) *AttachOSSBucketRequest {
+	s.Description = &v
+	return s
 }
 
 func (s *AttachOSSBucketRequest) SetOSSBucket(v string) *AttachOSSBucketRequest {
@@ -5821,8 +5933,9 @@ func (s *CreateBatchRequest) SetTags(v map[string]interface{}) *CreateBatchReque
 }
 
 type CreateBatchRequestActions struct {
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
+	Name           *string         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters     []*string       `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateBatchRequestActions) String() string {
@@ -5831,6 +5944,11 @@ func (s CreateBatchRequestActions) String() string {
 
 func (s CreateBatchRequestActions) GoString() string {
 	return s.String()
+}
+
+func (s *CreateBatchRequestActions) SetFastFailPolicy(v *FastFailPolicy) *CreateBatchRequestActions {
+	s.FastFailPolicy = v
+	return s
 }
 
 func (s *CreateBatchRequestActions) SetName(v string) *CreateBatchRequestActions {
@@ -7131,6 +7249,7 @@ func (s *CreateFileCompressionTaskRequest) SetUserData(v string) *CreateFileComp
 
 type CreateFileCompressionTaskRequestSources struct {
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Mode  *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	URI   *string `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -7144,6 +7263,11 @@ func (s CreateFileCompressionTaskRequestSources) GoString() string {
 
 func (s *CreateFileCompressionTaskRequestSources) SetAlias(v string) *CreateFileCompressionTaskRequestSources {
 	s.Alias = &v
+	return s
+}
+
+func (s *CreateFileCompressionTaskRequestSources) SetMode(v string) *CreateFileCompressionTaskRequestSources {
+	s.Mode = &v
 	return s
 }
 
@@ -9700,8 +9824,9 @@ func (s *CreateTriggerRequest) SetTags(v map[string]interface{}) *CreateTriggerR
 }
 
 type CreateTriggerRequestActions struct {
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Parameters []*string `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	FastFailPolicy *FastFailPolicy `json:"FastFailPolicy,omitempty" xml:"FastFailPolicy,omitempty"`
+	Name           *string         `json:"Name,omitempty" xml:"Name,omitempty"`
+	Parameters     []*string       `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateTriggerRequestActions) String() string {
@@ -9710,6 +9835,11 @@ func (s CreateTriggerRequestActions) String() string {
 
 func (s CreateTriggerRequestActions) GoString() string {
 	return s.String()
+}
+
+func (s *CreateTriggerRequestActions) SetFastFailPolicy(v *FastFailPolicy) *CreateTriggerRequestActions {
+	s.FastFailPolicy = v
+	return s
 }
 
 func (s *CreateTriggerRequestActions) SetName(v string) *CreateTriggerRequestActions {
@@ -12066,13 +12196,14 @@ func (s *ExtractDocumentTextResponse) SetBody(v *ExtractDocumentTextResponseBody
 }
 
 type FuzzyQueryRequest struct {
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Sort        *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order       *string   `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query       *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	Sort        *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFields  []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s FuzzyQueryRequest) String() string {
@@ -12115,6 +12246,70 @@ func (s *FuzzyQueryRequest) SetQuery(v string) *FuzzyQueryRequest {
 
 func (s *FuzzyQueryRequest) SetSort(v string) *FuzzyQueryRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *FuzzyQueryRequest) SetWithFields(v []*string) *FuzzyQueryRequest {
+	s.WithFields = v
+	return s
+}
+
+type FuzzyQueryShrinkRequest struct {
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults       *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order            *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+}
+
+func (s FuzzyQueryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FuzzyQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FuzzyQueryShrinkRequest) SetDatasetName(v string) *FuzzyQueryShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetMaxResults(v int64) *FuzzyQueryShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetNextToken(v string) *FuzzyQueryShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetOrder(v string) *FuzzyQueryShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetProjectName(v string) *FuzzyQueryShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetQuery(v string) *FuzzyQueryShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetSort(v string) *FuzzyQueryShrinkRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *FuzzyQueryShrinkRequest) SetWithFieldsShrink(v string) *FuzzyQueryShrinkRequest {
+	s.WithFieldsShrink = &v
 	return s
 }
 
@@ -13119,8 +13314,11 @@ func (s *GetOSSBucketAttachmentRequest) SetOSSBucket(v string) *GetOSSBucketAtta
 }
 
 type GetOSSBucketAttachmentResponseBody struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s GetOSSBucketAttachmentResponseBody) String() string {
@@ -13131,6 +13329,16 @@ func (s GetOSSBucketAttachmentResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetOSSBucketAttachmentResponseBody) SetCreateTime(v string) *GetOSSBucketAttachmentResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetOSSBucketAttachmentResponseBody) SetDescription(v string) *GetOSSBucketAttachmentResponseBody {
+	s.Description = &v
+	return s
+}
+
 func (s *GetOSSBucketAttachmentResponseBody) SetProjectName(v string) *GetOSSBucketAttachmentResponseBody {
 	s.ProjectName = &v
 	return s
@@ -13138,6 +13346,11 @@ func (s *GetOSSBucketAttachmentResponseBody) SetProjectName(v string) *GetOSSBuc
 
 func (s *GetOSSBucketAttachmentResponseBody) SetRequestId(v string) *GetOSSBucketAttachmentResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetOSSBucketAttachmentResponseBody) SetUpdateTime(v string) *GetOSSBucketAttachmentResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -16251,11 +16464,13 @@ func (s *SearchImageFigureClusterResponse) SetBody(v *SearchImageFigureClusterRe
 }
 
 type SemanticQueryRequest struct {
-	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	DatasetName *string   `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaTypes  []*string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty" type:"Repeated"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query       *string   `json:"Query,omitempty" xml:"Query,omitempty"`
+	WithFields  []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s SemanticQueryRequest) String() string {
@@ -16276,6 +16491,11 @@ func (s *SemanticQueryRequest) SetMaxResults(v int32) *SemanticQueryRequest {
 	return s
 }
 
+func (s *SemanticQueryRequest) SetMediaTypes(v []*string) *SemanticQueryRequest {
+	s.MediaTypes = v
+	return s
+}
+
 func (s *SemanticQueryRequest) SetNextToken(v string) *SemanticQueryRequest {
 	s.NextToken = &v
 	return s
@@ -16291,11 +16511,67 @@ func (s *SemanticQueryRequest) SetQuery(v string) *SemanticQueryRequest {
 	return s
 }
 
+func (s *SemanticQueryRequest) SetWithFields(v []*string) *SemanticQueryRequest {
+	s.WithFields = v
+	return s
+}
+
+type SemanticQueryShrinkRequest struct {
+	DatasetName      *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MediaTypesShrink *string `json:"MediaTypes,omitempty" xml:"MediaTypes,omitempty"`
+	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query            *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+}
+
+func (s SemanticQueryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SemanticQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SemanticQueryShrinkRequest) SetDatasetName(v string) *SemanticQueryShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetMaxResults(v int32) *SemanticQueryShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetMediaTypesShrink(v string) *SemanticQueryShrinkRequest {
+	s.MediaTypesShrink = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetNextToken(v string) *SemanticQueryShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetProjectName(v string) *SemanticQueryShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetQuery(v string) *SemanticQueryShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SemanticQueryShrinkRequest) SetWithFieldsShrink(v string) *SemanticQueryShrinkRequest {
+	s.WithFieldsShrink = &v
+	return s
+}
+
 type SemanticQueryResponseBody struct {
 	Files     []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalHits *int64  `json:"TotalHits,omitempty" xml:"TotalHits,omitempty"`
 }
 
 func (s SemanticQueryResponseBody) String() string {
@@ -16311,18 +16587,8 @@ func (s *SemanticQueryResponseBody) SetFiles(v []*File) *SemanticQueryResponseBo
 	return s
 }
 
-func (s *SemanticQueryResponseBody) SetNextToken(v string) *SemanticQueryResponseBody {
-	s.NextToken = &v
-	return s
-}
-
 func (s *SemanticQueryResponseBody) SetRequestId(v string) *SemanticQueryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SemanticQueryResponseBody) SetTotalHits(v int64) *SemanticQueryResponseBody {
-	s.TotalHits = &v
 	return s
 }
 
@@ -16356,15 +16622,16 @@ func (s *SemanticQueryResponse) SetBody(v *SemanticQueryResponseBody) *SemanticQ
 }
 
 type SimpleQueryRequest struct {
-	Aggregations []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
-	DatasetName  *string                           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	MaxResults   *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Order        *string                           `json:"Order,omitempty" xml:"Order,omitempty"`
-	ProjectName  *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Query        *SimpleQuery                      `json:"Query,omitempty" xml:"Query,omitempty"`
-	Sort         *string                           `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WithFields   []*string                         `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	Aggregations     []*SimpleQueryRequestAggregations `json:"Aggregations,omitempty" xml:"Aggregations,omitempty" type:"Repeated"`
+	DatasetName      *string                           `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	MaxResults       *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken        *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Order            *string                           `json:"Order,omitempty" xml:"Order,omitempty"`
+	ProjectName      *string                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Query            *SimpleQuery                      `json:"Query,omitempty" xml:"Query,omitempty"`
+	Sort             *string                           `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	WithFields       []*string                         `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
+	WithoutTotalHits *bool                             `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
 }
 
 func (s SimpleQueryRequest) String() string {
@@ -16420,6 +16687,11 @@ func (s *SimpleQueryRequest) SetWithFields(v []*string) *SimpleQueryRequest {
 	return s
 }
 
+func (s *SimpleQueryRequest) SetWithoutTotalHits(v bool) *SimpleQueryRequest {
+	s.WithoutTotalHits = &v
+	return s
+}
+
 type SimpleQueryRequestAggregations struct {
 	Field     *string `json:"Field,omitempty" xml:"Field,omitempty"`
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
@@ -16453,6 +16725,7 @@ type SimpleQueryShrinkRequest struct {
 	QueryShrink        *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	Sort               *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	WithFieldsShrink   *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+	WithoutTotalHits   *bool   `json:"WithoutTotalHits,omitempty" xml:"WithoutTotalHits,omitempty"`
 }
 
 func (s SimpleQueryShrinkRequest) String() string {
@@ -16505,6 +16778,11 @@ func (s *SimpleQueryShrinkRequest) SetSort(v string) *SimpleQueryShrinkRequest {
 
 func (s *SimpleQueryShrinkRequest) SetWithFieldsShrink(v string) *SimpleQueryShrinkRequest {
 	s.WithFieldsShrink = &v
+	return s
+}
+
+func (s *SimpleQueryShrinkRequest) SetWithoutTotalHits(v bool) *SimpleQueryShrinkRequest {
+	s.WithoutTotalHits = &v
 	return s
 }
 
@@ -18029,6 +18307,10 @@ func (client *Client) AttachOSSBucketWithOptions(request *AttachOSSBucketRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OSSBucket)) {
 		query["OSSBucket"] = request.OSSBucket
 	}
@@ -21533,11 +21815,17 @@ func (client *Client) ExtractDocumentText(request *ExtractDocumentTextRequest) (
 	return _result, _err
 }
 
-func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime *util.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) FuzzyQueryWithOptions(tmpReq *FuzzyQueryRequest, runtime *util.RuntimeOptions) (_result *FuzzyQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &FuzzyQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
+		request.WithFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WithFields, tea.String("WithFields"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -21565,6 +21853,10 @@ func (client *Client) FuzzyQueryWithOptions(request *FuzzyQueryRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
 		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
+		query["WithFields"] = request.WithFieldsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23583,11 +23875,21 @@ func (client *Client) SearchImageFigureCluster(request *SearchImageFigureCluster
 	return _result, _err
 }
 
-func (client *Client) SemanticQueryWithOptions(request *SemanticQueryRequest, runtime *util.RuntimeOptions) (_result *SemanticQueryResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SemanticQueryWithOptions(tmpReq *SemanticQueryRequest, runtime *util.RuntimeOptions) (_result *SemanticQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SemanticQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MediaTypes)) {
+		request.MediaTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MediaTypes, tea.String("MediaTypes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
+		request.WithFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WithFields, tea.String("WithFields"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -23595,6 +23897,10 @@ func (client *Client) SemanticQueryWithOptions(request *SemanticQueryRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaTypesShrink)) {
+		query["MediaTypes"] = request.MediaTypesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -23607,6 +23913,10 @@ func (client *Client) SemanticQueryWithOptions(request *SemanticQueryRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
+		query["WithFields"] = request.WithFieldsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23697,6 +24007,10 @@ func (client *Client) SimpleQueryWithOptions(tmpReq *SimpleQueryRequest, runtime
 
 	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
 		query["WithFields"] = request.WithFieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithoutTotalHits)) {
+		query["WithoutTotalHits"] = request.WithoutTotalHits
 	}
 
 	req := &openapi.OpenApiRequest{
