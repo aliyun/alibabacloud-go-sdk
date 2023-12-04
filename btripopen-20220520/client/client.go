@@ -56166,6 +56166,7 @@ type IsvUserSaveRequestUserList struct {
 	ThirdDepartIdList []*string                             `json:"third_depart_id_list,omitempty" xml:"third_depart_id_list,omitempty" type:"Repeated"`
 	UserId            *string                               `json:"user_id,omitempty" xml:"user_id,omitempty"`
 	UserName          *string                               `json:"user_name,omitempty" xml:"user_name,omitempty"`
+	UserNick          *string                               `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
 }
 
 func (s IsvUserSaveRequestUserList) String() string {
@@ -56263,6 +56264,11 @@ func (s *IsvUserSaveRequestUserList) SetUserId(v string) *IsvUserSaveRequestUser
 
 func (s *IsvUserSaveRequestUserList) SetUserName(v string) *IsvUserSaveRequestUserList {
 	s.UserName = &v
+	return s
+}
+
+func (s *IsvUserSaveRequestUserList) SetUserNick(v string) *IsvUserSaveRequestUserList {
+	s.UserNick = &v
 	return s
 }
 
