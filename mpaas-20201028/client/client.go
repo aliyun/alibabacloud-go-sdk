@@ -14084,6 +14084,129 @@ func (s *LogMsaQueryResponse) SetBody(v *LogMsaQueryResponseBody) *LogMsaQueryRe
 	return s
 }
 
+type MTRSOCRServiceRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ImageRaw    *string `json:"ImageRaw,omitempty" xml:"ImageRaw,omitempty"`
+	Mask        *bool   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s MTRSOCRServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MTRSOCRServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MTRSOCRServiceRequest) SetAppId(v string) *MTRSOCRServiceRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *MTRSOCRServiceRequest) SetImageRaw(v string) *MTRSOCRServiceRequest {
+	s.ImageRaw = &v
+	return s
+}
+
+func (s *MTRSOCRServiceRequest) SetMask(v bool) *MTRSOCRServiceRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *MTRSOCRServiceRequest) SetTenantId(v string) *MTRSOCRServiceRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *MTRSOCRServiceRequest) SetType(v string) *MTRSOCRServiceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *MTRSOCRServiceRequest) SetWorkspaceId(v string) *MTRSOCRServiceRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type MTRSOCRServiceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s MTRSOCRServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MTRSOCRServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MTRSOCRServiceResponseBody) SetCode(v string) *MTRSOCRServiceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponseBody) SetMsg(v string) *MTRSOCRServiceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponseBody) SetRequestId(v string) *MTRSOCRServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponseBody) SetResult(v string) *MTRSOCRServiceResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponseBody) SetStatus(v bool) *MTRSOCRServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponseBody) SetTraceId(v string) *MTRSOCRServiceResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type MTRSOCRServiceResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MTRSOCRServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s MTRSOCRServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MTRSOCRServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MTRSOCRServiceResponse) SetHeaders(v map[string]*string) *MTRSOCRServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MTRSOCRServiceResponse) SetStatusCode(v int32) *MTRSOCRServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MTRSOCRServiceResponse) SetBody(v *MTRSOCRServiceResponseBody) *MTRSOCRServiceResponse {
+	s.Body = v
+	return s
+}
+
 type OpenApiAddActiveCodeRequest struct {
 	AppId                                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	MpaasMqcpOpenApiAddActiveCodeReqJsonStr *string `json:"MpaasMqcpOpenApiAddActiveCodeReqJsonStr,omitempty" xml:"MpaasMqcpOpenApiAddActiveCodeReqJsonStr,omitempty"`
@@ -23036,6 +23159,7 @@ type UploadBitcodeToMsaRequest struct {
 	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
 	License     *string `json:"License,omitempty" xml:"License,omitempty"`
 	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -23069,6 +23193,11 @@ func (s *UploadBitcodeToMsaRequest) SetLicense(v string) *UploadBitcodeToMsaRequ
 
 func (s *UploadBitcodeToMsaRequest) SetTenantId(v string) *UploadBitcodeToMsaRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *UploadBitcodeToMsaRequest) SetType(v string) *UploadBitcodeToMsaRequest {
+	s.Type = &v
 	return s
 }
 
@@ -28297,6 +28426,70 @@ func (client *Client) LogMsaQuery(request *LogMsaQueryRequest) (_result *LogMsaQ
 	return _result, _err
 }
 
+func (client *Client) MTRSOCRServiceWithOptions(request *MTRSOCRServiceRequest, runtime *util.RuntimeOptions) (_result *MTRSOCRServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageRaw)) {
+		body["ImageRaw"] = request.ImageRaw
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		body["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MTRSOCRService"),
+		Version:     tea.String("2020-10-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MTRSOCRServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MTRSOCRService(request *MTRSOCRServiceRequest) (_result *MTRSOCRServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MTRSOCRServiceResponse{}
+	_body, _err := client.MTRSOCRServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenApiAddActiveCodeWithOptions(request *OpenApiAddActiveCodeRequest, runtime *util.RuntimeOptions) (_result *OpenApiAddActiveCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31105,6 +31298,10 @@ func (client *Client) UploadBitcodeToMsaWithOptions(request *UploadBitcodeToMsaR
 
 	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
 		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
