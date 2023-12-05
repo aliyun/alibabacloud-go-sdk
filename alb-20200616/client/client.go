@@ -762,10 +762,23 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerResponse) SetBody(v *AttachCo
 }
 
 type CancelShiftLoadBalancerZonesRequest struct {
-	ClientToken    *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun         *bool                                              `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerId *string                                            `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ZoneMappings   []*CancelShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the ALB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The mappings between zones and vSwitches.
+	//
+	// >  You can add only one zone in each call.
+	ZoneMappings []*CancelShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s CancelShiftLoadBalancerZonesRequest) String() string {
@@ -797,8 +810,10 @@ func (s *CancelShiftLoadBalancerZonesRequest) SetZoneMappings(v []*CancelShiftLo
 }
 
 type CancelShiftLoadBalancerZonesRequestZoneMappings struct {
+	// The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CancelShiftLoadBalancerZonesRequestZoneMappings) String() string {
@@ -820,6 +835,7 @@ func (s *CancelShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *C
 }
 
 type CancelShiftLoadBalancerZonesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11999,6 +12015,7 @@ func (s *ListRulesResponseBodyRulesRuleActionsFixedResponseConfig) SetHttpCode(v
 }
 
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfig struct {
+	ServerGroupStickySession *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession `json:"ServerGroupStickySession,omitempty" xml:"ServerGroupStickySession,omitempty" type:"Struct"`
 	// The server groups to which requests are forwarded.
 	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
 }
@@ -12011,8 +12028,36 @@ func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) GoString() stri
 	return s.String()
 }
 
+func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroupStickySession(v *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig {
+	s.ServerGroupStickySession = v
+	return s
+}
+
 func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroupTuples(v []*ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig {
 	s.ServerGroupTuples = v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession struct {
+	Enabled *bool  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetEnabled(v bool) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession) SetTimeout(v int32) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession {
+	s.Timeout = &v
 	return s
 }
 
@@ -12262,6 +12307,7 @@ func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
 	// The configuration of the server group to which traffic is mirrored.
 	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+	TargetType        *string                                                                    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -12274,6 +12320,11 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) GoString() str
 
 func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
 	s.MirrorGroupConfig = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetTargetType(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
 	return s
 }
 
@@ -15095,10 +15146,23 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 }
 
 type StartShiftLoadBalancerZonesRequest struct {
-	ClientToken    *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun         *bool                                             `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerId *string                                           `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	ZoneMappings   []*StartShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ALB instance ID.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The mappings between zones and vSwitches.
+	//
+	// >  You can remove only one zone in each call.
+	ZoneMappings []*StartShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s StartShiftLoadBalancerZonesRequest) String() string {
@@ -15130,8 +15194,10 @@ func (s *StartShiftLoadBalancerZonesRequest) SetZoneMappings(v []*StartShiftLoad
 }
 
 type StartShiftLoadBalancerZonesRequestZoneMappings struct {
+	// The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s StartShiftLoadBalancerZonesRequestZoneMappings) String() string {
@@ -15153,6 +15219,7 @@ func (s *StartShiftLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *St
 }
 
 type StartShiftLoadBalancerZonesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20345,6 +20412,13 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancer(request *Attach
 	return _result, _err
 }
 
+/**
+ * This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+ *
+ * @param request CancelShiftLoadBalancerZonesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelShiftLoadBalancerZonesResponse
+ */
 func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20390,6 +20464,12 @@ func (client *Client) CancelShiftLoadBalancerZonesWithOptions(request *CancelShi
 	return _result, _err
 }
 
+/**
+ * This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+ *
+ * @param request CancelShiftLoadBalancerZonesRequest
+ * @return CancelShiftLoadBalancerZonesResponse
+ */
 func (client *Client) CancelShiftLoadBalancerZones(request *CancelShiftLoadBalancerZonesRequest) (_result *CancelShiftLoadBalancerZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelShiftLoadBalancerZonesResponse{}
@@ -24187,6 +24267,13 @@ func (client *Client) StartListener(request *StartListenerRequest) (_result *Sta
 	return _result, _err
 }
 
+/**
+ * This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+ *
+ * @param request StartShiftLoadBalancerZonesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartShiftLoadBalancerZonesResponse
+ */
 func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShiftLoadBalancerZonesRequest, runtime *util.RuntimeOptions) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24232,6 +24319,12 @@ func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShift
 	return _result, _err
 }
 
+/**
+ * This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+ *
+ * @param request StartShiftLoadBalancerZonesRequest
+ * @return StartShiftLoadBalancerZonesResponse
+ */
 func (client *Client) StartShiftLoadBalancerZones(request *StartShiftLoadBalancerZonesRequest) (_result *StartShiftLoadBalancerZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartShiftLoadBalancerZonesResponse{}
