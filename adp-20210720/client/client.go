@@ -406,14 +406,17 @@ type FoundationVersion struct {
 	Documents            *string                            `json:"documents,omitempty" xml:"documents,omitempty"`
 	Driver               *FoundationVersionDriver           `json:"driver,omitempty" xml:"driver,omitempty" type:"Struct"`
 	Features             []*string                          `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	IsDefault            *bool                              `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 	Labels               *string                            `json:"labels,omitempty" xml:"labels,omitempty"`
 	Name                 *string                            `json:"name,omitempty" xml:"name,omitempty"`
 	PackageTools         []*FoundationVersionPackageTools   `json:"packageTools,omitempty" xml:"packageTools,omitempty" type:"Repeated"`
 	Platforms            []*Platform                        `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
+	SpecName             *string                            `json:"specName,omitempty" xml:"specName,omitempty"`
 	Status               *string                            `json:"status,omitempty" xml:"status,omitempty"`
 	Tools                *FoundationVersionTools            `json:"tools,omitempty" xml:"tools,omitempty" type:"Struct"`
 	Type                 *string                            `json:"type,omitempty" xml:"type,omitempty"`
 	Uid                  *string                            `json:"uid,omitempty" xml:"uid,omitempty"`
+	UserWhiteList        []*string                          `json:"userWhiteList,omitempty" xml:"userWhiteList,omitempty" type:"Repeated"`
 	Version              *string                            `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -460,6 +463,11 @@ func (s *FoundationVersion) SetFeatures(v []*string) *FoundationVersion {
 	return s
 }
 
+func (s *FoundationVersion) SetIsDefault(v bool) *FoundationVersion {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *FoundationVersion) SetLabels(v string) *FoundationVersion {
 	s.Labels = &v
 	return s
@@ -480,6 +488,11 @@ func (s *FoundationVersion) SetPlatforms(v []*Platform) *FoundationVersion {
 	return s
 }
 
+func (s *FoundationVersion) SetSpecName(v string) *FoundationVersion {
+	s.SpecName = &v
+	return s
+}
+
 func (s *FoundationVersion) SetStatus(v string) *FoundationVersion {
 	s.Status = &v
 	return s
@@ -497,6 +510,11 @@ func (s *FoundationVersion) SetType(v string) *FoundationVersion {
 
 func (s *FoundationVersion) SetUid(v string) *FoundationVersion {
 	s.Uid = &v
+	return s
+}
+
+func (s *FoundationVersion) SetUserWhiteList(v []*string) *FoundationVersion {
+	s.UserWhiteList = v
 	return s
 }
 
@@ -1478,35 +1496,38 @@ func (s *Platform) SetOs(v string) *Platform {
 }
 
 type ProductComponentRelationDetail struct {
-	AppVersion                        *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
-	Category                          *string `json:"category,omitempty" xml:"category,omitempty"`
-	Class                             *string `json:"class,omitempty" xml:"class,omitempty"`
-	ComponentName                     *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
-	ComponentOrchestrationValues      *string `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
-	ComponentUID                      *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
-	ComponentVersionUID               *string `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
-	CreatedAt                         *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	Description                       *string `json:"description,omitempty" xml:"description,omitempty"`
-	Documents                         *string `json:"documents,omitempty" xml:"documents,omitempty"`
-	Enable                            *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	ImagesMapping                     *string `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
-	Namespace                         *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OrchestrationType                 *string `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
-	ParentComponent                   *bool   `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
-	ParentComponentVersionRelationUID *string `json:"parentComponentVersionRelationUID,omitempty" xml:"parentComponentVersionRelationUID,omitempty"`
-	ParentComponentVersionUID         *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
-	Priority                          *int32  `json:"priority,omitempty" xml:"priority,omitempty"`
-	ProductVersionUID                 *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	Provider                          *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	Public                            *bool   `json:"public,omitempty" xml:"public,omitempty"`
-	Readme                            *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	RelationUID                       *string `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
-	ReleaseName                       *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	Resources                         *string `json:"resources,omitempty" xml:"resources,omitempty"`
-	Sequence                          *int32  `json:"sequence,omitempty" xml:"sequence,omitempty"`
-	Singleton                         *bool   `json:"singleton,omitempty" xml:"singleton,omitempty"`
-	Source                            *string `json:"source,omitempty" xml:"source,omitempty"`
-	Version                           *string `json:"version,omitempty" xml:"version,omitempty"`
+	AppVersion                        *string                               `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	Category                          *string                               `json:"category,omitempty" xml:"category,omitempty"`
+	Class                             *string                               `json:"class,omitempty" xml:"class,omitempty"`
+	ComponentName                     *string                               `json:"componentName,omitempty" xml:"componentName,omitempty"`
+	ComponentOrchestrationValues      *string                               `json:"componentOrchestrationValues,omitempty" xml:"componentOrchestrationValues,omitempty"`
+	ComponentUID                      *string                               `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
+	ComponentVersionSpecUID           *string                               `json:"componentVersionSpecUID,omitempty" xml:"componentVersionSpecUID,omitempty"`
+	ComponentVersionSpecValues        *string                               `json:"componentVersionSpecValues,omitempty" xml:"componentVersionSpecValues,omitempty"`
+	ComponentVersionUID               *string                               `json:"componentVersionUID,omitempty" xml:"componentVersionUID,omitempty"`
+	CreatedAt                         *string                               `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description                       *string                               `json:"description,omitempty" xml:"description,omitempty"`
+	Documents                         *string                               `json:"documents,omitempty" xml:"documents,omitempty"`
+	Enable                            *bool                                 `json:"enable,omitempty" xml:"enable,omitempty"`
+	ImagesMapping                     *string                               `json:"imagesMapping,omitempty" xml:"imagesMapping,omitempty"`
+	Namespace                         *string                               `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	OrchestrationType                 *string                               `json:"orchestrationType,omitempty" xml:"orchestrationType,omitempty"`
+	ParentComponent                   *bool                                 `json:"parentComponent,omitempty" xml:"parentComponent,omitempty"`
+	ParentComponentVersionRelationUID *string                               `json:"parentComponentVersionRelationUID,omitempty" xml:"parentComponentVersionRelationUID,omitempty"`
+	ParentComponentVersionUID         *string                               `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
+	Policy                            *ProductComponentRelationDetailPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
+	Priority                          *int32                                `json:"priority,omitempty" xml:"priority,omitempty"`
+	ProductVersionUID                 *string                               `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Provider                          *string                               `json:"provider,omitempty" xml:"provider,omitempty"`
+	Public                            *bool                                 `json:"public,omitempty" xml:"public,omitempty"`
+	Readme                            *string                               `json:"readme,omitempty" xml:"readme,omitempty"`
+	RelationUID                       *string                               `json:"relationUID,omitempty" xml:"relationUID,omitempty"`
+	ReleaseName                       *string                               `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
+	Resources                         *string                               `json:"resources,omitempty" xml:"resources,omitempty"`
+	Sequence                          *int32                                `json:"sequence,omitempty" xml:"sequence,omitempty"`
+	Singleton                         *bool                                 `json:"singleton,omitempty" xml:"singleton,omitempty"`
+	Source                            *string                               `json:"source,omitempty" xml:"source,omitempty"`
+	Version                           *string                               `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ProductComponentRelationDetail) String() string {
@@ -1544,6 +1565,16 @@ func (s *ProductComponentRelationDetail) SetComponentOrchestrationValues(v strin
 
 func (s *ProductComponentRelationDetail) SetComponentUID(v string) *ProductComponentRelationDetail {
 	s.ComponentUID = &v
+	return s
+}
+
+func (s *ProductComponentRelationDetail) SetComponentVersionSpecUID(v string) *ProductComponentRelationDetail {
+	s.ComponentVersionSpecUID = &v
+	return s
+}
+
+func (s *ProductComponentRelationDetail) SetComponentVersionSpecValues(v string) *ProductComponentRelationDetail {
+	s.ComponentVersionSpecValues = &v
 	return s
 }
 
@@ -1599,6 +1630,11 @@ func (s *ProductComponentRelationDetail) SetParentComponentVersionRelationUID(v 
 
 func (s *ProductComponentRelationDetail) SetParentComponentVersionUID(v string) *ProductComponentRelationDetail {
 	s.ParentComponentVersionUID = &v
+	return s
+}
+
+func (s *ProductComponentRelationDetail) SetPolicy(v *ProductComponentRelationDetailPolicy) *ProductComponentRelationDetail {
+	s.Policy = v
 	return s
 }
 
@@ -1659,6 +1695,40 @@ func (s *ProductComponentRelationDetail) SetSource(v string) *ProductComponentRe
 
 func (s *ProductComponentRelationDetail) SetVersion(v string) *ProductComponentRelationDetail {
 	s.Version = &v
+	return s
+}
+
+type ProductComponentRelationDetailPolicy struct {
+	MultiCluster *ProductComponentRelationDetailPolicyMultiCluster `json:"multiCluster,omitempty" xml:"multiCluster,omitempty" type:"Struct"`
+}
+
+func (s ProductComponentRelationDetailPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProductComponentRelationDetailPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ProductComponentRelationDetailPolicy) SetMultiCluster(v *ProductComponentRelationDetailPolicyMultiCluster) *ProductComponentRelationDetailPolicy {
+	s.MultiCluster = v
+	return s
+}
+
+type ProductComponentRelationDetailPolicyMultiCluster struct {
+	TargetClusters []*string `json:"targetClusters,omitempty" xml:"targetClusters,omitempty" type:"Repeated"`
+}
+
+func (s ProductComponentRelationDetailPolicyMultiCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProductComponentRelationDetailPolicyMultiCluster) GoString() string {
+	return s.String()
+}
+
+func (s *ProductComponentRelationDetailPolicyMultiCluster) SetTargetClusters(v []*string) *ProductComponentRelationDetailPolicyMultiCluster {
+	s.TargetClusters = v
 	return s
 }
 
@@ -2901,10 +2971,13 @@ func (s *CreateDeliverableResponse) SetBody(v *CreateDeliverableResponseBody) *C
 }
 
 type CreateDeliveryInstanceRequest struct {
-	ClusterUID           *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
-	DeliverableConfigUID *string `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
-	DeliverableUID       *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
-	EnvUID               *string `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	ClusterUID           *string                                  `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	DeliverableConfigUID *string                                  `json:"deliverableConfigUID,omitempty" xml:"deliverableConfigUID,omitempty"`
+	DeliverableUID       *string                                  `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	EnvUID               *string                                  `json:"envUID,omitempty" xml:"envUID,omitempty"`
+	Foundation           *CreateDeliveryInstanceRequestFoundation `json:"foundation,omitempty" xml:"foundation,omitempty" type:"Struct"`
+	Products             []*CreateDeliveryInstanceRequestProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
+	TemplateUID          *string                                  `json:"templateUID,omitempty" xml:"templateUID,omitempty"`
 }
 
 func (s CreateDeliveryInstanceRequest) String() string {
@@ -2932,6 +3005,127 @@ func (s *CreateDeliveryInstanceRequest) SetDeliverableUID(v string) *CreateDeliv
 
 func (s *CreateDeliveryInstanceRequest) SetEnvUID(v string) *CreateDeliveryInstanceRequest {
 	s.EnvUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetFoundation(v *CreateDeliveryInstanceRequestFoundation) *CreateDeliveryInstanceRequest {
+	s.Foundation = v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetProducts(v []*CreateDeliveryInstanceRequestProducts) *CreateDeliveryInstanceRequest {
+	s.Products = v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequest) SetTemplateUID(v string) *CreateDeliveryInstanceRequest {
+	s.TemplateUID = &v
+	return s
+}
+
+type CreateDeliveryInstanceRequestFoundation struct {
+	ClusterConfig          *string `json:"clusterConfig,omitempty" xml:"clusterConfig,omitempty"`
+	FoundationReferenceUID *string `json:"foundationReferenceUID,omitempty" xml:"foundationReferenceUID,omitempty"`
+	FoundationVersion      *string `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
+	FoundationVersionUID   *string `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
+	Reusable               *string `json:"reusable,omitempty" xml:"reusable,omitempty"`
+}
+
+func (s CreateDeliveryInstanceRequestFoundation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceRequestFoundation) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceRequestFoundation) SetClusterConfig(v string) *CreateDeliveryInstanceRequestFoundation {
+	s.ClusterConfig = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestFoundation) SetFoundationReferenceUID(v string) *CreateDeliveryInstanceRequestFoundation {
+	s.FoundationReferenceUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestFoundation) SetFoundationVersion(v string) *CreateDeliveryInstanceRequestFoundation {
+	s.FoundationVersion = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestFoundation) SetFoundationVersionUID(v string) *CreateDeliveryInstanceRequestFoundation {
+	s.FoundationVersionUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestFoundation) SetReusable(v string) *CreateDeliveryInstanceRequestFoundation {
+	s.Reusable = &v
+	return s
+}
+
+type CreateDeliveryInstanceRequestProducts struct {
+	Namespace              *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Order                  *string `json:"order,omitempty" xml:"order,omitempty"`
+	ProductName            *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductType            *string `json:"productType,omitempty" xml:"productType,omitempty"`
+	ProductUID             *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion         *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionSpecName *string `json:"productVersionSpecName,omitempty" xml:"productVersionSpecName,omitempty"`
+	ProductVersionSpecUID  *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID      *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+}
+
+func (s CreateDeliveryInstanceRequestProducts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryInstanceRequestProducts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetNamespace(v string) *CreateDeliveryInstanceRequestProducts {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetOrder(v string) *CreateDeliveryInstanceRequestProducts {
+	s.Order = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductName(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductName = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductType(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductType = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductUID(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductVersion(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductVersion = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductVersionSpecName(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductVersionSpecName = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductVersionSpecUID(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductVersionSpecUID = &v
+	return s
+}
+
+func (s *CreateDeliveryInstanceRequestProducts) SetProductVersionUID(v string) *CreateDeliveryInstanceRequestProducts {
+	s.ProductVersionUID = &v
 	return s
 }
 
@@ -3158,6 +3352,7 @@ func (s *CreateEnvironmentHeaders) SetClientToken(v string) *CreateEnvironmentHe
 type CreateEnvironmentRequest struct {
 	Annotations       *string                           `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	Description       *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	ExpiredAt         *string                           `json:"expiredAt,omitempty" xml:"expiredAt,omitempty"`
 	Location          *string                           `json:"location,omitempty" xml:"location,omitempty"`
 	Name              *string                           `json:"name,omitempty" xml:"name,omitempty"`
 	Platform          *CreateEnvironmentRequestPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
@@ -3183,6 +3378,11 @@ func (s *CreateEnvironmentRequest) SetAnnotations(v string) *CreateEnvironmentRe
 
 func (s *CreateEnvironmentRequest) SetDescription(v string) *CreateEnvironmentRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateEnvironmentRequest) SetExpiredAt(v string) *CreateEnvironmentRequest {
+	s.ExpiredAt = &v
 	return s
 }
 
@@ -4005,8 +4205,9 @@ func (s *CreateProductDeploymentResponse) SetBody(v *CreateProductDeploymentResp
 }
 
 type CreateProductVersionRequest struct {
-	BaseProductVersionUID *string `json:"baseProductVersionUID,omitempty" xml:"baseProductVersionUID,omitempty"`
-	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
+	BaseProductVersionUID     *string `json:"baseProductVersionUID,omitempty" xml:"baseProductVersionUID,omitempty"`
+	Version                   *string `json:"version,omitempty" xml:"version,omitempty"`
+	WithoutBaseProductVersion *bool   `json:"withoutBaseProductVersion,omitempty" xml:"withoutBaseProductVersion,omitempty"`
 }
 
 func (s CreateProductVersionRequest) String() string {
@@ -4024,6 +4225,11 @@ func (s *CreateProductVersionRequest) SetBaseProductVersionUID(v string) *Create
 
 func (s *CreateProductVersionRequest) SetVersion(v string) *CreateProductVersionRequest {
 	s.Version = &v
+	return s
+}
+
+func (s *CreateProductVersionRequest) SetWithoutBaseProductVersion(v bool) *CreateProductVersionRequest {
+	s.WithoutBaseProductVersion = &v
 	return s
 }
 
@@ -5282,6 +5488,7 @@ func (s *GetDeliverableResponseBodyDataFoundation) SetFoundationVersionUID(v str
 }
 
 type GetDeliverableResponseBodyDataProducts struct {
+	Namespace              *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	ProductName            *string `json:"productName,omitempty" xml:"productName,omitempty"`
 	ProductType            *string `json:"productType,omitempty" xml:"productType,omitempty"`
 	ProductUID             *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
@@ -5297,6 +5504,11 @@ func (s GetDeliverableResponseBodyDataProducts) String() string {
 
 func (s GetDeliverableResponseBodyDataProducts) GoString() string {
 	return s.String()
+}
+
+func (s *GetDeliverableResponseBodyDataProducts) SetNamespace(v string) *GetDeliverableResponseBodyDataProducts {
+	s.Namespace = &v
+	return s
 }
 
 func (s *GetDeliverableResponseBodyDataProducts) SetProductName(v string) *GetDeliverableResponseBodyDataProducts {
@@ -5572,6 +5784,8 @@ type GetEnvironmentResponseBodyData struct {
 	ClusterUID           *string                                         `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
 	CreatedAt            *string                                         `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	Description          *string                                         `json:"description,omitempty" xml:"description,omitempty"`
+	ExpiredAt            *string                                         `json:"expiredAt,omitempty" xml:"expiredAt,omitempty"`
+	FoundationType       *string                                         `json:"foundationType,omitempty" xml:"foundationType,omitempty"`
 	FoundationVersion    *string                                         `json:"foundationVersion,omitempty" xml:"foundationVersion,omitempty"`
 	FoundationVersionUID *string                                         `json:"foundationVersionUID,omitempty" xml:"foundationVersionUID,omitempty"`
 	InstanceList         []*InstanceInfo                                 `json:"instanceList,omitempty" xml:"instanceList,omitempty" type:"Repeated"`
@@ -5621,6 +5835,16 @@ func (s *GetEnvironmentResponseBodyData) SetCreatedAt(v string) *GetEnvironmentR
 
 func (s *GetEnvironmentResponseBodyData) SetDescription(v string) *GetEnvironmentResponseBodyData {
 	s.Description = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetExpiredAt(v string) *GetEnvironmentResponseBodyData {
+	s.ExpiredAt = &v
+	return s
+}
+
+func (s *GetEnvironmentResponseBodyData) SetFoundationType(v string) *GetEnvironmentResponseBodyData {
+	s.FoundationType = &v
 	return s
 }
 
@@ -6530,10 +6754,12 @@ func (s *GetFoundationVersionResponseBody) SetMsg(v string) *GetFoundationVersio
 type GetFoundationVersionResponseBodyData struct {
 	Description    *string                                             `json:"description,omitempty" xml:"description,omitempty"`
 	Features       []*string                                           `json:"features,omitempty" xml:"features,omitempty" type:"Repeated"`
+	IsDefault      *bool                                               `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 	Labels         *string                                             `json:"labels,omitempty" xml:"labels,omitempty"`
 	Name           *string                                             `json:"name,omitempty" xml:"name,omitempty"`
 	Platforms      []*Platform                                         `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
 	SiteSurveyTool *GetFoundationVersionResponseBodyDataSiteSurveyTool `json:"siteSurveyTool,omitempty" xml:"siteSurveyTool,omitempty" type:"Struct"`
+	SpecName       *string                                             `json:"specName,omitempty" xml:"specName,omitempty"`
 	Status         *string                                             `json:"status,omitempty" xml:"status,omitempty"`
 	Type           *string                                             `json:"type,omitempty" xml:"type,omitempty"`
 	Uid            *string                                             `json:"uid,omitempty" xml:"uid,omitempty"`
@@ -6559,6 +6785,11 @@ func (s *GetFoundationVersionResponseBodyData) SetFeatures(v []*string) *GetFoun
 	return s
 }
 
+func (s *GetFoundationVersionResponseBodyData) SetIsDefault(v bool) *GetFoundationVersionResponseBodyData {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *GetFoundationVersionResponseBodyData) SetLabels(v string) *GetFoundationVersionResponseBodyData {
 	s.Labels = &v
 	return s
@@ -6576,6 +6807,11 @@ func (s *GetFoundationVersionResponseBodyData) SetPlatforms(v []*Platform) *GetF
 
 func (s *GetFoundationVersionResponseBodyData) SetSiteSurveyTool(v *GetFoundationVersionResponseBodyDataSiteSurveyTool) *GetFoundationVersionResponseBodyData {
 	s.SiteSurveyTool = v
+	return s
+}
+
+func (s *GetFoundationVersionResponseBodyData) SetSpecName(v string) *GetFoundationVersionResponseBodyData {
+	s.SpecName = &v
 	return s
 }
 
@@ -6839,6 +7075,7 @@ func (s *GetProductComponentVersionResponseBody) SetMsg(v string) *GetProductCom
 
 type GetProductComponentVersionResponseBodyData struct {
 	AppVersion                        *string `json:"appVersion,omitempty" xml:"appVersion,omitempty"`
+	Category                          *string `json:"category,omitempty" xml:"category,omitempty"`
 	ComponentDescription              *string `json:"componentDescription,omitempty" xml:"componentDescription,omitempty"`
 	ComponentName                     *string `json:"componentName,omitempty" xml:"componentName,omitempty"`
 	ComponentUID                      *string `json:"componentUID,omitempty" xml:"componentUID,omitempty"`
@@ -6855,6 +7092,7 @@ type GetProductComponentVersionResponseBodyData struct {
 	ReleaseName                       *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
 	Resources                         *string `json:"resources,omitempty" xml:"resources,omitempty"`
 	Sequence                          *int32  `json:"sequence,omitempty" xml:"sequence,omitempty"`
+	Source                            *string `json:"source,omitempty" xml:"source,omitempty"`
 	Values                            *string `json:"values,omitempty" xml:"values,omitempty"`
 	Version                           *string `json:"version,omitempty" xml:"version,omitempty"`
 }
@@ -6869,6 +7107,11 @@ func (s GetProductComponentVersionResponseBodyData) GoString() string {
 
 func (s *GetProductComponentVersionResponseBodyData) SetAppVersion(v string) *GetProductComponentVersionResponseBodyData {
 	s.AppVersion = &v
+	return s
+}
+
+func (s *GetProductComponentVersionResponseBodyData) SetCategory(v string) *GetProductComponentVersionResponseBodyData {
+	s.Category = &v
 	return s
 }
 
@@ -6949,6 +7192,11 @@ func (s *GetProductComponentVersionResponseBodyData) SetResources(v string) *Get
 
 func (s *GetProductComponentVersionResponseBodyData) SetSequence(v int32) *GetProductComponentVersionResponseBodyData {
 	s.Sequence = &v
+	return s
+}
+
+func (s *GetProductComponentVersionResponseBodyData) SetSource(v string) *GetProductComponentVersionResponseBodyData {
+	s.Source = &v
 	return s
 }
 
@@ -9022,6 +9270,7 @@ func (s *ListDeliveryInstanceChangeRecordsResponse) SetBody(v *ListDeliveryInsta
 
 type ListDeliveryPackageRequest struct {
 	DeliverableUID *string `json:"deliverableUID,omitempty" xml:"deliverableUID,omitempty"`
+	Platform       *string `json:"platform,omitempty" xml:"platform,omitempty"`
 }
 
 func (s ListDeliveryPackageRequest) String() string {
@@ -9034,6 +9283,11 @@ func (s ListDeliveryPackageRequest) GoString() string {
 
 func (s *ListDeliveryPackageRequest) SetDeliverableUID(v string) *ListDeliveryPackageRequest {
 	s.DeliverableUID = &v
+	return s
+}
+
+func (s *ListDeliveryPackageRequest) SetPlatform(v string) *ListDeliveryPackageRequest {
+	s.Platform = &v
 	return s
 }
 
@@ -9720,6 +9974,7 @@ func (s *ListEnvironmentTunnelsResponse) SetBody(v *ListEnvironmentTunnelsRespon
 
 type ListEnvironmentsRequest struct {
 	ClusterUID     *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	Endpoint       *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	FoundationType *string `json:"foundationType,omitempty" xml:"foundationType,omitempty"`
 	Fuzzy          *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
 	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
@@ -9740,6 +9995,11 @@ func (s ListEnvironmentsRequest) GoString() string {
 
 func (s *ListEnvironmentsRequest) SetClusterUID(v string) *ListEnvironmentsRequest {
 	s.ClusterUID = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetEndpoint(v string) *ListEnvironmentsRequest {
+	s.Endpoint = &v
 	return s
 }
 
@@ -9850,10 +10110,13 @@ func (s *ListEnvironmentsResponseBodyData) SetTotal(v int32) *ListEnvironmentsRe
 type ListEnvironmentsResponseBodyDataList struct {
 	CreatedAt         *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	Description       *string                                       `json:"description,omitempty" xml:"description,omitempty"`
+	ExpireAt          *string                                       `json:"expireAt,omitempty" xml:"expireAt,omitempty"`
+	InstanceStatus    *string                                       `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
 	Location          *string                                       `json:"location,omitempty" xml:"location,omitempty"`
 	Name              *string                                       `json:"name,omitempty" xml:"name,omitempty"`
 	Platform          *ListEnvironmentsResponseBodyDataListPlatform `json:"platform,omitempty" xml:"platform,omitempty" type:"Struct"`
 	PlatformList      []*Platform                                   `json:"platformList,omitempty" xml:"platformList,omitempty" type:"Repeated"`
+	PlatformStatus    *string                                       `json:"platformStatus,omitempty" xml:"platformStatus,omitempty"`
 	ProductName       *string                                       `json:"productName,omitempty" xml:"productName,omitempty"`
 	ProductVersion    *string                                       `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
 	ProductVersionUID *string                                       `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
@@ -9879,6 +10142,16 @@ func (s *ListEnvironmentsResponseBodyDataList) SetDescription(v string) *ListEnv
 	return s
 }
 
+func (s *ListEnvironmentsResponseBodyDataList) SetExpireAt(v string) *ListEnvironmentsResponseBodyDataList {
+	s.ExpireAt = &v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataList) SetInstanceStatus(v string) *ListEnvironmentsResponseBodyDataList {
+	s.InstanceStatus = &v
+	return s
+}
+
 func (s *ListEnvironmentsResponseBodyDataList) SetLocation(v string) *ListEnvironmentsResponseBodyDataList {
 	s.Location = &v
 	return s
@@ -9896,6 +10169,11 @@ func (s *ListEnvironmentsResponseBodyDataList) SetPlatform(v *ListEnvironmentsRe
 
 func (s *ListEnvironmentsResponseBodyDataList) SetPlatformList(v []*Platform) *ListEnvironmentsResponseBodyDataList {
 	s.PlatformList = v
+	return s
+}
+
+func (s *ListEnvironmentsResponseBodyDataList) SetPlatformStatus(v string) *ListEnvironmentsResponseBodyDataList {
+	s.PlatformStatus = &v
 	return s
 }
 
@@ -9977,6 +10255,7 @@ func (s *ListEnvironmentsResponse) SetBody(v *ListEnvironmentsResponseBody) *Lis
 }
 
 type ListFoundationComponentVersionsRequest struct {
+	OnlyEnabled                *bool   `json:"onlyEnabled,omitempty" xml:"onlyEnabled,omitempty"`
 	ParentComponentRelationUID *string `json:"parentComponentRelationUID,omitempty" xml:"parentComponentRelationUID,omitempty"`
 }
 
@@ -9986,6 +10265,11 @@ func (s ListFoundationComponentVersionsRequest) String() string {
 
 func (s ListFoundationComponentVersionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFoundationComponentVersionsRequest) SetOnlyEnabled(v bool) *ListFoundationComponentVersionsRequest {
+	s.OnlyEnabled = &v
+	return s
 }
 
 func (s *ListFoundationComponentVersionsRequest) SetParentComponentRelationUID(v string) *ListFoundationComponentVersionsRequest {
@@ -10186,12 +10470,13 @@ func (s *ListFoundationReferenceComponentsResponse) SetBody(v *ListFoundationRef
 }
 
 type ListFoundationVersionsRequest struct {
-	PageNum    *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize   *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	SortDirect *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
-	SortKey    *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
-	Version    *string `json:"version,omitempty" xml:"version,omitempty"`
+	OnlyDefault *bool   `json:"onlyDefault,omitempty" xml:"onlyDefault,omitempty"`
+	PageNum     *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize    *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	SortDirect  *string `json:"sortDirect,omitempty" xml:"sortDirect,omitempty"`
+	SortKey     *string `json:"sortKey,omitempty" xml:"sortKey,omitempty"`
+	Type        *string `json:"type,omitempty" xml:"type,omitempty"`
+	Version     *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListFoundationVersionsRequest) String() string {
@@ -10200,6 +10485,11 @@ func (s ListFoundationVersionsRequest) String() string {
 
 func (s ListFoundationVersionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFoundationVersionsRequest) SetOnlyDefault(v bool) *ListFoundationVersionsRequest {
+	s.OnlyDefault = &v
+	return s
 }
 
 func (s *ListFoundationVersionsRequest) SetPageNum(v int32) *ListFoundationVersionsRequest {
@@ -11051,11 +11341,14 @@ func (s *ListProductFoundationReferencesResponse) SetBody(v *ListProductFoundati
 }
 
 type ListProductInstanceConfigsRequest struct {
-	EnvironmentUID    *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
-	PageNum           *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize          *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ParamType         *string `json:"paramType,omitempty" xml:"paramType,omitempty"`
-	ProductVersionUID *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	ComponentReleaseName *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	EnvironmentUID       *string `json:"environmentUID,omitempty" xml:"environmentUID,omitempty"`
+	Fuzzy                *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	PageNum              *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize             *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	ParamType            *string `json:"paramType,omitempty" xml:"paramType,omitempty"`
+	Parameter            *string `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
 }
 
 func (s ListProductInstanceConfigsRequest) String() string {
@@ -11066,8 +11359,18 @@ func (s ListProductInstanceConfigsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListProductInstanceConfigsRequest) SetComponentReleaseName(v string) *ListProductInstanceConfigsRequest {
+	s.ComponentReleaseName = &v
+	return s
+}
+
 func (s *ListProductInstanceConfigsRequest) SetEnvironmentUID(v string) *ListProductInstanceConfigsRequest {
 	s.EnvironmentUID = &v
+	return s
+}
+
+func (s *ListProductInstanceConfigsRequest) SetFuzzy(v string) *ListProductInstanceConfigsRequest {
+	s.Fuzzy = &v
 	return s
 }
 
@@ -11083,6 +11386,11 @@ func (s *ListProductInstanceConfigsRequest) SetPageSize(v int32) *ListProductIns
 
 func (s *ListProductInstanceConfigsRequest) SetParamType(v string) *ListProductInstanceConfigsRequest {
 	s.ParamType = &v
+	return s
+}
+
+func (s *ListProductInstanceConfigsRequest) SetParameter(v string) *ListProductInstanceConfigsRequest {
+	s.Parameter = &v
 	return s
 }
 
@@ -11438,7 +11746,10 @@ func (s *ListProductInstancesResponseBody) SetMsg(v string) *ListProductInstance
 }
 
 type ListProductInstancesResponseBodyData struct {
-	List []*ListProductInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	List     []*ListProductInstancesResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNum  *int32                                      `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize *int32                                      `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                      `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListProductInstancesResponseBodyData) String() string {
@@ -11454,15 +11765,33 @@ func (s *ListProductInstancesResponseBodyData) SetList(v []*ListProductInstances
 	return s
 }
 
+func (s *ListProductInstancesResponseBodyData) SetPageNum(v int32) *ListProductInstancesResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyData) SetPageSize(v int32) *ListProductInstancesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyData) SetTotal(v int32) *ListProductInstancesResponseBodyData {
+	s.Total = &v
+	return s
+}
+
 type ListProductInstancesResponseBodyDataList struct {
-	ContinuousDeployment *bool   `json:"continuousDeployment,omitempty" xml:"continuousDeployment,omitempty"`
-	ProductName          *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	ProductUID           *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
-	ProductVersion       *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
-	ProductVersionUID    *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
-	Status               *string `json:"status,omitempty" xml:"status,omitempty"`
-	Timeout              *int64  `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	Uid                  *string `json:"uid,omitempty" xml:"uid,omitempty"`
+	ClusterUID            *string `json:"clusterUID,omitempty" xml:"clusterUID,omitempty"`
+	ContinuousDeployment  *bool   `json:"continuousDeployment,omitempty" xml:"continuousDeployment,omitempty"`
+	Namespace             *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	ProductName           *string `json:"productName,omitempty" xml:"productName,omitempty"`
+	ProductUID            *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
+	ProductVersion        *string `json:"productVersion,omitempty" xml:"productVersion,omitempty"`
+	ProductVersionSpecUID *string `json:"productVersionSpecUID,omitempty" xml:"productVersionSpecUID,omitempty"`
+	ProductVersionUID     *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Status                *string `json:"status,omitempty" xml:"status,omitempty"`
+	Timeout               *int64  `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	Uid                   *string `json:"uid,omitempty" xml:"uid,omitempty"`
 }
 
 func (s ListProductInstancesResponseBodyDataList) String() string {
@@ -11473,8 +11802,18 @@ func (s ListProductInstancesResponseBodyDataList) GoString() string {
 	return s.String()
 }
 
+func (s *ListProductInstancesResponseBodyDataList) SetClusterUID(v string) *ListProductInstancesResponseBodyDataList {
+	s.ClusterUID = &v
+	return s
+}
+
 func (s *ListProductInstancesResponseBodyDataList) SetContinuousDeployment(v bool) *ListProductInstancesResponseBodyDataList {
 	s.ContinuousDeployment = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetNamespace(v string) *ListProductInstancesResponseBodyDataList {
+	s.Namespace = &v
 	return s
 }
 
@@ -11490,6 +11829,11 @@ func (s *ListProductInstancesResponseBodyDataList) SetProductUID(v string) *List
 
 func (s *ListProductInstancesResponseBodyDataList) SetProductVersion(v string) *ListProductInstancesResponseBodyDataList {
 	s.ProductVersion = &v
+	return s
+}
+
+func (s *ListProductInstancesResponseBodyDataList) SetProductVersionSpecUID(v string) *ListProductInstancesResponseBodyDataList {
+	s.ProductVersionSpecUID = &v
 	return s
 }
 
@@ -11543,11 +11887,13 @@ func (s *ListProductInstancesResponse) SetBody(v *ListProductInstancesResponseBo
 }
 
 type ListProductVersionConfigsRequest struct {
-	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	PageNum    *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	PageSize   *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Parameter  *string `json:"parameter,omitempty" xml:"parameter,omitempty"`
-	Scope      *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	ComponentReleaseName *string `json:"componentReleaseName,omitempty" xml:"componentReleaseName,omitempty"`
+	ConfigType           *string `json:"configType,omitempty" xml:"configType,omitempty"`
+	Fuzzy                *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
+	PageNum              *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	PageSize             *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Parameter            *string `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Scope                *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
 
 func (s ListProductVersionConfigsRequest) String() string {
@@ -11558,8 +11904,18 @@ func (s ListProductVersionConfigsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListProductVersionConfigsRequest) SetComponentReleaseName(v string) *ListProductVersionConfigsRequest {
+	s.ComponentReleaseName = &v
+	return s
+}
+
 func (s *ListProductVersionConfigsRequest) SetConfigType(v string) *ListProductVersionConfigsRequest {
 	s.ConfigType = &v
+	return s
+}
+
+func (s *ListProductVersionConfigsRequest) SetFuzzy(v string) *ListProductVersionConfigsRequest {
+	s.Fuzzy = &v
 	return s
 }
 
@@ -11657,8 +12013,10 @@ type ListProductVersionConfigsResponseBodyDataList struct {
 	ParentComponentReleaseName *string `json:"parentComponentReleaseName,omitempty" xml:"parentComponentReleaseName,omitempty"`
 	ParentComponentVersionUID  *string `json:"parentComponentVersionUID,omitempty" xml:"parentComponentVersionUID,omitempty"`
 	ProductVersionUID          *string `json:"productVersionUID,omitempty" xml:"productVersionUID,omitempty"`
+	Scope                      *string `json:"scope,omitempty" xml:"scope,omitempty"`
 	Uid                        *string `json:"uid,omitempty" xml:"uid,omitempty"`
 	Value                      *string `json:"value,omitempty" xml:"value,omitempty"`
+	ValueType                  *string `json:"valueType,omitempty" xml:"valueType,omitempty"`
 }
 
 func (s ListProductVersionConfigsResponseBodyDataList) String() string {
@@ -11714,6 +12072,11 @@ func (s *ListProductVersionConfigsResponseBodyDataList) SetProductVersionUID(v s
 	return s
 }
 
+func (s *ListProductVersionConfigsResponseBodyDataList) SetScope(v string) *ListProductVersionConfigsResponseBodyDataList {
+	s.Scope = &v
+	return s
+}
+
 func (s *ListProductVersionConfigsResponseBodyDataList) SetUid(v string) *ListProductVersionConfigsResponseBodyDataList {
 	s.Uid = &v
 	return s
@@ -11721,6 +12084,11 @@ func (s *ListProductVersionConfigsResponseBodyDataList) SetUid(v string) *ListPr
 
 func (s *ListProductVersionConfigsResponseBodyDataList) SetValue(v string) *ListProductVersionConfigsResponseBodyDataList {
 	s.Value = &v
+	return s
+}
+
+func (s *ListProductVersionConfigsResponseBodyDataList) SetValueType(v string) *ListProductVersionConfigsResponseBodyDataList {
+	s.ValueType = &v
 	return s
 }
 
@@ -11754,6 +12122,7 @@ func (s *ListProductVersionConfigsResponse) SetBody(v *ListProductVersionConfigs
 }
 
 type ListProductVersionsRequest struct {
+	Fuzzy                    *string                                `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
 	PageNum                  *string                                `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize                 *string                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	Platforms                []*ListProductVersionsRequestPlatforms `json:"platforms,omitempty" xml:"platforms,omitempty" type:"Repeated"`
@@ -11761,6 +12130,7 @@ type ListProductVersionsRequest struct {
 	ProductUID               *string                                `json:"productUID,omitempty" xml:"productUID,omitempty"`
 	Released                 *bool                                  `json:"released,omitempty" xml:"released,omitempty"`
 	SupportedFoundationTypes []*string                              `json:"supportedFoundationTypes,omitempty" xml:"supportedFoundationTypes,omitempty" type:"Repeated"`
+	Tag                      *ListProductVersionsRequestTag         `json:"tag,omitempty" xml:"tag,omitempty" type:"Struct"`
 	Version                  *string                                `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -11770,6 +12140,11 @@ func (s ListProductVersionsRequest) String() string {
 
 func (s ListProductVersionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListProductVersionsRequest) SetFuzzy(v string) *ListProductVersionsRequest {
+	s.Fuzzy = &v
+	return s
 }
 
 func (s *ListProductVersionsRequest) SetPageNum(v string) *ListProductVersionsRequest {
@@ -11807,6 +12182,11 @@ func (s *ListProductVersionsRequest) SetSupportedFoundationTypes(v []*string) *L
 	return s
 }
 
+func (s *ListProductVersionsRequest) SetTag(v *ListProductVersionsRequestTag) *ListProductVersionsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListProductVersionsRequest) SetVersion(v string) *ListProductVersionsRequest {
 	s.Version = &v
 	return s
@@ -11835,7 +12215,31 @@ func (s *ListProductVersionsRequestPlatforms) SetOs(v string) *ListProductVersio
 	return s
 }
 
+type ListProductVersionsRequestTag struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListProductVersionsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionsRequestTag) SetKey(v string) *ListProductVersionsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProductVersionsRequestTag) SetValue(v string) *ListProductVersionsRequestTag {
+	s.Value = &v
+	return s
+}
+
 type ListProductVersionsShrinkRequest struct {
+	Fuzzy                          *string `json:"fuzzy,omitempty" xml:"fuzzy,omitempty"`
 	PageNum                        *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
 	PageSize                       *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	PlatformsShrink                *string `json:"platforms,omitempty" xml:"platforms,omitempty"`
@@ -11843,6 +12247,7 @@ type ListProductVersionsShrinkRequest struct {
 	ProductUID                     *string `json:"productUID,omitempty" xml:"productUID,omitempty"`
 	Released                       *bool   `json:"released,omitempty" xml:"released,omitempty"`
 	SupportedFoundationTypesShrink *string `json:"supportedFoundationTypes,omitempty" xml:"supportedFoundationTypes,omitempty"`
+	TagShrink                      *string `json:"tag,omitempty" xml:"tag,omitempty"`
 	Version                        *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
@@ -11852,6 +12257,11 @@ func (s ListProductVersionsShrinkRequest) String() string {
 
 func (s ListProductVersionsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListProductVersionsShrinkRequest) SetFuzzy(v string) *ListProductVersionsShrinkRequest {
+	s.Fuzzy = &v
+	return s
 }
 
 func (s *ListProductVersionsShrinkRequest) SetPageNum(v string) *ListProductVersionsShrinkRequest {
@@ -11886,6 +12296,11 @@ func (s *ListProductVersionsShrinkRequest) SetReleased(v bool) *ListProductVersi
 
 func (s *ListProductVersionsShrinkRequest) SetSupportedFoundationTypesShrink(v string) *ListProductVersionsShrinkRequest {
 	s.SupportedFoundationTypesShrink = &v
+	return s
+}
+
+func (s *ListProductVersionsShrinkRequest) SetTagShrink(v string) *ListProductVersionsShrinkRequest {
+	s.TagShrink = &v
 	return s
 }
 
@@ -11965,6 +12380,8 @@ type ListProductVersionsResponseBodyDataList struct {
 	ProductName *string                                             `json:"productName,omitempty" xml:"productName,omitempty"`
 	ProductUID  *string                                             `json:"productUID,omitempty" xml:"productUID,omitempty"`
 	Provider    *string                                             `json:"provider,omitempty" xml:"provider,omitempty"`
+	ReleasedAt  *string                                             `json:"releasedAt,omitempty" xml:"releasedAt,omitempty"`
+	Tags        []*ListProductVersionsResponseBodyDataListTags      `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	Uid         *string                                             `json:"uid,omitempty" xml:"uid,omitempty"`
 	Version     *string                                             `json:"version,omitempty" xml:"version,omitempty"`
 }
@@ -12007,6 +12424,16 @@ func (s *ListProductVersionsResponseBodyDataList) SetProvider(v string) *ListPro
 	return s
 }
 
+func (s *ListProductVersionsResponseBodyDataList) SetReleasedAt(v string) *ListProductVersionsResponseBodyDataList {
+	s.ReleasedAt = &v
+	return s
+}
+
+func (s *ListProductVersionsResponseBodyDataList) SetTags(v []*ListProductVersionsResponseBodyDataListTags) *ListProductVersionsResponseBodyDataList {
+	s.Tags = v
+	return s
+}
+
 func (s *ListProductVersionsResponseBodyDataList) SetUid(v string) *ListProductVersionsResponseBodyDataList {
 	s.Uid = &v
 	return s
@@ -12043,6 +12470,29 @@ func (s *ListProductVersionsResponseBodyDataListAnnotations) SetAdditionalProp2(
 
 func (s *ListProductVersionsResponseBodyDataListAnnotations) SetAdditionalProp3(v string) *ListProductVersionsResponseBodyDataListAnnotations {
 	s.AdditionalProp3 = &v
+	return s
+}
+
+type ListProductVersionsResponseBodyDataListTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListProductVersionsResponseBodyDataListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProductVersionsResponseBodyDataListTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListProductVersionsResponseBodyDataListTags) SetKey(v string) *ListProductVersionsResponseBodyDataListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListProductVersionsResponseBodyDataListTags) SetValue(v string) *ListProductVersionsResponseBodyDataListTags {
+	s.Value = &v
 	return s
 }
 
@@ -14734,6 +15184,18 @@ func (client *Client) CreateDeliveryInstanceWithOptions(request *CreateDeliveryI
 		body["envUID"] = request.EnvUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Foundation)) {
+		body["foundation"] = request.Foundation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Products)) {
+		body["products"] = request.Products
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateUID)) {
+		body["templateUID"] = request.TemplateUID
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -14848,6 +15310,10 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiredAt)) {
+		body["expiredAt"] = request.ExpiredAt
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Location)) {
@@ -15237,6 +15703,10 @@ func (client *Client) CreateProductVersionWithOptions(uid *string, request *Crea
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
 		body["version"] = request.Version
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithoutBaseProductVersion)) {
+		body["withoutBaseProductVersion"] = request.WithoutBaseProductVersion
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16863,6 +17333,10 @@ func (client *Client) ListDeliveryPackageWithOptions(request *ListDeliveryPackag
 		query["deliverableUID"] = request.DeliverableUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["platform"] = request.Platform
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -17053,6 +17527,10 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		query["clusterUID"] = request.ClusterUID
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
+		query["endpoint"] = request.Endpoint
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FoundationType)) {
 		query["foundationType"] = request.FoundationType
 	}
@@ -17127,6 +17605,10 @@ func (client *Client) ListFoundationComponentVersionsWithOptions(uid *string, re
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OnlyEnabled)) {
+		query["onlyEnabled"] = request.OnlyEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ParentComponentRelationUID)) {
 		query["parentComponentRelationUID"] = request.ParentComponentRelationUID
 	}
@@ -17235,6 +17717,10 @@ func (client *Client) ListFoundationVersionsWithOptions(request *ListFoundationV
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OnlyDefault)) {
+		query["onlyDefault"] = request.OnlyDefault
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["pageNum"] = request.PageNum
 	}
@@ -17551,8 +18037,16 @@ func (client *Client) ListProductInstanceConfigsWithOptions(request *ListProduct
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentReleaseName)) {
+		query["componentReleaseName"] = request.ComponentReleaseName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentUID)) {
 		query["environmentUID"] = request.EnvironmentUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
@@ -17565,6 +18059,10 @@ func (client *Client) ListProductInstanceConfigsWithOptions(request *ListProduct
 
 	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
 		query["paramType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
+		query["parameter"] = request.Parameter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductVersionUID)) {
@@ -17681,8 +18179,16 @@ func (client *Client) ListProductVersionConfigsWithOptions(uid *string, request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ComponentReleaseName)) {
+		query["componentReleaseName"] = request.ComponentReleaseName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
 		query["configType"] = request.ConfigType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
@@ -17752,7 +18258,15 @@ func (client *Client) ListProductVersionsWithOptions(tmpReq *ListProductVersions
 		request.SupportedFoundationTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SupportedFoundationTypes, tea.String("supportedFoundationTypes"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fuzzy)) {
+		query["fuzzy"] = request.Fuzzy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		query["pageNum"] = request.PageNum
 	}
@@ -17779,6 +18293,10 @@ func (client *Client) ListProductVersionsWithOptions(tmpReq *ListProductVersions
 
 	if !tea.BoolValue(util.IsUnset(request.SupportedFoundationTypesShrink)) {
 		query["supportedFoundationTypes"] = request.SupportedFoundationTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["tag"] = request.TagShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
