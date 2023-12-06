@@ -5637,6 +5637,7 @@ func (s *CreateProcCorrectOrderRequest) SetTid(v int64) *CreateProcCorrectOrderR
 type CreateProcCorrectOrderRequestParam struct {
 	Classify               *string                                         `json:"Classify,omitempty" xml:"Classify,omitempty"`
 	DbItemList             []*CreateProcCorrectOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	ExecMode               *string                                         `json:"ExecMode,omitempty" xml:"ExecMode,omitempty"`
 	ExecSQL                *string                                         `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
 	RollbackAttachmentName *string                                         `json:"RollbackAttachmentName,omitempty" xml:"RollbackAttachmentName,omitempty"`
 	RollbackSQL            *string                                         `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
@@ -5658,6 +5659,11 @@ func (s *CreateProcCorrectOrderRequestParam) SetClassify(v string) *CreateProcCo
 
 func (s *CreateProcCorrectOrderRequestParam) SetDbItemList(v []*CreateProcCorrectOrderRequestParamDbItemList) *CreateProcCorrectOrderRequestParam {
 	s.DbItemList = v
+	return s
+}
+
+func (s *CreateProcCorrectOrderRequestParam) SetExecMode(v string) *CreateProcCorrectOrderRequestParam {
+	s.ExecMode = &v
 	return s
 }
 
