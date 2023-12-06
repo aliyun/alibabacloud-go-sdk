@@ -21261,9 +21261,10 @@ type ScaleWithAdjustmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
-	MinAdjustmentMagnitude *int32  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	MinAdjustmentMagnitude *int32                               `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
+	Overrides              *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
+	OwnerId                *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
@@ -21305,6 +21306,11 @@ func (s *ScaleWithAdjustmentRequest) SetMinAdjustmentMagnitude(v int32) *ScaleWi
 	return s
 }
 
+func (s *ScaleWithAdjustmentRequest) SetOverrides(v *ScaleWithAdjustmentRequestOverrides) *ScaleWithAdjustmentRequest {
+	s.Overrides = v
+	return s
+}
+
 func (s *ScaleWithAdjustmentRequest) SetOwnerId(v int64) *ScaleWithAdjustmentRequest {
 	s.OwnerId = &v
 	return s
@@ -21321,6 +21327,191 @@ func (s *ScaleWithAdjustmentRequest) SetScalingGroupId(v string) *ScaleWithAdjus
 }
 
 func (s *ScaleWithAdjustmentRequest) SetSyncActivity(v bool) *ScaleWithAdjustmentRequest {
+	s.SyncActivity = &v
+	return s
+}
+
+type ScaleWithAdjustmentRequestOverrides struct {
+	ContainerOverrides []*ScaleWithAdjustmentRequestOverridesContainerOverrides `json:"ContainerOverrides,omitempty" xml:"ContainerOverrides,omitempty" type:"Repeated"`
+	Cpu                *float32                                                 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Memory             *float32                                                 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ScaleWithAdjustmentRequestOverrides) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentRequestOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentRequestOverrides) SetContainerOverrides(v []*ScaleWithAdjustmentRequestOverridesContainerOverrides) *ScaleWithAdjustmentRequestOverrides {
+	s.ContainerOverrides = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverrides) SetCpu(v float32) *ScaleWithAdjustmentRequestOverrides {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverrides) SetMemory(v float32) *ScaleWithAdjustmentRequestOverrides {
+	s.Memory = &v
+	return s
+}
+
+type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
+	Args            []*string                                                               `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
+	Commands        []*string                                                               `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	Cpu             *float32                                                                `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnvironmentVars []*ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
+	Memory          *float32                                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Name            *string                                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ScaleWithAdjustmentRequestOverridesContainerOverrides) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentRequestOverridesContainerOverrides) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetArgs(v []*string) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.Args = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetCommands(v []*string) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.Commands = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetCpu(v float32) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetEnvironmentVars(v []*ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.EnvironmentVars = v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetMemory(v float32) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.Memory = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) SetName(v string) *ScaleWithAdjustmentRequestOverridesContainerOverrides {
+	s.Name = &v
+	return s
+}
+
+type ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) SetKey(v string) *ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars {
+	s.Key = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars) SetValue(v string) *ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars {
+	s.Value = &v
+	return s
+}
+
+type ScaleWithAdjustmentShrinkRequest struct {
+	// The type of the scaling policy. Valid values:
+	//
+	// *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
+	// *   PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
+	// *   TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number.
+	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
+	// The number of instances in each adjustment. The number of ECS instances in each adjustment cannot exceed 1,000.
+	//
+	// *   Valid values if you set the AdjustmentType parameter to QuantityChangeInCapacity: -1000 to 1000.
+	// *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
+	// *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
+	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
+	MinAdjustmentMagnitude *int32  `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
+	OverridesShrink        *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
+	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	// Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+	//
+	// *   true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
+	// *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+	//
+	// > For more information about the Expected Number of Instances feature, see [Expected number of instances](~~146231~~).
+	//
+	// Default value: false.
+	SyncActivity *bool `json:"SyncActivity,omitempty" xml:"SyncActivity,omitempty"`
+}
+
+func (s ScaleWithAdjustmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScaleWithAdjustmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetAdjustmentType(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.AdjustmentType = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetAdjustmentValue(v int32) *ScaleWithAdjustmentShrinkRequest {
+	s.AdjustmentValue = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetClientToken(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetMinAdjustmentMagnitude(v int32) *ScaleWithAdjustmentShrinkRequest {
+	s.MinAdjustmentMagnitude = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetOverridesShrink(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.OverridesShrink = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetOwnerId(v int64) *ScaleWithAdjustmentShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetResourceOwnerAccount(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetScalingGroupId(v string) *ScaleWithAdjustmentShrinkRequest {
+	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetSyncActivity(v bool) *ScaleWithAdjustmentShrinkRequest {
 	s.SyncActivity = &v
 	return s
 }
@@ -28873,15 +29064,21 @@ func (client *Client) ResumeProcesses(request *ResumeProcessesRequest) (_result 
  * *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
  * A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
  *
- * @param request ScaleWithAdjustmentRequest
+ * @param tmpReq ScaleWithAdjustmentRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return ScaleWithAdjustmentResponse
  */
-func (client *Client) ScaleWithAdjustmentWithOptions(request *ScaleWithAdjustmentRequest, runtime *util.RuntimeOptions) (_result *ScaleWithAdjustmentResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ScaleWithAdjustmentWithOptions(tmpReq *ScaleWithAdjustmentRequest, runtime *util.RuntimeOptions) (_result *ScaleWithAdjustmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ScaleWithAdjustmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Overrides)) {
+		request.OverridesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Overrides, tea.String("Overrides"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AdjustmentType)) {
 		query["AdjustmentType"] = request.AdjustmentType
@@ -28897,6 +29094,10 @@ func (client *Client) ScaleWithAdjustmentWithOptions(request *ScaleWithAdjustmen
 
 	if !tea.BoolValue(util.IsUnset(request.MinAdjustmentMagnitude)) {
 		query["MinAdjustmentMagnitude"] = request.MinAdjustmentMagnitude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverridesShrink)) {
+		query["Overrides"] = request.OverridesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
