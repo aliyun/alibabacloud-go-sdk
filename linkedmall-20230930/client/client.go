@@ -1217,6 +1217,7 @@ func (s *OrderResult) SetRequestId(v string) *OrderResult {
 }
 
 type Product struct {
+	BrandName      *string            `json:"brandName,omitempty" xml:"brandName,omitempty"`
 	CanSell        *bool              `json:"canSell,omitempty" xml:"canSell,omitempty"`
 	CategoryChain  []*Category        `json:"categoryChain,omitempty" xml:"categoryChain,omitempty" type:"Repeated"`
 	CategoryLeafId *int64             `json:"categoryLeafId,omitempty" xml:"categoryLeafId,omitempty"`
@@ -1246,6 +1247,11 @@ func (s Product) String() string {
 
 func (s Product) GoString() string {
 	return s.String()
+}
+
+func (s *Product) SetBrandName(v string) *Product {
+	s.BrandName = &v
+	return s
 }
 
 func (s *Product) SetCanSell(v bool) *Product {
@@ -2402,6 +2408,7 @@ func (s *ShopPageResult) SetTotal(v int32) *ShopPageResult {
 }
 
 type Sku struct {
+	Barcode       *string    `json:"barcode,omitempty" xml:"barcode,omitempty"`
 	CanSell       *bool      `json:"canSell,omitempty" xml:"canSell,omitempty"`
 	DivisionCode  *string    `json:"divisionCode,omitempty" xml:"divisionCode,omitempty"`
 	FuzzyQuantity *string    `json:"fuzzyQuantity,omitempty" xml:"fuzzyQuantity,omitempty"`
@@ -2425,6 +2432,11 @@ func (s Sku) String() string {
 
 func (s Sku) GoString() string {
 	return s.String()
+}
+
+func (s *Sku) SetBarcode(v string) *Sku {
+	s.Barcode = &v
+	return s
 }
 
 func (s *Sku) SetCanSell(v bool) *Sku {
