@@ -1325,6 +1325,8 @@ type JobSettings struct {
 	EnableRDMA                      *bool                  `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
 	EnableTideResource              *bool                  `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
 	ErrorMonitoringArgs             *string                `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
+	JobReservedMinutes              *int32                 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
+	JobReservedPolicy               *string                `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
 	OversoldType                    *string                `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	PipelineId                      *string                `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	Tags                            map[string]*string     `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -1380,6 +1382,16 @@ func (s *JobSettings) SetEnableTideResource(v bool) *JobSettings {
 
 func (s *JobSettings) SetErrorMonitoringArgs(v string) *JobSettings {
 	s.ErrorMonitoringArgs = &v
+	return s
+}
+
+func (s *JobSettings) SetJobReservedMinutes(v int32) *JobSettings {
+	s.JobReservedMinutes = &v
+	return s
+}
+
+func (s *JobSettings) SetJobReservedPolicy(v string) *JobSettings {
+	s.JobReservedPolicy = &v
 	return s
 }
 
