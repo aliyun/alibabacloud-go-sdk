@@ -960,6 +960,223 @@ func (s *CreateBranchResponse) SetBody(v *CreateBranchResponseBody) *CreateBranc
 	return s
 }
 
+type CreateCommitStatusRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Context            *string `json:"context,omitempty" xml:"context,omitempty"`
+	Description        *string `json:"description,omitempty" xml:"description,omitempty"`
+	State              *string `json:"state,omitempty" xml:"state,omitempty"`
+	TargetUrl          *string `json:"targetUrl,omitempty" xml:"targetUrl,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+	Sha                *string `json:"sha,omitempty" xml:"sha,omitempty"`
+}
+
+func (s CreateCommitStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitStatusRequest) SetAccessToken(v string) *CreateCommitStatusRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetContext(v string) *CreateCommitStatusRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetDescription(v string) *CreateCommitStatusRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetState(v string) *CreateCommitStatusRequest {
+	s.State = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetTargetUrl(v string) *CreateCommitStatusRequest {
+	s.TargetUrl = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetOrganizationId(v string) *CreateCommitStatusRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetRepositoryIdentity(v string) *CreateCommitStatusRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+func (s *CreateCommitStatusRequest) SetSha(v string) *CreateCommitStatusRequest {
+	s.Sha = &v
+	return s
+}
+
+type CreateCommitStatusResponseBody struct {
+	ErrorCode    *string                               `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                               `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateCommitStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                 `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateCommitStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitStatusResponseBody) SetErrorCode(v string) *CreateCommitStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBody) SetErrorMessage(v string) *CreateCommitStatusResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBody) SetRequestId(v string) *CreateCommitStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBody) SetResult(v *CreateCommitStatusResponseBodyResult) *CreateCommitStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBody) SetSuccess(v bool) *CreateCommitStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCommitStatusResponseBodyResult struct {
+	Context     *string                                      `json:"context,omitempty" xml:"context,omitempty"`
+	Creator     *CreateCommitStatusResponseBodyResultCreator `json:"creator,omitempty" xml:"creator,omitempty" type:"Struct"`
+	Description *string                                      `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Sha         *string                                      `json:"sha,omitempty" xml:"sha,omitempty"`
+	State       *string                                      `json:"state,omitempty" xml:"state,omitempty"`
+	TargetUrl   *string                                      `json:"targetUrl,omitempty" xml:"targetUrl,omitempty"`
+}
+
+func (s CreateCommitStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetContext(v string) *CreateCommitStatusResponseBodyResult {
+	s.Context = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetCreator(v *CreateCommitStatusResponseBodyResultCreator) *CreateCommitStatusResponseBodyResult {
+	s.Creator = v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetDescription(v string) *CreateCommitStatusResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetId(v int64) *CreateCommitStatusResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetSha(v string) *CreateCommitStatusResponseBodyResult {
+	s.Sha = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetState(v string) *CreateCommitStatusResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResult) SetTargetUrl(v string) *CreateCommitStatusResponseBodyResult {
+	s.TargetUrl = &v
+	return s
+}
+
+type CreateCommitStatusResponseBodyResultCreator struct {
+	AliyunPk  *int64  `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Login     *string `json:"login,omitempty" xml:"login,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateCommitStatusResponseBodyResultCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitStatusResponseBodyResultCreator) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitStatusResponseBodyResultCreator) SetAliyunPk(v int64) *CreateCommitStatusResponseBodyResultCreator {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResultCreator) SetAvatarUrl(v string) *CreateCommitStatusResponseBodyResultCreator {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResultCreator) SetLogin(v string) *CreateCommitStatusResponseBodyResultCreator {
+	s.Login = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponseBodyResultCreator) SetType(v string) *CreateCommitStatusResponseBodyResultCreator {
+	s.Type = &v
+	return s
+}
+
+type CreateCommitStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCommitStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCommitStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCommitStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCommitStatusResponse) SetHeaders(v map[string]*string) *CreateCommitStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCommitStatusResponse) SetStatusCode(v int32) *CreateCommitStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCommitStatusResponse) SetBody(v *CreateCommitStatusResponseBody) *CreateCommitStatusResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeployKeyRequest struct {
 	AccessToken    *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	Key            *string `json:"key,omitempty" xml:"key,omitempty"`
@@ -12489,6 +12706,217 @@ func (s *GetMergeRequestResponse) SetBody(v *GetMergeRequestResponseBody) *GetMe
 	return s
 }
 
+type GetMergeRequestChangeTreeRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	FromPatchSetBizId  *string `json:"fromPatchSetBizId,omitempty" xml:"fromPatchSetBizId,omitempty"`
+	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+	ToPatchSetBizId    *string `json:"toPatchSetBizId,omitempty" xml:"toPatchSetBizId,omitempty"`
+}
+
+func (s GetMergeRequestChangeTreeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestChangeTreeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetAccessToken(v string) *GetMergeRequestChangeTreeRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetFromPatchSetBizId(v string) *GetMergeRequestChangeTreeRequest {
+	s.FromPatchSetBizId = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetLocalId(v int64) *GetMergeRequestChangeTreeRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetOrganizationId(v string) *GetMergeRequestChangeTreeRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetRepositoryIdentity(v string) *GetMergeRequestChangeTreeRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeRequest) SetToPatchSetBizId(v string) *GetMergeRequestChangeTreeRequest {
+	s.ToPatchSetBizId = &v
+	return s
+}
+
+type GetMergeRequestChangeTreeResponseBody struct {
+	ErrorCode    *string                                      `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                      `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                      `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetMergeRequestChangeTreeResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                                        `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetMergeRequestChangeTreeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestChangeTreeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestChangeTreeResponseBody) SetErrorCode(v string) *GetMergeRequestChangeTreeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBody) SetErrorMessage(v string) *GetMergeRequestChangeTreeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBody) SetRequestId(v string) *GetMergeRequestChangeTreeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBody) SetResult(v *GetMergeRequestChangeTreeResponseBodyResult) *GetMergeRequestChangeTreeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBody) SetSuccess(v bool) *GetMergeRequestChangeTreeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMergeRequestChangeTreeResponseBodyResult struct {
+	ChangedFilesCount *int64                                                          `json:"changedFilesCount,omitempty" xml:"changedFilesCount,omitempty"`
+	ChangedFilesInfos []*GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos `json:"changedFilesInfos,omitempty" xml:"changedFilesInfos,omitempty" type:"Repeated"`
+	TotalAddLines     *int64                                                          `json:"totalAddLines,omitempty" xml:"totalAddLines,omitempty"`
+	TotalDelLines     *int64                                                          `json:"totalDelLines,omitempty" xml:"totalDelLines,omitempty"`
+}
+
+func (s GetMergeRequestChangeTreeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestChangeTreeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResult) SetChangedFilesCount(v int64) *GetMergeRequestChangeTreeResponseBodyResult {
+	s.ChangedFilesCount = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResult) SetChangedFilesInfos(v []*GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) *GetMergeRequestChangeTreeResponseBodyResult {
+	s.ChangedFilesInfos = v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResult) SetTotalAddLines(v int64) *GetMergeRequestChangeTreeResponseBodyResult {
+	s.TotalAddLines = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResult) SetTotalDelLines(v int64) *GetMergeRequestChangeTreeResponseBodyResult {
+	s.TotalDelLines = &v
+	return s
+}
+
+type GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos struct {
+	AddLines    *int64  `json:"addLines,omitempty" xml:"addLines,omitempty"`
+	BinaryFile  *bool   `json:"binaryFile,omitempty" xml:"binaryFile,omitempty"`
+	DelLines    *int64  `json:"delLines,omitempty" xml:"delLines,omitempty"`
+	DeletedFile *bool   `json:"deletedFile,omitempty" xml:"deletedFile,omitempty"`
+	NewFile     *bool   `json:"newFile,omitempty" xml:"newFile,omitempty"`
+	NewPath     *string `json:"newPath,omitempty" xml:"newPath,omitempty"`
+	OldPath     *string `json:"oldPath,omitempty" xml:"oldPath,omitempty"`
+	RenamedFile *bool   `json:"renamedFile,omitempty" xml:"renamedFile,omitempty"`
+}
+
+func (s GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetAddLines(v int64) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.AddLines = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetBinaryFile(v bool) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.BinaryFile = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetDelLines(v int64) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.DelLines = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetDeletedFile(v bool) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.DeletedFile = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetNewFile(v bool) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.NewFile = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetNewPath(v string) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.NewPath = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetOldPath(v string) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.OldPath = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos) SetRenamedFile(v bool) *GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos {
+	s.RenamedFile = &v
+	return s
+}
+
+type GetMergeRequestChangeTreeResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMergeRequestChangeTreeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMergeRequestChangeTreeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMergeRequestChangeTreeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMergeRequestChangeTreeResponse) SetHeaders(v map[string]*string) *GetMergeRequestChangeTreeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponse) SetStatusCode(v int32) *GetMergeRequestChangeTreeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMergeRequestChangeTreeResponse) SetBody(v *GetMergeRequestChangeTreeResponseBody) *GetMergeRequestChangeTreeResponse {
+	s.Body = v
+	return s
+}
+
 type GetOrganizationMemberResponseBody struct {
 	ErrorCode    *string                                  `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage *string                                  `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -12537,6 +12965,7 @@ type GetOrganizationMemberResponseBodyMember struct {
 	Email                  *string                                            `json:"email,omitempty" xml:"email,omitempty"`
 	HiredDate              *int64                                             `json:"hiredDate,omitempty" xml:"hiredDate,omitempty"`
 	Identities             *GetOrganizationMemberResponseBodyMemberIdentities `json:"identities,omitempty" xml:"identities,omitempty" type:"Struct"`
+	JobNumber              *string                                            `json:"jobNumber,omitempty" xml:"jobNumber,omitempty"`
 	JoinTime               *int64                                             `json:"joinTime,omitempty" xml:"joinTime,omitempty"`
 	LastVisitTime          *int64                                             `json:"lastVisitTime,omitempty" xml:"lastVisitTime,omitempty"`
 	Mobile                 *string                                            `json:"mobile,omitempty" xml:"mobile,omitempty"`
@@ -12581,6 +13010,11 @@ func (s *GetOrganizationMemberResponseBodyMember) SetHiredDate(v int64) *GetOrga
 
 func (s *GetOrganizationMemberResponseBodyMember) SetIdentities(v *GetOrganizationMemberResponseBodyMemberIdentities) *GetOrganizationMemberResponseBodyMember {
 	s.Identities = v
+	return s
+}
+
+func (s *GetOrganizationMemberResponseBodyMember) SetJobNumber(v string) *GetOrganizationMemberResponseBodyMember {
+	s.JobNumber = &v
 	return s
 }
 
@@ -18314,6 +18748,217 @@ func (s *JoinPipelineGroupResponse) SetBody(v *JoinPipelineGroupResponseBody) *J
 	return s
 }
 
+type ListCommitStatusesRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Page               *int64  `json:"page,omitempty" xml:"page,omitempty"`
+	PageSize           *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+	Sha                *string `json:"sha,omitempty" xml:"sha,omitempty"`
+}
+
+func (s ListCommitStatusesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommitStatusesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommitStatusesRequest) SetAccessToken(v string) *ListCommitStatusesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListCommitStatusesRequest) SetOrganizationId(v string) *ListCommitStatusesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListCommitStatusesRequest) SetPage(v int64) *ListCommitStatusesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListCommitStatusesRequest) SetPageSize(v int64) *ListCommitStatusesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCommitStatusesRequest) SetRepositoryIdentity(v string) *ListCommitStatusesRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+func (s *ListCommitStatusesRequest) SetSha(v string) *ListCommitStatusesRequest {
+	s.Sha = &v
+	return s
+}
+
+type ListCommitStatusesResponseBody struct {
+	ErrorCode    *string                                 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                 `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListCommitStatusesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                  `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListCommitStatusesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommitStatusesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommitStatusesResponseBody) SetErrorCode(v string) *ListCommitStatusesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBody) SetErrorMessage(v string) *ListCommitStatusesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBody) SetRequestId(v string) *ListCommitStatusesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBody) SetResult(v []*ListCommitStatusesResponseBodyResult) *ListCommitStatusesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBody) SetSuccess(v bool) *ListCommitStatusesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBody) SetTotal(v int64) *ListCommitStatusesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListCommitStatusesResponseBodyResult struct {
+	Context     *string                                      `json:"context,omitempty" xml:"context,omitempty"`
+	Creator     *ListCommitStatusesResponseBodyResultCreator `json:"creator,omitempty" xml:"creator,omitempty" type:"Struct"`
+	Description *string                                      `json:"description,omitempty" xml:"description,omitempty"`
+	Id          *int64                                       `json:"id,omitempty" xml:"id,omitempty"`
+	Sha         *string                                      `json:"sha,omitempty" xml:"sha,omitempty"`
+	State       *string                                      `json:"state,omitempty" xml:"state,omitempty"`
+	TargetUrl   *string                                      `json:"targetUrl,omitempty" xml:"targetUrl,omitempty"`
+}
+
+func (s ListCommitStatusesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommitStatusesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetContext(v string) *ListCommitStatusesResponseBodyResult {
+	s.Context = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetCreator(v *ListCommitStatusesResponseBodyResultCreator) *ListCommitStatusesResponseBodyResult {
+	s.Creator = v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetDescription(v string) *ListCommitStatusesResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetId(v int64) *ListCommitStatusesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetSha(v string) *ListCommitStatusesResponseBodyResult {
+	s.Sha = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetState(v string) *ListCommitStatusesResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResult) SetTargetUrl(v string) *ListCommitStatusesResponseBodyResult {
+	s.TargetUrl = &v
+	return s
+}
+
+type ListCommitStatusesResponseBodyResultCreator struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Login     *string `json:"login,omitempty" xml:"login,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListCommitStatusesResponseBodyResultCreator) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommitStatusesResponseBodyResultCreator) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommitStatusesResponseBodyResultCreator) SetAliyunPk(v string) *ListCommitStatusesResponseBodyResultCreator {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResultCreator) SetAvatarUrl(v string) *ListCommitStatusesResponseBodyResultCreator {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResultCreator) SetLogin(v string) *ListCommitStatusesResponseBodyResultCreator {
+	s.Login = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponseBodyResultCreator) SetType(v string) *ListCommitStatusesResponseBodyResultCreator {
+	s.Type = &v
+	return s
+}
+
+type ListCommitStatusesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCommitStatusesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCommitStatusesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommitStatusesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommitStatusesResponse) SetHeaders(v map[string]*string) *ListCommitStatusesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCommitStatusesResponse) SetStatusCode(v int32) *ListCommitStatusesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCommitStatusesResponse) SetBody(v *ListCommitStatusesResponseBody) *ListCommitStatusesResponse {
+	s.Body = v
+	return s
+}
+
 type ListFlowTagGroupsResponseBody struct {
 	ErrorCode     *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	ErrorMessage  *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
@@ -19094,6 +19739,1107 @@ func (s *ListHostGroupsResponse) SetStatusCode(v int32) *ListHostGroupsResponse 
 }
 
 func (s *ListHostGroupsResponse) SetBody(v *ListHostGroupsResponseBody) *ListHostGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMergeRequestCommentsRequest struct {
+	AccessToken        *string   `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	CommentType        *string   `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	FilePath           *string   `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	PatchSetBizIds     []*string `json:"patchSetBizIds,omitempty" xml:"patchSetBizIds,omitempty" type:"Repeated"`
+	Resolved           *bool     `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	State              *string   `json:"state,omitempty" xml:"state,omitempty"`
+	LocalId            *int64    `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string   `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string   `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s ListMergeRequestCommentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsRequest) SetAccessToken(v string) *ListMergeRequestCommentsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetCommentType(v string) *ListMergeRequestCommentsRequest {
+	s.CommentType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetFilePath(v string) *ListMergeRequestCommentsRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetPatchSetBizIds(v []*string) *ListMergeRequestCommentsRequest {
+	s.PatchSetBizIds = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetResolved(v bool) *ListMergeRequestCommentsRequest {
+	s.Resolved = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetState(v string) *ListMergeRequestCommentsRequest {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetLocalId(v int64) *ListMergeRequestCommentsRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetOrganizationId(v string) *ListMergeRequestCommentsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsRequest) SetRepositoryIdentity(v string) *ListMergeRequestCommentsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBody struct {
+	ErrorCode    *string                                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListMergeRequestCommentsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBody) SetErrorCode(v string) *ListMergeRequestCommentsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBody) SetErrorMessage(v string) *ListMergeRequestCommentsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBody) SetRequestId(v string) *ListMergeRequestCommentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBody) SetResult(v []*ListMergeRequestCommentsResponseBodyResult) *ListMergeRequestCommentsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBody) SetSuccess(v bool) *ListMergeRequestCommentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResult struct {
+	Author             *ListMergeRequestCommentsResponseBodyResultAuthor          `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	ChildComments      []*ListMergeRequestCommentsResponseBodyResultChildComments `json:"childComments,omitempty" xml:"childComments,omitempty" type:"Repeated"`
+	CommentBizId       *string                                                    `json:"commentBizId,omitempty" xml:"commentBizId,omitempty"`
+	CommentTime        *string                                                    `json:"commentTime,omitempty" xml:"commentTime,omitempty"`
+	CommentType        *string                                                    `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	Content            *string                                                    `json:"content,omitempty" xml:"content,omitempty"`
+	Deleted            *bool                                                      `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	FilePath           *string                                                    `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	LastEditTime       *string                                                    `json:"lastEditTime,omitempty" xml:"lastEditTime,omitempty"`
+	LineNumber         *string                                                    `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	ParentCommentBizId *string                                                    `json:"parentCommentBizId,omitempty" xml:"parentCommentBizId,omitempty"`
+	RelatedPatchSet    *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet `json:"relatedPatchSet,omitempty" xml:"relatedPatchSet,omitempty" type:"Struct"`
+	Resolved           *bool                                                      `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	RootCommentBizId   *string                                                    `json:"rootCommentBizId,omitempty" xml:"rootCommentBizId,omitempty"`
+	State              *string                                                    `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetAuthor(v *ListMergeRequestCommentsResponseBodyResultAuthor) *ListMergeRequestCommentsResponseBodyResult {
+	s.Author = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetChildComments(v []*ListMergeRequestCommentsResponseBodyResultChildComments) *ListMergeRequestCommentsResponseBodyResult {
+	s.ChildComments = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.CommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetCommentTime(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.CommentTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetCommentType(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.CommentType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetContent(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetDeleted(v bool) *ListMergeRequestCommentsResponseBodyResult {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetFilePath(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetLastEditTime(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetLineNumber(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetParentCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.ParentCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetRelatedPatchSet(v *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) *ListMergeRequestCommentsResponseBodyResult {
+	s.RelatedPatchSet = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetResolved(v bool) *ListMergeRequestCommentsResponseBodyResult {
+	s.Resolved = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetRootCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.RootCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResult) SetState(v string) *ListMergeRequestCommentsResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultAuthor struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetAliyunPk(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetAvatarUrl(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetEmail(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetName(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetState(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultAuthor) SetUsername(v string) *ListMergeRequestCommentsResponseBodyResultAuthor {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildComments struct {
+	Author             *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor               `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	CommentBizId       *string                                                                      `json:"commentBizId,omitempty" xml:"commentBizId,omitempty"`
+	CommentTime        *string                                                                      `json:"commentTime,omitempty" xml:"commentTime,omitempty"`
+	CommentType        *string                                                                      `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	Content            *string                                                                      `json:"content,omitempty" xml:"content,omitempty"`
+	Deleted            *bool                                                                        `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	FilePath           *string                                                                      `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	FinalChildComments []*ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments `json:"finalChildComments,omitempty" xml:"finalChildComments,omitempty" type:"Repeated"`
+	LastEditTime       *string                                                                      `json:"lastEditTime,omitempty" xml:"lastEditTime,omitempty"`
+	LineNumber         *string                                                                      `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	ParentCommentBizId *string                                                                      `json:"parentCommentBizId,omitempty" xml:"parentCommentBizId,omitempty"`
+	RelatedPatchSet    *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet      `json:"relatedPatchSet,omitempty" xml:"relatedPatchSet,omitempty" type:"Struct"`
+	Resolved           *bool                                                                        `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	RootCommentBizId   *string                                                                      `json:"rootCommentBizId,omitempty" xml:"rootCommentBizId,omitempty"`
+	State              *string                                                                      `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildComments) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetAuthor(v *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.Author = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.CommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetCommentTime(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.CommentTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetCommentType(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.CommentType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetContent(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetDeleted(v bool) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetFilePath(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetFinalChildComments(v []*ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.FinalChildComments = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetLastEditTime(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetLineNumber(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetParentCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.ParentCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetRelatedPatchSet(v *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.RelatedPatchSet = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetResolved(v bool) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.Resolved = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetRootCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.RootCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildComments) SetState(v string) *ListMergeRequestCommentsResponseBodyResultChildComments {
+	s.State = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetAliyunPk(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetAvatarUrl(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetEmail(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetName(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetState(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor) SetUsername(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments struct {
+	Author             *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor          `json:"author,omitempty" xml:"author,omitempty" type:"Struct"`
+	CommentBizId       *string                                                                                   `json:"commentBizId,omitempty" xml:"commentBizId,omitempty"`
+	CommentTime        *string                                                                                   `json:"commentTime,omitempty" xml:"commentTime,omitempty"`
+	CommentType        *string                                                                                   `json:"commentType,omitempty" xml:"commentType,omitempty"`
+	Content            *string                                                                                   `json:"content,omitempty" xml:"content,omitempty"`
+	Deleted            *bool                                                                                     `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	FilePath           *string                                                                                   `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	LastEditTime       *string                                                                                   `json:"lastEditTime,omitempty" xml:"lastEditTime,omitempty"`
+	LineNumber         *string                                                                                   `json:"lineNumber,omitempty" xml:"lineNumber,omitempty"`
+	ParentCommentBizId *string                                                                                   `json:"parentCommentBizId,omitempty" xml:"parentCommentBizId,omitempty"`
+	RelatedPatchSet    *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet `json:"relatedPatchSet,omitempty" xml:"relatedPatchSet,omitempty" type:"Struct"`
+	Resolved           *bool                                                                                     `json:"resolved,omitempty" xml:"resolved,omitempty"`
+	RootCommentBizId   *string                                                                                   `json:"rootCommentBizId,omitempty" xml:"rootCommentBizId,omitempty"`
+	State              *string                                                                                   `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetAuthor(v *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.Author = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.CommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetCommentTime(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.CommentTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetCommentType(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.CommentType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetContent(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.Content = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetDeleted(v bool) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.Deleted = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetFilePath(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetLastEditTime(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetLineNumber(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.LineNumber = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetParentCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.ParentCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetRelatedPatchSet(v *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.RelatedPatchSet = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetResolved(v bool) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.Resolved = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetRootCommentBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.RootCommentBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments) SetState(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments {
+	s.State = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetAliyunPk(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetAvatarUrl(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetEmail(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetName(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetState(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor) SetUsername(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet struct {
+	CommitId             *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	PatchSetBizId        *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	PatchSetName         *string `json:"patchSetName,omitempty" xml:"patchSetName,omitempty"`
+	PatchSetNo           *string `json:"patchSetNo,omitempty" xml:"patchSetNo,omitempty"`
+	RelatedMergeItemType *string `json:"relatedMergeItemType,omitempty" xml:"relatedMergeItemType,omitempty"`
+	ShortId              *string `json:"shortId,omitempty" xml:"shortId,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetCommitId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetCreatedAt(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetPatchSetBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetPatchSetName(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.PatchSetName = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetPatchSetNo(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.PatchSetNo = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetRelatedMergeItemType(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.RelatedMergeItemType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet) SetShortId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet {
+	s.ShortId = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet struct {
+	CommitId             *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	PatchSetBizId        *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	PatchSetName         *string `json:"patchSetName,omitempty" xml:"patchSetName,omitempty"`
+	PatchSetNo           *string `json:"patchSetNo,omitempty" xml:"patchSetNo,omitempty"`
+	RelatedMergeItemType *string `json:"relatedMergeItemType,omitempty" xml:"relatedMergeItemType,omitempty"`
+	ShortId              *string `json:"shortId,omitempty" xml:"shortId,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetCommitId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetCreatedAt(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetPatchSetBizId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetPatchSetName(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.PatchSetName = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetPatchSetNo(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.PatchSetNo = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetRelatedMergeItemType(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.RelatedMergeItemType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet) SetShortId(v string) *ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet {
+	s.ShortId = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponseBodyResultRelatedPatchSet struct {
+	CommitId             *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	PatchSetBizId        *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	PatchSetName         *string `json:"patchSetName,omitempty" xml:"patchSetName,omitempty"`
+	PatchSetNo           *string `json:"patchSetNo,omitempty" xml:"patchSetNo,omitempty"`
+	RelatedMergeItemType *string `json:"relatedMergeItemType,omitempty" xml:"relatedMergeItemType,omitempty"`
+	ShortId              *string `json:"shortId,omitempty" xml:"shortId,omitempty"`
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetCommitId(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetCreatedAt(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetPatchSetBizId(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetPatchSetName(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.PatchSetName = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetPatchSetNo(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.PatchSetNo = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetRelatedMergeItemType(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.RelatedMergeItemType = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet) SetShortId(v string) *ListMergeRequestCommentsResponseBodyResultRelatedPatchSet {
+	s.ShortId = &v
+	return s
+}
+
+type ListMergeRequestCommentsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMergeRequestCommentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMergeRequestCommentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestCommentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestCommentsResponse) SetHeaders(v map[string]*string) *ListMergeRequestCommentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponse) SetStatusCode(v int32) *ListMergeRequestCommentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMergeRequestCommentsResponse) SetBody(v *ListMergeRequestCommentsResponseBody) *ListMergeRequestCommentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMergeRequestFilesReadsRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	FromPatchSetBizId  *string `json:"fromPatchSetBizId,omitempty" xml:"fromPatchSetBizId,omitempty"`
+	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+	ToPatchSetBizId    *string `json:"toPatchSetBizId,omitempty" xml:"toPatchSetBizId,omitempty"`
+}
+
+func (s ListMergeRequestFilesReadsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestFilesReadsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetAccessToken(v string) *ListMergeRequestFilesReadsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetFromPatchSetBizId(v string) *ListMergeRequestFilesReadsRequest {
+	s.FromPatchSetBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetLocalId(v int64) *ListMergeRequestFilesReadsRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetOrganizationId(v string) *ListMergeRequestFilesReadsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetRepositoryIdentity(v string) *ListMergeRequestFilesReadsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsRequest) SetToPatchSetBizId(v string) *ListMergeRequestFilesReadsRequest {
+	s.ToPatchSetBizId = &v
+	return s
+}
+
+type ListMergeRequestFilesReadsResponseBody struct {
+	ErrorCode    *string                                         `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                         `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListMergeRequestFilesReadsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMergeRequestFilesReadsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestFilesReadsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestFilesReadsResponseBody) SetErrorCode(v string) *ListMergeRequestFilesReadsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBody) SetErrorMessage(v string) *ListMergeRequestFilesReadsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBody) SetRequestId(v string) *ListMergeRequestFilesReadsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBody) SetResult(v []*ListMergeRequestFilesReadsResponseBodyResult) *ListMergeRequestFilesReadsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBody) SetSuccess(v bool) *ListMergeRequestFilesReadsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMergeRequestFilesReadsResponseBodyResult struct {
+	DeletedFile *string                                                  `json:"deletedFile,omitempty" xml:"deletedFile,omitempty"`
+	NewFile     *bool                                                    `json:"newFile,omitempty" xml:"newFile,omitempty"`
+	NewFilePath *string                                                  `json:"newFilePath,omitempty" xml:"newFilePath,omitempty"`
+	OldFilePath *string                                                  `json:"oldFilePath,omitempty" xml:"oldFilePath,omitempty"`
+	ReadUsers   []*ListMergeRequestFilesReadsResponseBodyResultReadUsers `json:"readUsers,omitempty" xml:"readUsers,omitempty" type:"Repeated"`
+	RenamedFile *string                                                  `json:"renamedFile,omitempty" xml:"renamedFile,omitempty"`
+}
+
+func (s ListMergeRequestFilesReadsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestFilesReadsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetDeletedFile(v string) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.DeletedFile = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetNewFile(v bool) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.NewFile = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetNewFilePath(v string) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.NewFilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetOldFilePath(v string) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.OldFilePath = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetReadUsers(v []*ListMergeRequestFilesReadsResponseBodyResultReadUsers) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.ReadUsers = v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResult) SetRenamedFile(v string) *ListMergeRequestFilesReadsResponseBodyResult {
+	s.RenamedFile = &v
+	return s
+}
+
+type ListMergeRequestFilesReadsResponseBodyResultReadUsers struct {
+	AliyunPk  *string `json:"aliyunPk,omitempty" xml:"aliyunPk,omitempty"`
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email     *string `json:"email,omitempty" xml:"email,omitempty"`
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
+	Username  *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListMergeRequestFilesReadsResponseBodyResultReadUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestFilesReadsResponseBodyResultReadUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetAliyunPk(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.AliyunPk = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetAvatarUrl(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetEmail(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.Email = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetName(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetState(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.State = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponseBodyResultReadUsers) SetUsername(v string) *ListMergeRequestFilesReadsResponseBodyResultReadUsers {
+	s.Username = &v
+	return s
+}
+
+type ListMergeRequestFilesReadsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMergeRequestFilesReadsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMergeRequestFilesReadsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestFilesReadsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestFilesReadsResponse) SetHeaders(v map[string]*string) *ListMergeRequestFilesReadsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponse) SetStatusCode(v int32) *ListMergeRequestFilesReadsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMergeRequestFilesReadsResponse) SetBody(v *ListMergeRequestFilesReadsResponseBody) *ListMergeRequestFilesReadsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMergeRequestPatchSetsRequest struct {
+	AccessToken        *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	LocalId            *int64  `json:"localId,omitempty" xml:"localId,omitempty"`
+	OrganizationId     *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	RepositoryIdentity *string `json:"repositoryIdentity,omitempty" xml:"repositoryIdentity,omitempty"`
+}
+
+func (s ListMergeRequestPatchSetsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestPatchSetsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestPatchSetsRequest) SetAccessToken(v string) *ListMergeRequestPatchSetsRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsRequest) SetLocalId(v int64) *ListMergeRequestPatchSetsRequest {
+	s.LocalId = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsRequest) SetOrganizationId(v string) *ListMergeRequestPatchSetsRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsRequest) SetRepositoryIdentity(v string) *ListMergeRequestPatchSetsRequest {
+	s.RepositoryIdentity = &v
+	return s
+}
+
+type ListMergeRequestPatchSetsResponseBody struct {
+	ErrorCode    *string                                        `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                        `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListMergeRequestPatchSetsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                          `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListMergeRequestPatchSetsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestPatchSetsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestPatchSetsResponseBody) SetErrorCode(v string) *ListMergeRequestPatchSetsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBody) SetErrorMessage(v string) *ListMergeRequestPatchSetsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBody) SetRequestId(v string) *ListMergeRequestPatchSetsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBody) SetResult(v []*ListMergeRequestPatchSetsResponseBodyResult) *ListMergeRequestPatchSetsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBody) SetSuccess(v bool) *ListMergeRequestPatchSetsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListMergeRequestPatchSetsResponseBodyResult struct {
+	CommitId             *string `json:"commitId,omitempty" xml:"commitId,omitempty"`
+	CreatedAt            *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	PatchSetBizId        *string `json:"patchSetBizId,omitempty" xml:"patchSetBizId,omitempty"`
+	PatchSetName         *string `json:"patchSetName,omitempty" xml:"patchSetName,omitempty"`
+	PatchSetNo           *int64  `json:"patchSetNo,omitempty" xml:"patchSetNo,omitempty"`
+	RelatedMergeItemType *string `json:"relatedMergeItemType,omitempty" xml:"relatedMergeItemType,omitempty"`
+	ShortCommitId        *string `json:"shortCommitId,omitempty" xml:"shortCommitId,omitempty"`
+}
+
+func (s ListMergeRequestPatchSetsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestPatchSetsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetCommitId(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.CommitId = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetCreatedAt(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetPatchSetBizId(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.PatchSetBizId = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetPatchSetName(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.PatchSetName = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetPatchSetNo(v int64) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.PatchSetNo = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetRelatedMergeItemType(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.RelatedMergeItemType = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponseBodyResult) SetShortCommitId(v string) *ListMergeRequestPatchSetsResponseBodyResult {
+	s.ShortCommitId = &v
+	return s
+}
+
+type ListMergeRequestPatchSetsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMergeRequestPatchSetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMergeRequestPatchSetsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMergeRequestPatchSetsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMergeRequestPatchSetsResponse) SetHeaders(v map[string]*string) *ListMergeRequestPatchSetsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponse) SetStatusCode(v int32) *ListMergeRequestPatchSetsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMergeRequestPatchSetsResponse) SetBody(v *ListMergeRequestPatchSetsResponseBody) *ListMergeRequestPatchSetsResponse {
 	s.Body = v
 	return s
 }
@@ -36207,6 +37953,82 @@ func (client *Client) CreateBranch(repositoryId *string, request *CreateBranchRe
 	return _result, _err
 }
 
+func (client *Client) CreateCommitStatusWithOptions(request *CreateCommitStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCommitStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sha)) {
+		query["sha"] = request.Sha
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		body["context"] = request.Context
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["state"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUrl)) {
+		body["targetUrl"] = request.TargetUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCommitStatus"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/repository/commit_statuses/create_commit_status"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCommitStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCommitStatus(request *CreateCommitStatusRequest) (_result *CreateCommitStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCommitStatusResponse{}
+	_body, _err := client.CreateCommitStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDeployKeyWithOptions(repositoryId *string, request *CreateDeployKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDeployKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39963,6 +41785,72 @@ func (client *Client) GetMergeRequest(repositoryId *string, localId *string, req
 	return _result, _err
 }
 
+func (client *Client) GetMergeRequestChangeTreeWithOptions(request *GetMergeRequestChangeTreeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMergeRequestChangeTreeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromPatchSetBizId)) {
+		query["fromPatchSetBizId"] = request.FromPatchSetBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToPatchSetBizId)) {
+		query["toPatchSetBizId"] = request.ToPatchSetBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMergeRequestChangeTree"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/diffs/change_tree"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMergeRequestChangeTreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMergeRequestChangeTree(request *GetMergeRequestChangeTreeRequest) (_result *GetMergeRequestChangeTreeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMergeRequestChangeTreeResponse{}
+	_body, _err := client.GetMergeRequestChangeTreeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOrganizationMemberWithOptions(organizationId *string, accountId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetOrganizationMemberResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -41239,6 +43127,72 @@ func (client *Client) JoinPipelineGroup(organizationId *string, request *JoinPip
 	return _result, _err
 }
 
+func (client *Client) ListCommitStatusesWithOptions(request *ListCommitStatusesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCommitStatusesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sha)) {
+		query["sha"] = request.Sha
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCommitStatuses"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/repository/commit_statuses/list_commit_statuses"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCommitStatusesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCommitStatuses(request *ListCommitStatusesRequest) (_result *ListCommitStatusesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCommitStatusesResponse{}
+	_body, _err := client.ListCommitStatusesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFlowTagGroupsWithOptions(organizationId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFlowTagGroupsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -41458,6 +43412,210 @@ func (client *Client) ListHostGroups(organizationId *string, request *ListHostGr
 	headers := make(map[string]*string)
 	_result = &ListHostGroupsResponse{}
 	_body, _err := client.ListHostGroupsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestCommentsWithOptions(request *ListMergeRequestCommentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMergeRequestCommentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommentType)) {
+		body["commentType"] = request.CommentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["filePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PatchSetBizIds)) {
+		body["patchSetBizIds"] = request.PatchSetBizIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolved)) {
+		body["resolved"] = request.Resolved
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		body["state"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMergeRequestComments"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/comments/list_comments"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMergeRequestCommentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestComments(request *ListMergeRequestCommentsRequest) (_result *ListMergeRequestCommentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMergeRequestCommentsResponse{}
+	_body, _err := client.ListMergeRequestCommentsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestFilesReadsWithOptions(request *ListMergeRequestFilesReadsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMergeRequestFilesReadsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromPatchSetBizId)) {
+		query["fromPatchSetBizId"] = request.FromPatchSetBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToPatchSetBizId)) {
+		query["toPatchSetBizId"] = request.ToPatchSetBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMergeRequestFilesReads"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/diffs/files_read_infos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMergeRequestFilesReadsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestFilesReads(request *ListMergeRequestFilesReadsRequest) (_result *ListMergeRequestFilesReadsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMergeRequestFilesReadsResponse{}
+	_body, _err := client.ListMergeRequestFilesReadsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestPatchSetsWithOptions(request *ListMergeRequestPatchSetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMergeRequestPatchSetsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalId)) {
+		query["localId"] = request.LocalId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryIdentity)) {
+		query["repositoryIdentity"] = request.RepositoryIdentity
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMergeRequestPatchSets"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v4/projects/merge_requests/diffs/list_patchsets"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMergeRequestPatchSetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMergeRequestPatchSets(request *ListMergeRequestPatchSetsRequest) (_result *ListMergeRequestPatchSetsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMergeRequestPatchSetsResponse{}
+	_body, _err := client.ListMergeRequestPatchSetsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
