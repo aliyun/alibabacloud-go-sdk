@@ -12,6 +12,88 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ApplyForStreamAccessTokenRequest struct {
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+}
+
+func (s ApplyForStreamAccessTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyForStreamAccessTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyForStreamAccessTokenRequest) SetAgentKey(v string) *ApplyForStreamAccessTokenRequest {
+	s.AgentKey = &v
+	return s
+}
+
+type ApplyForStreamAccessTokenResponseBody struct {
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Id of the request
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StreamSecret *string `json:"StreamSecret,omitempty" xml:"StreamSecret,omitempty"`
+}
+
+func (s ApplyForStreamAccessTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyForStreamAccessTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyForStreamAccessTokenResponseBody) SetAccessToken(v string) *ApplyForStreamAccessTokenResponseBody {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ApplyForStreamAccessTokenResponseBody) SetChannelId(v string) *ApplyForStreamAccessTokenResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *ApplyForStreamAccessTokenResponseBody) SetRequestId(v string) *ApplyForStreamAccessTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ApplyForStreamAccessTokenResponseBody) SetStreamSecret(v string) *ApplyForStreamAccessTokenResponseBody {
+	s.StreamSecret = &v
+	return s
+}
+
+type ApplyForStreamAccessTokenResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyForStreamAccessTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyForStreamAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyForStreamAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyForStreamAccessTokenResponse) SetHeaders(v map[string]*string) *ApplyForStreamAccessTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyForStreamAccessTokenResponse) SetStatusCode(v int32) *ApplyForStreamAccessTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyForStreamAccessTokenResponse) SetBody(v *ApplyForStreamAccessTokenResponseBody) *ApplyForStreamAccessTokenResponse {
+	s.Body = v
+	return s
+}
+
 type AssociateRequest struct {
 	AgentKey     *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9747,6 +9829,50 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyForStreamAccessTokenWithOptions(request *ApplyForStreamAccessTokenRequest, runtime *util.RuntimeOptions) (_result *ApplyForStreamAccessTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyForStreamAccessToken"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyForStreamAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyForStreamAccessToken(request *ApplyForStreamAccessTokenRequest) (_result *ApplyForStreamAccessTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyForStreamAccessTokenResponse{}
+	_body, _err := client.ApplyForStreamAccessTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
