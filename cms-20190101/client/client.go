@@ -4073,9 +4073,7 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	//
 	// Valid values of N: 1 to 3.
 	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
-	// The time period during which the alert rule is ineffective.
-	//
-	// Valid values of N: 1 to 3.
+	// This parameter is deprecated.
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
 	//
@@ -4094,6 +4092,8 @@ type CreateGroupMonitoringAgentProcessRequestAlertConfig struct {
 	// The alert threshold.
 	//
 	// Valid values of N: 1 to 3.
+	//
+	// Unit: cores.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// The number of times for which the threshold can be consecutively exceeded. Default value: 3.
 	//
@@ -11540,7 +11540,8 @@ type DescribeAlertLogCountRequest struct {
 	// You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
 	//
 	// >  The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The dimension based on which data is aggregated. This parameter is similar to the Group By clause of SQL statements. Valid values:
 	//
 	// *   `product`: aggregates data by cloud service.
@@ -11579,6 +11580,7 @@ type DescribeAlertLogCountRequest struct {
 	// The abbreviation of the service name.
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The keyword based on which the alert logs to be counted are searched.
@@ -11620,6 +11622,11 @@ func (s *DescribeAlertLogCountRequest) SetContactGroup(v string) *DescribeAlertL
 
 func (s *DescribeAlertLogCountRequest) SetEndTime(v int64) *DescribeAlertLogCountRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertLogCountRequest) SetEventType(v string) *DescribeAlertLogCountRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -11670,6 +11677,11 @@ func (s *DescribeAlertLogCountRequest) SetProduct(v string) *DescribeAlertLogCou
 
 func (s *DescribeAlertLogCountRequest) SetRegionId(v string) *DescribeAlertLogCountRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertLogCountRequest) SetRuleId(v string) *DescribeAlertLogCountRequest {
+	s.RuleId = &v
 	return s
 }
 
@@ -11840,7 +11852,8 @@ type DescribeAlertLogHistogramRequest struct {
 	// *   You can query only the alert logs within the last year.
 	//
 	// *   The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The dimensions based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
 	// *   `product`: aggregates data by cloud service.
@@ -11877,6 +11890,7 @@ type DescribeAlertLogHistogramRequest struct {
 	// The abbreviation of the Alibaba Cloud service name.
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the alert rule.
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The keyword that is used to query alert logs.
@@ -11920,6 +11934,11 @@ func (s *DescribeAlertLogHistogramRequest) SetContactGroup(v string) *DescribeAl
 
 func (s *DescribeAlertLogHistogramRequest) SetEndTime(v int64) *DescribeAlertLogHistogramRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertLogHistogramRequest) SetEventType(v string) *DescribeAlertLogHistogramRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -11970,6 +11989,11 @@ func (s *DescribeAlertLogHistogramRequest) SetProduct(v string) *DescribeAlertLo
 
 func (s *DescribeAlertLogHistogramRequest) SetRegionId(v string) *DescribeAlertLogHistogramRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAlertLogHistogramRequest) SetRuleId(v string) *DescribeAlertLogHistogramRequest {
+	s.RuleId = &v
 	return s
 }
 
@@ -12118,7 +12142,8 @@ type DescribeAlertLogListRequest struct {
 	// The alert contact group.
 	ContactGroup *string `json:"ContactGroup,omitempty" xml:"ContactGroup,omitempty"`
 	// The end timestamp of the alert logs to be queried. Unit: milliseconds.
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
 	// *   `product`: aggregates data by cloud service.
@@ -12187,6 +12212,11 @@ func (s *DescribeAlertLogListRequest) SetContactGroup(v string) *DescribeAlertLo
 
 func (s *DescribeAlertLogListRequest) SetEndTime(v int64) *DescribeAlertLogListRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAlertLogListRequest) SetEventType(v string) *DescribeAlertLogListRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -17086,11 +17116,11 @@ func (s *DescribeExporterRuleListResponse) SetBody(v *DescribeExporterRuleListRe
 type DescribeGroupMonitoringAgentProcessRequest struct {
 	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// The page number. Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the process monitoring task.
+	// The process name.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -17129,23 +17159,23 @@ func (s *DescribeGroupMonitoringAgentProcessRequest) SetRegionId(v string) *Desc
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status codes.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of the returned page. Default value: 1.
+	// The page number. Default value: 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The process monitoring tasks created for the application group.
+	// The process monitoring tasks.
 	Processes *DescribeGroupMonitoringAgentProcessResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+	// Indicates whether the request was successful. Valid values: Valid values: true and false.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -17215,17 +17245,23 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcesses) SetProcess(v 
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcess struct {
-	// The configurations of the alert rule.
+	// The alert rule configurations.
 	AlertConfig *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Struct"`
-	GroupId     *string                                                                     `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the application group.
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The ID of the process monitoring task.
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The conditional expressions used to match the instances.
+	// The matching conditions.
 	//
 	// >  Only the instances that meet the conditional expressions are monitored by the process monitoring task.
-	MatchExpress               *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
-	MatchExpressFilterRelation *string                                                                      `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
-	// The name of the process monitoring task.
+	MatchExpress *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Struct"`
+	// The logical operator used between conditional expressions that are used to match instances. Valid values:
+	//
+	// *   all
+	// *   and
+	// *   or
+	MatchExpressFilterRelation *string `json:"MatchExpressFilterRelation,omitempty" xml:"MatchExpressFilterRelation,omitempty"`
+	// The process name.
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 }
 
@@ -17285,14 +17321,14 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfig struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values:
+	// The comparison operator that is used to compare the metric value with the threshold. Valid values:
 	//
 	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
 	// *   GreaterThanThreshold: greater than the threshold
 	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
 	// *   LessThanThreshold: less than the threshold
 	// *   NotEqualToThreshold: not equal to the threshold
-	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	// *   LessThanYesterday: less than the metric value at the same time yesterday
 	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
 	// *   LessThanLastWeek: less than the metric value at the same time last week
@@ -17305,18 +17341,19 @@ type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigA
 	//
 	// *   critical
 	// *   warn
-	// *   info
+	// *   Info
 	EscalationsLevel *string `json:"EscalationsLevel,omitempty" xml:"EscalationsLevel,omitempty"`
 	// The time period during which the alert rule is ineffective.
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The duration of the mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
+	// The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
 	//
-	// >  Only one alert notification is sent during each mute period even if the metric value consecutively exceeds the alert threshold several times.
+	// >  Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	// The method used to calculate metric values that trigger alerts.
-	Statistics *string                                                                                          `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	// The resource for which alerts are triggered.
 	TargetList *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Struct"`
-	// The threshold for triggering alerts.
+	// The alert threshold.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// The number of times for which the threshold can be consecutively exceeded.
 	//
@@ -17402,10 +17439,18 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertCon
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget struct {
-	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message. Example: acs:mns:cn-hangzhou:120886317861\*\*\*\*:/queues/test123/message. Fields:
+	//
+	// {Service name abbreviation}: the abbreviation of the service name. Valid value: mns. {userId}: the ID of the Alibaba Cloud account. {regionId}: the region ID of the message queue or topic. {Resource type}: the type of the resource that triggers the alert. Valid values: - **queues** - **topics** - {Resource name}: the resource name. - If the resource type is set to **queues**, the resource name is the name of the message queue. - If the resource type is set to **topics**, the resource name is the name of the topic.
+	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	// The ID of the resource for which alerts are triggered.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The parameters of the alert callback. The parameters are in the JSON format.
 	JsonParmas *string `json:"JsonParmas,omitempty" xml:"JsonParmas,omitempty"`
-	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The level of the alert. Valid values:
+	//
+	// INFO WARN CRITICAL
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessAlertConfigAlertConfigTargetListTarget) String() string {
@@ -17454,20 +17499,20 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExp
 }
 
 type DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExpressMatchExpress struct {
-	// The method used to match the instances. Default value: all. Valid values:
+	// The matching condition. Valid values:
 	//
-	// *   all
-	// *   startWith
-	// *   endWith
-	// *   contains
-	// *   notContains
-	// *   equals
+	// *   all (default): matches all
+	// *   startWith: starts with a prefix
+	// *   endWith: ends with a suffix
+	// *   contains: contains
+	// *   notContains: excludes
+	// *   equals: equals
 	//
 	// >  The matched instances are monitored by the process monitoring task.
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
 	// The criteria based on which the instances are matched.
 	//
-	// >  Set the value to `name`, indicating that the instances are matched based on instance name.
+	// >  Set the value to `name`. The value name indicates that the instances are matched based on the instance name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The keyword used to match the instance name.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -23666,14 +23711,19 @@ func (s *DescribeMonitorGroupCategoriesRequest) SetRegionId(v string) *DescribeM
 type DescribeMonitorGroupCategoriesResponseBody struct {
 	// The HTTP status code.
 	//
-	// >  The status code 200 indicates that the call was successful.
+	// >  The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The cloud services to which the resources in the application group belong and the number of resources that belong to the cloud service.
 	MonitorGroupCategories *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories `json:"MonitorGroupCategories,omitempty" xml:"MonitorGroupCategories,omitempty" type:"Struct"`
-	RequestId              *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeMonitorGroupCategoriesResponseBody) String() string {
@@ -23712,7 +23762,7 @@ func (s *DescribeMonitorGroupCategoriesResponseBody) SetSuccess(v bool) *Describ
 type DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategories struct {
 	// The ID of the application group.
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// One of the cloud services to which the resources in the application group belong and the number of resources that belong to the cloud service.
+	// The cloud services to which the resources in the application group belong and the number of resources that belong to the cloud service.
 	MonitorGroupCategory *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGroupCategory `json:"MonitorGroupCategory,omitempty" xml:"MonitorGroupCategory,omitempty" type:"Struct"`
 }
 
@@ -23752,43 +23802,9 @@ func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitor
 }
 
 type DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitorGroupCategoryCategoryItem struct {
-	// The name of the cloud service. Valid values:
+	// The abbreviation of the Alibaba Cloud service name.
 	//
-	// *   ecs: Elastic Compute Service (ECS) instances that are provided by Alibaba Cloud and hosts that are not provided by Alibaba Cloud
-	// *   rds: ApsaraDB RDS
-	// *   ads: AnalyticDB
-	// *   slb: Server Load Balancer (SLB)
-	// *   vpc: Virtual Private Cloud (VPC)
-	// *   apigateway: API Gateway
-	// *   cdn: Alibaba Cloud Content Delivery Network (CDN)
-	// *   cs: Container Service for Swarm
-	// *   dcdn: Dynamic Route for CDN (DCDN)
-	// *   ddos: Anti-DDoS
-	// *   eip: Elastic IP Address (EIP)
-	// *   elasticsearch: Elasticsearch
-	// *   emr: E-MapReduce
-	// *   ess: Auto Scaling
-	// *   hbase: ApsaraDB for HBase
-	// *   iot_edge: IoT Edge
-	// *   k8s_pod: pods in Container Service for Kubernetes (ACK)
-	// *   kvstore_sharding: ApsaraDB for Redis of the cluster master-replica architecture
-	// *   kvstore_splitrw: ApsaraDB for Redis of the read/write splitting architecture
-	// *   kvstore_standard: ApsaraDB for Redis of the standard master-replica architecture
-	// *   memcache: ApsaraDB for Memcache
-	// *   mns: Message Service (MNS)
-	// *   mongodb: ApsaraDB for MongoDB of the replica set architecture
-	// *   mongodb_cluster: ApsaraDB for MongoDB of the cluster architecture
-	// *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
-	// *   mq_topic: MNS topics
-	// *   ocs: ApsaraDB for Memcache of earlier versions
-	// *   opensearch: Open Search
-	// *   oss: Object Storage Service (OSS)
-	// *   polardb: PolarDB
-	// *   petadata: HybridDB for MySQL
-	// *   scdn: Secure CDN (SCDN)
-	// *   sharebandwidthpackages: EIP Bandwidth Plan
-	// *   sls: Log Service
-	// *   vpn: VPN Gateway
+	// To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](~~114916~~) operation. The `metricCategory` tag in the `Labels` response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The number of resources that belong to the cloud service.
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
@@ -26798,6 +26814,7 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusList) SetNodeStatu
 }
 
 type DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus struct {
+	AgentInstallErrorCode *string `json:"AgentInstallErrorCode,omitempty" xml:"AgentInstallErrorCode,omitempty"`
 	// Indicates whether the CloudMonitor agent is automatically installed. Valid values:
 	//
 	// *   true: The CloudMonitor agent is automatically installed.
@@ -26854,6 +26871,11 @@ func (s DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Str
 
 func (s DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetAgentInstallErrorCode(v string) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
+	s.AgentInstallErrorCode = &v
+	return s
 }
 
 func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) SetAutoInstall(v bool) *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus {
@@ -27182,16 +27204,32 @@ func (s *DescribeProductsOfActiveMetricRuleRequest) SetRegionId(v string) *Descr
 type DescribeProductsOfActiveMetricRuleResponseBody struct {
 	// The information about the services for which one-click alert is enabled.
 	AllProductInitMetricRuleList *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList `json:"AllProductInitMetricRuleList,omitempty" xml:"AllProductInitMetricRuleList,omitempty" type:"Struct"`
-	Code                         *int32                                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Datapoints                   *string                                                                     `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
-	// The returned message.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// The HTTP status code.
 	//
-	// *   true: The call was successful.
-	// *   false: The call failed.
+	// >  The status code 200 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the services for which one-click alert is enabled. Services are separated with commas (,). Valid values:
+	//
+	// *   ecs: Elastic Compute Service (ECS)
+	// *   rds: ApsaraDB RDS
+	// *   slb: Server Load Balancer (SLB)
+	// *   redis_standard: ApsaraDB for Redis of the standard architecture
+	// *   redis_sharding: ApsaraDB for Redis of the cluster architecture
+	// *   redis_splitrw: ApsaraDB for Redis of the read/write splitting architecture
+	// *   mongodb: ApsaraDB for MongoDB of the replica set architecture
+	// *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+	// *   hbase: ApsaraDB for HBase
+	// *   elasticsearch: Elasticsearch
+	// *   opensearch: OpenSearch
+	Datapoints *string `json:"Datapoints,omitempty" xml:"Datapoints,omitempty"`
+	// The error message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true: The request was successful.
+	// *   false: The request failed.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -27253,7 +27291,8 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule struct {
 	// The initial alert rules that are generated after one-click alert is enabled for a service.
 	AlertInitConfigList *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigList `json:"AlertInitConfigList,omitempty" xml:"AlertInitConfigList,omitempty" type:"Struct"`
-	Product             *string                                                                                                                `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The abbreviation of the service name.
+	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
 }
 
 func (s DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRule) String() string {
@@ -27292,19 +27331,71 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 type DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigListAlertInitConfig struct {
+	// The operator that is used to compare the metric value with the threshold for Warn-level alerts.
+	//
+	// Valid values:
+	//
+	// *   LessThanThreshold: less than the threshold
+	//
+	// *   GreaterThanLastWeek: greater than the metric value at the same time last week
+	//
+	// *   LessThanOrEqualToThreshold: less than or equal to the threshold
+	//
+	// *   NotEqualToThreshold: does not equal to the threshold
+	//
+	// *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
+	//
+	// *   GreaterThanYesterday: greater than the metric value at the same time yesterday
+	//
+	// *   LessThanYesterday: less than the metric value at the same time yesterday
+	//
+	// *   LessThanLastWeek: less than the metric value at the same time last week
+	//
+	// *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
+	//
+	// *   GreaterThanThreshold: greater than the threshold
+	//
+	// *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The consecutive number of times for which the metric value is measured before an alert is triggered.
+	// The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
 	EvaluationCount *string `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	Level           *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The name of the metric. For more information, see [Appendix 1: Metrics](~~163515~~).
+	// The alert level.
+	//
+	// Valid values:
+	//
+	// *   INFO
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   WARN
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   CRITICAL
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The metric name. For more information, see [Appendix 1: Metrics](~~163515~~).
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The aggregation period of the monitoring data. Unit: minutes. For more information, see [Appendix 1: Metrics](~~163515~~).
+	// The aggregation period of monitoring data. Unit: minutes. For more information, see [Appendix 1: Metrics](~~163515~~).
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The statistical aggregation method that is used to calculate metric values that trigger alerts. For more information, see [Appendix 1: Metrics](~~163515~~).
+	// The method used to calculate metric values that trigger alerts. For more information, see [Appendix 1: Metrics](~~163515~~).
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold of the metric value.
+	// The alert threshold.
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -30389,6 +30480,7 @@ type DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the application group.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the instance.
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// The level of the system event. Valid values:
@@ -30428,6 +30520,11 @@ func (s *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent) SetCon
 
 func (s *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent) SetGroupId(v string) *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent {
 	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent) SetId(v string) *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent {
+	s.Id = &v
 	return s
 }
 
@@ -44558,6 +44655,10 @@ func (client *Client) DescribeAlertLogCountWithOptions(request *DescribeAlertLog
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
 		query["GroupBy"] = request.GroupBy
 	}
@@ -44592,6 +44693,10 @@ func (client *Client) DescribeAlertLogCountWithOptions(request *DescribeAlertLog
 
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
@@ -44675,6 +44780,10 @@ func (client *Client) DescribeAlertLogHistogramWithOptions(request *DescribeAler
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
 		query["GroupBy"] = request.GroupBy
 	}
@@ -44709,6 +44818,10 @@ func (client *Client) DescribeAlertLogHistogramWithOptions(request *DescribeAler
 
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
@@ -44790,6 +44903,10 @@ func (client *Client) DescribeAlertLogListWithOptions(request *DescribeAlertLogL
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
@@ -45730,7 +45847,7 @@ func (client *Client) DescribeExporterRuleList(request *DescribeExporterRuleList
 }
 
 /**
- * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+ * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
  *
  * @param request DescribeGroupMonitoringAgentProcessRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -45782,7 +45899,7 @@ func (client *Client) DescribeGroupMonitoringAgentProcessWithOptions(request *De
 }
 
 /**
- * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+ * You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
  *
  * @param request DescribeGroupMonitoringAgentProcessRequest
  * @return DescribeGroupMonitoringAgentProcessResponse
