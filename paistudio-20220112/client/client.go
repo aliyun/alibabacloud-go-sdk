@@ -4546,6 +4546,7 @@ type GetTrainingJobResponseBody struct {
 	LatestMetrics          []*GetTrainingJobResponseBodyLatestMetrics     `json:"LatestMetrics,omitempty" xml:"LatestMetrics,omitempty" type:"Repeated"`
 	LatestProgress         *GetTrainingJobResponseBodyLatestProgress      `json:"LatestProgress,omitempty" xml:"LatestProgress,omitempty" type:"Struct"`
 	OutputChannels         []*GetTrainingJobResponseBodyOutputChannels    `json:"OutputChannels,omitempty" xml:"OutputChannels,omitempty" type:"Repeated"`
+	OutputModel            *GetTrainingJobResponseBodyOutputModel         `json:"OutputModel,omitempty" xml:"OutputModel,omitempty" type:"Struct"`
 	ReasonCode             *string                                        `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	ReasonMessage          *string                                        `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
 	RequestId              *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4650,6 +4651,11 @@ func (s *GetTrainingJobResponseBody) SetOutputChannels(v []*GetTrainingJobRespon
 	return s
 }
 
+func (s *GetTrainingJobResponseBody) SetOutputModel(v *GetTrainingJobResponseBodyOutputModel) *GetTrainingJobResponseBody {
+	s.OutputModel = v
+	return s
+}
+
 func (s *GetTrainingJobResponseBody) SetReasonCode(v string) *GetTrainingJobResponseBody {
 	s.ReasonCode = &v
 	return s
@@ -4721,8 +4727,11 @@ func (s *GetTrainingJobResponseBody) SetWorkspaceId(v string) *GetTrainingJobRes
 }
 
 type GetTrainingJobResponseBodyComputeResource struct {
-	EcsCount *int64  `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	EcsSpec  *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsCount      *int64                                                 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	EcsSpec       *string                                                `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	InstanceCount *int64                                                 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceSpec  *GetTrainingJobResponseBodyComputeResourceInstanceSpec `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty" type:"Struct"`
+	ResourceId    *string                                                `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s GetTrainingJobResponseBodyComputeResource) String() string {
@@ -4740,6 +4749,62 @@ func (s *GetTrainingJobResponseBodyComputeResource) SetEcsCount(v int64) *GetTra
 
 func (s *GetTrainingJobResponseBodyComputeResource) SetEcsSpec(v string) *GetTrainingJobResponseBodyComputeResource {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResource) SetInstanceCount(v int64) *GetTrainingJobResponseBodyComputeResource {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResource) SetInstanceSpec(v *GetTrainingJobResponseBodyComputeResourceInstanceSpec) *GetTrainingJobResponseBodyComputeResource {
+	s.InstanceSpec = v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResource) SetResourceId(v string) *GetTrainingJobResponseBodyComputeResource {
+	s.ResourceId = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyComputeResourceInstanceSpec struct {
+	CPU          *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	GPU          *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUType      *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	SharedMemory *string `json:"SharedMemory,omitempty" xml:"SharedMemory,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyComputeResourceInstanceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyComputeResourceInstanceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetCPU(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
+	s.CPU = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetGPU(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
+	s.GPU = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetGPUType(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
+	s.GPUType = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetMemory(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
+	s.Memory = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyComputeResourceInstanceSpec) SetSharedMemory(v string) *GetTrainingJobResponseBodyComputeResourceInstanceSpec {
+	s.SharedMemory = &v
 	return s
 }
 
@@ -4971,6 +5036,29 @@ func (s *GetTrainingJobResponseBodyOutputChannels) SetName(v string) *GetTrainin
 
 func (s *GetTrainingJobResponseBodyOutputChannels) SetOutputUri(v string) *GetTrainingJobResponseBodyOutputChannels {
 	s.OutputUri = &v
+	return s
+}
+
+type GetTrainingJobResponseBodyOutputModel struct {
+	OutputChannelName *string `json:"OutputChannelName,omitempty" xml:"OutputChannelName,omitempty"`
+	Uri               *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s GetTrainingJobResponseBodyOutputModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTrainingJobResponseBodyOutputModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetTrainingJobResponseBodyOutputModel) SetOutputChannelName(v string) *GetTrainingJobResponseBodyOutputModel {
+	s.OutputChannelName = &v
+	return s
+}
+
+func (s *GetTrainingJobResponseBodyOutputModel) SetUri(v string) *GetTrainingJobResponseBodyOutputModel {
+	s.Uri = &v
 	return s
 }
 
