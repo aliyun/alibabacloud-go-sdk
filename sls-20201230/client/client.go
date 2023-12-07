@@ -9483,7 +9483,7 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &ApplyConfigToMachineGroupResponse{}
 	_body, _err := client.Execute(params, req, runtime)
