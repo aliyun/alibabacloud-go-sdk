@@ -11317,7 +11317,7 @@ func (client *Client) DeleteProjectPolicyWithOptions(project *string, headers ma
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteProjectPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -14297,7 +14297,7 @@ func (client *Client) PutProjectPolicyWithOptions(project *string, request *PutP
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &PutProjectPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
