@@ -1478,6 +1478,52 @@ func (s *CancelComponentUpgradeResponse) SetStatusCode(v int32) *CancelComponent
 	return s
 }
 
+type CancelOperationPlanResponseBody struct {
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CancelOperationPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOperationPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOperationPlanResponseBody) SetRequestId(v string) *CancelOperationPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelOperationPlanResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelOperationPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelOperationPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelOperationPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelOperationPlanResponse) SetHeaders(v map[string]*string) *CancelOperationPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelOperationPlanResponse) SetStatusCode(v int32) *CancelOperationPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelOperationPlanResponse) SetBody(v *CancelOperationPlanResponseBody) *CancelOperationPlanResponse {
+	s.Body = v
+	return s
+}
+
 type CancelTaskResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1763,7 +1809,7 @@ func (s *CreateAutoscalingConfigResponse) SetStatusCode(v int32) *CreateAutoscal
 }
 
 type CreateClusterRequest struct {
-	// 注册集群 API Server SLB 访问控制列表。
+	// The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
 	AccessControlList []*string `json:"access_control_list,omitempty" xml:"access_control_list,omitempty" type:"Repeated"`
 	// The components that you want to install in the cluster. When you create a cluster, you can set the `addons` parameter to install specific components.
 	//
@@ -1772,24 +1818,24 @@ type CreateClusterRequest struct {
 	// *   Specify the Flannel plug-in in the following format: \[{"name":"flannel","config":""}].
 	// *   Specify the Terway plug-in in the following format: \[{"name": "terway-eniip","config": ""}].
 	//
-	// **Volume plug-in**: required. The `csi` and `flexvolume` volume plug-ins are supported.
+	// **Volume plug-in**: required. The `CSI` and `FlexVolume` volume plug-ins are supported.
 	//
 	// *   Specify the `CSI` plug-in in the following format: \[{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}].
-	// *   Specify the `FlexVolume plug-in` in the following format: \[{"name": "flexvolume","config": ""}].
+	// *   Specify the `FlexVolume` plug-in in the following format: \[{"name": "flexvolume","config": ""}].
 	//
-	// **Simple Log Service component**: optional. We recommend that you enable Simple Log Service. If Log Service is disabled, you cannot use the cluster auditing feature.
+	// **Simple Log Service component**: optional. We recommend that you enable Simple Log Service. If Simple Log Service is disabled, you cannot use the cluster auditing feature.
 	//
 	// *   Use an existing `Simple Log Service project`: \[{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true","sls_project_name":"your_sls_project_name"}"}].
 	// *   To create a `Simple Log Service project`, specify the component in the following format: \[{"name": "logtail-ds","config": "{"IngressDashboardEnabled":"true"}"}].
 	//
-	// **Ingress controller**`: optional. By default, the nginx-ingress-controller component is installed in ACK dedicated clusters.`
+	// **Ingress controller**: optional. By default, the `nginx-ingress-controller` component is installed in ACK dedicated clusters.
 	//
 	// *   To install nginx-ingress-controller and enable Internet access, specify the Ingress controller in the following format: \[{"name":"nginx-ingress-controller","config":"{"IngressSlbNetworkType":"internet"}"}].
 	// *   If you do not want to install nginx-ingress-controller, specify the component in the following format: \[{"name": "nginx-ingress-controller","config": "","disabled": true}].
 	//
-	// **Event center**: Optional. By default, the event center feature is enabled.
+	// **Event center**: optional. By default, the event center feature is enabled.
 	//
-	// You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use a Kubernetes event center](https://help.aliyun.com/document_detail/150476.html#task-2389213).
+	// You can use Kubernetes event centers to store and query events, and configure alert rules. You can use the Logstores that are associated with Kubernetes event centers for free within 90 days. For more information, see [Create and use an event center](https://help.aliyun.com/document_detail/150476.html#task-2389213).
 	//
 	// Enable the ack-node-problem-detector component in the following format: \[{"name":"ack-node-problem-detector","config":"{"sls_project_name":"your_sls_project_name"}"}].
 	Addons []*Addon `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
@@ -1821,35 +1867,35 @@ type CreateClusterRequest struct {
 	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
 	// The type of ACK managed cluster. Valid values:
 	//
-	// *   `ack.pro.small`: ACK Pro clusters
-	// *   `ack.standard`: ACK Basic clusters
+	// *   `ack.pro.small`: ACK Pro cluster.
+	// *   `ack.standard`: ACK Basic cluster.
 	//
-	// Default value: `ack.standard`. If you leave this property empty, an ACK Basic cluster is created.
+	// Default value: `ack.standard`. If you leave this property empty, an ACK Basic cluster.is created.
 	//
-	// For more information, see [Introduction to ACK managed clusters](https://help.aliyun.com/document_detail/173290.html).
+	// For more information, see [Overview of ACK Pro clusters](https://help.aliyun.com/document_detail/173290.html).
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// *   `Kubernetes`: ACK dedicated clusters
-	// *   `ManagedKubernetes`: ACK managed clusters or ACK Edge clusters
-	// *   `Ask`: ACK Serverless Basic clusters
-	// *   `ExternalKubernetes`: external clusters that are registered to ACK
+	// *   `Kubernetes`: ACK dedicated cluster.
+	// *   `ManagedKubernetes`: ACK Basic cluster or ACK Edge cluster.
+	// *   `Ask`: ACK Serverless Basic cluster.
+	// *   `ExternalKubernetes`: external cluster that is registered to ACK.
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
 	// The CIDR block of pods. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the CIDR block of pods. The CIDR block of pods cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after the cluster is created.
 	//
 	// For more information about subnetting for ACK clusters, see [Plan CIDR blocks for an ACK cluster that is deployed in a VPC](~~86500~~).
 	//
-	// > If the cluster uses Flannel, this parameter is required.
+	// >  This parameter is required if the cluster uses the Flannel plug-in.
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
 	// The list of control plane components for which you want to enable log collection.
 	//
 	// By default, the logs of kube-apiserver, kube-controller-manager, and kube-scheduler are collected.
 	ControlplaneLogComponents []*string `json:"controlplane_log_components,omitempty" xml:"controlplane_log_components,omitempty" type:"Repeated"`
-	// The Simple Log Service project that is used to store the log of control plane components. You can use an existing project or create one. If you choose to create a Simple Log Service project, the created project is named in the `k8s-log-{ClusterID}` format.
+	// The Simple Log Service project that is used to store the logs of control plane components. You can use an existing project or create one. If you choose to create a Simple Log Service project, the created project is named in the `k8s-log-{ClusterID}` format.
 	ControlplaneLogProject *string `json:"controlplane_log_project,omitempty" xml:"controlplane_log_project,omitempty"`
 	// The retention period of control plane logs in days.
 	ControlplaneLogTtl *string `json:"controlplane_log_ttl,omitempty" xml:"controlplane_log_ttl,omitempty"`
-	// The CPU management policy. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
+	// The CPU management policy of the nodes in a node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
 	//
 	// *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
 	// *   `none`: specifies that the default CPU affinity is used.
@@ -1867,8 +1913,8 @@ type CreateClusterRequest struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// Specifies whether to perform a rollback if the cluster fails to be created. Valid values:
 	//
-	// *   `true`: performs a rollback if the system fails to create the cluster
-	// *   `false`: does not perform a rollback if the system fails to create the cluster
+	// *   `true`: performs a rollback if the system fails to create the cluster.
+	// *   `false`: does not perform a rollback if the system fails to create the cluster.
 	//
 	// Default value: `true`.
 	DisableRollback *bool `json:"disable_rollback,omitempty" xml:"disable_rollback,omitempty"`
@@ -1876,7 +1922,7 @@ type CreateClusterRequest struct {
 	EnableRrsa *bool `json:"enable_rrsa,omitempty" xml:"enable_rrsa,omitempty"`
 	// The ID of a key that is managed by Key Management Service (KMS). The key is used to encrypt data disks. For more information, see [KMS](~~28935~~).
 	//
-	// > This feature supports only ACK Pro clusters.
+	// >  This feature supports only ACK Pro clusters.
 	EncryptionProviderKey *string `json:"encryption_provider_key,omitempty" xml:"encryption_provider_key,omitempty"`
 	// Specifies whether to enable Internet access for the cluster. You can use an elastic IP address (EIP) to expose the API server. This way, you can access the cluster over the Internet.
 	//
@@ -1913,15 +1959,15 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `CentOS`.
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The list of existing Elastic Compute Service (ECS) instances that are specified as worker nodes for the cluster.
+	// The list of existing ECS instances that are specified as worker nodes for the cluster.
 	//
-	// > This parameter is required when you create worker nodes on existing ECS instances.
+	// >  This parameter is required when you create worker nodes on existing ECS instances.
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 	// The cluster IP stack.
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
 	// Specifies whether to create an advanced security group. This parameter takes effect only if `security_group_id` is left empty.
 	//
-	// > To use a basic security group, make sure that the sum of the number of cluster nodes and the number of pods that use Terway does not exceed 2,000. Therefore, if the cluster uses Terway, we recommend that you use an advanced security group.
+	// >  To use a basic security group, make sure that the sum of the number of nodes in the cluster and the number of pods that use Terway does not exceed 2,000. Therefore, if the cluster uses Terway, we recommend that you use an advanced security group.
 	//
 	// *   `true`: creates an advanced security group.
 	// *   `false`: does not create an advanced security group.
@@ -1956,7 +2002,7 @@ type CreateClusterRequest struct {
 	LoggingType *string `json:"logging_type,omitempty" xml:"logging_type,omitempty"`
 	// The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	// Specifies whether to enable auto-renewal for master nodes. This parameter takes effect and is required only if `master_instance_charge_type` is set to `PrePaid`.
+	// Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only if `master_instance_charge_type` is set to `PrePaid`. Valid values:
 	//
 	// *   `true`: enables auto-renewal.
 	// *   `false`: disables auto-renewal.
@@ -1990,17 +2036,17 @@ type CreateClusterRequest struct {
 	MasterPeriod *int64 `json:"master_period,omitempty" xml:"master_period,omitempty"`
 	// The billing cycle of master nodes. This parameter is required if master_instance_charge_type is set to `PrePaid`.
 	//
-	// Set the value to `Month`. Resources are billed only on a monthly basis.
+	// Set the value to `Month`. Master nodes are billed only on a monthly basis.
 	MasterPeriodUnit *string `json:"master_period_unit,omitempty" xml:"master_period_unit,omitempty"`
 	// The type of system disk that you want to use for master nodes. Valid values:
 	//
 	// *   `cloud_efficiency`: ultra disk.
 	// *   `cloud_ssd`: standard SSD.
-	// *   `cloud_essd`: enhanced SSD (ESSD).
+	// *   `cloud_essd`: ESSD.
 	//
 	// Default value: `cloud_ssd`. The default value may vary in different zones.
 	MasterSystemDiskCategory *string `json:"master_system_disk_category,omitempty" xml:"master_system_disk_category,omitempty"`
-	// The performance level (PL) of the system disk that you want to use for master nodes. This parameter takes effect only for ESSDs. For more information about the relationship between disk PLs and disk sizes, see [ESSDs](~~122389~~).
+	// The performance level (PL) of the system disk that you want to use for master nodes. This parameter takes effect only for enhanced SSDs. For more information about the relationship between disk PLs and disk sizes, see [ESSDs](~~122389~~).
 	MasterSystemDiskPerformanceLevel *string `json:"master_system_disk_performance_level,omitempty" xml:"master_system_disk_performance_level,omitempty"`
 	// The size of the system disk that you want to use for master nodes. Valid values: 40 to 500. Unit: GiB.
 	//
@@ -2012,9 +2058,9 @@ type CreateClusterRequest struct {
 	//
 	// The number of vSwitches must be the same as that specified in `master_count` and the same as those specified in `master_vswitch_ids`.
 	MasterVswitchIds []*string `json:"master_vswitch_ids,omitempty" xml:"master_vswitch_ids,omitempty" type:"Repeated"`
-	// The name of the cluster.
+	// The cluster name.
 	//
-	// The name must be 1 to 63 characters in length and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
+	// The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// Specifies whether to create a NAT gateway and configure Source Network Address Translation (SNAT) rules when the system creates the ACK Serverless cluster. Valid values:
 	//
@@ -2023,7 +2069,7 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `false`.
 	NatGateway *bool `json:"nat_gateway,omitempty" xml:"nat_gateway,omitempty"`
-	// The maximum number of IP addresses that can be assigned to nodes. This number is determined by the node CIDR block. This parameter takes effect only if the cluster uses Flannel.
+	// The maximum number of IP addresses that can be assigned to nodes. This number is determined by the node CIDR block. This parameter takes effect only if the cluster uses Flannel as the network plug-in.
 	//
 	// Default value: `26`.
 	NodeCidrMask *string `json:"node_cidr_mask,omitempty" xml:"node_cidr_mask,omitempty"`
@@ -2040,7 +2086,7 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `30000-32767`.
 	NodePortRange *string `json:"node_port_range,omitempty" xml:"node_port_range,omitempty"`
-	// 节点池列表。
+	// The list of node pools.
 	Nodepools []*Nodepool `json:"nodepools,omitempty" xml:"nodepools,omitempty" type:"Repeated"`
 	// Deprecated
 	// The number of worker nodes. Valid values: 0 to 100.
@@ -2067,9 +2113,9 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `CentOS`.
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The list of pod vSwiches. You need to specify at least one pod vSwitch for each node vSwitch and the pod vSwitches must not be the same as the node vSwitches (`vswitch`). We recommend that you specify pod vSwitches whose mask lengths are no greater than 19.
+	// The list of pod vSwitches. You need to specify at least one pod vSwitch for each node vSwitch and the pod vSwitches must not be the same as the node vSwitches (`vswitch`). We recommend that you specify pod vSwitches whose mask lengths are no greater than 19.
 	//
-	// > When the cluster uses Terway, the `pod_vswitch_ids` parameter is required.
+	// >  The `pod_vswitch_ids` parameter is required if the cluster uses Terway as the network plug-in.
 	PodVswitchIds []*string `json:"pod_vswitch_ids,omitempty" xml:"pod_vswitch_ids,omitempty" type:"Repeated"`
 	// The identifier that indicates whether the cluster is an ACK Edge cluster. To create an ACK Edge cluster, you must set this parameter to `Edge`.
 	//
@@ -2078,20 +2124,20 @@ type CreateClusterRequest struct {
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
 	// The kube-proxy mode. Valid values:
 	//
-	// *   `iptables`: iptables is a kube-proxy mode. It uses iptables rules to conduct Service discovery and load balancing. The performance of this mode is limited by the size of the cluster. This mode is suitable for clusters that run a small number of Services.
-	// *   `ipvs`: a high-performance kube-proxy mode. It uses Linux IP Virtual Server (IPVS) to conduct Service discovery and load balancing. This mode is suitable for clusters that run a large number of Services. We recommend that you use this mode in scenarios where high-performance load balancing is required.
+	// *   `iptables`: iptables is a mature and stable kube-proxy mode. It uses iptables rules to conduct service discovery and load balancing. The performance of this mode is restricted by the size of the Kubernetes cluster. This mode is suitable for Kubernetes clusters that manage a small number of Services.
+	// *   `ipvs`: IPVS is a high-performance kube-proxy mode. It uses Linux Virtual Server (LVS) to conduct service discovery and load balancing. This mode is suitable for clusters that manage a large number of Services. We recommend that you use this mode in scenarios where high-performance load balancing is required.
 	//
 	// Default value: `ipvs`.
 	ProxyMode *string `json:"proxy_mode,omitempty" xml:"proxy_mode,omitempty"`
 	// The list of ApsaraDB RDS instances. Select the ApsaraDB RDS instances that you want to add to the whitelist. We recommend that you add the CIDR block of pods and CIDR block of nodes to the ApsaraDB RDS instances in the ApsaraDB RDS console. When you set the ApsaraDB RDS instances, you cannot scale out the number of nodes because the instances are not in the Running state.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	// The region ID of the cluster.
+	// The ID of the region in which you want to deploy the cluster.
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The ID of the resource group to which the cluster belongs. You can use this parameter to isolate different clusters.
+	// The ID of the resource group to which the cluster belongs. You can use resource groups to isolate clusters.
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
 	// The container runtime. The default container runtime is Docker. containerd and Sandboxed-Container are also supported.
 	//
-	// For more information about how to select a proper container runtime, see [How to select between Docker and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
+	// For more information about how to select a proper container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://help.aliyun.com/document_detail/160313.html).
 	Runtime *Runtime `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// The ID of an existing security group. You need to choose between this parameter and the `is_enterprise_security_group` parameter. Cluster nodes are automatically added to the security group.
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
@@ -2105,7 +2151,7 @@ type CreateClusterRequest struct {
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
 	// The type of service discovery that is implemented in the `ACK Serverless` cluster.
 	//
-	// *   `CoreDNS`:a standard service discovery plug-in provided by open source Kubernetes. To use the Domain Name System (DNS) resolution, you must provision pods. By default, two elastic container instances are used. The specification of each instance is 0.25 CPU cores and 512 MiB of memory.
+	// *   `CoreDNS`: a standard service discovery plug-in provided by open source Kubernetes. To use the Domain Name System (DNS) resolution, you must provision pods. By default, two elastic container instances are used. The specification of each instance is 0.25 CPU cores and 512 MiB of memory.
 	// *   `PrivateZone`: a DNS resolution service provided by Alibaba Cloud. You must activate Alibaba Cloud DNS PrivateZone before you can use it for service discovery.
 	//
 	// By default, this parameter is not specified.
@@ -2115,16 +2161,16 @@ type CreateClusterRequest struct {
 	// *   `true`: automatically creates a NAT gateway and configures SNAT rules. Set this parameter to `true` if nodes and applications in the cluster need to access the Internet.
 	// *   `false`: does not create a NAT gateway or configure SNAT rules. In this case, nodes and applications in the cluster cannot access the Internet.
 	//
-	// > If this feature is disabled when you create the cluster, you can manually enable this feature after you create the cluster. For more information, see [Manually create a NAT gateway and configure SNAT rules](~~178480~~).
+	// >  If this feature is disabled when you create the cluster, you can also manually enable this feature after you create the cluster. For more information, see [Manually create a NAT gateway and configure SNAT rules](~~178480~~).
 	//
 	// Default value: `true`.
 	SnatEntry *bool `json:"snat_entry,omitempty" xml:"snat_entry,omitempty"`
-	// Reinforcement based on Multi-Level Protection Scheme (MLPS). For more information, see [ACK reinforcement based on MLPS](~~196148~~).
+	// Reinforcement based on classified protection. For more information, see [ACK reinforcement based on classified protection](~~196148~~).
 	//
 	// Valid values:
 	//
-	// *   `true`: enables reinforcement based on MLPS.
-	// *   `false`: disables reinforcement based on MLPS.
+	// *   `true`: enables reinforcement based on classified protection.
+	// *   `false`: disables reinforcement based on classified protection.
 	//
 	// Default value: `false`.
 	SocEnabled *bool `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
@@ -2135,12 +2181,12 @@ type CreateClusterRequest struct {
 	//
 	// Default value: `false`.
 	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
-	// The labels that you want to add to nodes. You must add labels based on the following rules:
+	// The labels that you want to add to nodes. You must add tags based on the following rules:
 	//
 	// *   Each label is a case-sensitive key-value pair. You can add up to 20 labels.
 	// *   A key must be unique and cannot exceed 64 characters in length. A value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with aliyun, acs:, https://, or http://. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The taints that you want to add to nodes. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	// The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [Taints and Tolerations](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
 	// Specifies the timeout period of cluster creation. Unit: minutes.
 	//
@@ -2152,7 +2198,7 @@ type CreateClusterRequest struct {
 	UserCa *string `json:"user_ca,omitempty" xml:"user_ca,omitempty"`
 	// The user data of nodes.
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
-	// The virtual private cloud (VPC) in which you want to deploy the cluster. You must specify a VPC when you create the cluster.
+	// The virtual private cloud (VPC) in which you want to deploy the cluster. This parameter is required.
 	Vpcid *string `json:"vpcid,omitempty" xml:"vpcid,omitempty"`
 	// The vSwitches that are specified for nodes in the cluster. This parameter is required when you create a managed Kubernetes cluster that does not contain nodes.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
@@ -2196,7 +2242,7 @@ type CreateClusterRequest struct {
 	// Set the value to `Month`. Worker nodes are billed only on a monthly basis.
 	WorkerPeriodUnit *string `json:"worker_period_unit,omitempty" xml:"worker_period_unit,omitempty"`
 	// Deprecated
-	// The category of the system disk that you attach to the worker node. For more information, see [Elastic Block Storage overview](~~63136~~).
+	// The category of the system disk that you attach to the worker node. For more information, see [Elastic Block Storage devices](~~63136~~).
 	//
 	// Valid values:
 	//
@@ -2218,7 +2264,7 @@ type CreateClusterRequest struct {
 	// Deprecated
 	// The size of the system disk that you want to use for worker nodes. Unit: GiB.
 	//
-	// Valid values: 40 to 500
+	// Valid values: 40 to 500.
 	//
 	// The value of this parameter must be at least 40 and no less than the image size.
 	//
@@ -2230,7 +2276,7 @@ type CreateClusterRequest struct {
 	// Deprecated
 	// The list of vSwitches that are specified for nodes. Each node is allocated a vSwitch.
 	//
-	// The ` worker_vswitch_ids  `parameter is optional but the `vswitch_ids` parameter is required when you create an ACK managed cluster that does not contain nodes.
+	// The `worker_vswitch_ids` parameter is optional but the `vswitch_ids` parameter is required when you create an ACK managed cluster that does not contain nodes.
 	WorkerVswitchIds []*string `json:"worker_vswitch_ids,omitempty" xml:"worker_vswitch_ids,omitempty" type:"Repeated"`
 	// The ID of the zone in which the cluster is deployed. This parameter takes effect in only ACK Serverless clusters.
 	//
@@ -2699,14 +2745,14 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 type CreateClusterRequestWorkerDataDisks struct {
 	// The data disk type.
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// Specifies whether to encrypt the data disks. Valid values:
+	// Specifies whether to encrypt a data disk. Valid values:
 	//
 	// *   `true`: encrypts a data disk.
 	// *   `false`: does not encrypt a data disk.
 	//
 	// Default value: `false`.
 	Encrypted *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
-	// The PL of a data disk. This parameter takes effect only for ESSDs. You can specify a higher PL if you increase the size of a data disk. For more information, see [ESSDs](~~122389~~).
+	// The performance level (PL) of a data disk. This parameter takes effect only on ESSDs. You can specify a higher PL if you increase the size of a data disk. For more information, see [ESSDs](~~122389~~).
 	PerformanceLevel *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
 	// The size of the data disk. Valid values: 40 to 32767.
 	Size *string `json:"size,omitempty" xml:"size,omitempty"`
@@ -13875,6 +13921,81 @@ func (s *InstallClusterAddonsResponse) SetStatusCode(v int32) *InstallClusterAdd
 	return s
 }
 
+type ListClusterAddonInstancesResponseBody struct {
+	Addons []*ListClusterAddonInstancesResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+}
+
+func (s ListClusterAddonInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterAddonInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterAddonInstancesResponseBody) SetAddons(v []*ListClusterAddonInstancesResponseBodyAddons) *ListClusterAddonInstancesResponseBody {
+	s.Addons = v
+	return s
+}
+
+type ListClusterAddonInstancesResponseBodyAddons struct {
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	State   *string `json:"state,omitempty" xml:"state,omitempty"`
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListClusterAddonInstancesResponseBodyAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterAddonInstancesResponseBodyAddons) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterAddonInstancesResponseBodyAddons) SetName(v string) *ListClusterAddonInstancesResponseBodyAddons {
+	s.Name = &v
+	return s
+}
+
+func (s *ListClusterAddonInstancesResponseBodyAddons) SetState(v string) *ListClusterAddonInstancesResponseBodyAddons {
+	s.State = &v
+	return s
+}
+
+func (s *ListClusterAddonInstancesResponseBodyAddons) SetVersion(v string) *ListClusterAddonInstancesResponseBodyAddons {
+	s.Version = &v
+	return s
+}
+
+type ListClusterAddonInstancesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListClusterAddonInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListClusterAddonInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterAddonInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterAddonInstancesResponse) SetHeaders(v map[string]*string) *ListClusterAddonInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClusterAddonInstancesResponse) SetStatusCode(v int32) *ListClusterAddonInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClusterAddonInstancesResponse) SetBody(v *ListClusterAddonInstancesResponseBody) *ListClusterAddonInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListClusterChecksRequest struct {
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -18382,6 +18503,42 @@ func (client *Client) CancelComponentUpgrade(clusterId *string, componentId *str
 	return _result, _err
 }
 
+func (client *Client) CancelOperationPlanWithOptions(planId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelOperationPlanResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOperationPlan"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/operation/plans/" + tea.StringValue(openapiutil.GetEncodeParam(planId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelOperationPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelOperationPlan(planId *string) (_result *CancelOperationPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelOperationPlanResponse{}
+	_body, _err := client.CancelOperationPlanWithOptions(planId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CancelTaskWithOptions(taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22187,6 +22344,42 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 	headers := make(map[string]*string)
 	_result = &InstallClusterAddonsResponse{}
 	_body, _err := client.InstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListClusterAddonInstancesWithOptions(clusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListClusterAddonInstancesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusterAddonInstances"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterId)) + "/addon_instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClusterAddonInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListClusterAddonInstances(clusterId *string) (_result *ListClusterAddonInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListClusterAddonInstancesResponse{}
+	_body, _err := client.ListClusterAddonInstancesWithOptions(clusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
