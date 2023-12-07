@@ -768,6 +768,244 @@ func (s *ListChannelRiskDetailsResponse) SetBody(v *ListChannelRiskDetailsRespon
 	return s
 }
 
+type ListUninstallDetailRequest struct {
+	DataSourceId *string `json:"dataSourceId,omitempty" xml:"dataSourceId,omitempty"`
+	EndDs        *string `json:"endDs,omitempty" xml:"endDs,omitempty"`
+	StartDs      *string `json:"startDs,omitempty" xml:"startDs,omitempty"`
+}
+
+func (s ListUninstallDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallDetailRequest) SetDataSourceId(v string) *ListUninstallDetailRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListUninstallDetailRequest) SetEndDs(v string) *ListUninstallDetailRequest {
+	s.EndDs = &v
+	return s
+}
+
+func (s *ListUninstallDetailRequest) SetStartDs(v string) *ListUninstallDetailRequest {
+	s.StartDs = &v
+	return s
+}
+
+type ListUninstallDetailResponseBody struct {
+	// msg
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// code
+	Code *int64                               `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListUninstallDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListUninstallDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallDetailResponseBody) SetMsg(v string) *ListUninstallDetailResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBody) SetSuccess(v bool) *ListUninstallDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBody) SetCode(v int64) *ListUninstallDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBody) SetData(v *ListUninstallDetailResponseBodyData) *ListUninstallDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBody) SetRequestId(v string) *ListUninstallDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUninstallDetailResponseBodyData struct {
+	Details []*ListUninstallDetailResponseBodyDataDetails `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
+}
+
+func (s ListUninstallDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallDetailResponseBodyData) SetDetails(v []*ListUninstallDetailResponseBodyDataDetails) *ListUninstallDetailResponseBodyData {
+	s.Details = v
+	return s
+}
+
+type ListUninstallDetailResponseBodyDataDetails struct {
+	ActiveDatetime *string `json:"activeDatetime,omitempty" xml:"activeDatetime,omitempty"`
+	City           *string `json:"city,omitempty" xml:"city,omitempty"`
+	// deviceBrand
+	DeviceBrand *string `json:"deviceBrand,omitempty" xml:"deviceBrand,omitempty"`
+	// deviceModel
+	DeviceModel *string `json:"deviceModel,omitempty" xml:"deviceModel,omitempty"`
+	// firstActiveDatetime
+	FirstActiveDatetime *string `json:"firstActiveDatetime,omitempty" xml:"firstActiveDatetime,omitempty"`
+	// idfa
+	Idfa *string `json:"idfa,omitempty" xml:"idfa,omitempty"`
+	// imei
+	Imei *string `json:"imei,omitempty" xml:"imei,omitempty"`
+	// installAppVersion
+	InstallAppVersion *string `json:"installAppVersion,omitempty" xml:"installAppVersion,omitempty"`
+	// installChannel
+	InstallChannel *string `json:"installChannel,omitempty" xml:"installChannel,omitempty"`
+	// oaid
+	Oaid *string `json:"oaid,omitempty" xml:"oaid,omitempty"`
+	// osVersion
+	OsVersion *string `json:"osVersion,omitempty" xml:"osVersion,omitempty"`
+	// puid
+	Puid              *string `json:"puid,omitempty" xml:"puid,omitempty"`
+	Umid              *string `json:"umid,omitempty" xml:"umid,omitempty"`
+	UninstallCount    *int32  `json:"uninstallCount,omitempty" xml:"uninstallCount,omitempty"`
+	UninstallDatetime *string `json:"uninstallDatetime,omitempty" xml:"uninstallDatetime,omitempty"`
+	// zid
+	Zid *string `json:"zid,omitempty" xml:"zid,omitempty"`
+}
+
+func (s ListUninstallDetailResponseBodyDataDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallDetailResponseBodyDataDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetActiveDatetime(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.ActiveDatetime = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetCity(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.City = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetDeviceBrand(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.DeviceBrand = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetDeviceModel(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.DeviceModel = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetFirstActiveDatetime(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.FirstActiveDatetime = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetIdfa(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Idfa = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetImei(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Imei = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetInstallAppVersion(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.InstallAppVersion = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetInstallChannel(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.InstallChannel = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetOaid(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Oaid = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetOsVersion(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.OsVersion = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetPuid(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Puid = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetUmid(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Umid = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetUninstallCount(v int32) *ListUninstallDetailResponseBodyDataDetails {
+	s.UninstallCount = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetUninstallDatetime(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.UninstallDatetime = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponseBodyDataDetails) SetZid(v string) *ListUninstallDetailResponseBodyDataDetails {
+	s.Zid = &v
+	return s
+}
+
+type ListUninstallDetailResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUninstallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUninstallDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUninstallDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUninstallDetailResponse) SetHeaders(v map[string]*string) *ListUninstallDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUninstallDetailResponse) SetStatusCode(v int32) *ListUninstallDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUninstallDetailResponse) SetBody(v *ListUninstallDetailResponseBody) *ListUninstallDetailResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1024,6 +1262,60 @@ func (client *Client) ListChannelRiskDetails(request *ListChannelRiskDetailsRequ
 	headers := make(map[string]*string)
 	_result = &ListChannelRiskDetailsResponse{}
 	_body, _err := client.ListChannelRiskDetailsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUninstallDetailWithOptions(request *ListUninstallDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUninstallDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["dataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDs)) {
+		query["endDs"] = request.EndDs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDs)) {
+		query["startDs"] = request.StartDs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUninstallDetail"),
+		Version:     tea.String("2022-11-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/uninstall/listUninstallDetail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUninstallDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUninstallDetail(request *ListUninstallDetailRequest) (_result *ListUninstallDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUninstallDetailResponse{}
+	_body, _err := client.ListUninstallDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
