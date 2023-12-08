@@ -392,7 +392,8 @@ func (s *CreatePolicyRequest) SetUserType(v string) *CreatePolicyRequest {
 
 type CreatePolicyResponseBody struct {
 	// The ID of the tag policy.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -407,6 +408,11 @@ func (s CreatePolicyResponseBody) GoString() string {
 
 func (s *CreatePolicyResponseBody) SetPolicyId(v string) *CreatePolicyResponseBody {
 	s.PolicyId = &v
+	return s
+}
+
+func (s *CreatePolicyResponseBody) SetPolicyName(v string) *CreatePolicyResponseBody {
+	s.PolicyName = &v
 	return s
 }
 
@@ -447,11 +453,12 @@ func (s *CreatePolicyResponse) SetBody(v *CreatePolicyResponseBody) *CreatePolic
 type CreateTagsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The description of the tag value.
+	// The region ID.
 	//
-	// Valid values of N: 1 to 10.
-	RegionId             *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// >  Only `cn-hangzhou` is supported.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The tag keys and values list.
 	TagKeyValueParamList []*CreateTagsRequestTagKeyValueParamList `json:"TagKeyValueParamList,omitempty" xml:"TagKeyValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -489,11 +496,17 @@ func (s *CreateTagsRequest) SetTagKeyValueParamList(v []*CreateTagsRequestTagKey
 }
 
 type CreateTagsRequestTagKeyValueParamList struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The description of the tag key.
 	//
 	// Valid values of N: 1 to 10.
-	Key               *string                                                   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The tag key.
+	//
+	// The tag key can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	//
+	// Valid values of N: 1 to 10.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag values list.
 	TagValueParamList []*CreateTagsRequestTagKeyValueParamListTagValueParamList `json:"TagValueParamList,omitempty" xml:"TagValueParamList,omitempty" type:"Repeated"`
 }
 
@@ -521,8 +534,15 @@ func (s *CreateTagsRequestTagKeyValueParamList) SetTagValueParamList(v []*Create
 }
 
 type CreateTagsRequestTagKeyValueParamListTagValueParamList struct {
+	// The description of the tag value.
+	//
+	// Valid values of N: 1 to 10.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// The tag value.
+	//
+	// The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+	//
+	// Valid values of N: 1 to 10.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -545,6 +565,7 @@ func (s *CreateTagsRequestTagKeyValueParamListTagValueParamList) SetValue(v stri
 }
 
 type CreateTagsResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -681,13 +702,19 @@ func (s *DeletePolicyResponse) SetBody(v *DeletePolicyResponseBody) *DeletePolic
 }
 
 type DeleteTagRequest struct {
+	// The tag key.
+	//
+	// If no tag value is associated with a tag key, you can specify the `Key` parameter without specifying the Value parameter to delete the tag key. Otherwise, you must specify both the `Key` and `Value` parameters to delete a preset tag.
 	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The region ID.
+	//
+	// >  Only `cn-hangzhou` is supported.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	Value                *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The tag value.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DeleteTagRequest) String() string {
@@ -729,6 +756,7 @@ func (s *DeleteTagRequest) SetValue(v string) *DeleteTagRequest {
 }
 
 type DeleteTagResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -775,11 +803,15 @@ func (s *DeleteTagResponse) SetBody(v *DeleteTagResponseBody) *DeleteTagResponse
 }
 
 type DescribeRegionsRequest struct {
-	// The information of the regions.
+	// The supported natural language. Valid values:
+	//
+	// *   zh-CN: Chinese (default value)
+	// *   en-US: English
+	// *   ja: Japanese
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the request.
+	// The ID of the region.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -824,9 +856,9 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
-	// The endpoint of the Tag service in the region.
+	// The information of the regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The name of the region.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -866,10 +898,12 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The ID of the region.
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The name of the region.
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the Tag service in the region.
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -2093,11 +2127,13 @@ type ListConfigRulesForTargetResponseBodyData struct {
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// Indicates whether automatic remediation is enabled. Valid values:
 	//
-	// *   true: enabled
-	// *   false: disabled
+	// *   true
+	// *   false
 	Remediation *bool `json:"Remediation,omitempty" xml:"Remediation,omitempty"`
 	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value for automatic remediation.
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	// The ID of the object.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. Valid values:
@@ -2139,6 +2175,11 @@ func (s *ListConfigRulesForTargetResponseBodyData) SetRemediation(v bool) *ListC
 
 func (s *ListConfigRulesForTargetResponseBodyData) SetTagKey(v string) *ListConfigRulesForTargetResponseBodyData {
 	s.TagKey = &v
+	return s
+}
+
+func (s *ListConfigRulesForTargetResponseBodyData) SetTagValue(v string) *ListConfigRulesForTargetResponseBodyData {
+	s.TagValue = &v
 	return s
 }
 
@@ -2187,11 +2228,13 @@ type ListPoliciesRequest struct {
 	// Default value: 50. Maximum value: 1000.
 	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
 	// The token that is used to start the next query.
-	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PolicyIds    []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	PolicyNames  []*string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty" type:"Repeated"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of a tag policy. This parameter specifies a filter condition for the query.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The name of a tag policy. This parameter specifies a filter condition for the query.
+	PolicyNames []*string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty" type:"Repeated"`
 	// The region ID. Set the value to cn-shanghai.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2375,17 +2418,19 @@ func (s *ListPoliciesResponse) SetBody(v *ListPoliciesResponseBody) *ListPolicie
 }
 
 type ListPoliciesForTargetRequest struct {
-	// The token that is used to start the next query.
-	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
-	// The ID of the object. This parameter specifies a filter condition for the query.
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of entries to return on each page.
 	//
 	// Default value: 50. Maximum value: 1000.
+	MaxResult *int32 `json:"MaxResult,omitempty" xml:"MaxResult,omitempty"`
+	// The token that is used to start the next query.
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. Set the value to cn-shanghai.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	// The ID of the object. This parameter specifies a filter condition for the query.
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The type of the object. This parameter specifies a filter condition for the query. Valid values:
 	//
 	// *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
@@ -2394,8 +2439,6 @@ type ListPoliciesForTargetRequest struct {
 	// *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
 	//
 	// >  The value of this parameter is not case-sensitive.
-	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The tag policies that are attached to the object.
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
@@ -2448,13 +2491,14 @@ func (s *ListPoliciesForTargetRequest) SetTargetType(v string) *ListPoliciesForT
 }
 
 type ListPoliciesForTargetResponseBody struct {
-	// The ID of the tag policy.
-	Data      []*ListPoliciesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	NextToken *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The tag policies that are attached to the object.
+	Data []*ListPoliciesForTargetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether the next query is required.
 	//
 	// *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
 	// *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2482,20 +2526,20 @@ func (s *ListPoliciesForTargetResponseBody) SetRequestId(v string) *ListPolicies
 }
 
 type ListPoliciesForTargetResponseBodyData struct {
+	// The document of the tag policy.
+	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
+	// The description of the tag policy.
+	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
+	// The ID of the tag policy.
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	// The name of the tag policy.
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The mode of the Tag Policy feature. Valid values:
 	//
 	// *   USER: single-account mode
 	// *   RD: multi-account mode
 	//
 	// For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
-	PolicyContent *string `json:"PolicyContent,omitempty" xml:"PolicyContent,omitempty"`
-	// The document of the tag policy.
-	PolicyDesc *string `json:"PolicyDesc,omitempty" xml:"PolicyDesc,omitempty"`
-	// The name of the tag policy.
-	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The description of the tag policy.
-	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the request.
 	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
 }
 
@@ -2583,12 +2627,12 @@ type ListResourcesByTagRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// For more information about the region ID, see [Endpoints](~~170112~~).
+	// For more information about region IDs, see [Endpoints](~~2330902~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The resource type. This parameter specifies a filter condition for the query.
 	//
-	// *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a resource type provided in [Types of resources that support Tag API operations](~~172061~~).
+	// *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
 	// *   If you set the FuzzyType parameter to NOT, you can set this parameter to a resource type provided in **Types of resources that support queries based on the NOT operator**.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -2967,11 +3011,13 @@ func (s *ListSupportResourceTypesResponseBodySupportResourceTypes) SetSupportIte
 type ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems struct {
 	// Indicates whether the tag-related capability item is supported. Valid values:
 	//
-	// *   true: The tag-related capability item is supported.
-	// *   false: The tag-related capability item is not supported.
+	// *   true
+	// *   false
 	Support *bool `json:"Support,omitempty" xml:"Support,omitempty"`
 	// The code of the tag-related capability item.
 	SupportCode *string `json:"SupportCode,omitempty" xml:"SupportCode,omitempty"`
+	// The details of the support for the tag-related capability item.
+	SupportDetails []map[string]*string `json:"SupportDetails,omitempty" xml:"SupportDetails,omitempty" type:"Repeated"`
 }
 
 func (s ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems) String() string {
@@ -2989,6 +3035,11 @@ func (s *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems) S
 
 func (s *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems) SetSupportCode(v string) *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems {
 	s.SupportCode = &v
+	return s
+}
+
+func (s *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems) SetSupportDetails(v []map[string]*string) *ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems {
+	s.SupportDetails = v
 	return s
 }
 
@@ -3055,12 +3106,15 @@ type ListTagKeysRequest struct {
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region ID.
 	//
-	// For more information about the region ID, see [Endpoints](~~170112~~).
+	// For more information about region IDs, see [Endpoints](~~2330902~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resources. This parameter specifies a filter condition for the query.
+	// The resource type. This parameter specifies a filter condition for the query.
 	//
-	// For more information about supported resource types, see [Types of resources that support Tag API operations](~~172061~~).
+	// Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
+	//
+	// *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+	// *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3283,7 +3337,8 @@ type ListTagResourcesRequest struct {
 	// Maximum value: 1000. Default value: 50.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the resources.
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -3504,12 +3559,15 @@ type ListTagValuesRequest struct {
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
 	// The region ID.
 	//
-	// For more information about the region ID, see [Endpoints](~~170112~~).
+	// For more information about region IDs, see [Endpoints](~~2330902~~).
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resources. This parameter specifies a filter condition for the query.
+	// The resource type. This parameter specifies a filter condition for the query.
 	//
-	// For more information about supported resource types, see [Types of resources that support Tag API operations](~~172061~~).
+	// Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
+	//
+	// *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+	// *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3979,8 +4037,9 @@ func (s *ModifyPolicyResponse) SetBody(v *ModifyPolicyResponseBody) *ModifyPolic
 }
 
 type OpenCreatedByRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. Set the value to cn-shanghai.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4020,6 +4079,7 @@ func (s *OpenCreatedByRequest) SetResourceOwnerId(v string) *OpenCreatedByReques
 }
 
 type OpenCreatedByResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4069,7 +4129,8 @@ type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resources.
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -4124,11 +4185,13 @@ func (s *TagResourcesRequest) SetTags(v string) *TagResourcesRequest {
 }
 
 type TagResourcesResponseBody struct {
-	// The information of the resources to which tags fail to be added.
+	// The information about the resources to which tags fail to be added.
 	//
 	// >
+	//
 	// *   If tags are added to all resources, the value of `FailedResources` is empty.
-	// *   If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information of the resources.
+	//
+	// *   If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information about the resources.
 	FailedResources *TagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4172,7 +4235,7 @@ func (s *TagResourcesResponseBodyFailedResources) SetFailedResource(v []*TagReso
 type TagResourcesResponseBodyFailedResourcesFailedResource struct {
 	// The ARN of the resource.
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The information of the error.
+	// The information about the error.
 	Result *TagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -4252,10 +4315,12 @@ type UntagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the resources.
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of a resource.
 	ResourceARN          []*string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// A tag key.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4297,11 +4362,13 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	// The information of resources from which tags fail to be removed.
+	// The information about the resources from which tags fail to be removed.
 	//
 	// >
+	//
 	// *   If tags are removed from all resources, the value of FailedResources is empty.
-	// *   If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information of the resources.
+	//
+	// *   If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information about the resources.
 	FailedResources *UntagResourcesResponseBodyFailedResources `json:"FailedResources,omitempty" xml:"FailedResources,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -4345,7 +4412,7 @@ func (s *UntagResourcesResponseBodyFailedResources) SetFailedResource(v []*Untag
 type UntagResourcesResponseBodyFailedResourcesFailedResource struct {
 	// The ARN of the resource.
 	ResourceARN *string `json:"ResourceARN,omitempty" xml:"ResourceARN,omitempty"`
-	// The information of the error.
+	// The information about the error.
 	Result *UntagResourcesResponseBodyFailedResourcesFailedResourceResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -4804,8 +4871,8 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 }
 
 /**
- * The region ID.
- * >  Only `cn-hangzhou` is supported.
+ * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+ * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
  *
  * @param request CreateTagsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4861,8 +4928,8 @@ func (client *Client) CreateTagsWithOptions(request *CreateTagsRequest, runtime 
 }
 
 /**
- * The region ID.
- * >  Only `cn-hangzhou` is supported.
+ * A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+ * This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
  *
  * @param request CreateTagsRequest
  * @return CreateTagsResponse
@@ -4954,8 +5021,7 @@ func (client *Client) DeletePolicy(request *DeletePolicyRequest) (_result *Delet
 }
 
 /**
- * The region ID.
- * >  Only `cn-hangzhou` is supported.
+ * This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
  *
  * @param request DeleteTagRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5015,8 +5081,7 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *u
 }
 
 /**
- * The region ID.
- * >  Only `cn-hangzhou` is supported.
+ * This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
  *
  * @param request DeleteTagRequest
  * @return DeleteTagResponse
@@ -5895,7 +5960,8 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 }
 
 /**
- * For more information about common request parameters, see [Common parameters](~~159973~~).
+ * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+ * This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
  *
  * @param request ListPoliciesForTargetRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -5963,7 +6029,8 @@ func (client *Client) ListPoliciesForTargetWithOptions(request *ListPoliciesForT
 }
 
 /**
- * For more information about common request parameters, see [Common parameters](~~159973~~).
+ * If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+ * This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
  *
  * @param request ListPoliciesForTargetRequest
  * @return ListPoliciesForTargetResponse
@@ -6271,10 +6338,7 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 }
 
 /**
- * This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
- * *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
- * *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
- * *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request ListTagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6350,10 +6414,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 }
 
 /**
- * This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
- * *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
- * *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
- * *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request ListTagResourcesRequest
  * @return ListTagResourcesResponse
@@ -6642,6 +6703,13 @@ func (client *Client) ModifyPolicy(request *ModifyPolicyRequest) (_result *Modif
 	return _result, _err
 }
 
+/**
+ * createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+ *
+ * @param request OpenCreatedByRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return OpenCreatedByResponse
+ */
 func (client *Client) OpenCreatedByWithOptions(request *OpenCreatedByRequest, runtime *util.RuntimeOptions) (_result *OpenCreatedByResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6691,6 +6759,12 @@ func (client *Client) OpenCreatedByWithOptions(request *OpenCreatedByRequest, ru
 	return _result, _err
 }
 
+/**
+ * createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+ *
+ * @param request OpenCreatedByRequest
+ * @return OpenCreatedByResponse
+ */
 func (client *Client) OpenCreatedBy(request *OpenCreatedByRequest) (_result *OpenCreatedByResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenCreatedByResponse{}
@@ -6704,7 +6778,7 @@ func (client *Client) OpenCreatedBy(request *OpenCreatedByRequest) (_result *Ope
 
 /**
  * Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
- * This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request TagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6769,7 +6843,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 /**
  * Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
- * This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request TagResourcesRequest
  * @return TagResourcesResponse
@@ -6787,7 +6861,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 /**
  * After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
- * This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request UntagResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -6852,7 +6926,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 /**
  * After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
- * This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+ * For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
  *
  * @param request UntagResourcesRequest
  * @return UntagResourcesResponse
