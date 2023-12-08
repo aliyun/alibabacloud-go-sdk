@@ -981,7 +981,7 @@ type BatchSetDcdnDomainCertificateRequest struct {
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
 	// Specifies whether to enable the HTTPS certificate. Valid values:
 	//
-	// *   \*\*on\*\*: enables the HTTPS certificate.
+	// *   **on**: enables the HTTPS certificate.
 	// *   **off**: does not enable the HTTPS certificate.
 	//
 	// This is the default value.
@@ -1097,25 +1097,26 @@ type BatchSetDcdnDomainConfigsRequest struct {
 	// The features that you want to configure. Format:
 	//
 	// *   **functionName**: The name of the feature. Separate multiple values with commas (,). For more information, see [A list of features](~~410622~~).
+	//
 	// *   **argName**: The feature parameters for **functionName**.
 	// *   **argValue**: The parameter values set for **functionName**.
 	//
-	// <!---->
-	//
-	//     [
-	//      {
-	//        "functionArgs": [
-	//         {
-	//          "argName": "Parameter A",
-	//          "argValue": "Value of parameter A"
-	//         },
-	//       {
+	// ````[
+	//  {
+	//    "functionArgs": [
+	//     {
+	//      "argName": "Parameter A",
+	//      "argValue": Value of parameter A"
+	//     },
+	//   {
 	//     "argName": "Parameter B",
-	//     "argValue": "Value of parameter B"     }
-	//      ],
-	//      "functionName": "Feature name"
-	//         }
-	//     ]
+	//     "argValue": "Value of Parameter B"
+	//      }
+	//  ],
+	//  "functionName": "Feature name"
+	//     }
+	// ]```
+	// ````
 	Functions     *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1156,7 +1157,7 @@ func (s *BatchSetDcdnDomainConfigsRequest) SetSecurityToken(v string) *BatchSetD
 }
 
 type BatchSetDcdnDomainConfigsResponseBody struct {
-	// The list of domain configurations.
+	// 域名配置清单。
 	DomainConfigList *BatchSetDcdnDomainConfigsResponseBodyDomainConfigList `json:"DomainConfigList,omitempty" xml:"DomainConfigList,omitempty" type:"Struct"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -1198,11 +1199,11 @@ func (s *BatchSetDcdnDomainConfigsResponseBodyDomainConfigList) SetDomainConfigM
 }
 
 type BatchSetDcdnDomainConfigsResponseBodyDomainConfigListDomainConfigModel struct {
-	// The ID of the configuration. If 0 is returned, the configuration failed and you need reconfigure this configuration.
+	// 配置ID，如果返回为0，则表示该条配置未配置成功，需要重新配置。
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The domain name.
+	// 域名。
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The feature name.
+	// 功能名称。
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -2047,26 +2048,24 @@ func (s *CreateDcdnSLSRealTimeLogDeliveryResponse) SetBody(v *CreateDcdnSLSRealT
 }
 
 type CreateDcdnSubTaskRequest struct {
-	// The domain names to be tracked. Separate multiple domain names with commas (,). You can specify up to 500 domain names. If you want to specify more than 500 domain names, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex).
+	// [](https://workorder-intl.console.aliyun.com/?spm=5176.2020520001.aliyun_topbar.18.dbd44bd3e4f845#/ticket/createIndex)
 	//
 	// **
 	//
-	// **If you do not specify a domain name, the custom operations reports are created for all domain names that belong to your Alibaba Cloud account.
+	// ****
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The IDs of the metrics that you want to include in the report. Separate multiple IDs with commas (,). Valid values:
-	//
-	// *   **2**: Popular URLs by Request
-	// *   **4**: Popular URLs by Traffic
-	// *   **6**: Popular Referer by Request
-	// *   **8**: Popular Referer by Traffic
-	// *   **10**: Popular Back-to-origin URLs by Request
-	// *   **12**: Popular Back-to-origin URLs by Traffic
-	// *   **14**: Top Client IPs by Request
-	// *   **16**: Top Client IPs by Traffic
-	// *   **18**: Popular Domain Names by Traffic
-	// *   **20**: PV/UV
-	// *   **22**: Visit Distribution by Region
-	// *   **24**: Distribution of ISPs
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
+	// *   ****
 	ReportIds *string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty"`
 }
 
@@ -2089,7 +2088,6 @@ func (s *CreateDcdnSubTaskRequest) SetReportIds(v string) *CreateDcdnSubTaskRequ
 }
 
 type CreateDcdnSubTaskResponseBody struct {
-	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8423,10 +8421,8 @@ func (s *DescribeDcdnDomainLogExTtlRequest) SetStartTime(v string) *DescribeDcdn
 }
 
 type DescribeDcdnDomainLogExTtlResponseBody struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DomainLogDetails *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDcdnDomainLogExTtlResponseBody) String() string {
@@ -8437,13 +8433,8 @@ func (s DescribeDcdnDomainLogExTtlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeDcdnDomainLogExTtlResponseBody) SetMaxResults(v int32) *DescribeDcdnDomainLogExTtlResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DescribeDcdnDomainLogExTtlResponseBody) SetNextToken(v string) *DescribeDcdnDomainLogExTtlResponseBody {
-	s.NextToken = &v
+func (s *DescribeDcdnDomainLogExTtlResponseBody) SetDomainLogDetails(v *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails) *DescribeDcdnDomainLogExTtlResponseBody {
+	s.DomainLogDetails = v
 	return s
 }
 
@@ -8452,8 +8443,142 @@ func (s *DescribeDcdnDomainLogExTtlResponseBody) SetRequestId(v string) *Describ
 	return s
 }
 
-func (s *DescribeDcdnDomainLogExTtlResponseBody) SetTotalCount(v int32) *DescribeDcdnDomainLogExTtlResponseBody {
-	s.TotalCount = &v
+type DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails struct {
+	DomainLogDetail []*DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail `json:"DomainLogDetail,omitempty" xml:"DomainLogDetail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails) SetDomainLogDetail(v []*DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetails {
+	s.DomainLogDetail = v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail struct {
+	DomainName *string                                                                         `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	LogCount   *int64                                                                          `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos   *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos  `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Struct"`
+	PageInfos  *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetDomainName(v string) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetLogCount(v int64) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.LogCount = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetLogInfos(v *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.LogInfos = v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail) SetPageInfos(v *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetail {
+	s.PageInfos = v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos struct {
+	LogInfoDetail []*DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail `json:"LogInfoDetail,omitempty" xml:"LogInfoDetail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos) SetLogInfoDetail(v []*DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfos {
+	s.LogInfoDetail = v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogName   *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	LogPath   *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogSize   *int64  `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetEndTime(v string) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogName(v string) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogPath(v string) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogPath = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetLogSize(v int64) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.LogSize = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail) SetStartTime(v string) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailLogInfosLogInfoDetail {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos struct {
+	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total     *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetPageIndex(v int64) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetPageSize(v int64) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos) SetTotal(v int64) *DescribeDcdnDomainLogExTtlResponseBodyDomainLogDetailsDomainLogDetailPageInfos {
+	s.Total = &v
 	return s
 }
 
@@ -13567,7 +13692,7 @@ type DescribeDcdnDomainWebsocketTrafficDataRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time granularity for a query. Unit: seconds.
 	//
-	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
+	// The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Operation Description**.
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The name of the ISP.
 	//
@@ -16629,11 +16754,10 @@ type DescribeDcdnRefreshTasksRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The path of the object. The path is used as a condition for exact matching.
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the task. Valid values:
+	// The type of the task.
 	//
 	// *   **file**: URL-based refresh
 	// *   **directory**: directory-based refresh
-	// *   **regex**: regular expression-based refresh
 	// *   **preload**: URL-based prefetch
 	//
 	// If you set **DomainName** or **Status**, you must also set this parameter.
@@ -16646,7 +16770,7 @@ type DescribeDcdnRefreshTasksRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the task.
 	//
 	// *   **Complete**: The task is complete.
 	// *   **Refreshing**: The task is in progress.
@@ -16720,13 +16844,13 @@ func (s *DescribeDcdnRefreshTasksRequest) SetTaskId(v string) *DescribeDcdnRefre
 }
 
 type DescribeDcdnRefreshTasksResponseBody struct {
-	// The number of the returned page.
+	// The page number of the returned page.
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// Details about tasks.
 	Tasks *DescribeDcdnRefreshTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 	// The number of tasks.
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -16793,22 +16917,21 @@ type DescribeDcdnRefreshTasksResponseBodyTasksTask struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URL of the object refreshed.
 	ObjectPath *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
-	// The type of the task. Valid values:
+	// The type of the task.
 	//
 	// *   **file**: URL-based refresh
 	// *   **path**: directory-based refresh
-	// *   **regex**: regular expression-based refresh
 	// *   **preload**: URL-based prefetch
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The progress of the task in percentage.
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The status of the auxiliary media asset.
+	// The status of the task.
 	//
 	// *   **Complete**: The task is complete.
 	// *   **Refreshing**: The task is in progress.
 	// *   **Failed**: The task failed.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -21649,9 +21772,7 @@ type DescribeDcdnWafFilterInfoRequest struct {
 	// *   custom_acl: custom protection
 	// *   whitelist: IP address whitelist
 	//
-	// **
-	//
-	// **If you do not specify this parameter, all types are returned.
+	// >If you do not specify this parameter, all types are returned.
 	DefenseScenes *string `json:"DefenseScenes,omitempty" xml:"DefenseScenes,omitempty"`
 	// The language of the returned information. Valid values:
 	//
@@ -22893,7 +23014,7 @@ type DescribeDcdnWafPolicyResponseBodyPolicy struct {
 	// *   default
 	// *   custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The protection rule configurations that are defined in the protection policy. The configurations only support bot management. For more information, see [BatchCreateDcdnWafRules](~~BatchCreateDcdnWafRules~~).
+	// The protection rule configurations corresponding to the protection policy. The configurations only support Bot management. For more information, see [BatchCreateDcdnWafRules](~~BatchCreateDcdnWafRules~~).
 	RuleConfigs *string `json:"RuleConfigs,omitempty" xml:"RuleConfigs,omitempty"`
 	// The number of protection rules in the protection policy.
 	RuleCount *int64 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
@@ -29176,17 +29297,17 @@ func (s *UntagDcdnResourcesResponse) SetBody(v *UntagDcdnResourcesResponseBody) 
 }
 
 type UpdateDcdnDeliverTaskRequest struct {
-	// The ID of the request.
+	// The method that is used to send operations reports. Operations reports are sent to you only by email. The settings need to be escaped in JSON.
 	Deliver *string `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
-	// Domain Subscription
+	// The ID of the tracking task that you want to update.
 	DeliverId *int64 `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
-	// {"schedName":"subscription task name","description":"description","crontab":"000**?","frequency":"d","status":"enable","effectiveFrom": "2020-09-17T00:00:00Z","effectiveEnd":"2020-11-17T00:00:00Z"}
+	// The domain names from which the tracking task collects data. Separate domain names with commas (,). If you do not specify a domain name, the task collects data from all domain names that belong to your Alibaba Cloud account.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The name of the tracking task.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The operations reports that are tracked by the task. The data must be escaped in JSON.
+	// The operations reports that are tracked by the task. The data needs to be escaped in JSON.
 	Reports *string `json:"Reports,omitempty" xml:"Reports,omitempty"`
-	// The method that is used to send operations reports. Operations reports are sent to you only by email. The settings must be escaped in JSON.
+	// The parameters that specify the time interval at which the tracking task sends operations reports. The settings need to be escaped in JSON.
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 }
 
@@ -29229,7 +29350,7 @@ func (s *UpdateDcdnDeliverTaskRequest) SetSchedule(v string) *UpdateDcdnDeliverT
 }
 
 type UpdateDcdnDeliverTaskResponseBody struct {
-	// Updates a tracking task by task ID.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30864,8 +30985,8 @@ func (client *Client) BatchSetDcdnDomainCertificate(request *BatchSetDcdnDomainC
 }
 
 /**
- * > *   You can specify up to 50 domain names in each request.
- * >*   You can call this operation up to 30 times per second per account.
+ * *   You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchSetDcdnDomainConfigsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -30921,8 +31042,8 @@ func (client *Client) BatchSetDcdnDomainConfigsWithOptions(request *BatchSetDcdn
 }
 
 /**
- * > *   You can specify up to 50 domain names in each request.
- * >*   You can call this operation up to 30 times per second per account.
+ * *   You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+ * *   You can call this operation up to 30 times per second per account.
  *
  * @param request BatchSetDcdnDomainConfigsRequest
  * @return BatchSetDcdnDomainConfigsResponse
@@ -31493,9 +31614,10 @@ func (client *Client) CreateDcdnSLSRealTimeLogDelivery(request *CreateDcdnSLSRea
 }
 
 /**
- * >
- * *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
- * *   You can call this operation up to three times per second per account.
+ * **
+ * ****
+ * *
+ * *
  *
  * @param request CreateDcdnSubTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31539,9 +31661,10 @@ func (client *Client) CreateDcdnSubTaskWithOptions(request *CreateDcdnSubTaskReq
 }
 
 /**
- * >
- * *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
- * *   You can call this operation up to three times per second per account.
+ * **
+ * ****
+ * *
+ * *
  *
  * @param request CreateDcdnSubTaskRequest
  * @return CreateDcdnSubTaskResponse
@@ -31681,10 +31804,9 @@ func (client *Client) CreateDcdnWafPolicy(request *CreateDcdnWafPolicyRequest) (
 }
 
 /**
- * >
- * *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
- * *   You can only specify the production and staging environments when you call this operation.
- * *   You can call this operation up to 100 times per second.
+ * > *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+ * >*   You can only specify the production and staging environments when you call this operation.
+ * >*   You can call this operation up to 100 times per second per account.
  *
  * @param tmpReq CreateRoutineRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -31738,10 +31860,9 @@ func (client *Client) CreateRoutineWithOptions(tmpReq *CreateRoutineRequest, run
 }
 
 /**
- * >
- * *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
- * *   You can only specify the production and staging environments when you call this operation.
- * *   You can call this operation up to 100 times per second.
+ * > *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+ * >*   You can only specify the production and staging environments when you call this operation.
+ * >*   You can call this operation up to 100 times per second per account.
  *
  * @param request CreateRoutineRequest
  * @return CreateRoutineResponse
@@ -33313,8 +33434,7 @@ func (client *Client) DescribeDcdnDeletedDomains(request *DescribeDcdnDeletedDom
 }
 
 /**
- * **
- * **You can call this operation up to three times per second.
+ * >You can call this operation up to three times per second.
  *
  * @param request DescribeDcdnDeliverListRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -33354,8 +33474,7 @@ func (client *Client) DescribeDcdnDeliverListWithOptions(request *DescribeDcdnDe
 }
 
 /**
- * **
- * **You can call this operation up to three times per second.
+ * >You can call this operation up to three times per second.
  *
  * @param request DescribeDcdnDeliverListRequest
  * @return DescribeDcdnDeliverListResponse
@@ -37884,7 +38003,6 @@ func (client *Client) DescribeDcdnRefreshTaskById(request *DescribeDcdnRefreshTa
 }
 
 /**
- * >
  * *   You can query the refresh or prefetch tasks by ID or URL.
  * *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
  * *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
@@ -37968,7 +38086,6 @@ func (client *Client) DescribeDcdnRefreshTasksWithOptions(request *DescribeDcdnR
 }
 
 /**
- * >
  * *   You can query the refresh or prefetch tasks by ID or URL.
  * *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
  * *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
@@ -43920,7 +44037,7 @@ func (client *Client) UntagDcdnResources(request *UntagDcdnResourcesRequest) (_r
 }
 
 /**
- * The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+ * > You can call this operation up to three times per second per account.
  *
  * @param request UpdateDcdnDeliverTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -43980,7 +44097,7 @@ func (client *Client) UpdateDcdnDeliverTaskWithOptions(request *UpdateDcdnDelive
 }
 
 /**
- * The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+ * > You can call this operation up to three times per second per account.
  *
  * @param request UpdateDcdnDeliverTaskRequest
  * @return UpdateDcdnDeliverTaskResponse
