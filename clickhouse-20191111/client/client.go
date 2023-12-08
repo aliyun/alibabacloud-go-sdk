@@ -719,9 +719,34 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 }
 
 type CreateAccountRequest struct {
-	AccountDescription   *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The description of the database account.
+	//
+	// >
+	//
+	// *   The description cannot start with http:// or https://.
+	//
+	// *   The description must be 0 to 256 characters in length.
+	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	// The name of the database account.
+	//
+	// >
+	//
+	// *   The name must be unique in the cluster.
+	//
+	// *   The name can contain lowercase letters, digits, and underscores (\_).
+	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	// *   The name must be 2 to 64 characters in length.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the database account.
+	//
+	// >
+	//
+	// *   The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// *   The password can contain the following special characters: ! @ # $ % ^ & \* ( ) \_ + - =
+	// *   The password must be 8 to 32 characters in length.
+	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The cluster ID.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -778,6 +803,7 @@ func (s *CreateAccountRequest) SetResourceOwnerId(v int64) *CreateAccountRequest
 }
 
 type CreateAccountResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -971,15 +997,30 @@ func (s *CreateAccountAndAuthorityResponse) SetBody(v *CreateAccountAndAuthority
 }
 
 type CreateBackupPolicyRequest struct {
+	// The retention period for the backup data. By default, the backup data is retained for seven days. Valid values: 7 to 730. Unit: day.
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	DBClusterId           *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The cluster ID.
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The day of a week when the system regularly backs up data. If you specify multiple days of a week, separate them with commas (,). Valid values:
+	//
+	// *   **Monday**
+	// *   **Tuesday**
+	// *   **Wednesday**
+	// *   **Thursday**
+	// *   **Friday**
+	// *   **Saturday**
+	// *   **Sunday**
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime   *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+	//
+	// For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateBackupPolicyRequest) String() string {
@@ -1036,6 +1077,7 @@ func (s *CreateBackupPolicyRequest) SetResourceOwnerId(v int64) *CreateBackupPol
 }
 
 type CreateBackupPolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1082,32 +1124,103 @@ func (s *CreateBackupPolicyResponse) SetBody(v *CreateBackupPolicyResponseBody) 
 }
 
 type CreateDBInstanceRequest struct {
-	BackupSetID          *string `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DBClusterCategory    *string `json:"DBClusterCategory,omitempty" xml:"DBClusterCategory,omitempty"`
-	DBClusterClass       *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// The ID of the backup set. You can call the [DescribeBackups](~~360339~~) operation to query the backup sets.
+	//
+	// >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
+	BackupSetID *string `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. The value is a string and can be up to 64 ASCII characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The edition of the cluster. Valid values:
+	//
+	// *   **Basic**: Single-replica Edition
+	// *   **HighAvailability**: Double-replica Edition
+	DBClusterCategory *string `json:"DBClusterCategory,omitempty" xml:"DBClusterCategory,omitempty"`
+	// The specifications of the cluster.
+	//
+	// *   Valid values when the cluster is of Single-replica Edition: -**S4**: 4 CPU cores and 16 GB of memory -**S8**: 8 CPU cores and 32 GB of memory -**S16**: 16 CPU cores and 64 GB of memory
+	//
+	//     *   **S32**: 32 CPU cores and 128 GB of memory
+	//     *   **S64**: 64 CPU cores and 256 GB of memory
+	//     *   **S104**: 104 CPU cores and 384 GB of memory
+	//
+	// *   Valid values when the cluster is of Double-replica Edition: -**C4**: 4 CPU cores and 16 GB of memory -**C8**: 8 CPU cores and 32 GB of memory -**C16**: 16 CPU cores and 64 GB of memory -**C32**: 32 CPU cores and 128 GB of memory -**C64**: 64 CPU cores and 256 GB of memory -**C104**: 104 CPU cores and 384 GB of memory
+	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
+	// The description of the cluster.
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The network type of the cluster. Only Virtual Private Cloud (VPC) is supported.
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	DBClusterVersion     *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	DBNodeGroupCount     *string `json:"DBNodeGroupCount,omitempty" xml:"DBNodeGroupCount,omitempty"`
-	DBNodeStorage        *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	DbNodeStorageType    *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
-	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType       *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The kernel version. Valid values:
+	//
+	// *   **21.8.10.19**
+	// *   **22.8.5.29**
+	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
+	// The number of nodes.
+	//
+	// *   Valid values when the cluster is of Single-replica Edition: 1 to 48.
+	// *   Valid values when the cluster is of Double-replica Edition: 1 to 24.
+	DBNodeGroupCount *string `json:"DBNodeGroupCount,omitempty" xml:"DBNodeGroupCount,omitempty"`
+	// The storage capacity of a single node. Valid values: 100 to 32000. Unit: GB.
+	//
+	// >  This value is a multiple of 100.
+	DBNodeStorage *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	// The storage type of the cluster. Valid values:
+	//
+	// *   **CloudESSD_PL1**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
+	// *   **CloudESSD_PL2**: The cluster uses an ESSD of PL2.
+	// *   **CloudESSD_PL3**: The cluster uses an ESSD of PL3.
+	// *   **CloudEfficiency**: The cluster uses an ultra disk.
+	DbNodeStorageType *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
+	// You must specify this parameter when EncryptionType is set to CloudDisk.
+	//
+	// The ID of the key that is used to encrypt data on disks. You can obtain the ID of the key from the Key Management Service (KMS) console. You can also create a key.
+	//
+	// >  If EncryptionType is empty, you do not need to specify this parameter.
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// The encryption type. Set the value to **CloudDisk**, which indicates that only disk encryption is supported.
+	//
+	// >  If this parameter is not specified, data is not encrypted.
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing method of the cluster. Valid values:
+	//
+	// *   **Postpaid**: The cluster uses the pay-as-you-go billing method.
+	// *   **Prepaid**: The cluster uses the subscription billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The unit of the subscription duration. This parameter is required when PayType is set to Prepaid.
+	//
+	// Valid values:
+	//
+	// *   **Year**
+	// *   **Month**
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the cluster belongs.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SourceDBClusterId    *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
-	UsedTime             *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
-	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the source cluster. You can call the [DescribeDBClusters](~~170879~~) operation to query backup set IDs.
+	//
+	// >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
+	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
+	// The subscription duration of the subscription cluster. This parameter is required when PayType is set to Prepaid.
+	//
+	// Valid values:
+	//
+	// *   If Period is set to Year, the value of UsedTime must be an integer that ranges from 1 to 3.
+	// *   If Period is set to Month, the value of UsedTime must be an integer that ranges from 1 to 9.
+	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The VPC ID.
+	VPCId       *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchBak  *string `json:"VSwitchBak,omitempty" xml:"VSwitchBak,omitempty"`
+	VSwitchBak2 *string `json:"VSwitchBak2,omitempty" xml:"VSwitchBak2,omitempty"`
+	// The vSwitch ID.
+	VSwitchId  *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZondIdBak2 *string `json:"ZondIdBak2,omitempty" xml:"ZondIdBak2,omitempty"`
+	// The zone ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent zone list.
 	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIdBak *string `json:"ZoneIdBak,omitempty" xml:"ZoneIdBak,omitempty"`
 }
 
 func (s CreateDBInstanceRequest) String() string {
@@ -1233,8 +1346,23 @@ func (s *CreateDBInstanceRequest) SetVPCId(v string) *CreateDBInstanceRequest {
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetVSwitchBak(v string) *CreateDBInstanceRequest {
+	s.VSwitchBak = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetVSwitchBak2(v string) *CreateDBInstanceRequest {
+	s.VSwitchBak2 = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetVSwitchId(v string) *CreateDBInstanceRequest {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetZondIdBak2(v string) *CreateDBInstanceRequest {
+	s.ZondIdBak2 = &v
 	return s
 }
 
@@ -1243,10 +1371,18 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetZoneIdBak(v string) *CreateDBInstanceRequest {
+	s.ZoneIdBak = &v
+	return s
+}
+
 type CreateDBInstanceResponseBody struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDBInstanceResponseBody) String() string {
@@ -4078,10 +4214,11 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	VSwitchId                *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcCloudInstanceId       *string                                                        `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	// VPC ID。
-	VpcId          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcIpAddr      *string `json:"VpcIpAddr,omitempty" xml:"VpcIpAddr,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZookeeperClass *string `json:"ZookeeperClass,omitempty" xml:"ZookeeperClass,omitempty"`
+	VpcId            *string                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcIpAddr        *string                `json:"VpcIpAddr,omitempty" xml:"VpcIpAddr,omitempty"`
+	ZoneId           *string                `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIdVswitchMap map[string]interface{} `json:"ZoneIdVswitchMap,omitempty" xml:"ZoneIdVswitchMap,omitempty"`
+	ZookeeperClass   *string                `json:"ZookeeperClass,omitempty" xml:"ZookeeperClass,omitempty"`
 }
 
 func (s DescribeDBClusterAttributeResponseBodyDBCluster) String() string {
@@ -4334,6 +4471,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetVpcIpAddr(v string)
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetZoneId(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetZoneIdVswitchMap(v map[string]interface{}) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.ZoneIdVswitchMap = v
 	return s
 }
 
@@ -9778,6 +9920,13 @@ func (client *Client) CreateAccountAndAuthority(request *CreateAccountAndAuthori
 	return _result, _err
 }
 
+/**
+ * >  This operation is available only for the ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8.
+ *
+ * @param request CreateBackupPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateBackupPolicyResponse
+ */
 func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9843,6 +9992,12 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 	return _result, _err
 }
 
+/**
+ * >  This operation is available only for the ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8.
+ *
+ * @param request CreateBackupPolicyRequest
+ * @return CreateBackupPolicyResponse
+ */
 func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_result *CreateBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupPolicyResponse{}
@@ -9952,12 +10107,28 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["VPCId"] = request.VPCId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VSwitchBak)) {
+		query["VSwitchBak"] = request.VSwitchBak
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchBak2)) {
+		query["VSwitchBak2"] = request.VSwitchBak2
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		query["VSwitchId"] = request.VSwitchId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ZondIdBak2)) {
+		query["ZondIdBak2"] = request.ZondIdBak2
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
 		query["ZoneId"] = request.ZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneIdBak)) {
+		query["ZoneIdBak"] = request.ZoneIdBak
 	}
 
 	req := &openapi.OpenApiRequest{
