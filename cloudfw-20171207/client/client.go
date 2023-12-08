@@ -2735,9 +2735,16 @@ func (s *DeleteVpcFirewallControlPolicyResponse) SetBody(v *DeleteVpcFirewallCon
 }
 
 type DescribeACLProtectTrendRequest struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp  *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of the content within the request and the response. Valid values:
+	//
+	// *   **zh** (default): Chinese
+	// *   **en**: English
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is deprecated.
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2770,13 +2777,20 @@ func (s *DescribeACLProtectTrendRequest) SetStartTime(v string) *DescribeACLProt
 }
 
 type DescribeACLProtectTrendResponseBody struct {
-	InProtectCnt       *int64                                          `json:"InProtectCnt,omitempty" xml:"InProtectCnt,omitempty"`
-	InterVPCProtectCnt *int64                                          `json:"InterVPCProtectCnt,omitempty" xml:"InterVPCProtectCnt,omitempty"`
-	Interval           *int32                                          `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OutProtectCnt      *int64                                          `json:"OutProtectCnt,omitempty" xml:"OutProtectCnt,omitempty"`
-	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalProtectCnt    *int64                                          `json:"TotalProtectCnt,omitempty" xml:"TotalProtectCnt,omitempty"`
-	TrendList          []*DescribeACLProtectTrendResponseBodyTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
+	// The number of internal requests that are blocked by the ACL feature.
+	InProtectCnt *int64 `json:"InProtectCnt,omitempty" xml:"InProtectCnt,omitempty"`
+	// This parameter is deprecated.
+	InterVPCProtectCnt *int64 `json:"InterVPCProtectCnt,omitempty" xml:"InterVPCProtectCnt,omitempty"`
+	// The interval for returning data. Unit: seconds.
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The number of external requests that are blocked by the ACL feature.
+	OutProtectCnt *int64 `json:"OutProtectCnt,omitempty" xml:"OutProtectCnt,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of requests that are blocked by the ACL feature.
+	TotalProtectCnt *int64 `json:"TotalProtectCnt,omitempty" xml:"TotalProtectCnt,omitempty"`
+	// The statistics on the requests that are blocked by the ACL feature.
+	TrendList []*DescribeACLProtectTrendResponseBodyTrendList `json:"TrendList,omitempty" xml:"TrendList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeACLProtectTrendResponseBody) String() string {
@@ -2823,8 +2837,10 @@ func (s *DescribeACLProtectTrendResponseBody) SetTrendList(v []*DescribeACLProte
 }
 
 type DescribeACLProtectTrendResponseBodyTrendList struct {
+	// The number of requests that are blocked by ACL on the current day.
 	ProtectCnt *int32 `json:"ProtectCnt,omitempty" xml:"ProtectCnt,omitempty"`
-	Time       *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The UNIX timestamp at midnight (00:00:00) of each day, which indicates the date of the current day. Unit: seconds.
+	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s DescribeACLProtectTrendResponseBodyTrendList) String() string {
@@ -9807,6 +9823,7 @@ type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
 	// *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
 	AclGroupName *string `json:"AclGroupName,omitempty" xml:"AclGroupName,omitempty"`
 	AclRuleCount *int32  `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The UID of the member that is managed by your Alibaba Cloud account.
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 }
@@ -9831,6 +9848,11 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclGroupNam
 
 func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclRuleCount(v int32) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
 	s.AclRuleCount = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetIsDefault(v bool) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
+	s.IsDefault = &v
 	return s
 }
 
@@ -13107,7 +13129,10 @@ type ModifyControlPolicyRequest struct {
 	// *   **in**: inbound traffic
 	// *   **out**: outbound traffic
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the content within the request and the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -13126,11 +13151,34 @@ type ModifyControlPolicyRequest struct {
 	//
 	// *   true: enabled
 	// *   false: disabled
-	Release         *string  `json:"Release,omitempty" xml:"Release,omitempty"`
-	RepeatDays      []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	RepeatEndTime   *string  `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	RepeatStartTime *string  `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	RepeatType      *string  `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
+	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
+	// The days of a week or of a month on which the access control policy takes effect.
+	//
+	// *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[]
+	// *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6]
+	//
+	// >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+	//
+	// *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31]
+	//
+	// >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
+	// The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
+	// The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+	//
+	// >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
+	// The recurrence type for the access control policy to take effect. Valid values:
+	//
+	// *   **Permanent** (default): The policy always takes effect.
+	// *   **None**: The policy takes effect for only once.
+	// *   **Daily**: The policy takes effect on a daily basis.
+	// *   **Weekly**: The policy takes effect on a weekly basis.
+	// *   **Monthly**: The policy takes effect on a monthly basis.
+	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy.
 	//
 	// *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24.
@@ -13143,7 +13191,10 @@ type ModifyControlPolicyRequest struct {
 	// *   **group**: address book
 	// *   **location**: location
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartTime  *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+	//
+	// >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ModifyControlPolicyRequest) String() string {
@@ -13753,6 +13804,7 @@ type ModifyNatFirewallControlPolicyRequest struct {
 	// *   **domain**: domain name
 	// *   **location**
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
 	//
 	// *   **0**: Fully qualified domain name (FQDN)-based resolution
@@ -13857,6 +13909,11 @@ func (s *ModifyNatFirewallControlPolicyRequest) SetDestination(v string) *Modify
 
 func (s *ModifyNatFirewallControlPolicyRequest) SetDestinationType(v string) *ModifyNatFirewallControlPolicyRequest {
 	s.DestinationType = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyRequest) SetDirection(v string) *ModifyNatFirewallControlPolicyRequest {
+	s.Direction = &v
 	return s
 }
 
@@ -13974,7 +14031,8 @@ func (s *ModifyNatFirewallControlPolicyResponse) SetBody(v *ModifyNatFirewallCon
 
 type ModifyNatFirewallControlPolicyPositionRequest struct {
 	// The UUID of the access control policy.
-	AclUuid *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	AclUuid   *string `json:"AclUuid,omitempty" xml:"AclUuid,omitempty"`
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
 	// *   **zh**: Chinese (default)
@@ -14000,6 +14058,11 @@ func (s ModifyNatFirewallControlPolicyPositionRequest) GoString() string {
 
 func (s *ModifyNatFirewallControlPolicyPositionRequest) SetAclUuid(v string) *ModifyNatFirewallControlPolicyPositionRequest {
 	s.AclUuid = &v
+	return s
+}
+
+func (s *ModifyNatFirewallControlPolicyPositionRequest) SetDirection(v string) *ModifyNatFirewallControlPolicyPositionRequest {
+	s.Direction = &v
 	return s
 }
 
@@ -19606,10 +19669,6 @@ func (client *Client) DescribeVpcFirewallAclGroupListWithOptions(request *Descri
 		query["Lang"] = request.Lang
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -20942,6 +21001,10 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 		query["DestinationType"] = request.DestinationType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainResolveType)) {
 		query["DomainResolveType"] = request.DomainResolveType
 	}
@@ -21042,6 +21105,10 @@ func (client *Client) ModifyNatFirewallControlPolicyPositionWithOptions(request 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AclUuid)) {
 		query["AclUuid"] = request.AclUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
