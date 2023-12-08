@@ -13,7 +13,6 @@ import (
 )
 
 type CreateAndAnalyzeNetworkPathRequest struct {
-	AuditParam *string `json:"AuditParam,omitempty" xml:"AuditParam,omitempty"`
 	// The protocol type. Valid values:
 	//
 	// *   **tcp**: Transmission Control Protocol (TCP)
@@ -59,11 +58,6 @@ func (s CreateAndAnalyzeNetworkPathRequest) String() string {
 
 func (s CreateAndAnalyzeNetworkPathRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateAndAnalyzeNetworkPathRequest) SetAuditParam(v string) *CreateAndAnalyzeNetworkPathRequest {
-	s.AuditParam = &v
-	return s
 }
 
 func (s *CreateAndAnalyzeNetworkPathRequest) SetProtocol(v string) *CreateAndAnalyzeNetworkPathRequest {
@@ -245,7 +239,8 @@ type CreateNetworkPathRequest struct {
 	// *   **icmp**: Internet Control Message Protocol (ICMP)
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The region ID of the network path that you want to create.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the source resource.
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The source IP address.
@@ -259,8 +254,9 @@ type CreateNetworkPathRequest struct {
 	// *   **vsw**: the vSwitch
 	// *   **vpn**: the VPN gateway
 	// *   **vbr**: the virtual border router (VBR)
-	SourceType *string                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Tag        []*CreateNetworkPathRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The tags to add to the resource.
+	Tag []*CreateNetworkPathRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the destination resource.
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
 	// The destination IP address.
@@ -303,6 +299,11 @@ func (s *CreateNetworkPathRequest) SetProtocol(v string) *CreateNetworkPathReque
 
 func (s *CreateNetworkPathRequest) SetRegionId(v string) *CreateNetworkPathRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateNetworkPathRequest) SetResourceGroupId(v string) *CreateNetworkPathRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -352,7 +353,13 @@ func (s *CreateNetworkPathRequest) SetTargetType(v string) *CreateNetworkPathReq
 }
 
 type CreateNetworkPathRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	//
+	// You can add up to 20 tags in each call.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -429,12 +436,12 @@ func (s *CreateNetworkPathResponse) SetBody(v *CreateNetworkPathResponseBody) *C
 }
 
 type CreateNetworkReachableAnalysisRequest struct {
-	AuditParam *string `json:"AuditParam,omitempty" xml:"AuditParam,omitempty"`
 	// The ID of the network path. You can call the **CreateNetworkPath** operation to obtain the ID of the network path.
 	NetworkPathId *string `json:"NetworkPathId,omitempty" xml:"NetworkPathId,omitempty"`
 	// The ID of the region for which you want to create a task for analyzing network reachability.
-	RegionId *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*CreateNetworkReachableAnalysisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tags to add to the resource.
+	Tag []*CreateNetworkReachableAnalysisRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNetworkReachableAnalysisRequest) String() string {
@@ -443,11 +450,6 @@ func (s CreateNetworkReachableAnalysisRequest) String() string {
 
 func (s CreateNetworkReachableAnalysisRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateNetworkReachableAnalysisRequest) SetAuditParam(v string) *CreateNetworkReachableAnalysisRequest {
-	s.AuditParam = &v
-	return s
 }
 
 func (s *CreateNetworkReachableAnalysisRequest) SetNetworkPathId(v string) *CreateNetworkReachableAnalysisRequest {
@@ -466,7 +468,13 @@ func (s *CreateNetworkReachableAnalysisRequest) SetTag(v []*CreateNetworkReachab
 }
 
 type CreateNetworkReachableAnalysisRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	//
+	// You can add up to 20 tags in each call.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -738,7 +746,7 @@ func (s *DeleteNetworkReachableAnalysisResponse) SetBody(v *DeleteNetworkReachab
 
 type GetInternetTupleRequest struct {
 	// The IDs of member accounts.
-	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The local IP address.
@@ -749,12 +757,12 @@ type GetInternetTupleRequest struct {
 	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
 	// The local port.
 	//
-	// > This parameter is required only when you set **TupleType** to **5**.
+	// >  This parameter is required only if you set the **TupleType** parameter to **5**.
 	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
 	// The direction of the Internet traffic that you want to query. Valid values:
 	//
-	// - **in**: inbound
-	// - **out**: outbound
+	// *   **in**: inbound
+	// *   **out**: outbound
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -762,7 +770,7 @@ type GetInternetTupleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance IDs for filtering.
 	InstanceList []*string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+	// The metric for data ranking. Default value: **ByteCount**. This value specifies that data is ranked by traffic volume.
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The remote city.
 	//
@@ -792,20 +800,20 @@ type GetInternetTupleRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The order in which instances are ranked by Internet traffic. Valid values:
 	//
-	// - **desc**: the descending order
-	// - **asc**: the ascending order
+	// *   **desc**: the descending order
+	// *   **asc**: the ascending order
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
 	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	// The type of the tuple. Valid values:
+	// The type of the tuple. Valid values:
 	//
-	// - **1**: 1-tuple
-	// - **2**: 2-tuples
-	// - **5**: 5-tuples
+	// *   **1**: 1-tuple
+	// *   **2**: 2-tuple
+	// *   **5**: 5-tuple
 	TupleType *int32 `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
-	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
 	//
-	// > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your customer business manager to apply for permissions.
 	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
@@ -817,7 +825,7 @@ func (s GetInternetTupleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetInternetTupleRequest) SetAccountIds(v []*string) *GetInternetTupleRequest {
+func (s *GetInternetTupleRequest) SetAccountIds(v []*int64) *GetInternetTupleRequest {
 	s.AccountIds = v
 	return s
 }
@@ -924,7 +932,7 @@ func (s *GetInternetTupleRequest) SetUseMultiAccount(v bool) *GetInternetTupleRe
 
 type GetInternetTupleShrinkRequest struct {
 	// The IDs of member accounts.
-	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
 	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The local IP address.
@@ -935,12 +943,12 @@ type GetInternetTupleShrinkRequest struct {
 	CloudIsp *string `json:"CloudIsp,omitempty" xml:"CloudIsp,omitempty"`
 	// The local port.
 	//
-	// > This parameter is required only when you set **TupleType** to **5**.
+	// >  This parameter is required only if you set the **TupleType** parameter to **5**.
 	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
 	// The direction of the Internet traffic that you want to query. Valid values:
 	//
-	// - **in**: inbound
-	// - **out**: outbound
+	// *   **in**: inbound
+	// *   **out**: outbound
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -948,7 +956,7 @@ type GetInternetTupleShrinkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance IDs for filtering.
 	InstanceListShrink *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
-	// The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+	// The metric for data ranking. Default value: **ByteCount**. This value specifies that data is ranked by traffic volume.
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The remote city.
 	//
@@ -978,20 +986,20 @@ type GetInternetTupleShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The order in which instances are ranked by Internet traffic. Valid values:
 	//
-	// - **desc**: the descending order
-	// - **asc**: the ascending order
+	// *   **desc**: the descending order
+	// *   **asc**: the ascending order
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
 	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	// The type of the tuple. Valid values:
+	// The type of the tuple. Valid values:
 	//
-	// - **1**: 1-tuple
-	// - **2**: 2-tuples
-	// - **5**: 5-tuples
+	// *   **1**: 1-tuple
+	// *   **2**: 2-tuple
+	// *   **5**: 5-tuple
 	TupleType *int32 `json:"TupleType,omitempty" xml:"TupleType,omitempty"`
-	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
 	//
-	// > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your customer business manager to apply for permissions.
 	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
@@ -1003,7 +1011,7 @@ func (s GetInternetTupleShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetInternetTupleShrinkRequest) SetAccountIds(v []*string) *GetInternetTupleShrinkRequest {
+func (s *GetInternetTupleShrinkRequest) SetAccountIds(v []*int64) *GetInternetTupleShrinkRequest {
 	s.AccountIds = v
 	return s
 }
@@ -1198,9 +1206,8 @@ type GetInternetTupleResponseBodyData struct {
 	// The number of packets.
 	PacketCount *float64 `json:"PacketCount,omitempty" xml:"PacketCount,omitempty"`
 	// The protocol number.
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of repeated packets.
-	RetranCount *float64 `json:"RetranCount,omitempty" xml:"RetranCount,omitempty"`
+	Protocol       *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RetransmitRate *float64 `json:"RetransmitRate,omitempty" xml:"RetransmitRate,omitempty"`
 	// The round-trip time (RTT). Unit: milliseconds.
 	Rtt *float64 `json:"Rtt,omitempty" xml:"Rtt,omitempty"`
 }
@@ -1363,8 +1370,8 @@ func (s *GetInternetTupleResponseBodyData) SetProtocol(v string) *GetInternetTup
 	return s
 }
 
-func (s *GetInternetTupleResponseBodyData) SetRetranCount(v float64) *GetInternetTupleResponseBodyData {
-	s.RetranCount = &v
+func (s *GetInternetTupleResponseBodyData) SetRetransmitRate(v float64) *GetInternetTupleResponseBodyData {
+	s.RetransmitRate = &v
 	return s
 }
 
@@ -1744,24 +1751,60 @@ func (s *GetNetworkReachableAnalysisResponse) SetBody(v *GetNetworkReachableAnal
 }
 
 type GetTransitRouterFlowTopNRequest struct {
-	AccountIds        []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	BandwithPackageId *string   `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
-	BeginTime         *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CenId             *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	Direction         *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime           *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupBy           *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	OrderBy           *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherIp           *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort         *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	OtherRegion       *string   `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
-	Protocol          *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Sort              *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	ThisIp            *string   `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
-	ThisPort          *string   `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
-	ThisRegion        *string   `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
-	TopN              *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	UseMultiAccount   *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The IDs of member accounts.
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The ID of the CEN bandwidth plan.
+	BandwithPackageId *string `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The direction of the inter-region traffic in the local regions or for the local IP addresses. Valid values:
+	//
+	// *   in: inbound traffic
+	// *   out: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   1Tuple: queries the rankings of inter-region traffic data for the local regions, Cloud Enterprise Network (CEN) instances, and IP addresses.
+	// *   2Tuple: queries the rankings of inter-region traffic data for the local and remote regions, and the local and remote IP addresses.
+	// *   5Tuple: queries the rankings of inter-region traffic data for the local and remote IP addresses, local and remote ports, and protocols in use.
+	// *   Cen: queries the rankings of inter-region traffic data for CEN instances.
+	// *   RegionPair: queries the rankings of inter-region traffic data for the local and remote regions.
+	// *   Port: queries the rankings of inter-region traffic data for the local and remote ports.
+	// *   Protocol: queries the rankings of inter-region traffic data for the protocols in use.
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The remote region.
+	OtherRegion *string `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	// The protocol number.
+	//
+	// >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The order for ranking inter-region traffic data. Valid values:
+	//
+	// *   desc: descending order
+	// *   asc: ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The local IP address.
+	ThisIp *string `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	// The local port.
+	ThisPort *string `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	// The local region where the **local IP address** resides.
+	ThisRegion *string `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+	// Specifies the maximum number of data entries to display. Default value: **10**. Maximum value: 100.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
 func (s GetTransitRouterFlowTopNRequest) String() string {
@@ -1772,7 +1815,7 @@ func (s GetTransitRouterFlowTopNRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetTransitRouterFlowTopNRequest) SetAccountIds(v []*string) *GetTransitRouterFlowTopNRequest {
+func (s *GetTransitRouterFlowTopNRequest) SetAccountIds(v []*int64) *GetTransitRouterFlowTopNRequest {
 	s.AccountIds = v
 	return s
 }
@@ -1863,24 +1906,60 @@ func (s *GetTransitRouterFlowTopNRequest) SetUseMultiAccount(v bool) *GetTransit
 }
 
 type GetTransitRouterFlowTopNShrinkRequest struct {
-	AccountIdsShrink  *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	// The IDs of member accounts.
+	AccountIdsShrink *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	// The ID of the CEN bandwidth plan.
 	BandwithPackageId *string `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
-	BeginTime         *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CenId             *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	Direction         *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupBy           *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	OrderBy           *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherIp           *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort         *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	OtherRegion       *string `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
-	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Sort              *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	ThisIp            *string `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
-	ThisPort          *string `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
-	ThisRegion        *string `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
-	TopN              *int32  `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	UseMultiAccount   *bool   `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The direction of the inter-region traffic in the local regions or for the local IP addresses. Valid values:
+	//
+	// *   in: inbound traffic
+	// *   out: outbound traffic
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   1Tuple: queries the rankings of inter-region traffic data for the local regions, Cloud Enterprise Network (CEN) instances, and IP addresses.
+	// *   2Tuple: queries the rankings of inter-region traffic data for the local and remote regions, and the local and remote IP addresses.
+	// *   5Tuple: queries the rankings of inter-region traffic data for the local and remote IP addresses, local and remote ports, and protocols in use.
+	// *   Cen: queries the rankings of inter-region traffic data for CEN instances.
+	// *   RegionPair: queries the rankings of inter-region traffic data for the local and remote regions.
+	// *   Port: queries the rankings of inter-region traffic data for the local and remote ports.
+	// *   Protocol: queries the rankings of inter-region traffic data for the protocols in use.
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The remote region.
+	OtherRegion *string `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	// The protocol number.
+	//
+	// >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The order for ranking inter-region traffic data. Valid values:
+	//
+	// *   desc: descending order
+	// *   asc: ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The local IP address.
+	ThisIp *string `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	// The local port.
+	ThisPort *string `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	// The local region where the **local IP address** resides.
+	ThisRegion *string `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+	// Specifies the maximum number of data entries to display. Default value: **10**. Maximum value: 100.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
 }
 
 func (s GetTransitRouterFlowTopNShrinkRequest) String() string {
@@ -1982,7 +2061,9 @@ func (s *GetTransitRouterFlowTopNShrinkRequest) SetUseMultiAccount(v bool) *GetT
 }
 
 type GetTransitRouterFlowTopNResponseBody struct {
-	RequestId             *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ranking result of inter-region traffic data.
 	TransitRouterFlowTopN []*GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN `json:"TransitRouterFlowTopN,omitempty" xml:"TransitRouterFlowTopN,omitempty" type:"Repeated"`
 }
 
@@ -2005,20 +2086,34 @@ func (s *GetTransitRouterFlowTopNResponseBody) SetTransitRouterFlowTopN(v []*Get
 }
 
 type GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN struct {
-	AccountId         *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	BandwithPackageId *string  `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
-	Bytes             *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	CenId             *string  `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	EndTime           *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OtherIp           *string  `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort         *string  `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	OtherRegion       *string  `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
-	Packets           *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
-	Protocol          *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	StartTime         *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	ThisIp            *string  `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
-	ThisPort          *string  `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
-	ThisRegion        *string  `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
+	// The account ID.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the CEN bandwidth plan.
+	BandwithPackageId *string `json:"BandwithPackageId,omitempty" xml:"BandwithPackageId,omitempty"`
+	// The total volume of traffic in the specified time range.
+	Bytes *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The end of the time range that you queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The remote region where the remote IP address resides.
+	OtherRegion *string `json:"OtherRegion,omitempty" xml:"OtherRegion,omitempty"`
+	// The total number of packets in the specified time range.
+	Packets *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	// The protocol number.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The beginning of the time range that you queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The local IP address.
+	ThisIp *string `json:"ThisIp,omitempty" xml:"ThisIp,omitempty"`
+	// The local port.
+	ThisPort *string `json:"ThisPort,omitempty" xml:"ThisPort,omitempty"`
+	// The local region where the local IP address resides.
+	ThisRegion *string `json:"ThisRegion,omitempty" xml:"ThisRegion,omitempty"`
 }
 
 func (s GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN) String() string {
@@ -2129,24 +2224,63 @@ func (s *GetTransitRouterFlowTopNResponse) SetBody(v *GetTransitRouterFlowTopNRe
 }
 
 type GetVbrFlowTopNRequest struct {
-	AccountIds            []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	AttachmentId          *string   `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	BeginTime             *int64    `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CenId                 *string   `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CloudIp               *string   `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudPort             *string   `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	Direction             *string   `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime               *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupBy               *string   `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	OrderBy               *string   `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherIp               *string   `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort             *string   `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	Protocol              *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId              *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort                  *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TopN                  *int32    `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	UseMultiAccount       *bool     `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
-	VirtualBorderRouterId *string   `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
+	// The IDs of member accounts.
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// The CEN connection ID.
+	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local port.
+	//
+	// >  This parameter is required only if you set GroupBy to CloudPort.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The direction of the hybrid cloud traffic in the local regions or for the local IP addresses. Valid values:
+	//
+	// *   in: traffic from a data center to Alibaba Cloud
+	// *   out: traffic from Alibaba Cloud to a data center
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   1Tuple: queries the rankings of hybrid cloud traffic data for the Cloud Enterprise Network (CEN) instances, CEN connections, virtual border routers (VBRs), and IP addresses.
+	// *   2Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses.
+	// *   5Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses, local and remote ports, and protocols.
+	// *   CloudPort: queries the rankings of hybrid cloud traffic data for the local ports.
+	// *   OtherPort: queries the rankings of hybrid cloud traffic data for the remote ports.
+	// *   Protocol: queries the rankings of hybrid cloud traffic data for the protocols.
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	//
+	// >  This parameter is required only if you set GroupBy to OtherPort.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The protocol number.
+	//
+	// >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The local region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The order for ranking hybrid cloud traffic data. Valid values:
+	//
+	// *   desc: descending order
+	// *   asc: ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies that top-10 traffic data is displayed by default. Maximum value: **100**.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The ID of the VBR that is associated with the Express Connect circuit.
+	VirtualBorderRouterId *string `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
 }
 
 func (s GetVbrFlowTopNRequest) String() string {
@@ -2157,7 +2291,7 @@ func (s GetVbrFlowTopNRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetVbrFlowTopNRequest) SetAccountIds(v []*string) *GetVbrFlowTopNRequest {
+func (s *GetVbrFlowTopNRequest) SetAccountIds(v []*int64) *GetVbrFlowTopNRequest {
 	s.AccountIds = v
 	return s
 }
@@ -2248,23 +2382,62 @@ func (s *GetVbrFlowTopNRequest) SetVirtualBorderRouterId(v string) *GetVbrFlowTo
 }
 
 type GetVbrFlowTopNShrinkRequest struct {
-	AccountIdsShrink      *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
-	AttachmentId          *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	BeginTime             *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CloudIp               *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudPort             *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	Direction             *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	EndTime               *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupBy               *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	OrderBy               *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	OtherIp               *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort             *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	Protocol              *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sort                  *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TopN                  *int32  `json:"TopN,omitempty" xml:"TopN,omitempty"`
-	UseMultiAccount       *bool   `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The IDs of member accounts.
+	AccountIdsShrink *string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty"`
+	// The CEN connection ID.
+	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The CEN instance ID.
+	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local port.
+	//
+	// >  This parameter is required only if you set GroupBy to CloudPort.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The direction of the hybrid cloud traffic in the local regions or for the local IP addresses. Valid values:
+	//
+	// *   in: traffic from a data center to Alibaba Cloud
+	// *   out: traffic from Alibaba Cloud to a data center
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   1Tuple: queries the rankings of hybrid cloud traffic data for the Cloud Enterprise Network (CEN) instances, CEN connections, virtual border routers (VBRs), and IP addresses.
+	// *   2Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses.
+	// *   5Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses, local and remote ports, and protocols.
+	// *   CloudPort: queries the rankings of hybrid cloud traffic data for the local ports.
+	// *   OtherPort: queries the rankings of hybrid cloud traffic data for the remote ports.
+	// *   Protocol: queries the rankings of hybrid cloud traffic data for the protocols.
+	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
+	// The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	//
+	// >  This parameter is required only if you set GroupBy to OtherPort.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The protocol number.
+	//
+	// >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The local region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The order for ranking hybrid cloud traffic data. Valid values:
+	//
+	// *   desc: descending order
+	// *   asc: ascending order
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// Specifies top-N traffic data to display. Default value: **10**. This value specifies that top-10 traffic data is displayed by default. Maximum value: **100**.
+	TopN *int32 `json:"TopN,omitempty" xml:"TopN,omitempty"`
+	// Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+	//
+	// >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
+	UseMultiAccount *bool `json:"UseMultiAccount,omitempty" xml:"UseMultiAccount,omitempty"`
+	// The ID of the VBR that is associated with the Express Connect circuit.
 	VirtualBorderRouterId *string `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
 }
 
@@ -2367,7 +2540,9 @@ func (s *GetVbrFlowTopNShrinkRequest) SetVirtualBorderRouterId(v string) *GetVbr
 }
 
 type GetVbrFlowTopNResponseBody struct {
-	RequestId                      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ranking result of hybrid cloud traffic data.
 	VirtualBorderRouterFlowlogTopN []*GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN `json:"VirtualBorderRouterFlowlogTopN,omitempty" xml:"VirtualBorderRouterFlowlogTopN,omitempty" type:"Repeated"`
 }
 
@@ -2390,17 +2565,28 @@ func (s *GetVbrFlowTopNResponseBody) SetVirtualBorderRouterFlowlogTopN(v []*GetV
 }
 
 type GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN struct {
-	AccountId             *string  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	AttachmentId          *string  `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	Bytes                 *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
-	CloudIp               *string  `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
-	CloudPort             *string  `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
-	CloudRegion           *string  `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
-	OtherIp               *string  `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
-	OtherPort             *string  `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
-	Packets               *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
-	Protocol              *string  `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	VirtualBorderRouterId *string  `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
+	// The account ID.
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The CEN connection ID.
+	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
+	// The total volume of traffic in the specified time range.
+	Bytes *float64 `json:"Bytes,omitempty" xml:"Bytes,omitempty"`
+	// The local IP address.
+	CloudIp *string `json:"CloudIp,omitempty" xml:"CloudIp,omitempty"`
+	// The local port.
+	CloudPort *string `json:"CloudPort,omitempty" xml:"CloudPort,omitempty"`
+	// The local region where the local IP address resides.
+	CloudRegion *string `json:"CloudRegion,omitempty" xml:"CloudRegion,omitempty"`
+	// The remote IP address.
+	OtherIp *string `json:"OtherIp,omitempty" xml:"OtherIp,omitempty"`
+	// The remote port.
+	OtherPort *string `json:"OtherPort,omitempty" xml:"OtherPort,omitempty"`
+	// The total number of packets in the specified time range.
+	Packets *float64 `json:"Packets,omitempty" xml:"Packets,omitempty"`
+	// The protocol number.
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the VBR that is associated with the Express Connect circuit.
+	VirtualBorderRouterId *string `json:"VirtualBorderRouterId,omitempty" xml:"VirtualBorderRouterId,omitempty"`
 }
 
 func (s GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN) String() string {
@@ -2625,6 +2811,10 @@ func (client *Client) CreateNetworkPathWithOptions(request *CreateNetworkPathReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
 		query["SourceId"] = request.SourceId
 	}
@@ -2717,10 +2907,6 @@ func (client *Client) CreateNetworkReachableAnalysisWithOptions(request *CreateN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AuditParam)) {
-		query["AuditParam"] = request.AuditParam
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.NetworkPathId)) {
 		query["NetworkPathId"] = request.NetworkPathId
 	}
