@@ -1848,6 +1848,140 @@ func (s *CreateRequestDiagnosisResponse) SetBody(v *CreateRequestDiagnosisRespon
 	return s
 }
 
+type CreateStorageAnalysisTaskRequest struct {
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	TableName  *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s CreateStorageAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageAnalysisTaskRequest) SetDbName(v string) *CreateStorageAnalysisTaskRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskRequest) SetInstanceId(v string) *CreateStorageAnalysisTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskRequest) SetNodeId(v string) *CreateStorageAnalysisTaskRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskRequest) SetTableName(v string) *CreateStorageAnalysisTaskRequest {
+	s.TableName = &v
+	return s
+}
+
+type CreateStorageAnalysisTaskResponseBody struct {
+	Code      *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateStorageAnalysisTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateStorageAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageAnalysisTaskResponseBody) SetCode(v int64) *CreateStorageAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBody) SetData(v *CreateStorageAnalysisTaskResponseBodyData) *CreateStorageAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBody) SetMessage(v string) *CreateStorageAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBody) SetRequestId(v string) *CreateStorageAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBody) SetSuccess(v bool) *CreateStorageAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateStorageAnalysisTaskResponseBodyData struct {
+	CreateTaskSuccess *bool   `json:"CreateTaskSuccess,omitempty" xml:"CreateTaskSuccess,omitempty"`
+	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateStorageAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageAnalysisTaskResponseBodyData) SetCreateTaskSuccess(v bool) *CreateStorageAnalysisTaskResponseBodyData {
+	s.CreateTaskSuccess = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBodyData) SetErrorMessage(v string) *CreateStorageAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponseBodyData) SetTaskId(v string) *CreateStorageAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CreateStorageAnalysisTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateStorageAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStorageAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageAnalysisTaskResponse) SetHeaders(v map[string]*string) *CreateStorageAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponse) SetStatusCode(v int32) *CreateStorageAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStorageAnalysisTaskResponse) SetBody(v *CreateStorageAnalysisTaskResponseBody) *CreateStorageAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCloudBenchTaskRequest struct {
 	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](~~230670~~) operation to query the ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -7972,6 +8106,199 @@ func (s *GetAsyncErrorRequestStatResultResponse) SetBody(v *GetAsyncErrorRequest
 	return s
 }
 
+type GetAutoIncrementUsageStatisticRequest struct {
+	DbNames     *string  `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
+	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RatioFilter *float64 `json:"RatioFilter,omitempty" xml:"RatioFilter,omitempty"`
+	RealTime    *bool    `json:"RealTime,omitempty" xml:"RealTime,omitempty"`
+}
+
+func (s GetAutoIncrementUsageStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoIncrementUsageStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoIncrementUsageStatisticRequest) SetDbNames(v string) *GetAutoIncrementUsageStatisticRequest {
+	s.DbNames = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticRequest) SetInstanceId(v string) *GetAutoIncrementUsageStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticRequest) SetRatioFilter(v float64) *GetAutoIncrementUsageStatisticRequest {
+	s.RatioFilter = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticRequest) SetRealTime(v bool) *GetAutoIncrementUsageStatisticRequest {
+	s.RealTime = &v
+	return s
+}
+
+type GetAutoIncrementUsageStatisticResponseBody struct {
+	Code      *int64                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAutoIncrementUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBody) SetCode(v int64) *GetAutoIncrementUsageStatisticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBody) SetData(v *GetAutoIncrementUsageStatisticResponseBodyData) *GetAutoIncrementUsageStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBody) SetMessage(v string) *GetAutoIncrementUsageStatisticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBody) SetRequestId(v string) *GetAutoIncrementUsageStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBody) SetSuccess(v bool) *GetAutoIncrementUsageStatisticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAutoIncrementUsageStatisticResponseBodyData struct {
+	AutoIncrementUsageList []*GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList `json:"AutoIncrementUsageList,omitempty" xml:"AutoIncrementUsageList,omitempty" type:"Repeated"`
+	ErrorInfo              *string                                                                 `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
+	Finish                 *bool                                                                   `json:"Finish,omitempty" xml:"Finish,omitempty"`
+	TaskStatus             *string                                                                 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Timestamp              *int64                                                                  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetAutoIncrementUsageList(v []*GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) *GetAutoIncrementUsageStatisticResponseBodyData {
+	s.AutoIncrementUsageList = v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetErrorInfo(v string) *GetAutoIncrementUsageStatisticResponseBodyData {
+	s.ErrorInfo = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetFinish(v bool) *GetAutoIncrementUsageStatisticResponseBodyData {
+	s.Finish = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetTaskStatus(v string) *GetAutoIncrementUsageStatisticResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyData) SetTimestamp(v int64) *GetAutoIncrementUsageStatisticResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList struct {
+	AutoIncrementCurrentValue *int64   `json:"AutoIncrementCurrentValue,omitempty" xml:"AutoIncrementCurrentValue,omitempty"`
+	AutoIncrementRatio        *float64 `json:"AutoIncrementRatio,omitempty" xml:"AutoIncrementRatio,omitempty"`
+	ColumnName                *string  `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	DbName                    *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	MaximumValue              *int64   `json:"MaximumValue,omitempty" xml:"MaximumValue,omitempty"`
+	TableName                 *string  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetAutoIncrementCurrentValue(v int64) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.AutoIncrementCurrentValue = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetAutoIncrementRatio(v float64) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.AutoIncrementRatio = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetColumnName(v string) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetDbName(v string) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetMaximumValue(v int64) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.MaximumValue = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList) SetTableName(v string) *GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList {
+	s.TableName = &v
+	return s
+}
+
+type GetAutoIncrementUsageStatisticResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAutoIncrementUsageStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAutoIncrementUsageStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAutoIncrementUsageStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAutoIncrementUsageStatisticResponse) SetHeaders(v map[string]*string) *GetAutoIncrementUsageStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponse) SetStatusCode(v int32) *GetAutoIncrementUsageStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAutoIncrementUsageStatisticResponse) SetBody(v *GetAutoIncrementUsageStatisticResponseBody) *GetAutoIncrementUsageStatisticResponse {
+	s.Body = v
+	return s
+}
+
 type GetAutoResourceOptimizeRulesRequest struct {
 	// The reserved parameter.
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
@@ -10288,21 +10615,21 @@ func (s *GetErrorRequestSampleResponseBody) SetSuccess(v bool) *GetErrorRequestS
 }
 
 type GetErrorRequestSampleResponseBodyData struct {
-	// The name of the database.
+	// The database name.
 	Database *string `json:"database,omitempty" xml:"database,omitempty"`
-	// The error code.
+	// The error code that is returned.
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The IP address of the client that executes the SQL statement.
 	OriginHost *string `json:"originHost,omitempty" xml:"originHost,omitempty"`
 	// The SQL statement.
 	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
-	// The ID of the SQL query.
+	// The SQL query ID.
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
 	// The table information.
 	Tables []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
-	// The time when the SQL query was executed. The value of this parameter is a UNIX timestamp. Unit: ms.
+	// The time when the SQL query was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 	// The username of the account that is used to log on to the database.
 	User *string `json:"user,omitempty" xml:"user,omitempty"`
@@ -13448,7 +13775,7 @@ func (s *GetKillInstanceSessionTaskResultResponse) SetBody(v *GetKillInstanceSes
 }
 
 type GetMongoDBCurrentOpRequest struct {
-	// The condition used to filter sessions during the query. For more information, see the currentOp command of MongoDB.
+	// The `db.currentOp()` command that is used to filter sessions. For more information, see [db.currentOp()](https://docs.mongodb.com/manual/reference/method/db.currentOp/) of MongoDB Documentation.
 	FilterDoc *string `json:"FilterDoc,omitempty" xml:"FilterDoc,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -13572,7 +13899,10 @@ func (s *GetMongoDBCurrentOpResponseBodyData) SetTimestamp(v int64) *GetMongoDBC
 }
 
 type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
-	// Indicates whether the operation is active.
+	// Indicates whether the operation is active. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The IP address of the client.
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
@@ -13582,11 +13912,14 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	ConnectionId *int64 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	// The description of the connection.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The driver.
+	// The driver for MongoDB.
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
 	// The host.
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Indicates whether the operation is marked as terminated. If the operation is marked as terminated, true is returned.
+	// Indicates whether the operation is marked as terminated.
+	//
+	// *   **true**
+	// *   **false**
 	KillPending *bool `json:"KillPending,omitempty" xml:"KillPending,omitempty"`
 	// The namespace.
 	Ns *string `json:"Ns,omitempty" xml:"Ns,omitempty"`
@@ -13606,7 +13939,9 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 	// The duration of the operation. Unit: seconds.
 	SecsRunning *int64 `json:"SecsRunning,omitempty" xml:"SecsRunning,omitempty"`
-	// The shard.
+	// The ID of the data shard.
+	//
+	// >  This parameter is returned for sharded cluster instances.
 	Shard *string `json:"Shard,omitempty" xml:"Shard,omitempty"`
 }
 
@@ -14420,7 +14755,7 @@ func (s *GetPartitionsHeatmapResponse) SetBody(v *GetPartitionsHeatmapResponseBo
 type GetPfsMetricTrendsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
+	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -14433,7 +14768,7 @@ type GetPfsMetricTrendsRequest struct {
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
 	// The node ID.
 	//
-	// >  You must specify this parameter for an ApsaraDB RDS for MySQL Cluster Edition instance and a PolarDB for MySQL cluster.
+	// >  You must specify this parameter for an ApsaraDB RDS for MySQL cluster instance and a PolarDB for MySQL cluster.
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -19638,6 +19973,353 @@ func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBo
 	return s
 }
 
+type GetStorageAnalysisResultRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetStorageAnalysisResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultRequest) SetInstanceId(v string) *GetStorageAnalysisResultRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultRequest) SetNodeId(v string) *GetStorageAnalysisResultRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultRequest) SetTaskId(v string) *GetStorageAnalysisResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponseBody struct {
+	Code      *int64                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetStorageAnalysisResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponseBody) SetCode(v int64) *GetStorageAnalysisResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBody) SetData(v *GetStorageAnalysisResultResponseBodyData) *GetStorageAnalysisResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBody) SetMessage(v string) *GetStorageAnalysisResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBody) SetRequestId(v string) *GetStorageAnalysisResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBody) SetSuccess(v bool) *GetStorageAnalysisResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponseBodyData struct {
+	AnalyzedDbCount       *int64                                                         `json:"AnalyzedDbCount,omitempty" xml:"AnalyzedDbCount,omitempty"`
+	StorageAnalysisResult *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult `json:"StorageAnalysisResult,omitempty" xml:"StorageAnalysisResult,omitempty" type:"Struct"`
+	TaskFinish            *bool                                                          `json:"TaskFinish,omitempty" xml:"TaskFinish,omitempty"`
+	TaskId                *string                                                        `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProgress          *int64                                                         `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	TaskState             *string                                                        `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
+	TaskSuccess           *bool                                                          `json:"TaskSuccess,omitempty" xml:"TaskSuccess,omitempty"`
+	TotalDbCount          *int64                                                         `json:"TotalDbCount,omitempty" xml:"TotalDbCount,omitempty"`
+}
+
+func (s GetStorageAnalysisResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetAnalyzedDbCount(v int64) *GetStorageAnalysisResultResponseBodyData {
+	s.AnalyzedDbCount = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetStorageAnalysisResult(v *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) *GetStorageAnalysisResultResponseBodyData {
+	s.StorageAnalysisResult = v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTaskFinish(v bool) *GetStorageAnalysisResultResponseBodyData {
+	s.TaskFinish = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTaskId(v string) *GetStorageAnalysisResultResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTaskProgress(v int64) *GetStorageAnalysisResultResponseBodyData {
+	s.TaskProgress = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTaskState(v string) *GetStorageAnalysisResultResponseBodyData {
+	s.TaskState = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTaskSuccess(v bool) *GetStorageAnalysisResultResponseBodyData {
+	s.TaskSuccess = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyData) SetTotalDbCount(v int64) *GetStorageAnalysisResultResponseBodyData {
+	s.TotalDbCount = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
+	AnalysisErrorType     *string                                                                              `json:"AnalysisErrorType,omitempty" xml:"AnalysisErrorType,omitempty"`
+	AnalysisSuccess       *bool                                                                                `json:"AnalysisSuccess,omitempty" xml:"AnalysisSuccess,omitempty"`
+	DailyIncrement        *int64                                                                               `json:"DailyIncrement,omitempty" xml:"DailyIncrement,omitempty"`
+	EstimateAvailableDays *int64                                                                               `json:"EstimateAvailableDays,omitempty" xml:"EstimateAvailableDays,omitempty"`
+	NeedOptimizeItemList  []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList `json:"NeedOptimizeItemList,omitempty" xml:"NeedOptimizeItemList,omitempty" type:"Repeated"`
+	TableStats            []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats           `json:"TableStats,omitempty" xml:"TableStats,omitempty" type:"Repeated"`
+	TotalFreeStorageSize  *int64                                                                               `json:"TotalFreeStorageSize,omitempty" xml:"TotalFreeStorageSize,omitempty"`
+	TotalStorageSize      *int64                                                                               `json:"TotalStorageSize,omitempty" xml:"TotalStorageSize,omitempty"`
+	TotalUsedStorageSize  *int64                                                                               `json:"TotalUsedStorageSize,omitempty" xml:"TotalUsedStorageSize,omitempty"`
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetAnalysisErrorType(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.AnalysisErrorType = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetAnalysisSuccess(v bool) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.AnalysisSuccess = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetDailyIncrement(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.DailyIncrement = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetEstimateAvailableDays(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.EstimateAvailableDays = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetNeedOptimizeItemList(v []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.NeedOptimizeItemList = v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTableStats(v []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.TableStats = v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotalFreeStorageSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.TotalFreeStorageSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotalStorageSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.TotalStorageSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult) SetTotalUsedStorageSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult {
+	s.TotalUsedStorageSize = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList struct {
+	AssociatedData   *string `json:"AssociatedData,omitempty" xml:"AssociatedData,omitempty"`
+	DbName           *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	OptimizeAdvice   *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
+	OptimizeItemName *string `json:"OptimizeItemName,omitempty" xml:"OptimizeItemName,omitempty"`
+	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) SetAssociatedData(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList {
+	s.AssociatedData = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) SetDbName(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) SetOptimizeAdvice(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList {
+	s.OptimizeAdvice = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) SetOptimizeItemName(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList {
+	s.OptimizeItemName = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList) SetTableName(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList {
+	s.TableName = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats struct {
+	AvgRowLength     *int64  `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
+	DataFree         *int64  `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
+	DataSize         *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DbName           *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	IndexSize        *int64  `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	PhyTotalSize     *int64  `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
+	PhysicalFileSize *int64  `json:"PhysicalFileSize,omitempty" xml:"PhysicalFileSize,omitempty"`
+	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableRows        *int64  `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
+	TableType        *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	TotalSize        *int64  `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetAvgRowLength(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.AvgRowLength = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetDataFree(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.DataFree = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetDataSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.DataSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetDbName(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.DbName = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetEngine(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetIndexSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetPhyTotalSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.PhyTotalSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetPhysicalFileSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.PhysicalFileSize = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetTableName(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetTableRows(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.TableRows = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetTableType(v string) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.TableType = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats) SetTotalSize(v int64) *GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats {
+	s.TotalSize = &v
+	return s
+}
+
+type GetStorageAnalysisResultResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetStorageAnalysisResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetStorageAnalysisResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStorageAnalysisResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStorageAnalysisResultResponse) SetHeaders(v map[string]*string) *GetStorageAnalysisResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponse) SetStatusCode(v int32) *GetStorageAnalysisResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStorageAnalysisResultResponse) SetBody(v *GetStorageAnalysisResultResponseBody) *GetStorageAnalysisResultResponse {
+	s.Body = v
+	return s
+}
+
 type KillInstanceAllSessionRequest struct {
 	// The reserved parameter.
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
@@ -22701,13 +23383,13 @@ func (client *Client) CreateQueryOptimizeTag(request *CreateQueryOptimizeTagRequ
  * Before you call this operation, take note of the following items:
  * *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
  * *   This operation supports the following database engines:
- *     *   RDS MySQL
- *     *   RDS PostgreSQL
- *     *   RDS SQL Server
+ *     *   ApsaraDB RDS for MySQL
+ *     *   ApsaraDB RDS for PostgreSQL
+ *     *   ApsaraDB RDS for SQL Server
  *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (Compatible with Oracle)
+ *     *   PolarDB for PostgreSQL (compatible with Oracle)
  *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+ * >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
  *
  * @param request CreateRequestDiagnosisRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -22762,13 +23444,13 @@ func (client *Client) CreateRequestDiagnosisWithOptions(request *CreateRequestDi
  * Before you call this operation, take note of the following items:
  * *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
  * *   This operation supports the following database engines:
- *     *   RDS MySQL
- *     *   RDS PostgreSQL
- *     *   RDS SQL Server
+ *     *   ApsaraDB RDS for MySQL
+ *     *   ApsaraDB RDS for PostgreSQL
+ *     *   ApsaraDB RDS for SQL Server
  *     *   PolarDB for MySQL
- *     *   PolarDB for PostgreSQL (Compatible with Oracle)
+ *     *   PolarDB for PostgreSQL (compatible with Oracle)
  *     *   ApsaraDB for MongoDB
- * >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+ * >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
  *
  * @param request CreateRequestDiagnosisRequest
  * @return CreateRequestDiagnosisResponse
@@ -22777,6 +23459,62 @@ func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRequestDiagnosisResponse{}
 	_body, _err := client.CreateRequestDiagnosisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorageAnalysisTaskRequest, runtime *util.RuntimeOptions) (_result *CreateStorageAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStorageAnalysisTask"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStorageAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateStorageAnalysisTask(request *CreateStorageAnalysisTaskRequest) (_result *CreateStorageAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStorageAnalysisTaskResponse{}
+	_body, _err := client.CreateStorageAnalysisTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24602,6 +25340,62 @@ func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorReque
 	return _result, _err
 }
 
+func (client *Client) GetAutoIncrementUsageStatisticWithOptions(request *GetAutoIncrementUsageStatisticRequest, runtime *util.RuntimeOptions) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbNames)) {
+		query["DbNames"] = request.DbNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RatioFilter)) {
+		query["RatioFilter"] = request.RatioFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealTime)) {
+		query["RealTime"] = request.RealTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAutoIncrementUsageStatistic"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAutoIncrementUsageStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAutoIncrementUsageStatistic(request *GetAutoIncrementUsageStatisticRequest) (_result *GetAutoIncrementUsageStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAutoIncrementUsageStatisticResponse{}
+	_body, _err := client.GetAutoIncrementUsageStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you call this operation, take note of the following items:
  * *   If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
@@ -24673,8 +25467,8 @@ func (client *Client) GetAutoResourceOptimizeRules(request *GetAutoResourceOptim
  * Before you call this operation, take note of the following items:
  * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
  * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+ *     *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
  *
  * @param request GetAutoThrottleRulesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -24721,8 +25515,8 @@ func (client *Client) GetAutoThrottleRulesWithOptions(request *GetAutoThrottleRu
  * Before you call this operation, take note of the following items:
  * *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
  * *   The database instance that you want to manage is of one of the following types:
- *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
- *     *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+ *     *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+ *     *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
  *
  * @param request GetAutoThrottleRulesRequest
  * @return GetAutoThrottleRulesResponse
@@ -27728,6 +28522,58 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSqlOptimizeAdviceResponse{}
 	_body, _err := client.GetSqlOptimizeAdviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAnalysisResultRequest, runtime *util.RuntimeOptions) (_result *GetStorageAnalysisResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStorageAnalysisResult"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStorageAnalysisResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetStorageAnalysisResult(request *GetStorageAnalysisResultRequest) (_result *GetStorageAnalysisResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStorageAnalysisResultResponse{}
+	_body, _err := client.GetStorageAnalysisResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

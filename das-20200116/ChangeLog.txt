@@ -1,3 +1,6 @@
+2023-12-08 Version: v3.2.0
+- Generated golang 2020-01-16 for DAS.
+
 2023-11-17 Version: v3.1.2
 - Generated golang 2020-01-16 for DAS.
 
