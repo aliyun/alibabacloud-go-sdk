@@ -758,7 +758,10 @@ func (s *GetPackageRequest) SetSourceProject(v string) *GetPackageRequest {
 
 type GetPackageResponseBody struct {
 	// The returned data.
-	Data *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Data      *GetPackageResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -773,6 +776,21 @@ func (s GetPackageResponseBody) GoString() string {
 
 func (s *GetPackageResponseBody) SetData(v *GetPackageResponseBodyData) *GetPackageResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *GetPackageResponseBody) SetErrorCode(v string) *GetPackageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetPackageResponseBody) SetErrorMsg(v string) *GetPackageResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetPackageResponseBody) SetHttpCode(v int32) *GetPackageResponseBody {
+	s.HttpCode = &v
 	return s
 }
 
@@ -867,7 +885,8 @@ type GetPackageResponseBodyDataResourceListFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListFunction) String() string {
@@ -888,11 +907,17 @@ func (s *GetPackageResponseBodyDataResourceListFunction) SetName(v string) *GetP
 	return s
 }
 
+func (s *GetPackageResponseBodyDataResourceListFunction) SetSchemaName(v string) *GetPackageResponseBodyDataResourceListFunction {
+	s.SchemaName = &v
+	return s
+}
+
 type GetPackageResponseBodyDataResourceListResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListResource) String() string {
@@ -913,11 +938,17 @@ func (s *GetPackageResponseBodyDataResourceListResource) SetName(v string) *GetP
 	return s
 }
 
+func (s *GetPackageResponseBodyDataResourceListResource) SetSchemaName(v string) *GetPackageResponseBodyDataResourceListResource {
+	s.SchemaName = &v
+	return s
+}
+
 type GetPackageResponseBodyDataResourceListTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetPackageResponseBodyDataResourceListTable) String() string {
@@ -935,6 +966,11 @@ func (s *GetPackageResponseBodyDataResourceListTable) SetActions(v []*string) *G
 
 func (s *GetPackageResponseBodyDataResourceListTable) SetName(v string) *GetPackageResponseBodyDataResourceListTable {
 	s.Name = &v
+	return s
+}
+
+func (s *GetPackageResponseBodyDataResourceListTable) SetSchemaName(v string) *GetPackageResponseBodyDataResourceListTable {
+	s.SchemaName = &v
 	return s
 }
 
@@ -1021,7 +1057,8 @@ type GetProjectResponseBodyData struct {
 	// The permission properties.
 	SecurityProperties *GetProjectResponseBodyDataSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -**AVAILABLE**: The project was available. -**READONLY**: The project was read only. -**FROZEN**: The project was frozen. -**DELETING**: The project was being deleted.
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status      *string   `json:"status,omitempty" xml:"status,omitempty"`
+	SuperAdmins []*string `json:"superAdmins,omitempty" xml:"superAdmins,omitempty" type:"Repeated"`
 	// The type of the project. Valid values: -**managed**: The project is an internal project. -**external**: The project is an external project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
@@ -1086,6 +1123,11 @@ func (s *GetProjectResponseBodyData) SetSecurityProperties(v *GetProjectResponse
 
 func (s *GetProjectResponseBodyData) SetStatus(v string) *GetProjectResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetProjectResponseBodyData) SetSuperAdmins(v []*string) *GetProjectResponseBodyData {
+	s.SuperAdmins = v
 	return s
 }
 
@@ -3186,7 +3228,10 @@ func (s *GetQuotaScheduleResponse) SetBody(v *GetQuotaScheduleResponseBody) *Get
 
 type GetRoleAclResponseBody struct {
 	// The returned data.
-	Data *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Data      *GetRoleAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	ErrorCode *string                     `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMsg  *string                     `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	HttpCode  *int32                      `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
 	// The ID of the request.
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
@@ -3201,6 +3246,21 @@ func (s GetRoleAclResponseBody) GoString() string {
 
 func (s *GetRoleAclResponseBody) SetData(v *GetRoleAclResponseBodyData) *GetRoleAclResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *GetRoleAclResponseBody) SetErrorCode(v string) *GetRoleAclResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRoleAclResponseBody) SetErrorMsg(v string) *GetRoleAclResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetRoleAclResponseBody) SetHttpCode(v int32) *GetRoleAclResponseBody {
+	s.HttpCode = &v
 	return s
 }
 
@@ -3266,7 +3326,8 @@ type GetRoleAclResponseBodyDataFunction struct {
 	// The operations that were performed on the function.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the function.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataFunction) String() string {
@@ -3287,11 +3348,17 @@ func (s *GetRoleAclResponseBodyDataFunction) SetName(v string) *GetRoleAclRespon
 	return s
 }
 
+func (s *GetRoleAclResponseBodyDataFunction) SetSchemaName(v string) *GetRoleAclResponseBodyDataFunction {
+	s.SchemaName = &v
+	return s
+}
+
 type GetRoleAclResponseBodyDataInstance struct {
 	// The operations that were performed on the instance.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the instance.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataInstance) String() string {
@@ -3312,11 +3379,17 @@ func (s *GetRoleAclResponseBodyDataInstance) SetName(v string) *GetRoleAclRespon
 	return s
 }
 
+func (s *GetRoleAclResponseBodyDataInstance) SetSchemaName(v string) *GetRoleAclResponseBodyDataInstance {
+	s.SchemaName = &v
+	return s
+}
+
 type GetRoleAclResponseBodyDataPackage struct {
 	// The operations that were performed on the package.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the package.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataPackage) String() string {
@@ -3337,11 +3410,17 @@ func (s *GetRoleAclResponseBodyDataPackage) SetName(v string) *GetRoleAclRespons
 	return s
 }
 
+func (s *GetRoleAclResponseBodyDataPackage) SetSchemaName(v string) *GetRoleAclResponseBodyDataPackage {
+	s.SchemaName = &v
+	return s
+}
+
 type GetRoleAclResponseBodyDataProject struct {
 	// The operations that were performed on the project.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the MaxCompute project.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataProject) String() string {
@@ -3362,11 +3441,17 @@ func (s *GetRoleAclResponseBodyDataProject) SetName(v string) *GetRoleAclRespons
 	return s
 }
 
+func (s *GetRoleAclResponseBodyDataProject) SetSchemaName(v string) *GetRoleAclResponseBodyDataProject {
+	s.SchemaName = &v
+	return s
+}
+
 type GetRoleAclResponseBodyDataResource struct {
 	// The operations that were performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the resource.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataResource) String() string {
@@ -3387,11 +3472,17 @@ func (s *GetRoleAclResponseBodyDataResource) SetName(v string) *GetRoleAclRespon
 	return s
 }
 
+func (s *GetRoleAclResponseBodyDataResource) SetSchemaName(v string) *GetRoleAclResponseBodyDataResource {
+	s.SchemaName = &v
+	return s
+}
+
 type GetRoleAclResponseBodyDataTable struct {
 	// The operations that were performed on the table.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 	// The name of the table.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	SchemaName *string `json:"schemaName,omitempty" xml:"schemaName,omitempty"`
 }
 
 func (s GetRoleAclResponseBodyDataTable) String() string {
@@ -3409,6 +3500,11 @@ func (s *GetRoleAclResponseBodyDataTable) SetActions(v []*string) *GetRoleAclRes
 
 func (s *GetRoleAclResponseBodyDataTable) SetName(v string) *GetRoleAclResponseBodyDataTable {
 	s.Name = &v
+	return s
+}
+
+func (s *GetRoleAclResponseBodyDataTable) SetSchemaName(v string) *GetRoleAclResponseBodyDataTable {
+	s.SchemaName = &v
 	return s
 }
 
@@ -4470,6 +4566,7 @@ func (s *ListProjectUsersResponse) SetBody(v *ListProjectUsersResponseBody) *Lis
 }
 
 type ListProjectsRequest struct {
+	// The flag to choose whether list the specific catalog - system_catalog.
 	ListSystemCatalog *bool `json:"listSystemCatalog,omitempty" xml:"listSystemCatalog,omitempty"`
 	// The maximum number of entries to return on each page.
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
@@ -4635,8 +4732,9 @@ type ListProjectsResponseBodyDataProjects struct {
 	// The permission properties.
 	SecurityProperties *ListProjectsResponseBodyDataProjectsSecurityProperties `json:"securityProperties,omitempty" xml:"securityProperties,omitempty" type:"Struct"`
 	// The status of the project. Valid values: -AVAILABLE: The project is available. -READONLY: The project is read only. -FROZEN: The project is frozen. -DELETING: The project is being deleted.
-	Status         *string `json:"status,omitempty" xml:"status,omitempty"`
-	ThreeTierModel *bool   `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Indicates whether the current project support the three-tier model
+	ThreeTierModel *bool `json:"threeTierModel,omitempty" xml:"threeTierModel,omitempty"`
 	// The project type. Valid values: -managed: The project is an internal project. -external: The project is an external project.
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
