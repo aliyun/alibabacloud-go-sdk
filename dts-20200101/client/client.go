@@ -4744,6 +4744,105 @@ func (s *CreateMigrationJobResponse) SetBody(v *CreateMigrationJobResponseBody) 
 	return s
 }
 
+type CreateReverseDtsJobRequest struct {
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+}
+
+func (s CreateReverseDtsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReverseDtsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReverseDtsJobRequest) SetDtsJobId(v string) *CreateReverseDtsJobRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+type CreateReverseDtsJobResponseBody struct {
+	DtsInstanceId  *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId       *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateReverseDtsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReverseDtsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetDtsInstanceId(v string) *CreateReverseDtsJobResponseBody {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetDtsJobId(v string) *CreateReverseDtsJobResponseBody {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetErrCode(v string) *CreateReverseDtsJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetErrMessage(v string) *CreateReverseDtsJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetHttpStatusCode(v string) *CreateReverseDtsJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetRequestId(v string) *CreateReverseDtsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponseBody) SetSuccess(v string) *CreateReverseDtsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateReverseDtsJobResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateReverseDtsJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateReverseDtsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateReverseDtsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateReverseDtsJobResponse) SetHeaders(v map[string]*string) *CreateReverseDtsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponse) SetStatusCode(v int32) *CreateReverseDtsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateReverseDtsJobResponse) SetBody(v *CreateReverseDtsJobResponseBody) *CreateReverseDtsJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSubscriptionInstanceRequest struct {
 	SourceEndpoint *CreateSubscriptionInstanceRequestSourceEndpoint `json:"SourceEndpoint,omitempty" xml:"SourceEndpoint,omitempty" type:"Struct"`
 	// The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
@@ -15195,7 +15294,9 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	// The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTime          *string                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	FullDataCheckStatus *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus `json:"FullDataCheckStatus,omitempty" xml:"FullDataCheckStatus,omitempty" type:"Struct"`
+	IncDataCheckStatus  *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus  `json:"IncDataCheckStatus,omitempty" xml:"IncDataCheckStatus,omitempty" type:"Struct"`
 	// The memory that has been used. Unit: MB.
 	MemUsage *string `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	// The initial synchronization types.
@@ -15319,6 +15420,16 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetEtlSafeCheckpoint(v
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetExpireTime(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetFullDataCheckStatus(v *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.FullDataCheckStatus = v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetIncDataCheckStatus(v *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.IncDataCheckStatus = v
 	return s
 }
 
@@ -15575,6 +15686,76 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails) SetHelpUrl
 	return s
 }
 
+type DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Percent      *string `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Progress     *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) SetPercent(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus {
+	s.Percent = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) SetProgress(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus) SetStatus(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus {
+	s.Status = &v
+	return s
+}
+
 type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	// Indicates whether initial full data synchronization is performed. Valid values:
 	//
@@ -15585,6 +15766,8 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode struct {
 	// -  **true**
 	// -  **false**
 	DataSynchronization *bool `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
+	FullDataCheck       *bool `json:"FullDataCheck,omitempty" xml:"FullDataCheck,omitempty"`
+	IncDataCheck        *bool `json:"IncDataCheck,omitempty" xml:"IncDataCheck,omitempty"`
 	// Indicates whether initial schema synchronization is performed. Valid values:
 	// -  **true**
 	// -  **false**
@@ -15606,6 +15789,16 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetDataIn
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetDataSynchronization(v bool) *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode {
 	s.DataSynchronization = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetFullDataCheck(v bool) *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode {
+	s.FullDataCheck = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode) SetIncDataCheck(v bool) *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode {
+	s.IncDataCheck = &v
 	return s
 }
 
@@ -27965,6 +28158,7 @@ type ModifyDtsJobRequest struct {
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28022,6 +28216,11 @@ func (s *ModifyDtsJobRequest) SetDtsInstanceId(v string) *ModifyDtsJobRequest {
 	return s
 }
 
+func (s *ModifyDtsJobRequest) SetDtsJobId(v string) *ModifyDtsJobRequest {
+	s.DtsJobId = &v
+	return s
+}
+
 func (s *ModifyDtsJobRequest) SetEtlOperatorColumnReference(v string) *ModifyDtsJobRequest {
 	s.EtlOperatorColumnReference = &v
 	return s
@@ -28073,6 +28272,7 @@ type ModifyDtsJobAdvanceRequest struct {
 	DbList map[string]interface{} `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28130,6 +28330,11 @@ func (s *ModifyDtsJobAdvanceRequest) SetDtsInstanceId(v string) *ModifyDtsJobAdv
 	return s
 }
 
+func (s *ModifyDtsJobAdvanceRequest) SetDtsJobId(v string) *ModifyDtsJobAdvanceRequest {
+	s.DtsJobId = &v
+	return s
+}
+
 func (s *ModifyDtsJobAdvanceRequest) SetEtlOperatorColumnReference(v string) *ModifyDtsJobAdvanceRequest {
 	s.EtlOperatorColumnReference = &v
 	return s
@@ -28181,6 +28386,7 @@ type ModifyDtsJobShrinkRequest struct {
 	DbListShrink *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
 	// The ID of the data synchronization instance.
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId      *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
 	EtlOperatorColumnReference *string `json:"EtlOperatorColumnReference,omitempty" xml:"EtlOperatorColumnReference,omitempty"`
 	// The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -28235,6 +28441,11 @@ func (s *ModifyDtsJobShrinkRequest) SetDbListShrink(v string) *ModifyDtsJobShrin
 
 func (s *ModifyDtsJobShrinkRequest) SetDtsInstanceId(v string) *ModifyDtsJobShrinkRequest {
 	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *ModifyDtsJobShrinkRequest) SetDtsJobId(v string) *ModifyDtsJobShrinkRequest {
+	s.DtsJobId = &v
 	return s
 }
 
@@ -30682,6 +30893,93 @@ func (s *StartMigrationJobResponse) SetStatusCode(v int32) *StartMigrationJobRes
 }
 
 func (s *StartMigrationJobResponse) SetBody(v *StartMigrationJobResponseBody) *StartMigrationJobResponse {
+	s.Body = v
+	return s
+}
+
+type StartReverseWriterRequest struct {
+	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
+	DtsJobId   *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+}
+
+func (s StartReverseWriterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReverseWriterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartReverseWriterRequest) SetCheckPoint(v string) *StartReverseWriterRequest {
+	s.CheckPoint = &v
+	return s
+}
+
+func (s *StartReverseWriterRequest) SetDtsJobId(v string) *StartReverseWriterRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+type StartReverseWriterResponseBody struct {
+	ErrCode    *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartReverseWriterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReverseWriterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartReverseWriterResponseBody) SetErrCode(v string) *StartReverseWriterResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *StartReverseWriterResponseBody) SetErrMessage(v string) *StartReverseWriterResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *StartReverseWriterResponseBody) SetRequestId(v string) *StartReverseWriterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartReverseWriterResponseBody) SetSuccess(v string) *StartReverseWriterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartReverseWriterResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartReverseWriterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartReverseWriterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartReverseWriterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartReverseWriterResponse) SetHeaders(v map[string]*string) *StartReverseWriterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartReverseWriterResponse) SetStatusCode(v int32) *StartReverseWriterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartReverseWriterResponse) SetBody(v *StartReverseWriterResponseBody) *StartReverseWriterResponse {
 	s.Body = v
 	return s
 }
@@ -35193,6 +35491,50 @@ func (client *Client) CreateMigrationJob(request *CreateMigrationJobRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateReverseDtsJobWithOptions(request *CreateReverseDtsJobRequest, runtime *util.RuntimeOptions) (_result *CreateReverseDtsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateReverseDtsJob"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateReverseDtsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateReverseDtsJob(request *CreateReverseDtsJobRequest) (_result *CreateReverseDtsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateReverseDtsJobResponse{}
+	_body, _err := client.CreateReverseDtsJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/data-transmission-service/pricing) of Data Transmission Service (DTS).
  *
@@ -39091,6 +39433,10 @@ func (client *Client) ModifyDtsJobWithOptions(tmpReq *ModifyDtsJobRequest, runti
 		query["DtsInstanceId"] = request.DtsInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileOssUrl)) {
 		query["FileOssUrl"] = request.FileOssUrl
 	}
@@ -40395,6 +40741,54 @@ func (client *Client) StartMigrationJob(request *StartMigrationJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &StartMigrationJobResponse{}
 	_body, _err := client.StartMigrationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartReverseWriterWithOptions(request *StartReverseWriterRequest, runtime *util.RuntimeOptions) (_result *StartReverseWriterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckPoint)) {
+		query["CheckPoint"] = request.CheckPoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartReverseWriter"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartReverseWriterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartReverseWriter(request *StartReverseWriterRequest) (_result *StartReverseWriterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartReverseWriterResponse{}
+	_body, _err := client.StartReverseWriterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
