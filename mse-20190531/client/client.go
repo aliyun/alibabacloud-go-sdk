@@ -4641,7 +4641,8 @@ type AddServiceSourceRequest struct {
 	//
 	// *   K8s: ACK cluster
 	// *   NACOS: MSE Nacos instance
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source                    *string                                             `json:"Source,omitempty" xml:"Source,omitempty"`
+	ToAuthorizeSecurityGroups []*AddServiceSourceRequestToAuthorizeSecurityGroups `json:"ToAuthorizeSecurityGroups,omitempty" xml:"ToAuthorizeSecurityGroups,omitempty" type:"Repeated"`
 	// The type of the service source.
 	//
 	// *   K8s: Container Service for Kubernetes (ACK) cluster
@@ -4697,6 +4698,11 @@ func (s *AddServiceSourceRequest) SetSource(v string) *AddServiceSourceRequest {
 	return s
 }
 
+func (s *AddServiceSourceRequest) SetToAuthorizeSecurityGroups(v []*AddServiceSourceRequestToAuthorizeSecurityGroups) *AddServiceSourceRequest {
+	s.ToAuthorizeSecurityGroups = v
+	return s
+}
+
 func (s *AddServiceSourceRequest) SetType(v string) *AddServiceSourceRequest {
 	s.Type = &v
 	return s
@@ -4745,6 +4751,35 @@ func (s *AddServiceSourceRequestIngressOptionsRequest) SetWatchNamespace(v strin
 	return s
 }
 
+type AddServiceSourceRequestToAuthorizeSecurityGroups struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+}
+
+func (s AddServiceSourceRequestToAuthorizeSecurityGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddServiceSourceRequestToAuthorizeSecurityGroups) GoString() string {
+	return s.String()
+}
+
+func (s *AddServiceSourceRequestToAuthorizeSecurityGroups) SetDescription(v string) *AddServiceSourceRequestToAuthorizeSecurityGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *AddServiceSourceRequestToAuthorizeSecurityGroups) SetPortRange(v string) *AddServiceSourceRequestToAuthorizeSecurityGroups {
+	s.PortRange = &v
+	return s
+}
+
+func (s *AddServiceSourceRequestToAuthorizeSecurityGroups) SetSecurityGroupId(v string) *AddServiceSourceRequestToAuthorizeSecurityGroups {
+	s.SecurityGroupId = &v
+	return s
+}
+
 type AddServiceSourceShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -4768,7 +4803,8 @@ type AddServiceSourceShrinkRequest struct {
 	//
 	// *   K8s: ACK cluster
 	// *   NACOS: MSE Nacos instance
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Source                          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	ToAuthorizeSecurityGroupsShrink *string `json:"ToAuthorizeSecurityGroups,omitempty" xml:"ToAuthorizeSecurityGroups,omitempty"`
 	// The type of the service source.
 	//
 	// *   K8s: Container Service for Kubernetes (ACK) cluster
@@ -4821,6 +4857,11 @@ func (s *AddServiceSourceShrinkRequest) SetPathListShrink(v string) *AddServiceS
 
 func (s *AddServiceSourceShrinkRequest) SetSource(v string) *AddServiceSourceShrinkRequest {
 	s.Source = &v
+	return s
+}
+
+func (s *AddServiceSourceShrinkRequest) SetToAuthorizeSecurityGroupsShrink(v string) *AddServiceSourceShrinkRequest {
+	s.ToAuthorizeSecurityGroupsShrink = &v
 	return s
 }
 
@@ -7959,7 +8000,7 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the primary key. The value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -8249,7 +8290,7 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the primary key. The value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+	// The tag.
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -8813,7 +8854,7 @@ func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetStatus(v int32) *CreateOrUpd
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
-	// The details of the data.
+	// The response parameters.
 	Data *CreateOrUpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -12116,7 +12157,8 @@ type DeleteSecurityGroupRuleRequest struct {
 	//
 	// *   zh: Chinese
 	// *   en: English
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	CascadingDelete *bool   `json:"CascadingDelete,omitempty" xml:"CascadingDelete,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The destination ID.
@@ -12133,6 +12175,11 @@ func (s DeleteSecurityGroupRuleRequest) GoString() string {
 
 func (s *DeleteSecurityGroupRuleRequest) SetAcceptLanguage(v string) *DeleteSecurityGroupRuleRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteSecurityGroupRuleRequest) SetCascadingDelete(v bool) *DeleteSecurityGroupRuleRequest {
+	s.CascadingDelete = &v
 	return s
 }
 
@@ -19981,7 +20028,7 @@ type GetServiceListPageRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The application ID.
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用名字。
+	// The application name.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The IP address from which the query is initiated.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
@@ -23070,7 +23117,7 @@ type ListApplicationsWithTagRulesRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The name of the application.
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The Microservices Engine (MSE) namespace to which the application belongs.
+	// The MSE namespace to which the application belongs.
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The number of the page to return.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -33375,6 +33422,7 @@ func (s *ListSecurityGroupRuleResponseBody) SetSuccess(v bool) *ListSecurityGrou
 }
 
 type ListSecurityGroupRuleResponseBodyData struct {
+	AuthCidrs []*string `json:"AuthCidrs,omitempty" xml:"AuthCidrs,omitempty" type:"Repeated"`
 	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The gateway ID.
@@ -33401,6 +33449,11 @@ func (s ListSecurityGroupRuleResponseBodyData) String() string {
 
 func (s ListSecurityGroupRuleResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListSecurityGroupRuleResponseBodyData) SetAuthCidrs(v []*string) *ListSecurityGroupRuleResponseBodyData {
+	s.AuthCidrs = v
+	return s
 }
 
 func (s *ListSecurityGroupRuleResponseBodyData) SetDescription(v string) *ListSecurityGroupRuleResponseBodyData {
@@ -33487,7 +33540,7 @@ type ListServiceSourceRequest struct {
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// Specifies the type of the returned service source. If this parameter is not specified, service sources of all types are returned. Valid values:
 	//
-	// *   K8S
+	// *   K8s
 	// *   MSE
 	// *   MSE_ZK
 	// *   SAE
@@ -36894,7 +36947,7 @@ func (s *QueryClusterInfoRequest) SetRequestPars(v string) *QueryClusterInfoRequ
 }
 
 type QueryClusterInfoResponseBody struct {
-	// The data returned.
+	// The details of the data.
 	Data *QueryClusterInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned if the request failed.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
@@ -36974,9 +37027,9 @@ type QueryClusterInfoResponseBodyData struct {
 	DiskCapacity *int64 `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
 	// A deprecated parameter.
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// 弹性公网IP（EIP）的实例ID
+	// The ID of the instance that is associated with the Elastic IP Address (EIP).
 	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	// 到期时间（包年包月）
+	// The time when the subscription instance expires.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	// The zones to which the current cluster can be distributed.
 	ExpectZones []*string `json:"ExpectZones,omitempty" xml:"ExpectZones,omitempty" type:"Repeated"`
@@ -37003,7 +37056,8 @@ type QueryClusterInfoResponseBodyData struct {
 	// The internal endpoint.
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
 	// The instance ports that are accessible over an internal network.
-	IntranetPort      *string                                            `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	IntranetPort *string `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
+	// The O\&M time window.
 	MaintenancePeriod *QueryClusterInfoResponseBodyDataMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
 	// A deprecated parameter.
 	MemoryCapacity *int64 `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
@@ -37018,9 +37072,9 @@ type QueryClusterInfoResponseBodyData struct {
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ENI网络接入的安全组ID
+	// The ID of the security group to which the elastic network interface (ENI) is connected.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// ENI网络接入的安全组类型
+	// The type of the security group to which the ENI is connected.
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
 	// The tag.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -37311,7 +37365,9 @@ func (s *QueryClusterInfoResponseBodyDataInstanceModels) SetZone(v string) *Quer
 }
 
 type QueryClusterInfoResponseBodyDataMaintenancePeriod struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the O\&M time window.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the O\&M time window.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -37668,7 +37724,8 @@ type QueryConfigResponseBodyData struct {
 	// *   `true`: supported.
 	// *   `false`: not supported.
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
-	ConsoleUIEnabled      *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
+	// Indicates whether the Nacos open source console is enabled.
+	ConsoleUIEnabled *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
 	// Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
 	EurekaSupported *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
 	// Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
@@ -41281,8 +41338,10 @@ type UpdateClusterRequest struct {
 	// The alias of the instance.
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
 	// The ID of the instance.
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaintenanceEndTime   *string `json:"MaintenanceEndTime,omitempty" xml:"MaintenanceEndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The end time of the O\&M window.
+	MaintenanceEndTime *string `json:"MaintenanceEndTime,omitempty" xml:"MaintenanceEndTime,omitempty"`
+	// The start time of the O\&M window.
 	MaintenanceStartTime *string `json:"MaintenanceStartTime,omitempty" xml:"MaintenanceStartTime,omitempty"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
@@ -45069,7 +45128,7 @@ type UpdateGatewayRouteHeaderOpRequest struct {
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The unique ID of the gateway.
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The information about the header configuration policy.
+	// The description of user header settings.
 	HeaderOpJSON *string `json:"HeaderOpJSON,omitempty" xml:"HeaderOpJSON,omitempty"`
 	// The ID of the record.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -50504,6 +50563,10 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 		request.PathListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PathList, tea.String("PathList"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ToAuthorizeSecurityGroups)) {
+		request.ToAuthorizeSecurityGroupsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ToAuthorizeSecurityGroups, tea.String("ToAuthorizeSecurityGroups"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
@@ -50535,6 +50598,10 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 
 	if !tea.BoolValue(util.IsUnset(request.Source)) {
 		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToAuthorizeSecurityGroupsShrink)) {
+		query["ToAuthorizeSecurityGroups"] = request.ToAuthorizeSecurityGroupsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -52982,6 +53049,10 @@ func (client *Client) DeleteSecurityGroupRuleWithOptions(request *DeleteSecurity
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
 		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CascadingDelete)) {
+		query["CascadingDelete"] = request.CascadingDelete
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
