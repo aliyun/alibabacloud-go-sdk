@@ -281,7 +281,8 @@ type CreateApplicationRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -379,7 +380,8 @@ type CreateApplicationShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -829,7 +831,7 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The list of solutions.
+	// The solutions.
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -1007,7 +1009,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The list of solutions.
+	// The solutions.
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -1091,9 +1093,9 @@ func (s *CreateOpsItemShrinkRequest) SetTitle(v string) *CreateOpsItemShrinkRequ
 }
 
 type CreateOpsItemResponseBody struct {
-	// The O\&M item.
+	// The information about the O\&M item.
 	OpsItem *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1116,35 +1118,35 @@ func (s *CreateOpsItemResponseBody) SetRequestId(v string) *CreateOpsItemRespons
 }
 
 type CreateOpsItemResponseBodyOpsItem struct {
-	// The information about the properties of the O\&M item.
+	// The attributes of the O\&M item.
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The category.
+	// The category of the O\&M item.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The time when the O\&M item was created.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The user who created the OpsItem.
+	// The user who created the O\&M item.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The description.
+	// The description of the O\&M item.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user who modified the O\&M item.
+	// The user who last modified the O\&M item.
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
 	// The ID of the O\&M item.
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	// The priority.
+	// The priority of the O\&M item.
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ARN of the associated resource.
+	// The ARNs of the associated resources.
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The severity level.
+	// The severity level of the O\&M item.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The solution.
+	// The solutions.
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	// The source business.
+	// The source business of the O\&M item.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status.
+	// The state of the O\&M item.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tags of the O\&M item.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The title of the O\&M item.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -3010,7 +3012,8 @@ type DeleteApplicationRequest struct {
 	// The application name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. Set the value to cn-hangzhou.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RetainResource *bool   `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
 func (s DeleteApplicationRequest) String() string {
@@ -3033,6 +3036,11 @@ func (s *DeleteApplicationRequest) SetName(v string) *DeleteApplicationRequest {
 
 func (s *DeleteApplicationRequest) SetRegionId(v string) *DeleteApplicationRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteApplicationRequest) SetRetainResource(v bool) *DeleteApplicationRequest {
+	s.RetainResource = &v
 	return s
 }
 
@@ -3089,7 +3097,8 @@ type DeleteApplicationGroupRequest struct {
 	// The name of the application group.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region. Set the value to cn-hangzhou.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RetainResource *bool   `json:"RetainResource,omitempty" xml:"RetainResource,omitempty"`
 }
 
 func (s DeleteApplicationGroupRequest) String() string {
@@ -3112,6 +3121,11 @@ func (s *DeleteApplicationGroupRequest) SetName(v string) *DeleteApplicationGrou
 
 func (s *DeleteApplicationGroupRequest) SetRegionId(v string) *DeleteApplicationGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteApplicationGroupRequest) SetRetainResource(v bool) *DeleteApplicationGroupRequest {
+	s.RetainResource = &v
 	return s
 }
 
@@ -3775,6 +3789,194 @@ func (s *DeployApplicationGroupResponse) SetBody(v *DeployApplicationGroupRespon
 	return s
 }
 
+type DescribeApplicationGroupBillRequest struct {
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	BillingCycle    *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeApplicationGroupBillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationGroupBillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetApplicationName(v string) *DescribeApplicationGroupBillRequest {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetBillingCycle(v string) *DescribeApplicationGroupBillRequest {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetMaxResults(v int32) *DescribeApplicationGroupBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetName(v string) *DescribeApplicationGroupBillRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetNextToken(v string) *DescribeApplicationGroupBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetRegionId(v string) *DescribeApplicationGroupBillRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillRequest) SetResourceType(v string) *DescribeApplicationGroupBillRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeApplicationGroupBillResponseBody struct {
+	ApplicationGroupConsume []*DescribeApplicationGroupBillResponseBodyApplicationGroupConsume `json:"ApplicationGroupConsume,omitempty" xml:"ApplicationGroupConsume,omitempty" type:"Repeated"`
+	MaxResults              *int32                                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken               *string                                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId               *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeApplicationGroupBillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationGroupBillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationGroupBillResponseBody) SetApplicationGroupConsume(v []*DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) *DescribeApplicationGroupBillResponseBody {
+	s.ApplicationGroupConsume = v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBody) SetMaxResults(v int32) *DescribeApplicationGroupBillResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBody) SetNextToken(v string) *DescribeApplicationGroupBillResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBody) SetRequestId(v string) *DescribeApplicationGroupBillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeApplicationGroupBillResponseBodyApplicationGroupConsume struct {
+	Amount       *float32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	CreationTime *string  `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Currency     *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	InstanceId   *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	Optimization *string  `json:"Optimization,omitempty" xml:"Optimization,omitempty"`
+	PeakType     *string  `json:"PeakType,omitempty" xml:"PeakType,omitempty"`
+	Performance  *string  `json:"Performance,omitempty" xml:"Performance,omitempty"`
+	Status       *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetAmount(v float32) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetCreationTime(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetCurrency(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetInstanceId(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetInstanceName(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetInstanceType(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetOptimization(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.Optimization = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetPeakType(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.PeakType = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetPerformance(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.Performance = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume) SetStatus(v string) *DescribeApplicationGroupBillResponseBodyApplicationGroupConsume {
+	s.Status = &v
+	return s
+}
+
+type DescribeApplicationGroupBillResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeApplicationGroupBillResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeApplicationGroupBillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationGroupBillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationGroupBillResponse) SetHeaders(v map[string]*string) *DescribeApplicationGroupBillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponse) SetStatusCode(v int32) *DescribeApplicationGroupBillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupBillResponse) SetBody(v *DescribeApplicationGroupBillResponseBody) *DescribeApplicationGroupBillResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The supported natural language. Valid values:
 	//
@@ -3893,7 +4095,8 @@ type GenerateExecutionPolicyRequest struct {
 	// The RAM role.
 	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
 	// The ID of the region.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
 	// The name of the template.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The version of the template. The default value is the latest version of the template.
@@ -3915,6 +4118,11 @@ func (s *GenerateExecutionPolicyRequest) SetRamRole(v string) *GenerateExecution
 
 func (s *GenerateExecutionPolicyRequest) SetRegionId(v string) *GenerateExecutionPolicyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GenerateExecutionPolicyRequest) SetTemplateContent(v string) *GenerateExecutionPolicyRequest {
+	s.TemplateContent = &v
 	return s
 }
 
@@ -4040,8 +4248,36 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 }
 
 type GetApplicationResponseBodyApplication struct {
-	AlarmConfig     *GetApplicationResponseBodyApplicationAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
-	ApplicationType *string                                           `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	// The configurations of application alerts.
+	AlarmConfig *GetApplicationResponseBodyApplicationAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	// The type of the application.
+	//
+	// Valid values:
+	//
+	// *   ComputeNest
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   Custom
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   DingTalk
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The time when the application was created.
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	// The description of the application.
@@ -4050,7 +4286,8 @@ type GetApplicationResponseBodyApplication struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceId       *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The time when the application was updated.
@@ -4111,9 +4348,12 @@ func (s *GetApplicationResponseBodyApplication) SetUpdateDate(v string) *GetAppl
 }
 
 type GetApplicationResponseBodyApplicationAlarmConfig struct {
-	ContactGroups  []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
-	HealthCheckUrl *string   `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
-	TemplateIds    []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	// The alert contact list.
+	ContactGroups []*string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty" type:"Repeated"`
+	// The health check URL of the application.
+	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
+	// The ID of the alert template.
+	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationResponseBodyApplicationAlarmConfig) String() string {
@@ -4790,7 +5030,7 @@ type GetOpsItemResponseBodyOpsItem struct {
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
 	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user who modified the O\&M item.
+	// The user who last modified the O\&M item.
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
 	// The O\&M item ID.
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
@@ -10051,7 +10291,7 @@ type ListPatchBaselinesRequest struct {
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
@@ -10176,7 +10416,7 @@ type ListPatchBaselinesShrinkRequest struct {
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. Valid values:
 	//
@@ -10310,13 +10550,13 @@ type ListPatchBaselinesResponseBodyPatchBaselines struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the operating system.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the patch baseline.
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The patch source configurations.
+	// The configurations of patch sources.
 	Sources []*string `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
-	// The tags.
+	// The tags of the patch baseline.
 	Tags []*ListPatchBaselinesResponseBodyPatchBaselinesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user who last updated the patch baseline.
 	UpdatedBy *string `json:"UpdatedBy,omitempty" xml:"UpdatedBy,omitempty"`
@@ -12428,6 +12668,7 @@ type ListTemplatesRequest struct {
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
@@ -12447,6 +12688,7 @@ type ListTemplatesRequest struct {
 	// *   **Popularity**: The system sorts the returned templates based on the popularity of the template.
 	// *   **TemplateName**: The system sorts the returned templates based on the name of the template.
 	// *   **CreatedDate**: The system sorts the returned templates based on the creation time of the template.
+	// *   **UpdateDate**: The system sorts the returned templates based on the update time of the template.
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
@@ -12525,6 +12767,11 @@ func (s *ListTemplatesRequest) SetHasTrigger(v bool) *ListTemplatesRequest {
 	return s
 }
 
+func (s *ListTemplatesRequest) SetIsFavorite(v bool) *ListTemplatesRequest {
+	s.IsFavorite = &v
+	return s
+}
+
 func (s *ListTemplatesRequest) SetMaxResults(v int32) *ListTemplatesRequest {
 	s.MaxResults = &v
 	return s
@@ -12598,6 +12845,7 @@ type ListTemplatesShrinkRequest struct {
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
 	// Specifies whether to query the template that is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The number of entries to return on each page. Valid values: 20 to 100. Default value: 50.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results.
@@ -12617,6 +12865,7 @@ type ListTemplatesShrinkRequest struct {
 	// *   **Popularity**: The system sorts the returned templates based on the popularity of the template.
 	// *   **TemplateName**: The system sorts the returned templates based on the name of the template.
 	// *   **CreatedDate**: The system sorts the returned templates based on the creation time of the template.
+	// *   **UpdateDate**: The system sorts the returned templates based on the update time of the template.
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The order in which you want to sort the results. Valid values:
 	//
@@ -12692,6 +12941,11 @@ func (s *ListTemplatesShrinkRequest) SetCreatedDateBefore(v string) *ListTemplat
 
 func (s *ListTemplatesShrinkRequest) SetHasTrigger(v bool) *ListTemplatesShrinkRequest {
 	s.HasTrigger = &v
+	return s
+}
+
+func (s *ListTemplatesShrinkRequest) SetIsFavorite(v bool) *ListTemplatesShrinkRequest {
+	s.IsFavorite = &v
 	return s
 }
 
@@ -12791,7 +13045,8 @@ func (s *ListTemplatesResponseBody) SetTemplates(v []*ListTemplatesResponseBodyT
 
 type ListTemplatesResponseBodyTemplates struct {
 	// The type of the template.
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the template.
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	// The time when the template was created.
@@ -12801,11 +13056,13 @@ type ListTemplatesResponseBodyTemplates struct {
 	// Indicates whether the template is configured with a trigger.
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
 	// The SHA-256 value of the template content.
-	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	Hash       *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
+	IsFavorite *bool   `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If the **ShareType** parameter is set to **Private**, the value of this parameter is `-1`.
 	//
 	// **Notes** This parameter is valid only if the value of the **ShareType** parameter is set to **Public**.
-	Popularity *int32 `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
+	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
+	Publisher  *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The share type of the template. The share type of the template that you create is **Private**. Valid values:
@@ -12847,6 +13104,11 @@ func (s *ListTemplatesResponseBodyTemplates) SetCategory(v string) *ListTemplate
 	return s
 }
 
+func (s *ListTemplatesResponseBodyTemplates) SetConstraints(v string) *ListTemplatesResponseBodyTemplates {
+	s.Constraints = &v
+	return s
+}
+
 func (s *ListTemplatesResponseBodyTemplates) SetCreatedBy(v string) *ListTemplatesResponseBodyTemplates {
 	s.CreatedBy = &v
 	return s
@@ -12872,8 +13134,18 @@ func (s *ListTemplatesResponseBodyTemplates) SetHash(v string) *ListTemplatesRes
 	return s
 }
 
+func (s *ListTemplatesResponseBodyTemplates) SetIsFavorite(v bool) *ListTemplatesResponseBodyTemplates {
+	s.IsFavorite = &v
+	return s
+}
+
 func (s *ListTemplatesResponseBodyTemplates) SetPopularity(v int32) *ListTemplatesResponseBodyTemplates {
 	s.Popularity = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplates) SetPublisher(v string) *ListTemplatesResponseBodyTemplates {
+	s.Publisher = &v
 	return s
 }
 
@@ -14915,7 +15187,7 @@ type UpdateExecutionRequest struct {
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the execution.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -15032,7 +15304,7 @@ type UpdateOpsItemRequest struct {
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The list of solutions.
+	// The solutions.
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -15148,7 +15420,7 @@ type UpdateOpsItemShrinkRequest struct {
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The list of solutions.
+	// The solutions.
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -15244,7 +15516,7 @@ func (s *UpdateOpsItemShrinkRequest) SetTitle(v string) *UpdateOpsItemShrinkRequ
 }
 
 type UpdateOpsItemResponseBody struct {
-	// The O\&M item.
+	// The information about the O\&M item.
 	OpsItem *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -15269,7 +15541,7 @@ func (s *UpdateOpsItemResponseBody) SetRequestId(v string) *UpdateOpsItemRespons
 }
 
 type UpdateOpsItemResponseBodyOpsItem struct {
-	// The information about the properties of the O\&M item.
+	// The attributes of the O\&M item.
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The category.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
@@ -15291,7 +15563,7 @@ type UpdateOpsItemResponseBodyOpsItem struct {
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The severity level.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The list of solutions.
+	// The solutions.
 	Solutions []*string `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
 	// The source business.
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -18013,6 +18285,10 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RetainResource)) {
+		query["RetainResource"] = request.RetainResource
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18063,6 +18339,10 @@ func (client *Client) DeleteApplicationGroupWithOptions(request *DeleteApplicati
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetainResource)) {
+		query["RetainResource"] = request.RetainResource
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18503,6 +18783,74 @@ func (client *Client) DeployApplicationGroup(request *DeployApplicationGroupRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeApplicationGroupBillWithOptions(request *DescribeApplicationGroupBillRequest, runtime *util.RuntimeOptions) (_result *DescribeApplicationGroupBillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeApplicationGroupBill"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeApplicationGroupBillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeApplicationGroupBill(request *DescribeApplicationGroupBillRequest) (_result *DescribeApplicationGroupBillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeApplicationGroupBillResponse{}
+	_body, _err := client.DescribeApplicationGroupBillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18563,6 +18911,10 @@ func (client *Client) GenerateExecutionPolicyWithOptions(request *GenerateExecut
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateContent)) {
+		query["TemplateContent"] = request.TemplateContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
@@ -20999,6 +21351,10 @@ func (client *Client) ListTemplatesWithOptions(tmpReq *ListTemplatesRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.HasTrigger)) {
 		query["HasTrigger"] = request.HasTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsFavorite)) {
+		query["IsFavorite"] = request.IsFavorite
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
