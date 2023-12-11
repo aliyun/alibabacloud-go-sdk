@@ -803,11 +803,13 @@ type CreateDBClusterRequest struct {
 	//
 	// > * This parameter is required if the Mode parameter is set to Reserver.
 	// > * 1000 The storage capacity less than 1,000 GB increases in 100 GB increments. The storage capacity greater than 1,000 GB increases in 1,000 GB increments.
-	DBNodeStorage *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DBNodeStorage  *string `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	DiskEncryption *string `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
 	// The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
 	ElasticIOResource *string `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
 	// A reserved parameter.
 	ExecutorCount *string `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
+	KmsId         *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The mode of the cluster. Valid values:
 	//
 	// *   **Reserver**: the reserved mode
@@ -925,6 +927,11 @@ func (s *CreateDBClusterRequest) SetDBNodeStorage(v string) *CreateDBClusterRequ
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetDiskEncryption(v string) *CreateDBClusterRequest {
+	s.DiskEncryption = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetElasticIOResource(v string) *CreateDBClusterRequest {
 	s.ElasticIOResource = &v
 	return s
@@ -932,6 +939,11 @@ func (s *CreateDBClusterRequest) SetElasticIOResource(v string) *CreateDBCluster
 
 func (s *CreateDBClusterRequest) SetExecutorCount(v string) *CreateDBClusterRequest {
 	s.ExecutorCount = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetKmsId(v string) *CreateDBClusterRequest {
+	s.KmsId = &v
 	return s
 }
 
@@ -1971,9 +1983,13 @@ func (s *DeleteDBResourcePoolResponse) SetBody(v *DeleteDBResourcePoolResponseBo
 }
 
 type DeleteElasticPlanRequest struct {
-	// The ID of the cluster.
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~612241~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the elastic plan.
+	// The name of the scaling plan.
+	//
+	// > You can call the [DescribeElasticPlans](~~601334~~) operation to query the names of scaling plans.
 	ElasticPlanName      *string `json:"ElasticPlanName,omitempty" xml:"ElasticPlanName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2020,7 +2036,7 @@ func (s *DeleteElasticPlanRequest) SetResourceOwnerId(v int64) *DeleteElasticPla
 }
 
 type DeleteElasticPlanResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2067,12 +2083,12 @@ func (s *DeleteElasticPlanResponse) SetBody(v *DeleteElasticPlanResponseBody) *D
 }
 
 type DescribeAccountsRequest struct {
-	// The account of the database.
+	// The name of the database account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// *   Normal: standard account
-	// *   Super: privileged account
+	// *   Normal: standard account.
+	// *   Super: privileged account.
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2124,9 +2140,9 @@ func (s *DescribeAccountsRequest) SetResourceOwnerId(v int64) *DescribeAccountsR
 }
 
 type DescribeAccountsResponseBody struct {
-	// The list of database accounts.
+	// The queried database accounts.
 	AccountList *DescribeAccountsResponseBodyAccountList `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2166,18 +2182,18 @@ func (s *DescribeAccountsResponseBodyAccountList) SetDBAccount(v []*DescribeAcco
 }
 
 type DescribeAccountsResponseBodyAccountListDBAccount struct {
-	// The description of the account.
+	// The description of the database account.
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the account.
+	// The name of the database account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The status of the account.
+	// The state of the database account. Valid values:
 	//
-	// *   Creating: The account is being created.
-	// *   Available: The account is available.
-	// *   Deleting: The account is being deleted.
+	// *   Creating
+	// *   Available
+	// *   Deleting
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	// *   Normal: standard account
-	// *   Super: privileged account
+	// *   Normal: standard account.
+	// *   Super: privileged account.
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 }
 
@@ -3112,17 +3128,14 @@ func (s *DescribeAuditLogConfigResponse) SetBody(v *DescribeAuditLogConfigRespon
 type DescribeAuditLogRecordsRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database on which you want to execute the SQL statement.
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
-	// >
-	//
-	// *   The end time must be later than the start time.
-	//
-	// *   The maximum time range that can be specified is 24 hours.
+	// > - The end time must be later than the start time.
+	// > - The maximum time range that can be specified is 24 hours.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address and port number of the client that is used to execute the SQL statement.
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
@@ -3177,9 +3190,9 @@ type DescribeAuditLogRecordsRequest struct {
 	// *   **INSERT_INTO_SELECT**
 	// *   **ALTER**
 	// *   **DROP**
-	// *   **INSERT**
+	// *   **CREATE**
 	//
-	// > You can query only a single type of SQL statements at a time. If this parameter is left empty, the **SELECT** SQL statements are queried.
+	// > You can query only a single type of SQL statements at a time. If you leave this parameter empty, the **SELECT** statements are queried.
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
@@ -4635,7 +4648,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	// The backup method. Only Snapshot is returned.
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup size. Unit: bytes.
-	BackupSize *int32 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
 	// The start time of the backup.
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup type. Valid values:
@@ -4670,7 +4683,7 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupMethod(v string) *Desc
 	return s
 }
 
-func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupSize(v int32) *DescribeBackupsResponseBodyItemsBackup {
+func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupSize(v int64) *DescribeBackupsResponseBodyItemsBackup {
 	s.BackupSize = &v
 	return s
 }
@@ -4907,12 +4920,16 @@ func (s *DescribeColumnsResponse) SetBody(v *DescribeColumnsResponseBody) *Descr
 }
 
 type DescribeComputeResourceRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3**.
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	Migrate          *bool   `json:"Migrate,omitempty" xml:"Migrate,omitempty"`
-	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The available computing resources for migrating AnalyticDB MySQL Data Warehouse Edition to AnalyticDB MySQL Lakehouse Edition. Possible values are:
+	// - **true**
+	// - **false**(default value)
+	Migrate      *bool   `json:"Migrate,omitempty" xml:"Migrate,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
 	//
 	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
@@ -5462,14 +5479,14 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// *   **CLUSTER**: reserved mode for Cluster Edition.
 	// *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
 	//
-	// > For more information about cluster editions, see [Editions](~~205001~~).
+	// >  For more information about cluster editions, see [Editions](~~205001~~).
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// *   **ads**: pay-as-you-go.
 	// *   **ads_pre**: subscription.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The specifications of computing resources that are used by the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
+	// The specifications of computing resources that are used in the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
 	// The Virtual Private Cloud (VPC) endpoint of the cluster.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
@@ -5495,7 +5512,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// The storage capacity of the cluster. Unit: GB.
 	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
 	// The version of the database engine. **3.0** is returned.
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DBVersion      *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DiskEncryption *string `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
 	// The ESSD performance level.
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
 	// The disk type of the cluster. Valid values:
@@ -5504,11 +5522,12 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// *   **cloud**: basic disk.
 	// *   **cloud_ssd**: standard SSD.
 	// *   **cloud_efficiency**: ultra disk.
-	// *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+	// *   **cloud_essd0**: PL0 enhanced SSD (ESSD).
+	// *   **cloud_essd**: PL1 ESSD.
 	// *   **cloud_essd2**: PL2 ESSD.
 	// *   **cloud_essd3**: PL3 ESSD.
 	//
-	// > For more information about ESSDs, see [ESSD specifications](~~122389~~).
+	// >  For more information about ESSDs, see [ESSDs](~~122389~~).
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
@@ -5554,7 +5573,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	InnerPort *string `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
 	// The ID of the key that is used to encrypt disk data.
 	//
-	// > This parameter is returned only when disk encryption is enabled.
+	// >  This parameter is returned only when disk encryption is enabled.
 	KmsId *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The lock mode of the cluster. Valid values:
 	//
@@ -5566,18 +5585,18 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the cluster is locked.
 	//
-	// > This parameter is returned only when the cluster was locked. The value is **instance_expire**.
+	// >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maintenance window of the cluster. The window is in the *HH:mmZ-HH:mmZ* format. The time is displayed in UTC. Example: *04:00Z-05:00Z*, which indicates that routine maintenance can be performed from 04:00 to 05:00.
+	// The maintenance window of the cluster. The window follows the ISO 8601 standard in the *HH:mmZ- HH:mmZ* format. The time is displayed in UTC. An example is *04:00Z-05:00Z*, which indicates that routine maintenance can be performed from 04:00 to 05:00.
 	//
-	// > For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
+	// >  For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// The mode of the cluster. Valid values:
 	//
 	// *   **flexible**: elastic mode.
 	// *   **reserver**: reserved mode.
 	//
-	// > For more information about cluster modes, see [Editions](~~205001~~).
+	// >  For more information about cluster modes, see [Editions](~~205001~~).
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
@@ -5590,9 +5609,9 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of storage resources that are used by the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
+	// The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// The tags that are added to the cluster.
 	Tags *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -5686,6 +5705,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetDBNodeStorage(
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetDBVersion(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.DBVersion = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetDiskEncryption(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.DiskEncryption = &v
 	return s
 }
 
@@ -5862,11 +5886,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags) SetTag(v []*D
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
-	// > You can call the [TagResources](~~179253~~) operation to add a tag to the cluster.
+	// >  You can call the [TagResources](~~179253~~) operation to add a tag to the cluster.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6367,9 +6391,9 @@ func (s *DescribeDBClusterNetInfoResponse) SetBody(v *DescribeDBClusterNetInfoRe
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	// The cluster ID.
+	// The ID of the AnalyticDB for MySQL cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
 	//
@@ -6385,44 +6409,46 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	//     *   **AnalyticDB_Connections**: the number of database connections.
 	//
-	// *   Write
+	// *   Writes
 	//
 	//     *   **AnalyticDB_TPS**: the write transactions per second (TPS).
 	//     *   **AnalyticDB_InsertRT**: the write response time.
-	//     *   **AnalyticDB_InsertBytes**: the write throughout.
+	//     *   **AnalyticDB_InsertBytes**: the write throughput.
 	//
-	// *   Update
+	// *   Updates
 	//
 	//     *   **AnalyticDB_UpdateRT**: the update response time.
 	//
-	// *   Delete
+	// *   Deletion
 	//
 	//     *   **AnalyticDB_DeleteRT**: the delete response time.
 	//
-	// *   Query
+	// *   Queries
 	//
 	//     *   **AnalyticDB_QPS**: the queries per second (QPS).
 	//     *   **AnalyticDB_QueryRT**: the query response time.
 	//     *   **AnalyticDB_QueryWaitTime**: the query wait time.
 	//
-	// *   Disk
+	// *   Disks
 	//
 	//     *   **AnalyticDB_IO**: the disk I/O throughput.
 	//     *   **AnalyticDB_IO_UTIL**: the I/O utilization.
 	//     *   **AnalyticDB_IO_WAIT**: the I/O wait time.
 	//     *   **AnalyticDB_IOPS**: the disk input/output operations per second (IOPS).
-	//     *   **AnalyticDB_DiskUsage**: the disk usage.
-	//     *   **AnalyticDB_HotDataDiskUsage**: the disk usage of hot data.
-	//     *   **AnalyticDB_ColdDataDiskUsage**: the disk usage of cold data.
+	//     *   **AnalyticDB_DiskUsage**: the disk space that is used.
+	//     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
+	//     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by cold data.
 	//
-	// > If you leave this parameter empty, the values of all the preceding performance metrics are returned.
-	Key                  *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// >  If you leave this parameter empty, the values of all the preceding performance metrics are returned.
+	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the cluster.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ResourcePools        *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
+	// The name of the resource group.
+	ResourcePools *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
 	// The start time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -6536,7 +6562,7 @@ type DescribeDBClusterPerformanceResponseBodyPerformances struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The queried performance metric data.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformancesSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	// The unit of the performance metric.
+	// The unit of the performance metrics.
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
@@ -6564,8 +6590,9 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) SetUnit(v string)
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	// The name of the performance metric.
+	// The name of the performance metric value.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tags that are added to the cluster.
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The values of the queried performance metrics.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
@@ -7201,7 +7228,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// *   **CLUSTER**: reserved mode for Cluster Edition.
 	// *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
 	//
-	// > For more information about cluster editions, see [Editions](~~205001~~).
+	// >  For more information about cluster editions, see [Editions](~~205001~~).
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The commodity code. **ads** is returned.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
@@ -7238,17 +7265,18 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// *   **cloud**: basic disk.
 	// *   **cloud_ssd**: standard SSD.
 	// *   **cloud_efficiency**: ultra disk.
-	// *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+	// *   **cloud_essd**: PL0 enhanced SSD (ESSD).
+	// *   **cloud_essd**: PL1 ESSD.
 	// *   **cloud_essd2**: PL2 ESSD.
 	// *   **cloud_essd3**: PL3 ESSD.
 	//
-	// > For more information, see [ESSDs](~~122389~~).
+	// >  For more information, see [ESSDs](~~122389~~).
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	// The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
 	//
-	// > This parameter is returned only for clusters in elastic mode.
+	// >  This parameter is returned only for clusters in elastic mode.
 	ElasticIOResource *int32 `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
 	// The engine of the cluster. **AnalyticDB** is returned.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -7281,7 +7309,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the cluster is locked.
 	//
-	// > This parameter is returned only when the cluster was locked. **instance_expire** is returned.
+	// >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The mode of the cluster. Valid values:
 	//
@@ -7303,7 +7331,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
@@ -7532,7 +7560,7 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*DescribeD
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
 	// The tag key.
 	//
-	// > You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
+	// >  You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -9412,13 +9440,14 @@ func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResp
 }
 
 type DescribeEIURangeRequest struct {
-	ComputeResource      *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	DBClusterVersion     *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	Operation            *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ComputeResource  *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
+	DBClusterId      *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
+	Operation        *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10320,7 +10349,10 @@ type DescribeLoadTasksRecordsRequest struct {
 	// *   **30** (default)
 	// *   **50**
 	// *   **100**
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11657,6 +11689,281 @@ func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsRespons
 }
 
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeResubmitConfigRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeResubmitConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResubmitConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResubmitConfigRequest) SetDBClusterId(v string) *DescribeResubmitConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetGroupName(v string) *DescribeResubmitConfigRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetOwnerAccount(v string) *DescribeResubmitConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetOwnerId(v int64) *DescribeResubmitConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetResourceGroupId(v string) *DescribeResubmitConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetResourceOwnerAccount(v string) *DescribeResubmitConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigRequest) SetResourceOwnerId(v int64) *DescribeResubmitConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeResubmitConfigResponseBody struct {
+	DBClusterId *string                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules       []*DescribeResubmitConfigResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResubmitConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResubmitConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResubmitConfigResponseBody) SetDBClusterId(v string) *DescribeResubmitConfigResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBody) SetRequestId(v string) *DescribeResubmitConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBody) SetRules(v []*DescribeResubmitConfigResponseBodyRules) *DescribeResubmitConfigResponseBody {
+	s.Rules = v
+	return s
+}
+
+type DescribeResubmitConfigResponseBodyRules struct {
+	ExceedMemoryException *bool   `json:"ExceedMemoryException,omitempty" xml:"ExceedMemoryException,omitempty"`
+	GroupName             *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PeakMemory            *string `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	QueryTime             *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	TargetGroupName       *string `json:"TargetGroupName,omitempty" xml:"TargetGroupName,omitempty"`
+}
+
+func (s DescribeResubmitConfigResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResubmitConfigResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResubmitConfigResponseBodyRules) SetExceedMemoryException(v bool) *DescribeResubmitConfigResponseBodyRules {
+	s.ExceedMemoryException = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBodyRules) SetGroupName(v string) *DescribeResubmitConfigResponseBodyRules {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBodyRules) SetPeakMemory(v string) *DescribeResubmitConfigResponseBodyRules {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBodyRules) SetQueryTime(v string) *DescribeResubmitConfigResponseBodyRules {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponseBodyRules) SetTargetGroupName(v string) *DescribeResubmitConfigResponseBodyRules {
+	s.TargetGroupName = &v
+	return s
+}
+
+type DescribeResubmitConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeResubmitConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeResubmitConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResubmitConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResubmitConfigResponse) SetHeaders(v map[string]*string) *DescribeResubmitConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponse) SetStatusCode(v int32) *DescribeResubmitConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResubmitConfigResponse) SetBody(v *DescribeResubmitConfigResponseBody) *DescribeResubmitConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSQAConfigRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeSQAConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQAConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQAConfigRequest) SetDBClusterId(v string) *DescribeSQAConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetGroupName(v string) *DescribeSQAConfigRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetOwnerAccount(v string) *DescribeSQAConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetOwnerId(v int64) *DescribeSQAConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetRegionId(v string) *DescribeSQAConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetResourceGroupId(v string) *DescribeSQAConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetResourceOwnerAccount(v string) *DescribeSQAConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeSQAConfigRequest) SetResourceOwnerId(v int64) *DescribeSQAConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeSQAConfigResponseBody struct {
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SQAStatus   *string `json:"SQAStatus,omitempty" xml:"SQAStatus,omitempty"`
+}
+
+func (s DescribeSQAConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQAConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQAConfigResponseBody) SetDBClusterId(v string) *DescribeSQAConfigResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigResponseBody) SetGroupName(v string) *DescribeSQAConfigResponseBody {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeSQAConfigResponseBody) SetRequestId(v string) *DescribeSQAConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQAConfigResponseBody) SetSQAStatus(v string) *DescribeSQAConfigResponseBody {
+	s.SQAStatus = &v
+	return s
+}
+
+type DescribeSQAConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSQAConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSQAConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQAConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQAConfigResponse) SetHeaders(v map[string]*string) *DescribeSQAConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQAConfigResponse) SetStatusCode(v int32) *DescribeSQAConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQAConfigResponse) SetBody(v *DescribeSQAConfigResponseBody) *DescribeSQAConfigResponse {
 	s.Body = v
 	return s
 }
@@ -14201,7 +14508,11 @@ type DescribeTableStatisticsRequest struct {
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -14241,6 +14552,11 @@ func (s *DescribeTableStatisticsRequest) SetPageNumber(v int32) *DescribeTableSt
 
 func (s *DescribeTableStatisticsRequest) SetPageSize(v int32) *DescribeTableStatisticsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetRegionId(v string) *DescribeTableStatisticsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -14423,10 +14739,13 @@ func (s *DescribeTableStatisticsResponse) SetBody(v *DescribeTableStatisticsResp
 }
 
 type DescribeTablesRequest struct {
-	// The ID of the cluster.
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14478,9 +14797,9 @@ func (s *DescribeTablesRequest) SetSchemaName(v string) *DescribeTablesRequest {
 }
 
 type DescribeTablesResponseBody struct {
-	// The list of tables.
+	// The queried tables.
 	Items *DescribeTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14520,7 +14839,7 @@ func (s *DescribeTablesResponseBodyItems) SetTable(v []*DescribeTablesResponseBo
 }
 
 type DescribeTablesResponseBodyItemsTable struct {
-	// The ID of the cluster.
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
@@ -14750,7 +15069,7 @@ type DescribeVSwitchesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15443,7 +15762,7 @@ func (s *EnableAdviceServiceResponse) SetBody(v *EnableAdviceServiceResponseBody
 type GrantOperatorPermissionRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
+	// > You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The expiration time of the service account permissions. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
@@ -15502,7 +15821,7 @@ func (s *GrantOperatorPermissionRequest) SetResourceOwnerId(v int64) *GrantOpera
 }
 
 type GrantOperatorPermissionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15861,6 +16180,7 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MigrateDBClusterRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15902,6 +16222,7 @@ func (s *MigrateDBClusterRequest) SetResourceOwnerId(v int64) *MigrateDBClusterR
 }
 
 type MigrateDBClusterResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17817,7 +18138,7 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 }
 
 type ModifyLogBackupPolicyRequest struct {
-	// The cluster ID.
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to enable log backup. Valid values:
 	//
@@ -17830,9 +18151,10 @@ type ModifyLogBackupPolicyRequest struct {
 	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource group ID.
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyLogBackupPolicyRequest) String() string {
@@ -17932,21 +18254,16 @@ func (s *ModifyLogBackupPolicyResponse) SetBody(v *ModifyLogBackupPolicyResponse
 
 type ModifyMaintenanceActionRequest struct {
 	// The ID of the pending O\&M event. You can specify multiple IDs to batch change the switchover time. Separate multiple IDs with commas (,).
-	//
-	// >
-	//
-	// *   You can call the [DescribeMaintenanceAction](~~271738~~) operation to query the information about pending O\&M events, including the event ID.
-	//
-	// *   You can change the switchover time only for pending O\&M events. The switchover time of historical O\&M events cannot be changed. For more information about the status of pending and historical O\&M events, see [DescribeMaintenanceAction](~~271738~~).
+	// > - You can call the [DescribeMaintenanceAction](~~271738~~) operation to query the information about pending O\&M events, including the event ID.
+	// > - You can change the switchover time only for pending O\&M events. The switchover time of historical O\&M events cannot be changed. For more information about the status of pending and historical O\&M events, see [DescribeMaintenanceAction](~~271738~~).
 	Ids          *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region where the pending O\&M event occurs.
 	//
-	// >
-	//
-	// *   You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// > - You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18052,6 +18369,304 @@ func (s *ModifyMaintenanceActionResponse) SetStatusCode(v int32) *ModifyMaintena
 }
 
 func (s *ModifyMaintenanceActionResponse) SetBody(v *ModifyMaintenanceActionResponseBody) *ModifyMaintenanceActionResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyResubmitConfigRequest struct {
+	DBClusterId          *string                             `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Rules                []*ModifyResubmitConfigRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s ModifyResubmitConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResubmitConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResubmitConfigRequest) SetDBClusterId(v string) *ModifyResubmitConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetOwnerAccount(v string) *ModifyResubmitConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetOwnerId(v int64) *ModifyResubmitConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetResourceGroupId(v string) *ModifyResubmitConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetResourceOwnerAccount(v string) *ModifyResubmitConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetResourceOwnerId(v int64) *ModifyResubmitConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequest) SetRules(v []*ModifyResubmitConfigRequestRules) *ModifyResubmitConfigRequest {
+	s.Rules = v
+	return s
+}
+
+type ModifyResubmitConfigRequestRules struct {
+	ExceedMemoryException *bool   `json:"ExceedMemoryException,omitempty" xml:"ExceedMemoryException,omitempty"`
+	GroupName             *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	PeakMemory            *string `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	QueryTime             *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	TargetGroupName       *string `json:"TargetGroupName,omitempty" xml:"TargetGroupName,omitempty"`
+}
+
+func (s ModifyResubmitConfigRequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResubmitConfigRequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResubmitConfigRequestRules) SetExceedMemoryException(v bool) *ModifyResubmitConfigRequestRules {
+	s.ExceedMemoryException = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequestRules) SetGroupName(v string) *ModifyResubmitConfigRequestRules {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequestRules) SetPeakMemory(v string) *ModifyResubmitConfigRequestRules {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequestRules) SetQueryTime(v string) *ModifyResubmitConfigRequestRules {
+	s.QueryTime = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigRequestRules) SetTargetGroupName(v string) *ModifyResubmitConfigRequestRules {
+	s.TargetGroupName = &v
+	return s
+}
+
+type ModifyResubmitConfigShrinkRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RulesShrink          *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s ModifyResubmitConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResubmitConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetDBClusterId(v string) *ModifyResubmitConfigShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetOwnerAccount(v string) *ModifyResubmitConfigShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetOwnerId(v int64) *ModifyResubmitConfigShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetResourceGroupId(v string) *ModifyResubmitConfigShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetResourceOwnerAccount(v string) *ModifyResubmitConfigShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetResourceOwnerId(v int64) *ModifyResubmitConfigShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigShrinkRequest) SetRulesShrink(v string) *ModifyResubmitConfigShrinkRequest {
+	s.RulesShrink = &v
+	return s
+}
+
+type ModifyResubmitConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyResubmitConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResubmitConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResubmitConfigResponseBody) SetRequestId(v string) *ModifyResubmitConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyResubmitConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyResubmitConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyResubmitConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyResubmitConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyResubmitConfigResponse) SetHeaders(v map[string]*string) *ModifyResubmitConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyResubmitConfigResponse) SetStatusCode(v int32) *ModifyResubmitConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyResubmitConfigResponse) SetBody(v *ModifyResubmitConfigResponseBody) *ModifyResubmitConfigResponse {
+	s.Body = v
+	return s
+}
+
+type ModifySQAConfigRequest struct {
+	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SQAStatus            *string `json:"SQAStatus,omitempty" xml:"SQAStatus,omitempty"`
+}
+
+func (s ModifySQAConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySQAConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySQAConfigRequest) SetDBClusterId(v string) *ModifySQAConfigRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetGroupName(v string) *ModifySQAConfigRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetOwnerAccount(v string) *ModifySQAConfigRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetOwnerId(v int64) *ModifySQAConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetResourceGroupId(v string) *ModifySQAConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetResourceOwnerAccount(v string) *ModifySQAConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetResourceOwnerId(v int64) *ModifySQAConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifySQAConfigRequest) SetSQAStatus(v string) *ModifySQAConfigRequest {
+	s.SQAStatus = &v
+	return s
+}
+
+type ModifySQAConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifySQAConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySQAConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySQAConfigResponseBody) SetRequestId(v string) *ModifySQAConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifySQAConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySQAConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifySQAConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySQAConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySQAConfigResponse) SetHeaders(v map[string]*string) *ModifySQAConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySQAConfigResponse) SetStatusCode(v int32) *ModifySQAConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySQAConfigResponse) SetBody(v *ModifySQAConfigResponseBody) *ModifySQAConfigResponse {
 	s.Body = v
 	return s
 }
@@ -19476,12 +20091,20 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["DBNodeStorage"] = request.DBNodeStorage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskEncryption)) {
+		query["DiskEncryption"] = request.DiskEncryption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ElasticIOResource)) {
 		query["ElasticIOResource"] = request.ElasticIOResource
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExecutorCount)) {
 		query["ExecutorCount"] = request.ExecutorCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsId)) {
+		query["KmsId"] = request.KmsId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Mode)) {
@@ -20638,7 +21261,7 @@ func (client *Client) DescribeAuditLogConfig(request *DescribeAuditLogConfigRequ
 
 /**
  * Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
- * SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+ * SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
  *
  * @param request DescribeAuditLogRecordsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -20747,7 +21370,7 @@ func (client *Client) DescribeAuditLogRecordsWithOptions(request *DescribeAuditL
 
 /**
  * Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
- * SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+ * SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
  *
  * @param request DescribeAuditLogRecordsRequest
  * @return DescribeAuditLogRecordsResponse
@@ -23206,6 +23829,146 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DescribeResubmitConfigWithOptions(request *DescribeResubmitConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeResubmitConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResubmitConfig"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeResubmitConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeResubmitConfig(request *DescribeResubmitConfigRequest) (_result *DescribeResubmitConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeResubmitConfigResponse{}
+	_body, _err := client.DescribeResubmitConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSQAConfigWithOptions(request *DescribeSQAConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeSQAConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQAConfig"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQAConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSQAConfig(request *DescribeSQAConfigRequest) (_result *DescribeSQAConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQAConfigResponse{}
+	_body, _err := client.DescribeSQAConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPatternsRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLPatternsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23959,6 +24722,10 @@ func (client *Client) DescribeTableStatisticsWithOptions(request *DescribeTableS
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -24489,6 +25256,7 @@ func (client *Client) EnableAdviceService(request *EnableAdviceServiceRequest) (
 }
 
 /**
+ * ###
  * If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
  *
  * @param request GrantOperatorPermissionRequest
@@ -24553,6 +25321,7 @@ func (client *Client) GrantOperatorPermissionWithOptions(request *GrantOperatorP
 }
 
 /**
+ * ###
  * If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
  *
  * @param request GrantOperatorPermissionRequest
@@ -26014,6 +26783,152 @@ func (client *Client) ModifyMaintenanceAction(request *ModifyMaintenanceActionRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMaintenanceActionResponse{}
 	_body, _err := client.ModifyMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyResubmitConfigWithOptions(tmpReq *ModifyResubmitConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyResubmitConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyResubmitConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		query["Rules"] = request.RulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyResubmitConfig"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyResubmitConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyResubmitConfig(request *ModifyResubmitConfigRequest) (_result *ModifyResubmitConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyResubmitConfigResponse{}
+	_body, _err := client.ModifyResubmitConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifySQAConfigWithOptions(request *ModifySQAConfigRequest, runtime *util.RuntimeOptions) (_result *ModifySQAConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SQAStatus)) {
+		query["SQAStatus"] = request.SQAStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySQAConfig"),
+		Version:     tea.String("2019-03-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySQAConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifySQAConfig(request *ModifySQAConfigRequest) (_result *ModifySQAConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySQAConfigResponse{}
+	_body, _err := client.ModifySQAConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
