@@ -19779,7 +19779,8 @@ type GetInstanceStatusStatisticRequest struct {
 	// The environment of the workspace. Valid values: PROD and DEV. The value PROD indicates the production environment. The value DEV indicates the development environment.
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
 	// The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID.
-	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SchedulerPeriod *string `json:"SchedulerPeriod,omitempty" xml:"SchedulerPeriod,omitempty"`
 	// The scheduling type of the node. Valid values:
 	//
 	// *   NORMAL: auto triggered node
@@ -19814,6 +19815,11 @@ func (s *GetInstanceStatusStatisticRequest) SetProjectEnv(v string) *GetInstance
 
 func (s *GetInstanceStatusStatisticRequest) SetProjectId(v int64) *GetInstanceStatusStatisticRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *GetInstanceStatusStatisticRequest) SetSchedulerPeriod(v string) *GetInstanceStatusStatisticRequest {
+	s.SchedulerPeriod = &v
 	return s
 }
 
@@ -35468,9 +35474,6 @@ type ListEnabledExtensionsForProjectResponseBodyExtensions struct {
 	ExtensionDesc *string `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
 	// The ID of the tenant.
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
-	// The timestamp when extension was modified.
-	GmtCreate   *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The description of the extension.
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
 	// The parameter settings of the extension. For more information, see [Configure extension parameters](~~405354~~).
@@ -35506,16 +35509,6 @@ func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetExtensionDesc
 
 func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetExtensionName(v string) *ListEnabledExtensionsForProjectResponseBodyExtensions {
 	s.ExtensionName = &v
-	return s
-}
-
-func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetGmtCreate(v int64) *ListEnabledExtensionsForProjectResponseBodyExtensions {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListEnabledExtensionsForProjectResponseBodyExtensions) SetGmtModified(v int64) *ListEnabledExtensionsForProjectResponseBodyExtensions {
-	s.GmtModified = &v
 	return s
 }
 
@@ -37774,6 +37767,7 @@ type ListInstancesRequest struct {
 	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// Indicates whether the node can be rerun.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OrderBy  *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// The connection string.
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The operation that you want to perform.
@@ -37830,6 +37824,11 @@ func (s *ListInstancesRequest) SetNodeId(v int64) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetNodeName(v string) *ListInstancesRequest {
 	s.NodeName = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetOrderBy(v string) *ListInstancesRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -61981,6 +61980,10 @@ func (client *Client) GetInstanceStatusStatisticWithOptions(request *GetInstance
 		body["ProjectId"] = request.ProjectId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SchedulerPeriod)) {
+		body["SchedulerPeriod"] = request.SchedulerPeriod
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
 		body["SchedulerType"] = request.SchedulerType
 	}
@@ -66162,6 +66165,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
 		body["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		body["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Owner)) {
