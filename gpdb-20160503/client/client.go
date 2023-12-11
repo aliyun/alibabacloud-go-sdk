@@ -227,7 +227,7 @@ type CreateAccountRequest struct {
 	// The name of the database.
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -575,9 +575,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// >  You are charged for coordinator node resources of more than 8 CUs.
 	MasterCU *int32 `json:"MasterCU,omitempty" xml:"MasterCU,omitempty"`
-	// The number of coordinator nodes. Valid values: 1 and 2.
-	//
-	// > If you do not specify this parameter, 1 is used.
+	// This parameter is no longer used.
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
@@ -1334,13 +1332,23 @@ func (s *CreateDocumentCollectionResponse) SetBody(v *CreateDocumentCollectionRe
 }
 
 type CreateNamespaceRequest struct {
-	DBInstanceId           *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	ManagerAccount         *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~196830~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the manager account that has the rds_superuser permission.
+	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
+	// The password of the manager account.
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	Namespace              *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword      *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password of the namespace.
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -1387,9 +1395,15 @@ func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
 }
 
 type CreateNamespaceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -1869,14 +1883,25 @@ func (s *DeleteCollectionResponse) SetBody(v *DeleteCollectionResponseBody) *Del
 }
 
 type DeleteCollectionDataRequest struct {
-	Collection           *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	CollectionData       *string `json:"CollectionData,omitempty" xml:"CollectionData,omitempty"`
+	// The name of the collection.
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The data that you want to delete.
+	CollectionData *string `json:"CollectionData,omitempty" xml:"CollectionData,omitempty"`
+	// The data filter to delete.
 	CollectionDataFilter *string `json:"CollectionDataFilter,omitempty" xml:"CollectionDataFilter,omitempty"`
-	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword    *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password of the namespace.
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteCollectionDataRequest) String() string {
@@ -1928,10 +1953,17 @@ func (s *DeleteCollectionDataRequest) SetRegionId(v string) *DeleteCollectionDat
 }
 
 type DeleteCollectionDataResponseBody struct {
-	AppliedRows *int64  `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of rows that are affected by the request.
+	AppliedRows *int64 `json:"AppliedRows,omitempty" xml:"AppliedRows,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DeleteCollectionDataResponseBody) String() string {
@@ -1999,7 +2031,7 @@ type DeleteDBInstanceRequest struct {
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3524,7 +3556,8 @@ type DescribeDBClusterPerformanceRequest struct {
 	// *   **top20**: the 20 nodes that have the highest metric values.
 	// *   **bottom10**: the 10 nodes that have the lowest metric values.
 	// *   **bottom20**: the 20 nodes that have the lowest metric values.
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Nodes             *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// > You can query monitoring information only within the last 30 days.
@@ -3561,6 +3594,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetNodeType(v string) *DescribeDBC
 
 func (s *DescribeDBClusterPerformanceRequest) SetNodes(v string) *DescribeDBClusterPerformanceRequest {
 	s.Nodes = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceRequest) SetResourceGroupName(v string) *DescribeDBClusterPerformanceRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 
@@ -3736,7 +3774,7 @@ type DescribeDBInstanceAttributeRequest struct {
 	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3868,11 +3906,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **StorageElastic**: elastic storage mode.
 	// *   **Classic**: reserved storage mode.
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// The type of the network interface card (NIC) that is used by the instance. Valid values:
-	//
-	// *   **0**: Internet.
-	// *   **1**: internal network.
-	// *   **2**: VPC.
+	// An invalid parameter. It is no longer returned when you call this operation.
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The state of the instance. For more information, see the "Additional description of DBInstanceStatus" section of this topic.
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
@@ -3963,7 +3997,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The running duration of the instance.
 	RunningTime *string `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// The IP address whitelist of the instance.
+	// An invalid parameter. It is no longer returned when you call this operation.
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The performance level of ESSDs. Only **PL1** is supported.
 	SegDiskPerformanceLevel *string `json:"SegDiskPerformanceLevel,omitempty" xml:"SegDiskPerformanceLevel,omitempty"`
@@ -4007,9 +4041,9 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	// *   **TB SSD**
 	// *   **GB HDD**
 	//
-	// >  This parameter is returned only for instances in reserved storage mode or Serverless mode.
+	// >  This parameter is returned only for instances in reserved storage mode.
 	StorageUnit *string `json:"StorageUnit,omitempty" xml:"StorageUnit,omitempty"`
-	// Indicates whether the instance supports backup and restoration.
+	// Indicates whether the instance supports backup and restoration. Valid values:
 	//
 	// *   **true**
 	// *   **false**
@@ -4943,9 +4977,9 @@ type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The IP address of the node.
 	NodeAddress *string `json:"NodeAddress,omitempty" xml:"NodeAddress,omitempty"`
-	// The ID of the node group.
+	// The node group ID.
 	NodeCID *string `json:"NodeCID,omitempty" xml:"NodeCID,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	NodeID *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
 	// The name of the host where the node resides.
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
@@ -4953,10 +4987,10 @@ type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
 	NodePort *string `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
 	// The initial role of the node. Valid values:
 	//
-	// *   **primary**: primary node
-	// *   **mirror**: secondary node
+	// *   **primary**: primary node.
+	// *   **mirror**: secondary node.
 	//
-	// If the value of this parameter is the same as that of **NodeRole**, no primary/secondary switchover occurs. If the value of this parameter is not the same as that of **NodeRole**, a primary/secondary switchover occurs.
+	// If the value of this parameter is the same as that of **NodeRole**, no primary/secondary switchover occurs. If the value of this parameter is different from that of **NodeRole**, a primary/secondary switchover occurs.
 	NodePreferredRole *string `json:"NodePreferredRole,omitempty" xml:"NodePreferredRole,omitempty"`
 	// The data synchronization state of the node. Valid values:
 	//
@@ -4966,8 +5000,8 @@ type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
 	NodeReplicationMode *string `json:"NodeReplicationMode,omitempty" xml:"NodeReplicationMode,omitempty"`
 	// The current role of the node. Valid values:
 	//
-	// *   **primary**: primary node
-	// *   **mirror**: secondary node
+	// *   **primary**: primary node.
+	// *   **mirror**: secondary node.
 	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
 	// The running state of the node. Valid values:
 	//
@@ -4976,9 +5010,9 @@ type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
 	// The type of the node. Valid values:
 	//
-	// *   **master**: primary coordinator node
-	// *   **slave**: standby coordinator node
-	// *   **segment**: compute node
+	// *   **master**: primary coordinator node.
+	// *   **slave**: standby coordinator node.
+	// *   **segment**: compute node.
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -5396,6 +5430,9 @@ func (s *DescribeDBInstanceErrorLogResponse) SetBody(v *DescribeDBInstanceErrorL
 }
 
 type DescribeDBInstanceIPArrayListRequest struct {
+	// The name of the IP address whitelist. If you do not specify this parameter, the default whitelist is queried.
+	//
+	// >  Each instance supports up to 50 IP address whitelists.
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
 	// The instance ID.
 	//
@@ -5429,7 +5466,7 @@ func (s *DescribeDBInstanceIPArrayListRequest) SetResourceGroupId(v string) *Des
 }
 
 type DescribeDBInstanceIPArrayListResponseBody struct {
-	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
+	// The queried IP address whitelists.
 	Items *DescribeDBInstanceIPArrayListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -5471,11 +5508,11 @@ func (s *DescribeDBInstanceIPArrayListResponseBodyItems) SetDBInstanceIPArray(v 
 }
 
 type DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray struct {
-	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute does not appear in the console.
+	// The attribute of the IP address whitelist. By default, this parameter is empty. A whitelist with the `hidden` attribute is not displayed in the console.
 	DBInstanceIPArrayAttribute *string `json:"DBInstanceIPArrayAttribute,omitempty" xml:"DBInstanceIPArrayAttribute,omitempty"`
 	// The name of the IP address whitelist.
 	DBInstanceIPArrayName *string `json:"DBInstanceIPArrayName,omitempty" xml:"DBInstanceIPArrayName,omitempty"`
-	// The IP addresses listed in the whitelist. You can add up to 1,000 IP addresses to the whitelist. Separate multiple IP addresses with commas (,). The IP addresses must use one of the following formats:
+	// The IP addresses listed in the whitelist. Up to 1,000 IP addresses are contained in a whitelist and separated by commas (,). The IP addresses must use one of the following formats:
 	//
 	// *   0.0.0.0/0
 	// *   10.23.12.24. This is a standard IP address.
@@ -5544,11 +5581,11 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **20**
+	// *   **30**
 	// *   **50**
 	// *   **100**
 	//
-	// Default value: **20**.
+	// Default value: **30**.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5916,7 +5953,7 @@ type DescribeDBInstancePerformanceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The performance metric. Separate multiple values with commas (,). For more information, see [Performance parameters](~~86943~~).
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -6583,7 +6620,8 @@ type DescribeDBInstancesRequest struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag value.
-	Tag []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag   []*DescribeDBInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcId *string                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDBInstancesRequest) String() string {
@@ -6659,6 +6697,11 @@ func (s *DescribeDBInstancesRequest) SetTag(v []*DescribeDBInstancesRequestTag) 
 	return s
 }
 
+func (s *DescribeDBInstancesRequest) SetVpcId(v string) *DescribeDBInstancesRequest {
+	s.VpcId = &v
+	return s
+}
+
 type DescribeDBInstancesRequestTag struct {
 	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -6722,7 +6765,8 @@ type DescribeDBInstancesShrinkRequest struct {
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag value.
-	Tag []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Tag   []*DescribeDBInstancesShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VpcId *string                                `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeDBInstancesShrinkRequest) String() string {
@@ -6798,6 +6842,11 @@ func (s *DescribeDBInstancesShrinkRequest) SetTag(v []*DescribeDBInstancesShrink
 	return s
 }
 
+func (s *DescribeDBInstancesShrinkRequest) SetVpcId(v string) *DescribeDBInstancesShrinkRequest {
+	s.VpcId = &v
+	return s
+}
+
 type DescribeDBInstancesShrinkRequestTag struct {
 	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -6824,12 +6873,7 @@ func (s *DescribeDBInstancesShrinkRequestTag) SetValue(v string) *DescribeDBInst
 }
 
 type DescribeDBInstancesResponseBody struct {
-	// The type of the Serverless mode. Valid values:
-	//
-	// *   **Manual**: manual scheduling.
-	// *   **Auto**: automatic scheduling.
-	//
-	// > This parameter is returned only for instances in Serverless mode.
+	// The queried instances.
 	Items *DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -6900,45 +6944,45 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The edition of the instance. Valid values:
 	//
-	// *   **Basic**: Basic Edition
-	// *   **HighAvailability**: High-availability Edition
-	// *   **Finance**: Enterprise Edition
+	// *   **Basic**: Basic Edition.
+	// *   **HighAvailability**: High-availability Edition.
+	// *   **Finance**: Enterprise Edition.
 	DBInstanceCategory *string `json:"DBInstanceCategory,omitempty" xml:"DBInstanceCategory,omitempty"`
 	// The description of the instance.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **Serverless**: Serverless mode
-	// *   **StorageElastic**: elastic storage mode
-	// *   **Classic**: reserved storage mode
+	// *   **Serverless**: Serverless mode.
+	// *   **StorageElastic**: elastic storage mode.
+	// *   **Classic**: reserved storage mode.
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
 	// The type of the network interface card (NIC) that is used by the instance. Valid values:
 	//
-	// *   **0**: Internet
-	// *   **1**: internal network
-	// *   **2**: VPC
+	// *   **0**: Internet.
+	// *   **1**: internal network.
+	// *   **2**: VPC.
 	DBInstanceNetType *string `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
 	// The state of the instance. For more information, see [Instance statuses](~~86944~~).
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
-	// The database engine that the instance runs.
+	// The database engine of the instance.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The version of the database engine.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The expiration time of the instance. The time is displayed in UTC.
 	//
-	// >  For pay-as-you-go instances, `2999-09-08T16:00:00Z` is returned.
+	// > The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The resource type of the instance. Valid values:
 	//
-	// *   **cluster**: elastic storage mode or Serverless mode
-	// *   **replicaSet**: reserved storage mode
+	// *   **cluster**: Serverless mode or elastic storage mode.
+	// *   **replicaSet**: reserved storage mode.
 	InstanceDeployType *string `json:"InstanceDeployType,omitempty" xml:"InstanceDeployType,omitempty"`
 	// The network type of the instance. Valid values:
 	//
-	// *   **Classic**
-	// *   **VPC**
+	// *   **Classic**: classic network.
+	// *   **VPC**: VPC.
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
@@ -6949,18 +6993,24 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	// *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
 	// *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The reason why the cluster is locked.
+	// The reason why the instance is locked. Valid values:
 	//
-	// >  This parameter is returned only when the cluster is locked. The value is **instance_expire**.
+	// *   **0**: The instance is not locked.
+	// *   **1**: The instance is manually locked.
+	// *   **2**: The instance is automatically locked due to instance expiration.
+	// *   **3**: The instance is automatically locked due to instance restoration.
+	// *   **4**: The instance is automatically locked due to exhausted storage.
+	//
+	// > If the instance is in reserved storage mode and unlocked, null is returned.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The number of coordinator nodes.
 	MasterNodeNum *int32 `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// *   **Postpaid**: pay-as-you-go.
+	// *   **Prepaid**: subscription.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -6968,25 +7018,25 @@ type DescribeDBInstancesResponseBodyItemsDBInstance struct {
 	SegNodeNum *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	// The type of the Serverless mode. Valid values:
 	//
-	// *   **Manual**: manual scheduling
-	// *   **Auto**: automatic scheduling
+	// *   **Manual**: manual scheduling.
+	// *   **Auto**: automatic scheduling.
 	//
-	// >  This parameter is returned only for instances in Serverless mode.
+	// > This parameter is returned only for instances in Serverless mode.
 	ServerlessMode *string `json:"ServerlessMode,omitempty" xml:"ServerlessMode,omitempty"`
-	// The storage capacity. Unit: GB.
+	// The storage capacity of the instance. Unit: GB.
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// *   **cloud_essd**: enhanced SSD (ESSD)
-	// *   **cloud_efficiency**: ultra disk
+	// *   **cloud_essd**: enhanced SSD (ESSD).
+	// *   **cloud_efficiency**: ultra disk.
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The tags of the instance. Each tag is a key-value pair.
+	// The tags that are added to the instance.
 	Tags *DescribeDBInstancesResponseBodyItemsDBInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of virtual private cloud (VPC).
+	// The VPC ID.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID of the instance.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7151,9 +7201,9 @@ func (s *DescribeDBInstancesResponseBodyItemsDBInstanceTags) SetTag(v []*Describ
 }
 
 type DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag struct {
-	// The key of the tag.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7205,10 +7255,19 @@ func (s *DescribeDBInstancesResponse) SetBody(v *DescribeDBInstancesResponseBody
 }
 
 type DescribeDBVersionInfosRequest struct {
-	DBInstanceMode  *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	DBVersion       *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type of the instance. Valid values:
+	//
+	// *   **StorageElastic**: elastic storage mode.
+	// *   **Serverless**: Serverless mode.
+	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	// The minor version number that does not include the prefix.
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
+	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -7246,7 +7305,9 @@ func (s *DescribeDBVersionInfosRequest) SetResourceGroupId(v string) *DescribeDB
 }
 
 type DescribeDBVersionInfosResponseBody struct {
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried minor versions.
 	VersionDetails *DescribeDBVersionInfosResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Struct"`
 }
 
@@ -7269,7 +7330,9 @@ func (s *DescribeDBVersionInfosResponseBody) SetVersionDetails(v *DescribeDBVers
 }
 
 type DescribeDBVersionInfosResponseBodyVersionDetails struct {
-	Serverless     interface{} `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
+	// The queried minor version information about the instance in Serverless mode.
+	Serverless interface{} `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
+	// The queried minor version information about the instance in elastic storage mode.
 	StorageElastic interface{} `json:"StorageElastic,omitempty" xml:"StorageElastic,omitempty"`
 }
 
@@ -7987,11 +8050,11 @@ type DescribeDataSharePerformanceRequest struct {
 	// *   **adbpg_datashare_topic_count**: the number of shared topics.
 	// *   **adbpg_datashare_data_size_mb**: the amount of data shared.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the region.
+	// The region ID of the instance.
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -10275,7 +10338,7 @@ func (s *DescribeModifyParameterLogRequest) SetStartTime(v string) *DescribeModi
 }
 
 type DescribeModifyParameterLogResponseBody struct {
-	// Indicates whether the modification takes effect.
+	// The queried parameter modification logs.
 	Changelogs []*DescribeModifyParameterLogResponseBodyChangelogs `json:"Changelogs,omitempty" xml:"Changelogs,omitempty" type:"Repeated"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10300,11 +10363,11 @@ func (s *DescribeModifyParameterLogResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeModifyParameterLogResponseBodyChangelogs struct {
-	// The time when the configuration change takes effect.
+	// The effective time.
 	EffectTime *string `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
 	// The name of the parameter.
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// Indicates whether the configuration change takes effect.
+	// Indicates whether the modification takes effect.
 	ParameterValid *string `json:"ParameterValid,omitempty" xml:"ParameterValid,omitempty"`
 	// The original value of the parameter.
 	ParameterValueAfter *string `json:"ParameterValueAfter,omitempty" xml:"ParameterValueAfter,omitempty"`
@@ -10669,15 +10732,18 @@ type DescribeRdsVSwitchsRequest struct {
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list and zone list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// This parameter is no longer used.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of virtual private cloud (VPC).
+	// The virtual private cloud (VPC) ID of the instance.
 	//
-	// > *   You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPCs.
-	// > *   This parameter is required.
+	// >
+	//
+	// *   You can call the [DescribeRdsVpcs](~~208327~~) operation to query the available VPC IDs.
+	//
+	// *   This parameter must be specified.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone.
 	//
@@ -12455,7 +12521,7 @@ type DescribeTagsRequest struct {
 	//
 	// >  You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12509,7 +12575,7 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 type DescribeTagsResponseBody struct {
 	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the tags.
+	// The queried tags.
 	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -12532,9 +12598,9 @@ func (s *DescribeTagsResponseBody) SetTags(v []*DescribeTagsResponseBodyTags) *D
 }
 
 type DescribeTagsResponseBodyTags struct {
-	// The key of the tag.
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -15114,7 +15180,7 @@ type ModifyDBInstanceDescriptionRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](~~86911~~) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a specific region.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -15195,7 +15261,7 @@ type ModifyDBInstanceMaintainTimeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The end time of the maintenance window. The end time must be later than the start time. Specify the time in the HH:mmZ format. The time must be in UTC.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View basic information of a resource group](~~151181~~).
+	// This parameter is no longer used.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -18151,9 +18217,7 @@ type UpgradeDBInstanceRequest struct {
 	//
 	// > This parameter is available only for instances in elastic storage mode.
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The number of coordinator nodes. Valid values: 1 and 2.
-	//
-	// > This parameter is available only for China site (aliyun.com).
+	// This parameter is no longer used.
 	MasterNodeNum *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is no longer used.
@@ -18671,13 +18735,22 @@ func (s *UpsertChunksResponse) SetBody(v *UpsertChunksResponseBody) *UpsertChunk
 }
 
 type UpsertCollectionDataRequest struct {
-	Collection        *string                            `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string                            `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace         *string                            `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespacePassword *string                            `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	OwnerId           *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Rows              []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	// The name of the collection.
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password of the namespace.
+	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rows     []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 
 func (s UpsertCollectionDataRequest) String() string {
@@ -18753,13 +18826,22 @@ func (s *UpsertCollectionDataRequestRows) SetVector(v []*float64) *UpsertCollect
 }
 
 type UpsertCollectionDataShrinkRequest struct {
-	Collection        *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	DBInstanceId      *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the collection.
+	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The instance ID.
+	//
+	// > You can call the [DescribeDBInstances](~~86911~~) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The password of the namespace.
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RowsShrink        *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// The region ID of the instance.
+	//
+	// > You can call the [DescribeRegions](~~86912~~) operation to query the most recent region list.
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RowsShrink *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
 }
 
 func (s UpsertCollectionDataShrinkRequest) String() string {
@@ -18806,9 +18888,15 @@ func (s *UpsertCollectionDataShrinkRequest) SetRowsShrink(v string) *UpsertColle
 }
 
 type UpsertCollectionDataResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   **success**
+	// *   **fail**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s UpsertCollectionDataResponseBody) String() string {
@@ -20811,6 +20899,10 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 		query["Nodes"] = request.Nodes
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -21743,6 +21835,10 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
 		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
 	}
 
 	req := &openapi.OpenApiRequest{
