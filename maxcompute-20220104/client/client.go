@@ -4332,6 +4332,325 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 	return s
 }
 
+type ListJobInfosRequest struct {
+	AscOrder    *bool   `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	Body        *string `json:"body,omitempty" xml:"body,omitempty"`
+	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
+	PageNumber  *int64  `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Region      *string `json:"region,omitempty" xml:"region,omitempty"`
+	TenantId    *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s ListJobInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfosRequest) SetAscOrder(v bool) *ListJobInfosRequest {
+	s.AscOrder = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetBody(v string) *ListJobInfosRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetOrderColumn(v string) *ListJobInfosRequest {
+	s.OrderColumn = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetPageNumber(v int64) *ListJobInfosRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetPageSize(v int64) *ListJobInfosRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetRegion(v string) *ListJobInfosRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *ListJobInfosRequest) SetTenantId(v string) *ListJobInfosRequest {
+	s.TenantId = &v
+	return s
+}
+
+type ListJobInfosResponseBody struct {
+	Data      *ListJobInfosResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpCode  *int32                        `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	RequestId *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListJobInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfosResponseBody) SetData(v *ListJobInfosResponseBodyData) *ListJobInfosResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListJobInfosResponseBody) SetHttpCode(v int32) *ListJobInfosResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBody) SetRequestId(v string) *ListJobInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListJobInfosResponseBodyData struct {
+	JobInfoList []*ListJobInfosResponseBodyDataJobInfoList `json:"jobInfoList,omitempty" xml:"jobInfoList,omitempty" type:"Repeated"`
+	PageNumber  *int64                                     `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	PageSize    *int64                                     `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	TotalCount  *int64                                     `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListJobInfosResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfosResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfosResponseBodyData) SetJobInfoList(v []*ListJobInfosResponseBodyDataJobInfoList) *ListJobInfosResponseBodyData {
+	s.JobInfoList = v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyData) SetPageNumber(v int64) *ListJobInfosResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyData) SetPageSize(v int64) *ListJobInfosResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyData) SetTotalCount(v int64) *ListJobInfosResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListJobInfosResponseBodyDataJobInfoList struct {
+	Cluster         *string  `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	CuSnapshot      *float64 `json:"cuSnapshot,omitempty" xml:"cuSnapshot,omitempty"`
+	CuUsage         *int64   `json:"cuUsage,omitempty" xml:"cuUsage,omitempty"`
+	EndAtTime       *int64   `json:"endAtTime,omitempty" xml:"endAtTime,omitempty"`
+	ExtNodeId       *string  `json:"extNodeId,omitempty" xml:"extNodeId,omitempty"`
+	ExtNodeOnDuty   *string  `json:"extNodeOnDuty,omitempty" xml:"extNodeOnDuty,omitempty"`
+	ExtPlantFrom    *string  `json:"extPlantFrom,omitempty" xml:"extPlantFrom,omitempty"`
+	InstanceId      *string  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	JobOwner        *string  `json:"jobOwner,omitempty" xml:"jobOwner,omitempty"`
+	JobType         *string  `json:"jobType,omitempty" xml:"jobType,omitempty"`
+	MemorySnapshot  *float64 `json:"memorySnapshot,omitempty" xml:"memorySnapshot,omitempty"`
+	MemoryUsage     *int64   `json:"memoryUsage,omitempty" xml:"memoryUsage,omitempty"`
+	Priority        *int64   `json:"priority,omitempty" xml:"priority,omitempty"`
+	Project         *string  `json:"project,omitempty" xml:"project,omitempty"`
+	QuotaNickname   *string  `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	QuotaType       *string  `json:"quotaType,omitempty" xml:"quotaType,omitempty"`
+	Region          *string  `json:"region,omitempty" xml:"region,omitempty"`
+	RunningAtTime   *int64   `json:"runningAtTime,omitempty" xml:"runningAtTime,omitempty"`
+	RunningTime     *int64   `json:"runningTime,omitempty" xml:"runningTime,omitempty"`
+	Signature       *string  `json:"signature,omitempty" xml:"signature,omitempty"`
+	Status          *string  `json:"status,omitempty" xml:"status,omitempty"`
+	StatusSnapshot  *string  `json:"statusSnapshot,omitempty" xml:"statusSnapshot,omitempty"`
+	SubmittedAtTime *int64   `json:"submittedAtTime,omitempty" xml:"submittedAtTime,omitempty"`
+	Tags            *string  `json:"tags,omitempty" xml:"tags,omitempty"`
+	TenantId        *string  `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	TotalTime       *int64   `json:"totalTime,omitempty" xml:"totalTime,omitempty"`
+	WaitingTime     *int64   `json:"waitingTime,omitempty" xml:"waitingTime,omitempty"`
+}
+
+func (s ListJobInfosResponseBodyDataJobInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfosResponseBodyDataJobInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetCluster(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Cluster = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetCuSnapshot(v float64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.CuSnapshot = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetCuUsage(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.CuUsage = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetEndAtTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.EndAtTime = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeId(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.ExtNodeId = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtNodeOnDuty(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.ExtNodeOnDuty = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetExtPlantFrom(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.ExtPlantFrom = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetInstanceId(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetJobOwner(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.JobOwner = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetJobType(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetMemorySnapshot(v float64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.MemorySnapshot = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetMemoryUsage(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.MemoryUsage = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetPriority(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetProject(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Project = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetQuotaNickname(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.QuotaNickname = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetQuotaType(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.QuotaType = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetRegion(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Region = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetRunningAtTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.RunningAtTime = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetRunningTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.RunningTime = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetSignature(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Signature = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetStatus(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetStatusSnapshot(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.StatusSnapshot = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetSubmittedAtTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.SubmittedAtTime = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetTags(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.Tags = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetTenantId(v string) *ListJobInfosResponseBodyDataJobInfoList {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetTotalTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.TotalTime = &v
+	return s
+}
+
+func (s *ListJobInfosResponseBodyDataJobInfoList) SetWaitingTime(v int64) *ListJobInfosResponseBodyDataJobInfoList {
+	s.WaitingTime = &v
+	return s
+}
+
+type ListJobInfosResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListJobInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListJobInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInfosResponse) SetHeaders(v map[string]*string) *ListJobInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobInfosResponse) SetStatusCode(v int32) *ListJobInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobInfosResponse) SetBody(v *ListJobInfosResponseBody) *ListJobInfosResponse {
+	s.Body = v
+	return s
+}
+
 type ListPackagesResponseBody struct {
 	// The returned data.
 	Data *ListPackagesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -9637,6 +9956,73 @@ func (client *Client) ListFunctions(projectName *string, request *ListFunctionsR
 	headers := make(map[string]*string)
 	_result = &ListFunctionsResponse{}
 	_body, _err := client.ListFunctionsWithOptions(projectName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AscOrder)) {
+		query["ascOrder"] = request.AscOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderColumn)) {
+		query["orderColumn"] = request.OrderColumn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["tenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobInfos"),
+		Version:     tea.String("2022-01-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/jobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobInfos(request *ListJobInfosRequest) (_result *ListJobInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobInfosResponse{}
+	_body, _err := client.ListJobInfosWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
