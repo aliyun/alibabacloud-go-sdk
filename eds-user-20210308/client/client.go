@@ -905,6 +905,7 @@ func (s *DescribeMfaDevicesResponse) SetBody(v *DescribeMfaDevicesResponseBody) 
 }
 
 type DescribeUsersRequest struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The list of usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The list of usernames to be exactly excluded.
@@ -921,7 +922,8 @@ type DescribeUsersRequest struct {
 	// If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the organization in which you want to query users.
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId      *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
 }
 
 func (s DescribeUsersRequest) String() string {
@@ -930,6 +932,11 @@ func (s DescribeUsersRequest) String() string {
 
 func (s DescribeUsersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUsersRequest) SetBizType(v string) *DescribeUsersRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *DescribeUsersRequest) SetEndUserIds(v []*string) *DescribeUsersRequest {
@@ -964,6 +971,11 @@ func (s *DescribeUsersRequest) SetNextToken(v string) *DescribeUsersRequest {
 
 func (s *DescribeUsersRequest) SetOrgId(v string) *DescribeUsersRequest {
 	s.OrgId = &v
+	return s
+}
+
+func (s *DescribeUsersRequest) SetSolutionId(v string) *DescribeUsersRequest {
+	s.SolutionId = &v
 	return s
 }
 
@@ -1674,7 +1686,8 @@ type FilterUsersResponseBodyUsers struct {
 	//     <!-- -->
 	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
 	// The mobile number.
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
 	// The remarks.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The user status.
@@ -1756,6 +1769,11 @@ func (s *FilterUsersResponseBodyUsers) SetOwnerType(v string) *FilterUsersRespon
 
 func (s *FilterUsersResponseBodyUsers) SetPhone(v string) *FilterUsersResponseBodyUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsers) SetRealNickName(v string) *FilterUsersResponseBodyUsers {
+	s.RealNickName = &v
 	return s
 }
 
@@ -2000,11 +2018,11 @@ func (s *GetManagerInfoByAuthCodeResponse) SetBody(v *GetManagerInfoByAuthCodeRe
 }
 
 type ListPropertyResponseBody struct {
-	// The information about the properties.
+	// The token that is used for the next query. If this parameter is empty, all results have been returned.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The information about the properties.
 	Properties []*ListPropertyResponseBodyProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
-	// The ID of the property.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2032,11 +2050,11 @@ func (s *ListPropertyResponseBody) SetRequestId(v string) *ListPropertyResponseB
 }
 
 type ListPropertyResponseBodyProperties struct {
-	// The operation that you want to perform. Set the value to **ListProperty**.
+	// The ID of the property.
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// Queries all user properties within an Alibaba Cloud account.
+	// The name of the property.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// ListProperty
+	// Details about the property values.
 	PropertyValues []*ListPropertyResponseBodyPropertiesPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -2064,8 +2082,10 @@ func (s *ListPropertyResponseBodyProperties) SetPropertyValues(v []*ListProperty
 }
 
 type ListPropertyResponseBodyPropertiesPropertyValues struct {
-	PropertyValue   *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	PropertyValueId *int64  `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
+	// The value of the property.
+	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
+	// The ID of the property value.
+	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
 func (s ListPropertyResponseBodyPropertiesPropertyValues) String() string {
@@ -2116,7 +2136,7 @@ func (s *ListPropertyResponse) SetBody(v *ListPropertyResponseBody) *ListPropert
 }
 
 type ListPropertyValueRequest struct {
-	// Queries property values of a user property.
+	// The ID of the property. You can call the [ListProperty](~~410890~~) operation to query the property ID.
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
 }
 
@@ -2134,8 +2154,9 @@ func (s *ListPropertyValueRequest) SetPropertyId(v int64) *ListPropertyValueRequ
 }
 
 type ListPropertyValueResponseBody struct {
+	// Details about property values.
 	PropertyValueInfos []*ListPropertyValueResponseBodyPropertyValueInfos `json:"PropertyValueInfos,omitempty" xml:"PropertyValueInfos,omitempty" type:"Repeated"`
-	// ListPropertyValue
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2158,8 +2179,10 @@ func (s *ListPropertyValueResponseBody) SetRequestId(v string) *ListPropertyValu
 }
 
 type ListPropertyValueResponseBodyPropertyValueInfos struct {
-	PropertyValue   *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	PropertyValueId *int64  `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
+	// The value of the property.
+	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
+	// The ID of the property value.
+	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
 func (s ListPropertyValueResponseBodyPropertyValueInfos) String() string {
@@ -3360,11 +3383,11 @@ func (s *UnlockUsersResponse) SetBody(v *UnlockUsersResponseBody) *UnlockUsersRe
 }
 
 type UpdatePropertyRequest struct {
-	// The operation that you want to perform. Set the value to **UpdateProperty**.
+	// The ID of the property that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property ID.
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The property values that failed to be modified.
+	// The new property name.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The new property value N.
+	// The values of property.
 	PropertyValues []*UpdatePropertyRequestPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -3392,9 +3415,9 @@ func (s *UpdatePropertyRequest) SetPropertyValues(v []*UpdatePropertyRequestProp
 }
 
 type UpdatePropertyRequestPropertyValues struct {
-	// The error code.
+	// The new property value.
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
-	// The ID of the property that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property ID.
+	// The ID of property value that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property value ID.
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
@@ -3417,9 +3440,9 @@ func (s *UpdatePropertyRequestPropertyValues) SetPropertyValueId(v int64) *Updat
 }
 
 type UpdatePropertyResponseBody struct {
-	// The name of the property.
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the property.
+	// The result of the modification.
 	UpdateResult *UpdatePropertyResponseBodyUpdateResult `json:"UpdateResult,omitempty" xml:"UpdateResult,omitempty" type:"Struct"`
 }
 
@@ -3444,9 +3467,9 @@ func (s *UpdatePropertyResponseBody) SetUpdateResult(v *UpdatePropertyResponseBo
 type UpdatePropertyResponseBodyUpdateResult struct {
 	// The ID of the property.
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The ID of property value N that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property value ID.
+	// The name of the property.
 	PropertyKey *string `json:"PropertyKey,omitempty" xml:"PropertyKey,omitempty"`
-	// The property values that were modified.
+	// The result of the property value modification.
 	SavePropertyValueModel *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel `json:"SavePropertyValueModel,omitempty" xml:"SavePropertyValueModel,omitempty" type:"Struct"`
 }
 
@@ -3474,9 +3497,9 @@ func (s *UpdatePropertyResponseBodyUpdateResult) SetSavePropertyValueModel(v *Up
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel struct {
-	// UpdateProperty
+	// The property values that failed to be modified.
 	FailedPropertyValues []*UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues `json:"FailedPropertyValues,omitempty" xml:"FailedPropertyValues,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The property values that were modified.
 	SavePropertyValues []*UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues `json:"SavePropertyValues,omitempty" xml:"SavePropertyValues,omitempty" type:"Repeated"`
 }
 
@@ -3499,9 +3522,13 @@ func (s *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModel) SetSavePr
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPropertyValues struct {
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	PropertyId    *int64  `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
+	// The error code.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The ID of the property.
+	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
+	// The value of the property.
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 }
 
@@ -3534,9 +3561,9 @@ func (s *UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelFailedPrope
 }
 
 type UpdatePropertyResponseBodyUpdateResultSavePropertyValueModelSavePropertyValues struct {
-	// Modifies a user property.
-	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 	// The value of the property.
+	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
+	// The ID of the property value.
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
 }
 
@@ -3998,6 +4025,10 @@ func (client *Client) DescribeUsersWithOptions(request *DescribeUsersRequest, ru
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
 		body["EndUserIds"] = request.EndUserIds
 	}
@@ -4012,6 +4043,10 @@ func (client *Client) DescribeUsersWithOptions(request *DescribeUsersRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
 		body["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		body["SolutionId"] = request.SolutionId
 	}
 
 	req := &openapi.OpenApiRequest{
