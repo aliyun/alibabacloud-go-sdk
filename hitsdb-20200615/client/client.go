@@ -12,6 +12,117 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateLdpsComputeGroupRequest struct {
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Properties           *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateLdpsComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetGroupName(v string) *CreateLdpsComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetInstanceId(v string) *CreateLdpsComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetOwnerAccount(v string) *CreateLdpsComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetOwnerId(v int64) *CreateLdpsComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetProperties(v string) *CreateLdpsComputeGroupRequest {
+	s.Properties = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetRegionId(v string) *CreateLdpsComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetResourceOwnerAccount(v string) *CreateLdpsComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetResourceOwnerId(v int64) *CreateLdpsComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupRequest) SetSecurityToken(v string) *CreateLdpsComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateLdpsComputeGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLdpsComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsComputeGroupResponseBody) SetRequestId(v string) *CreateLdpsComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLdpsComputeGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLdpsComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLdpsComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLdpsComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLdpsComputeGroupResponse) SetHeaders(v map[string]*string) *CreateLdpsComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupResponse) SetStatusCode(v int32) *CreateLdpsComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLdpsComputeGroupResponse) SetBody(v *CreateLdpsComputeGroupResponseBody) *CreateLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLdpsNamespaceRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -128,7 +239,9 @@ type CreateLindormInstanceRequest struct {
 	// *   **2.0**: The instance that you want to create is a multi-zone instance.
 	//
 	// By default, the value of this parameter is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required if you want to create a multi-zone instance**.
-	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	ArchVersion       *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	AutoRenewDuration *string `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoRenewal       *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800** to **1000000**.
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	// The storage capacity of the disk of a single core node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
@@ -308,6 +421,16 @@ func (s *CreateLindormInstanceRequest) SetArbiterZoneId(v string) *CreateLindorm
 
 func (s *CreateLindormInstanceRequest) SetArchVersion(v string) *CreateLindormInstanceRequest {
 	s.ArchVersion = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetAutoRenewDuration(v string) *CreateLindormInstanceRequest {
+	s.AutoRenewDuration = &v
+	return s
+}
+
+func (s *CreateLindormInstanceRequest) SetAutoRenewal(v bool) *CreateLindormInstanceRequest {
+	s.AutoRenewal = &v
 	return s
 }
 
@@ -562,6 +685,111 @@ func (s *CreateLindormInstanceResponse) SetBody(v *CreateLindormInstanceResponse
 	return s
 }
 
+type DeleteLdpsComputeGroupRequest struct {
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteLdpsComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLdpsComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetGroupName(v string) *DeleteLdpsComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetInstanceId(v string) *DeleteLdpsComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetOwnerAccount(v string) *DeleteLdpsComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetOwnerId(v int64) *DeleteLdpsComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetRegionId(v string) *DeleteLdpsComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetResourceOwnerAccount(v string) *DeleteLdpsComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetResourceOwnerId(v int64) *DeleteLdpsComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupRequest) SetSecurityToken(v string) *DeleteLdpsComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteLdpsComputeGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLdpsComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLdpsComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLdpsComputeGroupResponseBody) SetRequestId(v string) *DeleteLdpsComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLdpsComputeGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLdpsComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLdpsComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLdpsComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLdpsComputeGroupResponse) SetHeaders(v map[string]*string) *DeleteLdpsComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupResponse) SetStatusCode(v int32) *DeleteLdpsComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLdpsComputeGroupResponse) SetBody(v *DeleteLdpsComputeGroupResponseBody) *DeleteLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The display language of the regions in the returned results. Valid values:
 	//
@@ -699,6 +927,146 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type GetEngineDefaultAuthRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetEngineDefaultAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineDefaultAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineDefaultAuthRequest) SetInstanceId(v string) *GetEngineDefaultAuthRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetOwnerAccount(v string) *GetEngineDefaultAuthRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetOwnerId(v int64) *GetEngineDefaultAuthRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetRegionId(v string) *GetEngineDefaultAuthRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetResourceOwnerAccount(v string) *GetEngineDefaultAuthRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetResourceOwnerId(v int64) *GetEngineDefaultAuthRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthRequest) SetSecurityToken(v string) *GetEngineDefaultAuthRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetEngineDefaultAuthResponseBody struct {
+	AuthInfos  []*GetEngineDefaultAuthResponseBodyAuthInfos `json:"AuthInfos,omitempty" xml:"AuthInfos,omitempty" type:"Repeated"`
+	InstanceId *string                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEngineDefaultAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineDefaultAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineDefaultAuthResponseBody) SetAuthInfos(v []*GetEngineDefaultAuthResponseBodyAuthInfos) *GetEngineDefaultAuthResponseBody {
+	s.AuthInfos = v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponseBody) SetInstanceId(v string) *GetEngineDefaultAuthResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponseBody) SetRequestId(v string) *GetEngineDefaultAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEngineDefaultAuthResponseBodyAuthInfos struct {
+	Engine   *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetEngineDefaultAuthResponseBodyAuthInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineDefaultAuthResponseBodyAuthInfos) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineDefaultAuthResponseBodyAuthInfos) SetEngine(v string) *GetEngineDefaultAuthResponseBodyAuthInfos {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponseBodyAuthInfos) SetPassword(v string) *GetEngineDefaultAuthResponseBodyAuthInfos {
+	s.Password = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponseBodyAuthInfos) SetUsername(v string) *GetEngineDefaultAuthResponseBodyAuthInfos {
+	s.Username = &v
+	return s
+}
+
+type GetEngineDefaultAuthResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEngineDefaultAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEngineDefaultAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineDefaultAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineDefaultAuthResponse) SetHeaders(v map[string]*string) *GetEngineDefaultAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponse) SetStatusCode(v int32) *GetEngineDefaultAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEngineDefaultAuthResponse) SetBody(v *GetEngineDefaultAuthResponseBody) *GetEngineDefaultAuthResponse {
+	s.Body = v
+	return s
+}
+
 type GetInstanceIpWhiteListRequest struct {
 	// The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to obtain the instance ID.
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -832,6 +1200,123 @@ func (s *GetInstanceIpWhiteListResponse) SetStatusCode(v int32) *GetInstanceIpWh
 }
 
 func (s *GetInstanceIpWhiteListResponse) SetBody(v *GetInstanceIpWhiteListResponseBody) *GetInstanceIpWhiteListResponse {
+	s.Body = v
+	return s
+}
+
+type GetLdpsComputeGroupRequest struct {
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s GetLdpsComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsComputeGroupRequest) SetGroupName(v string) *GetLdpsComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetInstanceId(v string) *GetLdpsComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetOwnerAccount(v string) *GetLdpsComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetOwnerId(v int64) *GetLdpsComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetRegionId(v string) *GetLdpsComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetResourceOwnerAccount(v string) *GetLdpsComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetResourceOwnerId(v int64) *GetLdpsComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupRequest) SetSecurityToken(v string) *GetLdpsComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type GetLdpsComputeGroupResponseBody struct {
+	GroupName  *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequestId  *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLdpsComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsComputeGroupResponseBody) SetGroupName(v string) *GetLdpsComputeGroupResponseBody {
+	s.GroupName = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupResponseBody) SetProperties(v map[string]interface{}) *GetLdpsComputeGroupResponseBody {
+	s.Properties = v
+	return s
+}
+
+func (s *GetLdpsComputeGroupResponseBody) SetRequestId(v string) *GetLdpsComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLdpsComputeGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetLdpsComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLdpsComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLdpsComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLdpsComputeGroupResponse) SetHeaders(v map[string]*string) *GetLdpsComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLdpsComputeGroupResponse) SetStatusCode(v int32) *GetLdpsComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLdpsComputeGroupResponse) SetBody(v *GetLdpsComputeGroupResponseBody) *GetLdpsComputeGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2161,6 +2646,134 @@ func (s *GetLindormInstanceListResponse) SetBody(v *GetLindormInstanceListRespon
 	return s
 }
 
+type ListLdpsComputeGroupsRequest struct {
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s ListLdpsComputeGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLdpsComputeGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetInstanceId(v string) *ListLdpsComputeGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetOwnerAccount(v string) *ListLdpsComputeGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetOwnerId(v int64) *ListLdpsComputeGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetRegionId(v string) *ListLdpsComputeGroupsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetResourceOwnerAccount(v string) *ListLdpsComputeGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetResourceOwnerId(v int64) *ListLdpsComputeGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsRequest) SetSecurityToken(v string) *ListLdpsComputeGroupsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type ListLdpsComputeGroupsResponseBody struct {
+	GroupList []*ListLdpsComputeGroupsResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListLdpsComputeGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLdpsComputeGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsResponseBody) SetGroupList(v []*ListLdpsComputeGroupsResponseBodyGroupList) *ListLdpsComputeGroupsResponseBody {
+	s.GroupList = v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBody) SetRequestId(v string) *ListLdpsComputeGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListLdpsComputeGroupsResponseBodyGroupList struct {
+	GroupName  *string                `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+}
+
+func (s ListLdpsComputeGroupsResponseBodyGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLdpsComputeGroupsResponseBodyGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetGroupName(v string) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponseBodyGroupList) SetProperties(v map[string]interface{}) *ListLdpsComputeGroupsResponseBodyGroupList {
+	s.Properties = v
+	return s
+}
+
+type ListLdpsComputeGroupsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLdpsComputeGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLdpsComputeGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLdpsComputeGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLdpsComputeGroupsResponse) SetHeaders(v map[string]*string) *ListLdpsComputeGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponse) SetStatusCode(v int32) *ListLdpsComputeGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLdpsComputeGroupsResponse) SetBody(v *ListLdpsComputeGroupsResponseBody) *ListLdpsComputeGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The token used to start the next query to retrieve more results.
 	//
@@ -2745,6 +3358,111 @@ func (s *RenewLindormInstanceResponse) SetBody(v *RenewLindormInstanceResponseBo
 	return s
 }
 
+type RestartLdpsComputeGroupRequest struct {
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s RestartLdpsComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartLdpsComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetGroupName(v string) *RestartLdpsComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetInstanceId(v string) *RestartLdpsComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetOwnerAccount(v string) *RestartLdpsComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetOwnerId(v int64) *RestartLdpsComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetRegionId(v string) *RestartLdpsComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetResourceOwnerAccount(v string) *RestartLdpsComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetResourceOwnerId(v int64) *RestartLdpsComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupRequest) SetSecurityToken(v string) *RestartLdpsComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type RestartLdpsComputeGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestartLdpsComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartLdpsComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestartLdpsComputeGroupResponseBody) SetRequestId(v string) *RestartLdpsComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestartLdpsComputeGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartLdpsComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RestartLdpsComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestartLdpsComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestartLdpsComputeGroupResponse) SetHeaders(v map[string]*string) *RestartLdpsComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupResponse) SetStatusCode(v int32) *RestartLdpsComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestartLdpsComputeGroupResponse) SetBody(v *RestartLdpsComputeGroupResponseBody) *RestartLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type SwitchLSQLV3MySQLServiceRequest struct {
 	ActionType           *int32  `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -3231,6 +3949,117 @@ func (s *UpdateInstanceIpWhiteListResponse) SetBody(v *UpdateInstanceIpWhiteList
 	return s
 }
 
+type UpdateLdpsComputeGroupRequest struct {
+	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Properties           *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s UpdateLdpsComputeGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLdpsComputeGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetGroupName(v string) *UpdateLdpsComputeGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetInstanceId(v string) *UpdateLdpsComputeGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetOwnerAccount(v string) *UpdateLdpsComputeGroupRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetOwnerId(v int64) *UpdateLdpsComputeGroupRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetProperties(v string) *UpdateLdpsComputeGroupRequest {
+	s.Properties = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetRegionId(v string) *UpdateLdpsComputeGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetResourceOwnerAccount(v string) *UpdateLdpsComputeGroupRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetResourceOwnerId(v int64) *UpdateLdpsComputeGroupRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupRequest) SetSecurityToken(v string) *UpdateLdpsComputeGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type UpdateLdpsComputeGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLdpsComputeGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLdpsComputeGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLdpsComputeGroupResponseBody) SetRequestId(v string) *UpdateLdpsComputeGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLdpsComputeGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLdpsComputeGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLdpsComputeGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLdpsComputeGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLdpsComputeGroupResponse) SetHeaders(v map[string]*string) *UpdateLdpsComputeGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupResponse) SetStatusCode(v int32) *UpdateLdpsComputeGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLdpsComputeGroupResponse) SetBody(v *UpdateLdpsComputeGroupResponseBody) *UpdateLdpsComputeGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeLindormInstanceRequest struct {
 	// The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480** to **1017600**.
 	ClusterStorage *int32 `json:"ClusterStorage,omitempty" xml:"ClusterStorage,omitempty"`
@@ -3562,6 +4391,82 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Properties)) {
+		query["Properties"] = request.Properties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLdpsComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLdpsComputeGroup(request *CreateLdpsComputeGroupRequest) (_result *CreateLdpsComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLdpsComputeGroupResponse{}
+	_body, _err := client.CreateLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateLdpsNamespaceWithOptions(request *CreateLdpsNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateLdpsNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3657,6 +4562,14 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 
 	if !tea.BoolValue(util.IsUnset(request.ArchVersion)) {
 		query["ArchVersion"] = request.ArchVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewDuration)) {
+		query["AutoRenewDuration"] = request.AutoRenewDuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewal)) {
+		query["AutoRenewal"] = request.AutoRenewal
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ColdStorage)) {
@@ -3851,6 +4764,78 @@ func (client *Client) CreateLindormInstance(request *CreateLindormInstanceReques
 	return _result, _err
 }
 
+func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteLdpsComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLdpsComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLdpsComputeGroup(request *DeleteLdpsComputeGroupRequest) (_result *DeleteLdpsComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLdpsComputeGroupResponse{}
+	_body, _err := client.DeleteLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3915,6 +4900,74 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultAuthRequest, runtime *util.RuntimeOptions) (_result *GetEngineDefaultAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEngineDefaultAuth"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEngineDefaultAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEngineDefaultAuth(request *GetEngineDefaultAuthRequest) (_result *GetEngineDefaultAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEngineDefaultAuthResponse{}
+	_body, _err := client.GetEngineDefaultAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3972,6 +5025,78 @@ func (client *Client) GetInstanceIpWhiteList(request *GetInstanceIpWhiteListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceIpWhiteListResponse{}
 	_body, _err := client.GetInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *GetLdpsComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLdpsComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLdpsComputeGroup(request *GetLdpsComputeGroupRequest) (_result *GetLdpsComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLdpsComputeGroupResponse{}
+	_body, _err := client.GetLdpsComputeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4355,6 +5480,74 @@ func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequ
 	return _result, _err
 }
 
+func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeGroupsRequest, runtime *util.RuntimeOptions) (_result *ListLdpsComputeGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLdpsComputeGroups"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLdpsComputeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLdpsComputeGroups(request *ListLdpsComputeGroupsRequest) (_result *ListLdpsComputeGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLdpsComputeGroupsResponse{}
+	_body, _err := client.ListLdpsComputeGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4685,6 +5878,78 @@ func (client *Client) RenewLindormInstance(request *RenewLindormInstanceRequest)
 	return _result, _err
 }
 
+func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *RestartLdpsComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartLdpsComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestartLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RestartLdpsComputeGroup(request *RestartLdpsComputeGroupRequest) (_result *RestartLdpsComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestartLdpsComputeGroupResponse{}
+	_body, _err := client.RestartLdpsComputeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3MySQLServiceRequest, runtime *util.RuntimeOptions) (_result *SwitchLSQLV3MySQLServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4974,6 +6239,82 @@ func (client *Client) UpdateInstanceIpWhiteList(request *UpdateInstanceIpWhiteLi
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceIpWhiteListResponse{}
 	_body, _err := client.UpdateInstanceIpWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsComputeGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateLdpsComputeGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Properties)) {
+		query["Properties"] = request.Properties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLdpsComputeGroup"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLdpsComputeGroup(request *UpdateLdpsComputeGroupRequest) (_result *UpdateLdpsComputeGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLdpsComputeGroupResponse{}
+	_body, _err := client.UpdateLdpsComputeGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
