@@ -1,3 +1,6 @@
+2023-12-12 Version: v1.4.1
+- Generated golang 2021-12-01 for adb.
+
 2023-12-11 Version: v1.4.0
 - Generated golang 2021-12-01 for adb.
 
