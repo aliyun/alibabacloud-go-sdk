@@ -763,6 +763,7 @@ func (s *QueryTraceMuResponse) SetBody(v *QueryTraceMuResponseBody) *QueryTraceM
 type SubmitCopyrightExtractRequest struct {
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
 	Input    *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	Params   *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	Url      *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
@@ -782,6 +783,11 @@ func (s *SubmitCopyrightExtractRequest) SetCallBack(v string) *SubmitCopyrightEx
 
 func (s *SubmitCopyrightExtractRequest) SetInput(v string) *SubmitCopyrightExtractRequest {
 	s.Input = &v
+	return s
+}
+
+func (s *SubmitCopyrightExtractRequest) SetParams(v string) *SubmitCopyrightExtractRequest {
+	s.Params = &v
 	return s
 }
 
@@ -1637,18 +1643,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) QueryCopyright(request *QueryCopyrightRequest) (_result *QueryCopyrightResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryCopyrightResponse{}
-	_body, _err := client.QueryCopyrightWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryCopyrightWithOptions(request *QueryCopyrightRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryCopyrightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1703,11 +1697,11 @@ func (client *Client) QueryCopyrightWithOptions(request *QueryCopyrightRequest, 
 	return _result, _err
 }
 
-func (client *Client) QueryCopyrightExtract(request *QueryCopyrightExtractRequest) (_result *QueryCopyrightExtractResponse, _err error) {
+func (client *Client) QueryCopyright(request *QueryCopyrightRequest) (_result *QueryCopyrightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryCopyrightExtractResponse{}
-	_body, _err := client.QueryCopyrightExtractWithOptions(request, headers, runtime)
+	_result = &QueryCopyrightResponse{}
+	_body, _err := client.QueryCopyrightWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1749,11 +1743,11 @@ func (client *Client) QueryCopyrightExtractWithOptions(request *QueryCopyrightEx
 	return _result, _err
 }
 
-func (client *Client) QueryTraceAb(request *QueryTraceAbRequest) (_result *QueryTraceAbResponse, _err error) {
+func (client *Client) QueryCopyrightExtract(request *QueryCopyrightExtractRequest) (_result *QueryCopyrightExtractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryTraceAbResponse{}
-	_body, _err := client.QueryTraceAbWithOptions(request, headers, runtime)
+	_result = &QueryCopyrightExtractResponse{}
+	_body, _err := client.QueryCopyrightExtractWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1799,11 +1793,11 @@ func (client *Client) QueryTraceAbWithOptions(request *QueryTraceAbRequest, head
 	return _result, _err
 }
 
-func (client *Client) QueryTraceExtract(request *QueryTraceExtractRequest) (_result *QueryTraceExtractResponse, _err error) {
+func (client *Client) QueryTraceAb(request *QueryTraceAbRequest) (_result *QueryTraceAbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryTraceExtractResponse{}
-	_body, _err := client.QueryTraceExtractWithOptions(request, headers, runtime)
+	_result = &QueryTraceAbResponse{}
+	_body, _err := client.QueryTraceAbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1845,11 +1839,11 @@ func (client *Client) QueryTraceExtractWithOptions(request *QueryTraceExtractReq
 	return _result, _err
 }
 
-func (client *Client) QueryTraceMu(request *QueryTraceMuRequest) (_result *QueryTraceMuResponse, _err error) {
+func (client *Client) QueryTraceExtract(request *QueryTraceExtractRequest) (_result *QueryTraceExtractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &QueryTraceMuResponse{}
-	_body, _err := client.QueryTraceMuWithOptions(request, headers, runtime)
+	_result = &QueryTraceExtractResponse{}
+	_body, _err := client.QueryTraceExtractWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1915,11 +1909,11 @@ func (client *Client) QueryTraceMuWithOptions(request *QueryTraceMuRequest, head
 	return _result, _err
 }
 
-func (client *Client) SubmitCopyrightExtract(request *SubmitCopyrightExtractRequest) (_result *SubmitCopyrightExtractResponse, _err error) {
+func (client *Client) QueryTraceMu(request *QueryTraceMuRequest) (_result *QueryTraceMuResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitCopyrightExtractResponse{}
-	_body, _err := client.SubmitCopyrightExtractWithOptions(request, headers, runtime)
+	_result = &QueryTraceMuResponse{}
+	_body, _err := client.QueryTraceMuWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1939,6 +1933,10 @@ func (client *Client) SubmitCopyrightExtractWithOptions(request *SubmitCopyright
 
 	if !tea.BoolValue(util.IsUnset(request.Input)) {
 		body["Input"] = request.Input
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
@@ -1973,11 +1971,11 @@ func (client *Client) SubmitCopyrightExtractWithOptions(request *SubmitCopyright
 	return _result, _err
 }
 
-func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_result *SubmitCopyrightJobResponse, _err error) {
+func (client *Client) SubmitCopyrightExtract(request *SubmitCopyrightExtractRequest) (_result *SubmitCopyrightExtractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitCopyrightJobResponse{}
-	_body, _err := client.SubmitCopyrightJobWithOptions(request, headers, runtime)
+	_result = &SubmitCopyrightExtractResponse{}
+	_body, _err := client.SubmitCopyrightExtractWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2063,11 +2061,11 @@ func (client *Client) SubmitCopyrightJobWithOptions(request *SubmitCopyrightJobR
 	return _result, _err
 }
 
-func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest) (_result *SubmitImageCopyrightResponse, _err error) {
+func (client *Client) SubmitCopyrightJob(request *SubmitCopyrightJobRequest) (_result *SubmitCopyrightJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitImageCopyrightResponse{}
-	_body, _err := client.SubmitImageCopyrightWithOptions(request, headers, runtime)
+	_result = &SubmitCopyrightJobResponse{}
+	_body, _err := client.SubmitCopyrightJobWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2121,11 +2119,11 @@ func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyri
 	return _result, _err
 }
 
-func (client *Client) SubmitTraceAb(request *SubmitTraceAbRequest) (_result *SubmitTraceAbResponse, _err error) {
+func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest) (_result *SubmitImageCopyrightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitTraceAbResponse{}
-	_body, _err := client.SubmitTraceAbWithOptions(request, headers, runtime)
+	_result = &SubmitImageCopyrightResponse{}
+	_body, _err := client.SubmitImageCopyrightWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2199,11 +2197,11 @@ func (client *Client) SubmitTraceAbWithOptions(request *SubmitTraceAbRequest, he
 	return _result, _err
 }
 
-func (client *Client) SubmitTraceExtract(request *SubmitTraceExtractRequest) (_result *SubmitTraceExtractResponse, _err error) {
+func (client *Client) SubmitTraceAb(request *SubmitTraceAbRequest) (_result *SubmitTraceAbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitTraceExtractResponse{}
-	_body, _err := client.SubmitTraceExtractWithOptions(request, headers, runtime)
+	_result = &SubmitTraceAbResponse{}
+	_body, _err := client.SubmitTraceAbWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2257,11 +2255,11 @@ func (client *Client) SubmitTraceExtractWithOptions(request *SubmitTraceExtractR
 	return _result, _err
 }
 
-func (client *Client) SubmitTracemu(request *SubmitTracemuRequest) (_result *SubmitTracemuResponse, _err error) {
+func (client *Client) SubmitTraceExtract(request *SubmitTraceExtractRequest) (_result *SubmitTraceExtractResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &SubmitTracemuResponse{}
-	_body, _err := client.SubmitTracemuWithOptions(request, headers, runtime)
+	_result = &SubmitTraceExtractResponse{}
+	_body, _err := client.SubmitTraceExtractWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2312,5 +2310,17 @@ func (client *Client) SubmitTracemuWithOptions(request *SubmitTracemuRequest, he
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitTracemu(request *SubmitTracemuRequest) (_result *SubmitTracemuResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitTracemuResponse{}
+	_body, _err := client.SubmitTracemuWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
