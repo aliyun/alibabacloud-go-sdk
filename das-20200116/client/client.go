@@ -9393,6 +9393,247 @@ func (s *GetAutonomousNotifyEventsInRangeResponse) SetBody(v *GetAutonomousNotif
 	return s
 }
 
+type GetBlockingDetailListRequest struct {
+	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryHash  *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetBlockingDetailListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBlockingDetailListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBlockingDetailListRequest) SetDbNameList(v string) *GetBlockingDetailListRequest {
+	s.DbNameList = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetEndTime(v string) *GetBlockingDetailListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetInstanceId(v string) *GetBlockingDetailListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetPageNo(v string) *GetBlockingDetailListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetPageSize(v string) *GetBlockingDetailListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetQueryHash(v string) *GetBlockingDetailListRequest {
+	s.QueryHash = &v
+	return s
+}
+
+func (s *GetBlockingDetailListRequest) SetStartTime(v string) *GetBlockingDetailListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetBlockingDetailListResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetBlockingDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetBlockingDetailListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBlockingDetailListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBlockingDetailListResponseBody) SetCode(v string) *GetBlockingDetailListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBody) SetData(v *GetBlockingDetailListResponseBodyData) *GetBlockingDetailListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBody) SetMessage(v string) *GetBlockingDetailListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBody) SetRequestId(v string) *GetBlockingDetailListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBody) SetSuccess(v string) *GetBlockingDetailListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetBlockingDetailListResponseBodyData struct {
+	List     []*GetBlockingDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetBlockingDetailListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBlockingDetailListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetBlockingDetailListResponseBodyData) SetList(v []*GetBlockingDetailListResponseBodyDataList) *GetBlockingDetailListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyData) SetPageNo(v int64) *GetBlockingDetailListResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyData) SetPageSize(v int64) *GetBlockingDetailListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyData) SetTotal(v int64) *GetBlockingDetailListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetBlockingDetailListResponseBodyDataList struct {
+	BatchId               *int64  `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	ClientAppName         *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
+	CurrentCollectionTime *int64  `json:"CurrentCollectionTime,omitempty" xml:"CurrentCollectionTime,omitempty"`
+	DataBase              *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
+	HostName              *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	LoginId               *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
+	QueryHash             *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
+	Spid                  *string `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	SqlText               *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	StartTime             *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	WaitTimeMs            *int64  `json:"WaitTimeMs,omitempty" xml:"WaitTimeMs,omitempty"`
+	WaitType              *string `json:"WaitType,omitempty" xml:"WaitType,omitempty"`
+}
+
+func (s GetBlockingDetailListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBlockingDetailListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetBatchId(v int64) *GetBlockingDetailListResponseBodyDataList {
+	s.BatchId = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetClientAppName(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.ClientAppName = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetCurrentCollectionTime(v int64) *GetBlockingDetailListResponseBodyDataList {
+	s.CurrentCollectionTime = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetDataBase(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.DataBase = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetHostName(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetLoginId(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.LoginId = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetQueryHash(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.QueryHash = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetSpid(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.Spid = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetSqlText(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.SqlText = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetStartTime(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetWaitTimeMs(v int64) *GetBlockingDetailListResponseBodyDataList {
+	s.WaitTimeMs = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponseBodyDataList) SetWaitType(v string) *GetBlockingDetailListResponseBodyDataList {
+	s.WaitType = &v
+	return s
+}
+
+type GetBlockingDetailListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBlockingDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBlockingDetailListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBlockingDetailListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBlockingDetailListResponse) SetHeaders(v map[string]*string) *GetBlockingDetailListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBlockingDetailListResponse) SetStatusCode(v int32) *GetBlockingDetailListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBlockingDetailListResponse) SetBody(v *GetBlockingDetailListResponseBody) *GetBlockingDetailListResponse {
+	s.Body = v
+	return s
+}
+
 type GetDBInstanceConnectivityDiagnosisRequest struct {
 	// The instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -10312,6 +10553,396 @@ func (s *GetDasSQLLogHotDataResponse) SetStatusCode(v int32) *GetDasSQLLogHotDat
 }
 
 func (s *GetDasSQLLogHotDataResponse) SetBody(v *GetDasSQLLogHotDataResponseBody) *GetDasSQLLogHotDataResponse {
+	s.Body = v
+	return s
+}
+
+type GetDeadLockDetailListRequest struct {
+	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo     *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetDeadLockDetailListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListRequest) SetDbNameList(v string) *GetDeadLockDetailListRequest {
+	s.DbNameList = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListRequest) SetEndTime(v string) *GetDeadLockDetailListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListRequest) SetInstanceId(v string) *GetDeadLockDetailListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListRequest) SetPageNo(v string) *GetDeadLockDetailListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListRequest) SetPageSize(v string) *GetDeadLockDetailListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListRequest) SetStartTime(v string) *GetDeadLockDetailListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetDeadLockDetailListResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetDeadLockDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDeadLockDetailListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListResponseBody) SetCode(v string) *GetDeadLockDetailListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBody) SetData(v *GetDeadLockDetailListResponseBodyData) *GetDeadLockDetailListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBody) SetMessage(v string) *GetDeadLockDetailListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBody) SetRequestId(v string) *GetDeadLockDetailListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBody) SetSuccess(v string) *GetDeadLockDetailListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDeadLockDetailListResponseBodyData struct {
+	List     []*GetDeadLockDetailListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                       `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetDeadLockDetailListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListResponseBodyData) SetList(v []*GetDeadLockDetailListResponseBodyDataList) *GetDeadLockDetailListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyData) SetPageNo(v int64) *GetDeadLockDetailListResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyData) SetPageSize(v int64) *GetDeadLockDetailListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyData) SetTotal(v int64) *GetDeadLockDetailListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetDeadLockDetailListResponseBodyDataList struct {
+	BatchId                 *int64                                                       `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	BlockProcessList        []*GetDeadLockDetailListResponseBodyDataListBlockProcessList `json:"BlockProcessList,omitempty" xml:"BlockProcessList,omitempty" type:"Repeated"`
+	ClientApp               *string                                                      `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
+	DatabaseName            *string                                                      `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	HostName                *string                                                      `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	LastTranStarted         *int64                                                       `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
+	LockMode                *string                                                      `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LogUsed                 *int64                                                       `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
+	LoginName               *string                                                      `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	ObjectOwned             *string                                                      `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
+	ObjectRequested         *string                                                      `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
+	OwnMode                 *string                                                      `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
+	Spid                    *int64                                                       `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	SqlText                 *string                                                      `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	Status                  *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Victim                  *int64                                                       `json:"Victim,omitempty" xml:"Victim,omitempty"`
+	WaitMode                *string                                                      `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
+	WaitResource            *string                                                      `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
+	WaitResourceDescription *string                                                      `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
+}
+
+func (s GetDeadLockDetailListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetBatchId(v int64) *GetDeadLockDetailListResponseBodyDataList {
+	s.BatchId = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetBlockProcessList(v []*GetDeadLockDetailListResponseBodyDataListBlockProcessList) *GetDeadLockDetailListResponseBodyDataList {
+	s.BlockProcessList = v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetClientApp(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.ClientApp = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetDatabaseName(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetHostName(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetLastTranStarted(v int64) *GetDeadLockDetailListResponseBodyDataList {
+	s.LastTranStarted = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetLockMode(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.LockMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetLogUsed(v int64) *GetDeadLockDetailListResponseBodyDataList {
+	s.LogUsed = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetLoginName(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.LoginName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetObjectOwned(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.ObjectOwned = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetObjectRequested(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.ObjectRequested = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetOwnMode(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.OwnMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetSpid(v int64) *GetDeadLockDetailListResponseBodyDataList {
+	s.Spid = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetSqlText(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.SqlText = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetStatus(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetVictim(v int64) *GetDeadLockDetailListResponseBodyDataList {
+	s.Victim = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetWaitMode(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.WaitMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetWaitResource(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.WaitResource = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataList) SetWaitResourceDescription(v string) *GetDeadLockDetailListResponseBodyDataList {
+	s.WaitResourceDescription = &v
+	return s
+}
+
+type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
+	ClientApp               *string `json:"ClientApp,omitempty" xml:"ClientApp,omitempty"`
+	DatabaseName            *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	LastTranStarted         *int64  `json:"LastTranStarted,omitempty" xml:"LastTranStarted,omitempty"`
+	LockMode                *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	LogUsed                 *int64  `json:"LogUsed,omitempty" xml:"LogUsed,omitempty"`
+	LoginName               *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	ObjectOwned             *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
+	ObjectRequested         *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
+	OwnMode                 *string `json:"OwnMode,omitempty" xml:"OwnMode,omitempty"`
+	Spid                    *int64  `json:"Spid,omitempty" xml:"Spid,omitempty"`
+	SqlText                 *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Victim                  *int64  `json:"Victim,omitempty" xml:"Victim,omitempty"`
+	WaitMode                *string `json:"WaitMode,omitempty" xml:"WaitMode,omitempty"`
+	WaitResource            *string `json:"WaitResource,omitempty" xml:"WaitResource,omitempty"`
+	WaitResourceDescription *string `json:"WaitResourceDescription,omitempty" xml:"WaitResourceDescription,omitempty"`
+}
+
+func (s GetDeadLockDetailListResponseBodyDataListBlockProcessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListResponseBodyDataListBlockProcessList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetClientApp(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.ClientApp = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetDatabaseName(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetHostName(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetLastTranStarted(v int64) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.LastTranStarted = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetLockMode(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.LockMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetLogUsed(v int64) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.LogUsed = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetLoginName(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.LoginName = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetObjectOwned(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.ObjectOwned = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetObjectRequested(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.ObjectRequested = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetOwnMode(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.OwnMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetSpid(v int64) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.Spid = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetSqlText(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.SqlText = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetStatus(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetVictim(v int64) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.Victim = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetWaitMode(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.WaitMode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetWaitResource(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.WaitResource = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponseBodyDataListBlockProcessList) SetWaitResourceDescription(v string) *GetDeadLockDetailListResponseBodyDataListBlockProcessList {
+	s.WaitResourceDescription = &v
+	return s
+}
+
+type GetDeadLockDetailListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDeadLockDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDeadLockDetailListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeadLockDetailListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeadLockDetailListResponse) SetHeaders(v map[string]*string) *GetDeadLockDetailListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponse) SetStatusCode(v int32) *GetDeadLockDetailListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeadLockDetailListResponse) SetBody(v *GetDeadLockDetailListResponseBody) *GetDeadLockDetailListResponse {
 	s.Body = v
 	return s
 }
@@ -13286,6 +13917,337 @@ func (s *GetInstanceInspectionsResponse) SetStatusCode(v int32) *GetInstanceInsp
 }
 
 func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsResponseBody) *GetInstanceInspectionsResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceMissingIndexListRequest struct {
+	AvgTotalUserCost *string `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
+	AvgUserImpact    *string `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IndexCount       *string `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ObjectName       *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	PageNo           *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ReservedPages    *string `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
+	ReservedSize     *string `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
+	RowCount         *string `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UniqueCompiles   *string `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
+	UserScans        *string `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
+	UserSeeks        *string `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
+}
+
+func (s GetInstanceMissingIndexListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMissingIndexListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetAvgTotalUserCost(v string) *GetInstanceMissingIndexListRequest {
+	s.AvgTotalUserCost = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetAvgUserImpact(v string) *GetInstanceMissingIndexListRequest {
+	s.AvgUserImpact = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetEndTime(v string) *GetInstanceMissingIndexListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetIndexCount(v string) *GetInstanceMissingIndexListRequest {
+	s.IndexCount = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetInstanceId(v string) *GetInstanceMissingIndexListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetObjectName(v string) *GetInstanceMissingIndexListRequest {
+	s.ObjectName = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetPageNo(v string) *GetInstanceMissingIndexListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetPageSize(v string) *GetInstanceMissingIndexListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetReservedPages(v string) *GetInstanceMissingIndexListRequest {
+	s.ReservedPages = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetReservedSize(v string) *GetInstanceMissingIndexListRequest {
+	s.ReservedSize = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetRowCount(v string) *GetInstanceMissingIndexListRequest {
+	s.RowCount = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetStartTime(v string) *GetInstanceMissingIndexListRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetUniqueCompiles(v string) *GetInstanceMissingIndexListRequest {
+	s.UniqueCompiles = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetUserScans(v string) *GetInstanceMissingIndexListRequest {
+	s.UserScans = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListRequest) SetUserSeeks(v string) *GetInstanceMissingIndexListRequest {
+	s.UserSeeks = &v
+	return s
+}
+
+type GetInstanceMissingIndexListResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetInstanceMissingIndexListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetInstanceMissingIndexListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMissingIndexListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMissingIndexListResponseBody) SetCode(v string) *GetInstanceMissingIndexListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBody) SetData(v *GetInstanceMissingIndexListResponseBodyData) *GetInstanceMissingIndexListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBody) SetMessage(v string) *GetInstanceMissingIndexListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBody) SetRequestId(v string) *GetInstanceMissingIndexListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBody) SetSuccess(v string) *GetInstanceMissingIndexListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetInstanceMissingIndexListResponseBodyData struct {
+	List     []*GetInstanceMissingIndexListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNo   *int64                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int64                                             `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetInstanceMissingIndexListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMissingIndexListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyData) SetList(v []*GetInstanceMissingIndexListResponseBodyDataList) *GetInstanceMissingIndexListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyData) SetPageNo(v int64) *GetInstanceMissingIndexListResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyData) SetPageSize(v int64) *GetInstanceMissingIndexListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyData) SetTotal(v int64) *GetInstanceMissingIndexListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type GetInstanceMissingIndexListResponseBodyDataList struct {
+	AvgTotalUserCost  *float64 `json:"AvgTotalUserCost,omitempty" xml:"AvgTotalUserCost,omitempty"`
+	AvgUserImpact     *float64 `json:"AvgUserImpact,omitempty" xml:"AvgUserImpact,omitempty"`
+	CreateIndex       *string  `json:"CreateIndex,omitempty" xml:"CreateIndex,omitempty"`
+	DatabaseName      *string  `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EqualityColumns   *string  `json:"EqualityColumns,omitempty" xml:"EqualityColumns,omitempty"`
+	IncludedColumns   *string  `json:"IncludedColumns,omitempty" xml:"IncludedColumns,omitempty"`
+	IndexCount        *int64   `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	InequalityColumns *string  `json:"InequalityColumns,omitempty" xml:"InequalityColumns,omitempty"`
+	LastUserSeek      *int64   `json:"LastUserSeek,omitempty" xml:"LastUserSeek,omitempty"`
+	ObjectName        *string  `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
+	ReservedPages     *int64   `json:"ReservedPages,omitempty" xml:"ReservedPages,omitempty"`
+	ReservedSize      *float64 `json:"ReservedSize,omitempty" xml:"ReservedSize,omitempty"`
+	RowCount          *int64   `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	SchemaName        *string  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SystemScans       *int64   `json:"SystemScans,omitempty" xml:"SystemScans,omitempty"`
+	SystemSeeks       *int64   `json:"SystemSeeks,omitempty" xml:"SystemSeeks,omitempty"`
+	UniqueCompiles    *int64   `json:"UniqueCompiles,omitempty" xml:"UniqueCompiles,omitempty"`
+	UserScans         *int64   `json:"UserScans,omitempty" xml:"UserScans,omitempty"`
+	UserSeeks         *int64   `json:"UserSeeks,omitempty" xml:"UserSeeks,omitempty"`
+}
+
+func (s GetInstanceMissingIndexListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMissingIndexListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetAvgTotalUserCost(v float64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.AvgTotalUserCost = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetAvgUserImpact(v float64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.AvgUserImpact = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetCreateIndex(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.CreateIndex = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetDatabaseName(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetEqualityColumns(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.EqualityColumns = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetIncludedColumns(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.IncludedColumns = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetIndexCount(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.IndexCount = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetInequalityColumns(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.InequalityColumns = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetLastUserSeek(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.LastUserSeek = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetObjectName(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.ObjectName = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetReservedPages(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.ReservedPages = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetReservedSize(v float64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.ReservedSize = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetRowCount(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.RowCount = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetSchemaName(v string) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetSystemScans(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.SystemScans = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetSystemSeeks(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.SystemSeeks = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetUniqueCompiles(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.UniqueCompiles = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetUserScans(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.UserScans = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponseBodyDataList) SetUserSeeks(v int64) *GetInstanceMissingIndexListResponseBodyDataList {
+	s.UserSeeks = &v
+	return s
+}
+
+type GetInstanceMissingIndexListResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceMissingIndexListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceMissingIndexListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceMissingIndexListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceMissingIndexListResponse) SetHeaders(v map[string]*string) *GetInstanceMissingIndexListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponse) SetStatusCode(v int32) *GetInstanceMissingIndexListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceMissingIndexListResponse) SetBody(v *GetInstanceMissingIndexListResponseBody) *GetInstanceMissingIndexListResponse {
 	s.Body = v
 	return s
 }
@@ -25706,6 +26668,74 @@ func (client *Client) GetAutonomousNotifyEventsInRange(request *GetAutonomousNot
 	return _result, _err
 }
 
+func (client *Client) GetBlockingDetailListWithOptions(request *GetBlockingDetailListRequest, runtime *util.RuntimeOptions) (_result *GetBlockingDetailListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbNameList)) {
+		query["DbNameList"] = request.DbNameList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryHash)) {
+		query["QueryHash"] = request.QueryHash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBlockingDetailList"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBlockingDetailListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBlockingDetailList(request *GetBlockingDetailListRequest) (_result *GetBlockingDetailListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBlockingDetailListResponse{}
+	_body, _err := client.GetBlockingDetailListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * Before you call this operation, take note of the following items:
  * *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
@@ -26006,6 +27036,70 @@ func (client *Client) GetDasSQLLogHotData(request *GetDasSQLLogHotDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDasSQLLogHotDataResponse{}
 	_body, _err := client.GetDasSQLLogHotDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDeadLockDetailListWithOptions(request *GetDeadLockDetailListRequest, runtime *util.RuntimeOptions) (_result *GetDeadLockDetailListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbNameList)) {
+		query["DbNameList"] = request.DbNameList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeadLockDetailList"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeadLockDetailListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDeadLockDetailList(request *GetDeadLockDetailListRequest) (_result *GetDeadLockDetailListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeadLockDetailListResponse{}
+	_body, _err := client.GetDeadLockDetailListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26760,6 +27854,106 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceInspectionsResponse{}
 	_body, _err := client.GetInstanceInspectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceMissingIndexListWithOptions(request *GetInstanceMissingIndexListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceMissingIndexListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvgTotalUserCost)) {
+		query["AvgTotalUserCost"] = request.AvgTotalUserCost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvgUserImpact)) {
+		query["AvgUserImpact"] = request.AvgUserImpact
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexCount)) {
+		query["IndexCount"] = request.IndexCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectName)) {
+		query["ObjectName"] = request.ObjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReservedPages)) {
+		query["ReservedPages"] = request.ReservedPages
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReservedSize)) {
+		query["ReservedSize"] = request.ReservedSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RowCount)) {
+		query["RowCount"] = request.RowCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueCompiles)) {
+		query["UniqueCompiles"] = request.UniqueCompiles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserScans)) {
+		query["UserScans"] = request.UserScans
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSeeks)) {
+		query["UserSeeks"] = request.UserSeeks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceMissingIndexList"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceMissingIndexListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceMissingIndexList(request *GetInstanceMissingIndexListRequest) (_result *GetInstanceMissingIndexListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetInstanceMissingIndexListResponse{}
+	_body, _err := client.GetInstanceMissingIndexListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
