@@ -228,6 +228,7 @@ type CreateTaskRequestParametersTranscription struct {
 	Diarization                *CreateTaskRequestParametersTranscriptionDiarization `json:"Diarization,omitempty" xml:"Diarization,omitempty" type:"Struct"`
 	DiarizationEnabled         *bool                                                `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
 	OutputLevel                *int32                                               `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	PhraseId                   *string                                              `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
 }
 
 func (s CreateTaskRequestParametersTranscription) String() string {
@@ -255,6 +256,11 @@ func (s *CreateTaskRequestParametersTranscription) SetDiarizationEnabled(v bool)
 
 func (s *CreateTaskRequestParametersTranscription) SetOutputLevel(v int32) *CreateTaskRequestParametersTranscription {
 	s.OutputLevel = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersTranscription) SetPhraseId(v string) *CreateTaskRequestParametersTranscription {
+	s.PhraseId = &v
 	return s
 }
 
@@ -385,6 +391,193 @@ func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskRespo
 	return s
 }
 
+type CreateTranscriptionPhrasesRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
+}
+
+func (s CreateTranscriptionPhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTranscriptionPhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTranscriptionPhrasesRequest) SetDescription(v string) *CreateTranscriptionPhrasesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesRequest) SetName(v string) *CreateTranscriptionPhrasesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesRequest) SetWordWeights(v string) *CreateTranscriptionPhrasesRequest {
+	s.WordWeights = &v
+	return s
+}
+
+type CreateTranscriptionPhrasesResponseBody struct {
+	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *CreateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTranscriptionPhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTranscriptionPhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTranscriptionPhrasesResponseBody) SetCode(v string) *CreateTranscriptionPhrasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBody) SetData(v *CreateTranscriptionPhrasesResponseBodyData) *CreateTranscriptionPhrasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBody) SetMessage(v string) *CreateTranscriptionPhrasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBody) SetRequestId(v string) *CreateTranscriptionPhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTranscriptionPhrasesResponseBodyData struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	PhraseId     *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateTranscriptionPhrasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTranscriptionPhrasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTranscriptionPhrasesResponseBodyData) SetErrorCode(v string) *CreateTranscriptionPhrasesResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBodyData) SetErrorMessage(v string) *CreateTranscriptionPhrasesResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBodyData) SetPhraseId(v string) *CreateTranscriptionPhrasesResponseBodyData {
+	s.PhraseId = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponseBodyData) SetStatus(v string) *CreateTranscriptionPhrasesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CreateTranscriptionPhrasesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTranscriptionPhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTranscriptionPhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTranscriptionPhrasesResponse) SetHeaders(v map[string]*string) *CreateTranscriptionPhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponse) SetStatusCode(v int32) *CreateTranscriptionPhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTranscriptionPhrasesResponse) SetBody(v *CreateTranscriptionPhrasesResponseBody) *CreateTranscriptionPhrasesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTranscriptionPhrasesResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteTranscriptionPhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTranscriptionPhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBody) SetErrorCode(v string) *DeleteTranscriptionPhrasesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBody) SetErrorMessage(v string) *DeleteTranscriptionPhrasesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponseBody) SetStatus(v string) *DeleteTranscriptionPhrasesResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteTranscriptionPhrasesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTranscriptionPhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTranscriptionPhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTranscriptionPhrasesResponse) SetHeaders(v map[string]*string) *DeleteTranscriptionPhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponse) SetStatusCode(v int32) *DeleteTranscriptionPhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTranscriptionPhrasesResponse) SetBody(v *DeleteTranscriptionPhrasesResponseBody) *DeleteTranscriptionPhrasesResponse {
+	s.Body = v
+	return s
+}
+
 type GetTaskInfoResponseBody struct {
 	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data      *GetTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -474,6 +667,393 @@ func (s *GetTaskInfoResponse) SetStatusCode(v int32) *GetTaskInfoResponse {
 }
 
 func (s *GetTaskInfoResponse) SetBody(v *GetTaskInfoResponseBody) *GetTaskInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetTranscriptionPhrasesResponseBody struct {
+	Code    *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *GetTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTranscriptionPhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscriptionPhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscriptionPhrasesResponseBody) SetCode(v string) *GetTranscriptionPhrasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBody) SetData(v *GetTranscriptionPhrasesResponseBodyData) *GetTranscriptionPhrasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBody) SetMessage(v string) *GetTranscriptionPhrasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBody) SetRequestId(v string) *GetTranscriptionPhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTranscriptionPhrasesResponseBodyData struct {
+	ErrorCode    *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Phrases      []*GetTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	Status       *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetTranscriptionPhrasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscriptionPhrasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyData) SetErrorCode(v string) *GetTranscriptionPhrasesResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyData) SetErrorMessage(v string) *GetTranscriptionPhrasesResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyData) SetPhrases(v []*GetTranscriptionPhrasesResponseBodyDataPhrases) *GetTranscriptionPhrasesResponseBodyData {
+	s.Phrases = v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyData) SetStatus(v string) *GetTranscriptionPhrasesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetTranscriptionPhrasesResponseBodyDataPhrases struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhraseId    *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
+}
+
+func (s GetTranscriptionPhrasesResponseBodyDataPhrases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscriptionPhrasesResponseBodyDataPhrases) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyDataPhrases) SetDescription(v string) *GetTranscriptionPhrasesResponseBodyDataPhrases {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyDataPhrases) SetName(v string) *GetTranscriptionPhrasesResponseBodyDataPhrases {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyDataPhrases) SetPhraseId(v string) *GetTranscriptionPhrasesResponseBodyDataPhrases {
+	s.PhraseId = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponseBodyDataPhrases) SetWordWeights(v string) *GetTranscriptionPhrasesResponseBodyDataPhrases {
+	s.WordWeights = &v
+	return s
+}
+
+type GetTranscriptionPhrasesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTranscriptionPhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTranscriptionPhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTranscriptionPhrasesResponse) SetHeaders(v map[string]*string) *GetTranscriptionPhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponse) SetStatusCode(v int32) *GetTranscriptionPhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTranscriptionPhrasesResponse) SetBody(v *GetTranscriptionPhrasesResponseBody) *GetTranscriptionPhrasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListTranscriptionPhrasesResponseBody struct {
+	Code    *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *ListTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTranscriptionPhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTranscriptionPhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTranscriptionPhrasesResponseBody) SetCode(v string) *ListTranscriptionPhrasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBody) SetData(v *ListTranscriptionPhrasesResponseBodyData) *ListTranscriptionPhrasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBody) SetMessage(v string) *ListTranscriptionPhrasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBody) SetRequestId(v string) *ListTranscriptionPhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTranscriptionPhrasesResponseBodyData struct {
+	ErrorCode    *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Phrases      []*ListTranscriptionPhrasesResponseBodyDataPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	Status       *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTranscriptionPhrasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTranscriptionPhrasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyData) SetErrorCode(v string) *ListTranscriptionPhrasesResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyData) SetErrorMessage(v string) *ListTranscriptionPhrasesResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyData) SetPhrases(v []*ListTranscriptionPhrasesResponseBodyDataPhrases) *ListTranscriptionPhrasesResponseBodyData {
+	s.Phrases = v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyData) SetStatus(v string) *ListTranscriptionPhrasesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type ListTranscriptionPhrasesResponseBodyDataPhrases struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PhraseId    *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+}
+
+func (s ListTranscriptionPhrasesResponseBodyDataPhrases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTranscriptionPhrasesResponseBodyDataPhrases) GoString() string {
+	return s.String()
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyDataPhrases) SetDescription(v string) *ListTranscriptionPhrasesResponseBodyDataPhrases {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyDataPhrases) SetName(v string) *ListTranscriptionPhrasesResponseBodyDataPhrases {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponseBodyDataPhrases) SetPhraseId(v string) *ListTranscriptionPhrasesResponseBodyDataPhrases {
+	s.PhraseId = &v
+	return s
+}
+
+type ListTranscriptionPhrasesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTranscriptionPhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTranscriptionPhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTranscriptionPhrasesResponse) SetHeaders(v map[string]*string) *ListTranscriptionPhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponse) SetStatusCode(v int32) *ListTranscriptionPhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTranscriptionPhrasesResponse) SetBody(v *ListTranscriptionPhrasesResponseBody) *ListTranscriptionPhrasesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateTranscriptionPhrasesRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	WordWeights *string `json:"WordWeights,omitempty" xml:"WordWeights,omitempty"`
+}
+
+func (s UpdateTranscriptionPhrasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTranscriptionPhrasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTranscriptionPhrasesRequest) SetDescription(v string) *UpdateTranscriptionPhrasesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesRequest) SetName(v string) *UpdateTranscriptionPhrasesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesRequest) SetWordWeights(v string) *UpdateTranscriptionPhrasesRequest {
+	s.WordWeights = &v
+	return s
+}
+
+type UpdateTranscriptionPhrasesResponseBody struct {
+	Code    *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *UpdateTranscriptionPhrasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTranscriptionPhrasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTranscriptionPhrasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBody) SetCode(v string) *UpdateTranscriptionPhrasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBody) SetData(v *UpdateTranscriptionPhrasesResponseBodyData) *UpdateTranscriptionPhrasesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBody) SetMessage(v string) *UpdateTranscriptionPhrasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBody) SetRequestId(v string) *UpdateTranscriptionPhrasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTranscriptionPhrasesResponseBodyData struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateTranscriptionPhrasesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTranscriptionPhrasesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBodyData) SetErrorCode(v string) *UpdateTranscriptionPhrasesResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBodyData) SetErrorMessage(v string) *UpdateTranscriptionPhrasesResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponseBodyData) SetStatus(v string) *UpdateTranscriptionPhrasesResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type UpdateTranscriptionPhrasesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTranscriptionPhrasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTranscriptionPhrasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTranscriptionPhrasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTranscriptionPhrasesResponse) SetHeaders(v map[string]*string) *UpdateTranscriptionPhrasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponse) SetStatusCode(v int32) *UpdateTranscriptionPhrasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTranscriptionPhrasesResponse) SetBody(v *UpdateTranscriptionPhrasesResponseBody) *UpdateTranscriptionPhrasesResponse {
 	s.Body = v
 	return s
 }
@@ -589,6 +1169,96 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 	return _result, _err
 }
 
+func (client *Client) CreateTranscriptionPhrasesWithOptions(request *CreateTranscriptionPhrasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTranscriptionPhrasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordWeights)) {
+		body["WordWeights"] = request.WordWeights
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTranscriptionPhrases"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tingwu/v2/resources/phrases"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTranscriptionPhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTranscriptionPhrases(request *CreateTranscriptionPhrasesRequest) (_result *CreateTranscriptionPhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTranscriptionPhrasesResponse{}
+	_body, _err := client.CreateTranscriptionPhrasesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTranscriptionPhrases"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tingwu/v2/resources/phrases/" + tea.StringValue(openapiutil.GetEncodeParam(PhraseId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTranscriptionPhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTranscriptionPhrases(PhraseId *string) (_result *DeleteTranscriptionPhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTranscriptionPhrasesResponse{}
+	_body, _err := client.DeleteTranscriptionPhrasesWithOptions(PhraseId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTaskInfoWithOptions(TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTaskInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -618,6 +1288,132 @@ func (client *Client) GetTaskInfo(TaskId *string) (_result *GetTaskInfoResponse,
 	headers := make(map[string]*string)
 	_result = &GetTaskInfoResponse{}
 	_body, _err := client.GetTaskInfoWithOptions(TaskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTranscriptionPhrasesWithOptions(PhraseId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTranscriptionPhrasesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTranscriptionPhrases"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tingwu/v2/resources/phrases/" + tea.StringValue(openapiutil.GetEncodeParam(PhraseId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTranscriptionPhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTranscriptionPhrases(PhraseId *string) (_result *GetTranscriptionPhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTranscriptionPhrasesResponse{}
+	_body, _err := client.GetTranscriptionPhrasesWithOptions(PhraseId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTranscriptionPhrasesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTranscriptionPhrasesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTranscriptionPhrases"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tingwu/v2/resources/phrases"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTranscriptionPhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTranscriptionPhrases() (_result *ListTranscriptionPhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTranscriptionPhrasesResponse{}
+	_body, _err := client.ListTranscriptionPhrasesWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTranscriptionPhrasesWithOptions(PhraseId *string, request *UpdateTranscriptionPhrasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordWeights)) {
+		body["WordWeights"] = request.WordWeights
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTranscriptionPhrases"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/tingwu/v2/resources/phrases/" + tea.StringValue(openapiutil.GetEncodeParam(PhraseId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTranscriptionPhrasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTranscriptionPhrases(PhraseId *string, request *UpdateTranscriptionPhrasesRequest) (_result *UpdateTranscriptionPhrasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTranscriptionPhrasesResponse{}
+	_body, _err := client.UpdateTranscriptionPhrasesWithOptions(PhraseId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
