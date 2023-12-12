@@ -13392,6 +13392,111 @@ func (s *FixNodePoolVulsResponse) SetBody(v *FixNodePoolVulsResponseBody) *FixNo
 	return s
 }
 
+type GetClusterAddonInstanceResponseBody struct {
+	Config  *string                                     `json:"config,omitempty" xml:"config,omitempty"`
+	Logging *GetClusterAddonInstanceResponseBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
+	Name    *string                                     `json:"name,omitempty" xml:"name,omitempty"`
+	State   *string                                     `json:"state,omitempty" xml:"state,omitempty"`
+	Version *string                                     `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s GetClusterAddonInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterAddonInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterAddonInstanceResponseBody) SetConfig(v string) *GetClusterAddonInstanceResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBody) SetLogging(v *GetClusterAddonInstanceResponseBodyLogging) *GetClusterAddonInstanceResponseBody {
+	s.Logging = v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBody) SetName(v string) *GetClusterAddonInstanceResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBody) SetState(v string) *GetClusterAddonInstanceResponseBody {
+	s.State = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBody) SetVersion(v string) *GetClusterAddonInstanceResponseBody {
+	s.Version = &v
+	return s
+}
+
+type GetClusterAddonInstanceResponseBodyLogging struct {
+	Capable    *bool   `json:"capable,omitempty" xml:"capable,omitempty"`
+	Enabled    *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
+	Logstore   *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+}
+
+func (s GetClusterAddonInstanceResponseBodyLogging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterAddonInstanceResponseBodyLogging) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterAddonInstanceResponseBodyLogging) SetCapable(v bool) *GetClusterAddonInstanceResponseBodyLogging {
+	s.Capable = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBodyLogging) SetEnabled(v bool) *GetClusterAddonInstanceResponseBodyLogging {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBodyLogging) SetLogProject(v string) *GetClusterAddonInstanceResponseBodyLogging {
+	s.LogProject = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponseBodyLogging) SetLogstore(v string) *GetClusterAddonInstanceResponseBodyLogging {
+	s.Logstore = &v
+	return s
+}
+
+type GetClusterAddonInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClusterAddonInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClusterAddonInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterAddonInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterAddonInstanceResponse) SetHeaders(v map[string]*string) *GetClusterAddonInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponse) SetStatusCode(v int32) *GetClusterAddonInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterAddonInstanceResponse) SetBody(v *GetClusterAddonInstanceResponseBody) *GetClusterAddonInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type GetClusterCheckResponseBody struct {
 	// Id of the request
 	CheckId    *string                             `json:"check_id,omitempty" xml:"check_id,omitempty"`
@@ -13918,6 +14023,158 @@ func (s *InstallClusterAddonsResponse) SetHeaders(v map[string]*string) *Install
 
 func (s *InstallClusterAddonsResponse) SetStatusCode(v int32) *InstallClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type ListAddonsRequest struct {
+	ClusterId      *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ClusterSpec    *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	ClusterType    *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
+	Profile        *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	RegionId       *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+}
+
+func (s ListAddonsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsRequest) SetClusterId(v string) *ListAddonsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetClusterSpec(v string) *ListAddonsRequest {
+	s.ClusterSpec = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetClusterType(v string) *ListAddonsRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetClusterVersion(v string) *ListAddonsRequest {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetProfile(v string) *ListAddonsRequest {
+	s.Profile = &v
+	return s
+}
+
+func (s *ListAddonsRequest) SetRegionId(v string) *ListAddonsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAddonsResponseBody struct {
+	Addons []*ListAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
+}
+
+func (s ListAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBody) SetAddons(v []*ListAddonsResponseBodyAddons) *ListAddonsResponseBody {
+	s.Addons = v
+	return s
+}
+
+type ListAddonsResponseBodyAddons struct {
+	Architecture     []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
+	Category         *string   `json:"category,omitempty" xml:"category,omitempty"`
+	ConfigSchema     *string   `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
+	InstallByDefault *bool     `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
+	Managed          *bool     `json:"managed,omitempty" xml:"managed,omitempty"`
+	Name             *string   `json:"name,omitempty" xml:"name,omitempty"`
+	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
+	Version          *string   `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s ListAddonsResponseBodyAddons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponseBodyAddons) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponseBodyAddons) SetArchitecture(v []*string) *ListAddonsResponseBodyAddons {
+	s.Architecture = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetCategory(v string) *ListAddonsResponseBodyAddons {
+	s.Category = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetConfigSchema(v string) *ListAddonsResponseBodyAddons {
+	s.ConfigSchema = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetInstallByDefault(v bool) *ListAddonsResponseBodyAddons {
+	s.InstallByDefault = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetManaged(v bool) *ListAddonsResponseBodyAddons {
+	s.Managed = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetName(v string) *ListAddonsResponseBodyAddons {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetSupportedActions(v []*string) *ListAddonsResponseBodyAddons {
+	s.SupportedActions = v
+	return s
+}
+
+func (s *ListAddonsResponseBodyAddons) SetVersion(v string) *ListAddonsResponseBodyAddons {
+	s.Version = &v
+	return s
+}
+
+type ListAddonsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAddonsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAddonsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAddonsResponse) SetHeaders(v map[string]*string) *ListAddonsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAddonsResponse) SetStatusCode(v int32) *ListAddonsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAddonsResponse) SetBody(v *ListAddonsResponseBody) *ListAddonsResponse {
+	s.Body = v
 	return s
 }
 
@@ -22119,6 +22376,42 @@ func (client *Client) FixNodePoolVuls(clusterId *string, nodepoolId *string, req
 	return _result, _err
 }
 
+func (client *Client) GetClusterAddonInstanceWithOptions(clusterId *string, instanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetClusterAddonInstanceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterAddonInstance"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterId)) + "/addon_instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterAddonInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClusterAddonInstance(clusterId *string, instanceName *string) (_result *GetClusterAddonInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetClusterAddonInstanceResponse{}
+	_body, _err := client.GetClusterAddonInstanceWithOptions(clusterId, instanceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetClusterCheckWithOptions(clusterId *string, checkId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetClusterCheckResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -22344,6 +22637,72 @@ func (client *Client) InstallClusterAddons(ClusterId *string, request *InstallCl
 	headers := make(map[string]*string)
 	_result = &InstallClusterAddonsResponse{}
 	_body, _err := client.InstallClusterAddonsWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAddonsWithOptions(request *ListAddonsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAddonsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
+		query["cluster_spec"] = request.ClusterSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["cluster_type"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterVersion)) {
+		query["cluster_version"] = request.ClusterVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["region_id"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAddons"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/addons"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAddons(request *ListAddonsRequest) (_result *ListAddonsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAddonsResponse{}
+	_body, _err := client.ListAddonsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
