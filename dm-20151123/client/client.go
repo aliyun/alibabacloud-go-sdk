@@ -787,6 +787,7 @@ type CreateTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -810,6 +811,11 @@ func (s *CreateTagRequest) SetResourceOwnerAccount(v string) *CreateTagRequest {
 
 func (s *CreateTagRequest) SetResourceOwnerId(v int64) *CreateTagRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTagRequest) SetTagDescription(v string) *CreateTagRequest {
+	s.TagDescription = &v
 	return s
 }
 
@@ -2783,6 +2789,7 @@ type ModifyTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
 	// The ID of the tag.
 	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 	// The name of the tag.
@@ -2809,6 +2816,11 @@ func (s *ModifyTagRequest) SetResourceOwnerAccount(v string) *ModifyTagRequest {
 
 func (s *ModifyTagRequest) SetResourceOwnerId(v int64) *ModifyTagRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTagRequest) SetTagDescription(v string) *ModifyTagRequest {
+	s.TagDescription = &v
 	return s
 }
 
@@ -3958,8 +3970,9 @@ func (s *QueryTagByParamResponseBodyData) SetTag(v []*QueryTagByParamResponseBod
 }
 
 type QueryTagByParamResponseBodyDataTag struct {
-	TagId   *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryTagByParamResponseBodyDataTag) String() string {
@@ -3968,6 +3981,11 @@ func (s QueryTagByParamResponseBodyDataTag) String() string {
 
 func (s QueryTagByParamResponseBodyDataTag) GoString() string {
 	return s.String()
+}
+
+func (s *QueryTagByParamResponseBodyDataTag) SetTagDescription(v string) *QueryTagByParamResponseBodyDataTag {
+	s.TagDescription = &v
+	return s
 }
 
 func (s *QueryTagByParamResponseBodyDataTag) SetTagId(v string) *QueryTagByParamResponseBodyDataTag {
@@ -5655,6 +5673,10 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *u
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagDescription)) {
+		query["TagDescription"] = request.TagDescription
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagName)) {
 		query["TagName"] = request.TagName
 	}
@@ -6621,6 +6643,10 @@ func (client *Client) ModifyTagWithOptions(request *ModifyTagRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagDescription)) {
+		query["TagDescription"] = request.TagDescription
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagId)) {
