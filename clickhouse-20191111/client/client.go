@@ -6862,6 +6862,8 @@ type DescribeSynDbsRequest struct {
 	DbClusterId          *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -6886,6 +6888,16 @@ func (s *DescribeSynDbsRequest) SetOwnerAccount(v string) *DescribeSynDbsRequest
 
 func (s *DescribeSynDbsRequest) SetOwnerId(v int64) *DescribeSynDbsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeSynDbsRequest) SetPageNumber(v int32) *DescribeSynDbsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSynDbsRequest) SetPageSize(v int32) *DescribeSynDbsRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -12305,6 +12317,14 @@ func (client *Client) DescribeSynDbsWithOptions(request *DescribeSynDbsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {

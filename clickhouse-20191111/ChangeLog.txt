@@ -1,3 +1,6 @@
+2023-12-12 Version: v3.2.2
+- Generated golang 2019-11-11 for clickhouse.
+
 2023-12-08 Version: v3.2.1
 - Generated golang 2019-11-11 for clickhouse.
 
