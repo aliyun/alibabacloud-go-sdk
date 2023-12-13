@@ -13,10 +13,21 @@ import (
 )
 
 type CompanyFourElementsVerificationRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
-	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
-	LegalPersonCertName  *string `json:"LegalPersonCertName,omitempty" xml:"LegalPersonCertName,omitempty"`
+	// The authorization code.
+	//
+	// >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The enterprise name.
+	EpCertName *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	// The business license number.
+	EpCertNo *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	// The name of the legal representative.
+	//
+	// >  If an enterprise has multiple legal representatives, separate them with commas (,).
+	LegalPersonCertName *string `json:"LegalPersonCertName,omitempty" xml:"LegalPersonCertName,omitempty"`
+	// The ID card number of the legal representative.
+	//
+	// >  If an enterprise has multiple legal representatives, separate the ID card numbers with commas (,).
 	LegalPersonCertNo    *string `json:"LegalPersonCertNo,omitempty" xml:"LegalPersonCertNo,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -72,11 +83,16 @@ func (s *CompanyFourElementsVerificationRequest) SetResourceOwnerId(v int64) *Co
 }
 
 type CompanyFourElementsVerificationResponseBody struct {
-	AccessDeniedDetail *string                                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *CompanyFourElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message            *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *CompanyFourElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CompanyFourElementsVerificationResponseBody) String() string {
@@ -113,10 +129,24 @@ func (s *CompanyFourElementsVerificationResponseBody) SetRequestId(v string) *Co
 }
 
 type CompanyFourElementsVerificationResponseBodyData struct {
-	DetailInfo       *CompanyFourElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	InconsistentData []*string                                                  `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
-	ReasonCode       *int64                                                     `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult     *string                                                    `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// The information about the enterprise.
+	DetailInfo *CompanyFourElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	// The fields to be verified.
+	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	// The code of the verification result. Valid values:
+	//
+	// *   0: The four elements belong to the same enterprise.
+	// *   1: The four elements belong to the same enterprise, but the business status of the enterprise is abnormal.
+	// *   2: The legal representative information cannot match the enterprise information.
+	// *   3: The four elements do not belong to the same enterprise.
+	// *   4: No information about the enterprise is found.
+	// *   5: No information about the legal representative is found.
+	ReasonCode *int64 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The verification result. Valid values:
+	//
+	// *   true: The four elements belong to the same enterprise and the business status of the enterprise is Active.
+	// *   false: The four elements do not belong to the same enterprise.
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyFourElementsVerificationResponseBodyData) String() string {
@@ -148,8 +178,10 @@ func (s *CompanyFourElementsVerificationResponseBodyData) SetVerifyResult(v stri
 }
 
 type CompanyFourElementsVerificationResponseBodyDataDetailInfo struct {
+	// The business status of the enterprise.
 	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
-	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	// The business term of the enterprise.
+	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 }
 
 func (s CompanyFourElementsVerificationResponseBodyDataDetailInfo) String() string {
@@ -200,9 +232,17 @@ func (s *CompanyFourElementsVerificationResponse) SetBody(v *CompanyFourElements
 }
 
 type CompanyThreeElementsVerificationRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
-	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	// The authorization code.
+	//
+	// >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The enterprise name.
+	EpCertName *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	// The business license number.
+	EpCertNo *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
+	// The name of the legal representative.
+	//
+	// >  If an enterprise has multiple legal representatives, separate them with commas (,).
 	LegalPersonCertName  *string `json:"LegalPersonCertName,omitempty" xml:"LegalPersonCertName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -253,11 +293,16 @@ func (s *CompanyThreeElementsVerificationRequest) SetResourceOwnerId(v int64) *C
 }
 
 type CompanyThreeElementsVerificationResponseBody struct {
-	AccessDeniedDetail *string                                           `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *CompanyThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message            *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *CompanyThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CompanyThreeElementsVerificationResponseBody) String() string {
@@ -294,10 +339,24 @@ func (s *CompanyThreeElementsVerificationResponseBody) SetRequestId(v string) *C
 }
 
 type CompanyThreeElementsVerificationResponseBodyData struct {
-	DetailInfo       *CompanyThreeElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	InconsistentData []*string                                                   `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
-	ReasonCode       *int64                                                      `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult     *string                                                     `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// The information about the enterprise.
+	DetailInfo *CompanyThreeElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	// The fields to be verified.
+	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	// The code of the verification result. Valid values:
+	//
+	// *   0: The three elements belong to the same enterprise.
+	// *   1: The three elements belong to the same enterprise, and the business status of the enterprise is abnormal.
+	// *   2: The legal representative information cannot match the enterprise information.
+	// *   3: The three elements do not belong to the same enterprise.
+	// *   4: No information about the enterprise is found.
+	// *   5: No information about the legal representative is found.
+	ReasonCode *int64 `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The verification result. Valid values:
+	//
+	// *   true: The three elements belong to the same enterprise and the business status of the enterprise is Active.
+	// *   false: The three elements do not belong to the same enterprise.
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyThreeElementsVerificationResponseBodyData) String() string {
@@ -329,8 +388,10 @@ func (s *CompanyThreeElementsVerificationResponseBodyData) SetVerifyResult(v str
 }
 
 type CompanyThreeElementsVerificationResponseBodyDataDetailInfo struct {
+	// The business status of the enterprise.
 	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
-	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	// The business term of the enterprise.
+	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 }
 
 func (s CompanyThreeElementsVerificationResponseBodyDataDetailInfo) String() string {
@@ -381,8 +442,13 @@ func (s *CompanyThreeElementsVerificationResponse) SetBody(v *CompanyThreeElemen
 }
 
 type CompanyTwoElementsVerificationRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	EpCertName           *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	// The authorization code.
+	//
+	// >  On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/overview?spm=a2c4g.608385.0.0.79847f8b3awqUC), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The enterprise name.
+	EpCertName *string `json:"EpCertName,omitempty" xml:"EpCertName,omitempty"`
+	// The business license number.
 	EpCertNo             *string `json:"EpCertNo,omitempty" xml:"EpCertNo,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -428,11 +494,16 @@ func (s *CompanyTwoElementsVerificationRequest) SetResourceOwnerId(v int64) *Com
 }
 
 type CompanyTwoElementsVerificationResponseBody struct {
-	AccessDeniedDetail *string                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *CompanyTwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details about the access denial.
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *CompanyTwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CompanyTwoElementsVerificationResponseBody) String() string {
@@ -469,10 +540,22 @@ func (s *CompanyTwoElementsVerificationResponseBody) SetRequestId(v string) *Com
 }
 
 type CompanyTwoElementsVerificationResponseBodyData struct {
-	DetailInfo       *CompanyTwoElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
-	InconsistentData []*string                                                 `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
-	ReasonCode       *string                                                   `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	VerifyResult     *string                                                   `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	// The information about the enterprise.
+	DetailInfo *CompanyTwoElementsVerificationResponseBodyDataDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Struct"`
+	// The fields to be verified.
+	InconsistentData []*string `json:"InconsistentData,omitempty" xml:"InconsistentData,omitempty" type:"Repeated"`
+	// The code of the verification result. Valid values:
+	//
+	// *   0: The two elements belong to the same enterprise.
+	// *   1: The two elements belong to the same enterprise, but the business status of the enterprise is abnormal.
+	// *   3: The two elements do not belong to the same enterprise.
+	// *   4: No information about the enterprise is found.
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The verification result. Valid values:
+	//
+	// *   true: The two elements belong to the same enterprise and the business status of the enterprise is Active.
+	// *   false: The two elements do not belong to the same enterprise.
+	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s CompanyTwoElementsVerificationResponseBodyData) String() string {
@@ -504,8 +587,10 @@ func (s *CompanyTwoElementsVerificationResponseBodyData) SetVerifyResult(v strin
 }
 
 type CompanyTwoElementsVerificationResponseBodyDataDetailInfo struct {
+	// The business status of the enterprise.
 	EnterpriseStatus *string `json:"EnterpriseStatus,omitempty" xml:"EnterpriseStatus,omitempty"`
-	OpenTime         *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
+	// The business term of the enterprise.
+	OpenTime *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 }
 
 func (s CompanyTwoElementsVerificationResponseBodyDataDetailInfo) String() string {
@@ -556,8 +641,19 @@ func (s *CompanyTwoElementsVerificationResponse) SetBody(v *CompanyTwoElementsVe
 }
 
 type DescribeEmptyNumberRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// >  You can query only one phone number a time.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -603,10 +699,17 @@ func (s *DescribeEmptyNumberRequest) SetResourceOwnerId(v int64) *DescribeEmptyN
 }
 
 type DescribeEmptyNumberResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeEmptyNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **InvalidPhoneNumber.Check**: The phone number is invalid.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *DescribeEmptyNumberResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEmptyNumberResponseBody) String() string {
@@ -638,7 +741,14 @@ func (s *DescribeEmptyNumberResponseBody) SetRequestId(v string) *DescribeEmptyN
 }
 
 type DescribeEmptyNumberResponseBodyData struct {
+	// The specified phone number.
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **EMPTY**: The queried phone number is a nonexistent number.
+	// *   **NORMAL**: The queried phone number is valid.
+	// *   **SUSPECT_EMPTY**: The queried phone number is suspected to be a nonexistent number.
+	// *   **UNKNOWN**: The queried phone number is unknown.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -853,10 +963,18 @@ func (s *DescribePhoneNumberAnalysisResponse) SetBody(v *DescribePhoneNumberAnal
 }
 
 type DescribePhoneNumberAnalysisAIRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	ModelConfig          *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The authorization code.
+	//
+	// >  On the ****[**Labels**](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click Activate Now, enter the required information, and then submit your application. After your application is approved, you can obtain an authorization code.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The model parameter configuration. This field is required by some labels.
+	ModelConfig *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The score threshold for the phone number. Valid values: **0 to 100**.
+	//
+	// >  The system provided by Alibaba Cloud determines whether to accept the specified score threshold. When the system does not accept the specified score threshold, the value of this field is invalid.
 	Rate                 *int64  `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -906,10 +1024,16 @@ func (s *DescribePhoneNumberAnalysisAIRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribePhoneNumberAnalysisAIResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribePhoneNumberAnalysisAIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   OK: The request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *DescribePhoneNumberAnalysisAIResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberAnalysisAIResponseBody) String() string {
@@ -941,7 +1065,13 @@ func (s *DescribePhoneNumberAnalysisAIResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribePhoneNumberAnalysisAIResponseBodyData struct {
-	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned code.
+	//
+	// *   YES: The specified phone number is valid.
+	// *   NO: The specified phone number is invalid.
+	// *   UNKNOWN: The specified phone number is unknown
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The specified phone number.
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
@@ -993,7 +1123,8 @@ func (s *DescribePhoneNumberAnalysisAIResponse) SetBody(v *DescribePhoneNumberAn
 }
 
 type DescribePhoneNumberAttributeRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The phone number that you want to query.
 	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1028,10 +1159,19 @@ func (s *DescribePhoneNumberAttributeRequest) SetResourceOwnerId(v int64) *Descr
 }
 
 type DescribePhoneNumberAttributeResponseBody struct {
-	Code                 *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message              *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **InvalidParameter**: The specified phone number is invalid or the parameter format is invalid.
+	// *   **PhoneNumberNotfound**: No attribute information can be found for the specified phone number.
+	// *   **isp.UNKNOWN**: An unknown exception occurred.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The attribute information about the phone number.
 	PhoneNumberAttribute *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute `json:"PhoneNumberAttribute,omitempty" xml:"PhoneNumberAttribute,omitempty" type:"Struct"`
-	RequestId            *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberAttributeResponseBody) String() string {
@@ -1063,12 +1203,25 @@ func (s *DescribePhoneNumberAttributeResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute struct {
-	BasicCarrier        *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	Carrier             *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	City                *string `json:"City,omitempty" xml:"City,omitempty"`
-	IsNumberPortability *bool   `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
-	NumberSegment       *int64  `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
-	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The basic carrier. Valid values:
+	//
+	// *   **China Mobile**
+	// *   **China Unicom**
+	// *   **China Telecom**
+	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	// The actual carrier, including the virtual network operator (VNO). If the phone number involves mobile number portability, the value of this parameter is the carrier after mobile number portability.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The city where the phone number is registered.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Indicates whether the phone number involves mobile number portability. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsNumberPortability *bool `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	// The number segment to which the phone number belongs.
+	NumberSegment *int64 `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
+	// The province where the phone number is registered.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) String() string {
@@ -1139,9 +1292,31 @@ func (s *DescribePhoneNumberAttributeResponse) SetBody(v *DescribePhoneNumberAtt
 }
 
 type DescribePhoneNumberOnlineTimeRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	Carrier              *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The carrier. Valid values:
+	//
+	// *   **MOBILE**: China Mobile
+	// *   **UNICOM**: China Unicom
+	// *   **TELECOM**: China Telecom
+	//
+	// >  Alibaba Cloud automatically determines the carrier based on the carrier who assigns the phone number. Therefore, the value of this field does not affect the query result.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1192,10 +1367,20 @@ func (s *DescribePhoneNumberOnlineTimeRequest) SetResourceOwnerId(v int64) *Desc
 }
 
 type DescribePhoneNumberOnlineTimeResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribePhoneNumberOnlineTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **PortabilityNumberNotSupported**: The phone number that is involved in mobile number portability is not supported.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	//
+	// >  You are charged if the value of Code is OK and the value of VerifyResult is not -1. For more information, see [Pricing](~~154751~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *DescribePhoneNumberOnlineTimeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberOnlineTimeResponseBody) String() string {
@@ -1227,7 +1412,22 @@ func (s *DescribePhoneNumberOnlineTimeResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribePhoneNumberOnlineTimeResponseBodyData struct {
-	CarrierCode  *string `json:"CarrierCode,omitempty" xml:"CarrierCode,omitempty"`
+	// The carrier code. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	// *   **CBN**: China Broadnet
+	CarrierCode *string `json:"CarrierCode,omitempty" xml:"CarrierCode,omitempty"`
+	// The enumerated value of the usage period of a phone number. Valid values:
+	//
+	// *   **-1**: No usage period information is available for the phone number.
+	// *   **0**: The phone number status is abnormal. For example, the phone number is a nonexistent number.
+	// *   **1** :\[0-3) months.
+	// *   **2** :\[3-6] months.
+	// *   **3** :(6-12] months.
+	// *   **4** :(12-24] months.
+	// *   **5** :(24,+) months.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -1279,8 +1479,25 @@ func (s *DescribePhoneNumberOnlineTimeResponse) SetBody(v *DescribePhoneNumberOn
 }
 
 type DescribePhoneNumberOperatorAttributeRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**: The phone number is MD5-encrypted.
+	// *   **SHA256**: The phone number is SHA256-encrypted.
+	//
+	// > Letters in the string must be uppercase.
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1326,10 +1543,20 @@ func (s *DescribePhoneNumberOperatorAttributeRequest) SetResourceOwnerId(v int64
 }
 
 type DescribePhoneNumberOperatorAttributeResponseBody struct {
-	Code      *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribePhoneNumberOperatorAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **InvalidParameter**: The specified phone number is invalid or the parameter format is invalid.
+	// *   **PhoneNumberNotfound**: No attribute information can be found for the specified phone number.
+	// *   **isp.UNKNOWN**: An unknown exception occurred.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *DescribePhoneNumberOperatorAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneNumberOperatorAttributeResponseBody) String() string {
@@ -1361,12 +1588,26 @@ func (s *DescribePhoneNumberOperatorAttributeResponseBody) SetRequestId(v string
 }
 
 type DescribePhoneNumberOperatorAttributeResponseBodyData struct {
-	BasicCarrier        *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	Carrier             *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	City                *string `json:"City,omitempty" xml:"City,omitempty"`
-	IsNumberPortability *bool   `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
-	NumberSegment       *int64  `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
-	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The basic carrier. Valid values:
+	//
+	// *   **China Mobile**
+	// *   **China Unicom**
+	// *   **China Telecom**
+	// *   **China Broadnet**
+	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	// The actual carrier, including the virtual network operator (VNO). If the phone number involves mobile number portability, the value of this parameter is the carrier after mobile number portability.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The city where the phone number is registered.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Indicates whether the phone number involves mobile number portability. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	IsNumberPortability *bool `json:"IsNumberPortability,omitempty" xml:"IsNumberPortability,omitempty"`
+	// The number segment to which the phone number belongs.
+	NumberSegment *int64 `json:"NumberSegment,omitempty" xml:"NumberSegment,omitempty"`
+	// The province where the phone number is registered.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribePhoneNumberOperatorAttributeResponseBodyData) String() string {
@@ -1437,13 +1678,35 @@ func (s *DescribePhoneNumberOperatorAttributeResponse) SetBody(v *DescribePhoneN
 }
 
 type DescribePhoneTwiceTelVerifyRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The registration time. Specify the time in the yyyy-MM-dd HH:mm:ss format. This time is the service registration time of the mobile phone user. If the service registration time is later than the time when the phone number is assigned by a carrier, it indicates that the phone number is not a reassigned number. Otherwise, the phone number is a reassigned number.
+	//
+	// >
+	//
+	// *   If a carrier allocates a single number multiple times, the system will determine whether the phone number is a reassigned number based on the time when the carrier last allocated the phone number.
+	//
+	// *   The service registration time must be later than 00:00:00 on January 1, 1970.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribePhoneTwiceTelVerifyRequest) String() string {
@@ -1490,10 +1753,21 @@ func (s *DescribePhoneTwiceTelVerifyRequest) SetStartTime(v string) *DescribePho
 }
 
 type DescribePhoneTwiceTelVerifyResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribePhoneTwiceTelVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **PortabilityNumberNotSupported**: The phone number that is involved in mobile number portability is not supported.
+	// *   **RequestNumberNotSupported**: You are not allowed to query phone numbers assigned by China Broadnet (that is, phone numbers start with 192) and phone numbers assigned by virtual network operators (VNOs).
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	//
+	// >  You are charged for phone number verifications if the value of Code is OK and the value of VerifyResult is not 0. For more information, see [Pricing](~~154751~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *DescribePhoneTwiceTelVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot and locate issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePhoneTwiceTelVerifyResponseBody) String() string {
@@ -1525,7 +1799,20 @@ func (s *DescribePhoneTwiceTelVerifyResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribePhoneTwiceTelVerifyResponseBodyData struct {
-	Carrier      *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The carrier. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  The returned result indicates the carrier who assigns the phone number. If the phone number involves mobile number portability, the carrier after mobile number portability is returned.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The result of the request. Valid values:
+	//
+	// *   **0**: It is unable to judge whether the phone number is a reassigned number.
+	// *   **1**: The phone number is a reassigned number.
+	// *   **2**: The phone number is not a reassigned number.
+	// *   **3**: The phone number has been canceled.
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
@@ -1576,9 +1863,192 @@ func (s *DescribePhoneTwiceTelVerifyResponse) SetBody(v *DescribePhoneTwiceTelVe
 	return s
 }
 
-type InvalidPhoneNumberFilterRequest struct {
+type GetUAIDApplyTokenSignRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Carrier              *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	ClientType           *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	Format               *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParamKey             *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+	ParamStr             *string `json:"ParamStr,omitempty" xml:"ParamStr,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Time                 *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s GetUAIDApplyTokenSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUAIDApplyTokenSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetAuthCode(v string) *GetUAIDApplyTokenSignRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetCarrier(v string) *GetUAIDApplyTokenSignRequest {
+	s.Carrier = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetClientType(v string) *GetUAIDApplyTokenSignRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetFormat(v string) *GetUAIDApplyTokenSignRequest {
+	s.Format = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetOutId(v string) *GetUAIDApplyTokenSignRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetOwnerId(v int64) *GetUAIDApplyTokenSignRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetParamKey(v string) *GetUAIDApplyTokenSignRequest {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetParamStr(v string) *GetUAIDApplyTokenSignRequest {
+	s.ParamStr = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetResourceOwnerAccount(v string) *GetUAIDApplyTokenSignRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetResourceOwnerId(v int64) *GetUAIDApplyTokenSignRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignRequest) SetTime(v string) *GetUAIDApplyTokenSignRequest {
+	s.Time = &v
+	return s
+}
+
+type GetUAIDApplyTokenSignResponseBody struct {
+	AccessDeniedDetail *string                                `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *GetUAIDApplyTokenSignResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetUAIDApplyTokenSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUAIDApplyTokenSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUAIDApplyTokenSignResponseBody) SetAccessDeniedDetail(v string) *GetUAIDApplyTokenSignResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBody) SetCode(v string) *GetUAIDApplyTokenSignResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBody) SetData(v *GetUAIDApplyTokenSignResponseBodyData) *GetUAIDApplyTokenSignResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBody) SetMessage(v string) *GetUAIDApplyTokenSignResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBody) SetRequestId(v string) *GetUAIDApplyTokenSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetUAIDApplyTokenSignResponseBodyData struct {
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	OutId   *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	Sign    *string `json:"Sign,omitempty" xml:"Sign,omitempty"`
+}
+
+func (s GetUAIDApplyTokenSignResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUAIDApplyTokenSignResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetUAIDApplyTokenSignResponseBodyData) SetCarrier(v string) *GetUAIDApplyTokenSignResponseBodyData {
+	s.Carrier = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBodyData) SetOutId(v string) *GetUAIDApplyTokenSignResponseBodyData {
+	s.OutId = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponseBodyData) SetSign(v string) *GetUAIDApplyTokenSignResponseBodyData {
+	s.Sign = &v
+	return s
+}
+
+type GetUAIDApplyTokenSignResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUAIDApplyTokenSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUAIDApplyTokenSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUAIDApplyTokenSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUAIDApplyTokenSignResponse) SetHeaders(v map[string]*string) *GetUAIDApplyTokenSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponse) SetStatusCode(v int32) *GetUAIDApplyTokenSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUAIDApplyTokenSignResponse) SetBody(v *GetUAIDApplyTokenSignResponseBody) *GetUAIDApplyTokenSignResponse {
+	s.Body = v
+	return s
+}
+
+type InvalidPhoneNumberFilterRequest struct {
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number.
+	//
+	// >  Only the NORMAL encryption method is supported.
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1624,10 +2094,26 @@ func (s *InvalidPhoneNumberFilterRequest) SetResourceOwnerId(v int64) *InvalidPh
 }
 
 type InvalidPhoneNumberFilterResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*InvalidPhoneNumberFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **MobileNumberIllegal**: The phone number is invalid.
+	// *   **EncyrptTypeIllegal**: The encryption type is invalid.
+	// *   **MobileNumberTypeNotMatch**: The phone number does not match the encryption type.
+	// *   **CarrierIllegal**: The carrier type is invalid.
+	// *   **AuthCodeNotExist**: The authorization code does not exist.
+	// *   **PortabilityNumberNotSupported**: Mobile number portability is not supported.
+	// *   **Unknown**: An unknown exception occurred.
+	// *   **AuthCodeAndApiNotMatch**: A system exception occurred.
+	// *   **AuthCodeAndApiNotMatch**: The authorization code does not match the API operation.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Details about the returned entries.
+	Data []*InvalidPhoneNumberFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s InvalidPhoneNumberFilterResponseBody) String() string {
@@ -1659,10 +2145,17 @@ func (s *InvalidPhoneNumberFilterResponseBody) SetRequestId(v string) *InvalidPh
 }
 
 type InvalidPhoneNumberFilterResponseBodyData struct {
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned filter results.
+	//
+	// *   **YES**: the valid phone number. The mappings are returned.
+	// *   **NO**: the invalid phone number. No mappings are returned.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The encrypted phone number.
 	EncryptedNumber *string `json:"EncryptedNumber,omitempty" xml:"EncryptedNumber,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	OriginalNumber  *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
+	// The time when the phone number expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The original phone number.
+	OriginalNumber *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
 }
 
 func (s InvalidPhoneNumberFilterResponseBodyData) String() string {
@@ -1869,8 +2362,17 @@ func (s *PhoneNumberConvertServiceResponse) SetBody(v *PhoneNumberConvertService
 }
 
 type PhoneNumberEncryptRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// >  You can query only one phone number at a time.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Set the value to **NORMAL**.
+	//
+	// >  Only the NORMAL encryption method is supported.
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1916,10 +2418,17 @@ func (s *PhoneNumberEncryptRequest) SetResourceOwnerId(v int64) *PhoneNumberEncr
 }
 
 type PhoneNumberEncryptResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*PhoneNumberEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   The value OK indicates that the request was successful.
+	// *   Other values indicate that the request failed. For more information, see [Error codes](~~109196~~).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Details about the returned entries.
+	Data []*PhoneNumberEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberEncryptResponseBody) String() string {
@@ -1951,9 +2460,12 @@ func (s *PhoneNumberEncryptResponseBody) SetRequestId(v string) *PhoneNumberEncr
 }
 
 type PhoneNumberEncryptResponseBodyData struct {
+	// The encrypted phone number.
 	EncryptedNumber *string `json:"EncryptedNumber,omitempty" xml:"EncryptedNumber,omitempty"`
-	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	OriginalNumber  *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
+	// The time when the phone number expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The original phone number.
+	OriginalNumber *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
 }
 
 func (s PhoneNumberEncryptResponseBodyData) String() string {
@@ -2009,8 +2521,23 @@ func (s *PhoneNumberEncryptResponse) SetBody(v *PhoneNumberEncryptResponseBody) 
 }
 
 type PhoneNumberStatusForAccountRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2056,10 +2583,18 @@ func (s *PhoneNumberStatusForAccountRequest) SetResourceOwnerId(v int64) *PhoneN
 }
 
 type PhoneNumberStatusForAccountResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForAccountResponseBody) String() string {
@@ -2091,8 +2626,25 @@ func (s *PhoneNumberStatusForAccountResponseBody) SetRequestId(v string) *PhoneN
 }
 
 type PhoneNumberStatusForAccountResponseBodyData struct {
+	// The basic carrier who assings the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **NORMAL**: The queried phone number is valid.
+	// *   **SHUTDOWN**: The queried phone number is suspended.
+	// *   **POWER_OFF**: The queried phone number cannot be connected.
+	// *   **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// *   **DEFECT**: The queried phone number is invalid.
+	// *   **UNKNOWN**: The queried phone number is unknown.
+	//
+	// >  Due to system adjustment of the carrier, the BUSY and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PhoneNumberStatusForAccountResponseBodyData) String() string {
@@ -2143,8 +2695,23 @@ func (s *PhoneNumberStatusForAccountResponse) SetBody(v *PhoneNumberStatusForAcc
 }
 
 type PhoneNumberStatusForPublicRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, the value of this field is an 11-digit phone number.
+	// *   If the value of Mask is MD5, the value of this field is a 32-bit encrypted string.
+	// *   If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2190,10 +2757,20 @@ func (s *PhoneNumberStatusForPublicRequest) SetResourceOwnerId(v int64) *PhoneNu
 }
 
 type PhoneNumberStatusForPublicResponseBody struct {
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	//
+	// >  For a list of error codes, see [Service error codes](https://next.api.aliyun.com/document/Dytnsapi/2020-02-17/errorCode).
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForPublicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForPublicResponseBody) String() string {
@@ -2225,8 +2802,28 @@ func (s *PhoneNumberStatusForPublicResponseBody) SetRequestId(v string) *PhoneNu
 }
 
 type PhoneNumberStatusForPublicResponseBodyData struct {
+	// The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned.
+	//
+	// Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **NORMAL**: The queried phone number can be reached.
+	// *   **SHUTDOWN**: The queried phone number is suspended.
+	// *   **POWER_OFF**: The phone is powered off.
+	// *   **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// *   **SUSPECTED_POWER_OFF**: The phone is suspected to be powered off.
+	// *   **BUSY**: The queried phone number is busy.
+	// *   **UNKNOWN**: The queried phone number is unknown.
+	//
+	// >  Due to system adjustment of the carrier, the BUSY and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PhoneNumberStatusForPublicResponseBodyData) String() string {
@@ -2277,8 +2874,23 @@ func (s *PhoneNumberStatusForPublicResponse) SetBody(v *PhoneNumberStatusForPubl
 }
 
 type PhoneNumberStatusForRealRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, the value of this field is an 11-digit phone number.
+	// *   If the value of Mask is MD5, the value of this field is a 32-bit encrypted string.
+	// *   If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2324,10 +2936,18 @@ func (s *PhoneNumberStatusForRealRequest) SetResourceOwnerId(v int64) *PhoneNumb
 }
 
 type PhoneNumberStatusForRealResponseBody struct {
-	Code      *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForRealResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForRealResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForRealResponseBody) String() string {
@@ -2359,8 +2979,27 @@ func (s *PhoneNumberStatusForRealResponseBody) SetRequestId(v string) *PhoneNumb
 }
 
 type PhoneNumberStatusForRealResponseBodyData struct {
+	// The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **NORMAL**: The queried phone number can be reached.
+	// *   **SHUTDOWN**: The queried phone number is suspended.
+	// *   **POWER_OFF**: The phone is powered off.
+	// *   **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// *   **BUSY**: The queried phone number is busy.
+	// *   **SUSPECTED_POWER_OFF**: The phone is suspected to be powered off.
+	// *   **DEFECT**: The queried phone number is invalid.
+	// *   **UNKNOWN**: The queried phone number is unknown.
+	//
+	// >  Due to system adjustment of the carrier, the BUSY and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PhoneNumberStatusForRealResponseBodyData) String() string {
@@ -2411,8 +3050,23 @@ func (s *PhoneNumberStatusForRealResponse) SetBody(v *PhoneNumberStatusForRealRe
 }
 
 type PhoneNumberStatusForSmsRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: plaintext
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2458,10 +3112,18 @@ func (s *PhoneNumberStatusForSmsRequest) SetResourceOwnerId(v int64) *PhoneNumbe
 }
 
 type PhoneNumberStatusForSmsResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForSmsResponseBody) String() string {
@@ -2493,8 +3155,25 @@ func (s *PhoneNumberStatusForSmsResponseBody) SetRequestId(v string) *PhoneNumbe
 }
 
 type PhoneNumberStatusForSmsResponseBodyData struct {
+	// The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **NORMAL**: The queried phone number can be reached.
+	// *   **SHUTDOWN**: The queried phone number is suspended.
+	// *   **POWER_OFF**: The phone is powered off.
+	// *   **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// *   **DEFECT**: The queried phone number is invalid.
+	// *   **UNKNOWN**: The queried phone number is unknown.
+	//
+	// >  Due to system adjustment of the carrier, the BUSY, SUSPECTED_POWER_OFF, and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PhoneNumberStatusForSmsResponseBodyData) String() string {
@@ -2545,8 +3224,23 @@ func (s *PhoneNumberStatusForSmsResponse) SetBody(v *PhoneNumberStatusForSmsResp
 }
 
 type PhoneNumberStatusForVirtualRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, the value of this field is an 11-digit phone number.
+	// *   If the value of Mask is MD5, the value of this field is a 32-bit encrypted string.
+	// *   If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method of the phone number. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2592,10 +3286,18 @@ func (s *PhoneNumberStatusForVirtualRequest) SetResourceOwnerId(v int64) *PhoneN
 }
 
 type PhoneNumberStatusForVirtualResponseBody struct {
-	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForVirtualResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForVirtualResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForVirtualResponseBody) String() string {
@@ -2627,6 +3329,10 @@ func (s *PhoneNumberStatusForVirtualResponseBody) SetRequestId(v string) *PhoneN
 }
 
 type PhoneNumberStatusForVirtualResponseBodyData struct {
+	// Indicate whether the phone number is a virtual number assigned by the carrier. Valid values:
+	//
+	// *   **true**
+	// *   **false**
 	IsPrivacyNumber *bool `json:"IsPrivacyNumber,omitempty" xml:"IsPrivacyNumber,omitempty"`
 }
 
@@ -2673,8 +3379,23 @@ func (s *PhoneNumberStatusForVirtualResponse) SetBody(v *PhoneNumberStatusForVir
 }
 
 type PhoneNumberStatusForVoiceRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be queried.
+	//
+	// *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
+	// *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
+	// *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method. Valid values:
+	//
+	// *   **NORMAL**: plaintext
+	// *   **MD5**
+	// *   **SHA256**
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2720,10 +3441,18 @@ func (s *PhoneNumberStatusForVoiceRequest) SetResourceOwnerId(v int64) *PhoneNum
 }
 
 type PhoneNumberStatusForVoiceResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PhoneNumberStatusForVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   **OperatorLimit**: The carrier prohibits the query of the phone number.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *PhoneNumberStatusForVoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PhoneNumberStatusForVoiceResponseBody) String() string {
@@ -2755,8 +3484,26 @@ func (s *PhoneNumberStatusForVoiceResponseBody) SetRequestId(v string) *PhoneNum
 }
 
 type PhoneNumberStatusForVoiceResponseBodyData struct {
+	// The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned. Valid values:
+	//
+	// *   **CMCC**: China Mobile
+	// *   **CUCC**: China Unicom
+	// *   **CTCC**: China Telecom
+	//
+	// >  You are not allowed to query the phone numbers assigned by China Broadnet.
 	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned status for the queried phone number. Valid values:
+	//
+	// *   **NORMAL**: The queried phone number can be reached.
+	// *   **SHUTDOWN**: The queried phone number is suspended.
+	// *   **POWER_OFF**: The phone is powered off.
+	// *   **NOT_EXIST**: The queried phone number is a nonexistent number.
+	// *   **SUSPECTED_POWER_OFF**: The phone is suspected to be powered off.
+	// *   **DEFECT**: The queried phone number is invalid.
+	// *   **UNKNOWN**: The queried phone number is unknown.
+	//
+	// >  Due to system adjustment of the carrier, the BUSY, SUSPECTED_POWER_OFF, and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PhoneNumberStatusForVoiceResponseBodyData) String() string {
@@ -2810,7 +3557,7 @@ type QueryAvailableAuthCodeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 标签id
+	// The tag ID.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -2843,11 +3590,19 @@ func (s *QueryAvailableAuthCodeRequest) SetTagId(v int64) *QueryAvailableAuthCod
 }
 
 type QueryAvailableAuthCodeResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. **OK** indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryAvailableAuthCodeResponseBody) String() string {
@@ -2916,7 +3671,7 @@ type QueryTagApplyRuleRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 标签id
+	// The tag ID.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -2949,11 +3704,19 @@ func (s *QueryTagApplyRuleRequest) SetTagId(v int64) *QueryTagApplyRuleRequest {
 }
 
 type QueryTagApplyRuleResponseBody struct {
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryTagApplyRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. **OK** indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *QueryTagApplyRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTagApplyRuleResponseBody) String() string {
@@ -2990,17 +3753,17 @@ func (s *QueryTagApplyRuleResponseBody) SetSuccess(v bool) *QueryTagApplyRuleRes
 }
 
 type QueryTagApplyRuleResponseBodyData struct {
-	// 申请材料要求
+	// The requirements for application materials.
 	ApplyMaterialDesc *string `json:"ApplyMaterialDesc,omitempty" xml:"ApplyMaterialDesc,omitempty"`
-	// 是否自动审批
+	// Indicates whether the application is automatically approved.
 	AutoAudit *int64 `json:"AutoAudit,omitempty" xml:"AutoAudit,omitempty"`
-	// 计费标准说明链接
+	// The URL for the billing documentation.
 	ChargingStandardLink *string `json:"ChargingStandardLink,omitempty" xml:"ChargingStandardLink,omitempty"`
-	// 是否支持加密查询
+	// indicates whether encrypted queries are supported.
 	EncryptedQuery *int64 `json:"EncryptedQuery,omitempty" xml:"EncryptedQuery,omitempty"`
-	// 是否需要提供申请材料
+	// Indicates whether application materials are required.
 	NeedApplyMaterial *int64 `json:"NeedApplyMaterial,omitempty" xml:"NeedApplyMaterial,omitempty"`
-	// 服务协议链接
+	// The URL for the service agreement.
 	SlaLink *string `json:"SlaLink,omitempty" xml:"SlaLink,omitempty"`
 }
 
@@ -3072,14 +3835,14 @@ func (s *QueryTagApplyRuleResponse) SetBody(v *QueryTagApplyRuleResponseBody) *Q
 }
 
 type QueryTagInfoBySelectionRequest struct {
-	// 行业id
+	// The industry ID.
 	IndustryId           *int64  `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 场景id
+	// The scene ID.
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 标签id
+	// The tag ID.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -3122,11 +3885,19 @@ func (s *QueryTagInfoBySelectionRequest) SetTagId(v int64) *QueryTagInfoBySelect
 }
 
 type QueryTagInfoBySelectionResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*QueryTagInfoBySelectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. **OK** indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*QueryTagInfoBySelectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTagInfoBySelectionResponseBody) String() string {
@@ -3163,29 +3934,31 @@ func (s *QueryTagInfoBySelectionResponseBody) SetSuccess(v bool) *QueryTagInfoBy
 }
 
 type QueryTagInfoBySelectionResponseBodyData struct {
-	// 可用的授权码列表
-	AuthCodeList []*string `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
-	// API demo链接
+	// The list of available authorization codes.
+	AuthCodeList   []*string `json:"AuthCodeList,omitempty" xml:"AuthCodeList,omitempty" type:"Repeated"`
+	ComplexityType *string   `json:"ComplexityType,omitempty" xml:"ComplexityType,omitempty"`
+	// The URL for the API demo.
 	DemoAddress *string `json:"DemoAddress,omitempty" xml:"DemoAddress,omitempty"`
-	// API文档链接
+	// The URL for the API documentation.
 	DocAddress *string `json:"DocAddress,omitempty" xml:"DocAddress,omitempty"`
-	// 枚举值定义链接
+	// The URL for the definitions of the enumerated values.
 	EnumDefinitionAddress *string `json:"EnumDefinitionAddress,omitempty" xml:"EnumDefinitionAddress,omitempty"`
-	// 流程名称
+	// The flow name.
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// 行业id
+	// The industry ID.
 	IndustryId *int64 `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
-	// 行业名称
+	// The industry name.
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
-	// 标签参数列表
-	ParamList []*QueryTagInfoBySelectionResponseBodyDataParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// 场景id
+	// The list of tag parameters.
+	ParamList           []*QueryTagInfoBySelectionResponseBodyDataParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	RichTextDescription *string                                             `json:"RichTextDescription,omitempty" xml:"RichTextDescription,omitempty"`
+	// The scene ID.
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名称
+	// The scene name.
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 标签id
+	// The tag ID.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// 标签名称
+	// The tag name.
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -3199,6 +3972,11 @@ func (s QueryTagInfoBySelectionResponseBodyData) GoString() string {
 
 func (s *QueryTagInfoBySelectionResponseBodyData) SetAuthCodeList(v []*string) *QueryTagInfoBySelectionResponseBodyData {
 	s.AuthCodeList = v
+	return s
+}
+
+func (s *QueryTagInfoBySelectionResponseBodyData) SetComplexityType(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.ComplexityType = &v
 	return s
 }
 
@@ -3237,6 +4015,11 @@ func (s *QueryTagInfoBySelectionResponseBodyData) SetParamList(v []*QueryTagInfo
 	return s
 }
 
+func (s *QueryTagInfoBySelectionResponseBodyData) SetRichTextDescription(v string) *QueryTagInfoBySelectionResponseBodyData {
+	s.RichTextDescription = &v
+	return s
+}
+
 func (s *QueryTagInfoBySelectionResponseBodyData) SetSceneId(v int64) *QueryTagInfoBySelectionResponseBodyData {
 	s.SceneId = &v
 	return s
@@ -3258,17 +4041,17 @@ func (s *QueryTagInfoBySelectionResponseBodyData) SetTagName(v string) *QueryTag
 }
 
 type QueryTagInfoBySelectionResponseBodyDataParamList struct {
-	// 参数英文名
+	// The English name of the parameter.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 输入提示
+	// The input hint.
 	Hint *string `json:"Hint,omitempty" xml:"Hint,omitempty"`
-	// 是否必填
+	// Indicates whether the parameter is required.
 	Must *bool `json:"Must,omitempty" xml:"Must,omitempty"`
-	// 参数中文名
+	// The Chinese name of the parameter.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 类型EnumUIWidgetTypes对应的code
+	// The type. The code that corresponds to EnumUIWidgetTypes.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 枚举值定义，code:desc
+	// The definitions of the enumerated values such as Code or Desc.
 	ValueDict []*QueryTagInfoBySelectionResponseBodyDataParamListValueDict `json:"ValueDict,omitempty" xml:"ValueDict,omitempty" type:"Repeated"`
 }
 
@@ -3311,9 +4094,9 @@ func (s *QueryTagInfoBySelectionResponseBodyDataParamList) SetValueDict(v []*Que
 }
 
 type QueryTagInfoBySelectionResponseBodyDataParamListValueDict struct {
-	// 英文名
+	// The English name.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 中文名
+	// The Chinese name.
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 }
 
@@ -3365,8 +4148,10 @@ func (s *QueryTagInfoBySelectionResponse) SetBody(v *QueryTagInfoBySelectionResp
 }
 
 type QueryTagListPageRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3406,11 +4191,19 @@ func (s *QueryTagListPageRequest) SetResourceOwnerId(v int64) *QueryTagListPageR
 }
 
 type QueryTagListPageResponseBody struct {
-	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryTagListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. **OK** indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *QueryTagListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryTagListPageResponseBody) String() string {
@@ -3447,11 +4240,16 @@ func (s *QueryTagListPageResponseBody) SetSuccess(v bool) *QueryTagListPageRespo
 }
 
 type QueryTagListPageResponseBodyData struct {
-	PageNo     *int64                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize   *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    []*QueryTagListPageResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int64                                     `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// The page number.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The retruned data.
+	Records []*QueryTagListPageResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The total number of returned entries.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of returned pages.
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s QueryTagListPageResponseBodyData) String() string {
@@ -3488,29 +4286,30 @@ func (s *QueryTagListPageResponseBodyData) SetTotalPage(v int64) *QueryTagListPa
 }
 
 type QueryTagListPageResponseBodyDataRecords struct {
-	// 前端调用的api名称
+	// The API operation that is called by the frontend.
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// code
+	// Code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// API文档链接
+	// The URL for the API documentation.
 	DocAddress *string `json:"DocAddress,omitempty" xml:"DocAddress,omitempty"`
-	// 标签 id
+	// The tag ID.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 行业id
+	// The industry ID.
 	IndustryId *int64 `json:"IndustryId,omitempty" xml:"IndustryId,omitempty"`
-	// 行业名称
+	// The industry name.
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
-	// 标签介绍
+	// The tag description.
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	// 是否已经申请开通
+	// Indicates whether the number is activated.
 	IsOpen *int64 `json:"IsOpen,omitempty" xml:"IsOpen,omitempty"`
-	// 标签名称
+	// The tag name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 0 隐藏 1 公开
+	// *   0: The number is hidden.
+	// *   1: The number is public.
 	SaleStatusStr *string `json:"SaleStatusStr,omitempty" xml:"SaleStatusStr,omitempty"`
-	// 场景id
+	// The scene ID.
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// 场景名称
+	// The scene name.
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
@@ -3612,16 +4411,18 @@ func (s *QueryTagListPageResponse) SetBody(v *QueryTagListPageResponseBody) *Que
 }
 
 type QueryUsageStatisticsByTagIdRequest struct {
-	// 开始时间
+	// The beginning of the time range to query.
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// 结束时间
-	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNo               *int64  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The end of the time range to query.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 结束时间
+	// The tag ID.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
@@ -3674,11 +4475,19 @@ func (s *QueryUsageStatisticsByTagIdRequest) SetTagId(v int64) *QueryUsageStatis
 }
 
 type QueryUsageStatisticsByTagIdResponseBody struct {
-	Code      *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*QueryUsageStatisticsByTagIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response code. **OK** indicates that the request is successful.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*QueryUsageStatisticsByTagIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call is successful.
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUsageStatisticsByTagIdResponseBody) String() string {
@@ -3715,27 +4524,27 @@ func (s *QueryUsageStatisticsByTagIdResponseBody) SetSuccess(v bool) *QueryUsage
 }
 
 type QueryUsageStatisticsByTagIdResponseBodyData struct {
-	// 授权码
+	// The authorization code.
 	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	// 查询失败号码数
+	// The numbers for which the query failed.
 	FailTotal *int64 `json:"FailTotal,omitempty" xml:"FailTotal,omitempty"`
-	// 创建时间
+	// The creation time.
 	GmtDateStr *string `json:"GmtDateStr,omitempty" xml:"GmtDateStr,omitempty"`
-	// 授权码使用记录 id
+	// The ID of the authorization code usage record.
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 行业名称
+	// The industry name.
 	IndustryName *string `json:"IndustryName,omitempty" xml:"IndustryName,omitempty"`
-	// 客户 pid
+	// The customer product ID (PID).
 	PartnerId *int64 `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	// 场景名称
+	// The scene name.
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// 查询成功号码数
+	// The numbers for which the query succeeded.
 	SuccessTotal *int64 `json:"SuccessTotal,omitempty" xml:"SuccessTotal,omitempty"`
-	// 标签名称
+	// The tag name.
 	TagId *int64 `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// 标签名称
+	// The tag name.
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// 查询总号码数
+	// The total quantity of numbers that are involved in the query.
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -3832,10 +4641,39 @@ func (s *QueryUsageStatisticsByTagIdResponse) SetBody(v *QueryUsageStatisticsByT
 }
 
 type ThreeElementsVerificationRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	CertCode             *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The ID card number to be verified.
+	//
+	// *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	CertCode *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
+	// The phone number to be verified.
+	//
+	// *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method. Valid values:
+	//
+	// *   **NORMAL**: The phone number is not encrypted.
+	// *   **MD5**
+	// *   **SHA256**
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The name to be verified.
+	//
+	// *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -3891,10 +4729,18 @@ func (s *ThreeElementsVerificationRequest) SetResourceOwnerId(v int64) *ThreeEle
 }
 
 type ThreeElementsVerificationResponseBody struct {
-	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
+	// *   **OK**: The request is successful.
+	// *   For more information, see Error codes in this documentation.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *ThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ThreeElementsVerificationResponseBody) String() string {
@@ -3926,8 +4772,26 @@ func (s *ThreeElementsVerificationResponseBody) SetRequestId(v string) *ThreeEle
 }
 
 type ThreeElementsVerificationResponseBodyData struct {
+	// The basic carrier. Valid values:
+	//
+	// *   **China Mobile**
+	// *   **China Unicom**
+	// *   **China Telecom**
 	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	IsConsistent *int32  `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+	// Indicates whether the specified name, phone number, and ID card number belong to the same user. Valid values:
+	//
+	// * **1**: The specified name, phone number, and ID card number belong to the same user.
+	// * **0**: The specified name, phone number, and ID card number do not belong to the same user.
+	// * **2**: The specified name, phone number, and ID card number cannot be found.
+	//
+	// **Note** The phone number registration data of a user is usually updated one or three days after registration. The registration data can be queried only after the update. The following table shows the verification results under different phone number states.
+	//
+	// |Carrier/Phone number state|Out-of-service|Nonexistent|Canceled|
+	// |---|---|---|---|
+	// |China Mobile|Verifications can be carried out normally.|The specified name, phone number, and ID card number cannot be found.|The specified name, phone number, and ID card number cannot be found.|
+	// |China Unicom|Verifications can be carried out normally.|The specified name, phone number, and ID card number do not belong to the same user.|The specified name, phone number, and ID card number do not belong to the same user.|
+	// |China Telecom|Verifications can be carried out normally.|The specified name, phone number, and ID card number cannot be found.|The specified name, phone number, and ID card number cannot be found.|
+	IsConsistent *int32 `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
 }
 
 func (s ThreeElementsVerificationResponseBodyData) String() string {
@@ -3978,9 +4842,31 @@ func (s *ThreeElementsVerificationResponse) SetBody(v *ThreeElementsVerification
 }
 
 type TwoElementsVerificationRequest struct {
-	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The authorization code.
+	//
+	// >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The phone number to be verified.
+	//
+	// *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
+	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	// The encryption method. Valid values:
+	//
+	// *   **NORMAL**: plaintext
+	// *   **MD5**
+	// *   **SHA256**
+	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	// The name to be verified.
+	//
+	// *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
+	// *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
+	// *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+	//
+	// >  Letters in the encrypted strings are not case-sensitive.
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4031,10 +4917,18 @@ func (s *TwoElementsVerificationRequest) SetResourceOwnerId(v int64) *TwoElement
 }
 
 type TwoElementsVerificationResponseBody struct {
-	Code      *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *TwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code. Valid values:
+	//
+	// *   **OK**: The request is successful.
+	// *   For more information, see Error codes in this documentation.
+	// *   **RequestFrequencyLimit**: Repeated queries for the same phone number or name at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
+	Data *TwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s TwoElementsVerificationResponseBody) String() string {
@@ -4066,8 +4960,30 @@ func (s *TwoElementsVerificationResponseBody) SetRequestId(v string) *TwoElement
 }
 
 type TwoElementsVerificationResponseBodyData struct {
+	// The basic carriers. Valid values:
+	//
+	// *   **China Mobile**
+	// *   **China Unicom**
+	// *   **China Telecom**
+	//
+	// >  You are not allowed to verify numbers assigned by China Broadnet.
 	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
-	IsConsistent *int32  `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+	// Indicates whether the specified name and phone number belong to the same user. Valid values:
+	//
+	// * **1**: The specified name and phone number belong to the same user.
+	//
+	// * **0**: The specified name and phone number do not belong to the same user.
+	//
+	// * **2**: The specified name and phone number cannot be found.
+	//
+	// The phone number registration data of a user is usually updated one or three days after registration. The registration data can be queried only after the update. The following table shows the verification results under different phone number states.
+	//
+	// |Carrier/Phone number state|Out-of-service|Nonexistent|Canceled|
+	// |---|---|---|---|
+	// |China Mobile|Verifications can be carried out normally.|The specified name and phone number cannot be found.|The specified name and phone number cannot be found.|
+	// |China Unicom|Verifications can be carried out normally.|The specified name and phone number do not belong to the same user.|The specified name and phone number do not belong to the same user.|
+	// |China Telecom|Verifications can be carried out normally.|The specified name and phone number cannot be found.|The specified name and phone number cannot be found.|
+	IsConsistent *int32 `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
 }
 
 func (s TwoElementsVerificationResponseBodyData) String() string {
@@ -4113,6 +5029,158 @@ func (s *TwoElementsVerificationResponse) SetStatusCode(v int32) *TwoElementsVer
 }
 
 func (s *TwoElementsVerificationResponse) SetBody(v *TwoElementsVerificationResponseBody) *TwoElementsVerificationResponse {
+	s.Body = v
+	return s
+}
+
+type UAIDVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	Carrier              *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	Ip                   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	UserGrantId          *string `json:"UserGrantId,omitempty" xml:"UserGrantId,omitempty"`
+}
+
+func (s UAIDVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UAIDVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UAIDVerificationRequest) SetAuthCode(v string) *UAIDVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetCarrier(v string) *UAIDVerificationRequest {
+	s.Carrier = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetIp(v string) *UAIDVerificationRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetOutId(v string) *UAIDVerificationRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetOwnerId(v int64) *UAIDVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetResourceOwnerAccount(v string) *UAIDVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetResourceOwnerId(v int64) *UAIDVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetToken(v string) *UAIDVerificationRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *UAIDVerificationRequest) SetUserGrantId(v string) *UAIDVerificationRequest {
+	s.UserGrantId = &v
+	return s
+}
+
+type UAIDVerificationResponseBody struct {
+	AccessDeniedDetail *string                           `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *UAIDVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UAIDVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UAIDVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UAIDVerificationResponseBody) SetAccessDeniedDetail(v string) *UAIDVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UAIDVerificationResponseBody) SetCode(v string) *UAIDVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UAIDVerificationResponseBody) SetData(v *UAIDVerificationResponseBodyData) *UAIDVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UAIDVerificationResponseBody) SetMessage(v string) *UAIDVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UAIDVerificationResponseBody) SetRequestId(v string) *UAIDVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UAIDVerificationResponseBodyData struct {
+	Uaid *string `json:"Uaid,omitempty" xml:"Uaid,omitempty"`
+}
+
+func (s UAIDVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UAIDVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UAIDVerificationResponseBodyData) SetUaid(v string) *UAIDVerificationResponseBodyData {
+	s.Uaid = &v
+	return s
+}
+
+type UAIDVerificationResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UAIDVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UAIDVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UAIDVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UAIDVerificationResponse) SetHeaders(v map[string]*string) *UAIDVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UAIDVerificationResponse) SetStatusCode(v int32) *UAIDVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UAIDVerificationResponse) SetBody(v *UAIDVerificationResponseBody) *UAIDVerificationResponse {
 	s.Body = v
 	return s
 }
@@ -4164,6 +5232,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyFourElementsVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CompanyFourElementsVerificationResponse
+ */
 func (client *Client) CompanyFourElementsVerificationWithOptions(request *CompanyFourElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyFourElementsVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4225,6 +5302,14 @@ func (client *Client) CompanyFourElementsVerificationWithOptions(request *Compan
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyFourElementsVerificationRequest
+ * @return CompanyFourElementsVerificationResponse
+ */
 func (client *Client) CompanyFourElementsVerification(request *CompanyFourElementsVerificationRequest) (_result *CompanyFourElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompanyFourElementsVerificationResponse{}
@@ -4236,6 +5321,15 @@ func (client *Client) CompanyFourElementsVerification(request *CompanyFourElemen
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyThreeElementsVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CompanyThreeElementsVerificationResponse
+ */
 func (client *Client) CompanyThreeElementsVerificationWithOptions(request *CompanyThreeElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyThreeElementsVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4293,6 +5387,14 @@ func (client *Client) CompanyThreeElementsVerificationWithOptions(request *Compa
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyThreeElementsVerificationRequest
+ * @return CompanyThreeElementsVerificationResponse
+ */
 func (client *Client) CompanyThreeElementsVerification(request *CompanyThreeElementsVerificationRequest) (_result *CompanyThreeElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompanyThreeElementsVerificationResponse{}
@@ -4304,6 +5406,15 @@ func (client *Client) CompanyThreeElementsVerification(request *CompanyThreeElem
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyTwoElementsVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CompanyTwoElementsVerificationResponse
+ */
 func (client *Client) CompanyTwoElementsVerificationWithOptions(request *CompanyTwoElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *CompanyTwoElementsVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4357,6 +5468,14 @@ func (client *Client) CompanyTwoElementsVerificationWithOptions(request *Company
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+ * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
+ * *   Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request CompanyTwoElementsVerificationRequest
+ * @return CompanyTwoElementsVerificationResponse
+ */
 func (client *Client) CompanyTwoElementsVerification(request *CompanyTwoElementsVerificationRequest) (_result *CompanyTwoElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CompanyTwoElementsVerificationResponse{}
@@ -4368,6 +5487,20 @@ func (client *Client) CompanyTwoElementsVerification(request *CompanyTwoElements
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
+ * *   You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
+ * *   The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ### [](#)Authorization information
+ * By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ *
+ * @param request DescribeEmptyNumberRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeEmptyNumberResponse
+ */
 func (client *Client) DescribeEmptyNumberWithOptions(request *DescribeEmptyNumberRequest, runtime *util.RuntimeOptions) (_result *DescribeEmptyNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4421,6 +5554,19 @@ func (client *Client) DescribeEmptyNumberWithOptions(request *DescribeEmptyNumbe
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
+ * *   You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
+ * *   The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ### [](#)Authorization information
+ * By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ *
+ * @param request DescribeEmptyNumberRequest
+ * @return DescribeEmptyNumberResponse
+ */
 func (client *Client) DescribeEmptyNumber(request *DescribeEmptyNumberRequest) (_result *DescribeEmptyNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEmptyNumberResponse{}
@@ -4504,6 +5650,13 @@ func (client *Client) DescribePhoneNumberAnalysis(request *DescribePhoneNumberAn
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the Labels page, find the label that you want to use, click Activate Now, enter the required information, and then submit your application. After your application is approved, you can use the label. Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.
+ *
+ * @param request DescribePhoneNumberAnalysisAIRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePhoneNumberAnalysisAIResponse
+ */
 func (client *Client) DescribePhoneNumberAnalysisAIWithOptions(request *DescribePhoneNumberAnalysisAIRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAnalysisAIResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4561,6 +5714,12 @@ func (client *Client) DescribePhoneNumberAnalysisAIWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the Labels page, find the label that you want to use, click Activate Now, enter the required information, and then submit your application. After your application is approved, you can use the label. Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.
+ *
+ * @param request DescribePhoneNumberAnalysisAIRequest
+ * @return DescribePhoneNumberAnalysisAIResponse
+ */
 func (client *Client) DescribePhoneNumberAnalysisAI(request *DescribePhoneNumberAnalysisAIRequest) (_result *DescribePhoneNumberAnalysisAIResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberAnalysisAIResponse{}
@@ -4572,6 +5731,18 @@ func (client *Client) DescribePhoneNumberAnalysisAI(request *DescribePhoneNumber
 	return _result, _err
 }
 
+/**
+ * @deprecated : DescribePhoneNumberAttribute is deprecated, please use Dytnsapi::2020-02-17::DescribePhoneNumberOperatorAttribute instead.
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 2,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePhoneNumberAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePhoneNumberAttributeResponse
+ */
+// Deprecated
 func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribePhoneNumberAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4617,6 +5788,17 @@ func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribeP
 	return _result, _err
 }
 
+/**
+ * @deprecated : DescribePhoneNumberAttribute is deprecated, please use Dytnsapi::2020-02-17::DescribePhoneNumberOperatorAttribute instead.
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 2,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePhoneNumberAttributeRequest
+ * @return DescribePhoneNumberAttributeResponse
+ */
+// Deprecated
 func (client *Client) DescribePhoneNumberAttribute(request *DescribePhoneNumberAttributeRequest) (_result *DescribePhoneNumberAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberAttributeResponse{}
@@ -4628,6 +5810,16 @@ func (client *Client) DescribePhoneNumberAttribute(request *DescribePhoneNumberA
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePhoneNumberOnlineTimeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePhoneNumberOnlineTimeResponse
+ */
 func (client *Client) DescribePhoneNumberOnlineTimeWithOptions(request *DescribePhoneNumberOnlineTimeRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberOnlineTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4685,6 +5877,15 @@ func (client *Client) DescribePhoneNumberOnlineTimeWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DescribePhoneNumberOnlineTimeRequest
+ * @return DescribePhoneNumberOnlineTimeResponse
+ */
 func (client *Client) DescribePhoneNumberOnlineTime(request *DescribePhoneNumberOnlineTimeRequest) (_result *DescribePhoneNumberOnlineTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberOnlineTimeResponse{}
@@ -4696,6 +5897,16 @@ func (client *Client) DescribePhoneNumberOnlineTime(request *DescribePhoneNumber
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154008~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext** and phone numbers that are encrypted by using **MD5** and **SHA256**.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request DescribePhoneNumberOperatorAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePhoneNumberOperatorAttributeResponse
+ */
 func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *DescribePhoneNumberOperatorAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberOperatorAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4749,6 +5960,15 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154008~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext** and phone numbers that are encrypted by using **MD5** and **SHA256**.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ *
+ * @param request DescribePhoneNumberOperatorAttributeRequest
+ * @return DescribePhoneNumberOperatorAttributeResponse
+ */
 func (client *Client) DescribePhoneNumberOperatorAttribute(request *DescribePhoneNumberOperatorAttributeRequest) (_result *DescribePhoneNumberOperatorAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberOperatorAttributeResponse{}
@@ -4760,6 +5980,19 @@ func (client *Client) DescribePhoneNumberOperatorAttribute(request *DescribePhon
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ## [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## [](#)Authorization information
+ * By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ *
+ * @param request DescribePhoneTwiceTelVerifyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribePhoneTwiceTelVerifyResponse
+ */
 func (client *Client) DescribePhoneTwiceTelVerifyWithOptions(request *DescribePhoneTwiceTelVerifyRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneTwiceTelVerifyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4817,6 +6050,18 @@ func (client *Client) DescribePhoneTwiceTelVerifyWithOptions(request *DescribePh
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ## [](#qps)QPS limits
+ * You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ * ## [](#)Authorization information
+ * By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ *
+ * @param request DescribePhoneTwiceTelVerifyRequest
+ * @return DescribePhoneTwiceTelVerifyResponse
+ */
 func (client *Client) DescribePhoneTwiceTelVerify(request *DescribePhoneTwiceTelVerifyRequest) (_result *DescribePhoneTwiceTelVerifyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneTwiceTelVerifyResponse{}
@@ -4828,6 +6073,99 @@ func (client *Client) DescribePhoneTwiceTelVerify(request *DescribePhoneTwiceTel
 	return _result, _err
 }
 
+func (client *Client) GetUAIDApplyTokenSignWithOptions(request *GetUAIDApplyTokenSignRequest, runtime *util.RuntimeOptions) (_result *GetUAIDApplyTokenSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Carrier)) {
+		query["Carrier"] = request.Carrier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Format)) {
+		query["Format"] = request.Format
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamKey)) {
+		query["ParamKey"] = request.ParamKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamStr)) {
+		query["ParamStr"] = request.ParamStr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUAIDApplyTokenSign"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUAIDApplyTokenSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUAIDApplyTokenSign(request *GetUAIDApplyTokenSignRequest) (_result *GetUAIDApplyTokenSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUAIDApplyTokenSignResponse{}
+	_body, _err := client.GetUAIDApplyTokenSignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request InvalidPhoneNumberFilterRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return InvalidPhoneNumberFilterResponse
+ */
 func (client *Client) InvalidPhoneNumberFilterWithOptions(request *InvalidPhoneNumberFilterRequest, runtime *util.RuntimeOptions) (_result *InvalidPhoneNumberFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4881,6 +6219,14 @@ func (client *Client) InvalidPhoneNumberFilterWithOptions(request *InvalidPhoneN
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request InvalidPhoneNumberFilterRequest
+ * @return InvalidPhoneNumberFilterResponse
+ */
 func (client *Client) InvalidPhoneNumberFilter(request *InvalidPhoneNumberFilterRequest) (_result *InvalidPhoneNumberFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InvalidPhoneNumberFilterResponse{}
@@ -4956,6 +6302,15 @@ func (client *Client) PhoneNumberConvertService(request *PhoneNumberConvertServi
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberEncryptRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberEncryptResponse
+ */
 func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberEncryptResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5009,6 +6364,14 @@ func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptR
 	return _result, _err
 }
 
+/**
+ * Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberEncryptRequest
+ * @return PhoneNumberEncryptResponse
+ */
 func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_result *PhoneNumberEncryptResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberEncryptResponse{}
@@ -5020,6 +6383,17 @@ func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_r
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForAccountRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForAccountResponse
+ */
 func (client *Client) PhoneNumberStatusForAccountWithOptions(request *PhoneNumberStatusForAccountRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5073,6 +6447,16 @@ func (client *Client) PhoneNumberStatusForAccountWithOptions(request *PhoneNumbe
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForAccountRequest
+ * @return PhoneNumberStatusForAccountResponse
+ */
 func (client *Client) PhoneNumberStatusForAccount(request *PhoneNumberStatusForAccountRequest) (_result *PhoneNumberStatusForAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForAccountResponse{}
@@ -5084,6 +6468,17 @@ func (client *Client) PhoneNumberStatusForAccount(request *PhoneNumberStatusForA
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForPublicRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForPublicResponse
+ */
 func (client *Client) PhoneNumberStatusForPublicWithOptions(request *PhoneNumberStatusForPublicRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForPublicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5137,6 +6532,16 @@ func (client *Client) PhoneNumberStatusForPublicWithOptions(request *PhoneNumber
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForPublicRequest
+ * @return PhoneNumberStatusForPublicResponse
+ */
 func (client *Client) PhoneNumberStatusForPublic(request *PhoneNumberStatusForPublicRequest) (_result *PhoneNumberStatusForPublicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForPublicResponse{}
@@ -5148,6 +6553,17 @@ func (client *Client) PhoneNumberStatusForPublic(request *PhoneNumberStatusForPu
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForRealRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForRealResponse
+ */
 func (client *Client) PhoneNumberStatusForRealWithOptions(request *PhoneNumberStatusForRealRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForRealResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5201,6 +6617,16 @@ func (client *Client) PhoneNumberStatusForRealWithOptions(request *PhoneNumberSt
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForRealRequest
+ * @return PhoneNumberStatusForRealResponse
+ */
 func (client *Client) PhoneNumberStatusForReal(request *PhoneNumberStatusForRealRequest) (_result *PhoneNumberStatusForRealResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForRealResponse{}
@@ -5212,6 +6638,17 @@ func (client *Client) PhoneNumberStatusForReal(request *PhoneNumberStatusForReal
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForSmsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForSmsResponse
+ */
 func (client *Client) PhoneNumberStatusForSmsWithOptions(request *PhoneNumberStatusForSmsRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5265,6 +6702,16 @@ func (client *Client) PhoneNumberStatusForSmsWithOptions(request *PhoneNumberSta
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForSmsRequest
+ * @return PhoneNumberStatusForSmsResponse
+ */
 func (client *Client) PhoneNumberStatusForSms(request *PhoneNumberStatusForSmsRequest) (_result *PhoneNumberStatusForSmsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForSmsResponse{}
@@ -5276,6 +6723,18 @@ func (client *Client) PhoneNumberStatusForSms(request *PhoneNumberStatusForSmsRe
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForVirtualRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForVirtualResponse
+ */
 func (client *Client) PhoneNumberStatusForVirtualWithOptions(request *PhoneNumberStatusForVirtualRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForVirtualResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5329,6 +6788,17 @@ func (client *Client) PhoneNumberStatusForVirtualWithOptions(request *PhoneNumbe
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForVirtualRequest
+ * @return PhoneNumberStatusForVirtualResponse
+ */
 func (client *Client) PhoneNumberStatusForVirtual(request *PhoneNumberStatusForVirtualRequest) (_result *PhoneNumberStatusForVirtualResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForVirtualResponse{}
@@ -5340,6 +6810,17 @@ func (client *Client) PhoneNumberStatusForVirtual(request *PhoneNumberStatusForV
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForVoiceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PhoneNumberStatusForVoiceResponse
+ */
 func (client *Client) PhoneNumberStatusForVoiceWithOptions(request *PhoneNumberStatusForVoiceRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForVoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5393,6 +6874,16 @@ func (client *Client) PhoneNumberStatusForVoiceWithOptions(request *PhoneNumberS
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](~~154006~~).
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request PhoneNumberStatusForVoiceRequest
+ * @return PhoneNumberStatusForVoiceResponse
+ */
 func (client *Client) PhoneNumberStatusForVoice(request *PhoneNumberStatusForVoiceRequest) (_result *PhoneNumberStatusForVoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberStatusForVoiceResponse{}
@@ -5712,6 +7203,17 @@ func (client *Client) QueryUsageStatisticsByTagId(request *QueryUsageStatisticsB
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ThreeElementsVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ThreeElementsVerificationResponse
+ */
 func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *ThreeElementsVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5773,6 +7275,16 @@ func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElement
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ThreeElementsVerificationRequest
+ * @return ThreeElementsVerificationResponse
+ */
 func (client *Client) ThreeElementsVerification(request *ThreeElementsVerificationRequest) (_result *ThreeElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ThreeElementsVerificationResponse{}
@@ -5784,6 +7296,17 @@ func (client *Client) ThreeElementsVerification(request *ThreeElementsVerificati
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request TwoElementsVerificationRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TwoElementsVerificationResponse
+ */
 func (client *Client) TwoElementsVerificationWithOptions(request *TwoElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *TwoElementsVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5841,10 +7364,96 @@ func (client *Client) TwoElementsVerificationWithOptions(request *TwoElementsVer
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you are familiar with the [billing](~~154751~~) of Cell Phone Number Service.
+ * *   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+ * *   You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+ * ### [](#qps)QPS limits
+ * You can call this operation up to 200 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request TwoElementsVerificationRequest
+ * @return TwoElementsVerificationResponse
+ */
 func (client *Client) TwoElementsVerification(request *TwoElementsVerificationRequest) (_result *TwoElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TwoElementsVerificationResponse{}
 	_body, _err := client.TwoElementsVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UAIDVerificationWithOptions(request *UAIDVerificationRequest, runtime *util.RuntimeOptions) (_result *UAIDVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Carrier)) {
+		query["Carrier"] = request.Carrier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGrantId)) {
+		query["UserGrantId"] = request.UserGrantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UAIDVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UAIDVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UAIDVerification(request *UAIDVerificationRequest) (_result *UAIDVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UAIDVerificationResponse{}
+	_body, _err := client.UAIDVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
