@@ -867,6 +867,87 @@ func (s *AddVodDomainResponse) SetBody(v *AddVodDomainResponseBody) *AddVodDomai
 	return s
 }
 
+type AddVodStorageForAppRequest struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	StorageType     *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+}
+
+func (s AddVodStorageForAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVodStorageForAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddVodStorageForAppRequest) SetAppId(v string) *AddVodStorageForAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *AddVodStorageForAppRequest) SetStorageLocation(v string) *AddVodStorageForAppRequest {
+	s.StorageLocation = &v
+	return s
+}
+
+func (s *AddVodStorageForAppRequest) SetStorageType(v string) *AddVodStorageForAppRequest {
+	s.StorageType = &v
+	return s
+}
+
+type AddVodStorageForAppResponseBody struct {
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+}
+
+func (s AddVodStorageForAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVodStorageForAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddVodStorageForAppResponseBody) SetRequestId(v string) *AddVodStorageForAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddVodStorageForAppResponseBody) SetStorageLocation(v string) *AddVodStorageForAppResponseBody {
+	s.StorageLocation = &v
+	return s
+}
+
+type AddVodStorageForAppResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddVodStorageForAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddVodStorageForAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddVodStorageForAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddVodStorageForAppResponse) SetHeaders(v map[string]*string) *AddVodStorageForAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddVodStorageForAppResponse) SetStatusCode(v int32) *AddVodStorageForAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddVodStorageForAppResponse) SetBody(v *AddVodStorageForAppResponseBody) *AddVodStorageForAppResponse {
+	s.Body = v
+	return s
+}
+
 type AddVodTemplateRequest struct {
 	// The ID of the application. Default value: **app-1000000**. For more information, see [Overview](~~113600~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -15847,7 +15928,8 @@ type GetPlayInfoResponseBodyVideoBase struct {
 	// *   **audio**
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	// The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The title of the audio or video file.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The ID of the media file.
@@ -15889,6 +15971,11 @@ func (s *GetPlayInfoResponseBodyVideoBase) SetMediaType(v string) *GetPlayInfoRe
 
 func (s *GetPlayInfoResponseBodyVideoBase) SetStatus(v string) *GetPlayInfoResponseBodyVideoBase {
 	s.Status = &v
+	return s
+}
+
+func (s *GetPlayInfoResponseBodyVideoBase) SetStorageClass(v string) *GetPlayInfoResponseBodyVideoBase {
+	s.StorageClass = &v
 	return s
 }
 
@@ -20952,6 +21039,7 @@ func (s *PreloadVodObjectCachesResponse) SetBody(v *PreloadVodObjectCachesRespon
 }
 
 type ProduceEditingProjectVideoRequest struct {
+	// The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](~~113600~~).
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The thumbnail URL of the online editing project.
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
@@ -25752,6 +25840,7 @@ func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *Upd
 }
 
 type UpdateMediaStorageClassRequest struct {
+	AllowUpdateWithoutTimeLimit *bool `json:"AllowUpdateWithoutTimeLimit,omitempty" xml:"AllowUpdateWithoutTimeLimit,omitempty"`
 	// The media asset ID. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
 	//
 	// *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the media asset. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -25784,6 +25873,11 @@ func (s UpdateMediaStorageClassRequest) String() string {
 
 func (s UpdateMediaStorageClassRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateMediaStorageClassRequest) SetAllowUpdateWithoutTimeLimit(v bool) *UpdateMediaStorageClassRequest {
+	s.AllowUpdateWithoutTimeLimit = &v
+	return s
 }
 
 func (s *UpdateMediaStorageClassRequest) SetMediaIds(v string) *UpdateMediaStorageClassRequest {
@@ -27504,6 +27598,58 @@ func (client *Client) AddVodDomain(request *AddVodDomainRequest) (_result *AddVo
 	runtime := &util.RuntimeOptions{}
 	_result = &AddVodDomainResponse{}
 	_body, _err := client.AddVodDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddVodStorageForAppWithOptions(request *AddVodStorageForAppRequest, runtime *util.RuntimeOptions) (_result *AddVodStorageForAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageLocation)) {
+		query["StorageLocation"] = request.StorageLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageType)) {
+		query["StorageType"] = request.StorageType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddVodStorageForApp"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddVodStorageForAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddVodStorageForApp(request *AddVodStorageForAppRequest) (_result *AddVodStorageForAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddVodStorageForAppResponse{}
+	_body, _err := client.AddVodStorageForAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36884,6 +37030,10 @@ func (client *Client) UpdateMediaStorageClassWithOptions(request *UpdateMediaSto
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowUpdateWithoutTimeLimit)) {
+		query["AllowUpdateWithoutTimeLimit"] = request.AllowUpdateWithoutTimeLimit
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
 		query["MediaIds"] = request.MediaIds
 	}
