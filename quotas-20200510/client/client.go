@@ -4947,6 +4947,7 @@ func (s *ListQuotaApplicationsForTemplateResponseBody) SetTotalCount(v int32) *L
 }
 
 type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
+	AliyunUids []*string `json:"AliyunUids,omitempty" xml:"AliyunUids,omitempty" type:"Repeated"`
 	// The time when the quota increase application was submitted. The value is displayed in UTC.
 	ApplyTime *string `json:"ApplyTime,omitempty" xml:"ApplyTime,omitempty"`
 	// The number of applications in different approval states.
@@ -4973,6 +4974,7 @@ type ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications struct {
 	// *   FlowControl: API rate limit
 	// *   WhiteListLabel: privilege
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
+	Reason        *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) String() string {
@@ -4981,6 +4983,11 @@ func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) Stri
 
 func (s ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) GoString() string {
 	return s.String()
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetAliyunUids(v []*string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.AliyunUids = v
+	return s
 }
 
 func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetApplyTime(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
@@ -5030,6 +5037,11 @@ func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) Set
 
 func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetQuotaCategory(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
 	s.QuotaCategory = &v
+	return s
+}
+
+func (s *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications) SetReason(v string) *ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications {
+	s.Reason = &v
 	return s
 }
 
