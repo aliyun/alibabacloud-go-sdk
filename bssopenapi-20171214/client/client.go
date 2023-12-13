@@ -4458,6 +4458,7 @@ type DescribeInstanceBillRequest struct {
 	// The token that is used to indicate the position where the results for the current call start. The parameter must be left empty or set to the value of the NextToken parameter that is returned from the last call. Otherwise, an error is returned. If the parameter is left empty, data is queried from the first item.
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PipCode   *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The code of the service.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
@@ -4524,6 +4525,11 @@ func (s *DescribeInstanceBillRequest) SetNextToken(v string) *DescribeInstanceBi
 
 func (s *DescribeInstanceBillRequest) SetOwnerId(v int64) *DescribeInstanceBillRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeInstanceBillRequest) SetPipCode(v string) *DescribeInstanceBillRequest {
+	s.PipCode = &v
 	return s
 }
 
@@ -12536,6 +12542,7 @@ type QueryAccountBalanceResponseBodyData struct {
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The credit line controlled by MYbank.
 	MybankCreditAmount *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
+	QuotaLimit         *string `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
 }
 
 func (s QueryAccountBalanceResponseBodyData) String() string {
@@ -12568,6 +12575,11 @@ func (s *QueryAccountBalanceResponseBodyData) SetCurrency(v string) *QueryAccoun
 
 func (s *QueryAccountBalanceResponseBodyData) SetMybankCreditAmount(v string) *QueryAccountBalanceResponseBodyData {
 	s.MybankCreditAmount = &v
+	return s
+}
+
+func (s *QueryAccountBalanceResponseBodyData) SetQuotaLimit(v string) *QueryAccountBalanceResponseBodyData {
+	s.QuotaLimit = &v
 	return s
 }
 
@@ -21465,7 +21477,9 @@ func (s *QuerySavingsPlansDeductLogResponseBodyData) SetTotalCount(v int32) *Que
 
 type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	// The billable item for which the fee is deducted.
-	BillModule *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
+	BillModule           *string `json:"BillModule,omitempty" xml:"BillModule,omitempty"`
+	BillingCycle         *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	BillingOfficialPrice *string `json:"BillingOfficialPrice,omitempty" xml:"BillingOfficialPrice,omitempty"`
 	// The service for which the fee is deducted.
 	DeductCommodity *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
 	// The deducted amount.
@@ -21473,14 +21487,18 @@ type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	// The ID of the instance for which the fee is deducted.
 	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
 	// The deduction rate.
-	DeductRate *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	DeductRate            *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
+	DeductedOfficialPrice *string `json:"DeductedOfficialPrice,omitempty" xml:"DeductedOfficialPrice,omitempty"`
 	// The discount used for the current deduction.
 	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
 	// The end of the billing cycle for which the fee is deducted.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the savings plan instance.
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
 	// *   universal: general-purpose
@@ -21505,6 +21523,16 @@ func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetBillModule(v string
 	return s
 }
 
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetBillingCycle(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetBillingOfficialPrice(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.BillingOfficialPrice = &v
+	return s
+}
+
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductCommodity(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.DeductCommodity = &v
 	return s
@@ -21525,6 +21553,11 @@ func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductRate(v string
 	return s
 }
 
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDeductedOfficialPrice(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.DeductedOfficialPrice = &v
+	return s
+}
+
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetDiscountRate(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.DiscountRate = &v
 	return s
@@ -21540,8 +21573,23 @@ func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceId(v string
 	return s
 }
 
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceSpec(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceTypeFamily(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.InstanceTypeFamily = &v
+	return s
+}
+
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetOwnerId(v int64) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetRegion(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.Region = &v
 	return s
 }
 
@@ -27752,6 +27800,10 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipCode)) {
+		query["PipCode"] = request.PipCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {

@@ -1,3 +1,6 @@
+2023-12-13 Version: v3.2.2
+- Generated golang 2017-12-14 for BssOpenApi.
+
 2023-11-21 Version: v3.2.1
 - Generated golang 2017-12-14 for BssOpenApi.
 
