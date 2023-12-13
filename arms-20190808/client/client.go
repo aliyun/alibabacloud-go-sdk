@@ -4808,27 +4808,29 @@ func (s *CreateEnvServiceMonitorResponse) SetBody(v *CreateEnvServiceMonitorResp
 }
 
 type CreateEnvironmentRequest struct {
-	// Locale, the default is Chinese zh | en.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Resource instance ID bound to the environment, including container instance ID or VpcId.
+	// The ID of the resource associated with the environment, such as the ACK cluster ID or VPC ID.
 	BindResourceId *string `json:"BindResourceId,omitempty" xml:"BindResourceId,omitempty"`
-	// Environment name.
+	// The name of the environment.
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
-	// Environment subtypes:
-	// - CS: Currently supports ACK.
-	// - ECS: ECS is currently supported.
-	// - Cloud: Currently supports Cloud.
+	// The subtype of the environment. Valid values:
+	//
+	// *   CS: Container Service for Kubernetes (ACK)
+	// *   ECS: ECS
+	// *   Cloud: cloud service
 	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
-	// Environment type:
-	// - CS: Container Service.
-	// - ECS.
-	// - Cloud: cloud service.
+	// The type of the environment. Valid values:
+	//
+	// *   CS: Container Service
+	// *   ECS: Elastic Compute Service
+	// *   Cloud: cloud service
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags.
+	// The tags to add to the instance.
 	Tags []*CreateEnvironmentRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -4906,13 +4908,13 @@ func (s *CreateEnvironmentRequestTags) SetValue(v string) *CreateEnvironmentRequ
 }
 
 type CreateEnvironmentResponseBody struct {
-	// The status code returned.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The ID of the created environment.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5131,7 +5133,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   If you specify this parameter, the specified alert rule is modified.
 	AlertId *int64 `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	// The name of the alert rule.
-	AlertName     *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// Alarm Notification Channel Configuration. Used for compatibility with legacy rules.
 	AlertPiplines *string `json:"AlertPiplines,omitempty" xml:"AlertPiplines,omitempty"`
 	// The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent** parameter. For more information about the meaning of each field, see the supplementary description.
 	//
@@ -5179,7 +5182,12 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   `false`: disables the automatic backup feature.
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
 	// The ID of the monitored cluster.
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Data Configuration. The dataRevision field specifies the data repair method when there is no data for the metric.
+	//
+	// - Fill with zero: 0
+	// - Fill with one: 1
+	// - Fill with null: 2 (default, does not trigger an alarm)
 	DataConfig *string `json:"DataConfig,omitempty" xml:"DataConfig,omitempty"`
 	// The duration of the Prometheus alert rule. Unit: minutes.
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
@@ -5208,7 +5216,8 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// *   P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
 	// *   P4: Alert notifications are sent for low-priority issues that do not affect your business.
 	// *   Default: Alert notifications are sent regardless of alert levels.
-	Level    *string                                   `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Application Tags. Used for application monitoring alert rules, to filter applications associated with alert rules.
 	MarkTags []*CreateOrUpdateAlertRuleRequestMarkTags `json:"MarkTags,omitempty" xml:"MarkTags,omitempty" type:"Repeated"`
 	// The alert message of the Prometheus alert rule.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -5218,8 +5227,10 @@ type CreateOrUpdateAlertRuleRequest struct {
 	MetricsKey *string `json:"MetricsKey,omitempty" xml:"MetricsKey,omitempty"`
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following table.
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	Notice      *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	NotifyMode  *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
+	// Effective Time and Notification Time. Used for compatibility with legacy rules.
+	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
+	// Notification Mode. Normal mode or Simplified mode.
+	NotifyMode *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
 	// The notification policy.
 	//
 	// *   If you set this parameter to null, no notification policy is specified. After you create an alert rule, you can create a notification policy and specify match rules and match conditions. For example, you can specify the name of the alert rule as the match condition. When the alert rule is triggered, an alert event is generated and an alert notification is sent to the contacts or contact groups that are specified in the notification policy.
@@ -5230,8 +5241,9 @@ type CreateOrUpdateAlertRuleRequest struct {
 	// The PromQL statement of the Prometheus alert rule.
 	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
 	// The region ID.
-	RegionId *string                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags     []*CreateOrUpdateAlertRuleRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of tags.
+	Tags []*CreateOrUpdateAlertRuleRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateOrUpdateAlertRuleRequest) String() string {
@@ -5378,7 +5390,9 @@ func (s *CreateOrUpdateAlertRuleRequest) SetTags(v []*CreateOrUpdateAlertRuleReq
 }
 
 type CreateOrUpdateAlertRuleRequestMarkTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The Tag Key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The Tag Value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5401,7 +5415,9 @@ func (s *CreateOrUpdateAlertRuleRequestMarkTags) SetValue(v string) *CreateOrUpd
 }
 
 type CreateOrUpdateAlertRuleRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5511,7 +5527,8 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The metric type of the Application Monitoring or Browser Monitoring alert rule.
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	NotifyMode  *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
+	// Notification Mode.
+	NotifyMode *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
 	// The name of the notification policy.
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
 	// The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
@@ -5519,8 +5536,9 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	// The PromQL statement of the Prometheus alert rule.
 	PromQL *string `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
 	// The region ID.
-	RegionId *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tags     []*CreateOrUpdateAlertRuleResponseBodyAlertRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of tags.
+	Tags []*CreateOrUpdateAlertRuleResponseBodyAlertRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The timestamp generated when the alert rule was updated. Unit: seconds.
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	// The ID of the Alibaba Cloud account.
@@ -5924,7 +5942,9 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels) SetValue(v string) 
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8010,13 +8030,19 @@ func (s *CreatePrometheusAlertRuleResponse) SetBody(v *CreatePrometheusAlertRule
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// 创建GlobalView时，是否要求所有子实例都校验成功时，才创建GlobalView实例。默认是false，即可以部分成功。
+	// To edit a GlobalView aggregated instance, do you require all passed child instances to be verified successfully before creating a GlobalView instance (optional, default to false):
+	// - true
+	// - false
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
-	// The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs��.
+	// The ID of the cluster. This parameter is required if you set ClusterType to aliyun-cs.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the cluster. This parameter is required if you set ClusterType to remote-write, ecs, or global-view.
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the Prometheus instance. Valid values: remote-write: Prometheus instance for remote write. ecs: Prometheus instance for ECS. cloud-monitor�: Prometheus instance for cloud services in China. cloud-product: Prometheus instance for Alibaba Cloud services outside China. global-view: Prometheus instance for GlobalView. aliyun-cs��: Prometheus instance for Container Service.
+	// Types include:
+	// - remote-write: General-purpose Instance
+	// - ecs: Prometheus for ECS
+	// - global-view: Global Aggregation Instance
+	// - aliyun-cs: Prometheus Instance for Container Service
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana dedicated instance. This parameter is available if you set ClusterType to ecs.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
@@ -11979,10 +12005,11 @@ func (s *DeleteEnvServiceMonitorResponse) SetBody(v *DeleteEnvServiceMonitorResp
 }
 
 type DeleteEnvironmentRequest struct {
+	// cascade delete Prometheus instance.
 	DeletePromInstance *bool `json:"DeletePromInstance,omitempty" xml:"DeletePromInstance,omitempty"`
-	// Environment instance ID.
+	// The ID of the environment instance.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12010,13 +12037,13 @@ func (s *DeleteEnvironmentRequest) SetRegionId(v string) *DeleteEnvironmentReque
 }
 
 type DeleteEnvironmentResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned information.
+	// The result of the operation.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18086,6 +18113,178 @@ func (s *GetAppApiByPageResponse) SetBody(v *GetAppApiByPageResponseBody) *GetAp
 	return s
 }
 
+type GetAppJVMConfigRequest struct {
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Application Monitoring** > **Applications**. On the **Applications** page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the call method.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GetAppJVMConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppJVMConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppJVMConfigRequest) SetEndTime(v int64) *GetAppJVMConfigRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAppJVMConfigRequest) SetPid(v string) *GetAppJVMConfigRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *GetAppJVMConfigRequest) SetRegionId(v string) *GetAppJVMConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetAppJVMConfigRequest) SetStartTime(v int64) *GetAppJVMConfigRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GetAppJVMConfigResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Java VM info list.
+	JvmInfoList []*GetAppJVMConfigResponseBodyJvmInfoList `json:"JvmInfoList,omitempty" xml:"JvmInfoList,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAppJVMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppJVMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppJVMConfigResponseBody) SetCode(v int32) *GetAppJVMConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBody) SetJvmInfoList(v []*GetAppJVMConfigResponseBodyJvmInfoList) *GetAppJVMConfigResponseBody {
+	s.JvmInfoList = v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBody) SetMessage(v string) *GetAppJVMConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBody) SetRequestId(v string) *GetAppJVMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBody) SetSuccess(v bool) *GetAppJVMConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAppJVMConfigResponseBodyJvmInfoList struct {
+	// Agent version.
+	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
+	// The name of the elastic container instance.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// Ip address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The PID.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// Process Id.
+	ProcId *string `json:"ProcId,omitempty" xml:"ProcId,omitempty"`
+	// Java VM config.
+	VmArgs *string `json:"VmArgs,omitempty" xml:"VmArgs,omitempty"`
+}
+
+func (s GetAppJVMConfigResponseBodyJvmInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppJVMConfigResponseBodyJvmInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetAgentVersion(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.AgentVersion = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetHostName(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.HostName = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetIp(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetPid(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.Pid = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetProcId(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.ProcId = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponseBodyJvmInfoList) SetVmArgs(v string) *GetAppJVMConfigResponseBodyJvmInfoList {
+	s.VmArgs = &v
+	return s
+}
+
+type GetAppJVMConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAppJVMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAppJVMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppJVMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppJVMConfigResponse) SetHeaders(v map[string]*string) *GetAppJVMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppJVMConfigResponse) SetStatusCode(v int32) *GetAppJVMConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppJVMConfigResponse) SetBody(v *GetAppJVMConfigResponseBody) *GetAppJVMConfigResponse {
+	s.Body = v
+	return s
+}
+
 type GetAuthTokenRequest struct {
 	// The ID of the cluster.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -19874,6 +20073,8 @@ func (s *GetPrometheusInstanceResponseBody) SetRequestId(v string) *GetPrometheu
 }
 
 type GetPrometheusInstanceResponseBodyData struct {
+	// auth token string.
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the monitoring object.
@@ -19887,13 +20088,29 @@ type GetPrometheusInstanceResponseBodyData struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
+	// http api internet url.
+	HttpApiInterUrl *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
+	// http api intranet url.
+	HttpApiIntraUrl *string `json:"HttpApiIntraUrl,omitempty" xml:"HttpApiIntraUrl,omitempty"`
 	// The billing method. Valid values:
 	//
 	// *   PREPAY: subscription
 	// *   POSTPAY: pay-as-you-go
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// push gateway internet url.
+	PushGatewayInterUrl *string `json:"PushGatewayInterUrl,omitempty" xml:"PushGatewayInterUrl,omitempty"`
+	// push gateway intranet url.
+	PushGatewayIntraUrl *string `json:"PushGatewayIntraUrl,omitempty" xml:"PushGatewayIntraUrl,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// remote read internet url.
+	RemoteReadInterUrl *string `json:"RemoteReadInterUrl,omitempty" xml:"RemoteReadInterUrl,omitempty"`
+	// remote read intranet url.
+	RemoteReadIntraUrl *string `json:"RemoteReadIntraUrl,omitempty" xml:"RemoteReadIntraUrl,omitempty"`
+	// remote write internet url.
+	RemoteWriteInterUrl *string `json:"RemoteWriteInterUrl,omitempty" xml:"RemoteWriteInterUrl,omitempty"`
+	// remote write intranet url.
+	RemoteWriteIntraUrl *string `json:"RemoteWriteIntraUrl,omitempty" xml:"RemoteWriteIntraUrl,omitempty"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the resource. Set the value to PROMETHEUS.
@@ -19920,6 +20137,11 @@ func (s GetPrometheusInstanceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetAuthToken(v string) *GetPrometheusInstanceResponseBodyData {
+	s.AuthToken = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetClusterId(v string) *GetPrometheusInstanceResponseBodyData {
 	s.ClusterId = &v
 	return s
@@ -19940,13 +20162,53 @@ func (s *GetPrometheusInstanceResponseBodyData) SetGrafanaInstanceId(v string) *
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetHttpApiInterUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.HttpApiInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetHttpApiIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.HttpApiIntraUrl = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetPaymentType(v string) *GetPrometheusInstanceResponseBodyData {
 	s.PaymentType = &v
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayInterUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.PushGatewayInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetPushGatewayIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.PushGatewayIntraUrl = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetRegionId(v string) *GetPrometheusInstanceResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetRemoteReadInterUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.RemoteReadInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetRemoteReadIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.RemoteReadIntraUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetRemoteWriteInterUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.RemoteWriteInterUrl = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetRemoteWriteIntraUrl(v string) *GetPrometheusInstanceResponseBodyData {
+	s.RemoteWriteIntraUrl = &v
 	return s
 }
 
@@ -26765,6 +27027,7 @@ func (s *ListAlertsResponseBodyPageBean) SetTotal(v int64) *ListAlertsResponseBo
 }
 
 type ListAlertsResponseBodyPageBeanListAlerts struct {
+	AcknowledgeTime *int64 `json:"AcknowledgeTime,omitempty" xml:"AcknowledgeTime,omitempty"`
 	// The list of activities.
 	Activities []*ListAlertsResponseBodyPageBeanListAlertsActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
 	// The list of events.
@@ -26775,10 +27038,15 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The time when the alert was created.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Describe   *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
 	// The ID of the notification policy.
 	DispatchRuleId *float32 `json:"DispatchRuleId,omitempty" xml:"DispatchRuleId,omitempty"`
 	// The name of the notification policy.
 	DispatchRuleName *string `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
+	Handler          *string `json:"Handler,omitempty" xml:"Handler,omitempty"`
+	NotifyRobots     *string `json:"NotifyRobots,omitempty" xml:"NotifyRobots,omitempty"`
+	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	RecoverTime      *int64  `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
 	// The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
 	// The Alert solution.
@@ -26797,6 +27065,11 @@ func (s ListAlertsResponseBodyPageBeanListAlerts) String() string {
 
 func (s ListAlertsResponseBodyPageBeanListAlerts) GoString() string {
 	return s.String()
+}
+
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetAcknowledgeTime(v int64) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.AcknowledgeTime = &v
+	return s
 }
 
 func (s *ListAlertsResponseBodyPageBeanListAlerts) SetActivities(v []*ListAlertsResponseBodyPageBeanListAlertsActivities) *ListAlertsResponseBodyPageBeanListAlerts {
@@ -26824,6 +27097,11 @@ func (s *ListAlertsResponseBodyPageBeanListAlerts) SetCreateTime(v string) *List
 	return s
 }
 
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetDescribe(v string) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.Describe = &v
+	return s
+}
+
 func (s *ListAlertsResponseBodyPageBeanListAlerts) SetDispatchRuleId(v float32) *ListAlertsResponseBodyPageBeanListAlerts {
 	s.DispatchRuleId = &v
 	return s
@@ -26831,6 +27109,26 @@ func (s *ListAlertsResponseBodyPageBeanListAlerts) SetDispatchRuleId(v float32) 
 
 func (s *ListAlertsResponseBodyPageBeanListAlerts) SetDispatchRuleName(v string) *ListAlertsResponseBodyPageBeanListAlerts {
 	s.DispatchRuleName = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetHandler(v string) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.Handler = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetNotifyRobots(v string) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.NotifyRobots = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetOwner(v string) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListAlertsResponseBodyPageBeanListAlerts) SetRecoverTime(v int64) *ListAlertsResponseBodyPageBeanListAlerts {
+	s.RecoverTime = &v
 	return s
 }
 
@@ -27514,8 +27812,9 @@ func (s *ListDashboardsRequest) SetTitle(v string) *ListDashboardsRequest {
 
 type ListDashboardsResponseBody struct {
 	// The information about the Grafana dashboard.
-	DashboardVos            []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
-	PrometheusServiceOpened *string                                   `json:"PrometheusServiceOpened,omitempty" xml:"PrometheusServiceOpened,omitempty"`
+	DashboardVos []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	// The indicators of whether the Prometheus service has been activated.
+	PrometheusServiceOpened *string `json:"PrometheusServiceOpened,omitempty" xml:"PrometheusServiceOpened,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -31701,6 +32000,7 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData) SetProme
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances struct {
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the Prometheus instance.
@@ -31715,13 +32015,21 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
+	HttpApiInterUrl   *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
+	HttpApiIntraUrl   *string `json:"HttpApiIntraUrl,omitempty" xml:"HttpApiIntraUrl,omitempty"`
 	// The billing method. Valid values:
 	//
 	// *   PREPAY: subscription.
 	// *   POSTPAY: pay-as-you-go.
-	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PushGatewayInterUrl *string `json:"PushGatewayInterUrl,omitempty" xml:"PushGatewayInterUrl,omitempty"`
+	PushGatewayIntraUrl *string `json:"PushGatewayIntraUrl,omitempty" xml:"PushGatewayIntraUrl,omitempty"`
 	// The region ID of the Prometheus instance.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RemoteReadInterUrl  *string `json:"RemoteReadInterUrl,omitempty" xml:"RemoteReadInterUrl,omitempty"`
+	RemoteReadIntraUrl  *string `json:"RemoteReadIntraUrl,omitempty" xml:"RemoteReadIntraUrl,omitempty"`
+	RemoteWriteInterUrl *string `json:"RemoteWriteInterUrl,omitempty" xml:"RemoteWriteInterUrl,omitempty"`
+	RemoteWriteIntraUrl *string `json:"RemoteWriteIntraUrl,omitempty" xml:"RemoteWriteIntraUrl,omitempty"`
 	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 资源类型
@@ -31748,6 +32056,11 @@ func (s ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusI
 	return s.String()
 }
 
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetAuthToken(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.AuthToken = &v
+	return s
+}
+
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetClusterId(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
 	s.ClusterId = &v
 	return s
@@ -31768,13 +32081,53 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheus
 	return s
 }
 
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetHttpApiInterUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.HttpApiInterUrl = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetHttpApiIntraUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.HttpApiIntraUrl = &v
+	return s
+}
+
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetPaymentType(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
 	s.PaymentType = &v
 	return s
 }
 
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetPushGatewayInterUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.PushGatewayInterUrl = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetPushGatewayIntraUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.PushGatewayIntraUrl = &v
+	return s
+}
+
 func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetRegionId(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetRemoteReadInterUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.RemoteReadInterUrl = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetRemoteReadIntraUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.RemoteReadIntraUrl = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetRemoteWriteInterUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.RemoteWriteInterUrl = &v
+	return s
+}
+
+func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances) SetRemoteWriteIntraUrl(v string) *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances {
+	s.RemoteWriteIntraUrl = &v
 	return s
 }
 
@@ -31873,9 +32226,19 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponse) SetBody(v *ListP
 }
 
 type ListPrometheusInstancesRequest struct {
-	// 实例类型
+	// Optional instance types (if left blank, all types of instances will be queried):
+	// - cloud-product-prometheus
+	// - ManagedKubernetes
+	// - satellite
+	// - Ask
+	// - remote-write-prometheus
+	// - cloud-monitor-cmee
+	// - ExternalKubernetes
+	// - vpc-prometheus
+	// - cloud-monitor-direct
+	// - Edge Kubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to query global aggregation instances. Valid values:
 	//
@@ -31908,9 +32271,11 @@ func (s *ListPrometheusInstancesRequest) SetShowGlobalView(v bool) *ListPromethe
 }
 
 type ListPrometheusInstancesResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried Prometheus instances. The value is a JSON string.
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The Prometheus instances in the region in the JSON format.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID. You can use the ID to query logs and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -33984,6 +34349,7 @@ func (s *ManageRecordingRuleResponse) SetBody(v *ManageRecordingRuleResponseBody
 }
 
 type OpenArmsDefaultSLRRequest struct {
+	// The ID of the region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -34001,7 +34367,9 @@ func (s *OpenArmsDefaultSLRRequest) SetRegionId(v string) *OpenArmsDefaultSLRReq
 }
 
 type OpenArmsDefaultSLRResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned result.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -34259,9 +34627,12 @@ func (s *OpenXtraceDefaultSLRRequest) SetRegionId(v string) *OpenXtraceDefaultSL
 }
 
 type OpenXtraceDefaultSLRResponseBody struct {
-	// The ID of the request.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   `true`
+	// *   `false`
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Activates the service-linked role AliyunServiceRoleForXtrace for Tracing Analysis.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -39199,8 +39570,10 @@ func (s *StopAlertResponse) SetBody(v *StopAlertResponseBody) *StopAlertResponse
 }
 
 type StopTimingSyntheticTaskRequest struct {
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskIds  []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task IDs.
+	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 
 func (s StopTimingSyntheticTaskRequest) String() string {
@@ -39222,7 +39595,9 @@ func (s *StopTimingSyntheticTaskRequest) SetTaskIds(v []*string) *StopTimingSynt
 }
 
 type StopTimingSyntheticTaskShrinkRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The task IDs.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }
 
@@ -39245,9 +39620,13 @@ func (s *StopTimingSyntheticTaskShrinkRequest) SetTaskIdsShrink(v string) *StopT
 }
 
 type StopTimingSyntheticTaskResponseBody struct {
-	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values: true and false.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -39716,7 +40095,9 @@ func (s *UninstallManagedPrometheusResponse) SetBody(v *UninstallManagedPromethe
 }
 
 type UninstallPromClusterRequest struct {
-	// 语言环境, 默认为中文 zh | en
+	// Language environment(If left blank, defaults to zh):
+	// - zh
+	// - en
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The cluster ID.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -41265,6 +41646,106 @@ func (s *UpdateIntegrationResponse) SetBody(v *UpdateIntegrationResponseBody) *U
 	return s
 }
 
+type UpdateMetricDropRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	MetricDrop *string `json:"MetricDrop,omitempty" xml:"MetricDrop,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateMetricDropRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricDropRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricDropRequest) SetClusterId(v string) *UpdateMetricDropRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateMetricDropRequest) SetMetricDrop(v string) *UpdateMetricDropRequest {
+	s.MetricDrop = &v
+	return s
+}
+
+func (s *UpdateMetricDropRequest) SetRegionId(v string) *UpdateMetricDropRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateMetricDropResponseBody struct {
+	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMetricDropResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricDropResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricDropResponseBody) SetCode(v int64) *UpdateMetricDropResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateMetricDropResponseBody) SetData(v string) *UpdateMetricDropResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateMetricDropResponseBody) SetMessage(v string) *UpdateMetricDropResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateMetricDropResponseBody) SetRequestId(v string) *UpdateMetricDropResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMetricDropResponseBody) SetSuccess(v bool) *UpdateMetricDropResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMetricDropResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateMetricDropResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMetricDropResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetricDropResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetricDropResponse) SetHeaders(v map[string]*string) *UpdateMetricDropResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMetricDropResponse) SetStatusCode(v int32) *UpdateMetricDropResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMetricDropResponse) SetBody(v *UpdateMetricDropResponseBody) *UpdateMetricDropResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePrometheusAlertRuleRequest struct {
 	AlertId        *int64                                  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
 	AlertName      *string                                 `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
@@ -41577,11 +42058,15 @@ func (s *UpdatePrometheusAlertRuleResponse) SetBody(v *UpdatePrometheusAlertRule
 }
 
 type UpdatePrometheusGlobalViewRequest struct {
-	// 创建GlobalView时，是否要求所有子实例都校验成功时，才创建GlobalView实例。默认是false，即可以部分成功。
+	// To edit a GlobalView aggregated instance, do you require all passed child instances to be verified successfully before creating a GlobalView instance (optional, default to false):
+	// - true
+	// - false
 	AllSubClustersSuccess *bool `json:"AllSubClustersSuccess,omitempty" xml:"AllSubClustersSuccess,omitempty"`
 	// The ID of the Prometheus instance.
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the global aggregation instance.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The region ID of the global aggregation instance.
 	MostRegionId *string `json:"MostRegionId,omitempty" xml:"MostRegionId,omitempty"`
 	// The ID of the region in which the Prometheus instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -49500,6 +49985,46 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) GetAppJVMConfigWithOptions(request *GetAppJVMConfigRequest, runtime *util.RuntimeOptions) (_result *GetAppJVMConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppJVMConfig"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppJVMConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppJVMConfig(request *GetAppJVMConfigRequest) (_result *GetAppJVMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppJVMConfigResponse{}
+	_body, _err := client.GetAppJVMConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAuthTokenWithOptions(request *GetAuthTokenRequest, runtime *util.RuntimeOptions) (_result *GetAuthTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56259,6 +56784,58 @@ func (client *Client) UpdateIntegration(request *UpdateIntegrationRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIntegrationResponse{}
 	_body, _err := client.UpdateIntegrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMetricDropWithOptions(request *UpdateMetricDropRequest, runtime *util.RuntimeOptions) (_result *UpdateMetricDropResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricDrop)) {
+		query["MetricDrop"] = request.MetricDrop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMetricDrop"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMetricDropResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMetricDrop(request *UpdateMetricDropRequest) (_result *UpdateMetricDropResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMetricDropResponse{}
+	_body, _err := client.UpdateMetricDropWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
