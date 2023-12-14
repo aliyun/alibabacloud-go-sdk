@@ -4301,7 +4301,11 @@ func (s *SubmitAudioTo2DAvatarVideoTaskRequestApp) SetAppId(v string) *SubmitAud
 }
 
 type SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) String() string {
@@ -4314,6 +4318,26 @@ func (s SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) GoString() string {
 
 func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
 	s.Code = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetHeight(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetWidth(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetX(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.X = &v
+	return s
+}
+
+func (s *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo) SetY(v int32) *SubmitAudioTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Y = &v
 	return s
 }
 
@@ -5143,7 +5167,11 @@ func (s *SubmitTextTo2DAvatarVideoTaskRequestAudioInfo) SetVolume(v int32) *Subm
 }
 
 type SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Height *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	Width  *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+	X      *int32  `json:"X,omitempty" xml:"X,omitempty"`
+	Y      *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) String() string {
@@ -5156,6 +5184,26 @@ func (s SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) GoString() string {
 
 func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetCode(v string) *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo {
 	s.Code = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetHeight(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetWidth(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Width = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetX(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.X = &v
+	return s
+}
+
+func (s *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo) SetY(v int32) *SubmitTextTo2DAvatarVideoTaskRequestAvatarInfo {
+	s.Y = &v
 	return s
 }
 
