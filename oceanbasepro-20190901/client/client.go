@@ -21582,14 +21582,14 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// Plan execution time (in milliseconds).
 	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
 	// Whether to initiate RPC.
-	ExecutorRpc *float64 `json:"ExecutorRpc,omitempty" xml:"ExecutorRpc,omitempty"`
+	ExecutorRpc *bool `json:"ExecutorRpc,omitempty" xml:"ExecutorRpc,omitempty"`
 	// Degree of parallelism.
 	ExpectedWorkerCount *float64 `json:"ExpectedWorkerCount,omitempty" xml:"ExpectedWorkerCount,omitempty"`
 	FullSqlText         *string  `json:"FullSqlText,omitempty" xml:"FullSqlText,omitempty"`
 	// Plan generation time (in milliseconds).
 	GetPlanTime *float64 `json:"GetPlanTime,omitempty" xml:"GetPlanTime,omitempty"`
 	// Whether to hit the execution plan.
-	HitPlan *float64 `json:"HitPlan,omitempty" xml:"HitPlan,omitempty"`
+	HitPlan *bool `json:"HitPlan,omitempty" xml:"HitPlan,omitempty"`
 	// Whether an internal SQL.
 	Inner *bool `json:"Inner,omitempty" xml:"Inner,omitempty"`
 	// Memstore read row count.
@@ -21637,7 +21637,7 @@ type DescribeSQLSamplesResponseBodyData struct {
 	// Parameterized SQL text.
 	Statement *string `json:"Statement,omitempty" xml:"Statement,omitempty"`
 	// Whether to perform full table scan.
-	TableScan *float64 `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	TableScan *bool `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
 	// Trace ID.
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	// Transaction hash.
@@ -21739,7 +21739,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetExecuteTime(v float64) *Describe
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetExecutorRpc(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetExecutorRpc(v bool) *DescribeSQLSamplesResponseBodyData {
 	s.ExecutorRpc = &v
 	return s
 }
@@ -21759,7 +21759,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetGetPlanTime(v float64) *Describe
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetHitPlan(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetHitPlan(v bool) *DescribeSQLSamplesResponseBodyData {
 	s.HitPlan = &v
 	return s
 }
@@ -21879,7 +21879,7 @@ func (s *DescribeSQLSamplesResponseBodyData) SetStatement(v string) *DescribeSQL
 	return s
 }
 
-func (s *DescribeSQLSamplesResponseBodyData) SetTableScan(v float64) *DescribeSQLSamplesResponseBodyData {
+func (s *DescribeSQLSamplesResponseBodyData) SetTableScan(v bool) *DescribeSQLSamplesResponseBodyData {
 	s.TableScan = &v
 	return s
 }
@@ -30063,6 +30063,81 @@ func (s *ModifyInstanceTagsResponse) SetStatusCode(v int32) *ModifyInstanceTagsR
 }
 
 func (s *ModifyInstanceTagsResponse) SetBody(v *ModifyInstanceTagsResponseBody) *ModifyInstanceTagsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyInstanceTemporaryCapacityRequest struct {
+	DiskSize   *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Spec       *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s ModifyInstanceTemporaryCapacityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTemporaryCapacityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTemporaryCapacityRequest) SetDiskSize(v string) *ModifyInstanceTemporaryCapacityRequest {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *ModifyInstanceTemporaryCapacityRequest) SetInstanceId(v string) *ModifyInstanceTemporaryCapacityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceTemporaryCapacityRequest) SetSpec(v string) *ModifyInstanceTemporaryCapacityRequest {
+	s.Spec = &v
+	return s
+}
+
+type ModifyInstanceTemporaryCapacityResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceTemporaryCapacityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTemporaryCapacityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTemporaryCapacityResponseBody) SetRequestId(v string) *ModifyInstanceTemporaryCapacityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceTemporaryCapacityResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceTemporaryCapacityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceTemporaryCapacityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceTemporaryCapacityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceTemporaryCapacityResponse) SetHeaders(v map[string]*string) *ModifyInstanceTemporaryCapacityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceTemporaryCapacityResponse) SetStatusCode(v int32) *ModifyInstanceTemporaryCapacityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyInstanceTemporaryCapacityResponse) SetBody(v *ModifyInstanceTemporaryCapacityResponseBody) *ModifyInstanceTemporaryCapacityResponse {
 	s.Body = v
 	return s
 }
@@ -40853,6 +40928,58 @@ func (client *Client) ModifyInstanceTags(request *ModifyInstanceTagsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceTagsResponse{}
 	_body, _err := client.ModifyInstanceTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceTemporaryCapacityWithOptions(request *ModifyInstanceTemporaryCapacityRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceTemporaryCapacityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		body["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		body["Spec"] = request.Spec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceTemporaryCapacity"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceTemporaryCapacityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceTemporaryCapacity(request *ModifyInstanceTemporaryCapacityRequest) (_result *ModifyInstanceTemporaryCapacityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceTemporaryCapacityResponse{}
+	_body, _err := client.ModifyInstanceTemporaryCapacityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
