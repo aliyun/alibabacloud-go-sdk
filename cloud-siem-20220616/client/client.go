@@ -13,13 +13,27 @@ import (
 )
 
 type DataProductListLogMapValue struct {
-	LogCode         *string                                      `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	LogName         *string                                      `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	LogNameEn       *string                                      `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
-	LogNameKey      *string                                      `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
-	Status          *bool                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	CanOperateOrNot *bool                                        `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
-	Topic           *string                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The code of the log.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// This parameter is deprecated.
+	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// This parameter is deprecated.
+	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
+	// The language code of the log that is used to indicate the language in which the log is displayed.
+	LogNameKey *string `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
+	// The status of the log delivery. Valid values:
+	//
+	// *   true: The logs are being delivered.
+	// *   false: The log delivery feature is disabled.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
+	//
+	// *   true
+	// *   false
+	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
+	// The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The extended parameter.
 	ExtraParameters []*DataProductListLogMapValueExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
 }
 
@@ -72,7 +86,9 @@ func (s *DataProductListLogMapValue) SetExtraParameters(v []*DataProductListLogM
 }
 
 type DataProductListLogMapValueExtraParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the extended parameter.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the extended parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -91,6 +107,495 @@ func (s *DataProductListLogMapValueExtraParameters) SetKey(v string) *DataProduc
 
 func (s *DataProductListLogMapValueExtraParameters) SetValue(v string) *DataProductListLogMapValueExtraParameters {
 	s.Value = &v
+	return s
+}
+
+type AddDataSourceRequest struct {
+	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode                *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceName   *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
+	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
+	DataSourceType           *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceRequest) SetAccountId(v string) *AddDataSourceRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetCloudCode(v string) *AddDataSourceRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetDataSourceInstanceName(v string) *AddDataSourceRequest {
+	s.DataSourceInstanceName = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetDataSourceInstanceParams(v string) *AddDataSourceRequest {
+	s.DataSourceInstanceParams = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetDataSourceInstanceRemark(v string) *AddDataSourceRequest {
+	s.DataSourceInstanceRemark = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetDataSourceType(v string) *AddDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *AddDataSourceRequest) SetRegionId(v string) *AddDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddDataSourceResponseBody struct {
+	Data      *AddDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceResponseBody) SetData(v *AddDataSourceResponseBodyData) *AddDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddDataSourceResponseBody) SetRequestId(v string) *AddDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddDataSourceResponseBodyData struct {
+	Count                *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+}
+
+func (s AddDataSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceResponseBodyData) SetCount(v int32) *AddDataSourceResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *AddDataSourceResponseBodyData) SetDataSourceInstanceId(v string) *AddDataSourceResponseBodyData {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+type AddDataSourceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceResponse) SetHeaders(v map[string]*string) *AddDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDataSourceResponse) SetStatusCode(v int32) *AddDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDataSourceResponse) SetBody(v *AddDataSourceResponseBody) *AddDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type AddDataSourceLogRequest struct {
+	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode              *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId   *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
+	LogCode                *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddDataSourceLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceLogRequest) SetAccountId(v string) *AddDataSourceLogRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *AddDataSourceLogRequest) SetCloudCode(v string) *AddDataSourceLogRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *AddDataSourceLogRequest) SetDataSourceInstanceId(v string) *AddDataSourceLogRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *AddDataSourceLogRequest) SetDataSourceInstanceLogs(v string) *AddDataSourceLogRequest {
+	s.DataSourceInstanceLogs = &v
+	return s
+}
+
+func (s *AddDataSourceLogRequest) SetLogCode(v string) *AddDataSourceLogRequest {
+	s.LogCode = &v
+	return s
+}
+
+func (s *AddDataSourceLogRequest) SetRegionId(v string) *AddDataSourceLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddDataSourceLogResponseBody struct {
+	Data      *AddDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddDataSourceLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceLogResponseBody) SetData(v *AddDataSourceLogResponseBodyData) *AddDataSourceLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddDataSourceLogResponseBody) SetRequestId(v string) *AddDataSourceLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddDataSourceLogResponseBodyData struct {
+	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+}
+
+func (s AddDataSourceLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceLogResponseBodyData) SetCount(v int32) *AddDataSourceLogResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *AddDataSourceLogResponseBodyData) SetLogInstanceId(v string) *AddDataSourceLogResponseBodyData {
+	s.LogInstanceId = &v
+	return s
+}
+
+type AddDataSourceLogResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDataSourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddDataSourceLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDataSourceLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDataSourceLogResponse) SetHeaders(v map[string]*string) *AddDataSourceLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDataSourceLogResponse) SetStatusCode(v int32) *AddDataSourceLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDataSourceLogResponse) SetBody(v *AddDataSourceLogResponseBody) *AddDataSourceLogResponse {
+	s.Body = v
+	return s
+}
+
+type AddUserRequest struct {
+	AddedUserId *int64  `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s AddUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserRequest) SetAddedUserId(v int64) *AddUserRequest {
+	s.AddedUserId = &v
+	return s
+}
+
+func (s *AddUserRequest) SetRegionId(v string) *AddUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+type AddUserResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserResponseBody) SetData(v bool) *AddUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddUserResponseBody) SetRequestId(v string) *AddUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddUserResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserResponse) SetHeaders(v map[string]*string) *AddUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddUserResponse) SetStatusCode(v int32) *AddUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddUserResponse) SetBody(v *AddUserResponseBody) *AddUserResponse {
+	s.Body = v
+	return s
+}
+
+type AddUserSourceLogConfigRequest struct {
+	Deleted        *int32  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	DisPlayLine    *string `json:"DisPlayLine,omitempty" xml:"DisPlayLine,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceLogInfo  *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s AddUserSourceLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserSourceLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserSourceLogConfigRequest) SetDeleted(v int32) *AddUserSourceLogConfigRequest {
+	s.Deleted = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetDisPlayLine(v string) *AddUserSourceLogConfigRequest {
+	s.DisPlayLine = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetRegionId(v string) *AddUserSourceLogConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetSourceLogCode(v string) *AddUserSourceLogConfigRequest {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetSourceLogInfo(v string) *AddUserSourceLogConfigRequest {
+	s.SourceLogInfo = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetSourceProdCode(v string) *AddUserSourceLogConfigRequest {
+	s.SourceProdCode = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigRequest) SetSubUserId(v int64) *AddUserSourceLogConfigRequest {
+	s.SubUserId = &v
+	return s
+}
+
+type AddUserSourceLogConfigResponseBody struct {
+	Data      *AddUserSourceLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddUserSourceLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserSourceLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserSourceLogConfigResponseBody) SetData(v *AddUserSourceLogConfigResponseBodyData) *AddUserSourceLogConfigResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBody) SetRequestId(v string) *AddUserSourceLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddUserSourceLogConfigResponseBodyData struct {
+	DiplayLine     *string `json:"DiplayLine,omitempty" xml:"DiplayLine,omitempty"`
+	Displayed      *bool   `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
+	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s AddUserSourceLogConfigResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserSourceLogConfigResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetDiplayLine(v string) *AddUserSourceLogConfigResponseBodyData {
+	s.DiplayLine = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetDisplayed(v bool) *AddUserSourceLogConfigResponseBodyData {
+	s.Displayed = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetImported(v bool) *AddUserSourceLogConfigResponseBodyData {
+	s.Imported = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetMainUserId(v int64) *AddUserSourceLogConfigResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetSourceLogCode(v string) *AddUserSourceLogConfigResponseBodyData {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetSourceProdCode(v string) *AddUserSourceLogConfigResponseBodyData {
+	s.SourceProdCode = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetSubUserId(v int64) *AddUserSourceLogConfigResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponseBodyData) SetSubUserName(v string) *AddUserSourceLogConfigResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type AddUserSourceLogConfigResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddUserSourceLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddUserSourceLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddUserSourceLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddUserSourceLogConfigResponse) SetHeaders(v map[string]*string) *AddUserSourceLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponse) SetStatusCode(v int32) *AddUserSourceLogConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddUserSourceLogConfigResponse) SetBody(v *AddUserSourceLogConfigResponseBody) *AddUserSourceLogConfigResponse {
+	s.Body = v
 	return s
 }
 
@@ -566,10 +1071,150 @@ func (s *BatchJobSubmitResponse) SetBody(v *BatchJobSubmitResponseBody) *BatchJo
 	return s
 }
 
-type CloseDeliveryRequest struct {
-	LogCode     *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+type BindAccountRequest struct {
+	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s BindAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAccountRequest) SetAccessId(v string) *BindAccountRequest {
+	s.AccessId = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetAccountId(v string) *BindAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetAccountName(v string) *BindAccountRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetCloudCode(v string) *BindAccountRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *BindAccountRequest) SetRegionId(v string) *BindAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type BindAccountResponseBody struct {
+	Data      *BindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BindAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAccountResponseBody) SetData(v *BindAccountResponseBodyData) *BindAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindAccountResponseBody) SetRequestId(v string) *BindAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BindAccountResponseBodyData struct {
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s BindAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindAccountResponseBodyData) SetCount(v int32) *BindAccountResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type BindAccountResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BindAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAccountResponse) SetHeaders(v map[string]*string) *BindAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAccountResponse) SetStatusCode(v int32) *BindAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAccountResponse) SetBody(v *BindAccountResponseBody) *BindAccountResponse {
+	s.Body = v
+	return s
+}
+
+type CloseDeliveryRequest struct {
+	// The log code of the cloud service, such as the code of the process log for Security Center. You can obtain the log code from the response of the ListDelivery operation.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The code of the cloud service. Valid values:
+	//
+	// *   qcloud_waf
+	// *   qlcoud_cfw
+	// *   hcloud_waf
+	// *   hcloud_cfw
+	// *   ddos
+	// *   sas
+	// *   cfw
+	// *   config
+	// *   csk
+	// *   fc
+	// *   rds
+	// *   nas
+	// *   apigateway
+	// *   cdn
+	// *   mongodb
+	// *   eip
+	// *   slb
+	// *   vpc
+	// *   actiontrail
+	// *   waf
+	// *   bastionhost
+	// *   oss
+	// *   polardb
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CloseDeliveryRequest) String() string {
@@ -596,14 +1241,13 @@ func (s *CloseDeliveryRequest) SetRegionId(v string) *CloseDeliveryRequest {
 }
 
 type CloseDeliveryResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the threat analysis feature was disabled. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CloseDeliveryResponseBody) String() string {
@@ -614,43 +1258,13 @@ func (s CloseDeliveryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CloseDeliveryResponseBody) SetCode(v int32) *CloseDeliveryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *CloseDeliveryResponseBody) SetData(v bool) *CloseDeliveryResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *CloseDeliveryResponseBody) SetDyCode(v string) *CloseDeliveryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *CloseDeliveryResponseBody) SetDyMessage(v string) *CloseDeliveryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *CloseDeliveryResponseBody) SetErrCode(v string) *CloseDeliveryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *CloseDeliveryResponseBody) SetMessage(v string) *CloseDeliveryResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *CloseDeliveryResponseBody) SetRequestId(v string) *CloseDeliveryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CloseDeliveryResponseBody) SetSuccess(v bool) *CloseDeliveryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -684,7 +1298,12 @@ func (s *CloseDeliveryResponse) SetBody(v *CloseDeliveryResponseBody) *CloseDeli
 }
 
 type DeleteAutomateResponseConfigRequest struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -707,11 +1326,19 @@ func (s *DeleteAutomateResponseConfigRequest) SetRegionId(v string) *DeleteAutom
 }
 
 type DeleteAutomateResponseConfigResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAutomateResponseConfigResponseBody) String() string {
@@ -776,9 +1403,121 @@ func (s *DeleteAutomateResponseConfigResponse) SetBody(v *DeleteAutomateResponse
 	return s
 }
 
+type DeleteBindAccountRequest struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	BindId    *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteBindAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindAccountRequest) SetAccessId(v string) *DeleteBindAccountRequest {
+	s.AccessId = &v
+	return s
+}
+
+func (s *DeleteBindAccountRequest) SetAccountId(v string) *DeleteBindAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeleteBindAccountRequest) SetBindId(v int64) *DeleteBindAccountRequest {
+	s.BindId = &v
+	return s
+}
+
+func (s *DeleteBindAccountRequest) SetCloudCode(v string) *DeleteBindAccountRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DeleteBindAccountRequest) SetRegionId(v string) *DeleteBindAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteBindAccountResponseBody struct {
+	Data      *DeleteBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBindAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindAccountResponseBody) SetData(v *DeleteBindAccountResponseBodyData) *DeleteBindAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteBindAccountResponseBody) SetRequestId(v string) *DeleteBindAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBindAccountResponseBodyData struct {
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DeleteBindAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindAccountResponseBodyData) SetCount(v int32) *DeleteBindAccountResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type DeleteBindAccountResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBindAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBindAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBindAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBindAccountResponse) SetHeaders(v map[string]*string) *DeleteBindAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBindAccountResponse) SetStatusCode(v int32) *DeleteBindAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBindAccountResponse) SetBody(v *DeleteBindAccountResponseBody) *DeleteBindAccountResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCustomizeRuleRequest struct {
+	// The region in which the service is deployed.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteCustomizeRuleRequest) String() string {
@@ -800,11 +1539,19 @@ func (s *DeleteCustomizeRuleRequest) SetRuleId(v int64) *DeleteCustomizeRuleRequ
 }
 
 type DeleteCustomizeRuleResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteCustomizeRuleResponseBody) String() string {
@@ -869,8 +1616,233 @@ func (s *DeleteCustomizeRuleResponse) SetBody(v *DeleteCustomizeRuleResponseBody
 	return s
 }
 
+type DeleteDataSourceRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceRequest) SetAccountId(v string) *DeleteDataSourceRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeleteDataSourceRequest) SetCloudCode(v string) *DeleteDataSourceRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceRequest) SetDataSourceInstanceId(v string) *DeleteDataSourceRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *DeleteDataSourceRequest) SetRegionId(v string) *DeleteDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDataSourceResponseBody struct {
+	Data      *DeleteDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponseBody) SetData(v *DeleteDataSourceResponseBodyData) *DeleteDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDataSourceResponseBody) SetRequestId(v string) *DeleteDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDataSourceResponseBodyData struct {
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s DeleteDataSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponseBodyData) SetCount(v int32) *DeleteDataSourceResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type DeleteDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceResponse) SetHeaders(v map[string]*string) *DeleteDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetStatusCode(v int32) *DeleteDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceResponse) SetBody(v *DeleteDataSourceResponseBody) *DeleteDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDataSourceLogRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	LogInstanceId        *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDataSourceLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceLogRequest) SetAccountId(v string) *DeleteDataSourceLogRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogRequest) SetCloudCode(v string) *DeleteDataSourceLogRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogRequest) SetDataSourceInstanceId(v string) *DeleteDataSourceLogRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogRequest) SetLogInstanceId(v string) *DeleteDataSourceLogRequest {
+	s.LogInstanceId = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogRequest) SetRegionId(v string) *DeleteDataSourceLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDataSourceLogResponseBody struct {
+	Data      *DeleteDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDataSourceLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceLogResponseBody) SetData(v *DeleteDataSourceLogResponseBodyData) *DeleteDataSourceLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteDataSourceLogResponseBody) SetRequestId(v string) *DeleteDataSourceLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDataSourceLogResponseBodyData struct {
+	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+}
+
+func (s DeleteDataSourceLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceLogResponseBodyData) SetCount(v int32) *DeleteDataSourceLogResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogResponseBodyData) SetLogInstanceId(v string) *DeleteDataSourceLogResponseBodyData {
+	s.LogInstanceId = &v
+	return s
+}
+
+type DeleteDataSourceLogResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDataSourceLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceLogResponse) SetHeaders(v map[string]*string) *DeleteDataSourceLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceLogResponse) SetStatusCode(v int32) *DeleteDataSourceLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceLogResponse) SetBody(v *DeleteDataSourceLogResponseBody) *DeleteDataSourceLogResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteQuickQueryRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the saved search.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -893,14 +1865,13 @@ func (s *DeleteQuickQueryRequest) SetSearchName(v string) *DeleteQuickQueryReque
 }
 
 type DeleteQuickQueryResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the saved search is deleted. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteQuickQueryResponseBody) String() string {
@@ -911,43 +1882,13 @@ func (s DeleteQuickQueryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteQuickQueryResponseBody) SetCode(v int32) *DeleteQuickQueryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DeleteQuickQueryResponseBody) SetData(v bool) *DeleteQuickQueryResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *DeleteQuickQueryResponseBody) SetDyCode(v string) *DeleteQuickQueryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponseBody) SetDyMessage(v string) *DeleteQuickQueryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponseBody) SetErrCode(v string) *DeleteQuickQueryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponseBody) SetMessage(v string) *DeleteQuickQueryResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteQuickQueryResponseBody) SetRequestId(v string) *DeleteQuickQueryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteQuickQueryResponseBody) SetSuccess(v bool) *DeleteQuickQueryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -980,8 +1921,88 @@ func (s *DeleteQuickQueryResponse) SetBody(v *DeleteQuickQueryResponseBody) *Del
 	return s
 }
 
+type DeleteUserRequest struct {
+	AddedUserId *int64  `json:"AddedUserId,omitempty" xml:"AddedUserId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserRequest) SetAddedUserId(v int64) *DeleteUserRequest {
+	s.AddedUserId = &v
+	return s
+}
+
+func (s *DeleteUserRequest) SetRegionId(v string) *DeleteUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteUserResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserResponseBody) SetData(v bool) *DeleteUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteUserResponseBody) SetRequestId(v string) *DeleteUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserResponse) SetHeaders(v map[string]*string) *DeleteUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteWhiteRuleListRequest struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The unique ID of the whitelist rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1004,11 +2025,19 @@ func (s *DeleteWhiteRuleListRequest) SetRegionId(v string) *DeleteWhiteRuleListR
 }
 
 type DeleteWhiteRuleListResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteWhiteRuleListResponseBody) String() string {
@@ -1074,6 +2103,10 @@ func (s *DeleteWhiteRuleListResponse) SetBody(v *DeleteWhiteRuleListResponseBody
 }
 
 type DescribeAggregateFunctionRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1091,11 +2124,19 @@ func (s *DescribeAggregateFunctionRequest) SetRegionId(v string) *DescribeAggreg
 }
 
 type DescribeAggregateFunctionResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAggregateFunctionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAggregateFunctionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAggregateFunctionResponseBody) String() string {
@@ -1132,7 +2173,9 @@ func (s *DescribeAggregateFunctionResponseBody) SetSuccess(v bool) *DescribeAggr
 }
 
 type DescribeAggregateFunctionResponseBodyData struct {
-	Function     *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The aggregate function.
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	// The display name of the aggregate function.
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -1359,8 +2402,13 @@ func (s *DescribeAlertSceneResponse) SetBody(v *DescribeAlertSceneResponseBody) 
 }
 
 type DescribeAlertSceneByEventRequest struct {
+	// The ID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAlertSceneByEventRequest) String() string {
@@ -1382,11 +2430,19 @@ func (s *DescribeAlertSceneByEventRequest) SetRegionId(v string) *DescribeAlertS
 }
 
 type DescribeAlertSceneByEventResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAlertSceneByEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAlertSceneByEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertSceneByEventResponseBody) String() string {
@@ -1423,13 +2479,20 @@ func (s *DescribeAlertSceneByEventResponseBody) SetSuccess(v bool) *DescribeAler
 }
 
 type DescribeAlertSceneByEventResponseBodyData struct {
-	AlertName   *string                                             `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameId *string                                             `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
-	AlertTile   *string                                             `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
-	AlertTileId *string                                             `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
-	AlertType   *string                                             `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeId *string                                             `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
-	Targets     []*DescribeAlertSceneByEventResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	// The alert name. The display name of the alert name varies based on the language of the system, such as Chinese and English.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The ID of the alert name.
+	AlertNameId *string `json:"AlertNameId,omitempty" xml:"AlertNameId,omitempty"`
+	// The alert title. The display name of the alert title varies based on the language of the system, such as Chinese and English.
+	AlertTile *string `json:"AlertTile,omitempty" xml:"AlertTile,omitempty"`
+	// The ID of the alert title.
+	AlertTileId *string `json:"AlertTileId,omitempty" xml:"AlertTileId,omitempty"`
+	// The alert type. The display name of the alert type varies based on the language of the system, such as Chinese and English.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The ID of the alert type.
+	AlertTypeId *string `json:"AlertTypeId,omitempty" xml:"AlertTypeId,omitempty"`
+	// The objects that can be added to the whitelist.
+	Targets []*DescribeAlertSceneByEventResponseBodyDataTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAlertSceneByEventResponseBodyData) String() string {
@@ -1476,9 +2539,13 @@ func (s *DescribeAlertSceneByEventResponseBodyData) SetTargets(v []*DescribeAler
 }
 
 type DescribeAlertSceneByEventResponseBodyDataTargets struct {
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The display name of the entity attribute field that can be added to the whitelist.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The entity attribute field that can be added to the whitelist.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The right operand that is displayed by default in the whitelist rule.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The supported right operands of the whitelist rule.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1540,10 +2607,21 @@ func (s *DescribeAlertSceneByEventResponse) SetBody(v *DescribeAlertSceneByEvent
 }
 
 type DescribeAlertSourceRequest struct {
-	EndTime   *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Level     []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
-	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The risk levels. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeAlertSourceRequest) String() string {
@@ -1575,11 +2653,19 @@ func (s *DescribeAlertSourceRequest) SetStartTime(v int64) *DescribeAlertSourceR
 }
 
 type DescribeAlertSourceResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAlertSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAlertSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertSourceResponseBody) String() string {
@@ -1616,7 +2702,9 @@ func (s *DescribeAlertSourceResponseBody) SetSuccess(v bool) *DescribeAlertSourc
 }
 
 type DescribeAlertSourceResponseBodyData struct {
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The internal code of the alert data source.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The name of the alert data source.
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
 }
 
@@ -1668,8 +2756,13 @@ func (s *DescribeAlertSourceResponse) SetBody(v *DescribeAlertSourceResponseBody
 }
 
 type DescribeAlertSourceWithEventRequest struct {
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAlertSourceWithEventRequest) String() string {
@@ -1691,11 +2784,19 @@ func (s *DescribeAlertSourceWithEventRequest) SetRegionId(v string) *DescribeAle
 }
 
 type DescribeAlertSourceWithEventResponseBody struct {
-	Code      *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAlertSourceWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAlertSourceWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertSourceWithEventResponseBody) String() string {
@@ -1732,7 +2833,9 @@ func (s *DescribeAlertSourceWithEventResponseBody) SetSuccess(v bool) *DescribeA
 }
 
 type DescribeAlertSourceWithEventResponseBodyData struct {
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The internal code of the alert data source.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The name of the alert data source.
 	SourceName *string `json:"SourceName,omitempty" xml:"SourceName,omitempty"`
 }
 
@@ -1784,6 +2887,10 @@ func (s *DescribeAlertSourceWithEventResponse) SetBody(v *DescribeAlertSourceWit
 }
 
 type DescribeAlertTypeRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -1801,11 +2908,19 @@ func (s *DescribeAlertTypeRequest) SetRegionId(v string) *DescribeAlertTypeReque
 }
 
 type DescribeAlertTypeResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAlertTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAlertTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertTypeResponseBody) String() string {
@@ -1842,7 +2957,9 @@ func (s *DescribeAlertTypeResponseBody) SetSuccess(v bool) *DescribeAlertTypeRes
 }
 
 type DescribeAlertTypeResponseBodyData struct {
-	AlertType    *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The type of the risk.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the risk type.
 	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
 }
 
@@ -1894,17 +3011,38 @@ func (s *DescribeAlertTypeResponse) SetBody(v *DescribeAlertTypeResponseBody) *D
 }
 
 type DescribeAlertsRequest struct {
-	AlertTitle  *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertUuid   *string   `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	CurrentPage *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	IsDefend    *string   `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	Level       []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Source      *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubUserId   *string   `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether an attack is defended. Valid values:
+	//
+	// *   0: detected.
+	// *   1: blocked.
+	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The risk level. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source of the alert.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the Alibaba Cloud account within which the alert is generated.
+	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeAlertsRequest) String() string {
@@ -1971,11 +3109,19 @@ func (s *DescribeAlertsRequest) SetSubUserId(v string) *DescribeAlertsRequest {
 }
 
 type DescribeAlertsResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAlertsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeAlertsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertsResponseBody) String() string {
@@ -2012,7 +3158,9 @@ func (s *DescribeAlertsResponseBody) SetSuccess(v bool) *DescribeAlertsResponseB
 }
 
 type DescribeAlertsResponseBodyData struct {
-	PageInfo     *DescribeAlertsResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeAlertsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeAlertsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -2035,9 +3183,12 @@ func (s *DescribeAlertsResponseBodyData) SetResponseData(v []*DescribeAlertsResp
 }
 
 type DescribeAlertsResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAlertsResponseBodyDataPageInfo) String() string {
@@ -2064,38 +3215,81 @@ func (s *DescribeAlertsResponseBodyDataPageInfo) SetTotalCount(v int64) *Describ
 }
 
 type DescribeAlertsResponseBodyDataResponseData struct {
-	AlertDesc          *string                                                    `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	AlertDescCode      *string                                                    `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
-	AlertDescEn        *string                                                    `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
-	AlertDetail        *string                                                    `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertInfoList      []*DescribeAlertsResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
-	AlertLevel         *string                                                    `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName          *string                                                    `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameCode      *string                                                    `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	AlertNameEn        *string                                                    `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	AlertSrcProd       *string                                                    `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	AlertSrcProdModule *string                                                    `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	AlertTitle         *string                                                    `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertTitleEn       *string                                                    `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	AlertType          *string                                                    `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeCode      *string                                                    `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	AlertTypeEn        *string                                                    `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
-	AlertUuid          *string                                                    `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	AssetList          *string                                                    `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	AttCk              *string                                                    `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	CloudCode          *string                                                    `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	EndTime            *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtCreate          *string                                                    `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string                                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                 *int64                                                     `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentUuid       *string                                                    `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	IsDefend           *string                                                    `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	LogTime            *string                                                    `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	LogUuid            *string                                                    `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
-	MainUserId         *int64                                                     `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	OccurTime          *string                                                    `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	StartTime          *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubUserId          *int64                                                     `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The description of the alert.
+	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	// The internal code of the alert description.
+	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	// The description of the alert in English.
+	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	// The details of the alert.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	// The displayed details of the alert.
+	AlertInfoList []*DescribeAlertsResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	// The threat level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The name of the alert.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The internal code of the alert name.
+	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	// The name of the alert in English.
+	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	// The service for which the alert associated with the event is generated.
+	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The sub-module of ther alert source.
+	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The title of the alert in English.
+	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	// The alert type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the alert type.
+	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	// The type of the alert in English.
+	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The details of the asset.
+	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The tag of the ATT\&CK attack.
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The cloud code. Valid values:
+	//
+	// *   aliyun: Alibaba Cloud
+	// *   qcloud: Tencent Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The time when the alert was closed.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the alert was received.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the alert was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique ID of the alert.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Indicates whether an attack is defended. Valid values:
+	//
+	// *   0: detected.
+	// *   1: blocked.
+	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The time when the alert was recorded.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The UUID of the alert log.
+	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The time when the alert is triggered.
+	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	// The time at which the alert was first generated.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the Alibaba Cloud account within which the alert is generated.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeAlertsResponseBodyDataResponseData) String() string {
@@ -2267,9 +3461,12 @@ func (s *DescribeAlertsResponseBodyDataResponseData) SetSubUserId(v int64) *Desc
 }
 
 type DescribeAlertsResponseBodyDataResponseDataAlertInfoList struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the key.
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	// The value of the key.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeAlertsResponseBodyDataResponseDataAlertInfoList) String() string {
@@ -2325,9 +3522,15 @@ func (s *DescribeAlertsResponse) SetBody(v *DescribeAlertsResponseBody) *Describ
 }
 
 type DescribeAlertsCountRequest struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeAlertsCountRequest) String() string {
@@ -2354,11 +3557,19 @@ func (s *DescribeAlertsCountRequest) SetStartTime(v int64) *DescribeAlertsCountR
 }
 
 type DescribeAlertsCountResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAlertsCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeAlertsCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertsCountResponseBody) String() string {
@@ -2395,10 +3606,15 @@ func (s *DescribeAlertsCountResponseBody) SetSuccess(v bool) *DescribeAlertsCoun
 }
 
 type DescribeAlertsCountResponseBodyData struct {
-	All        *int64 `json:"All,omitempty" xml:"All,omitempty"`
-	High       *int64 `json:"High,omitempty" xml:"High,omitempty"`
-	Low        *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
-	Medium     *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// The total number of alerts.
+	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
+	// The number of high-risk alerts.
+	High *int64 `json:"High,omitempty" xml:"High,omitempty"`
+	// The number of low-risk alerts.
+	Low *int64 `json:"Low,omitempty" xml:"Low,omitempty"`
+	// The number of medium-risk alerts.
+	Medium *int64 `json:"Medium,omitempty" xml:"Medium,omitempty"`
+	// The number of connected services.
 	ProductNum *int32 `json:"ProductNum,omitempty" xml:"ProductNum,omitempty"`
 }
 
@@ -2465,11 +3681,20 @@ func (s *DescribeAlertsCountResponse) SetBody(v *DescribeAlertsCountResponseBody
 }
 
 type DescribeAlertsWithEntityRequest struct {
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EntityId     *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the entity.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the SOAR handing policy.
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
 
@@ -2512,11 +3737,19 @@ func (s *DescribeAlertsWithEntityRequest) SetSophonTaskId(v string) *DescribeAle
 }
 
 type DescribeAlertsWithEntityResponseBody struct {
-	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAlertsWithEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeAlertsWithEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBody) String() string {
@@ -2553,7 +3786,9 @@ func (s *DescribeAlertsWithEntityResponseBody) SetSuccess(v bool) *DescribeAlert
 }
 
 type DescribeAlertsWithEntityResponseBodyData struct {
-	PageInfo     *DescribeAlertsWithEntityResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeAlertsWithEntityResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeAlertsWithEntityResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -2576,9 +3811,12 @@ func (s *DescribeAlertsWithEntityResponseBodyData) SetResponseData(v []*Describe
 }
 
 type DescribeAlertsWithEntityResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBodyDataPageInfo) String() string {
@@ -2605,38 +3843,81 @@ func (s *DescribeAlertsWithEntityResponseBodyDataPageInfo) SetTotalCount(v int64
 }
 
 type DescribeAlertsWithEntityResponseBodyDataResponseData struct {
-	AlertDesc          *string                                                              `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	AlertDescCode      *string                                                              `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
-	AlertDescEn        *string                                                              `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
-	AlertDetail        *string                                                              `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertInfoList      []*DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
-	AlertLevel         *string                                                              `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName          *string                                                              `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameCode      *string                                                              `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	AlertNameEn        *string                                                              `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	AlertSrcProd       *string                                                              `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	AlertSrcProdModule *string                                                              `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	AlertTitle         *string                                                              `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertTitleEn       *string                                                              `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	AlertType          *string                                                              `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeCode      *string                                                              `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	AlertTypeEn        *string                                                              `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
-	AlertUuid          *string                                                              `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	AssetList          *string                                                              `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	AttCk              *string                                                              `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	CloudCode          *string                                                              `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	EndTime            *string                                                              `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtCreate          *string                                                              `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string                                                              `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                 *int64                                                               `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentUuid       *string                                                              `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	IsDefend           *string                                                              `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	LogTime            *string                                                              `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	LogUuid            *string                                                              `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
-	MainUserId         *int64                                                               `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	OccurTime          *string                                                              `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	StartTime          *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubUserId          *int64                                                               `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The description of the alert.
+	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	// The internal code of the alert description.
+	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	// The alert description in English.
+	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	// The details of the alert.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	// The displayed details of the alert.
+	AlertInfoList []*DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The name of the alert.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The internal code of the alert name.
+	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	// The name of the alert.
+	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	// The source of the alert.
+	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The sub-module of the alert source.
+	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The alert title in English.
+	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	// The type of the alert.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the alert type.
+	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	// The alert type in English.
+	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The details of the asset.
+	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The tag of the ATT\&CK attack.
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The cloud code. Valid values:
+	//
+	// *   aliyun: Alibaba Cloud
+	// *   qcloud: Tencent Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The time when the alert was closed.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the alert was received.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the alert was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique ID of the alert.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Specifies whether an attack is defended. Valid values:
+	//
+	// *   0: detected
+	// *   1: blocked
+	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The time when the alert was recorded.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The UUID of the alert log.
+	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The time when the alert was triggered.
+	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	// The time at which the alert was first generated.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the Alibaba Cloud account within which the alert is generated.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBodyDataResponseData) String() string {
@@ -2808,9 +4089,12 @@ func (s *DescribeAlertsWithEntityResponseBodyDataResponseData) SetSubUserId(v in
 }
 
 type DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the key.
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	// The value of the key.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList) String() string {
@@ -2866,15 +4150,34 @@ func (s *DescribeAlertsWithEntityResponse) SetBody(v *DescribeAlertsWithEntityRe
 }
 
 type DescribeAlertsWithEventRequest struct {
-	AlertTitle   *string   `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	IncidentUuid *string   `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	IsDefend     *string   `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	Level        []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Source       *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SubUserId    *int64    `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Specifies whether an attack is defended. Valid values:
+	//
+	// *   0: detected
+	// *   1: blocked
+	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The risk levels. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	Level []*string `json:"Level,omitempty" xml:"Level,omitempty" type:"Repeated"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The data source of the alert.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the account within which the alert is generated.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeAlertsWithEventRequest) String() string {
@@ -2931,11 +4234,19 @@ func (s *DescribeAlertsWithEventRequest) SetSubUserId(v int64) *DescribeAlertsWi
 }
 
 type DescribeAlertsWithEventResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAlertsWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeAlertsWithEventResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBody) String() string {
@@ -2972,7 +4283,9 @@ func (s *DescribeAlertsWithEventResponseBody) SetSuccess(v bool) *DescribeAlerts
 }
 
 type DescribeAlertsWithEventResponseBodyData struct {
-	PageInfo     *DescribeAlertsWithEventResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeAlertsWithEventResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeAlertsWithEventResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -2995,9 +4308,12 @@ func (s *DescribeAlertsWithEventResponseBodyData) SetResponseData(v []*DescribeA
 }
 
 type DescribeAlertsWithEventResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBodyDataPageInfo) String() string {
@@ -3024,38 +4340,81 @@ func (s *DescribeAlertsWithEventResponseBodyDataPageInfo) SetTotalCount(v int64)
 }
 
 type DescribeAlertsWithEventResponseBodyDataResponseData struct {
-	AlertDesc          *string                                                             `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	AlertDescCode      *string                                                             `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
-	AlertDescEn        *string                                                             `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
-	AlertDetail        *string                                                             `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertInfoList      []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
-	AlertLevel         *string                                                             `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName          *string                                                             `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameCode      *string                                                             `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	AlertNameEn        *string                                                             `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	AlertSrcProd       *string                                                             `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
-	AlertSrcProdModule *string                                                             `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	AlertTitle         *string                                                             `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertTitleEn       *string                                                             `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	AlertType          *string                                                             `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeCode      *string                                                             `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	AlertTypeEn        *string                                                             `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
-	AlertUuid          *string                                                             `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	AssetList          *string                                                             `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	AttCk              *string                                                             `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	CloudCode          *string                                                             `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	EndTime            *string                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GmtCreate          *string                                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string                                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                 *int64                                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentUuid       *string                                                             `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	IsDefend           *string                                                             `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
-	LogTime            *string                                                             `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	LogUuid            *string                                                             `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
-	MainUserId         *int64                                                              `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	OccurTime          *string                                                             `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
-	StartTime          *string                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubUserId          *int64                                                              `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The description of the alert.
+	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	// The internal code of the alert description.
+	AlertDescCode *string `json:"AlertDescCode,omitempty" xml:"AlertDescCode,omitempty"`
+	// The alert description in English.
+	AlertDescEn *string `json:"AlertDescEn,omitempty" xml:"AlertDescEn,omitempty"`
+	// The details of the alert.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	// The displayed details of the alert.
+	AlertInfoList []*DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList `json:"AlertInfoList,omitempty" xml:"AlertInfoList,omitempty" type:"Repeated"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The name of the alert.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The internal code of the alert name.
+	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	// The alert name in English.
+	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	// The source of the alert.
+	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The sub-module of the alert source.
+	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The alert title in English.
+	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	// The type of the alert.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the alert type.
+	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	// The alert type in English.
+	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The details of the asset.
+	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The tag of the ATT\&CK attack.
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The cloud code. Valid values:
+	//
+	// *   aliyun: Alibaba Cloud
+	// *   qcloud: Tencent Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The time when the alert was closed.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time when the alert was received.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the alert was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The unique ID of the alert.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// Indicates whether an attack is defended. Valid values:
+	//
+	// *   0: detected
+	// *   1: blocked
+	IsDefend *string `json:"IsDefend,omitempty" xml:"IsDefend,omitempty"`
+	// The time when the alert was recorded.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The UUID of the alert log.
+	LogUuid *string `json:"LogUuid,omitempty" xml:"LogUuid,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	MainUserId *int64 `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The time when the alert was triggered.
+	OccurTime *string `json:"OccurTime,omitempty" xml:"OccurTime,omitempty"`
+	// The time at which the alert was first generated.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the Alibaba Cloud account within which the alert is generated.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBodyDataResponseData) String() string {
@@ -3227,9 +4586,12 @@ func (s *DescribeAlertsWithEventResponseBodyDataResponseData) SetSubUserId(v int
 }
 
 type DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the key.
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	// The value of the key.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList) String() string {
@@ -3285,11 +4647,19 @@ func (s *DescribeAlertsWithEventResponse) SetBody(v *DescribeAlertsWithEventResp
 }
 
 type DescribeAttackTimeLineRequest struct {
-	AssetName    *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the asset.
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeAttackTimeLineRequest) String() string {
@@ -3326,11 +4696,19 @@ func (s *DescribeAttackTimeLineRequest) SetStartTime(v int64) *DescribeAttackTim
 }
 
 type DescribeAttackTimeLineResponseBody struct {
-	Code      *int32                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAttackTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAttackTimeLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAttackTimeLineResponseBody) String() string {
@@ -3367,26 +4745,54 @@ func (s *DescribeAttackTimeLineResponseBody) SetSuccess(v bool) *DescribeAttackT
 }
 
 type DescribeAttackTimeLineResponseBodyData struct {
-	AlertLevel         *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
-	AlertName          *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	AlertNameCode      *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
-	AlertNameEn        *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
-	AlertSrcProd       *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
+	// The alert name in English.
+	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
+	// The internal code of the alert name.
+	AlertNameCode *string `json:"AlertNameCode,omitempty" xml:"AlertNameCode,omitempty"`
+	// The alert name in English.
+	AlertNameEn *string `json:"AlertNameEn,omitempty" xml:"AlertNameEn,omitempty"`
+	// The source of the alert.
+	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The sub-module of the alert source.
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	AlertTime          *int64  `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
-	AlertTitle         *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
-	AlertTitleEn       *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
-	AlertType          *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeCode      *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
-	AlertTypeEn        *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
-	AlertUuid          *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	AssetId            *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	AssetList          *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
-	AssetName          *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	AttCk              *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	CloudCode          *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	IncidentUuid       *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	LogTime            *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The time when the alert was triggered.
+	AlertTime *int64 `json:"AlertTime,omitempty" xml:"AlertTime,omitempty"`
+	// The title of the alert.
+	AlertTitle *string `json:"AlertTitle,omitempty" xml:"AlertTitle,omitempty"`
+	// The alert title in English.
+	AlertTitleEn *string `json:"AlertTitleEn,omitempty" xml:"AlertTitleEn,omitempty"`
+	// The type of the alert.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the alert type.
+	AlertTypeCode *string `json:"AlertTypeCode,omitempty" xml:"AlertTypeCode,omitempty"`
+	// The alert type in English.
+	AlertTypeEn *string `json:"AlertTypeEn,omitempty" xml:"AlertTypeEn,omitempty"`
+	// The UUID of the alert
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The logical ID of the asset.
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The details of the asset.
+	AssetList *string `json:"AssetList,omitempty" xml:"AssetList,omitempty"`
+	// The name of the asset.
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The tag of the ATT\&CK attack.
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The cloud code. Valid values:
+	//
+	// *   aliyun: Alibaba Cloud
+	// *   qcloud: Tencent Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The time when the alert was recorded.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
 }
 
 func (s DescribeAttackTimeLineResponseBodyData) String() string {
@@ -3526,7 +4932,80 @@ func (s *DescribeAttackTimeLineResponse) SetBody(v *DescribeAttackTimeLineRespon
 	return s
 }
 
+type DescribeAuthRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeAuthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAuthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAuthRequest) SetRegionId(v string) *DescribeAuthRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeAuthResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAuthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAuthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAuthResponseBody) SetData(v bool) *DescribeAuthResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeAuthResponseBody) SetRequestId(v string) *DescribeAuthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAuthResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAuthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAuthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAuthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAuthResponse) SetHeaders(v map[string]*string) *DescribeAuthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAuthResponse) SetStatusCode(v int32) *DescribeAuthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAuthResponse) SetBody(v *DescribeAuthResponseBody) *DescribeAuthResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAutomateResponseConfigCounterRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3544,11 +5023,19 @@ func (s *DescribeAutomateResponseConfigCounterRequest) SetRegionId(v string) *De
 }
 
 type DescribeAutomateResponseConfigCounterResponseBody struct {
-	Code      *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeAutomateResponseConfigCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeAutomateResponseConfigCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigCounterResponseBody) String() string {
@@ -3585,7 +5072,9 @@ func (s *DescribeAutomateResponseConfigCounterResponseBody) SetSuccess(v bool) *
 }
 
 type DescribeAutomateResponseConfigCounterResponseBodyData struct {
-	All    *int64 `json:"All,omitempty" xml:"All,omitempty"`
+	// The total number of rules.
+	All *int64 `json:"All,omitempty" xml:"All,omitempty"`
+	// The number of enabled rules.
 	Online *int64 `json:"Online,omitempty" xml:"Online,omitempty"`
 }
 
@@ -3637,8 +5126,16 @@ func (s *DescribeAutomateResponseConfigCounterResponse) SetBody(v *DescribeAutom
 }
 
 type DescribeAutomateResponseConfigFeatureRequest struct {
+	// The type of the automated response rule. Valid values:
+	//
+	// *   event
+	// *   alert
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigFeatureRequest) String() string {
@@ -3660,11 +5157,19 @@ func (s *DescribeAutomateResponseConfigFeatureRequest) SetRegionId(v string) *De
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBody struct {
-	Code      *int32                                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAutomateResponseConfigFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAutomateResponseConfigFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigFeatureResponseBody) String() string {
@@ -3701,9 +5206,13 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBody) SetSuccess(v bool) *
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyData struct {
-	DataType         *string                                                                  `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Feature          *string                                                                  `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	RightValueEnums  []*DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums  `json:"RightValueEnums,omitempty" xml:"RightValueEnums,omitempty" type:"Repeated"`
+	// The data type of the condition field in the automated response rule.
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The name of the condition field in the automated response rule.
+	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
+	// The enumerated values of the right operand for the field.
+	RightValueEnums []*DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums `json:"RightValueEnums,omitempty" xml:"RightValueEnums,omitempty" type:"Repeated"`
+	// The operators that are supported for the condition field.
 	SupportOperators []*DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators `json:"SupportOperators,omitempty" xml:"SupportOperators,omitempty" type:"Repeated"`
 }
 
@@ -3736,7 +5245,9 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyData) SetSupportOperat
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums struct {
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The enumerated value of the right operand.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The internal code of the enumerated value.
 	ValueMds *string `json:"ValueMds,omitempty" xml:"ValueMds,omitempty"`
 }
 
@@ -3759,14 +5270,25 @@ func (s *DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums) S
 }
 
 type DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators struct {
-	HasRightValue   *bool     `json:"HasRightValue,omitempty" xml:"HasRightValue,omitempty"`
-	Index           *int32    `json:"Index,omitempty" xml:"Index,omitempty"`
-	Operator        *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorDescCn  *string   `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
-	OperatorDescEn  *string   `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	OperatorName    *string   `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	SupportDataType *string   `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	SupportTag      []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
+	// Indicates whether the right operand is required. Valid values:
+	//
+	// *   true
+	// *   false
+	HasRightValue *bool `json:"HasRightValue,omitempty" xml:"HasRightValue,omitempty"`
+	// The position of the operator in the operator list.
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The operator.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The description of the operator in Chinese.
+	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
+	// The description of the operator in English.
+	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
+	// The display name of the operator.
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The data types that are supported by the current operator. The data types are separated by commas (,).
+	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
+	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. This parameter is empty by default.
+	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators) String() string {
@@ -3847,9 +5369,22 @@ func (s *DescribeAutomateResponseConfigFeatureResponse) SetBody(v *DescribeAutom
 }
 
 type DescribeAutomateResponseConfigPlayBooksRequest struct {
+	// The type of the automated response rule. Valid values:
+	//
+	// *   event
+	// *   alert
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	EntityType       *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The entity type of the playbook. Valid values:
+	//
+	// *   ip
+	// *   process
+	// *   file
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigPlayBooksRequest) String() string {
@@ -3876,11 +5411,19 @@ func (s *DescribeAutomateResponseConfigPlayBooksRequest) SetRegionId(v string) *
 }
 
 type DescribeAutomateResponseConfigPlayBooksResponseBody struct {
-	Code      *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeAutomateResponseConfigPlayBooksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeAutomateResponseConfigPlayBooksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigPlayBooksResponseBody) String() string {
@@ -3917,11 +5460,20 @@ func (s *DescribeAutomateResponseConfigPlayBooksResponseBody) SetSuccess(v bool)
 }
 
 type DescribeAutomateResponseConfigPlayBooksResponseBodyData struct {
+	// The description of the playbook.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the playbook.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ParamType   *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The unique identifier name of the playbook.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The input parameter template of the playbook. Valid values:
+	//
+	// *   template-ip: IP address
+	// *   template-process: process
+	// *   template-filee: file
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The UUID of the playbook.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAutomateResponseConfigPlayBooksResponseBodyData) String() string {
@@ -3987,11 +5539,26 @@ func (s *DescribeAutomateResponseConfigPlayBooksResponse) SetBody(v *DescribeAut
 }
 
 type DescribeCloudSiemAssetsRequest struct {
-	AssetType    *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   ip
+	// *   domain
+	// *   url
+	// *   process
+	// *   file
+	// *   host
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsRequest) String() string {
@@ -4028,11 +5595,19 @@ func (s *DescribeCloudSiemAssetsRequest) SetRegionId(v string) *DescribeCloudSie
 }
 
 type DescribeCloudSiemAssetsResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCloudSiemAssetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCloudSiemAssetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsResponseBody) String() string {
@@ -4069,7 +5644,9 @@ func (s *DescribeCloudSiemAssetsResponseBody) SetSuccess(v bool) *DescribeCloudS
 }
 
 type DescribeCloudSiemAssetsResponseBodyData struct {
-	PageInfo     *DescribeCloudSiemAssetsResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeCloudSiemAssetsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeCloudSiemAssetsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -4092,9 +5669,12 @@ func (s *DescribeCloudSiemAssetsResponseBodyData) SetResponseData(v []*DescribeC
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsResponseBodyDataPageInfo) String() string {
@@ -4121,18 +5701,41 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataPageInfo) SetTotalCount(v int64)
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseData struct {
-	AlertUuid    *string                                                         `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	Aliuid       *int64                                                          `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AssetId      *string                                                         `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	AssetInfo    []*DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo `json:"AssetInfo,omitempty" xml:"AssetInfo,omitempty" type:"Repeated"`
-	AssetName    *string                                                         `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	AssetType    *string                                                         `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	CloudCode    *string                                                         `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
-	GmtCreate    *string                                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string                                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id           *int64                                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentUuid *string                                                         `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	SubUserId    *int64                                                          `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The UUID of the alert associated with the event.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The ID of the Alibaba Cloud account in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The logical ID of the asset.
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The display information of the asset is in the JSON format.
+	AssetInfo []*DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo `json:"AssetInfo,omitempty" xml:"AssetInfo,omitempty" type:"Repeated"`
+	// The name of the asset.
+	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   ip
+	// *   domain
+	// *   url
+	// *   process
+	// *   file
+	// *   host
+	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
+	// The cloud code of the entity. Valid values:
+	//
+	// *   aliyun: Alibaba Cloud
+	// *   qcloud: Tencent Cloud
+	// *   hcloud: Huawei Cloud
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	// The time when the asset was synchronized.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the asset was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the asset.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The ID of the associated account to which the asset belongs.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsResponseBodyDataResponseData) String() string {
@@ -4204,9 +5807,12 @@ func (s *DescribeCloudSiemAssetsResponseBodyDataResponseData) SetSubUserId(v int
 }
 
 type DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo struct {
-	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The attribute key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the key.
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	Values  *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	// The value of the key.
+	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo) String() string {
@@ -4262,8 +5868,13 @@ func (s *DescribeCloudSiemAssetsResponse) SetBody(v *DescribeCloudSiemAssetsResp
 }
 
 type DescribeCloudSiemAssetsCounterRequest struct {
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsCounterRequest) String() string {
@@ -4285,11 +5896,19 @@ func (s *DescribeCloudSiemAssetsCounterRequest) SetRegionId(v string) *DescribeC
 }
 
 type DescribeCloudSiemAssetsCounterResponseBody struct {
-	Code      *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeCloudSiemAssetsCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeCloudSiemAssetsCounterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudSiemAssetsCounterResponseBody) String() string {
@@ -4326,7 +5945,16 @@ func (s *DescribeCloudSiemAssetsCounterResponseBody) SetSuccess(v bool) *Describ
 }
 
 type DescribeCloudSiemAssetsCounterResponseBodyData struct {
-	AssetNum  *int32  `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
+	// The number of assets.
+	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
+	// The type of the asset. Valid values:
+	//
+	// *   ip
+	// *   domain
+	// *   url
+	// *   process
+	// *   file
+	// *   host
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 }
 
@@ -4378,8 +6006,13 @@ func (s *DescribeCloudSiemAssetsCounterResponse) SetBody(v *DescribeCloudSiemAss
 }
 
 type DescribeCloudSiemEventDetailRequest struct {
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCloudSiemEventDetailRequest) String() string {
@@ -4401,11 +6034,19 @@ func (s *DescribeCloudSiemEventDetailRequest) SetRegionId(v string) *DescribeClo
 }
 
 type DescribeCloudSiemEventDetailResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCloudSiemEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCloudSiemEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudSiemEventDetailResponseBody) String() string {
@@ -4442,23 +6083,49 @@ func (s *DescribeCloudSiemEventDetailResponseBody) SetSuccess(v bool) *DescribeC
 }
 
 type DescribeCloudSiemEventDetailResponseBodyData struct {
-	AlertNum       *int32    `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	Aliuid         *int64    `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AssetNum       *int32    `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	AttCkLabels    []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
-	DataSources    []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DescriptionEn  *string   `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
-	ExtContent     *string   `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
-	GmtCreate      *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IncidentName   *string   `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	IncidentNameEn *string   `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
-	IncidentUuid   *string   `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	Remark         *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status         *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreatLevel    *string   `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	ThreatScore    *float32  `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
+	// The number of alerts that are associated with the event.
+	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// The ID of the Alibaba Cloud account to which the event belongs.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The number of assets that are associated with the event.
+	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
+	// The tags of the ATT\&CK attacks.
+	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	// The source of the alert.
+	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The description of the event.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the event in English.
+	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
+	// The extended information of the event in the JSON format.
+	ExtContent *string `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
+	// The time when the event occurred.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the event was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the event.
+	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
+	// The name of the event in English.
+	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The remarks of the event.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   0: not handled
+	// *   1: handing
+	// *   5: handling failed
+	// *   10: handled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The risk score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
+	ThreatScore *float32 `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
 }
 
 func (s DescribeCloudSiemEventDetailResponseBodyData) String() string {
@@ -4584,18 +6251,48 @@ func (s *DescribeCloudSiemEventDetailResponse) SetBody(v *DescribeCloudSiemEvent
 }
 
 type DescribeCloudSiemEventsRequest struct {
-	AssetId      *string   `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	CurrentPage  *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime      *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventName    *string   `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	IncidentUuid *string   `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	Order        *string   `json:"Order,omitempty" xml:"Order,omitempty"`
-	OrderField   *string   `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime    *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status       *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreadLevel  []*string `json:"ThreadLevel,omitempty" xml:"ThreadLevel,omitempty" type:"Repeated"`
+	// The ID of the asset that is associated with the event.
+	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the event.
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The ID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The sort order. Valid values:
+	//
+	// *   desc: descending order
+	// *   asc: ascending order
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sort field. Valid values:
+	//
+	// *   GmtModified: sorts the events by creation time. This is the default value.
+	// *   ThreatScore: sorts the events by risk score.
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   0: unhandled
+	// *   1: handling
+	// *   5: handling failed
+	// *   10: handled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk levels of the events. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreadLevel []*string `json:"ThreadLevel,omitempty" xml:"ThreadLevel,omitempty" type:"Repeated"`
 }
 
 func (s DescribeCloudSiemEventsRequest) String() string {
@@ -4667,11 +6364,19 @@ func (s *DescribeCloudSiemEventsRequest) SetThreadLevel(v []*string) *DescribeCl
 }
 
 type DescribeCloudSiemEventsResponseBody struct {
-	Code      *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCloudSiemEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCloudSiemEventsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCloudSiemEventsResponseBody) String() string {
@@ -4708,7 +6413,9 @@ func (s *DescribeCloudSiemEventsResponseBody) SetSuccess(v bool) *DescribeCloudS
 }
 
 type DescribeCloudSiemEventsResponseBodyData struct {
-	PageInfo     *DescribeCloudSiemEventsResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeCloudSiemEventsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*DescribeCloudSiemEventsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -4731,9 +6438,12 @@ func (s *DescribeCloudSiemEventsResponseBodyData) SetResponseData(v []*DescribeC
 }
 
 type DescribeCloudSiemEventsResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeCloudSiemEventsResponseBodyDataPageInfo) String() string {
@@ -4760,23 +6470,49 @@ func (s *DescribeCloudSiemEventsResponseBodyDataPageInfo) SetTotalCount(v int64)
 }
 
 type DescribeCloudSiemEventsResponseBodyDataResponseData struct {
-	AlertNum       *int32    `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	Aliuid         *int64    `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AssetNum       *int32    `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
-	AttCkLabels    []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
-	DataSources    []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	Description    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DescriptionEn  *string   `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
-	ExtContent     *string   `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
-	GmtCreate      *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified    *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	IncidentName   *string   `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	IncidentNameEn *string   `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
-	IncidentUuid   *string   `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	Remark         *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status         *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreatLevel    *string   `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
-	ThreatScore    *float32  `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
+	// The number of alerts that are associated with the event.
+	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// The ID of the Alibaba Cloud account to which the event belongs.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The number of assets that are associated with the event.
+	AssetNum *int32 `json:"AssetNum,omitempty" xml:"AssetNum,omitempty"`
+	// The tags of the ATT\&CK attack.
+	AttCkLabels []*string `json:"AttCkLabels,omitempty" xml:"AttCkLabels,omitempty" type:"Repeated"`
+	// The sources of the alert.
+	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The description of the event.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The event description in English.
+	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
+	// The extended event information in the JSON format.
+	ExtContent *string `json:"ExtContent,omitempty" xml:"ExtContent,omitempty"`
+	// The time when the event occurred.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the event was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The name of the event.
+	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
+	// The event name in English.
+	IncidentNameEn *string `json:"IncidentNameEn,omitempty" xml:"IncidentNameEn,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The remarks of the event.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   0: unhandled
+	// *   1: handling
+	// *   5: handling failed
+	// *   10: handled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The risk score of the event. Valid values: 0 to 100. A higher value indicates a higher risk level.
+	ThreatScore *float32 `json:"ThreatScore,omitempty" xml:"ThreatScore,omitempty"`
 }
 
 func (s DescribeCloudSiemEventsResponseBodyDataResponseData) String() string {
@@ -4901,9 +6637,95 @@ func (s *DescribeCloudSiemEventsResponse) SetBody(v *DescribeCloudSiemEventsResp
 	return s
 }
 
+type DescribeCsImportedProdStatusByUserRequest struct {
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceLogProd *string `json:"SourceLogProd,omitempty" xml:"SourceLogProd,omitempty"`
+	UserId        *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeCsImportedProdStatusByUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCsImportedProdStatusByUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCsImportedProdStatusByUserRequest) SetRegionId(v string) *DescribeCsImportedProdStatusByUserRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCsImportedProdStatusByUserRequest) SetSourceLogProd(v string) *DescribeCsImportedProdStatusByUserRequest {
+	s.SourceLogProd = &v
+	return s
+}
+
+func (s *DescribeCsImportedProdStatusByUserRequest) SetUserId(v int64) *DescribeCsImportedProdStatusByUserRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeCsImportedProdStatusByUserResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCsImportedProdStatusByUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCsImportedProdStatusByUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCsImportedProdStatusByUserResponseBody) SetData(v bool) *DescribeCsImportedProdStatusByUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeCsImportedProdStatusByUserResponseBody) SetRequestId(v string) *DescribeCsImportedProdStatusByUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCsImportedProdStatusByUserResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCsImportedProdStatusByUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCsImportedProdStatusByUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCsImportedProdStatusByUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCsImportedProdStatusByUserResponse) SetHeaders(v map[string]*string) *DescribeCsImportedProdStatusByUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCsImportedProdStatusByUserResponse) SetStatusCode(v int32) *DescribeCsImportedProdStatusByUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCsImportedProdStatusByUserResponse) SetBody(v *DescribeCsImportedProdStatusByUserResponseBody) *DescribeCsImportedProdStatusByUserResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCustomizeRuleRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleId   *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The ID of the rule.
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DescribeCustomizeRuleRequest) String() string {
@@ -4925,11 +6747,19 @@ func (s *DescribeCustomizeRuleRequest) SetRuleId(v int64) *DescribeCustomizeRule
 }
 
 type DescribeCustomizeRuleResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCustomizeRuleResponseBody) String() string {
@@ -4966,28 +6796,70 @@ func (s *DescribeCustomizeRuleResponseBody) SetSuccess(v bool) *DescribeCustomiz
 }
 
 type DescribeCustomizeRuleResponseBodyData struct {
-	AlertType           *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeMds        *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	Aliuid              *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	EventTransferExt    *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	EventTransferSwitch *int32  `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	EventTransferType   *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSource           *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogSourceMds        *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	LogType             *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	LogTypeMds          *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	QueryCycle          *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	RuleCondition       *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
-	RuleDesc            *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	RuleGroup           *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
-	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleThreshold       *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	RuleType            *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreatLevel         *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The risk type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the risk type.
+	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
+	// The ID of the Alibaba Cloud account in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The extended information about event generation. If the value of eventTransferType is allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
+	// Indicates whether the alert generates an event. Valid values:
+	//
+	// *   0: no
+	// *   1: yes
+	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
+	// The event generation method. Valid values:
+	//
+	// *   default: The default method is used.
+	// *   singleToSingle: The system generates an event for each alert.
+	// *   allToSingle: The system generates an event for alerts within a period of time.
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
+	// The time when the custom rule was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the custom rule was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the custom rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The internal code of the log source.
+	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The internal code of the log type.
+	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
+	// The window length of the rule. The HTML escape characters are reversed.
+	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
+	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
+	// The description of the rule.
+	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
+	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The rule status. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
 func (s DescribeCustomizeRuleResponseBodyData) String() string {
@@ -5138,6 +7010,10 @@ func (s *DescribeCustomizeRuleResponse) SetBody(v *DescribeCustomizeRuleResponse
 }
 
 type DescribeCustomizeRuleCountRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5155,11 +7031,19 @@ func (s *DescribeCustomizeRuleCountRequest) SetRegionId(v string) *DescribeCusto
 }
 
 type DescribeCustomizeRuleCountResponseBody struct {
-	Code      *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCustomizeRuleCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCustomizeRuleCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCustomizeRuleCountResponseBody) String() string {
@@ -5196,9 +7080,13 @@ func (s *DescribeCustomizeRuleCountResponseBody) SetSuccess(v bool) *DescribeCus
 }
 
 type DescribeCustomizeRuleCountResponseBodyData struct {
-	HighRuleNum   *int32 `json:"HighRuleNum,omitempty" xml:"HighRuleNum,omitempty"`
-	InUseRuleNum  *int32 `json:"InUseRuleNum,omitempty" xml:"InUseRuleNum,omitempty"`
-	LowRuleNum    *int32 `json:"LowRuleNum,omitempty" xml:"LowRuleNum,omitempty"`
+	// The number of rules that are used to identify high-risk threats.
+	HighRuleNum *int32 `json:"HighRuleNum,omitempty" xml:"HighRuleNum,omitempty"`
+	// The total number of rules.
+	InUseRuleNum *int32 `json:"InUseRuleNum,omitempty" xml:"InUseRuleNum,omitempty"`
+	// The number of rules that are used to identify low-risk threats.
+	LowRuleNum *int32 `json:"LowRuleNum,omitempty" xml:"LowRuleNum,omitempty"`
+	// The number of rules that are used to identify medium-risk threats.
 	MediumRuleNum *int32 `json:"MediumRuleNum,omitempty" xml:"MediumRuleNum,omitempty"`
 }
 
@@ -5260,7 +7148,12 @@ func (s *DescribeCustomizeRuleCountResponse) SetBody(v *DescribeCustomizeRuleCou
 }
 
 type DescribeCustomizeRuleTestRequest struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5283,11 +7176,19 @@ func (s *DescribeCustomizeRuleTestRequest) SetRegionId(v string) *DescribeCustom
 }
 
 type DescribeCustomizeRuleTestResponseBody struct {
-	Code      *int32                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeCustomizeRuleTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeCustomizeRuleTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestResponseBody) String() string {
@@ -5324,9 +7225,18 @@ func (s *DescribeCustomizeRuleTestResponseBody) SetSuccess(v bool) *DescribeCust
 }
 
 type DescribeCustomizeRuleTestResponseBodyData struct {
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The historical data that is used in the simulation test.
 	SimulateData *string `json:"SimulateData,omitempty" xml:"SimulateData,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestResponseBodyData) String() string {
@@ -5382,7 +7292,12 @@ func (s *DescribeCustomizeRuleTestResponse) SetBody(v *DescribeCustomizeRuleTest
 }
 
 type DescribeCustomizeRuleTestHistogramRequest struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5405,11 +7320,19 @@ func (s *DescribeCustomizeRuleTestHistogramRequest) SetRegionId(v string) *Descr
 }
 
 type DescribeCustomizeRuleTestHistogramResponseBody struct {
-	Code      *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeCustomizeRuleTestHistogramResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeCustomizeRuleTestHistogramResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestHistogramResponseBody) String() string {
@@ -5446,9 +7369,12 @@ func (s *DescribeCustomizeRuleTestHistogramResponseBody) SetSuccess(v bool) *Des
 }
 
 type DescribeCustomizeRuleTestHistogramResponseBodyData struct {
+	// The number of alerts that are generated in the query time range.
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	From  *int64 `json:"From,omitempty" xml:"From,omitempty"`
-	To    *int64 `json:"To,omitempty" xml:"To,omitempty"`
+	// The start of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
+	// The end of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+	To *int64 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s DescribeCustomizeRuleTestHistogramResponseBodyData) String() string {
@@ -5503,12 +7429,368 @@ func (s *DescribeCustomizeRuleTestHistogramResponse) SetBody(v *DescribeCustomiz
 	return s
 }
 
+type DescribeDataSourceInstanceRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDataSourceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceInstanceRequest) SetAccountId(v string) *DescribeDataSourceInstanceRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceRequest) SetCloudCode(v string) *DescribeDataSourceInstanceRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceRequest) SetDataSourceInstanceId(v string) *DescribeDataSourceInstanceRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceRequest) SetRegionId(v string) *DescribeDataSourceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDataSourceInstanceResponseBody struct {
+	Data      *DescribeDataSourceInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDataSourceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceInstanceResponseBody) SetData(v *DescribeDataSourceInstanceResponseBodyData) *DescribeDataSourceInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponseBody) SetRequestId(v string) *DescribeDataSourceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDataSourceInstanceResponseBodyData struct {
+	AccountId                *string                                                               `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode                *string                                                               `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId     *string                                                               `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceInstanceParams []*DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataSourceInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyData) SetAccountId(v string) *DescribeDataSourceInstanceResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyData) SetCloudCode(v string) *DescribeDataSourceInstanceResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyData) SetDataSourceInstanceId(v string) *DescribeDataSourceInstanceResponseBodyData {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyData) SetDataSourceInstanceParams(v []*DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams) *DescribeDataSourceInstanceResponseBodyData {
+	s.DataSourceInstanceParams = v
+	return s
+}
+
+type DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams struct {
+	ParaCode  *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+}
+
+func (s DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams) SetParaCode(v string) *DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams {
+	s.ParaCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams) SetParaValue(v string) *DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams {
+	s.ParaValue = &v
+	return s
+}
+
+type DescribeDataSourceInstanceResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataSourceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataSourceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceInstanceResponse) SetHeaders(v map[string]*string) *DescribeDataSourceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponse) SetStatusCode(v int32) *DescribeDataSourceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceInstanceResponse) SetBody(v *DescribeDataSourceInstanceResponseBody) *DescribeDataSourceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataSourceParametersRequest struct {
+	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeDataSourceParametersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceParametersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceParametersRequest) SetCloudCode(v string) *DescribeDataSourceParametersRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersRequest) SetDataSourceType(v string) *DescribeDataSourceParametersRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersRequest) SetRegionId(v string) *DescribeDataSourceParametersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeDataSourceParametersResponseBody struct {
+	Data      []*DescribeDataSourceParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDataSourceParametersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceParametersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceParametersResponseBody) SetData(v []*DescribeDataSourceParametersResponseBodyData) *DescribeDataSourceParametersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBody) SetRequestId(v string) *DescribeDataSourceParametersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDataSourceParametersResponseBodyData struct {
+	CanEditted     *int32                                                    `json:"CanEditted,omitempty" xml:"CanEditted,omitempty"`
+	CloudCode      *string                                                   `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceType *string                                                   `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	DefaultValue   *string                                                   `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Disabled       *bool                                                     `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	FormatCheck    *string                                                   `json:"FormatCheck,omitempty" xml:"FormatCheck,omitempty"`
+	Hit            *string                                                   `json:"Hit,omitempty" xml:"Hit,omitempty"`
+	ParaCode       *string                                                   `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	ParaLevel      *int32                                                    `json:"ParaLevel,omitempty" xml:"ParaLevel,omitempty"`
+	ParaName       *string                                                   `json:"ParaName,omitempty" xml:"ParaName,omitempty"`
+	ParaType       *string                                                   `json:"ParaType,omitempty" xml:"ParaType,omitempty"`
+	ParamValue     []*DescribeDataSourceParametersResponseBodyDataParamValue `json:"ParamValue,omitempty" xml:"ParamValue,omitempty" type:"Repeated"`
+	Required       *int32                                                    `json:"Required,omitempty" xml:"Required,omitempty"`
+	Title          *string                                                   `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s DescribeDataSourceParametersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceParametersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetCanEditted(v int32) *DescribeDataSourceParametersResponseBodyData {
+	s.CanEditted = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetCloudCode(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetDataSourceType(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetDefaultValue(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetDisabled(v bool) *DescribeDataSourceParametersResponseBodyData {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetFormatCheck(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.FormatCheck = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetHit(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.Hit = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetParaCode(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.ParaCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetParaLevel(v int32) *DescribeDataSourceParametersResponseBodyData {
+	s.ParaLevel = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetParaName(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.ParaName = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetParaType(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.ParaType = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetParamValue(v []*DescribeDataSourceParametersResponseBodyDataParamValue) *DescribeDataSourceParametersResponseBodyData {
+	s.ParamValue = v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetRequired(v int32) *DescribeDataSourceParametersResponseBodyData {
+	s.Required = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyData) SetTitle(v string) *DescribeDataSourceParametersResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+type DescribeDataSourceParametersResponseBodyDataParamValue struct {
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDataSourceParametersResponseBodyDataParamValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceParametersResponseBodyDataParamValue) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceParametersResponseBodyDataParamValue) SetLabel(v string) *DescribeDataSourceParametersResponseBodyDataParamValue {
+	s.Label = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponseBodyDataParamValue) SetValue(v string) *DescribeDataSourceParametersResponseBodyDataParamValue {
+	s.Value = &v
+	return s
+}
+
+type DescribeDataSourceParametersResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDataSourceParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataSourceParametersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSourceParametersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSourceParametersResponse) SetHeaders(v map[string]*string) *DescribeDataSourceParametersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponse) SetStatusCode(v int32) *DescribeDataSourceParametersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDataSourceParametersResponse) SetBody(v *DescribeDataSourceParametersResponseBody) *DescribeDataSourceParametersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDisposeAndPlaybookRequest struct {
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EntityType   *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The entity type. Valid values:
+	//
+	// *   ip: IP address
+	// *   process: process
+	// *   file: file
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookRequest) String() string {
@@ -5545,11 +7827,19 @@ func (s *DescribeDisposeAndPlaybookRequest) SetRegionId(v string) *DescribeDispo
 }
 
 type DescribeDisposeAndPlaybookResponseBody struct {
-	Code      *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeDisposeAndPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeDisposeAndPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookResponseBody) String() string {
@@ -5586,7 +7876,9 @@ func (s *DescribeDisposeAndPlaybookResponseBody) SetSuccess(v bool) *DescribeDis
 }
 
 type DescribeDisposeAndPlaybookResponseBodyData struct {
-	PageInfo     *DescribeDisposeAndPlaybookResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *DescribeDisposeAndPlaybookResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data
 	ResponseData []*DescribeDisposeAndPlaybookResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -5609,9 +7901,12 @@ func (s *DescribeDisposeAndPlaybookResponseBodyData) SetResponseData(v []*Descri
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookResponseBodyDataPageInfo) String() string {
@@ -5638,14 +7933,22 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataPageInfo) SetTotalCount(v int
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseData struct {
-	AlertNum     *int32                                                                `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
-	Dispose      *string                                                               `json:"Dispose,omitempty" xml:"Dispose,omitempty"`
-	EntityId     *int64                                                                `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityInfo   map[string]interface{}                                                `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
-	OpcodeMap    map[string]*string                                                    `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
-	OpcodeSet    []*string                                                             `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
+	// The number of alerts that are associated with the entity.
+	AlertNum *int32 `json:"AlertNum,omitempty" xml:"AlertNum,omitempty"`
+	// The object for handling.
+	Dispose *string `json:"Dispose,omitempty" xml:"Dispose,omitempty"`
+	// The entity ID
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The entity information.
+	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
+	// The key-value pairs each of which consists of opcode and oplevel.
+	OpcodeMap map[string]*string `json:"OpcodeMap,omitempty" xml:"OpcodeMap,omitempty"`
+	// An array consisting of the codes of playbooks that are recommended for entity handling.
+	OpcodeSet []*string `json:"OpcodeSet,omitempty" xml:"OpcodeSet,omitempty" type:"Repeated"`
+	// The playbooks that can handle the entity.
 	PlaybookList []*DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList `json:"PlaybookList,omitempty" xml:"PlaybookList,omitempty" type:"Repeated"`
-	Scope        []interface{}                                                         `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
+	// An array consisting of the IDs of the users who can handle objects.
+	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDisposeAndPlaybookResponseBodyDataResponseData) String() string {
@@ -5697,13 +8000,26 @@ func (s *DescribeDisposeAndPlaybookResponseBodyDataResponseData) SetScope(v []in
 }
 
 type DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList struct {
+	// The playbook description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the playbook.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OpCode      *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
-	OpLevel     *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
-	TaskConfig  *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	WafPlaybook *bool   `json:"WafPlaybook,omitempty" xml:"WafPlaybook,omitempty"`
+	// The playbook name, which is the unique identifier of the playbook.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The opcode of the playbook, which corresponds to the opcode of the playbook recommended for entity handling.
+	OpCode *string `json:"OpCode,omitempty" xml:"OpCode,omitempty"`
+	// Indicates whether quick event handling is selected by default. Valid values:
+	//
+	// *   2: Quick event handling is selected.
+	// *   1: Quick event handling is displayed but not selected.
+	OpLevel *string `json:"OpLevel,omitempty" xml:"OpLevel,omitempty"`
+	// The opcode configuration.
+	TaskConfig *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
+	// Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
+	//
+	// *   true
+	// *   false
+	WafPlaybook *bool `json:"WafPlaybook,omitempty" xml:"WafPlaybook,omitempty"`
 }
 
 func (s DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList) String() string {
@@ -5779,9 +8095,15 @@ func (s *DescribeDisposeAndPlaybookResponse) SetBody(v *DescribeDisposeAndPlaybo
 }
 
 type DescribeDisposeStrategyPlaybookRequest struct {
-	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDisposeStrategyPlaybookRequest) String() string {
@@ -5808,11 +8130,19 @@ func (s *DescribeDisposeStrategyPlaybookRequest) SetStartTime(v int64) *Describe
 }
 
 type DescribeDisposeStrategyPlaybookResponseBody struct {
-	Code      *int32                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeDisposeStrategyPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeDisposeStrategyPlaybookResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeDisposeStrategyPlaybookResponseBody) String() string {
@@ -5849,7 +8179,9 @@ func (s *DescribeDisposeStrategyPlaybookResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeDisposeStrategyPlaybookResponseBodyData struct {
+	// The playbook name, which is the unique identifier of the playbook.
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
+	// The UUID of the playbook.
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
 }
 
@@ -5901,11 +8233,19 @@ func (s *DescribeDisposeStrategyPlaybookResponse) SetBody(v *DescribeDisposeStra
 }
 
 type DescribeEntityInfoRequest struct {
-	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The logical ID of the entity.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The feature value of the entity. Fuzzy match is supported.
 	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	IncidentUuid   *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SophonTaskId   *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the SOAR handling policy.
+	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
 }
 
 func (s DescribeEntityInfoRequest) String() string {
@@ -5942,11 +8282,19 @@ func (s *DescribeEntityInfoRequest) SetSophonTaskId(v string) *DescribeEntityInf
 }
 
 type DescribeEntityInfoResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeEntityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeEntityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeEntityInfoResponseBody) String() string {
@@ -5983,10 +8331,21 @@ func (s *DescribeEntityInfoResponseBody) SetSuccess(v bool) *DescribeEntityInfoR
 }
 
 type DescribeEntityInfoResponseBodyData struct {
-	EntityId   *int64                 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The logical ID of the entity.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The information about the entry.
 	EntityInfo map[string]interface{} `json:"EntityInfo,omitempty" xml:"EntityInfo,omitempty"`
-	EntityType *string                `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	TipInfo    map[string]interface{} `json:"TipInfo,omitempty" xml:"TipInfo,omitempty"`
+	// The type of the entity. Valid values:
+	//
+	// *   ip
+	// *   domain
+	// *   url
+	// *   process
+	// *   file
+	// *   host
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The information about the risk Intelligence.
+	TipInfo map[string]interface{} `json:"TipInfo,omitempty" xml:"TipInfo,omitempty"`
 }
 
 func (s DescribeEntityInfoResponseBodyData) String() string {
@@ -6047,6 +8406,10 @@ func (s *DescribeEntityInfoResponse) SetBody(v *DescribeEntityInfoResponseBody) 
 }
 
 type DescribeEventCountByThreatLevelRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6064,11 +8427,19 @@ func (s *DescribeEventCountByThreatLevelRequest) SetRegionId(v string) *Describe
 }
 
 type DescribeEventCountByThreatLevelResponseBody struct {
-	Code      *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeEventCountByThreatLevelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeEventCountByThreatLevelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeEventCountByThreatLevelResponseBody) String() string {
@@ -6105,11 +8476,16 @@ func (s *DescribeEventCountByThreatLevelResponseBody) SetSuccess(v bool) *Descri
 }
 
 type DescribeEventCountByThreatLevelResponseBodyData struct {
-	EventNum            *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
-	HighLevelEventNum   *int64 `json:"HighLevelEventNum,omitempty" xml:"HighLevelEventNum,omitempty"`
-	LowLevelEventNum    *int64 `json:"LowLevelEventNum,omitempty" xml:"LowLevelEventNum,omitempty"`
+	// The total number of events.
+	EventNum *int64 `json:"EventNum,omitempty" xml:"EventNum,omitempty"`
+	// The number of high-risk events.
+	HighLevelEventNum *int64 `json:"HighLevelEventNum,omitempty" xml:"HighLevelEventNum,omitempty"`
+	// The number of low-risk events.
+	LowLevelEventNum *int64 `json:"LowLevelEventNum,omitempty" xml:"LowLevelEventNum,omitempty"`
+	// The number of medium-risk events.
 	MediumLevelEventNum *int64 `json:"MediumLevelEventNum,omitempty" xml:"MediumLevelEventNum,omitempty"`
-	UndealEventNum      *int64 `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
+	// The number of unhandled events.
+	UndealEventNum *int64 `json:"UndealEventNum,omitempty" xml:"UndealEventNum,omitempty"`
 }
 
 func (s DescribeEventCountByThreatLevelResponseBodyData) String() string {
@@ -6175,10 +8551,17 @@ func (s *DescribeEventCountByThreatLevelResponse) SetBody(v *DescribeEventCountB
 }
 
 type DescribeEventDisposeRequest struct {
-	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of entries to return on each page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeEventDisposeRequest) String() string {
@@ -6210,11 +8593,19 @@ func (s *DescribeEventDisposeRequest) SetRegionId(v string) *DescribeEventDispos
 }
 
 type DescribeEventDisposeResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeEventDisposeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *DescribeEventDisposeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeEventDisposeResponseBody) String() string {
@@ -6251,10 +8642,19 @@ func (s *DescribeEventDisposeResponseBody) SetSuccess(v bool) *DescribeEventDisp
 }
 
 type DescribeEventDisposeResponseBodyData struct {
-	EventDispose []interface{}                                     `json:"EventDispose,omitempty" xml:"EventDispose,omitempty" type:"Repeated"`
+	// An array consisting of JSON objects that are configured for event handling.
+	EventDispose []interface{} `json:"EventDispose,omitempty" xml:"EventDispose,omitempty" type:"Repeated"`
+	// The JSON object that is configured for an alert recipient.
 	ReceiverInfo *DescribeEventDisposeResponseBodyDataReceiverInfo `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty" type:"Struct"`
-	Remark       *string                                           `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status       *int32                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the event.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   0: not handled
+	// *   1: handing
+	// *   5: handling failed
+	// *   10: handled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventDisposeResponseBodyData) String() string {
@@ -6286,14 +8686,28 @@ func (s *DescribeEventDisposeResponseBodyData) SetStatus(v int32) *DescribeEvent
 }
 
 type DescribeEventDisposeResponseBodyDataReceiverInfo struct {
-	Channel      *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	GmtCreate    *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The channel of the contact information. Valid values:
+	//
+	// *   message
+	// *   mail
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the recipient who receives the event handling result.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The message title.
 	MessageTitle *string `json:"MessageTitle,omitempty" xml:"MessageTitle,omitempty"`
-	Receiver     *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The contact information of the recipient.
+	Receiver *string `json:"Receiver,omitempty" xml:"Receiver,omitempty"`
+	// Indicates whether the message is sent. Valid values:
+	//
+	// *   0: not sent
+	// *   1: sent
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEventDisposeResponseBodyDataReceiverInfo) String() string {
@@ -6369,6 +8783,104 @@ func (s *DescribeEventDisposeResponse) SetStatusCode(v int32) *DescribeEventDisp
 }
 
 func (s *DescribeEventDisposeResponse) SetBody(v *DescribeEventDisposeResponseBody) *DescribeEventDisposeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeImportedLogCountRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeImportedLogCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImportedLogCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImportedLogCountRequest) SetRegionId(v string) *DescribeImportedLogCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeImportedLogCountResponseBody struct {
+	Data      *DescribeImportedLogCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeImportedLogCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImportedLogCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImportedLogCountResponseBody) SetData(v *DescribeImportedLogCountResponseBodyData) *DescribeImportedLogCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeImportedLogCountResponseBody) SetRequestId(v string) *DescribeImportedLogCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeImportedLogCountResponseBodyData struct {
+	ImportedLogCount   *int32 `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
+	TotalLogCount      *int32 `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
+	UnImportedLogCount *int32 `json:"UnImportedLogCount,omitempty" xml:"UnImportedLogCount,omitempty"`
+}
+
+func (s DescribeImportedLogCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImportedLogCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImportedLogCountResponseBodyData) SetImportedLogCount(v int32) *DescribeImportedLogCountResponseBodyData {
+	s.ImportedLogCount = &v
+	return s
+}
+
+func (s *DescribeImportedLogCountResponseBodyData) SetTotalLogCount(v int32) *DescribeImportedLogCountResponseBodyData {
+	s.TotalLogCount = &v
+	return s
+}
+
+func (s *DescribeImportedLogCountResponseBodyData) SetUnImportedLogCount(v int32) *DescribeImportedLogCountResponseBodyData {
+	s.UnImportedLogCount = &v
+	return s
+}
+
+type DescribeImportedLogCountResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeImportedLogCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeImportedLogCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeImportedLogCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeImportedLogCountResponse) SetHeaders(v map[string]*string) *DescribeImportedLogCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeImportedLogCountResponse) SetStatusCode(v int32) *DescribeImportedLogCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeImportedLogCountResponse) SetBody(v *DescribeImportedLogCountResponseBody) *DescribeImportedLogCountResponse {
 	s.Body = v
 	return s
 }
@@ -6619,9 +9131,15 @@ func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *D
 }
 
 type DescribeLogFieldsRequest struct {
+	// The log source of the rule.
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogType   *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLogFieldsRequest) String() string {
@@ -6648,11 +9166,19 @@ func (s *DescribeLogFieldsRequest) SetRegionId(v string) *DescribeLogFieldsReque
 }
 
 type DescribeLogFieldsResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeLogFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeLogFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeLogFieldsResponseBody) String() string {
@@ -6689,11 +9215,19 @@ func (s *DescribeLogFieldsResponseBody) SetSuccess(v bool) *DescribeLogFieldsRes
 }
 
 type DescribeLogFieldsResponseBodyData struct {
+	// The type of the log to which the field belongs.
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	FieldDesc    *string `json:"FieldDesc,omitempty" xml:"FieldDesc,omitempty"`
-	FieldName    *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	FieldType    *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	LogCode      *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The internal code of the field description.
+	FieldDesc *string `json:"FieldDesc,omitempty" xml:"FieldDesc,omitempty"`
+	// The name of the field.
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// The data type of the field. Valid values:
+	//
+	// *   varchar
+	// *   bigint
+	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
+	// The log source to which the field belongs.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
 }
 
 func (s DescribeLogFieldsResponseBodyData) String() string {
@@ -6759,7 +9293,12 @@ func (s *DescribeLogFieldsResponse) SetBody(v *DescribeLogFieldsResponseBody) *D
 }
 
 type DescribeLogSourceRequest struct {
-	LogType  *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6782,11 +9321,19 @@ func (s *DescribeLogSourceRequest) SetRegionId(v string) *DescribeLogSourceReque
 }
 
 type DescribeLogSourceResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeLogSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeLogSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeLogSourceResponseBody) String() string {
@@ -6823,7 +9370,9 @@ func (s *DescribeLogSourceResponseBody) SetSuccess(v bool) *DescribeLogSourceRes
 }
 
 type DescribeLogSourceResponseBodyData struct {
-	LogSource     *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The internal code of the log source.
 	LogSourceName *string `json:"LogSourceName,omitempty" xml:"LogSourceName,omitempty"`
 }
 
@@ -6875,6 +9424,10 @@ func (s *DescribeLogSourceResponse) SetBody(v *DescribeLogSourceResponseBody) *D
 }
 
 type DescribeLogStoreRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -6892,14 +9445,10 @@ func (s *DescribeLogStoreRequest) SetRegionId(v string) *DescribeLogStoreRequest
 }
 
 type DescribeLogStoreResponseBody struct {
-	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeLogStoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                           `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                           `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                           `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response of the threat analysis feature.
+	Data *DescribeLogStoreResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLogStoreResponseBody) String() string {
@@ -6910,33 +9459,8 @@ func (s DescribeLogStoreResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeLogStoreResponseBody) SetCode(v int32) *DescribeLogStoreResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeLogStoreResponseBody) SetData(v *DescribeLogStoreResponseBodyData) *DescribeLogStoreResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBody) SetDyCode(v string) *DescribeLogStoreResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBody) SetDyMessage(v string) *DescribeLogStoreResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBody) SetErrCode(v string) *DescribeLogStoreResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DescribeLogStoreResponseBody) SetMessage(v string) *DescribeLogStoreResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -6945,19 +9469,30 @@ func (s *DescribeLogStoreResponseBody) SetRequestId(v string) *DescribeLogStoreR
 	return s
 }
 
-func (s *DescribeLogStoreResponseBody) SetSuccess(v bool) *DescribeLogStoreResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DescribeLogStoreResponseBodyData struct {
-	AppendMeta     *bool   `json:"AppendMeta,omitempty" xml:"AppendMeta,omitempty"`
-	AutoSplit      *bool   `json:"AutoSplit,omitempty" xml:"AutoSplit,omitempty"`
-	EnableTracking *bool   `json:"EnableTracking,omitempty" xml:"EnableTracking,omitempty"`
-	LogStoreName   *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	MaxSplitShard  *int32  `json:"MaxSplitShard,omitempty" xml:"MaxSplitShard,omitempty"`
-	ShardCount     *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
-	Ttl            *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// Indicates whether the following time points are added after the log arrives: the time points when the public IP address of the client and the log arrive. Valid values:
+	//
+	// *   true
+	// *   false
+	AppendMeta *bool `json:"AppendMeta,omitempty" xml:"AppendMeta,omitempty"`
+	// Indicates whether the automatic sharding feature is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	AutoSplit *bool `json:"AutoSplit,omitempty" xml:"AutoSplit,omitempty"`
+	// Indicates whether the web tracking feature is enabled to collect user information from browsers, iOS applications, or Android applications. Valid values:
+	//
+	// *   true
+	// *   false
+	EnableTracking *bool `json:"EnableTracking,omitempty" xml:"EnableTracking,omitempty"`
+	// The name of the Logstore in Simple Log Service.
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The maximum number of shards that can be generated by using the automatic sharding feature.
+	MaxSplitShard *int32 `json:"MaxSplitShard,omitempty" xml:"MaxSplitShard,omitempty"`
+	// The number of shards in Log Service.
+	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	// The retention period of data. Unit: day.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s DescribeLogStoreResponseBodyData) String() string {
@@ -7033,6 +9568,10 @@ func (s *DescribeLogStoreResponse) SetBody(v *DescribeLogStoreResponseBody) *Des
 }
 
 type DescribeLogTypeRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7050,11 +9589,19 @@ func (s *DescribeLogTypeRequest) SetRegionId(v string) *DescribeLogTypeRequest {
 }
 
 type DescribeLogTypeResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeLogTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeLogTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeLogTypeResponseBody) String() string {
@@ -7091,7 +9638,9 @@ func (s *DescribeLogTypeResponseBody) SetSuccess(v bool) *DescribeLogTypeRespons
 }
 
 type DescribeLogTypeResponseBodyData struct {
-	LogType     *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The internal code of the log type.
 	LogTypeName *string `json:"LogTypeName,omitempty" xml:"LogTypeName,omitempty"`
 }
 
@@ -7143,7 +9692,15 @@ func (s *DescribeLogTypeResponse) SetBody(v *DescribeLogTypeResponseBody) *Descr
 }
 
 type DescribeOperatorsRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the scenario in which the operator is used. Valid values:
+	//
+	// *   If you do not specify this parameter, the default scenario is used.
+	// *   AGGREGATE: AGGREGATE scenario.
 	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 }
 
@@ -7166,11 +9723,19 @@ func (s *DescribeOperatorsRequest) SetSceneType(v string) *DescribeOperatorsRequ
 }
 
 type DescribeOperatorsResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeOperatorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeOperatorsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeOperatorsResponseBody) String() string {
@@ -7207,13 +9772,20 @@ func (s *DescribeOperatorsResponseBody) SetSuccess(v bool) *DescribeOperatorsRes
 }
 
 type DescribeOperatorsResponseBodyData struct {
-	Index           *int32    `json:"Index,omitempty" xml:"Index,omitempty"`
-	Operator        *string   `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorDescCn  *string   `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
-	OperatorDescEn  *string   `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
-	OperatorName    *string   `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	SupportDataType *string   `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
-	SupportTag      []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
+	// The position of the operator in the operator list.
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The operator.
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The description of the operator in Chinese.
+	OperatorDescCn *string `json:"OperatorDescCn,omitempty" xml:"OperatorDescCn,omitempty"`
+	// The description of the operator in English.
+	OperatorDescEn *string `json:"OperatorDescEn,omitempty" xml:"OperatorDescEn,omitempty"`
+	// The display name of the operator.
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The data types that are supported by the current operator. The data types are separated by commas (,).
+	SupportDataType *string `json:"SupportDataType,omitempty" xml:"SupportDataType,omitempty"`
+	// The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. This parameter is empty by default.
+	SupportTag []*string `json:"SupportTag,omitempty" xml:"SupportTag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOperatorsResponseBodyData) String() string {
@@ -7288,7 +9860,109 @@ func (s *DescribeOperatorsResponse) SetBody(v *DescribeOperatorsResponseBody) *D
 	return s
 }
 
+type DescribeProdCountRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeProdCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProdCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProdCountRequest) SetRegionId(v string) *DescribeProdCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeProdCountResponseBody struct {
+	Data      *DescribeProdCountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeProdCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProdCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProdCountResponseBody) SetData(v *DescribeProdCountResponseBodyData) *DescribeProdCountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeProdCountResponseBody) SetRequestId(v string) *DescribeProdCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeProdCountResponseBodyData struct {
+	AliyunProdCount *int32 `json:"AliyunProdCount,omitempty" xml:"AliyunProdCount,omitempty"`
+	HcloudProdCount *int32 `json:"HcloudProdCount,omitempty" xml:"HcloudProdCount,omitempty"`
+	QcloudProdCount *int32 `json:"QcloudProdCount,omitempty" xml:"QcloudProdCount,omitempty"`
+}
+
+func (s DescribeProdCountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProdCountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProdCountResponseBodyData) SetAliyunProdCount(v int32) *DescribeProdCountResponseBodyData {
+	s.AliyunProdCount = &v
+	return s
+}
+
+func (s *DescribeProdCountResponseBodyData) SetHcloudProdCount(v int32) *DescribeProdCountResponseBodyData {
+	s.HcloudProdCount = &v
+	return s
+}
+
+func (s *DescribeProdCountResponseBodyData) SetQcloudProdCount(v int32) *DescribeProdCountResponseBodyData {
+	s.QcloudProdCount = &v
+	return s
+}
+
+type DescribeProdCountResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProdCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeProdCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProdCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProdCountResponse) SetHeaders(v map[string]*string) *DescribeProdCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeProdCountResponse) SetStatusCode(v int32) *DescribeProdCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeProdCountResponse) SetBody(v *DescribeProdCountResponseBody) *DescribeProdCountResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeScopeUsersRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7306,11 +9980,19 @@ func (s *DescribeScopeUsersRequest) SetRegionId(v string) *DescribeScopeUsersReq
 }
 
 type DescribeScopeUsersResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeScopeUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeScopeUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeScopeUsersResponseBody) String() string {
@@ -7347,10 +10029,14 @@ func (s *DescribeScopeUsersResponseBody) SetSuccess(v bool) *DescribeScopeUsersR
 }
 
 type DescribeScopeUsersResponseBodyData struct {
-	AliUid     *int64    `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Domains    []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	UserName   *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The ID of the security information and event management (SIEM) user.
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// An array consisting of the domain names that are protected by the WAF instance.
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The username.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeScopeUsersResponseBodyData) String() string {
@@ -7410,7 +10096,80 @@ func (s *DescribeScopeUsersResponse) SetBody(v *DescribeScopeUsersResponseBody) 
 	return s
 }
 
+type DescribeServiceStatusRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeServiceStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceStatusRequest) SetRegionId(v string) *DescribeServiceStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeServiceStatusResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeServiceStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceStatusResponseBody) SetData(v bool) *DescribeServiceStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeServiceStatusResponseBody) SetRequestId(v string) *DescribeServiceStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeServiceStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceStatusResponse) SetHeaders(v map[string]*string) *DescribeServiceStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceStatusResponse) SetStatusCode(v int32) *DescribeServiceStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeServiceStatusResponse) SetBody(v *DescribeServiceStatusResponseBody) *DescribeServiceStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeStorageRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7428,14 +10187,13 @@ func (s *DescribeStorageRequest) SetRegionId(v string) *DescribeStorageRequest {
 }
 
 type DescribeStorageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the projects and Logstores that are created for the threat analysis feature exist in Simple Log Service. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeStorageResponseBody) String() string {
@@ -7446,43 +10204,13 @@ func (s DescribeStorageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeStorageResponseBody) SetCode(v int32) *DescribeStorageResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DescribeStorageResponseBody) SetData(v bool) *DescribeStorageResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *DescribeStorageResponseBody) SetDyCode(v string) *DescribeStorageResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *DescribeStorageResponseBody) SetDyMessage(v string) *DescribeStorageResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *DescribeStorageResponseBody) SetErrCode(v string) *DescribeStorageResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DescribeStorageResponseBody) SetMessage(v string) *DescribeStorageResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DescribeStorageResponseBody) SetRequestId(v string) *DescribeStorageResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeStorageResponseBody) SetSuccess(v bool) *DescribeStorageResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -7515,8 +10243,165 @@ func (s *DescribeStorageResponse) SetBody(v *DescribeStorageResponseBody) *Descr
 	return s
 }
 
+type DescribeUserBuyStatusRequest struct {
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubUserId *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s DescribeUserBuyStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBuyStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBuyStatusRequest) SetRegionId(v string) *DescribeUserBuyStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusRequest) SetSubUserId(v int64) *DescribeUserBuyStatusRequest {
+	s.SubUserId = &v
+	return s
+}
+
+type DescribeUserBuyStatusResponseBody struct {
+	Data      *DescribeUserBuyStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserBuyStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBuyStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBuyStatusResponseBody) SetData(v *DescribeUserBuyStatusResponseBodyData) *DescribeUserBuyStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBody) SetRequestId(v string) *DescribeUserBuyStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserBuyStatusResponseBodyData struct {
+	CanBuy         *bool   `json:"CanBuy,omitempty" xml:"CanBuy,omitempty"`
+	Capacity       *int32  `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	DurationDays   *int64  `json:"DurationDays,omitempty" xml:"DurationDays,omitempty"`
+	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	MainUserName   *string `json:"MainUserName,omitempty" xml:"MainUserName,omitempty"`
+	MasterUserId   *int64  `json:"MasterUserId,omitempty" xml:"MasterUserId,omitempty"`
+	MasterUserName *string `json:"MasterUserName,omitempty" xml:"MasterUserName,omitempty"`
+	SasInstanceId  *string `json:"SasInstanceId,omitempty" xml:"SasInstanceId,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s DescribeUserBuyStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBuyStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetCanBuy(v bool) *DescribeUserBuyStatusResponseBodyData {
+	s.CanBuy = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetCapacity(v int32) *DescribeUserBuyStatusResponseBodyData {
+	s.Capacity = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetDurationDays(v int64) *DescribeUserBuyStatusResponseBodyData {
+	s.DurationDays = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetEndTime(v int64) *DescribeUserBuyStatusResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetMainUserId(v int64) *DescribeUserBuyStatusResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetMainUserName(v string) *DescribeUserBuyStatusResponseBodyData {
+	s.MainUserName = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetMasterUserId(v int64) *DescribeUserBuyStatusResponseBodyData {
+	s.MasterUserId = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetMasterUserName(v string) *DescribeUserBuyStatusResponseBodyData {
+	s.MasterUserName = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetSasInstanceId(v string) *DescribeUserBuyStatusResponseBodyData {
+	s.SasInstanceId = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetSubUserId(v int64) *DescribeUserBuyStatusResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponseBodyData) SetSubUserName(v string) *DescribeUserBuyStatusResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type DescribeUserBuyStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserBuyStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserBuyStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserBuyStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserBuyStatusResponse) SetHeaders(v map[string]*string) *DescribeUserBuyStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponse) SetStatusCode(v int32) *DescribeUserBuyStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserBuyStatusResponse) SetBody(v *DescribeUserBuyStatusResponseBody) *DescribeUserBuyStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeWafScopeRequest struct {
-	EntityId *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the entity.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -7539,11 +10424,19 @@ func (s *DescribeWafScopeRequest) SetRegionId(v string) *DescribeWafScopeRequest
 }
 
 type DescribeWafScopeResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeWafScopeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data []*DescribeWafScopeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeWafScopeResponseBody) String() string {
@@ -7580,9 +10473,12 @@ func (s *DescribeWafScopeResponseBody) SetSuccess(v bool) *DescribeWafScopeRespo
 }
 
 type DescribeWafScopeResponseBodyData struct {
-	Aliuid     *int64    `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	Domains    []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the Alibaba Cloud account in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The domain names that are protected by the WAF instance.
+	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// The ID of the WAF instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeWafScopeResponseBodyData) String() string {
@@ -8042,13 +10938,23 @@ func (s *DescribeWhiteRuleListResponse) SetBody(v *DescribeWhiteRuleListResponse
 }
 
 type DoQuickFieldRequest struct {
-	From     *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Index    *string `json:"Index,omitempty" xml:"Index,omitempty"`
-	Page     *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The time when the quick analysis starts. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// The index field.
+	Index *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The number of pages to return. Default value: 1.
+	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Reverse  *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	Size     *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	To       *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	// The sorting of the query and analysis results. By default, the results are sorted in descending order.
+	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	// The number of entries per page. Default value: 10.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The time when the quick analysis ends. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s DoQuickFieldRequest) String() string {
@@ -8095,14 +11001,10 @@ func (s *DoQuickFieldRequest) SetTo(v int32) *DoQuickFieldRequest {
 }
 
 type DoQuickFieldResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DoQuickFieldResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                       `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                       `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                       `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response of the quick analysis.
+	Data *DoQuickFieldResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DoQuickFieldResponseBody) String() string {
@@ -8113,33 +11015,8 @@ func (s DoQuickFieldResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DoQuickFieldResponseBody) SetCode(v int32) *DoQuickFieldResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DoQuickFieldResponseBody) SetData(v *DoQuickFieldResponseBodyData) *DoQuickFieldResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *DoQuickFieldResponseBody) SetDyCode(v string) *DoQuickFieldResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBody) SetDyMessage(v string) *DoQuickFieldResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBody) SetErrCode(v string) *DoQuickFieldResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DoQuickFieldResponseBody) SetMessage(v string) *DoQuickFieldResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -8148,23 +11025,32 @@ func (s *DoQuickFieldResponseBody) SetRequestId(v string) *DoQuickFieldResponseB
 	return s
 }
 
-func (s *DoQuickFieldResponseBody) SetSuccess(v bool) *DoQuickFieldResponseBody {
-	s.Success = &v
-	return s
-}
-
 type DoQuickFieldResponseBodyData struct {
-	AggQueryd     *string       `json:"AggQueryd,omitempty" xml:"AggQueryd,omitempty"`
-	CompleteOrNot *bool         `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
-	Count         *int32        `json:"Count,omitempty" xml:"Count,omitempty"`
-	HasSQL        *bool         `json:"HasSQL,omitempty" xml:"HasSQL,omitempty"`
-	Keys          []*string     `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	Limited       *int64        `json:"Limited,omitempty" xml:"Limited,omitempty"`
-	Logs          []interface{} `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	PQuery        *string       `json:"PQuery,omitempty" xml:"PQuery,omitempty"`
-	ProcessedRows *int64        `json:"ProcessedRows,omitempty" xml:"ProcessedRows,omitempty"`
-	QueryMode     *int32        `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	WhereQuery    *string       `json:"WhereQuery,omitempty" xml:"WhereQuery,omitempty"`
+	// This parameter is deprecated.
+	AggQueryd *string `json:"AggQueryd,omitempty" xml:"AggQueryd,omitempty"`
+	// Indicates whether the quick analysis was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
+	// The number of entries returned.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// This parameter is deprecated.
+	HasSQL *bool `json:"HasSQL,omitempty" xml:"HasSQL,omitempty"`
+	// This parameter is deprecated.
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	Limited *int64 `json:"Limited,omitempty" xml:"Limited,omitempty"`
+	// The logs queried by using the quick analysis feature.
+	Logs []interface{} `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// This parameter is deprecated.
+	PQuery *string `json:"PQuery,omitempty" xml:"PQuery,omitempty"`
+	// The number of entries queried.
+	ProcessedRows *int64 `json:"ProcessedRows,omitempty" xml:"ProcessedRows,omitempty"`
+	// This parameter is deprecated.
+	QueryMode *int32 `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// This parameter is deprecated.
+	WhereQuery *string `json:"WhereQuery,omitempty" xml:"WhereQuery,omitempty"`
 }
 
 func (s DoQuickFieldResponseBodyData) String() string {
@@ -8260,9 +11146,18 @@ func (s *DoQuickFieldResponse) SetBody(v *DoQuickFieldResponseBody) *DoQuickFiel
 }
 
 type DoSelfDelegateRequest struct {
-	AliUid        *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	DelegateOrNot *int32  `json:"DelegateOrNot,omitempty" xml:"DelegateOrNot,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud account of an ordinary member of the threat analysis feature.
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// Specifies whether to use a delegated administrator account. Valid values:
+	//
+	// *   1: use a delegated administrator account.
+	// *   0: do not use a delegated administrator account.
+	DelegateOrNot *int32 `json:"DelegateOrNot,omitempty" xml:"DelegateOrNot,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DoSelfDelegateRequest) String() string {
@@ -8289,14 +11184,13 @@ func (s *DoSelfDelegateRequest) SetRegionId(v string) *DoSelfDelegateRequest {
 }
 
 type DoSelfDelegateResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether a regular member is authorized. Valid values:
+	//
+	// *   true: The member is authorized.
+	// *   false: The authorization is canceled.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DoSelfDelegateResponseBody) String() string {
@@ -8307,43 +11201,13 @@ func (s DoSelfDelegateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DoSelfDelegateResponseBody) SetCode(v int32) *DoSelfDelegateResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *DoSelfDelegateResponseBody) SetData(v bool) *DoSelfDelegateResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *DoSelfDelegateResponseBody) SetDyCode(v string) *DoSelfDelegateResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponseBody) SetDyMessage(v string) *DoSelfDelegateResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponseBody) SetErrCode(v string) *DoSelfDelegateResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponseBody) SetMessage(v string) *DoSelfDelegateResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DoSelfDelegateResponseBody) SetRequestId(v string) *DoSelfDelegateResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DoSelfDelegateResponseBody) SetSuccess(v bool) *DoSelfDelegateResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -8376,7 +11240,149 @@ func (s *DoSelfDelegateResponse) SetBody(v *DoSelfDelegateResponseBody) *DoSelfD
 	return s
 }
 
+type EnableAccessForCloudSiemRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableAccessForCloudSiemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAccessForCloudSiemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAccessForCloudSiemRequest) SetRegionId(v string) *EnableAccessForCloudSiemRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableAccessForCloudSiemResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableAccessForCloudSiemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAccessForCloudSiemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAccessForCloudSiemResponseBody) SetData(v bool) *EnableAccessForCloudSiemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EnableAccessForCloudSiemResponseBody) SetRequestId(v string) *EnableAccessForCloudSiemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableAccessForCloudSiemResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableAccessForCloudSiemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableAccessForCloudSiemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAccessForCloudSiemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAccessForCloudSiemResponse) SetHeaders(v map[string]*string) *EnableAccessForCloudSiemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAccessForCloudSiemResponse) SetStatusCode(v int32) *EnableAccessForCloudSiemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAccessForCloudSiemResponse) SetBody(v *EnableAccessForCloudSiemResponseBody) *EnableAccessForCloudSiemResponse {
+	s.Body = v
+	return s
+}
+
+type EnableServiceForCloudSiemRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableServiceForCloudSiemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableServiceForCloudSiemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableServiceForCloudSiemRequest) SetRegionId(v string) *EnableServiceForCloudSiemRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableServiceForCloudSiemResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableServiceForCloudSiemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableServiceForCloudSiemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableServiceForCloudSiemResponseBody) SetData(v bool) *EnableServiceForCloudSiemResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EnableServiceForCloudSiemResponseBody) SetRequestId(v string) *EnableServiceForCloudSiemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableServiceForCloudSiemResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableServiceForCloudSiemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableServiceForCloudSiemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableServiceForCloudSiemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableServiceForCloudSiemResponse) SetHeaders(v map[string]*string) *EnableServiceForCloudSiemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableServiceForCloudSiemResponse) SetStatusCode(v int32) *EnableServiceForCloudSiemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableServiceForCloudSiemResponse) SetBody(v *EnableServiceForCloudSiemResponseBody) *EnableServiceForCloudSiemResponse {
+	s.Body = v
+	return s
+}
+
 type GetCapacityRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8394,14 +11400,10 @@ func (s *GetCapacityRequest) SetRegionId(v string) *GetCapacityRequest {
 }
 
 type GetCapacityResponseBody struct {
-	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetCapacityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                      `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                      `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                      `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the storage capacity.
+	Data *GetCapacityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetCapacityResponseBody) String() string {
@@ -8412,33 +11414,8 @@ func (s GetCapacityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetCapacityResponseBody) SetCode(v int32) *GetCapacityResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetCapacityResponseBody) SetData(v *GetCapacityResponseBodyData) *GetCapacityResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetCapacityResponseBody) SetDyCode(v string) *GetCapacityResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *GetCapacityResponseBody) SetDyMessage(v string) *GetCapacityResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *GetCapacityResponseBody) SetErrCode(v string) *GetCapacityResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetCapacityResponseBody) SetMessage(v string) *GetCapacityResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -8447,15 +11424,16 @@ func (s *GetCapacityResponseBody) SetRequestId(v string) *GetCapacityResponseBod
 	return s
 }
 
-func (s *GetCapacityResponseBody) SetSuccess(v bool) *GetCapacityResponseBody {
-	s.Success = &v
-	return s
-}
-
 type GetCapacityResponseBodyData struct {
-	ExistLogStore     *bool    `json:"ExistLogStore,omitempty" xml:"ExistLogStore,omitempty"`
-	PreservedCapacity *int64   `json:"PreservedCapacity,omitempty" xml:"PreservedCapacity,omitempty"`
-	UsedCapacity      *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
+	// Indicates whether the Logstores for the threat analysis feature exist on the user side. Valid values:
+	//
+	// *   true: The logs are in the normal state. The log analysis feature is available.
+	// *   false: The logs are being cleared. The log analysis feature is unavailable.
+	ExistLogStore *bool `json:"ExistLogStore,omitempty" xml:"ExistLogStore,omitempty"`
+	// The purchased storage capacity of the threat analysis feature. Unit: GB.
+	PreservedCapacity *int64 `json:"PreservedCapacity,omitempty" xml:"PreservedCapacity,omitempty"`
+	// The billable storage capacity of the threat analysis feature. Unit: GB.
+	UsedCapacity *float64 `json:"UsedCapacity,omitempty" xml:"UsedCapacity,omitempty"`
 }
 
 func (s GetCapacityResponseBodyData) String() string {
@@ -8511,10 +11489,17 @@ func (s *GetCapacityResponse) SetBody(v *GetCapacityResponseBody) *GetCapacityRe
 }
 
 type GetHistogramsRequest struct {
-	From     *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](https://help.aliyun.com/zh/sls/user-guide/search-syntax?spm=a2c4g.11186623.0.i2#concept-tnd-1jq-zdb).
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	To       *int32  `json:"To,omitempty" xml:"To,omitempty"`
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s GetHistogramsRequest) String() string {
@@ -8546,14 +11531,10 @@ func (s *GetHistogramsRequest) SetTo(v int32) *GetHistogramsRequest {
 }
 
 type GetHistogramsResponseBody struct {
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetHistogramsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                        `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                        `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                        `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The data of the charts.
+	Data *GetHistogramsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetHistogramsResponseBody) String() string {
@@ -8564,33 +11545,8 @@ func (s GetHistogramsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetHistogramsResponseBody) SetCode(v int32) *GetHistogramsResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetHistogramsResponseBody) SetData(v *GetHistogramsResponseBodyData) *GetHistogramsResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetHistogramsResponseBody) SetDyCode(v string) *GetHistogramsResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBody) SetDyMessage(v string) *GetHistogramsResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBody) SetErrCode(v string) *GetHistogramsResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetHistogramsResponseBody) SetMessage(v string) *GetHistogramsResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -8599,15 +11555,13 @@ func (s *GetHistogramsResponseBody) SetRequestId(v string) *GetHistogramsRespons
 	return s
 }
 
-func (s *GetHistogramsResponseBody) SetSuccess(v bool) *GetHistogramsResponseBody {
-	s.Success = &v
-	return s
-}
-
 type GetHistogramsResponseBodyData struct {
+	// The distribution of logs.
 	Histograms []*GetHistogramsResponseBodyDataHistograms `json:"Histograms,omitempty" xml:"Histograms,omitempty" type:"Repeated"`
-	Server     *string                                    `json:"Server,omitempty" xml:"Server,omitempty"`
-	TotalCount *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The name of the server.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The number of logs that are generated within the subinterval.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetHistogramsResponseBodyData) String() string {
@@ -8634,10 +11588,17 @@ func (s *GetHistogramsResponseBodyData) SetTotalCount(v int64) *GetHistogramsRes
 }
 
 type GetHistogramsResponseBodyDataHistograms struct {
-	CompletedOrNot *bool  `json:"CompletedOrNot,omitempty" xml:"CompletedOrNot,omitempty"`
-	Count          *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	From           *int32 `json:"From,omitempty" xml:"From,omitempty"`
-	To             *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// Indicates whether the query results within the subinterval is complete. Valid values:
+	//
+	// *   true: The query is complete and the returned result is complete.
+	// *   false: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
+	CompletedOrNot *bool `json:"CompletedOrNot,omitempty" xml:"CompletedOrNot,omitempty"`
+	// The number of logs within the subinterval.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
 }
 
 func (s GetHistogramsResponseBodyDataHistograms) String() string {
@@ -8698,14 +11659,28 @@ func (s *GetHistogramsResponse) SetBody(v *GetHistogramsResponseBody) *GetHistog
 }
 
 type GetLogsRequest struct {
-	From         *int32  `json:"From,omitempty" xml:"From,omitempty"`
-	PageIndex    *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query        *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReverseOrNot *bool   `json:"ReverseOrNot,omitempty" xml:"ReverseOrNot,omitempty"`
-	To           *int32  `json:"To,omitempty" xml:"To,omitempty"`
-	Total        *int64  `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The time when the query starts. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	// The page number. Pages start from page 1.
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries per page. Valid values: 0 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search statement or the analytic statement. For more information, see [Log search overview](https://help.aliyun.com/zh/sls/user-guide/log-analysis-overview?spm=a2c4g.11186623.0.i1#t13103.html) and [Log analysis overview](https://help.aliyun.com/zh/sls/user-guide/search-syntax?spm=a2c4g.11186623.0.i0#concept-tnd-1jq-zdb).
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to sort the results of the log query by time in minutes in descending order. Default value: true. Valid values:
+	//
+	// *   true
+	// *   false
+	ReverseOrNot *bool `json:"ReverseOrNot,omitempty" xml:"ReverseOrNot,omitempty"`
+	// The time when the query ends. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+	To *int32 `json:"To,omitempty" xml:"To,omitempty"`
+	// The total number of entries returned.
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetLogsRequest) String() string {
@@ -8757,11 +11732,19 @@ func (s *GetLogsRequest) SetTotal(v int64) *GetLogsRequest {
 }
 
 type GetLogsResponseBody struct {
-	Code      *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The results of the log query.
+	Data *GetLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetLogsResponseBody) String() string {
@@ -8798,7 +11781,9 @@ func (s *GetLogsResponseBody) SetSuccess(v bool) *GetLogsResponseBody {
 }
 
 type GetLogsResponseBodyData struct {
-	PageInfo     *GetLogsResponseBodyDataPageInfo     `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The result on the current page.
+	PageInfo *GetLogsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The log.
 	ResponseData *GetLogsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Struct"`
 }
 
@@ -8821,9 +11806,12 @@ func (s *GetLogsResponseBodyData) SetResponseData(v *GetLogsResponseBodyDataResp
 }
 
 type GetLogsResponseBodyDataPageInfo struct {
+	// The page number. Pages start from page 1.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetLogsResponseBodyDataPageInfo) String() string {
@@ -8850,12 +11838,24 @@ func (s *GetLogsResponseBodyDataPageInfo) SetTotalCount(v int64) *GetLogsRespons
 }
 
 type GetLogsResponseBodyDataResponseData struct {
-	CompleteOrNot *bool         `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
-	Cost          *int64        `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	Count         *int32        `json:"Count,omitempty" xml:"Count,omitempty"`
-	HasSql        *bool         `json:"HasSql,omitempty" xml:"HasSql,omitempty"`
-	Keys          []*string     `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
-	Lines         []interface{} `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
+	// The status of the log query. Valid values:
+	//
+	// *   true: The query is complete and the returned result is complete.
+	// *   false: The query is complete but the returned result is incomplete. You must resend the request to obtain the complete result.
+	CompleteOrNot *bool `json:"CompleteOrNot,omitempty" xml:"CompleteOrNot,omitempty"`
+	// The time period of the log query. Unit: milliseconds.
+	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	// The number of entries returned.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Indicated whether an analytic statement is contained. Valid values:
+	//
+	// *   true
+	// *   false
+	HasSql *bool `json:"HasSql,omitempty" xml:"HasSql,omitempty"`
+	// The index fields of the logs.
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// The raw data generated in the query.
+	Lines []interface{} `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
 }
 
 func (s GetLogsResponseBodyDataResponseData) String() string {
@@ -8926,7 +11926,12 @@ func (s *GetLogsResponse) SetBody(v *GetLogsResponseBody) *GetLogsResponse {
 }
 
 type GetQuickQueryRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the saved search.
 	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
@@ -8949,14 +11954,10 @@ func (s *GetQuickQueryRequest) SetSearchName(v string) *GetQuickQueryRequest {
 }
 
 type GetQuickQueryResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The query statement.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetQuickQueryResponseBody) String() string {
@@ -8967,43 +11968,13 @@ func (s GetQuickQueryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetQuickQueryResponseBody) SetCode(v int32) *GetQuickQueryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetQuickQueryResponseBody) SetData(v string) *GetQuickQueryResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *GetQuickQueryResponseBody) SetDyCode(v string) *GetQuickQueryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *GetQuickQueryResponseBody) SetDyMessage(v string) *GetQuickQueryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *GetQuickQueryResponseBody) SetErrCode(v string) *GetQuickQueryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetQuickQueryResponseBody) SetMessage(v string) *GetQuickQueryResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *GetQuickQueryResponseBody) SetRequestId(v string) *GetQuickQueryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *GetQuickQueryResponseBody) SetSuccess(v bool) *GetQuickQueryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -9037,6 +12008,10 @@ func (s *GetQuickQueryResponse) SetBody(v *GetQuickQueryResponseBody) *GetQuickQ
 }
 
 type GetStorageRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -9054,14 +12029,10 @@ func (s *GetStorageRequest) SetRegionId(v string) *GetStorageRequest {
 }
 
 type GetStorageResponseBody struct {
-	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                     `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                     `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                     `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The information about the storage.
+	Data *GetStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetStorageResponseBody) String() string {
@@ -9072,33 +12043,8 @@ func (s GetStorageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetStorageResponseBody) SetCode(v int32) *GetStorageResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetStorageResponseBody) SetData(v *GetStorageResponseBodyData) *GetStorageResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *GetStorageResponseBody) SetDyCode(v string) *GetStorageResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *GetStorageResponseBody) SetDyMessage(v string) *GetStorageResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *GetStorageResponseBody) SetErrCode(v string) *GetStorageResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *GetStorageResponseBody) SetMessage(v string) *GetStorageResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -9107,16 +12053,21 @@ func (s *GetStorageResponseBody) SetRequestId(v string) *GetStorageResponseBody 
 	return s
 }
 
-func (s *GetStorageResponseBody) SetSuccess(v bool) *GetStorageResponseBody {
-	s.Success = &v
-	return s
-}
-
 type GetStorageResponseBodyData struct {
-	CanOperate    *bool   `json:"CanOperate,omitempty" xml:"CanOperate,omitempty"`
-	DisplayRegion *bool   `json:"DisplayRegion,omitempty" xml:"DisplayRegion,omitempty"`
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Ttl           *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// Indicates whether the storage region can be changed for once. Default value: false Valid values:
+	//
+	// *   true
+	// *   false
+	CanOperate *bool `json:"CanOperate,omitempty" xml:"CanOperate,omitempty"`
+	// Indicates whether the storage region can be changed. Default value: false Valid values:
+	//
+	// *   true
+	// *   false
+	DisplayRegion *bool `json:"DisplayRegion,omitempty" xml:"DisplayRegion,omitempty"`
+	// The region in which the logs are stored. Default value: cn-shanghai. Valid values: cn-shanghai for the China site and ap-southeast-1 for the international site.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The storage period of logs. Unit: day. Default value: 180. Valid values: 30 to 3000.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s GetStorageResponseBodyData) String() string {
@@ -9176,17 +12127,471 @@ func (s *GetStorageResponse) SetBody(v *GetStorageResponseBody) *GetStorageRespo
 	return s
 }
 
+type ListAccountAccessIdRequest struct {
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAccountAccessIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountAccessIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountAccessIdRequest) SetCloudCode(v string) *ListAccountAccessIdRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListAccountAccessIdRequest) SetRegionId(v string) *ListAccountAccessIdRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAccountAccessIdResponseBody struct {
+	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListAccountAccessIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListAccountAccessIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountAccessIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountAccessIdResponseBody) SetCode(v int32) *ListAccountAccessIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBody) SetData(v []*ListAccountAccessIdResponseBodyData) *ListAccountAccessIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBody) SetMessage(v string) *ListAccountAccessIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBody) SetRequestId(v string) *ListAccountAccessIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBody) SetSuccess(v bool) *ListAccountAccessIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListAccountAccessIdResponseBodyData struct {
+	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccessIdMd5 *string `json:"AccessIdMd5,omitempty" xml:"AccessIdMd5,omitempty"`
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountStr  *string `json:"AccountStr,omitempty" xml:"AccountStr,omitempty"`
+	Bound       *int32  `json:"Bound,omitempty" xml:"Bound,omitempty"`
+	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s ListAccountAccessIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountAccessIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetAccessId(v string) *ListAccountAccessIdResponseBodyData {
+	s.AccessId = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetAccessIdMd5(v string) *ListAccountAccessIdResponseBodyData {
+	s.AccessIdMd5 = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetAccountId(v string) *ListAccountAccessIdResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetAccountStr(v string) *ListAccountAccessIdResponseBodyData {
+	s.AccountStr = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetBound(v int32) *ListAccountAccessIdResponseBodyData {
+	s.Bound = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetCloudCode(v string) *ListAccountAccessIdResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponseBodyData) SetSubUserId(v int64) *ListAccountAccessIdResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+type ListAccountAccessIdResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccountAccessIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAccountAccessIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountAccessIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountAccessIdResponse) SetHeaders(v map[string]*string) *ListAccountAccessIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccountAccessIdResponse) SetStatusCode(v int32) *ListAccountAccessIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccountAccessIdResponse) SetBody(v *ListAccountAccessIdResponseBody) *ListAccountAccessIdResponse {
+	s.Body = v
+	return s
+}
+
+type ListAccountsByLogRequest struct {
+	CloudCode *string   `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	LogCodes  []*string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty" type:"Repeated"`
+	ProdCode  *string   `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAccountsByLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsByLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsByLogRequest) SetCloudCode(v string) *ListAccountsByLogRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListAccountsByLogRequest) SetLogCodes(v []*string) *ListAccountsByLogRequest {
+	s.LogCodes = v
+	return s
+}
+
+func (s *ListAccountsByLogRequest) SetProdCode(v string) *ListAccountsByLogRequest {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *ListAccountsByLogRequest) SetRegionId(v string) *ListAccountsByLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAccountsByLogResponseBody struct {
+	Data      []*ListAccountsByLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAccountsByLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsByLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsByLogResponseBody) SetData(v []*ListAccountsByLogResponseBodyData) *ListAccountsByLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBody) SetRequestId(v string) *ListAccountsByLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAccountsByLogResponseBodyData struct {
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Imported    *int32  `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	LogCode     *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	MainUserId  *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	ProdCode    *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s ListAccountsByLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsByLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetAccountId(v string) *ListAccountsByLogResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetAccountName(v string) *ListAccountsByLogResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetImported(v int32) *ListAccountsByLogResponseBodyData {
+	s.Imported = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetLogCode(v string) *ListAccountsByLogResponseBodyData {
+	s.LogCode = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetMainUserId(v int64) *ListAccountsByLogResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetProdCode(v string) *ListAccountsByLogResponseBodyData {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponseBodyData) SetSubUserId(v int64) *ListAccountsByLogResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+type ListAccountsByLogResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAccountsByLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAccountsByLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountsByLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountsByLogResponse) SetHeaders(v map[string]*string) *ListAccountsByLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccountsByLogResponse) SetStatusCode(v int32) *ListAccountsByLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccountsByLogResponse) SetBody(v *ListAccountsByLogResponseBody) *ListAccountsByLogResponse {
+	s.Body = v
+	return s
+}
+
+type ListAllProdsRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListAllProdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProdsRequest) SetRegionId(v string) *ListAllProdsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListAllProdsResponseBody struct {
+	Data      *ListAllProdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAllProdsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProdsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProdsResponseBody) SetData(v *ListAllProdsResponseBodyData) *ListAllProdsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAllProdsResponseBody) SetRequestId(v string) *ListAllProdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAllProdsResponseBodyData struct {
+	CurrentPage *int32                                  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProdList    []*ListAllProdsResponseBodyDataProdList `json:"ProdList,omitempty" xml:"ProdList,omitempty" type:"Repeated"`
+	TotalCount  *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListAllProdsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProdsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProdsResponseBodyData) SetCurrentPage(v int32) *ListAllProdsResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyData) SetPageSize(v int32) *ListAllProdsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyData) SetProdList(v []*ListAllProdsResponseBodyDataProdList) *ListAllProdsResponseBodyData {
+	s.ProdList = v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyData) SetTotalCount(v int32) *ListAllProdsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListAllProdsResponseBodyDataProdList struct {
+	CloudCode        *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	ImportedLogCount *int32  `json:"ImportedLogCount,omitempty" xml:"ImportedLogCount,omitempty"`
+	ModifyTime       *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ProdCode         *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	TotalLogCount    *int32  `json:"TotalLogCount,omitempty" xml:"TotalLogCount,omitempty"`
+}
+
+func (s ListAllProdsResponseBodyDataProdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProdsResponseBodyDataProdList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProdsResponseBodyDataProdList) SetCloudCode(v string) *ListAllProdsResponseBodyDataProdList {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyDataProdList) SetImportedLogCount(v int32) *ListAllProdsResponseBodyDataProdList {
+	s.ImportedLogCount = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyDataProdList) SetModifyTime(v string) *ListAllProdsResponseBodyDataProdList {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyDataProdList) SetProdCode(v string) *ListAllProdsResponseBodyDataProdList {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *ListAllProdsResponseBodyDataProdList) SetTotalLogCount(v int32) *ListAllProdsResponseBodyDataProdList {
+	s.TotalLogCount = &v
+	return s
+}
+
+type ListAllProdsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAllProdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAllProdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllProdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllProdsResponse) SetHeaders(v map[string]*string) *ListAllProdsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAllProdsResponse) SetStatusCode(v int32) *ListAllProdsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAllProdsResponse) SetBody(v *ListAllProdsResponseBody) *ListAllProdsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAutomateResponseConfigsRequest struct {
-	ActionType       *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The type of the handling action. Valid values:
+	//
+	// *   doPlaybook: runs a playbook.
+	// *   changeEventStatus: changes the status of an event.
+	// *   changeThreatLevel: changes the risk level of an event.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The type of the automated response rule. Valid values:
+	//
+	// *   event
+	// *   alert
 	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
-	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Id               *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlaybookUuid     *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName         *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubUserId        *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the automated response rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The UUID of the playbook.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the automated response rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   0: disabled
+	// *   100: enabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user who created the rule.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListAutomateResponseConfigsRequest) String() string {
@@ -9248,11 +12653,19 @@ func (s *ListAutomateResponseConfigsRequest) SetSubUserId(v int64) *ListAutomate
 }
 
 type ListAutomateResponseConfigsResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListAutomateResponseConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListAutomateResponseConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAutomateResponseConfigsResponseBody) String() string {
@@ -9289,7 +12702,9 @@ func (s *ListAutomateResponseConfigsResponseBody) SetSuccess(v bool) *ListAutoma
 }
 
 type ListAutomateResponseConfigsResponseBodyData struct {
-	PageInfo     *ListAutomateResponseConfigsResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListAutomateResponseConfigsResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListAutomateResponseConfigsResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -9312,9 +12727,12 @@ func (s *ListAutomateResponseConfigsResponseBodyData) SetResponseData(v []*ListA
 }
 
 type ListAutomateResponseConfigsResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAutomateResponseConfigsResponseBodyDataPageInfo) String() string {
@@ -9341,17 +12759,38 @@ func (s *ListAutomateResponseConfigsResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListAutomateResponseConfigsResponseBodyDataResponseData struct {
-	ActionConfig       *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
-	ActionType         *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	Aliuid             *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	AutoResponseType   *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
+	// The configuration of the action that is performed after the rule is hit. The value is in JSON format.
+	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
+	// The type of the handling action. Multiple types are separated by commas (,). Valid values:
+	//
+	// *   doPlaybook: runs a playbook.
+	// *   changeEventStatus: changes the status of an event.
+	// *   changeThreatLevel: changes the risk level of an event.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The type of the automated response rule. Valid values:
+	//
+	// *   event
+	// *   alert
+	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
+	// The trigger condition of the rule. The value is in the JSON format.
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
-	GmtCreate          *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubUserId          *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the automated response rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the automated response rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   0: disabled
+	// *   100: enabled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the user who created the rule.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s ListAutomateResponseConfigsResponseBodyDataResponseData) String() string {
@@ -9446,17 +12885,324 @@ func (s *ListAutomateResponseConfigsResponse) SetBody(v *ListAutomateResponseCon
 	return s
 }
 
+type ListBindAccountRequest struct {
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBindAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindAccountRequest) SetCloudCode(v string) *ListBindAccountRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListBindAccountRequest) SetRegionId(v string) *ListBindAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBindAccountResponseBody struct {
+	Data      []*ListBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBindAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindAccountResponseBody) SetData(v []*ListBindAccountResponseBodyData) *ListBindAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBindAccountResponseBody) SetRequestId(v string) *ListBindAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBindAccountResponseBodyData struct {
+	AccessId        *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccountId       *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BindId          *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	CloudCode       *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	CreateUser      *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	DataSourceCount *int64  `json:"DataSourceCount,omitempty" xml:"DataSourceCount,omitempty"`
+	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+}
+
+func (s ListBindAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindAccountResponseBodyData) SetAccessId(v string) *ListBindAccountResponseBodyData {
+	s.AccessId = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetAccountId(v string) *ListBindAccountResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetAccountName(v string) *ListBindAccountResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetBindId(v int64) *ListBindAccountResponseBodyData {
+	s.BindId = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetCloudCode(v string) *ListBindAccountResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetCreateUser(v string) *ListBindAccountResponseBodyData {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetDataSourceCount(v int64) *ListBindAccountResponseBodyData {
+	s.DataSourceCount = &v
+	return s
+}
+
+func (s *ListBindAccountResponseBodyData) SetModifyTime(v string) *ListBindAccountResponseBodyData {
+	s.ModifyTime = &v
+	return s
+}
+
+type ListBindAccountResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBindAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBindAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindAccountResponse) SetHeaders(v map[string]*string) *ListBindAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBindAccountResponse) SetStatusCode(v int32) *ListBindAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBindAccountResponse) SetBody(v *ListBindAccountResponseBody) *ListBindAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ListBindDataSourcesRequest struct {
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListBindDataSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindDataSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindDataSourcesRequest) SetAccountId(v string) *ListBindDataSourcesRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListBindDataSourcesRequest) SetCloudCode(v string) *ListBindDataSourcesRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListBindDataSourcesRequest) SetRegionId(v string) *ListBindDataSourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListBindDataSourcesResponseBody struct {
+	Data      []*ListBindDataSourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListBindDataSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindDataSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindDataSourcesResponseBody) SetData(v []*ListBindDataSourcesResponseBodyData) *ListBindDataSourcesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBody) SetRequestId(v string) *ListBindDataSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListBindDataSourcesResponseBodyData struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceName       *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceRemark     *string `json:"DataSourceRemark,omitempty" xml:"DataSourceRemark,omitempty"`
+	DataSourceType       *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	LogCount             *int32  `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	TaskCount            *int32  `json:"TaskCount,omitempty" xml:"TaskCount,omitempty"`
+}
+
+func (s ListBindDataSourcesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindDataSourcesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetAccountId(v string) *ListBindDataSourcesResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetAccountName(v string) *ListBindDataSourcesResponseBodyData {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetCloudCode(v string) *ListBindDataSourcesResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetDataSourceInstanceId(v string) *ListBindDataSourcesResponseBodyData {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetDataSourceName(v string) *ListBindDataSourcesResponseBodyData {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetDataSourceRemark(v string) *ListBindDataSourcesResponseBodyData {
+	s.DataSourceRemark = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetDataSourceType(v string) *ListBindDataSourcesResponseBodyData {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetLogCount(v int32) *ListBindDataSourcesResponseBodyData {
+	s.LogCount = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponseBodyData) SetTaskCount(v int32) *ListBindDataSourcesResponseBodyData {
+	s.TaskCount = &v
+	return s
+}
+
+type ListBindDataSourcesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBindDataSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBindDataSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBindDataSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBindDataSourcesResponse) SetHeaders(v map[string]*string) *ListBindDataSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBindDataSourcesResponse) SetStatusCode(v int32) *ListBindDataSourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBindDataSourcesResponse) SetBody(v *ListBindDataSourcesResponseBody) *ListBindDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCloudSiemCustomizeRulesRequest struct {
-	AlertType   *string   `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	CurrentPage *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id          *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName    *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleType    *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The alert type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the custom rule.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of entries per page. The value can be up to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -9524,11 +13270,19 @@ func (s *ListCloudSiemCustomizeRulesRequest) SetThreatLevel(v []*string) *ListCl
 }
 
 type ListCloudSiemCustomizeRulesResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListCloudSiemCustomizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListCloudSiemCustomizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCloudSiemCustomizeRulesResponseBody) String() string {
@@ -9565,7 +13319,9 @@ func (s *ListCloudSiemCustomizeRulesResponseBody) SetSuccess(v bool) *ListCloudS
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyData struct {
-	PageInfo     *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListCloudSiemCustomizeRulesResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -9588,9 +13344,12 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyData) SetResponseData(v []*ListC
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCloudSiemCustomizeRulesResponseBodyDataPageInfo) String() string {
@@ -9617,28 +13376,70 @@ func (s *ListCloudSiemCustomizeRulesResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListCloudSiemCustomizeRulesResponseBodyDataResponseData struct {
-	AlertType           *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeMds        *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	Aliuid              *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	EventTransferExt    *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	EventTransferSwitch *int32  `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	EventTransferType   *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSource           *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogSourceMds        *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	LogType             *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	LogTypeMds          *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	QueryCycle          *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	RuleCondition       *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
-	RuleDesc            *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	RuleGroup           *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
-	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleThreshold       *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	RuleType            *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreatLevel         *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The type of the risk.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the risk type.
+	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
+	// The ID of the Alibaba Cloud account in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The extended information about event generation. If the value of eventTransferType is allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
+	// Indicates whether the system generates an event for the alert. Valid values:
+	//
+	// *   0: no.
+	// *   1: yes.
+	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
+	// The event generation method. Valid values:
+	//
+	// *   default: The default method is used.
+	// *   singleToSingle: The system generates an event for each alert.
+	// *   allToSingle: The system generates an event for alerts within a period of time.
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
+	// The time when the custom rule was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the custom rule was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the custom rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The internal code of the log source.
+	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The internal code of the log type.
+	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
+	// The window length of the rule. The HTML escape characters are reversed.
+	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
+	// The query condition of the rule in the JSON format. The HTML escape characters are reversed.
+	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
+	// The description of the rule.
+	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The threshold configurations of the rule in the JSON format. The HTML escape characters are reversed.
+	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The rule status. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The threat level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
 func (s ListCloudSiemCustomizeRulesResponseBodyDataResponseData) String() string {
@@ -9789,16 +13590,43 @@ func (s *ListCloudSiemCustomizeRulesResponse) SetBody(v *ListCloudSiemCustomizeR
 }
 
 type ListCloudSiemPredefinedRulesRequest struct {
-	AlertType   *string   `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	CurrentPage *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Id          *string   `json:"Id,omitempty" xml:"Id,omitempty"`
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName    *string   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleType    *string   `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status      *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The alert type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the rule.
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. The value is a JSON array. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
 	ThreatLevel []*string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty" type:"Repeated"`
 }
 
@@ -9866,11 +13694,19 @@ func (s *ListCloudSiemPredefinedRulesRequest) SetThreatLevel(v []*string) *ListC
 }
 
 type ListCloudSiemPredefinedRulesResponseBody struct {
-	Code      *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListCloudSiemPredefinedRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListCloudSiemPredefinedRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCloudSiemPredefinedRulesResponseBody) String() string {
@@ -9907,7 +13743,9 @@ func (s *ListCloudSiemPredefinedRulesResponseBody) SetSuccess(v bool) *ListCloud
 }
 
 type ListCloudSiemPredefinedRulesResponseBodyData struct {
-	PageInfo     *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListCloudSiemPredefinedRulesResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -9930,9 +13768,12 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyData) SetResponseData(v []*List
 }
 
 type ListCloudSiemPredefinedRulesResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCloudSiemPredefinedRulesResponseBodyDataPageInfo) String() string {
@@ -9959,15 +13800,32 @@ func (s *ListCloudSiemPredefinedRulesResponseBodyDataPageInfo) SetTotalCount(v i
 }
 
 type ListCloudSiemPredefinedRulesResponseBodyDataResponseData struct {
-	AlertType   *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The type of the risk.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The time when the rule was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the rule was modified.
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the predefined rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The internal code of the rule description.
 	RuleDescMds *string `json:"RuleDescMds,omitempty" xml:"RuleDescMds,omitempty"`
-	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The internal code of the rule name.
 	RuleNameMds *string `json:"RuleNameMds,omitempty" xml:"RuleNameMds,omitempty"`
-	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The log source of the rule.
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the predefined rule. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The threat level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
 	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
@@ -10059,10 +13917,17 @@ func (s *ListCloudSiemPredefinedRulesResponse) SetBody(v *ListCloudSiemPredefine
 }
 
 type ListCustomizeRuleTestResultRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultRequest) String() string {
@@ -10094,11 +13959,19 @@ func (s *ListCustomizeRuleTestResultRequest) SetRegionId(v string) *ListCustomiz
 }
 
 type ListCustomizeRuleTestResultResponseBody struct {
-	Code      *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListCustomizeRuleTestResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListCustomizeRuleTestResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultResponseBody) String() string {
@@ -10135,7 +14008,9 @@ func (s *ListCustomizeRuleTestResultResponseBody) SetSuccess(v bool) *ListCustom
 }
 
 type ListCustomizeRuleTestResultResponseBodyData struct {
-	PageInfo     *ListCustomizeRuleTestResultResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListCustomizeRuleTestResultResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListCustomizeRuleTestResultResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -10158,9 +14033,12 @@ func (s *ListCustomizeRuleTestResultResponseBodyData) SetResponseData(v []*ListC
 }
 
 type ListCustomizeRuleTestResultResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultResponseBodyDataPageInfo) String() string {
@@ -10187,21 +14065,43 @@ func (s *ListCustomizeRuleTestResultResponseBodyDataPageInfo) SetTotalCount(v in
 }
 
 type ListCustomizeRuleTestResultResponseBodyDataResponseData struct {
-	AlertDesc          *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
-	AlertDetail        *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
-	AlertSrcProd       *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The description of the alert.
+	AlertDesc *string `json:"AlertDesc,omitempty" xml:"AlertDesc,omitempty"`
+	// The alert details in the JSON format.
+	AlertDetail *string `json:"AlertDetail,omitempty" xml:"AlertDetail,omitempty"`
+	// The source of the alert.
+	AlertSrcProd *string `json:"AlertSrcProd,omitempty" xml:"AlertSrcProd,omitempty"`
+	// The sub-module of the source.
 	AlertSrcProdModule *string `json:"AlertSrcProdModule,omitempty" xml:"AlertSrcProdModule,omitempty"`
-	AttCk              *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
-	EventName          *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	EventType          *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	Level              *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	LogSource          *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogTime            *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
-	LogType            *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	MainUserId         *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
-	OnlineStatus       *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
-	SubUserId          *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
-	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The tag of the ATT\&CK attack.
+	AttCk *string `json:"AttCk,omitempty" xml:"AttCk,omitempty"`
+	// The name of the alert, which corresponds to the name of the custom rule.
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The risk type, which indicates the alert type.
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The time when the alert was recorded.
+	LogTime *string `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+	MainUserId *string `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	// The status of the alert data. Valid values:
+	//
+	// *   test: business test data
+	// *   online: online data
+	OnlineStatus *string `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The ID of the Alibaba Cloud account within which the alert is generated.
+	SubUserId *string `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The UUID of the alert.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListCustomizeRuleTestResultResponseBodyDataResponseData) String() string {
@@ -10316,7 +14216,313 @@ func (s *ListCustomizeRuleTestResultResponse) SetBody(v *ListCustomizeRuleTestRe
 	return s
 }
 
+type ListDataSourceLogsRequest struct {
+	AccountId            *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode            *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDataSourceLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsRequest) SetAccountId(v string) *ListDataSourceLogsRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListDataSourceLogsRequest) SetCloudCode(v string) *ListDataSourceLogsRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsRequest) SetDataSourceInstanceId(v string) *ListDataSourceLogsRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *ListDataSourceLogsRequest) SetRegionId(v string) *ListDataSourceLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDataSourceLogsResponseBody struct {
+	Data      *ListDataSourceLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataSourceLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsResponseBody) SetData(v *ListDataSourceLogsResponseBodyData) *ListDataSourceLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBody) SetRequestId(v string) *ListDataSourceLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataSourceLogsResponseBodyData struct {
+	AccountId                *string                                                     `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode                *string                                                     `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId     *string                                                     `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceInstanceLogs   []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty" type:"Repeated"`
+	DataSourceInstanceName   *string                                                     `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	DataSourceInstanceRemark *string                                                     `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
+	SubUserId                *int64                                                      `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s ListDataSourceLogsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetAccountId(v string) *ListDataSourceLogsResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetCloudCode(v string) *ListDataSourceLogsResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetDataSourceInstanceId(v string) *ListDataSourceLogsResponseBodyData {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetDataSourceInstanceLogs(v []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) *ListDataSourceLogsResponseBodyData {
+	s.DataSourceInstanceLogs = v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetDataSourceInstanceName(v string) *ListDataSourceLogsResponseBodyData {
+	s.DataSourceInstanceName = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetDataSourceInstanceRemark(v string) *ListDataSourceLogsResponseBodyData {
+	s.DataSourceInstanceRemark = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyData) SetSubUserId(v int64) *ListDataSourceLogsResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs struct {
+	LogCode       *string                                                              `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	LogInstanceId *string                                                              `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	LogMdsCode    *string                                                              `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	LogParams     []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams `json:"LogParams,omitempty" xml:"LogParams,omitempty" type:"Repeated"`
+	TaskStatus    *int32                                                               `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetLogCode(v string) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs {
+	s.LogCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetLogInstanceId(v string) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs {
+	s.LogInstanceId = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetLogMdsCode(v string) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs {
+	s.LogMdsCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetLogParams(v []*ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs {
+	s.LogParams = v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs) SetTaskStatus(v int32) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs {
+	s.TaskStatus = &v
+	return s
+}
+
+type ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams struct {
+	ParaCode  *string `json:"ParaCode,omitempty" xml:"ParaCode,omitempty"`
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+}
+
+func (s ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams) SetParaCode(v string) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams {
+	s.ParaCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams) SetParaValue(v string) *ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams {
+	s.ParaValue = &v
+	return s
+}
+
+type ListDataSourceLogsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSourceLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataSourceLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceLogsResponse) SetHeaders(v map[string]*string) *ListDataSourceLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceLogsResponse) SetStatusCode(v int32) *ListDataSourceLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourceLogsResponse) SetBody(v *ListDataSourceLogsResponseBody) *ListDataSourceLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDataSourceTypesRequest struct {
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListDataSourceTypesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceTypesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceTypesRequest) SetCloudCode(v string) *ListDataSourceTypesRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListDataSourceTypesRequest) SetRegionId(v string) *ListDataSourceTypesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListDataSourceTypesResponseBody struct {
+	Data      []*ListDataSourceTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataSourceTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceTypesResponseBody) SetData(v []*ListDataSourceTypesResponseBodyData) *ListDataSourceTypesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDataSourceTypesResponseBody) SetRequestId(v string) *ListDataSourceTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataSourceTypesResponseBodyData struct {
+	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+}
+
+func (s ListDataSourceTypesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceTypesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceTypesResponseBodyData) SetCloudCode(v string) *ListDataSourceTypesResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListDataSourceTypesResponseBodyData) SetDataSourceType(v string) *ListDataSourceTypesResponseBodyData {
+	s.DataSourceType = &v
+	return s
+}
+
+type ListDataSourceTypesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataSourceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataSourceTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceTypesResponse) SetHeaders(v map[string]*string) *ListDataSourceTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceTypesResponse) SetStatusCode(v int32) *ListDataSourceTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataSourceTypesResponse) SetBody(v *ListDataSourceTypesResponseBody) *ListDataSourceTypesResponse {
+	s.Body = v
+	return s
+}
+
 type ListDeliveryRequest struct {
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10334,14 +14540,10 @@ func (s *ListDeliveryRequest) SetRegionId(v string) *ListDeliveryRequest {
 }
 
 type ListDeliveryResponseBody struct {
-	Code      *int32                        `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListDeliveryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                       `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                       `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                       `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response parameters.
+	Data *ListDeliveryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDeliveryResponseBody) String() string {
@@ -10352,33 +14554,8 @@ func (s ListDeliveryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListDeliveryResponseBody) SetCode(v int32) *ListDeliveryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListDeliveryResponseBody) SetData(v *ListDeliveryResponseBodyData) *ListDeliveryResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListDeliveryResponseBody) SetDyCode(v string) *ListDeliveryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *ListDeliveryResponseBody) SetDyMessage(v string) *ListDeliveryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *ListDeliveryResponseBody) SetErrCode(v string) *ListDeliveryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListDeliveryResponseBody) SetMessage(v string) *ListDeliveryResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -10387,18 +14564,22 @@ func (s *ListDeliveryResponseBody) SetRequestId(v string) *ListDeliveryResponseB
 	return s
 }
 
-func (s *ListDeliveryResponseBody) SetSuccess(v bool) *ListDeliveryResponseBody {
-	s.Success = &v
-	return s
-}
-
 type ListDeliveryResponseBodyData struct {
-	DashboardUrl       *string                                    `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
-	DisplaySwitchOrNot *bool                                      `json:"DisplaySwitchOrNot,omitempty" xml:"DisplaySwitchOrNot,omitempty"`
-	LogStoreName       *string                                    `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	ProductList        []*ListDeliveryResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
-	ProjectName        *string                                    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SearchUrl          *string                                    `json:"SearchUrl,omitempty" xml:"SearchUrl,omitempty"`
+	// The URL that is displayed in charts.
+	DashboardUrl *string `json:"DashboardUrl,omitempty" xml:"DashboardUrl,omitempty"`
+	// Indicates whether the log delivery switch is displayed. Default value: true. Valid values:
+	//
+	// *   true
+	// *   false
+	DisplaySwitchOrNot *bool `json:"DisplaySwitchOrNot,omitempty" xml:"DisplaySwitchOrNot,omitempty"`
+	// The name of the Logstore for the threat analysis feature on the user side. The value is in the cloud_siem format.
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The cloud services.
+	ProductList []*ListDeliveryResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Repeated"`
+	// The name of the project for the threat analysis feature in Simple Log service on the user side. The value is in the aliyun-cloudsiem-data-${aliUid}-${region} format.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The URL that is used for log analysis.
+	SearchUrl *string `json:"SearchUrl,omitempty" xml:"SearchUrl,omitempty"`
 }
 
 func (s ListDeliveryResponseBodyData) String() string {
@@ -10440,10 +14621,38 @@ func (s *ListDeliveryResponseBodyData) SetSearchUrl(v string) *ListDeliveryRespo
 }
 
 type ListDeliveryResponseBodyDataProductList struct {
-	LogList     []*ListDeliveryResponseBodyDataProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	LogMap      map[string][]*DataProductListLogMapValue          `json:"LogMap,omitempty" xml:"LogMap,omitempty"`
-	ProductCode *string                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName *string                                           `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The logs of the cloud services.
+	LogList []*ListDeliveryResponseBodyDataProductListLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
+	// The log group. For example, in Security Center, the logs of hosts and networks are stored in different groups. Key indicates the group information, and value indicates the logs in the group.
+	LogMap map[string][]*DataProductListLogMapValue `json:"LogMap,omitempty" xml:"LogMap,omitempty"`
+	// The code of the cloud service. Valid values:
+	//
+	// *   qcloud_waf
+	// *   qlcoud_cfw
+	// *   hcloud_waf
+	// *   hcloud_cfw
+	// *   ddos
+	// *   sas
+	// *   cfw
+	// *   config
+	// *   csk
+	// *   fc
+	// *   rds
+	// *   nas
+	// *   apigateway
+	// *   cdn
+	// *   mongodb
+	// *   eip
+	// *   slb
+	// *   vpc
+	// *   actiontrail
+	// *   waf
+	// *   bastionhost
+	// *   oss
+	// *   polardb
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// This parameter is deprecated.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 }
 
 func (s ListDeliveryResponseBodyDataProductList) String() string {
@@ -10475,14 +14684,28 @@ func (s *ListDeliveryResponseBodyDataProductList) SetProductName(v string) *List
 }
 
 type ListDeliveryResponseBodyDataProductListLogList struct {
-	CanOperateOrNot *bool                                                            `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
+	// Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
+	//
+	// *   true
+	// *   false
+	CanOperateOrNot *bool `json:"CanOperateOrNot,omitempty" xml:"CanOperateOrNot,omitempty"`
+	// The extended parameter.
 	ExtraParameters []*ListDeliveryResponseBodyDataProductListLogListExtraParameters `json:"ExtraParameters,omitempty" xml:"ExtraParameters,omitempty" type:"Repeated"`
-	LogCode         *string                                                          `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	LogName         *string                                                          `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	LogNameEn       *string                                                          `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
-	LogNameKey      *string                                                          `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
-	Status          *bool                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Topic           *string                                                          `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The code of the log.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// This parameter is deprecated.
+	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// This parameter is deprecated.
+	LogNameEn *string `json:"LogNameEn,omitempty" xml:"LogNameEn,omitempty"`
+	// The language code of the log that is used to indicate the language in which the log is displayed.
+	LogNameKey *string `json:"LogNameKey,omitempty" xml:"LogNameKey,omitempty"`
+	// The status of the log delivery. Valid values:
+	//
+	// *   true: The logs are being delivered.
+	// *   false: The log delivery feature is disabled.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s ListDeliveryResponseBodyDataProductListLogList) String() string {
@@ -10534,7 +14757,9 @@ func (s *ListDeliveryResponseBodyDataProductListLogList) SetTopic(v string) *Lis
 }
 
 type ListDeliveryResponseBodyDataProductListLogListExtraParameters struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The ID of the extended parameter.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the extended parameter.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10586,20 +14811,57 @@ func (s *ListDeliveryResponse) SetBody(v *ListDeliveryResponseBody) *ListDeliver
 }
 
 type ListDisposeStrategyRequest struct {
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	EffectiveStatus *int32  `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EntityIdentity  *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
-	EntityType      *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Order           *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PlaybookName    *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	PlaybookTypes   *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
-	PlaybookUuid    *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SophonTaskId    *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	StartTime       *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number. Pages start from page 1.
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// *   0: invalid
+	// *   1: valid
+	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The feature value of the entity. Fuzzy match is supported.
+	EntityIdentity *string `json:"EntityIdentity,omitempty" xml:"EntityIdentity,omitempty"`
+	// The entity type of the playbook. Valid values:
+	//
+	// *   ip
+	// *   process
+	// *   file
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The sort order. Valid values:
+	//
+	// *   desc: descending order.
+	// *   asc: ascending order.
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The sort field. Valid values:
+	//
+	// *   GmtModified: sorts the policies by update time.
+	// *   GmtCreate: sorts the policies by creation time.
+	// *   FinishTime: sorts the policies by end time.
+	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	// The number of entries per page. Maximum value: 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the playbook, which is the unique identifier of the playbook.
+	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   system: user-triggered playbook
+	// *   custom: event-triggered playbook
+	// *   custom_alert: alert-triggered playbook
+	// *   soar-manual: user-run playbook
+	// *   soar-mdr: MDR-run playbook
+	PlaybookTypes *string `json:"PlaybookTypes,omitempty" xml:"PlaybookTypes,omitempty"`
+	// The UUID of the playbook.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the SOAR handling policy.
+	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
+	// The beginning of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListDisposeStrategyRequest) String() string {
@@ -10681,11 +14943,19 @@ func (s *ListDisposeStrategyRequest) SetStartTime(v int64) *ListDisposeStrategyR
 }
 
 type ListDisposeStrategyResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListDisposeStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *ListDisposeStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBody) String() string {
@@ -10722,7 +14992,9 @@ func (s *ListDisposeStrategyResponseBody) SetSuccess(v bool) *ListDisposeStrateg
 }
 
 type ListDisposeStrategyResponseBodyData struct {
-	PageInfo     *ListDisposeStrategyResponseBodyDataPageInfo       `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The pagination information.
+	PageInfo *ListDisposeStrategyResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The detailed data.
 	ResponseData []*ListDisposeStrategyResponseBodyDataResponseData `json:"ResponseData,omitempty" xml:"ResponseData,omitempty" type:"Repeated"`
 }
 
@@ -10745,9 +15017,12 @@ func (s *ListDisposeStrategyResponseBodyData) SetResponseData(v []*ListDisposeSt
 }
 
 type ListDisposeStrategyResponseBodyDataPageInfo struct {
+	// The current page number.
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBodyDataPageInfo) String() string {
@@ -10774,27 +15049,66 @@ func (s *ListDisposeStrategyResponseBodyDataPageInfo) SetTotalCount(v int64) *Li
 }
 
 type ListDisposeStrategyResponseBodyDataResponseData struct {
-	AlertUuid       *string       `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	Aliuid          *int64        `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	EffectiveStatus *int32        `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
-	Entity          []interface{} `json:"Entity,omitempty" xml:"Entity,omitempty" type:"Repeated"`
-	EntityId        *int64        `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityType      *string       `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	ErrorMessage    *string       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	FinishTime      *string       `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	GmtCreate       *string       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id              *int64        `json:"Id,omitempty" xml:"Id,omitempty"`
-	IncidentName    *string       `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
-	IncidentUuid    *string       `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	PlaybookName    *string       `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	PlaybookType    *string       `json:"PlaybookType,omitempty" xml:"PlaybookType,omitempty"`
-	PlaybookUuid    *string       `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	Scope           []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
-	SophonTaskId    *string       `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	Status          *int32        `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubAliuid       *int64        `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
-	TaskParam       *string       `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
+	// The UUID of the alert.
+	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
+	// The ID of the Alibaba Cloud account that is associated with the policy in SIEM.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The status of the policy. Valid values:
+	//
+	// *   0: invalid
+	// *   1: valid
+	EffectiveStatus *int32 `json:"EffectiveStatus,omitempty" xml:"EffectiveStatus,omitempty"`
+	// The details of the entity. The value is a JSON array.
+	Entity []interface{} `json:"Entity,omitempty" xml:"Entity,omitempty" type:"Repeated"`
+	// The ID of the entity.
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The type of the entity. Valid values:
+	//
+	// *   ip
+	// *   process
+	// *   file
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The summary information about the failed task.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The end time of the task.
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The creation time.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the policy.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the event.
+	IncidentName *string `json:"IncidentName,omitempty" xml:"IncidentName,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The name of the playbook, which is the unique identifier of the playbook.
+	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
+	// The type of the playbook. Valid values:
+	//
+	// *   system: user-triggered playbook
+	// *   custom: event-triggered playbook
+	// *   custom_alert: alert-triggered playbook
+	// *   soar-manual: user-run playbook
+	// *   soar-mdr: MDR-run playbook
+	PlaybookType *string `json:"PlaybookType,omitempty" xml:"PlaybookType,omitempty"`
+	// The UUID of the playbook.
+	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
+	// The scope of the policy.
+	Scope []interface{} `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Repeated"`
+	// The ID of the SOAR handling policy.
+	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
+	// The running status of the playbook. Valid values:
+	//
+	// *   200: successful
+	// *   10: deleted
+	// *   5: failed
+	// *   0: initial
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the Alibaba account that is used to configure the policy.
+	SubAliuid *int64 `json:"SubAliuid,omitempty" xml:"SubAliuid,omitempty"`
+	// The parameters that are used to trigger the playbook. The value is in the JSON format.
+	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
 }
 
 func (s ListDisposeStrategyResponseBodyDataResponseData) String() string {
@@ -10939,7 +15253,163 @@ func (s *ListDisposeStrategyResponse) SetBody(v *ListDisposeStrategyResponseBody
 	return s
 }
 
+type ListImportedLogsByProdRequest struct {
+	CloudCode *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	ProdCode  *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListImportedLogsByProdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImportedLogsByProdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListImportedLogsByProdRequest) SetCloudCode(v string) *ListImportedLogsByProdRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdRequest) SetProdCode(v string) *ListImportedLogsByProdRequest {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdRequest) SetRegionId(v string) *ListImportedLogsByProdRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListImportedLogsByProdResponseBody struct {
+	Data      []*ListImportedLogsByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListImportedLogsByProdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImportedLogsByProdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListImportedLogsByProdResponseBody) SetData(v []*ListImportedLogsByProdResponseBodyData) *ListImportedLogsByProdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBody) SetRequestId(v string) *ListImportedLogsByProdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListImportedLogsByProdResponseBodyData struct {
+	AutoImported        *int32  `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
+	CloudCode           *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	Imported            *int32  `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	ImportedUserCount   *int32  `json:"ImportedUserCount,omitempty" xml:"ImportedUserCount,omitempty"`
+	LogCode             *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	LogMdsCode          *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	ModifyTime          *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ProdCode            *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	TotalUserCount      *int32  `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
+	UnImportedUserCount *int32  `json:"UnImportedUserCount,omitempty" xml:"UnImportedUserCount,omitempty"`
+}
+
+func (s ListImportedLogsByProdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImportedLogsByProdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetAutoImported(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.AutoImported = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetCloudCode(v string) *ListImportedLogsByProdResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetImported(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.Imported = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetImportedUserCount(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.ImportedUserCount = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetLogCode(v string) *ListImportedLogsByProdResponseBodyData {
+	s.LogCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetLogMdsCode(v string) *ListImportedLogsByProdResponseBodyData {
+	s.LogMdsCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetModifyTime(v string) *ListImportedLogsByProdResponseBodyData {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetProdCode(v string) *ListImportedLogsByProdResponseBodyData {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetTotalUserCount(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.TotalUserCount = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponseBodyData) SetUnImportedUserCount(v int32) *ListImportedLogsByProdResponseBodyData {
+	s.UnImportedUserCount = &v
+	return s
+}
+
+type ListImportedLogsByProdResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListImportedLogsByProdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListImportedLogsByProdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListImportedLogsByProdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListImportedLogsByProdResponse) SetHeaders(v map[string]*string) *ListImportedLogsByProdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponse) SetStatusCode(v int32) *ListImportedLogsByProdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListImportedLogsByProdResponse) SetBody(v *ListImportedLogsByProdResponseBody) *ListImportedLogsByProdResponse {
+	s.Body = v
+	return s
+}
+
 type ListOperationRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10957,14 +15427,10 @@ func (s *ListOperationRequest) SetRegionId(v string) *ListOperationRequest {
 }
 
 type ListOperationResponseBody struct {
-	Code      *int32                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                        `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                        `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                        `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response parameters.
+	Data *ListOperationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListOperationResponseBody) String() string {
@@ -10975,33 +15441,8 @@ func (s ListOperationResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListOperationResponseBody) SetCode(v int32) *ListOperationResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListOperationResponseBody) SetData(v *ListOperationResponseBodyData) *ListOperationResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListOperationResponseBody) SetDyCode(v string) *ListOperationResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *ListOperationResponseBody) SetDyMessage(v string) *ListOperationResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *ListOperationResponseBody) SetErrCode(v string) *ListOperationResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListOperationResponseBody) SetMessage(v string) *ListOperationResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -11010,13 +15451,13 @@ func (s *ListOperationResponseBody) SetRequestId(v string) *ListOperationRespons
 	return s
 }
 
-func (s *ListOperationResponseBody) SetSuccess(v bool) *ListOperationResponseBody {
-	s.Success = &v
-	return s
-}
-
 type ListOperationResponseBodyData struct {
-	AdminOrNot    *bool     `json:"AdminOrNot,omitempty" xml:"AdminOrNot,omitempty"`
+	// Indicates whether the user is an administrator. Valid values:
+	//
+	// *   true
+	// *   false
+	AdminOrNot *bool `json:"AdminOrNot,omitempty" xml:"AdminOrNot,omitempty"`
+	// The resources on which the permissions are granted.
 	OperationList []*string `json:"OperationList,omitempty" xml:"OperationList,omitempty" type:"Repeated"`
 }
 
@@ -11067,9 +15508,161 @@ func (s *ListOperationResponse) SetBody(v *ListOperationResponseBody) *ListOpera
 	return s
 }
 
+type ListProjectLogStoresRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+}
+
+func (s ListProjectLogStoresRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLogStoresRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLogStoresRequest) SetRegionId(v string) *ListProjectLogStoresRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListProjectLogStoresRequest) SetSourceLogCode(v string) *ListProjectLogStoresRequest {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *ListProjectLogStoresRequest) SetSourceProdCode(v string) *ListProjectLogStoresRequest {
+	s.SourceProdCode = &v
+	return s
+}
+
+func (s *ListProjectLogStoresRequest) SetSubUserId(v int64) *ListProjectLogStoresRequest {
+	s.SubUserId = &v
+	return s
+}
+
+type ListProjectLogStoresResponseBody struct {
+	Data      []*ListProjectLogStoresResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListProjectLogStoresResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLogStoresResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLogStoresResponseBody) SetData(v []*ListProjectLogStoresResponseBodyData) *ListProjectLogStoresResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBody) SetRequestId(v string) *ListProjectLogStoresResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProjectLogStoresResponseBodyData struct {
+	EndPoint    *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	LocalName   *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	MainUserId  *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	Project     *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubUserId   *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s ListProjectLogStoresResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLogStoresResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetEndPoint(v string) *ListProjectLogStoresResponseBodyData {
+	s.EndPoint = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetLocalName(v string) *ListProjectLogStoresResponseBodyData {
+	s.LocalName = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetLogStore(v string) *ListProjectLogStoresResponseBodyData {
+	s.LogStore = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetMainUserId(v int64) *ListProjectLogStoresResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetProject(v string) *ListProjectLogStoresResponseBodyData {
+	s.Project = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetRegionId(v string) *ListProjectLogStoresResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetSubUserId(v int64) *ListProjectLogStoresResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponseBodyData) SetSubUserName(v string) *ListProjectLogStoresResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type ListProjectLogStoresResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListProjectLogStoresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListProjectLogStoresResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectLogStoresResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectLogStoresResponse) SetHeaders(v map[string]*string) *ListProjectLogStoresResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectLogStoresResponse) SetStatusCode(v int32) *ListProjectLogStoresResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectLogStoresResponse) SetBody(v *ListProjectLogStoresResponseBody) *ListProjectLogStoresResponse {
+	s.Body = v
+	return s
+}
+
 type ListQuickQueryRequest struct {
-	Offset   *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The line from which the query starts. Default value: 0.
+	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The number of entries per page. Valid values: 1 to 500.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -11097,14 +15690,10 @@ func (s *ListQuickQueryRequest) SetRegionId(v string) *ListQuickQueryRequest {
 }
 
 type ListQuickQueryResponseBody struct {
-	Code      *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListQuickQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                         `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                         `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                         `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response parameters.
+	Data *ListQuickQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListQuickQueryResponseBody) String() string {
@@ -11115,33 +15704,8 @@ func (s ListQuickQueryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListQuickQueryResponseBody) SetCode(v int32) *ListQuickQueryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ListQuickQueryResponseBody) SetData(v *ListQuickQueryResponseBodyData) *ListQuickQueryResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ListQuickQueryResponseBody) SetDyCode(v string) *ListQuickQueryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBody) SetDyMessage(v string) *ListQuickQueryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBody) SetErrCode(v string) *ListQuickQueryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ListQuickQueryResponseBody) SetMessage(v string) *ListQuickQueryResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -11150,15 +15714,13 @@ func (s *ListQuickQueryResponseBody) SetRequestId(v string) *ListQuickQueryRespo
 	return s
 }
 
-func (s *ListQuickQueryResponseBody) SetSuccess(v bool) *ListQuickQueryResponseBody {
-	s.Success = &v
-	return s
-}
-
 type ListQuickQueryResponseBodyData struct {
-	Count          *int32                                          `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of saved searches per page.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The saved search.
 	QuickQueryList []*ListQuickQueryResponseBodyDataQuickQueryList `json:"QuickQueryList,omitempty" xml:"QuickQueryList,omitempty" type:"Repeated"`
-	Total          *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The total number of saved searches that meet the query conditions.
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListQuickQueryResponseBodyData) String() string {
@@ -11185,9 +15747,12 @@ func (s *ListQuickQueryResponseBodyData) SetTotal(v int32) *ListQuickQueryRespon
 }
 
 type ListQuickQueryResponseBodyDataQuickQueryList struct {
+	// The alias of the saved search.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	SearchName  *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	// The query statement corresponding to the saved search.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The name of the saved search.
+	SearchName *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
 }
 
 func (s ListQuickQueryResponseBodyDataQuickQueryList) String() string {
@@ -11242,10 +15807,832 @@ func (s *ListQuickQueryResponse) SetBody(v *ListQuickQueryResponseBody) *ListQui
 	return s
 }
 
-type OpenDeliveryRequest struct {
-	LogCode     *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+type ListRdUsersRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListRdUsersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRdUsersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRdUsersRequest) SetRegionId(v string) *ListRdUsersRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListRdUsersResponseBody struct {
+	Data      []*ListRdUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRdUsersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRdUsersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRdUsersResponseBody) SetData(v []*ListRdUsersResponseBodyData) *ListRdUsersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListRdUsersResponseBody) SetRequestId(v string) *ListRdUsersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRdUsersResponseBodyData struct {
+	DelegatedOrNot *bool   `json:"DelegatedOrNot,omitempty" xml:"DelegatedOrNot,omitempty"`
+	Joined         *bool   `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	JoinedTime     *string `json:"JoinedTime,omitempty" xml:"JoinedTime,omitempty"`
+	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s ListRdUsersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRdUsersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRdUsersResponseBodyData) SetDelegatedOrNot(v bool) *ListRdUsersResponseBodyData {
+	s.DelegatedOrNot = &v
+	return s
+}
+
+func (s *ListRdUsersResponseBodyData) SetJoined(v bool) *ListRdUsersResponseBodyData {
+	s.Joined = &v
+	return s
+}
+
+func (s *ListRdUsersResponseBodyData) SetJoinedTime(v string) *ListRdUsersResponseBodyData {
+	s.JoinedTime = &v
+	return s
+}
+
+func (s *ListRdUsersResponseBodyData) SetMainUserId(v int64) *ListRdUsersResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *ListRdUsersResponseBodyData) SetSubUserId(v int64) *ListRdUsersResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *ListRdUsersResponseBodyData) SetSubUserName(v string) *ListRdUsersResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type ListRdUsersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRdUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRdUsersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRdUsersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRdUsersResponse) SetHeaders(v map[string]*string) *ListRdUsersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRdUsersResponse) SetStatusCode(v int32) *ListRdUsersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRdUsersResponse) SetBody(v *ListRdUsersResponseBody) *ListRdUsersResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserProdLogsRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+}
+
+func (s ListUserProdLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProdLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProdLogsRequest) SetRegionId(v string) *ListUserProdLogsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListUserProdLogsRequest) SetSourceLogCode(v string) *ListUserProdLogsRequest {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *ListUserProdLogsRequest) SetSourceProdCode(v string) *ListUserProdLogsRequest {
+	s.SourceProdCode = &v
+	return s
+}
+
+type ListUserProdLogsResponseBody struct {
+	Data      []*ListUserProdLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUserProdLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProdLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProdLogsResponseBody) SetData(v []*ListUserProdLogsResponseBodyData) *ListUserProdLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBody) SetRequestId(v string) *ListUserProdLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUserProdLogsResponseBodyData struct {
+	DisplayLine    *string `json:"DisplayLine,omitempty" xml:"DisplayLine,omitempty"`
+	Displayed      *bool   `json:"Displayed,omitempty" xml:"Displayed,omitempty"`
+	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	IsDeleted      *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceLogInfo  *string `json:"SourceLogInfo,omitempty" xml:"SourceLogInfo,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s ListUserProdLogsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProdLogsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetDisplayLine(v string) *ListUserProdLogsResponseBodyData {
+	s.DisplayLine = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetDisplayed(v bool) *ListUserProdLogsResponseBodyData {
+	s.Displayed = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetImported(v bool) *ListUserProdLogsResponseBodyData {
+	s.Imported = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetIsDeleted(v int32) *ListUserProdLogsResponseBodyData {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetMainUserId(v int64) *ListUserProdLogsResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetSourceLogCode(v string) *ListUserProdLogsResponseBodyData {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetSourceLogInfo(v string) *ListUserProdLogsResponseBodyData {
+	s.SourceLogInfo = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetSourceProdCode(v string) *ListUserProdLogsResponseBodyData {
+	s.SourceProdCode = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetSubUserId(v int64) *ListUserProdLogsResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponseBodyData) SetSubUserName(v string) *ListUserProdLogsResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type ListUserProdLogsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUserProdLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserProdLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserProdLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserProdLogsResponse) SetHeaders(v map[string]*string) *ListUserProdLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserProdLogsResponse) SetStatusCode(v int32) *ListUserProdLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserProdLogsResponse) SetBody(v *ListUserProdLogsResponseBody) *ListUserProdLogsResponse {
+	s.Body = v
+	return s
+}
+
+type ListUsersByProdRequest struct {
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+}
+
+func (s ListUsersByProdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersByProdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersByProdRequest) SetRegionId(v string) *ListUsersByProdRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListUsersByProdRequest) SetSourceProdCode(v string) *ListUsersByProdRequest {
+	s.SourceProdCode = &v
+	return s
+}
+
+type ListUsersByProdResponseBody struct {
+	Data      []*ListUsersByProdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListUsersByProdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersByProdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersByProdResponseBody) SetData(v []*ListUsersByProdResponseBodyData) *ListUsersByProdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUsersByProdResponseBody) SetRequestId(v string) *ListUsersByProdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListUsersByProdResponseBodyData struct {
+	CloudCode      *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	Imported       *bool   `json:"Imported,omitempty" xml:"Imported,omitempty"`
+	LogMdsCode     *string `json:"LogMdsCode,omitempty" xml:"LogMdsCode,omitempty"`
+	MainUserId     *int64  `json:"MainUserId,omitempty" xml:"MainUserId,omitempty"`
+	SourceLogCode  *string `json:"SourceLogCode,omitempty" xml:"SourceLogCode,omitempty"`
+	SourceLogName  *string `json:"SourceLogName,omitempty" xml:"SourceLogName,omitempty"`
+	SourceProdCode *string `json:"SourceProdCode,omitempty" xml:"SourceProdCode,omitempty"`
+	SubUserId      *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	SubUserName    *string `json:"SubUserName,omitempty" xml:"SubUserName,omitempty"`
+}
+
+func (s ListUsersByProdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersByProdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersByProdResponseBodyData) SetCloudCode(v string) *ListUsersByProdResponseBodyData {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetImported(v bool) *ListUsersByProdResponseBodyData {
+	s.Imported = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetLogMdsCode(v string) *ListUsersByProdResponseBodyData {
+	s.LogMdsCode = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetMainUserId(v int64) *ListUsersByProdResponseBodyData {
+	s.MainUserId = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetSourceLogCode(v string) *ListUsersByProdResponseBodyData {
+	s.SourceLogCode = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetSourceLogName(v string) *ListUsersByProdResponseBodyData {
+	s.SourceLogName = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetSourceProdCode(v string) *ListUsersByProdResponseBodyData {
+	s.SourceProdCode = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetSubUserId(v int64) *ListUsersByProdResponseBodyData {
+	s.SubUserId = &v
+	return s
+}
+
+func (s *ListUsersByProdResponseBodyData) SetSubUserName(v string) *ListUsersByProdResponseBodyData {
+	s.SubUserName = &v
+	return s
+}
+
+type ListUsersByProdResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListUsersByProdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUsersByProdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersByProdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersByProdResponse) SetHeaders(v map[string]*string) *ListUsersByProdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersByProdResponse) SetStatusCode(v int32) *ListUsersByProdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUsersByProdResponse) SetBody(v *ListUsersByProdResponseBody) *ListUsersByProdResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBindAccountRequest struct {
+	AccessId    *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	BindId      *int64  `json:"BindId,omitempty" xml:"BindId,omitempty"`
+	CloudCode   *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyBindAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBindAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBindAccountRequest) SetAccessId(v string) *ModifyBindAccountRequest {
+	s.AccessId = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetAccountId(v string) *ModifyBindAccountRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetAccountName(v string) *ModifyBindAccountRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetBindId(v int64) *ModifyBindAccountRequest {
+	s.BindId = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetCloudCode(v string) *ModifyBindAccountRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ModifyBindAccountRequest) SetRegionId(v string) *ModifyBindAccountRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyBindAccountResponseBody struct {
+	Data      *ModifyBindAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyBindAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBindAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBindAccountResponseBody) SetData(v *ModifyBindAccountResponseBodyData) *ModifyBindAccountResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyBindAccountResponseBody) SetRequestId(v string) *ModifyBindAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyBindAccountResponseBodyData struct {
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s ModifyBindAccountResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBindAccountResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBindAccountResponseBodyData) SetCount(v int32) *ModifyBindAccountResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type ModifyBindAccountResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyBindAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyBindAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBindAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBindAccountResponse) SetHeaders(v map[string]*string) *ModifyBindAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBindAccountResponse) SetStatusCode(v int32) *ModifyBindAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBindAccountResponse) SetBody(v *ModifyBindAccountResponseBody) *ModifyBindAccountResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDataSourceRequest struct {
+	AccountId                *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode                *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId     *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceInstanceName   *string `json:"DataSourceInstanceName,omitempty" xml:"DataSourceInstanceName,omitempty"`
+	DataSourceInstanceParams *string `json:"DataSourceInstanceParams,omitempty" xml:"DataSourceInstanceParams,omitempty"`
+	DataSourceInstanceRemark *string `json:"DataSourceInstanceRemark,omitempty" xml:"DataSourceInstanceRemark,omitempty"`
+	DataSourceType           *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceRequest) SetAccountId(v string) *ModifyDataSourceRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetCloudCode(v string) *ModifyDataSourceRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetDataSourceInstanceId(v string) *ModifyDataSourceRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetDataSourceInstanceName(v string) *ModifyDataSourceRequest {
+	s.DataSourceInstanceName = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetDataSourceInstanceParams(v string) *ModifyDataSourceRequest {
+	s.DataSourceInstanceParams = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetDataSourceInstanceRemark(v string) *ModifyDataSourceRequest {
+	s.DataSourceInstanceRemark = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetDataSourceType(v string) *ModifyDataSourceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ModifyDataSourceRequest) SetRegionId(v string) *ModifyDataSourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDataSourceResponseBody struct {
+	Data      *ModifyDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceResponseBody) SetData(v *ModifyDataSourceResponseBodyData) *ModifyDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyDataSourceResponseBody) SetRequestId(v string) *ModifyDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDataSourceResponseBodyData struct {
+	Count                *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DataSourceInstanceId *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+}
+
+func (s ModifyDataSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceResponseBodyData) SetCount(v int32) *ModifyDataSourceResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *ModifyDataSourceResponseBodyData) SetDataSourceInstanceId(v string) *ModifyDataSourceResponseBodyData {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+type ModifyDataSourceResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceResponse) SetHeaders(v map[string]*string) *ModifyDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDataSourceResponse) SetStatusCode(v int32) *ModifyDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDataSourceResponse) SetBody(v *ModifyDataSourceResponseBody) *ModifyDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDataSourceLogRequest struct {
+	AccountId              *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CloudCode              *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	DataSourceInstanceId   *string `json:"DataSourceInstanceId,omitempty" xml:"DataSourceInstanceId,omitempty"`
+	DataSourceInstanceLogs *string `json:"DataSourceInstanceLogs,omitempty" xml:"DataSourceInstanceLogs,omitempty"`
+	DataSourceType         *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	LogCode                *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	LogInstanceId          *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ModifyDataSourceLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceLogRequest) SetAccountId(v string) *ModifyDataSourceLogRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetCloudCode(v string) *ModifyDataSourceLogRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetDataSourceInstanceId(v string) *ModifyDataSourceLogRequest {
+	s.DataSourceInstanceId = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetDataSourceInstanceLogs(v string) *ModifyDataSourceLogRequest {
+	s.DataSourceInstanceLogs = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetDataSourceType(v string) *ModifyDataSourceLogRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetLogCode(v string) *ModifyDataSourceLogRequest {
+	s.LogCode = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetLogInstanceId(v string) *ModifyDataSourceLogRequest {
+	s.LogInstanceId = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogRequest) SetRegionId(v string) *ModifyDataSourceLogRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ModifyDataSourceLogResponseBody struct {
+	Data      *ModifyDataSourceLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDataSourceLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceLogResponseBody) SetData(v *ModifyDataSourceLogResponseBodyData) *ModifyDataSourceLogResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyDataSourceLogResponseBody) SetRequestId(v string) *ModifyDataSourceLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDataSourceLogResponseBodyData struct {
+	Count         *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	LogInstanceId *string `json:"LogInstanceId,omitempty" xml:"LogInstanceId,omitempty"`
+}
+
+func (s ModifyDataSourceLogResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceLogResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceLogResponseBodyData) SetCount(v int32) *ModifyDataSourceLogResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogResponseBodyData) SetLogInstanceId(v string) *ModifyDataSourceLogResponseBodyData {
+	s.LogInstanceId = &v
+	return s
+}
+
+type ModifyDataSourceLogResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDataSourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDataSourceLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDataSourceLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDataSourceLogResponse) SetHeaders(v map[string]*string) *ModifyDataSourceLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDataSourceLogResponse) SetStatusCode(v int32) *ModifyDataSourceLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDataSourceLogResponse) SetBody(v *ModifyDataSourceLogResponseBody) *ModifyDataSourceLogResponse {
+	s.Body = v
+	return s
+}
+
+type OpenDeliveryRequest struct {
+	// The log code of the cloud service, such as the code of the process log for Security Center. If you leave this parameter empty, operations are performed on all logs of the cloud service.
+	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
+	// The code of the cloud service. Valid values:
+	//
+	// *   qcloud_waf
+	// *   qlcoud_cfw
+	// *   hcloud_waf
+	// *   hcloud_cfw
+	// *   ddos
+	// *   sas
+	// *   cfw
+	// *   config
+	// *   csk
+	// *   fc
+	// *   rds
+	// *   nas
+	// *   apigateway
+	// *   cdn
+	// *   mongodb
+	// *   eip
+	// *   slb
+	// *   vpc
+	// *   actiontrail
+	// *   waf
+	// *   bastionhost
+	// *   oss
+	// *   polardb
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s OpenDeliveryRequest) String() string {
@@ -11272,14 +16659,13 @@ func (s *OpenDeliveryRequest) SetRegionId(v string) *OpenDeliveryRequest {
 }
 
 type OpenDeliveryResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the log delivery feature is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OpenDeliveryResponseBody) String() string {
@@ -11290,43 +16676,13 @@ func (s OpenDeliveryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *OpenDeliveryResponseBody) SetCode(v int32) *OpenDeliveryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *OpenDeliveryResponseBody) SetData(v bool) *OpenDeliveryResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *OpenDeliveryResponseBody) SetDyCode(v string) *OpenDeliveryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *OpenDeliveryResponseBody) SetDyMessage(v string) *OpenDeliveryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *OpenDeliveryResponseBody) SetErrCode(v string) *OpenDeliveryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *OpenDeliveryResponseBody) SetMessage(v string) *OpenDeliveryResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *OpenDeliveryResponseBody) SetRequestId(v string) *OpenDeliveryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *OpenDeliveryResponseBody) SetSuccess(v bool) *OpenDeliveryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -11360,14 +16716,32 @@ func (s *OpenDeliveryResponse) SetBody(v *OpenDeliveryResponseBody) *OpenDeliver
 }
 
 type PostAutomateResponseConfigRequest struct {
-	ActionConfig       *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
-	ActionType         *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	AutoResponseType   *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
+	// The configuration of the action that is performed after the rule is hit. The value is in JSON format.
+	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
+	// The action that is performed after the rule is hit. Separate multiple values with commas (,). Valid values:
+	//
+	// *   doPlaybook: Execute a playbook.
+	// *   changeEventStatus: Change the event status.
+	// *   changeThreatLevel: Change the threat level of the event.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The rule type. Valid values:
+	//
+	// *   event
+	// *   alert
+	AutoResponseType *string `json:"AutoResponseType,omitempty" xml:"AutoResponseType,omitempty"`
+	// The trigger condition of the rule. The value is in JSON format.
 	ExecutionCondition *string `json:"ExecutionCondition,omitempty" xml:"ExecutionCondition,omitempty"`
-	Id                 *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName           *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SubUserId          *int64  `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
+	// The rule ID.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The rule name.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The ID of the user who created the rule.
+	SubUserId *int64 `json:"SubUserId,omitempty" xml:"SubUserId,omitempty"`
 }
 
 func (s PostAutomateResponseConfigRequest) String() string {
@@ -11419,11 +16793,19 @@ func (s *PostAutomateResponseConfigRequest) SetSubUserId(v int64) *PostAutomateR
 }
 
 type PostAutomateResponseConfigResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostAutomateResponseConfigResponseBody) String() string {
@@ -11489,24 +16871,56 @@ func (s *PostAutomateResponseConfigResponse) SetBody(v *PostAutomateResponseConf
 }
 
 type PostCustomizeRuleRequest struct {
-	AlertType           *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeMds        *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	EventTransferExt    *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	EventTransferSwitch *int32  `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	EventTransferType   *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSource           *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogSourceMds        *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	LogType             *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	LogTypeMds          *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	QueryCycle          *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleCondition       *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
-	RuleDesc            *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	RuleGroup           *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
-	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleThreshold       *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	ThreatLevel         *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The risk type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the risk type.
+	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
+	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
+	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
+	// Specifies whether to convert an alert to an event. Valid values:
+	//
+	// *   0: no
+	// *   1: yes
+	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
+	// The event generation method. Valid values:
+	//
+	// *   default: The default method is used.
+	// *   singleToSingle: The system generates an event for each alert.
+	// *   allToSingle: The system generates an event for alerts within a period of time.
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The internal code of the log source.
+	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The internal code of the log type.
+	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
+	// The window length of the rule.
+	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The query condition of the rule. The value is in the JSON format.
+	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
+	// The description of the rule.
+	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// The log aggregation field of the rule. The value is a JSON string.
+	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The threshold configuration of the rule. The value is in the JSON format.
+	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
 func (s PostCustomizeRuleRequest) String() string {
@@ -11608,11 +17022,19 @@ func (s *PostCustomizeRuleRequest) SetThreatLevel(v string) *PostCustomizeRuleRe
 }
 
 type PostCustomizeRuleResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *PostCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *PostCustomizeRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostCustomizeRuleResponseBody) String() string {
@@ -11649,28 +17071,70 @@ func (s *PostCustomizeRuleResponseBody) SetSuccess(v bool) *PostCustomizeRuleRes
 }
 
 type PostCustomizeRuleResponseBodyData struct {
-	AlertType           *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	AlertTypeMds        *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
-	Aliuid              *int64  `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	EventTransferExt    *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
-	EventTransferSwitch *int32  `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
-	EventTransferType   *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	LogSource           *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
-	LogSourceMds        *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
-	LogType             *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	LogTypeMds          *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
-	QueryCycle          *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
-	RuleCondition       *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
-	RuleDesc            *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
-	RuleGroup           *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
-	RuleName            *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	RuleThreshold       *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
-	RuleType            *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ThreatLevel         *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
+	// The risk type.
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The internal code of the risk type.
+	AlertTypeMds *string `json:"AlertTypeMds,omitempty" xml:"AlertTypeMds,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	// The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+	EventTransferExt *string `json:"EventTransferExt,omitempty" xml:"EventTransferExt,omitempty"`
+	// Indicates whether the system generates an event for the alert. Valid values:
+	//
+	// *   0: no
+	// *   1: yes
+	EventTransferSwitch *int32 `json:"EventTransferSwitch,omitempty" xml:"EventTransferSwitch,omitempty"`
+	// The event generation method. Valid values:
+	//
+	// *   default: The default method is used.
+	// *   singleToSingle: The system generates an event for each alert.
+	// *   allToSingle: The system generates an event for alerts within a period of time.
+	EventTransferType *string `json:"EventTransferType,omitempty" xml:"EventTransferType,omitempty"`
+	// The time when the custom rule was created.
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the custom rule was last updated.
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the custom rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log source of the rule.
+	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The internal code of the log source.
+	LogSourceMds *string `json:"LogSourceMds,omitempty" xml:"LogSourceMds,omitempty"`
+	// The log type of the rule.
+	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	// The internal code of the log type.
+	LogTypeMds *string `json:"LogTypeMds,omitempty" xml:"LogTypeMds,omitempty"`
+	// The window length of the rule. The HTML escape characters are reversed.
+	QueryCycle *string `json:"QueryCycle,omitempty" xml:"QueryCycle,omitempty"`
+	// The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	RuleCondition *string `json:"RuleCondition,omitempty" xml:"RuleCondition,omitempty"`
+	// The description of the rule.
+	RuleDesc *string `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	// The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+	RuleGroup *string `json:"RuleGroup,omitempty" xml:"RuleGroup,omitempty"`
+	// The name of the rule.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+	RuleThreshold *string `json:"RuleThreshold,omitempty" xml:"RuleThreshold,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	// The rule status. Valid values:
+	//
+	// *   0: The rule is in the initial state.
+	// *   10: The simulation data is tested.
+	// *   15: The business data is being tested.
+	// *   20: The business data test ends.
+	// *   100: The rule takes effect.
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The risk level. Valid values:
+	//
+	// *   serious: high
+	// *   suspicious: medium
+	// *   remind: low
+	ThreatLevel *string `json:"ThreatLevel,omitempty" xml:"ThreatLevel,omitempty"`
 }
 
 func (s PostCustomizeRuleResponseBodyData) String() string {
@@ -11821,10 +17285,20 @@ func (s *PostCustomizeRuleResponse) SetBody(v *PostCustomizeRuleResponseBody) *P
 }
 
 type PostCustomizeRuleTestRequest struct {
-	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The simulation data for the testing. This parameter is available only when TestType is set to simulate.
 	SimulatedData *string `json:"SimulatedData,omitempty" xml:"SimulatedData,omitempty"`
-	TestType      *string `json:"TestType,omitempty" xml:"TestType,omitempty"`
+	// The testing type. Valid values:
+	//
+	// *   simulate: simulation data test
+	// *   business: business data test
+	TestType *string `json:"TestType,omitempty" xml:"TestType,omitempty"`
 }
 
 func (s PostCustomizeRuleTestRequest) String() string {
@@ -11856,11 +17330,19 @@ func (s *PostCustomizeRuleTestRequest) SetTestType(v string) *PostCustomizeRuleT
 }
 
 type PostCustomizeRuleTestResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostCustomizeRuleTestResponseBody) String() string {
@@ -11926,12 +17408,26 @@ func (s *PostCustomizeRuleTestResponse) SetBody(v *PostCustomizeRuleTestResponse
 }
 
 type PostEventDisposeAndWhiteruleListRequest struct {
+	// The configuration of event handling. The value is a JSON object.
 	EventDispose *string `json:"EventDispose,omitempty" xml:"EventDispose,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The configuration of the alert recipient. The value is a JSON object.
 	ReceiverInfo *string `json:"ReceiverInfo,omitempty" xml:"ReceiverInfo,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remarks of the event.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The status of the event. Valid values:
+	//
+	// *   0: unhandled
+	// *   1: handing
+	// *   5: handling failed
+	// *   10: handled
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PostEventDisposeAndWhiteruleListRequest) String() string {
@@ -11973,11 +17469,19 @@ func (s *PostEventDisposeAndWhiteruleListRequest) SetStatus(v int32) *PostEventD
 }
 
 type PostEventDisposeAndWhiteruleListResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostEventDisposeAndWhiteruleListResponseBody) String() string {
@@ -12043,8 +17547,14 @@ func (s *PostEventDisposeAndWhiteruleListResponse) SetBody(v *PostEventDisposeAn
 }
 
 type PostEventWhiteruleListRequest struct {
-	IncidentUuid  *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The UUID of the event.
+	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The alert whitelist rule. The value is a JSON object.
 	WhiteruleList *string `json:"WhiteruleList,omitempty" xml:"WhiteruleList,omitempty"`
 }
 
@@ -12072,11 +17582,19 @@ func (s *PostEventWhiteruleListRequest) SetWhiteruleList(v string) *PostEventWhi
 }
 
 type PostEventWhiteruleListResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostEventWhiteruleListResponseBody) String() string {
@@ -12142,7 +17660,12 @@ func (s *PostEventWhiteruleListResponse) SetBody(v *PostEventWhiteruleListRespon
 }
 
 type PostFinishCustomizeRuleTestRequest struct {
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the rule.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12165,11 +17688,19 @@ func (s *PostFinishCustomizeRuleTestRequest) SetRegionId(v string) *PostFinishCu
 }
 
 type PostFinishCustomizeRuleTestResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostFinishCustomizeRuleTestResponseBody) String() string {
@@ -12235,9 +17766,22 @@ func (s *PostFinishCustomizeRuleTestResponse) SetBody(v *PostFinishCustomizeRule
 }
 
 type PostRuleStatusChangeRequest struct {
-	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	InUse    *bool   `json:"InUse,omitempty" xml:"InUse,omitempty"`
+	// The rule IDs. The value is a JSON array.
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether to enable the rule. Valid values:
+	//
+	// *   true
+	// *   false
+	InUse *bool `json:"InUse,omitempty" xml:"InUse,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   predefine
+	// *   customize
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 }
 
@@ -12270,11 +17814,19 @@ func (s *PostRuleStatusChangeRequest) SetRuleType(v string) *PostRuleStatusChang
 }
 
 type PostRuleStatusChangeResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PostRuleStatusChangeResponseBody) String() string {
@@ -12340,6 +17892,10 @@ func (s *PostRuleStatusChangeResponse) SetBody(v *PostRuleStatusChangeResponseBo
 }
 
 type RestoreCapacityRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12357,14 +17913,13 @@ func (s *RestoreCapacityRequest) SetRegionId(v string) *RestoreCapacityRequest {
 }
 
 type RestoreCapacityResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the release command has been sent. Valid values:
+	//
+	// *   true: The command has been sent and the storage space is being released.
+	// *   false: The command failed to be sent.
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RestoreCapacityResponseBody) String() string {
@@ -12375,43 +17930,13 @@ func (s RestoreCapacityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RestoreCapacityResponseBody) SetCode(v int32) *RestoreCapacityResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *RestoreCapacityResponseBody) SetData(v bool) *RestoreCapacityResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *RestoreCapacityResponseBody) SetDyCode(v string) *RestoreCapacityResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *RestoreCapacityResponseBody) SetDyMessage(v string) *RestoreCapacityResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *RestoreCapacityResponseBody) SetErrCode(v string) *RestoreCapacityResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *RestoreCapacityResponseBody) SetMessage(v string) *RestoreCapacityResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *RestoreCapacityResponseBody) SetRequestId(v string) *RestoreCapacityResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RestoreCapacityResponseBody) SetSuccess(v bool) *RestoreCapacityResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -12445,9 +17970,15 @@ func (s *RestoreCapacityResponse) SetBody(v *RestoreCapacityResponseBody) *Resto
 }
 
 type SaveQuickQueryRequest struct {
+	// The name of the saved search.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The query statement.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SaveQuickQueryRequest) String() string {
@@ -12474,14 +18005,13 @@ func (s *SaveQuickQueryRequest) SetRegionId(v string) *SaveQuickQueryRequest {
 }
 
 type SaveQuickQueryResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the query statement is saved as a saved search. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SaveQuickQueryResponseBody) String() string {
@@ -12492,43 +18022,13 @@ func (s SaveQuickQueryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SaveQuickQueryResponseBody) SetCode(v int32) *SaveQuickQueryResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *SaveQuickQueryResponseBody) SetData(v bool) *SaveQuickQueryResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *SaveQuickQueryResponseBody) SetDyCode(v string) *SaveQuickQueryResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponseBody) SetDyMessage(v string) *SaveQuickQueryResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponseBody) SetErrCode(v string) *SaveQuickQueryResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponseBody) SetMessage(v string) *SaveQuickQueryResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *SaveQuickQueryResponseBody) SetRequestId(v string) *SaveQuickQueryResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SaveQuickQueryResponseBody) SetSuccess(v bool) *SaveQuickQueryResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -12562,9 +18062,15 @@ func (s *SaveQuickQueryResponse) SetBody(v *SaveQuickQueryResponseBody) *SaveQui
 }
 
 type SetStorageRequest struct {
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The storage region of logs. By default, the region of the data management center is used and cannot be changed. cn-shanghai is used for the China data management center, and ap-southeast-1 is used for the Outside China data management center. To change the region, contact the technical support of threat analysis.
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Ttl      *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The storage duration of logs. Default value: 180. Minimum value: 30. Maximum value: 3000. Unit: days.
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
 }
 
 func (s SetStorageRequest) String() string {
@@ -12591,14 +18097,13 @@ func (s *SetStorageRequest) SetTtl(v int32) *SetStorageRequest {
 }
 
 type SetStorageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	DyCode    *string `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the settings are saved. Valid values:
+	//
+	// *   true
+	// *   false
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetStorageResponseBody) String() string {
@@ -12609,43 +18114,13 @@ func (s SetStorageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SetStorageResponseBody) SetCode(v int32) *SetStorageResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *SetStorageResponseBody) SetData(v bool) *SetStorageResponseBody {
 	s.Data = &v
 	return s
 }
 
-func (s *SetStorageResponseBody) SetDyCode(v string) *SetStorageResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *SetStorageResponseBody) SetDyMessage(v string) *SetStorageResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *SetStorageResponseBody) SetErrCode(v string) *SetStorageResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *SetStorageResponseBody) SetMessage(v string) *SetStorageResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *SetStorageResponseBody) SetRequestId(v string) *SetStorageResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *SetStorageResponseBody) SetSuccess(v bool) *SetStorageResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -12679,6 +18154,10 @@ func (s *SetStorageResponse) SetBody(v *SetStorageResponseBody) *SetStorageRespo
 }
 
 type ShowQuickAnalysisRequest struct {
+	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
+	// *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12696,14 +18175,10 @@ func (s *ShowQuickAnalysisRequest) SetRegionId(v string) *ShowQuickAnalysisReque
 }
 
 type ShowQuickAnalysisResponseBody struct {
-	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ShowQuickAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	DyCode    *string                            `json:"DyCode,omitempty" xml:"DyCode,omitempty"`
-	DyMessage *string                            `json:"DyMessage,omitempty" xml:"DyMessage,omitempty"`
-	ErrCode   *string                            `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The index fields.
+	Data *ShowQuickAnalysisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ShowQuickAnalysisResponseBody) String() string {
@@ -12714,33 +18189,8 @@ func (s ShowQuickAnalysisResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ShowQuickAnalysisResponseBody) SetCode(v int32) *ShowQuickAnalysisResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *ShowQuickAnalysisResponseBody) SetData(v *ShowQuickAnalysisResponseBodyData) *ShowQuickAnalysisResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetDyCode(v string) *ShowQuickAnalysisResponseBody {
-	s.DyCode = &v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetDyMessage(v string) *ShowQuickAnalysisResponseBody {
-	s.DyMessage = &v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetErrCode(v string) *ShowQuickAnalysisResponseBody {
-	s.ErrCode = &v
-	return s
-}
-
-func (s *ShowQuickAnalysisResponseBody) SetMessage(v string) *ShowQuickAnalysisResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -12749,12 +18199,8 @@ func (s *ShowQuickAnalysisResponseBody) SetRequestId(v string) *ShowQuickAnalysi
 	return s
 }
 
-func (s *ShowQuickAnalysisResponseBody) SetSuccess(v bool) *ShowQuickAnalysisResponseBody {
-	s.Success = &v
-	return s
-}
-
 type ShowQuickAnalysisResponseBodyData struct {
+	// The index fields of the logs.
 	IndexList []*string `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Repeated"`
 }
 
@@ -12800,9 +18246,209 @@ func (s *ShowQuickAnalysisResponse) SetBody(v *ShowQuickAnalysisResponseBody) *S
 	return s
 }
 
+type SubmitImportLogTasksRequest struct {
+	Accounts     *string `json:"Accounts,omitempty" xml:"Accounts,omitempty"`
+	AutoImported *int32  `json:"AutoImported,omitempty" xml:"AutoImported,omitempty"`
+	CloudCode    *string `json:"CloudCode,omitempty" xml:"CloudCode,omitempty"`
+	LogCodes     *string `json:"LogCodes,omitempty" xml:"LogCodes,omitempty"`
+	ProdCode     *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SubmitImportLogTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImportLogTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImportLogTasksRequest) SetAccounts(v string) *SubmitImportLogTasksRequest {
+	s.Accounts = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetAutoImported(v int32) *SubmitImportLogTasksRequest {
+	s.AutoImported = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetCloudCode(v string) *SubmitImportLogTasksRequest {
+	s.CloudCode = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetLogCodes(v string) *SubmitImportLogTasksRequest {
+	s.LogCodes = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetProdCode(v string) *SubmitImportLogTasksRequest {
+	s.ProdCode = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksRequest) SetRegionId(v string) *SubmitImportLogTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SubmitImportLogTasksResponseBody struct {
+	Data      *SubmitImportLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitImportLogTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImportLogTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImportLogTasksResponseBody) SetData(v *SubmitImportLogTasksResponseBodyData) *SubmitImportLogTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitImportLogTasksResponseBody) SetRequestId(v string) *SubmitImportLogTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitImportLogTasksResponseBodyData struct {
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s SubmitImportLogTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImportLogTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImportLogTasksResponseBodyData) SetCount(v int32) *SubmitImportLogTasksResponseBodyData {
+	s.Count = &v
+	return s
+}
+
+type SubmitImportLogTasksResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitImportLogTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitImportLogTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImportLogTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImportLogTasksResponse) SetHeaders(v map[string]*string) *SubmitImportLogTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitImportLogTasksResponse) SetStatusCode(v int32) *SubmitImportLogTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitImportLogTasksResponse) SetBody(v *SubmitImportLogTasksResponseBody) *SubmitImportLogTasksResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitJobsRequest struct {
+	JsonParam *string `json:"JsonParam,omitempty" xml:"JsonParam,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SubmitJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitJobsRequest) SetJsonParam(v string) *SubmitJobsRequest {
+	s.JsonParam = &v
+	return s
+}
+
+func (s *SubmitJobsRequest) SetRegionId(v string) *SubmitJobsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SubmitJobsResponseBody struct {
+	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitJobsResponseBody) SetData(v int32) *SubmitJobsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitJobsResponseBody) SetRequestId(v string) *SubmitJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitJobsResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubmitJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitJobsResponse) SetHeaders(v map[string]*string) *SubmitJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitJobsResponse) SetStatusCode(v int32) *SubmitJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitJobsResponse) SetBody(v *SubmitJobsResponseBody) *SubmitJobsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAutomateResponseConfigStatusRequest struct {
-	Ids      *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	InUse    *bool   `json:"InUse,omitempty" xml:"InUse,omitempty"`
+	// The IDs of the automatic response rules. The value is a JSON array.
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// Specifies whether the rule is enabled. Valid values:
+	//
+	// *   true
+	// *   false
+	InUse *bool `json:"InUse,omitempty" xml:"InUse,omitempty"`
+	// The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions inside China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -12830,11 +18476,19 @@ func (s *UpdateAutomateResponseConfigStatusRequest) SetRegionId(v string) *Updat
 }
 
 type UpdateAutomateResponseConfigStatusResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateAutomateResponseConfigStatusResponseBody) String() string {
@@ -12900,10 +18554,17 @@ func (s *UpdateAutomateResponseConfigStatusResponse) SetBody(v *UpdateAutomateRe
 }
 
 type UpdateWhiteRuleListRequest struct {
-	Expression   *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The alert whitelist rule. The value is a JSON object.
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// The UUID of the event.
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	WhiteRuleId  *int64  `json:"WhiteRuleId,omitempty" xml:"WhiteRuleId,omitempty"`
+	// The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+	//
+	// *   cn-hangzhou: Your assets reside in regions in China.
+	// *   ap-southeast-1: Your assets reside in regions outside China.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID of the whitelist rule.
+	WhiteRuleId *int64 `json:"WhiteRuleId,omitempty" xml:"WhiteRuleId,omitempty"`
 }
 
 func (s UpdateWhiteRuleListRequest) String() string {
@@ -12935,11 +18596,19 @@ func (s *UpdateWhiteRuleListRequest) SetWhiteRuleId(v int64) *UpdateWhiteRuleLis
 }
 
 type UpdateWhiteRuleListResponseBody struct {
-	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateWhiteRuleListResponseBody) String() string {
@@ -13051,6 +18720,254 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddDataSourceWithOptions(request *AddDataSourceRequest, runtime *util.RuntimeOptions) (_result *AddDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceName)) {
+		body["DataSourceInstanceName"] = request.DataSourceInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceParams)) {
+		body["DataSourceInstanceParams"] = request.DataSourceInstanceParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceRemark)) {
+		body["DataSourceInstanceRemark"] = request.DataSourceInstanceRemark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDataSource"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDataSource(request *AddDataSourceRequest) (_result *AddDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDataSourceResponse{}
+	_body, _err := client.AddDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddDataSourceLogWithOptions(request *AddDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *AddDataSourceLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceLogs)) {
+		body["DataSourceInstanceLogs"] = request.DataSourceInstanceLogs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogCode)) {
+		body["LogCode"] = request.LogCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDataSourceLog"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDataSourceLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddDataSourceLog(request *AddDataSourceLogRequest) (_result *AddDataSourceLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddDataSourceLogResponse{}
+	_body, _err := client.AddDataSourceLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddUserWithOptions(request *AddUserRequest, runtime *util.RuntimeOptions) (_result *AddUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddedUserId)) {
+		body["AddedUserId"] = request.AddedUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUser"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddUser(request *AddUserRequest) (_result *AddUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddUserResponse{}
+	_body, _err := client.AddUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddUserSourceLogConfigWithOptions(request *AddUserSourceLogConfigRequest, runtime *util.RuntimeOptions) (_result *AddUserSourceLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Deleted)) {
+		body["Deleted"] = request.Deleted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisPlayLine)) {
+		body["DisPlayLine"] = request.DisPlayLine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLogCode)) {
+		body["SourceLogCode"] = request.SourceLogCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLogInfo)) {
+		body["SourceLogInfo"] = request.SourceLogInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
+		body["SourceProdCode"] = request.SourceProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUserSourceLogConfig"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddUserSourceLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddUserSourceLogConfig(request *AddUserSourceLogConfigRequest) (_result *AddUserSourceLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddUserSourceLogConfigResponse{}
+	_body, _err := client.AddUserSourceLogConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchJobCheckWithOptions(request *BatchJobCheckRequest, runtime *util.RuntimeOptions) (_result *BatchJobCheckResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13140,6 +19057,66 @@ func (client *Client) BatchJobSubmit(request *BatchJobSubmitRequest) (_result *B
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchJobSubmitResponse{}
 	_body, _err := client.BatchJobSubmitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtime *util.RuntimeOptions) (_result *BindAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessId)) {
+		body["AccessId"] = request.AccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		body["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAccount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindAccount(request *BindAccountRequest) (_result *BindAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAccountResponse{}
+	_body, _err := client.BindAccountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13247,6 +19224,66 @@ func (client *Client) DeleteAutomateResponseConfig(request *DeleteAutomateRespon
 	return _result, _err
 }
 
+func (client *Client) DeleteBindAccountWithOptions(request *DeleteBindAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteBindAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessId)) {
+		body["AccessId"] = request.AccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindId)) {
+		body["BindId"] = request.BindId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBindAccount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBindAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBindAccount(request *DeleteBindAccountRequest) (_result *DeleteBindAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBindAccountResponse{}
+	_body, _err := client.DeleteBindAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCustomizeRuleWithOptions(request *DeleteCustomizeRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomizeRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13295,6 +19332,122 @@ func (client *Client) DeleteCustomizeRule(request *DeleteCustomizeRuleRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSource"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_result *DeleteDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceResponse{}
+	_body, _err := client.DeleteDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSourceLogWithOptions(request *DeleteDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogInstanceId)) {
+		body["LogInstanceId"] = request.LogInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSourceLog"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSourceLog(request *DeleteDataSourceLogRequest) (_result *DeleteDataSourceLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceLogResponse{}
+	_body, _err := client.DeleteDataSourceLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteQuickQueryWithOptions(request *DeleteQuickQueryRequest, runtime *util.RuntimeOptions) (_result *DeleteQuickQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13336,6 +19489,54 @@ func (client *Client) DeleteQuickQuery(request *DeleteQuickQueryRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteQuickQueryResponse{}
 	_body, _err := client.DeleteQuickQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime *util.RuntimeOptions) (_result *DeleteUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddedUserId)) {
+		body["AddedUserId"] = request.AddedUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUser"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserResponse{}
+	_body, _err := client.DeleteUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14011,6 +20212,50 @@ func (client *Client) DescribeAttackTimeLine(request *DescribeAttackTimeLineRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeAuthWithOptions(request *DescribeAuthRequest, runtime *util.RuntimeOptions) (_result *DescribeAuthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAuth"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAuth(request *DescribeAuthRequest) (_result *DescribeAuthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAuthResponse{}
+	_body, _err := client.DescribeAuthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAutomateResponseConfigCounterWithOptions(request *DescribeAutomateResponseConfigCounterRequest, runtime *util.RuntimeOptions) (_result *DescribeAutomateResponseConfigCounterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14399,6 +20644,58 @@ func (client *Client) DescribeCloudSiemEvents(request *DescribeCloudSiemEventsRe
 	return _result, _err
 }
 
+func (client *Client) DescribeCsImportedProdStatusByUserWithOptions(request *DescribeCsImportedProdStatusByUserRequest, runtime *util.RuntimeOptions) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLogProd)) {
+		body["SourceLogProd"] = request.SourceLogProd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCsImportedProdStatusByUser"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCsImportedProdStatusByUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCsImportedProdStatusByUser(request *DescribeCsImportedProdStatusByUserRequest) (_result *DescribeCsImportedProdStatusByUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCsImportedProdStatusByUserResponse{}
+	_body, _err := client.DescribeCsImportedProdStatusByUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeCustomizeRuleWithOptions(request *DescribeCustomizeRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomizeRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14580,6 +20877,114 @@ func (client *Client) DescribeCustomizeRuleTestHistogram(request *DescribeCustom
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCustomizeRuleTestHistogramResponse{}
 	_body, _err := client.DescribeCustomizeRuleTestHistogramWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSourceInstanceWithOptions(request *DescribeDataSourceInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSourceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataSourceInstance"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataSourceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSourceInstance(request *DescribeDataSourceInstanceRequest) (_result *DescribeDataSourceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataSourceInstanceResponse{}
+	_body, _err := client.DescribeDataSourceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSourceParametersWithOptions(request *DescribeDataSourceParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSourceParametersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataSourceParameters"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataSourceParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSourceParameters(request *DescribeDataSourceParametersRequest) (_result *DescribeDataSourceParametersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataSourceParametersResponse{}
+	_body, _err := client.DescribeDataSourceParametersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14852,6 +21257,50 @@ func (client *Client) DescribeEventDispose(request *DescribeEventDisposeRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEventDisposeResponse{}
 	_body, _err := client.DescribeEventDisposeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeImportedLogCountWithOptions(request *DescribeImportedLogCountRequest, runtime *util.RuntimeOptions) (_result *DescribeImportedLogCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeImportedLogCount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeImportedLogCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeImportedLogCount(request *DescribeImportedLogCountRequest) (_result *DescribeImportedLogCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeImportedLogCountResponse{}
+	_body, _err := client.DescribeImportedLogCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15143,6 +21592,50 @@ func (client *Client) DescribeOperators(request *DescribeOperatorsRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeProdCountWithOptions(request *DescribeProdCountRequest, runtime *util.RuntimeOptions) (_result *DescribeProdCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeProdCount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeProdCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeProdCount(request *DescribeProdCountRequest) (_result *DescribeProdCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeProdCountResponse{}
+	_body, _err := client.DescribeProdCountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeScopeUsersWithOptions(request *DescribeScopeUsersRequest, runtime *util.RuntimeOptions) (_result *DescribeScopeUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15187,6 +21680,50 @@ func (client *Client) DescribeScopeUsers(request *DescribeScopeUsersRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) DescribeServiceStatusWithOptions(request *DescribeServiceStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceStatus"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceStatus(request *DescribeServiceStatusRequest) (_result *DescribeServiceStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServiceStatusResponse{}
+	_body, _err := client.DescribeServiceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeStorageWithOptions(request *DescribeStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15224,6 +21761,54 @@ func (client *Client) DescribeStorage(request *DescribeStorageRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStorageResponse{}
 	_body, _err := client.DescribeStorageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserBuyStatusWithOptions(request *DescribeUserBuyStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeUserBuyStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserBuyStatus"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserBuyStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserBuyStatus(request *DescribeUserBuyStatusRequest) (_result *DescribeUserBuyStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserBuyStatusResponse{}
+	_body, _err := client.DescribeUserBuyStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15456,6 +22041,94 @@ func (client *Client) DoSelfDelegate(request *DoSelfDelegateRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DoSelfDelegateResponse{}
 	_body, _err := client.DoSelfDelegateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessForCloudSiemRequest, runtime *util.RuntimeOptions) (_result *EnableAccessForCloudSiemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAccessForCloudSiem"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableAccessForCloudSiemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableAccessForCloudSiem(request *EnableAccessForCloudSiemRequest) (_result *EnableAccessForCloudSiemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAccessForCloudSiemResponse{}
+	_body, _err := client.EnableAccessForCloudSiemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableServiceForCloudSiemWithOptions(request *EnableServiceForCloudSiemRequest, runtime *util.RuntimeOptions) (_result *EnableServiceForCloudSiemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableServiceForCloudSiem"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableServiceForCloudSiemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableServiceForCloudSiem(request *EnableServiceForCloudSiemRequest) (_result *EnableServiceForCloudSiemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableServiceForCloudSiemResponse{}
+	_body, _err := client.EnableServiceForCloudSiemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15727,6 +22400,154 @@ func (client *Client) GetStorage(request *GetStorageRequest) (_result *GetStorag
 	return _result, _err
 }
 
+func (client *Client) ListAccountAccessIdWithOptions(request *ListAccountAccessIdRequest, runtime *util.RuntimeOptions) (_result *ListAccountAccessIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccountAccessId"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccountAccessIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAccountAccessId(request *ListAccountAccessIdRequest) (_result *ListAccountAccessIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccountAccessIdResponse{}
+	_body, _err := client.ListAccountAccessIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAccountsByLogWithOptions(request *ListAccountsByLogRequest, runtime *util.RuntimeOptions) (_result *ListAccountsByLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogCodes)) {
+		body["LogCodes"] = request.LogCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		body["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccountsByLog"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccountsByLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAccountsByLog(request *ListAccountsByLogRequest) (_result *ListAccountsByLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccountsByLogResponse{}
+	_body, _err := client.ListAccountsByLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAllProdsWithOptions(request *ListAllProdsRequest, runtime *util.RuntimeOptions) (_result *ListAllProdsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllProds"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAllProdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAllProds(request *ListAllProdsRequest) (_result *ListAllProdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAllProdsResponse{}
+	_body, _err := client.ListAllProdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAutomateResponseConfigsWithOptions(request *ListAutomateResponseConfigsRequest, runtime *util.RuntimeOptions) (_result *ListAutomateResponseConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15800,6 +22621,106 @@ func (client *Client) ListAutomateResponseConfigs(request *ListAutomateResponseC
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAutomateResponseConfigsResponse{}
 	_body, _err := client.ListAutomateResponseConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBindAccountWithOptions(request *ListBindAccountRequest, runtime *util.RuntimeOptions) (_result *ListBindAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBindAccount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBindAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBindAccount(request *ListBindAccountRequest) (_result *ListBindAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBindAccountResponse{}
+	_body, _err := client.ListBindAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBindDataSourcesWithOptions(request *ListBindDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ListBindDataSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBindDataSources"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBindDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBindDataSources(request *ListBindDataSourcesRequest) (_result *ListBindDataSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBindDataSourcesResponse{}
+	_body, _err := client.ListBindDataSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16031,6 +22952,110 @@ func (client *Client) ListCustomizeRuleTestResult(request *ListCustomizeRuleTest
 	return _result, _err
 }
 
+func (client *Client) ListDataSourceLogsWithOptions(request *ListDataSourceLogsRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSourceLogs"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceLogs(request *ListDataSourceLogsRequest) (_result *ListDataSourceLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceLogsResponse{}
+	_body, _err := client.ListDataSourceLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceTypesWithOptions(request *ListDataSourceTypesRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceTypesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSourceTypes"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceTypesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceTypes(request *ListDataSourceTypesRequest) (_result *ListDataSourceTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceTypesResponse{}
+	_body, _err := client.ListDataSourceTypesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDeliveryWithOptions(request *ListDeliveryRequest, runtime *util.RuntimeOptions) (_result *ListDeliveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16171,6 +23196,58 @@ func (client *Client) ListDisposeStrategy(request *ListDisposeStrategyRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListImportedLogsByProdWithOptions(request *ListImportedLogsByProdRequest, runtime *util.RuntimeOptions) (_result *ListImportedLogsByProdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		body["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImportedLogsByProd"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListImportedLogsByProdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListImportedLogsByProd(request *ListImportedLogsByProdRequest) (_result *ListImportedLogsByProdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListImportedLogsByProdResponse{}
+	_body, _err := client.ListImportedLogsByProdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListOperationWithOptions(request *ListOperationRequest, runtime *util.RuntimeOptions) (_result *ListOperationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16208,6 +23285,62 @@ func (client *Client) ListOperation(request *ListOperationRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOperationResponse{}
 	_body, _err := client.ListOperationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListProjectLogStoresWithOptions(request *ListProjectLogStoresRequest, runtime *util.RuntimeOptions) (_result *ListProjectLogStoresResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLogCode)) {
+		body["SourceLogCode"] = request.SourceLogCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
+		body["SourceProdCode"] = request.SourceProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubUserId)) {
+		body["SubUserId"] = request.SubUserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectLogStores"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectLogStoresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListProjectLogStores(request *ListProjectLogStoresRequest) (_result *ListProjectLogStoresResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListProjectLogStoresResponse{}
+	_body, _err := client.ListProjectLogStoresWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16260,6 +23393,358 @@ func (client *Client) ListQuickQuery(request *ListQuickQueryRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListQuickQueryResponse{}
 	_body, _err := client.ListQuickQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRdUsersWithOptions(request *ListRdUsersRequest, runtime *util.RuntimeOptions) (_result *ListRdUsersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRdUsers"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRdUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRdUsers(request *ListRdUsersRequest) (_result *ListRdUsersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRdUsersResponse{}
+	_body, _err := client.ListRdUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUserProdLogsWithOptions(request *ListUserProdLogsRequest, runtime *util.RuntimeOptions) (_result *ListUserProdLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLogCode)) {
+		body["SourceLogCode"] = request.SourceLogCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
+		body["SourceProdCode"] = request.SourceProdCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserProdLogs"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserProdLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserProdLogs(request *ListUserProdLogsRequest) (_result *ListUserProdLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserProdLogsResponse{}
+	_body, _err := client.ListUserProdLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUsersByProdWithOptions(request *ListUsersByProdRequest, runtime *util.RuntimeOptions) (_result *ListUsersByProdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceProdCode)) {
+		body["SourceProdCode"] = request.SourceProdCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersByProd"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUsersByProdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUsersByProd(request *ListUsersByProdRequest) (_result *ListUsersByProdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsersByProdResponse{}
+	_body, _err := client.ListUsersByProdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyBindAccountWithOptions(request *ModifyBindAccountRequest, runtime *util.RuntimeOptions) (_result *ModifyBindAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessId)) {
+		body["AccessId"] = request.AccessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		body["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindId)) {
+		body["BindId"] = request.BindId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBindAccount"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBindAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyBindAccount(request *ModifyBindAccountRequest) (_result *ModifyBindAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBindAccountResponse{}
+	_body, _err := client.ModifyBindAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDataSourceWithOptions(request *ModifyDataSourceRequest, runtime *util.RuntimeOptions) (_result *ModifyDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceName)) {
+		body["DataSourceInstanceName"] = request.DataSourceInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceParams)) {
+		body["DataSourceInstanceParams"] = request.DataSourceInstanceParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceRemark)) {
+		body["DataSourceInstanceRemark"] = request.DataSourceInstanceRemark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDataSource"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDataSource(request *ModifyDataSourceRequest) (_result *ModifyDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDataSourceResponse{}
+	_body, _err := client.ModifyDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDataSourceLogWithOptions(request *ModifyDataSourceLogRequest, runtime *util.RuntimeOptions) (_result *ModifyDataSourceLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		body["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceId)) {
+		body["DataSourceInstanceId"] = request.DataSourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceInstanceLogs)) {
+		body["DataSourceInstanceLogs"] = request.DataSourceInstanceLogs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogCode)) {
+		body["LogCode"] = request.LogCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogInstanceId)) {
+		body["LogInstanceId"] = request.LogInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDataSourceLog"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDataSourceLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDataSourceLog(request *ModifyDataSourceLogRequest) (_result *ModifyDataSourceLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDataSourceLogResponse{}
+	_body, _err := client.ModifyDataSourceLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16964,6 +24449,118 @@ func (client *Client) ShowQuickAnalysis(request *ShowQuickAnalysisRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ShowQuickAnalysisResponse{}
 	_body, _err := client.ShowQuickAnalysisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitImportLogTasksWithOptions(request *SubmitImportLogTasksRequest, runtime *util.RuntimeOptions) (_result *SubmitImportLogTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accounts)) {
+		body["Accounts"] = request.Accounts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoImported)) {
+		body["AutoImported"] = request.AutoImported
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CloudCode)) {
+		body["CloudCode"] = request.CloudCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogCodes)) {
+		body["LogCodes"] = request.LogCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		body["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitImportLogTasks"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitImportLogTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitImportLogTasks(request *SubmitImportLogTasksRequest) (_result *SubmitImportLogTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitImportLogTasksResponse{}
+	_body, _err := client.SubmitImportLogTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitJobsWithOptions(request *SubmitJobsRequest, runtime *util.RuntimeOptions) (_result *SubmitJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JsonParam)) {
+		body["JsonParam"] = request.JsonParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitJobs"),
+		Version:     tea.String("2022-06-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubmitJobs(request *SubmitJobsRequest) (_result *SubmitJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitJobsResponse{}
+	_body, _err := client.SubmitJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
