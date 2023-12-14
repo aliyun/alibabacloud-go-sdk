@@ -1651,7 +1651,8 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//
 	// *   **on** (default): yes
 	// *   **off**: no
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**: yes
@@ -1661,7 +1662,8 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//
 	// *   **on**: yes
 	// *   **off** (default): no
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBIP   *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol. Valid values:
 	//
 	// *   **on**: yes
@@ -1857,6 +1859,11 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor(v string) *Crea
 	return s
 }
 
+func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_ClientSrcPort(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
 func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_SLBID(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.XForwardedFor_SLBID = &v
 	return s
@@ -1864,6 +1871,11 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_SLBID(v string)
 
 func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_SLBIP(v string) *CreateLoadBalancerHTTPListenerRequest {
 	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor_SLBPORT(v string) *CreateLoadBalancerHTTPListenerRequest {
+	s.XForwardedFor_SLBPORT = &v
 	return s
 }
 
@@ -2159,7 +2171,8 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**: yes
@@ -2169,7 +2182,8 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBIP   *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// *   **on**: yes
@@ -2375,6 +2389,11 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor(v string) *Cre
 	return s
 }
 
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_ClientSrcPort(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_SLBID(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.XForwardedFor_SLBID = &v
 	return s
@@ -2382,6 +2401,11 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_SLBID(v string
 
 func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_SLBIP(v string) *CreateLoadBalancerHTTPSListenerRequest {
 	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *CreateLoadBalancerHTTPSListenerRequest) SetXForwardedFor_SLBPORT(v string) *CreateLoadBalancerHTTPSListenerRequest {
+	s.XForwardedFor_SLBPORT = &v
 	return s
 }
 
@@ -3175,57 +3199,61 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 }
 
 type CreateMasterSlaveServerGroupRequest struct {
-	// The ID of the Classic Load Balancer (CLB) instance.
+	// The ID of the SLB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The list of backend servers in the primary/secondary server group.
+	// The backend servers in the primary/secondary server group.
 	//
 	// The value of this parameter must be a STRING list in the JSON format. You can specify up to 20 elements in each request.
 	//
-	// *   **ServerId**: This parameter is required. Specify the ID of the backend server. This parameter must be of the STRING type.
+	// *   **ServerId**: Required. Specify the ID of the backend server. The value must be of the STRING type.
 	//
-	// *   **Port**: This parameter is required. Specify the port that is used by the backend server. This parameter must be of the INTEGER type. Valid values: **1** to **65535**.
+	// *   **Port**: Required. Specify the port that is used by the backend server. The value must be of the INTEGER type. Valid values: **1** to **65535**.
 	//
-	// *   **Weight**: This parameter is required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0** to **100**.
+	// *   **Weight**: Required. Specify the weight of the backend server. The value must be of the INTEGER type. Valid values: **0** to **100**.
 	//
-	// *   **Description**: This parameter is optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+	// *   \*\*Description \*\*: Optional. The description of the backend server. The value must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
 	//
-	// *   **ServerType**: Specify the type of the backend server. This parameter must be of the STRING type. Valid values:
+	// *   **ServerType**: the type of the backend server. The value must be of the STRING type. Valid values:
 	//
-	//     *   **Master**: primary server
+	//     *   **Master**
 	//
-	//     <!---->
+	// *   **Slave**
 	//
-	//     *   **Slave**: secondary server
+	// *   **Type**: the service type of backend server. The value must be of the STRING type. Valid values:
 	//
-	// *   **Type**: Specify the type of backend server. This parameter must be of the STRING type. Valid values:
+	//     *   **ecs**
+	//     *   **eni**
 	//
-	//     *   **ecs**: an ECS instance
-	//     *   **eni**: an elastic network interface (ENI)
+	// *   **ServerIp**
 	//
-	// *   **ServerIp**: the IP address of the ECS instance or ENI
+	// A primary/secondary server group can contain up to two backend servers.
 	//
-	// A primary/secondary server group can contain at most two backend servers.
-	//
-	// If you do not set this parameter, an empty primary/secondary server group is created.
+	// If you do not specify this parameter, an empty primary/secondary server group is created.
 	//
 	// Examples:
 	//
-	// *   ECS: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"82","ServerType":"Master","Description":"test-112" }, { "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"84","ServerType":"Slave","Description":"test-112" }]`
+	// *   ECS instances:
 	//
-	// <!---->
+	// `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"82","ServerType":"Master","Description":"test-112" }, { "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"84","ServerType":"Slave","Description":"test-112" }]`
 	//
-	// *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
-	// *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+	// *   ENIs:
+	//
+	//     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+	//
+	// *   IP addresses of ENIs:
+	//
+	//     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
 	MasterSlaveBackendServers *string `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty"`
 	// The name of the primary/secondary server group.
 	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
 	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the CLB instance is deployed.
-	RegionId             *string                                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string                                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Tag                  []*CreateMasterSlaveServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 标签列表。
+	Tag []*CreateMasterSlaveServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateMasterSlaveServerGroupRequest) String() string {
@@ -3282,7 +3310,12 @@ func (s *CreateMasterSlaveServerGroupRequest) SetTag(v []*CreateMasterSlaveServe
 }
 
 type CreateMasterSlaveServerGroupRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源标签键。N的取值范围：**1**~**20**。一旦输入该值，则不允许为空字符串。
+	//
+	// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
+	// 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3305,11 +3338,11 @@ func (s *CreateMasterSlaveServerGroupRequestTag) SetValue(v string) *CreateMaste
 }
 
 type CreateMasterSlaveServerGroupResponseBody struct {
-	// The list of backend servers in the primary/secondary server group.
+	// The backend servers in the primary/secondary server group.
 	MasterSlaveBackendServers *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers `json:"MasterSlaveBackendServers,omitempty" xml:"MasterSlaveBackendServers,omitempty" type:"Struct"`
-	// The ID of the primary/secondary server group.
+	// The primary/secondary server group ID.
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3356,7 +3389,7 @@ func (s *CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServers) SetM
 type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlaveBackendServer struct {
 	// The description of the primary/secondary server group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port number used by the backend server.
+	// The port that is used by the backend server.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The ID of the ECS instance or ENI that is added.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
@@ -3364,10 +3397,10 @@ type CreateMasterSlaveServerGroupResponseBodyMasterSlaveBackendServersMasterSlav
 	//
 	// Valid values: **Master** and **Slave**.
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The type of the backend server. Valid values:
+	// The service type of the backend server. Valid values:
 	//
-	// *   **ecs**: an ECS instance
-	// *   **eni**: an ENI
+	// *   **ecs**
+	// *   **eni**
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The weight of the backend server.
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
@@ -4339,11 +4372,11 @@ func (s *DeleteCACertificateResponse) SetBody(v *DeleteCACertificateResponseBody
 }
 
 type DeleteDomainExtensionRequest struct {
-	// The ID of the domain name extension to be deleted.
+	// The ID of the additional domain name that you want to delete.
 	DomainExtensionId *string `json:"DomainExtensionId,omitempty" xml:"DomainExtensionId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region to which the SLB instance belongs.
+	// The region ID of the Server Load Balancer (SLB) instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4388,7 +4421,7 @@ func (s *DeleteDomainExtensionRequest) SetResourceOwnerId(v int64) *DeleteDomain
 }
 
 type DeleteDomainExtensionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8077,7 +8110,8 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	//
 	// *   **on**
 	// *   **off**
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
 	// Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**
@@ -8087,7 +8121,8 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	//
 	// *   **on**
 	// *   **off**
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBIP   *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
 	//
 	// *   **on**
@@ -8278,6 +8313,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor
 	return s
 }
 
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_ClientSrcPort(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBID(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.XForwardedFor_SLBID = &v
 	return s
@@ -8285,6 +8325,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBIP(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor_SLBPORT(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor_SLBPORT = &v
 	return s
 }
 
@@ -9125,8 +9170,10 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 }
 
 type DescribeLoadBalancerListenersRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ListenerPort *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The frontend port that is used by the CLB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The protocol used by the listener. Valid values:
 	//
 	// *   **tcp**
@@ -9136,9 +9183,9 @@ type DescribeLoadBalancerListenersRequest struct {
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The ID of the CLB instance. You can specify at most 10 IDs.
 	LoadBalancerId []*string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
-	// Valid values: **1** to **100**. If you do not specify a value, the default value **20** is used.
+	// Valid values: **1** to **100**. If you do not specify this parameter, the default value **20** is used.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. Valid values:
 	//
@@ -9155,7 +9202,7 @@ type DescribeLoadBalancerListenersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// 标签列表。
+	// The tags.
 	Tag []*DescribeLoadBalancerListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -9228,12 +9275,13 @@ func (s *DescribeLoadBalancerListenersRequest) SetTag(v []*DescribeLoadBalancerL
 }
 
 type DescribeLoadBalancerListenersRequestTag struct {
-	// 资源的标签键。N的取值范围：**1~20**。一旦输入该值，则不允许为空字符串。
+	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// 最多支持64个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+	// The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 资源的标签值。N的取值范围：**1~20**。一旦输入该值，可以为空字符串。
-	// 最多支持128个字符，不能以`aliyun`和`acs:`开头，不能包含`http://`或者`https://`。
+	// The tag value. Valid values of N: **1 to 20**. The tag value can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9357,7 +9405,7 @@ type DescribeLoadBalancerListenersResponseBodyListeners struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The configuration of the TCP listener.
 	TCPListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig `json:"TCPListenerConfig,omitempty" xml:"TCPListenerConfig,omitempty" type:"Struct"`
-	// 标签列表。
+	// The tags.
 	Tags []*DescribeLoadBalancerListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The configuration of the UDP listener.
 	UDPListenerConfig *DescribeLoadBalancerListenersResponseBodyListenersUDPListenerConfig `json:"UDPListenerConfig,omitempty" xml:"UDPListenerConfig,omitempty" type:"Struct"`
@@ -10184,9 +10232,11 @@ func (s *DescribeLoadBalancerListenersResponseBodyListenersTCPListenerConfig) Se
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersTags struct {
-	// 资源的标签键。
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 资源的标签值。
+	// The tag value.
+	//
+	// For more information about how to obtain a tag value, see [DescribeTagKeyList](~~145557~~).
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -11942,17 +11992,18 @@ func (s *DescribeMasterSlaveServerGroupAttributeResponse) SetBody(v *DescribeMas
 }
 
 type DescribeMasterSlaveServerGroupsRequest struct {
+	// The description of the primary/secondary server group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to return information about the associated listeners. Valid values:
 	//
-	// *   **true**: returns information about the associated listeners.
-	// *   **false**: does not return information about the associated listeners.
+	// *   **true**
+	// *   **false**
 	IncludeListener *bool `json:"IncludeListener,omitempty" xml:"IncludeListener,omitempty"`
-	// The ID of the CLB instance.
+	// The CLB instance ID.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Classic Load Balancer (CLB) instance.
+	// The region ID of the CLB instance.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12014,13 +12065,11 @@ func (s *DescribeMasterSlaveServerGroupsRequest) SetTag(v []*DescribeMasterSlave
 }
 
 type DescribeMasterSlaveServerGroupsRequestTag struct {
-	// The tag key. You can specify at most 20 tag keys.
+	// The key of tag N. Valid values of N: **1 to 20**. The tag key cannot be an empty string.
 	//
-	// The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
-	//
-	// The tag value must be 1 to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of tag N. Valid values of N: **1 to 20**. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` and `acs:`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12043,9 +12092,9 @@ func (s *DescribeMasterSlaveServerGroupsRequestTag) SetValue(v string) *Describe
 }
 
 type DescribeMasterSlaveServerGroupsResponseBody struct {
-	// The list of backend servers in the primary/secondary server group.
+	// The primary/secondary server groups.
 	MasterSlaveServerGroups *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups `json:"MasterSlaveServerGroups,omitempty" xml:"MasterSlaveServerGroups,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12087,13 +12136,13 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroups) Set
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroup struct {
 	// The associated resources.
 	AssociatedObjects *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects `json:"AssociatedObjects,omitempty" xml:"AssociatedObjects,omitempty" type:"Struct"`
-	// The time when the CLB instance was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+	// The time when the CLB instance was created. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the primary/secondary server group.
 	MasterSlaveServerGroupId *string `json:"MasterSlaveServerGroupId,omitempty" xml:"MasterSlaveServerGroupId,omitempty"`
 	// The name of the primary/secondary server group.
 	MasterSlaveServerGroupName *string `json:"MasterSlaveServerGroupName,omitempty" xml:"MasterSlaveServerGroupName,omitempty"`
-	// The tag key.
+	// The tags to add to the resource.
 	Tags *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
@@ -12131,7 +12180,7 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjects struct {
-	// The list of listeners.
+	// The listeners.
 	Listeners *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Struct"`
 }
 
@@ -12166,9 +12215,9 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupAssociatedObjectsListenersListener struct {
-	// The listening port.
+	// The listener port.
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The listening protocol.
+	// The listener protocol.
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -12208,9 +12257,9 @@ func (s *DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMaste
 }
 
 type DescribeMasterSlaveServerGroupsResponseBodyMasterSlaveServerGroupsMasterSlaveServerGroupTagsTag struct {
-	// The tag keys.
+	// The tag key.
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag values.
+	// The tag value.
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -17913,7 +17962,8 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// *   **on** (default)
 	// *   **off**
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**
@@ -17923,7 +17973,8 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// *   **on**
 	// *   **off**
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBIP   *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// *   **on**
@@ -18104,6 +18155,11 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor(v string)
 	return s
 }
 
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_ClientSrcPort(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_SLBID(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.XForwardedFor_SLBID = &v
 	return s
@@ -18111,6 +18167,11 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_SLBID(v s
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_SLBIP(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor_SLBPORT(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.XForwardedFor_SLBPORT = &v
 	return s
 }
 
@@ -18373,7 +18434,8 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor               *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	XForwardedFor_ClientSrcPort *string `json:"XForwardedFor_ClientSrcPort,omitempty" xml:"XForwardedFor_ClientSrcPort,omitempty"`
 	// Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
 	//
 	// *   **on**: yes
@@ -18383,7 +18445,8 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//
 	// *   **on**: yes
 	// *   **off**: no
-	XForwardedFor_SLBIP *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBIP   *string `json:"XForwardedFor_SLBIP,omitempty" xml:"XForwardedFor_SLBIP,omitempty"`
+	XForwardedFor_SLBPORT *string `json:"XForwardedFor_SLBPORT,omitempty" xml:"XForwardedFor_SLBPORT,omitempty"`
 	// Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
 	//
 	// *   **on**: yes
@@ -18584,6 +18647,11 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor(v string
 	return s
 }
 
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_ClientSrcPort(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.XForwardedFor_ClientSrcPort = &v
+	return s
+}
+
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_SLBID(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.XForwardedFor_SLBID = &v
 	return s
@@ -18591,6 +18659,11 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_SLBID(v 
 
 func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_SLBIP(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
 	s.XForwardedFor_SLBIP = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetXForwardedFor_SLBPORT(v string) *SetLoadBalancerHTTPSListenerAttributeRequest {
+	s.XForwardedFor_SLBPORT = &v
 	return s
 }
 
@@ -18766,7 +18839,11 @@ func (s *SetLoadBalancerModificationProtectionResponse) SetBody(v *SetLoadBalanc
 }
 
 type SetLoadBalancerNameRequest struct {
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the CLB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The new name of the CLB instance.
+	//
+	// The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18822,6 +18899,7 @@ func (s *SetLoadBalancerNameRequest) SetResourceOwnerId(v int64) *SetLoadBalance
 }
 
 type SetLoadBalancerNameResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22443,12 +22521,20 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 		query["XForwardedFor"] = request.XForwardedFor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_ClientSrcPort)) {
+		query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBID)) {
 		query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBIP)) {
 		query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBPORT)) {
+		query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_proto)) {
@@ -22664,12 +22750,20 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 		query["XForwardedFor"] = request.XForwardedFor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_ClientSrcPort)) {
+		query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBID)) {
 		query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBIP)) {
 		query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBPORT)) {
+		query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_proto)) {
@@ -24030,6 +24124,14 @@ func (client *Client) DeleteServerCertificate(request *DeleteServerCertificateRe
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+ *
+ * @param request DeleteTLSCipherPolicyRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteTLSCipherPolicyResponse
+ */
 func (client *Client) DeleteTLSCipherPolicyWithOptions(request *DeleteTLSCipherPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteTLSCipherPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24083,6 +24185,13 @@ func (client *Client) DeleteTLSCipherPolicyWithOptions(request *DeleteTLSCipherP
 	return _result, _err
 }
 
+/**
+ * ## Debugging
+ * [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+ *
+ * @param request DeleteTLSCipherPolicyRequest
+ * @return DeleteTLSCipherPolicyResponse
+ */
 func (client *Client) DeleteTLSCipherPolicy(request *DeleteTLSCipherPolicyRequest) (_result *DeleteTLSCipherPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTLSCipherPolicyResponse{}
@@ -28112,12 +28221,20 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 		query["XForwardedFor"] = request.XForwardedFor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_ClientSrcPort)) {
+		query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBID)) {
 		query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBIP)) {
 		query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBPORT)) {
+		query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_proto)) {
@@ -28328,12 +28445,20 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 		query["XForwardedFor"] = request.XForwardedFor
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_ClientSrcPort)) {
+		query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBID)) {
 		query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBIP)) {
 		query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_SLBPORT)) {
+		query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.XForwardedFor_proto)) {
