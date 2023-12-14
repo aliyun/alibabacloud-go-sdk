@@ -5,10 +5,10 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
@@ -113,8 +113,9 @@ func (s *ActivateAllInOneGatewayResponseBody) SetSuccess(v bool) *ActivateAllInO
 }
 
 type ActivateAllInOneGatewayResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ActivateAllInOneGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ActivateAllInOneGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ActivateAllInOneGatewayResponse) String() string {
@@ -127,6 +128,11 @@ func (s ActivateAllInOneGatewayResponse) GoString() string {
 
 func (s *ActivateAllInOneGatewayResponse) SetHeaders(v map[string]*string) *ActivateAllInOneGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ActivateAllInOneGatewayResponse) SetStatusCode(v int32) *ActivateAllInOneGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -236,8 +242,9 @@ func (s *ActivateGatewayResponseBody) SetSuccess(v bool) *ActivateGatewayRespons
 }
 
 type ActivateGatewayResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ActivateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ActivateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ActivateGatewayResponse) String() string {
@@ -250,6 +257,11 @@ func (s ActivateGatewayResponse) GoString() string {
 
 func (s *ActivateGatewayResponse) SetHeaders(v map[string]*string) *ActivateGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ActivateGatewayResponse) SetStatusCode(v int32) *ActivateGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -359,8 +371,9 @@ func (s *AddSharesToExpressSyncResponseBody) SetTaskId(v string) *AddSharesToExp
 }
 
 type AddSharesToExpressSyncResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddSharesToExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddSharesToExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddSharesToExpressSyncResponse) String() string {
@@ -373,6 +386,11 @@ func (s AddSharesToExpressSyncResponse) GoString() string {
 
 func (s *AddSharesToExpressSyncResponse) SetHeaders(v map[string]*string) *AddSharesToExpressSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddSharesToExpressSyncResponse) SetStatusCode(v int32) *AddSharesToExpressSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -446,8 +464,9 @@ func (s *AddTagsToGatewayResponseBody) SetSuccess(v bool) *AddTagsToGatewayRespo
 }
 
 type AddTagsToGatewayResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddTagsToGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTagsToGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddTagsToGatewayResponse) String() string {
@@ -460,6 +479,11 @@ func (s AddTagsToGatewayResponse) GoString() string {
 
 func (s *AddTagsToGatewayResponse) SetHeaders(v map[string]*string) *AddTagsToGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddTagsToGatewayResponse) SetStatusCode(v int32) *AddTagsToGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -545,8 +569,9 @@ func (s *CheckActivationKeyResponseBody) SetSuccess(v bool) *CheckActivationKeyR
 }
 
 type CheckActivationKeyResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckActivationKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckActivationKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckActivationKeyResponse) String() string {
@@ -562,12 +587,18 @@ func (s *CheckActivationKeyResponse) SetHeaders(v map[string]*string) *CheckActi
 	return s
 }
 
+func (s *CheckActivationKeyResponse) SetStatusCode(v int32) *CheckActivationKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckActivationKeyResponse) SetBody(v *CheckActivationKeyResponseBody) *CheckActivationKeyResponse {
 	s.Body = v
 	return s
 }
 
 type CheckBlockVolumeNameRequest struct {
+	// Bucket Endpoint。
 	BucketEndpoint *string `json:"BucketEndpoint,omitempty" xml:"BucketEndpoint,omitempty"`
 	BucketName     *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -604,6 +635,7 @@ func (s *CheckBlockVolumeNameRequest) SetVolumeName(v string) *CheckBlockVolumeN
 
 type CheckBlockVolumeNameResponseBody struct {
 	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsAlreadyExist    *bool   `json:"IsAlreadyExist,omitempty" xml:"IsAlreadyExist,omitempty"`
 	IsRequireRecovery *string `json:"IsRequireRecovery,omitempty" xml:"IsRequireRecovery,omitempty"`
 	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -620,6 +652,11 @@ func (s CheckBlockVolumeNameResponseBody) GoString() string {
 
 func (s *CheckBlockVolumeNameResponseBody) SetCode(v string) *CheckBlockVolumeNameResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *CheckBlockVolumeNameResponseBody) SetIsAlreadyExist(v bool) *CheckBlockVolumeNameResponseBody {
+	s.IsAlreadyExist = &v
 	return s
 }
 
@@ -644,8 +681,9 @@ func (s *CheckBlockVolumeNameResponseBody) SetSuccess(v bool) *CheckBlockVolumeN
 }
 
 type CheckBlockVolumeNameResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckBlockVolumeNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckBlockVolumeNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckBlockVolumeNameResponse) String() string {
@@ -658,6 +696,11 @@ func (s CheckBlockVolumeNameResponse) GoString() string {
 
 func (s *CheckBlockVolumeNameResponse) SetHeaders(v map[string]*string) *CheckBlockVolumeNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckBlockVolumeNameResponse) SetStatusCode(v int32) *CheckBlockVolumeNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -737,8 +780,9 @@ func (s *CheckGatewayEssdSupportResponseBody) SetSuccess(v bool) *CheckGatewayEs
 }
 
 type CheckGatewayEssdSupportResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckGatewayEssdSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckGatewayEssdSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckGatewayEssdSupportResponse) String() string {
@@ -751,6 +795,11 @@ func (s CheckGatewayEssdSupportResponse) GoString() string {
 
 func (s *CheckGatewayEssdSupportResponse) SetHeaders(v map[string]*string) *CheckGatewayEssdSupportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckGatewayEssdSupportResponse) SetStatusCode(v int32) *CheckGatewayEssdSupportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -824,8 +873,9 @@ func (s *CheckMnsServiceResponseBody) SetSuccess(v bool) *CheckMnsServiceRespons
 }
 
 type CheckMnsServiceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckMnsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckMnsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckMnsServiceResponse) String() string {
@@ -838,6 +888,11 @@ func (s CheckMnsServiceResponse) GoString() string {
 
 func (s *CheckMnsServiceResponse) SetHeaders(v map[string]*string) *CheckMnsServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckMnsServiceResponse) SetStatusCode(v int32) *CheckMnsServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -905,8 +960,9 @@ func (s *CheckRoleResponseBody) SetSuccess(v bool) *CheckRoleResponseBody {
 }
 
 type CheckRoleResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckRoleResponse) String() string {
@@ -919,6 +975,11 @@ func (s CheckRoleResponse) GoString() string {
 
 func (s *CheckRoleResponse) SetHeaders(v map[string]*string) *CheckRoleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckRoleResponse) SetStatusCode(v int32) *CheckRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1004,8 +1065,9 @@ func (s *CheckSlrRoleResponseBody) SetSuccess(v bool) *CheckSlrRoleResponseBody 
 }
 
 type CheckSlrRoleResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckSlrRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckSlrRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckSlrRoleResponse) String() string {
@@ -1018,6 +1080,11 @@ func (s CheckSlrRoleResponse) GoString() string {
 
 func (s *CheckSlrRoleResponse) SetHeaders(v map[string]*string) *CheckSlrRoleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckSlrRoleResponse) SetStatusCode(v int32) *CheckSlrRoleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1167,8 +1234,9 @@ func (s *CheckUpgradeVersionResponseBodyPatchesPatch) SetUrl(v string) *CheckUpg
 }
 
 type CheckUpgradeVersionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckUpgradeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckUpgradeVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckUpgradeVersionResponse) String() string {
@@ -1181,6 +1249,11 @@ func (s CheckUpgradeVersionResponse) GoString() string {
 
 func (s *CheckUpgradeVersionResponse) SetHeaders(v map[string]*string) *CheckUpgradeVersionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckUpgradeVersionResponse) SetStatusCode(v int32) *CheckUpgradeVersionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1272,8 +1345,9 @@ func (s *CreateCacheResponseBody) SetSuccess(v bool) *CreateCacheResponseBody {
 }
 
 type CreateCacheResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCacheResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCacheResponse) String() string {
@@ -1286,6 +1360,11 @@ func (s CreateCacheResponse) GoString() string {
 
 func (s *CreateCacheResponse) SetHeaders(v map[string]*string) *CreateCacheResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCacheResponse) SetStatusCode(v int32) *CreateCacheResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1359,8 +1438,9 @@ func (s *CreateElasticGatewayPrivateZoneResponseBody) SetTaskId(v string) *Creat
 }
 
 type CreateElasticGatewayPrivateZoneResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateElasticGatewayPrivateZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateElasticGatewayPrivateZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateElasticGatewayPrivateZoneResponse) String() string {
@@ -1373,6 +1453,11 @@ func (s CreateElasticGatewayPrivateZoneResponse) GoString() string {
 
 func (s *CreateElasticGatewayPrivateZoneResponse) SetHeaders(v map[string]*string) *CreateElasticGatewayPrivateZoneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateElasticGatewayPrivateZoneResponse) SetStatusCode(v int32) *CreateElasticGatewayPrivateZoneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1470,8 +1555,9 @@ func (s *CreateExpressSyncResponseBody) SetSuccess(v bool) *CreateExpressSyncRes
 }
 
 type CreateExpressSyncResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateExpressSyncResponse) String() string {
@@ -1484,6 +1570,11 @@ func (s CreateExpressSyncResponse) GoString() string {
 
 func (s *CreateExpressSyncResponse) SetHeaders(v map[string]*string) *CreateExpressSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateExpressSyncResponse) SetStatusCode(v int32) *CreateExpressSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1500,6 +1591,7 @@ type CreateGatewayRequest struct {
 	PostPaid               *bool   `json:"PostPaid,omitempty" xml:"PostPaid,omitempty"`
 	PublicNetworkBandwidth *int32  `json:"PublicNetworkBandwidth,omitempty" xml:"PublicNetworkBandwidth,omitempty"`
 	ReleaseAfterExpiration *bool   `json:"ReleaseAfterExpiration,omitempty" xml:"ReleaseAfterExpiration,omitempty"`
+	ResourceRegionId       *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	SecurityToken          *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	StorageBundleId        *string `json:"StorageBundleId,omitempty" xml:"StorageBundleId,omitempty"`
 	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -1546,6 +1638,11 @@ func (s *CreateGatewayRequest) SetPublicNetworkBandwidth(v int32) *CreateGateway
 
 func (s *CreateGatewayRequest) SetReleaseAfterExpiration(v bool) *CreateGatewayRequest {
 	s.ReleaseAfterExpiration = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetResourceRegionId(v string) *CreateGatewayRequest {
+	s.ResourceRegionId = &v
 	return s
 }
 
@@ -1617,8 +1714,9 @@ func (s *CreateGatewayResponseBody) SetSuccess(v bool) *CreateGatewayResponseBod
 }
 
 type CreateGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayResponse) String() string {
@@ -1631,6 +1729,11 @@ func (s CreateGatewayResponse) GoString() string {
 
 func (s *CreateGatewayResponse) SetHeaders(v map[string]*string) *CreateGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayResponse) SetStatusCode(v int32) *CreateGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1782,8 +1885,9 @@ func (s *CreateGatewayBlockVolumeResponseBody) SetTaskId(v string) *CreateGatewa
 }
 
 type CreateGatewayBlockVolumeResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayBlockVolumeResponse) String() string {
@@ -1796,6 +1900,11 @@ func (s CreateGatewayBlockVolumeResponse) GoString() string {
 
 func (s *CreateGatewayBlockVolumeResponse) SetHeaders(v map[string]*string) *CreateGatewayBlockVolumeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayBlockVolumeResponse) SetStatusCode(v int32) *CreateGatewayBlockVolumeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1887,8 +1996,9 @@ func (s *CreateGatewayCacheDiskResponseBody) SetTaskId(v string) *CreateGatewayC
 }
 
 type CreateGatewayCacheDiskResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayCacheDiskResponse) String() string {
@@ -1901,6 +2011,11 @@ func (s CreateGatewayCacheDiskResponse) GoString() string {
 
 func (s *CreateGatewayCacheDiskResponse) SetHeaders(v map[string]*string) *CreateGatewayCacheDiskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayCacheDiskResponse) SetStatusCode(v int32) *CreateGatewayCacheDiskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2202,8 +2317,9 @@ func (s *CreateGatewayFileShareResponseBody) SetTaskId(v string) *CreateGatewayF
 }
 
 type CreateGatewayFileShareResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayFileShareResponse) String() string {
@@ -2216,6 +2332,11 @@ func (s CreateGatewayFileShareResponse) GoString() string {
 
 func (s *CreateGatewayFileShareResponse) SetHeaders(v map[string]*string) *CreateGatewayFileShareResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayFileShareResponse) SetStatusCode(v int32) *CreateGatewayFileShareResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2295,8 +2416,9 @@ func (s *CreateGatewayLoggingResponseBody) SetSuccess(v bool) *CreateGatewayLogg
 }
 
 type CreateGatewayLoggingResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewayLoggingResponse) String() string {
@@ -2309,6 +2431,11 @@ func (s CreateGatewayLoggingResponse) GoString() string {
 
 func (s *CreateGatewayLoggingResponse) SetHeaders(v map[string]*string) *CreateGatewayLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewayLoggingResponse) SetStatusCode(v int32) *CreateGatewayLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2394,8 +2521,9 @@ func (s *CreateGatewaySMBUserResponseBody) SetTaskId(v string) *CreateGatewaySMB
 }
 
 type CreateGatewaySMBUserResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGatewaySMBUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGatewaySMBUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGatewaySMBUserResponse) String() string {
@@ -2408,6 +2536,11 @@ func (s CreateGatewaySMBUserResponse) GoString() string {
 
 func (s *CreateGatewaySMBUserResponse) SetHeaders(v map[string]*string) *CreateGatewaySMBUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewaySMBUserResponse) SetStatusCode(v int32) *CreateGatewaySMBUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2493,8 +2626,9 @@ func (s *CreateStorageBundleResponseBody) SetSuccess(v bool) *CreateStorageBundl
 }
 
 type CreateStorageBundleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateStorageBundleResponse) String() string {
@@ -2507,6 +2641,11 @@ func (s CreateStorageBundleResponse) GoString() string {
 
 func (s *CreateStorageBundleResponse) SetHeaders(v map[string]*string) *CreateStorageBundleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateStorageBundleResponse) SetStatusCode(v int32) *CreateStorageBundleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2615,8 +2754,9 @@ func (s *DeleteCSGClientsResponseBody) SetTaskId(v string) *DeleteCSGClientsResp
 }
 
 type DeleteCSGClientsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCSGClientsResponse) String() string {
@@ -2629,6 +2769,11 @@ func (s DeleteCSGClientsResponse) GoString() string {
 
 func (s *DeleteCSGClientsResponse) SetHeaders(v map[string]*string) *DeleteCSGClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCSGClientsResponse) SetStatusCode(v int32) *DeleteCSGClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2702,8 +2847,9 @@ func (s *DeleteElasticGatewayPrivateZoneResponseBody) SetTaskId(v string) *Delet
 }
 
 type DeleteElasticGatewayPrivateZoneResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteElasticGatewayPrivateZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteElasticGatewayPrivateZoneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteElasticGatewayPrivateZoneResponse) String() string {
@@ -2716,6 +2862,11 @@ func (s DeleteElasticGatewayPrivateZoneResponse) GoString() string {
 
 func (s *DeleteElasticGatewayPrivateZoneResponse) SetHeaders(v map[string]*string) *DeleteElasticGatewayPrivateZoneResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteElasticGatewayPrivateZoneResponse) SetStatusCode(v int32) *DeleteElasticGatewayPrivateZoneResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2789,8 +2940,9 @@ func (s *DeleteExpressSyncResponseBody) SetTaskId(v string) *DeleteExpressSyncRe
 }
 
 type DeleteExpressSyncResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteExpressSyncResponse) String() string {
@@ -2803,6 +2955,11 @@ func (s DeleteExpressSyncResponse) GoString() string {
 
 func (s *DeleteExpressSyncResponse) SetHeaders(v map[string]*string) *DeleteExpressSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteExpressSyncResponse) SetStatusCode(v int32) *DeleteExpressSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2888,8 +3045,9 @@ func (s *DeleteGatewayResponseBody) SetTaskId(v string) *DeleteGatewayResponseBo
 }
 
 type DeleteGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayResponse) String() string {
@@ -2902,6 +3060,11 @@ func (s DeleteGatewayResponse) GoString() string {
 
 func (s *DeleteGatewayResponse) SetHeaders(v map[string]*string) *DeleteGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayResponse) SetStatusCode(v int32) *DeleteGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2987,8 +3150,9 @@ func (s *DeleteGatewayBlockVolumesResponseBody) SetTaskId(v string) *DeleteGatew
 }
 
 type DeleteGatewayBlockVolumesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayBlockVolumesResponse) String() string {
@@ -3001,6 +3165,11 @@ func (s DeleteGatewayBlockVolumesResponse) GoString() string {
 
 func (s *DeleteGatewayBlockVolumesResponse) SetHeaders(v map[string]*string) *DeleteGatewayBlockVolumesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayBlockVolumesResponse) SetStatusCode(v int32) *DeleteGatewayBlockVolumesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3086,8 +3255,9 @@ func (s *DeleteGatewayCacheDiskResponseBody) SetTaskId(v string) *DeleteGatewayC
 }
 
 type DeleteGatewayCacheDiskResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayCacheDiskResponse) String() string {
@@ -3100,6 +3270,11 @@ func (s DeleteGatewayCacheDiskResponse) GoString() string {
 
 func (s *DeleteGatewayCacheDiskResponse) SetHeaders(v map[string]*string) *DeleteGatewayCacheDiskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayCacheDiskResponse) SetStatusCode(v int32) *DeleteGatewayCacheDiskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3185,8 +3360,9 @@ func (s *DeleteGatewayFileSharesResponseBody) SetTaskId(v string) *DeleteGateway
 }
 
 type DeleteGatewayFileSharesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayFileSharesResponse) String() string {
@@ -3199,6 +3375,11 @@ func (s DeleteGatewayFileSharesResponse) GoString() string {
 
 func (s *DeleteGatewayFileSharesResponse) SetHeaders(v map[string]*string) *DeleteGatewayFileSharesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayFileSharesResponse) SetStatusCode(v int32) *DeleteGatewayFileSharesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3266,8 +3447,9 @@ func (s *DeleteGatewayLoggingResponseBody) SetSuccess(v bool) *DeleteGatewayLogg
 }
 
 type DeleteGatewayLoggingResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewayLoggingResponse) String() string {
@@ -3280,6 +3462,11 @@ func (s DeleteGatewayLoggingResponse) GoString() string {
 
 func (s *DeleteGatewayLoggingResponse) SetHeaders(v map[string]*string) *DeleteGatewayLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayLoggingResponse) SetStatusCode(v int32) *DeleteGatewayLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3359,8 +3546,9 @@ func (s *DeleteGatewaySMBUserResponseBody) SetTaskId(v string) *DeleteGatewaySMB
 }
 
 type DeleteGatewaySMBUserResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGatewaySMBUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGatewaySMBUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGatewaySMBUserResponse) String() string {
@@ -3373,6 +3561,11 @@ func (s DeleteGatewaySMBUserResponse) GoString() string {
 
 func (s *DeleteGatewaySMBUserResponse) SetHeaders(v map[string]*string) *DeleteGatewaySMBUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewaySMBUserResponse) SetStatusCode(v int32) *DeleteGatewaySMBUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3440,8 +3633,9 @@ func (s *DeleteStorageBundleResponseBody) SetSuccess(v bool) *DeleteStorageBundl
 }
 
 type DeleteStorageBundleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteStorageBundleResponse) String() string {
@@ -3454,6 +3648,11 @@ func (s DeleteStorageBundleResponse) GoString() string {
 
 func (s *DeleteStorageBundleResponse) SetHeaders(v map[string]*string) *DeleteStorageBundleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteStorageBundleResponse) SetStatusCode(v int32) *DeleteStorageBundleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3574,8 +3773,9 @@ func (s *DeployCSGClientsResponseBody) SetTaskId(v string) *DeployCSGClientsResp
 }
 
 type DeployCSGClientsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeployCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeployCSGClientsResponse) String() string {
@@ -3588,6 +3788,11 @@ func (s DeployCSGClientsResponse) GoString() string {
 
 func (s *DeployCSGClientsResponse) SetHeaders(v map[string]*string) *DeployCSGClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeployCSGClientsResponse) SetStatusCode(v int32) *DeployCSGClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3679,8 +3884,9 @@ func (s *DeployCacheDiskResponseBody) SetTaskId(v string) *DeployCacheDiskRespon
 }
 
 type DeployCacheDiskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeployCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeployCacheDiskResponse) String() string {
@@ -3693,6 +3899,11 @@ func (s DeployCacheDiskResponse) GoString() string {
 
 func (s *DeployCacheDiskResponse) SetHeaders(v map[string]*string) *DeployCacheDiskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeployCacheDiskResponse) SetStatusCode(v int32) *DeployCacheDiskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3772,8 +3983,9 @@ func (s *DeployGatewayResponseBody) SetTaskId(v string) *DeployGatewayResponseBo
 }
 
 type DeployGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeployGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeployGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeployGatewayResponse) String() string {
@@ -3786,6 +3998,11 @@ func (s DeployGatewayResponse) GoString() string {
 
 func (s *DeployGatewayResponse) SetHeaders(v map[string]*string) *DeployGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeployGatewayResponse) SetStatusCode(v int32) *DeployGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3877,8 +4094,9 @@ func (s *DescribeAccountConfigResponseBody) SetSuccess(v bool) *DescribeAccountC
 }
 
 type DescribeAccountConfigResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAccountConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccountConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAccountConfigResponse) String() string {
@@ -3891,6 +4109,11 @@ func (s DescribeAccountConfigResponse) GoString() string {
 
 func (s *DescribeAccountConfigResponse) SetHeaders(v map[string]*string) *DescribeAccountConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccountConfigResponse) SetStatusCode(v int32) *DescribeAccountConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4046,8 +4269,9 @@ func (s *DescribeBlockVolumeSnapshotsResponseBodySnapshotsSnapshot) SetSnapshotN
 }
 
 type DescribeBlockVolumeSnapshotsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBlockVolumeSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBlockVolumeSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeBlockVolumeSnapshotsResponse) String() string {
@@ -4060,6 +4284,11 @@ func (s DescribeBlockVolumeSnapshotsResponse) GoString() string {
 
 func (s *DescribeBlockVolumeSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeBlockVolumeSnapshotsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeBlockVolumeSnapshotsResponse) SetStatusCode(v int32) *DescribeBlockVolumeSnapshotsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4228,8 +4457,9 @@ func (s *DescribeCSGClientTasksResponseBodyTasks) SetUpdatedTime(v int64) *Descr
 }
 
 type DescribeCSGClientTasksResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCSGClientTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCSGClientTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCSGClientTasksResponse) String() string {
@@ -4242,6 +4472,11 @@ func (s DescribeCSGClientTasksResponse) GoString() string {
 
 func (s *DescribeCSGClientTasksResponse) SetHeaders(v map[string]*string) *DescribeCSGClientTasksResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCSGClientTasksResponse) SetStatusCode(v int32) *DescribeCSGClientTasksResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4350,6 +4585,7 @@ type DescribeCSGClientsResponseBodyClients struct {
 	ClientInstallationCommand *string `json:"ClientInstallationCommand,omitempty" xml:"ClientInstallationCommand,omitempty"`
 	ClientVersion             *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	EcsInstanceId             *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	HostInstanceId            *string `json:"HostInstanceId,omitempty" xml:"HostInstanceId,omitempty"`
 	LastHeartbeatTime         *int64  `json:"LastHeartbeatTime,omitempty" xml:"LastHeartbeatTime,omitempty"`
 	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -4389,6 +4625,11 @@ func (s *DescribeCSGClientsResponseBodyClients) SetEcsInstanceId(v string) *Desc
 	return s
 }
 
+func (s *DescribeCSGClientsResponseBodyClients) SetHostInstanceId(v string) *DescribeCSGClientsResponseBodyClients {
+	s.HostInstanceId = &v
+	return s
+}
+
 func (s *DescribeCSGClientsResponseBodyClients) SetLastHeartbeatTime(v int64) *DescribeCSGClientsResponseBodyClients {
 	s.LastHeartbeatTime = &v
 	return s
@@ -4410,8 +4651,9 @@ func (s *DescribeCSGClientsResponseBodyClients) SetWorkDirectory(v string) *Desc
 }
 
 type DescribeCSGClientsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCSGClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCSGClientsResponse) String() string {
@@ -4424,6 +4666,11 @@ func (s DescribeCSGClientsResponse) GoString() string {
 
 func (s *DescribeCSGClientsResponse) SetHeaders(v map[string]*string) *DescribeCSGClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCSGClientsResponse) SetStatusCode(v int32) *DescribeCSGClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4503,8 +4750,9 @@ func (s *DescribeDashboardResponseBody) SetSuccess(v bool) *DescribeDashboardRes
 }
 
 type DescribeDashboardResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDashboardResponse) String() string {
@@ -4517,6 +4765,11 @@ func (s DescribeDashboardResponse) GoString() string {
 
 func (s *DescribeDashboardResponse) SetHeaders(v map[string]*string) *DescribeDashboardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDashboardResponse) SetStatusCode(v int32) *DescribeDashboardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4590,8 +4843,9 @@ func (s *DescribeExpireCachesResponseBody) SetSuccess(v bool) *DescribeExpireCac
 }
 
 type DescribeExpireCachesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExpireCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExpireCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExpireCachesResponse) String() string {
@@ -4604,6 +4858,11 @@ func (s DescribeExpireCachesResponse) GoString() string {
 
 func (s *DescribeExpireCachesResponse) SetHeaders(v map[string]*string) *DescribeExpireCachesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExpireCachesResponse) SetStatusCode(v int32) *DescribeExpireCachesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4765,8 +5024,9 @@ func (s *DescribeExpressSyncSharesResponseBodySharesShare) SetSyncProgress(v int
 }
 
 type DescribeExpressSyncSharesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExpressSyncSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExpressSyncSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExpressSyncSharesResponse) String() string {
@@ -4779,6 +5039,11 @@ func (s DescribeExpressSyncSharesResponse) GoString() string {
 
 func (s *DescribeExpressSyncSharesResponse) SetHeaders(v map[string]*string) *DescribeExpressSyncSharesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExpressSyncSharesResponse) SetStatusCode(v int32) *DescribeExpressSyncSharesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4928,8 +5193,9 @@ func (s *DescribeExpressSyncsResponseBodyExpressSyncsExpressSync) SetName(v stri
 }
 
 type DescribeExpressSyncsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExpressSyncsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExpressSyncsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExpressSyncsResponse) String() string {
@@ -4942,6 +5208,11 @@ func (s DescribeExpressSyncsResponse) GoString() string {
 
 func (s *DescribeExpressSyncsResponse) SetHeaders(v map[string]*string) *DescribeExpressSyncsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExpressSyncsResponse) SetStatusCode(v int32) *DescribeExpressSyncsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4991,6 +5262,7 @@ type DescribeGatewayResponseBody struct {
 	ExpiredTime              *int64                                   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GatewayClass             *string                                  `json:"GatewayClass,omitempty" xml:"GatewayClass,omitempty"`
 	GatewayId                *string                                  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayRegionId          *string                                  `json:"GatewayRegionId,omitempty" xml:"GatewayRegionId,omitempty"`
 	GatewayType              *string                                  `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	GatewayVersion           *string                                  `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
 	InnerIp                  *string                                  `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
@@ -5105,6 +5377,11 @@ func (s *DescribeGatewayResponseBody) SetGatewayClass(v string) *DescribeGateway
 
 func (s *DescribeGatewayResponseBody) SetGatewayId(v string) *DescribeGatewayResponseBody {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetGatewayRegionId(v string) *DescribeGatewayResponseBody {
+	s.GatewayRegionId = &v
 	return s
 }
 
@@ -5236,8 +5513,9 @@ func (s *DescribeGatewayResponseBodyElasticNodes) SetElasticNode(v []*string) *D
 }
 
 type DescribeGatewayResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayResponse) String() string {
@@ -5250,6 +5528,11 @@ func (s DescribeGatewayResponse) GoString() string {
 
 func (s *DescribeGatewayResponse) SetHeaders(v map[string]*string) *DescribeGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayResponse) SetStatusCode(v int32) *DescribeGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5341,8 +5624,9 @@ func (s *DescribeGatewayADInfoResponseBody) SetUsername(v string) *DescribeGatew
 }
 
 type DescribeGatewayADInfoResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayADInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayADInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayADInfoResponse) String() string {
@@ -5355,6 +5639,11 @@ func (s DescribeGatewayADInfoResponse) GoString() string {
 
 func (s *DescribeGatewayADInfoResponse) SetHeaders(v map[string]*string) *DescribeGatewayADInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayADInfoResponse) SetStatusCode(v int32) *DescribeGatewayADInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5504,8 +5793,9 @@ func (s *DescribeGatewayActionsResponseBodyActionsAction) SetTarget(v string) *D
 }
 
 type DescribeGatewayActionsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayActionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayActionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayActionsResponse) String() string {
@@ -5518,6 +5808,11 @@ func (s DescribeGatewayActionsResponse) GoString() string {
 
 func (s *DescribeGatewayActionsResponse) SetHeaders(v map[string]*string) *DescribeGatewayActionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayActionsResponse) SetStatusCode(v int32) *DescribeGatewayActionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5603,8 +5898,9 @@ func (s *DescribeGatewayAuthInfoResponseBody) SetUsername(v string) *DescribeGat
 }
 
 type DescribeGatewayAuthInfoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayAuthInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayAuthInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayAuthInfoResponse) String() string {
@@ -5620,7 +5916,287 @@ func (s *DescribeGatewayAuthInfoResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeGatewayAuthInfoResponse) SetStatusCode(v int32) *DescribeGatewayAuthInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeGatewayAuthInfoResponse) SetBody(v *DescribeGatewayAuthInfoResponseBody) *DescribeGatewayAuthInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGatewayAutoPlansRequest struct {
+	GatewayId     *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeGatewayAutoPlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoPlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoPlansRequest) SetGatewayId(v string) *DescribeGatewayAutoPlansRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansRequest) SetPageNumber(v int32) *DescribeGatewayAutoPlansRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansRequest) SetPageSize(v int32) *DescribeGatewayAutoPlansRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansRequest) SetSecurityToken(v string) *DescribeGatewayAutoPlansRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeGatewayAutoPlansResponseBody struct {
+	AutoPlans  []*DescribeGatewayAutoPlansResponseBodyAutoPlans `json:"AutoPlans,omitempty" xml:"AutoPlans,omitempty" type:"Repeated"`
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeGatewayAutoPlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoPlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetAutoPlans(v []*DescribeGatewayAutoPlansResponseBodyAutoPlans) *DescribeGatewayAutoPlansResponseBody {
+	s.AutoPlans = v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetCode(v string) *DescribeGatewayAutoPlansResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetMessage(v string) *DescribeGatewayAutoPlansResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetPageNumber(v int32) *DescribeGatewayAutoPlansResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetPageSize(v int32) *DescribeGatewayAutoPlansResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetRequestId(v string) *DescribeGatewayAutoPlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetSuccess(v bool) *DescribeGatewayAutoPlansResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBody) SetTotalCount(v int32) *DescribeGatewayAutoPlansResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeGatewayAutoPlansResponseBodyAutoPlans struct {
+	Detail    *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	PlanId    *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeGatewayAutoPlansResponseBodyAutoPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoPlansResponseBodyAutoPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetDetail(v string) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetEndTime(v int64) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetEvent(v string) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.Event = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetPlanId(v string) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetStartTime(v int64) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponseBodyAutoPlans) SetStatus(v string) *DescribeGatewayAutoPlansResponseBodyAutoPlans {
+	s.Status = &v
+	return s
+}
+
+type DescribeGatewayAutoPlansResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayAutoPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGatewayAutoPlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoPlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoPlansResponse) SetHeaders(v map[string]*string) *DescribeGatewayAutoPlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponse) SetStatusCode(v int32) *DescribeGatewayAutoPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoPlansResponse) SetBody(v *DescribeGatewayAutoPlansResponseBody) *DescribeGatewayAutoPlansResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeGatewayAutoUpgradeConfigurationRequest struct {
+	GatewayId     *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationRequest) SetGatewayId(v string) *DescribeGatewayAutoUpgradeConfigurationRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationRequest) SetSecurityToken(v string) *DescribeGatewayAutoUpgradeConfigurationRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeGatewayAutoUpgradeConfigurationResponseBody struct {
+	AutoUpgradeEndHour   *int32  `json:"AutoUpgradeEndHour,omitempty" xml:"AutoUpgradeEndHour,omitempty"`
+	AutoUpgradeStartHour *int32  `json:"AutoUpgradeStartHour,omitempty" xml:"AutoUpgradeStartHour,omitempty"`
+	Code                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsAutoUpgrade        *bool   `json:"IsAutoUpgrade,omitempty" xml:"IsAutoUpgrade,omitempty"`
+	Message              *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetAutoUpgradeEndHour(v int32) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.AutoUpgradeEndHour = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetAutoUpgradeStartHour(v int32) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.AutoUpgradeStartHour = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetCode(v string) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetIsAutoUpgrade(v bool) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.IsAutoUpgrade = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetMessage(v string) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetRequestId(v string) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponseBody) SetSuccess(v bool) *DescribeGatewayAutoUpgradeConfigurationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeGatewayAutoUpgradeConfigurationResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayAutoUpgradeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewayAutoUpgradeConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponse) SetHeaders(v map[string]*string) *DescribeGatewayAutoUpgradeConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponse) SetStatusCode(v int32) *DescribeGatewayAutoUpgradeConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGatewayAutoUpgradeConfigurationResponse) SetBody(v *DescribeGatewayAutoUpgradeConfigurationResponseBody) *DescribeGatewayAutoUpgradeConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -5719,16 +6295,17 @@ func (s *DescribeGatewayBlockVolumesResponseBodyBlockVolumes) SetBlockVolume(v [
 }
 
 type DescribeGatewayBlockVolumesResponseBodyBlockVolumesBlockVolume struct {
-	Address       *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	CacheMode     *string `json:"CacheMode,omitempty" xml:"CacheMode,omitempty"`
-	ChapEnabled   *bool   `json:"ChapEnabled,omitempty" xml:"ChapEnabled,omitempty"`
-	ChapInUser    *string `json:"ChapInUser,omitempty" xml:"ChapInUser,omitempty"`
-	ChunkSize     *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
-	DiskId        *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskType      *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	Enabled       *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	IndexId       *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
-	LocalPath     *string `json:"LocalPath,omitempty" xml:"LocalPath,omitempty"`
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	CacheMode   *string `json:"CacheMode,omitempty" xml:"CacheMode,omitempty"`
+	ChapEnabled *bool   `json:"ChapEnabled,omitempty" xml:"ChapEnabled,omitempty"`
+	ChapInUser  *string `json:"ChapInUser,omitempty" xml:"ChapInUser,omitempty"`
+	ChunkSize   *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	DiskId      *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskType    *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Enabled     *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	IndexId     *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	LocalPath   *string `json:"LocalPath,omitempty" xml:"LocalPath,omitempty"`
+	// LUN ID。
 	LunId         *int32  `json:"LunId,omitempty" xml:"LunId,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
@@ -5874,8 +6451,9 @@ func (s *DescribeGatewayBlockVolumesResponseBodyBlockVolumesBlockVolume) SetVolu
 }
 
 type DescribeGatewayBlockVolumesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayBlockVolumesResponse) String() string {
@@ -5888,6 +6466,11 @@ func (s DescribeGatewayBlockVolumesResponse) GoString() string {
 
 func (s *DescribeGatewayBlockVolumesResponse) SetHeaders(v map[string]*string) *DescribeGatewayBlockVolumesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayBlockVolumesResponse) SetStatusCode(v int32) *DescribeGatewayBlockVolumesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6103,8 +6686,9 @@ func (s *DescribeGatewayBucketCachesResponseBodyBucketCachesBucketCache) SetVpcI
 }
 
 type DescribeGatewayBucketCachesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayBucketCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayBucketCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayBucketCachesResponse) String() string {
@@ -6117,6 +6701,11 @@ func (s DescribeGatewayBucketCachesResponse) GoString() string {
 
 func (s *DescribeGatewayBucketCachesResponse) SetHeaders(v map[string]*string) *DescribeGatewayBucketCachesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayBucketCachesResponse) SetStatusCode(v int32) *DescribeGatewayBucketCachesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6207,12 +6796,15 @@ func (s *DescribeGatewayCachesResponseBodyCaches) SetCache(v []*DescribeGatewayC
 }
 
 type DescribeGatewayCachesResponseBodyCachesCache struct {
-	BuyURL                 *string `json:"BuyURL,omitempty" xml:"BuyURL,omitempty"`
-	CacheId                *string `json:"CacheId,omitempty" xml:"CacheId,omitempty"`
-	CacheType              *string `json:"CacheType,omitempty" xml:"CacheType,omitempty"`
-	ExpireStatus           *int32  `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
-	ExpiredTime            *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	BuyURL       *string `json:"BuyURL,omitempty" xml:"BuyURL,omitempty"`
+	CacheId      *string `json:"CacheId,omitempty" xml:"CacheId,omitempty"`
+	CacheType    *string `json:"CacheType,omitempty" xml:"CacheType,omitempty"`
+	ExpireStatus *int32  `json:"ExpireStatus,omitempty" xml:"ExpireStatus,omitempty"`
+	ExpiredTime  *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// IOPS。
 	Iops                   *int64  `json:"Iops,omitempty" xml:"Iops,omitempty"`
+	IsDirectExpand         *string `json:"IsDirectExpand,omitempty" xml:"IsDirectExpand,omitempty"`
+	IsNoPartition          *bool   `json:"IsNoPartition,omitempty" xml:"IsNoPartition,omitempty"`
 	IsUsed                 *bool   `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
 	LocalFilePath          *string `json:"LocalFilePath,omitempty" xml:"LocalFilePath,omitempty"`
 	PerformanceLevel       *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
@@ -6259,6 +6851,16 @@ func (s *DescribeGatewayCachesResponseBodyCachesCache) SetIops(v int64) *Describ
 	return s
 }
 
+func (s *DescribeGatewayCachesResponseBodyCachesCache) SetIsDirectExpand(v string) *DescribeGatewayCachesResponseBodyCachesCache {
+	s.IsDirectExpand = &v
+	return s
+}
+
+func (s *DescribeGatewayCachesResponseBodyCachesCache) SetIsNoPartition(v bool) *DescribeGatewayCachesResponseBodyCachesCache {
+	s.IsNoPartition = &v
+	return s
+}
+
 func (s *DescribeGatewayCachesResponseBodyCachesCache) SetIsUsed(v bool) *DescribeGatewayCachesResponseBodyCachesCache {
 	s.IsUsed = &v
 	return s
@@ -6290,8 +6892,9 @@ func (s *DescribeGatewayCachesResponseBodyCachesCache) SetSubscriptionInstanceId
 }
 
 type DescribeGatewayCachesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayCachesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayCachesResponse) String() string {
@@ -6304,6 +6907,11 @@ func (s DescribeGatewayCachesResponse) GoString() string {
 
 func (s *DescribeGatewayCachesResponse) SetHeaders(v map[string]*string) *DescribeGatewayCachesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayCachesResponse) SetStatusCode(v int32) *DescribeGatewayCachesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6395,8 +7003,9 @@ func (s *DescribeGatewayCapacityLimitResponseBody) SetSuccess(v bool) *DescribeG
 }
 
 type DescribeGatewayCapacityLimitResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayCapacityLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayCapacityLimitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayCapacityLimitResponse) String() string {
@@ -6409,6 +7018,11 @@ func (s DescribeGatewayCapacityLimitResponse) GoString() string {
 
 func (s *DescribeGatewayCapacityLimitResponse) SetHeaders(v map[string]*string) *DescribeGatewayCapacityLimitResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayCapacityLimitResponse) SetStatusCode(v int32) *DescribeGatewayCapacityLimitResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6482,8 +7096,9 @@ func (s *DescribeGatewayCategoriesResponseBody) SetSuccess(v bool) *DescribeGate
 }
 
 type DescribeGatewayCategoriesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayCategoriesResponse) String() string {
@@ -6496,6 +7111,11 @@ func (s DescribeGatewayCategoriesResponse) GoString() string {
 
 func (s *DescribeGatewayCategoriesResponse) SetHeaders(v map[string]*string) *DescribeGatewayCategoriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayCategoriesResponse) SetStatusCode(v int32) *DescribeGatewayCategoriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6563,8 +7183,9 @@ func (s *DescribeGatewayClassesResponseBody) SetSuccess(v bool) *DescribeGateway
 }
 
 type DescribeGatewayClassesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayClassesResponse) String() string {
@@ -6577,6 +7198,11 @@ func (s DescribeGatewayClassesResponse) GoString() string {
 
 func (s *DescribeGatewayClassesResponse) SetHeaders(v map[string]*string) *DescribeGatewayClassesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayClassesResponse) SetStatusCode(v int32) *DescribeGatewayClassesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6680,8 +7306,9 @@ func (s *DescribeGatewayCredentialResponseBody) SetVpcId(v string) *DescribeGate
 }
 
 type DescribeGatewayCredentialResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayCredentialResponse) String() string {
@@ -6694,6 +7321,11 @@ func (s DescribeGatewayCredentialResponse) GoString() string {
 
 func (s *DescribeGatewayCredentialResponse) SetHeaders(v map[string]*string) *DescribeGatewayCredentialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayCredentialResponse) SetStatusCode(v int32) *DescribeGatewayCredentialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6767,8 +7399,9 @@ func (s *DescribeGatewayDNSResponseBody) SetSuccess(v bool) *DescribeGatewayDNSR
 }
 
 type DescribeGatewayDNSResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayDNSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayDNSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayDNSResponse) String() string {
@@ -6781,6 +7414,11 @@ func (s DescribeGatewayDNSResponse) GoString() string {
 
 func (s *DescribeGatewayDNSResponse) SetHeaders(v map[string]*string) *DescribeGatewayDNSResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayDNSResponse) SetStatusCode(v int32) *DescribeGatewayDNSResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6918,6 +7556,7 @@ type DescribeGatewayFileSharesResponseBodyFileSharesFileShare struct {
 	MnsHealth              *string `json:"MnsHealth,omitempty" xml:"MnsHealth,omitempty"`
 	Name                   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NfsV4Optimization      *bool   `json:"NfsV4Optimization,omitempty" xml:"NfsV4Optimization,omitempty"`
+	NoPartition            *bool   `json:"NoPartition,omitempty" xml:"NoPartition,omitempty"`
 	ObsoleteBuckets        *string `json:"ObsoleteBuckets,omitempty" xml:"ObsoleteBuckets,omitempty"`
 	OssBucketName          *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
 	OssBucketSsl           *bool   `json:"OssBucketSsl,omitempty" xml:"OssBucketSsl,omitempty"`
@@ -6926,31 +7565,33 @@ type DescribeGatewayFileSharesResponseBodyFileSharesFileShare struct {
 	OssUsed                *int64  `json:"OssUsed,omitempty" xml:"OssUsed,omitempty"`
 	OutRate                *int64  `json:"OutRate,omitempty" xml:"OutRate,omitempty"`
 	PartialSyncPaths       *string `json:"PartialSyncPaths,omitempty" xml:"PartialSyncPaths,omitempty"`
-	PathPrefix             *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
-	PollingInterval        *int32  `json:"PollingInterval,omitempty" xml:"PollingInterval,omitempty"`
-	Protocol               *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	RemainingMetaSpace     *int64  `json:"RemainingMetaSpace,omitempty" xml:"RemainingMetaSpace,omitempty"`
-	RemoteSync             *bool   `json:"RemoteSync,omitempty" xml:"RemoteSync,omitempty"`
-	RemoteSyncDownload     *bool   `json:"RemoteSyncDownload,omitempty" xml:"RemoteSyncDownload,omitempty"`
-	RoClientList           *string `json:"RoClientList,omitempty" xml:"RoClientList,omitempty"`
-	RoUserList             *string `json:"RoUserList,omitempty" xml:"RoUserList,omitempty"`
-	RwClientList           *string `json:"RwClientList,omitempty" xml:"RwClientList,omitempty"`
-	RwUserList             *string `json:"RwUserList,omitempty" xml:"RwUserList,omitempty"`
-	ServerSideAlgorithm    *string `json:"ServerSideAlgorithm,omitempty" xml:"ServerSideAlgorithm,omitempty"`
-	ServerSideCmk          *string `json:"ServerSideCmk,omitempty" xml:"ServerSideCmk,omitempty"`
-	ServerSideEncryption   *bool   `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
-	Size                   *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Squash                 *string `json:"Squash,omitempty" xml:"Squash,omitempty"`
-	State                  *string `json:"State,omitempty" xml:"State,omitempty"`
-	SupportArchive         *bool   `json:"SupportArchive,omitempty" xml:"SupportArchive,omitempty"`
-	SyncProgress           *int32  `json:"SyncProgress,omitempty" xml:"SyncProgress,omitempty"`
-	Throttling             *bool   `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
-	TotalDownload          *int64  `json:"TotalDownload,omitempty" xml:"TotalDownload,omitempty"`
-	TotalUpload            *int64  `json:"TotalUpload,omitempty" xml:"TotalUpload,omitempty"`
-	TransferAcceleration   *bool   `json:"TransferAcceleration,omitempty" xml:"TransferAcceleration,omitempty"`
-	UploadQueue            *int64  `json:"UploadQueue,omitempty" xml:"UploadQueue,omitempty"`
-	Used                   *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
-	WindowsAcl             *bool   `json:"WindowsAcl,omitempty" xml:"WindowsAcl,omitempty"`
+	// OSS Prefix。
+	PathPrefix           *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
+	PollingInterval      *int32  `json:"PollingInterval,omitempty" xml:"PollingInterval,omitempty"`
+	Protocol             *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	RemainingMetaSpace   *int64  `json:"RemainingMetaSpace,omitempty" xml:"RemainingMetaSpace,omitempty"`
+	RemoteSync           *bool   `json:"RemoteSync,omitempty" xml:"RemoteSync,omitempty"`
+	RemoteSyncDownload   *bool   `json:"RemoteSyncDownload,omitempty" xml:"RemoteSyncDownload,omitempty"`
+	RoClientList         *string `json:"RoClientList,omitempty" xml:"RoClientList,omitempty"`
+	RoUserList           *string `json:"RoUserList,omitempty" xml:"RoUserList,omitempty"`
+	RwClientList         *string `json:"RwClientList,omitempty" xml:"RwClientList,omitempty"`
+	RwUserList           *string `json:"RwUserList,omitempty" xml:"RwUserList,omitempty"`
+	ServerSideAlgorithm  *string `json:"ServerSideAlgorithm,omitempty" xml:"ServerSideAlgorithm,omitempty"`
+	ServerSideCmk        *string `json:"ServerSideCmk,omitempty" xml:"ServerSideCmk,omitempty"`
+	ServerSideEncryption *bool   `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
+	Size                 *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Squash               *string `json:"Squash,omitempty" xml:"Squash,omitempty"`
+	State                *string `json:"State,omitempty" xml:"State,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportArchive       *bool   `json:"SupportArchive,omitempty" xml:"SupportArchive,omitempty"`
+	SyncProgress         *int32  `json:"SyncProgress,omitempty" xml:"SyncProgress,omitempty"`
+	Throttling           *bool   `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
+	TotalDownload        *int64  `json:"TotalDownload,omitempty" xml:"TotalDownload,omitempty"`
+	TotalUpload          *int64  `json:"TotalUpload,omitempty" xml:"TotalUpload,omitempty"`
+	TransferAcceleration *bool   `json:"TransferAcceleration,omitempty" xml:"TransferAcceleration,omitempty"`
+	UploadQueue          *int64  `json:"UploadQueue,omitempty" xml:"UploadQueue,omitempty"`
+	Used                 *int64  `json:"Used,omitempty" xml:"Used,omitempty"`
+	WindowsAcl           *bool   `json:"WindowsAcl,omitempty" xml:"WindowsAcl,omitempty"`
 }
 
 func (s DescribeGatewayFileSharesResponseBodyFileSharesFileShare) String() string {
@@ -7136,6 +7777,11 @@ func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetNfsV4Optim
 	return s
 }
 
+func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetNoPartition(v bool) *DescribeGatewayFileSharesResponseBodyFileSharesFileShare {
+	s.NoPartition = &v
+	return s
+}
+
 func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetObsoleteBuckets(v string) *DescribeGatewayFileSharesResponseBodyFileSharesFileShare {
 	s.ObsoleteBuckets = &v
 	return s
@@ -7256,6 +7902,11 @@ func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetState(v st
 	return s
 }
 
+func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetStatus(v string) *DescribeGatewayFileSharesResponseBodyFileSharesFileShare {
+	s.Status = &v
+	return s
+}
+
 func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetSupportArchive(v bool) *DescribeGatewayFileSharesResponseBodyFileSharesFileShare {
 	s.SupportArchive = &v
 	return s
@@ -7302,8 +7953,9 @@ func (s *DescribeGatewayFileSharesResponseBodyFileSharesFileShare) SetWindowsAcl
 }
 
 type DescribeGatewayFileSharesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayFileSharesResponse) String() string {
@@ -7316,6 +7968,11 @@ func (s DescribeGatewayFileSharesResponse) GoString() string {
 
 func (s *DescribeGatewayFileSharesResponse) SetHeaders(v map[string]*string) *DescribeGatewayFileSharesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayFileSharesResponse) SetStatusCode(v int32) *DescribeGatewayFileSharesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7401,8 +8058,9 @@ func (s *DescribeGatewayFileStatusResponseBody) SetSuccess(v bool) *DescribeGate
 }
 
 type DescribeGatewayFileStatusResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayFileStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayFileStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayFileStatusResponse) String() string {
@@ -7415,6 +8073,11 @@ func (s DescribeGatewayFileStatusResponse) GoString() string {
 
 func (s *DescribeGatewayFileStatusResponse) SetHeaders(v map[string]*string) *DescribeGatewayFileStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayFileStatusResponse) SetStatusCode(v int32) *DescribeGatewayFileStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7570,8 +8233,9 @@ func (s *DescribeGatewayImagesResponseBodyImagesImage) SetVersion(v string) *Des
 }
 
 type DescribeGatewayImagesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayImagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayImagesResponse) String() string {
@@ -7584,6 +8248,11 @@ func (s DescribeGatewayImagesResponse) GoString() string {
 
 func (s *DescribeGatewayImagesResponse) SetHeaders(v map[string]*string) *DescribeGatewayImagesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayImagesResponse) SetStatusCode(v int32) *DescribeGatewayImagesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7697,8 +8366,9 @@ func (s *DescribeGatewayInfoResponseBodyGatewayInfosGatewayInfo) SetTime(v int64
 }
 
 type DescribeGatewayInfoResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayInfoResponse) String() string {
@@ -7711,6 +8381,11 @@ func (s DescribeGatewayInfoResponse) GoString() string {
 
 func (s *DescribeGatewayInfoResponse) SetHeaders(v map[string]*string) *DescribeGatewayInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayInfoResponse) SetStatusCode(v int32) *DescribeGatewayInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7808,8 +8483,9 @@ func (s *DescribeGatewayLDAPInfoResponseBody) SetSuccess(v bool) *DescribeGatewa
 }
 
 type DescribeGatewayLDAPInfoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayLDAPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayLDAPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayLDAPInfoResponse) String() string {
@@ -7822,6 +8498,11 @@ func (s DescribeGatewayLDAPInfoResponse) GoString() string {
 
 func (s *DescribeGatewayLDAPInfoResponse) SetHeaders(v map[string]*string) *DescribeGatewayLDAPInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayLDAPInfoResponse) SetStatusCode(v int32) *DescribeGatewayLDAPInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7889,8 +8570,9 @@ func (s *DescribeGatewayLocationsResponseBody) SetSuccess(v bool) *DescribeGatew
 }
 
 type DescribeGatewayLocationsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayLocationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayLocationsResponse) String() string {
@@ -7903,6 +8585,11 @@ func (s DescribeGatewayLocationsResponse) GoString() string {
 
 func (s *DescribeGatewayLocationsResponse) SetHeaders(v map[string]*string) *DescribeGatewayLocationsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayLocationsResponse) SetStatusCode(v int32) *DescribeGatewayLocationsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7988,8 +8675,9 @@ func (s *DescribeGatewayLoggingResponseBody) SetSuccess(v bool) *DescribeGateway
 }
 
 type DescribeGatewayLoggingResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayLoggingResponse) String() string {
@@ -8002,6 +8690,11 @@ func (s DescribeGatewayLoggingResponse) GoString() string {
 
 func (s *DescribeGatewayLoggingResponse) SetHeaders(v map[string]*string) *DescribeGatewayLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayLoggingResponse) SetStatusCode(v int32) *DescribeGatewayLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8081,8 +8774,9 @@ func (s *DescribeGatewayLogsResponseBody) SetSuccess(v bool) *DescribeGatewayLog
 }
 
 type DescribeGatewayLogsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayLogsResponse) String() string {
@@ -8095,6 +8789,11 @@ func (s DescribeGatewayLogsResponse) GoString() string {
 
 func (s *DescribeGatewayLogsResponse) SetHeaders(v map[string]*string) *DescribeGatewayLogsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayLogsResponse) SetStatusCode(v int32) *DescribeGatewayLogsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8208,8 +8907,9 @@ func (s *DescribeGatewayModificationClassesResponseBodyTargetGatewayClassesTarge
 }
 
 type DescribeGatewayModificationClassesResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayModificationClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayModificationClassesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayModificationClassesResponse) String() string {
@@ -8222,6 +8922,11 @@ func (s DescribeGatewayModificationClassesResponse) GoString() string {
 
 func (s *DescribeGatewayModificationClassesResponse) SetHeaders(v map[string]*string) *DescribeGatewayModificationClassesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayModificationClassesResponse) SetStatusCode(v int32) *DescribeGatewayModificationClassesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8395,8 +9100,9 @@ func (s *DescribeGatewayNFSClientsResponseBodyClientInfoListClientInfo) SetHasNF
 }
 
 type DescribeGatewayNFSClientsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayNFSClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayNFSClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayNFSClientsResponse) String() string {
@@ -8409,6 +9115,11 @@ func (s DescribeGatewayNFSClientsResponse) GoString() string {
 
 func (s *DescribeGatewayNFSClientsResponse) SetHeaders(v map[string]*string) *DescribeGatewayNFSClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayNFSClientsResponse) SetStatusCode(v int32) *DescribeGatewayNFSClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8453,14 +9164,15 @@ func (s *DescribeGatewaySMBUsersRequest) SetSecurityToken(v string) *DescribeGat
 }
 
 type DescribeGatewaySMBUsersResponseBody struct {
-	Code       *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message    *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Users      *DescribeGatewaySMBUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+	ActiveDirectory *bool                                     `json:"ActiveDirectory,omitempty" xml:"ActiveDirectory,omitempty"`
+	Code            *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message         *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber      *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount      *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Users           *DescribeGatewaySMBUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
 func (s DescribeGatewaySMBUsersResponseBody) String() string {
@@ -8469,6 +9181,11 @@ func (s DescribeGatewaySMBUsersResponseBody) String() string {
 
 func (s DescribeGatewaySMBUsersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGatewaySMBUsersResponseBody) SetActiveDirectory(v bool) *DescribeGatewaySMBUsersResponseBody {
+	s.ActiveDirectory = &v
+	return s
 }
 
 func (s *DescribeGatewaySMBUsersResponseBody) SetCode(v string) *DescribeGatewaySMBUsersResponseBody {
@@ -8546,8 +9263,9 @@ func (s *DescribeGatewaySMBUsersResponseBodyUsersUser) SetUsername(v string) *De
 }
 
 type DescribeGatewaySMBUsersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewaySMBUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewaySMBUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewaySMBUsersResponse) String() string {
@@ -8560,6 +9278,11 @@ func (s DescribeGatewaySMBUsersResponse) GoString() string {
 
 func (s *DescribeGatewaySMBUsersResponse) SetHeaders(v map[string]*string) *DescribeGatewaySMBUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewaySMBUsersResponse) SetStatusCode(v int32) *DescribeGatewaySMBUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8657,8 +9380,9 @@ func (s *DescribeGatewayStatisticsResponseBody) SetSuccess(v bool) *DescribeGate
 }
 
 type DescribeGatewayStatisticsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayStatisticsResponse) String() string {
@@ -8671,6 +9395,11 @@ func (s DescribeGatewayStatisticsResponse) GoString() string {
 
 func (s *DescribeGatewayStatisticsResponse) SetHeaders(v map[string]*string) *DescribeGatewayStatisticsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayStatisticsResponse) SetStatusCode(v int32) *DescribeGatewayStatisticsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8784,8 +9513,9 @@ func (s *DescribeGatewayStockResponseBodyStocksStock) SetZoneId(v string) *Descr
 }
 
 type DescribeGatewayStockResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayStockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayStockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayStockResponse) String() string {
@@ -8798,6 +9528,11 @@ func (s DescribeGatewayStockResponse) GoString() string {
 
 func (s *DescribeGatewayStockResponse) SetHeaders(v map[string]*string) *DescribeGatewayStockResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayStockResponse) SetStatusCode(v int32) *DescribeGatewayStockResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8871,8 +9606,9 @@ func (s *DescribeGatewayTypesResponseBody) SetTypes(v string) *DescribeGatewayTy
 }
 
 type DescribeGatewayTypesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewayTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewayTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewayTypesResponse) String() string {
@@ -8885,6 +9621,11 @@ func (s DescribeGatewayTypesResponse) GoString() string {
 
 func (s *DescribeGatewayTypesResponse) SetHeaders(v map[string]*string) *DescribeGatewayTypesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewayTypesResponse) SetStatusCode(v int32) *DescribeGatewayTypesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9021,6 +9762,7 @@ type DescribeGatewaysResponseBodyGatewaysGateway struct {
 	ExpiredTime              *int64                                                   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	GatewayClass             *string                                                  `json:"GatewayClass,omitempty" xml:"GatewayClass,omitempty"`
 	GatewayId                *string                                                  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayRegionId          *string                                                  `json:"GatewayRegionId,omitempty" xml:"GatewayRegionId,omitempty"`
 	GatewayType              *string                                                  `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	GatewayVersion           *string                                                  `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
 	InnerIp                  *string                                                  `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
@@ -9127,6 +9869,11 @@ func (s *DescribeGatewaysResponseBodyGatewaysGateway) SetGatewayClass(v string) 
 
 func (s *DescribeGatewaysResponseBodyGatewaysGateway) SetGatewayId(v string) *DescribeGatewaysResponseBodyGatewaysGateway {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeGatewaysResponseBodyGatewaysGateway) SetGatewayRegionId(v string) *DescribeGatewaysResponseBodyGatewaysGateway {
+	s.GatewayRegionId = &v
 	return s
 }
 
@@ -9243,8 +9990,9 @@ func (s *DescribeGatewaysResponseBodyGatewaysGatewayElasticNodes) SetElasticNode
 }
 
 type DescribeGatewaysResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewaysResponse) String() string {
@@ -9257,6 +10005,11 @@ func (s DescribeGatewaysResponse) GoString() string {
 
 func (s *DescribeGatewaysResponse) SetHeaders(v map[string]*string) *DescribeGatewaysResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewaysResponse) SetStatusCode(v int32) *DescribeGatewaysResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9406,8 +10159,9 @@ func (s *DescribeGatewaysForCmsResponseBodyGatewaysGateway) SetName(v string) *D
 }
 
 type DescribeGatewaysForCmsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewaysForCmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewaysForCmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewaysForCmsResponse) String() string {
@@ -9420,6 +10174,11 @@ func (s DescribeGatewaysForCmsResponse) GoString() string {
 
 func (s *DescribeGatewaysForCmsResponse) SetHeaders(v map[string]*string) *DescribeGatewaysForCmsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewaysForCmsResponse) SetStatusCode(v int32) *DescribeGatewaysForCmsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9585,8 +10344,9 @@ func (s *DescribeGatewaysTagsResponseBodyGatewayTagsGatewayTagTagsTag) SetTagVal
 }
 
 type DescribeGatewaysTagsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGatewaysTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGatewaysTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGatewaysTagsResponse) String() string {
@@ -9599,6 +10359,11 @@ func (s DescribeGatewaysTagsResponse) GoString() string {
 
 func (s *DescribeGatewaysTagsResponse) SetHeaders(v map[string]*string) *DescribeGatewaysTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewaysTagsResponse) SetStatusCode(v int32) *DescribeGatewaysTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9678,8 +10443,9 @@ func (s *DescribeKmsKeyResponseBody) SetSuccess(v bool) *DescribeKmsKeyResponseB
 }
 
 type DescribeKmsKeyResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeKmsKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeKmsKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeKmsKeyResponse) String() string {
@@ -9692,6 +10458,11 @@ func (s DescribeKmsKeyResponse) GoString() string {
 
 func (s *DescribeKmsKeyResponse) SetHeaders(v map[string]*string) *DescribeKmsKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeKmsKeyResponse) SetStatusCode(v int32) *DescribeKmsKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9819,8 +10590,9 @@ func (s *DescribeMqttConfigResponseBody) SetUsername(v string) *DescribeMqttConf
 }
 
 type DescribeMqttConfigResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMqttConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMqttConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMqttConfigResponse) String() string {
@@ -9833,6 +10605,11 @@ func (s DescribeMqttConfigResponse) GoString() string {
 
 func (s *DescribeMqttConfigResponse) SetHeaders(v map[string]*string) *DescribeMqttConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMqttConfigResponse) SetStatusCode(v int32) *DescribeMqttConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9886,6 +10663,7 @@ type DescribeOssBucketInfoResponseBody struct {
 	Code                          *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	IsArchive                     *bool   `json:"IsArchive,omitempty" xml:"IsArchive,omitempty"`
 	IsBackToResource              *bool   `json:"IsBackToResource,omitempty" xml:"IsBackToResource,omitempty"`
+	IsColdArchive                 *bool   `json:"IsColdArchive,omitempty" xml:"IsColdArchive,omitempty"`
 	IsFresh                       *bool   `json:"IsFresh,omitempty" xml:"IsFresh,omitempty"`
 	IsSupportServerSideEncryption *bool   `json:"IsSupportServerSideEncryption,omitempty" xml:"IsSupportServerSideEncryption,omitempty"`
 	IsVersioning                  *bool   `json:"IsVersioning,omitempty" xml:"IsVersioning,omitempty"`
@@ -9916,6 +10694,11 @@ func (s *DescribeOssBucketInfoResponseBody) SetIsArchive(v bool) *DescribeOssBuc
 
 func (s *DescribeOssBucketInfoResponseBody) SetIsBackToResource(v bool) *DescribeOssBucketInfoResponseBody {
 	s.IsBackToResource = &v
+	return s
+}
+
+func (s *DescribeOssBucketInfoResponseBody) SetIsColdArchive(v bool) *DescribeOssBucketInfoResponseBody {
+	s.IsColdArchive = &v
 	return s
 }
 
@@ -9960,8 +10743,9 @@ func (s *DescribeOssBucketInfoResponseBody) SetSuccess(v bool) *DescribeOssBucke
 }
 
 type DescribeOssBucketInfoResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeOssBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOssBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeOssBucketInfoResponse) String() string {
@@ -9974,6 +10758,11 @@ func (s DescribeOssBucketInfoResponse) GoString() string {
 
 func (s *DescribeOssBucketInfoResponse) SetHeaders(v map[string]*string) *DescribeOssBucketInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeOssBucketInfoResponse) SetStatusCode(v int32) *DescribeOssBucketInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10081,8 +10870,9 @@ func (s *DescribeOssBucketsResponseBodyBucketsBucket) SetName(v string) *Describ
 }
 
 type DescribeOssBucketsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeOssBucketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOssBucketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeOssBucketsResponse) String() string {
@@ -10095,6 +10885,11 @@ func (s DescribeOssBucketsResponse) GoString() string {
 
 func (s *DescribeOssBucketsResponse) SetHeaders(v map[string]*string) *DescribeOssBucketsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeOssBucketsResponse) SetStatusCode(v int32) *DescribeOssBucketsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10135,6 +10930,7 @@ func (s *DescribePayAsYouGoPriceRequest) SetSecurityToken(v string) *DescribePay
 type DescribePayAsYouGoPriceResponseBody struct {
 	CacheCloudEfficiencySizePrice *float32 `json:"CacheCloudEfficiencySizePrice,omitempty" xml:"CacheCloudEfficiencySizePrice,omitempty"`
 	CacheCloudSSDSizePrice        *float32 `json:"CacheCloudSSDSizePrice,omitempty" xml:"CacheCloudSSDSizePrice,omitempty"`
+	CacheESSDPl1SizePrice         *float32 `json:"CacheESSDPl1SizePrice,omitempty" xml:"CacheESSDPl1SizePrice,omitempty"`
 	Code                          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
 	Currency                      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	GatewayClassPrice             *float32 `json:"GatewayClassPrice,omitempty" xml:"GatewayClassPrice,omitempty"`
@@ -10158,6 +10954,11 @@ func (s *DescribePayAsYouGoPriceResponseBody) SetCacheCloudEfficiencySizePrice(v
 
 func (s *DescribePayAsYouGoPriceResponseBody) SetCacheCloudSSDSizePrice(v float32) *DescribePayAsYouGoPriceResponseBody {
 	s.CacheCloudSSDSizePrice = &v
+	return s
+}
+
+func (s *DescribePayAsYouGoPriceResponseBody) SetCacheESSDPl1SizePrice(v float32) *DescribePayAsYouGoPriceResponseBody {
+	s.CacheESSDPl1SizePrice = &v
 	return s
 }
 
@@ -10192,8 +10993,9 @@ func (s *DescribePayAsYouGoPriceResponseBody) SetSuccess(v bool) *DescribePayAsY
 }
 
 type DescribePayAsYouGoPriceResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePayAsYouGoPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePayAsYouGoPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePayAsYouGoPriceResponse) String() string {
@@ -10206,6 +11008,11 @@ func (s DescribePayAsYouGoPriceResponse) GoString() string {
 
 func (s *DescribePayAsYouGoPriceResponse) SetHeaders(v map[string]*string) *DescribePayAsYouGoPriceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePayAsYouGoPriceResponse) SetStatusCode(v int32) *DescribePayAsYouGoPriceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10307,8 +11114,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -10321,6 +11129,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10446,8 +11259,9 @@ func (s *DescribeSharesBucketInfoForExpressSyncResponseBodyBucketInfosBucketInfo
 }
 
 type DescribeSharesBucketInfoForExpressSyncResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSharesBucketInfoForExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSharesBucketInfoForExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSharesBucketInfoForExpressSyncResponse) String() string {
@@ -10460,6 +11274,11 @@ func (s DescribeSharesBucketInfoForExpressSyncResponse) GoString() string {
 
 func (s *DescribeSharesBucketInfoForExpressSyncResponse) SetHeaders(v map[string]*string) *DescribeSharesBucketInfoForExpressSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSharesBucketInfoForExpressSyncResponse) SetStatusCode(v int32) *DescribeSharesBucketInfoForExpressSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10557,8 +11376,9 @@ func (s *DescribeStorageBundleResponseBody) SetSuccess(v bool) *DescribeStorageB
 }
 
 type DescribeStorageBundleResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeStorageBundleResponse) String() string {
@@ -10571,6 +11391,11 @@ func (s DescribeStorageBundleResponse) GoString() string {
 
 func (s *DescribeStorageBundleResponse) SetHeaders(v map[string]*string) *DescribeStorageBundleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeStorageBundleResponse) SetStatusCode(v int32) *DescribeStorageBundleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10732,8 +11557,9 @@ func (s *DescribeStorageBundlesResponseBodyStorageBundlesStorageBundle) SetStora
 }
 
 type DescribeStorageBundlesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeStorageBundlesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeStorageBundlesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeStorageBundlesResponse) String() string {
@@ -10749,6 +11575,11 @@ func (s *DescribeStorageBundlesResponse) SetHeaders(v map[string]*string) *Descr
 	return s
 }
 
+func (s *DescribeStorageBundlesResponse) SetStatusCode(v int32) *DescribeStorageBundlesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeStorageBundlesResponse) SetBody(v *DescribeStorageBundlesResponseBody) *DescribeStorageBundlesResponse {
 	s.Body = v
 	return s
@@ -10756,6 +11587,7 @@ func (s *DescribeStorageBundlesResponse) SetBody(v *DescribeStorageBundlesRespon
 
 type DescribeSubscriptionPriceRequest struct {
 	CacheCloudEfficiencySize *int64  `json:"CacheCloudEfficiencySize,omitempty" xml:"CacheCloudEfficiencySize,omitempty"`
+	CacheESSDPl1Size         *int64  `json:"CacheESSDPl1Size,omitempty" xml:"CacheESSDPl1Size,omitempty"`
 	CacheSSDSize             *int64  `json:"CacheSSDSize,omitempty" xml:"CacheSSDSize,omitempty"`
 	GatewayClass             *string `json:"GatewayClass,omitempty" xml:"GatewayClass,omitempty"`
 	PeriodQuantity           *int32  `json:"PeriodQuantity,omitempty" xml:"PeriodQuantity,omitempty"`
@@ -10774,6 +11606,11 @@ func (s DescribeSubscriptionPriceRequest) GoString() string {
 
 func (s *DescribeSubscriptionPriceRequest) SetCacheCloudEfficiencySize(v int64) *DescribeSubscriptionPriceRequest {
 	s.CacheCloudEfficiencySize = &v
+	return s
+}
+
+func (s *DescribeSubscriptionPriceRequest) SetCacheESSDPl1Size(v int64) *DescribeSubscriptionPriceRequest {
+	s.CacheESSDPl1Size = &v
 	return s
 }
 
@@ -10855,8 +11692,9 @@ func (s *DescribeSubscriptionPriceResponseBody) SetTradePrice(v float32) *Descri
 }
 
 type DescribeSubscriptionPriceResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSubscriptionPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSubscriptionPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSubscriptionPriceResponse) String() string {
@@ -10869,6 +11707,11 @@ func (s DescribeSubscriptionPriceResponse) GoString() string {
 
 func (s *DescribeSubscriptionPriceResponse) SetHeaders(v map[string]*string) *DescribeSubscriptionPriceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSubscriptionPriceResponse) SetStatusCode(v int32) *DescribeSubscriptionPriceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11054,8 +11897,9 @@ func (s *DescribeTasksResponseBodyTasksSimpleTask) SetUpdatedTime(v int64) *Desc
 }
 
 type DescribeTasksResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTasksResponse) String() string {
@@ -11068,6 +11912,11 @@ func (s DescribeTasksResponse) GoString() string {
 
 func (s *DescribeTasksResponse) SetHeaders(v map[string]*string) *DescribeTasksResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeTasksResponse) SetStatusCode(v int32) *DescribeTasksResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11153,8 +12002,9 @@ func (s *DescribeUserBusinessStatusResponseBody) SetSuccess(v bool) *DescribeUse
 }
 
 type DescribeUserBusinessStatusResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUserBusinessStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserBusinessStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUserBusinessStatusResponse) String() string {
@@ -11170,18 +12020,25 @@ func (s *DescribeUserBusinessStatusResponse) SetHeaders(v map[string]*string) *D
 	return s
 }
 
+func (s *DescribeUserBusinessStatusResponse) SetStatusCode(v int32) *DescribeUserBusinessStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeUserBusinessStatusResponse) SetBody(v *DescribeUserBusinessStatusResponseBody) *DescribeUserBusinessStatusResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeVSwitchesRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StorageBundleId *string `json:"StorageBundleId,omitempty" xml:"StorageBundleId,omitempty"`
-	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StorageBundleId  *string `json:"StorageBundleId,omitempty" xml:"StorageBundleId,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVSwitchesRequest) String() string {
@@ -11192,6 +12049,11 @@ func (s DescribeVSwitchesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVSwitchesRequest) SetName(v string) *DescribeVSwitchesRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeVSwitchesRequest) SetPageNumber(v int32) *DescribeVSwitchesRequest {
 	s.PageNumber = &v
 	return s
@@ -11199,6 +12061,11 @@ func (s *DescribeVSwitchesRequest) SetPageNumber(v int32) *DescribeVSwitchesRequ
 
 func (s *DescribeVSwitchesRequest) SetPageSize(v int32) *DescribeVSwitchesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVSwitchesRequest) SetResourceRegionId(v string) *DescribeVSwitchesRequest {
+	s.ResourceRegionId = &v
 	return s
 }
 
@@ -11340,8 +12207,9 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetZoneId(v string) *Des
 }
 
 type DescribeVSwitchesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVSwitchesResponse) String() string {
@@ -11357,17 +12225,24 @@ func (s *DescribeVSwitchesResponse) SetHeaders(v map[string]*string) *DescribeVS
 	return s
 }
 
+func (s *DescribeVSwitchesResponse) SetStatusCode(v int32) *DescribeVSwitchesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *DescribeVSwitchesResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeVpcsRequest struct {
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	StorageBundleId *string `json:"StorageBundleId,omitempty" xml:"StorageBundleId,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StorageBundleId  *string `json:"StorageBundleId,omitempty" xml:"StorageBundleId,omitempty"`
+	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeVpcsRequest) String() string {
@@ -11378,6 +12253,11 @@ func (s DescribeVpcsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVpcsRequest) SetName(v string) *DescribeVpcsRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *DescribeVpcsRequest) SetPageNumber(v int32) *DescribeVpcsRequest {
 	s.PageNumber = &v
 	return s
@@ -11385,6 +12265,11 @@ func (s *DescribeVpcsRequest) SetPageNumber(v int32) *DescribeVpcsRequest {
 
 func (s *DescribeVpcsRequest) SetPageSize(v int32) *DescribeVpcsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVpcsRequest) SetResourceRegionId(v string) *DescribeVpcsRequest {
+	s.ResourceRegionId = &v
 	return s
 }
 
@@ -11515,8 +12400,9 @@ func (s *DescribeVpcsResponseBodyVpcsVpc) SetName(v string) *DescribeVpcsRespons
 }
 
 type DescribeVpcsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcsResponse) String() string {
@@ -11529,6 +12415,11 @@ func (s DescribeVpcsResponse) GoString() string {
 
 func (s *DescribeVpcsResponse) SetHeaders(v map[string]*string) *DescribeVpcsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcsResponse) SetStatusCode(v int32) *DescribeVpcsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11636,8 +12527,9 @@ func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesR
 }
 
 type DescribeZonesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeZonesResponse) String() string {
@@ -11650,6 +12542,11 @@ func (s DescribeZonesResponse) GoString() string {
 
 func (s *DescribeZonesResponse) SetHeaders(v map[string]*string) *DescribeZonesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeZonesResponse) SetStatusCode(v int32) *DescribeZonesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11717,8 +12614,9 @@ func (s *DisableGatewayLoggingResponseBody) SetSuccess(v bool) *DisableGatewayLo
 }
 
 type DisableGatewayLoggingResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableGatewayLoggingResponse) String() string {
@@ -11731,6 +12629,11 @@ func (s DisableGatewayLoggingResponse) GoString() string {
 
 func (s *DisableGatewayLoggingResponse) SetHeaders(v map[string]*string) *DisableGatewayLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableGatewayLoggingResponse) SetStatusCode(v int32) *DisableGatewayLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11810,8 +12713,9 @@ func (s *DisableGatewayNFSVersionResponseBody) SetTaskId(v string) *DisableGatew
 }
 
 type DisableGatewayNFSVersionResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableGatewayNFSVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableGatewayNFSVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableGatewayNFSVersionResponse) String() string {
@@ -11824,6 +12728,11 @@ func (s DisableGatewayNFSVersionResponse) GoString() string {
 
 func (s *DisableGatewayNFSVersionResponse) SetHeaders(v map[string]*string) *DisableGatewayNFSVersionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableGatewayNFSVersionResponse) SetStatusCode(v int32) *DisableGatewayNFSVersionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11897,8 +12806,9 @@ func (s *EnableGatewayIpv6ResponseBody) SetTaskId(v string) *EnableGatewayIpv6Re
 }
 
 type EnableGatewayIpv6Response struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableGatewayIpv6ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableGatewayIpv6ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableGatewayIpv6Response) String() string {
@@ -11911,6 +12821,11 @@ func (s EnableGatewayIpv6Response) GoString() string {
 
 func (s *EnableGatewayIpv6Response) SetHeaders(v map[string]*string) *EnableGatewayIpv6Response {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableGatewayIpv6Response) SetStatusCode(v int32) *EnableGatewayIpv6Response {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11978,8 +12893,9 @@ func (s *EnableGatewayLoggingResponseBody) SetSuccess(v bool) *EnableGatewayLogg
 }
 
 type EnableGatewayLoggingResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableGatewayLoggingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableGatewayLoggingResponse) String() string {
@@ -11992,6 +12908,11 @@ func (s EnableGatewayLoggingResponse) GoString() string {
 
 func (s *EnableGatewayLoggingResponse) SetHeaders(v map[string]*string) *EnableGatewayLoggingResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableGatewayLoggingResponse) SetStatusCode(v int32) *EnableGatewayLoggingResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12083,8 +13004,9 @@ func (s *ExpandCacheDiskResponseBody) SetTaskId(v string) *ExpandCacheDiskRespon
 }
 
 type ExpandCacheDiskResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExpandCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExpandCacheDiskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExpandCacheDiskResponse) String() string {
@@ -12100,7 +13022,105 @@ func (s *ExpandCacheDiskResponse) SetHeaders(v map[string]*string) *ExpandCacheD
 	return s
 }
 
+func (s *ExpandCacheDiskResponse) SetStatusCode(v int32) *ExpandCacheDiskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ExpandCacheDiskResponse) SetBody(v *ExpandCacheDiskResponseBody) *ExpandCacheDiskResponse {
+	s.Body = v
+	return s
+}
+
+type ExpandGatewayFileShareRequest struct {
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	IndexId   *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+}
+
+func (s ExpandGatewayFileShareRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandGatewayFileShareRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandGatewayFileShareRequest) SetGatewayId(v string) *ExpandGatewayFileShareRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareRequest) SetIndexId(v string) *ExpandGatewayFileShareRequest {
+	s.IndexId = &v
+	return s
+}
+
+type ExpandGatewayFileShareResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ExpandGatewayFileShareResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandGatewayFileShareResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandGatewayFileShareResponseBody) SetCode(v string) *ExpandGatewayFileShareResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponseBody) SetMessage(v string) *ExpandGatewayFileShareResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponseBody) SetRequestId(v string) *ExpandGatewayFileShareResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponseBody) SetSuccess(v bool) *ExpandGatewayFileShareResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponseBody) SetTaskId(v string) *ExpandGatewayFileShareResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type ExpandGatewayFileShareResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExpandGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExpandGatewayFileShareResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandGatewayFileShareResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandGatewayFileShareResponse) SetHeaders(v map[string]*string) *ExpandGatewayFileShareResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponse) SetStatusCode(v int32) *ExpandGatewayFileShareResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExpandGatewayFileShareResponse) SetBody(v *ExpandGatewayFileShareResponseBody) *ExpandGatewayFileShareResponse {
 	s.Body = v
 	return s
 }
@@ -12182,8 +13202,9 @@ func (s *ExpandGatewayNetworkBandwidthResponseBody) SetTaskId(v string) *ExpandG
 }
 
 type ExpandGatewayNetworkBandwidthResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExpandGatewayNetworkBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExpandGatewayNetworkBandwidthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExpandGatewayNetworkBandwidthResponse) String() string {
@@ -12196,6 +13217,11 @@ func (s ExpandGatewayNetworkBandwidthResponse) GoString() string {
 
 func (s *ExpandGatewayNetworkBandwidthResponse) SetHeaders(v map[string]*string) *ExpandGatewayNetworkBandwidthResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExpandGatewayNetworkBandwidthResponse) SetStatusCode(v int32) *ExpandGatewayNetworkBandwidthResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12269,8 +13295,9 @@ func (s *GenerateGatewayTokenResponseBody) SetToken(v string) *GenerateGatewayTo
 }
 
 type GenerateGatewayTokenResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateGatewayTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateGatewayTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateGatewayTokenResponse) String() string {
@@ -12283,6 +13310,11 @@ func (s GenerateGatewayTokenResponse) GoString() string {
 
 func (s *GenerateGatewayTokenResponse) SetHeaders(v map[string]*string) *GenerateGatewayTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateGatewayTokenResponse) SetStatusCode(v int32) *GenerateGatewayTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12362,8 +13394,9 @@ func (s *GenerateMqttTokenResponseBody) SetSuccess(v bool) *GenerateMqttTokenRes
 }
 
 type GenerateMqttTokenResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateMqttTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateMqttTokenResponse) String() string {
@@ -12376,6 +13409,11 @@ func (s GenerateMqttTokenResponse) GoString() string {
 
 func (s *GenerateMqttTokenResponse) SetHeaders(v map[string]*string) *GenerateMqttTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateMqttTokenResponse) SetStatusCode(v int32) *GenerateMqttTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12491,8 +13529,9 @@ func (s *GenerateStsTokenResponseBody) SetSupportBundleTarget(v string) *Generat
 }
 
 type GenerateStsTokenResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateStsTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateStsTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateStsTokenResponse) String() string {
@@ -12508,7 +13547,117 @@ func (s *GenerateStsTokenResponse) SetHeaders(v map[string]*string) *GenerateSts
 	return s
 }
 
+func (s *GenerateStsTokenResponse) SetStatusCode(v int32) *GenerateStsTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateStsTokenResponse) SetBody(v *GenerateStsTokenResponseBody) *GenerateStsTokenResponse {
+	s.Body = v
+	return s
+}
+
+type HandleGatewayAutoPlanRequest struct {
+	Cancel        *bool   `json:"Cancel,omitempty" xml:"Cancel,omitempty"`
+	DelayHours    *int32  `json:"DelayHours,omitempty" xml:"DelayHours,omitempty"`
+	GatewayId     *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	PlanId        *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s HandleGatewayAutoPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleGatewayAutoPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HandleGatewayAutoPlanRequest) SetCancel(v bool) *HandleGatewayAutoPlanRequest {
+	s.Cancel = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanRequest) SetDelayHours(v int32) *HandleGatewayAutoPlanRequest {
+	s.DelayHours = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanRequest) SetGatewayId(v string) *HandleGatewayAutoPlanRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanRequest) SetPlanId(v string) *HandleGatewayAutoPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanRequest) SetSecurityToken(v string) *HandleGatewayAutoPlanRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type HandleGatewayAutoPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s HandleGatewayAutoPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleGatewayAutoPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HandleGatewayAutoPlanResponseBody) SetCode(v string) *HandleGatewayAutoPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanResponseBody) SetMessage(v string) *HandleGatewayAutoPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanResponseBody) SetRequestId(v string) *HandleGatewayAutoPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanResponseBody) SetSuccess(v bool) *HandleGatewayAutoPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type HandleGatewayAutoPlanResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HandleGatewayAutoPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s HandleGatewayAutoPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HandleGatewayAutoPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HandleGatewayAutoPlanResponse) SetHeaders(v map[string]*string) *HandleGatewayAutoPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanResponse) SetStatusCode(v int32) *HandleGatewayAutoPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HandleGatewayAutoPlanResponse) SetBody(v *HandleGatewayAutoPlanResponseBody) *HandleGatewayAutoPlanResponse {
 	s.Body = v
 	return s
 }
@@ -12671,8 +13820,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -12685,6 +13835,11 @@ func (s ListTagResourcesResponse) GoString() string {
 
 func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12770,8 +13925,9 @@ func (s *ModifyGatewayResponseBody) SetSuccess(v bool) *ModifyGatewayResponseBod
 }
 
 type ModifyGatewayResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGatewayResponse) String() string {
@@ -12784,6 +13940,11 @@ func (s ModifyGatewayResponse) GoString() string {
 
 func (s *ModifyGatewayResponse) SetHeaders(v map[string]*string) *ModifyGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGatewayResponse) SetStatusCode(v int32) *ModifyGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12869,8 +14030,9 @@ func (s *ModifyGatewayBlockVolumeResponseBody) SetTaskId(v string) *ModifyGatewa
 }
 
 type ModifyGatewayBlockVolumeResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGatewayBlockVolumeResponse) String() string {
@@ -12883,6 +14045,11 @@ func (s ModifyGatewayBlockVolumeResponse) GoString() string {
 
 func (s *ModifyGatewayBlockVolumeResponse) SetHeaders(v map[string]*string) *ModifyGatewayBlockVolumeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGatewayBlockVolumeResponse) SetStatusCode(v int32) *ModifyGatewayBlockVolumeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12968,8 +14135,9 @@ func (s *ModifyGatewayClassResponseBody) SetTaskId(v string) *ModifyGatewayClass
 }
 
 type ModifyGatewayClassResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGatewayClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGatewayClassResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGatewayClassResponse) String() string {
@@ -12982,6 +14150,11 @@ func (s ModifyGatewayClassResponse) GoString() string {
 
 func (s *ModifyGatewayClassResponse) SetHeaders(v map[string]*string) *ModifyGatewayClassResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGatewayClassResponse) SetStatusCode(v int32) *ModifyGatewayClassResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13067,8 +14240,9 @@ func (s *ModifyGatewayFileShareResponseBody) SetTaskId(v string) *ModifyGatewayF
 }
 
 type ModifyGatewayFileShareResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGatewayFileShareResponse) String() string {
@@ -13081,6 +14255,11 @@ func (s ModifyGatewayFileShareResponse) GoString() string {
 
 func (s *ModifyGatewayFileShareResponse) SetHeaders(v map[string]*string) *ModifyGatewayFileShareResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGatewayFileShareResponse) SetStatusCode(v int32) *ModifyGatewayFileShareResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13166,8 +14345,9 @@ func (s *ModifyGatewayFileShareWatermarkResponseBody) SetTaskId(v string) *Modif
 }
 
 type ModifyGatewayFileShareWatermarkResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGatewayFileShareWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGatewayFileShareWatermarkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGatewayFileShareWatermarkResponse) String() string {
@@ -13180,6 +14360,11 @@ func (s ModifyGatewayFileShareWatermarkResponse) GoString() string {
 
 func (s *ModifyGatewayFileShareWatermarkResponse) SetHeaders(v map[string]*string) *ModifyGatewayFileShareWatermarkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGatewayFileShareWatermarkResponse) SetStatusCode(v int32) *ModifyGatewayFileShareWatermarkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13265,8 +14450,9 @@ func (s *ModifyStorageBundleResponseBody) SetSuccess(v bool) *ModifyStorageBundl
 }
 
 type ModifyStorageBundleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyStorageBundleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyStorageBundleResponse) String() string {
@@ -13279,6 +14465,11 @@ func (s ModifyStorageBundleResponse) GoString() string {
 
 func (s *ModifyStorageBundleResponse) SetHeaders(v map[string]*string) *ModifyStorageBundleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyStorageBundleResponse) SetStatusCode(v int32) *ModifyStorageBundleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13311,8 +14502,9 @@ func (s *OpenSgwServiceResponseBody) SetRequestId(v string) *OpenSgwServiceRespo
 }
 
 type OpenSgwServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenSgwServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenSgwServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenSgwServiceResponse) String() string {
@@ -13325,6 +14517,11 @@ func (s OpenSgwServiceResponse) GoString() string {
 
 func (s *OpenSgwServiceResponse) SetHeaders(v map[string]*string) *OpenSgwServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenSgwServiceResponse) SetStatusCode(v int32) *OpenSgwServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13416,8 +14613,9 @@ func (s *OperateGatewayResponseBody) SetTaskId(v string) *OperateGatewayResponse
 }
 
 type OperateGatewayResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OperateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OperateGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OperateGatewayResponse) String() string {
@@ -13430,6 +14628,11 @@ func (s OperateGatewayResponse) GoString() string {
 
 func (s *OperateGatewayResponse) SetHeaders(v map[string]*string) *OperateGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OperateGatewayResponse) SetStatusCode(v int32) *OperateGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13491,8 +14694,9 @@ func (s *ReleaseServiceResponseBody) SetSuccess(v bool) *ReleaseServiceResponseB
 }
 
 type ReleaseServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseServiceResponse) String() string {
@@ -13505,6 +14709,11 @@ func (s ReleaseServiceResponse) GoString() string {
 
 func (s *ReleaseServiceResponse) SetHeaders(v map[string]*string) *ReleaseServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReleaseServiceResponse) SetStatusCode(v int32) *ReleaseServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13584,8 +14793,9 @@ func (s *RemoveSharesFromExpressSyncResponseBody) SetTaskId(v string) *RemoveSha
 }
 
 type RemoveSharesFromExpressSyncResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveSharesFromExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveSharesFromExpressSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveSharesFromExpressSyncResponse) String() string {
@@ -13598,6 +14808,11 @@ func (s RemoveSharesFromExpressSyncResponse) GoString() string {
 
 func (s *RemoveSharesFromExpressSyncResponse) SetHeaders(v map[string]*string) *RemoveSharesFromExpressSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveSharesFromExpressSyncResponse) SetStatusCode(v int32) *RemoveSharesFromExpressSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13671,8 +14886,9 @@ func (s *RemoveTagsFromGatewayResponseBody) SetSuccess(v bool) *RemoveTagsFromGa
 }
 
 type RemoveTagsFromGatewayResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveTagsFromGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveTagsFromGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveTagsFromGatewayResponse) String() string {
@@ -13685,6 +14901,11 @@ func (s RemoveTagsFromGatewayResponse) GoString() string {
 
 func (s *RemoveTagsFromGatewayResponse) SetHeaders(v map[string]*string) *RemoveTagsFromGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveTagsFromGatewayResponse) SetStatusCode(v int32) *RemoveTagsFromGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13764,8 +14985,9 @@ func (s *ReportBlockVolumesResponseBody) SetSuccess(v bool) *ReportBlockVolumesR
 }
 
 type ReportBlockVolumesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportBlockVolumesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReportBlockVolumesResponse) String() string {
@@ -13778,6 +15000,11 @@ func (s ReportBlockVolumesResponse) GoString() string {
 
 func (s *ReportBlockVolumesResponse) SetHeaders(v map[string]*string) *ReportBlockVolumesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportBlockVolumesResponse) SetStatusCode(v int32) *ReportBlockVolumesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13857,8 +15084,9 @@ func (s *ReportFileSharesResponseBody) SetSuccess(v bool) *ReportFileSharesRespo
 }
 
 type ReportFileSharesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReportFileSharesResponse) String() string {
@@ -13871,6 +15099,11 @@ func (s ReportFileSharesResponse) GoString() string {
 
 func (s *ReportFileSharesResponse) SetHeaders(v map[string]*string) *ReportFileSharesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportFileSharesResponse) SetStatusCode(v int32) *ReportFileSharesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13962,8 +15195,9 @@ func (s *ReportGatewayInfoResponseBody) SetSuccess(v bool) *ReportGatewayInfoRes
 }
 
 type ReportGatewayInfoResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportGatewayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportGatewayInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReportGatewayInfoResponse) String() string {
@@ -13976,6 +15210,11 @@ func (s ReportGatewayInfoResponse) GoString() string {
 
 func (s *ReportGatewayInfoResponse) SetHeaders(v map[string]*string) *ReportGatewayInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportGatewayInfoResponse) SetStatusCode(v int32) *ReportGatewayInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14055,8 +15294,9 @@ func (s *ReportGatewayUsageResponseBody) SetSuccess(v bool) *ReportGatewayUsageR
 }
 
 type ReportGatewayUsageResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReportGatewayUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportGatewayUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReportGatewayUsageResponse) String() string {
@@ -14069,6 +15309,11 @@ func (s ReportGatewayUsageResponse) GoString() string {
 
 func (s *ReportGatewayUsageResponse) SetHeaders(v map[string]*string) *ReportGatewayUsageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReportGatewayUsageResponse) SetStatusCode(v int32) *ReportGatewayUsageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14154,8 +15399,9 @@ func (s *ResetGatewayPasswordResponseBody) SetTaskId(v string) *ResetGatewayPass
 }
 
 type ResetGatewayPasswordResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetGatewayPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetGatewayPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResetGatewayPasswordResponse) String() string {
@@ -14168,6 +15414,11 @@ func (s ResetGatewayPasswordResponse) GoString() string {
 
 func (s *ResetGatewayPasswordResponse) SetHeaders(v map[string]*string) *ResetGatewayPasswordResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ResetGatewayPasswordResponse) SetStatusCode(v int32) *ResetGatewayPasswordResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14247,8 +15498,9 @@ func (s *RestartFileSharesResponseBody) SetTaskId(v string) *RestartFileSharesRe
 }
 
 type RestartFileSharesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RestartFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestartFileSharesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RestartFileSharesResponse) String() string {
@@ -14261,6 +15513,11 @@ func (s RestartFileSharesResponse) GoString() string {
 
 func (s *RestartFileSharesResponse) SetHeaders(v map[string]*string) *RestartFileSharesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RestartFileSharesResponse) SetStatusCode(v int32) *RestartFileSharesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14358,8 +15615,9 @@ func (s *SetGatewayADInfoResponseBody) SetTaskId(v string) *SetGatewayADInfoResp
 }
 
 type SetGatewayADInfoResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetGatewayADInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetGatewayADInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetGatewayADInfoResponse) String() string {
@@ -14375,7 +15633,117 @@ func (s *SetGatewayADInfoResponse) SetHeaders(v map[string]*string) *SetGatewayA
 	return s
 }
 
+func (s *SetGatewayADInfoResponse) SetStatusCode(v int32) *SetGatewayADInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SetGatewayADInfoResponse) SetBody(v *SetGatewayADInfoResponseBody) *SetGatewayADInfoResponse {
+	s.Body = v
+	return s
+}
+
+type SetGatewayAutoUpgradeConfigurationRequest struct {
+	AutoUpgradeEndHour   *int32  `json:"AutoUpgradeEndHour,omitempty" xml:"AutoUpgradeEndHour,omitempty"`
+	AutoUpgradeStartHour *int32  `json:"AutoUpgradeStartHour,omitempty" xml:"AutoUpgradeStartHour,omitempty"`
+	GatewayId            *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	IsAutoUpgrade        *bool   `json:"IsAutoUpgrade,omitempty" xml:"IsAutoUpgrade,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetGatewayAutoUpgradeConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGatewayAutoUpgradeConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationRequest) SetAutoUpgradeEndHour(v int32) *SetGatewayAutoUpgradeConfigurationRequest {
+	s.AutoUpgradeEndHour = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationRequest) SetAutoUpgradeStartHour(v int32) *SetGatewayAutoUpgradeConfigurationRequest {
+	s.AutoUpgradeStartHour = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationRequest) SetGatewayId(v string) *SetGatewayAutoUpgradeConfigurationRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationRequest) SetIsAutoUpgrade(v bool) *SetGatewayAutoUpgradeConfigurationRequest {
+	s.IsAutoUpgrade = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationRequest) SetSecurityToken(v string) *SetGatewayAutoUpgradeConfigurationRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetGatewayAutoUpgradeConfigurationResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetGatewayAutoUpgradeConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGatewayAutoUpgradeConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponseBody) SetCode(v string) *SetGatewayAutoUpgradeConfigurationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponseBody) SetMessage(v string) *SetGatewayAutoUpgradeConfigurationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponseBody) SetRequestId(v string) *SetGatewayAutoUpgradeConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponseBody) SetSuccess(v bool) *SetGatewayAutoUpgradeConfigurationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetGatewayAutoUpgradeConfigurationResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetGatewayAutoUpgradeConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGatewayAutoUpgradeConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGatewayAutoUpgradeConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponse) SetHeaders(v map[string]*string) *SetGatewayAutoUpgradeConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponse) SetStatusCode(v int32) *SetGatewayAutoUpgradeConfigurationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetGatewayAutoUpgradeConfigurationResponse) SetBody(v *SetGatewayAutoUpgradeConfigurationResponseBody) *SetGatewayAutoUpgradeConfigurationResponse {
 	s.Body = v
 	return s
 }
@@ -14451,8 +15819,9 @@ func (s *SetGatewayDNSResponseBody) SetTaskId(v string) *SetGatewayDNSResponseBo
 }
 
 type SetGatewayDNSResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetGatewayDNSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetGatewayDNSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetGatewayDNSResponse) String() string {
@@ -14465,6 +15834,11 @@ func (s SetGatewayDNSResponse) GoString() string {
 
 func (s *SetGatewayDNSResponse) SetHeaders(v map[string]*string) *SetGatewayDNSResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetGatewayDNSResponse) SetStatusCode(v int32) *SetGatewayDNSResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14574,8 +15948,9 @@ func (s *SetGatewayLDAPInfoResponseBody) SetTaskId(v string) *SetGatewayLDAPInfo
 }
 
 type SetGatewayLDAPInfoResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetGatewayLDAPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetGatewayLDAPInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SetGatewayLDAPInfoResponse) String() string {
@@ -14588,6 +15963,11 @@ func (s SetGatewayLDAPInfoResponse) GoString() string {
 
 func (s *SetGatewayLDAPInfoResponse) SetHeaders(v map[string]*string) *SetGatewayLDAPInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SetGatewayLDAPInfoResponse) SetStatusCode(v int32) *SetGatewayLDAPInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14720,8 +16100,9 @@ func (s *SwitchCSGClientsReverseSyncConfigurationResponseBody) SetTaskId(v strin
 }
 
 type SwitchCSGClientsReverseSyncConfigurationResponse struct {
-	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SwitchCSGClientsReverseSyncConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchCSGClientsReverseSyncConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SwitchCSGClientsReverseSyncConfigurationResponse) String() string {
@@ -14734,6 +16115,11 @@ func (s SwitchCSGClientsReverseSyncConfigurationResponse) GoString() string {
 
 func (s *SwitchCSGClientsReverseSyncConfigurationResponse) SetHeaders(v map[string]*string) *SwitchCSGClientsReverseSyncConfigurationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SwitchCSGClientsReverseSyncConfigurationResponse) SetStatusCode(v int32) *SwitchCSGClientsReverseSyncConfigurationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14801,8 +16187,9 @@ func (s *SwitchGatewayExpirationPolicyResponseBody) SetSuccess(v bool) *SwitchGa
 }
 
 type SwitchGatewayExpirationPolicyResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SwitchGatewayExpirationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchGatewayExpirationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SwitchGatewayExpirationPolicyResponse) String() string {
@@ -14815,6 +16202,11 @@ func (s SwitchGatewayExpirationPolicyResponse) GoString() string {
 
 func (s *SwitchGatewayExpirationPolicyResponse) SetHeaders(v map[string]*string) *SwitchGatewayExpirationPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SwitchGatewayExpirationPolicyResponse) SetStatusCode(v int32) *SwitchGatewayExpirationPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14888,8 +16280,9 @@ func (s *SwitchToSubscriptionResponseBody) SetSuccess(v bool) *SwitchToSubscript
 }
 
 type SwitchToSubscriptionResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SwitchToSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwitchToSubscriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SwitchToSubscriptionResponse) String() string {
@@ -14902,6 +16295,11 @@ func (s SwitchToSubscriptionResponse) GoString() string {
 
 func (s *SwitchToSubscriptionResponse) SetHeaders(v map[string]*string) *SwitchToSubscriptionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SwitchToSubscriptionResponse) SetStatusCode(v int32) *SwitchToSubscriptionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14998,8 +16396,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -15012,6 +16411,11 @@ func (s TagResourcesResponse) GoString() string {
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15097,8 +16501,9 @@ func (s *TriggerGatewayRemoteSyncResponseBody) SetTaskId(v string) *TriggerGatew
 }
 
 type TriggerGatewayRemoteSyncResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TriggerGatewayRemoteSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TriggerGatewayRemoteSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TriggerGatewayRemoteSyncResponse) String() string {
@@ -15111,6 +16516,11 @@ func (s TriggerGatewayRemoteSyncResponse) GoString() string {
 
 func (s *TriggerGatewayRemoteSyncResponse) SetHeaders(v map[string]*string) *TriggerGatewayRemoteSyncResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TriggerGatewayRemoteSyncResponse) SetStatusCode(v int32) *TriggerGatewayRemoteSyncResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15190,8 +16600,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -15204,6 +16615,11 @@ func (s UntagResourcesResponse) GoString() string {
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15307,8 +16723,9 @@ func (s *UpdateGatewayBlockVolumeResponseBody) SetTaskId(v string) *UpdateGatewa
 }
 
 type UpdateGatewayBlockVolumeResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayBlockVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGatewayBlockVolumeResponse) String() string {
@@ -15321,6 +16738,11 @@ func (s UpdateGatewayBlockVolumeResponse) GoString() string {
 
 func (s *UpdateGatewayBlockVolumeResponse) SetHeaders(v map[string]*string) *UpdateGatewayBlockVolumeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayBlockVolumeResponse) SetStatusCode(v int32) *UpdateGatewayBlockVolumeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15574,8 +16996,9 @@ func (s *UpdateGatewayFileShareResponseBody) SetTaskId(v string) *UpdateGatewayF
 }
 
 type UpdateGatewayFileShareResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewayFileShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGatewayFileShareResponse) String() string {
@@ -15591,13 +17014,19 @@ func (s *UpdateGatewayFileShareResponse) SetHeaders(v map[string]*string) *Updat
 	return s
 }
 
+func (s *UpdateGatewayFileShareResponse) SetStatusCode(v int32) *UpdateGatewayFileShareResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateGatewayFileShareResponse) SetBody(v *UpdateGatewayFileShareResponseBody) *UpdateGatewayFileShareResponse {
 	s.Body = v
 	return s
 }
 
 type UpgradeGatewayRequest struct {
-	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayId     *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s UpgradeGatewayRequest) String() string {
@@ -15610,6 +17039,11 @@ func (s UpgradeGatewayRequest) GoString() string {
 
 func (s *UpgradeGatewayRequest) SetGatewayId(v string) *UpgradeGatewayRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *UpgradeGatewayRequest) SetSecurityToken(v string) *UpgradeGatewayRequest {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -15655,8 +17089,9 @@ func (s *UpgradeGatewayResponseBody) SetTaskId(v string) *UpgradeGatewayResponse
 }
 
 type UpgradeGatewayResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpgradeGatewayResponse) String() string {
@@ -15669,6 +17104,11 @@ func (s UpgradeGatewayResponse) GoString() string {
 
 func (s *UpgradeGatewayResponse) SetHeaders(v map[string]*string) *UpgradeGatewayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpgradeGatewayResponse) SetStatusCode(v int32) *UpgradeGatewayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15748,8 +17188,9 @@ func (s *UploadCSGClientLogResponseBody) SetTaskId(v string) *UploadCSGClientLog
 }
 
 type UploadCSGClientLogResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UploadCSGClientLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadCSGClientLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UploadCSGClientLogResponse) String() string {
@@ -15762,6 +17203,11 @@ func (s UploadCSGClientLogResponse) GoString() string {
 
 func (s *UploadCSGClientLogResponse) SetHeaders(v map[string]*string) *UploadCSGClientLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UploadCSGClientLogResponse) SetStatusCode(v int32) *UploadCSGClientLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15829,8 +17275,9 @@ func (s *UploadGatewayLogResponseBody) SetTaskId(v string) *UploadGatewayLogResp
 }
 
 type UploadGatewayLogResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UploadGatewayLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadGatewayLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UploadGatewayLogResponse) String() string {
@@ -15843,6 +17290,11 @@ func (s UploadGatewayLogResponse) GoString() string {
 
 func (s *UploadGatewayLogResponse) SetHeaders(v map[string]*string) *UploadGatewayLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UploadGatewayLogResponse) SetStatusCode(v int32) *UploadGatewayLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15940,8 +17392,9 @@ func (s *ValidateExpressSyncConfigResponseBody) SetValidateMessage(v string) *Va
 }
 
 type ValidateExpressSyncConfigResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ValidateExpressSyncConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateExpressSyncConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ValidateExpressSyncConfigResponse) String() string {
@@ -15954,6 +17407,11 @@ func (s ValidateExpressSyncConfigResponse) GoString() string {
 
 func (s *ValidateExpressSyncConfigResponse) SetHeaders(v map[string]*string) *ValidateExpressSyncConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ValidateExpressSyncConfigResponse) SetStatusCode(v int32) *ValidateExpressSyncConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16027,8 +17485,9 @@ func (s *ValidateGatewayNameResponseBody) SetSuccess(v bool) *ValidateGatewayNam
 }
 
 type ValidateGatewayNameResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ValidateGatewayNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateGatewayNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ValidateGatewayNameResponse) String() string {
@@ -16041,6 +17500,11 @@ func (s ValidateGatewayNameResponse) GoString() string {
 
 func (s *ValidateGatewayNameResponse) SetHeaders(v map[string]*string) *ValidateGatewayNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ValidateGatewayNameResponse) SetStatusCode(v int32) *ValidateGatewayNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16113,15 +17577,32 @@ func (client *Client) ActivateAllInOneGatewayWithOptions(request *ActivateAllInO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["DeviceNumber"] = request.DeviceNumber
-	query["GatewayId"] = request.GatewayId
-	query["Model"] = request.Model
-	query["SecurityToken"] = request.SecurityToken
-	query["SerialNumber"] = request.SerialNumber
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceNumber)) {
+		query["DeviceNumber"] = request.DeviceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ActivateAllInOneGateway"),
@@ -16131,7 +17612,7 @@ func (client *Client) ActivateAllInOneGatewayWithOptions(request *ActivateAllInO
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActivateAllInOneGatewayResponse{}
@@ -16160,16 +17641,36 @@ func (client *Client) ActivateGatewayWithOptions(request *ActivateGatewayRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["ClientUUID"] = request.ClientUUID
-	query["Model"] = request.Model
-	query["SecurityToken"] = request.SecurityToken
-	query["SerialNumber"] = request.SerialNumber
-	query["Token"] = request.Token
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ActivateGateway"),
@@ -16179,7 +17680,7 @@ func (client *Client) ActivateGatewayWithOptions(request *ActivateGatewayRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ActivateGatewayResponse{}
@@ -16208,12 +17709,20 @@ func (client *Client) AddSharesToExpressSyncWithOptions(request *AddSharesToExpr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExpressSyncId"] = request.ExpressSyncId
-	query["GatewayShares"] = request.GatewayShares
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ExpressSyncId)) {
+		query["ExpressSyncId"] = request.ExpressSyncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayShares)) {
+		query["GatewayShares"] = request.GatewayShares
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddSharesToExpressSync"),
@@ -16223,7 +17732,7 @@ func (client *Client) AddSharesToExpressSyncWithOptions(request *AddSharesToExpr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddSharesToExpressSyncResponse{}
@@ -16252,12 +17761,20 @@ func (client *Client) AddTagsToGatewayWithOptions(request *AddTagsToGatewayReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddTagsToGateway"),
@@ -16267,7 +17784,7 @@ func (client *Client) AddTagsToGatewayWithOptions(request *AddTagsToGatewayReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddTagsToGatewayResponse{}
@@ -16296,14 +17813,28 @@ func (client *Client) CheckActivationKeyWithOptions(request *CheckActivationKeyR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CryptKey"] = request.CryptKey
-	query["CryptText"] = request.CryptText
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Token"] = request.Token
+	if !tea.BoolValue(util.IsUnset(request.CryptKey)) {
+		query["CryptKey"] = request.CryptKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CryptText)) {
+		query["CryptText"] = request.CryptText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckActivationKey"),
@@ -16313,7 +17844,7 @@ func (client *Client) CheckActivationKeyWithOptions(request *CheckActivationKeyR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckActivationKeyResponse{}
@@ -16342,13 +17873,24 @@ func (client *Client) CheckBlockVolumeNameWithOptions(request *CheckBlockVolumeN
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketEndpoint"] = request.BucketEndpoint
-	query["BucketName"] = request.BucketName
-	query["SecurityToken"] = request.SecurityToken
-	query["VolumeName"] = request.VolumeName
+	if !tea.BoolValue(util.IsUnset(request.BucketEndpoint)) {
+		query["BucketEndpoint"] = request.BucketEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VolumeName)) {
+		query["VolumeName"] = request.VolumeName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckBlockVolumeName"),
@@ -16358,7 +17900,7 @@ func (client *Client) CheckBlockVolumeNameWithOptions(request *CheckBlockVolumeN
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckBlockVolumeNameResponse{}
@@ -16387,11 +17929,16 @@ func (client *Client) CheckGatewayEssdSupportWithOptions(request *CheckGatewayEs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckGatewayEssdSupport"),
@@ -16401,7 +17948,7 @@ func (client *Client) CheckGatewayEssdSupportWithOptions(request *CheckGatewayEs
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckGatewayEssdSupportResponse{}
@@ -16430,10 +17977,12 @@ func (client *Client) CheckMnsServiceWithOptions(request *CheckMnsServiceRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckMnsService"),
@@ -16443,7 +17992,7 @@ func (client *Client) CheckMnsServiceWithOptions(request *CheckMnsServiceRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckMnsServiceResponse{}
@@ -16472,11 +18021,16 @@ func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RoleType"] = request.RoleType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckRole"),
@@ -16486,7 +18040,7 @@ func (client *Client) CheckRoleWithOptions(request *CheckRoleRequest, runtime *u
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckRoleResponse{}
@@ -16515,12 +18069,20 @@ func (client *Client) CheckSlrRoleWithOptions(request *CheckSlrRoleRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CreateIfNotExist"] = request.CreateIfNotExist
-	query["RoleName"] = request.RoleName
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CreateIfNotExist)) {
+		query["CreateIfNotExist"] = request.CreateIfNotExist
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckSlrRole"),
@@ -16530,7 +18092,7 @@ func (client *Client) CheckSlrRoleWithOptions(request *CheckSlrRoleRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckSlrRoleResponse{}
@@ -16559,13 +18121,24 @@ func (client *Client) CheckUpgradeVersionWithOptions(request *CheckUpgradeVersio
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["GatewayVersion"] = request.GatewayVersion
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayVersion)) {
+		query["GatewayVersion"] = request.GatewayVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckUpgradeVersion"),
@@ -16575,7 +18148,7 @@ func (client *Client) CheckUpgradeVersionWithOptions(request *CheckUpgradeVersio
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckUpgradeVersionResponse{}
@@ -16604,13 +18177,24 @@ func (client *Client) CreateCacheWithOptions(request *CreateCacheRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Category"] = request.Category
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["SizeInGB"] = request.SizeInGB
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeInGB)) {
+		query["SizeInGB"] = request.SizeInGB
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateCache"),
@@ -16620,7 +18204,7 @@ func (client *Client) CreateCacheWithOptions(request *CreateCacheRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCacheResponse{}
@@ -16649,11 +18233,16 @@ func (client *Client) CreateElasticGatewayPrivateZoneWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateElasticGatewayPrivateZone"),
@@ -16663,7 +18252,7 @@ func (client *Client) CreateElasticGatewayPrivateZoneWithOptions(request *Create
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateElasticGatewayPrivateZoneResponse{}
@@ -16692,15 +18281,32 @@ func (client *Client) CreateExpressSyncWithOptions(request *CreateExpressSyncReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["BucketPrefix"] = request.BucketPrefix
-	query["BucketRegion"] = request.BucketRegion
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketPrefix)) {
+		query["BucketPrefix"] = request.BucketPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketRegion)) {
+		query["BucketRegion"] = request.BucketRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateExpressSync"),
@@ -16710,7 +18316,7 @@ func (client *Client) CreateExpressSyncWithOptions(request *CreateExpressSyncReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateExpressSyncResponse{}
@@ -16739,20 +18345,56 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["GatewayClass"] = request.GatewayClass
-	query["Location"] = request.Location
-	query["Name"] = request.Name
-	query["PostPaid"] = request.PostPaid
-	query["PublicNetworkBandwidth"] = request.PublicNetworkBandwidth
-	query["ReleaseAfterExpiration"] = request.ReleaseAfterExpiration
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
-	query["Type"] = request.Type
-	query["VSwitchId"] = request.VSwitchId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayClass)) {
+		query["GatewayClass"] = request.GatewayClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Location)) {
+		query["Location"] = request.Location
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostPaid)) {
+		query["PostPaid"] = request.PostPaid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicNetworkBandwidth)) {
+		query["PublicNetworkBandwidth"] = request.PublicNetworkBandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReleaseAfterExpiration)) {
+		query["ReleaseAfterExpiration"] = request.ReleaseAfterExpiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGateway"),
@@ -16762,7 +18404,7 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayResponse{}
@@ -16791,24 +18433,68 @@ func (client *Client) CreateGatewayBlockVolumeWithOptions(request *CreateGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheMode"] = request.CacheMode
-	query["ChapEnabled"] = request.ChapEnabled
-	query["ChapInPassword"] = request.ChapInPassword
-	query["ChapInUser"] = request.ChapInUser
-	query["ChunkSize"] = request.ChunkSize
-	query["GatewayId"] = request.GatewayId
-	query["LocalFilePath"] = request.LocalFilePath
-	query["Name"] = request.Name
-	query["OssBucketName"] = request.OssBucketName
-	query["OssBucketSsl"] = request.OssBucketSsl
-	query["OssEndpoint"] = request.OssEndpoint
-	query["Recovery"] = request.Recovery
-	query["SecurityToken"] = request.SecurityToken
-	query["Size"] = request.Size
-	query["VolumeProtocol"] = request.VolumeProtocol
+	if !tea.BoolValue(util.IsUnset(request.CacheMode)) {
+		query["CacheMode"] = request.CacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChapEnabled)) {
+		query["ChapEnabled"] = request.ChapEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChapInPassword)) {
+		query["ChapInPassword"] = request.ChapInPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChapInUser)) {
+		query["ChapInUser"] = request.ChapInUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChunkSize)) {
+		query["ChunkSize"] = request.ChunkSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalFilePath)) {
+		query["LocalFilePath"] = request.LocalFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketSsl)) {
+		query["OssBucketSsl"] = request.OssBucketSsl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recovery)) {
+		query["Recovery"] = request.Recovery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VolumeProtocol)) {
+		query["VolumeProtocol"] = request.VolumeProtocol
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGatewayBlockVolume"),
@@ -16818,7 +18504,7 @@ func (client *Client) CreateGatewayBlockVolumeWithOptions(request *CreateGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayBlockVolumeResponse{}
@@ -16847,13 +18533,24 @@ func (client *Client) CreateGatewayCacheDiskWithOptions(request *CreateGatewayCa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheDiskCategory"] = request.CacheDiskCategory
-	query["CacheDiskSizeInGB"] = request.CacheDiskSizeInGB
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CacheDiskCategory)) {
+		query["CacheDiskCategory"] = request.CacheDiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheDiskSizeInGB)) {
+		query["CacheDiskSizeInGB"] = request.CacheDiskSizeInGB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGatewayCacheDisk"),
@@ -16863,7 +18560,7 @@ func (client *Client) CreateGatewayCacheDiskWithOptions(request *CreateGatewayCa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayCacheDiskResponse{}
@@ -16892,49 +18589,168 @@ func (client *Client) CreateGatewayFileShareWithOptions(request *CreateGatewayFi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessBasedEnumeration"] = request.AccessBasedEnumeration
-	query["BackendLimit"] = request.BackendLimit
-	query["Browsable"] = request.Browsable
-	query["BypassCacheRead"] = request.BypassCacheRead
-	query["CacheMode"] = request.CacheMode
-	query["ClientSideCmk"] = request.ClientSideCmk
-	query["ClientSideEncryption"] = request.ClientSideEncryption
-	query["DirectIO"] = request.DirectIO
-	query["DownloadLimit"] = request.DownloadLimit
-	query["FastReclaim"] = request.FastReclaim
-	query["FrontendLimit"] = request.FrontendLimit
-	query["GatewayId"] = request.GatewayId
-	query["IgnoreDelete"] = request.IgnoreDelete
-	query["InPlace"] = request.InPlace
-	query["KmsRotatePeriod"] = request.KmsRotatePeriod
-	query["LagPeriod"] = request.LagPeriod
-	query["LocalFilePath"] = request.LocalFilePath
-	query["Name"] = request.Name
-	query["NfsV4Optimization"] = request.NfsV4Optimization
-	query["OssBucketName"] = request.OssBucketName
-	query["OssBucketSsl"] = request.OssBucketSsl
-	query["OssEndpoint"] = request.OssEndpoint
-	query["PartialSyncPaths"] = request.PartialSyncPaths
-	query["PathPrefix"] = request.PathPrefix
-	query["PollingInterval"] = request.PollingInterval
-	query["ReadOnlyClientList"] = request.ReadOnlyClientList
-	query["ReadOnlyUserList"] = request.ReadOnlyUserList
-	query["ReadWriteClientList"] = request.ReadWriteClientList
-	query["ReadWriteUserList"] = request.ReadWriteUserList
-	query["RemoteSync"] = request.RemoteSync
-	query["RemoteSyncDownload"] = request.RemoteSyncDownload
-	query["SecurityToken"] = request.SecurityToken
-	query["ServerSideAlgorithm"] = request.ServerSideAlgorithm
-	query["ServerSideCmk"] = request.ServerSideCmk
-	query["ServerSideEncryption"] = request.ServerSideEncryption
-	query["ShareProtocol"] = request.ShareProtocol
-	query["Squash"] = request.Squash
-	query["SupportArchive"] = request.SupportArchive
-	query["TransferAcceleration"] = request.TransferAcceleration
-	query["WindowsAcl"] = request.WindowsAcl
+	if !tea.BoolValue(util.IsUnset(request.AccessBasedEnumeration)) {
+		query["AccessBasedEnumeration"] = request.AccessBasedEnumeration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendLimit)) {
+		query["BackendLimit"] = request.BackendLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Browsable)) {
+		query["Browsable"] = request.Browsable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BypassCacheRead)) {
+		query["BypassCacheRead"] = request.BypassCacheRead
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheMode)) {
+		query["CacheMode"] = request.CacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSideCmk)) {
+		query["ClientSideCmk"] = request.ClientSideCmk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSideEncryption)) {
+		query["ClientSideEncryption"] = request.ClientSideEncryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectIO)) {
+		query["DirectIO"] = request.DirectIO
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadLimit)) {
+		query["DownloadLimit"] = request.DownloadLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FastReclaim)) {
+		query["FastReclaim"] = request.FastReclaim
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrontendLimit)) {
+		query["FrontendLimit"] = request.FrontendLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDelete)) {
+		query["IgnoreDelete"] = request.IgnoreDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InPlace)) {
+		query["InPlace"] = request.InPlace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsRotatePeriod)) {
+		query["KmsRotatePeriod"] = request.KmsRotatePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LagPeriod)) {
+		query["LagPeriod"] = request.LagPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalFilePath)) {
+		query["LocalFilePath"] = request.LocalFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NfsV4Optimization)) {
+		query["NfsV4Optimization"] = request.NfsV4Optimization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketSsl)) {
+		query["OssBucketSsl"] = request.OssBucketSsl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartialSyncPaths)) {
+		query["PartialSyncPaths"] = request.PartialSyncPaths
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathPrefix)) {
+		query["PathPrefix"] = request.PathPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PollingInterval)) {
+		query["PollingInterval"] = request.PollingInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyClientList)) {
+		query["ReadOnlyClientList"] = request.ReadOnlyClientList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyUserList)) {
+		query["ReadOnlyUserList"] = request.ReadOnlyUserList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadWriteClientList)) {
+		query["ReadWriteClientList"] = request.ReadWriteClientList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadWriteUserList)) {
+		query["ReadWriteUserList"] = request.ReadWriteUserList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteSync)) {
+		query["RemoteSync"] = request.RemoteSync
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteSyncDownload)) {
+		query["RemoteSyncDownload"] = request.RemoteSyncDownload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerSideAlgorithm)) {
+		query["ServerSideAlgorithm"] = request.ServerSideAlgorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerSideCmk)) {
+		query["ServerSideCmk"] = request.ServerSideCmk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerSideEncryption)) {
+		query["ServerSideEncryption"] = request.ServerSideEncryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareProtocol)) {
+		query["ShareProtocol"] = request.ShareProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Squash)) {
+		query["Squash"] = request.Squash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportArchive)) {
+		query["SupportArchive"] = request.SupportArchive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferAcceleration)) {
+		query["TransferAcceleration"] = request.TransferAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WindowsAcl)) {
+		query["WindowsAcl"] = request.WindowsAcl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGatewayFileShare"),
@@ -16944,7 +18760,7 @@ func (client *Client) CreateGatewayFileShareWithOptions(request *CreateGatewayFi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayFileShareResponse{}
@@ -16973,13 +18789,24 @@ func (client *Client) CreateGatewayLoggingWithOptions(request *CreateGatewayLogg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["SlsLogstore"] = request.SlsLogstore
-	query["SlsProject"] = request.SlsProject
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsLogstore)) {
+		query["SlsLogstore"] = request.SlsLogstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProject)) {
+		query["SlsProject"] = request.SlsProject
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGatewayLogging"),
@@ -16989,7 +18816,7 @@ func (client *Client) CreateGatewayLoggingWithOptions(request *CreateGatewayLogg
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewayLoggingResponse{}
@@ -17018,13 +18845,24 @@ func (client *Client) CreateGatewaySMBUserWithOptions(request *CreateGatewaySMBU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["Password"] = request.Password
-	query["SecurityToken"] = request.SecurityToken
-	query["Username"] = request.Username
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateGatewaySMBUser"),
@@ -17034,7 +18872,7 @@ func (client *Client) CreateGatewaySMBUserWithOptions(request *CreateGatewaySMBU
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGatewaySMBUserResponse{}
@@ -17063,13 +18901,24 @@ func (client *Client) CreateStorageBundleWithOptions(request *CreateStorageBundl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackendBucketRegionId"] = request.BackendBucketRegionId
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BackendBucketRegionId)) {
+		query["BackendBucketRegionId"] = request.BackendBucketRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStorageBundle"),
@@ -17079,7 +18928,7 @@ func (client *Client) CreateStorageBundleWithOptions(request *CreateStorageBundl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateStorageBundleResponse{}
@@ -17114,12 +18963,20 @@ func (client *Client) DeleteCSGClientsWithOptions(tmpReq *DeleteCSGClientsReques
 	}
 
 	query := map[string]interface{}{}
-	query["ClientIds"] = request.ClientIdsShrink
-	query["ClientRegionId"] = request.ClientRegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientIdsShrink)) {
+		query["ClientIds"] = request.ClientIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteCSGClients"),
@@ -17129,7 +18986,7 @@ func (client *Client) DeleteCSGClientsWithOptions(tmpReq *DeleteCSGClientsReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCSGClientsResponse{}
@@ -17158,11 +19015,16 @@ func (client *Client) DeleteElasticGatewayPrivateZoneWithOptions(request *Delete
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteElasticGatewayPrivateZone"),
@@ -17172,7 +19034,7 @@ func (client *Client) DeleteElasticGatewayPrivateZoneWithOptions(request *Delete
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteElasticGatewayPrivateZoneResponse{}
@@ -17201,11 +19063,16 @@ func (client *Client) DeleteExpressSyncWithOptions(request *DeleteExpressSyncReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExpressSyncId"] = request.ExpressSyncId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ExpressSyncId)) {
+		query["ExpressSyncId"] = request.ExpressSyncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteExpressSync"),
@@ -17215,7 +19082,7 @@ func (client *Client) DeleteExpressSyncWithOptions(request *DeleteExpressSyncReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteExpressSyncResponse{}
@@ -17244,13 +19111,24 @@ func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["ReasonDetail"] = request.ReasonDetail
-	query["ReasonType"] = request.ReasonType
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonDetail)) {
+		query["ReasonDetail"] = request.ReasonDetail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonType)) {
+		query["ReasonType"] = request.ReasonType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGateway"),
@@ -17260,7 +19138,7 @@ func (client *Client) DeleteGatewayWithOptions(request *DeleteGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayResponse{}
@@ -17289,13 +19167,24 @@ func (client *Client) DeleteGatewayBlockVolumesWithOptions(request *DeleteGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["IsSourceDeletion"] = request.IsSourceDeletion
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSourceDeletion)) {
+		query["IsSourceDeletion"] = request.IsSourceDeletion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGatewayBlockVolumes"),
@@ -17305,7 +19194,7 @@ func (client *Client) DeleteGatewayBlockVolumesWithOptions(request *DeleteGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayBlockVolumesResponse{}
@@ -17334,13 +19223,24 @@ func (client *Client) DeleteGatewayCacheDiskWithOptions(request *DeleteGatewayCa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheId"] = request.CacheId
-	query["GatewayId"] = request.GatewayId
-	query["LocalFilePath"] = request.LocalFilePath
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CacheId)) {
+		query["CacheId"] = request.CacheId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalFilePath)) {
+		query["LocalFilePath"] = request.LocalFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGatewayCacheDisk"),
@@ -17350,7 +19250,7 @@ func (client *Client) DeleteGatewayCacheDiskWithOptions(request *DeleteGatewayCa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayCacheDiskResponse{}
@@ -17379,13 +19279,24 @@ func (client *Client) DeleteGatewayFileSharesWithOptions(request *DeleteGatewayF
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Force"] = request.Force
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGatewayFileShares"),
@@ -17395,7 +19306,7 @@ func (client *Client) DeleteGatewayFileSharesWithOptions(request *DeleteGatewayF
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayFileSharesResponse{}
@@ -17424,11 +19335,16 @@ func (client *Client) DeleteGatewayLoggingWithOptions(request *DeleteGatewayLogg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGatewayLogging"),
@@ -17438,7 +19354,7 @@ func (client *Client) DeleteGatewayLoggingWithOptions(request *DeleteGatewayLogg
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewayLoggingResponse{}
@@ -17467,12 +19383,20 @@ func (client *Client) DeleteGatewaySMBUserWithOptions(request *DeleteGatewaySMBU
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Username"] = request.Username
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteGatewaySMBUser"),
@@ -17482,7 +19406,7 @@ func (client *Client) DeleteGatewaySMBUserWithOptions(request *DeleteGatewaySMBU
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGatewaySMBUserResponse{}
@@ -17511,11 +19435,16 @@ func (client *Client) DeleteStorageBundleWithOptions(request *DeleteStorageBundl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStorageBundle"),
@@ -17525,7 +19454,7 @@ func (client *Client) DeleteStorageBundleWithOptions(request *DeleteStorageBundl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteStorageBundleResponse{}
@@ -17560,13 +19489,24 @@ func (client *Client) DeployCSGClientsWithOptions(tmpReq *DeployCSGClientsReques
 	}
 
 	query := map[string]interface{}{}
-	query["ClientRegionId"] = request.ClientRegionId
-	query["EcsInstanceIds"] = request.EcsInstanceIdsShrink
-	query["SecurityToken"] = request.SecurityToken
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceIdsShrink)) {
+		query["EcsInstanceIds"] = request.EcsInstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployCSGClients"),
@@ -17576,7 +19516,7 @@ func (client *Client) DeployCSGClientsWithOptions(tmpReq *DeployCSGClientsReques
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeployCSGClientsResponse{}
@@ -17605,14 +19545,28 @@ func (client *Client) DeployCacheDiskWithOptions(request *DeployCacheDiskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheConfig"] = request.CacheConfig
-	query["DiskCategory"] = request.DiskCategory
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["SizeInGB"] = request.SizeInGB
+	if !tea.BoolValue(util.IsUnset(request.CacheConfig)) {
+		query["CacheConfig"] = request.CacheConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskCategory)) {
+		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeInGB)) {
+		query["SizeInGB"] = request.SizeInGB
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployCacheDisk"),
@@ -17622,7 +19576,7 @@ func (client *Client) DeployCacheDiskWithOptions(request *DeployCacheDiskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeployCacheDiskResponse{}
@@ -17651,12 +19605,20 @@ func (client *Client) DeployGatewayWithOptions(request *DeployGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayClass"] = request.GatewayClass
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayClass)) {
+		query["GatewayClass"] = request.GatewayClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployGateway"),
@@ -17666,7 +19628,7 @@ func (client *Client) DeployGatewayWithOptions(request *DeployGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeployGatewayResponse{}
@@ -17695,11 +19657,16 @@ func (client *Client) DescribeAccountConfigWithOptions(request *DescribeAccountC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeAccountConfig"),
@@ -17709,7 +19676,7 @@ func (client *Client) DescribeAccountConfigWithOptions(request *DescribeAccountC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAccountConfigResponse{}
@@ -17738,14 +19705,28 @@ func (client *Client) DescribeBlockVolumeSnapshotsWithOptions(request *DescribeB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBlockVolumeSnapshots"),
@@ -17755,7 +19736,7 @@ func (client *Client) DescribeBlockVolumeSnapshotsWithOptions(request *DescribeB
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBlockVolumeSnapshotsResponse{}
@@ -17784,14 +19765,28 @@ func (client *Client) DescribeCSGClientTasksWithOptions(request *DescribeCSGClie
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientId"] = request.ClientId
-	query["ClientRegionId"] = request.ClientRegionId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCSGClientTasks"),
@@ -17801,7 +19796,7 @@ func (client *Client) DescribeCSGClientTasksWithOptions(request *DescribeCSGClie
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCSGClientTasksResponse{}
@@ -17830,13 +19825,24 @@ func (client *Client) DescribeCSGClientsWithOptions(request *DescribeCSGClientsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientRegionId"] = request.ClientRegionId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeCSGClients"),
@@ -17846,7 +19852,7 @@ func (client *Client) DescribeCSGClientsWithOptions(request *DescribeCSGClientsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCSGClientsResponse{}
@@ -17875,12 +19881,20 @@ func (client *Client) DescribeDashboardWithOptions(request *DescribeDashboardReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackendBucketRegionId"] = request.BackendBucketRegionId
-	query["ResourceGroupId"] = request.ResourceGroupId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BackendBucketRegionId)) {
+		query["BackendBucketRegionId"] = request.BackendBucketRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeDashboard"),
@@ -17890,7 +19904,7 @@ func (client *Client) DescribeDashboardWithOptions(request *DescribeDashboardReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDashboardResponse{}
@@ -17919,11 +19933,16 @@ func (client *Client) DescribeExpireCachesWithOptions(request *DescribeExpireCac
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeExpireCaches"),
@@ -17933,7 +19952,7 @@ func (client *Client) DescribeExpireCachesWithOptions(request *DescribeExpireCac
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExpireCachesResponse{}
@@ -17962,12 +19981,20 @@ func (client *Client) DescribeExpressSyncSharesWithOptions(request *DescribeExpr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExpressSyncIds"] = request.ExpressSyncIds
-	query["IsExternal"] = request.IsExternal
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ExpressSyncIds)) {
+		query["ExpressSyncIds"] = request.ExpressSyncIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsExternal)) {
+		query["IsExternal"] = request.IsExternal
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeExpressSyncShares"),
@@ -17977,7 +20004,7 @@ func (client *Client) DescribeExpressSyncSharesWithOptions(request *DescribeExpr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExpressSyncSharesResponse{}
@@ -18006,12 +20033,20 @@ func (client *Client) DescribeExpressSyncsWithOptions(request *DescribeExpressSy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["BucketPrefix"] = request.BucketPrefix
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketPrefix)) {
+		query["BucketPrefix"] = request.BucketPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeExpressSyncs"),
@@ -18021,7 +20056,7 @@ func (client *Client) DescribeExpressSyncsWithOptions(request *DescribeExpressSy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeExpressSyncsResponse{}
@@ -18050,11 +20085,16 @@ func (client *Client) DescribeGatewayWithOptions(request *DescribeGatewayRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGateway"),
@@ -18064,7 +20104,7 @@ func (client *Client) DescribeGatewayWithOptions(request *DescribeGatewayRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayResponse{}
@@ -18093,11 +20133,16 @@ func (client *Client) DescribeGatewayADInfoWithOptions(request *DescribeGatewayA
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayADInfo"),
@@ -18107,7 +20152,7 @@ func (client *Client) DescribeGatewayADInfoWithOptions(request *DescribeGatewayA
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayADInfoResponse{}
@@ -18136,11 +20181,16 @@ func (client *Client) DescribeGatewayActionsWithOptions(request *DescribeGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayActions"),
@@ -18150,7 +20200,7 @@ func (client *Client) DescribeGatewayActionsWithOptions(request *DescribeGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayActionsResponse{}
@@ -18179,11 +20229,16 @@ func (client *Client) DescribeGatewayAuthInfoWithOptions(request *DescribeGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayAuthInfo"),
@@ -18193,7 +20248,7 @@ func (client *Client) DescribeGatewayAuthInfoWithOptions(request *DescribeGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayAuthInfoResponse{}
@@ -18216,19 +20271,141 @@ func (client *Client) DescribeGatewayAuthInfo(request *DescribeGatewayAuthInfoRe
 	return _result, _err
 }
 
+func (client *Client) DescribeGatewayAutoPlansWithOptions(request *DescribeGatewayAutoPlansRequest, runtime *util.RuntimeOptions) (_result *DescribeGatewayAutoPlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGatewayAutoPlans"),
+		Version:     tea.String("2018-05-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGatewayAutoPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGatewayAutoPlans(request *DescribeGatewayAutoPlansRequest) (_result *DescribeGatewayAutoPlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGatewayAutoPlansResponse{}
+	_body, _err := client.DescribeGatewayAutoPlansWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeGatewayAutoUpgradeConfigurationWithOptions(request *DescribeGatewayAutoUpgradeConfigurationRequest, runtime *util.RuntimeOptions) (_result *DescribeGatewayAutoUpgradeConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGatewayAutoUpgradeConfiguration"),
+		Version:     tea.String("2018-05-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGatewayAutoUpgradeConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGatewayAutoUpgradeConfiguration(request *DescribeGatewayAutoUpgradeConfigurationRequest) (_result *DescribeGatewayAutoUpgradeConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGatewayAutoUpgradeConfigurationResponse{}
+	_body, _err := client.DescribeGatewayAutoUpgradeConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * ****
+ *
+ * @param request DescribeGatewayBlockVolumesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeGatewayBlockVolumesResponse
+ */
 func (client *Client) DescribeGatewayBlockVolumesWithOptions(request *DescribeGatewayBlockVolumesRequest, runtime *util.RuntimeOptions) (_result *DescribeGatewayBlockVolumesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["Refresh"] = request.Refresh
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Refresh)) {
+		query["Refresh"] = request.Refresh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayBlockVolumes"),
@@ -18238,7 +20415,7 @@ func (client *Client) DescribeGatewayBlockVolumesWithOptions(request *DescribeGa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayBlockVolumesResponse{}
@@ -18250,6 +20427,12 @@ func (client *Client) DescribeGatewayBlockVolumesWithOptions(request *DescribeGa
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request DescribeGatewayBlockVolumesRequest
+ * @return DescribeGatewayBlockVolumesResponse
+ */
 func (client *Client) DescribeGatewayBlockVolumes(request *DescribeGatewayBlockVolumesRequest) (_result *DescribeGatewayBlockVolumesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGatewayBlockVolumesResponse{}
@@ -18267,13 +20450,24 @@ func (client *Client) DescribeGatewayBucketCachesWithOptions(request *DescribeGa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayBucketCaches"),
@@ -18283,7 +20477,7 @@ func (client *Client) DescribeGatewayBucketCachesWithOptions(request *DescribeGa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayBucketCachesResponse{}
@@ -18312,11 +20506,16 @@ func (client *Client) DescribeGatewayCachesWithOptions(request *DescribeGatewayC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayCaches"),
@@ -18326,7 +20525,7 @@ func (client *Client) DescribeGatewayCachesWithOptions(request *DescribeGatewayC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayCachesResponse{}
@@ -18355,12 +20554,20 @@ func (client *Client) DescribeGatewayCapacityLimitWithOptions(request *DescribeG
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["SizeInGB"] = request.SizeInGB
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SizeInGB)) {
+		query["SizeInGB"] = request.SizeInGB
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayCapacityLimit"),
@@ -18370,7 +20577,7 @@ func (client *Client) DescribeGatewayCapacityLimitWithOptions(request *DescribeG
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayCapacityLimitResponse{}
@@ -18399,11 +20606,16 @@ func (client *Client) DescribeGatewayCategoriesWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayLocation"] = request.GatewayLocation
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayLocation)) {
+		query["GatewayLocation"] = request.GatewayLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayCategories"),
@@ -18413,7 +20625,7 @@ func (client *Client) DescribeGatewayCategoriesWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayCategoriesResponse{}
@@ -18442,10 +20654,12 @@ func (client *Client) DescribeGatewayClassesWithOptions(request *DescribeGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayClasses"),
@@ -18455,7 +20669,7 @@ func (client *Client) DescribeGatewayClassesWithOptions(request *DescribeGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayClassesResponse{}
@@ -18484,11 +20698,16 @@ func (client *Client) DescribeGatewayCredentialWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayCredential"),
@@ -18498,7 +20717,7 @@ func (client *Client) DescribeGatewayCredentialWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayCredentialResponse{}
@@ -18527,11 +20746,16 @@ func (client *Client) DescribeGatewayDNSWithOptions(request *DescribeGatewayDNSR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayDNS"),
@@ -18541,7 +20765,7 @@ func (client *Client) DescribeGatewayDNSWithOptions(request *DescribeGatewayDNSR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayDNSResponse{}
@@ -18570,13 +20794,24 @@ func (client *Client) DescribeGatewayFileSharesWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["Refresh"] = request.Refresh
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Refresh)) {
+		query["Refresh"] = request.Refresh
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayFileShares"),
@@ -18586,7 +20821,7 @@ func (client *Client) DescribeGatewayFileSharesWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayFileSharesResponse{}
@@ -18615,13 +20850,24 @@ func (client *Client) DescribeGatewayFileStatusWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FilePath"] = request.FilePath
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		query["FilePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayFileStatus"),
@@ -18631,7 +20877,7 @@ func (client *Client) DescribeGatewayFileStatusWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayFileStatusResponse{}
@@ -18660,11 +20906,16 @@ func (client *Client) DescribeGatewayImagesWithOptions(request *DescribeGatewayI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayImages"),
@@ -18674,7 +20925,7 @@ func (client *Client) DescribeGatewayImagesWithOptions(request *DescribeGatewayI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayImagesResponse{}
@@ -18703,11 +20954,16 @@ func (client *Client) DescribeGatewayInfoWithOptions(request *DescribeGatewayInf
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayInfo"),
@@ -18717,7 +20973,7 @@ func (client *Client) DescribeGatewayInfoWithOptions(request *DescribeGatewayInf
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayInfoResponse{}
@@ -18746,11 +21002,16 @@ func (client *Client) DescribeGatewayLDAPInfoWithOptions(request *DescribeGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayLDAPInfo"),
@@ -18760,7 +21021,7 @@ func (client *Client) DescribeGatewayLDAPInfoWithOptions(request *DescribeGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayLDAPInfoResponse{}
@@ -18789,10 +21050,12 @@ func (client *Client) DescribeGatewayLocationsWithOptions(request *DescribeGatew
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayLocations"),
@@ -18802,7 +21065,7 @@ func (client *Client) DescribeGatewayLocationsWithOptions(request *DescribeGatew
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayLocationsResponse{}
@@ -18831,11 +21094,16 @@ func (client *Client) DescribeGatewayLoggingWithOptions(request *DescribeGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayLogging"),
@@ -18845,7 +21113,7 @@ func (client *Client) DescribeGatewayLoggingWithOptions(request *DescribeGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayLoggingResponse{}
@@ -18874,12 +21142,20 @@ func (client *Client) DescribeGatewayLogsWithOptions(request *DescribeGatewayLog
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["LogFilePath"] = request.LogFilePath
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogFilePath)) {
+		query["LogFilePath"] = request.LogFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayLogs"),
@@ -18889,7 +21165,7 @@ func (client *Client) DescribeGatewayLogsWithOptions(request *DescribeGatewayLog
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayLogsResponse{}
@@ -18918,11 +21194,16 @@ func (client *Client) DescribeGatewayModificationClassesWithOptions(request *Des
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayModificationClasses"),
@@ -18932,7 +21213,7 @@ func (client *Client) DescribeGatewayModificationClassesWithOptions(request *Des
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayModificationClassesResponse{}
@@ -18961,13 +21242,24 @@ func (client *Client) DescribeGatewayNFSClientsWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayNFSClients"),
@@ -18977,7 +21269,7 @@ func (client *Client) DescribeGatewayNFSClientsWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayNFSClientsResponse{}
@@ -19006,13 +21298,24 @@ func (client *Client) DescribeGatewaySMBUsersWithOptions(request *DescribeGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewaySMBUsers"),
@@ -19022,7 +21325,7 @@ func (client *Client) DescribeGatewaySMBUsersWithOptions(request *DescribeGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewaySMBUsersResponse{}
@@ -19051,15 +21354,32 @@ func (client *Client) DescribeGatewayStatisticsWithOptions(request *DescribeGate
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTimestamp"] = request.EndTimestamp
-	query["GatewayCategory"] = request.GatewayCategory
-	query["GatewayLocation"] = request.GatewayLocation
-	query["SecurityToken"] = request.SecurityToken
-	query["StartTimestamp"] = request.StartTimestamp
-	query["TargetAccountId"] = request.TargetAccountId
+	if !tea.BoolValue(util.IsUnset(request.EndTimestamp)) {
+		query["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayCategory)) {
+		query["GatewayCategory"] = request.GatewayCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayLocation)) {
+		query["GatewayLocation"] = request.GatewayLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimestamp)) {
+		query["StartTimestamp"] = request.StartTimestamp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetAccountId)) {
+		query["TargetAccountId"] = request.TargetAccountId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayStatistics"),
@@ -19069,7 +21389,7 @@ func (client *Client) DescribeGatewayStatisticsWithOptions(request *DescribeGate
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayStatisticsResponse{}
@@ -19098,11 +21418,16 @@ func (client *Client) DescribeGatewayStockWithOptions(request *DescribeGatewaySt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayRegionId"] = request.GatewayRegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayRegionId)) {
+		query["GatewayRegionId"] = request.GatewayRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayStock"),
@@ -19112,7 +21437,7 @@ func (client *Client) DescribeGatewayStockWithOptions(request *DescribeGatewaySt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayStockResponse{}
@@ -19141,11 +21466,16 @@ func (client *Client) DescribeGatewayTypesWithOptions(request *DescribeGatewayTy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayLocation"] = request.GatewayLocation
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayLocation)) {
+		query["GatewayLocation"] = request.GatewayLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewayTypes"),
@@ -19155,7 +21485,7 @@ func (client *Client) DescribeGatewayTypesWithOptions(request *DescribeGatewayTy
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewayTypesResponse{}
@@ -19184,13 +21514,24 @@ func (client *Client) DescribeGatewaysWithOptions(request *DescribeGatewaysReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGateways"),
@@ -19200,7 +21541,7 @@ func (client *Client) DescribeGatewaysWithOptions(request *DescribeGatewaysReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewaysResponse{}
@@ -19229,13 +21570,24 @@ func (client *Client) DescribeGatewaysForCmsWithOptions(request *DescribeGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayRegionId"] = request.GatewayRegionId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayRegionId)) {
+		query["GatewayRegionId"] = request.GatewayRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewaysForCms"),
@@ -19245,7 +21597,7 @@ func (client *Client) DescribeGatewaysForCmsWithOptions(request *DescribeGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewaysForCmsResponse{}
@@ -19274,13 +21626,24 @@ func (client *Client) DescribeGatewaysTagsWithOptions(request *DescribeGatewaysT
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayIds"] = request.GatewayIds
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
-	query["TagCategory"] = request.TagCategory
+	if !tea.BoolValue(util.IsUnset(request.GatewayIds)) {
+		query["GatewayIds"] = request.GatewayIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagCategory)) {
+		query["TagCategory"] = request.TagCategory
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeGatewaysTags"),
@@ -19290,7 +21653,7 @@ func (client *Client) DescribeGatewaysTagsWithOptions(request *DescribeGatewaysT
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeGatewaysTagsResponse{}
@@ -19319,12 +21682,20 @@ func (client *Client) DescribeKmsKeyWithOptions(request *DescribeKmsKeyRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["KmsKey"] = request.KmsKey
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsKey)) {
+		query["KmsKey"] = request.KmsKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeKmsKey"),
@@ -19334,7 +21705,7 @@ func (client *Client) DescribeKmsKeyWithOptions(request *DescribeKmsKeyRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeKmsKeyResponse{}
@@ -19363,11 +21734,16 @@ func (client *Client) DescribeMqttConfigWithOptions(request *DescribeMqttConfigR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeMqttConfig"),
@@ -19377,7 +21753,7 @@ func (client *Client) DescribeMqttConfigWithOptions(request *DescribeMqttConfigR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMqttConfigResponse{}
@@ -19406,14 +21782,28 @@ func (client *Client) DescribeOssBucketInfoWithOptions(request *DescribeOssBucke
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketEndpoint"] = request.BucketEndpoint
-	query["BucketName"] = request.BucketName
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Type"] = request.Type
+	if !tea.BoolValue(util.IsUnset(request.BucketEndpoint)) {
+		query["BucketEndpoint"] = request.BucketEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeOssBucketInfo"),
@@ -19423,7 +21813,7 @@ func (client *Client) DescribeOssBucketInfoWithOptions(request *DescribeOssBucke
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeOssBucketInfoResponse{}
@@ -19452,11 +21842,16 @@ func (client *Client) DescribeOssBucketsWithOptions(request *DescribeOssBucketsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketEndpoint"] = request.BucketEndpoint
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketEndpoint)) {
+		query["BucketEndpoint"] = request.BucketEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeOssBuckets"),
@@ -19466,7 +21861,7 @@ func (client *Client) DescribeOssBucketsWithOptions(request *DescribeOssBucketsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeOssBucketsResponse{}
@@ -19495,12 +21890,20 @@ func (client *Client) DescribePayAsYouGoPriceWithOptions(request *DescribePayAsY
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayClass"] = request.GatewayClass
-	query["RegionId"] = request.RegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayClass)) {
+		query["GatewayClass"] = request.GatewayClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribePayAsYouGoPrice"),
@@ -19510,7 +21913,7 @@ func (client *Client) DescribePayAsYouGoPriceWithOptions(request *DescribePayAsY
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePayAsYouGoPriceResponse{}
@@ -19539,10 +21942,12 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeRegions"),
@@ -19552,7 +21957,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
@@ -19581,12 +21986,20 @@ func (client *Client) DescribeSharesBucketInfoForExpressSyncWithOptions(request 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["BucketRegion"] = request.BucketRegion
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketRegion)) {
+		query["BucketRegion"] = request.BucketRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSharesBucketInfoForExpressSync"),
@@ -19596,7 +22009,7 @@ func (client *Client) DescribeSharesBucketInfoForExpressSyncWithOptions(request 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSharesBucketInfoForExpressSyncResponse{}
@@ -19625,11 +22038,16 @@ func (client *Client) DescribeStorageBundleWithOptions(request *DescribeStorageB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeStorageBundle"),
@@ -19639,7 +22057,7 @@ func (client *Client) DescribeStorageBundleWithOptions(request *DescribeStorageB
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStorageBundleResponse{}
@@ -19668,13 +22086,24 @@ func (client *Client) DescribeStorageBundlesWithOptions(request *DescribeStorage
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BackendBucketRegionId"] = request.BackendBucketRegionId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BackendBucketRegionId)) {
+		query["BackendBucketRegionId"] = request.BackendBucketRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeStorageBundles"),
@@ -19684,7 +22113,7 @@ func (client *Client) DescribeStorageBundlesWithOptions(request *DescribeStorage
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeStorageBundlesResponse{}
@@ -19713,16 +22142,40 @@ func (client *Client) DescribeSubscriptionPriceWithOptions(request *DescribeSubs
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheCloudEfficiencySize"] = request.CacheCloudEfficiencySize
-	query["CacheSSDSize"] = request.CacheSSDSize
-	query["GatewayClass"] = request.GatewayClass
-	query["PeriodQuantity"] = request.PeriodQuantity
-	query["PeriodUnit"] = request.PeriodUnit
-	query["RegionId"] = request.RegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CacheCloudEfficiencySize)) {
+		query["CacheCloudEfficiencySize"] = request.CacheCloudEfficiencySize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheESSDPl1Size)) {
+		query["CacheESSDPl1Size"] = request.CacheESSDPl1Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheSSDSize)) {
+		query["CacheSSDSize"] = request.CacheSSDSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayClass)) {
+		query["GatewayClass"] = request.GatewayClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodQuantity)) {
+		query["PeriodQuantity"] = request.PeriodQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSubscriptionPrice"),
@@ -19732,7 +22185,7 @@ func (client *Client) DescribeSubscriptionPriceWithOptions(request *DescribeSubs
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubscriptionPriceResponse{}
@@ -19761,14 +22214,28 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["TargetId"] = request.TargetId
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeTasks"),
@@ -19778,7 +22245,7 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeTasksResponse{}
@@ -19807,10 +22274,12 @@ func (client *Client) DescribeUserBusinessStatusWithOptions(request *DescribeUse
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeUserBusinessStatus"),
@@ -19820,7 +22289,7 @@ func (client *Client) DescribeUserBusinessStatusWithOptions(request *DescribeUse
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeUserBusinessStatusResponse{}
@@ -19849,15 +22318,40 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
-	query["VSwitchId"] = request.VSwitchId
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVSwitches"),
@@ -19867,7 +22361,7 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVSwitchesResponse{}
@@ -19896,14 +22390,36 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
-	query["VpcId"] = request.VpcId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeVpcs"),
@@ -19913,7 +22429,7 @@ func (client *Client) DescribeVpcsWithOptions(request *DescribeVpcsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeVpcsResponse{}
@@ -19942,11 +22458,16 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeZones"),
@@ -19956,7 +22477,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeZonesResponse{}
@@ -19985,11 +22506,16 @@ func (client *Client) DisableGatewayLoggingWithOptions(request *DisableGatewayLo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableGatewayLogging"),
@@ -19999,7 +22525,7 @@ func (client *Client) DisableGatewayLoggingWithOptions(request *DisableGatewayLo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableGatewayLoggingResponse{}
@@ -20028,12 +22554,20 @@ func (client *Client) DisableGatewayNFSVersionWithOptions(request *DisableGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["NFSVersion"] = request.NFSVersion
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NFSVersion)) {
+		query["NFSVersion"] = request.NFSVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DisableGatewayNFSVersion"),
@@ -20043,7 +22577,7 @@ func (client *Client) DisableGatewayNFSVersionWithOptions(request *DisableGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DisableGatewayNFSVersionResponse{}
@@ -20072,11 +22606,16 @@ func (client *Client) EnableGatewayIpv6WithOptions(request *EnableGatewayIpv6Req
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableGatewayIpv6"),
@@ -20086,7 +22625,7 @@ func (client *Client) EnableGatewayIpv6WithOptions(request *EnableGatewayIpv6Req
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableGatewayIpv6Response{}
@@ -20115,11 +22654,16 @@ func (client *Client) EnableGatewayLoggingWithOptions(request *EnableGatewayLogg
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableGatewayLogging"),
@@ -20129,7 +22673,7 @@ func (client *Client) EnableGatewayLoggingWithOptions(request *EnableGatewayLogg
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableGatewayLoggingResponse{}
@@ -20158,13 +22702,24 @@ func (client *Client) ExpandCacheDiskWithOptions(request *ExpandCacheDiskRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["LocalFilePath"] = request.LocalFilePath
-	query["NewSizeInGB"] = request.NewSizeInGB
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalFilePath)) {
+		query["LocalFilePath"] = request.LocalFilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSizeInGB)) {
+		query["NewSizeInGB"] = request.NewSizeInGB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExpandCacheDisk"),
@@ -20174,7 +22729,7 @@ func (client *Client) ExpandCacheDiskWithOptions(request *ExpandCacheDiskRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ExpandCacheDiskResponse{}
@@ -20197,18 +22752,74 @@ func (client *Client) ExpandCacheDisk(request *ExpandCacheDiskRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ExpandGatewayFileShareWithOptions(request *ExpandGatewayFileShareRequest, runtime *util.RuntimeOptions) (_result *ExpandGatewayFileShareResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExpandGatewayFileShare"),
+		Version:     tea.String("2018-05-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExpandGatewayFileShareResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExpandGatewayFileShare(request *ExpandGatewayFileShareRequest) (_result *ExpandGatewayFileShareResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExpandGatewayFileShareResponse{}
+	_body, _err := client.ExpandGatewayFileShareWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ExpandGatewayNetworkBandwidthWithOptions(request *ExpandGatewayNetworkBandwidthRequest, runtime *util.RuntimeOptions) (_result *ExpandGatewayNetworkBandwidthResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["NewNetworkBandwidth"] = request.NewNetworkBandwidth
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewNetworkBandwidth)) {
+		query["NewNetworkBandwidth"] = request.NewNetworkBandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ExpandGatewayNetworkBandwidth"),
@@ -20218,7 +22829,7 @@ func (client *Client) ExpandGatewayNetworkBandwidthWithOptions(request *ExpandGa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ExpandGatewayNetworkBandwidthResponse{}
@@ -20247,11 +22858,16 @@ func (client *Client) GenerateGatewayTokenWithOptions(request *GenerateGatewayTo
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateGatewayToken"),
@@ -20261,7 +22877,7 @@ func (client *Client) GenerateGatewayTokenWithOptions(request *GenerateGatewayTo
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateGatewayTokenResponse{}
@@ -20290,12 +22906,20 @@ func (client *Client) GenerateMqttTokenWithOptions(request *GenerateMqttTokenReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateMqttToken"),
@@ -20305,7 +22929,7 @@ func (client *Client) GenerateMqttTokenWithOptions(request *GenerateMqttTokenReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateMqttTokenResponse{}
@@ -20334,13 +22958,24 @@ func (client *Client) GenerateStsTokenWithOptions(request *GenerateStsTokenReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExpireInSeconds"] = request.ExpireInSeconds
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["TokenType"] = request.TokenType
+	if !tea.BoolValue(util.IsUnset(request.ExpireInSeconds)) {
+		query["ExpireInSeconds"] = request.ExpireInSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenType)) {
+		query["TokenType"] = request.TokenType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateStsToken"),
@@ -20350,7 +22985,7 @@ func (client *Client) GenerateStsTokenWithOptions(request *GenerateStsTokenReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateStsTokenResponse{}
@@ -20373,22 +23008,102 @@ func (client *Client) GenerateStsToken(request *GenerateStsTokenRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) HandleGatewayAutoPlanWithOptions(request *HandleGatewayAutoPlanRequest, runtime *util.RuntimeOptions) (_result *HandleGatewayAutoPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cancel)) {
+		query["Cancel"] = request.Cancel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DelayHours)) {
+		query["DelayHours"] = request.DelayHours
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HandleGatewayAutoPlan"),
+		Version:     tea.String("2018-05-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HandleGatewayAutoPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) HandleGatewayAutoPlan(request *HandleGatewayAutoPlanRequest) (_result *HandleGatewayAutoPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &HandleGatewayAutoPlanResponse{}
+	_body, _err := client.HandleGatewayAutoPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["NextToken"] = request.NextToken
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceRegionId"] = request.ResourceRegionId
-	query["ResourceType"] = request.ResourceType
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTagResources"),
@@ -20398,7 +23113,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
@@ -20427,13 +23142,24 @@ func (client *Client) ModifyGatewayWithOptions(request *ModifyGatewayRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["GatewayId"] = request.GatewayId
-	query["Name"] = request.Name
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyGateway"),
@@ -20443,7 +23169,7 @@ func (client *Client) ModifyGatewayWithOptions(request *ModifyGatewayRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGatewayResponse{}
@@ -20472,13 +23198,24 @@ func (client *Client) ModifyGatewayBlockVolumeWithOptions(request *ModifyGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheConfig"] = request.CacheConfig
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CacheConfig)) {
+		query["CacheConfig"] = request.CacheConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyGatewayBlockVolume"),
@@ -20488,7 +23225,7 @@ func (client *Client) ModifyGatewayBlockVolumeWithOptions(request *ModifyGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGatewayBlockVolumeResponse{}
@@ -20517,12 +23254,20 @@ func (client *Client) ModifyGatewayClassWithOptions(request *ModifyGatewayClassR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayClass"] = request.GatewayClass
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayClass)) {
+		query["GatewayClass"] = request.GatewayClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyGatewayClass"),
@@ -20532,7 +23277,7 @@ func (client *Client) ModifyGatewayClassWithOptions(request *ModifyGatewayClassR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGatewayClassResponse{}
@@ -20561,13 +23306,24 @@ func (client *Client) ModifyGatewayFileShareWithOptions(request *ModifyGatewayFi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CacheConfig"] = request.CacheConfig
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.CacheConfig)) {
+		query["CacheConfig"] = request.CacheConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyGatewayFileShare"),
@@ -20577,7 +23333,7 @@ func (client *Client) ModifyGatewayFileShareWithOptions(request *ModifyGatewayFi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGatewayFileShareResponse{}
@@ -20606,13 +23362,24 @@ func (client *Client) ModifyGatewayFileShareWatermarkWithOptions(request *Modify
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
-	query["Watermark"] = request.Watermark
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watermark)) {
+		query["Watermark"] = request.Watermark
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyGatewayFileShareWatermark"),
@@ -20622,7 +23389,7 @@ func (client *Client) ModifyGatewayFileShareWatermarkWithOptions(request *Modify
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyGatewayFileShareWatermarkResponse{}
@@ -20651,13 +23418,24 @@ func (client *Client) ModifyStorageBundleWithOptions(request *ModifyStorageBundl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["Name"] = request.Name
-	query["SecurityToken"] = request.SecurityToken
-	query["StorageBundleId"] = request.StorageBundleId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifyStorageBundle"),
@@ -20667,7 +23445,7 @@ func (client *Client) ModifyStorageBundleWithOptions(request *ModifyStorageBundl
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyStorageBundleResponse{}
@@ -20700,7 +23478,7 @@ func (client *Client) OpenSgwServiceWithOptions(runtime *util.RuntimeOptions) (_
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OpenSgwServiceResponse{}
@@ -20729,13 +23507,24 @@ func (client *Client) OperateGatewayWithOptions(request *OperateGatewayRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["OperateAction"] = request.OperateAction
-	query["Params"] = request.Params
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateAction)) {
+		query["OperateAction"] = request.OperateAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("OperateGateway"),
@@ -20745,7 +23534,7 @@ func (client *Client) OperateGatewayWithOptions(request *OperateGatewayRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &OperateGatewayResponse{}
@@ -20774,10 +23563,12 @@ func (client *Client) ReleaseServiceWithOptions(request *ReleaseServiceRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReleaseService"),
@@ -20787,7 +23578,7 @@ func (client *Client) ReleaseServiceWithOptions(request *ReleaseServiceRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReleaseServiceResponse{}
@@ -20816,12 +23607,20 @@ func (client *Client) RemoveSharesFromExpressSyncWithOptions(request *RemoveShar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ExpressSyncId"] = request.ExpressSyncId
-	query["GatewayShares"] = request.GatewayShares
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ExpressSyncId)) {
+		query["ExpressSyncId"] = request.ExpressSyncId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayShares)) {
+		query["GatewayShares"] = request.GatewayShares
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveSharesFromExpressSync"),
@@ -20831,7 +23630,7 @@ func (client *Client) RemoveSharesFromExpressSyncWithOptions(request *RemoveShar
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveSharesFromExpressSyncResponse{}
@@ -20860,12 +23659,20 @@ func (client *Client) RemoveTagsFromGatewayWithOptions(request *RemoveTagsFromGa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Tags"] = request.Tags
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveTagsFromGateway"),
@@ -20875,7 +23682,7 @@ func (client *Client) RemoveTagsFromGatewayWithOptions(request *RemoveTagsFromGa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveTagsFromGatewayResponse{}
@@ -20904,13 +23711,24 @@ func (client *Client) ReportBlockVolumesWithOptions(request *ReportBlockVolumesR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["Info"] = request.Info
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Info)) {
+		query["Info"] = request.Info
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportBlockVolumes"),
@@ -20920,7 +23738,7 @@ func (client *Client) ReportBlockVolumesWithOptions(request *ReportBlockVolumesR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportBlockVolumesResponse{}
@@ -20949,13 +23767,24 @@ func (client *Client) ReportFileSharesWithOptions(request *ReportFileSharesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["Info"] = request.Info
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Info)) {
+		query["Info"] = request.Info
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportFileShares"),
@@ -20965,7 +23794,7 @@ func (client *Client) ReportFileSharesWithOptions(request *ReportFileSharesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportFileSharesResponse{}
@@ -20994,15 +23823,32 @@ func (client *Client) ReportGatewayInfoWithOptions(request *ReportGatewayInfoReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["GatewayStatus"] = request.GatewayStatus
-	query["Info"] = request.Info
-	query["SecurityToken"] = request.SecurityToken
-	query["Time"] = request.Time
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayStatus)) {
+		query["GatewayStatus"] = request.GatewayStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Info)) {
+		query["Info"] = request.Info
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Time)) {
+		query["Time"] = request.Time
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportGatewayInfo"),
@@ -21012,7 +23858,7 @@ func (client *Client) ReportGatewayInfoWithOptions(request *ReportGatewayInfoReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportGatewayInfoResponse{}
@@ -21041,13 +23887,24 @@ func (client *Client) ReportGatewayUsageWithOptions(request *ReportGatewayUsageR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientUUID"] = request.ClientUUID
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["Usage"] = request.Usage
+	if !tea.BoolValue(util.IsUnset(request.ClientUUID)) {
+		query["ClientUUID"] = request.ClientUUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Usage)) {
+		query["Usage"] = request.Usage
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ReportGatewayUsage"),
@@ -21057,7 +23914,7 @@ func (client *Client) ReportGatewayUsageWithOptions(request *ReportGatewayUsageR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ReportGatewayUsageResponse{}
@@ -21086,13 +23943,24 @@ func (client *Client) ResetGatewayPasswordWithOptions(request *ResetGatewayPassw
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["Password"] = request.Password
-	query["SecurityToken"] = request.SecurityToken
-	query["Username"] = request.Username
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResetGatewayPassword"),
@@ -21102,7 +23970,7 @@ func (client *Client) ResetGatewayPasswordWithOptions(request *ResetGatewayPassw
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ResetGatewayPasswordResponse{}
@@ -21131,12 +23999,20 @@ func (client *Client) RestartFileSharesWithOptions(request *RestartFileSharesReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
-	query["ShareProtocol"] = request.ShareProtocol
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareProtocol)) {
+		query["ShareProtocol"] = request.ShareProtocol
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartFileShares"),
@@ -21146,7 +24022,7 @@ func (client *Client) RestartFileSharesWithOptions(request *RestartFileSharesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RestartFileSharesResponse{}
@@ -21175,15 +24051,32 @@ func (client *Client) SetGatewayADInfoWithOptions(request *SetGatewayADInfoReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IsEnabled"] = request.IsEnabled
-	query["Password"] = request.Password
-	query["SecurityToken"] = request.SecurityToken
-	query["ServerIp"] = request.ServerIp
-	query["Username"] = request.Username
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnabled)) {
+		query["IsEnabled"] = request.IsEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerIp)) {
+		query["ServerIp"] = request.ServerIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetGatewayADInfo"),
@@ -21193,7 +24086,7 @@ func (client *Client) SetGatewayADInfoWithOptions(request *SetGatewayADInfoReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGatewayADInfoResponse{}
@@ -21216,18 +24109,86 @@ func (client *Client) SetGatewayADInfo(request *SetGatewayADInfoRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) SetGatewayAutoUpgradeConfigurationWithOptions(request *SetGatewayAutoUpgradeConfigurationRequest, runtime *util.RuntimeOptions) (_result *SetGatewayAutoUpgradeConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoUpgradeEndHour)) {
+		query["AutoUpgradeEndHour"] = request.AutoUpgradeEndHour
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoUpgradeStartHour)) {
+		query["AutoUpgradeStartHour"] = request.AutoUpgradeStartHour
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAutoUpgrade)) {
+		query["IsAutoUpgrade"] = request.IsAutoUpgrade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetGatewayAutoUpgradeConfiguration"),
+		Version:     tea.String("2018-05-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetGatewayAutoUpgradeConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGatewayAutoUpgradeConfiguration(request *SetGatewayAutoUpgradeConfigurationRequest) (_result *SetGatewayAutoUpgradeConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGatewayAutoUpgradeConfigurationResponse{}
+	_body, _err := client.SetGatewayAutoUpgradeConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetGatewayDNSWithOptions(request *SetGatewayDNSRequest, runtime *util.RuntimeOptions) (_result *SetGatewayDNSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DnsServer"] = request.DnsServer
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.DnsServer)) {
+		query["DnsServer"] = request.DnsServer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetGatewayDNS"),
@@ -21237,7 +24198,7 @@ func (client *Client) SetGatewayDNSWithOptions(request *SetGatewayDNSRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGatewayDNSResponse{}
@@ -21266,17 +24227,40 @@ func (client *Client) SetGatewayLDAPInfoWithOptions(request *SetGatewayLDAPInfoR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BaseDN"] = request.BaseDN
-	query["GatewayId"] = request.GatewayId
-	query["IsEnabled"] = request.IsEnabled
-	query["IsTls"] = request.IsTls
-	query["Password"] = request.Password
-	query["RootDN"] = request.RootDN
-	query["SecurityToken"] = request.SecurityToken
-	query["ServerIp"] = request.ServerIp
+	if !tea.BoolValue(util.IsUnset(request.BaseDN)) {
+		query["BaseDN"] = request.BaseDN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsEnabled)) {
+		query["IsEnabled"] = request.IsEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsTls)) {
+		query["IsTls"] = request.IsTls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDN)) {
+		query["RootDN"] = request.RootDN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerIp)) {
+		query["ServerIp"] = request.ServerIp
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetGatewayLDAPInfo"),
@@ -21286,7 +24270,7 @@ func (client *Client) SetGatewayLDAPInfoWithOptions(request *SetGatewayLDAPInfoR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetGatewayLDAPInfoResponse{}
@@ -21321,14 +24305,28 @@ func (client *Client) SwitchCSGClientsReverseSyncConfigurationWithOptions(tmpReq
 	}
 
 	query := map[string]interface{}{}
-	query["ClientIds"] = request.ClientIdsShrink
-	query["ClientRegionId"] = request.ClientRegionId
-	query["IsReverseSync"] = request.IsReverseSync
-	query["ReverseSyncInternalSecond"] = request.ReverseSyncInternalSecond
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientIdsShrink)) {
+		query["ClientIds"] = request.ClientIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsReverseSync)) {
+		query["IsReverseSync"] = request.IsReverseSync
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReverseSyncInternalSecond)) {
+		query["ReverseSyncInternalSecond"] = request.ReverseSyncInternalSecond
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchCSGClientsReverseSyncConfiguration"),
@@ -21338,7 +24336,7 @@ func (client *Client) SwitchCSGClientsReverseSyncConfigurationWithOptions(tmpReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchCSGClientsReverseSyncConfigurationResponse{}
@@ -21367,11 +24365,16 @@ func (client *Client) SwitchGatewayExpirationPolicyWithOptions(request *SwitchGa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchGatewayExpirationPolicy"),
@@ -21381,7 +24384,7 @@ func (client *Client) SwitchGatewayExpirationPolicyWithOptions(request *SwitchGa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchGatewayExpirationPolicyResponse{}
@@ -21410,11 +24413,16 @@ func (client *Client) SwitchToSubscriptionWithOptions(request *SwitchToSubscript
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SwitchToSubscription"),
@@ -21424,7 +24432,7 @@ func (client *Client) SwitchToSubscriptionWithOptions(request *SwitchToSubscript
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchToSubscriptionResponse{}
@@ -21453,15 +24461,32 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceRegionId"] = request.ResourceRegionId
-	query["ResourceType"] = request.ResourceType
-	query["SecurityToken"] = request.SecurityToken
-	query["Tag"] = request.Tag
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TagResources"),
@@ -21471,7 +24496,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
@@ -21500,13 +24525,24 @@ func (client *Client) TriggerGatewayRemoteSyncWithOptions(request *TriggerGatewa
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["Path"] = request.Path
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		query["Path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TriggerGatewayRemoteSync"),
@@ -21516,7 +24552,7 @@ func (client *Client) TriggerGatewayRemoteSyncWithOptions(request *TriggerGatewa
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TriggerGatewayRemoteSyncResponse{}
@@ -21545,16 +24581,36 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["All"] = request.All
-	query["RegionId"] = request.RegionId
-	query["ResourceId"] = request.ResourceId
-	query["ResourceRegionId"] = request.ResourceRegionId
-	query["ResourceType"] = request.ResourceType
-	query["SecurityToken"] = request.SecurityToken
-	query["TagKey"] = request.TagKey
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceRegionId)) {
+		query["ResourceRegionId"] = request.ResourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UntagResources"),
@@ -21564,7 +24620,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
@@ -21593,16 +24649,36 @@ func (client *Client) UpdateGatewayBlockVolumeWithOptions(request *UpdateGateway
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ChapEnabled"] = request.ChapEnabled
-	query["ChapInPassword"] = request.ChapInPassword
-	query["ChapInUser"] = request.ChapInUser
-	query["GatewayId"] = request.GatewayId
-	query["IndexId"] = request.IndexId
-	query["SecurityToken"] = request.SecurityToken
-	query["Size"] = request.Size
+	if !tea.BoolValue(util.IsUnset(request.ChapEnabled)) {
+		query["ChapEnabled"] = request.ChapEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChapInPassword)) {
+		query["ChapInPassword"] = request.ChapInPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChapInUser)) {
+		query["ChapInUser"] = request.ChapInUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["Size"] = request.Size
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateGatewayBlockVolume"),
@@ -21612,7 +24688,7 @@ func (client *Client) UpdateGatewayBlockVolumeWithOptions(request *UpdateGateway
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGatewayBlockVolumeResponse{}
@@ -21641,41 +24717,136 @@ func (client *Client) UpdateGatewayFileShareWithOptions(request *UpdateGatewayFi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessBasedEnumeration"] = request.AccessBasedEnumeration
-	query["BackendLimit"] = request.BackendLimit
-	query["Browsable"] = request.Browsable
-	query["BypassCacheRead"] = request.BypassCacheRead
-	query["CacheMode"] = request.CacheMode
-	query["ClientSideCmk"] = request.ClientSideCmk
-	query["ClientSideEncryption"] = request.ClientSideEncryption
-	query["DirectIO"] = request.DirectIO
-	query["DownloadLimit"] = request.DownloadLimit
-	query["FastReclaim"] = request.FastReclaim
-	query["FrontendLimit"] = request.FrontendLimit
-	query["GatewayId"] = request.GatewayId
-	query["IgnoreDelete"] = request.IgnoreDelete
-	query["InPlace"] = request.InPlace
-	query["IndexId"] = request.IndexId
-	query["KmsRotatePeriod"] = request.KmsRotatePeriod
-	query["LagPeriod"] = request.LagPeriod
-	query["Name"] = request.Name
-	query["NfsV4Optimization"] = request.NfsV4Optimization
-	query["PollingInterval"] = request.PollingInterval
-	query["ReadOnlyClientList"] = request.ReadOnlyClientList
-	query["ReadOnlyUserList"] = request.ReadOnlyUserList
-	query["ReadWriteClientList"] = request.ReadWriteClientList
-	query["ReadWriteUserList"] = request.ReadWriteUserList
-	query["RemoteSync"] = request.RemoteSync
-	query["RemoteSyncDownload"] = request.RemoteSyncDownload
-	query["SecurityToken"] = request.SecurityToken
-	query["ServerSideCmk"] = request.ServerSideCmk
-	query["ServerSideEncryption"] = request.ServerSideEncryption
-	query["Squash"] = request.Squash
-	query["TransferAcceleration"] = request.TransferAcceleration
-	query["WindowsAcl"] = request.WindowsAcl
+	if !tea.BoolValue(util.IsUnset(request.AccessBasedEnumeration)) {
+		query["AccessBasedEnumeration"] = request.AccessBasedEnumeration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendLimit)) {
+		query["BackendLimit"] = request.BackendLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Browsable)) {
+		query["Browsable"] = request.Browsable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BypassCacheRead)) {
+		query["BypassCacheRead"] = request.BypassCacheRead
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CacheMode)) {
+		query["CacheMode"] = request.CacheMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSideCmk)) {
+		query["ClientSideCmk"] = request.ClientSideCmk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSideEncryption)) {
+		query["ClientSideEncryption"] = request.ClientSideEncryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirectIO)) {
+		query["DirectIO"] = request.DirectIO
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DownloadLimit)) {
+		query["DownloadLimit"] = request.DownloadLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FastReclaim)) {
+		query["FastReclaim"] = request.FastReclaim
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrontendLimit)) {
+		query["FrontendLimit"] = request.FrontendLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreDelete)) {
+		query["IgnoreDelete"] = request.IgnoreDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InPlace)) {
+		query["InPlace"] = request.InPlace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsRotatePeriod)) {
+		query["KmsRotatePeriod"] = request.KmsRotatePeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LagPeriod)) {
+		query["LagPeriod"] = request.LagPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NfsV4Optimization)) {
+		query["NfsV4Optimization"] = request.NfsV4Optimization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PollingInterval)) {
+		query["PollingInterval"] = request.PollingInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyClientList)) {
+		query["ReadOnlyClientList"] = request.ReadOnlyClientList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadOnlyUserList)) {
+		query["ReadOnlyUserList"] = request.ReadOnlyUserList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadWriteClientList)) {
+		query["ReadWriteClientList"] = request.ReadWriteClientList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadWriteUserList)) {
+		query["ReadWriteUserList"] = request.ReadWriteUserList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteSync)) {
+		query["RemoteSync"] = request.RemoteSync
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoteSyncDownload)) {
+		query["RemoteSyncDownload"] = request.RemoteSyncDownload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerSideCmk)) {
+		query["ServerSideCmk"] = request.ServerSideCmk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerSideEncryption)) {
+		query["ServerSideEncryption"] = request.ServerSideEncryption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Squash)) {
+		query["Squash"] = request.Squash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransferAcceleration)) {
+		query["TransferAcceleration"] = request.TransferAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WindowsAcl)) {
+		query["WindowsAcl"] = request.WindowsAcl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateGatewayFileShare"),
@@ -21685,7 +24856,7 @@ func (client *Client) UpdateGatewayFileShareWithOptions(request *UpdateGatewayFi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGatewayFileShareResponse{}
@@ -21714,10 +24885,16 @@ func (client *Client) UpgradeGatewayWithOptions(request *UpgradeGatewayRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpgradeGateway"),
@@ -21727,7 +24904,7 @@ func (client *Client) UpgradeGatewayWithOptions(request *UpgradeGatewayRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeGatewayResponse{}
@@ -21756,12 +24933,20 @@ func (client *Client) UploadCSGClientLogWithOptions(request *UploadCSGClientLogR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientId"] = request.ClientId
-	query["ClientRegionId"] = request.ClientRegionId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientRegionId)) {
+		query["ClientRegionId"] = request.ClientRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadCSGClientLog"),
@@ -21771,7 +24956,7 @@ func (client *Client) UploadCSGClientLogWithOptions(request *UploadCSGClientLogR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadCSGClientLogResponse{}
@@ -21800,10 +24985,12 @@ func (client *Client) UploadGatewayLogWithOptions(request *UploadGatewayLogReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GatewayId"] = request.GatewayId
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UploadGatewayLog"),
@@ -21813,7 +25000,7 @@ func (client *Client) UploadGatewayLogWithOptions(request *UploadGatewayLogReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UploadGatewayLogResponse{}
@@ -21842,14 +25029,28 @@ func (client *Client) ValidateExpressSyncConfigWithOptions(request *ValidateExpr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BucketName"] = request.BucketName
-	query["BucketPrefix"] = request.BucketPrefix
-	query["BucketRegion"] = request.BucketRegion
-	query["Name"] = request.Name
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketPrefix)) {
+		query["BucketPrefix"] = request.BucketPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketRegion)) {
+		query["BucketRegion"] = request.BucketRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateExpressSyncConfig"),
@@ -21859,7 +25060,7 @@ func (client *Client) ValidateExpressSyncConfigWithOptions(request *ValidateExpr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateExpressSyncConfigResponse{}
@@ -21888,11 +25089,16 @@ func (client *Client) ValidateGatewayNameWithOptions(request *ValidateGatewayNam
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["StorageBundleId"] = request.StorageBundleId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageBundleId)) {
+		query["StorageBundleId"] = request.StorageBundleId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ValidateGatewayName"),
@@ -21902,7 +25108,7 @@ func (client *Client) ValidateGatewayNameWithOptions(request *ValidateGatewayNam
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ValidateGatewayNameResponse{}

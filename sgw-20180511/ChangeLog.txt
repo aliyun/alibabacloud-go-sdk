@@ -1,3 +1,6 @@
+2023-12-14 Version: v1.0.3
+- Generated golang 2018-05-11 for sgw.
+
 2021-10-28 Version: v1.0.2
 - Update tag api including resourceRegionId parameter.
 - Update DescribeTask api to get relatedResourceId info.
