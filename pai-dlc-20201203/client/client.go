@@ -2355,6 +2355,7 @@ func (s *CreateJobRequestCodeSource) SetMountPath(v string) *CreateJobRequestCod
 type CreateJobRequestDataSources struct {
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s CreateJobRequestDataSources) String() string {
@@ -2372,6 +2373,11 @@ func (s *CreateJobRequestDataSources) SetDataSourceId(v string) *CreateJobReques
 
 func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDataSources {
 	s.MountPath = &v
+	return s
+}
+
+func (s *CreateJobRequestDataSources) SetUri(v string) *CreateJobRequestDataSources {
+	s.Uri = &v
 	return s
 }
 
@@ -3030,6 +3036,7 @@ func (s *GetJobResponseBodyCodeSource) SetMountPath(v string) *GetJobResponseBod
 type GetJobResponseBodyDataSources struct {
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	MountPath    *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s GetJobResponseBodyDataSources) String() string {
@@ -3047,6 +3054,11 @@ func (s *GetJobResponseBodyDataSources) SetDataSourceId(v string) *GetJobRespons
 
 func (s *GetJobResponseBodyDataSources) SetMountPath(v string) *GetJobResponseBodyDataSources {
 	s.MountPath = &v
+	return s
+}
+
+func (s *GetJobResponseBodyDataSources) SetUri(v string) *GetJobResponseBodyDataSources {
+	s.Uri = &v
 	return s
 }
 
@@ -4030,6 +4042,7 @@ type ListJobsRequest struct {
 	StartTime         *string            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status            *string            `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags              map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserIdForFilter   *string            `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
 	WorkspaceId       *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4126,6 +4139,11 @@ func (s *ListJobsRequest) SetTags(v map[string]*string) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetUserIdForFilter(v string) *ListJobsRequest {
+	s.UserIdForFilter = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 	s.WorkspaceId = &v
 	return s
@@ -4149,6 +4167,7 @@ type ListJobsShrinkRequest struct {
 	StartTime         *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TagsShrink        *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserIdForFilter   *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
 	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -4242,6 +4261,11 @@ func (s *ListJobsShrinkRequest) SetStatus(v string) *ListJobsShrinkRequest {
 
 func (s *ListJobsShrinkRequest) SetTagsShrink(v string) *ListJobsShrinkRequest {
 	s.TagsShrink = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetUserIdForFilter(v string) *ListJobsShrinkRequest {
+	s.UserIdForFilter = &v
 	return s
 }
 
@@ -5828,6 +5852,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
 		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserIdForFilter)) {
+		query["UserIdForFilter"] = request.UserIdForFilter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
