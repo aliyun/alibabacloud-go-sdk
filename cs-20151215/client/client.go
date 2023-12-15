@@ -5267,6 +5267,182 @@ func (s *DescirbeWorkflowResponse) SetBody(v *DescirbeWorkflowResponseBody) *Des
 	return s
 }
 
+type DescribeAddonRequest struct {
+	ClusterId      *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	ClusterSpec    *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
+	ClusterType    *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
+	ClusterVersion *string `json:"cluster_version,omitempty" xml:"cluster_version,omitempty"`
+	Profile        *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	RegionId       *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
+	Version        *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeAddonRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonRequest) SetClusterId(v string) *DescribeAddonRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetClusterSpec(v string) *DescribeAddonRequest {
+	s.ClusterSpec = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetClusterType(v string) *DescribeAddonRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetClusterVersion(v string) *DescribeAddonRequest {
+	s.ClusterVersion = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetProfile(v string) *DescribeAddonRequest {
+	s.Profile = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetRegionId(v string) *DescribeAddonRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAddonRequest) SetVersion(v string) *DescribeAddonRequest {
+	s.Version = &v
+	return s
+}
+
+type DescribeAddonResponseBody struct {
+	Architecture     []*string                                 `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
+	Category         *string                                   `json:"category,omitempty" xml:"category,omitempty"`
+	ConfigSchema     *string                                   `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
+	InstallByDefault *bool                                     `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
+	Managed          *bool                                     `json:"managed,omitempty" xml:"managed,omitempty"`
+	Name             *string                                   `json:"name,omitempty" xml:"name,omitempty"`
+	NewerVersions    []*DescribeAddonResponseBodyNewerVersions `json:"newer_versions,omitempty" xml:"newer_versions,omitempty" type:"Repeated"`
+	SupportedActions []*string                                 `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
+	Version          *string                                   `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeAddonResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonResponseBody) SetArchitecture(v []*string) *DescribeAddonResponseBody {
+	s.Architecture = v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetCategory(v string) *DescribeAddonResponseBody {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetConfigSchema(v string) *DescribeAddonResponseBody {
+	s.ConfigSchema = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetInstallByDefault(v bool) *DescribeAddonResponseBody {
+	s.InstallByDefault = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetManaged(v bool) *DescribeAddonResponseBody {
+	s.Managed = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetName(v string) *DescribeAddonResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetNewerVersions(v []*DescribeAddonResponseBodyNewerVersions) *DescribeAddonResponseBody {
+	s.NewerVersions = v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetSupportedActions(v []*string) *DescribeAddonResponseBody {
+	s.SupportedActions = v
+	return s
+}
+
+func (s *DescribeAddonResponseBody) SetVersion(v string) *DescribeAddonResponseBody {
+	s.Version = &v
+	return s
+}
+
+type DescribeAddonResponseBodyNewerVersions struct {
+	MinimumClusterVersion *string `json:"minimum_cluster_version,omitempty" xml:"minimum_cluster_version,omitempty"`
+	Upgradable            *bool   `json:"upgradable,omitempty" xml:"upgradable,omitempty"`
+	Version               *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DescribeAddonResponseBodyNewerVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonResponseBodyNewerVersions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonResponseBodyNewerVersions) SetMinimumClusterVersion(v string) *DescribeAddonResponseBodyNewerVersions {
+	s.MinimumClusterVersion = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBodyNewerVersions) SetUpgradable(v bool) *DescribeAddonResponseBodyNewerVersions {
+	s.Upgradable = &v
+	return s
+}
+
+func (s *DescribeAddonResponseBodyNewerVersions) SetVersion(v string) *DescribeAddonResponseBodyNewerVersions {
+	s.Version = &v
+	return s
+}
+
+type DescribeAddonResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAddonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAddonResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAddonResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAddonResponse) SetHeaders(v map[string]*string) *DescribeAddonResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddonResponse) SetStatusCode(v int32) *DescribeAddonResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAddonResponse) SetBody(v *DescribeAddonResponseBody) *DescribeAddonResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAddonsRequest struct {
 	// The type of cluster. Valid values:
 	//
@@ -14722,6 +14898,140 @@ func (s *ListClusterChecksResponse) SetBody(v *ListClusterChecksResponseBody) *L
 	return s
 }
 
+type ListOperationPlansRequest struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListOperationPlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationPlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationPlansRequest) SetClusterId(v string) *ListOperationPlansRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListOperationPlansRequest) SetType(v string) *ListOperationPlansRequest {
+	s.Type = &v
+	return s
+}
+
+type ListOperationPlansResponseBody struct {
+	Plans []*ListOperationPlansResponseBodyPlans `json:"plans,omitempty" xml:"plans,omitempty" type:"Repeated"`
+}
+
+func (s ListOperationPlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationPlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationPlansResponseBody) SetPlans(v []*ListOperationPlansResponseBodyPlans) *ListOperationPlansResponseBody {
+	s.Plans = v
+	return s
+}
+
+type ListOperationPlansResponseBodyPlans struct {
+	ClusterId  *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	Created    *string `json:"created,omitempty" xml:"created,omitempty"`
+	EndTime    *string `json:"end_time,omitempty" xml:"end_time,omitempty"`
+	PlanId     *string `json:"plan_id,omitempty" xml:"plan_id,omitempty"`
+	StartTime  *string `json:"start_time,omitempty" xml:"start_time,omitempty"`
+	State      *string `json:"state,omitempty" xml:"state,omitempty"`
+	TargetId   *string `json:"target_id,omitempty" xml:"target_id,omitempty"`
+	TargetType *string `json:"target_type,omitempty" xml:"target_type,omitempty"`
+	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListOperationPlansResponseBodyPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationPlansResponseBodyPlans) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetClusterId(v string) *ListOperationPlansResponseBodyPlans {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetCreated(v string) *ListOperationPlansResponseBodyPlans {
+	s.Created = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetEndTime(v string) *ListOperationPlansResponseBodyPlans {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetPlanId(v string) *ListOperationPlansResponseBodyPlans {
+	s.PlanId = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetStartTime(v string) *ListOperationPlansResponseBodyPlans {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetState(v string) *ListOperationPlansResponseBodyPlans {
+	s.State = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetTargetId(v string) *ListOperationPlansResponseBodyPlans {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetTargetType(v string) *ListOperationPlansResponseBodyPlans {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ListOperationPlansResponseBodyPlans) SetType(v string) *ListOperationPlansResponseBodyPlans {
+	s.Type = &v
+	return s
+}
+
+type ListOperationPlansResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOperationPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOperationPlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOperationPlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOperationPlansResponse) SetHeaders(v map[string]*string) *ListOperationPlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOperationPlansResponse) SetStatusCode(v int32) *ListOperationPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOperationPlansResponse) SetBody(v *ListOperationPlansResponseBody) *ListOperationPlansResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results.
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
@@ -20691,6 +21001,76 @@ func (client *Client) DescirbeWorkflow(workflowName *string) (_result *DescirbeW
 	return _result, _err
 }
 
+func (client *Client) DescribeAddonWithOptions(addonName *string, request *DescribeAddonRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAddonResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
+		query["cluster_spec"] = request.ClusterSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["cluster_type"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterVersion)) {
+		query["cluster_version"] = request.ClusterVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Profile)) {
+		query["profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["region_id"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAddon"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/addons/" + tea.StringValue(openapiutil.GetEncodeParam(addonName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAddon(addonName *string, request *DescribeAddonRequest) (_result *DescribeAddonResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeAddonResponse{}
+	_body, _err := client.DescribeAddonWithOptions(addonName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAddonsWithOptions(request *DescribeAddonsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeAddonsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23210,6 +23590,56 @@ func (client *Client) ListClusterChecks(clusterId *string, request *ListClusterC
 	headers := make(map[string]*string)
 	_result = &ListClusterChecksResponse{}
 	_body, _err := client.ListClusterChecksWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOperationPlansWithOptions(request *ListOperationPlansRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListOperationPlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["cluster_id"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOperationPlans"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/operation/plans"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOperationPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOperationPlans(request *ListOperationPlansRequest) (_result *ListOperationPlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListOperationPlansResponse{}
+	_body, _err := client.ListOperationPlansWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
