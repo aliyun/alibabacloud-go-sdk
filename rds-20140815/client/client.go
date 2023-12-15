@@ -442,11 +442,11 @@ type AllocateReadWriteSplittingConnectionRequest struct {
 	//
 	// >  The default prefix consists of the name of the primary instance followed by the letters rw.
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The ID of the primary instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+	// The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The method that is used to assign read weights. Valid values:
 	//
-	// *   **Standard**: ApsaraDB RDS automatically assigns read weights to the primary and read-only instances based on the specifications of these instances.
+	// *   **Standard**: The system automatically assigns read weights to the primary and read-only instances based on the specifications of these instances.
 	// *   **Custom**: You must manually assign a read weight to each instance.
 	DistributionType *string `json:"DistributionType,omitempty" xml:"DistributionType,omitempty"`
 	// The threshold of the latency that is allowed on the read-only instances. Valid values: 0 to 7200. Default value: 30. Unit: seconds.
@@ -455,8 +455,8 @@ type AllocateReadWriteSplittingConnectionRequest struct {
 	MaxDelayTime *string `json:"MaxDelayTime,omitempty" xml:"MaxDelayTime,omitempty"`
 	// The network type of the read-only routing endpoint. Valid values:
 	//
-	// *   **Internet**: Internet
-	// *   **Intranet**: internal network
+	// *   **Internet**
+	// *   **Intranet**
 	//
 	// >  The default value is Intranet. Make sure that the network type of the read-only routing endpoint is the same as that of the primary instance.
 	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
@@ -468,11 +468,14 @@ type AllocateReadWriteSplittingConnectionRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The read weights of the primary instance and its read-only instances. The read weight is increased in increments of 100. The maximum value is 10000.
 	//
-	// * For ApsaraDB RDS instances, the value of this parameter is in the following format: `{"<ID of the read-only instance >":<Weight>,"master":<Weight>,"slave":<Weight>}`.
-	// * For ApsaraDB MyBase instances, the value of this parameter is in the following format: `[{"instanceName":"<ID of the primary instance>","weight":<Weight>,"role":"master"},{"instanceName":"<ID of the primary instance>","weight":<Weight>,"role":"slave"},{"instanceName":"<ID of the read-only instance>","weight":<Weight>,"role":"master"}]`
+	// *   For ApsaraDB RDS instances, the value of this parameter is in the following format: `{"<ID of the read-only instance >":<Weight>,"master":<Weight>,"slave":<Weight>}`.
+	// *   For ApsaraDB MyBase instances, the value of this parameter is in the following format: `[{"instanceName":"<Primary instance ID>","weight":<Weight>,"role":"master"},{"instanceName":"<Primary instance ID>","weight":<Weight>,"role":"slave"},{"instanceName":"<Read-only instance ID>","weight":<Weight>,"role":"master"}]`
 	//
-	// > * If you set the **DistributionType** parameter to **Custom**, you must also specify this parameter.
-	// > * If you set the **DistributionType** parameter to **Standard**, this parameter is invalid.
+	// >
+	//
+	// *   This parameter must be specified when **DistributionType** is set to **Custom**.
+	//
+	// *   If **DistributionType** is set to **Standard**, this parameter is invalid.
 	Weight *string `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
@@ -540,7 +543,7 @@ func (s *AllocateReadWriteSplittingConnectionRequest) SetWeight(v string) *Alloc
 }
 
 type AllocateReadWriteSplittingConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1236,9 +1239,9 @@ func (s *CheckCloudResourceAuthorizedResponse) SetBody(v *CheckCloudResourceAuth
 }
 
 type CheckCreateDdrDBInstanceRequest struct {
-	// The ID of the backup set that is used for the restoration. You can call the [DescribeCrossRegionBackups](~~121733~~) operation to query the ID of the backup set.
+	// The ID of the backup set that is used for the restoration. You can call the DescribeCrossRegionBackups operation to query the backup set ID.
 	//
-	// > If you set **RestoreType** to **0**, you must also specify this parameter.
+	// >  This parameter must be specified when the **RestoreType** parameter is set to **0**.
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
 	// The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
@@ -1257,9 +1260,9 @@ type CheckCreateDdrDBInstanceRequest struct {
 	// *   PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the destination instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1276,7 +1279,7 @@ type CheckCreateDdrDBInstanceRequest struct {
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The ID of the source instance if you want to restore data to a point in time.
 	//
-	// > If you set **RestoreType** to **1**, you must also specify this parameter.
+	// >  This parameter must be specified when the **RestoreType** parameter is set to **1**.
 	SourceDBInstanceName *string `json:"SourceDBInstanceName,omitempty" xml:"SourceDBInstanceName,omitempty"`
 	// The region ID of the source instance if you want to restore data to a point in time.
 	//
@@ -2532,7 +2535,7 @@ func (s *CloneParameterGroupResponse) SetBody(v *CloneParameterGroupResponseBody
 type ConfirmNotifyRequest struct {
 	// The ID of the Alibaba Cloud account that is used to confirm the notification. You can set this parameter to **0**, which indicates that the notification is confirmed by the system.
 	Confirmor *int64 `json:"Confirmor,omitempty" xml:"Confirmor,omitempty"`
-	// The IDs of the notifications that needs to be confirmed. You can call the [QueryNotify](~~427959~~) operation to query notifications for an instance.
+	// The notification IDs.
 	NotifyIdList []*int64 `json:"NotifyIdList,omitempty" xml:"NotifyIdList,omitempty" type:"Repeated"`
 }
 
@@ -2557,7 +2560,7 @@ func (s *ConfirmNotifyRequest) SetNotifyIdList(v []*int64) *ConfirmNotifyRequest
 type ConfirmNotifyShrinkRequest struct {
 	// The ID of the Alibaba Cloud account that is used to confirm the notification. You can set this parameter to **0**, which indicates that the notification is confirmed by the system.
 	Confirmor *int64 `json:"Confirmor,omitempty" xml:"Confirmor,omitempty"`
-	// The IDs of the notifications that needs to be confirmed. You can call the [QueryNotify](~~427959~~) operation to query notifications for an instance.
+	// The notification IDs.
 	NotifyIdListShrink *string `json:"NotifyIdList,omitempty" xml:"NotifyIdList,omitempty"`
 }
 
@@ -2580,7 +2583,7 @@ func (s *ConfirmNotifyShrinkRequest) SetNotifyIdListShrink(v string) *ConfirmNot
 }
 
 type ConfirmNotifyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7031,13 +7034,13 @@ func (s *CreateGADInstanceResponse) SetBody(v *CreateGADInstanceResponseBody) *C
 }
 
 type CreateGadInstanceMemberRequest struct {
-	// The ID of the central node. You can call the [DescribeGadInstances](~~330105~~) operation to query the ID of the central node.
+	// The ID of the central node . You can call the DescribeGadInstances operation to query the ID.
 	CentralDBInstanceId *string `json:"CentralDBInstanceId,omitempty" xml:"CentralDBInstanceId,omitempty"`
-	// The username of the privileged account of the central node. You can call the [DescribeAccounts](~~26265~~) operation to query the privileged account of the central node.
+	// The username of the privileged account of the central node. You can call the DescribeAccounts operation to query the privileged account of the central node.
 	CentralRdsDtsAdminAccount *string `json:"CentralRdsDtsAdminAccount,omitempty" xml:"CentralRdsDtsAdminAccount,omitempty"`
 	// The password of the privileged account of the central node.
 	CentralRdsDtsAdminPassword *string `json:"CentralRdsDtsAdminPassword,omitempty" xml:"CentralRdsDtsAdminPassword,omitempty"`
-	// The region ID of the central node. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the central node. You can call the DescribeRegions operation to query the most recent region list.
 	CentralRegionId *string `json:"CentralRegionId,omitempty" xml:"CentralRegionId,omitempty"`
 	// A JSON array that consists of the information about the databases on the central node. All database information that you specify in this array is synchronized to the unit nodes of the global active database cluster. The JSON array contains the following fields:
 	//
@@ -7049,7 +7052,7 @@ type CreateGadInstanceMemberRequest struct {
 	//
 	// >  For more information, see [Objects of DTS tasks](~~209545~~).
 	DBList *string `json:"DBList,omitempty" xml:"DBList,omitempty"`
-	// The ID of the global active database cluster. You can call the [DescribeGadInstances](~~330105~~) operation to query the ID of the global active database cluster.
+	// The ID of the global active database cluster. You can call the DescribeGadInstances operation to query the ID.
 	GadInstanceId *string `json:"GadInstanceId,omitempty" xml:"GadInstanceId,omitempty"`
 	// The information about the unit node.
 	UnitNode []*CreateGadInstanceMemberRequestUnitNode `json:"UnitNode,omitempty" xml:"UnitNode,omitempty" type:"Repeated"`
@@ -7107,7 +7110,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the [DescribeAvailableResource](~~134039~~) operation to query the storage capacity range that is supported for a specified instance type in a region.
+	// The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableResource operation to query the storage capacity range that is available for a specific instance type in a region.
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DBInstanceStorage *int64 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
@@ -7115,11 +7118,11 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// *   **local_ssd**: local SSDs
 	// *   **cloud_ssd**: standard SSDs
-	// *   **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
-	// *   **cloud_essd2**: ESSDs of PL2.
-	// *   **cloud_essd3**: ESSD of PL3.
+	// *   **cloud_essd**: PL1 ESSDs
+	// *   **cloud_essd2**: PL2 ESSDs
+	// *   **cloud_essd3**: PL3 ESSD
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the [DescribeAvailableResource](~~134039~~) operation to query the available instance types in a region.
+	// The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the DescribeAvailableResource operation to query the available instance types in a region.
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	DbInstanceClass *string `json:"DbInstanceClass,omitempty" xml:"DbInstanceClass,omitempty"`
@@ -7155,7 +7158,7 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The region ID of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
@@ -7174,18 +7177,18 @@ type CreateGadInstanceMemberRequestUnitNode struct {
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	VpcID *string `json:"VpcID,omitempty" xml:"VpcID,omitempty"`
-	// The zone ID of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query zone ID.
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	ZoneID *string `json:"ZoneID,omitempty" xml:"ZoneID,omitempty"`
-	// The zone ID of the secondary node of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the secondary node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
 	// *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
 	//
 	// **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
 	ZoneIDSlave1 *string `json:"ZoneIDSlave1,omitempty" xml:"ZoneIDSlave1,omitempty"`
-	// The zone ID of the logger node of the unit node that you want to create. You can call the [DescribeRegions](~~26243~~) operation to query the ID of the zone.
+	// The zone ID of the logger node of the unit node that you want to create. You can call the DescribeRegions operation to query the zone ID.
 	//
 	// *   If the value of this parameter is the same as the **zone ID** of the unit node that you want to create, the single-zone deployment method is used.
 	// *   If the value of this parameter is different from the **zone ID** of the unit node that you want to create, the multiple-zone deployment method is used.
@@ -8555,6 +8558,7 @@ type CreatePostgresExtensionsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RiskConfirmed        *bool   `json:"RiskConfirmed,omitempty" xml:"RiskConfirmed,omitempty"`
 	// The source database from which you want to synchronize the extension to the destination database. If you do not specify the **Extensions** parameter, you must specify this parameter.
 	SourceDatabase *string `json:"SourceDatabase,omitempty" xml:"SourceDatabase,omitempty"`
 }
@@ -8614,6 +8618,11 @@ func (s *CreatePostgresExtensionsRequest) SetResourceOwnerAccount(v string) *Cre
 
 func (s *CreatePostgresExtensionsRequest) SetResourceOwnerId(v int64) *CreatePostgresExtensionsRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreatePostgresExtensionsRequest) SetRiskConfirmed(v bool) *CreatePostgresExtensionsRequest {
+	s.RiskConfirmed = &v
 	return s
 }
 
@@ -10782,11 +10791,11 @@ func (s *DeleteGadInstanceResponse) SetBody(v *DeleteGadInstanceResponseBody) *D
 
 type DeleteParameterGroupRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template. You can call the [DescribeParameterGroups](~~144491~~) operation to query the ID of the parameter template.
+	// The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute to obtain the resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11289,12 +11298,12 @@ func (s *DeleteSlotResponse) SetBody(v *DeleteSlotResponseBody) *DeleteSlotRespo
 }
 
 type DeleteUserBackupFileRequest struct {
-	// The ID of the full backup file. You can call the [ListUserBackupFiles](~~257821~~) operation to query the ID of the file.
+	// The ID of the full backup file. You can call the ListUserBackupFiles operation to query the information about all full backup files in a region.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+	// The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22199,7 +22208,7 @@ func (s *DescribeDBInstancePromoteActivityResponse) SetBody(v *DescribeDBInstanc
 }
 
 type DescribeDBInstanceProxyConfigurationRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -22240,11 +22249,10 @@ type DescribeDBInstanceProxyConfigurationResponseBody struct {
 	// *   **Enable**
 	// *   **Disable**
 	//
-	// The return value is a JSON string. Examples:
+	// The return value is a JSON string. Example:
 	//
-	// {"status":"Disable", "check_interval_seconds": 60,
-	//
-	// "max_failed_login_attempts": 60, "blocking_seconds": 600}
+	//     {"status":"Disable", "check_interval_seconds": 60,
+	//               "max_failed_login_attempts": 60, "blocking_seconds": 600}
 	//
 	// Description:
 	//
@@ -22261,11 +22269,11 @@ type DescribeDBInstanceProxyConfigurationResponseBody struct {
 	// *   **Enable**
 	// *   **Disable**
 	//
-	// The return value is a JSON string. Example:
+	// In this case, the return value is a JSON string. Examples:
 	//
-	// {"status":"Disable"}.
+	//     {"status":"Disable"}.
 	PersistentConnectionsConfiguration *string `json:"PersistentConnectionsConfiguration,omitempty" xml:"PersistentConnectionsConfiguration,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the transparent switchover feature is enabled.
 	//
@@ -22274,7 +22282,7 @@ type DescribeDBInstanceProxyConfigurationResponseBody struct {
 	//
 	// The return value is a JSON string. Example:
 	//
-	// {"status":"Enable"}.
+	//     {"status":"Enable"}
 	TransparentSwitchConfiguration *string `json:"TransparentSwitchConfiguration,omitempty" xml:"TransparentSwitchConfiguration,omitempty"`
 }
 
@@ -25219,9 +25227,9 @@ func (s *DescribeDBInstancesForCloneResponse) SetBody(v *DescribeDBInstancesForC
 }
 
 type DescribeDBMiniEngineVersionsRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The dedicated cluster ID. You can call the [DescribeDedicatedHostGroups](~~141946~~) operation to query the ID of the dedicated cluster.
+	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	// The database engine of the instance. Valid values: **MySQL** and **PostgreSQL**.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
@@ -25232,13 +25240,13 @@ type DescribeDBMiniEngineVersionsRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The minor engine version of the instance. You can specify this parameter to query the minor engine version of the instance.
 	MinorVersionTag *string `json:"MinorVersionTag,omitempty" xml:"MinorVersionTag,omitempty"`
-	// The RDS edition of the instance. Valid values:
+	// The instance edition. Valid values:
 	//
 	// *   **Basic**: RDS Basic Edition
 	// *   **HighAvailability**: RDS High-availability Edition
 	// *   **Finance**: RDS Enterprise Edition
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage type of the instance. Valid values:
@@ -25366,6 +25374,7 @@ type DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The database engine version that corresponds to the minor engine version.
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	ExpireDate    *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// The expiration status of the minor engine version. Valid values:
 	//
 	// *   **vaild**
@@ -25426,6 +25435,11 @@ func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetEngine(v 
 
 func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetEngineVersion(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems) SetExpireDate(v string) *DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems {
+	s.ExpireDate = &v
 	return s
 }
 
@@ -25589,9 +25603,8 @@ type DescribeDBProxyResponseBody struct {
 	// *   2: dedicated proxy
 	//
 	// >  ApsaraDB RDS for PostgreSQL instances support only dedicated proxies.
-	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// An internal parameter. You can ignore this parameter.
-	DBProxyPersistentConnectionSupport *string `json:"DBProxyPersistentConnectionSupport,omitempty" xml:"DBProxyPersistentConnectionSupport,omitempty"`
+	DBProxyInstanceType               *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
+	DBProxyPersistentConnectionStatus *string `json:"DBProxyPersistentConnectionStatus,omitempty" xml:"DBProxyPersistentConnectionStatus,omitempty"`
 	// The status of the database proxy.
 	//
 	// *   Shutdown: disabled
@@ -25663,8 +25676,8 @@ func (s *DescribeDBProxyResponseBody) SetDBProxyInstanceType(v string) *Describe
 	return s
 }
 
-func (s *DescribeDBProxyResponseBody) SetDBProxyPersistentConnectionSupport(v string) *DescribeDBProxyResponseBody {
-	s.DBProxyPersistentConnectionSupport = &v
+func (s *DescribeDBProxyResponseBody) SetDBProxyPersistentConnectionStatus(v string) *DescribeDBProxyResponseBody {
+	s.DBProxyPersistentConnectionStatus = &v
 	return s
 }
 
@@ -27378,38 +27391,38 @@ func (s *DescribeDedicatedHostGroupsResponse) SetBody(v *DescribeDedicatedHostGr
 }
 
 type DescribeDedicatedHostsRequest struct {
-	// Specifies whether to query the hosts on which you can create instances or those on which you cannot create instances. Valid values:
+	// Specifies whether instances can be deployed on the host. Valid values:
 	//
-	// *   **0**: queries the hosts on which you cannot create instances
-	// *   **1**: queries the hosts on which you can create instances
+	// *   **0**: Instances cannot be deployed on the host.
+	// *   **1**: Instances can be deployed on the host.
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	// The ID of the dedicated cluster. You can call the [DescribeDedicatedHostGroups](~~141946~~) operation to query the IDs of dedicated clusters.
+	// The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host.
+	// The ID of the host in the dedicated cluster.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The status of the hosts. Valid values:
+	// The status of the host. Valid values:
 	//
-	// *   **0**: queries the hosts that are being created
-	// *   **1**: queries the hosts that are running
-	// *   **2**: queries the hosts that are faulty
-	// *   **3**: queries the hosts that are being replaced
-	// *   **4**: queries the hosts that are deprecated
-	// *   **5**: queries the hosts that are being deleted
-	// *   **6**: queries the hosts that are restarting
+	// *   **0**: creating
+	// *   **1**: running
+	// *   **2**: faulty
+	// *   **3**: being replaced
+	// *   **4**: deprecated
+	// *   **5**: deleting
+	// *   **6**: restarting
 	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
-	// The type of storage media that is used for the hosts. Valid values:
+	// The storage type of the host. Valid values:
 	//
-	// *   **dhg_cloud_ssd**: enhanced solid-state drive (SSD)
+	// *   **dhg_cloud_ssd**: enhanced SSD (ESSD)
 	// *   **dhg_local_ssd**: local SSD
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the hosts. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The zone ID of the hosts.
+	// The zone ID.
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -27477,11 +27490,11 @@ func (s *DescribeDedicatedHostsRequest) SetZoneId(v string) *DescribeDedicatedHo
 }
 
 type DescribeDedicatedHostsResponseBody struct {
-	// The ID of the dedicated cluster.
+	// The host group ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// An array that consists of hosts returned.
+	// The host information.
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27526,71 +27539,71 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHosts) SetDedicatedHosts(v [
 }
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts struct {
-	// The account of the host. You can call the [CreateDedicatedHostAccount](~~196877~~) operation to create a host account.
+	// The host account. You can call the [CreateDedicatedHostAccount](~~196877~~) operation to create a host account.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the system allows you to create instances on the host. Valid values:
+	// Specifies whether instances can be deployed on the host. Valid values:
 	//
-	// *   **0**: The system does not allow you to create instances on the host.
-	// *   **1**: The system allows you to create instances on the host.
+	// *   **0**: Instances cannot be deployed on the host.
+	// *   **1**: Instances can be deployed on the host.
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	// The ID of the bastion host.
+	// The bastion host ID.
 	BastionInstanceId *string `json:"BastionInstanceId,omitempty" xml:"BastionInstanceId,omitempty"`
-	// The core overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+	// The core overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
 	CPUAllocationRatio *string `json:"CPUAllocationRatio,omitempty" xml:"CPUAllocationRatio,omitempty"`
-	// The number of used cores on the host.
+	// The number of used CPU cores on the host. Unit: cores.
 	CpuUsed *string `json:"CpuUsed,omitempty" xml:"CpuUsed,omitempty"`
 	// The time when the host was created.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The ID of the dedicated cluster.
+	// The dedicated cluster ID.
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
-	// The ID of the host.
+	// The host ID.
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The disk overcommitment ratio of the dedicated cluster. Unit: %. For more information about the disk overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+	// The disk overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
 	DiskAllocationRatio *string `json:"DiskAllocationRatio,omitempty" xml:"DiskAllocationRatio,omitempty"`
 	// The time when the host expires.
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The database engine of instances that are created on the host.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The total number of cores that are configured for the host.
+	// The total number of CPU cores that are configured for the host. Unit: cores.
 	HostCPU *string `json:"HostCPU,omitempty" xml:"HostCPU,omitempty"`
-	// The specifications of the host.
+	// The instance type of the host.
 	HostClass *string `json:"HostClass,omitempty" xml:"HostClass,omitempty"`
 	// The total memory space of the host. Unit: MB.
 	HostMem *string `json:"HostMem,omitempty" xml:"HostMem,omitempty"`
-	// The name of the host.
+	// The host name.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The status of the host. Valid values:
 	//
-	// *   **0**: The host is being created.
-	// *   **1**: The host is running.
-	// *   **2**: The host is faulty.
-	// *   **3**: The host is being replaced.
-	// *   **4**: The host is deprecated.
-	// *   **5**: The host is being deleted.
-	// *   **6**: The host is restarting.
+	// *   **0**: creating
+	// *   **1**: running
+	// *   **2**: faulty
+	// *   **3**: being replaced
+	// *   **4**: deprecated
+	// *   **5**: deleting
+	// *   **6**: restarting
 	HostStatus *string `json:"HostStatus,omitempty" xml:"HostStatus,omitempty"`
 	// The storage capacity of the host. Unit: MB.
 	HostStorage *string `json:"HostStorage,omitempty" xml:"HostStorage,omitempty"`
-	// The type of storage media that is used for the host. Valid values:
+	// The storage type of the host. Valid values:
 	//
-	// *   **dhg_cloud_ssd**: enhanced SSD
+	// *   **dhg_cloud_ssd**: ESSD
 	// *   **dhg_local_ssd**: local SSD
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
 	// The internal IP address of the host.
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
-	// The image of the host. This parameter is returned only when the **Engine** parameter is set to **mssql**. Valid values:
+	// The host image. This parameter is returned only when the **Engine** parameter is set to **mssql**. Valid values:
 	//
-	// *   **WindowsWithMssqlStdLicense**: a Windows image, which contains the licenses of the SQL Server Standard Edition
-	// *   **WindowsWithMssqlEntLisence**: a Windows image, which contains the licenses of the SQL Server Enterprise Edition
-	// *   **WindowsWithMssqlWebLisence**: a Windows image, which contains the licenses of the SQL Server Web Edition
+	// *   **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
+	// *   **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
+	// *   **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	// The total number of instances that are created on the host.
 	InstanceNumber *string `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
 	// The maximum memory usage per host in the dedicated cluster.
 	MemAllocationRatio *string `json:"MemAllocationRatio,omitempty" xml:"MemAllocationRatio,omitempty"`
-	// The amount of used memory space on the host. Unit: MB.
+	// The size of the used memory. Unit: MB.
 	MemoryUsed *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// Indicates whether the operating system permissions of the host can be granted. Valid values:
+	// Indicates whether the feature that allows you to have the OS permissions on the host is enabled. Valid values:
 	//
 	// *   **0** or **null**: The permissions cannot be granted.
 	// *   **1**: The permissions can be granted.
@@ -30517,14 +30530,14 @@ func (s *DescribeHostGroupElasticStrategyParametersResponse) SetBody(v *Describe
 type DescribeHostWebShellRequest struct {
 	// The username of the account that is used to log on to the host of the instance.
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The password of the account.
+	// The password of the host account.
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The hostname of the instance. You can call the [DescribeDBInstanceIpHostname](~~610525~~) operation to query the hostname.
+	// The instance hostname. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the most recent region list.
+	// The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
 	RegionID             *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -30579,7 +30592,7 @@ func (s *DescribeHostWebShellRequest) SetResourceOwnerId(v int64) *DescribeHostW
 }
 
 type DescribeHostWebShellResponseBody struct {
-	// The URL of the webshell.
+	// The webshell URL.
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
 	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -36287,13 +36300,13 @@ func (s *DescribeRdsResourceSettingsResponse) SetBody(v *DescribeRdsResourceSett
 }
 
 type DescribeReadDBInstanceDelayRequest struct {
-	// The ID of the primary instance.
+	// The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the read-only instance.
+	// The read-only instance ID. You can call the DescribeDBInstances operation to query the read-only instance ID.
 	ReadInstanceId *string `json:"ReadInstanceId,omitempty" xml:"ReadInstanceId,omitempty"`
-	// The ID of the region where the global active database clusters that you want to query reside. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -36349,15 +36362,15 @@ func (s *DescribeReadDBInstanceDelayRequest) SetSecurityToken(v string) *Describ
 }
 
 type DescribeReadDBInstanceDelayResponseBody struct {
-	// The ID of the primary instance.
+	// The primary instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The latency of data replication between the primary instance and the read-only instance.
+	// The latency of data replication. Unit: seconds.
 	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// An array that consists of latency information.
+	// The latency information.
 	Items *DescribeReadDBInstanceDelayResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the read-only instance.
+	// The read-only instance ID.
 	ReadDBInstanceId *string `json:"ReadDBInstanceId,omitempty" xml:"ReadDBInstanceId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -36412,19 +36425,15 @@ func (s *DescribeReadDBInstanceDelayResponseBodyItems) SetItems(v []*DescribeRea
 }
 
 type DescribeReadDBInstanceDelayResponseBodyItemsItems struct {
-	// The ID of the primary instance.
+	// The primary instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// An array that consists of information about the read-only instance.
-	//
-	// >  This parameter is returned only when the primary instance runs the MySQL database engine.
 	ReadDBInstanceNames *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDBInstanceNames `json:"ReadDBInstanceNames,omitempty" xml:"ReadDBInstanceNames,omitempty" type:"Struct"`
-	// An array that consists of latencies.
-	//
-	// >  This parameter is returned only when the primary instance runs the MySQL database engine.
+	// The latency of data replication.
 	ReadDelayTimes *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes `json:"ReadDelayTimes,omitempty" xml:"ReadDelayTimes,omitempty" type:"Struct"`
-	// An array that consists of information about the write-ahead log (WAL) latency.
+	// The information about the write-ahead log (WAL) latency.
 	//
-	// >  This parameter is returned only when the primary instance runs the PostgreSQL database engine.
+	// >  This parameter is returned only when the primary instance runs PostgreSQL.
 	ReadonlyInstanceDelay *DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay `json:"ReadonlyInstanceDelay,omitempty" xml:"ReadonlyInstanceDelay,omitempty" type:"Struct"`
 }
 
@@ -36512,7 +36521,7 @@ type DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelayReado
 	FlushLag *string `json:"FlushLag,omitempty" xml:"FlushLag,omitempty"`
 	// The data size that is allowed for the latency in the persistence of WAL data. Unit: MB.
 	FlushLatency *string `json:"FlushLatency,omitempty" xml:"FlushLatency,omitempty"`
-	// The ID of the read-only instance.
+	// The read-only instance ID.
 	ReadDBInstanceName *string `json:"ReadDBInstanceName,omitempty" xml:"ReadDBInstanceName,omitempty"`
 	// The duration that is allowed for the latency in the playback of WAL data. Unit: seconds.
 	ReplayLag *string `json:"ReplayLag,omitempty" xml:"ReplayLag,omitempty"`
@@ -37935,7 +37944,7 @@ func (s *DescribeSQLCollectorRetentionResponse) SetBody(v *DescribeSQLCollectorR
 }
 
 type DescribeSQLLogFilesRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the audit log file.
 	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
@@ -38061,7 +38070,7 @@ func (s *DescribeSQLLogFilesResponseBodyItems) SetLogFile(v []*DescribeSQLLogFil
 }
 
 type DescribeSQLLogFilesResponseBodyItemsLogFile struct {
-	// The name of the file.
+	// The file name.
 	FileID *string `json:"FileID,omitempty" xml:"FileID,omitempty"`
 	// The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
 	LogDownloadURL *string `json:"LogDownloadURL,omitempty" xml:"LogDownloadURL,omitempty"`
@@ -38431,19 +38440,19 @@ func (s *DescribeSQLLogRecordsResponse) SetBody(v *DescribeSQLLogRecordsResponse
 }
 
 type DescribeSQLLogReportListRequest struct {
-	// The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the IDs of instances.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.**
 	//
 	// >  The end time must be later than the start time.
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: any **non-zero** positive integer.
+	// The page number. Valid values: any **non-zero** positive integer.
 	//
 	// Default value: **1**.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// *   **30**
 	// *   **50**
@@ -38513,13 +38522,13 @@ func (s *DescribeSQLLogReportListRequest) SetStartTime(v string) *DescribeSQLLog
 type DescribeSQLLogReportListResponseBody struct {
 	// An array that consists of SQL log reports.
 	Items *DescribeSQLLogReportListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of reports on the current page.
+	// The number of SQL log reports on the current page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records returned.
+	// The total number of entries.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -38627,7 +38636,7 @@ type DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNIte
 	AvgLatency *int64 `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
 	// The number of times that the SQL statement is executed.
 	SQLExecuteTimes *int64 `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-	// The SQL statement returned.
+	// The SQL statement.
 	//
 	// >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 100 ms to execute are returned.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
@@ -38676,7 +38685,7 @@ func (s *DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems) SetQPSTopNIt
 type DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem struct {
 	// The number of times that the SQL statement is executed.
 	SQLExecuteTimes *int64 `json:"SQLExecuteTimes,omitempty" xml:"SQLExecuteTimes,omitempty"`
-	// The SQL statement returned.
+	// The SQL statement.
 	//
 	// >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 5 ms to execute are returned.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
@@ -40854,29 +40863,27 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 }
 
 type DescribeUpgradeMajorVersionPrecheckTaskRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return in the upgrade check report.
+	// The page number.
 	//
-	// Valid values: any non-zero positive integer. Default value: 1.
+	// Valid values: any non-zero positive integer. Default value: 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page of the upgrade check report.
+	// The number of entries per page.
 	//
 	// Valid values:
 	//
-	// *   30 (This is the default value.)
+	// *   30 (default)
 	// *   50
 	// *   100
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new major engine version of the instance. The new major engine version must be later than the original major engine version.
-	//
-	// For example, if the original major engine version is PostgreSQL 9.4, the new major engine version can be PostgreSQL 10, PostgreSQL 11, PostgreSQL 12, or PostgreSQL 13.
 	TargetMajorVersion *string `json:"TargetMajorVersion,omitempty" xml:"TargetMajorVersion,omitempty"`
-	// The ID of the upgrade check task. You can obtain the ID of the upgrade check task from the **TaskId** parameter that is returned from the call of the [UpgradeDBInstanceMajorVersionPrecheck](~~330050~~) operation.
+	// The ID of the upgrade check task. You can obtain the ID of the upgrade check task from the **TaskId** parameter in the response to the UpgradeDBInstanceMajorVersionPrecheck operation.
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -40934,13 +40941,13 @@ func (s *DescribeUpgradeMajorVersionPrecheckTaskRequest) SetTaskId(v int32) *Des
 }
 
 type DescribeUpgradeMajorVersionPrecheckTaskResponseBody struct {
-	// An array that consists of the attributes in the upgrade check report.
+	// The information about the upgrade check report.
 	Items []*DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries in the upgrade check report.
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
@@ -40997,7 +41004,7 @@ type DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems struct {
 	// *   Success
 	// *   Fail
 	//
-	// >  If the check result is **Fail**, you must check the value of the **Detail** parameter to obtain the information about the errors that occurred. After you handle the errors, you can try again. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](~~218391~~).
+	// >  If the check result is **Fail**, you must check the value of the **Detail** parameter to obtain the information about the errors that occurred, resolve the errors, and then try again. For more information about how to resolve common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](~~218391~~).
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The original major engine version of the instance.
 	SourceMajorVersion *string `json:"SourceMajorVersion,omitempty" xml:"SourceMajorVersion,omitempty"`
@@ -44946,10 +44953,13 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 }
 
 type ModifyActionEventPolicyRequest struct {
-	// Specifies whether to enable the event history feature. Valid values: **True | False**.
+	// Specifies whether to enable the event history feature. Valid values:
+	//
+	// *   **True**
+	// *   **False**
 	EnableEventLog *string `json:"EnableEventLog,omitempty" xml:"EnableEventLog,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region for which you want to enable the event history feature. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -44991,9 +45001,9 @@ func (s *ModifyActionEventPolicyRequest) SetResourceOwnerId(v int64) *ModifyActi
 type ModifyActionEventPolicyResponseBody struct {
 	// Indicates whether the event history feature is enabled.
 	EnableEventLog *string `json:"EnableEventLog,omitempty" xml:"EnableEventLog,omitempty"`
-	// The ID of the region.
+	// The ID of the region for which the event history feature is enabled or disabled.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -45050,22 +45060,22 @@ func (s *ModifyActionEventPolicyResponse) SetBody(v *ModifyActionEventPolicyResp
 }
 
 type ModifyActiveOperationTasksRequest struct {
-	// The ID of the O\&M task. Separate multiple IDs with commas (,).
+	// The O\&M task ID. Separate multiple IDs with commas (,).
 	//
-	// > You can call the DescribeActiveOperationTask operation to query the IDs of O\&M tasks.
+	// >  You can call the DescribeActiveOperationTask operation to query the O\&M task ID.
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// Specifies whether to immediately start scheduling. The value 0 indicates that scheduling is not immediately started. This is the default value. The value 1 indicates that scheduling is immediately started. If you set this parameter to 0, SwitchTime takes effect. If you set this parameter to 1, SwitchTimer does not take effect. In this case, the start time of the task is set to the current time, and the system determines the switching time based on the start time.
 	//
-	// > Immediate scheduling indicates that the task enters the preparation state instead of the immediate switchover. After the preparation is complete, the switchover is performed. You can call the DescribeActiveOperationTasks operation to obtain the period of time for preparation. The period of time for preparation is returned in PrepareInterva.
+	// >  Immediate scheduling indicates that the task enters the preparing state instead of the immediate switchover. After the preparation is complete, the switchover is performed. You can call the DescribeActiveOperationTasks operation and obtain the preparation time from the value of the PrepareInterval response parameter.
 	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The scheduled switching time that you want to specify. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The scheduled switching time for the task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > The time that you specify cannot be later than the deadline for performing the O\&M task. You can call DescribeActiveOperationTasks to query the deadlines of O\&M tasks. The deadline of a task is returned in Deadline.
+	// >  The time that you specify cannot be later than the deadline of the O\&M task. You can call the DescribeActiveOperationTasks operation and obtain the deadline of the O\&M task from the value of the Deadline response parameter.
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
@@ -49427,8 +49437,9 @@ type ModifyDBProxyRequest struct {
 	// The network type of the instance. Set the value to **VPC**.
 	//
 	// > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
-	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
-	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceNetworkType        *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
+	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PersistentConnectionStatus *string `json:"PersistentConnectionStatus,omitempty" xml:"PersistentConnectionStatus,omitempty"`
 	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group ID.
@@ -49485,6 +49496,11 @@ func (s *ModifyDBProxyRequest) SetInstanceNetworkType(v string) *ModifyDBProxyRe
 
 func (s *ModifyDBProxyRequest) SetOwnerId(v int64) *ModifyDBProxyRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBProxyRequest) SetPersistentConnectionStatus(v string) *ModifyDBProxyRequest {
+	s.PersistentConnectionStatus = &v
 	return s
 }
 
@@ -50039,20 +50055,20 @@ func (s *ModifyDBProxyInstanceResponse) SetBody(v *ModifyDBProxyInstanceResponse
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerRequest struct {
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP address of the ECS instance and the hostname of the Windows computer. Format: IP address,Hostname. Multiple values are separated with semicolons (;).
+	// The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Separate multiple entries with semicolon (;).
 	//
 	// >  For more information about how to query the computer hostname, see [Configure a distributed transaction whitelist](~~124321~~).
 	SecurityIpHosts *string `json:"SecurityIpHosts,omitempty" xml:"SecurityIpHosts,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the whitelist.
+	// The name of the IP address whitelist.
 	WhiteListGroupName *string `json:"WhiteListGroupName,omitempty" xml:"WhiteListGroupName,omitempty"`
 }
 
@@ -50110,16 +50126,16 @@ func (s *ModifyDTCSecurityIpHostsForSQLServerRequest) SetWhiteListGroupName(v st
 }
 
 type ModifyDTCSecurityIpHostsForSQLServerResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The result of the whitelist configuration. Valid values:
+	// The result of the IP address whitelist configuration. Valid values:
 	//
 	// *   **Success**
 	// *   **Fail**
 	DTCSetResult *string `json:"DTCSetResult,omitempty" xml:"DTCSetResult,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -50873,19 +50889,22 @@ func (s *ModifyHASwitchConfigResponse) SetBody(v *ModifyHASwitchConfigResponseBo
 }
 
 type ModifyInstanceAutoRenewalAttributeRequest struct {
-	// Specifies whether to enable or disable auto-renewal. Valid values: **True and False**.
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// *   **True**
+	// *   **False**
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The number of months for auto-renewal. Valid values: **1 to 12**.
 	//
-	// >  You must specify this parameter if you set the** AutoRenew **parameter to** True**.
+	// >  This parameter must be specified when **AutoRenew** is set to **True**.
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -50945,7 +50964,7 @@ func (s *ModifyInstanceAutoRenewalAttributeRequest) SetResourceOwnerId(v int64) 
 }
 
 type ModifyInstanceAutoRenewalAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -54409,25 +54428,30 @@ func (s *ReceiveDBInstanceResponse) SetBody(v *ReceiveDBInstanceResponseBody) *R
 }
 
 type RecoveryDBInstanceRequest struct {
-	// The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+	// The backup set ID. You can call the DescribeBackups operation to query the backup set ID.
 	//
 	// If you specify this parameter, you do not need to specify **DBInstanceId**.
 	//
-	// > You must specify at least one of **BackupId** and **RestoreTime**.
+	// >  You must specify at least one of the **BackupId** or **RestoreTime** parameters.
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The instance type of the new instance. For more information, see [Instance types](~~26312~~).
 	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	// The ID of the original instance.
 	//
-	// > *   If you specify BackupId, you do not need to specify this parameter.
-	// > *   If you specify RestoreTime, you must also specify this parameter.
+	// >
+	//
+	// *   If you specify BackupId, you do not need to specify this parameter.
+	//
+	// *   If you specify RestoreTime, you must also specify this parameter.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The storage capacity of the new instance. Unit: GB. For more information, see [Instance types](~~26312~~).
+	//
+	// >  You must set this parameter to a value that is greater than or equal to the storage capacity of the original instance.
 	DBInstanceStorage *int32 `json:"DBInstanceStorage,omitempty" xml:"DBInstanceStorage,omitempty"`
 	// The storage type of the new instance. Valid values:
 	//
 	// *   **local_ssd/ephemeral_ssd**: local SSD
-	// *   **cloud_ssd**: standard SSD
+	// *   **cloud_ssd**: standard SSD.
 	// *   **cloud_essd**: enhanced SSD (ESSD)
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
 	// The name of the database.
@@ -54444,8 +54468,8 @@ type RecoveryDBInstanceRequest struct {
 	InstanceNetworkType *string `json:"InstanceNetworkType,omitempty" xml:"InstanceNetworkType,omitempty"`
 	// The billing method of the new instance. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// *   **Postpaid**: pay-as-you-go.
+	// *   **Prepaid**: subscription.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	//
@@ -54454,7 +54478,7 @@ type RecoveryDBInstanceRequest struct {
 	//
 	// > This parameter must be specified when **PayType** is set to **Prepaid**.
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The internal IP address of the new instance. The internal IP address must be within the CIDR block that is supported by the specified vSwitch. The system automatically assigns a private IP address to an instance based on the values of **VPCId** and **VSwitchId**.
+	// The internal IP address of the new instance. The internal IP address must be within the CIDR block that is supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId** and **VSwitchId** parameters.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ResourceOwnerId  *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The point in time to which you want to restore data. The point in time must fall within the specified log backup retention period. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
@@ -54567,11 +54591,11 @@ func (s *RecoveryDBInstanceRequest) SetVSwitchId(v string) *RecoveryDBInstanceRe
 }
 
 type RecoveryDBInstanceResponseBody struct {
-	// The ID of the instance.
+	// The instance ID.
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -54734,9 +54758,9 @@ func (s *ReleaseInstanceConnectionResponse) SetBody(v *ReleaseInstanceConnection
 }
 
 type ReleaseInstancePublicConnectionRequest struct {
-	// The public endpoint.
+	// The public endpoint. You can call the DescribeDBInstanceNetInfo to query the public endpoint.
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -54783,7 +54807,7 @@ func (s *ReleaseInstancePublicConnectionRequest) SetResourceOwnerId(v int64) *Re
 }
 
 type ReleaseInstancePublicConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -58823,15 +58847,20 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 }
 
 /**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   SQL Server
+ * ### [](#)Feature description
  * If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
- * *   If the instance runs MySQL, the instance uses a shared proxy.
+ * *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
  * *   The instance is in the Running state.
  * *   Read-only instances are attached to the primary instance.
  * *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
  * *   The instance runs one of the following database versions and RDS editions:
- *     *   SQL Server (cluster edition)
- *     *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+ *     *   SQL Server on RDS Cluster Edition
+ *     *   MySQL 5.7 on RDS High-availability Edition (with local disks)
  *     *   MySQL 5.6
  *
  * @param request AllocateReadWriteSplittingConnectionRequest
@@ -58912,15 +58941,20 @@ func (client *Client) AllocateReadWriteSplittingConnectionWithOptions(request *A
 }
 
 /**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   SQL Server
+ * ### [](#)Feature description
  * If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
- * *   If the instance runs MySQL, the instance uses a shared proxy.
+ * *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
  * *   The instance is in the Running state.
  * *   Read-only instances are attached to the primary instance.
  * *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
  * *   The instance runs one of the following database versions and RDS editions:
- *     *   SQL Server (cluster edition)
- *     *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+ *     *   SQL Server on RDS Cluster Edition
+ *     *   MySQL 5.7 on RDS High-availability Edition (with local disks)
  *     *   MySQL 5.6
  *
  * @param request AllocateReadWriteSplittingConnectionRequest
@@ -59373,11 +59407,16 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 }
 
 /**
- * Before you call this operation, make sure that the instance runs one of the following database engines:
- * *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
- * *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
- * *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
- * > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
  *
  * @param request CheckCreateDdrDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -59469,11 +59508,16 @@ func (client *Client) CheckCreateDdrDBInstanceWithOptions(request *CheckCreateDd
 }
 
 /**
- * Before you call this operation, make sure that the instance runs one of the following database engines:
- * *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
- * *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
- * *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
- * > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+ * *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
  *
  * @param request CheckCreateDdrDBInstanceRequest
  * @return CheckCreateDdrDBInstanceResponse
@@ -60010,7 +60054,13 @@ func (client *Client) CloneParameterGroup(request *CloneParameterGroupRequest) (
 }
 
 /**
- * After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)Feature description
+ * After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
  *
  * @param tmpReq ConfirmNotifyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -60060,7 +60110,13 @@ func (client *Client) ConfirmNotifyWithOptions(tmpReq *ConfirmNotifyRequest, run
 }
 
 /**
- * After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)Feature description
+ * After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
  *
  * @param request ConfirmNotifyRequest
  * @return ConfirmNotifyResponse
@@ -61979,9 +62035,11 @@ func (client *Client) CreateGADInstance(request *CreateGADInstanceRequest) (_res
 }
 
 /**
- * ## [](#)Prerequisites
- * An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
- * For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Add or remove unit nodes](~~331851~~)
  *
  * @param request CreateGadInstanceMemberRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -62045,9 +62103,11 @@ func (client *Client) CreateGadInstanceMemberWithOptions(request *CreateGadInsta
 }
 
 /**
- * ## [](#)Prerequisites
- * An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
- * For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+ * ### [](#)Supported database engines
+ * *   RDS MySQL
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Add or remove unit nodes](~~331851~~)
  *
  * @param request CreateGadInstanceMemberRequest
  * @return CreateGadInstanceMemberResponse
@@ -62697,6 +62757,10 @@ func (client *Client) CreatePostgresExtensionsWithOptions(request *CreatePostgre
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskConfirmed)) {
+		query["RiskConfirmed"] = request.RiskConfirmed
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceDatabase)) {
@@ -63575,10 +63639,9 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 }
 
 /**
- * ### Supported database engine
- * SQL Server
- * ### Usage notes
- * This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+ * ### [](#)Supported database engines
+ * RDS SQL Server
+ * >  This operation is available only for users that are added to the whitelist.
  *
  * @param request DeleteBackupFileRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -63646,10 +63709,9 @@ func (client *Client) DeleteBackupFileWithOptions(request *DeleteBackupFileReque
 }
 
 /**
- * ### Supported database engine
- * SQL Server
- * ### Usage notes
- * This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+ * ### [](#)Supported database engines
+ * RDS SQL Server
+ * >  This operation is available only for users that are added to the whitelist.
  *
  * @param request DeleteBackupFileRequest
  * @return DeleteBackupFileResponse
@@ -64270,8 +64332,6 @@ func (client *Client) DeleteGadInstance(request *DeleteGadInstanceRequest) (_res
  * ### [](#)Supported database engines
  * *   MySQL
  * *   PostgreSQL
- * *   SQL Server
- * *   MariaDB
  * ### [](#)References
  * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
  * *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -64338,8 +64398,6 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
  * ### [](#)Supported database engines
  * *   MySQL
  * *   PostgreSQL
- * *   SQL Server
- * *   MariaDB
  * ### [](#)References
  * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
  * *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -64632,11 +64690,11 @@ func (client *Client) DeleteSlot(request *DeleteSlotRequest) (_result *DeleteSlo
 }
 
 /**
- * ### [](#)Supported database engines
+ * ### [](#)Supported database engine
  * *   MySQL
- * ### [](#)Description
+ * ### [](#)Usage notes
  * *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
- * *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+ * *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
  *
  * @param request DeleteUserBackupFileRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -64696,11 +64754,11 @@ func (client *Client) DeleteUserBackupFileWithOptions(request *DeleteUserBackupF
 }
 
 /**
- * ### [](#)Supported database engines
+ * ### [](#)Supported database engine
  * *   MySQL
- * ### [](#)Description
+ * ### [](#)Usage notes
  * *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
- * *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+ * *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
  *
  * @param request DeleteUserBackupFileRequest
  * @return DeleteUserBackupFileResponse
@@ -68482,7 +68540,12 @@ func (client *Client) DescribeDBInstancePromoteActivity(request *DescribeDBInsta
 }
 
 /**
- * This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   SQL Server
+ * ### [](#)Feature description
+ * This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
  * *   The shared proxy feature must be enabled for the primary instance.
  * *   The read/write splitting feature must be enabled for the primary instance.
@@ -68537,7 +68600,12 @@ func (client *Client) DescribeDBInstanceProxyConfigurationWithOptions(request *D
 }
 
 /**
- * This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   SQL Server
+ * ### [](#)Feature description
+ * This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+ * ### [](#)Prerequisites
  * Before you call this operation, make sure that the following requirements are met:
  * *   The shared proxy feature must be enabled for the primary instance.
  * *   The read/write splitting feature must be enabled for the primary instance.
@@ -69378,6 +69446,10 @@ func (client *Client) DescribeDBInstancesForClone(request *DescribeDBInstancesFo
 }
 
 /**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * ### [](#)Usage notes
  * Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
  *
  * @param request DescribeDBMiniEngineVersionsRequest
@@ -69450,6 +69522,10 @@ func (client *Client) DescribeDBMiniEngineVersionsWithOptions(request *DescribeD
 }
 
 /**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * ### [](#)Usage notes
  * Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
  *
  * @param request DescribeDBMiniEngineVersionsRequest
@@ -71188,15 +71264,18 @@ func (client *Client) DescribeHostGroupElasticStrategyParameters(request *Descri
 }
 
 /**
- * >  This operation is available only for instances that run SQL Server. If you require this operation, contact **Alibaba Cloud technical support**.
+ * ### [](#)Supported database engine
+ * *   SQL Server
+ * ### [](#)Usage notes
+ * This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
  * ### [](#)Prerequisites
- * The instance meets the following requirements:
- * *   The instance resides in a region other than the China (Zhangjiakou) region.
- * *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
- * *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
- * *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
- * *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
- * Your **Alibaba Cloud account** is used for logons.
+ * *   The instance meets the following requirements:
+ *     *   The instance resides in a region other than the China (Zhangjiakou) region.
+ *     *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
+ *     *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
+ *     *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
+ *     *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
+ * *   Your **Alibaba Cloud account** is used for logons.
  *
  * @param request DescribeHostWebShellRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -71264,15 +71343,18 @@ func (client *Client) DescribeHostWebShellWithOptions(request *DescribeHostWebSh
 }
 
 /**
- * >  This operation is available only for instances that run SQL Server. If you require this operation, contact **Alibaba Cloud technical support**.
+ * ### [](#)Supported database engine
+ * *   SQL Server
+ * ### [](#)Usage notes
+ * This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
  * ### [](#)Prerequisites
- * The instance meets the following requirements:
- * *   The instance resides in a region other than the China (Zhangjiakou) region.
- * *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
- * *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
- * *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
- * *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
- * Your **Alibaba Cloud account** is used for logons.
+ * *   The instance meets the following requirements:
+ *     *   The instance resides in a region other than the China (Zhangjiakou) region.
+ *     *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
+ *     *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
+ *     *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
+ *     *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
+ * *   Your **Alibaba Cloud account** is used for logons.
  *
  * @param request DescribeHostWebShellRequest
  * @return DescribeHostWebShellResponse
@@ -73244,9 +73326,9 @@ func (client *Client) DescribeRdsResourceSettings(request *DescribeRdsResourceSe
 }
 
 /**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The primary instance must run the MySQL or PostgreSQL database engine.
- * *   The primary instance must be attached with a read-only instance.
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
  *
  * @param request DescribeReadDBInstanceDelayRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -73314,9 +73396,9 @@ func (client *Client) DescribeReadDBInstanceDelayWithOptions(request *DescribeRe
 }
 
 /**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The primary instance must run the MySQL or PostgreSQL database engine.
- * *   The primary instance must be attached with a read-only instance.
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
  *
  * @param request DescribeReadDBInstanceDelayRequest
  * @return DescribeReadDBInstanceDelayResponse
@@ -73925,13 +74007,15 @@ func (client *Client) DescribeSQLCollectorRetention(request *DescribeSQLCollecto
 }
 
 /**
- * Before you call this operation, make sure that the instance runs one of the following database engines:
+ * ### [](#)Supported database engines
  * *   MySQL
- * *   SQL Server 2008 R2
  * *   PostgreSQL
- * >
- * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
- * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+ * *   SQL Server
+ *     **
+ *     **Note** Only SQL Server 2008 R2 is supported.
+ * ### [](#)Precautions
+ * *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
  *
  * @param request DescribeSQLLogFilesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -73999,13 +74083,15 @@ func (client *Client) DescribeSQLLogFilesWithOptions(request *DescribeSQLLogFile
 }
 
 /**
- * Before you call this operation, make sure that the instance runs one of the following database engines:
+ * ### [](#)Supported database engines
  * *   MySQL
- * *   SQL Server 2008 R2
  * *   PostgreSQL
- * >
- * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
- * *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+ * *   SQL Server
+ *     **
+ *     **Note** Only SQL Server 2008 R2 is supported.
+ * ### [](#)Precautions
+ * *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+ * *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
  *
  * @param request DescribeSQLLogFilesRequest
  * @return DescribeSQLLogFilesResponse
@@ -74148,6 +74234,17 @@ func (client *Client) DescribeSQLLogRecords(request *DescribeSQLLogRecordsReques
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ *
+ * @param request DescribeSQLLogReportListRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeSQLLogReportListResponse
+ */
 func (client *Client) DescribeSQLLogReportListWithOptions(request *DescribeSQLLogReportListRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLLogReportListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -74213,6 +74310,16 @@ func (client *Client) DescribeSQLLogReportListWithOptions(request *DescribeSQLLo
 	return _result, _err
 }
 
+/**
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ *
+ * @param request DescribeSQLLogReportListRequest
+ * @return DescribeSQLLogReportListResponse
+ */
 func (client *Client) DescribeSQLLogReportList(request *DescribeSQLLogReportListRequest) (_result *DescribeSQLLogReportListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLLogReportListResponse{}
@@ -74605,16 +74712,17 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 }
 
 /**
- * ### Supported database engines
+ * ### [](#)Supported database engines
  * *   MySQL
  *     **
- *     **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+ *     **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
  * *   SQL Server
  *     **
- *     **Note**Only SQL Server 2008 R2 is supported.
+ *     **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
  * *   MariaDB
- * ### Usage notes
- * Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+ * ### [](#)Precautions
+ * *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+ * *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
  *
  * @param request DescribeSlowLogsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -74694,16 +74802,17 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 }
 
 /**
- * ### Supported database engines
+ * ### [](#)Supported database engines
  * *   MySQL
  *     **
- *     **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+ *     **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
  * *   SQL Server
  *     **
- *     **Note**Only SQL Server 2008 R2 is supported.
+ *     **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
  * *   MariaDB
- * ### Usage notes
- * Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+ * ### [](#)Precautions
+ * *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+ * *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
  *
  * @param request DescribeSlowLogsRequest
  * @return DescribeSlowLogsResponse
@@ -74987,8 +75096,12 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 }
 
 /**
- * Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is **Success**. You can call this operation to query the upgrade check report.
- * If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+ * ### [](#)Supported database engines
+ * PostgreSQL
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+ * *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
  *
  * @param request DescribeUpgradeMajorVersionPrecheckTaskRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -75060,8 +75173,12 @@ func (client *Client) DescribeUpgradeMajorVersionPrecheckTaskWithOptions(request
 }
 
 /**
- * Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is **Success**. You can call this operation to query the upgrade check report.
- * If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+ * ### [](#)Supported database engines
+ * PostgreSQL
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+ * *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
  *
  * @param request DescribeUpgradeMajorVersionPrecheckTaskRequest
  * @return DescribeUpgradeMajorVersionPrecheckTaskResponse
@@ -77231,7 +77348,17 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 }
 
 /**
- * The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+ * *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+ * *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+ * *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
  *
  * @param request ModifyActionEventPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -77287,7 +77414,17 @@ func (client *Client) ModifyActionEventPolicyWithOptions(request *ModifyActionEv
 }
 
 /**
- * The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+ * *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+ * *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+ * *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
  *
  * @param request ModifyActionEventPolicyRequest
  * @return ModifyActionEventPolicyResponse
@@ -79952,6 +80089,10 @@ func (client *Client) ModifyDBProxyWithOptions(request *ModifyDBProxyRequest, ru
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PersistentConnectionStatus)) {
+		query["PersistentConnectionStatus"] = request.PersistentConnectionStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -80359,8 +80500,11 @@ func (client *Client) ModifyDBProxyInstance(request *ModifyDBProxyInstanceReques
 }
 
 /**
- * Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
- * This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+ * ### [](#)Supported database engine
+ * SQL Server
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Configure a distributed transaction whitelist](~~124321~~)
  *
  * @param request ModifyDTCSecurityIpHostsForSQLServerRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -80432,8 +80576,11 @@ func (client *Client) ModifyDTCSecurityIpHostsForSQLServerWithOptions(request *M
 }
 
 /**
- * Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
- * This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+ * ### [](#)Supported database engine
+ * SQL Server
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Configure a distributed transaction whitelist](~~124321~~)
  *
  * @param request ModifyDTCSecurityIpHostsForSQLServerRequest
  * @return ModifyDTCSecurityIpHostsForSQLServerResponse
@@ -80975,7 +81122,17 @@ func (client *Client) ModifyHASwitchConfig(request *ModifyHASwitchConfigRequest)
 }
 
 /**
- * If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### References
+ * ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
  *
  * @param request ModifyInstanceAutoRenewalAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -81047,7 +81204,17 @@ func (client *Client) ModifyInstanceAutoRenewalAttributeWithOptions(request *Mod
 }
 
 /**
- * If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+ * ### Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### References
+ * ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+ * *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
  *
  * @param request ModifyInstanceAutoRenewalAttributeRequest
  * @return ModifyInstanceAutoRenewalAttributeResponse
@@ -82948,11 +83115,11 @@ func (client *Client) ReceiveDBInstance(request *ReceiveDBInstanceRequest) (_res
 }
 
 /**
- * You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
- * If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
- * *   If you specify the name of a database, only the specified database is restored to the new instance.
- * *   If you do not specify the name of a database, all databases are restored to the new instance.
- * > This operation is supported only for instances that run SQL Server 2012 or later.
+ * ### [](#)Supported database engines
+ * SQL Server 2012 or later
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
  *
  * @param request RecoveryDBInstanceRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -83052,11 +83219,11 @@ func (client *Client) RecoveryDBInstanceWithOptions(request *RecoveryDBInstanceR
 }
 
 /**
- * You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
- * If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
- * *   If you specify the name of a database, only the specified database is restored to the new instance.
- * *   If you do not specify the name of a database, all databases are restored to the new instance.
- * > This operation is supported only for instances that run SQL Server 2012 or later.
+ * ### [](#)Supported database engines
+ * SQL Server 2012 or later
+ * ### [](#)References
+ * > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+ * [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
  *
  * @param request RecoveryDBInstanceRequest
  * @return RecoveryDBInstanceResponse
@@ -83172,7 +83339,17 @@ func (client *Client) ReleaseInstanceConnection(request *ReleaseInstanceConnecti
 }
 
 /**
- * To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
  *
  * @param request ReleaseInstancePublicConnectionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -83232,7 +83409,17 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 }
 
 /**
- * To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+ * ### [](#)Supported database engines
+ * *   MySQL
+ * *   PostgreSQL
+ * *   SQL Server
+ * *   MariaDB
+ * ### [](#)References
+ * > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+ * *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+ * *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
  *
  * @param request ReleaseInstancePublicConnectionRequest
  * @return ReleaseInstancePublicConnectionResponse
