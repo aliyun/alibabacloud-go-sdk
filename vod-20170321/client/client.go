@@ -24924,7 +24924,8 @@ type SubmitSnapshotJobRequest struct {
 	//
 	// *   Unit: milliseconds.
 	// *   Default value: **0**.
-	SpecifiedOffsetTime *int64 `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	SpecifiedOffsetTime  *int64   `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	SpecifiedOffsetTimes []*int64 `json:"SpecifiedOffsetTimes,omitempty" xml:"SpecifiedOffsetTimes,omitempty" type:"Repeated"`
 	// The sprite snapshot configuration. If you set this parameter, sprite snapshots are generated. For more information, see [SpriteSnapshotConfig](~~86952~~).
 	SpriteSnapshotConfig *string `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty"`
 	// The custom configurations, including the configuration of transparent data transmission and callback configurations. The value is a JSON-formatted string. For more information, see [UserData](~~86952~~).
@@ -24972,6 +24973,11 @@ func (s *SubmitSnapshotJobRequest) SetSpecifiedOffsetTime(v int64) *SubmitSnapsh
 	return s
 }
 
+func (s *SubmitSnapshotJobRequest) SetSpecifiedOffsetTimes(v []*int64) *SubmitSnapshotJobRequest {
+	s.SpecifiedOffsetTimes = v
+	return s
+}
+
 func (s *SubmitSnapshotJobRequest) SetSpriteSnapshotConfig(v string) *SubmitSnapshotJobRequest {
 	s.SpriteSnapshotConfig = &v
 	return s
@@ -24988,6 +24994,97 @@ func (s *SubmitSnapshotJobRequest) SetVideoId(v string) *SubmitSnapshotJobReques
 }
 
 func (s *SubmitSnapshotJobRequest) SetWidth(v string) *SubmitSnapshotJobRequest {
+	s.Width = &v
+	return s
+}
+
+type SubmitSnapshotJobShrinkRequest struct {
+	// The maximum number of snapshots. Default value: **1**.
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The height of each snapshot. Valid values: `[8,4096]`. By default, the height of the video mezzanine file is used. Unit: pixel.
+	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The snapshot interval. The value must be **greater than or equal to 0**. Unit: seconds. If you set this parameter to **0**, snapshots are taken at even intervals based on the video duration divided by the value of the Count parameter. Default value: **1**.
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the snapshot template.
+	//
+	// *   We recommend that you create a snapshot template before you specify the ID of the snapshot template.
+	// *   If you set the SnapshotTemplateId parameter, all the other request parameters except the Action and VideoId parameters are ignored.
+	// *   For more information about how to create a snapshot template, see [AddVodTemplate](~~99406~~).
+	SnapshotTemplateId *string `json:"SnapshotTemplateId,omitempty" xml:"SnapshotTemplateId,omitempty"`
+	// The start time of the specified snapshot time period.
+	//
+	// *   Unit: milliseconds.
+	// *   Default value: **0**.
+	SpecifiedOffsetTime        *int64  `json:"SpecifiedOffsetTime,omitempty" xml:"SpecifiedOffsetTime,omitempty"`
+	SpecifiedOffsetTimesShrink *string `json:"SpecifiedOffsetTimes,omitempty" xml:"SpecifiedOffsetTimes,omitempty"`
+	// The sprite snapshot configuration. If you set this parameter, sprite snapshots are generated. For more information, see [SpriteSnapshotConfig](~~86952~~).
+	SpriteSnapshotConfig *string `json:"SpriteSnapshotConfig,omitempty" xml:"SpriteSnapshotConfig,omitempty"`
+	// The custom configurations, including the configuration of transparent data transmission and callback configurations. The value is a JSON-formatted string. For more information, see [UserData](~~86952~~).
+	//
+	// **
+	//
+	// **Note** The callback configurations take effect only when you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the video.
+	VideoId *string `json:"VideoId,omitempty" xml:"VideoId,omitempty"`
+	// The width of each snapshot. Valid values: `[8,4096]`. By default, the width of the video mezzanine file is used. Unit: pixel.
+	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s SubmitSnapshotJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSnapshotJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetCount(v int64) *SubmitSnapshotJobShrinkRequest {
+	s.Count = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetHeight(v string) *SubmitSnapshotJobShrinkRequest {
+	s.Height = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetInterval(v int64) *SubmitSnapshotJobShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetSnapshotTemplateId(v string) *SubmitSnapshotJobShrinkRequest {
+	s.SnapshotTemplateId = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetSpecifiedOffsetTime(v int64) *SubmitSnapshotJobShrinkRequest {
+	s.SpecifiedOffsetTime = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetSpecifiedOffsetTimesShrink(v string) *SubmitSnapshotJobShrinkRequest {
+	s.SpecifiedOffsetTimesShrink = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetSpriteSnapshotConfig(v string) *SubmitSnapshotJobShrinkRequest {
+	s.SpriteSnapshotConfig = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetUserData(v string) *SubmitSnapshotJobShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetVideoId(v string) *SubmitSnapshotJobShrinkRequest {
+	s.VideoId = &v
+	return s
+}
+
+func (s *SubmitSnapshotJobShrinkRequest) SetWidth(v string) *SubmitSnapshotJobShrinkRequest {
 	s.Width = &v
 	return s
 }
@@ -36431,15 +36528,21 @@ func (client *Client) SubmitPreprocessJobs(request *SubmitPreprocessJobsRequest)
  * > *   Only snapshots in the JPG format are generated.
  * > *   After a snapshot job is complete, ApsaraVideo VOD sends a [SnapshotComplete](~~57337~~) event notification that contains EventType=SnapshotComplete and SubType=SpecifiedTime.
  *
- * @param request SubmitSnapshotJobRequest
+ * @param tmpReq SubmitSnapshotJobRequest
  * @param runtime runtime options for this request RuntimeOptions
  * @return SubmitSnapshotJobResponse
  */
-func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSnapshotJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) SubmitSnapshotJobWithOptions(tmpReq *SubmitSnapshotJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSnapshotJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &SubmitSnapshotJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SpecifiedOffsetTimes)) {
+		request.SpecifiedOffsetTimesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SpecifiedOffsetTimes, tea.String("SpecifiedOffsetTimes"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Count)) {
 		query["Count"] = request.Count
@@ -36459,6 +36562,10 @@ func (client *Client) SubmitSnapshotJobWithOptions(request *SubmitSnapshotJobReq
 
 	if !tea.BoolValue(util.IsUnset(request.SpecifiedOffsetTime)) {
 		query["SpecifiedOffsetTime"] = request.SpecifiedOffsetTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecifiedOffsetTimesShrink)) {
+		query["SpecifiedOffsetTimes"] = request.SpecifiedOffsetTimesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpriteSnapshotConfig)) {
