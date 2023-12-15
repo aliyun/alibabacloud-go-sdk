@@ -1518,23 +1518,24 @@ func (s *DescribeClusterResponseBody) SetRequestId(v string) *DescribeClusterRes
 }
 
 type DescribeClusterResponseBodyCluster struct {
-	AutoRenewPeriod   *int32                                  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	AutoRenewal       *bool                                   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ClusterId         *string                                 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName       *string                                 `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreatedTime       *string                                 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DataCenterCount   *int32                                  `json:"DataCenterCount,omitempty" xml:"DataCenterCount,omitempty"`
-	ExpireTime        *string                                 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	IsLatestVersion   *bool                                   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	LockMode          *string                                 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MaintainEndTime   *string                                 `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime *string                                 `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MajorVersion      *string                                 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	MinorVersion      *string                                 `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	PayType           *string                                 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ResourceGroupId   *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status            *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags              *DescribeClusterResponseBodyClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AutoRenewPeriod       *int32                                  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	AutoRenewal           *bool                                   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	ClusterId             *string                                 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName           *string                                 `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ConfirmProductOffline *bool                                   `json:"ConfirmProductOffline,omitempty" xml:"ConfirmProductOffline,omitempty"`
+	CreatedTime           *string                                 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataCenterCount       *int32                                  `json:"DataCenterCount,omitempty" xml:"DataCenterCount,omitempty"`
+	ExpireTime            *string                                 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	IsLatestVersion       *bool                                   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	LockMode              *string                                 `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MaintainEndTime       *string                                 `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime     *string                                 `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MajorVersion          *string                                 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	MinorVersion          *string                                 `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	PayType               *string                                 `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ResourceGroupId       *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status                *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                  *DescribeClusterResponseBodyClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterResponseBodyCluster) String() string {
@@ -1562,6 +1563,11 @@ func (s *DescribeClusterResponseBodyCluster) SetClusterId(v string) *DescribeClu
 
 func (s *DescribeClusterResponseBodyCluster) SetClusterName(v string) *DescribeClusterResponseBodyCluster {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeClusterResponseBodyCluster) SetConfirmProductOffline(v bool) *DescribeClusterResponseBodyCluster {
+	s.ConfirmProductOffline = &v
 	return s
 }
 
@@ -4792,8 +4798,9 @@ func (s *ModifyBackupPlanResponse) SetBody(v *ModifyBackupPlanResponseBody) *Mod
 }
 
 type ModifyClusterRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName           *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ConfirmProductOffline *string `json:"ConfirmProductOffline,omitempty" xml:"ConfirmProductOffline,omitempty"`
 }
 
 func (s ModifyClusterRequest) String() string {
@@ -4811,6 +4818,11 @@ func (s *ModifyClusterRequest) SetClusterId(v string) *ModifyClusterRequest {
 
 func (s *ModifyClusterRequest) SetClusterName(v string) *ModifyClusterRequest {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetConfirmProductOffline(v string) *ModifyClusterRequest {
+	s.ConfirmProductOffline = &v
 	return s
 }
 
@@ -8010,6 +8022,10 @@ func (client *Client) ModifyClusterWithOptions(request *ModifyClusterRequest, ru
 		query["ClusterName"] = request.ClusterName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ConfirmProductOffline)) {
+		query["ConfirmProductOffline"] = request.ConfirmProductOffline
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8696,6 +8712,13 @@ func (client *Client) ResizeNodeCount(request *ResizeNodeCountRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request TagResourcesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8737,6 +8760,12 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request TagResourcesRequest
+ * @return TagResourcesResponse
+ */
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}

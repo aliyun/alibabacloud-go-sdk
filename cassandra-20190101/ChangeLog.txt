@@ -1,3 +1,6 @@
+2023-12-15 Version: v2.0.1
+- Generated golang 2019-01-01 for Cassandra.
+
 2022-09-23 Version: v2.0.0
 - Generated golang 2019-01-01 for Cassandra.
 
