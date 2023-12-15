@@ -1,3 +1,6 @@
+2023-12-15 Version: v3.0.1
+- Generated golang 2017-10-11 for Chatbot.
+
 2022-09-23 Version: v3.0.0
 - Generated golang 2017-10-11 for Chatbot.
 

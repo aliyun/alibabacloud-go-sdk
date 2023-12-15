@@ -3860,9 +3860,11 @@ type DescribeDialogFlowResponseBody struct {
 	ModuleId         *int64                 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleName       *string                `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	RequestId        *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status           *int32                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags             *string                `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Templates        *string                `json:"Templates,omitempty" xml:"Templates,omitempty"`
+	// 0 for deleted, 1 for inSandbox, 2 for draft，3 for online
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// null
+	Tags      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Templates *string `json:"Templates,omitempty" xml:"Templates,omitempty"`
 }
 
 func (s DescribeDialogFlowResponseBody) String() string {
@@ -4467,8 +4469,9 @@ func (s *DescribeIntentResponse) SetBody(v *DescribeIntentResponseBody) *Describ
 }
 
 type DescribeKnowledgeRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// FAQ ID
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DescribeKnowledgeRequest) String() string {
@@ -4490,12 +4493,13 @@ func (s *DescribeKnowledgeRequest) SetKnowledgeId(v int64) *DescribeKnowledgeReq
 }
 
 type DescribeKnowledgeResponseBody struct {
-	CategoryId      *int64                                       `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CoreWords       []*string                                    `json:"CoreWords,omitempty" xml:"CoreWords,omitempty" type:"Repeated"`
-	CreateTime      *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserName  *string                                      `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndDate         *string                                      `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KeyWords        []*string                                    `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	CategoryId     *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CoreWords      []*string `json:"CoreWords,omitempty" xml:"CoreWords,omitempty" type:"Repeated"`
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndDate        *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	KeyWords       []*string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty" type:"Repeated"`
+	// FAQ ID
 	KnowledgeId     *int64                                       `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	KnowledgeStatus *int32                                       `json:"KnowledgeStatus,omitempty" xml:"KnowledgeStatus,omitempty"`
 	KnowledgeTitle  *string                                      `json:"KnowledgeTitle,omitempty" xml:"KnowledgeTitle,omitempty"`
@@ -4609,6 +4613,7 @@ func (s *DescribeKnowledgeResponseBody) SetVersion(v int32) *DescribeKnowledgeRe
 }
 
 type DescribeKnowledgeResponseBodyOutlines struct {
+	// FAQ ID
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	OutlineId   *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
@@ -4947,8 +4952,9 @@ func (s *DisableDialogFlowResponse) SetBody(v *DisableDialogFlowResponseBody) *D
 }
 
 type DisableKnowledgeRequest struct {
-	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// FAQ ID
+	KnowledgeId *int64 `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 }
 
 func (s DisableKnowledgeRequest) String() string {
@@ -5651,11 +5657,11 @@ func (s *GetConversationListRequest) SetStartDate(v string) *GetConversationList
 }
 
 type GetConversationListResponseBody struct {
-	Messages    []map[string]interface{} `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	PageNumber  *int64                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int64                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCounts *int64                   `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
+	Messages    []map[string]*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	PageNumber  *int64               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int64               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCounts *int64               `json:"TotalCounts,omitempty" xml:"TotalCounts,omitempty"`
 }
 
 func (s GetConversationListResponseBody) String() string {
@@ -5666,7 +5672,7 @@ func (s GetConversationListResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetConversationListResponseBody) SetMessages(v []map[string]interface{}) *GetConversationListResponseBody {
+func (s *GetConversationListResponseBody) SetMessages(v []map[string]*string) *GetConversationListResponseBody {
 	s.Messages = v
 	return s
 }
@@ -8054,18 +8060,19 @@ func (s *QueryKnowledgesResponseBody) SetTotalCount(v int32) *QueryKnowledgesRes
 }
 
 type QueryKnowledgesResponseBodyKnowledges struct {
-	CategoryId      *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CoreWords       []*string `json:"CoreWords,omitempty" xml:"CoreWords,omitempty" type:"Repeated"`
-	CreateTime      *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUserName  *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	EndDate         *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	KnowledgeId     *int64    `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
-	KnowledgeStatus *int32    `json:"KnowledgeStatus,omitempty" xml:"KnowledgeStatus,omitempty"`
-	KnowledgeTitle  *string   `json:"KnowledgeTitle,omitempty" xml:"KnowledgeTitle,omitempty"`
-	ModifyTime      *string   `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserName  *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	StartDate       *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Version         *string   `json:"Version,omitempty" xml:"Version,omitempty"`
+	CategoryId     *int64    `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CoreWords      []*string `json:"CoreWords,omitempty" xml:"CoreWords,omitempty" type:"Repeated"`
+	CreateTime     *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	EndDate        *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// FAQ ID
+	KnowledgeId     *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	KnowledgeStatus *int32  `json:"KnowledgeStatus,omitempty" xml:"KnowledgeStatus,omitempty"`
+	KnowledgeTitle  *string `json:"KnowledgeTitle,omitempty" xml:"KnowledgeTitle,omitempty"`
+	ModifyTime      *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserName  *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s QueryKnowledgesResponseBodyKnowledges) String() string {
@@ -9365,8 +9372,9 @@ func (s *UpdateKnowledgeRequest) SetKnowledge(v *UpdateKnowledgeRequestKnowledge
 }
 
 type UpdateKnowledgeRequestKnowledge struct {
-	CategoryId     *int64                                         `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	EndDate        *string                                        `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// FAQ ID
 	KnowledgeId    *int64                                         `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	KnowledgeTitle *string                                        `json:"KnowledgeTitle,omitempty" xml:"KnowledgeTitle,omitempty"`
 	KnowledgeType  *int32                                         `json:"KnowledgeType,omitempty" xml:"KnowledgeType,omitempty"`
@@ -9838,8 +9846,8 @@ func (client *Client) AppendEntityMemberWithOptions(tmpReq *AppendEntityMemberRe
 	}
 	request := &AppendEntityMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Member))) {
-		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Member), tea.String("Member"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Member)) {
+		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Member, tea.String("Member"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10338,8 +10346,8 @@ func (client *Client) CreateIntentWithOptions(tmpReq *CreateIntentRequest, runti
 	}
 	request := &CreateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IntentDefinition))) {
-		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10396,8 +10404,8 @@ func (client *Client) CreateKnowledgeWithOptions(tmpReq *CreateKnowledgeRequest,
 	}
 	request := &CreateKnowledgeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Knowledge))) {
-		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Knowledge), tea.String("Knowledge"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Knowledge)) {
+		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Knowledge, tea.String("Knowledge"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -12653,6 +12661,13 @@ func (client *Client) QueryCoreWords(request *QueryCoreWordsRequest) (_result *Q
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request QueryDialogsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return QueryDialogsResponse
+ */
 func (client *Client) QueryDialogsWithOptions(request *QueryDialogsRequest, runtime *util.RuntimeOptions) (_result *QueryDialogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12702,6 +12717,12 @@ func (client *Client) QueryDialogsWithOptions(request *QueryDialogsRequest, runt
 	return _result, _err
 }
 
+/**
+ * ****
+ *
+ * @param request QueryDialogsRequest
+ * @return QueryDialogsResponse
+ */
 func (client *Client) QueryDialogs(request *QueryDialogsRequest) (_result *QueryDialogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDialogsResponse{}
@@ -13000,8 +13021,8 @@ func (client *Client) RemoveEntityMemberWithOptions(tmpReq *RemoveEntityMemberRe
 	}
 	request := &RemoveEntityMemberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Member))) {
-		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Member), tea.String("Member"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Member)) {
+		request.MemberShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Member, tea.String("Member"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13322,8 +13343,8 @@ func (client *Client) UpdateDialogFlowWithOptions(tmpReq *UpdateDialogFlowReques
 	}
 	request := &UpdateDialogFlowShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ModuleDefinition))) {
-		request.ModuleDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ModuleDefinition), tea.String("ModuleDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ModuleDefinition)) {
+		request.ModuleDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModuleDefinition, tea.String("ModuleDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13454,8 +13475,8 @@ func (client *Client) UpdateIntentWithOptions(tmpReq *UpdateIntentRequest, runti
 	}
 	request := &UpdateIntentShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IntentDefinition))) {
-		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IntentDefinition), tea.String("IntentDefinition"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -13512,8 +13533,8 @@ func (client *Client) UpdateKnowledgeWithOptions(tmpReq *UpdateKnowledgeRequest,
 	}
 	request := &UpdateKnowledgeShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Knowledge))) {
-		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Knowledge), tea.String("Knowledge"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Knowledge)) {
+		request.KnowledgeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Knowledge, tea.String("Knowledge"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
