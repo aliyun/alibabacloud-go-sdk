@@ -54,6 +54,7 @@ type DataDisk struct {
 	Category             *string `json:"category,omitempty" xml:"category,omitempty"`
 	Encrypted            *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
 	FileSystem           *string `json:"file_system,omitempty" xml:"file_system,omitempty"`
+	KmsKeyId             *string `json:"kms_key_id,omitempty" xml:"kms_key_id,omitempty"`
 	MountTarget          *string `json:"mount_target,omitempty" xml:"mount_target,omitempty"`
 	PerformanceLevel     *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
 	ProvisionedIops      *int64  `json:"provisioned_iops,omitempty" xml:"provisioned_iops,omitempty"`
@@ -95,6 +96,11 @@ func (s *DataDisk) SetEncrypted(v string) *DataDisk {
 
 func (s *DataDisk) SetFileSystem(v string) *DataDisk {
 	s.FileSystem = &v
+	return s
+}
+
+func (s *DataDisk) SetKmsKeyId(v string) *DataDisk {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -288,6 +294,7 @@ type Nodepool struct {
 	KubernetesConfig   *NodepoolKubernetesConfig   `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	Management         *NodepoolManagement         `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
 	MaxNodes           *int64                      `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeConfig         *NodepoolNodeConfig         `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	NodepoolInfo       *NodepoolNodepoolInfo       `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	ScalingGroup       *NodepoolScalingGroup       `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
 	TeeConfig          *NodepoolTeeConfig          `json:"tee_config,omitempty" xml:"tee_config,omitempty" type:"Struct"`
@@ -333,6 +340,11 @@ func (s *Nodepool) SetManagement(v *NodepoolManagement) *Nodepool {
 
 func (s *Nodepool) SetMaxNodes(v int64) *Nodepool {
 	s.MaxNodes = &v
+	return s
+}
+
+func (s *Nodepool) SetNodeConfig(v *NodepoolNodeConfig) *Nodepool {
+	s.NodeConfig = v
 	return s
 }
 
@@ -513,8 +525,14 @@ func (s *NodepoolKubernetesConfig) SetUserData(v string) *NodepoolKubernetesConf
 }
 
 type NodepoolManagement struct {
-	AutoRepair    *bool                            `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	Enable        *bool                            `json:"enable,omitempty" xml:"enable,omitempty"`
+	AutoRepair        *bool                                `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
+	AutoRepairPolicy  *NodepoolManagementAutoRepairPolicy  `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
+	AutoUpgrade       *bool                                `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
+	AutoUpgradePolicy *NodepoolManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
+	AutoVulFix        *bool                                `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
+	AutoVulFixPolicy  *NodepoolManagementAutoVulFixPolicy  `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
+	Enable            *bool                                `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
 	UpgradeConfig *NodepoolManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
 }
 
@@ -531,6 +549,31 @@ func (s *NodepoolManagement) SetAutoRepair(v bool) *NodepoolManagement {
 	return s
 }
 
+func (s *NodepoolManagement) SetAutoRepairPolicy(v *NodepoolManagementAutoRepairPolicy) *NodepoolManagement {
+	s.AutoRepairPolicy = v
+	return s
+}
+
+func (s *NodepoolManagement) SetAutoUpgrade(v bool) *NodepoolManagement {
+	s.AutoUpgrade = &v
+	return s
+}
+
+func (s *NodepoolManagement) SetAutoUpgradePolicy(v *NodepoolManagementAutoUpgradePolicy) *NodepoolManagement {
+	s.AutoUpgradePolicy = v
+	return s
+}
+
+func (s *NodepoolManagement) SetAutoVulFix(v bool) *NodepoolManagement {
+	s.AutoVulFix = &v
+	return s
+}
+
+func (s *NodepoolManagement) SetAutoVulFixPolicy(v *NodepoolManagementAutoVulFixPolicy) *NodepoolManagement {
+	s.AutoVulFixPolicy = v
+	return s
+}
+
 func (s *NodepoolManagement) SetEnable(v bool) *NodepoolManagement {
 	s.Enable = &v
 	return s
@@ -538,6 +581,63 @@ func (s *NodepoolManagement) SetEnable(v bool) *NodepoolManagement {
 
 func (s *NodepoolManagement) SetUpgradeConfig(v *NodepoolManagementUpgradeConfig) *NodepoolManagement {
 	s.UpgradeConfig = v
+	return s
+}
+
+type NodepoolManagementAutoRepairPolicy struct {
+	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
+}
+
+func (s NodepoolManagementAutoRepairPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolManagementAutoRepairPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolManagementAutoRepairPolicy) SetRestartNode(v bool) *NodepoolManagementAutoRepairPolicy {
+	s.RestartNode = &v
+	return s
+}
+
+type NodepoolManagementAutoUpgradePolicy struct {
+	AutoUpgradeKubelet *bool `json:"auto_upgrade_kubelet,omitempty" xml:"auto_upgrade_kubelet,omitempty"`
+}
+
+func (s NodepoolManagementAutoUpgradePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolManagementAutoUpgradePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolManagementAutoUpgradePolicy) SetAutoUpgradeKubelet(v bool) *NodepoolManagementAutoUpgradePolicy {
+	s.AutoUpgradeKubelet = &v
+	return s
+}
+
+type NodepoolManagementAutoVulFixPolicy struct {
+	RestartNode *bool   `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
+	VulLevel    *string `json:"vul_level,omitempty" xml:"vul_level,omitempty"`
+}
+
+func (s NodepoolManagementAutoVulFixPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolManagementAutoVulFixPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolManagementAutoVulFixPolicy) SetRestartNode(v bool) *NodepoolManagementAutoVulFixPolicy {
+	s.RestartNode = &v
+	return s
+}
+
+func (s *NodepoolManagementAutoVulFixPolicy) SetVulLevel(v string) *NodepoolManagementAutoVulFixPolicy {
+	s.VulLevel = &v
 	return s
 }
 
@@ -576,6 +676,23 @@ func (s *NodepoolManagementUpgradeConfig) SetSurgePercentage(v int64) *NodepoolM
 	return s
 }
 
+type NodepoolNodeConfig struct {
+	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+}
+
+func (s NodepoolNodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NodepoolNodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *NodepoolNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *NodepoolNodeConfig {
+	s.KubeletConfiguration = v
+	return s
+}
+
 type NodepoolNodepoolInfo struct {
 	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
 	ResourceGroupId *string `json:"resource_group_id,omitempty" xml:"resource_group_id,omitempty"`
@@ -606,42 +723,48 @@ func (s *NodepoolNodepoolInfo) SetType(v string) *NodepoolNodepoolInfo {
 }
 
 type NodepoolScalingGroup struct {
-	AutoRenew                           *bool                                   `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
-	AutoRenewPeriod                     *int64                                  `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
-	CompensateWithOnDemand              *bool                                   `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
-	DataDisks                           []*DataDisk                             `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
-	DeploymentsetId                     *string                                 `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
-	DesiredSize                         *int64                                  `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
-	ImageId                             *string                                 `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	ImageType                           *string                                 `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	InstanceChargeType                  *string                                 `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstanceTypes                       []*string                               `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
-	InternetChargeType                  *string                                 `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
-	InternetMaxBandwidthOut             *int64                                  `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
-	KeyPair                             *string                                 `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	LoginPassword                       *string                                 `json:"login_password,omitempty" xml:"login_password,omitempty"`
-	MultiAzPolicy                       *string                                 `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
-	OnDemandBaseCapacity                *int64                                  `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
-	OnDemandPercentageAboveBaseCapacity *int64                                  `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
-	Period                              *int64                                  `json:"period,omitempty" xml:"period,omitempty"`
-	PeriodUnit                          *string                                 `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
-	Platform                            *string                                 `json:"platform,omitempty" xml:"platform,omitempty"`
-	PrivatePoolOptions                  *NodepoolScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
-	RdsInstances                        []*string                               `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
-	ScalingPolicy                       *string                                 `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
-	SecurityGroupId                     *string                                 `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	SecurityGroupIds                    []*string                               `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	SpotInstancePools                   *int64                                  `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
-	SpotInstanceRemedy                  *bool                                   `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
-	SpotPriceLimit                      []*NodepoolScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
-	SpotStrategy                        *string                                 `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	SystemDiskBurstingEnabled           *bool                                   `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	SystemDiskCategory                  *string                                 `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	SystemDiskPerformanceLevel          *string                                 `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	SystemDiskProvisionedIops           *int64                                  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
-	SystemDiskSize                      *int64                                  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
-	Tags                                []*NodepoolScalingGroupTags             `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	VswitchIds                          []*string                               `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
+	AutoRenew                           *bool       `json:"auto_renew,omitempty" xml:"auto_renew,omitempty"`
+	AutoRenewPeriod                     *int64      `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CompensateWithOnDemand              *bool       `json:"compensate_with_on_demand,omitempty" xml:"compensate_with_on_demand,omitempty"`
+	DataDisks                           []*DataDisk `json:"data_disks,omitempty" xml:"data_disks,omitempty" type:"Repeated"`
+	DeploymentsetId                     *string     `json:"deploymentset_id,omitempty" xml:"deploymentset_id,omitempty"`
+	DesiredSize                         *int64      `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
+	ImageId                             *string     `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType                           *string     `json:"image_type,omitempty" xml:"image_type,omitempty"`
+	InstanceChargeType                  *string     `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	InstanceTypes                       []*string   `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
+	InternetChargeType                  *string     `json:"internet_charge_type,omitempty" xml:"internet_charge_type,omitempty"`
+	InternetMaxBandwidthOut             *int64      `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
+	KeyPair                             *string     `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginAsNonRoot                      *bool       `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
+	LoginPassword                       *string     `json:"login_password,omitempty" xml:"login_password,omitempty"`
+	MultiAzPolicy                       *string     `json:"multi_az_policy,omitempty" xml:"multi_az_policy,omitempty"`
+	OnDemandBaseCapacity                *int64      `json:"on_demand_base_capacity,omitempty" xml:"on_demand_base_capacity,omitempty"`
+	OnDemandPercentageAboveBaseCapacity *int64      `json:"on_demand_percentage_above_base_capacity,omitempty" xml:"on_demand_percentage_above_base_capacity,omitempty"`
+	Period                              *int64      `json:"period,omitempty" xml:"period,omitempty"`
+	PeriodUnit                          *string     `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	// Deprecated
+	Platform                   *string                                 `json:"platform,omitempty" xml:"platform,omitempty"`
+	PrivatePoolOptions         *NodepoolScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	RdsInstances               []*string                               `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	ScalingPolicy              *string                                 `json:"scaling_policy,omitempty" xml:"scaling_policy,omitempty"`
+	SecurityGroupId            *string                                 `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	SecurityGroupIds           []*string                               `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SpotInstancePools          *int64                                  `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
+	SpotInstanceRemedy         *bool                                   `json:"spot_instance_remedy,omitempty" xml:"spot_instance_remedy,omitempty"`
+	SpotPriceLimit             []*NodepoolScalingGroupSpotPriceLimit   `json:"spot_price_limit,omitempty" xml:"spot_price_limit,omitempty" type:"Repeated"`
+	SpotStrategy               *string                                 `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled  *bool                                   `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategories       []*string                               `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
+	SystemDiskCategory         *string                                 `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskEncryptAlgorithm *string                                 `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
+	SystemDiskEncrypted        *bool                                   `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
+	SystemDiskKmsKeyId         *string                                 `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
+	SystemDiskPerformanceLevel *string                                 `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops  *int64                                  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
+	SystemDiskSize             *int64                                  `json:"system_disk_size,omitempty" xml:"system_disk_size,omitempty"`
+	Tags                       []*NodepoolScalingGroupTags             `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	VswitchIds                 []*string                               `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 }
 
 func (s NodepoolScalingGroup) String() string {
@@ -714,6 +837,11 @@ func (s *NodepoolScalingGroup) SetInternetMaxBandwidthOut(v int64) *NodepoolScal
 
 func (s *NodepoolScalingGroup) SetKeyPair(v string) *NodepoolScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetLoginAsNonRoot(v bool) *NodepoolScalingGroup {
+	s.LoginAsNonRoot = &v
 	return s
 }
 
@@ -802,8 +930,28 @@ func (s *NodepoolScalingGroup) SetSystemDiskBurstingEnabled(v bool) *NodepoolSca
 	return s
 }
 
+func (s *NodepoolScalingGroup) SetSystemDiskCategories(v []*string) *NodepoolScalingGroup {
+	s.SystemDiskCategories = v
+	return s
+}
+
 func (s *NodepoolScalingGroup) SetSystemDiskCategory(v string) *NodepoolScalingGroup {
 	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskEncryptAlgorithm(v string) *NodepoolScalingGroup {
+	s.SystemDiskEncryptAlgorithm = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskEncrypted(v bool) *NodepoolScalingGroup {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetSystemDiskKmsKeyId(v string) *NodepoolScalingGroup {
+	s.SystemDiskKmsKeyId = &v
 	return s
 }
 
@@ -2869,7 +3017,8 @@ type CreateClusterNodePoolRequest struct {
 	// The configurations about the managed node pool feature.
 	Management *CreateClusterNodePoolRequestManagement `json:"management,omitempty" xml:"management,omitempty" type:"Struct"`
 	// The maximum number of nodes that can be created in the edge node pool. You must specify a value that is equal to or larger than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools of the ess type or default edge node pools.
-	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	MaxNodes   *int64                                  `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
+	NodeConfig *CreateClusterNodePoolRequestNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The configurations of the node pool.
 	NodepoolInfo *CreateClusterNodePoolRequestNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
 	// The configuration of the scaling group that is used by the node pool.
@@ -2918,6 +3067,11 @@ func (s *CreateClusterNodePoolRequest) SetManagement(v *CreateClusterNodePoolReq
 
 func (s *CreateClusterNodePoolRequest) SetMaxNodes(v int64) *CreateClusterNodePoolRequest {
 	s.MaxNodes = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequest) SetNodeConfig(v *CreateClusterNodePoolRequestNodeConfig) *CreateClusterNodePoolRequest {
+	s.NodeConfig = v
 	return s
 }
 
@@ -3109,7 +3263,8 @@ type CreateClusterNodePoolRequestKubernetesConfig struct {
 	// The version of the container runtime.
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The configurations of the taints.
-	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints        []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Unschedulable *bool    `json:"unschedulable,omitempty" xml:"unschedulable,omitempty"`
 	// The user data on the node.
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -3157,6 +3312,11 @@ func (s *CreateClusterNodePoolRequestKubernetesConfig) SetTaints(v []*Taint) *Cr
 	return s
 }
 
+func (s *CreateClusterNodePoolRequestKubernetesConfig) SetUnschedulable(v bool) *CreateClusterNodePoolRequestKubernetesConfig {
+	s.Unschedulable = &v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequestKubernetesConfig) SetUserData(v string) *CreateClusterNodePoolRequestKubernetesConfig {
 	s.UserData = &v
 	return s
@@ -3178,6 +3338,7 @@ type CreateClusterNodePoolRequestManagement struct {
 	// *   `true`: enables the managed node pool feature.
 	// *   `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
 	// The configurations about auto update. The configurations take effect only when you specify `enable=true`.
 	UpgradeConfig *CreateClusterNodePoolRequestManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
 }
@@ -3331,6 +3492,23 @@ func (s *CreateClusterNodePoolRequestManagementUpgradeConfig) SetSurgePercentage
 	return s
 }
 
+type CreateClusterNodePoolRequestNodeConfig struct {
+	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
+}
+
+func (s CreateClusterNodePoolRequestNodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterNodePoolRequestNodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterNodePoolRequestNodeConfig) SetKubeletConfiguration(v *KubeletConfig) *CreateClusterNodePoolRequestNodeConfig {
+	s.KubeletConfiguration = v
+	return s
+}
+
 type CreateClusterNodePoolRequestNodepoolInfo struct {
 	// The name of the node pool.
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -3378,6 +3556,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	//
 	// Default value: 1.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CisEnabled      *bool  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as the cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values:
 	//
 	// *   `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
@@ -3421,7 +3600,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// The name of the key pair. You must set this parameter or the `login_password` parameter.
 	//
 	// >  If you create a managed node pool, only `key_pair` is supported.
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	KeyPair        *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginAsNonRoot *bool   `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
 	// The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	LoginPassword *string `json:"login_password,omitempty" xml:"login_password,omitempty"`
 	// The ECS instance scaling policy for a multi-zone scaling group. Valid values:
@@ -3448,6 +3628,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
 	// The billing cycle of the nodes in the node pool. This parameter is required if you set instance_charge_type to `PrePaid`. A value of Month indicates that the billing cycle is measured in months.
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	// Deprecated
 	// The release version of the operating system. Valid values:
 	//
 	// *   `CentOS`
@@ -3472,6 +3653,7 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SocEnabled       *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
 	// Specifies whether to supplement preemptible instances. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
@@ -3494,7 +3676,8 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// - false：否。
 	//
 	// 当`SystemDiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
-	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskBurstingEnabled *bool     `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategories      []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
 	// The type of system disk. Valid values:
 	//
 	// *   `cloud_efficiency`: ultra disk.
@@ -3502,7 +3685,10 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	// *   `cloud_essd`: enhanced SSD.
 	//
 	// Default value: `cloud_efficiency`.
-	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskCategory         *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
+	SystemDiskEncrypted        *bool   `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
+	SystemDiskKmsKeyId         *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
 	// The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for ESSDs.
 	//
 	// *   PL0: moderate maximum concurrent I/O performance and low I/O latency
@@ -3543,6 +3729,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetAutoRenew(v bool) *CreateC
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetAutoRenewPeriod(v int64) *CreateClusterNodePoolRequestScalingGroup {
 	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetCisEnabled(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.CisEnabled = &v
 	return s
 }
 
@@ -3598,6 +3789,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetInternetMaxBandwidthOut(v 
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetKeyPair(v string) *CreateClusterNodePoolRequestScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetLoginAsNonRoot(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.LoginAsNonRoot = &v
 	return s
 }
 
@@ -3661,6 +3857,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSecurityGroupIds(v []*stri
 	return s
 }
 
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSocEnabled(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.SocEnabled = &v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequestScalingGroup) SetSpotInstancePools(v int64) *CreateClusterNodePoolRequestScalingGroup {
 	s.SpotInstancePools = &v
 	return s
@@ -3686,8 +3887,28 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskBurstingEnabled(
 	return s
 }
 
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskCategories(v []*string) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskCategories = v
+	return s
+}
+
 func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *CreateClusterNodePoolRequestScalingGroup {
 	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskEncryptAlgorithm(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskEncryptAlgorithm = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskEncrypted(v bool) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetSystemDiskKmsKeyId(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.SystemDiskKmsKeyId = &v
 	return s
 }
 
@@ -4512,6 +4733,7 @@ func (s *DeleteClusterNodepoolRequest) SetForce(v bool) *DeleteClusterNodepoolRe
 type DeleteClusterNodepoolResponseBody struct {
 	// The request ID.
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s DeleteClusterNodepoolResponseBody) String() string {
@@ -4524,6 +4746,11 @@ func (s DeleteClusterNodepoolResponseBody) GoString() string {
 
 func (s *DeleteClusterNodepoolResponseBody) SetRequestId(v string) *DeleteClusterNodepoolResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClusterNodepoolResponseBody) SetTaskId(v string) *DeleteClusterNodepoolResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -6391,7 +6618,8 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	// The version of the container runtime.
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
-	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints        []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Unschedulable *bool    `json:"unschedulable,omitempty" xml:"unschedulable,omitempty"`
 	// The user data of the node pool. For more information, see [Generate user data](~~49121~~).
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -6436,6 +6664,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetRuntimeVe
 
 func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetTaints(v []*Taint) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
 	s.Taints = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig) SetUnschedulable(v bool) *DescribeClusterNodePoolDetailResponseBodyKubernetesConfig {
+	s.Unschedulable = &v
 	return s
 }
 
@@ -6719,6 +6952,7 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CisEnabled      *bool  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
 	//
 	// *   `true`: Pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created.
@@ -6731,7 +6965,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// The expected number of nodes in the node pool.
 	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageId   *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The billing method of the nodes in the node pool. Valid values:
 	//
 	// *   `PrePaid`: the subscription billing method.
@@ -6744,7 +6979,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// The maximum outbound bandwidth of the public IP address of the node. Unit: Mbit/s. Valid values: 1 to 100.
 	InternetMaxBandwidthOut *int64 `json:"internet_max_bandwidth_out,omitempty" xml:"internet_max_bandwidth_out,omitempty"`
 	// The name of the key pair. You must set this parameter or the `login_password` parameter. You must set `key_pair` if the node pool is a managed node pool.
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	KeyPair        *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginAsNonRoot *bool   `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
 	// The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// For security purposes, the returned password is encrypted.
@@ -6799,6 +7035,7 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of the security groups to which the node pool is added.
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SocEnabled       *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
 	// Indicates whether preemptible instances are supplemented when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
@@ -6815,14 +7052,20 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// *   SpotAsPriceGo: a preemptible instance for which the system automatically bids based on the current market price.
 	//
 	// For more information, see [Preemptible instances](~~157759~~).
-	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SpotStrategy              *string   `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled *bool     `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategories      []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
 	// The type of system disk. Valid values:
 	//
 	// *   `cloud_efficiency`: ultra disk.
 	// *   `cloud_ssd`: standard SSD.
-	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskCategory         *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
+	SystemDiskEncrypted        *bool   `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
+	SystemDiskKmsKeyId         *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
 	// The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs (ESSDs).
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops  *int64  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
 	// The system disk size of a node. Unit: GiB.
 	//
 	// Valid values: 20 to 500.
@@ -6855,6 +7098,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetAutoRenewPeri
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetCisEnabled(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.CisEnabled = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetCompensateWithOnDemand(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.CompensateWithOnDemand = &v
 	return s
@@ -6880,6 +7128,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetImageId(v str
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetImageType(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.ImageType = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInstanceChargeType(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.InstanceChargeType = &v
 	return s
@@ -6902,6 +7155,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetInternetMaxBa
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetKeyPair(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetLoginAsNonRoot(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.LoginAsNonRoot = &v
 	return s
 }
 
@@ -6975,6 +7233,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSecurityGroup
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSocEnabled(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SocEnabled = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSpotInstancePools(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.SpotInstancePools = &v
 	return s
@@ -6995,13 +7258,43 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSpotStrategy(
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskBurstingEnabled(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskBurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskCategories(v []*string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskCategories = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskCategory(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.SystemDiskCategory = &v
 	return s
 }
 
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskEncryptAlgorithm(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskEncryptAlgorithm = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskEncrypted(v bool) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskKmsKeyId(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskKmsKeyId = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskPerformanceLevel(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetSystemDiskProvisionedIops(v int64) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.SystemDiskProvisionedIops = &v
 	return s
 }
 
@@ -7453,7 +7746,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig struct {
 	// The version of the container runtime.
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
-	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Taints        []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
+	Unschedulable *bool    `json:"unschedulable,omitempty" xml:"unschedulable,omitempty"`
 	// The user data of the node pool. For more information, see [Generate user data](~~49121~~).
 	UserData *string `json:"user_data,omitempty" xml:"user_data,omitempty"`
 }
@@ -7498,6 +7792,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetRunti
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetTaints(v []*Taint) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
 	s.Taints = v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig) SetUnschedulable(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig {
+	s.Unschedulable = &v
 	return s
 }
 
@@ -7789,6 +8088,7 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	//
 	// If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
+	CisEnabled      *bool  `json:"cis_enabled,omitempty" xml:"cis_enabled,omitempty"`
 	// Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
 	//
 	// *   `true`: Pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created.
@@ -7801,7 +8101,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// The expected number of nodes in the node pool.
 	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageId   *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The billing method of the nodes in the node pool. Valid values:
 	//
 	// *   `PrePaid`: the subscription billing method.
@@ -7816,7 +8117,8 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// The name of the key pair. You must set this parameter or the `login_password` parameter.
 	//
 	// You must set `key_pair` if the node pool is a managed node pool.
-	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	KeyPair        *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
+	LoginAsNonRoot *bool   `json:"login_as_non_root,omitempty" xml:"login_as_non_root,omitempty"`
 	// The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// For security purposes, the returned password is encrypted.
@@ -7869,6 +8171,7 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of the security groups to which the node pool is added.
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
+	SocEnabled       *bool     `json:"soc_enabled,omitempty" xml:"soc_enabled,omitempty"`
 	// The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int64 `json:"spot_instance_pools,omitempty" xml:"spot_instance_pools,omitempty"`
 	// Indicates whether preemptible instances are supplemented when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
@@ -7885,14 +8188,20 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	// *   SpotAsPriceGo: a preemptible instance for which the system automatically bids based on the current market price.
 	//
 	// For more information, see [Preemptible instances](~~157759~~).
-	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SpotStrategy              *string   `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled *bool     `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategories      []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
 	// The type of system disk. Valid values:
 	//
 	// *   `cloud_efficiency`: ultra disk.
 	// *   `cloud_ssd`: standard SSD.
-	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskCategory         *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
+	SystemDiskEncrypted        *bool   `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
+	SystemDiskKmsKeyId         *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
 	// The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs (ESSDs).
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops  *int64  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
 	// The system disk size of a node. Unit: GiB.
 	//
 	// Valid values: 20 to 500.
@@ -7925,6 +8234,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetAutoRenew
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetCisEnabled(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.CisEnabled = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetCompensateWithOnDemand(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.CompensateWithOnDemand = &v
 	return s
@@ -7950,6 +8264,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetImageId(v
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetImageType(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.ImageType = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInstanceChargeType(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.InstanceChargeType = &v
 	return s
@@ -7972,6 +8291,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetInternetM
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetKeyPair(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.KeyPair = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetLoginAsNonRoot(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.LoginAsNonRoot = &v
 	return s
 }
 
@@ -8045,6 +8369,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSecurityG
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSocEnabled(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SocEnabled = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSpotInstancePools(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.SpotInstancePools = &v
 	return s
@@ -8065,13 +8394,43 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSpotStrat
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskBurstingEnabled(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskBurstingEnabled = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskCategories(v []*string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskCategories = v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskCategory(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.SystemDiskCategory = &v
 	return s
 }
 
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskEncryptAlgorithm(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskEncryptAlgorithm = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskEncrypted(v bool) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskKmsKeyId(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskKmsKeyId = &v
+	return s
+}
+
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskPerformanceLevel(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetSystemDiskProvisionedIops(v int64) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.SystemDiskProvisionedIops = &v
 	return s
 }
 
@@ -14992,6 +15351,7 @@ func (s *ModifyClusterConfigurationResponse) SetStatusCode(v int32) *ModifyClust
 type ModifyClusterNodePoolRequest struct {
 	// The configurations about auto scaling.
 	AutoScaling *ModifyClusterNodePoolRequestAutoScaling `json:"auto_scaling,omitempty" xml:"auto_scaling,omitempty" type:"Struct"`
+	Concurrency *bool                                    `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// The configurations about the cluster.
 	KubernetesConfig *ModifyClusterNodePoolRequestKubernetesConfig `json:"kubernetes_config,omitempty" xml:"kubernetes_config,omitempty" type:"Struct"`
 	// The configurations about the managed node pool feature.
@@ -15016,6 +15376,11 @@ func (s ModifyClusterNodePoolRequest) GoString() string {
 
 func (s *ModifyClusterNodePoolRequest) SetAutoScaling(v *ModifyClusterNodePoolRequestAutoScaling) *ModifyClusterNodePoolRequest {
 	s.AutoScaling = v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequest) SetConcurrency(v bool) *ModifyClusterNodePoolRequest {
+	s.Concurrency = &v
 	return s
 }
 
@@ -15224,6 +15589,7 @@ type ModifyClusterNodePoolRequestManagement struct {
 	//
 	// Default value: `false`.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// Deprecated
 	// The configurations about auto update. The configurations take effect only when you specify `enable=true`.
 	UpgradeConfig *ModifyClusterNodePoolRequestManagementUpgradeConfig `json:"upgrade_config,omitempty" xml:"upgrade_config,omitempty" type:"Struct"`
 }
@@ -15432,7 +15798,8 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// The expected number of nodes in the node pool.
 	DesiredSize *int64 `json:"desired_size,omitempty" xml:"desired_size,omitempty"`
 	// The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the supported images. By default, the latest image is used.
-	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageId   *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
+	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
 	// The billing method of the nodes in the node pool. Valid values:
 	//
 	// *   `PrePaid`: subscription.
@@ -15481,6 +15848,7 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	//
 	// Default value: `Month`.
 	PeriodUnit *string `json:"period_unit,omitempty" xml:"period_unit,omitempty"`
+	// Deprecated
 	// The OS platform. Valid values:
 	//
 	// *   `AliyunLinux`
@@ -15513,16 +15881,22 @@ type ModifyClusterNodePoolRequestScalingGroup struct {
 	// *   `SpotAsPriceGo`: automatically submits bids based on the up-to-date market price.
 	//
 	// For more information, see [Preemptible instances](~~157759~~).
-	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SpotStrategy              *string   `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
+	SystemDiskBurstingEnabled *bool     `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
+	SystemDiskCategories      []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
 	// The type of system disk. Valid values:
 	//
 	// *   `cloud_efficiency`: ultra disk.
 	// *   `cloud_ssd`: standard SSD.
 	//
 	// Default value: `cloud_ssd`.
-	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskCategory         *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
+	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
+	SystemDiskEncrypted        *bool   `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
+	SystemDiskKmsKeyId         *string `json:"system_disk_kms_key_id,omitempty" xml:"system_disk_kms_key_id,omitempty"`
 	// The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs. You can specify a higher PL if you increase the size of the system disk. For more information, see [ESSDs](~~122389~~).
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
+	SystemDiskProvisionedIops  *int64  `json:"system_disk_provisioned_iops,omitempty" xml:"system_disk_provisioned_iops,omitempty"`
 	// The system disk size of a node. Unit: GiB.
 	//
 	// Valid values: 20 to 500.
@@ -15576,6 +15950,11 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetDesiredSize(v int64) *Modi
 
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetImageId(v string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.ImageId = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetImageType(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.ImageType = &v
 	return s
 }
 
@@ -15674,13 +16053,43 @@ func (s *ModifyClusterNodePoolRequestScalingGroup) SetSpotStrategy(v string) *Mo
 	return s
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskBurstingEnabled(v bool) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskBurstingEnabled = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskCategories(v []*string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskCategories = v
+	return s
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskCategory(v string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.SystemDiskCategory = &v
 	return s
 }
 
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskEncryptAlgorithm(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskEncryptAlgorithm = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskEncrypted(v bool) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskEncrypted = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskKmsKeyId(v string) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskKmsKeyId = &v
+	return s
+}
+
 func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskPerformanceLevel(v string) *ModifyClusterNodePoolRequestScalingGroup {
 	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyClusterNodePoolRequestScalingGroup) SetSystemDiskProvisionedIops(v int64) *ModifyClusterNodePoolRequestScalingGroup {
+	s.SystemDiskProvisionedIops = &v
 	return s
 }
 
@@ -16267,6 +16676,7 @@ func (s *RemoveClusterNodesResponse) SetStatusCode(v int32) *RemoveClusterNodesR
 }
 
 type RemoveNodePoolNodesRequest struct {
+	Concurrency *bool `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// Specifies whether to drain the nodes that you want to remove. Valid values:
 	//
 	// *   true: drain the nodes that you want to remove.
@@ -16291,6 +16701,11 @@ func (s RemoveNodePoolNodesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveNodePoolNodesRequest) SetConcurrency(v bool) *RemoveNodePoolNodesRequest {
+	s.Concurrency = &v
+	return s
+}
+
 func (s *RemoveNodePoolNodesRequest) SetDrainNode(v bool) *RemoveNodePoolNodesRequest {
 	s.DrainNode = &v
 	return s
@@ -16312,6 +16727,7 @@ func (s *RemoveNodePoolNodesRequest) SetReleaseNode(v bool) *RemoveNodePoolNodes
 }
 
 type RemoveNodePoolNodesShrinkRequest struct {
+	Concurrency *bool `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// Specifies whether to drain the nodes that you want to remove. Valid values:
 	//
 	// *   true: drain the nodes that you want to remove.
@@ -16334,6 +16750,11 @@ func (s RemoveNodePoolNodesShrinkRequest) String() string {
 
 func (s RemoveNodePoolNodesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemoveNodePoolNodesShrinkRequest) SetConcurrency(v bool) *RemoveNodePoolNodesShrinkRequest {
+	s.Concurrency = &v
+	return s
 }
 
 func (s *RemoveNodePoolNodesShrinkRequest) SetDrainNode(v bool) *RemoveNodePoolNodesShrinkRequest {
@@ -19446,6 +19867,10 @@ func (client *Client) CreateClusterNodePoolWithOptions(ClusterId *string, reques
 
 	if !tea.BoolValue(util.IsUnset(request.MaxNodes)) {
 		body["max_nodes"] = request.MaxNodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeConfig)) {
+		body["node_config"] = request.NodeConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NodepoolInfo)) {
@@ -23126,6 +23551,10 @@ func (client *Client) ModifyClusterNodePoolWithOptions(ClusterId *string, Nodepo
 		body["auto_scaling"] = request.AutoScaling
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		body["concurrency"] = request.Concurrency
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.KubernetesConfig)) {
 		body["kubernetes_config"] = request.KubernetesConfig
 	}
@@ -23625,6 +24054,10 @@ func (client *Client) RemoveNodePoolNodesWithOptions(ClusterId *string, Nodepool
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Concurrency)) {
+		query["concurrency"] = request.Concurrency
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DrainNode)) {
 		query["drain_node"] = request.DrainNode
 	}
