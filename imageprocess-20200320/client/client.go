@@ -6569,6 +6569,46 @@ func (s *ScreenECRequestURLList) SetURL(v string) *ScreenECRequestURLList {
 	return s
 }
 
+type ScreenECAdvanceRequest struct {
+	DataSourceType *string                          `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*ScreenECAdvanceRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s ScreenECAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECAdvanceRequest) SetDataSourceType(v string) *ScreenECAdvanceRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *ScreenECAdvanceRequest) SetURLList(v []*ScreenECAdvanceRequestURLList) *ScreenECAdvanceRequest {
+	s.URLList = v
+	return s
+}
+
+type ScreenECAdvanceRequestURLList struct {
+	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s ScreenECAdvanceRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenECAdvanceRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenECAdvanceRequestURLList) SetURLObject(v io.Reader) *ScreenECAdvanceRequestURLList {
+	s.URLObject = v
+	return s
+}
+
 type ScreenECResponseBody struct {
 	Data      *ScreenECResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message   *string                   `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -11583,6 +11623,120 @@ func (client *Client) ScreenEC(request *ScreenECRequest) (_result *ScreenECRespo
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ScreenECAdvance(request *ScreenECAdvanceRequest, runtime *util.RuntimeOptions) (_result *ScreenECResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("imageprocess"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	screenECReq := &ScreenECRequest{}
+	openapiutil.Convert(request, screenECReq)
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		i0 := tea.Int(0)
+		for _, item0 := range request.URLList {
+			if !tea.BoolValue(util.IsUnset(item0.URLObject)) {
+				authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+				if _err != nil {
+					return _result, _err
+				}
+
+				ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+				ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+				ossClient, _err = oss.NewClient(ossConfig)
+				if _err != nil {
+					return _result, _err
+				}
+
+				fileObj = &fileform.FileField{
+					Filename:    authResponse.Body.ObjectKey,
+					Content:     item0.URLObject,
+					ContentType: tea.String(""),
+				}
+				ossHeader = &oss.PostObjectRequestHeader{
+					AccessKeyId:         authResponse.Body.AccessKeyId,
+					Policy:              authResponse.Body.EncodedPolicy,
+					Signature:           authResponse.Body.Signature,
+					Key:                 authResponse.Body.ObjectKey,
+					File:                fileObj,
+					SuccessActionStatus: tea.String("201"),
+				}
+				uploadRequest = &oss.PostObjectRequest{
+					BucketName: authResponse.Body.Bucket,
+					Header:     ossHeader,
+				}
+				_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+				if _err != nil {
+					return _result, _err
+				}
+				tmp := screenECReq.URLList[tea.IntValue(i0)]
+				tmp.URL = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+				i0 = number.Ltoi(number.Add(number.Itol(i0), number.Itol(tea.Int(1))))
+			}
+
+		}
+	}
+
+	screenECResp, _err := client.ScreenECWithOptions(screenECReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = screenECResp
 	return _result, _err
 }
 
