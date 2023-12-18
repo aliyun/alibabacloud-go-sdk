@@ -482,8 +482,10 @@ func (s *UdpConfig) SetScheduler(v string) *UdpConfig {
 }
 
 type AccosicateNetworkAclRequest struct {
-	NetworkAclId *string                                `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	Resource     []*AccosicateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	// The ID of the network ACL.
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The information about the resources with which you want to associate the network ACL.
+	Resource []*AccosicateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
 }
 
 func (s AccosicateNetworkAclRequest) String() string {
@@ -505,7 +507,11 @@ func (s *AccosicateNetworkAclRequest) SetResource(v []*AccosicateNetworkAclReque
 }
 
 type AccosicateNetworkAclRequestResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource with which you want to associate the network ACL.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of resource with which you want to associate the network ACL. Set the value to **Network**.
+	//
+	// ****
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -528,6 +534,7 @@ func (s *AccosicateNetworkAclRequestResource) SetResourceType(v string) *Accosic
 }
 
 type AccosicateNetworkAclResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -574,8 +581,12 @@ func (s *AccosicateNetworkAclResponse) SetBody(v *AccosicateNetworkAclResponseBo
 }
 
 type AddBackendServersRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers []*AddBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	LoadBalancerId *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s AddBackendServersRequest) String() string {
@@ -597,11 +608,21 @@ func (s *AddBackendServersRequest) SetLoadBalancerId(v string) *AddBackendServer
 }
 
 type AddBackendServersRequestBackendServers struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The backend port that is used by the ELB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the ENS instance.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddBackendServersRequestBackendServers) String() string {
@@ -638,8 +659,12 @@ func (s *AddBackendServersRequestBackendServers) SetWeight(v int32) *AddBackendS
 }
 
 type AddBackendServersShrinkRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s AddBackendServersShrinkRequest) String() string {
@@ -661,8 +686,12 @@ func (s *AddBackendServersShrinkRequest) SetLoadBalancerId(v string) *AddBackend
 }
 
 type AddBackendServersResponseBody struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers *AddBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddBackendServersResponseBody) String() string {
@@ -701,11 +730,21 @@ func (s *AddBackendServersResponseBodyBackendServers) SetBackendServer(v []*AddB
 }
 
 type AddBackendServersResponseBodyBackendServersBackendServer struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The backend port that is used by the ELB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance that is used as the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s AddBackendServersResponseBodyBackendServersBackendServer) String() string {
@@ -771,12 +810,26 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 }
 
 type AddDeviceInternetPortRequest struct {
-	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The Internet service provider (ISP). If you leave this parameter empty, the system automatically allows a random ISP. Valid values:
+	//
+	// *   telecom: China Telecom
+	// *   cmcc: China Mobile
+	// *   unicom: China Unicom
+	// *   cbn: China Broadcasting Network (CBN)
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// The ID of the instance. You can specify the ID of the server or container.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The internal IP address of the instance.
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port number. Specify this parameter in the following format: first port/last port. Separate multiple port number groups with commas (,). Example: 1026/2001,2005/2005. This parameter is required if you set NatType to DNAT. If you set NatType to SNAT, the value of this parameter is invalid.
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	NatType      *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the NAT gateway. The value of this parameter is of the enumerated data type. Valid values:
+	//
+	// *   SNAT
+	// *   DNAT
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddDeviceInternetPortRequest) String() string {
@@ -818,8 +871,10 @@ func (s *AddDeviceInternetPortRequest) SetRegionId(v string) *AddDeviceInternetP
 }
 
 type AddDeviceInternetPortResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleIds   []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of rules.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s AddDeviceInternetPortResponseBody) String() string {
@@ -870,9 +925,12 @@ func (s *AddDeviceInternetPortResponse) SetBody(v *AddDeviceInternetPortResponse
 }
 
 type AddNetworkInterfaceToInstanceRequest struct {
-	AutoStart  *bool   `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// Specifies whether to specify the instance.
+	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Networks   *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
+	// The network. The value is a JSON string. Only IPv6 is supported. Sample code of an IPv6 network: \[{ "ipType": "public", "ipAddressType": "ipv6" }]
+	Networks *string `json:"Networks,omitempty" xml:"Networks,omitempty"`
 }
 
 func (s AddNetworkInterfaceToInstanceRequest) String() string {
@@ -899,6 +957,7 @@ func (s *AddNetworkInterfaceToInstanceRequest) SetNetworks(v string) *AddNetwork
 }
 
 type AddNetworkInterfaceToInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -945,8 +1004,10 @@ func (s *AddNetworkInterfaceToInstanceResponse) SetBody(v *AddNetworkInterfaceTo
 }
 
 type AddSnatIpForSnatEntryRequest struct {
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The EIP that you want to add to the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s AddSnatIpForSnatEntryRequest) String() string {
@@ -968,7 +1029,7 @@ func (s *AddSnatIpForSnatEntryRequest) SetSnatIp(v string) *AddSnatIpForSnatEntr
 }
 
 type AddSnatIpForSnatEntryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1015,8 +1076,10 @@ func (s *AddSnatIpForSnatEntryResponse) SetBody(v *AddSnatIpForSnatEntryResponse
 }
 
 type AssignPrivateIpAddressesRequest struct {
+	// The ID of the ENI.
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s AssignPrivateIpAddressesRequest) String() string {
@@ -1038,8 +1101,9 @@ func (s *AssignPrivateIpAddressesRequest) SetVSwitchId(v string) *AssignPrivateI
 }
 
 type AssignPrivateIpAddressesResponseBody struct {
+	// Details about the ENI and the secondary private IP addresses that are assigned to the ENI.
 	AssignedPrivateIpAddressesSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet `json:"AssignedPrivateIpAddressesSet,omitempty" xml:"AssignedPrivateIpAddressesSet,omitempty" type:"Struct"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1062,8 +1126,10 @@ func (s *AssignPrivateIpAddressesResponseBody) SetRequestId(v string) *AssignPri
 }
 
 type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet struct {
-	NetworkInterfaceId *string   `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpSet       []*string `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
+	// The ID of the ENI.
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The secondary private IP addresses that are assigned to the ENI.
+	PrivateIpSet []*string `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
 }
 
 func (s AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) String() string {
@@ -1114,10 +1180,25 @@ func (s *AssignPrivateIpAddressesResponse) SetBody(v *AssignPrivateIpAddressesRe
 }
 
 type AssociateEnsEipAddressRequest struct {
+	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the cloud service with which you want to associate the EIP.
+	//
+	// >  IDs of Edge Load Balancer (ELB) are supported.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of instance with which you want to associate the EIP. Valid values:
+	//
+	// *   **Nat**: a NAT gateway
+	// *   **SlbInstance**: an ELB instance.
+	// *   **NetworkInterface**: a secondary ENI
+	// *   **NatSlbInstance**: If you want to associate multiple EIPs to an ELB instance, you need to set the parameter to this value.
+	// *   **EnsInstance** (default): an ENS instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Standby      *bool   `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	// Specifies whether the EIP is a secondary EIP. Valid values:
+	//
+	// *   true
+	// *   false
+	Standby *bool `json:"Standby,omitempty" xml:"Standby,omitempty"`
 }
 
 func (s AssociateEnsEipAddressRequest) String() string {
@@ -1149,6 +1230,7 @@ func (s *AssociateEnsEipAddressRequest) SetStandby(v bool) *AssociateEnsEipAddre
 }
 
 type AssociateEnsEipAddressResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1195,9 +1277,16 @@ func (s *AssociateEnsEipAddressResponse) SetBody(v *AssociateEnsEipAddressRespon
 }
 
 type AttachDiskRequest struct {
+	// Specifies whether the disk to be attached is released with the instance. Valid values:
+	//
+	// *   true: The disk will be released when the ECS instance is released.
+	// *   false: The disk will be retained when the ECS instance is released.
+	// *   If you leave this parameter empty, the default value is used.
 	DeleteWithInstance *string `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	DiskId             *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the disk to be attached. The cloud disk and the instance must belong to the same zone.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s AttachDiskRequest) String() string {
@@ -1224,7 +1313,9 @@ func (s *AttachDiskRequest) SetInstanceId(v string) *AttachDiskRequest {
 }
 
 type AttachDiskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1276,8 +1367,10 @@ func (s *AttachDiskResponse) SetBody(v *AttachDiskResponseBody) *AttachDiskRespo
 }
 
 type AttachEnsInstancesRequest struct {
+	// The ID of the instance. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Scripts    *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
+	// The command that you want to execute on the instance. The command must be encoded in Base64 or UTF-8.
+	Scripts *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
 }
 
 func (s AttachEnsInstancesRequest) String() string {
@@ -1299,6 +1392,7 @@ func (s *AttachEnsInstancesRequest) SetScripts(v string) *AttachEnsInstancesRequ
 }
 
 type AttachEnsInstancesResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1345,12 +1439,44 @@ func (s *AttachEnsInstancesResponse) SetBody(v *AttachEnsInstancesResponseBody) 
 }
 
 type AuthorizeSecurityGroupRequest struct {
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The transport layer protocol. The values of this parameter are case-sensitive. Valid values:
+	//
+	// *   tcp
+	// *   udp
+	// *   icmp
+	// *   gre
+	// *   all: All protocols are supported.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The action of security group rule N that determines whether to allow inbound access. Valid values:
+	//
+	// *   accept: allows access.
+	// *   drop: denies access and returns no responses.
+	//
+	// Default value: accept.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The range of destination ports that correspond to the transport layer protocol for security group rule N. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the security group rule. Valid values: **1** to **100**.
+	//
+	// Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The source IPv4 CIDR block. CIDR blocks and IPv4 addresses are supported.
+	//
+	// This parameter is empty by default.
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1 to 65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -1405,6 +1531,7 @@ func (s *AuthorizeSecurityGroupRequest) SetVersion(v string) *AuthorizeSecurityG
 }
 
 type AuthorizeSecurityGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1451,12 +1578,40 @@ func (s *AuthorizeSecurityGroupResponse) SetBody(v *AuthorizeSecurityGroupRespon
 }
 
 type AuthorizeSecurityGroupEgressRequest struct {
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
+	//
+	// This parameter is empty by default.
+	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	// The transport layer protocol. The values of this parameter are case-sensitive. Valid values:
+	//
+	// *   tcp: TCP.
+	// *   udp: UDP.
+	// *   icmp: ICMP.
+	// *   gre: GRE.
+	// *   all: All protocols are supported.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The action of security group rule N that determines whether to allow inbound access. Valid values:
+	//
+	// *   accept: allows access. This is the default value.
+	// *   drop: denies access and returns no responses.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The range of destination ports that correspond to the transport layer protocol for security group rule N. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the security group rule. Valid values: **1 to 100**. Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -1511,6 +1666,7 @@ func (s *AuthorizeSecurityGroupEgressRequest) SetVersion(v string) *AuthorizeSec
 }
 
 type AuthorizeSecurityGroupEgressResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1637,21 +1793,446 @@ func (s *CleanDistDataResponse) SetBody(v *CleanDistDataResponseBody) *CleanDist
 	return s
 }
 
+type CopySDGRequest struct {
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	SDGId                *string   `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s CopySDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGRequest) SetDestinationRegionIds(v []*string) *CopySDGRequest {
+	s.DestinationRegionIds = v
+	return s
+}
+
+func (s *CopySDGRequest) SetSDGId(v string) *CopySDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type CopySDGShrinkRequest struct {
+	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
+	SDGId                      *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s CopySDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGShrinkRequest) SetDestinationRegionIdsShrink(v string) *CopySDGShrinkRequest {
+	s.DestinationRegionIdsShrink = &v
+	return s
+}
+
+func (s *CopySDGShrinkRequest) SetSDGId(v string) *CopySDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type CopySDGResponseBody struct {
+	Data      *CopySDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CopySDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGResponseBody) SetData(v *CopySDGResponseBodyData) *CopySDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CopySDGResponseBody) SetRequestId(v string) *CopySDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CopySDGResponseBodyData struct {
+	Message *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *CopySDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CopySDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGResponseBodyData) SetMessage(v string) *CopySDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *CopySDGResponseBodyData) SetResult(v *CopySDGResponseBodyDataResult) *CopySDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *CopySDGResponseBodyData) SetSuccess(v bool) *CopySDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type CopySDGResponseBodyDataResult struct {
+	FailedCount  *int64                                      `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems  []*CopySDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	SuccessCount *int64                                      `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s CopySDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGResponseBodyDataResult) SetFailedCount(v int64) *CopySDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *CopySDGResponseBodyDataResult) SetFailedItems(v []*CopySDGResponseBodyDataResultFailedItems) *CopySDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *CopySDGResponseBodyDataResult) SetSuccessCount(v int64) *CopySDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type CopySDGResponseBodyDataResultFailedItems struct {
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s CopySDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGResponseBodyDataResultFailedItems) SetDestinationRegionId(v string) *CopySDGResponseBodyDataResultFailedItems {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *CopySDGResponseBodyDataResultFailedItems) SetErrorMessage(v string) *CopySDGResponseBodyDataResultFailedItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+type CopySDGResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopySDGResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopySDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopySDGResponse) SetHeaders(v map[string]*string) *CopySDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopySDGResponse) SetStatusCode(v int32) *CopySDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopySDGResponse) SetBody(v *CopySDGResponseBody) *CopySDGResponse {
+	s.Body = v
+	return s
+}
+
+type CopySnapshotRequest struct {
+	// The destination nodes.
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	DestinationSnapshotDescription *string `json:"DestinationSnapshotDescription,omitempty" xml:"DestinationSnapshotDescription,omitempty"`
+	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
+	// The ID of the source snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s CopySnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotRequest) SetDestinationRegionIds(v []*string) *CopySnapshotRequest {
+	s.DestinationRegionIds = v
+	return s
+}
+
+func (s *CopySnapshotRequest) SetDestinationSnapshotDescription(v string) *CopySnapshotRequest {
+	s.DestinationSnapshotDescription = &v
+	return s
+}
+
+func (s *CopySnapshotRequest) SetDestinationSnapshotName(v string) *CopySnapshotRequest {
+	s.DestinationSnapshotName = &v
+	return s
+}
+
+func (s *CopySnapshotRequest) SetSnapshotId(v string) *CopySnapshotRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type CopySnapshotShrinkRequest struct {
+	// The destination nodes.
+	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
+	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	DestinationSnapshotDescription *string `json:"DestinationSnapshotDescription,omitempty" xml:"DestinationSnapshotDescription,omitempty"`
+	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	DestinationSnapshotName *string `json:"DestinationSnapshotName,omitempty" xml:"DestinationSnapshotName,omitempty"`
+	// The ID of the source snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s CopySnapshotShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotShrinkRequest) SetDestinationRegionIdsShrink(v string) *CopySnapshotShrinkRequest {
+	s.DestinationRegionIdsShrink = &v
+	return s
+}
+
+func (s *CopySnapshotShrinkRequest) SetDestinationSnapshotDescription(v string) *CopySnapshotShrinkRequest {
+	s.DestinationSnapshotDescription = &v
+	return s
+}
+
+func (s *CopySnapshotShrinkRequest) SetDestinationSnapshotName(v string) *CopySnapshotShrinkRequest {
+	s.DestinationSnapshotName = &v
+	return s
+}
+
+func (s *CopySnapshotShrinkRequest) SetSnapshotId(v string) *CopySnapshotShrinkRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type CopySnapshotResponseBody struct {
+	// The list of created snapshots.
+	AllocationId []*CopySnapshotResponseBodyAllocationId `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	// Success status code.
+	//
+	// *   **PartSuccess**: partially succeeded.
+	// *   **AllSuccess**: all succeeded.
+	BizStatusCode *string `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of nodes that are not created.
+	UnAllocationId []*CopySnapshotResponseBodyUnAllocationId `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
+}
+
+func (s CopySnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotResponseBody) SetAllocationId(v []*CopySnapshotResponseBodyAllocationId) *CopySnapshotResponseBody {
+	s.AllocationId = v
+	return s
+}
+
+func (s *CopySnapshotResponseBody) SetBizStatusCode(v string) *CopySnapshotResponseBody {
+	s.BizStatusCode = &v
+	return s
+}
+
+func (s *CopySnapshotResponseBody) SetRequestId(v string) *CopySnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CopySnapshotResponseBody) SetUnAllocationId(v []*CopySnapshotResponseBodyUnAllocationId) *CopySnapshotResponseBody {
+	s.UnAllocationId = v
+	return s
+}
+
+type CopySnapshotResponseBodyAllocationId struct {
+	// The ID of the node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// An array of instance IDs.
+	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+}
+
+func (s CopySnapshotResponseBodyAllocationId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotResponseBodyAllocationId) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotResponseBodyAllocationId) SetEnsRegionId(v string) *CopySnapshotResponseBodyAllocationId {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CopySnapshotResponseBodyAllocationId) SetInstanceId(v []*string) *CopySnapshotResponseBodyAllocationId {
+	s.InstanceId = v
+	return s
+}
+
+type CopySnapshotResponseBodyUnAllocationId struct {
+	// The ID of the node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+}
+
+func (s CopySnapshotResponseBodyUnAllocationId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotResponseBodyUnAllocationId) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotResponseBodyUnAllocationId) SetEnsRegionId(v string) *CopySnapshotResponseBodyUnAllocationId {
+	s.EnsRegionId = &v
+	return s
+}
+
+type CopySnapshotResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopySnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopySnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopySnapshotResponse) SetHeaders(v map[string]*string) *CopySnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopySnapshotResponse) SetStatusCode(v int32) *CopySnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopySnapshotResponse) SetBody(v *CopySnapshotResponseBody) *CopySnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type CreateARMServerInstancesRequest struct {
-	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoRenew    *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Frequency    *int32  `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The number of instances to create. Valid values: **1** to **100**.
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto-renewal for the subscription. Valid values:
+	//
+	// *   true
+	// *   false (default)
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Specifies whether to use vouchers. Default values: true. Valid values:
+	//
+	// - true
+	//
+	// - false
+	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The refresh rate. Unit: Hz. Valid values: 30 and 60.
+	Frequency *int32 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The specification of the Android in Container (AIC) instance. Valid values:
+	//
+	// *   aic.cf53r.c1.np
+	// *   aic.cf53r.c2.np
+	// *   aic.cf53r.c3.np
+	// *   aic.cf53r.c4.np
+	// *   aic.cf53r.c5.np
+	// *   aic.cf53r.c6.np
+	// *   aic.cf53r.c7.np
+	// *   aic.cf53r.c8.np
+	// *   ens.a6c2
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KeyPairName  *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	NameSpace    *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	PayType      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period       *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit   *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Resolution   *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	ServerName   *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
-	ServerType   *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// The name of the key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The name of the namespace.
+	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
+	// The billing method. Set the value to **PrePaid**. PrePaid specifies the subscription billing method.
+	//
+	// >  Only PrePaid is supported.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The subscription duration of the instance.
+	//
+	// *   If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// *   If you set PeriodUnit to Day, you can set Period only to 3.
+	// *   If you set PeriodUnit to Month, you can set Period to a value within the range of \[1,9], or set the value to 12.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration.
+	//
+	// *   If you leave PeriodUnit empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// *   If you set PeriodUnit to Day, you can set Period only to 3.
+	// *   If you set PeriodUnit to Month, you can set Period to a value within the range of \[1,9], or set the value to 12.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The resolution. Valid values:
+	//
+	// *   1920\*1080
+	// *   1280\*720
+	// *   1080\*1920
+	// *   720\*1280
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The name of the service.
+	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	// The specification of the ARM server. Valid values:
+	//
+	// *   cas.cf53r
+	// *   cas.cf52r
+	// *   cas.cf52m1r
+	// *   cas.tg52g2
+	// *   ens.afq-c2m3i.medium
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 }
 
 func (s CreateARMServerInstancesRequest) String() string {
@@ -1669,6 +2250,11 @@ func (s *CreateARMServerInstancesRequest) SetAmount(v int32) *CreateARMServerIns
 
 func (s *CreateARMServerInstancesRequest) SetAutoRenew(v bool) *CreateARMServerInstancesRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetAutoUseCoupon(v bool) *CreateARMServerInstancesRequest {
+	s.AutoUseCoupon = &v
 	return s
 }
 
@@ -1733,9 +2319,12 @@ func (s *CreateARMServerInstancesRequest) SetServerType(v string) *CreateARMServ
 }
 
 type CreateARMServerInstancesResponseBody struct {
+	// The IDs of instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateARMServerInstancesResponseBody) String() string {
@@ -1791,8 +2380,15 @@ func (s *CreateARMServerInstancesResponse) SetBody(v *CreateARMServerInstancesRe
 }
 
 type CreateApplicationRequest struct {
+	// The edge application template. The value must be a JSON string that contains the following information:
+	//
+	// *   Basic information such as the name of the application
+	// *   Information such as resource specifications and network security configurations
+	// *   Service specifications
+	// *   Required resources
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout period for asynchronous processing. Unit: seconds. Default value: 1800.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -1814,7 +2410,9 @@ func (s *CreateApplicationRequest) SetTimeout(v int32) *CreateApplicationRequest
 }
 
 type CreateApplicationResponseBody struct {
-	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. This is the unique identifier of the edge application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1866,9 +2464,23 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 }
 
 type CreateClassicNetworkRequest struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The CIDR block of the network. You can use one of the following CIDR blocks or their subnets as the CIDR block of the network:
+	//
+	// *   10.0.0.0/8 (default)
+	// *   172.16.0.0/12
+	// *   192.168.0.0/16
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the listener. The description is **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the network. The name must meet the following requirements:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 }
 
@@ -1901,8 +2513,9 @@ func (s *CreateClassicNetworkRequest) SetNetworkName(v string) *CreateClassicNet
 }
 
 type CreateClassicNetworkResponseBody struct {
+	// The ID of the network.
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1954,11 +2567,40 @@ func (s *CreateClassicNetworkResponse) SetBody(v *CreateClassicNetworkResponseBo
 }
 
 type CreateDiskRequest struct {
-	Category           *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The category of the disk. Valid values:
+	//
+	// *   cloud_efficiency: ultra disk.
+	// *   cloud_ssd: all-flash disk.
+	// *   local_hdd: local HDD.
+	// *   local_ssd: local SSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// Specifies whether to encrypt the new system disk. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default): no
+	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   PrePaid: subscription.
+	// *   PostPaid: pay-as-you-go.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Size               *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The ID of the Key Management Service (KMS) key that is used by the cloud disk.
+	//
+	// >  If you set the **Encrypted** parameter to **true**, the default service key is used when the **KMSKeyId** parameter is empty.
+	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// The size of the disk. Unit: GiB.
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the snapshot that you want to use to create the disk.
+	//
+	// The following limits apply to the **SnapshotId** and **Size** parameters:
+	//
+	// *   If the size of the snapshot specified by **SnapshotId** is greater than the specified **Size** value, the size of the created disk is equal to the specified snapshot size.
+	// *   If the size of the snapshot specified by **SnapshotId** is smaller than the specified **Size** value, the size of the created disk is equal to the specified **Size** value.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s CreateDiskRequest) String() string {
@@ -1974,6 +2616,16 @@ func (s *CreateDiskRequest) SetCategory(v string) *CreateDiskRequest {
 	return s
 }
 
+func (s *CreateDiskRequest) SetDiskName(v string) *CreateDiskRequest {
+	s.DiskName = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetEncrypted(v bool) *CreateDiskRequest {
+	s.Encrypted = &v
+	return s
+}
+
 func (s *CreateDiskRequest) SetEnsRegionId(v string) *CreateDiskRequest {
 	s.EnsRegionId = &v
 	return s
@@ -1981,6 +2633,11 @@ func (s *CreateDiskRequest) SetEnsRegionId(v string) *CreateDiskRequest {
 
 func (s *CreateDiskRequest) SetInstanceChargeType(v string) *CreateDiskRequest {
 	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetKMSKeyId(v string) *CreateDiskRequest {
+	s.KMSKeyId = &v
 	return s
 }
 
@@ -1995,9 +2652,14 @@ func (s *CreateDiskRequest) SetSnapshotId(v string) *CreateDiskRequest {
 }
 
 type CreateDiskResponseBody struct {
+	// IDs of instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order. Multiple IDs are separated by commas (,).
+	//
+	// >  This parameter is not returned for the pay-as-you-go billing method.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDiskResponseBody) String() string {
@@ -2053,12 +2715,32 @@ func (s *CreateDiskResponse) SetBody(v *CreateDiskResponseBody) *CreateDiskRespo
 }
 
 type CreateEipInstanceRequest struct {
-	Bandwidth          *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The peak bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of elastic IP address (EIP).
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The billing method of the EIP. Valid values:
+	//
+	// *   **PrePaid**: subscription
+	// *   **PostPaid** (default): pay-as-you-go on a monthly basis
+	//
+	// >  If you set **InstanceChargeType** to **PostPaid**, you cannot set **InternetChargeType** to **PayByBandwidth**.
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The metering method of the EIP. Valid values:
+	//
+	// *   **PayByBandwidth** (default): pay-by-bandwidth
+	// *   **95BandwidthByMonth**: pay-by-monthly-95th-percentile-bandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Isp                *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Internet service provider. Valid values:
+	//
+	// *   **cmcc**: China Mobile
+	// *   **unicom**: China Unicom
+	// *   **telecom**: China Telecom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The name of the EIP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreateEipInstanceRequest) String() string {
@@ -2071,6 +2753,11 @@ func (s CreateEipInstanceRequest) GoString() string {
 
 func (s *CreateEipInstanceRequest) SetBandwidth(v int64) *CreateEipInstanceRequest {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *CreateEipInstanceRequest) SetDescription(v string) *CreateEipInstanceRequest {
+	s.Description = &v
 	return s
 }
 
@@ -2100,8 +2787,10 @@ func (s *CreateEipInstanceRequest) SetName(v string) *CreateEipInstanceRequest {
 }
 
 type CreateEipInstanceResponseBody struct {
+	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateEipInstanceResponseBody) String() string {
@@ -2152,12 +2841,24 @@ func (s *CreateEipInstanceResponse) SetBody(v *CreateEipInstanceResponseBody) *C
 }
 
 type CreateEnsRouteEntryRequest struct {
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the custom route entry.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination CIDR block of the custom route entry. Make sure that the destination CIDR block meets the following requirements:
+	//
+	// *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
+	// *   The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+	// *   0.0.0.0/0 indicates the default CIDR block.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	RouteEntryName       *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The ID of the next hop of the custom route entry.
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The type of next hop of the custom route entry. Valid values:
+	//
+	// *   Instance (default): an ENS instance.
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The name of the custom route entry that you want to add. The name must be 1 to 128 characters in length. It cannot start with http:// or https://.
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// The ID of the route table to which you want to add a custom route entry.
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
 
 func (s CreateEnsRouteEntryRequest) String() string {
@@ -2199,8 +2900,9 @@ func (s *CreateEnsRouteEntryRequest) SetRouteTableId(v string) *CreateEnsRouteEn
 }
 
 type CreateEnsRouteEntryResponseBody struct {
-	// Id of the request
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the route.
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 }
 
@@ -2629,6 +3331,7 @@ func (s *CreateEpnInstanceResponse) SetBody(v *CreateEpnInstanceResponseBody) *C
 }
 
 type CreateFileSystemRequest struct {
+	// The information about the orders.
 	OrderDetails []*CreateFileSystemRequestOrderDetails `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty" type:"Repeated"`
 }
 
@@ -2646,15 +3349,25 @@ func (s *CreateFileSystemRequest) SetOrderDetails(v []*CreateFileSystemRequestOr
 }
 
 type CreateFileSystemRequestOrderDetails struct {
-	ChargeType        *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemName    *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	// The billing method of the NAS file system. Valid values:
+	//
+	// *   PrePaid: subscription. This billing method is not supported.
+	// *   PostPaid: pay-as-you-go.
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the file system.
+	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	// The name of the mount target.
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	NetworkId         *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// BUY。
-	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the VPC.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The type of the order.
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The storage protocol. Valid values: nsf and smb.
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	StorgeType   *string `json:"StorgeType,omitempty" xml:"StorgeType,omitempty"`
+	// The type of the storage. Set the value to capacity.
+	StorgeType *string `json:"StorgeType,omitempty" xml:"StorgeType,omitempty"`
 }
 
 func (s CreateFileSystemRequestOrderDetails) String() string {
@@ -2706,6 +3419,7 @@ func (s *CreateFileSystemRequestOrderDetails) SetStorgeType(v string) *CreateFil
 }
 
 type CreateFileSystemShrinkRequest struct {
+	// The information about the orders.
 	OrderDetailsShrink *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
 }
 
@@ -2723,9 +3437,16 @@ func (s *CreateFileSystemShrinkRequest) SetOrderDetailsShrink(v string) *CreateF
 }
 
 type CreateFileSystemResponseBody struct {
-	AllocationId   []*string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
-	BizStatusCode  *string   `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the file system that was created.
+	AllocationId []*string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	// The status code for successful operations. Valid values:
+	//
+	// *   PartSuccess: The operation is partially successful.
+	// *   AllSuccess: The operation is successful.
+	BizStatusCode *string `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the file system that failed to be created.
 	UnAllocationId []*string `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
 }
 
@@ -2787,14 +3508,34 @@ func (s *CreateFileSystemResponse) SetBody(v *CreateFileSystemResponseBody) *Cre
 }
 
 type CreateForwardEntryRequest struct {
-	ExternalIp        *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalPort      *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ForwardEntryName  *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	HealthCheckPort   *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	InternalIp        *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort      *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol        *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatGatewayId      *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The elastic IP address (EIP) that is used to access the Internet.
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port or port range that is used for port forwarding.
+	//
+	// *   Valid values: 1 to 65535.
+	// *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	// *   If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified must be the same for both parameters. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// The name of the DNAT entry. The name must be 2 to 128 characters in length. The name cannot start with `http://` or `https://`.
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	// The probe port. The port must be within the internal port range. By default, this parameter is left empty.
+	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port or port range that is used for port forwarding.
+	//
+	// *   Valid values: 1 to 65535.
+	// *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **TCP**: forwards TCP packets.
+	// *   **UDP**: forwards UDP packets.
+	// *   **Any** (default): forwards all packets.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The ID of the Network Address Translation (NAT) gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The secondary EIP that is used to access the Internet. You need to select a secondary EIP that is bound to NAT. After the DNAT entry is created, the secondary EIP takes effect.
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
 }
 
@@ -2852,8 +3593,9 @@ func (s *CreateForwardEntryRequest) SetStandbyExternalIp(v string) *CreateForwar
 }
 
 type CreateForwardEntryResponseBody struct {
+	// The ID of the DNAT entry.
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2905,10 +3647,18 @@ func (s *CreateForwardEntryResponse) SetBody(v *CreateForwardEntryResponseBody) 
 }
 
 type CreateImageRequest struct {
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: false. Valid values:
+	//
+	// *   true: The image is released when the instance is released.
+	// *   false: The image is retained when the instance is released.
+	// *   If you leave this parameter empty, the default value is used.
 	DeleteAfterImageUpload *string `json:"DeleteAfterImageUpload,omitempty" xml:"DeleteAfterImageUpload,omitempty"`
-	ImageName              *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SnapshotId             *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s CreateImageRequest) String() string {
@@ -2940,8 +3690,11 @@ func (s *CreateImageRequest) SetSnapshotId(v string) *CreateImageRequest {
 }
 
 type CreateImageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2998,29 +3751,85 @@ func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageRe
 }
 
 type CreateInstanceRequest struct {
-	DataDisk               []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk             *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	AutoRenew              *string                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod        *string                          `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	EnsRegionId            *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HostName               *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceName           *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType           *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType     *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpType                 *string                          `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	KeyPairName            *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerId                *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Password               *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordInherit        *bool                            `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	PaymentType            *string                          `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Period                 *string                          `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress       *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification *bool                            `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	Quantity               *string                          `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	UniqueSuffix           *bool                            `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	UserData               *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VSwitchId              *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DataDisk   []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// Specifies whether to enable the auto-renewal feature. Valid values: **True** and **False**. Default value: False.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period for the instance. This parameter is required when the **AutoRenew** parameter is set to **True**. Valid values: **1** to **12**. Unit: months.
+	AutoRenewPeriod *string `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// The region ID.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The hostname of the Elastic Compute Service (ECS) instance. General naming rules: The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
+	//
+	// Naming rules for specific instances:
+	//
+	// *   For Windows instances, the hostname must be **2** to **15** characters in length and cannot contain periods (.) or contain only digits. The hostname cannot contain periods (.) or contain only digits.
+	// *   For instances that run one of other operating systems such as Linux, the hostname must be **2** to **64** characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the image file that you select when creating the instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the instance. The name must conform to the following naming conventions:
+	//
+	// *   The name must be **2** to **128** characters in length.
+	// *   It must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+	//
+	// If you do not specify this parameter, the instance ID is used as the instance name by default.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the instance.
+	//
+	// For more information, see [](~~66124~~).
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// This parameter is required if you create the instance for the first time. The existing billing method is used by default if you have created an instance. Valid values:
+	//
+	// *   **BandwidthByDay**: Pay by daily peak bandwidth.
+	// *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The type of IP address. Valid values:
+	//
+	// *   **ipv4**: IPv4. This is the default value.
+	// *   **ipv6**: IPv6.
+	// *   **ipv4Andipv6**: IPv4 and IPv6.
+	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The name of the key pair. You can specify only one name.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password of the instance.
+	//
+	// The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: ``()`~!@#$%^&*-_+=|{}[]:;\"<>,.?/``
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether to use the preset password of the image. Valid values:
+	//
+	// *   **true**: The password preset in the image is used, and the **Password** parameter must be null. For secure access, make sure that the selected image has a password configured.
+	// *   **false: does not use the password preset in the image.
+	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	// The billing method of the instance. The value is set to Subscription.
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The subscription period of the instance. Valid values: **1** to **9** and **12**. Unit: months.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The internal IP address. If this parameter is specified, you must specify the vSwitch ID. The vSwitch must be created first. Otherwise, an error is returned.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// Specifies whether a public IP address can be assigned to the specified instance. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	PublicIpIdentification *bool `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	// The number of instances.
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// Specifies whether to automatically append sequential suffixes to the hostnames specified by the **HostName** parameter and instance names specified by the **InstanceName** parameter. The sequential numbers in the suffix range from **001** to **999**.
+	//
+	// Examples: **LocalHost001** and **LocalHost002**, and **MyInstance001** and **MyInstance002**.
+	//
+	// Default value: **false**.
+	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	// Custom data. The data starts with `#!`. The data can be at most 256 characters in length and 16 KB in size. Only custom scripts are supported and cannot be rendered by InstanceMetaData.
+	//
+	// You can specify custom data. The data is encoded in Base64. The system does not encrypt your custom data when API requests are initiated. We recommend that you do not pass in confidential information such as passwords and private keys in plaintext. If you want to provide sensitive data such as passwords and private keys, encrypt the data and then encode it in Base64. The data is decrypted on the instance in the way it is encrypted.
+	//
+	// For more information, see [User data formats](https://cloudinit.readthedocs.io/en/latest/topics/format.html).
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -3147,6 +3956,7 @@ func (s *CreateInstanceRequest) SetVSwitchId(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceRequestDataDisk struct {
+	// The capacity of the first data disk. Unit: GiB. The capacity is at least 20 GiB and is a multiple of 10 GiB.
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -3164,6 +3974,7 @@ func (s *CreateInstanceRequestDataDisk) SetSize(v string) *CreateInstanceRequest
 }
 
 type CreateInstanceRequestSystemDisk struct {
+	// The size of the system disk. Unit: GiB. Valid values: **20** and **40**. The value cannot be smaller than the size of the image and must be a multiple of 10 GiB.
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -3181,9 +3992,14 @@ func (s *CreateInstanceRequestSystemDisk) SetSize(v string) *CreateInstanceReque
 }
 
 type CreateInstanceResponseBody struct {
-	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The return code. A value of 0 indicates that the request is successful.
+	//
+	// >  If you call this operation by using SDKs, the return value is of the integer type. If you call this operation by using common methods or HTTP requests, the return value is of the string type.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The IDs of instances.
 	InstanceIds *CreateInstanceResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -3342,8 +4158,13 @@ func (s *CreateInstanceActiveOpsTaskResponse) SetBody(v *CreateInstanceActiveOps
 }
 
 type CreateKeyPairRequest struct {
+	// The name of the key pair. The name must conform to the following naming conventions:
+	//
+	// *   The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	// *   It must start with a letter but cannot start with `http://` or `https://`.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateKeyPairRequest) String() string {
@@ -3365,11 +4186,16 @@ func (s *CreateKeyPairRequest) SetVersion(v string) *CreateKeyPairRequest {
 }
 
 type CreateKeyPairResponseBody struct {
+	// The fingerprint of the key pair. The message-digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairId          *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	PrivateKeyBody     *string `json:"PrivateKeyBody,omitempty" xml:"PrivateKeyBody,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the SSH key pair.
+	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
+	// The name of the key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The private key of the key pair. The private key is encoded with PEM in the PKCS#8 format.
+	PrivateKeyBody *string `json:"PrivateKeyBody,omitempty" xml:"PrivateKeyBody,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateKeyPairResponseBody) String() string {
@@ -3435,12 +4261,20 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreateLoadBalancerRequest struct {
-	EnsRegionId      *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the ELB instance. The name must be 1 to 80 characters in length. If you leave this parameter empty, the system randomly allocates a name as the value of this parameter.
+	//
+	// >  The value cannot start with `http://` or `https://`.
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specification of the ELB instance.
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	NetworkId        *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	PayType          *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The network ID of the created ELB instance.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The billing method of the instance. Valid value: PostPaid. PostPaid specifies the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the vSwitch to which the internal-facing ELB instance belongs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -3482,11 +4316,16 @@ func (s *CreateLoadBalancerRequest) SetVSwitchId(v string) *CreateLoadBalancerRe
 }
 
 type CreateLoadBalancerResponseBody struct {
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	NetworkId        *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vSwitch to which the ELB instance belongs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateLoadBalancerResponseBody) String() string {
@@ -3552,25 +4391,104 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	XForwardedFor          *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used to redirect HTTP requests to HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The backend port that is used for health checks. Valid values: **1** to **65535**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that you want to use for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values:
+	//
+	// *   **head** (default)
+	// *   **get**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with `/` and contain characters other than `/`.
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When a request is received, ELB creates a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of a request. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ALB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPListenerRequest) String() string {
@@ -3677,6 +4595,7 @@ func (s *CreateLoadBalancerHTTPListenerRequest) SetXForwardedFor(v string) *Crea
 }
 
 type CreateLoadBalancerHTTPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3723,28 +4642,114 @@ func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHT
 }
 
 type CreateLoadBalancerHTTPSListenerRequest struct {
-	Cookie                 *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout          *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	StickySessionType      *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The cookie that is configured on the server. The cookie must be **1** to **200** characters in length and contain only ASCII characters and digits.
+	//
+	// >  This parameter is required if you set StickySession to on and StickySessionType to server.
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// The timeout period of a cookie. Valid values: **1** to **86400**. Unit: seconds.
+	//
+	// >  This parameter is required if you set StickySession to on and StickySessionType to insert.
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used to redirect HTTP requests to HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that you want to use for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used by HTTP listeners. Valid values:
+	//
+	// *   **head** (default): requests the head of the page.
+	// *   **get**: requests the specified part of the page and returns the entity body.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The method that is used to handle a cookie. Valid values:
+	//
+	// *   **insert**: inserts a cookie. ELB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ELB carry this cookie, and ELB determines the destination servers of the requests based on the cookies.
+	// *   **server**: rewrites a cookie. When ELB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
+	//
+	// >  This parameter is required if you set StickySession to on.
+	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerHTTPSListenerRequest) String() string {
@@ -3866,6 +4871,7 @@ func (s *CreateLoadBalancerHTTPSListenerRequest) SetUnhealthyThreshold(v int32) 
 }
 
 type CreateLoadBalancerHTTPSListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3912,23 +4918,72 @@ func (s *CreateLoadBalancerHTTPSListenerResponse) SetBody(v *CreateLoadBalancerH
 }
 
 type CreateLoadBalancerTCPListenerRequest struct {
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The timeout period of a connection. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified for BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that you want to use for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The type of health checks. Valid values:
+	//
+	// *   **tcp** (default)
+	// *   **http**
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >  The URL must start with `/` and contain characters other than `/`.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of session persistence.
+	//
+	// *   Default value: 0. If the default value is used, the system disables session persistence.
+	// *   Valid values: **0** to **3600**.
+	// *   Unit: seconds.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerTCPListenerRequest) String() string {
@@ -4025,6 +5080,7 @@ func (s *CreateLoadBalancerTCPListenerRequest) SetUnhealthyThreshold(v int32) *C
 }
 
 type CreateLoadBalancerTCPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4071,19 +5127,50 @@ func (s *CreateLoadBalancerTCPListenerResponse) SetBody(v *CreateLoadBalancerTCP
 }
 
 type CreateLoadBalancerUDPListenerRequest struct {
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Default value: **2**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s CreateLoadBalancerUDPListenerRequest) String() string {
@@ -4160,6 +5247,7 @@ func (s *CreateLoadBalancerUDPListenerRequest) SetUnhealthyThreshold(v int32) *C
 }
 
 type CreateLoadBalancerUDPListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4206,10 +5294,14 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 }
 
 type CreateMountTargetRequest struct {
-	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The name of the mount target.
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	NetWorkId       *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	// The ID of the network.
+	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
 }
 
 func (s CreateMountTargetRequest) String() string {
@@ -4241,8 +5333,15 @@ func (s *CreateMountTargetRequest) SetNetWorkId(v string) *CreateMountTargetRequ
 }
 
 type CreateMountTargetResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the mount target. Valid values:
+	//
+	// *   active
+	// *   inactive
+	// *   pending
+	// *   deleting
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateMountTargetResponseBody) String() string {
@@ -4293,11 +5392,16 @@ func (s *CreateMountTargetResponse) SetBody(v *CreateMountTargetResponseBody) *C
 }
 
 type CreateNatGatewayRequest struct {
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The instance type of the NAT gateway. Set the value to **enat.default**.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the NAT gateway. The name must be 1 to 128 characters in length. The name cannot start with `http://` or `https://`.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateNatGatewayRequest) String() string {
@@ -4334,8 +5438,10 @@ func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayReques
 }
 
 type CreateNatGatewayResponseBody struct {
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNatGatewayResponseBody) String() string {
@@ -4386,9 +5492,23 @@ func (s *CreateNatGatewayResponse) SetBody(v *CreateNatGatewayResponseBody) *Cre
 }
 
 type CreateNetworkRequest struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The CIDR block of the network. You can use one of the following CIDR blocks or their subnets as the CIDR block of the network:
+	//
+	// *   10.0.0.0/8 (default)
+	// *   172.16.0.0/12
+	// *   192.168.0.0/16
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the network.
+	//
+	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the network. The name must meet the following requirements:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 }
 
@@ -4421,7 +5541,9 @@ func (s *CreateNetworkRequest) SetNetworkName(v string) *CreateNetworkRequest {
 }
 
 type CreateNetworkResponseBody struct {
+	// The ID of the network.
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4473,7 +5595,13 @@ func (s *CreateNetworkResponse) SetBody(v *CreateNetworkResponseBody) *CreateNet
 }
 
 type CreateNetworkAclRequest struct {
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the network ACL.
+	//
+	// The description must be 1 to 256 characters in length. The description cannot start with \*\*http:// **or** https://\*\*.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the network ACL.
+	//
+	// The name must be 1 to 128 characters in length. The name cannot start with \*\*http:// **or** https://\*\*.
 	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
 }
 
@@ -4496,8 +5624,10 @@ func (s *CreateNetworkAclRequest) SetNetworkAclName(v string) *CreateNetworkAclR
 }
 
 type CreateNetworkAclResponseBody struct {
+	// The ID of the network ACL.
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNetworkAclResponseBody) String() string {
@@ -4548,15 +5678,42 @@ func (s *CreateNetworkAclResponse) SetBody(v *CreateNetworkAclResponseBody) *Cre
 }
 
 type CreateNetworkAclEntryRequest struct {
-	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Direction           *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The source CIDR block.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the network ACL.
+	//
+	// The description must be 1 to 256 characters in length. The description cannot start with \*\*http:// **or** https://\*\*.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the ACL rule controls inbound or outbound access requests. Valid values:
+	//
+	// *   **ingress**
+	// *   **egress**
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The name of the rule.
+	//
+	// The name must be 1 to 128 characters in length. The name cannot start with \*\*http:// **or** https://\*\*.
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	NetworkAclId        *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the network ACL.
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The action that is performed on network traffic that matches the rule. Valid values:
+	//
+	// *   **accept**: allows network traffic.
+	// *   **drop**: blocks network traffic.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The port range.
+	//
+	// *   If you set **Protocol** to **all** or **icmp**, set this parameter to \*\*-1/-1\*\*. \*\*-1/-1\*\* specifies all ports.
+	// *   If you set **Protocol** to **tcp** or **udp**, the port range must be in the following format: **1/200** or **80/80**. 1/200 specifies port 1 to port 200 and 80/80 specifies port 80. Valid values for a port: **1 to 65535**.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **icmp**: ICMP
+	// *   **tcp**: TCP
+	// *   **udp**: UDP
+	// *   **all**: all protocols
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s CreateNetworkAclEntryRequest) String() string {
@@ -4613,8 +5770,10 @@ func (s *CreateNetworkAclEntryRequest) SetProtocol(v string) *CreateNetworkAclEn
 }
 
 type CreateNetworkAclEntryResponseBody struct {
+	// The ID of the network ACL.
 	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateNetworkAclEntryResponseBody) String() string {
@@ -4665,9 +5824,10 @@ func (s *CreateNetworkAclEntryResponse) SetBody(v *CreateNetworkAclEntryResponse
 }
 
 type CreateSecurityGroupRequest struct {
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the security group. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the security group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateSecurityGroupRequest) String() string {
@@ -4688,13 +5848,10 @@ func (s *CreateSecurityGroupRequest) SetSecurityGroupName(v string) *CreateSecur
 	return s
 }
 
-func (s *CreateSecurityGroupRequest) SetVersion(v string) *CreateSecurityGroupRequest {
-	s.Version = &v
-	return s
-}
-
 type CreateSecurityGroupResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -4745,14 +5902,129 @@ func (s *CreateSecurityGroupResponse) SetBody(v *CreateSecurityGroupResponseBody
 	return s
 }
 
+type CreateSnapshotRequest struct {
+	// The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	//
+	// By default, this parameter is left empty.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the cloud disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+}
+
+func (s CreateSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotRequest) SetDescription(v string) *CreateSnapshotRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetDiskId(v string) *CreateSnapshotRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetEnsRegionId(v string) *CreateSnapshotRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetSnapshotName(v string) *CreateSnapshotRequest {
+	s.SnapshotName = &v
+	return s
+}
+
+type CreateSnapshotResponseBody struct {
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the snapshot.
+	SnapShotId []*string `json:"SnapShotId,omitempty" xml:"SnapShotId,omitempty" type:"Repeated"`
+}
+
+func (s CreateSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponseBody) SetOrderId(v string) *CreateSnapshotResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetRequestId(v string) *CreateSnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetSnapShotId(v []*string) *CreateSnapshotResponseBody {
+	s.SnapShotId = v
+	return s
+}
+
+type CreateSnapshotResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSnapshotResponse) SetStatusCode(v int32) *CreateSnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSnatEntryRequest struct {
-	NatGatewayId    *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	SnatEntryName   *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	SnatIp          *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
-	SourceCIDR      *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The ID of the Network Address Translation (NAT) gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The name of the SNAT entry. The name must be 1 to 128 characters in length. The name cannot start with `http://` or `https://`.
+	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	// The elastic IP address (EIP) in the SNAT entry. Separate multiple EIPs with commas (,).
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The CIDR block. You can specify the CIDR block of a network, a vSwitch, or an instance. You can also specify a custom CIDR block. All instances within the CIDR block can access the Internet or external networks by using SNAT.
+	//
+	// >  If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
+	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The ID of the network. This parameter specifies that all ENS instances in the network can use the SNAT entry to access the Internet.
+	//
+	// >  If you specify **SourceNetworkId** and **SourceVSwitchId** or **SourceCIDR**, **SourceNetworkId** does not take effect. The value that you specified for **SourceCIDR** takes precedence. Priority: **SourceCIDR** > **SourceVSwitchId** > **SourceNetworkId**.
 	SourceNetworkId *string `json:"SourceNetworkId,omitempty" xml:"SourceNetworkId,omitempty"`
+	// The ID of the vSwitch that you need to access over the Internet. This parameter specifies that Edge Node Service (ENS) instances in the vSwitch can use the SNAT entry to access the Internet.
+	//
+	// >  If you specify **SourceVSwitchId** and **SourceCIDR**, **SourceVSwitchId** does not take effect. The value that you specified for **SourceCIDR** takes precedence.
 	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
-	StandbySnatIp   *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
+	// The secondary EIP in the SNAT entry. Separate multiple secondary EIPs with commas (,).
+	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
 }
 
 func (s CreateSnatEntryRequest) String() string {
@@ -4799,7 +6071,9 @@ func (s *CreateSnatEntryRequest) SetStandbySnatIp(v string) *CreateSnatEntryRequ
 }
 
 type CreateSnatEntryResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 }
 
@@ -4851,10 +6125,26 @@ func (s *CreateSnatEntryResponse) SetBody(v *CreateSnatEntryResponseBody) *Creat
 }
 
 type CreateVSwitchRequest struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The CIDR block of the vSwitch. Take note of the following limits:
+	//
+	// *   The subnet mask must be 16 to 29 bits in length.
+	// *   The CIDR block of the vSwitch must fall within the CIDR block of the VPC to which the vSwitch belongs.
+	// *   The CIDR block of the vSwitch cannot be the same as the destination CIDR block in a route entry of the VPC. However, it can be a subset of the destination CIDR block.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the vSwitch.
+	//
+	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the network to which the vSwitch that you want to create belongs.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The name of the vSwitch. The name must meet the following requirements:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	//
+	// Default value: null.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -4892,7 +6182,9 @@ func (s *CreateVSwitchRequest) SetVSwitchName(v string) *CreateVSwitchRequest {
 }
 
 type CreateVSwitchResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -4944,8 +6236,10 @@ func (s *CreateVSwitchResponse) SetBody(v *CreateVSwitchResponseBody) *CreateVSw
 }
 
 type DeleteApplicationRequest struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Timeout *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The ID of the application. To obtain the application ID, call the ListApplication operation.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The timeout period for the asynchronous release. Unit: seconds. Default value: 300.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s DeleteApplicationRequest) String() string {
@@ -4967,6 +6261,7 @@ func (s *DeleteApplicationRequest) SetTimeout(v int32) *DeleteApplicationRequest
 }
 
 type DeleteApplicationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5012,10 +6307,153 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 	return s
 }
 
+type DeleteBucketRequest struct {
+	// The name of the bucket that you want to delete. You can delete only one bucket at a time.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s DeleteBucketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketRequest) SetBucketName(v string) *DeleteBucketRequest {
+	s.BucketName = &v
+	return s
+}
+
+type DeleteBucketResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBucketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketResponseBody) SetRequestId(v string) *DeleteBucketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBucketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBucketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketResponse) SetHeaders(v map[string]*string) *DeleteBucketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBucketResponse) SetStatusCode(v int32) *DeleteBucketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBucketResponse) SetBody(v *DeleteBucketResponseBody) *DeleteBucketResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBucketLifecycleRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The ID of the rule. If this parameter is not specified, all rules are removed.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DeleteBucketLifecycleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketLifecycleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketLifecycleRequest) SetBucketName(v string) *DeleteBucketLifecycleRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DeleteBucketLifecycleRequest) SetRuleId(v string) *DeleteBucketLifecycleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DeleteBucketLifecycleResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBucketLifecycleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketLifecycleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketLifecycleResponseBody) SetRequestId(v string) *DeleteBucketLifecycleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBucketLifecycleResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBucketLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBucketLifecycleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBucketLifecycleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBucketLifecycleResponse) SetHeaders(v map[string]*string) *DeleteBucketLifecycleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBucketLifecycleResponse) SetStatusCode(v int32) *DeleteBucketLifecycleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBucketLifecycleResponse) SetBody(v *DeleteBucketLifecycleResponseBody) *DeleteBucketLifecycleResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDeviceInternetPortRequest struct {
+	// The ID of the instance. You can specify the ID of the server or container.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NatType    *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
+	//
+	// *   SNAT
+	// *   DNAT
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The ID of the rule.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s DeleteDeviceInternetPortRequest) String() string {
@@ -5042,8 +6480,10 @@ func (s *DeleteDeviceInternetPortRequest) SetRuleId(v string) *DeleteDeviceInter
 }
 
 type DeleteDeviceInternetPortResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleIds   []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of rules.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteDeviceInternetPortResponseBody) String() string {
@@ -5094,6 +6534,7 @@ func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortRe
 }
 
 type DeleteDiskRequest struct {
+	// The ID of the disk.
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 }
 
@@ -5111,7 +6552,9 @@ func (s *DeleteDiskRequest) SetDiskId(v string) *DeleteDiskRequest {
 }
 
 type DeleteDiskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5163,6 +6606,7 @@ func (s *DeleteDiskResponse) SetBody(v *DeleteDiskResponseBody) *DeleteDiskRespo
 }
 
 type DeleteEnsRouteEntryRequest struct {
+	// The ID of the route that you want to delete.
 	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
 }
 
@@ -5180,7 +6624,7 @@ func (s *DeleteEnsRouteEntryRequest) SetRouteEntryId(v string) *DeleteEnsRouteEn
 }
 
 type DeleteEnsRouteEntryResponseBody struct {
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5573,7 +7017,9 @@ func (s *DeleteEpnInstanceResponse) SetBody(v *DeleteEpnInstanceResponseBody) *D
 }
 
 type DeleteFileSystemRequest struct {
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system that you want to delete.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 }
 
@@ -5596,6 +7042,7 @@ func (s *DeleteFileSystemRequest) SetFileSystemId(v string) *DeleteFileSystemReq
 }
 
 type DeleteFileSystemResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5642,6 +7089,7 @@ func (s *DeleteFileSystemResponse) SetBody(v *DeleteFileSystemResponseBody) *Del
 }
 
 type DeleteForwardEntryRequest struct {
+	// The ID of the DNAT entry that you want to delete.
 	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
 }
 
@@ -5659,6 +7107,7 @@ func (s *DeleteForwardEntryRequest) SetForwardEntryId(v string) *DeleteForwardEn
 }
 
 type DeleteForwardEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5705,6 +7154,9 @@ func (s *DeleteForwardEntryResponse) SetBody(v *DeleteForwardEntryResponseBody) 
 }
 
 type DeleteImageRequest struct {
+	// The ID of the image. You can specify only one image ID.
+	//
+	// You can delete only custom images that you created.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 }
 
@@ -5722,7 +7174,9 @@ func (s *DeleteImageRequest) SetImageId(v string) *DeleteImageRequest {
 }
 
 type DeleteImageResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5774,8 +7228,14 @@ func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageRe
 }
 
 type DeleteKeyPairsRequest struct {
+	// The key pair name. The name must conform to the following naming conventions:
+	//
+	// *   The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	// *   It can contain letters, digits, colons (:), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// *   It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	//
+	// Before you delete a key pair, you can call the DescribeKeyPairs operation to query existing key pairs.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DeleteKeyPairsRequest) String() string {
@@ -5791,12 +7251,8 @@ func (s *DeleteKeyPairsRequest) SetKeyPairName(v string) *DeleteKeyPairsRequest 
 	return s
 }
 
-func (s *DeleteKeyPairsRequest) SetVersion(v string) *DeleteKeyPairsRequest {
-	s.Version = &v
-	return s
-}
-
 type DeleteKeyPairsResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5843,9 +7299,21 @@ func (s *DeleteKeyPairsResponse) SetBody(v *DeleteKeyPairsResponseBody) *DeleteK
 }
 
 type DeleteLoadBalancerListenerRequest struct {
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the ELB instance.
+	//
+	// >  This parameter is required if the same port is used by listeners that use different protocols.
+	//
+	// Valid values:
+	//
+	// *   tcp
+	// *   udp
+	// *   http
+	// *   https
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s DeleteLoadBalancerListenerRequest) String() string {
@@ -5872,6 +7340,7 @@ func (s *DeleteLoadBalancerListenerRequest) SetLoadBalancerId(v string) *DeleteL
 }
 
 type DeleteLoadBalancerListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5918,8 +7387,11 @@ func (s *DeleteLoadBalancerListenerResponse) SetBody(v *DeleteLoadBalancerListen
 }
 
 type DeleteMountTargetRequest struct {
-	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The name of the mount target.
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
 }
 
@@ -5947,6 +7419,7 @@ func (s *DeleteMountTargetRequest) SetMountTargetName(v string) *DeleteMountTarg
 }
 
 type DeleteMountTargetResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5993,6 +7466,7 @@ func (s *DeleteMountTargetResponse) SetBody(v *DeleteMountTargetResponseBody) *D
 }
 
 type DeleteNatGatewayRequest struct {
+	// The ID of the NAT gateway that you want to delete.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 }
 
@@ -6010,6 +7484,7 @@ func (s *DeleteNatGatewayRequest) SetNatGatewayId(v string) *DeleteNatGatewayReq
 }
 
 type DeleteNatGatewayResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6056,6 +7531,7 @@ func (s *DeleteNatGatewayResponse) SetBody(v *DeleteNatGatewayResponseBody) *Del
 }
 
 type DeleteNetworkRequest struct {
+	// The ID of the network.
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 }
 
@@ -6073,6 +7549,7 @@ func (s *DeleteNetworkRequest) SetNetworkId(v string) *DeleteNetworkRequest {
 }
 
 type DeleteNetworkResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6119,6 +7596,7 @@ func (s *DeleteNetworkResponse) SetBody(v *DeleteNetworkResponseBody) *DeleteNet
 }
 
 type DeleteNetworkAclRequest struct {
+	// The ID of the network ACL.
 	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
 }
 
@@ -6136,6 +7614,7 @@ func (s *DeleteNetworkAclRequest) SetNetworkAclId(v string) *DeleteNetworkAclReq
 }
 
 type DeleteNetworkAclResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6182,6 +7661,7 @@ func (s *DeleteNetworkAclResponse) SetBody(v *DeleteNetworkAclResponseBody) *Del
 }
 
 type DeleteNetworkAclEntryRequest struct {
+	// The ID of the network ACL for which you want to delete a rule.
 	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
 }
 
@@ -6199,6 +7679,7 @@ func (s *DeleteNetworkAclEntryRequest) SetNetworkAclEntryId(v string) *DeleteNet
 }
 
 type DeleteNetworkAclEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6244,9 +7725,83 @@ func (s *DeleteNetworkAclEntryResponse) SetBody(v *DeleteNetworkAclEntryResponse
 	return s
 }
 
+type DeleteObjectRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The name of the source file.
+	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+}
+
+func (s DeleteObjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObjectRequest) SetBucketName(v string) *DeleteObjectRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *DeleteObjectRequest) SetObjectKey(v string) *DeleteObjectRequest {
+	s.ObjectKey = &v
+	return s
+}
+
+type DeleteObjectResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteObjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObjectResponseBody) SetRequestId(v string) *DeleteObjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteObjectResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteObjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteObjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObjectResponse) SetHeaders(v map[string]*string) *DeleteObjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteObjectResponse) SetStatusCode(v int32) *DeleteObjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteObjectResponse) SetBody(v *DeleteObjectResponseBody) *DeleteObjectResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSecurityGroupRequest struct {
+	// The security group ID of the instance.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DeleteSecurityGroupRequest) String() string {
@@ -6268,6 +7823,7 @@ func (s *DeleteSecurityGroupRequest) SetVersion(v string) *DeleteSecurityGroupRe
 }
 
 type DeleteSecurityGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6313,7 +7869,73 @@ func (s *DeleteSecurityGroupResponse) SetBody(v *DeleteSecurityGroupResponseBody
 	return s
 }
 
+type DeleteSnapshotRequest struct {
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s DeleteSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotRequest) SetSnapshotId(v string) *DeleteSnapshotRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type DeleteSnapshotResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponseBody) SetRequestId(v string) *DeleteSnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSnapshotResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnapshotResponse) SetStatusCode(v int32) *DeleteSnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSnatEntryRequest struct {
+	// The ID of the SNAT entry that you want to delete.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 }
 
@@ -6331,6 +7953,7 @@ func (s *DeleteSnatEntryRequest) SetSnatEntryId(v string) *DeleteSnatEntryReques
 }
 
 type DeleteSnatEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6377,8 +8000,10 @@ func (s *DeleteSnatEntryResponse) SetBody(v *DeleteSnatEntryResponseBody) *Delet
 }
 
 type DeleteSnatIpForSnatEntryRequest struct {
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The EIP that you want to delete from the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s DeleteSnatIpForSnatEntryRequest) String() string {
@@ -6400,7 +8025,7 @@ func (s *DeleteSnatIpForSnatEntryRequest) SetSnatIp(v string) *DeleteSnatIpForSn
 }
 
 type DeleteSnatIpForSnatEntryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6447,8 +8072,10 @@ func (s *DeleteSnatIpForSnatEntryResponse) SetBody(v *DeleteSnatIpForSnatEntryRe
 }
 
 type DeleteVSwitchRequest struct {
+	// The ID of the vSwitch.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DeleteVSwitchRequest) String() string {
@@ -6470,6 +8097,7 @@ func (s *DeleteVSwitchRequest) SetVersion(v string) *DeleteVSwitchRequest {
 }
 
 type DeleteVSwitchResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6515,16 +8143,223 @@ func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSw
 	return s
 }
 
+type DeploySDGRequest struct {
+	DeploymentType *string   `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	SDGId          *string   `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DeploySDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGRequest) SetDeploymentType(v string) *DeploySDGRequest {
+	s.DeploymentType = &v
+	return s
+}
+
+func (s *DeploySDGRequest) SetInstanceIds(v []*string) *DeploySDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DeploySDGRequest) SetSDGId(v string) *DeploySDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DeploySDGShrinkRequest struct {
+	DeploymentType    *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	SDGId             *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DeploySDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGShrinkRequest) SetDeploymentType(v string) *DeploySDGShrinkRequest {
+	s.DeploymentType = &v
+	return s
+}
+
+func (s *DeploySDGShrinkRequest) SetInstanceIdsShrink(v string) *DeploySDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *DeploySDGShrinkRequest) SetSDGId(v string) *DeploySDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DeploySDGResponseBody struct {
+	Data      *DeploySDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeploySDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGResponseBody) SetData(v *DeploySDGResponseBodyData) *DeploySDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeploySDGResponseBody) SetRequestId(v string) *DeploySDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeploySDGResponseBodyData struct {
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *DeploySDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeploySDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGResponseBodyData) SetMessage(v string) *DeploySDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeploySDGResponseBodyData) SetResult(v *DeploySDGResponseBodyDataResult) *DeploySDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DeploySDGResponseBodyData) SetSuccess(v bool) *DeploySDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeploySDGResponseBodyDataResult struct {
+	FailedCount  *int64                                        `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems  []*DeploySDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	SuccessCount *int64                                        `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s DeploySDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGResponseBodyDataResult) SetFailedCount(v int64) *DeploySDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DeploySDGResponseBodyDataResult) SetFailedItems(v []*DeploySDGResponseBodyDataResultFailedItems) *DeploySDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *DeploySDGResponseBodyDataResult) SetSuccessCount(v int64) *DeploySDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type DeploySDGResponseBodyDataResultFailedItems struct {
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeploySDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *DeploySDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeploySDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *DeploySDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type DeploySDGResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeploySDGResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeploySDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeploySDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeploySDGResponse) SetHeaders(v map[string]*string) *DeploySDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeploySDGResponse) SetStatusCode(v int32) *DeploySDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeploySDGResponse) SetBody(v *DeploySDGResponseBody) *DeploySDGResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAICImagesRequest struct {
+	// The description of the image.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageType   *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	MaxDate     *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate     *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The image ID of the AIC instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the image. Valid values:
+	//
+	// *   **public**: public image
+	// *   **private**: custom image
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The URL of the AIC image repository.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**. Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The status of the image. Valid values:
+	//
+	// *   **verifying**
+	// *   **disable**
+	// *   **available**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeAICImagesRequest) String() string {
@@ -6581,11 +8416,18 @@ func (s *DescribeAICImagesRequest) SetStatus(v string) *DescribeAICImagesRequest
 }
 
 type DescribeAICImagesResponseBody struct {
-	Images     []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information about the images.
+	Images []*DescribeAICImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The page number. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeAICImagesResponseBody) String() string {
@@ -6622,12 +8464,18 @@ func (s *DescribeAICImagesResponseBody) SetTotalCount(v int32) *DescribeAICImage
 }
 
 type DescribeAICImagesResponseBodyImages struct {
+	// The time when the image was created.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUrl     *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+	// The description of the image.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image ID of the AIC instance.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The URL of the AIC image repository.
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The status of the image. **Available** is returned for this parameter. Available indicates that the image is available.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The username of the image repository.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s DescribeAICImagesResponseBodyImages) String() string {
@@ -6698,20 +8546,41 @@ func (s *DescribeAICImagesResponse) SetBody(v *DescribeAICImagesResponseBody) *D
 }
 
 type DescribeARMServerInstancesRequest struct {
-	AICSpecs             []*string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty" type:"Repeated"`
-	DescribeAICInstances *bool     `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
-	EnsRegionIds         []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	LatestAction         *string   `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	MaxDate              *string   `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate              *string   `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace            *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OrderByParams        *string   `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServerIds            []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	ServerSpecs          []*string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty" type:"Repeated"`
-	States               []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
+	// The container specifications.
+	AICSpecs []*string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty" type:"Repeated"`
+	// Spcifies whether the result contains the container information. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	DescribeAICInstances *bool `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
+	// The IDs of the Edge Node Service (ENS) nodes.
+	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The name of the server.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The sorting order of the results to return. Valid values: ServerIdSort, ServerNameSort, ExpireTimeSort, CreationTimeSort, and EnsRegionIdSort.
+	//
+	// asc: ascending order. desc: descending order.
+	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**.
+	//
+	// Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the ARM servers.
+	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	// The server specifications.
+	ServerSpecs []*string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty" type:"Repeated"`
+	// The operation statuses.
+	States []*string `json:"States,omitempty" xml:"States,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesRequest) String() string {
@@ -6734,11 +8603,6 @@ func (s *DescribeARMServerInstancesRequest) SetDescribeAICInstances(v bool) *Des
 
 func (s *DescribeARMServerInstancesRequest) SetEnsRegionIds(v []*string) *DescribeARMServerInstancesRequest {
 	s.EnsRegionIds = v
-	return s
-}
-
-func (s *DescribeARMServerInstancesRequest) SetLatestAction(v string) *DescribeARMServerInstancesRequest {
-	s.LatestAction = &v
 	return s
 }
 
@@ -6793,20 +8657,41 @@ func (s *DescribeARMServerInstancesRequest) SetStates(v []*string) *DescribeARMS
 }
 
 type DescribeARMServerInstancesShrinkRequest struct {
-	AICSpecsShrink       *string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty"`
-	DescribeAICInstances *bool   `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
-	EnsRegionIdsShrink   *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	LatestAction         *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	MaxDate              *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate              *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OrderByParams        *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServerIdsShrink      *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
-	ServerSpecsShrink    *string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty"`
-	StatesShrink         *string `json:"States,omitempty" xml:"States,omitempty"`
+	// The container specifications.
+	AICSpecsShrink *string `json:"AICSpecs,omitempty" xml:"AICSpecs,omitempty"`
+	// Spcifies whether the result contains the container information. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	DescribeAICInstances *bool `json:"DescribeAICInstances,omitempty" xml:"DescribeAICInstances,omitempty"`
+	// The IDs of the Edge Node Service (ENS) nodes.
+	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The name of the server.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The sorting order of the results to return. Valid values: ServerIdSort, ServerNameSort, ExpireTimeSort, CreationTimeSort, and EnsRegionIdSort.
+	//
+	// asc: ascending order. desc: descending order.
+	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**.
+	//
+	// Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of the ARM servers.
+	ServerIdsShrink *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
+	// The server specifications.
+	ServerSpecsShrink *string `json:"ServerSpecs,omitempty" xml:"ServerSpecs,omitempty"`
+	// The operation statuses.
+	StatesShrink *string `json:"States,omitempty" xml:"States,omitempty"`
 }
 
 func (s DescribeARMServerInstancesShrinkRequest) String() string {
@@ -6829,11 +8714,6 @@ func (s *DescribeARMServerInstancesShrinkRequest) SetDescribeAICInstances(v bool
 
 func (s *DescribeARMServerInstancesShrinkRequest) SetEnsRegionIdsShrink(v string) *DescribeARMServerInstancesShrinkRequest {
 	s.EnsRegionIdsShrink = &v
-	return s
-}
-
-func (s *DescribeARMServerInstancesShrinkRequest) SetLatestAction(v string) *DescribeARMServerInstancesShrinkRequest {
-	s.LatestAction = &v
 	return s
 }
 
@@ -6888,11 +8768,16 @@ func (s *DescribeARMServerInstancesShrinkRequest) SetStatesShrink(v string) *Des
 }
 
 type DescribeARMServerInstancesResponseBody struct {
-	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Servers    []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
-	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the servers and the AIC instances.
+	Servers []*DescribeARMServerInstancesResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeARMServerInstancesResponseBody) String() string {
@@ -6929,18 +8814,42 @@ func (s *DescribeARMServerInstancesResponseBody) SetTotalCount(v int32) *Describ
 }
 
 type DescribeARMServerInstancesResponseBodyServers struct {
+	// The information about the AIC instances.
 	AICInstances []*DescribeARMServerInstancesResponseBodyServersAICInstances `json:"AICInstances,omitempty" xml:"AICInstances,omitempty" type:"Repeated"`
-	CreationTime *string                                                      `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnsRegionId  *string                                                      `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ExpiredTime  *string                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	LatestAction *string                                                      `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	Name         *string                                                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace    *string                                                      `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PayType      *string                                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ServerId     *string                                                      `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	SpecName     *string                                                      `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	State        *string                                                      `json:"State,omitempty" xml:"State,omitempty"`
-	Status       *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the instance was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The time when the instance expires.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The operation that was most recently performed.
+	LatestAction *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	// The name of the server.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace of the cluster to which the server belongs.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The server specification.
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// The operation status of the server. Valid values:
+	//
+	// *   **success**
+	// *   **failed**
+	// *   **creating**
+	// *   **releasing**
+	// *   **rebooting**
+	// *   **upgrading**
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The running status of the server. Valid values:
+	//
+	// *   **running**
+	// *   **stopping**
+	// *   **down**
+	// *   **starting**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeARMServerInstancesResponseBodyServers) String() string {
@@ -7012,16 +8921,39 @@ func (s *DescribeARMServerInstancesResponseBodyServers) SetStatus(v string) *Des
 }
 
 type DescribeARMServerInstancesResponseBodyServersAICInstances struct {
-	Frequency         *int64                                                                      `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
-	ImageId           *string                                                                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId        *string                                                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LatestAction      *string                                                                     `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
-	Name              *string                                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The refresh rate of the AIC instance. Unit: Hz.
+	Frequency *int64 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// The ID of the AIC image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the AIC instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operation that was most recently performed.
+	LatestAction *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network attributes of the AIC instance.
 	NetworkAttributes *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	Resolution        *string                                                                     `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	Spec              *string                                                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	State             *string                                                                     `json:"State,omitempty" xml:"State,omitempty"`
-	Status            *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The resolution of the AIC instance.
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// The information about the shared data group (SDG) that is deployed on the AIC instance.
+	SdgDeployInfo *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo `json:"SdgDeployInfo,omitempty" xml:"SdgDeployInfo,omitempty" type:"Struct"`
+	// The specification of the AIC instance.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The operation status of the AIC instance. Valid values:
+	//
+	// *   **success**
+	// *   **failed**
+	// *   **creating**
+	// *   **releasing**
+	// *   **rebooting**
+	// *   **reseting**
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The running status of the AIC instance. Valid values:
+	//
+	// *   **running**
+	// *   **pending**
+	// *   **terminating**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeARMServerInstancesResponseBodyServersAICInstances) String() string {
@@ -7067,6 +8999,11 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetResolutio
 	return s
 }
 
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetSdgDeployInfo(v *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) *DescribeARMServerInstancesResponseBodyServersAICInstances {
+	s.SdgDeployInfo = v
+	return s
+}
+
 func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetSpec(v string) *DescribeARMServerInstancesResponseBodyServersAICInstances {
 	s.Spec = &v
 	return s
@@ -7083,8 +9020,11 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstances) SetStatus(v 
 }
 
 type DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes struct {
+	// The IP address of the AIC instance.
 	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The network ID of the AIC instance.
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The vSwitch ID of the AIC instance.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -7108,6 +9048,35 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttribu
 
 func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes) SetVSwitchId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesNetworkAttributes {
 	s.VSwitchId = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo struct {
+	// The ID of the SDG.
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// The deployment status of the SDG. Valid values:
+	//
+	// *   **sdg_deploying**
+	// *   **failed**
+	// *   **success**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) SetSDGId(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo {
+	s.SDGId = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) SetStatus(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo {
+	s.Status = &v
 	return s
 }
 
@@ -7141,9 +9110,21 @@ func (s *DescribeARMServerInstancesResponse) SetBody(v *DescribeARMServerInstanc
 }
 
 type DescribeApplicationRequest struct {
-	AppId               *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersions         *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
-	Level               *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The ID of the application. You can call the ListApplications operation to obtain the application ID.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The version number of the application. Separate multiple version numbers with commas (,). If you want to query data of all versions of applications, specify All for this parameter. By default, only data of applications in the stable versions are queried.
+	AppVersions *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
+	// The region level by which edge resources of the application are collected. The value must be of the enumerated data type. Valid values:
+	//
+	// *   National: Chinese mainland
+	// *   Big: area
+	// *   Middle: province
+	// *   Small: city
+	// *   RegionId: edge node
+	//
+	// Default value: National.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
 	OutDetailStatParams *string `json:"OutDetailStatParams,omitempty" xml:"OutDetailStatParams,omitempty"`
 }
 
@@ -7176,8 +9157,10 @@ func (s *DescribeApplicationRequest) SetOutDetailStatParams(v string) *DescribeA
 }
 
 type DescribeApplicationResponseBody struct {
+	// The returned application information.
 	Application *string `json:"Application,omitempty" xml:"Application,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApplicationResponseBody) String() string {
@@ -7228,7 +9211,19 @@ func (s *DescribeApplicationResponse) SetBody(v *DescribeApplicationResponseBody
 }
 
 type DescribeApplicationResourceSummaryRequest struct {
-	Level        *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The region level. The value must be of the enumerated data type. Valid values:
+	//
+	// *   **National** (default): Chinese mainland
+	// *   **Big**: area
+	// *   **Middle**: province
+	// *   **Small**: city
+	// *   **RegionId**: edge node
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The resource type.
+	//
+	// Valid value:
+	//
+	// *   Ens
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -7251,8 +9246,10 @@ func (s *DescribeApplicationResourceSummaryRequest) SetResourceType(v string) *D
 }
 
 type DescribeApplicationResourceSummaryResponseBody struct {
+	// The statistical information about the resource quota and usage in different regions.
 	ApplicationResource *string `json:"ApplicationResource,omitempty" xml:"ApplicationResource,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeApplicationResourceSummaryResponseBody) String() string {
@@ -7303,6 +9300,7 @@ func (s *DescribeApplicationResourceSummaryResponse) SetBody(v *DescribeApplicat
 }
 
 type DescribeAvailableResourceRequest struct {
+	// The version number. Set the value to 2017-11-10.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -7320,9 +9318,13 @@ func (s *DescribeAvailableResourceRequest) SetVersion(v string) *DescribeAvailab
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	Code             *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images           *DescribeAvailableResourceResponseBodyImages           `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	RequestId        *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the images.
+	Images *DescribeAvailableResourceResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The ID of the request. This is a common parameter. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The specifications of resources that you can purchase.
 	SupportResources *DescribeAvailableResourceResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -7372,7 +9374,9 @@ func (s *DescribeAvailableResourceResponseBodyImages) SetImage(v []*DescribeAvai
 }
 
 type DescribeAvailableResourceResponseBodyImagesImage struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 }
 
@@ -7412,11 +9416,16 @@ func (s *DescribeAvailableResourceResponseBodySupportResources) SetSupportResour
 }
 
 type DescribeAvailableResourceResponseBodySupportResourcesSupportResource struct {
-	DataDiskSize          *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	EnsRegionId           *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceSpec          *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The size of the data disk. Unit: GB.
+	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The specifications of the resource plan.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The number of resources that you can purchase.
 	SupportResourcesCount *string `json:"SupportResourcesCount,omitempty" xml:"SupportResourcesCount,omitempty"`
-	SystemDiskSize        *string `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The size of the system disk. Unit: GiB.
+	SystemDiskSize *string `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodySupportResourcesSupportResource) String() string {
@@ -7482,8 +9491,11 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeAvailableResourceInfoResponseBody struct {
-	Images           *DescribeAvailableResourceInfoResponseBodyImages           `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the image.
+	Images *DescribeAvailableResourceInfoResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The specifications of resources that you can purchase.
 	SupportResources *DescribeAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -7528,9 +9540,12 @@ func (s *DescribeAvailableResourceInfoResponseBodyImages) SetImage(v []*Describe
 }
 
 type DescribeAvailableResourceInfoResponseBodyImagesImage struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageSize *int32  `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The size of the image. Unit: GB.
+	ImageSize *int32 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodyImagesImage) String() string {
@@ -7574,14 +9589,21 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResources) SetSupportRe
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
-	BandwidthTypes      *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceBandwidthTypes      `json:"BandwidthTypes,omitempty" xml:"BandwidthTypes,omitempty" type:"Struct"`
-	DataDiskMaxSize     *int32                                                                                       `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
-	DataDiskMinSize     *int32                                                                                       `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
-	EnsRegionIds        *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIds        `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Struct"`
+	BandwidthTypes *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceBandwidthTypes `json:"BandwidthTypes,omitempty" xml:"BandwidthTypes,omitempty" type:"Struct"`
+	// The maximum capacity of a data disk. Unit: GB.
+	DataDiskMaxSize *int32 `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
+	// The minimum data disk size. Unit: GiB.
+	DataDiskMinSize *int32                                                                                `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
+	EnsRegionIds    *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIds `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Struct"`
+	// The supplementary information about the edge nodes.
 	EnsRegionIdsExtends *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtends `json:"EnsRegionIdsExtends,omitempty" xml:"EnsRegionIdsExtends,omitempty" type:"Struct"`
 	InstanceSpeces      *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceInstanceSpeces      `json:"InstanceSpeces,omitempty" xml:"InstanceSpeces,omitempty" type:"Struct"`
-	SystemDiskMaxSize   *int32                                                                                       `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
-	SystemDiskMinSize   *int32                                                                                       `json:"SystemDiskMinSize,omitempty" xml:"SystemDiskMinSize,omitempty"`
+	// The Internet service provider (ISP).
+	Isp *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp `json:"Isp,omitempty" xml:"Isp,omitempty" type:"Struct"`
+	// The maximum size of the system disk. Unit: GiB.
+	SystemDiskMaxSize *int32 `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
+	// The minimum capacity of a system disk. Unit: GB.
+	SystemDiskMinSize *int32 `json:"SystemDiskMinSize,omitempty" xml:"SystemDiskMinSize,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource) String() string {
@@ -7619,6 +9641,11 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource) SetInstanceSpeces(v *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceInstanceSpeces) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource {
 	s.InstanceSpeces = v
+	return s
+}
+
+func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource) SetIsp(v *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource {
+	s.Isp = v
 	return s
 }
 
@@ -7684,11 +9711,18 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 }
 
 type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId struct {
-	Area        *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	EnName      *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The region.
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The name. This parameter is empty by default.
+	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The ID of the node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Province    *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The Internet service provider (ISP).
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The name of the node.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The province.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId) String() string {
@@ -7711,6 +9745,11 @@ func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourc
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId) SetEnsRegionId(v string) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId) SetIsp(v string) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceEnsRegionIdsExtendsEnsRegionId {
+	s.Isp = &v
 	return s
 }
 
@@ -7738,6 +9777,23 @@ func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource
 
 func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceInstanceSpeces) SetInstanceSpec(v []*string) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceInstanceSpeces {
 	s.InstanceSpec = v
+	return s
+}
+
+type DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp struct {
+	Isp []*string `json:"Isp,omitempty" xml:"Isp,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp) SetIsp(v []*string) *DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResourceIsp {
+	s.Isp = v
 	return s
 }
 
@@ -7770,29 +9826,20 @@ func (s *DescribeAvailableResourceInfoResponse) SetBody(v *DescribeAvailableReso
 	return s
 }
 
-type DescribeBandWithdChargeTypeRequest struct {
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeBandWithdChargeTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBandWithdChargeTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBandWithdChargeTypeRequest) SetVersion(v string) *DescribeBandWithdChargeTypeRequest {
-	s.Version = &v
-	return s
-}
-
 type DescribeBandWithdChargeTypeResponseBody struct {
-	BandWithTypeInfo   *string `json:"BandWithTypeInfo,omitempty" xml:"BandWithTypeInfo,omitempty"`
+	// The information about the metering method.
+	BandWithTypeInfo *string `json:"BandWithTypeInfo,omitempty" xml:"BandWithTypeInfo,omitempty"`
+	// The metering type.
+	//
+	// *   ChargeByUnified: unified metering.
+	// *   ChargeByGrade: differential metering.
 	ChargeContractType *string `json:"ChargeContractType,omitempty" xml:"ChargeContractType,omitempty"`
-	ChargeCycleInfo    *string `json:"ChargeCycleInfo,omitempty" xml:"ChargeCycleInfo,omitempty"`
-	Code               *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The metering cycle. Currently, this parameter is empty in the response.
+	ChargeCycleInfo *string `json:"ChargeCycleInfo,omitempty" xml:"ChargeCycleInfo,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBandWithdChargeTypeResponseBody) String() string {
@@ -7858,11 +9905,27 @@ func (s *DescribeBandWithdChargeTypeResponse) SetBody(v *DescribeBandWithdCharge
 }
 
 type DescribeBandwitdhByInternetChargeTypeRequest struct {
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query.
+	//
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The region ID of the instance.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Isp         *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The Internet service provider (ISP). Valid values:
+	//
+	// *   cmcc: China Mobile
+	// *   telecom: China Telecom
+	// *   unicom: China Unicom
+	// *   multiCarrier: multi-line ISP
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeBandwitdhByInternetChargeTypeRequest) String() string {
@@ -7899,10 +9962,21 @@ func (s *DescribeBandwitdhByInternetChargeTypeRequest) SetVersion(v string) *Des
 }
 
 type DescribeBandwitdhByInternetChargeTypeResponseBody struct {
-	BandwidthValue     *int64  `json:"BandwidthValue,omitempty" xml:"BandwidthValue,omitempty"`
+	// The bandwidth. Unit: bit/s.
+	BandwidthValue *int64 `json:"BandwidthValue,omitempty" xml:"BandwidthValue,omitempty"`
+	// The metering method. Valid values:
+	//
+	// *   BandwidthByDay: Pay by daily peak bandwidth
+	// *   95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+	// *   PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+	// *   PayByBandwidth: Pay by fixed bandwidth
+	//
+	// You can specify only one metering method for network usage and cannot overwrite the existing metering method.
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TimeStamp          *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp. The time follows the ISO 8601 standard. The time is displayed in UTC. Example: 2016-10-20T04:00:00Z.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
 }
 
 func (s DescribeBandwitdhByInternetChargeTypeResponseBody) String() string {
@@ -7963,8 +10037,9 @@ func (s *DescribeBandwitdhByInternetChargeTypeResponse) SetBody(v *DescribeBandw
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBody struct {
-	// Id of the request
-	RequestId        *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The specifications of resources that you can purchase.
 	SupportResources *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -8004,13 +10079,25 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponseBodySupportResources) Set
 }
 
 type DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource struct {
-	CanBuyCount     *int64  `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
-	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DefaultDiskSize *int64  `json:"DefaultDiskSize,omitempty" xml:"DefaultDiskSize,omitempty"`
-	DiskMaxSize     *int64  `json:"DiskMaxSize,omitempty" xml:"DiskMaxSize,omitempty"`
-	DiskMinSize     *int64  `json:"DiskMinSize,omitempty" xml:"DiskMinSize,omitempty"`
-	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	EnsRegionName   *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
+	// The number of disks that you can purchase.
+	CanBuyCount *int64 `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
+	// The type of the disk.
+	//
+	// *   cloud_efficiency: ultra disk.
+	// *   cloud_ssd: all-flash disk.
+	// *   local_hdd: local HDD.
+	// *   local_ssd: local SSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The default size of the disk. Unit: GiB.
+	DefaultDiskSize *int64 `json:"DefaultDiskSize,omitempty" xml:"DefaultDiskSize,omitempty"`
+	// The maximum size of the disk. Unit: GiB.
+	DiskMaxSize *int64 `json:"DiskMaxSize,omitempty" xml:"DiskMaxSize,omitempty"`
+	// The minimum size of the disk size. Unit: GiB.
+	DiskMinSize *int64 `json:"DiskMinSize,omitempty" xml:"DiskMinSize,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the task node.
+	EnsRegionName *string `json:"EnsRegionName,omitempty" xml:"EnsRegionName,omitempty"`
 }
 
 func (s DescribeCloudDiskAvailableResourceInfoResponseBodySupportResourcesSupportResource) String() string {
@@ -8086,7 +10173,7 @@ func (s *DescribeCloudDiskAvailableResourceInfoResponse) SetBody(v *DescribeClou
 }
 
 type DescribeCloudDiskTypesRequest struct {
-	// A short description of struct
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
@@ -8104,7 +10191,9 @@ func (s *DescribeCloudDiskTypesRequest) SetEnsRegionId(v string) *DescribeCloudD
 }
 
 type DescribeCloudDiskTypesResponseBody struct {
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The specifications of resources that you can purchase.
 	SupportResources *DescribeCloudDiskTypesResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -8144,7 +10233,14 @@ func (s *DescribeCloudDiskTypesResponseBodySupportResources) SetSupportResource(
 }
 
 type DescribeCloudDiskTypesResponseBodySupportResourcesSupportResource struct {
-	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The category of the disk.
+	//
+	// *   cloud_efficiency: ultra disk.
+	// *   cloud_ssd: all-flash disk.
+	// *   local_hdd: local HDD.
+	// *   local_ssd: local SSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
@@ -8196,8 +10292,10 @@ func (s *DescribeCloudDiskTypesResponse) SetBody(v *DescribeCloudDiskTypesRespon
 }
 
 type DescribeCreatePrePaidInstanceResultRequest struct {
+	// The ID of the instance. You can call the CreateIntance operation to create an instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeCreatePrePaidInstanceResultRequest) String() string {
@@ -8219,8 +10317,10 @@ func (s *DescribeCreatePrePaidInstanceResultRequest) SetVersion(v string) *Descr
 }
 
 type DescribeCreatePrePaidInstanceResultResponseBody struct {
+	// Returned results of creating an instance.
 	InstanceCreateResult *DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult `json:"InstanceCreateResult,omitempty" xml:"InstanceCreateResult,omitempty" type:"Struct"`
-	RequestId            *string                                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeCreatePrePaidInstanceResultResponseBody) String() string {
@@ -8242,8 +10342,15 @@ func (s *DescribeCreatePrePaidInstanceResultResponseBody) SetRequestId(v string)
 }
 
 type DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult struct {
+	// The status of the instance creation.
+	//
+	// *   Accepted
+	// *   Creating
+	// *   Failed
+	// *   Successed
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult) String() string {
@@ -8294,15 +10401,24 @@ func (s *DescribeCreatePrePaidInstanceResultResponse) SetBody(v *DescribeCreateP
 }
 
 type DescribeDataDistResultRequest struct {
-	AppId        *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DataNames    *string   `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
-	DataVersions *string   `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the data file. Separate multiple names with commas (,). By default, all data files are queried.
+	DataNames *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	// The version number of the data file. Separate multiple numbers with commas (,). By default, all versions of data files are queried.
+	DataVersions *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	// The IDs of the ENS nodes.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
-	InstanceIds  *string   `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	MaxDate      *string   `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate      *string   `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	PageNumber   *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Edge Node Service (ENS) instance. Separate multiple IDs with commas (,). By default, all edge instances are queried.
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. This parameter is optional if you want to return the distribution status of all data files.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDataDistResultRequest) String() string {
@@ -8359,15 +10475,24 @@ func (s *DescribeDataDistResultRequest) SetPageSize(v int32) *DescribeDataDistRe
 }
 
 type DescribeDataDistResultShrinkRequest struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DataNames          *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
-	DataVersions       *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the data file. Separate multiple names with commas (,). By default, all data files are queried.
+	DataNames *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	// The version number of the data file. Separate multiple numbers with commas (,). By default, all versions of data files are queried.
+	DataVersions *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
+	// The IDs of the ENS nodes.
 	EnsRegionIdsShrink *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	InstanceIds        *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	MaxDate            *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate            *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the Edge Node Service (ENS) instance. Separate multiple IDs with commas (,). By default, all edge instances are queried.
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. This parameter is optional if you want to return the distribution status of all data files.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDataDistResultShrinkRequest) String() string {
@@ -8424,11 +10549,16 @@ func (s *DescribeDataDistResultShrinkRequest) SetPageSize(v int32) *DescribeData
 }
 
 type DescribeDataDistResultResponseBody struct {
+	// The distribution status of data files on edge instances.
 	DistResults *DescribeDataDistResultResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
-	PageNumber  *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBody) String() string {
@@ -8482,9 +10612,12 @@ func (s *DescribeDataDistResultResponseBodyDistResults) SetDistResult(v []*Descr
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResult struct {
-	Name        *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the data file.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The distribution status statistics.
 	StatusStats *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats `json:"StatusStats,omitempty" xml:"StatusStats,omitempty" type:"Struct"`
-	Version     *string                                                             `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number of the data file.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResult) String() string {
@@ -8528,9 +10661,18 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStats) Set
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat struct {
-	InstanceCount *string                                                                                `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	Instances     *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	Status        *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of associated edge instances.
+	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The distribution status of the edge instance.
+	Instances *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The distribution status. The value is of the enumeration type. Valid values:
+	//
+	// *   SUCCESS: The distribution is successful.
+	// *   FAILED: The distribution failed.
+	// *   DISTING: The data is being distributed.
+	// *   POD_RESTARTING: The idle pod is being restarted.
+	// *   DELETED: The data is cleared or removed.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStat) String() string {
@@ -8574,10 +10716,14 @@ func (s *DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatu
 }
 
 type DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstancesInstance struct {
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the instance
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start time of the distribution. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The description of the distribution status.
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the distribution status was last updated. The time is displayed in UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDataDistResultResponseBodyDistResultsDistResultStatusStatsStatusStatInstancesInstance) String() string {
@@ -8638,10 +10784,15 @@ func (s *DescribeDataDistResultResponse) SetBody(v *DescribeDataDistResultRespon
 }
 
 type DescribeDataDownloadURLRequest struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DataName             *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
-	DataVersion          *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
-	ExpireTimeout        *int64  `json:"ExpireTimeout,omitempty" xml:"ExpireTimeout,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the data file.
+	DataName *string `json:"DataName,omitempty" xml:"DataName,omitempty"`
+	// The version number of the data file.
+	DataVersion *string `json:"DataVersion,omitempty" xml:"DataVersion,omitempty"`
+	// This parameter is reserved.
+	ExpireTimeout *int64 `json:"ExpireTimeout,omitempty" xml:"ExpireTimeout,omitempty"`
+	// The condition that you want to use to filter file servers. You can specify multiple canary release policies. By default, all resources are queried.
 	ServerFilterStrategy *string `json:"ServerFilterStrategy,omitempty" xml:"ServerFilterStrategy,omitempty"`
 }
 
@@ -8679,10 +10830,14 @@ func (s *DescribeDataDownloadURLRequest) SetServerFilterStrategy(v string) *Desc
 }
 
 type DescribeDataDownloadURLResponseBody struct {
-	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeDataDownloadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The download URLs of data files.
+	Data *DescribeDataDownloadURLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message. Success is returned for a successful request.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeDataDownloadURLResponseBody) String() string {
@@ -8714,9 +10869,12 @@ func (s *DescribeDataDownloadURLResponseBody) SetRequestId(v string) *DescribeDa
 }
 
 type DescribeDataDownloadURLResponseBodyData struct {
-	ExpireTime *string                                              `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The time when the data file expires. The time is displayed in UTC.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The file servers.
 	ServerList []*DescribeDataDownloadURLResponseBodyDataServerList `json:"ServerList,omitempty" xml:"ServerList,omitempty" type:"Repeated"`
-	Url        *string                                              `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The download URL of the data file.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeDataDownloadURLResponseBodyData) String() string {
@@ -8743,7 +10901,9 @@ func (s *DescribeDataDownloadURLResponseBodyData) SetUrl(v string) *DescribeData
 }
 
 type DescribeDataDownloadURLResponseBodyDataServerList struct {
-	Host     *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The host address of the file server.
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8795,14 +10955,22 @@ func (s *DescribeDataDownloadURLResponse) SetBody(v *DescribeDataDownloadURLResp
 }
 
 type DescribeDataPushResultRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	DataNames    *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the data file. Separate multiple names with commas (,). By default, all data files are queried.
+	DataNames *string `json:"DataNames,omitempty" xml:"DataNames,omitempty"`
+	// The version number of the data file. Separate multiple numbers with commas (,). By default, all versions of data files are queried.
 	DataVersions *string `json:"DataVersions,omitempty" xml:"DataVersions,omitempty"`
-	MaxDate      *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate      *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIds    *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. This parameter is optional if you want to return the push status of all data files.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The IDs of ENS nodes. Separate multiple IDs with commas (,). By default, all ENS nodes are queried.
+	RegionIds *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 }
 
 func (s DescribeDataPushResultRequest) String() string {
@@ -8854,11 +11022,16 @@ func (s *DescribeDataPushResultRequest) SetRegionIds(v string) *DescribeDataPush
 }
 
 type DescribeDataPushResultResponseBody struct {
-	PageNumber  *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The push results of data files.
 	PushResults *DescribeDataPushResultResponseBodyPushResults `json:"PushResults,omitempty" xml:"PushResults,omitempty" type:"Struct"`
-	RequestId   *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBody) String() string {
@@ -8912,9 +11085,12 @@ func (s *DescribeDataPushResultResponseBodyPushResults) SetPushResult(v []*Descr
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResult struct {
-	Name        *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the data file.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The push status of data files.
 	StatusStatS *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS `json:"StatusStatS,omitempty" xml:"StatusStatS,omitempty" type:"Struct"`
-	Version     *string                                                             `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number of the data file.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResult) String() string {
@@ -8958,9 +11134,12 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatS) Set
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat struct {
-	RegionIdCount *int32                                                                                 `json:"RegionIdCount,omitempty" xml:"RegionIdCount,omitempty"`
-	RegionIds     *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
-	Status        *string                                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of ENS nodes.
+	RegionIdCount *int32 `json:"RegionIdCount,omitempty" xml:"RegionIdCount,omitempty"`
+	// The push status of data files on the ENS node.
+	RegionIds *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
+	// The push status. The value is of the enumeration type. Valid values: SUCCESS FAILED PUSHING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStat) String() string {
@@ -9004,10 +11183,14 @@ func (s *DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatu
 }
 
 type DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIdsRegionId struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the ENS node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time of the push operation. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The description of the status.
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the status was last updated. The time is displayed in UTC.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDataPushResultResponseBodyPushResultsPushResultStatusStatSStatusStatRegionIdsRegionId) String() string {
@@ -9068,11 +11251,16 @@ func (s *DescribeDataPushResultResponse) SetBody(v *DescribeDataPushResultRespon
 }
 
 type DescribeDeviceServiceRequest struct {
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter does not take effect.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Service ID
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 }
@@ -9116,12 +11304,16 @@ func (s *DescribeDeviceServiceRequest) SetServiceId(v string) *DescribeDeviceSer
 }
 
 type DescribeDeviceServiceResponseBody struct {
+	// The basic properties of the application.
 	AppMetaData *DescribeDeviceServiceResponseBodyAppMetaData `json:"AppMetaData,omitempty" xml:"AppMetaData,omitempty" type:"Struct"`
-	AppStatus   *DescribeDeviceServiceResponseBodyAppStatus   `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId           *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status information of the application.
+	AppStatus *DescribeDeviceServiceResponseBodyAppStatus `json:"AppStatus,omitempty" xml:"AppStatus,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the devices.
 	ResourceDetailInfos []*DescribeDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
-	ResourceInfos       []*DescribeDeviceServiceResponseBodyResourceInfos       `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
+	// The information about the instances.
+	ResourceInfos []*DescribeDeviceServiceResponseBodyResourceInfos `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDeviceServiceResponseBody) String() string {
@@ -9158,13 +11350,23 @@ func (s *DescribeDeviceServiceResponseBody) SetResourceInfos(v []*DescribeDevice
 }
 
 type DescribeDeviceServiceResponseBodyAppMetaData struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The stable version number of the application.
 	AppStableVersion *string `json:"AppStableVersion,omitempty" xml:"AppStableVersion,omitempty"`
-	AppType          *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	ClusterName      *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the application. The value is of the enumeration type. Valid values:
+	//
+	// *   Common
+	// *   Scheduler
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The name of the application cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The time when the application was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the application.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyAppMetaData) String() string {
@@ -9211,9 +11413,25 @@ func (s *DescribeDeviceServiceResponseBodyAppMetaData) SetDescription(v string) 
 }
 
 type DescribeDeviceServiceResponseBodyAppStatus struct {
-	Phase         *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The status of the application. The value is of the enumeration type. Valid values:
+	//
+	// Three intermediate states:
+	//
+	// *   CREATING
+	// *   UPDATING
+	// *   DELETING
+	//
+	// Four final states:
+	//
+	// *   CREATE_FAILED
+	// *   UPDATE_FAILED
+	// *   DELETE_FAILED
+	// *   RUNNING
+	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	// The description of the application status.
 	StatusDescrip *string `json:"StatusDescrip,omitempty" xml:"StatusDescrip,omitempty"`
-	UpdateTime    *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the status was last updated.
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyAppStatus) String() string {
@@ -9240,16 +11458,26 @@ func (s *DescribeDeviceServiceResponseBodyAppStatus) SetUpdateTime(v string) *De
 }
 
 type DescribeDeviceServiceResponseBodyResourceDetailInfos struct {
+	// The name of the device.
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	ID         *string `json:"ID,omitempty" xml:"ID,omitempty"`
-	IP         *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	ISP        *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	ImageID    *string `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
-	Mac        *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	RegionID   *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	Server     *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the cloud device.
+	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	// The IP address.
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The Internet service provider (ISP).
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// The ID of the image.
+	ImageID *string `json:"ImageID,omitempty" xml:"ImageID,omitempty"`
+	// The media access control (MAC) address of the device.
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The ID of the ENS node.
+	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
+	// The server name of the ENS node.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The status of the device.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the device.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -9311,18 +11539,30 @@ func (s *DescribeDeviceServiceResponseBodyResourceDetailInfos) SetType(v string)
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfos struct {
-	AppVersion     *string                                                      `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AreaCode       *string                                                      `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
-	AreaName       *string                                                      `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
-	CreateTime     *string                                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeviceInfos    []*DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
-	InstanceId     *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus *string                                                      `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InternalIps    []*DescribeDeviceServiceResponseBodyResourceInfosInternalIps `json:"InternalIps,omitempty" xml:"InternalIps,omitempty" type:"Repeated"`
-	PublicIps      []*DescribeDeviceServiceResponseBodyResourceInfosPublicIps   `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
-	RegionCode     *string                                                      `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId       *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName     *string                                                      `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The version of the application.
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The area code.
+	AreaCode *string `json:"AreaCode,omitempty" xml:"AreaCode,omitempty"`
+	// The region name.
+	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The time when the application was created.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The information about the devices.
+	DeviceInfos []*DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos `json:"DeviceInfos,omitempty" xml:"DeviceInfos,omitempty" type:"Repeated"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The status of the instance.
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The internal IP addresses.
+	InternalIps []*DescribeDeviceServiceResponseBodyResourceInfosInternalIps `json:"InternalIps,omitempty" xml:"InternalIps,omitempty" type:"Repeated"`
+	// The public IP addresses.
+	PublicIps []*DescribeDeviceServiceResponseBodyResourceInfosPublicIps `json:"PublicIps,omitempty" xml:"PublicIps,omitempty" type:"Repeated"`
+	// The ID of the region.
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The ID of the ENS node.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceInfos) String() string {
@@ -9394,9 +11634,12 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfos) SetRegionName(v string)
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos struct {
-	Name    *string                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the device.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network information.
 	Network []*DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Repeated"`
-	Status  *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos) String() string {
@@ -9423,10 +11666,17 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfos) SetStatus(v 
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork struct {
+	// The port of the container.
 	ContainerPorts *string `json:"ContainerPorts,omitempty" xml:"ContainerPorts,omitempty"`
-	ExternalIp     *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	HostPorts      *string `json:"HostPorts,omitempty" xml:"HostPorts,omitempty"`
-	Protocol       *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The public IP address.
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The port range.
+	HostPorts *string `json:"HostPorts,omitempty" xml:"HostPorts,omitempty"`
+	// The protocol of the gateway. The value is of the enumeration type. Valid values:
+	//
+	// *   TCP
+	// *   UDP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
 func (s DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork) String() string {
@@ -9458,6 +11708,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosDeviceInfosNetwork) SetPr
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosInternalIps struct {
+	// The internal IP address.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -9475,6 +11726,7 @@ func (s *DescribeDeviceServiceResponseBodyResourceInfosInternalIps) SetIp(v stri
 }
 
 type DescribeDeviceServiceResponseBodyResourceInfosPublicIps struct {
+	// The public IP address.
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
@@ -9521,21 +11773,65 @@ func (s *DescribeDeviceServiceResponse) SetBody(v *DescribeDeviceServiceResponse
 }
 
 type DescribeDisksRequest struct {
-	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The category of the disk.
+	//
+	// *   cloud_efficiency: ultra disk.
+	// *   cloud_ssd: all-flash disk.
+	// *   local_hdd: local HDD.
+	// *   local_ssd: local SSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The billing method.
+	//
+	// *   prePay: subscription.
+	// *   postpay: pay-as-you-go.
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	DiskId         *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskIds        *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
-	DiskName       *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	DiskType       *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	EnsRegionIds   *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderByParams  *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	PageNumber     *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the disk.
+	DiskIds *string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The purchase method of the disk. Valid values:
+	//
+	// *   ServiceDisk: The disk is purchased when ENS is activated.
+	// *   ResoureDisk: The disk is purchased when the instance is created.
+	// *   PostPayDisk: The disk is separately purchased.
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The node information.
+	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	// The instance to which the disk is attached.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}. By default, the nodes are sorted by IDs in descending order.
+	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	// The number of the page to return. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Maximum value: **50**.
+	//
+	// Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The status of the disk. Valid values:
+	//
+	// *   In-use: The disk is in use.
+	// *   Available: The disk can be attached.
+	// *   Attaching: The disk is being attached.
+	// *   Detaching: The disk is being detached.
+	// *   Creating: The image is being created.
+	// *   ReIniting: The disk is being reset.
+	// *   Deleting: The disk is being released.
+	// *   Deleted: The disk is released.
+	// *   Expiring: The disk is about to expire.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// *   system: system disk.
+	// *   data: data disk.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDisksRequest) String() string {
@@ -9622,12 +11918,18 @@ func (s *DescribeDisksRequest) SetType(v string) *DescribeDisksRequest {
 }
 
 type DescribeDisksResponseBody struct {
-	Code       *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Disks      *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the disks.
+	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned pages.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDisksResponseBody) String() string {
@@ -9686,20 +11988,64 @@ func (s *DescribeDisksResponseBodyDisks) SetDisks(v []*DescribeDisksResponseBody
 }
 
 type DescribeDisksResponseBodyDisksDisks struct {
-	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The category of the disk.
+	//
+	// *   cloud_efficiency: ultra disk.
+	// *   cloud_ssd: all-flash disk.
+	// *   local_hdd: local HDD.
+	// *   local_ssd: local SSD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The billing method of the cloud disk or local disk. Valid values:
+	//
+	// *   **prepaid**: subscription.
+	// *   **postpaid**: pay-as-you-go.
 	DiskChargeType *string `json:"DiskChargeType,omitempty" xml:"DiskChargeType,omitempty"`
-	DiskId         *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskName       *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Portable       *bool   `json:"Portable,omitempty" xml:"Portable,omitempty"`
-	SerialId       *string `json:"SerialId,omitempty" xml:"SerialId,omitempty"`
-	Size           *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SnapshotId     *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// Indicates whether the cloud disk is encrypted.
+	Encrypted      *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	EncryptedKeyId *string `json:"EncryptedKeyId,omitempty" xml:"EncryptedKeyId,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// Specifies whether the cloud disk or the local disk is removable. Valid values:
+	//
+	// *   true: The disk is removable. A removable disk can independently exist and can be attached to or detached from an instance within the same zone.
+	// *   false: The disk is not removable. A disk that is not removable cannot independently exist or be attached to or detached from an instance within the same zone.
+	//
+	// The **Portable** attribute of the following disks is **false**, and these disks share the same lifecycle with their associated instances:
+	//
+	// *   Local HDD.
+	// *   Local SSD.
+	// *   Data disk that uses the subscription billing method.
+	Portable *bool `json:"Portable,omitempty" xml:"Portable,omitempty"`
+	// The serial number.
+	SerialId *string `json:"SerialId,omitempty" xml:"SerialId,omitempty"`
+	// The size of the disk. Unit: MiB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The status of the disk. Valid values:
+	//
+	// *   In-use: The disk is in use.
+	// *   Available: The disk can be attached.
+	// *   Attaching: The disk is being attached.
+	// *   Detaching: The disk is being detached.
+	// *   Creating: The image is being created.
+	// *   ReIniting: The disk is being reset.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the cloud disk or local disk. Valid values:
+	//
+	// *   1: system disk.
+	// *   2: data disk.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDisksResponseBodyDisksDisks) String() string {
@@ -9732,6 +12078,16 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetDiskId(v string) *DescribeDisks
 
 func (s *DescribeDisksResponseBodyDisksDisks) SetDiskName(v string) *DescribeDisksResponseBodyDisksDisks {
 	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetEncrypted(v bool) *DescribeDisksResponseBodyDisksDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisks) SetEncryptedKeyId(v string) *DescribeDisksResponseBodyDisksDisks {
+	s.EncryptedKeyId = &v
 	return s
 }
 
@@ -9810,9 +12166,12 @@ func (s *DescribeDisksResponse) SetBody(v *DescribeDisksResponseBody) *DescribeD
 }
 
 type DescribeEipAddressesRequest struct {
-	Eips        *string `json:"Eips,omitempty" xml:"Eips,omitempty"`
+	// The information about the EIPs.
+	Eips *string `json:"Eips,omitempty" xml:"Eips,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeEipAddressesRequest) String() string {
@@ -9839,8 +12198,10 @@ func (s *DescribeEipAddressesRequest) SetVersion(v string) *DescribeEipAddresses
 }
 
 type DescribeEipAddressesResponseBody struct {
+	// Details about the EIP.
 	EipAddresses *DescribeEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEipAddressesResponseBody) String() string {
@@ -9879,7 +12240,9 @@ func (s *DescribeEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Descri
 }
 
 type DescribeEipAddressesResponseBodyEipAddressesEipAddress struct {
-	Eip                  *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The information about the EIP.
+	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	// The public IP address of the ENS instance.
 	InstanceIdInternetIp *string `json:"InstanceIdInternetIp,omitempty" xml:"InstanceIdInternetIp,omitempty"`
 }
 
@@ -9931,8 +12294,10 @@ func (s *DescribeEipAddressesResponse) SetBody(v *DescribeEipAddressesResponseBo
 }
 
 type DescribeElbAvailableResourceInfoResponseBody struct {
+	// The information about resources.
 	ElbAvailableResourceInfo []*DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo `json:"ElbAvailableResourceInfo,omitempty" xml:"ElbAvailableResourceInfo,omitempty" type:"Repeated"`
-	RequestId                *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeElbAvailableResourceInfoResponseBody) String() string {
@@ -9954,13 +12319,20 @@ func (s *DescribeElbAvailableResourceInfoResponseBody) SetRequestId(v string) *D
 }
 
 type DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo struct {
-	Area             *string   `json:"Area,omitempty" xml:"Area,omitempty"`
-	CanBuyCount      *string   `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
-	EnName           *string   `json:"EnName,omitempty" xml:"EnName,omitempty"`
-	EnsRegionId      *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the region.
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// The number of resources that you can purchase.
+	CanBuyCount *string `json:"CanBuyCount,omitempty" xml:"CanBuyCount,omitempty"`
+	// The name of the node.
+	EnName *string `json:"EnName,omitempty" xml:"EnName,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The specifications of the ELB instances.
 	LoadBalancerSpec []*string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty" type:"Repeated"`
-	Name             *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Province         *string   `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The Chinese name of the node.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The province where the node is deployed.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s DescribeElbAvailableResourceInfoResponseBodyElbAvailableResourceInfo) String() string {
@@ -10249,15 +12621,30 @@ func (s *DescribeEnsCommodityModuleCodeResponse) SetBody(v *DescribeEnsCommodity
 }
 
 type DescribeEnsEipAddressesRequest struct {
-	AllocationId           *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	AssociatedInstanceId   *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
+	// The ID of the EIP that you want to query. You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The ID of the instance with which you want to associate the EIP.
+	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
+	// The type of the instance with which you want to associate the EIP. Valid values:
+	//
+	// *   **EnsInstance**: ENS instance in a VPC
+	// *   **SlbInstance**: Edge Load Balancer (ELB) instance
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	EipAddress             *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
-	EipName                *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
-	EnsRegionId            *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Standby                *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	// The EIP that you want to query. You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
+	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	// The name of the EIP.
+	EipName *string `json:"EipName,omitempty" xml:"EipName,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether the EIP is a secondary EIP. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	Standby *string `json:"Standby,omitempty" xml:"Standby,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesRequest) String() string {
@@ -10314,11 +12701,16 @@ func (s *DescribeEnsEipAddressesRequest) SetStandby(v string) *DescribeEnsEipAdd
 }
 
 type DescribeEnsEipAddressesResponseBody struct {
+	// Details about the EIP.
 	EipAddresses *DescribeEnsEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
-	PageNumber   *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number. Valid values: an integer that is greater than 0. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: **10** to **100**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBody) String() string {
@@ -10372,21 +12764,59 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddresses) SetEipAddress(v []*Des
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
-	AllocationId       *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	AllocationTime     *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
-	Bandwidth          *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceType       *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the EIP.
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The time when the EIP was created.
+	AllocationTime *string `json:"AllocationTime,omitempty" xml:"AllocationTime,omitempty"`
+	// The peak bandwidth of the EIP. Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The billing method of the EIP. Valid values:
+	//
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The description of the EIP.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance that is associated with the EIP.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The type of the instance that is associated with the EIP. Valid values:
+	//
+	// *   **EnsInstance**: ENS instance in a VPC
+	// *   **SlbInstance**: SLB instance
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The metering method of the EIP.
+	//
+	// *   **95BandwidthByMonth**: Pay by monthly 95th percentile bandwidth
+	// *   **PayByBandwidth**: Pay by bandwidth
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpAddress          *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	IpStatus           *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
-	Isp                *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Standby            *bool   `json:"Standby,omitempty" xml:"Standby,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The EIP.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The running status of the EIP. This parameter is returned if the EIP is a secondary EIP. Valid values:
+	//
+	// *   **Stopped**
+	// *   **Running**
+	// *   **Starting**
+	// *   **Stopping**
+	IpStatus *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
+	// The Internet service provider (ISP). Valid values:
+	//
+	// *   **cmcc**: China Mobile
+	// *   **unicom**: China Unicom
+	// *   **telecom**: China Telecom
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The name of the EIP.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the EIP is a secondary EIP.
+	Standby *bool `json:"Standby,omitempty" xml:"Standby,omitempty"`
+	// The status of the EIP. Valid values:
+	//
+	// *   **Associating**
+	// *   **Unassociating**
+	// *   **InUse**
+	// *   **Available**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -10653,6 +13083,7 @@ func (s *DescribeEnsNetDistrictResponse) SetBody(v *DescribeEnsNetDistrictRespon
 }
 
 type DescribeEnsNetLevelRequest struct {
+	// The version number.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -10670,9 +13101,12 @@ func (s *DescribeEnsNetLevelRequest) SetVersion(v string) *DescribeEnsNetLevelRe
 }
 
 type DescribeEnsNetLevelResponseBody struct {
-	Code         *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The network levels.
 	EnsNetLevels *DescribeEnsNetLevelResponseBodyEnsNetLevels `json:"EnsNetLevels,omitempty" xml:"EnsNetLevels,omitempty" type:"Struct"`
-	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEnsNetLevelResponseBody) String() string {
@@ -10716,6 +13150,11 @@ func (s *DescribeEnsNetLevelResponseBodyEnsNetLevels) SetEnsNetLevel(v []*Descri
 }
 
 type DescribeEnsNetLevelResponseBodyEnsNetLevelsEnsNetLevel struct {
+	// The network level. Valid values:
+	//
+	// *   Big: greater area.
+	// *   Middle: province.
+	// *   Small: city.
 	EnsNetLevelCode *string `json:"EnsNetLevelCode,omitempty" xml:"EnsNetLevelCode,omitempty"`
 }
 
@@ -10762,9 +13201,17 @@ func (s *DescribeEnsNetLevelResponse) SetBody(v *DescribeEnsNetLevelResponseBody
 }
 
 type DescribeEnsNetSaleDistrictRequest struct {
+	// The region code.
+	//
+	// *   If you do not specify this parameter, only nodes under the area level that is specified by NetLevelCode are queried.
+	// *   If you specify this parameter, only child nodes in the area that is specified by NetDistrictCode are queried.
 	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	NetLevelCode    *string `json:"NetLevelCode,omitempty" xml:"NetLevelCode,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The network level. Valid values:
+	//
+	// *   **Big**: area
+	// *   **Middle**: province
+	// *   **Small**: city
+	NetLevelCode *string `json:"NetLevelCode,omitempty" xml:"NetLevelCode,omitempty"`
 }
 
 func (s DescribeEnsNetSaleDistrictRequest) String() string {
@@ -10785,15 +13232,13 @@ func (s *DescribeEnsNetSaleDistrictRequest) SetNetLevelCode(v string) *DescribeE
 	return s
 }
 
-func (s *DescribeEnsNetSaleDistrictRequest) SetVersion(v string) *DescribeEnsNetSaleDistrictRequest {
-	s.Version = &v
-	return s
-}
-
 type DescribeEnsNetSaleDistrictResponseBody struct {
-	Code            *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the ISPs in the area.
 	EnsNetDistricts *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts `json:"EnsNetDistricts,omitempty" xml:"EnsNetDistricts,omitempty" type:"Struct"`
-	RequestId       *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeEnsNetSaleDistrictResponseBody) String() string {
@@ -10837,13 +13282,24 @@ func (s *DescribeEnsNetSaleDistrictResponseBodyEnsNetDistricts) SetEnsNetDistric
 }
 
 type DescribeEnsNetSaleDistrictResponseBodyEnsNetDistrictsEnsNetDistrict struct {
-	EnsRegionIdCount      *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
-	InstanceCount         *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	NetDistrictCode       *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	NetDistrictEnName     *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
+	// The information about the ISP.
+	EnsRegionIdCount *string `json:"EnsRegionIdCount,omitempty" xml:"EnsRegionIdCount,omitempty"`
+	// The information about the instance.
+	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The region code.
+	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	// The name of the region.
+	NetDistrictEnName *string `json:"NetDistrictEnName,omitempty" xml:"NetDistrictEnName,omitempty"`
+	// The parent code of the region.
 	NetDistrictFatherCode *string `json:"NetDistrictFatherCode,omitempty" xml:"NetDistrictFatherCode,omitempty"`
-	NetDistrictLevel      *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
-	NetDistrictName       *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
+	// The region level. Valid values:
+	//
+	// *   **Big**: area
+	// *   **Middle**: province
+	// *   **Small**: city
+	NetDistrictLevel *string `json:"NetDistrictLevel,omitempty" xml:"NetDistrictLevel,omitempty"`
+	// The Chinese name of the region.
+	NetDistrictName *string `json:"NetDistrictName,omitempty" xml:"NetDistrictName,omitempty"`
 }
 
 func (s DescribeEnsNetSaleDistrictResponseBodyEnsNetDistrictsEnsNetDistrict) String() string {
@@ -10919,8 +13375,8 @@ func (s *DescribeEnsNetSaleDistrictResponse) SetBody(v *DescribeEnsNetSaleDistri
 }
 
 type DescribeEnsRegionIdIpv6InfoRequest struct {
+	// The ID of the node. You can specify only one node ID in a call.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeEnsRegionIdIpv6InfoRequest) String() string {
@@ -10936,13 +13392,10 @@ func (s *DescribeEnsRegionIdIpv6InfoRequest) SetEnsRegionId(v string) *DescribeE
 	return s
 }
 
-func (s *DescribeEnsRegionIdIpv6InfoRequest) SetVersion(v string) *DescribeEnsRegionIdIpv6InfoRequest {
-	s.Version = &v
-	return s
-}
-
 type DescribeEnsRegionIdIpv6InfoResponseBody struct {
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// IPv6 support information.
 	SupportIpv6Info *DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info `json:"SupportIpv6Info,omitempty" xml:"SupportIpv6Info,omitempty" type:"Struct"`
 }
 
@@ -10965,8 +13418,13 @@ func (s *DescribeEnsRegionIdIpv6InfoResponseBody) SetSupportIpv6Info(v *Describe
 }
 
 type DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info struct {
+	// The ID of the node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	SupportIpv6 *bool   `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	// Specifies whether IPv6 is supported. Valid values:
+	//
+	// *   true
+	// *   false
+	SupportIpv6 *bool `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
 }
 
 func (s DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info) String() string {
@@ -11502,15 +13960,29 @@ func (s *DescribeEnsResourceUsageResponse) SetBody(v *DescribeEnsResourceUsageRe
 }
 
 type DescribeEnsRouteEntryListRequest struct {
+	// The destination Classless Inter-Domain Routing (CIDR) block of the route entry.
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RouteEntryId         *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	RouteEntryName       *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	RouteEntryType       *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
-	RouteTableId         *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The ID of the next hop.
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The type of next hop of the custom route entry. Valid values:
+	//
+	// *   Instance: an ENS instance.
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: 10 to 100.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the route that you want to query.
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// The name of the route.
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// The route type. Valid values:
+	//
+	// *   Custom: custom route
+	// *   System: system route
+	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	// The ID of the route table that you want to query.
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 }
 
 func (s DescribeEnsRouteEntryListRequest) String() string {
@@ -11567,12 +14039,16 @@ func (s *DescribeEnsRouteEntryListRequest) SetRouteTableId(v string) *DescribeEn
 }
 
 type DescribeEnsRouteEntryListResponseBody struct {
+	// The page number of the returned page.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the route.
 	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
-	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of returned entries.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeEnsRouteEntryListResponseBody) String() string {
@@ -11609,14 +14085,22 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
-	Description          *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestinationCidrBlock *string                                                     `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	NextHops             []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
-	RouteEntryId         *string                                                     `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
-	RouteEntryName       *string                                                     `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
-	RouteTableId         *string                                                     `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	Status               *string                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type                 *string                                                     `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Enter a description for the route.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination CIDR block of the route.
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// The information about the next hop.
+	NextHops []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
+	// The ID of the route.
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// The name of the route.
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// The ID of the route table.
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The status of the route entry. Valid values:
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the route entry.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) String() string {
@@ -11668,7 +14152,9 @@ func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetType(v string) *De
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {
-	NextHopId   *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The ID of the next hop.
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// The type of the next hop. Valid values:
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
 }
 
@@ -13534,10 +16020,14 @@ func (s *DescribeEpnMeasurementDataResponse) SetBody(v *DescribeEpnMeasurementDa
 }
 
 type DescribeExportImageInfoRequest struct {
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeExportImageInfoRequest) String() string {
@@ -13569,11 +16059,16 @@ func (s *DescribeExportImageInfoRequest) SetPageSize(v int32) *DescribeExportIma
 }
 
 type DescribeExportImageInfoResponseBody struct {
-	Images     *DescribeExportImageInfoResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	PageNumber *int32                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned result. For more information, see the Images parameter described in the JSON-formatted sample success response.
+	Images *DescribeExportImageInfoResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeExportImageInfoResponseBody) String() string {
@@ -13627,14 +16122,30 @@ func (s *DescribeExportImageInfoResponseBodyImages) SetImage(v []*DescribeExport
 }
 
 type DescribeExportImageInfoResponseBodyImagesImage struct {
-	Architecture      *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ExportedImageURL  *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
+	// The architecture of the image. Example: **x86\_64**.
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The time when the image was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The URL of the exported image.
+	ExportedImageURL *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
+	// The export status of the image. Valid values:
+	//
+	// *   Exporting
+	// *   Exported
+	// *   ExportError
+	// *   Unexported
 	ImageExportStatus *string `json:"ImageExportStatus,omitempty" xml:"ImageExportStatus,omitempty"`
-	ImageId           *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName         *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	ImageOwnerAlias   *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The source of the image. Valid values:
+	//
+	// *   system: public image
+	// *   self: custom image
+	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
+	// The OS.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
 }
 
 func (s DescribeExportImageInfoResponseBodyImagesImage) String() string {
@@ -13715,7 +16226,9 @@ func (s *DescribeExportImageInfoResponse) SetBody(v *DescribeExportImageInfoResp
 }
 
 type DescribeExportImageStatusRequest struct {
+	// The ID of the image.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The version number. Set the value to 2017-11-10.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -13738,8 +16251,15 @@ func (s *DescribeExportImageStatusRequest) SetVersion(v string) *DescribeExportI
 }
 
 type DescribeExportImageStatusResponseBody struct {
+	// The export status of the image. Valid values:
+	//
+	// *   Exporting
+	// *   Exported
+	// *   ExportError
+	// *   Unexported
 	ImageExportStatus *string `json:"ImageExportStatus,omitempty" xml:"ImageExportStatus,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeExportImageStatusResponseBody) String() string {
@@ -13790,11 +16310,16 @@ func (s *DescribeExportImageStatusResponse) SetBody(v *DescribeExportImageStatus
 }
 
 type DescribeFileSystemsRequest struct {
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId   *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The name of the file system.
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeFileSystemsRequest) String() string {
@@ -13831,11 +16356,16 @@ func (s *DescribeFileSystemsRequest) SetPageSize(v int32) *DescribeFileSystemsRe
 }
 
 type DescribeFileSystemsResponseBody struct {
+	// The information about the file systems.
 	FileSystems []*DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeFileSystemsResponseBody) String() string {
@@ -13872,17 +16402,41 @@ func (s *DescribeFileSystemsResponseBody) SetTotalCount(v int32) *DescribeFileSy
 }
 
 type DescribeFileSystemsResponseBodyFileSystems struct {
-	Capacity       *int64                                                    `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	CreationTime   *string                                                   `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnsRegionId    *string                                                   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId   *string                                                   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	FileSystemName *string                                                   `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	MeteredSize    *int64                                                    `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
-	MountTargets   []*DescribeFileSystemsResponseBodyFileSystemsMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
-	PayType        *string                                                   `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	ProtocolType   *string                                                   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	Status         *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	StorageType    *string                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The capacity of the file system. Unit: MiB.
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The time when the file system was created.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The name of the file system.
+	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
+	// The storage usage of the file system. The value of this parameter is the maximum storage usage of the file system over the last hour. Unit: bytes.
+	MeteredSize *int64 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
+	// The information about mount targets.
+	MountTargets []*DescribeFileSystemsResponseBodyFileSystemsMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
+	// The billing method. PostPaid is returned. PostPaid indicates the pay-as-you-go billing method.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The protocol type of the file system. Valid values:
+	//
+	// *   NFS: Network File System (NFS)
+	// *   SMB: Server Message Block (SMB)
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The status of the file system. Valid values:
+	//
+	// *   pending: The file system is being created or modified.
+	// *   running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the running state.
+	// *   stopped: The file system is unavailable.
+	// *   extending: The file system is being scaled out.
+	// *   stopping: The file system is being disabled.
+	// *   deleting: The file system is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage type. Valid values:
+	//
+	// *   capacity: Capacity NAS file systems
+	// *   performance: Performance NAS file systems
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeFileSystemsResponseBodyFileSystems) String() string {
@@ -13949,10 +16503,19 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) SetStorageType(v string) *D
 }
 
 type DescribeFileSystemsResponseBodyFileSystemsMountTargets struct {
+	// The path of the mount target.
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	MountTargetName   *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	NetWorkId         *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the mount target.
+	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	// The ID of the network.
+	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	// The status of the mount target. Valid values:
+	//
+	// *   active: The mount target is available.
+	// *   inactive: The mount target is unavailable.
+	// *   pending: The task is running.
+	// *   deleting: The mount target is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeFileSystemsResponseBodyFileSystemsMountTargets) String() string {
@@ -14013,14 +16576,30 @@ func (s *DescribeFileSystemsResponse) SetBody(v *DescribeFileSystemsResponseBody
 }
 
 type DescribeForwardTableEntriesRequest struct {
-	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The ID of the DNAT entry.
+	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The name of the DNAT entry.
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **TCP**: forwards TCP packets.
+	// *   **UDP**: forwards UDP packets.
+	// *   **Any**: forwards all packets.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **100**.
+	//
+	// Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesRequest) String() string {
@@ -14072,11 +16651,16 @@ func (s *DescribeForwardTableEntriesRequest) SetPageSize(v int32) *DescribeForwa
 }
 
 type DescribeForwardTableEntriesResponseBody struct {
+	// Details of DNAT entries.
 	ForwardTableEntries []*DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Repeated"`
-	PageNumber          *string                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *string                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId           *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount          *string                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesResponseBody) String() string {
@@ -14113,18 +16697,43 @@ func (s *DescribeForwardTableEntriesResponseBody) SetTotalCount(v string) *Descr
 }
 
 type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
-	ExternalIp        *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
-	ExternalPort      *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ForwardEntryId    *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
-	ForwardEntryName  *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	HealthCheckPort   *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	InternalIp        *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort      *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol        *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	NatGatewayId      *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port or port range that is used in port forwarding.
+	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	// The ID of the DNAT entry.
+	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The name of the DNAT entry.
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	// The probe port of DNAT.
+	HealthCheckPort *string `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port or port range that is used for port forwarding.
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **TCP**: forwards TCP packets.
+	// *   **UDP**: forwards UDP packets.
+	// *   **Any**: forwards all packets.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The secondary EIP that is used to access the Internet.
 	StandbyExternalIp *string `json:"StandbyExternalIp,omitempty" xml:"StandbyExternalIp,omitempty"`
-	StandbyStatus     *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the secondary EIP. Valid values:
+	//
+	// *   Running
+	// *   Stopping
+	// *   Stopped
+	// *   Starting
+	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
+	// The status of the DNAT entry. Valid values:
+	//
+	// *   Pending: The DNAT entry is being created or modified.
+	// *   Available: The DNAT entry is available.
+	// *   Deleting: The DNAT entry is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeForwardTableEntriesResponseBodyForwardTableEntries) String() string {
@@ -14225,6 +16834,10 @@ func (s *DescribeForwardTableEntriesResponse) SetBody(v *DescribeForwardTableEnt
 }
 
 type DescribeImageInfosRequest struct {
+	// The operating system (OS). You can specify only one OS in a request. If you do not specify a value for this parameter, images for all supported OSs are queried. Valid values:
+	//
+	// *   linux
+	// *   windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 }
 
@@ -14242,9 +16855,12 @@ func (s *DescribeImageInfosRequest) SetOsType(v string) *DescribeImageInfosReque
 }
 
 type DescribeImageInfosResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images    *DescribeImageInfosResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about images.
+	Images *DescribeImageInfosResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeImageInfosResponseBody) String() string {
@@ -14288,13 +16904,25 @@ func (s *DescribeImageInfosResponseBodyImages) SetImage(v []*DescribeImageInfosR
 }
 
 type DescribeImageInfosResponseBodyImagesImage struct {
-	ComputeType  *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId      *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageSize    *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The computing type of the image. Valid values:
+	//
+	// *   ens_vm: x86 computing.
+	// *   arm_vm: ARM computing.
+	// *   bare_metal: x86 bare machine.
+	// *   pcfarm: heterogeneous computing.
+	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	// The description of the image.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The size of the image. Unit: GiB.
+	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The version of the image.
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	OSName       *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
-	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
+	// The type of the image. Valid values: **centos**, **debian**, **ubuntu**, and **windows**.
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The type of the operating system.
+	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 }
 
 func (s DescribeImageInfosResponseBodyImagesImage) String() string {
@@ -14370,10 +16998,18 @@ func (s *DescribeImageInfosResponse) SetBody(v *DescribeImageInfosResponseBody) 
 }
 
 type DescribeImageSharePermissionRequest struct {
-	AliyunId   *int64  `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	AliyunId *int64 `json:"AliyunId,omitempty" xml:"AliyunId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Maximum value: **100**.
+	//
+	// Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeImageSharePermissionRequest) String() string {
@@ -14405,12 +17041,18 @@ func (s *DescribeImageSharePermissionRequest) SetPageSize(v string) *DescribeIma
 }
 
 type DescribeImageSharePermissionResponseBody struct {
-	Accounts   *DescribeImageSharePermissionResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	ImageId    *string                                           `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The account information.
+	Accounts *DescribeImageSharePermissionResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of Alibaba Cloud accounts with which you share the image.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImageSharePermissionResponseBody) String() string {
@@ -14498,13 +17140,28 @@ func (s *DescribeImageSharePermissionResponse) SetBody(v *DescribeImageSharePerm
 }
 
 type DescribeImagesRequest struct {
+	// The ID of the Edge Node Service (ENS) node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName   *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the image. You can specify only one image ID.
+	//
+	// Custom images and public images are supported.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the custom image. The name must be 2 to 128 characters in length The name must start with a letter and cannot start with `acs:` or `aliyun`. The name cannot contain `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-).
+	//
+	// By default, this parameter is left empty, which indicates that the original name is retained.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **50**.
+	//
+	// Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// This parameter is unavailable.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeImagesRequest) String() string {
@@ -14551,12 +17208,18 @@ func (s *DescribeImagesRequest) SetStatus(v string) *DescribeImagesRequest {
 }
 
 type DescribeImagesResponseBody struct {
-	Code       *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images     *DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	PageNumber *int32                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about images.
+	Images *DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of images.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeImagesResponseBody) String() string {
@@ -14615,14 +17278,29 @@ func (s *DescribeImagesResponseBodyImages) SetImage(v []*DescribeImagesResponseB
 }
 
 type DescribeImagesResponseBodyImagesImage struct {
-	Architecture    *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The architecture of the image. Example: **x86\_64**.
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The time when the image was created. The time follows the ISO 8601 standard.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The source of the image. Valid values:
+	//
+	// *   system: Alibaba Cloud public images
+	// *   self: your custom images
+	// *   others: shared images from other Alibaba Cloud accounts, or community images published by other Alibaba Cloud accounts
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	ImageSize       *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The size of the image. Unit: GiB.
+	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The operating system type of the image. Valid values:
+	//
+	// *   Linux
+	// *   Windows
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s DescribeImagesResponseBodyImagesImage) String() string {
@@ -14703,9 +17381,11 @@ func (s *DescribeImagesResponse) SetBody(v *DescribeImagesResponseBody) *Describ
 }
 
 type DescribeInstanceAutoRenewAttributeRequest struct {
+	// The ID of an instance. Separate multiple IDs with semicolons (;).
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewAttributeRequest) String() string {
@@ -14732,9 +17412,12 @@ func (s *DescribeInstanceAutoRenewAttributeRequest) SetVersion(v string) *Descri
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBody struct {
-	Code                    *int32                                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The renewal status of the instance.
 	InstanceRenewAttributes *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes `json:"InstanceRenewAttributes,omitempty" xml:"InstanceRenewAttributes,omitempty" type:"Struct"`
-	RequestId               *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewAttributeResponseBody) String() string {
@@ -14778,9 +17461,15 @@ func (s *DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributes) 
 }
 
 type DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute struct {
-	AutoRenewal *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	Duration    *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The renewal type of the instance.
+	//
+	// *   **true**: enables auto-renewal.
+	// *   **false**: disables auto-renewal.
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The unit of the auto-renewal period.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInstanceRenewAttribute) String() string {
@@ -14836,11 +17525,20 @@ func (s *DescribeInstanceAutoRenewAttributeResponse) SetBody(v *DescribeInstance
 }
 
 type DescribeInstanceMonitorDataRequest struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the instance. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period     *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The precision of the monitoring data that you want to obtain. Valid values: 60, 300, 1200, 3600, and 14400. Default value: 60. Unit: seconds.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstanceMonitorDataRequest) String() string {
@@ -14877,9 +17575,12 @@ func (s *DescribeInstanceMonitorDataRequest) SetVersion(v string) *DescribeInsta
 }
 
 type DescribeInstanceMonitorDataResponseBody struct {
-	Code        *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The set of InstanceMonitorDataType data.
 	MonitorData *DescribeInstanceMonitorDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Struct"`
-	RequestId   *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceMonitorDataResponseBody) String() string {
@@ -14923,9 +17624,12 @@ func (s *DescribeInstanceMonitorDataResponseBodyMonitorData) SetInstanceMonitorD
 }
 
 type DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData struct {
-	CPU        *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The vCPU usage of the instance, which is raw data. For example, a value of 0.02 indicates that the usage is 2%.
+	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Memory     *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// This parameter is not yet supported.
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeInstanceMonitorDataResponseBodyMonitorDataInstanceMonitorData) String() string {
@@ -14981,6 +17685,7 @@ func (s *DescribeInstanceMonitorDataResponse) SetBody(v *DescribeInstanceMonitor
 }
 
 type DescribeInstanceSpecRequest struct {
+	// The version number.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -14998,13 +17703,20 @@ func (s *DescribeInstanceSpecRequest) SetVersion(v string) *DescribeInstanceSpec
 }
 
 type DescribeInstanceSpecResponseBody struct {
-	BandwidthLimit    *int32                                         `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
-	Code              *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	DataDiskMaxSize   *int32                                         `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
-	DataDiskMinSize   *int32                                         `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
-	InstanceSpecs     *DescribeInstanceSpecResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Struct"`
-	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SystemDiskMaxSize *int32                                         `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
+	// The bandwidth limit for a single instance. Unit: Mbit/s.
+	BandwidthLimit *int32 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The maximum capacity of a data disk. Unit: GB.
+	DataDiskMaxSize *int32 `json:"DataDiskMaxSize,omitempty" xml:"DataDiskMaxSize,omitempty"`
+	// The minimum capacity of a data disk. Unit: GB.
+	DataDiskMinSize *int32 `json:"DataDiskMinSize,omitempty" xml:"DataDiskMinSize,omitempty"`
+	// The information about instance specifications.
+	InstanceSpecs *DescribeInstanceSpecResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The maximum capacity of the system disk. Unit: GiB.
+	SystemDiskMaxSize *int32 `json:"SystemDiskMaxSize,omitempty" xml:"SystemDiskMaxSize,omitempty"`
 }
 
 func (s DescribeInstanceSpecResponseBody) String() string {
@@ -15068,10 +17780,14 @@ func (s *DescribeInstanceSpecResponseBodyInstanceSpecs) SetInstanceSpec(v []*Des
 }
 
 type DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec struct {
-	Core         *string `json:"Core,omitempty" xml:"Core,omitempty"`
-	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The number of CPU cores.
+	Core *string `json:"Core,omitempty" xml:"Core,omitempty"`
+	// The display name of the instance type.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The type of the instance.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The memory size. Unit: MB.
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 }
 
 func (s DescribeInstanceSpecResponseBodyInstanceSpecsInstanceSpec) String() string {
@@ -15132,6 +17848,7 @@ func (s *DescribeInstanceSpecResponse) SetBody(v *DescribeInstanceSpecResponseBo
 }
 
 type DescribeInstanceTypesRequest struct {
+	// The version number. Set the value to 2017-11-10.
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -15149,9 +17866,12 @@ func (s *DescribeInstanceTypesRequest) SetVersion(v string) *DescribeInstanceTyp
 }
 
 type DescribeInstanceTypesResponseBody struct {
-	Code          *int32                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code. If the request is successful, 0 is returned. If the request fails, a non-zero error code is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Details about the instance types.
 	InstanceTypes *DescribeInstanceTypesResponseBodyInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBody) String() string {
@@ -15195,10 +17915,14 @@ func (s *DescribeInstanceTypesResponseBodyInstanceTypes) SetInstanceType(v []*De
 }
 
 type DescribeInstanceTypesResponseBodyInstanceTypesInstanceType struct {
-	CpuCoreCount     *int32  `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	InstanceTypeId   *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	// The number of vCPUs.
+	CpuCoreCount *int32 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
+	// This parameter is unavailable.
+	InstanceTypeId *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
+	// The name of the instance type.
 	InstanceTypeName *string `json:"InstanceTypeName,omitempty" xml:"InstanceTypeName,omitempty"`
-	MemorySize       *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The memory size. Unit: MB.
+	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 }
 
 func (s DescribeInstanceTypesResponseBodyInstanceTypesInstanceType) String() string {
@@ -15259,6 +17983,7 @@ func (s *DescribeInstanceTypesResponse) SetBody(v *DescribeInstanceTypesResponse
 }
 
 type DescribeInstanceVncUrlRequest struct {
+	// The ID of the instance
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -15276,8 +18001,10 @@ func (s *DescribeInstanceVncUrlRequest) SetInstanceId(v string) *DescribeInstanc
 }
 
 type DescribeInstanceVncUrlResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VncUrl    *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
+	// The URL of the VNC management terminal.
+	VncUrl *string `json:"VncUrl,omitempty" xml:"VncUrl,omitempty"`
 }
 
 func (s DescribeInstanceVncUrlResponseBody) String() string {
@@ -15328,23 +18055,55 @@ func (s *DescribeInstanceVncUrlResponse) SetBody(v *DescribeInstanceVncUrlRespon
 }
 
 type DescribeInstancesRequest struct {
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	EnsRegionIds         *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	EnsServiceId         *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
-	ImageId              *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIds          *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IDs of the regions. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
+	// The ID of the edge service. You can use the ID to query information about the instances that are created in the edge service.
+	EnsServiceId *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the instances. The value is a JSON array that consists of up to 100 IDs. Separate multiple IDs with commas (,).
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The condition that you want to use to filter instances by category. Valid values:
+	//
+	// *   EnsInstance: ENS instances that you purchase.
+	// *   EnsService: ENS instances that belong to edge services.
+	// *   BuildMachine: ENS instances that are configured with image builders.
+	// *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
 	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
-	IntranetIp           *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	NetworkId            *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	OrderByParams        *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchKey            *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
-	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The internal IP address of the instance.
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The method that you want to use to sort instances. The value of this parameter is in the JSON format.
+	//
+	// You can sort instances by name, expiration time, region ID, or time when the instances were created. You can specify one or more methods.
+	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
+	// The number of the page to return. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The maximum value is **100**.
+	//
+	// Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword that you use to query the logs of the service. You can specify the values of parameters such as **ip**, **InstanceName**, and **InstanceId** as the keyword.
+	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the instance. Valid values:
+	//
+	// *   Running
+	// *   Stopped
+	// *   Expired
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -15441,12 +18200,18 @@ func (s *DescribeInstancesRequest) SetVSwitchId(v string) *DescribeInstancesRequ
 }
 
 type DescribeInstancesResponseBody struct {
-	Code       *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Instances  *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about instances returned. The value is an array that consists of InstanceAttributesType data.
+	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -15505,32 +18270,76 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	Cpu                     *string                                                       `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	CreationTime            *string                                                       `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	DataDisk                *DescribeInstancesResponseBodyInstancesInstanceDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
-	Disk                    *int32                                                        `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	EnsRegionId             *string                                                       `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ExpiredTime             *string                                                       `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	HostName                *string                                                       `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                 *string                                                       `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InnerIpAddress          *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	InstanceId              *string                                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName            *string                                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceResourceType    *string                                                       `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
-	InstanceTypeFamily      *string                                                       `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	InternetMaxBandwidthIn  *int32                                                        `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	InternetMaxBandwidthOut *int32                                                        `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	Memory                  *int32                                                        `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Schema of Response
-	NetworkAttributes  *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes  `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
-	OSName             *string                                                           `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The number of vCPUs.
+	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The time when the instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The details of the data disk.
+	DataDisk *DescribeInstancesResponseBodyInstancesInstanceDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Struct"`
+	// The total size of the disk. Unit: MiB.
+	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The region ID of the instance.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The expiration time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The hostname of the instance.
+	//
+	// *   The hostname cannot start or end with a period (.) or hyphen (-). It cannot contain consecutive periods (.) or hyphens (-).
+	// *   For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). It cannot contain periods (.) or contain only digits.
+	// *   For an instance that runs an operating system of another type such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Internal IP addresses of instances.
+	InnerIpAddress *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The type of the instance. Valid values:
+	//
+	// *   EnsInstance: ENS instances that you purchase.
+	// *   EnsService: ENS instances that belong to edge services.
+	// *   BuildMachine: ENS instances that are configured with image builders.
+	// *   EnsPostPaidInstance: Pay-as-you-go ENS instances that you purchase.
+	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	// The instance family. Valid values:
+	//
+	// *   x86\_vm: x86-based computing instance.
+	// *   x86\_pm: x86-based physical machine.
+	// *   x86\_bmi: x86-based bare metal instance.
+	// *   x86\_bm: SmartNIC bare metal.
+	// *   pc_bmi: heterogeneous bare metal.
+	// *   pc_vm: heterogeneous virtual machine.
+	// *   arm_bmi: ARM-based computing instance.
+	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
+	// The maximum outbound bandwidth. Unit: Mbit/s.
+	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
+	// The minimum inbound bandwidth. Unit: Mbit/s.
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// The memory size. Unit: MB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The returned information about the network.
+	NetworkAttributes *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes `json:"NetworkAttributes,omitempty" xml:"NetworkAttributes,omitempty" type:"Struct"`
+	// The name of the image.
+	OSName *string `json:"OSName,omitempty" xml:"OSName,omitempty"`
+	// The details of the private IP addresses.
 	PrivateIpAddresses *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty" type:"Struct"`
-	PublicIpAddress    *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress    `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
-	PublicIpAddresses  *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses  `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
-	SecurityGroupIds   *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds   `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	SpecName           *string                                                           `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	Status             *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Schema of Response
+	// The public IP addresses.
+	PublicIpAddress *DescribeInstancesResponseBodyInstancesInstancePublicIpAddress `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty" type:"Struct"`
+	// The details of the public IP addresses.
+	PublicIpAddresses *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty" type:"Struct"`
+	// IDs of security groups.
+	SecurityGroupIds *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	// The code of the instance type.
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// The status. Valid values:
+	//
+	// *   Running
+	// *   Expired
+	// *   Stopped
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The returned information about the disk.
 	SystemDisk *DescribeInstancesResponseBodyInstancesInstanceSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 }
 
@@ -15685,15 +18494,33 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceDataDisk) SetDataDisk(v [
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskName   *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The category of the cloud disk or local disk. Valid values:
+	//
+	// *   **file**: local disk.
+	// *   **pangu**: ultra disk.
+	// *   **local_hdd**: local HDD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The disk ID.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The size of the disk. Unit: MiB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The extended field of the disk category. Valid values:
+	//
+	// *   **file**: local disk.
+	// *   **pangu**: ultra disk.
+	// *   **local_hdd**: local HDD.
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
-	DiskType   *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
-	// UUID。
+	// The type of the cloud disk or local disk. Valid values:
+	//
+	// **system**: system disk. **data**: data disk.
+	DiskType *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
+	// The name of the disk.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the disk. Unit: MiB.
+	Storage *int32 `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The UUID of the disk.
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
@@ -15768,9 +18595,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceInnerIpAddress) SetIpAddr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes struct {
-	NetworkId        *string                                                                          `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The details of the private IP addresses.
 	PrivateIpAddress *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
-	VSwitchId        *string                                                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes) String() string {
@@ -15831,9 +18661,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePrivateIpAddresses) SetPr
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpAddress struct {
+	// The gateway.
 	GateWay *string `json:"GateWay,omitempty" xml:"GateWay,omitempty"`
-	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Isp     *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The information about the ISP.
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstancePrivateIpAddressesPrivateIpAddress) String() string {
@@ -15894,9 +18727,12 @@ func (s *DescribeInstancesResponseBodyInstancesInstancePublicIpAddresses) SetPub
 }
 
 type DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAddress struct {
+	// The gateway.
 	GateWay *string `json:"GateWay,omitempty" xml:"GateWay,omitempty"`
-	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Isp     *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The information about the ISP.
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstancePublicIpAddressesPublicIpAddress) String() string {
@@ -15940,15 +18776,34 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceSecurityGroupIds) SetSecu
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceSystemDisk struct {
-	Category   *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	DiskName   *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The category of the cloud disk or local disk. Valid values:
+	//
+	// *   **file**: local disk.
+	// *   **pangu**: ultra disk.
+	// *   **local_hdd**: local HDD.
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The disk ID.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The name of the disk.
+	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	// The size of the disk. Unit: MiB.
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The extended field of the disk category. Valid values:
+	//
+	// *   **file**: local disk.
+	// *   **pangu**: ultra disk.
+	// *   **local_hdd**: local HDD.
 	DeviceType *string `json:"device_type,omitempty" xml:"device_type,omitempty"`
-	DiskType   *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
-	Storage    *int32  `json:"storage,omitempty" xml:"storage,omitempty"`
-	// UUID。
+	// The type of the cloud disk or local disk. Valid values:
+	//
+	// *   **system**: system disk.
+	// *   **data**: data disk.
+	DiskType *string `json:"disk_type,omitempty" xml:"disk_type,omitempty"`
+	// The name of the disk.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The size of the disk. Unit: MiB.
+	Storage *int32 `json:"storage,omitempty" xml:"storage,omitempty"`
+	// The UUID of the disk.
 	Uuid *string `json:"uuid,omitempty" xml:"uuid,omitempty"`
 }
 
@@ -16035,10 +18890,21 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeKeyPairsRequest struct {
+	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
+	//
+	// *   Digits
+	// *   :
+	// *   \_
+	// *   *
+	//
+	// You can specify only one name. By default, all key pairs are queried.
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The page number of the returned page. Valid values: integers that are greater than 0. Default value: 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: integers that are greater than 0. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeKeyPairsRequest) String() string {
@@ -16070,11 +18936,16 @@ func (s *DescribeKeyPairsRequest) SetVersion(v string) *DescribeKeyPairsRequest 
 }
 
 type DescribeKeyPairsResponseBody struct {
-	KeyPairs   *DescribeKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Details about the key pairs.
+	KeyPairs *DescribeKeyPairsResponseBodyKeyPairs `json:"KeyPairs,omitempty" xml:"KeyPairs,omitempty" type:"Struct"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of key pairs.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeKeyPairsResponseBody) String() string {
@@ -16128,9 +18999,12 @@ func (s *DescribeKeyPairsResponseBodyKeyPairs) SetKeyPair(v []*DescribeKeyPairsR
 }
 
 type DescribeKeyPairsResponseBodyKeyPairsKeyPair struct {
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The time when the key pair was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The fingerprint of the key pair.
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The name of the SSH key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 }
 
 func (s DescribeKeyPairsResponseBodyKeyPairsKeyPair) String() string {
@@ -16186,6 +19060,7 @@ func (s *DescribeKeyPairsResponse) SetBody(v *DescribeKeyPairsResponseBody) *Des
 }
 
 type DescribeLoadBalancerAttributeRequest struct {
+	// The ID of the ELB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -16203,23 +19078,46 @@ func (s *DescribeLoadBalancerAttributeRequest) SetLoadBalancerId(v string) *Desc
 }
 
 type DescribeLoadBalancerAttributeResponseBody struct {
-	Address                   *string                                                               `json:"Address,omitempty" xml:"Address,omitempty"`
-	AddressIPVersion          *string                                                               `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	BackendServers            []*DescribeLoadBalancerAttributeResponseBodyBackendServers            `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	Bandwidth                 *int32                                                                `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	CreateTime                *string                                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EnsRegionId               *string                                                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ListenerPorts             []*string                                                             `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Repeated"`
+	// The IP address that the ELB instance uses to provide services.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The IP version of the ELB instance. Valid values: ipv4 and ipv6.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The backend servers.
+	BackendServers []*DescribeLoadBalancerAttributeResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
+	// The maximum bandwidth of the elastic IP address (EIP). Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The time when the ELB instance was created. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the ELB instance was disabled.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The frontend ports that are used by the ELB instance.
+	ListenerPorts []*string `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Repeated"`
+	// The frontend ports and protocols that are used by the ELB instance.
 	ListenerPortsAndProtocols []*DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols `json:"ListenerPortsAndProtocols,omitempty" xml:"ListenerPortsAndProtocols,omitempty" type:"Repeated"`
-	LoadBalancerId            *string                                                               `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName          *string                                                               `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerSpec          *string                                                               `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
-	LoadBalancerStatus        *string                                                               `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	NetworkId                 *string                                                               `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	PayType                   *string                                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId                 *string                                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The specifications of the ELB instance.
+	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
+	// The status of the ELB instance. Valid values:
+	//
+	// *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+	// *   **InActive**: The listener for the instance does not forward the received traffic.
+	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go. Only this billing method is supported.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBody) String() string {
@@ -16316,11 +19214,16 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetVSwitchId(v string) *Desc
 }
 
 type DescribeLoadBalancerAttributeResponseBodyBackendServers struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port that is used by the backend server.
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s DescribeLoadBalancerAttributeResponseBodyBackendServers) String() string {
@@ -16357,10 +19260,15 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetWeight(v in
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort      *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	ListenerForward  *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The destination listening port to which requests are forwarded.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether the listener is enabled.
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The listener port of the instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The listener protocol.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 }
 
@@ -16427,7 +19335,9 @@ func (s *DescribeLoadBalancerAttributeResponse) SetBody(v *DescribeLoadBalancerA
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeRequest struct {
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1 to 65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the ELB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -16450,27 +19360,115 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetLoadBalancerId(v s
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
-	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The maximum bandwidth of the EIP.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **5** to **10000**.
+	// *   Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used to redirect HTTP requests to HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values:
+	//
+	// *   **head**: requests the head of the page.
+	// *   **get**: requests the specified part of the page and returns the entity body.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter is returned only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	//
+	// *   This parameter is returned only if you set HealthCheck to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+	//
+	// *   **on**: HTTP-to-HTTPS redirection is enabled.
+	// *   **off** (default)
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Starting**
+	// *   **Configuring**
+	// *   **Stopping**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
@@ -16616,7 +19614,9 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponse) SetBody(v *DescribeL
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeRequest struct {
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the ELB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -16639,27 +19639,110 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetLoadBalancerId(v 
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	Bandwidth              *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ForwardPort            *int32  `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerForward        *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	RequestId              *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The maximum bandwidth of the EIP.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **5** to **10000**.
+	// *   Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port that is used to redirect HTTP requests to HTTPS.
+	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If an empty string is returned for this parameter, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values:
+	//
+	// *   **head**: requests the head of the page.
+	// *   **get**: requests the specified part of the page and returns the entity body.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter is returned only if the HealthCheck parameter is set to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The URI that is used for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// *   The URL must start with `/` and contain characters other than `/`.
+	// *   This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// Indicates whether HTTP-to-HTTPS redirection is enabled. Valid values:
+	//
+	// *   on
+	// *   off
+	ListenerForward *string `json:"ListenerForward,omitempty" xml:"ListenerForward,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Starting**
+	// *   **Configuring**
+	// *   **Stopping**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if the HealthCheck parameter is set to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPSListenerAttributeResponseBody) String() string {
@@ -16805,6 +19888,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *Describe
 }
 
 type DescribeLoadBalancerSpecRequest struct {
+	// The specifications of the ELB instance.
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 }
 
@@ -16822,12 +19906,16 @@ func (s *DescribeLoadBalancerSpecRequest) SetLoadBalancerSpec(v string) *Describ
 }
 
 type DescribeLoadBalancerSpecResponseBody struct {
+	// The specifications. Valid values:
 	LoadBalancerSpecs []*DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs `json:"LoadBalancerSpecs,omitempty" xml:"LoadBalancerSpecs,omitempty" type:"Repeated"`
-	PageNumber        *int32                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancerSpecResponseBody) String() string {
@@ -16864,7 +19952,9 @@ func (s *DescribeLoadBalancerSpecResponseBody) SetTotalCount(v int32) *DescribeL
 }
 
 type DescribeLoadBalancerSpecResponseBodyLoadBalancerSpecs struct {
-	DisplayName      *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display name of the instance type.
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The specifications of the ELB instance.
 	LoadBalancerSpec *string `json:"LoadBalancerSpec,omitempty" xml:"LoadBalancerSpec,omitempty"`
 }
 
@@ -16916,7 +20006,9 @@ func (s *DescribeLoadBalancerSpecResponse) SetBody(v *DescribeLoadBalancerSpecRe
 }
 
 type DescribeLoadBalancerTCPListenerAttributeRequest struct {
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the ELB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -16939,26 +20031,103 @@ func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetLoadBalancerId(v st
 }
 
 type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the elastic IP address (EIP). Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether EIP pass-through is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The timeout period of a connection. Valid values: **10** to **900**. Unit: seconds.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If an empty string is returned for this parameter, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter is returned only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that is used for health checks.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status codes for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The type of health checks. Valid values:
+	//
+	// *   **tcp** (default)
+	// *   **http**
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	//
+	// *   This parameter is returned only if you set HealthCheck to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The timeout period of session persistence.
+	//
+	// *   Default value: 0. If the default value is used, the system disables session persistence.
+	// *   Valid values: **0** to **3600**.
+	// *   Unit: seconds.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Starting**
+	// *   **Configuring**
+	// *   **Stopping**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter is returned only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerTCPListenerAttributeResponseBody) String() string {
@@ -17099,7 +20268,9 @@ func (s *DescribeLoadBalancerTCPListenerAttributeResponse) SetBody(v *DescribeLo
 }
 
 type DescribeLoadBalancerUDPListenerAttributeRequest struct {
-	ListenerPort   *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the ELB instance.
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
@@ -17122,22 +20293,77 @@ func (s *DescribeLoadBalancerUDPListenerAttributeRequest) SetLoadBalancerId(v st
 }
 
 type DescribeLoadBalancerUDPListenerAttributeResponseBody struct {
-	BackendServerPort         *int32  `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	Bandwidth                 *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	HealthCheck               *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	Status                    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
+	// The maximum bandwidth of the elastic IP address (EIP).
+	//
+	// *   Default value: 5.
+	// *   Valid values: **5** to **10000**.
+	// *   Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The description of the listener.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether EIP pass-through is enabled. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// *   **Running**
+	// *   **Stopped**
+	// *   **Starting**
+	// *   **Configuring**
+	// *   **Stopping**
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s DescribeLoadBalancerUDPListenerAttributeResponseBody) String() string {
@@ -17258,16 +20484,29 @@ func (s *DescribeLoadBalancerUDPListenerAttributeResponse) SetBody(v *DescribeLo
 }
 
 type DescribeLoadBalancersRequest struct {
-	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The IP address that the ELB instance uses to provide services.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The status of the ELB instance. Valid values:
+	//
+	// *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+	// *   **InActive**: The listener for the instance does not forward the received traffic.
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ServerId           *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The page number. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: **10** to **100**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the backend server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeLoadBalancersRequest) String() string {
@@ -17329,11 +20568,16 @@ func (s *DescribeLoadBalancersRequest) SetVSwitchId(v string) *DescribeLoadBalan
 }
 
 type DescribeLoadBalancersResponseBody struct {
+	// The returned ELB instances.
 	LoadBalancers *DescribeLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Struct"`
-	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Valid values: **10** to **100**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBody) String() string {
@@ -17387,16 +20631,32 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancers) SetLoadBalancer(v []*De
 }
 
 type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
-	Address            *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AddressIPVersion   *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	LoadBalancerName   *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The IP address that the ELB instance uses to provide services.
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The version of the IP address. Valid values: ipv4 and ipv6.
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
+	// The time when the ELB instance was created. The time is displayed in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance.
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The status of the ELB instance. Valid values:
+	//
+	// *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+	// *   **InActive**: The listener for the instance does not forward the received traffic.
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	NetworkId          *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The billing method. Valid values:
+	//
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go. Only this billing method is supported.
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) String() string {
@@ -17487,9 +20747,12 @@ func (s *DescribeLoadBalancersResponse) SetBody(v *DescribeLoadBalancersResponse
 }
 
 type DescribeMeasurementDataRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeMeasurementDataRequest) String() string {
@@ -17516,8 +20779,10 @@ func (s *DescribeMeasurementDataRequest) SetVersion(v string) *DescribeMeasureme
 }
 
 type DescribeMeasurementDataResponseBody struct {
+	// The metering data returned.
 	MeasurementDatas *DescribeMeasurementDataResponseBodyMeasurementDatas `json:"MeasurementDatas,omitempty" xml:"MeasurementDatas,omitempty" type:"Struct"`
-	RequestId        *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMeasurementDataResponseBody) String() string {
@@ -17556,12 +20821,22 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatas) SetMeasurementData
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementData struct {
-	BandWidthFeeDatas      *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas      `json:"BandWidthFeeDatas,omitempty" xml:"BandWidthFeeDatas,omitempty" type:"Struct"`
-	ChargeModel            *string                                                                                   `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
-	CostCycle              *string                                                                                   `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
-	CostEndTime            *string                                                                                   `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
-	CostStartTime          *string                                                                                   `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
-	ResourceFeeData        *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData        `json:"ResourceFeeData,omitempty" xml:"ResourceFeeData,omitempty" type:"Struct"`
+	// The bandwidth data returned.
+	BandWidthFeeDatas *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatas `json:"BandWidthFeeDatas,omitempty" xml:"BandWidthFeeDatas,omitempty" type:"Struct"`
+	// The metering method. Valid values:
+	//
+	// *   ChargeByUnified: unified metering.
+	// *   ChargeByGrade: differential metering.
+	ChargeModel *string `json:"ChargeModel,omitempty" xml:"ChargeModel,omitempty"`
+	// The metering cycle.
+	CostCycle *string `json:"CostCycle,omitempty" xml:"CostCycle,omitempty"`
+	// The end time of the metering cycle.
+	CostEndTime *string `json:"CostEndTime,omitempty" xml:"CostEndTime,omitempty"`
+	// The start time of the metering cycle.
+	CostStartTime *string `json:"CostStartTime,omitempty" xml:"CostStartTime,omitempty"`
+	// The information about computing resources.
+	ResourceFeeData *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData `json:"ResourceFeeData,omitempty" xml:"ResourceFeeData,omitempty" type:"Struct"`
+	// Details of the computing resources.
 	ResourceFeeDataDetails *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetails `json:"ResourceFeeDataDetails,omitempty" xml:"ResourceFeeDataDetails,omitempty" type:"Struct"`
 }
 
@@ -17626,9 +20901,12 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData struct {
+	// The code of the bandwidth plan.
 	CostCode *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
+	// The name of the bandwidth plan.
 	CostName *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
-	CostVal  *int32  `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
+	// The bandwidth consumption. Unit: bit/second.
+	CostVal *int32 `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
 }
 
 func (s DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandWidthFeeDatasBandWidthFeeData) String() string {
@@ -17655,9 +20933,12 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataBandW
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData struct {
-	Memory  *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The memory size. Unit: GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The storage capacity. Unit: GB.
 	Storage *int32 `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	Vcpu    *int32 `json:"Vcpu,omitempty" xml:"Vcpu,omitempty"`
+	// The number of vCPUs.
+	Vcpu *int32 `json:"Vcpu,omitempty" xml:"Vcpu,omitempty"`
 }
 
 func (s DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeData) String() string {
@@ -17701,9 +20982,17 @@ func (s *DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResou
 }
 
 type DescribeMeasurementDataResponseBodyMeasurementDatasMeasurementDataResourceFeeDataDetailsResourceFeeDataDetail struct {
-	CostCode     *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
-	CostName     *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
-	CostVal      *int32  `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
+	// The code of the resource.
+	CostCode *string `json:"CostCode,omitempty" xml:"CostCode,omitempty"`
+	// The name of the resource.
+	CostName *string `json:"CostName,omitempty" xml:"CostName,omitempty"`
+	// The consumption of the resource.
+	//
+	// *   Memory unit: GB.
+	// *   CPU unit: vCPU.
+	// *   Storage unit: GB.
+	CostVal *int32 `json:"CostVal,omitempty" xml:"CostVal,omitempty"`
+	// The type of the resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -17765,11 +21054,16 @@ func (s *DescribeMeasurementDataResponse) SetBody(v *DescribeMeasurementDataResp
 }
 
 type DescribeMountTargetsRequest struct {
-	EnsRegionId     *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId    *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The name of the mount target.
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is 100. Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeMountTargetsRequest) String() string {
@@ -17806,11 +21100,16 @@ func (s *DescribeMountTargetsRequest) SetPageSize(v int32) *DescribeMountTargets
 }
 
 type DescribeMountTargetsResponseBody struct {
+	// The information about mount targets.
 	MountTargets []*DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
-	PageNumber   *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of mount targets.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeMountTargetsResponseBody) String() string {
@@ -17847,12 +21146,23 @@ func (s *DescribeMountTargetsResponseBody) SetTotalCount(v int32) *DescribeMount
 }
 
 type DescribeMountTargetsResponseBodyMountTargets struct {
-	EnsRegionId       *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FileSystemId      *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
+	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The path of the mount target.
 	MountTargetDomain *string `json:"MountTargetDomain,omitempty" xml:"MountTargetDomain,omitempty"`
-	MountTargetName   *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	NetWorkId         *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the mount target.
+	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
+	// The ID of the network.
+	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	// The state of the mount target. Valid values:
+	//
+	// *   active: The mount target is available.
+	// *   inactive: The mount target is unavailable.
+	// *   pending: A task is being queued for the mount target.
+	// *   deleting: The mount target is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMountTargetsResponseBodyMountTargets) String() string {
@@ -18661,13 +21971,24 @@ func (s *DescribeNCInformationResponse) SetBody(v *DescribeNCInformationResponse
 }
 
 type DescribeNatGatewaysRequest struct {
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Edge Node Service (ENS) node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the NAT gateway.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**.
+	//
+	// Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeNatGatewaysRequest) String() string {
@@ -18714,11 +22035,16 @@ func (s *DescribeNatGatewaysRequest) SetVSwitchId(v string) *DescribeNatGateways
 }
 
 type DescribeNatGatewaysResponseBody struct {
+	// Details about the NAT gateways.
 	NatGateways []*DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
-	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of NAT gateways that are returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBody) String() string {
@@ -18755,13 +22081,20 @@ func (s *DescribeNatGatewaysResponseBody) SetTotalCount(v int32) *DescribeNatGat
 }
 
 type DescribeNatGatewaysResponseBodyNatGateways struct {
+	// The time when the NAT gateway was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the NAT gateway.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the NAT gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	Spec         *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The type of the NAT gateway.
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGateways) String() string {
@@ -18837,11 +22170,18 @@ func (s *DescribeNatGatewaysResponse) SetBody(v *DescribeNatGatewaysResponseBody
 }
 
 type DescribeNetworkAclsRequest struct {
-	NetworkAclId   *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The ID of the network ACL.
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The name of the network ACL.
+	//
+	// The name must be 1 to 128 characters in length. The name cannot start with \*\*http:// **or** https://\*\*.
 	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	PageNumber     *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceId     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **50**. Default value: **10**.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the associated instance.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
 func (s DescribeNetworkAclsRequest) String() string {
@@ -18878,11 +22218,16 @@ func (s *DescribeNetworkAclsRequest) SetResourceId(v string) *DescribeNetworkAcl
 }
 
 type DescribeNetworkAclsResponseBody struct {
+	// Details of the network ACLs.
 	NetworkAcls []*DescribeNetworkAclsResponseBodyNetworkAcls `json:"NetworkAcls,omitempty" xml:"NetworkAcls,omitempty" type:"Repeated"`
-	PageNumber  *string                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *string                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNetworkAclsResponseBody) String() string {
@@ -18919,14 +22264,25 @@ func (s *DescribeNetworkAclsResponseBody) SetTotalCount(v string) *DescribeNetwo
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAcls struct {
-	CreationTime      *string                                                        `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description       *string                                                        `json:"Description,omitempty" xml:"Description,omitempty"`
-	EgressAclEntries  []*DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries  `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Repeated"`
+	// The time when the network ACL was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the network ACL.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Details of the outbound rules.
+	EgressAclEntries []*DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries `json:"EgressAclEntries,omitempty" xml:"EgressAclEntries,omitempty" type:"Repeated"`
+	// Details of the inbound rules.
 	IngressAclEntries []*DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries `json:"IngressAclEntries,omitempty" xml:"IngressAclEntries,omitempty" type:"Repeated"`
-	NetworkAclId      *string                                                        `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	NetworkAclName    *string                                                        `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
-	Resources         []*DescribeNetworkAclsResponseBodyNetworkAclsResources         `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Status            *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the network ACL.
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The name of the network ACL.
+	NetworkAclName *string `json:"NetworkAclName,omitempty" xml:"NetworkAclName,omitempty"`
+	// Details of the associated resources.
+	Resources []*DescribeNetworkAclsResponseBodyNetworkAclsResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The status of the network ACL. Valid values:
+	//
+	// *   **Available**: The network ACL is available.
+	// *   **Modifying**: The network ACL is being configured.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeNetworkAclsResponseBodyNetworkAcls) String() string {
@@ -18978,15 +22334,38 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAcls) SetStatus(v string) *Descri
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries struct {
-	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	// The destination CIDR block.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the outbound rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the outbound rule.
+	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	// The name of the outbound rule.
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The action to be performed on network traffic that matches the rule. Valid values:
+	//
+	// *   **accept**: allows the network traffic.
+	// *   **drop**: blocks the network traffic.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The destination port range of the outbound rule.
+	//
+	// *   If **Protocol** in the outbound rule is set to **all** or **icmp**, \*\*-1/-1\*\* is returned for this parameter. \*\*-1/-1\*\* indicates all ports.
+	// *   If **Protocol** in the outbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 120/120 indicates port 1 to port 200 and 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **icmp**
+	// *   **tcp**
+	// *   **udp**
+	// *   **all**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   **system**: The rule is created by the system.
+	// *   **custom**: The rule is created by a user.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) String() string {
@@ -19043,15 +22422,38 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsEgressAclEntries) SetType(v s
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
-	CidrBlock           *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NetworkAclEntryId   *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	// The source CIDR block.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The description of the inbound rule.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the inbound rule.
+	NetworkAclEntryId *string `json:"NetworkAclEntryId,omitempty" xml:"NetworkAclEntryId,omitempty"`
+	// The name of the inbound rule.
 	NetworkAclEntryName *string `json:"NetworkAclEntryName,omitempty" xml:"NetworkAclEntryName,omitempty"`
-	Policy              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange           *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority            *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Protocol            *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The action that is performed on network traffic that matches the rule. Valid values:
+	//
+	// *   **accept**: allows the network traffic.
+	// *   **drop**: blocks the network traffic.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The destination port range of the inbound rule.
+	//
+	// *   If **Protocol** in the inbound rule is set to **all** or **icmp**, \*\*-1/-1\*\* is returned for this parameter. \*\*-1/-1\*\* indicates all ports.
+	// *   If **Protocol** in the inbound rule is set to **tcp** or **udp**, the port range is in the following format: **1/200** or **80/80**. 1/200 indicates port 1 to port 200 and 80/80 indicates port 80. Valid values for a port: **1 to 65535**.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the rule. Valid values: **1 to 100**. Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The protocol. Valid values:
+	//
+	// *   **icmp**
+	// *   **tcp**
+	// *   **udp**
+	// *   **all**
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// *   **system**: The rule is created by the system.
+	// *   **custom**: The rule is created by a user.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) String() string {
@@ -19108,10 +22510,18 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetType(v 
 }
 
 type DescribeNetworkAclsResponseBodyNetworkAclsResources struct {
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the associated resource.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the associated resource.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The association status of the resource. Valid values:
+	//
+	// *   **BINDED**: The resource is associated with the network ACL.
+	// *   **BINDING**: The resource is being associated with the network ACL.
+	// *   **UNBINDING**: The resource is being disassociated from the network ACL.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeNetworkAclsResponseBodyNetworkAclsResources) String() string {
@@ -19172,6 +22582,7 @@ func (s *DescribeNetworkAclsResponse) SetBody(v *DescribeNetworkAclsResponseBody
 }
 
 type DescribeNetworkAttributeRequest struct {
+	// The ID of the network.
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 }
 
@@ -19189,18 +22600,33 @@ func (s *DescribeNetworkAttributeRequest) SetNetworkId(v string) *DescribeNetwor
 }
 
 type DescribeNetworkAttributeResponseBody struct {
-	CidrBlock      *string                                             `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The IPv4 CIDR block of the network.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The list of resources in the network.
 	CloudResources *DescribeNetworkAttributeResponseBodyCloudResources `json:"CloudResources,omitempty" xml:"CloudResources,omitempty" type:"Struct"`
-	CreatedTime    *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description    *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId    *string                                             `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkAclId   *string                                             `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	NetworkId      *string                                             `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	NetworkName    *string                                             `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RouterTableId  *string                                             `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
-	Status         *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchIds     *DescribeNetworkAttributeResponseBodyVSwitchIds     `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	// The time when the network was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the network.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network access control list (ACL).
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The name of the network.
+	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the route table.
+	RouterTableId *string `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	// The status of the network. Valid values:
+	//
+	// *   Pending
+	// *   Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of vSwitches in the network.
+	VSwitchIds *DescribeNetworkAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworkAttributeResponseBody) String() string {
@@ -19289,8 +22715,10 @@ func (s *DescribeNetworkAttributeResponseBodyCloudResources) SetCloudResourceSet
 }
 
 type DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType struct {
-	ResourceCount *int32  `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
-	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of resources in the network.
+	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// The resource type. VSwitch.
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s DescribeNetworkAttributeResponseBodyCloudResourcesCloudResourceSetType) String() string {
@@ -19358,12 +22786,43 @@ func (s *DescribeNetworkAttributeResponse) SetBody(v *DescribeNetworkAttributeRe
 }
 
 type DescribeNetworkInterfacesRequest struct {
-	EnsRegionId      *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber       *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID of the instance.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the ENI.
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The name of the ENI.
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	// The number of the page to return. Pages start from page 1. Default value: 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Maximum value: 50. Default value: 10.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The primary IP address of the ENI.
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the security group to which the secondary ENI belongs. To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The status of the ENI. Valid values:
+	//
+	// *   Available: The ENI is available.
+	// *   Attaching: The ENI is being attached to an instance.
+	// *   InUse: The ENI is attached to an instance.
+	// *   Detaching: The ENI is being detached from an instance.
+	// *   Deleting: The ENI is being deleted.
+	//
+	// This parameter is empty by default, which indicates that ENIs in all states are queried.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the ENI. Valid values:
+	//
+	// *   Primary
+	// *   Secondary
+	//
+	// This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesRequest) String() string {
@@ -19384,6 +22843,21 @@ func (s *DescribeNetworkInterfacesRequest) SetInstanceId(v string) *DescribeNetw
 	return s
 }
 
+func (s *DescribeNetworkInterfacesRequest) SetNetworkId(v string) *DescribeNetworkInterfacesRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesRequest) SetNetworkInterfaceId(v string) *DescribeNetworkInterfacesRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesRequest) SetNetworkInterfaceName(v string) *DescribeNetworkInterfacesRequest {
+	s.NetworkInterfaceName = &v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesRequest) SetPageNumber(v string) *DescribeNetworkInterfacesRequest {
 	s.PageNumber = &v
 	return s
@@ -19399,17 +22873,37 @@ func (s *DescribeNetworkInterfacesRequest) SetPrimaryIpAddress(v string) *Descri
 	return s
 }
 
+func (s *DescribeNetworkInterfacesRequest) SetSecurityGroupId(v string) *DescribeNetworkInterfacesRequest {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesRequest) SetStatus(v string) *DescribeNetworkInterfacesRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesRequest) SetType(v string) *DescribeNetworkInterfacesRequest {
+	s.Type = &v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesRequest) SetVSwitchId(v string) *DescribeNetworkInterfacesRequest {
 	s.VSwitchId = &v
 	return s
 }
 
 type DescribeNetworkInterfacesResponseBody struct {
+	// Details about the ENIs.
 	NetworkInterfaceSets *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets `json:"NetworkInterfaceSets,omitempty" xml:"NetworkInterfaceSets,omitempty" type:"Struct"`
-	PageNumber           *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount           *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of the page to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page. Maximum value: **50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the list.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesResponseBody) String() string {
@@ -19463,16 +22957,48 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets) SetNetworkIn
 }
 
 type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet struct {
-	CreationTime       *string                                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnsRegionId        *string                                                                                    `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId         *string                                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MacAddress         *string                                                                                    `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	NetworkInterfaceId *string                                                                                    `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrimaryIp          *string                                                                                    `json:"PrimaryIp,omitempty" xml:"PrimaryIp,omitempty"`
-	PrimaryIpType      *string                                                                                    `json:"PrimaryIpType,omitempty" xml:"PrimaryIpType,omitempty"`
-	PrivateIpSets      *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
-	Status             *string                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId          *string                                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The time when the ENI was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC. The format is yyyy-MM-ddThh:mmZ.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the ENI.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance to which the ENI is attached.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The media access control (MAC) address of the ENI.
+	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the ENI.
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The name of the ENI.
+	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
+	// The primary private IP address.
+	PrimaryIp *string `json:"PrimaryIp,omitempty" xml:"PrimaryIp,omitempty"`
+	// The type of the primary IP address. Valid values:
+	//
+	// *   **Public**: public endpoint.
+	// *   **Private**: internal endpoint.
+	PrimaryIpType *string `json:"PrimaryIpType,omitempty" xml:"PrimaryIpType,omitempty"`
+	// Details about the private IP addresses.
+	PrivateIpSets *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	// IDs of security groups.
+	SecurityGroupIds *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
+	// The status of the ENI. Valid values:
+	//
+	// *   Available: The ENI is available.
+	// *   Attaching: The ENI is being attached to an instance.
+	// *   InUse: The ENI is attached to an instance.
+	// *   Detaching: The ENI is being detached from an instance.
+	// *   Deleting: The ENI is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the ENI. Valid values:
+	//
+	// *   Primary
+	// *   Secondary
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) String() string {
@@ -19485,6 +23011,11 @@ func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfac
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetCreationTime(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetDescription(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.Description = &v
 	return s
 }
 
@@ -19503,8 +23034,18 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 	return s
 }
 
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetNetworkId(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.NetworkId = &v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetNetworkInterfaceId(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetNetworkInterfaceName(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.NetworkInterfaceName = &v
 	return s
 }
 
@@ -19523,8 +23064,18 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 	return s
 }
 
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetSecurityGroupIds(v *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.SecurityGroupIds = v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetStatus(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetType(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.Type = &v
 	return s
 }
 
@@ -19551,7 +23102,12 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 }
 
 type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet struct {
-	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// Indicates whether the IP address is the primary private IP address. Valid values:
+	//
+	// *   true: The IP address is the primary private IP address.
+	// *   false: The IP address is the secondary private IP address.
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The private IP address.
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 }
 
@@ -19570,6 +23126,23 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) SetPrivateIpAddress(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds struct {
+	SecurityGroup []*string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds) SetSecurityGroup(v []*string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetSecurityGroupIds {
+	s.SecurityGroup = v
 	return s
 }
 
@@ -19603,11 +23176,16 @@ func (s *DescribeNetworkInterfacesResponse) SetBody(v *DescribeNetworkInterfaces
 }
 
 type DescribeNetworksRequest struct {
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The name of the network.
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number of the returned page. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeNetworksRequest) String() string {
@@ -19644,11 +23222,16 @@ func (s *DescribeNetworksRequest) SetPageSize(v int32) *DescribeNetworksRequest 
 }
 
 type DescribeNetworksResponseBody struct {
-	Networks   *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of networks.
+	Networks *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the list.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeNetworksResponseBody) String() string {
@@ -19702,16 +23285,29 @@ func (s *DescribeNetworksResponseBodyNetworks) SetNetwork(v []*DescribeNetworksR
 }
 
 type DescribeNetworksResponseBodyNetworksNetwork struct {
-	CidrBlock     *string                                                `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	CreatedTime   *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description   *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId   *string                                                `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkAclId  *string                                                `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	NetworkId     *string                                                `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	NetworkName   *string                                                `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	RouterTableId *string                                                `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
-	Status        *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchIds    *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	// The IPv4 CIDR block of the network.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The timestamp when the instance was created. Unit: milliseconds.
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the network.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the network access control list (ACL).
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The name of the network.
+	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	// The route table ID.
+	RouterTableId *string `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	// The status of the network. Valid values:
+	//
+	// *   Pending
+	// *   Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of vSwitches in the network.
+	VSwitchIds *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworksResponseBodyNetworksNetwork) String() string {
@@ -19819,10 +23415,13 @@ func (s *DescribeNetworksResponse) SetBody(v *DescribeNetworksResponseBody) *Des
 }
 
 type DescribePrePaidInstanceStockRequest struct {
-	DataDiskSize   *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The ID of the datadisk.
+	DataDiskSize *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The size of the system disk. Unit: GB.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The ID of the systemdisk
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s DescribePrePaidInstanceStockRequest) String() string {
@@ -19854,15 +23453,24 @@ func (s *DescribePrePaidInstanceStockRequest) SetSystemDiskSize(v int32) *Descri
 }
 
 type DescribePrePaidInstanceStockResponseBody struct {
-	AvaliableCount *int32  `json:"AvaliableCount,omitempty" xml:"AvaliableCount,omitempty"`
-	Cores          *int32  `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	DataDiskSize   *int32  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	EnsRegionId    *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	Memory         *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGap    *string `json:"ResourceGap,omitempty" xml:"ResourceGap,omitempty"`
-	SystemDiskSize *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The number of resources that you can purchase.
+	AvaliableCount *int32 `json:"AvaliableCount,omitempty" xml:"AvaliableCount,omitempty"`
+	// The number of vCPUs.
+	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The size of the data disk.
+	DataDiskSize *int32 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+	// The ID of the node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The instance type.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The memory size. Unit: GB.
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The reasons for resource scarcity
+	ResourceGap *string `json:"ResourceGap,omitempty" xml:"ResourceGap,omitempty"`
+	// The size of the system disk. Unit: GB.
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 }
 
 func (s DescribePrePaidInstanceStockResponseBody) String() string {
@@ -19948,15 +23556,34 @@ func (s *DescribePrePaidInstanceStockResponse) SetBody(v *DescribePrePaidInstanc
 }
 
 type DescribePriceRequest struct {
-	DataDisk           []*DescribePriceRequestDataDisk  `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk         *DescribePriceRequestSystemDisk  `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	DataDisks          []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
-	EnsRegionId        *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceType       *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Period             *int32                           `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string                          `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Quantity           *int32                           `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	DataDisk   []*DescribePriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk *DescribePriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// If you leave DataDisk.1.Size empty, the value that you specified for this parameter is used.
+	DataDisks []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The type of the instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The bandwidth metering method of the instance. Valid values:
+	//
+	// *   BandwidthByDay: Pay by daily peak bandwidth
+	// *   95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+	// *   PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+	// *   PayByBandwidth: Pay by fixed bandwidth
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The subscription duration of the instance.
+	//
+	// *   If you leave the PeriodUnit parameter empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// *   If you set PeriodUnit to Day, you can set Period only to 3.
+	// *   If you set PeriodUnit to Month, you can set Period to a number from 1 to 9, or set Period to 12.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The billing cycle of the ENS instance. Valid values:
+	//
+	// *   Month (default):
+	// *   Day
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The number of instances.
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s DescribePriceRequest) String() string {
@@ -20013,6 +23640,7 @@ func (s *DescribePriceRequest) SetQuantity(v int32) *DescribePriceRequest {
 }
 
 type DescribePriceRequestDataDisk struct {
+	// The size of the data disk. Unit: GB. If you specify this parameter, this parameter takes precedence over the Size property in DataDisks.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -20030,6 +23658,7 @@ func (s *DescribePriceRequestDataDisk) SetSize(v int32) *DescribePriceRequestDat
 }
 
 type DescribePriceRequestSystemDisk struct {
+	// The size of the system disk. Unit: GB.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -20047,8 +23676,10 @@ func (s *DescribePriceRequestSystemDisk) SetSize(v int32) *DescribePriceRequestS
 }
 
 type DescribePriceRequestDataDisks struct {
+	// The category of the disk.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size of the data disk. Unit: GB.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s DescribePriceRequestDataDisks) String() string {
@@ -20070,15 +23701,34 @@ func (s *DescribePriceRequestDataDisks) SetSize(v int64) *DescribePriceRequestDa
 }
 
 type DescribePriceShrinkRequest struct {
-	DataDisk           []*DescribePriceShrinkRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk         *DescribePriceShrinkRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	DataDisksShrink    *string                               `json:"DataDisks,omitempty" xml:"DataDisks,omitempty"`
-	EnsRegionId        *string                               `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceType       *string                               `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType *string                               `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Period             *int32                                `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string                               `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Quantity           *int32                                `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	DataDisk   []*DescribePriceShrinkRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk *DescribePriceShrinkRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// If you leave DataDisk.1.Size empty, the value that you specified for this parameter is used.
+	DataDisksShrink *string `json:"DataDisks,omitempty" xml:"DataDisks,omitempty"`
+	// The ID of the ENS node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The type of the instance.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The bandwidth metering method of the instance. Valid values:
+	//
+	// *   BandwidthByDay: Pay by daily peak bandwidth
+	// *   95BandwidthByMonth: Pay by monthly 95th percentile bandwidth
+	// *   PayByBandwidth4thMonth: Pay by monthly fourth peak bandwidth
+	// *   PayByBandwidth: Pay by fixed bandwidth
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The subscription duration of the instance.
+	//
+	// *   If you leave the PeriodUnit parameter empty, the instance is purchased on a monthly basis. Valid values: Day and Month.
+	// *   If you set PeriodUnit to Day, you can set Period only to 3.
+	// *   If you set PeriodUnit to Month, you can set Period to a number from 1 to 9, or set Period to 12.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The billing cycle of the ENS instance. Valid values:
+	//
+	// *   Month (default):
+	// *   Day
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The number of instances.
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s DescribePriceShrinkRequest) String() string {
@@ -20135,6 +23785,7 @@ func (s *DescribePriceShrinkRequest) SetQuantity(v int32) *DescribePriceShrinkRe
 }
 
 type DescribePriceShrinkRequestDataDisk struct {
+	// The size of the data disk. Unit: GB. If you specify this parameter, this parameter takes precedence over the Size property in DataDisks.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -20152,6 +23803,7 @@ func (s *DescribePriceShrinkRequestDataDisk) SetSize(v int32) *DescribePriceShri
 }
 
 type DescribePriceShrinkRequestSystemDisk struct {
+	// The size of the system disk. Unit: GB.
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -20169,8 +23821,10 @@ func (s *DescribePriceShrinkRequestSystemDisk) SetSize(v int32) *DescribePriceSh
 }
 
 type DescribePriceResponseBody struct {
+	// The price information.
 	PriceInfo *DescribePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePriceResponseBody) String() string {
@@ -20192,6 +23846,7 @@ func (s *DescribePriceResponseBody) SetRequestId(v string) *DescribePriceRespons
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
+	// The price.
 	Price *DescribePriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 }
 
@@ -20209,10 +23864,17 @@ func (s *DescribePriceResponseBodyPriceInfo) SetPrice(v *DescribePriceResponseBo
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {
-	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The type of currency.
+	//
+	// *   USD: US dollar
+	// *   JPY: Japanese Yen
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount.
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// The final price.
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s DescribePriceResponseBodyPriceInfoPrice) String() string {
@@ -20272,175 +23934,8 @@ func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribeP
 	return s
 }
 
-type DescribeRegionBandwidthQuotaRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRegionBandwidthQuotaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaRequest) SetRegionId(v string) *DescribeRegionBandwidthQuotaRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRegionBandwidthQuotaResponseBody struct {
-	BandwidthQuota []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota `json:"BandwidthQuota,omitempty" xml:"BandwidthQuota,omitempty" type:"Repeated"`
-	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBody) SetBandwidthQuota(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) *DescribeRegionBandwidthQuotaResponseBody {
-	s.BandwidthQuota = v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBody) SetRequestId(v string) *DescribeRegionBandwidthQuotaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota struct {
-	BandwidthInfo []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo `json:"BandwidthInfo,omitempty" xml:"BandwidthInfo,omitempty" type:"Repeated"`
-	Date          *string                                                                `json:"Date,omitempty" xml:"Date,omitempty"`
-	InstanceInfo  []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo  `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
-	RegionId      *string                                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetBandwidthInfo(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
-	s.BandwidthInfo = v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetDate(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
-	s.Date = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetInstanceInfo(v []*DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
-	s.InstanceInfo = v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota) SetRegionId(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuota {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo struct {
-	Isp               *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	MonthAverageQuota *int64  `json:"MonthAverageQuota,omitempty" xml:"MonthAverageQuota,omitempty"`
-	MonthMax          *int64  `json:"MonthMax,omitempty" xml:"MonthMax,omitempty"`
-	WeekAverageQuota  *int64  `json:"WeekAverageQuota,omitempty" xml:"WeekAverageQuota,omitempty"`
-	WeekMax           *int64  `json:"WeekMax,omitempty" xml:"WeekMax,omitempty"`
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetIsp(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
-	s.Isp = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetMonthAverageQuota(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
-	s.MonthAverageQuota = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetMonthMax(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
-	s.MonthMax = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetWeekAverageQuota(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
-	s.WeekAverageQuota = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo) SetWeekMax(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaBandwidthInfo {
-	s.WeekMax = &v
-	return s
-}
-
-type DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo struct {
-	InstanceNumber *int64  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
-	InstanceSpec   *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) SetInstanceNumber(v int64) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo {
-	s.InstanceNumber = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo) SetInstanceSpec(v string) *DescribeRegionBandwidthQuotaResponseBodyBandwidthQuotaInstanceInfo {
-	s.InstanceSpec = &v
-	return s
-}
-
-type DescribeRegionBandwidthQuotaResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionBandwidthQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRegionBandwidthQuotaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionBandwidthQuotaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionBandwidthQuotaResponse) SetHeaders(v map[string]*string) *DescribeRegionBandwidthQuotaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponse) SetStatusCode(v int32) *DescribeRegionBandwidthQuotaResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeRegionBandwidthQuotaResponse) SetBody(v *DescribeRegionBandwidthQuotaResponseBody) *DescribeRegionBandwidthQuotaResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeRegionIspsRequest struct {
+	// The ID of the node. You can specify only one node ID in a call.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 }
 
@@ -20458,8 +23953,9 @@ func (s *DescribeRegionIspsRequest) SetEnsRegionId(v string) *DescribeRegionIsps
 }
 
 type DescribeRegionIspsResponseBody struct {
+	// The list of ISPs.
 	Isps []*DescribeRegionIspsResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20482,7 +23978,9 @@ func (s *DescribeRegionIspsResponseBody) SetRequestId(v string) *DescribeRegionI
 }
 
 type DescribeRegionIspsResponseBodyIsps struct {
+	// The code of the ISP.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the ISP.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -22050,9 +25548,13 @@ func (s *DescribeReservedResourceRequest) SetVersion(v string) *DescribeReserved
 }
 
 type DescribeReservedResourceResponseBody struct {
-	Code             *int32                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images           *DescribeReservedResourceResponseBodyImages           `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	RequestId        *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about images.
+	Images *DescribeReservedResourceResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The specifications of resources that you can purchase.
 	SupportResources *DescribeReservedResourceResponseBodySupportResources `json:"SupportResources,omitempty" xml:"SupportResources,omitempty" type:"Struct"`
 }
 
@@ -22102,7 +25604,9 @@ func (s *DescribeReservedResourceResponseBodyImages) SetImage(v []*DescribeReser
 }
 
 type DescribeReservedResourceResponseBodyImagesImage struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 }
 
@@ -22142,11 +25646,16 @@ func (s *DescribeReservedResourceResponseBodySupportResources) SetSupportResourc
 }
 
 type DescribeReservedResourceResponseBodySupportResourcesSupportResource struct {
-	DataDiskSizes         *DescribeReservedResourceResponseBodySupportResourcesSupportResourceDataDiskSizes   `json:"DataDiskSizes,omitempty" xml:"DataDiskSizes,omitempty" type:"Struct"`
-	EnsRegionId           *string                                                                             `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceSpec          *string                                                                             `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	SupportResourcesCount *string                                                                             `json:"SupportResourcesCount,omitempty" xml:"SupportResourcesCount,omitempty"`
-	SystemDiskSizes       *DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes `json:"SystemDiskSizes,omitempty" xml:"SystemDiskSizes,omitempty" type:"Struct"`
+	// The information of the data disk.
+	DataDiskSizes *DescribeReservedResourceResponseBodySupportResourcesSupportResourceDataDiskSizes `json:"DataDiskSizes,omitempty" xml:"DataDiskSizes,omitempty" type:"Struct"`
+	// The node ID.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The instance type.
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The number of resources that you can purchase.
+	SupportResourcesCount *string `json:"SupportResourcesCount,omitempty" xml:"SupportResourcesCount,omitempty"`
+	// The information of the system disk.
+	SystemDiskSizes *DescribeReservedResourceResponseBodySupportResourcesSupportResourceSystemDiskSizes `json:"SystemDiskSizes,omitempty" xml:"SystemDiskSizes,omitempty" type:"Struct"`
 }
 
 func (s DescribeReservedResourceResponseBodySupportResourcesSupportResource) String() string {
@@ -22496,7 +26005,148 @@ func (s *DescribeResourceTimelineResponse) SetBody(v *DescribeResourceTimelineRe
 	return s
 }
 
+type DescribeSDGDeploymentStatusRequest struct {
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SDGId      *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DescribeSDGDeploymentStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGDeploymentStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGDeploymentStatusRequest) SetPageNumber(v string) *DescribeSDGDeploymentStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusRequest) SetPageSize(v string) *DescribeSDGDeploymentStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusRequest) SetSDGId(v string) *DescribeSDGDeploymentStatusRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DescribeSDGDeploymentStatusResponseBody struct {
+	DeploymentStatus []*DescribeSDGDeploymentStatusResponseBodyDeploymentStatus `json:"DeploymentStatus,omitempty" xml:"DeploymentStatus,omitempty" type:"Repeated"`
+	PageNumber       *int64                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int64                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId        *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *int64                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSDGDeploymentStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGDeploymentStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBody) SetDeploymentStatus(v []*DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) *DescribeSDGDeploymentStatusResponseBody {
+	s.DeploymentStatus = v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBody) SetPageNumber(v int64) *DescribeSDGDeploymentStatusResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBody) SetPageSize(v int64) *DescribeSDGDeploymentStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBody) SetRequestId(v string) *DescribeSDGDeploymentStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBody) SetTotalCount(v int64) *DescribeSDGDeploymentStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSDGDeploymentStatusResponseBodyDeploymentStatus struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MountType  *string `json:"MountType,omitempty" xml:"MountType,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetInstanceId(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetMountType(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.MountType = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetRegionId(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetStatus(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus) SetUpdateTime(v string) *DescribeSDGDeploymentStatusResponseBodyDeploymentStatus {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeSDGDeploymentStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSDGDeploymentStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSDGDeploymentStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGDeploymentStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGDeploymentStatusResponse) SetHeaders(v map[string]*string) *DescribeSDGDeploymentStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponse) SetStatusCode(v int32) *DescribeSDGDeploymentStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSDGDeploymentStatusResponse) SetBody(v *DescribeSDGDeploymentStatusResponseBody) *DescribeSDGDeploymentStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSecurityGroupAttributeRequest struct {
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -22514,11 +26164,16 @@ func (s *DescribeSecurityGroupAttributeRequest) SetSecurityGroupId(v string) *De
 }
 
 type DescribeSecurityGroupAttributeResponseBody struct {
-	Description       *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Permissions       *DescribeSecurityGroupAttributeResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Struct"`
-	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityGroupId   *string                                                `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SecurityGroupName *string                                                `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+	// The description of the security group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Details about the rules.
+	Permissions *DescribeSecurityGroupAttributeResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the destination security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the destination security group.
+	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
 func (s DescribeSecurityGroupAttributeResponseBody) String() string {
@@ -22572,15 +26227,25 @@ func (s *DescribeSecurityGroupAttributeResponseBodyPermissions) SetPermission(v 
 }
 
 type DescribeSecurityGroupAttributeResponseBodyPermissionsPermission struct {
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The time at which the security group rule was created. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The range of destination IP addresses for outbound access control.
+	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	// The direction in which the security group rule is applied.
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// The transport layer protocol.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The policy.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The source port range.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the rule.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The range of source IP addresses for inbound access control.
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The source port number range for the security group.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
@@ -22672,11 +26337,22 @@ func (s *DescribeSecurityGroupAttributeResponse) SetBody(v *DescribeSecurityGrou
 }
 
 type DescribeSecurityGroupsRequest struct {
-	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The page number.
+	//
+	// *   Pages start from page 1.
+	// *   Default value: 1.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page.
+	//
+	// *   Maximum value: 50.
+	// *   Default value: 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the security group.
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
-	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeSecurityGroupsRequest) String() string {
@@ -22713,11 +26389,16 @@ func (s *DescribeSecurityGroupsRequest) SetVersion(v string) *DescribeSecurityGr
 }
 
 type DescribeSecurityGroupsResponseBody struct {
-	PageNumber     *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details about security groups.
 	SecurityGroups *DescribeSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Struct"`
-	TotalCount     *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of returned pages.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSecurityGroupsResponseBody) String() string {
@@ -22771,10 +26452,15 @@ func (s *DescribeSecurityGroupsResponseBodySecurityGroups) SetSecurityGroup(v []
 }
 
 type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
-	CreationTime      *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The time when the security group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC. The format is yyyy-MM-ddThh:mmZ.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the security group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of associated instances.
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the security group.
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
@@ -22841,10 +26527,17 @@ func (s *DescribeSecurityGroupsResponse) SetBody(v *DescribeSecurityGroupsRespon
 }
 
 type DescribeSelfImagesRequest struct {
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName  *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the image. Fuzzy search is supported.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image. Fuzzy search is supported.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The page number to return. Pages start from page **1**. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// Default value: 10.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the snapshot.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -22882,9 +26575,12 @@ func (s *DescribeSelfImagesRequest) SetSnapshotId(v string) *DescribeSelfImagesR
 }
 
 type DescribeSelfImagesResponseBody struct {
-	Code      *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Images    *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The HTTP status code that is returned.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The image information.
+	Images *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeSelfImagesResponseBody) String() string {
@@ -22928,18 +26624,52 @@ func (s *DescribeSelfImagesResponseBodyImages) SetImage(v []*DescribeSelfImagesR
 }
 
 type DescribeSelfImagesResponseBodyImagesImage struct {
-	Architecture    *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	ComputeType     *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image architecture. Valid values:
+	//
+	// *   i386
+	// *   x86\_64
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// Computing type. ens_vm/ens: x86 computing. bare_metal: x86 bare machine or x86 bare metal. arm_vm: ARM computing. arm_bare_metal: ARM bare machine or ARM bare metal. pcfarm: heterogeneous computing.
+	ComputeType *string `json:"ComputeType,omitempty" xml:"ComputeType,omitempty"`
+	// The image creation time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The source of the image. Valid values:
+	//
+	// *   **system: public images**
+	// *   **self: your custom images**
 	ImageOwnerAlias *string `json:"ImageOwnerAlias,omitempty" xml:"ImageOwnerAlias,omitempty"`
-	ImageSize       *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OsVersion       *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	Platform        *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	SnapshotId      *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The size of the image. Unit: GiB.
+	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The operating system version.
+	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
+	// The platform.
+	//
+	// *   centos
+	// *   ubuntu
+	// *   alios
+	// *   debian
+	// *   rhel
+	// *   windows
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The state of the image.
+	//
+	// *   Creating.
+	// *   Packing.
+	// *   Uploading.
+	// *   Pack_failed.
+	// *   Upload_failed.
+	// *   Available: Only images in the Available state can be used and operated.
+	// *   Unavailable.
+	// *   Copying.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSelfImagesResponseBodyImagesImage) String() string {
@@ -23040,9 +26770,12 @@ func (s *DescribeSelfImagesResponse) SetBody(v *DescribeSelfImagesResponseBody) 
 }
 
 type DescribeServcieScheduleRequest struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter does not take effect.
 	PodConfigName *string `json:"PodConfigName,omitempty" xml:"PodConfigName,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The UUID of the device.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeServcieScheduleRequest) String() string {
@@ -23069,14 +26802,22 @@ func (s *DescribeServcieScheduleRequest) SetUuid(v string) *DescribeServcieSched
 }
 
 type DescribeServcieScheduleResponseBody struct {
-	Index           *int32                                              `json:"Index,omitempty" xml:"Index,omitempty"`
-	InstanceId      *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp      *string                                             `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstancePort    *int32                                              `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	// The index number of the scheduled virtual device (pod).
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The ID of the scheduled instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the scheduled instance.
+	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	// The start port of the scheduled instance.
+	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	// The summary information about the scheduled virtual device.
 	PodAbstractInfo *DescribeServcieScheduleResponseBodyPodAbstractInfo `json:"PodAbstractInfo,omitempty" xml:"PodAbstractInfo,omitempty" type:"Struct"`
-	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestRepeated *bool                                               `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
-	TcpPorts        *string                                             `json:"TcpPorts,omitempty" xml:"TcpPorts,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is repeated.
+	RequestRepeated *bool `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
+	// The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+	TcpPorts *string `json:"TcpPorts,omitempty" xml:"TcpPorts,omitempty"`
 }
 
 func (s DescribeServcieScheduleResponseBody) String() string {
@@ -23128,12 +26869,18 @@ func (s *DescribeServcieScheduleResponseBody) SetTcpPorts(v string) *DescribeSer
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfo struct {
-	ContainerService  *bool                                                                `json:"ContainerService,omitempty" xml:"ContainerService,omitempty"`
+	// The name of the container service.
+	ContainerService *bool `json:"ContainerService,omitempty" xml:"ContainerService,omitempty"`
+	// The information about the container.
 	ContainerStatuses *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses `json:"ContainerStatuses,omitempty" xml:"ContainerStatuses,omitempty" type:"Struct"`
-	Name              *bool                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace         *bool                                                                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ResourceScope     *bool                                                                `json:"ResourceScope,omitempty" xml:"ResourceScope,omitempty"`
-	Status            *bool                                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the pod.
+	Name *bool `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the namespace.
+	Namespace *bool `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The pod scope.
+	ResourceScope *bool `json:"ResourceScope,omitempty" xml:"ResourceScope,omitempty"`
+	// The status of the pod.
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeServcieScheduleResponseBodyPodAbstractInfo) String() string {
@@ -23192,8 +26939,10 @@ func (s *DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatuses) Se
 }
 
 type DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContainerStatus struct {
+	// The ID of the container.
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the container.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DescribeServcieScheduleResponseBodyPodAbstractInfoContainerStatusesContainerStatus) String() string {
@@ -23243,7 +26992,244 @@ func (s *DescribeServcieScheduleResponse) SetBody(v *DescribeServcieScheduleResp
 	return s
 }
 
+type DescribeSnapshotsRequest struct {
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The region ID of the disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent list of regions.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the snapshot. The value can be a JSON array that consists of up to 100 snapshot IDs. Separate the snapshot IDs with commas (,).
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s DescribeSnapshotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsRequest) SetDiskId(v string) *DescribeSnapshotsRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetEnsRegionId(v string) *DescribeSnapshotsRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetInstanceId(v string) *DescribeSnapshotsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetPageNumber(v int32) *DescribeSnapshotsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetPageSize(v int32) *DescribeSnapshotsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetSnapshotId(v string) *DescribeSnapshotsRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type DescribeSnapshotsResponseBody struct {
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the snapshots.
+	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// The total number of snapshots.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSnapshotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBody) SetPageNumber(v int32) *DescribeSnapshotsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetPageSize(v int32) *DescribeSnapshotsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetRequestId(v string) *DescribeSnapshotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetSnapshots(v []*DescribeSnapshotsResponseBodySnapshots) *DescribeSnapshotsResponseBody {
+	s.Snapshots = v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBody) SetTotalCount(v int32) *DescribeSnapshotsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSnapshotsResponseBodySnapshots struct {
+	// The creation time. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the snapshot.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The capacity of the disk. Unit: MiB.
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The name of the snapshot. This parameter is returned only if a snapshot name was specified when the snapshot was created.
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// The type of the disk. Valid value:
+	//
+	// *   cloud_efficiency: ultra disk
+	// *   cloud_ssd: all-flash disk
+	// *   local_hdd: local HDD
+	// *   local_ssd: local SSD
+	SourceDiskCategory *string `json:"SourceDiskCategory,omitempty" xml:"SourceDiskCategory,omitempty"`
+	// The ID of the source disk. This parameter is retained even after the source disk for which the snapshot was created is released.
+	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
+	// The type of the disk. Valid value:
+	//
+	// *   1: system disk
+	// *   2: data disk
+	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
+	// The ID of the source edge node.
+	SourceEnsRegionId *string `json:"SourceEnsRegionId,omitempty" xml:"SourceEnsRegionId,omitempty"`
+	// The ID of the source snapshot.
+	SourceSnapshotId *string `json:"SourceSnapshotId,omitempty" xml:"SourceSnapshotId,omitempty"`
+	// The status of the snapshot. Valid value:
+	//
+	// *   creating: The snapshot is being created.
+	// *   Available: The snapshot is available.
+	// *   deleting: The snapshot is being deleted.
+	// *   error: An error occurred on the snapshot.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSnapshotsResponseBodySnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponseBodySnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetCreationTime(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetDescription(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetEnsRegionId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSize(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSnapshotName(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SnapshotName = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceDiskCategory(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceDiskCategory = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceDiskId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceDiskId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceDiskType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceDiskType = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceEnsRegionId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceEnsRegionId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetSourceSnapshotId(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.SourceSnapshotId = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.Status = &v
+	return s
+}
+
+type DescribeSnapshotsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSnapshotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnapshotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeSnapshotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSnapshotsResponse) SetStatusCode(v int32) *DescribeSnapshotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *DescribeSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSnatAttributeRequest struct {
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
 }
 
@@ -23261,18 +27247,40 @@ func (s *DescribeSnatAttributeRequest) SetSnatEntryId(v string) *DescribeSnatAtt
 }
 
 type DescribeSnatAttributeResponseBody struct {
+	// The time when the entry was created. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DestCIDR     *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
+	IdleTimeout  *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The ID of the Network Address Translation (NAT) gateway.
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// Id of the request
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SnatEntryId   *string                                     `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	SnatEntryName *string                                     `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	SnatIp        *string                                     `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
-	SnatIps       []*DescribeSnatAttributeResponseBodySnatIps `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
-	SourceCIDR    *string                                     `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
-	StandbySnatIp *string                                     `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
-	StandbyStatus *string                                     `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
-	Status        *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the SNAT entry.
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The name of the SNAT entry.
+	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	// The EIP specified in the SNAT entry. Multiple EIPs are separated by commas (,).
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The information about the EIP specified in the SNAT entry.
+	SnatIps []*DescribeSnatAttributeResponseBodySnatIps `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
+	// The source CIDR block specified in the SNAT entry.
+	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The secondary EIP specified in the SNAT entry. Multiple secondary EIPs are separated by commas (,).
+	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
+	// The status of the secondary EIP.
+	//
+	// *   Running
+	// *   Stopping
+	// *   Stopped
+	// *   Starting
+	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
+	// The status of the SNAT entry.
+	//
+	// *   Pending: The SNAT entry is being created or modified.
+	// *   Available: The SNAT entry is available.
+	// *   Deleting: The SNAT entry is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeSnatAttributeResponseBody) String() string {
@@ -23285,6 +27293,16 @@ func (s DescribeSnatAttributeResponseBody) GoString() string {
 
 func (s *DescribeSnatAttributeResponseBody) SetCreationTime(v string) *DescribeSnatAttributeResponseBody {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetDestCIDR(v string) *DescribeSnatAttributeResponseBody {
+	s.DestCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatAttributeResponseBody) SetIdleTimeout(v int32) *DescribeSnatAttributeResponseBody {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -23338,10 +27356,24 @@ func (s *DescribeSnatAttributeResponseBody) SetStatus(v string) *DescribeSnatAtt
 	return s
 }
 
+func (s *DescribeSnatAttributeResponseBody) SetType(v string) *DescribeSnatAttributeResponseBody {
+	s.Type = &v
+	return s
+}
+
 type DescribeSnatAttributeResponseBodySnatIps struct {
+	// The time when the EIP was created. The time is displayed in UTC.
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Ip           *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IP address.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The status of the EIP.
+	//
+	// *   Running
+	// *   Stopping
+	// *   Stopped
+	// *   Starting
+	// *   Releasing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSnatAttributeResponseBodySnatIps) String() string {
@@ -23397,13 +27429,24 @@ func (s *DescribeSnatAttributeResponse) SetBody(v *DescribeSnatAttributeResponse
 }
 
 type DescribeSnatTableEntriesRequest struct {
-	NatGatewayId  *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SnatEntryId   *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The ID of the Network Address Translation (NAT) gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The page number. Pages start from page **1**.
+	//
+	// Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The maximum value is **100**.
+	//
+	// Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the SNAT entry.
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The name of the SNAT entry.
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
-	SourceCIDR    *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The elastic IP address (EIP) specified in the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The source CIDR block specified in the SNAT entry.
+	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
 }
 
 func (s DescribeSnatTableEntriesRequest) String() string {
@@ -23450,11 +27493,16 @@ func (s *DescribeSnatTableEntriesRequest) SetSourceCIDR(v string) *DescribeSnatT
 }
 
 type DescribeSnatTableEntriesResponseBody struct {
-	PageNumber       *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Details of SNAT entries.
 	SnatTableEntries []*DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Repeated"`
-	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of SNAT entries that are returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeSnatTableEntriesResponseBody) String() string {
@@ -23491,14 +27539,31 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
-	NatGatewayId  *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	SnatEntryId   *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The ID of the NAT gateway.
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The ID of the SNAT entry.
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	// The name of the SNAT entry.
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
-	SourceCIDR    *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The EIP specified in the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The source CIDR block specified in the SNAT entry.
+	SourceCIDR *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	// The secondary EIP. Multiple EIPs are separated by commas (,).
 	StandbySnatIp *string `json:"StandbySnatIp,omitempty" xml:"StandbySnatIp,omitempty"`
+	// The status of the secondary EIP. Valid values:
+	//
+	// *   Running
+	// *   Stopping
+	// *   Stopped
+	// *   Starting
 	StandbyStatus *string `json:"StandbyStatus,omitempty" xml:"StandbyStatus,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the SNAT entry. Valid values:
+	//
+	// *   Pending: The SNAT entry is being created or modified.
+	// *   Available: The SNAT entry is available.
+	// *   Deleting: The SNAT entry is being deleted.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) String() string {
@@ -23579,12 +27644,29 @@ func (s *DescribeSnatTableEntriesResponse) SetBody(v *DescribeSnatTableEntriesRe
 }
 
 type DescribeUserBandWidthDataRequest struct {
-	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end of the time range to query.
+	//
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the node. You can specify only one node ID. By default, all nodes are queried.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Isp         *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	Period      *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the instance for which you want to query the data. You can specify only one instance ID. By default, all instances are queried.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The Internet service provider (ISP). Valid values:
+	//
+	// *   cmcc: China Mobile
+	// *   telecom: China Telecom
+	// *   unicom: China Unicom
+	// *   multiCarrier: multi-line ISP
+	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The precision of the monitoring data that you want to obtain. Valid values: 300, 1200, 3600, and 14400. Default value: 300. Unit: seconds.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The beginning of the time range to query.
+	//
+	// *   Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// *   If the value of the seconds place is not 00, the start time is automatically set to the next minute.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataRequest) String() string {
@@ -23626,9 +27708,12 @@ func (s *DescribeUserBandWidthDataRequest) SetStartTime(v string) *DescribeUserB
 }
 
 type DescribeUserBandWidthDataResponseBody struct {
-	Code        *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The monitoring data.
 	MonitorData *DescribeUserBandWidthDataResponseBodyMonitorData `json:"MonitorData,omitempty" xml:"MonitorData,omitempty" type:"Struct"`
-	RequestId   *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataResponseBody) String() string {
@@ -23655,9 +27740,12 @@ func (s *DescribeUserBandWidthDataResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeUserBandWidthDataResponseBodyMonitorData struct {
+	// The bandwidth data.
 	BandWidthMonitorData []*DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData `json:"BandWidthMonitorData,omitempty" xml:"BandWidthMonitorData,omitempty" type:"Repeated"`
-	MaxDownBandWidth     *string                                                                 `json:"MaxDownBandWidth,omitempty" xml:"MaxDownBandWidth,omitempty"`
-	MaxUpBandWidth       *string                                                                 `json:"MaxUpBandWidth,omitempty" xml:"MaxUpBandWidth,omitempty"`
+	// The maximum outbound bandwidth within the queried time range. Unit: bit/s.
+	MaxDownBandWidth *string `json:"MaxDownBandWidth,omitempty" xml:"MaxDownBandWidth,omitempty"`
+	// The maximum inbound bandwidth within the queried time range. Unit: bit/s.
+	MaxUpBandWidth *string `json:"MaxUpBandWidth,omitempty" xml:"MaxUpBandWidth,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataResponseBodyMonitorData) String() string {
@@ -23684,11 +27772,16 @@ func (s *DescribeUserBandWidthDataResponseBodyMonitorData) SetMaxUpBandWidth(v s
 }
 
 type DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData struct {
-	DownBandWidth *int64  `json:"DownBandWidth,omitempty" xml:"DownBandWidth,omitempty"`
-	InternetRX    *int64  `json:"InternetRX,omitempty" xml:"InternetRX,omitempty"`
-	InternetTX    *int64  `json:"InternetTX,omitempty" xml:"InternetTX,omitempty"`
-	TimeStamp     *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	UpBandWidth   *int64  `json:"UpBandWidth,omitempty" xml:"UpBandWidth,omitempty"`
+	// The outbound bandwidth. Unit: bit/s.
+	DownBandWidth *int64 `json:"DownBandWidth,omitempty" xml:"DownBandWidth,omitempty"`
+	// The Internet traffic to the instance. Unit: bytes.
+	InternetRX *int64 `json:"InternetRX,omitempty" xml:"InternetRX,omitempty"`
+	// The Internet traffic from the instance. Unit: bytes.
+	InternetTX *int64 `json:"InternetTX,omitempty" xml:"InternetTX,omitempty"`
+	// The timestamp when the monitoring data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The inbound bandwidth. Unit: bit/s.
+	UpBandWidth *int64 `json:"UpBandWidth,omitempty" xml:"UpBandWidth,omitempty"`
 }
 
 func (s DescribeUserBandWidthDataResponseBodyMonitorDataBandWidthMonitorData) String() string {
@@ -23754,14 +27847,24 @@ func (s *DescribeUserBandWidthDataResponse) SetBody(v *DescribeUserBandWidthData
 }
 
 type DescribeVSwitchesRequest struct {
-	EnsRegionId   *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkId     *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the edge node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the VPC to which the vSwitches belong.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The order in which you want to sort the returned data. Example: {"EnsRegionId":"desc"}.
+	//
+	// By default, the nodes are sorted by IDs in descending order.
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName   *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The page number of the returned page. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The version of the API.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeVSwitchesRequest) String() string {
@@ -23813,11 +27916,16 @@ func (s *DescribeVSwitchesRequest) SetVersion(v string) *DescribeVSwitchesReques
 }
 
 type DescribeVSwitchesResponseBody struct {
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VSwitches  *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned on each page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries in the list.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The information about the vSwitches. For more information, see the array of vSwitches in the response examples in the JSON format.
+	VSwitches *DescribeVSwitchesResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -23871,14 +27979,26 @@ func (s *DescribeVSwitchesResponseBodyVSwitches) SetVSwitch(v []*DescribeVSwitch
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
-	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The time when the vSwitch was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The description of the vSwitch.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the edge node.
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	FreeIpCount *int64  `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
-	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The number of available IP addresses.
+	FreeIpCount *int64 `json:"FreeIpCount,omitempty" xml:"FreeIpCount,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The status of the vSwitch. Valid values:
+	//
+	// *   Pending
+	// *   Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -24371,7 +28491,9 @@ func (s *DescribeWorkflowActivityResponse) SetBody(v *DescribeWorkflowActivityRe
 }
 
 type DetachDiskRequest struct {
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the disk.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -24394,7 +28516,9 @@ func (s *DetachDiskRequest) SetInstanceId(v string) *DetachDiskRequest {
 }
 
 type DetachDiskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24446,8 +28570,11 @@ func (s *DetachDiskResponse) SetBody(v *DetachDiskResponseBody) *DetachDiskRespo
 }
 
 type DistApplicationDataRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the application. To obtain the application ID, call the ListApplications operation.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The list of data files that you want to distribute. The value must be a JSON string.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The canary release policy. The value must be a JSON string. You can specify multiple distribution policies. By default, all data files are distributed.
 	DistStrategy *string `json:"DistStrategy,omitempty" xml:"DistStrategy,omitempty"`
 }
 
@@ -24475,10 +28602,14 @@ func (s *DistApplicationDataRequest) SetDistStrategy(v string) *DistApplicationD
 }
 
 type DistApplicationDataResponseBody struct {
-	DistInstanceIds        *DistApplicationDataResponseBodyDistInstanceIds `json:"DistInstanceIds,omitempty" xml:"DistInstanceIds,omitempty" type:"Struct"`
-	DistInstanceTotalCount *int32                                          `json:"DistInstanceTotalCount,omitempty" xml:"DistInstanceTotalCount,omitempty"`
-	DistResults            *DistApplicationDataResponseBodyDistResults     `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
-	RequestId              *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of ENS instance IDs.
+	DistInstanceIds *DistApplicationDataResponseBodyDistInstanceIds `json:"DistInstanceIds,omitempty" xml:"DistInstanceIds,omitempty" type:"Struct"`
+	// The total number of ENS instance IDs.
+	DistInstanceTotalCount *int32 `json:"DistInstanceTotalCount,omitempty" xml:"DistInstanceTotalCount,omitempty"`
+	// The distribution result of the data file.
+	DistResults *DistApplicationDataResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DistApplicationDataResponseBody) String() string {
@@ -24544,10 +28675,14 @@ func (s *DistApplicationDataResponseBodyDistResults) SetDistResult(v []*DistAppl
 }
 
 type DistApplicationDataResponseBodyDistResultsDistResult struct {
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResultCode    *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The name of the data file.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The error code. The value is of the enumerated data type.
+	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The description of the distribution result.
 	ResultDescrip *string `json:"ResultDescrip,omitempty" xml:"ResultDescrip,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number of the data file.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DistApplicationDataResponseBodyDistResultsDistResult) String() string {
@@ -24608,7 +28743,9 @@ func (s *DistApplicationDataResponse) SetBody(v *DistApplicationDataResponseBody
 }
 
 type ExportBillDetailDataRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -24631,7 +28768,9 @@ func (s *ExportBillDetailDataRequest) SetStartDate(v string) *ExportBillDetailDa
 }
 
 type ExportBillDetailDataResponseBody struct {
-	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The download path of the exported file.
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24683,11 +28822,20 @@ func (s *ExportBillDetailDataResponse) SetBody(v *ExportBillDetailDataResponseBo
 }
 
 type ExportImageRequest struct {
-	ImageId     *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	OSSBucket   *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	OSSPrefix   *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The OSS bucket to which you want to export the image.
+	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// The prefix of the object as which you want to store the image in the OSS bucket. The prefix must be 1 to 30 characters in length and can contain digits and letters.
+	OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
+	// The ID of the region.
+	//
+	// Valid values:
+	//
+	// *   cn-beijing
 	OSSRegionId *string `json:"OSSRegionId,omitempty" xml:"OSSRegionId,omitempty"`
-	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The name of the Resource Access Management (RAM) role.
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s ExportImageRequest) String() string {
@@ -24724,8 +28872,10 @@ func (s *ExportImageRequest) SetRoleName(v string) *ExportImageRequest {
 }
 
 type ExportImageResponseBody struct {
+	// The URL that points to the exported image.
 	ExportedImageURL *string `json:"ExportedImageURL,omitempty" xml:"ExportedImageURL,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportImageResponseBody) String() string {
@@ -24776,7 +28926,9 @@ func (s *ExportImageResponse) SetBody(v *ExportImageResponseBody) *ExportImageRe
 }
 
 type ExportMeasurementDataRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-mm-ddthh:mm:ssz format. The time must be in UTC.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
@@ -24799,7 +28951,9 @@ func (s *ExportMeasurementDataRequest) SetStartDate(v string) *ExportMeasurement
 }
 
 type ExportMeasurementDataResponseBody struct {
-	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The download path of the exported file.
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24850,10 +29004,363 @@ func (s *ExportMeasurementDataResponse) SetBody(v *ExportMeasurementDataResponse
 	return s
 }
 
+type GetBucketAclRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s GetBucketAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketAclRequest) SetBucketName(v string) *GetBucketAclRequest {
+	s.BucketName = &v
+	return s
+}
+
+type GetBucketAclResponseBody struct {
+	// The ACL of the bucket.
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetBucketAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketAclResponseBody) SetBucketAcl(v string) *GetBucketAclResponseBody {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *GetBucketAclResponseBody) SetRequestId(v string) *GetBucketAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetBucketAclResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBucketAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBucketAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketAclResponse) SetHeaders(v map[string]*string) *GetBucketAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBucketAclResponse) SetStatusCode(v int32) *GetBucketAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBucketAclResponse) SetBody(v *GetBucketAclResponseBody) *GetBucketAclResponse {
+	s.Body = v
+	return s
+}
+
+type GetBucketInfoRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s GetBucketInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoRequest) SetBucketName(v string) *GetBucketInfoRequest {
+	s.BucketName = &v
+	return s
+}
+
+type GetBucketInfoResponseBody struct {
+	// The list of bucket information.
+	BucketInfo *GetBucketInfoResponseBodyBucketInfo `json:"BucketInfo,omitempty" xml:"BucketInfo,omitempty" type:"Struct"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetBucketInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponseBody) SetBucketInfo(v *GetBucketInfoResponseBodyBucketInfo) *GetBucketInfoResponseBody {
+	s.BucketInfo = v
+	return s
+}
+
+func (s *GetBucketInfoResponseBody) SetRequestId(v string) *GetBucketInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetBucketInfoResponseBodyBucketInfo struct {
+	// The access control list (ACL) of the bucket.
+	//
+	// *   **public-read-write**
+	// *   **public-read**
+	// *   **private** (default)
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The remarks.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the bucket was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Single-node storage. Set the value to sink.
+	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
+	// The time when the bucket was modified. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+}
+
+func (s GetBucketInfoResponseBodyBucketInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponseBodyBucketInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetBucketAcl(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetBucketName(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.BucketName = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetComment(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetCreateTime(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetLogicalBucketType(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.LogicalBucketType = &v
+	return s
+}
+
+func (s *GetBucketInfoResponseBodyBucketInfo) SetModifyTime(v string) *GetBucketInfoResponseBodyBucketInfo {
+	s.ModifyTime = &v
+	return s
+}
+
+type GetBucketInfoResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBucketInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBucketInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketInfoResponse) SetHeaders(v map[string]*string) *GetBucketInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBucketInfoResponse) SetStatusCode(v int32) *GetBucketInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBucketInfoResponse) SetBody(v *GetBucketInfoResponseBody) *GetBucketInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetBucketLifecycleRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The ID of the rule to be queried. If this parameter is not specified, all rules are returned.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s GetBucketLifecycleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketLifecycleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketLifecycleRequest) SetBucketName(v string) *GetBucketLifecycleRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *GetBucketLifecycleRequest) SetRuleId(v string) *GetBucketLifecycleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type GetBucketLifecycleResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The detailed information about the rule.
+	Rule []*GetBucketLifecycleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+}
+
+func (s GetBucketLifecycleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketLifecycleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketLifecycleResponseBody) SetRequestId(v string) *GetBucketLifecycleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBucketLifecycleResponseBody) SetRule(v []*GetBucketLifecycleResponseBodyRule) *GetBucketLifecycleResponseBody {
+	s.Rule = v
+	return s
+}
+
+type GetBucketLifecycleResponseBodyRule struct {
+	// The expiration time.
+	Expiration *GetBucketLifecycleResponseBodyRuleExpiration `json:"Expiration,omitempty" xml:"Expiration,omitempty" type:"Struct"`
+	// The unique ID of the rule.
+	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	// The prefix that is applied to the rule.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   **Enabled**: The rule is periodically executed.
+	// *   **Disabled**: The rule is ignored.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetBucketLifecycleResponseBodyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketLifecycleResponseBodyRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketLifecycleResponseBodyRule) SetExpiration(v *GetBucketLifecycleResponseBodyRuleExpiration) *GetBucketLifecycleResponseBodyRule {
+	s.Expiration = v
+	return s
+}
+
+func (s *GetBucketLifecycleResponseBodyRule) SetID(v string) *GetBucketLifecycleResponseBodyRule {
+	s.ID = &v
+	return s
+}
+
+func (s *GetBucketLifecycleResponseBodyRule) SetPrefix(v string) *GetBucketLifecycleResponseBodyRule {
+	s.Prefix = &v
+	return s
+}
+
+func (s *GetBucketLifecycleResponseBodyRule) SetStatus(v string) *GetBucketLifecycleResponseBodyRule {
+	s.Status = &v
+	return s
+}
+
+type GetBucketLifecycleResponseBodyRuleExpiration struct {
+	// The expiration date.
+	CreatedBeforeDate *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
+	// The validity period, in days.
+	Days *string `json:"Days,omitempty" xml:"Days,omitempty"`
+}
+
+func (s GetBucketLifecycleResponseBodyRuleExpiration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketLifecycleResponseBodyRuleExpiration) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketLifecycleResponseBodyRuleExpiration) SetCreatedBeforeDate(v string) *GetBucketLifecycleResponseBodyRuleExpiration {
+	s.CreatedBeforeDate = &v
+	return s
+}
+
+func (s *GetBucketLifecycleResponseBodyRuleExpiration) SetDays(v string) *GetBucketLifecycleResponseBodyRuleExpiration {
+	s.Days = &v
+	return s
+}
+
+type GetBucketLifecycleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBucketLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetBucketLifecycleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBucketLifecycleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBucketLifecycleResponse) SetHeaders(v map[string]*string) *GetBucketLifecycleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBucketLifecycleResponse) SetStatusCode(v int32) *GetBucketLifecycleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBucketLifecycleResponse) SetBody(v *GetBucketLifecycleResponseBody) *GetBucketLifecycleResponse {
+	s.Body = v
+	return s
+}
+
 type GetDeviceInternetPortRequest struct {
+	// The ID of the instance. You can specify the ID of the server or container. You can specify only one ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NatType    *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
-	RuleId     *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The type of the NAT gateway. The value must be of the enumerated data type. Valid values:
+	//
+	// *   SNAT
+	// *   DNAT
+	NatType *string `json:"NatType,omitempty" xml:"NatType,omitempty"`
+	// The ID of the rule. If you leave this parameter empty, all rules are queried.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetDeviceInternetPortRequest) String() string {
@@ -24880,9 +29387,12 @@ func (s *GetDeviceInternetPortRequest) SetRuleId(v string) *GetDeviceInternetPor
 }
 
 type GetDeviceInternetPortResponseBody struct {
-	InstanceId  *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance. The value is the ID of the server or container.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network mapping information about the instance.
 	NetworkInfo []*GetDeviceInternetPortResponseBodyNetworkInfo `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty" type:"Repeated"`
-	RequestId   *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDeviceInternetPortResponseBody) String() string {
@@ -24909,12 +29419,18 @@ func (s *GetDeviceInternetPortResponseBody) SetRequestId(v string) *GetDeviceInt
 }
 
 type GetDeviceInternetPortResponseBodyNetworkInfo struct {
-	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The public IP address.
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port number.
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	ISP          *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	InternalIp   *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The Internet service provider (ISP).
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// The internal IP address.
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port number.
 	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the external port.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetDeviceInternetPortResponseBodyNetworkInfo) String() string {
@@ -24985,6 +29501,7 @@ func (s *GetDeviceInternetPortResponse) SetBody(v *GetDeviceInternetPortResponse
 }
 
 type GetOssStorageAndAccByBucketsRequest struct {
+	// The information about the bucket.
 	BucketList *string `json:"BucketList,omitempty" xml:"BucketList,omitempty"`
 }
 
@@ -25002,8 +29519,10 @@ func (s *GetOssStorageAndAccByBucketsRequest) SetBucketList(v string) *GetOssSto
 }
 
 type GetOssStorageAndAccByBucketsResponseBody struct {
+	// The information about the bucket.
 	BucketList []*GetOssStorageAndAccByBucketsResponseBodyBucketList `json:"BucketList,omitempty" xml:"BucketList,omitempty" type:"Repeated"`
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetOssStorageAndAccByBucketsResponseBody) String() string {
@@ -25025,9 +29544,12 @@ func (s *GetOssStorageAndAccByBucketsResponseBody) SetRequestId(v string) *GetOs
 }
 
 type GetOssStorageAndAccByBucketsResponseBodyBucketList struct {
-	Acc              *int64  `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	Bucket           *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	StorageUsageByte *int64  `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
+	// The number of visits.
+	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
+	// The bucket name.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The storage usage of the cluster, in bytes.
+	StorageUsageByte *int64 `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
 }
 
 func (s GetOssStorageAndAccByBucketsResponseBodyBucketList) String() string {
@@ -25083,9 +29605,15 @@ func (s *GetOssStorageAndAccByBucketsResponse) SetBody(v *GetOssStorageAndAccByB
 }
 
 type GetOssUsageDataRequest struct {
-	Bucket    *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The name of the logical Object Storage Service (OSS) bucket.
+	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The end of the time range to query. The time is in UTC. Format: 2010-01-21T09:50:23Z.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The aggregation granularity. Unit: minutes.
+	//
+	// Default value: 5. Valid values: 5 to 1440.
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The beginning of the time range to query. The time is in UTC. Format: 2010-01-21T09:50:23Z.
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -25118,8 +29646,9 @@ func (s *GetOssUsageDataRequest) SetStartTime(v string) *GetOssUsageDataRequest 
 }
 
 type GetOssUsageDataResponseBody struct {
-	// Id of the request
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The array of usage data.
 	UsageList []*GetOssUsageDataResponseBodyUsageList `json:"UsageList,omitempty" xml:"UsageList,omitempty" type:"Repeated"`
 }
 
@@ -25142,13 +29671,20 @@ func (s *GetOssUsageDataResponseBody) SetUsageList(v []*GetOssUsageDataResponseB
 }
 
 type GetOssUsageDataResponseBodyUsageList struct {
-	LanRxBw          *int64  `json:"LanRxBw,omitempty" xml:"LanRxBw,omitempty"`
-	LanTxBw          *int64  `json:"LanTxBw,omitempty" xml:"LanTxBw,omitempty"`
-	Point            *int64  `json:"Point,omitempty" xml:"Point,omitempty"`
-	PointTs          *string `json:"PointTs,omitempty" xml:"PointTs,omitempty"`
-	StorageUsageByte *int64  `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
-	WanRxBw          *int64  `json:"WanRxBw,omitempty" xml:"WanRxBw,omitempty"`
-	WanTxBw          *int64  `json:"WanTxBw,omitempty" xml:"WanTxBw,omitempty"`
+	// The inbound bandwidth over the intranet. Unit: bit/s.
+	LanRxBw *int64 `json:"LanRxBw,omitempty" xml:"LanRxBw,omitempty"`
+	// The outbound bandwidth over the intranet. Unit: bit/s.
+	LanTxBw *int64 `json:"LanTxBw,omitempty" xml:"LanTxBw,omitempty"`
+	// The number of time point within a day.
+	Point *int64 `json:"Point,omitempty" xml:"Point,omitempty"`
+	// The point in time, in UTC. Format: 2010-01-21T09:50:23Z.
+	PointTs *string `json:"PointTs,omitempty" xml:"PointTs,omitempty"`
+	// The storage usage. Unit: bytes.
+	StorageUsageByte *int64 `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
+	// The outbound bandwidth over the intranet. Unit: bit/s.
+	WanRxBw *int64 `json:"WanRxBw,omitempty" xml:"WanRxBw,omitempty"`
+	// The outbound bandwidth over the Internet. Unit: bit/s.
+	WanTxBw *int64 `json:"WanTxBw,omitempty" xml:"WanTxBw,omitempty"`
 }
 
 func (s GetOssUsageDataResponseBodyUsageList) String() string {
@@ -25224,9 +29760,18 @@ func (s *GetOssUsageDataResponse) SetBody(v *GetOssUsageDataResponseBody) *GetOs
 }
 
 type ImportKeyPairRequest struct {
-	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The name of the key pair. The name must conform to the following naming conventions:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with `http://` or `https://`.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	//
+	// You can specify the name of only one key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The public key of the key pair. You can specify only one public key.
 	PublicKeyBody *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ImportKeyPairRequest) String() string {
@@ -25253,9 +29798,12 @@ func (s *ImportKeyPairRequest) SetVersion(v string) *ImportKeyPairRequest {
 }
 
 type ImportKeyPairResponseBody struct {
+	// The fingerprint of the key pair. The message-digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716.
 	KeyPairFingerPrint *string `json:"KeyPairFingerPrint,omitempty" xml:"KeyPairFingerPrint,omitempty"`
-	KeyPairName        *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the key pair.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ImportKeyPairResponseBody) String() string {
@@ -25380,7 +29928,10 @@ func (s *JoinPublicIpsToEpnInstanceResponse) SetBody(v *JoinPublicIpsToEpnInstan
 }
 
 type JoinSecurityGroupRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance.
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 }
 
@@ -25397,12 +29948,18 @@ func (s *JoinSecurityGroupRequest) SetInstanceId(v string) *JoinSecurityGroupReq
 	return s
 }
 
+func (s *JoinSecurityGroupRequest) SetNetworkInterfaceId(v string) *JoinSecurityGroupRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
 func (s *JoinSecurityGroupRequest) SetSecurityGroupId(v string) *JoinSecurityGroupRequest {
 	s.SecurityGroupId = &v
 	return s
 }
 
 type JoinSecurityGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25449,7 +30006,9 @@ func (s *JoinSecurityGroupResponse) SetBody(v *JoinSecurityGroupResponseBody) *J
 }
 
 type JoinVSwitchesToEpnInstanceRequest struct {
+	// The ID of the edge network instance.
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
+	// The information about the internal networking to which you want to add the edge network instance.
 	VSwitchesInfo *string `json:"VSwitchesInfo,omitempty" xml:"VSwitchesInfo,omitempty"`
 }
 
@@ -25472,6 +30031,7 @@ func (s *JoinVSwitchesToEpnInstanceRequest) SetVSwitchesInfo(v string) *JoinVSwi
 }
 
 type JoinVSwitchesToEpnInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25518,9 +30078,11 @@ func (s *JoinVSwitchesToEpnInstanceResponse) SetBody(v *JoinVSwitchesToEpnInstan
 }
 
 type LeaveSecurityGroupRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of instance.
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s LeaveSecurityGroupRequest) String() string {
@@ -25536,17 +30098,18 @@ func (s *LeaveSecurityGroupRequest) SetInstanceId(v string) *LeaveSecurityGroupR
 	return s
 }
 
+func (s *LeaveSecurityGroupRequest) SetNetworkInterfaceId(v string) *LeaveSecurityGroupRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
 func (s *LeaveSecurityGroupRequest) SetSecurityGroupId(v string) *LeaveSecurityGroupRequest {
 	s.SecurityGroupId = &v
 	return s
 }
 
-func (s *LeaveSecurityGroupRequest) SetVersion(v string) *LeaveSecurityGroupRequest {
-	s.Version = &v
-	return s
-}
-
 type LeaveSecurityGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25593,14 +30156,30 @@ func (s *LeaveSecurityGroupResponse) SetBody(v *LeaveSecurityGroupResponseBody) 
 }
 
 type ListApplicationsRequest struct {
-	AppVersions      *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
-	ClusterNames     *string `json:"ClusterNames,omitempty" xml:"ClusterNames,omitempty"`
-	Level            *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	MaxDate          *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
-	MinDate          *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// The version number of the application. Separate multiple version numbers with commas (,). If you want to query data of all versions of applications, specify All for this parameter. By default, only data of applications in the stable versions are queried.
+	AppVersions *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
+	// The name of the application cluster. Separate multiple names with commas (,). If you want to query applications of all clusters in your account, specify All for this parameter. Default value: All.
+	ClusterNames *string `json:"ClusterNames,omitempty" xml:"ClusterNames,omitempty"`
+	// The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
+	//
+	// *   National: Chinese mainland
+	// *   Big: area
+	// *   Middle: province
+	// *   Small: city
+	// *   RegionId: edge node
+	//
+	// Default value: National.
+	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The end of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MaxDate *string `json:"MaxDate,omitempty" xml:"MaxDate,omitempty"`
+	// The beginning of the time range to query. Specify the time in the 2006-01-02 format. By default, the time range to query is not restricted.
+	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
+	// Specifies whether to return other information about the application, such as statistics on resource instances and pods. The value must be a JSON string. By default, all information is returned.
 	OutAppInfoParams *string `json:"OutAppInfoParams,omitempty" xml:"OutAppInfoParams,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The page number. Pages start from page 1. This parameter is optional if you want to return all information about the applications.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. This parameter is optional if you want to return all information about the applications.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListApplicationsRequest) String() string {
@@ -25652,11 +30231,16 @@ func (s *ListApplicationsRequest) SetPageSize(v int32) *ListApplicationsRequest 
 }
 
 type ListApplicationsResponseBody struct {
+	// Details about applications.
 	Applications *ListApplicationsResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Struct"`
-	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListApplicationsResponseBody) String() string {
@@ -25710,8 +30294,10 @@ func (s *ListApplicationsResponseBodyApplications) SetApplication(v []*ListAppli
 }
 
 type ListApplicationsResponseBodyApplicationsApplication struct {
-	AppList     *ListApplicationsResponseBodyApplicationsApplicationAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
-	ClusterName *string                                                     `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Details about the application.
+	AppList *ListApplicationsResponseBodyApplicationsApplicationAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
+	// The name of the cluster.
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 }
 
 func (s ListApplicationsResponseBodyApplicationsApplication) String() string {
@@ -25750,7 +30336,9 @@ func (s *ListApplicationsResponseBodyApplicationsApplicationAppList) SetApp(v []
 }
 
 type ListApplicationsResponseBodyApplicationsApplicationAppListApp struct {
-	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The information about the application, such as the resource specification, parameter configuration, and resources.
 	AppInfo *string `json:"AppInfo,omitempty" xml:"AppInfo,omitempty"`
 }
 
@@ -25801,11 +30389,420 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 	return s
 }
 
+type ListBucketsRequest struct {
+	// The number of the page. Pages start from page 1.
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of returned buckets. If this parameter is not specified, the default value is 10. The value cannot be greater than 100.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies the prefix that returned bucket names must contain. If this parameter is not specified, prefix information will not be used as a filter.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListBucketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsRequest) SetPageNumber(v string) *ListBucketsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetPageSize(v string) *ListBucketsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBucketsRequest) SetPrefix(v string) *ListBucketsRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListBucketsResponseBody struct {
+	// The list of bucket information.
+	BucketInfos []*ListBucketsResponseBodyBucketInfos `json:"BucketInfos,omitempty" xml:"BucketInfos,omitempty" type:"Repeated"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of buckets that match the conditions.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBucketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponseBody) SetBucketInfos(v []*ListBucketsResponseBodyBucketInfos) *ListBucketsResponseBody {
+	s.BucketInfos = v
+	return s
+}
+
+func (s *ListBucketsResponseBody) SetRequestId(v string) *ListBucketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBucketsResponseBody) SetTotalCount(v int64) *ListBucketsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBucketsResponseBodyBucketInfos struct {
+	// The access control list (ACL) of the bucket.
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The remarks.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The time when the bucket was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the region where the node is located.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Single-node storage. Set the value to sink.
+	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
+	// The time when the bucket was modified. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+}
+
+func (s ListBucketsResponseBodyBucketInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponseBodyBucketInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetBucketAcl(v string) *ListBucketsResponseBodyBucketInfos {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetBucketName(v string) *ListBucketsResponseBodyBucketInfos {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetComment(v string) *ListBucketsResponseBodyBucketInfos {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetCreateTime(v string) *ListBucketsResponseBodyBucketInfos {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetEnsRegionId(v string) *ListBucketsResponseBodyBucketInfos {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetLogicalBucketType(v string) *ListBucketsResponseBodyBucketInfos {
+	s.LogicalBucketType = &v
+	return s
+}
+
+func (s *ListBucketsResponseBodyBucketInfos) SetModifyTime(v string) *ListBucketsResponseBodyBucketInfos {
+	s.ModifyTime = &v
+	return s
+}
+
+type ListBucketsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBucketsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBucketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBucketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBucketsResponse) SetHeaders(v map[string]*string) *ListBucketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBucketsResponse) SetStatusCode(v int32) *ListBucketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBucketsResponse) SetBody(v *ListBucketsResponseBody) *ListBucketsResponse {
+	s.Body = v
+	return s
+}
+
+type ListObjectsRequest struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The token used in this list operation. If the number of objects exceeds the value of MaxKeys, the NextContinuationToken is included in the response as the token for the next list operation.
+	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	// The encoding type of the object names in the response. Only URL encoding is supported.
+	EncodingType *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
+	// The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of Marker are returned. The Marker parameter is used to list the returned objects by page, and its value must be less than 1,024 bytes in length.
+	//
+	// Even if the value specified for Marker does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of Marker.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The maximum number of objects to return.
+	//
+	// Valid values: 0 to 1000. Default value: 100.
+	MaxKeys *int64 `json:"MaxKeys,omitempty" xml:"MaxKeys,omitempty"`
+	// The prefix that must be included in the names of objects you want to list. If you specify a prefix to query objects, the returned object names contain the prefix.
+	//
+	// The value of the parameter must be less than 1,000 bytes in length.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of StartAfter are returned. The StartAfter parameter is used to list the returned objects by page, and its value must be less than 1,000 bytes in length.
+	//
+	// Even if the value specified for StartAfter does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of StartAfter.
+	StartAfter *string `json:"StartAfter,omitempty" xml:"StartAfter,omitempty"`
+}
+
+func (s ListObjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsRequest) SetBucketName(v string) *ListObjectsRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetContinuationToken(v string) *ListObjectsRequest {
+	s.ContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetEncodingType(v string) *ListObjectsRequest {
+	s.EncodingType = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetMarker(v string) *ListObjectsRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetMaxKeys(v int64) *ListObjectsRequest {
+	s.MaxKeys = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetPrefix(v string) *ListObjectsRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListObjectsRequest) SetStartAfter(v string) *ListObjectsRequest {
+	s.StartAfter = &v
+	return s
+}
+
+type ListObjectsResponseBody struct {
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The container for all object names between Prefix and the next occurrence of the string specified by a delimiter. A response can contain CommonPrefixes only if you specify a delimiter.
+	CommonPrefixes []*string `json:"CommonPrefixes,omitempty" xml:"CommonPrefixes,omitempty" type:"Repeated"`
+	// The list of object metadata.
+	Contents []*ListObjectsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
+	// The token used in this list operation.
+	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
+	// The character used to group objects by name.
+	Delimiter *string `json:"Delimiter,omitempty" xml:"Delimiter,omitempty"`
+	// The encoding type of the object names in the response.
+	EncodingType *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
+	// Indicates whether the listed objects are truncated. Valid values:
+	//
+	// *   **false**
+	// *   **true**
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The number of objects returned for this request.
+	KeyCount *int64 `json:"KeyCount,omitempty" xml:"KeyCount,omitempty"`
+	// The position from which the list operation starts.
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The maximum number of objects returned.
+	MaxKeys *int64 `json:"MaxKeys,omitempty" xml:"MaxKeys,omitempty"`
+	// The token used in the next list operation.
+	NextContinuationToken *string `json:"NextContinuationToken,omitempty" xml:"NextContinuationToken,omitempty"`
+	// The position from which the next list operation starts.
+	NextMarker *string `json:"NextMarker,omitempty" xml:"NextMarker,omitempty"`
+	// The prefix contained in the names of returned objects.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListObjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponseBody) SetBucketName(v string) *ListObjectsResponseBody {
+	s.BucketName = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetCommonPrefixes(v []*string) *ListObjectsResponseBody {
+	s.CommonPrefixes = v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetContents(v []*ListObjectsResponseBodyContents) *ListObjectsResponseBody {
+	s.Contents = v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetContinuationToken(v string) *ListObjectsResponseBody {
+	s.ContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetDelimiter(v string) *ListObjectsResponseBody {
+	s.Delimiter = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetEncodingType(v string) *ListObjectsResponseBody {
+	s.EncodingType = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetIsTruncated(v bool) *ListObjectsResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetKeyCount(v int64) *ListObjectsResponseBody {
+	s.KeyCount = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetMarker(v string) *ListObjectsResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetMaxKeys(v int64) *ListObjectsResponseBody {
+	s.MaxKeys = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetNextContinuationToken(v string) *ListObjectsResponseBody {
+	s.NextContinuationToken = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetNextMarker(v string) *ListObjectsResponseBody {
+	s.NextMarker = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetPrefix(v string) *ListObjectsResponseBody {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListObjectsResponseBody) SetRequestId(v string) *ListObjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListObjectsResponseBodyContents struct {
+	// The entity tag (ETag). When an object is created, an ETag is created to identify the content of the object.
+	//
+	// *   For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
+	// *   If an object is created by using other methods, the ETag value of the object is the UUID of the object content.
+	// *   The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
+	ETag *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
+	// The name of the object.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The time when the object was last modified.
+	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The size of the returned object. Unit: bytes.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s ListObjectsResponseBodyContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponseBodyContents) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponseBodyContents) SetETag(v string) *ListObjectsResponseBodyContents {
+	s.ETag = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetKey(v string) *ListObjectsResponseBodyContents {
+	s.Key = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetLastModified(v string) *ListObjectsResponseBodyContents {
+	s.LastModified = &v
+	return s
+}
+
+func (s *ListObjectsResponseBodyContents) SetSize(v int64) *ListObjectsResponseBodyContents {
+	s.Size = &v
+	return s
+}
+
+type ListObjectsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListObjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListObjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListObjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListObjectsResponse) SetHeaders(v map[string]*string) *ListObjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListObjectsResponse) SetStatusCode(v int32) *ListObjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListObjectsResponse) SetBody(v *ListObjectsResponseBody) *ListObjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyEnsEipAddressAttributeRequest struct {
+	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	Bandwidth    *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The peak bandwidth of the EIP. Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// The new description of the EIP. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The new name of the EIP. The name must be 2 to 128 characters in length and cannot start with http:// or https://.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyEnsEipAddressAttributeRequest) String() string {
@@ -25837,6 +30834,7 @@ func (s *ModifyEnsEipAddressAttributeRequest) SetName(v string) *ModifyEnsEipAdd
 }
 
 type ModifyEnsEipAddressAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25883,10 +30881,20 @@ func (s *ModifyEnsEipAddressAttributeResponse) SetBody(v *ModifyEnsEipAddressAtt
 }
 
 type ModifyEpnInstanceRequest struct {
-	EPNInstanceId           *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
-	EPNInstanceName         *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
-	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	NetworkingModel         *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
+	// The ID of the EPN instance.
+	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
+	// The name of the EPN instance.
+	EPNInstanceName *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
+	// The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 1 Mbit/s to 100 Mbit/s.
+	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	// The networking mode. Valid values:
+	//
+	// *   **SpeedUp**: Intelligent acceleration network (Internet).
+	// *   **Connection**: Internal network.
+	// *   **SpeedUpAndConnection**: Intelligent acceleration network and internal network.
+	//
+	// >  The internal network supports only **Connection** and **SpeedUpAndConnection**.
+	NetworkingModel *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
 }
 
 func (s ModifyEpnInstanceRequest) String() string {
@@ -25918,6 +30926,7 @@ func (s *ModifyEpnInstanceRequest) SetNetworkingModel(v string) *ModifyEpnInstan
 }
 
 type ModifyEpnInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25964,8 +30973,11 @@ func (s *ModifyEpnInstanceResponse) SetBody(v *ModifyEpnInstanceResponseBody) *M
 }
 
 type ModifyFileSystemRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The description of the file system.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the region.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the file system.
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 }
 
@@ -25993,6 +31005,7 @@ func (s *ModifyFileSystemRequest) SetFileSystemId(v string) *ModifyFileSystemReq
 }
 
 type ModifyFileSystemResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26039,9 +31052,12 @@ func (s *ModifyFileSystemResponse) SetBody(v *ModifyFileSystemResponseBody) *Mod
 }
 
 type ModifyForwardEntryRequest struct {
-	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The ID of the DNAT entry.
+	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// The name of the DNAT entry. The name must be 2 to 128 characters in length. It cannot start with `http://` or `https://`.
 	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
-	HealthCheckPort  *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The probe port. The port must be within the internal port range. By default, this parameter is left empty.
+	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
 }
 
 func (s ModifyForwardEntryRequest) String() string {
@@ -26068,6 +31084,7 @@ func (s *ModifyForwardEntryRequest) SetHealthCheckPort(v int32) *ModifyForwardEn
 }
 
 type ModifyForwardEntryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26114,10 +31131,13 @@ func (s *ModifyForwardEntryResponse) SetBody(v *ModifyForwardEntryResponseBody) 
 }
 
 type ModifyImageAttributeRequest struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the image.
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// This parameter is unavailable.
 	Product *string `json:"product,omitempty" xml:"product,omitempty"`
 }
 
@@ -26150,7 +31170,9 @@ func (s *ModifyImageAttributeRequest) SetProduct(v string) *ModifyImageAttribute
 }
 
 type ModifyImageAttributeResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The service code. 0 is returned for a successful request. An error code is returned for a failed request.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26202,8 +31224,11 @@ func (s *ModifyImageAttributeResponse) SetBody(v *ModifyImageAttributeResponseBo
 }
 
 type ModifyImageSharePermissionRequest struct {
-	AddAccounts    *string `json:"AddAccounts,omitempty" xml:"AddAccounts,omitempty"`
-	ImageId        *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the Alibaba Cloud account with which you want to share the image. You can specify multiple Alibaba Cloud IDs. Separate multiple IDs with commas (,).
+	AddAccounts *string `json:"AddAccounts,omitempty" xml:"AddAccounts,omitempty"`
+	// The ID of the image. You can specify only one image ID. Custom images and public images are supported.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the Alibaba Cloud account from which you want to unshare the image. You can specify only one Alibaba Cloud account ID.
 	RemoveAccounts *string `json:"RemoveAccounts,omitempty" xml:"RemoveAccounts,omitempty"`
 }
 
@@ -26231,6 +31256,7 @@ func (s *ModifyImageSharePermissionRequest) SetRemoveAccounts(v string) *ModifyI
 }
 
 type ModifyImageSharePermissionResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26277,11 +31303,20 @@ func (s *ModifyImageSharePermissionResponse) SetBody(v *ModifyImageSharePermissi
 }
 
 type ModifyInstanceAttributeRequest struct {
-	HostName     *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The hostname of the Elastic Compute Service (ECS) instance. The value can be 2 to 64 characters in length. You can use periods (.) to separate the value into multiple segments. Each segment can contain letters, digits, hyphens (-), and periods. Consecutive periods or hyphens are not allowed. The name cannot start or end with a period (.) or a hyphen (-).
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the instance for which you want to modify attributes. You can specify only one ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the instance.
+	//
+	// The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The password of the instance.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The user data of the instance. User data must be encoded in Base64.
+	//
+	// The size of your UserData cannot exceed 16 KB. We recommend that you do not pass in confidential information such as passwords and private keys in the plaintext format. If you must pass in confidential information, we recommend that you encrypt and Base64-encode the information before you pass it in. Then you can decode and decrypt the information in the same way within the instance.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s ModifyInstanceAttributeRequest) String() string {
@@ -26318,7 +31353,9 @@ func (s *ModifyInstanceAttributeRequest) SetUserData(v string) *ModifyInstanceAt
 }
 
 type ModifyInstanceAttributeResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26370,10 +31407,20 @@ func (s *ModifyInstanceAttributeResponse) SetBody(v *ModifyInstanceAttributeResp
 }
 
 type ModifyInstanceAutoRenewAttributeRequest struct {
-	AutoRenew     *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Duration      *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceIds   *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specify whether to automatically renew the subscription of the nodes. Valid values: true and false. Default value: false.
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The auto-renewal period of the instance. Unit: months. Valid values: 1 to 9 and 12. This parameter is required if the AutoRenew parameter is set to true.
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the instance. Separate multiple instance IDs with semicolons (;).
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Specifies whether to renew the instance. The **RenewalStatus** parameter has a higher priority than the **AutoRenew** parameter. If you do not specify **RenewalStatus**, the **AutoRenew** parameter is used by default.
+	//
+	// *   AutoRenewal: Auto-renewal is enabled for the instance.
+	// *   Normal: Auto-renewal is disabled for the instance.
+	// *   NotRenewal: The instance is not renewed.
+	//
+	// The system no longer sends an expiration notification but sends only a renewal notification three days before the instance expires. To renew the instance, you can change the value of this parameter from NotRenewal to Normal and then manually renew the instance, or change the value of this parameter from NotRenewal to AutoRenewal.
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 }
 
@@ -26411,7 +31458,9 @@ func (s *ModifyInstanceAutoRenewAttributeRequest) SetRenewalStatus(v string) *Mo
 }
 
 type ModifyInstanceAutoRenewAttributeResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26463,7 +31512,11 @@ func (s *ModifyInstanceAutoRenewAttributeResponse) SetBody(v *ModifyInstanceAuto
 }
 
 type ModifyLoadBalancerAttributeRequest struct {
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The name of the ELB instance. The name must be **2** to **128** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 }
 
@@ -26486,6 +31539,7 @@ func (s *ModifyLoadBalancerAttributeRequest) SetLoadBalancerName(v string) *Modi
 }
 
 type ModifyLoadBalancerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26532,8 +31586,17 @@ func (s *ModifyLoadBalancerAttributeResponse) SetBody(v *ModifyLoadBalancerAttri
 }
 
 type ModifyNetworkAttributeRequest struct {
+	// The description of the network.
+	//
+	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The ID of the network.
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// The name of the network. The name must meet the following requirements:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 }
 
@@ -26561,6 +31624,7 @@ func (s *ModifyNetworkAttributeRequest) SetNetworkName(v string) *ModifyNetworkA
 }
 
 type ModifyNetworkAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26607,7 +31671,9 @@ func (s *ModifyNetworkAttributeResponse) SetBody(v *ModifyNetworkAttributeRespon
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the instance that you want to upgrade or downgrade.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The updated configuration.
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -26630,6 +31696,7 @@ func (s *ModifyPrepayInstanceSpecRequest) SetInstanceType(v string) *ModifyPrepa
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26676,8 +31743,15 @@ func (s *ModifyPrepayInstanceSpecResponse) SetBody(v *ModifyPrepayInstanceSpecRe
 }
 
 type ModifySecurityGroupAttributeRequest struct {
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityGroupId   *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The description of the security group.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the security group.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The name of the security group. The name of a bucket must meet the following requirements:
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
@@ -26705,6 +31779,7 @@ func (s *ModifySecurityGroupAttributeRequest) SetSecurityGroupName(v string) *Mo
 }
 
 type ModifySecurityGroupAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26750,9 +31825,99 @@ func (s *ModifySecurityGroupAttributeResponse) SetBody(v *ModifySecurityGroupAtt
 	return s
 }
 
-type ModifyVSwitchAttributeRequest struct {
+type ModifySnapshotAttributeRequest struct {
+	// The description of the snapshot. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the snapshot.
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+	//
+	// The name cannot start with **auto** because snapshots whose names start with auto are recognized as automatic snapshots.
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+}
+
+func (s ModifySnapshotAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeRequest) SetDescription(v string) *ModifySnapshotAttributeRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetSnapshotId(v string) *ModifySnapshotAttributeRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeRequest) SetSnapshotName(v string) *ModifySnapshotAttributeRequest {
+	s.SnapshotName = &v
+	return s
+}
+
+type ModifySnapshotAttributeResponseBody struct {
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifySnapshotAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeResponseBody) SetRequestId(v string) *ModifySnapshotAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifySnapshotAttributeResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySnapshotAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifySnapshotAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifySnapshotAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifySnapshotAttributeResponse) SetHeaders(v map[string]*string) *ModifySnapshotAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifySnapshotAttributeResponse) SetStatusCode(v int32) *ModifySnapshotAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResponseBody) *ModifySnapshotAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyVSwitchAttributeRequest struct {
+	// The description of the vSwitch.
+	//
+	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the vSwitch.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
+	// *   The name must be 2 to 128 characters in length.
+	// *   The name must start with a letter but cannot start with http:// or https://.
+	// *   The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -26780,6 +31945,7 @@ func (s *ModifyVSwitchAttributeRequest) SetVSwitchName(v string) *ModifyVSwitchA
 }
 
 type ModifyVSwitchAttributeResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -26826,10 +31992,14 @@ func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeRespon
 }
 
 type PushApplicationDataRequest struct {
-	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The data files that you want to push. The value must be a JSON string.
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The push policy in the canary release environment. The value must be a JSON string. You can specify multiple push policies. By default, all data files are pushed.
 	PushStrategy *string `json:"PushStrategy,omitempty" xml:"PushStrategy,omitempty"`
-	Timeout      *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter does not take effect.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s PushApplicationDataRequest) String() string {
@@ -26861,8 +32031,10 @@ func (s *PushApplicationDataRequest) SetTimeout(v int32) *PushApplicationDataReq
 }
 
 type PushApplicationDataResponseBody struct {
+	// The push results of data files.
 	PushResults *PushApplicationDataResponseBodyPushResults `json:"PushResults,omitempty" xml:"PushResults,omitempty" type:"Struct"`
-	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s PushApplicationDataResponseBody) String() string {
@@ -26901,10 +32073,19 @@ func (s *PushApplicationDataResponseBodyPushResults) SetPushResult(v []*PushAppl
 }
 
 type PushApplicationDataResponseBodyPushResultsPushResult struct {
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResultCode    *int32  `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The name of the data file.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The push result. The value is of the enumeration type. Valid values:
+	//
+	// *   0: The push operation is successful.
+	// *   100: The push operation has been performed and the file is pushed.
+	// *   200: The push operation has been performed and the file is being pushed to specific file servers.
+	// *   300: The push operation failed. You must trigger the push operation again. The ResultDescrip parameter indicates the error description.
+	ResultCode *int32 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+	// The description of the push status.
 	ResultDescrip *string `json:"ResultDescrip,omitempty" xml:"ResultDescrip,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number of the data file.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PushApplicationDataResponseBodyPushResultsPushResult) String() string {
@@ -26964,8 +32145,310 @@ func (s *PushApplicationDataResponse) SetBody(v *PushApplicationDataResponseBody
 	return s
 }
 
+type PutBucketRequest struct {
+	// The access control list (ACL) of the bucket.
+	//
+	// *   **private** (default)
+	// *   **public-read-write**
+	// *   **public-read**
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The name of the bucket.
+	//
+	// This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The remarks. The remarks are 0 to 128 characters in length.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Single-node storage. Set the value to sink.
+	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
+}
+
+func (s PutBucketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketRequest) SetBucketAcl(v string) *PutBucketRequest {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetBucketName(v string) *PutBucketRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetComment(v string) *PutBucketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetEnsRegionId(v string) *PutBucketRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetLogicalBucketType(v string) *PutBucketRequest {
+	s.LogicalBucketType = &v
+	return s
+}
+
+type PutBucketResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutBucketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketResponseBody) SetRequestId(v string) *PutBucketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PutBucketResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutBucketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutBucketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketResponse) SetHeaders(v map[string]*string) *PutBucketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutBucketResponse) SetStatusCode(v int32) *PutBucketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutBucketResponse) SetBody(v *PutBucketResponseBody) *PutBucketResponse {
+	s.Body = v
+	return s
+}
+
+type PutBucketAclRequest struct {
+	// The ACL of the bucket.
+	//
+	// *   **public-read-write**
+	// *   **public-read**
+	// *   **private** (default)
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+}
+
+func (s PutBucketAclRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketAclRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketAclRequest) SetBucketAcl(v string) *PutBucketAclRequest {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *PutBucketAclRequest) SetBucketName(v string) *PutBucketAclRequest {
+	s.BucketName = &v
+	return s
+}
+
+type PutBucketAclResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutBucketAclResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketAclResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketAclResponseBody) SetRequestId(v string) *PutBucketAclResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PutBucketAclResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutBucketAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutBucketAclResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketAclResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketAclResponse) SetHeaders(v map[string]*string) *PutBucketAclResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutBucketAclResponse) SetStatusCode(v int32) *PutBucketAclResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutBucketAclResponse) SetBody(v *PutBucketAclResponseBody) *PutBucketAclResponse {
+	s.Body = v
+	return s
+}
+
+type PutBucketLifecycleRequest struct {
+	// Specifies whether to allow overlapped prefixes. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	AllowSameActionOverlap *string `json:"AllowSameActionOverlap,omitempty" xml:"AllowSameActionOverlap,omitempty"`
+	// The name of the bucket.
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The expiration data. EOS executes a lifecycle rule for objects that were last updated before the expiration date.
+	//
+	// Specify the time that follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	//
+	// > ExpirationDays and CreateBeforeDate are mutually exclusive.
+	CreatedBeforeDate *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
+	// The number of days from when the objects were last modified to when the lifecycle rule takes effect. The value must be a positive integer that is greater than 0.
+	//
+	// > ExpirationDays and CreateBeforeDate are mutually exclusive.
+	ExpirationDays *int64 `json:"ExpirationDays,omitempty" xml:"ExpirationDays,omitempty"`
+	// The prefix of a rule. The prefix must be unique.
+	//
+	// *   If you specify a prefix, the rule applies only to objects in the bucket that match the prefix.
+	// *   If you do not specify a prefix, the rule applies to all objects in the bucket.
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	// The unique ID of the rule. The ID of a lifecycle rule can be up to 255 bytes in length.
+	//
+	// *   You do not need to configure this parameter when you create a rule. The system automatically generates a unique ID.
+	// *   When you update a rule, you need to specify the rule ID, and the rule must exist. Otherwise, an error occurs.
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// *   **Enabled**: The rule is periodically executed.
+	// *   **Disabled**: The rule is ignored.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s PutBucketLifecycleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketLifecycleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketLifecycleRequest) SetAllowSameActionOverlap(v string) *PutBucketLifecycleRequest {
+	s.AllowSameActionOverlap = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetBucketName(v string) *PutBucketLifecycleRequest {
+	s.BucketName = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetCreatedBeforeDate(v string) *PutBucketLifecycleRequest {
+	s.CreatedBeforeDate = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetExpirationDays(v int64) *PutBucketLifecycleRequest {
+	s.ExpirationDays = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetPrefix(v string) *PutBucketLifecycleRequest {
+	s.Prefix = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetRuleId(v string) *PutBucketLifecycleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *PutBucketLifecycleRequest) SetStatus(v string) *PutBucketLifecycleRequest {
+	s.Status = &v
+	return s
+}
+
+type PutBucketLifecycleResponseBody struct {
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PutBucketLifecycleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketLifecycleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketLifecycleResponseBody) SetRequestId(v string) *PutBucketLifecycleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PutBucketLifecycleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutBucketLifecycleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PutBucketLifecycleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutBucketLifecycleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PutBucketLifecycleResponse) SetHeaders(v map[string]*string) *PutBucketLifecycleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PutBucketLifecycleResponse) SetStatusCode(v int32) *PutBucketLifecycleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PutBucketLifecycleResponse) SetBody(v *PutBucketLifecycleResponseBody) *PutBucketLifecycleResponse {
+	s.Body = v
+	return s
+}
+
 type ReInitDiskRequest struct {
-	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the disk to be initialized. You can initialize only one disk at a time.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the image to use to create the instance.
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -26995,7 +32478,9 @@ func (s *ReInitDiskRequest) SetVersion(v string) *ReInitDiskRequest {
 }
 
 type ReInitDiskResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. A value of 0 indicates that the operation was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27047,9 +32532,12 @@ func (s *ReInitDiskResponse) SetBody(v *ReInitDiskResponseBody) *ReInitDiskRespo
 }
 
 type RebootAICInstanceRequest struct {
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the AIC instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the AIC instance groups.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ServerId    *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s RebootAICInstanceRequest) String() string {
@@ -27076,9 +32564,12 @@ func (s *RebootAICInstanceRequest) SetServerId(v string) *RebootAICInstanceReque
 }
 
 type RebootAICInstanceShrinkRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the AIC instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the AIC instance groups.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	ServerId          *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s RebootAICInstanceShrinkRequest) String() string {
@@ -27105,6 +32596,7 @@ func (s *RebootAICInstanceShrinkRequest) SetServerId(v string) *RebootAICInstanc
 }
 
 type RebootAICInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27151,8 +32643,8 @@ func (s *RebootAICInstanceResponse) SetBody(v *RebootAICInstanceResponseBody) *R
 }
 
 type RebootARMServerInstanceRequest struct {
-	ServerId  *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s RebootARMServerInstanceRequest) String() string {
@@ -27168,35 +32660,8 @@ func (s *RebootARMServerInstanceRequest) SetServerId(v string) *RebootARMServerI
 	return s
 }
 
-func (s *RebootARMServerInstanceRequest) SetServerIds(v []*string) *RebootARMServerInstanceRequest {
-	s.ServerIds = v
-	return s
-}
-
-type RebootARMServerInstanceShrinkRequest struct {
-	ServerId        *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	ServerIdsShrink *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
-}
-
-func (s RebootARMServerInstanceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RebootARMServerInstanceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RebootARMServerInstanceShrinkRequest) SetServerId(v string) *RebootARMServerInstanceShrinkRequest {
-	s.ServerId = &v
-	return s
-}
-
-func (s *RebootARMServerInstanceShrinkRequest) SetServerIdsShrink(v string) *RebootARMServerInstanceShrinkRequest {
-	s.ServerIdsShrink = &v
-	return s
-}
-
 type RebootARMServerInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27243,7 +32708,12 @@ func (s *RebootARMServerInstanceResponse) SetBody(v *RebootARMServerInstanceResp
 }
 
 type RebootInstanceRequest struct {
-	ForceStop  *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// Indicates whether to stop the instance forcibly before you reboot it. Default value: false. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ForceStop *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// The ID of the instance that you want to reboot. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -27266,7 +32736,9 @@ func (s *RebootInstanceRequest) SetInstanceId(v string) *RebootInstanceRequest {
 }
 
 type RebootInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27404,6 +32876,7 @@ func (s *RebootInstancesResponse) SetBody(v *RebootInstancesResponseBody) *Reboo
 }
 
 type RecoverAICInstanceRequest struct {
+	// The ID of the server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
@@ -27421,6 +32894,7 @@ func (s *RecoverAICInstanceRequest) SetServerId(v string) *RecoverAICInstanceReq
 }
 
 type RecoverAICInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27652,6 +33126,7 @@ func (s *ReinitInstancesResponse) SetBody(v *ReinitInstancesResponseBody) *Reini
 }
 
 type ReleaseAICInstanceRequest struct {
+	// The ID of the server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
@@ -27669,6 +33144,7 @@ func (s *ReleaseAICInstanceRequest) SetServerId(v string) *ReleaseAICInstanceReq
 }
 
 type ReleaseAICInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27715,6 +33191,7 @@ func (s *ReleaseAICInstanceResponse) SetBody(v *ReleaseAICInstanceResponseBody) 
 }
 
 type ReleaseARMServerInstanceRequest struct {
+	// The ID of the server.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -27732,6 +33209,7 @@ func (s *ReleaseARMServerInstanceRequest) SetInstanceId(v string) *ReleaseARMSer
 }
 
 type ReleaseARMServerInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27778,6 +33256,7 @@ func (s *ReleaseARMServerInstanceResponse) SetBody(v *ReleaseARMServerInstanceRe
 }
 
 type ReleaseInstanceRequest struct {
+	// The ID of the EIP.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -27795,6 +33274,7 @@ func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest
 }
 
 type ReleaseInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27841,6 +33321,7 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 }
 
 type ReleasePostPaidInstanceRequest struct {
+	// The ID of the instance to be deleted. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -27858,6 +33339,7 @@ func (s *ReleasePostPaidInstanceRequest) SetInstanceId(v string) *ReleasePostPai
 }
 
 type ReleasePostPaidInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27904,6 +33386,7 @@ func (s *ReleasePostPaidInstanceResponse) SetBody(v *ReleasePostPaidInstanceResp
 }
 
 type ReleasePrePaidInstanceRequest struct {
+	// The ID of the instance to be deleted. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -27921,6 +33404,7 @@ func (s *ReleasePrePaidInstanceRequest) SetInstanceId(v string) *ReleasePrePaidI
 }
 
 type ReleasePrePaidInstanceResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -27967,8 +33451,12 @@ func (s *ReleasePrePaidInstanceResponse) SetBody(v *ReleasePrePaidInstanceRespon
 }
 
 type RemoveBackendServersRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers []*RemoveBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	LoadBalancerId *string                                      `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s RemoveBackendServersRequest) String() string {
@@ -27990,11 +33478,21 @@ func (s *RemoveBackendServersRequest) SetLoadBalancerId(v string) *RemoveBackend
 }
 
 type RemoveBackendServersRequestBackendServers struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The backend port that is used by the ELB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance that is used as the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveBackendServersRequestBackendServers) String() string {
@@ -28031,8 +33529,12 @@ func (s *RemoveBackendServersRequestBackendServers) SetWeight(v int32) *RemoveBa
 }
 
 type RemoveBackendServersShrinkRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s RemoveBackendServersShrinkRequest) String() string {
@@ -28054,8 +33556,12 @@ func (s *RemoveBackendServersShrinkRequest) SetLoadBalancerId(v string) *RemoveB
 }
 
 type RemoveBackendServersResponseBody struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers *RemoveBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RemoveBackendServersResponseBody) String() string {
@@ -28094,11 +33600,21 @@ func (s *RemoveBackendServersResponseBodyBackendServers) SetBackendServer(v []*R
 }
 
 type RemoveBackendServersResponseBodyBackendServersBackendServer struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The backend port that is used by the ELB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance that is used as the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s RemoveBackendServersResponseBodyBackendServersBackendServer) String() string {
@@ -28302,8 +33818,14 @@ func (s *RemoveVSwitchesFromEpnInstanceResponse) SetBody(v *RemoveVSwitchesFromE
 }
 
 type RenewARMServerInstanceRequest struct {
+	// The ID of the instance that you want to renew.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The renewal period. By default, instances are renewed on a monthly basis. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the renewal period. Valid values:
+	//
+	// *   Month (default)
+	// *   Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 }
 
@@ -28331,6 +33853,7 @@ func (s *RenewARMServerInstanceRequest) SetPeriodUnit(v string) *RenewARMServerI
 }
 
 type RenewARMServerInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28377,8 +33900,23 @@ func (s *RenewARMServerInstanceResponse) SetBody(v *RenewARMServerInstanceRespon
 }
 
 type RenewInstanceRequest struct {
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Period     *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The renewal duration of the subscription instance.
+	//
+	// Valid values:
+	//
+	// *   1
+	// *   2
+	// *   3
+	// *   4
+	// *   5
+	// *   6
+	// *   7
+	// *   8
+	// *   9
+	// *   12
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -28400,6 +33938,7 @@ func (s *RenewInstanceRequest) SetPeriod(v int64) *RenewInstanceRequest {
 }
 
 type RenewInstanceResponseBody struct {
+	// The ID of the request. This parameter is a common parameter. Each request has a unique ID. You can use the ID to troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28446,12 +33985,25 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type RescaleApplicationRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	RescaleLevel     *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
-	RescaleType      *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
+	// The ID of the application. You can query the application ID by calling the ListApplications operation.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The level of resource scaling. The value must be of the enumerated data type. Valid values:
+	//
+	// *   AreaIspCode (default): scales resources based on the Internet service provider (ISP).
+	// *   RegionId: scales resources based on the edge node.
+	// *   InstanceId: scales resources based on the instance ID. Resource scale-out specifies resource hosting and scale-in specifies resource release.
+	RescaleLevel *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
+	// The scaling operation. The value must be of the enumerated data type. Valid values:
+	//
+	// *   Add: adds new resources.
+	// *   Del: releases resources.
+	RescaleType *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
+	// The required resources. The value must be a JSON string.
 	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
-	Timeout          *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	ToAppVersion     *string `json:"ToAppVersion,omitempty" xml:"ToAppVersion,omitempty"`
+	// The timeout period for asynchronous scaling. Unit: seconds. Default value: 300.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The version number of the application deployment package. By default, the stable version number is used. This parameter takes effect only when you perform resource scale-out.
+	ToAppVersion *string `json:"ToAppVersion,omitempty" xml:"ToAppVersion,omitempty"`
 }
 
 func (s RescaleApplicationRequest) String() string {
@@ -28493,6 +34045,7 @@ func (s *RescaleApplicationRequest) SetToAppVersion(v string) *RescaleApplicatio
 }
 
 type RescaleApplicationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28539,16 +34092,29 @@ func (s *RescaleApplicationResponse) SetBody(v *RescaleApplicationResponseBody) 
 }
 
 type RescaleDeviceServiceRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ImageId          *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	IpType           *int32  `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	RescaleLevel     *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
-	RescaleType      *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
-	ResourceInfo     *string `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The type of the network. The value must be of the enumerated data type. Valid values:
+	//
+	// *   **1** (default): Internet
+	// *   **2**: internal network
+	IpType *int32 `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The region level of the scale-out. Set the value to RegionId. RegionId specifies that resource scale-out is performed based on the ID of the edge node.
+	RescaleLevel *string `json:"RescaleLevel,omitempty" xml:"RescaleLevel,omitempty"`
+	// The scaling operation. Set the value to Add to add new resources.
+	RescaleType *string `json:"RescaleType,omitempty" xml:"RescaleType,omitempty"`
+	// The information about the resource specification template. The value must be a JSON string.
+	ResourceInfo *string `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty"`
+	// The required resources. The value must be a JSON string.
 	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
-	ResourceSpec     *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Timeout          *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The resource specification.
+	ResourceSpec *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	// The ID of the service.
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period for asynchronous scale-out. Unit: seconds. Default value: 300.
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s RescaleDeviceServiceRequest) String() string {
@@ -28610,10 +34176,13 @@ func (s *RescaleDeviceServiceRequest) SetTimeout(v int64) *RescaleDeviceServiceR
 }
 
 type RescaleDeviceServiceResponseBody struct {
+	// The IDs of the devices.
 	DeviceIds []*string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Repeated"`
-	OrderId   *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
-	RequestId           *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the order.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The key properties of the device.
 	ResourceDetailInfos []*RescaleDeviceServiceResponseBodyResourceDetailInfos `json:"ResourceDetailInfos,omitempty" xml:"ResourceDetailInfos,omitempty" type:"Repeated"`
 }
 
@@ -28646,14 +34215,22 @@ func (s *RescaleDeviceServiceResponseBody) SetResourceDetailInfos(v []*RescaleDe
 }
 
 type RescaleDeviceServiceResponseBodyResourceDetailInfos struct {
-	ID       *string `json:"ID,omitempty" xml:"ID,omitempty"`
-	IP       *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	ISP      *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	Mac      *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The ID of the device.
+	ID *string `json:"ID,omitempty" xml:"ID,omitempty"`
+	// The IP address of the device.
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// The Internet service provider (ISP) to which the device belongs.
+	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
+	// The media access control (MAC) address of the device.
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The ID of the edge node to which the device belongs.
 	RegionID *string `json:"RegionID,omitempty" xml:"RegionID,omitempty"`
-	Server   *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the server on which the device is deployed.
+	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	// The status of the device.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The type of the instance.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s RescaleDeviceServiceResponseBodyResourceDetailInfos) String() string {
@@ -28734,9 +34311,12 @@ func (s *RescaleDeviceServiceResponse) SetBody(v *RescaleDeviceServiceResponseBo
 }
 
 type ResetAICInstanceRequest struct {
-	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the AIC instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the AIC instance groups.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ServerId    *string   `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s ResetAICInstanceRequest) String() string {
@@ -28763,9 +34343,12 @@ func (s *ResetAICInstanceRequest) SetServerId(v string) *ResetAICInstanceRequest
 }
 
 type ResetAICInstanceShrinkRequest struct {
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the AIC instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IDs of the AIC instance groups.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	ServerId          *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The ID of the server.
+	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 }
 
 func (s ResetAICInstanceShrinkRequest) String() string {
@@ -28792,6 +34375,7 @@ func (s *ResetAICInstanceShrinkRequest) SetServerId(v string) *ResetAICInstanceS
 }
 
 type ResetAICInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28838,8 +34422,11 @@ func (s *ResetAICInstanceResponse) SetBody(v *ResetAICInstanceResponseBody) *Res
 }
 
 type ResetDeviceInstanceRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -28867,6 +34454,7 @@ func (s *ResetDeviceInstanceRequest) SetInstanceId(v string) *ResetDeviceInstanc
 }
 
 type ResetDeviceInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28913,7 +34501,9 @@ func (s *ResetDeviceInstanceResponse) SetBody(v *ResetDeviceInstanceResponseBody
 }
 
 type ResetDiskRequest struct {
-	DiskId     *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the disk that you want to roll back.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the snapshot that you want to use to roll back the disk.
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -28936,6 +34526,7 @@ func (s *ResetDiskRequest) SetSnapshotId(v string) *ResetDiskRequest {
 }
 
 type ResetDiskResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -28982,7 +34573,9 @@ func (s *ResetDiskResponse) SetBody(v *ResetDiskResponseBody) *ResetDiskResponse
 }
 
 type ResizeDiskRequest struct {
-	DiskId  *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The ID of the disk that you want to resize.
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The size of the disk that you want to resize. Unit: GiB.
 	NewSize *string `json:"NewSize,omitempty" xml:"NewSize,omitempty"`
 }
 
@@ -29005,7 +34598,9 @@ func (s *ResizeDiskRequest) SetNewSize(v string) *ResizeDiskRequest {
 }
 
 type ResizeDiskResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29057,7 +34652,9 @@ func (s *ResizeDiskResponse) SetBody(v *ResizeDiskResponseBody) *ResizeDiskRespo
 }
 
 type RestartDeviceInstanceRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application. To obtain the application ID, call the ListApplications operation. For more information, see the API documentation of ListApplications.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -29080,6 +34677,7 @@ func (s *RestartDeviceInstanceRequest) SetInstanceId(v string) *RestartDeviceIns
 }
 
 type RestartDeviceInstanceResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29286,12 +34884,38 @@ func (s *RetryWorkflowResponse) SetBody(v *RetryWorkflowResponseBody) *RetryWork
 }
 
 type RevokeSecurityGroupRequest struct {
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   tcp: TCP.
+	// *   udp: UDP.
+	// *   icmp: ICMP.
+	// *   gre: GRE.
+	// *   all: all protocols.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The authorization policy. Valid values:
+	//
+	// *   accept: allows access. This is the default value.
+	// *   drop: denies access and returns no responses.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The range of destination ports that correspond to the transport layer protocol for the security group rule. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of security group rule N. Valid values: **1** to **100**. Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The source CIDR block. CIDR blocks and IPv4 addresses are supported. Default value: 0.0.XX.XX/0.
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	// The range of source ports that correspond to the transport layer protocol for the security group rule. Valid values:
+	//
+	// *   When the IpProtocol parameter is set to tcp or udp, the port number range is **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// 2017-11-10
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -29346,6 +34970,7 @@ func (s *RevokeSecurityGroupRequest) SetVersion(v string) *RevokeSecurityGroupRe
 }
 
 type RevokeSecurityGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29392,14 +35017,47 @@ func (s *RevokeSecurityGroupResponse) SetBody(v *RevokeSecurityGroupResponseBody
 }
 
 type RevokeSecurityGroupEgressRequest struct {
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The destination IP addresses. CIDR blocks and IPv4 addresses are supported.
+	//
+	// By default, this parameter is empty.
+	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	// The transport layer protocol. The value of this parameter is case-sensitive. Valid values:
+	//
+	// *   tcp
+	// *   udp
+	// *   icmp
+	// *   gre
+	// *   all: All protocols are supported.
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	// The action of the security group rule. Valid values:
+	//
+	// *   **accept**: allows access.
+	// *   **drop**: denies access and returns no responses.
+	//
+	// Default value: **accept**.
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The range of destination ports that correspond to the transport layer protocol for the security group rule. Valid values:
+	//
+	// *   If you set the IpProtocol parameter to tcp or udp, the port number ranges from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
+	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	// The priority of the security group rule. Valid values: **1** to **100**. A smaller value indicates a higher priority.
+	//
+	// Default value: **1**.
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The range of port numbers that correspond to the transport layer protocol for the source security group. Valid values:
+	//
+	// *   If you set the IpProtocol parameter to tcp or udp, the port number ranges from **1** to **65535**. The start port number and the end port number are separated by a forward slash (/). Correct example: **1/200**. Incorrect example: **200/1**.
+	// *   When the IpProtocol parameter is set to icmp, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to gre, the port number range is **-1/-1**, which indicates all ports.
+	// *   When the IpProtocol parameter is set to all, the port number range is **-1/-1**, which indicates all ports.
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number. Set the value to 2017-11-10.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s RevokeSecurityGroupEgressRequest) String() string {
@@ -29451,6 +35109,7 @@ func (s *RevokeSecurityGroupEgressRequest) SetVersion(v string) *RevokeSecurityG
 }
 
 type RevokeSecurityGroupEgressResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29497,10 +35156,14 @@ func (s *RevokeSecurityGroupEgressResponse) SetBody(v *RevokeSecurityGroupEgress
 }
 
 type RollbackApplicationRequest struct {
-	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The current version number.
 	FromAppVersion *string `json:"FromAppVersion,omitempty" xml:"FromAppVersion,omitempty"`
-	Timeout        *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	ToAppVersion   *string `json:"ToAppVersion,omitempty" xml:"ToAppVersion,omitempty"`
+	// The timeout period of the asynchronous rollback operation. Unit: seconds. Default value: 300.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The target version number. By default, the system automatically rolls back the container version to the previous version.
+	ToAppVersion *string `json:"ToAppVersion,omitempty" xml:"ToAppVersion,omitempty"`
 }
 
 func (s RollbackApplicationRequest) String() string {
@@ -29532,6 +35195,7 @@ func (s *RollbackApplicationRequest) SetToAppVersion(v string) *RollbackApplicat
 }
 
 type RollbackApplicationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -29658,36 +35322,133 @@ func (s *RollbackWorkflowResponse) SetBody(v *RollbackWorkflowResponseBody) *Rol
 }
 
 type RunInstancesRequest struct {
-	Amount                  *int64                         `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoRenew               *bool                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Carrier                 *string                        `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	DataDisk                []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	EnsRegionId             *string                        `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HostName                *string                        `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                 *string                        `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceChargeStrategy  *string                        `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	InstanceChargeType      *string                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceName            *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType            *string                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string                        `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthOut *int64                         `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	KeyPairName             *string                        `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	NetDistrictCode         *string                        `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	NetWorkId               *string                        `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	Password                *string                        `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordInherit         *bool                          `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	Period                  *int64                         `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string                        `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PrivateIpAddress        *string                        `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification  *bool                          `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	ScheduleAreaLevel       *string                        `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	SchedulingPriceStrategy *string                        `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
-	SchedulingStrategy      *string                        `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	SecurityId              *string                        `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	SystemDisk              *RunInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	UniqueSuffix            *bool                          `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	UserData                *string                        `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VSwitchId               *string                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The number of instances that you want to create. Valid values: 1 to 100.
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	//
+	// >  This parameter is not available when InstanceChargeType is set to PostPaid.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// 是否使用代金券，默认为使用，即AutoUseCoupon=true。
+	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
+	//
+	// *   Hour
+	// *   Day
+	// *   Month
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The Internet service provider (ISP).
+	//
+	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The specification of the data disk.
+	DataDisk []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	// The ID of the node.
+	//
+	// >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the image. For ARM PCB-based server instances, leave this parameter empty. For other instances, this parameter is required.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing policy of the instance. Valid values:
+	//
+	// *   **instance**: Bills are generated based on instances.
+	// *   If you do not specify this parameter, bills are generated based on users.
+	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+	//
+	// The default value of this parameter is the value of the InstanceId parameter.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The bandwidth billing method. Valid values:
+	//
+	// *   **BandwidthByDay**: pay by daily peak bandwidth
+	// *   **95BandwidthByMonth**: pay by monthly 95th percentile bandwidth
+	//
+	// >  This parameter is required if you purchase an ENS instance for the first time. The value that you specified is used as the default value for subsequent purchases.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
+	InternetMaxBandwidthOut *int64  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	IpType                  *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The name of the key pair.
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The code of the region.
+	//
+	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	// The ID of the network.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	// The password that is used to connect to the instance.
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether to use the preset password of the image. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	// The unit of the subscription period.
+	//
+	// *   If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
+	// *   If **PeriodUnit** is **Month**, **Period** can be set to **1 to 9** or **12**.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// *   **Month** (default)
+	// *   **Day**
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The private IP address.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// Specifies whether to enable public IP address identification. Valid values: true and false. Default value: false.
+	PublicIpIdentification *bool `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	// The scheduling level. This parameter specifies area-level scheduling or node-level scheduling. Valid values:
+	//
+	// *   **Big**: greater area
+	// *   **Middle**: province
+	// *   **Small**: city
+	// *   **Region**: node
+	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
+	// The scheduling price policy. Valid values:
+	//
+	// *   **PriceHighPriority**: The high price prevails.
+	// *   **PriceLowPriority**: The low price prevails.
+	SchedulingPriceStrategy *string `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
+	// The scheduling policy of the taint. Valid values:
+	//
+	// *   **Concentrate**
+	// *   **Disperse**
+	//
+	// >  If ScheduleAreaLevel is set to Region, set this parameter to **Concentrate**. If ScheduleAreaLevel is set to other values, set this parameter to Concentrate or Disperse based on your business requirements.
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
+	// The ID of security group.
+	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	// The specification of the system disk.
+	SystemDisk *RunInstancesRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// Specifies whether to append sequential suffixes to the hostname specified by the **HostName** parameter and to the instance name specified by the **InstanceName** parameter. The sequential suffixes range from 001 to 999.
+	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	// The custom data. The maximum data size is 16 KB. You can specify **UserData**. **UserData** must be Base64-encoded.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s RunInstancesRequest) String() string {
@@ -29705,6 +35466,16 @@ func (s *RunInstancesRequest) SetAmount(v int64) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetAutoRenew(v bool) *RunInstancesRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetAutoUseCoupon(v string) *RunInstancesRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetBillingCycle(v string) *RunInstancesRequest {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -29760,6 +35531,11 @@ func (s *RunInstancesRequest) SetInternetChargeType(v string) *RunInstancesReque
 
 func (s *RunInstancesRequest) SetInternetMaxBandwidthOut(v int64) *RunInstancesRequest {
 	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetIpType(v string) *RunInstancesRequest {
+	s.IpType = &v
 	return s
 }
 
@@ -29849,8 +35625,17 @@ func (s *RunInstancesRequest) SetVSwitchId(v string) *RunInstancesRequest {
 }
 
 type RunInstancesRequestDataDisk struct {
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The category of the disk. Valid values:
+	//
+	// *   **cloud_efficiency**: ultra disk
+	// *   **cloud_ssd**: all-flash disk
+	// *   **local_hdd**: local HDD
+	// *   **local_ssd**: local SSD
+	Category  *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Encrypted *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	KMSKeyId  *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
+	// The size of a data disk. Unit: GiB.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s RunInstancesRequestDataDisk) String() string {
@@ -29866,14 +35651,26 @@ func (s *RunInstancesRequestDataDisk) SetCategory(v string) *RunInstancesRequest
 	return s
 }
 
+func (s *RunInstancesRequestDataDisk) SetEncrypted(v bool) *RunInstancesRequestDataDisk {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *RunInstancesRequestDataDisk) SetKMSKeyId(v string) *RunInstancesRequestDataDisk {
+	s.KMSKeyId = &v
+	return s
+}
+
 func (s *RunInstancesRequestDataDisk) SetSize(v int64) *RunInstancesRequestDataDisk {
 	s.Size = &v
 	return s
 }
 
 type RunInstancesRequestSystemDisk struct {
+	// The category of the system disk.
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size of the system disk. Unit: GiB.
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s RunInstancesRequestSystemDisk) String() string {
@@ -29895,36 +35692,133 @@ func (s *RunInstancesRequestSystemDisk) SetSize(v int64) *RunInstancesRequestSys
 }
 
 type RunInstancesShrinkRequest struct {
-	Amount                  *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoRenew               *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	Carrier                 *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
-	DataDiskShrink          *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
-	EnsRegionId             *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                 *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceChargeStrategy  *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	InstanceChargeType      *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	InstanceName            *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The number of instances that you want to create. Valid values: 1 to 100.
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// *   **true**
+	// *   **false** (default)
+	//
+	// >  This parameter is not available when InstanceChargeType is set to PostPaid.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// 是否使用代金券，默认为使用，即AutoUseCoupon=true。
+	AutoUseCoupon *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	// The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
+	//
+	// *   Hour
+	// *   Day
+	// *   Month
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The Internet service provider (ISP).
+	//
+	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	Carrier *string `json:"Carrier,omitempty" xml:"Carrier,omitempty"`
+	// The specification of the data disk.
+	DataDiskShrink *string `json:"DataDisk,omitempty" xml:"DataDisk,omitempty"`
+	// The ID of the node.
+	//
+	// >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the host.
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the image. For ARM PCB-based server instances, leave this parameter empty. For other instances, this parameter is required.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The billing policy of the instance. Valid values:
+	//
+	// *   **instance**: Bills are generated based on instances.
+	// *   If you do not specify this parameter, bills are generated based on users.
+	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// *   **PrePaid**: subscription.
+	// *   **PostPaid**: pay-as-you-go.
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+	//
+	// The default value of this parameter is the value of the InstanceId parameter.
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance type.
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The bandwidth billing method. Valid values:
+	//
+	// *   **BandwidthByDay**: pay by daily peak bandwidth
+	// *   **95BandwidthByMonth**: pay by monthly 95th percentile bandwidth
+	//
+	// >  This parameter is required if you purchase an ENS instance for the first time. The value that you specified is used as the default value for subsequent purchases.
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// The maximum public bandwidth. If the value of this parameter is greater than 0, a public IP address is assigned to the instance.
 	InternetMaxBandwidthOut *int64  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	KeyPairName             *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	NetDistrictCode         *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
-	NetWorkId               *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
-	Password                *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PasswordInherit         *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	Period                  *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit              *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PrivateIpAddress        *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification  *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	ScheduleAreaLevel       *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
+	IpType                  *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The name of the key pair.
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// The code of the region.
+	//
+	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
+	// The ID of the network.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
+	// The password that is used to connect to the instance.
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Specifies whether to use the preset password of the image. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	//
+	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
+	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	// The unit of the subscription period.
+	//
+	// *   If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
+	// *   If **PeriodUnit** is **Month**, **Period** can be set to **1 to 9** or **12**.
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// *   **Month** (default)
+	// *   **Day**
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// The private IP address.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs. If you specify a private IP address, the number of instances must be 1. The private IP address takes effect only when the private IP address and the vSwitch ID are not empty.
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	// Specifies whether to enable public IP address identification. Valid values: true and false. Default value: false.
+	PublicIpIdentification *bool `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	// The scheduling level. This parameter specifies area-level scheduling or node-level scheduling. Valid values:
+	//
+	// *   **Big**: greater area
+	// *   **Middle**: province
+	// *   **Small**: city
+	// *   **Region**: node
+	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
+	// The scheduling price policy. Valid values:
+	//
+	// *   **PriceHighPriority**: The high price prevails.
+	// *   **PriceLowPriority**: The low price prevails.
 	SchedulingPriceStrategy *string `json:"SchedulingPriceStrategy,omitempty" xml:"SchedulingPriceStrategy,omitempty"`
-	SchedulingStrategy      *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
-	SecurityId              *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
-	SystemDiskShrink        *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	UniqueSuffix            *bool   `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	UserData                *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The scheduling policy of the taint. Valid values:
+	//
+	// *   **Concentrate**
+	// *   **Disperse**
+	//
+	// >  If ScheduleAreaLevel is set to Region, set this parameter to **Concentrate**. If ScheduleAreaLevel is set to other values, set this parameter to Concentrate or Disperse based on your business requirements.
+	SchedulingStrategy *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
+	// The ID of security group.
+	SecurityId *string `json:"SecurityId,omitempty" xml:"SecurityId,omitempty"`
+	// The specification of the system disk.
+	SystemDiskShrink *string `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	// Specifies whether to append sequential suffixes to the hostname specified by the **HostName** parameter and to the instance name specified by the **InstanceName** parameter. The sequential suffixes range from 001 to 999.
+	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	// The custom data. The maximum data size is 16 KB. You can specify **UserData**. **UserData** must be Base64-encoded.
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// >  This parameter is available only if ScheduleAreaLevel is set to Region and cannot be configured if ScheduleAreaLevel is set to other values. Otherwise, an error occurs.
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s RunInstancesShrinkRequest) String() string {
@@ -29942,6 +35836,16 @@ func (s *RunInstancesShrinkRequest) SetAmount(v int64) *RunInstancesShrinkReques
 
 func (s *RunInstancesShrinkRequest) SetAutoRenew(v bool) *RunInstancesShrinkRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetAutoUseCoupon(v string) *RunInstancesShrinkRequest {
+	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetBillingCycle(v string) *RunInstancesShrinkRequest {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -29997,6 +35901,11 @@ func (s *RunInstancesShrinkRequest) SetInternetChargeType(v string) *RunInstance
 
 func (s *RunInstancesShrinkRequest) SetInternetMaxBandwidthOut(v int64) *RunInstancesShrinkRequest {
 	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetIpType(v string) *RunInstancesShrinkRequest {
+	s.IpType = &v
 	return s
 }
 
@@ -30086,9 +35995,12 @@ func (s *RunInstancesShrinkRequest) SetVSwitchId(v string) *RunInstancesShrinkRe
 }
 
 type RunInstancesResponseBody struct {
+	// The IDs of instances.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The order ID.
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RunInstancesResponseBody) String() string {
@@ -30144,15 +36056,37 @@ func (s *RunInstancesResponse) SetBody(v *RunInstancesResponseBody) *RunInstance
 }
 
 type RunServiceScheduleRequest struct {
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ClientIp         *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	Directorys       *string `json:"Directorys,omitempty" xml:"Directorys,omitempty"`
-	PodConfigName    *string `json:"PodConfigName,omitempty" xml:"PodConfigName,omitempty"`
-	PreLockedTimeout *int32  `json:"PreLockedTimeout,omitempty" xml:"PreLockedTimeout,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The IP address of the client.
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The directory to which the data file is mounted. The value must be a full path and cannot be \"/../\". Example: \["/data/app01", "/data/user"]. Specify the relative path of the virtual device for this parameter. For example, specify /data for this parameter when the actual path of the virtual device is /data/{input path}.
+	Directorys *string `json:"Directorys,omitempty" xml:"Directorys,omitempty"`
+	// The parameter does not take effect.
+	PodConfigName *string `json:"PodConfigName,omitempty" xml:"PodConfigName,omitempty"`
+	// The maximum duration for locking an idle device. Unit: seconds. This parameter takes effect only if you set ServiceAction to PreSchedule. Default value: 300.
+	PreLockedTimeout *int32 `json:"PreLockedTimeout,omitempty" xml:"PreLockedTimeout,omitempty"`
+	// The scheduling policy of the device. The value must be a JSON string.
 	ScheduleStrategy *string `json:"ScheduleStrategy,omitempty" xml:"ScheduleStrategy,omitempty"`
-	ServiceAction    *string `json:"ServiceAction,omitempty" xml:"ServiceAction,omitempty"`
-	ServiceCommands  *string `json:"ServiceCommands,omitempty" xml:"ServiceCommands,omitempty"`
-	Uuid             *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// The scheduling operation. The value must be of the enumeration type. Valid values:
+	//
+	// Container scenario:
+	//
+	// *   Start: selects and activates an idle cloud device.
+	// *   Stop: stops and releases the cloud device.
+	// *   Console: performs the scheduling operation when the device is in the scheduling state.
+	//
+	// Bare metal instance or virtual machine scenario:
+	//
+	// *   PreSchedule: locks a virtual machine instance for scheduling.
+	// *   Confirm: confirms the scheduling operation.
+	// *   Cancel: cancels the scheduling operation.
+	// *   Console: performs the scheduling operation when the device is in the scheduling state.
+	ServiceAction *string `json:"ServiceAction,omitempty" xml:"ServiceAction,omitempty"`
+	// The service commands. The value must be a JSON string.
+	ServiceCommands *string `json:"ServiceCommands,omitempty" xml:"ServiceCommands,omitempty"`
+	// The UUID of the device.
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s RunServiceScheduleRequest) String() string {
@@ -30209,14 +36143,22 @@ func (s *RunServiceScheduleRequest) SetUuid(v string) *RunServiceScheduleRequest
 }
 
 type RunServiceScheduleResponseBody struct {
-	CommandResults  *RunServiceScheduleResponseBodyCommandResults `json:"CommandResults,omitempty" xml:"CommandResults,omitempty" type:"Struct"`
-	Index           *int32                                        `json:"Index,omitempty" xml:"Index,omitempty"`
-	InstanceId      *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceIp      *string                                       `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
-	InstancePort    *int32                                        `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RequestRepeated *string                                       `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
-	TcpPorts        *bool                                         `json:"TcpPorts,omitempty" xml:"TcpPorts,omitempty"`
+	// The execution results of the commands.
+	CommandResults *RunServiceScheduleResponseBodyCommandResults `json:"CommandResults,omitempty" xml:"CommandResults,omitempty" type:"Struct"`
+	// The index number of the scheduled virtual device (pod).
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The ID of the scheduled instance.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the scheduled instance.
+	InstanceIp *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	// The start port of the scheduled instance.
+	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is repeated. This parameter is not returned if ServcieAction is set to Console.
+	RequestRepeated *string `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
+	// The TCP port range of the scheduled instance or container. The value is in the ${from}-$-{to} format. Example: 80-88.
+	TcpPorts *bool `json:"TcpPorts,omitempty" xml:"TcpPorts,omitempty"`
 }
 
 func (s RunServiceScheduleResponseBody) String() string {
@@ -30285,9 +36227,12 @@ func (s *RunServiceScheduleResponseBodyCommandResults) SetCommandResult(v []*Run
 }
 
 type RunServiceScheduleResponseBodyCommandResultsCommandResult struct {
-	Command       *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The command.
+	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The name of the container.
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	ResultMsg     *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
+	// The execution result of the command.
+	ResultMsg *string `json:"ResultMsg,omitempty" xml:"ResultMsg,omitempty"`
 }
 
 func (s RunServiceScheduleResponseBodyCommandResultsCommandResult) String() string {
@@ -30343,8 +36288,12 @@ func (s *RunServiceScheduleResponse) SetBody(v *RunServiceScheduleResponseBody) 
 }
 
 type SetBackendServersRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers []*SetBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
-	LoadBalancerId *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s SetBackendServersRequest) String() string {
@@ -30366,9 +36315,17 @@ func (s *SetBackendServersRequest) SetLoadBalancerId(v string) *SetBackendServer
 }
 
 type SetBackendServersRequestBackendServers struct {
+	// The ID of the instance that is used as the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SetBackendServersRequestBackendServers) String() string {
@@ -30395,8 +36352,12 @@ func (s *SetBackendServersRequestBackendServers) SetWeight(v int32) *SetBackendS
 }
 
 type SetBackendServersShrinkRequest struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
-	LoadBalancerId       *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s SetBackendServersShrinkRequest) String() string {
@@ -30418,8 +36379,12 @@ func (s *SetBackendServersShrinkRequest) SetLoadBalancerId(v string) *SetBackend
 }
 
 type SetBackendServersResponseBody struct {
+	// The list of backend servers that you want to add. You can add at most 20 backend servers.
+	//
+	// >  Only ENS instances that are in the running state can be attached to the ELB instance as backend servers.
 	BackendServers *SetBackendServersResponseBodyBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Struct"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SetBackendServersResponseBody) String() string {
@@ -30458,11 +36423,21 @@ func (s *SetBackendServersResponseBodyBackendServers) SetBackendServer(v []*SetB
 }
 
 type SetBackendServersResponseBodyBackendServersBackendServer struct {
-	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port     *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address of the backend server.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The backend port that is used by the ELB instance.
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ID of the instance that is used as the backend server.
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Weight   *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// *   **ens**: ENS instance.
+	// *   **eni**: ENI.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The weight of the backend server. Default value: 100. Valid values: **0** to **100**.
+	//
+	// >  The value 0 indicates that requests are not forwarded to the backend server.
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s SetBackendServersResponseBodyBackendServersBackendServer) String() string {
@@ -30528,22 +36503,92 @@ func (s *SetBackendServersResponse) SetBody(v *SetBackendServersResponseBody) *S
 }
 
 type SetLoadBalancerHTTPListenerAttributeRequest struct {
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that is used for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values:
+	//
+	// *   **head**
+	// *   **get**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, CLB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -30635,6 +36680,7 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetUnhealthyThreshold(v in
 }
 
 type SetLoadBalancerHTTPListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30681,23 +36727,94 @@ func (s *SetLoadBalancerHTTPListenerAttributeResponse) SetBody(v *SetLoadBalance
 }
 
 type SetLoadBalancerHTTPSListenerAttributeRequest struct {
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HealthCheck            *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	HealthCheckConnectPort *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckDomain      *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode    *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval    *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckMethod      *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
-	HealthCheckTimeout     *int32  `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
-	HealthCheckURI         *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold       *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	IdleTimeout            *int32  `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	ListenerPort           *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId         *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	RequestTimeout         *int32  `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	Scheduler              *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	ServerCertificateId    *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	UnhealthyThreshold     *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// *   **on**
+	// *   **off**
+	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The domain name that you want to use for health checks.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The health check method used in HTTP health checks. Valid values:
+	//
+	// *   **head** (default): requests the head of the page.
+	// *   **get**: requests the specified part of the page and returns the entity body.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckMethod *string `json:"HealthCheckMethod,omitempty" xml:"HealthCheckMethod,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	//
+	// *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >
+	//
+	// *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	//
+	// *   This parameter takes effect only if you set HealthCheck to on.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The timeout period for idle connections. Default value: 15. Valid values: **1** to **60**. Unit: seconds.
+	//
+	// >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of requests. Default value: 60. Valid values: **1** to **180**. Unit: seconds.
+	//
+	// >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The ID of the server certificate.
+	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	//
+	// >  This parameter takes effect only if you set HealthCheck to on.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPSListenerAttributeRequest) String() string {
@@ -30794,6 +36911,7 @@ func (s *SetLoadBalancerHTTPSListenerAttributeRequest) SetUnhealthyThreshold(v i
 }
 
 type SetLoadBalancerHTTPSListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30840,7 +36958,12 @@ func (s *SetLoadBalancerHTTPSListenerAttributeResponse) SetBody(v *SetLoadBalanc
 }
 
 type SetLoadBalancerStatusRequest struct {
-	LoadBalancerId     *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The status of the ELB instance. Valid values:
+	//
+	// *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+	// *   **InActive**: The listener for the instance does not forward the received traffic.
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
 }
 
@@ -30863,6 +36986,7 @@ func (s *SetLoadBalancerStatusRequest) SetLoadBalancerStatus(v string) *SetLoadB
 }
 
 type SetLoadBalancerStatusResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -30909,22 +37033,70 @@ func (s *SetLoadBalancerStatusResponse) SetBody(v *SetLoadBalancerStatusResponse
 }
 
 type SetLoadBalancerTCPListenerAttributeRequest struct {
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	EstablishedTimeout        *int32  `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckDomain         *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	HealthCheckHttpCode       *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckType           *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	HealthCheckURI            *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	PersistenceTimeout        *int32  `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The timeout period of a connection. Valid values: **10** to **900**. Unit: seconds.
+	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that you want to use for health checks.
+	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// The HTTP status code for a successful health check. Valid values:
+	//
+	// *   **http\_2xx** (default)
+	// *   **http\_3xx**.
+	// *   **http\_4xx**
+	// *   **http\_5xx**
+	HealthCheckHttpCode *string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The type of health checks. Valid values:
+	//
+	// *   **tcp** (default)
+	// *   **http**
+	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
+	// The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+	//
+	// >  The URL must start with `/` and contain characters other than `/`.
+	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The timeout period of session persistence.
+	//
+	// *   Default value: 0. If the default value is used, the system disables session persistence.
+	// *   Valid values: **0** to **3600**.
+	// *   Unit: seconds.
+	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerTCPListenerAttributeRequest) String() string {
@@ -31016,6 +37188,7 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) SetUnhealthyThreshold(v int
 }
 
 type SetLoadBalancerTCPListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31062,18 +37235,48 @@ func (s *SetLoadBalancerTCPListenerAttributeResponse) SetBody(v *SetLoadBalancer
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
-	Description               *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EipTransmit               *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
-	HealthCheckConnectPort    *int32  `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	HealthCheckConnectTimeout *int32  `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	HealthCheckExp            *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
-	HealthCheckInterval       *int32  `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	HealthCheckReq            *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	HealthyThreshold          *int32  `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	ListenerPort              *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	LoadBalancerId            *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	Scheduler                 *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	UnhealthyThreshold        *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// The description of the listener. The description must be **1** to **80** characters in length.
+	//
+	// >  The value cannot start with `http://` or `https://`.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	//
+	// *   **on**
+	// *   **off** (default)
+	EipTransmit *string `json:"EipTransmit,omitempty" xml:"EipTransmit,omitempty"`
+	// The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified for BackendServerPort is used for health checks.
+	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	//
+	// *   Default value: 5.
+	// *   Valid values: **1** to **300**.
+	// *   Unit: seconds.
+	//
+	// >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
+	// The interval at which health checks are performed. Valid values: **1** to **50**. Unit: seconds.
+	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The request string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
+	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
+	// The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
+	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The ID of the Edge Load Balancer (ELB) instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The routing algorithm. Valid values:
+	//
+	// *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
+	// *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// *   **rr**: Requests are distributed to backend servers in sequence.
+	// *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**.
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
 }
 
 func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
@@ -31145,6 +37348,7 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) SetUnhealthyThreshold(v int
 }
 
 type SetLoadBalancerUDPListenerAttributeResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31254,6 +37458,7 @@ func (s *StartEpnInstanceResponse) SetBody(v *StartEpnInstanceResponseBody) *Sta
 }
 
 type StartInstanceRequest struct {
+	// The ID of the instance. You can start only one instance.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -31271,7 +37476,9 @@ func (s *StartInstanceRequest) SetInstanceId(v string) *StartInstanceRequest {
 }
 
 type StartInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31409,9 +37616,27 @@ func (s *StartInstancesResponse) SetBody(v *StartInstancesResponseBody) *StartIn
 }
 
 type StartLoadBalancerListenerRequest struct {
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	//
+	// >
+	//
+	// *   You cannot specify port 250, 4789, or 4790 for UDP listeners. The preceding ports are system reserved ports.
+	//
+	// *   We recommend that you use port 80 for HTTP.
+	//
+	// *   We recommend that you use port 443 for HTTPS.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the ELB instance. Valid values:
+	//
+	// *   tcp
+	// *   udp
+	// *   http
+	// *   https
+	//
+	// >  This parameter is required if the same port is used by listeners that use different protocols.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s StartLoadBalancerListenerRequest) String() string {
@@ -31438,6 +37663,7 @@ func (s *StartLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StartLoa
 }
 
 type StartLoadBalancerListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31484,8 +37710,10 @@ func (s *StartLoadBalancerListenerResponse) SetBody(v *StartLoadBalancerListener
 }
 
 type StartSnatIpForSnatEntryRequest struct {
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The EIP specified in the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s StartSnatIpForSnatEntryRequest) String() string {
@@ -31507,7 +37735,7 @@ func (s *StartSnatIpForSnatEntryRequest) SetSnatIp(v string) *StartSnatIpForSnat
 }
 
 type StartSnatIpForSnatEntryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31617,9 +37845,15 @@ func (s *StopEpnInstanceResponse) SetBody(v *StopEpnInstanceResponseBody) *StopE
 }
 
 type StopInstanceRequest struct {
-	ForceStop  *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// Specifies whether to forcibly stop the servers.
+	//
+	// *   **true**: forcibly stops the instance.
+	// *   **false**: normally stops the servers. This is the default value.
+	ForceStop *string `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// The ID of the instance that you want to stop. You can specify only one instance ID.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version number.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s StopInstanceRequest) String() string {
@@ -31646,7 +37880,9 @@ func (s *StopInstanceRequest) SetVersion(v string) *StopInstanceRequest {
 }
 
 type StopInstanceResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned service code. 0 indicates that the request was successful.
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31784,9 +38020,14 @@ func (s *StopInstancesResponse) SetBody(v *StopInstancesResponseBody) *StopInsta
 }
 
 type StopLoadBalancerListenerRequest struct {
-	ListenerPort     *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The frontend protocol that is used by the ELB instance.
+	//
+	// >  This parameter is required if the same port is used by listeners that use different protocols.
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	LoadBalancerId   *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The ID of the ELB instance.
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 }
 
 func (s StopLoadBalancerListenerRequest) String() string {
@@ -31813,6 +38054,7 @@ func (s *StopLoadBalancerListenerRequest) SetLoadBalancerId(v string) *StopLoadB
 }
 
 type StopLoadBalancerListenerResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -31859,8 +38101,10 @@ func (s *StopLoadBalancerListenerResponse) SetBody(v *StopLoadBalancerListenerRe
 }
 
 type StopSnatIpForSnatEntryRequest struct {
+	// The ID of the SNAT entry.
 	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
-	SnatIp      *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The EIP specified in the SNAT entry.
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s StopSnatIpForSnatEntryRequest) String() string {
@@ -31882,7 +38126,7 @@ func (s *StopSnatIpForSnatEntryRequest) SetSnatIp(v string) *StopSnatIpForSnatEn
 }
 
 type StopSnatIpForSnatEntryResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32009,6 +38253,7 @@ func (s *TerminateWorkflowResponse) SetBody(v *TerminateWorkflowResponseBody) *T
 }
 
 type UnAssociateEnsEipAddressRequest struct {
+	// The ID of the EIP.
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 }
 
@@ -32026,6 +38271,7 @@ func (s *UnAssociateEnsEipAddressRequest) SetAllocationId(v string) *UnAssociate
 }
 
 type UnAssociateEnsEipAddressResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32072,8 +38318,10 @@ func (s *UnAssociateEnsEipAddressResponse) SetBody(v *UnAssociateEnsEipAddressRe
 }
 
 type UnassignPrivateIpAddressesRequest struct {
-	NetworkInterfaceId *string   `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrivateIpAddress   []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
+	// The ID of the ENI.
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	// The secondary private IP addresses that you want to unassign.
+	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
 }
 
 func (s UnassignPrivateIpAddressesRequest) String() string {
@@ -32142,8 +38390,10 @@ func (s *UnassignPrivateIpAddressesResponse) SetBody(v *UnassignPrivateIpAddress
 }
 
 type UnassociateNetworkAclRequest struct {
-	NetworkAclId *string                                 `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
-	Resource     []*UnassociateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
+	// The ID of the network ACL that you want to disassociate from a resource.
+	NetworkAclId *string `json:"NetworkAclId,omitempty" xml:"NetworkAclId,omitempty"`
+	// The information about the associated resource.
+	Resource []*UnassociateNetworkAclRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
 }
 
 func (s UnassociateNetworkAclRequest) String() string {
@@ -32165,7 +38415,11 @@ func (s *UnassociateNetworkAclRequest) SetResource(v []*UnassociateNetworkAclReq
 }
 
 type UnassociateNetworkAclRequestResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the resource from which you want to disassociate the network ACL.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of the resource from which you want to disassociate the network ACL. Set the value to **Network**.
+	//
+	// ****
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -32188,6 +38442,7 @@ func (s *UnassociateNetworkAclRequestResource) SetResourceType(v string) *Unasso
 }
 
 type UnassociateNetworkAclResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32437,9 +38692,12 @@ func (s *UpdateEnsSaleControlResponse) SetBody(v *UpdateEnsSaleControlResponseBo
 }
 
 type UpgradeAICInstanceImageRequest struct {
-	ImageId   *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the AIC image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The IDs of the servers.
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	Timeout   *int32    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout period of the update. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpgradeAICInstanceImageRequest) String() string {
@@ -32466,9 +38724,12 @@ func (s *UpgradeAICInstanceImageRequest) SetTimeout(v int32) *UpgradeAICInstance
 }
 
 type UpgradeAICInstanceImageShrinkRequest struct {
-	ImageId         *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The ID of the AIC image.
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The IDs of the servers.
 	ServerIdsShrink *string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty"`
-	Timeout         *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout period of the update. Unit: seconds.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpgradeAICInstanceImageShrinkRequest) String() string {
@@ -32495,6 +38756,7 @@ func (s *UpgradeAICInstanceImageShrinkRequest) SetTimeout(v int32) *UpgradeAICIn
 }
 
 type UpgradeAICInstanceImageResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32541,9 +38803,17 @@ func (s *UpgradeAICInstanceImageResponse) SetBody(v *UpgradeAICInstanceImageResp
 }
 
 type UpgradeApplicationRequest struct {
-	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the application.
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The information template for phased update. The value must be a JSON string and contain the following information:
+	//
+	// *   Version range that you want to update
+	// *   Configuration information of the target version
+	// *   Canary release policy for resources
+	// *   Intelligent upgrade policy that contains information such as the time window and resource usage limit
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The timeout period for asynchronous upgrade. Unit: seconds. Default value: 300.
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s UpgradeApplicationRequest) String() string {
@@ -32570,6 +38840,7 @@ func (s *UpgradeApplicationRequest) SetTimeout(v int32) *UpgradeApplicationReque
 }
 
 type UpgradeApplicationResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -32710,6 +38981,14 @@ func (client *Client) AccosicateNetworkAcl(request *AccosicateNetworkAclRequest)
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param tmpReq AddBackendServersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddBackendServersResponse
+ */
 func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequest, runtime *util.RuntimeOptions) (_result *AddBackendServersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -32753,6 +39032,13 @@ func (client *Client) AddBackendServersWithOptions(tmpReq *AddBackendServersRequ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request AddBackendServersRequest
+ * @return AddBackendServersResponse
+ */
 func (client *Client) AddBackendServers(request *AddBackendServersRequest) (_result *AddBackendServersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddBackendServersResponse{}
@@ -32804,6 +39090,16 @@ func (client *Client) AddDeviceInternetPort(request *AddDeviceInternetPortReques
 	return _result, _err
 }
 
+/**
+ * # [](#)Usage notes
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ * *   Internal networks and IPv4 addresses are not supported.
+ *
+ * @param request AddNetworkInterfaceToInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AddNetworkInterfaceToInstanceResponse
+ */
 func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetworkInterfaceToInstanceRequest, runtime *util.RuntimeOptions) (_result *AddNetworkInterfaceToInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32845,6 +39141,15 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 	return _result, _err
 }
 
+/**
+ * # [](#)Usage notes
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ * *   Internal networks and IPv4 addresses are not supported.
+ *
+ * @param request AddNetworkInterfaceToInstanceRequest
+ * @return AddNetworkInterfaceToInstanceResponse
+ */
 func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterfaceToInstanceRequest) (_result *AddNetworkInterfaceToInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddNetworkInterfaceToInstanceResponse{}
@@ -33060,6 +39365,16 @@ func (client *Client) AttachDisk(request *AttachDiskRequest) (_result *AttachDis
 	return _result, _err
 }
 
+/**
+ * # [](#)Usage notes
+ * *   You can call this operation up to 10 times per second per account.
+ * *   After you execute the command, the instance restarts loading.
+ * *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+ *
+ * @param request AttachEnsInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AttachEnsInstancesResponse
+ */
 func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesRequest, runtime *util.RuntimeOptions) (_result *AttachEnsInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33097,6 +39412,15 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 	return _result, _err
 }
 
+/**
+ * # [](#)Usage notes
+ * *   You can call this operation up to 10 times per second per account.
+ * *   After you execute the command, the instance restarts loading.
+ * *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+ *
+ * @param request AttachEnsInstancesRequest
+ * @return AttachEnsInstancesResponse
+ */
 func (client *Client) AttachEnsInstances(request *AttachEnsInstancesRequest) (_result *AttachEnsInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachEnsInstancesResponse{}
@@ -33180,6 +39504,13 @@ func (client *Client) AuthorizeSecurityGroup(request *AuthorizeSecurityGroupRequ
 	return _result, _err
 }
 
+/**
+ * In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+ *
+ * @param request AuthorizeSecurityGroupEgressRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return AuthorizeSecurityGroupEgressResponse
+ */
 func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *AuthorizeSecurityGroupEgressRequest, runtime *util.RuntimeOptions) (_result *AuthorizeSecurityGroupEgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33241,6 +39572,12 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 	return _result, _err
 }
 
+/**
+ * In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+ *
+ * @param request AuthorizeSecurityGroupEgressRequest
+ * @return AuthorizeSecurityGroupEgressResponse
+ */
 func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGroupEgressRequest) (_result *AuthorizeSecurityGroupEgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeSecurityGroupEgressResponse{}
@@ -33308,6 +39645,114 @@ func (client *Client) CleanDistData(request *CleanDistDataRequest) (_result *Cle
 	return _result, _err
 }
 
+func (client *Client) CopySDGWithOptions(tmpReq *CopySDGRequest, runtime *util.RuntimeOptions) (_result *CopySDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CopySDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationRegionIds)) {
+		request.DestinationRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationRegionIds, tea.String("DestinationRegionIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopySDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopySDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopySDG(request *CopySDGRequest) (_result *CopySDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CopySDGResponse{}
+	_body, _err := client.CopySDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CopySnapshotWithOptions(tmpReq *CopySnapshotRequest, runtime *util.RuntimeOptions) (_result *CopySnapshotResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CopySnapshotShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationRegionIds)) {
+		request.DestinationRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationRegionIds, tea.String("DestinationRegionIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegionIdsShrink)) {
+		query["DestinationRegionIds"] = request.DestinationRegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationSnapshotDescription)) {
+		query["DestinationSnapshotDescription"] = request.DestinationSnapshotDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationSnapshotName)) {
+		query["DestinationSnapshotName"] = request.DestinationSnapshotName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopySnapshot"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopySnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopySnapshot(request *CopySnapshotRequest) (_result *CopySnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CopySnapshotResponse{}
+	_body, _err := client.CopySnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServerInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateARMServerInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33320,6 +39765,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
@@ -33518,12 +39967,24 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 		query["Category"] = request.Category
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskName)) {
+		query["DiskName"] = request.DiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Encrypted)) {
+		query["Encrypted"] = request.Encrypted
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
 		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KMSKeyId)) {
+		query["KMSKeyId"] = request.KMSKeyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
@@ -33568,6 +40029,14 @@ func (client *Client) CreateDisk(request *CreateDiskRequest) (_result *CreateDis
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 5,000 times per second per account.
+ * *   You can call this operation up to 50 times per second per user.
+ *
+ * @param request CreateEipInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateEipInstanceResponse
+ */
 func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateEipInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33576,6 +40045,10 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
 		query["Bandwidth"] = request.Bandwidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
@@ -33621,6 +40094,13 @@ func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceReq
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 5,000 times per second per account.
+ * *   You can call this operation up to 50 times per second per user.
+ *
+ * @param request CreateEipInstanceRequest
+ * @return CreateEipInstanceResponse
+ */
 func (client *Client) CreateEipInstance(request *CreateEipInstanceRequest) (_result *CreateEipInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEipInstanceResponse{}
@@ -34044,6 +40524,15 @@ func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateI
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 10 times per second per account.
+ * *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+ * *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+ *
+ * @param request CreateInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34165,6 +40654,14 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 10 times per second per account.
+ * *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+ * *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+ *
+ * @param request CreateInstanceRequest
+ * @return CreateInstanceResponse
+ */
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -34226,6 +40723,13 @@ func (client *Client) CreateInstanceActiveOpsTask(request *CreateInstanceActiveO
 	return _result, _err
 }
 
+/**
+ * An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+ *
+ * @param request CreateKeyPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateKeyPairResponse
+ */
 func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, runtime *util.RuntimeOptions) (_result *CreateKeyPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34263,6 +40767,12 @@ func (client *Client) CreateKeyPairWithOptions(request *CreateKeyPairRequest, ru
 	return _result, _err
 }
 
+/**
+ * An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+ *
+ * @param request CreateKeyPairRequest
+ * @return CreateKeyPairResponse
+ */
 func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *CreateKeyPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateKeyPairResponse{}
@@ -34274,6 +40784,14 @@ func (client *Client) CreateKeyPair(request *CreateKeyPairRequest) (_result *Cre
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request CreateLoadBalancerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoadBalancerResponse
+ */
 func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34327,6 +40845,13 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request CreateLoadBalancerRequest
+ * @return CreateLoadBalancerResponse
+ */
 func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_result *CreateLoadBalancerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerResponse{}
@@ -34338,6 +40863,14 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerHTTPListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoadBalancerHTTPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateLoadBalancerHTTPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerHTTPListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34443,6 +40976,13 @@ func (client *Client) CreateLoadBalancerHTTPListenerWithOptions(request *CreateL
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerHTTPListenerRequest
+ * @return CreateLoadBalancerHTTPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerHTTPListener(request *CreateLoadBalancerHTTPListenerRequest) (_result *CreateLoadBalancerHTTPListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerHTTPListenerResponse{}
@@ -34454,6 +40994,14 @@ func (client *Client) CreateLoadBalancerHTTPListener(request *CreateLoadBalancer
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerHTTPSListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoadBalancerHTTPSListenerResponse
+ */
 func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *CreateLoadBalancerHTTPSListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerHTTPSListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34571,6 +41119,13 @@ func (client *Client) CreateLoadBalancerHTTPSListenerWithOptions(request *Create
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerHTTPSListenerRequest
+ * @return CreateLoadBalancerHTTPSListenerResponse
+ */
 func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalancerHTTPSListenerRequest) (_result *CreateLoadBalancerHTTPSListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerHTTPSListenerResponse{}
@@ -34582,6 +41137,14 @@ func (client *Client) CreateLoadBalancerHTTPSListener(request *CreateLoadBalance
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerTCPListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoadBalancerTCPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLoadBalancerTCPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerTCPListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34679,6 +41242,13 @@ func (client *Client) CreateLoadBalancerTCPListenerWithOptions(request *CreateLo
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerTCPListenerRequest
+ * @return CreateLoadBalancerTCPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerTCPListener(request *CreateLoadBalancerTCPListenerRequest) (_result *CreateLoadBalancerTCPListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerTCPListenerResponse{}
@@ -34690,6 +41260,14 @@ func (client *Client) CreateLoadBalancerTCPListener(request *CreateLoadBalancerT
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerUDPListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateLoadBalancerUDPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLoadBalancerUDPListenerRequest, runtime *util.RuntimeOptions) (_result *CreateLoadBalancerUDPListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34771,6 +41349,13 @@ func (client *Client) CreateLoadBalancerUDPListenerWithOptions(request *CreateLo
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request CreateLoadBalancerUDPListenerRequest
+ * @return CreateLoadBalancerUDPListenerResponse
+ */
 func (client *Client) CreateLoadBalancerUDPListener(request *CreateLoadBalancerUDPListenerRequest) (_result *CreateLoadBalancerUDPListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateLoadBalancerUDPListenerResponse{}
@@ -34782,6 +41367,14 @@ func (client *Client) CreateLoadBalancerUDPListener(request *CreateLoadBalancerU
 	return _result, _err
 }
 
+/**
+ * ## [](#)Precautions
+ * After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+ *
+ * @param request CreateMountTargetRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateMountTargetResponse
+ */
 func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetRequest, runtime *util.RuntimeOptions) (_result *CreateMountTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34827,6 +41420,13 @@ func (client *Client) CreateMountTargetWithOptions(request *CreateMountTargetReq
 	return _result, _err
 }
 
+/**
+ * ## [](#)Precautions
+ * After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+ *
+ * @param request CreateMountTargetRequest
+ * @return CreateMountTargetResponse
+ */
 func (client *Client) CreateMountTarget(request *CreateMountTargetRequest) (_result *CreateMountTargetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMountTargetResponse{}
@@ -34898,6 +41498,14 @@ func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request CreateNetworkRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateNetworkResponse
+ */
 func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34943,6 +41551,13 @@ func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request CreateNetworkRequest
+ * @return CreateNetworkResponse
+ */
 func (client *Client) CreateNetwork(request *CreateNetworkRequest) (_result *CreateNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNetworkResponse{}
@@ -35092,10 +41707,6 @@ func (client *Client) CreateSecurityGroupWithOptions(request *CreateSecurityGrou
 		query["SecurityGroupName"] = request.SecurityGroupName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -35123,6 +41734,62 @@ func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSecurityGroupResponse{}
 	_body, _err := client.CreateSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSnapshot"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CreateSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35306,6 +41973,98 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DeleteBucketWithOptions(request *DeleteBucketRequest, runtime *util.RuntimeOptions) (_result *DeleteBucketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBucket"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBucketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBucket(request *DeleteBucketRequest) (_result *DeleteBucketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBucketResponse{}
+	_body, _err := client.DeleteBucketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBucketLifecycleWithOptions(request *DeleteBucketLifecycleRequest, runtime *util.RuntimeOptions) (_result *DeleteBucketLifecycleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBucketLifecycle"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBucketLifecycleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBucketLifecycle(request *DeleteBucketLifecycleRequest) (_result *DeleteBucketLifecycleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBucketLifecycleResponse{}
+	_body, _err := client.DeleteBucketLifecycleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDeviceInternetPortWithOptions(request *DeleteDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceInternetPortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35346,6 +42105,13 @@ func (client *Client) DeleteDeviceInternetPort(request *DeleteDeviceInternetPort
 	return _result, _err
 }
 
+/**
+ * When you release a disk, the disk must be in the Available state.
+ *
+ * @param request DeleteDiskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteDiskResponse
+ */
 func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime *util.RuntimeOptions) (_result *DeleteDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35379,6 +42145,12 @@ func (client *Client) DeleteDiskWithOptions(request *DeleteDiskRequest, runtime 
 	return _result, _err
 }
 
+/**
+ * When you release a disk, the disk must be in the Available state.
+ *
+ * @param request DeleteDiskRequest
+ * @return DeleteDiskResponse
+ */
 func (client *Client) DeleteDisk(request *DeleteDiskRequest) (_result *DeleteDiskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDiskResponse{}
@@ -35722,6 +42494,14 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 	return _result, _err
 }
 
+/**
+ * *   After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+ * *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+ *
+ * @param request DeleteKeyPairsRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteKeyPairsResponse
+ */
 func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, runtime *util.RuntimeOptions) (_result *DeleteKeyPairsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35730,10 +42510,6 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
 		query["KeyPairName"] = request.KeyPairName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35759,6 +42535,13 @@ func (client *Client) DeleteKeyPairsWithOptions(request *DeleteKeyPairsRequest, 
 	return _result, _err
 }
 
+/**
+ * *   After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+ * *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+ *
+ * @param request DeleteKeyPairsRequest
+ * @return DeleteKeyPairsResponse
+ */
 func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *DeleteKeyPairsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteKeyPairsResponse{}
@@ -35770,6 +42553,14 @@ func (client *Client) DeleteKeyPairs(request *DeleteKeyPairsRequest) (_result *D
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DeleteLoadBalancerListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteLoadBalancerListenerResponse
+ */
 func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *DeleteLoadBalancerListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35811,6 +42602,13 @@ func (client *Client) DeleteLoadBalancerListenerWithOptions(request *DeleteLoadB
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DeleteLoadBalancerListenerRequest
+ * @return DeleteLoadBalancerListenerResponse
+ */
 func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerListenerRequest) (_result *DeleteLoadBalancerListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLoadBalancerListenerResponse{}
@@ -35822,6 +42620,13 @@ func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerList
 	return _result, _err
 }
 
+/**
+ * After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+ *
+ * @param request DeleteMountTargetRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteMountTargetResponse
+ */
 func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetRequest, runtime *util.RuntimeOptions) (_result *DeleteMountTargetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35863,6 +42668,12 @@ func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetReq
 	return _result, _err
 }
 
+/**
+ * After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+ *
+ * @param request DeleteMountTargetRequest
+ * @return DeleteMountTargetResponse
+ */
 func (client *Client) DeleteMountTarget(request *DeleteMountTargetRequest) (_result *DeleteMountTargetResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMountTargetResponse{}
@@ -36050,6 +42861,61 @@ func (client *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryReques
 	return _result, _err
 }
 
+func (client *Client) DeleteObjectWithOptions(request *DeleteObjectRequest, runtime *util.RuntimeOptions) (_result *DeleteObjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectKey)) {
+		query["ObjectKey"] = request.ObjectKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteObject"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteObject(request *DeleteObjectRequest) (_result *DeleteObjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteObjectResponse{}
+	_body, _err := client.DeleteObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * Before you delete a security group, make sure that no instances exist in the security group.
+ *
+ * @param request DeleteSecurityGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteSecurityGroupResponse
+ */
 func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteSecurityGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36087,10 +42953,60 @@ func (client *Client) DeleteSecurityGroupWithOptions(request *DeleteSecurityGrou
 	return _result, _err
 }
 
+/**
+ * Before you delete a security group, make sure that no instances exist in the security group.
+ *
+ * @param request DeleteSecurityGroupRequest
+ * @return DeleteSecurityGroupResponse
+ */
 func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (_result *DeleteSecurityGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecurityGroupResponse{}
 	_body, _err := client.DeleteSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnapshot"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *DeleteSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36190,6 +43106,13 @@ func (client *Client) DeleteSnatIpForSnatEntry(request *DeleteSnatIpForSnatEntry
 	return _result, _err
 }
 
+/**
+ * Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+ *
+ * @param request DeleteVSwitchRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteVSwitchResponse
+ */
 func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, runtime *util.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36227,10 +43150,62 @@ func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, ru
 	return _result, _err
 }
 
+/**
+ * Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+ *
+ * @param request DeleteVSwitchRequest
+ * @return DeleteVSwitchResponse
+ */
 func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *DeleteVSwitchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVSwitchResponse{}
 	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeploySDGWithOptions(tmpReq *DeploySDGRequest, runtime *util.RuntimeOptions) (_result *DeploySDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeploySDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeploySDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeploySDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeploySDG(request *DeploySDGRequest) (_result *DeploySDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeploySDGResponse{}
+	_body, _err := client.DeploySDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36557,19 +43532,8 @@ func (client *Client) DescribeAvailableResourceInfo() (_result *DescribeAvailabl
 	return _result, _err
 }
 
-func (client *Client) DescribeBandWithdChargeTypeWithOptions(request *DescribeBandWithdChargeTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeBandWithdChargeTypeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
+func (client *Client) DescribeBandWithdChargeTypeWithOptions(runtime *util.RuntimeOptions) (_result *DescribeBandWithdChargeTypeResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeBandWithdChargeType"),
 		Version:     tea.String("2017-11-10"),
@@ -36590,10 +43554,10 @@ func (client *Client) DescribeBandWithdChargeTypeWithOptions(request *DescribeBa
 	return _result, _err
 }
 
-func (client *Client) DescribeBandWithdChargeType(request *DescribeBandWithdChargeTypeRequest) (_result *DescribeBandWithdChargeTypeResponse, _err error) {
+func (client *Client) DescribeBandWithdChargeType() (_result *DescribeBandWithdChargeTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBandWithdChargeTypeResponse{}
-	_body, _err := client.DescribeBandWithdChargeTypeWithOptions(request, runtime)
+	_body, _err := client.DescribeBandWithdChargeTypeWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37479,10 +44443,6 @@ func (client *Client) DescribeEnsNetSaleDistrictWithOptions(request *DescribeEns
 		query["NetLevelCode"] = request.NetLevelCode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37525,10 +44485,6 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithOptions(request *DescribeEn
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -38266,6 +45222,15 @@ func (client *Client) DescribeEpnMeasurementData(request *DescribeEpnMeasurement
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+ * *   Empty strings are returned for images that are not exported.
+ * *   The download links may become invalid if you delete objects in OSS.
+ *
+ * @param request DescribeExportImageInfoRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeExportImageInfoResponse
+ */
 func (client *Client) DescribeExportImageInfoWithOptions(request *DescribeExportImageInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeExportImageInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38311,6 +45276,14 @@ func (client *Client) DescribeExportImageInfoWithOptions(request *DescribeExport
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+ * *   Empty strings are returned for images that are not exported.
+ * *   The download links may become invalid if you delete objects in OSS.
+ *
+ * @param request DescribeExportImageInfoRequest
+ * @return DescribeExportImageInfoResponse
+ */
 func (client *Client) DescribeExportImageInfo(request *DescribeExportImageInfoRequest) (_result *DescribeExportImageInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExportImageInfoResponse{}
@@ -38894,6 +45867,15 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 800 times per second per account.
+ * *   You can call this operation up to 100 times per second per user.
+ * *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+ *
+ * @param request DescribeInstancesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeInstancesResponse
+ */
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -38991,6 +45973,14 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 800 times per second per account.
+ * *   You can call this operation up to 100 times per second per user.
+ * *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+ *
+ * @param request DescribeInstancesRequest
+ * @return DescribeInstancesResponse
+ */
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -39058,6 +46048,15 @@ func (client *Client) DescribeKeyPairs(request *DescribeKeyPairsRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *DescribeLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39091,6 +46090,14 @@ func (client *Client) DescribeLoadBalancerAttributeWithOptions(request *Describe
 	return _result, _err
 }
 
+/**
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerAttributeRequest
+ * @return DescribeLoadBalancerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalancerAttributeRequest) (_result *DescribeLoadBalancerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerAttributeResponse{}
@@ -39102,6 +46109,15 @@ func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalance
 	return _result, _err
 }
 
+/**
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerHTTPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancerHTTPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(request *DescribeLoadBalancerHTTPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerHTTPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39139,6 +46155,14 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerHTTPListenerAttributeRequest
+ * @return DescribeLoadBalancerHTTPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *DescribeLoadBalancerHTTPListenerAttributeRequest) (_result *DescribeLoadBalancerHTTPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerHTTPListenerAttributeResponse{}
@@ -39150,6 +46174,14 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttribute(request *Describ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerHTTPSListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancerHTTPSListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(request *DescribeLoadBalancerHTTPSListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerHTTPSListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39187,6 +46219,13 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithOptions(requ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerHTTPSListenerAttributeRequest
+ * @return DescribeLoadBalancerHTTPSListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *DescribeLoadBalancerHTTPSListenerAttributeRequest) (_result *DescribeLoadBalancerHTTPSListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerHTTPSListenerAttributeResponse{}
@@ -39238,6 +46277,14 @@ func (client *Client) DescribeLoadBalancerSpec(request *DescribeLoadBalancerSpec
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerTCPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancerTCPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(request *DescribeLoadBalancerTCPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerTCPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39275,6 +46322,13 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttributeWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerTCPListenerAttributeRequest
+ * @return DescribeLoadBalancerTCPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerTCPListenerAttribute(request *DescribeLoadBalancerTCPListenerAttributeRequest) (_result *DescribeLoadBalancerTCPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerTCPListenerAttributeResponse{}
@@ -39286,6 +46340,14 @@ func (client *Client) DescribeLoadBalancerTCPListenerAttribute(request *Describe
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerUDPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancerUDPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(request *DescribeLoadBalancerUDPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancerUDPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39323,6 +46385,13 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttributeWithOptions(reques
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancerUDPListenerAttributeRequest
+ * @return DescribeLoadBalancerUDPListenerAttributeResponse
+ */
 func (client *Client) DescribeLoadBalancerUDPListenerAttribute(request *DescribeLoadBalancerUDPListenerAttributeRequest) (_result *DescribeLoadBalancerUDPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancerUDPListenerAttributeResponse{}
@@ -39334,6 +46403,14 @@ func (client *Client) DescribeLoadBalancerUDPListenerAttribute(request *Describe
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeLoadBalancersResponse
+ */
 func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBalancersRequest, runtime *util.RuntimeOptions) (_result *DescribeLoadBalancersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39363,6 +46440,13 @@ func (client *Client) DescribeLoadBalancersWithOptions(request *DescribeLoadBala
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request DescribeLoadBalancersRequest
+ * @return DescribeLoadBalancersResponse
+ */
 func (client *Client) DescribeLoadBalancers(request *DescribeLoadBalancersRequest) (_result *DescribeLoadBalancersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLoadBalancersResponse{}
@@ -39606,6 +46690,14 @@ func (client *Client) DescribeNetworkAcls(request *DescribeNetworkAclsRequest) (
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeNetworkAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeNetworkAttributeResponse
+ */
 func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetworkAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39639,6 +46731,13 @@ func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetwo
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeNetworkAttributeRequest
+ * @return DescribeNetworkAttributeResponse
+ */
 func (client *Client) DescribeNetworkAttribute(request *DescribeNetworkAttributeRequest) (_result *DescribeNetworkAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworkAttributeResponse{}
@@ -39664,6 +46763,18 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetw
 		query["InstanceId"] = request.InstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceName)) {
+		query["NetworkInterfaceName"] = request.NetworkInterfaceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -39674,6 +46785,18 @@ func (client *Client) DescribeNetworkInterfacesWithOptions(request *DescribeNetw
 
 	if !tea.BoolValue(util.IsUnset(request.PrimaryIpAddress)) {
 		query["PrimaryIpAddress"] = request.PrimaryIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
@@ -39714,6 +46837,14 @@ func (client *Client) DescribeNetworkInterfaces(request *DescribeNetworkInterfac
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeNetworksRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeNetworksResponse
+ */
 func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39763,6 +46894,13 @@ func (client *Client) DescribeNetworksWithOptions(request *DescribeNetworksReque
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request DescribeNetworksRequest
+ * @return DescribeNetworksResponse
+ */
 func (client *Client) DescribeNetworks(request *DescribeNetworksRequest) (_result *DescribeNetworksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNetworksResponse{}
@@ -39905,46 +47043,6 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePriceResponse{}
 	_body, _err := client.DescribePriceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRegionBandwidthQuotaWithOptions(request *DescribeRegionBandwidthQuotaRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionBandwidthQuotaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRegionBandwidthQuota"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRegionBandwidthQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRegionBandwidthQuota(request *DescribeRegionBandwidthQuotaRequest) (_result *DescribeRegionBandwidthQuotaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeRegionBandwidthQuotaResponse{}
-	_body, _err := client.DescribeRegionBandwidthQuotaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40109,6 +47207,46 @@ func (client *Client) DescribeResourceTimeline(request *DescribeResourceTimeline
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceTimelineResponse{}
 	_body, _err := client.DescribeResourceTimelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSDGDeploymentStatusWithOptions(request *DescribeSDGDeploymentStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeSDGDeploymentStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSDGDeploymentStatus"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSDGDeploymentStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSDGDeploymentStatus(request *DescribeSDGDeploymentStatusRequest) (_result *DescribeSDGDeploymentStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSDGDeploymentStatusResponse{}
+	_body, _err := client.DescribeSDGDeploymentStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40325,6 +47463,70 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServcieScheduleResponse{}
 	_body, _err := client.DescribeServcieScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeSnapshotsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSnapshots"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_result *DescribeSnapshotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSnapshotsResponse{}
+	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40940,6 +48142,138 @@ func (client *Client) ExportMeasurementData(request *ExportMeasurementDataReques
 	return _result, _err
 }
 
+func (client *Client) GetBucketAclWithOptions(request *GetBucketAclRequest, runtime *util.RuntimeOptions) (_result *GetBucketAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBucketAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBucketAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBucketAcl(request *GetBucketAclRequest) (_result *GetBucketAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBucketAclResponse{}
+	_body, _err := client.GetBucketAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBucketInfoWithOptions(request *GetBucketInfoRequest, runtime *util.RuntimeOptions) (_result *GetBucketInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBucketInfo"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBucketInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBucketInfo(request *GetBucketInfoRequest) (_result *GetBucketInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBucketInfoResponse{}
+	_body, _err := client.GetBucketInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetBucketLifecycleWithOptions(request *GetBucketLifecycleRequest, runtime *util.RuntimeOptions) (_result *GetBucketLifecycleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBucketLifecycle"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBucketLifecycleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetBucketLifecycle(request *GetBucketLifecycleRequest) (_result *GetBucketLifecycleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBucketLifecycleResponse{}
+	_body, _err := client.GetBucketLifecycleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDeviceInternetPortWithOptions(request *GetDeviceInternetPortRequest, runtime *util.RuntimeOptions) (_result *GetDeviceInternetPortResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41020,6 +48354,13 @@ func (client *Client) GetOssStorageAndAccByBuckets(request *GetOssStorageAndAccB
 	return _result, _err
 }
 
+/**
+ * The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+ *
+ * @param request GetOssUsageDataRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetOssUsageDataResponse
+ */
 func (client *Client) GetOssUsageDataWithOptions(request *GetOssUsageDataRequest, runtime *util.RuntimeOptions) (_result *GetOssUsageDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41049,6 +48390,12 @@ func (client *Client) GetOssUsageDataWithOptions(request *GetOssUsageDataRequest
 	return _result, _err
 }
 
+/**
+ * The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+ *
+ * @param request GetOssUsageDataRequest
+ * @return GetOssUsageDataResponse
+ */
 func (client *Client) GetOssUsageData(request *GetOssUsageDataRequest) (_result *GetOssUsageDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOssUsageDataResponse{}
@@ -41060,6 +48407,14 @@ func (client *Client) GetOssUsageData(request *GetOssUsageDataRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * *   After the key pair is imported, ENS stores the public key. You must securely store the private key.
+ * *   The key pair can be only in the ssh-rsa format.
+ *
+ * @param request ImportKeyPairRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ImportKeyPairResponse
+ */
 func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *util.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41101,6 +48456,13 @@ func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   After the key pair is imported, ENS stores the public key. You must securely store the private key.
+ * *   The key pair can be only in the ssh-rsa format.
+ *
+ * @param request ImportKeyPairRequest
+ * @return ImportKeyPairResponse
+ */
 func (client *Client) ImportKeyPair(request *ImportKeyPairRequest) (_result *ImportKeyPairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportKeyPairResponse{}
@@ -41160,6 +48522,13 @@ func (client *Client) JoinPublicIpsToEpnInstance(request *JoinPublicIpsToEpnInst
 	return _result, _err
 }
 
+/**
+ * Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+ *
+ * @param request JoinSecurityGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return JoinSecurityGroupResponse
+ */
 func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *JoinSecurityGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41168,6 +48537,10 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
@@ -41197,6 +48570,12 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 	return _result, _err
 }
 
+/**
+ * Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+ *
+ * @param request JoinSecurityGroupRequest
+ * @return JoinSecurityGroupResponse
+ */
 func (client *Client) JoinSecurityGroup(request *JoinSecurityGroupRequest) (_result *JoinSecurityGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &JoinSecurityGroupResponse{}
@@ -41256,6 +48635,13 @@ func (client *Client) JoinVSwitchesToEpnInstance(request *JoinVSwitchesToEpnInst
 	return _result, _err
 }
 
+/**
+ * Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+ *
+ * @param request LeaveSecurityGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return LeaveSecurityGroupResponse
+ */
 func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *LeaveSecurityGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41266,12 +48652,12 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		query["SecurityGroupId"] = request.SecurityGroupId
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -41297,6 +48683,12 @@ func (client *Client) LeaveSecurityGroupWithOptions(request *LeaveSecurityGroupR
 	return _result, _err
 }
 
+/**
+ * Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+ *
+ * @param request LeaveSecurityGroupRequest
+ * @return LeaveSecurityGroupResponse
+ */
 func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_result *LeaveSecurityGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LeaveSecurityGroupResponse{}
@@ -41373,6 +48765,126 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsResponse{}
 	_body, _err := client.ListApplicationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBucketsWithOptions(request *ListBucketsRequest, runtime *util.RuntimeOptions) (_result *ListBucketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBuckets"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBucketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBucketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBucketsResponse{}
+	_body, _err := client.ListBucketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListObjectsWithOptions(request *ListObjectsRequest, runtime *util.RuntimeOptions) (_result *ListObjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContinuationToken)) {
+		query["ContinuationToken"] = request.ContinuationToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodingType)) {
+		query["EncodingType"] = request.EncodingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxKeys)) {
+		query["MaxKeys"] = request.MaxKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartAfter)) {
+		query["StartAfter"] = request.StartAfter
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListObjects"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListObjectsResponse{}
+	_body, _err := client.ListObjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41704,6 +49216,15 @@ func (client *Client) ModifyImageSharePermission(request *ModifyImageSharePermis
 	return _result, _err
 }
 
+/**
+ * *   If an instance is in the Starting state, you cannot reset the password of the instance.
+ * *   When the instance is in the Running state, you cannot change the password of the instance.
+ * *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+ *
+ * @param request ModifyInstanceAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyInstanceAttributeResponse
+ */
 func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41753,6 +49274,14 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 	return _result, _err
 }
 
+/**
+ * *   If an instance is in the Starting state, you cannot reset the password of the instance.
+ * *   When the instance is in the Running state, you cannot change the password of the instance.
+ * *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+ *
+ * @param request ModifyInstanceAttributeRequest
+ * @return ModifyInstanceAttributeResponse
+ */
 func (client *Client) ModifyInstanceAttribute(request *ModifyInstanceAttributeRequest) (_result *ModifyInstanceAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceAttributeResponse{}
@@ -41824,6 +49353,14 @@ func (client *Client) ModifyInstanceAutoRenewAttribute(request *ModifyInstanceAu
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request ModifyLoadBalancerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyLoadBalancerAttributeResponse
+ */
 func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoadBalancerAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyLoadBalancerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41861,6 +49398,13 @@ func (client *Client) ModifyLoadBalancerAttributeWithOptions(request *ModifyLoad
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request ModifyLoadBalancerAttributeRequest
+ * @return ModifyLoadBalancerAttributeResponse
+ */
 func (client *Client) ModifyLoadBalancerAttribute(request *ModifyLoadBalancerAttributeRequest) (_result *ModifyLoadBalancerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLoadBalancerAttributeResponse{}
@@ -41872,6 +49416,14 @@ func (client *Client) ModifyLoadBalancerAttribute(request *ModifyLoadBalancerAtt
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifyNetworkAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyNetworkAttributeResponse
+ */
 func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyNetworkAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41913,6 +49465,13 @@ func (client *Client) ModifyNetworkAttributeWithOptions(request *ModifyNetworkAt
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifyNetworkAttributeRequest
+ * @return ModifyNetworkAttributeResponse
+ */
 func (client *Client) ModifyNetworkAttribute(request *ModifyNetworkAttributeRequest) (_result *ModifyNetworkAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNetworkAttributeResponse{}
@@ -41972,6 +49531,14 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifySecurityGroupAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifySecurityGroupAttributeResponse
+ */
 func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySecurityGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityGroupAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42013,6 +49580,13 @@ func (client *Client) ModifySecurityGroupAttributeWithOptions(request *ModifySec
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifySecurityGroupAttributeRequest
+ * @return ModifySecurityGroupAttributeResponse
+ */
 func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupAttributeRequest) (_result *ModifySecurityGroupAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityGroupAttributeResponse{}
@@ -42024,6 +49598,66 @@ func (client *Client) ModifySecurityGroupAttribute(request *ModifySecurityGroupA
 	return _result, _err
 }
 
+func (client *Client) ModifySnapshotAttributeWithOptions(request *ModifySnapshotAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifySnapshotAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		query["SnapshotName"] = request.SnapshotName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySnapshotAttribute"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifySnapshotAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest) (_result *ModifySnapshotAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifySnapshotAttributeResponse{}
+	_body, _err := client.ModifySnapshotAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifyVSwitchAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ModifyVSwitchAttributeResponse
+ */
 func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyVSwitchAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42065,6 +49699,13 @@ func (client *Client) ModifyVSwitchAttributeWithOptions(request *ModifyVSwitchAt
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 5 times per second per user.
+ *
+ * @param request ModifyVSwitchAttributeRequest
+ * @return ModifyVSwitchAttributeResponse
+ */
 func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequest) (_result *ModifyVSwitchAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyVSwitchAttributeResponse{}
@@ -42125,6 +49766,197 @@ func (client *Client) PushApplicationData(request *PushApplicationDataRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &PushApplicationDataResponse{}
 	_body, _err := client.PushApplicationDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutBucketWithOptions(request *PutBucketRequest, runtime *util.RuntimeOptions) (_result *PutBucketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketAcl)) {
+		body["BucketAcl"] = request.BucketAcl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		body["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		body["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalBucketType)) {
+		body["LogicalBucketType"] = request.LogicalBucketType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutBucket"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutBucketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutBucket(request *PutBucketRequest) (_result *PutBucketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutBucketResponse{}
+	_body, _err := client.PutBucketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PutBucketAclWithOptions(request *PutBucketAclRequest, runtime *util.RuntimeOptions) (_result *PutBucketAclResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BucketAcl)) {
+		query["BucketAcl"] = request.BucketAcl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutBucketAcl"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutBucketAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PutBucketAcl(request *PutBucketAclRequest) (_result *PutBucketAclResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutBucketAclResponse{}
+	_body, _err := client.PutBucketAclWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+/**
+ * - You can configure up to 1000 rules.
+ * - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+ *
+ * @param request PutBucketLifecycleRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return PutBucketLifecycleResponse
+ */
+func (client *Client) PutBucketLifecycleWithOptions(request *PutBucketLifecycleRequest, runtime *util.RuntimeOptions) (_result *PutBucketLifecycleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowSameActionOverlap)) {
+		query["AllowSameActionOverlap"] = request.AllowSameActionOverlap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketName)) {
+		query["BucketName"] = request.BucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatedBeforeDate)) {
+		query["CreatedBeforeDate"] = request.CreatedBeforeDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpirationDays)) {
+		query["ExpirationDays"] = request.ExpirationDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutBucketLifecycle"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PutBucketLifecycleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+/**
+ * - You can configure up to 1000 rules.
+ * - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+ *
+ * @param request PutBucketLifecycleRequest
+ * @return PutBucketLifecycleResponse
+ */
+func (client *Client) PutBucketLifecycle(request *PutBucketLifecycleRequest) (_result *PutBucketLifecycleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PutBucketLifecycleResponse{}
+	_body, _err := client.PutBucketLifecycleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42230,17 +50062,11 @@ func (client *Client) RebootAICInstance(request *RebootAICInstanceRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) RebootARMServerInstanceWithOptions(tmpReq *RebootARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootARMServerInstanceResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) RebootARMServerInstanceWithOptions(request *RebootARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootARMServerInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &RebootARMServerInstanceShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ServerIds)) {
-		request.ServerIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServerIds, tea.String("ServerIds"), tea.String("json"))
-	}
-
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -42276,6 +50102,14 @@ func (client *Client) RebootARMServerInstance(request *RebootARMServerInstanceRe
 	return _result, _err
 }
 
+/**
+ * *   Only instances that are in the Running state can be restarted.
+ * *   If the operation is successful, the status of the instance becomes Starting.
+ *
+ * @param request RebootInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RebootInstanceResponse
+ */
 func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, runtime *util.RuntimeOptions) (_result *RebootInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42313,6 +50147,13 @@ func (client *Client) RebootInstanceWithOptions(request *RebootInstanceRequest, 
 	return _result, _err
 }
 
+/**
+ * *   Only instances that are in the Running state can be restarted.
+ * *   If the operation is successful, the status of the instance becomes Starting.
+ *
+ * @param request RebootInstanceRequest
+ * @return RebootInstanceResponse
+ */
 func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *RebootInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootInstanceResponse{}
@@ -42612,6 +50453,14 @@ func (client *Client) ReleaseARMServerInstance(request *ReleaseARMServerInstance
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 10,000 times per second per account.
+ * *   The maximum number of times that each user can call this operation per second is 50.
+ *
+ * @param request ReleaseInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ReleaseInstanceResponse
+ */
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -42645,6 +50494,13 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 10,000 times per second per account.
+ * *   The maximum number of times that each user can call this operation per second is 50.
+ *
+ * @param request ReleaseInstanceRequest
+ * @return ReleaseInstanceResponse
+ */
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -42744,6 +50600,14 @@ func (client *Client) ReleasePrePaidInstance(request *ReleasePrePaidInstanceRequ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param tmpReq RemoveBackendServersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RemoveBackendServersResponse
+ */
 func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServersRequest, runtime *util.RuntimeOptions) (_result *RemoveBackendServersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -42787,6 +50651,13 @@ func (client *Client) RemoveBackendServersWithOptions(tmpReq *RemoveBackendServe
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request RemoveBackendServersRequest
+ * @return RemoveBackendServersResponse
+ */
 func (client *Client) RemoveBackendServers(request *RemoveBackendServersRequest) (_result *RemoveBackendServersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveBackendServersResponse{}
@@ -43218,6 +51089,17 @@ func (client *Client) ResetDeviceInstance(request *ResetDeviceInstanceRequest) (
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+ * *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+ * *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+ * *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+ *
+ * @param request ResetDiskRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ResetDiskResponse
+ */
 func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *util.RuntimeOptions) (_result *ResetDiskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43255,6 +51137,16 @@ func (client *Client) ResetDiskWithOptions(request *ResetDiskRequest, runtime *u
 	return _result, _err
 }
 
+/**
+ * When you call this operation, take note of the following items:
+ * *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+ * *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+ * *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+ * *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+ *
+ * @param request ResetDiskRequest
+ * @return ResetDiskResponse
+ */
 func (client *Client) ResetDisk(request *ResetDiskRequest) (_result *ResetDiskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetDiskResponse{}
@@ -43454,6 +51346,15 @@ func (client *Client) RetryWorkflow(request *RetryWorkflowRequest) (_result *Ret
 	return _result, _err
 }
 
+/**
+ * *   In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+ * *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+ * *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+ *
+ * @param request RevokeSecurityGroupRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevokeSecurityGroupResponse
+ */
 func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *RevokeSecurityGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43515,6 +51416,14 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 	return _result, _err
 }
 
+/**
+ * *   In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+ * *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+ * *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+ *
+ * @param request RevokeSecurityGroupRequest
+ * @return RevokeSecurityGroupResponse
+ */
 func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (_result *RevokeSecurityGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeSecurityGroupResponse{}
@@ -43526,6 +51435,13 @@ func (client *Client) RevokeSecurityGroup(request *RevokeSecurityGroupRequest) (
 	return _result, _err
 }
 
+/**
+ * >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+ *
+ * @param request RevokeSecurityGroupEgressRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RevokeSecurityGroupEgressResponse
+ */
 func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecurityGroupEgressRequest, runtime *util.RuntimeOptions) (_result *RevokeSecurityGroupEgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43587,6 +51503,12 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 	return _result, _err
 }
 
+/**
+ * >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+ *
+ * @param request RevokeSecurityGroupEgressRequest
+ * @return RevokeSecurityGroupEgressResponse
+ */
 func (client *Client) RevokeSecurityGroupEgress(request *RevokeSecurityGroupEgressRequest) (_result *RevokeSecurityGroupEgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeSecurityGroupEgressResponse{}
@@ -43728,6 +51650,14 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		query["AutoRenew"] = request.AutoRenew
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
+		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Carrier)) {
 		query["Carrier"] = request.Carrier
 	}
@@ -43770,6 +51700,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
 		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		query["IpType"] = request.IpType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
@@ -43950,6 +51884,14 @@ func (client *Client) RunServiceSchedule(request *RunServiceScheduleRequest) (_r
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param tmpReq SetBackendServersRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetBackendServersResponse
+ */
 func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequest, runtime *util.RuntimeOptions) (_result *SetBackendServersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -43993,6 +51935,13 @@ func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequ
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second.
+ * *   You can call this operation up to 10 times per second per account.
+ *
+ * @param request SetBackendServersRequest
+ * @return SetBackendServersResponse
+ */
 func (client *Client) SetBackendServers(request *SetBackendServersRequest) (_result *SetBackendServersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetBackendServersResponse{}
@@ -44004,6 +51953,14 @@ func (client *Client) SetBackendServers(request *SetBackendServersRequest) (_res
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerHTTPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetLoadBalancerHTTPListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *SetLoadBalancerHTTPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerHTTPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44097,6 +52054,13 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerHTTPListenerAttributeRequest
+ * @return SetLoadBalancerHTTPListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalancerHTTPListenerAttributeRequest) (_result *SetLoadBalancerHTTPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoadBalancerHTTPListenerAttributeResponse{}
@@ -44108,6 +52072,14 @@ func (client *Client) SetLoadBalancerHTTPListenerAttribute(request *SetLoadBalan
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerHTTPSListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetLoadBalancerHTTPSListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *SetLoadBalancerHTTPSListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerHTTPSListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44205,6 +52177,13 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttributeWithOptions(request *
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerHTTPSListenerAttributeRequest
+ * @return SetLoadBalancerHTTPSListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBalancerHTTPSListenerAttributeRequest) (_result *SetLoadBalancerHTTPSListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoadBalancerHTTPSListenerAttributeResponse{}
@@ -44216,6 +52195,14 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBala
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerStatusRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetLoadBalancerStatusResponse
+ */
 func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerStatusRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44253,6 +52240,13 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerStatusRequest
+ * @return SetLoadBalancerStatusResponse
+ */
 func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusRequest) (_result *SetLoadBalancerStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoadBalancerStatusResponse{}
@@ -44264,6 +52258,14 @@ func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusReques
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerTCPListenerAttributeRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return SetLoadBalancerTCPListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *SetLoadBalancerTCPListenerAttributeRequest, runtime *util.RuntimeOptions) (_result *SetLoadBalancerTCPListenerAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44357,6 +52359,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request SetLoadBalancerTCPListenerAttributeRequest
+ * @return SetLoadBalancerTCPListenerAttributeResponse
+ */
 func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalancerTCPListenerAttributeRequest) (_result *SetLoadBalancerTCPListenerAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetLoadBalancerTCPListenerAttributeResponse{}
@@ -44370,6 +52379,9 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 
 /**
  * @deprecated
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
  *
  * @param request SetLoadBalancerUDPListenerAttributeRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -44455,6 +52467,9 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 
 /**
  * @deprecated
+ * >
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
  *
  * @param request SetLoadBalancerUDPListenerAttributeRequest
  * @return SetLoadBalancerUDPListenerAttributeResponse
@@ -44515,6 +52530,14 @@ func (client *Client) StartEpnInstance(request *StartEpnInstanceRequest) (_resul
 	return _result, _err
 }
 
+/**
+ * *   You can call the operation only when the instance is in the Stopped state.
+ * *   If the operation is successful, the status of the instance becomes Starting.
+ *
+ * @param request StartInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartInstanceResponse
+ */
 func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, runtime *util.RuntimeOptions) (_result *StartInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44548,6 +52571,13 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 	return _result, _err
 }
 
+/**
+ * *   You can call the operation only when the instance is in the Stopped state.
+ * *   If the operation is successful, the status of the instance becomes Starting.
+ *
+ * @param request StartInstanceRequest
+ * @return StartInstanceResponse
+ */
 func (client *Client) StartInstance(request *StartInstanceRequest) (_result *StartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartInstanceResponse{}
@@ -44609,6 +52639,14 @@ func (client *Client) StartInstances(request *StartInstancesRequest) (_result *S
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request StartLoadBalancerListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StartLoadBalancerListenerResponse
+ */
 func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *StartLoadBalancerListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44650,6 +52688,13 @@ func (client *Client) StartLoadBalancerListenerWithOptions(request *StartLoadBal
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request StartLoadBalancerListenerRequest
+ * @return StartLoadBalancerListenerResponse
+ */
 func (client *Client) StartLoadBalancerListener(request *StartLoadBalancerListenerRequest) (_result *StartLoadBalancerListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartLoadBalancerListenerResponse{}
@@ -44753,6 +52798,16 @@ func (client *Client) StopEpnInstance(request *StopEpnInstanceRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to stop instances that are only in the Running state.
+ * *   If the call is successful, the state of the instance becomes Stopping.
+ * *   Once the instance is stopped, the state of the instance becomes Stopped.
+ * *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+ *
+ * @param request StopInstanceRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runtime *util.RuntimeOptions) (_result *StopInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44794,6 +52849,15 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to stop instances that are only in the Running state.
+ * *   If the call is successful, the state of the instance becomes Stopping.
+ * *   Once the instance is stopped, the state of the instance becomes Stopped.
+ * *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+ *
+ * @param request StopInstanceRequest
+ * @return StopInstanceResponse
+ */
 func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopInstanceResponse{}
@@ -44855,6 +52919,14 @@ func (client *Client) StopInstances(request *StopInstancesRequest) (_result *Sto
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request StopLoadBalancerListenerRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return StopLoadBalancerListenerResponse
+ */
 func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalancerListenerRequest, runtime *util.RuntimeOptions) (_result *StopLoadBalancerListenerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44896,6 +52968,13 @@ func (client *Client) StopLoadBalancerListenerWithOptions(request *StopLoadBalan
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation up to 100 times per second per account.
+ * *   You can call this operation up to 10 times per second per user.
+ *
+ * @param request StopLoadBalancerListenerRequest
+ * @return StopLoadBalancerListenerResponse
+ */
 func (client *Client) StopLoadBalancerListener(request *StopLoadBalancerListenerRequest) (_result *StopLoadBalancerListenerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopLoadBalancerListenerResponse{}
