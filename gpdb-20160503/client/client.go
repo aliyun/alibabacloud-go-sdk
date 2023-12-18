@@ -513,6 +513,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// > This parameter must be specified.
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
+	EnableSSL      *bool   `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
 	// The ID of the encryption key.
 	//
 	// > If EncryptionType is set to CloudDisk, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -734,6 +735,11 @@ func (s *CreateDBInstanceRequest) SetDBInstanceGroupCount(v string) *CreateDBIns
 
 func (s *CreateDBInstanceRequest) SetDBInstanceMode(v string) *CreateDBInstanceRequest {
 	s.DBInstanceMode = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetEnableSSL(v bool) *CreateDBInstanceRequest {
+	s.EnableSSL = &v
 	return s
 }
 
@@ -19371,6 +19377,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceMode)) {
 		query["DBInstanceMode"] = request.DBInstanceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSSL)) {
+		query["EnableSSL"] = request.EnableSSL
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EncryptionKey)) {
