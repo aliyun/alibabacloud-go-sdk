@@ -68,6 +68,7 @@ type DescribeImageModerationResultResponseBodyData struct {
 	DataId   *string                                                `json:"DataId,omitempty" xml:"DataId,omitempty"`
 	Frame    *string                                                `json:"Frame,omitempty" xml:"Frame,omitempty"`
 	FrameNum *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	ReqId    *string                                                `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	Result   []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -91,6 +92,11 @@ func (s *DescribeImageModerationResultResponseBodyData) SetFrame(v string) *Desc
 
 func (s *DescribeImageModerationResultResponseBodyData) SetFrameNum(v int32) *DescribeImageModerationResultResponseBodyData {
 	s.FrameNum = &v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetReqId(v string) *DescribeImageModerationResultResponseBodyData {
+	s.ReqId = &v
 	return s
 }
 
@@ -929,6 +935,88 @@ func (s *VideoModerationResponse) SetStatusCode(v int32) *VideoModerationRespons
 }
 
 func (s *VideoModerationResponse) SetBody(v *VideoModerationResponseBody) *VideoModerationResponse {
+	s.Body = v
+	return s
+}
+
+type VideoModerationCancelRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s VideoModerationCancelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationCancelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationCancelRequest) SetService(v string) *VideoModerationCancelRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *VideoModerationCancelRequest) SetServiceParameters(v string) *VideoModerationCancelRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type VideoModerationCancelResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VideoModerationCancelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationCancelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationCancelResponseBody) SetCode(v int32) *VideoModerationCancelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *VideoModerationCancelResponseBody) SetMessage(v string) *VideoModerationCancelResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *VideoModerationCancelResponseBody) SetRequestId(v string) *VideoModerationCancelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VideoModerationCancelResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VideoModerationCancelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VideoModerationCancelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VideoModerationCancelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VideoModerationCancelResponse) SetHeaders(v map[string]*string) *VideoModerationCancelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VideoModerationCancelResponse) SetStatusCode(v int32) *VideoModerationCancelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *VideoModerationCancelResponse) SetBody(v *VideoModerationCancelResponseBody) *VideoModerationCancelResponse {
 	s.Body = v
 	return s
 }
@@ -2018,6 +2106,54 @@ func (client *Client) VideoModeration(request *VideoModerationRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &VideoModerationResponse{}
 	_body, _err := client.VideoModerationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VideoModerationCancelWithOptions(request *VideoModerationCancelRequest, runtime *util.RuntimeOptions) (_result *VideoModerationCancelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VideoModerationCancel"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VideoModerationCancelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VideoModerationCancel(request *VideoModerationCancelRequest) (_result *VideoModerationCancelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VideoModerationCancelResponse{}
+	_body, _err := client.VideoModerationCancelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
