@@ -2202,6 +2202,7 @@ func (s *DeregisterDelegatedAdministratorResponse) SetBody(v *DeregisterDelegate
 }
 
 type DestroyResourceDirectoryResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2491,8 +2492,15 @@ func (s *DisassociateMembersResponse) SetBody(v *DisassociateMembersResponseBody
 }
 
 type EnableControlPolicyResponseBody struct {
+	// The status of the Control Policy feature. Valid values:
+	//
+	// *   Enabled: The feature is enabled.
+	// *   PendingEnable: The feature is being enabled.
+	// *   Disabled: The feature is disabled.
+	// *   PendingDisable: The feature is being disabled.
 	EnablementStatus *string `json:"EnablementStatus,omitempty" xml:"EnablementStatus,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableControlPolicyResponseBody) String() string {
@@ -7741,6 +7749,7 @@ func (s *MoveAccountResponse) SetBody(v *MoveAccountResponseBody) *MoveAccountRe
 }
 
 type PrecheckForConsolidatedBillingAccountRequest struct {
+	// The ID of the management account or member to be used as a main financial account.
 	BillingAccountId *string `json:"BillingAccountId,omitempty" xml:"BillingAccountId,omitempty"`
 }
 
@@ -7758,9 +7767,15 @@ func (s *PrecheckForConsolidatedBillingAccountRequest) SetBillingAccountId(v str
 }
 
 type PrecheckForConsolidatedBillingAccountResponseBody struct {
-	Reasons   []*PrecheckForConsolidatedBillingAccountResponseBodyReasons `json:"Reasons,omitempty" xml:"Reasons,omitempty" type:"Repeated"`
-	RequestId *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool                                                       `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The cause of the check failure.
+	Reasons []*PrecheckForConsolidatedBillingAccountResponseBodyReasons `json:"Reasons,omitempty" xml:"Reasons,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the check was successful. Valid values:
+	//
+	// *   true
+	// *   false
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s PrecheckForConsolidatedBillingAccountResponseBody) String() string {
@@ -7787,7 +7802,9 @@ func (s *PrecheckForConsolidatedBillingAccountResponseBody) SetResult(v bool) *P
 }
 
 type PrecheckForConsolidatedBillingAccountResponseBodyReasons struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -10408,7 +10425,9 @@ func (client *Client) DeregisterDelegatedAdministrator(request *DeregisterDelega
 }
 
 /**
- * The ID of the request.
+ * Before you disable a resource directory, you must make sure that the following requirements are met:
+ * *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+ * *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
  *
  * @param request DestroyResourceDirectoryRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10437,7 +10456,9 @@ func (client *Client) DestroyResourceDirectoryWithOptions(runtime *util.RuntimeO
 }
 
 /**
- * The ID of the request.
+ * Before you disable a resource directory, you must make sure that the following requirements are met:
+ * *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+ * *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
  *
  * @return DestroyResourceDirectoryResponse
  */
@@ -10609,7 +10630,7 @@ func (client *Client) DisassociateMembers(request *DisassociateMembersRequest) (
 }
 
 /**
- * The ID of the request.
+ * The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
  *
  * @param request EnableControlPolicyRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -10638,7 +10659,7 @@ func (client *Client) EnableControlPolicyWithOptions(runtime *util.RuntimeOption
 }
 
 /**
- * The ID of the request.
+ * The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
  *
  * @return EnableControlPolicyResponse
  */
