@@ -3471,9 +3471,9 @@ func (s *GetListenerAttributeResponseBody) SetTags(v []*GetListenerAttributeResp
 }
 
 type GetListenerAttributeResponseBodyProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *string `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
-	Ppv2PrivateLinkEpsIdEnabled *string `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *string `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
+	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBodyProxyProtocolV2Config) String() string {
@@ -3484,17 +3484,17 @@ func (s GetListenerAttributeResponseBodyProxyProtocolV2Config) GoString() string
 	return s.String()
 }
 
-func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v string) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
+func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v bool) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
 	s.Ppv2PrivateLinkEpIdEnabled = &v
 	return s
 }
 
-func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2PrivateLinkEpsIdEnabled(v string) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
+func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2PrivateLinkEpsIdEnabled(v bool) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
 	s.Ppv2PrivateLinkEpsIdEnabled = &v
 	return s
 }
 
-func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2VpcIdEnabled(v string) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
+func (s *GetListenerAttributeResponseBodyProxyProtocolV2Config) SetPpv2VpcIdEnabled(v bool) *GetListenerAttributeResponseBodyProxyProtocolV2Config {
 	s.Ppv2VpcIdEnabled = &v
 	return s
 }
@@ -4909,9 +4909,9 @@ func (s *ListListenersResponseBodyListeners) SetTags(v []*ListListenersResponseB
 }
 
 type ListListenersResponseBodyListenersProxyProtocolV2Config struct {
-	Ppv2PrivateLinkEpIdEnabled  *string `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
-	Ppv2PrivateLinkEpsIdEnabled *string `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	Ppv2VpcIdEnabled            *string `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
+	Ppv2PrivateLinkEpIdEnabled  *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
+	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
+	Ppv2VpcIdEnabled            *bool `json:"Ppv2VpcIdEnabled,omitempty" xml:"Ppv2VpcIdEnabled,omitempty"`
 }
 
 func (s ListListenersResponseBodyListenersProxyProtocolV2Config) String() string {
@@ -4922,17 +4922,17 @@ func (s ListListenersResponseBodyListenersProxyProtocolV2Config) GoString() stri
 	return s.String()
 }
 
-func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v string) *ListListenersResponseBodyListenersProxyProtocolV2Config {
+func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v bool) *ListListenersResponseBodyListenersProxyProtocolV2Config {
 	s.Ppv2PrivateLinkEpIdEnabled = &v
 	return s
 }
 
-func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2PrivateLinkEpsIdEnabled(v string) *ListListenersResponseBodyListenersProxyProtocolV2Config {
+func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2PrivateLinkEpsIdEnabled(v bool) *ListListenersResponseBodyListenersProxyProtocolV2Config {
 	s.Ppv2PrivateLinkEpsIdEnabled = &v
 	return s
 }
 
-func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2VpcIdEnabled(v string) *ListListenersResponseBodyListenersProxyProtocolV2Config {
+func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2VpcIdEnabled(v bool) *ListListenersResponseBodyListenersProxyProtocolV2Config {
 	s.Ppv2VpcIdEnabled = &v
 	return s
 }
