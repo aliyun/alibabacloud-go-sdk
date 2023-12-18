@@ -107,15 +107,16 @@ func (s *CreateTaskRequestInput) SetTaskKey(v string) *CreateTaskRequestInput {
 }
 
 type CreateTaskRequestParameters struct {
-	AutoChaptersEnabled      *bool                                     `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
-	MeetingAssistanceEnabled *bool                                     `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
-	PptExtractionEnabled     *bool                                     `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
-	Summarization            *CreateTaskRequestParametersSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
-	SummarizationEnabled     *bool                                     `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
-	Transcoding              *CreateTaskRequestParametersTranscoding   `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
-	Transcription            *CreateTaskRequestParametersTranscription `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
-	Translation              *CreateTaskRequestParametersTranslation   `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
-	TranslationEnabled       *bool                                     `json:"TranslationEnabled,omitempty" xml:"TranslationEnabled,omitempty"`
+	AutoChaptersEnabled      *bool                                         `json:"AutoChaptersEnabled,omitempty" xml:"AutoChaptersEnabled,omitempty"`
+	MeetingAssistance        *CreateTaskRequestParametersMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
+	MeetingAssistanceEnabled *bool                                         `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
+	PptExtractionEnabled     *bool                                         `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
+	Summarization            *CreateTaskRequestParametersSummarization     `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
+	SummarizationEnabled     *bool                                         `json:"SummarizationEnabled,omitempty" xml:"SummarizationEnabled,omitempty"`
+	Transcoding              *CreateTaskRequestParametersTranscoding       `json:"Transcoding,omitempty" xml:"Transcoding,omitempty" type:"Struct"`
+	Transcription            *CreateTaskRequestParametersTranscription     `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
+	Translation              *CreateTaskRequestParametersTranslation       `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
+	TranslationEnabled       *bool                                         `json:"TranslationEnabled,omitempty" xml:"TranslationEnabled,omitempty"`
 }
 
 func (s CreateTaskRequestParameters) String() string {
@@ -128,6 +129,11 @@ func (s CreateTaskRequestParameters) GoString() string {
 
 func (s *CreateTaskRequestParameters) SetAutoChaptersEnabled(v bool) *CreateTaskRequestParameters {
 	s.AutoChaptersEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetMeetingAssistance(v *CreateTaskRequestParametersMeetingAssistance) *CreateTaskRequestParameters {
+	s.MeetingAssistance = v
 	return s
 }
 
@@ -168,6 +174,23 @@ func (s *CreateTaskRequestParameters) SetTranslation(v *CreateTaskRequestParamet
 
 func (s *CreateTaskRequestParameters) SetTranslationEnabled(v bool) *CreateTaskRequestParameters {
 	s.TranslationEnabled = &v
+	return s
+}
+
+type CreateTaskRequestParametersMeetingAssistance struct {
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s CreateTaskRequestParametersMeetingAssistance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersMeetingAssistance) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersMeetingAssistance) SetTypes(v []*string) *CreateTaskRequestParametersMeetingAssistance {
+	s.Types = v
 	return s
 }
 
