@@ -1049,6 +1049,7 @@ type MassPushRequestPushTask struct {
 	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
 	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
 	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	AndroidVivoReceiptId             *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	// Deprecated
@@ -1258,6 +1259,11 @@ func (s *MassPushRequestPushTask) SetAndroidTargetUserType(v int32) *MassPushReq
 
 func (s *MassPushRequestPushTask) SetAndroidVivoPushMode(v int32) *MassPushRequestPushTask {
 	s.AndroidVivoPushMode = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidVivoReceiptId(v string) *MassPushRequestPushTask {
+	s.AndroidVivoReceiptId = &v
 	return s
 }
 
@@ -1529,6 +1535,7 @@ type PushRequest struct {
 	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
 	AndroidTargetUserType            *int32  `json:"AndroidTargetUserType,omitempty" xml:"AndroidTargetUserType,omitempty"`
 	AndroidVivoPushMode              *int32  `json:"AndroidVivoPushMode,omitempty" xml:"AndroidVivoPushMode,omitempty"`
+	AndroidVivoReceiptId             *string `json:"AndroidVivoReceiptId,omitempty" xml:"AndroidVivoReceiptId,omitempty"`
 	// Deprecated
 	AndroidXiaoMiActivity *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
 	// Deprecated
@@ -1744,6 +1751,11 @@ func (s *PushRequest) SetAndroidTargetUserType(v int32) *PushRequest {
 
 func (s *PushRequest) SetAndroidVivoPushMode(v int32) *PushRequest {
 	s.AndroidVivoPushMode = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidVivoReceiptId(v string) *PushRequest {
+	s.AndroidVivoReceiptId = &v
 	return s
 }
 
@@ -4990,6 +5002,10 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidVivoPushMode)) {
 		query["AndroidVivoPushMode"] = request.AndroidVivoPushMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidVivoReceiptId)) {
+		query["AndroidVivoReceiptId"] = request.AndroidVivoReceiptId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidXiaoMiActivity)) {
