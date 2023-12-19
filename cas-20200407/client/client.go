@@ -76,6 +76,9 @@ func (s *CancelCertificateForPackageRequestResponse) SetBody(v *CancelCertificat
 }
 
 type CancelOrderRequestRequest struct {
+	// The ID of the certificate application order that you want to cancel.
+	//
+	// >  After you call the [CreateCertificateForPackageRequest](~~204087~~), [CreateCertificateRequest](~~164105~~), or [CreateCertificateWithCsrRequest](~~178732~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -93,6 +96,7 @@ func (s *CancelOrderRequestRequest) SetOrderId(v int64) *CancelOrderRequestReque
 }
 
 type CancelOrderRequestResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -139,13 +143,66 @@ func (s *CancelOrderRequestResponse) SetBody(v *CancelOrderRequestResponseBody) 
 }
 
 type CreateCertificateForPackageRequestRequest struct {
-	CompanyName  *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	Csr          *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The company name of the certificate application.
+	//
+	// > This parameter is available only when you apply for OV certificates. If you want to apply for an OV certificate, you must add a company profile to the **Information Management** module of the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/). For more information, see [Manage company profiles](~~198289~~). If you want to apply for a DV certificate, you do not need to add a company profile.
+	//
+	// If you specify a company name, the information about the company that is configured in the **Information Management** module is used. If you do not specify this parameter, the information about the most recent company that is added to the **Information Management** module is used.
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [Create a CSR file](~~313297~~). If you do not specify this parameter, Certificate Management Service automatically creates a CSR file.
+	//
+	// A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
+	//
+	// >
+	//
+	// The **CN** field in the CSR file specifies the domain name that you want to bind to the certificate. You must include the field in the parameter value.
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The domain name that you want to bind to the certificate. The domain name must meet the following requirements:
+	//
+	// *   The domain name must be a single domain name or a wildcard domain name. Example: `*.aliyundoc.com`.
+	// *   You can specify multiple domain names. Separate multiple domain names with commas (,). You can specify a maximum of five domain names.
+	// *   If you specify multiple domain names, the domain names must be only single domain names or only wildcard domain names. You cannot specify both single domain names and wildcard domain names.
+	//
+	// >
+	//
+	// If you want to bind multiple domain names to the certificate, you must specify this parameter. You must specify at least one of the Domain parameter and the **Csr** parameter. If you specify both the Domain parameter and the **Csr** parameter, the value of the **CN** field in the **Csr** parameter is used as the domain name that can be bound to the certificate.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The email address of the applicant. After the CA receives your certificate application, the CA sends a verification email to the email address that you specify. You must log on to the mailbox, open the mail, and complete the verification of the domain name ownership based on the steps that are described in the email.
+	//
+	// If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The phone number of the applicant. CA staff can call the phone number to confirm the information in your certificate application.
+	//
+	// If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The specifications of the certificate. Valid values:
+	//
+	// *   **digicert-free-1-free**: DigiCert single-domain domain validated (DV) certificate in 3 months free trial. This is the default value.
+	// *   **symantec-free-1-free**: DigiCert single-domain domain validated (DV) certificate in 1 year free trial.
+	// *   **symantec-dv-1-starter**: DigiCert wildcard DV certificate.
+	// *   **symantec-ov-1-personal**: DigiCert single-domain organization validated (OV) certificate.
+	// *   **symantec-ov-w-personal**: DigiCert wildcard OV certificate.
+	// *   **geotrust-dv-1-starter**: GeoTrust single-domain DV certificate.
+	// *   **geotrust-dv-w-starter**: GeoTrust wildcard DV certificate.
+	// *   **geotrust-ov-1-personal**: GeoTrust single-domain OV certificate.
+	// *   **geotrust-ov-w-personal**: GeoTrust wildcard OV certificate.
+	// *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
+	// *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
+	// *   **globalsign-ov-1-personal**: GlobalSign single-domain OV certificate.
+	// *   **globalsign-ov-w-advanced**: GlobalSign wildcard OV certificate.
+	// *   **cfca-ov-1-personal**: China Financial Certification Authority (CFCA) single-domain OV certificate.
+	// *   **cfca-ev-w-advanced**: CFCA wildcard OV certificate.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the applicant.
+	//
+	// If you do not specify this parameter, the information about the most recent contact that is added to the **Information Management** module is used. For more information about how to add a contact to the **Information Management** module, see [Manage contacts](~~198262~~).
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The verification method of the domain name ownership. Valid values:
+	//
+	// *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
+	// *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
+	//
+	// For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
 	ValidateType *string `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
 }
 
@@ -198,7 +255,11 @@ func (s *CreateCertificateForPackageRequestRequest) SetValidateType(v string) *C
 }
 
 type CreateCertificateForPackageRequestResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the certificate application order.
+	//
+	// > You can use the ID to query the status of the certificate application order. For more information, see [DescribeCertificateState](~~455800~~).
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -250,11 +311,32 @@ func (s *CreateCertificateForPackageRequestResponse) SetBody(v *CreateCertificat
 }
 
 type CreateCertificateRequestRequest struct {
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The domain name that you want to bind to the certificate. You can specify only one domain name.
+	//
+	// > The domain name must match the certificate specifications that you specify for the **ProductCode** parameter. If you apply for a single-domain certificate, you must specify a single domain name for this parameter. If you apply for a wildcard certificate, you must specify a wildcard domain name such as `*.aliyundoc.com` for this parameter.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The email address of the applicant.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The phone number of the applicant.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The specifications of the certificate. Valid values:
+	//
+	// *   **digicert-free-1-free**: DigiCert single-domain DV certificate in 3 months free trial. This is the default value.
+	// *   **symantec-free-1-free**: DigiCert single-domain DV certificate in 1 year free trial.
+	// *   **symantec-dv-1-starter**: DigiCert wildcard DV certificate.
+	// *   **geotrust-dv-1-starter**: GeoTrust single-domain DV certificate.
+	// *   **geotrust-dv-w-starter**: GeoTrust wildcard DV certificate.
+	// *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
+	// *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the applicant.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The verification method of the domain name ownership. Valid values:
+	//
+	// *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
+	// *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
+	//
+	// For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
 	ValidateType *string `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
 }
 
@@ -297,7 +379,11 @@ func (s *CreateCertificateRequestRequest) SetValidateType(v string) *CreateCerti
 }
 
 type CreateCertificateRequestResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the certificate application order.
+	//
+	// > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~455800~~).
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -349,11 +435,34 @@ func (s *CreateCertificateRequestResponse) SetBody(v *CreateCertificateRequestRe
 }
 
 type CreateCertificateWithCsrRequestRequest struct {
-	Csr          *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	ProductCode  *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	Username     *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The content of the existing CSR file.\
+	// The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](~~42218~~) You can also create a CSR in the [Certificate Management Service console](https://yundunnext.console.aliyun.com/?\&p=cas). For more information, see [Create a CSR](~~313297~~).\
+	// A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
+	//
+	// >  The **CN** field in the CSR file specifies the domain name that is bound to the certificate.
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The contact email address of the applicant.
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The phone number of the applicant.
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The specifications of the certificate. Valid values:
+	//
+	// *   **digicert-free-1-free**: DigiCert single-domain DV certificate in 3 months free trial. This is the default value.
+	// *   **symantec-free-1-free**: DigiCert single-domain DV certificate in 1 year free trial.
+	// *   **symantec-dv-1-starter**: DigiCert wildcard DV certificate.
+	// *   **geotrust-dv-1-starter**: GeoTrust single-domain DV certificate.
+	// *   **geotrust-dv-w-starter**: GeoTrust wildcard DV certificate.
+	// *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
+	// *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The name of the applicant.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The method to verify the ownership of a domain name. Valid values:
+	//
+	// *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name. You must have operation permissions on domain name resolution to verify the ownership of the domain name.
+	// *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server. You must have administrative rights on the DNS server to verify the ownership of the domain name.
+	//
+	// For more information about the verification methods, see [Verify the ownership of a domain name](~~48016~~).
 	ValidateType *string `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
 }
 
@@ -396,7 +505,11 @@ func (s *CreateCertificateWithCsrRequestRequest) SetValidateType(v string) *Crea
 }
 
 type CreateCertificateWithCsrRequestResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the certificate application order.
+	//
+	// >  You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~164111~~).
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -730,6 +843,9 @@ func (s *DecryptResponse) SetBody(v *DecryptResponseBody) *DecryptResponse {
 }
 
 type DeleteCertificateRequestRequest struct {
+	// The ID of the certificate application order that you want to delete.
+	//
+	// >  After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -747,6 +863,7 @@ func (s *DeleteCertificateRequestRequest) SetOrderId(v int64) *DeleteCertificate
 }
 
 type DeleteCertificateRequestResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -856,6 +973,7 @@ func (s *DeletePCACertResponse) SetBody(v *DeletePCACertResponseBody) *DeletePCA
 }
 
 type DeleteUserCertificateRequest struct {
+	// The ID of the certificate.
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
 }
 
@@ -873,6 +991,7 @@ func (s *DeleteUserCertificateRequest) SetCertId(v int64) *DeleteUserCertificate
 }
 
 type DeleteUserCertificateResponseBody struct {
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -919,6 +1038,9 @@ func (s *DeleteUserCertificateResponse) SetBody(v *DeleteUserCertificateResponse
 }
 
 type DescribeCertificateStateRequest struct {
+	// The ID of the certificate application order that you want to query.
+	//
+	// > After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -936,16 +1058,65 @@ func (s *DescribeCertificateStateRequest) SetOrderId(v int64) *DescribeCertifica
 }
 
 type DescribeCertificateStateResponseBody struct {
-	Certificate  *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	PrivateKey   *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The content of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](~~42214~~)
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **certificate**. The value certificate indicates that the certificate is issued.
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The content that you need to write to the newly created file when you use the file verification method.
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The domain name to be verified when you use the file verification method. You must connect to the DNS server of the domain name and create a file on the server. The file is specified by the **Uri** parameter.
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The private key of the certificate in the PEM format. For more information about the PEM format and how to convert certificate formats, see [What formats are used for mainstream digital certificates?](~~42214~~)
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **certificate**. The value certificate indicates that the certificate is issued.
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// The DNS record that you need to manage when you use the DNS verification method.
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
 	RecordDomain *string `json:"RecordDomain,omitempty" xml:"RecordDomain,omitempty"`
-	RecordType   *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	RecordValue  *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The type of the DNS record that you need to add when you use the DNS verification method. Valid values:
+	//
+	// *   **TXT**
+	// *   **CNAME**
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete.
+	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	// You need to add a TXT record to the DNS records only when you use the DNS verification method.
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **DNS**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value DNS indicates that the DNS verification method is used.
+	RecordValue *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the certificate application order. Valid values:
+	//
+	// *   **domain_verify**: **pending review**, which indicates that you have not completed the verification of the domain name ownership after you submit the certificate application.
+	//
+	//     > After you submit a certificate application, you must manually complete the verification of the domain name ownership. The CA reviews the certificate application only after the verification is complete. If you have not completed the verification of the domain name ownership, you can complete the verification based on the data returned by this operation.
+	//
+	// *   **process**: **being reviewed**, which indicates that the certificate application is being reviewed by the CA.
+	//
+	// *   **verify_fail**: **review failed**, which indicates that the certificate application failed to be reviewed.
+	//
+	//     > If a certificate application fails to be reviewed, the information that you specified in the certificate application may be incorrect. We recommend that you call the [DeleteCertificateRequest](~~455294~~) operation to delete the certificate application order and resubmit a certificate application. After the order is deleted, the quota that is consumed for the order is released.
+	//
+	// *   **certificate**: **issued**, which indicates that the certificate is issued.
+	// *   **payed**: **pending application**, which indicates that you have not submitted a certificate application.
+	// *   **unknow**: The status is **unknown**.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The file that you need to create on the DNS server when you use the file verification method. **The value of this parameter contains the file path and file name.**
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify** and the value of the **ValidateType** parameter is **FILE**. The value domain\_verify indicates that the verification of the domain name ownership is not complete, and the value FILE indicates that the file verification method is used.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The verification method of the domain name ownership. Valid values:
+	//
+	// *   **DNS**: DNS verification. If you use this method, you must add a TXT record to the DNS records of the domain name in the management platform of the domain name.
+	// *   **FILE**: file verification. If you use this method, you must create a specified file on the DNS server.
+	//
+	// > This parameter is returned only when the value of the **Type** parameter is **domain\_verify**. The value domain\_verify indicates that the verification of the domain name ownership is not complete.
 	ValidateType *string `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
 }
 
@@ -1042,6 +1213,23 @@ func (s *DescribeCertificateStateResponse) SetBody(v *DescribeCertificateStateRe
 }
 
 type DescribePackageStateRequest struct {
+	// The specifications of the certificate resource plan. Valid values:
+	//
+	// *   **digicert-free-1-free**: DigiCert single-domain DV certificate in 3 months free trial. This is the default value.
+	// *   **symantec-free-1-free**: DigiCert single-domain DV certificate in 1 year free trial.
+	// *   **symantec-dv-1-starter**: DigiCert wildcard DV certificate.
+	// *   **symantec-ov-1-personal**: DigiCert single-domain organization validated (OV) certificate.
+	// *   **symantec-ov-w-personal**: DigiCert wildcard OV certificate.
+	// *   **geotrust-dv-1-starter**: GeoTrust single-domain DV certificate.
+	// *   **geotrust-dv-w-starter**: GeoTrust wildcard DV certificate.
+	// *   **geotrust-ov-1-personal**: GeoTrust single-domain OV certificate.
+	// *   **geotrust-ov-w-personal**: GeoTrust wildcard OV certificate.
+	// *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
+	// *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
+	// *   **globalsign-ov-1-personal**: GlobalSign single-domain OV certificate.
+	// *   **globalsign-ov-w-advanced**: GlobalSign wildcard OV certificate.
+	// *   **cfca-ov-1-personal**: China Financial Certification Authority (CFCA) single-domain OV certificate.
+	// *   **cfca-ev-w-advanced**: CFCA wildcard OV certificate.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -1059,11 +1247,34 @@ func (s *DescribePackageStateRequest) SetProductCode(v string) *DescribePackageS
 }
 
 type DescribePackageStateResponseBody struct {
-	IssuedCount *int64  `json:"IssuedCount,omitempty" xml:"IssuedCount,omitempty"`
+	// The number of issued certificates of the specified specifications.
+	IssuedCount *int64 `json:"IssuedCount,omitempty" xml:"IssuedCount,omitempty"`
+	// The specifications of the certificate. Valid values:
+	//
+	// *   **symantec-free-1-free**: DigiCert single-domain DV certificate in 3 months free trial.
+	// *   **symantec-free-1-free**: DigiCert single-domain DV certificate in 1 year free trial.
+	// *   **symantec-dv-1-starter**: DigiCert wildcard DV certificate.
+	// *   **symantec-ov-1-personal**: DigiCert single-domain OV certificate.
+	// *   **symantec-ov-w-personal**: DigiCert wildcard OV certificate.
+	// *   **geotrust-dv-1-starter**: GeoTrust single-domain DV certificate.
+	// *   **geotrust-dv-w-starter**: GeoTrust wildcard DV certificate.
+	// *   **geotrust-ov-1-personal**: GeoTrust single-domain OV certificate.
+	// *   **geotrust-ov-w-personal**: GeoTrust wildcard OV certificate.
+	// *   **globalsign-dv-1-personal**: GlobalSign single-domain DV certificate.
+	// *   **globalsign-dv-w-advanced**: GlobalSign wildcard DV certificate.
+	// *   **globalsign-ov-1-personal**: GlobalSign single-domain OV certificate.
+	// *   **globalsign-ov-w-advanced**: GlobalSign wildcard OV certificate.
+	// *   **cfca-ov-1-personal**: CFCA single-domain OV certificate.
+	// *   **cfca-ev-w-advanced**: CFCA wildcard OV certificate.
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	UsedCount   *int64  `json:"UsedCount,omitempty" xml:"UsedCount,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of purchased certificate resource plans of the specified specifications.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The number of certificate applications that you submitted for certificates of the specified specifications.
+	//
+	// > A successful call of the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation is counted as one a certificate application, regardless of whether the certificate is issued.
+	UsedCount *int64 `json:"UsedCount,omitempty" xml:"UsedCount,omitempty"`
 }
 
 func (s DescribePackageStateResponseBody) String() string {
@@ -1280,6 +1491,9 @@ func (s *GetCertWarehouseQuotaResponse) SetBody(v *GetCertWarehouseQuotaResponse
 }
 
 type GetUserCertificateDetailRequest struct {
+	// 值为true时Cert、Key、EncryptCert、EncryptPrivateKey、SignCert、SignPrivateKey信息不返回，false时则返回，默认是false。
+	CertFilter *bool `json:"CertFilter,omitempty" xml:"CertFilter,omitempty"`
+	// The ID of the certificate.
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
 }
 
@@ -1291,35 +1505,71 @@ func (s GetUserCertificateDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetUserCertificateDetailRequest) SetCertFilter(v bool) *GetUserCertificateDetailRequest {
+	s.CertFilter = &v
+	return s
+}
+
 func (s *GetUserCertificateDetailRequest) SetCertId(v int64) *GetUserCertificateDetailRequest {
 	s.CertId = &v
 	return s
 }
 
 type GetUserCertificateDetailResponseBody struct {
-	BuyInAliyun       *bool   `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
-	Cert              *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	City              *string `json:"City,omitempty" xml:"City,omitempty"`
-	Common            *string `json:"Common,omitempty" xml:"Common,omitempty"`
-	Country           *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	EncryptCert       *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	// The algorithm.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// Indicates whether the certificate was purchased from Alibaba Cloud. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	BuyInAliyun *bool `json:"BuyInAliyun,omitempty" xml:"BuyInAliyun,omitempty"`
+	// The content of the certificate.
+	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The city of the company or organization to which the certificate purchaser belongs.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The parent domain name that is bound to the certificate.
+	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
+	// The country or region of the company or organization to which the certificate purchaser belongs.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The content of the encryption certificate in PEM format.
+	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	// The private key of the encryption certificate in the PEM format.
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	EndDate           *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Expired           *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Fingerprint       *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Issuer            *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderId           *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrgName           *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	Province          *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Sans              *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SignCert          *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	SignPrivateKey    *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
-	StartDate         *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The expiration date of the certificate.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Indicates whether the certificate has expired. Valid values:
+	//
+	// *   **true**: yes
+	// *   **false**: no
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The fingerprint of the certificate.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The ID of the certificate.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The certificate authority (CA) that issued the certificate.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The private key.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the certificate.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the certificate application order.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The name of the company or organization to which the certificate purchaser belongs.
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The province of the company or organization to which the certificate purchaser belongs.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the certificate belongs.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// All domain names that are bound to the certificate.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The content of the signing certificate in the PEM format.
+	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
+	// The private key of the signing certificate in the PEM format.
+	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+	// The issuance date of the certificate.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 
 func (s GetUserCertificateDetailResponseBody) String() string {
@@ -1328,6 +1578,11 @@ func (s GetUserCertificateDetailResponseBody) String() string {
 
 func (s GetUserCertificateDetailResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetUserCertificateDetailResponseBody) SetAlgorithm(v string) *GetUserCertificateDetailResponseBody {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *GetUserCertificateDetailResponseBody) SetBuyInAliyun(v bool) *GetUserCertificateDetailResponseBody {
@@ -1475,12 +1730,29 @@ func (s *GetUserCertificateDetailResponse) SetBody(v *GetUserCertificateDetailRe
 }
 
 type ListCertRequest struct {
-	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	KeyWord     *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+	// The type of the certificate.
+	//
+	// *   **CA**: the CA certificate.
+	// *   **CERT**: a issued certificate.
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The number of the page to return. Default value: 1.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
+	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	// The number of entries to return on each page. Default value: 50.
+	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The source of the certificate. Valid values:
+	//
+	// *   **upload**: uploaded certificate
+	// *   **aliyun**: Alibaba Cloud certificate
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **ISSUE**: issued
+	// *   **REVOKE**: revoked
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the certificate repository. You can call the [ListCertWarehouse](~~453246~~) operation to query the IDs of certificate repositories.
+	WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s ListCertRequest) String() string {
@@ -1489,6 +1761,11 @@ func (s ListCertRequest) String() string {
 
 func (s ListCertRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListCertRequest) SetCertType(v string) *ListCertRequest {
+	s.CertType = &v
+	return s
 }
 
 func (s *ListCertRequest) SetCurrentPage(v int64) *ListCertRequest {
@@ -1522,11 +1799,16 @@ func (s *ListCertRequest) SetWarehouseId(v int64) *ListCertRequest {
 }
 
 type ListCertResponseBody struct {
-	CertList    []*ListCertResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
-	CurrentPage *int64                          `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	RequestId   *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize    *int64                          `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount  *int64                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// An array that consists of the certificates.
+	CertList []*ListCertResponseBodyCertList `json:"CertList,omitempty" xml:"CertList,omitempty" type:"Repeated"`
+	// The page number of the returned page. Default value: 1.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned per page. Default value: 50.
+	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListCertResponseBody) String() string {
@@ -1563,17 +1845,42 @@ func (s *ListCertResponseBody) SetTotalCount(v int64) *ListCertResponseBody {
 }
 
 type ListCertResponseBodyCertList struct {
-	AfterDate       *int64  `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
-	BeforeDate      *int64  `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	CommonName      *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	ExistPrivateKey *bool   `json:"ExistPrivateKey,omitempty" xml:"ExistPrivateKey,omitempty"`
-	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Sans            *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	WhId            *int64  `json:"WhId,omitempty" xml:"WhId,omitempty"`
-	WhInstanceId    *string `json:"WhInstanceId,omitempty" xml:"WhInstanceId,omitempty"`
+	// The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+	AfterDate *int64 `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
+	// The issuance time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+	BeforeDate *int64 `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
+	// The type of the certificate.
+	//
+	// *   **CA**: the CA certificate.
+	// *   **CERT**: a issued certificate.
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The domain name.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// Indicates whether the certificate contains a private key. Valid values:
+	//
+	// *   **true**
+	// *   **false**
+	ExistPrivateKey *bool `json:"ExistPrivateKey,omitempty" xml:"ExistPrivateKey,omitempty"`
+	// The unique identifier of the certificate.
+	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	// The issuer of the certificate.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The source of the certificate. Valid values:
+	//
+	// *   **upload**: uploaded certificate
+	// *   **aliyun**: Alibaba Cloud certificate
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The status of the certificate. Valid values:
+	//
+	// *   **ISSUE**: issued
+	// *   **REVOKE**: revoked
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the certificate repository.
+	WhId *int64 `json:"WhId,omitempty" xml:"WhId,omitempty"`
+	// The instance ID of the certificate repository.
+	WhInstanceId *string `json:"WhInstanceId,omitempty" xml:"WhInstanceId,omitempty"`
 }
 
 func (s ListCertResponseBodyCertList) String() string {
@@ -1591,6 +1898,11 @@ func (s *ListCertResponseBodyCertList) SetAfterDate(v int64) *ListCertResponseBo
 
 func (s *ListCertResponseBodyCertList) SetBeforeDate(v int64) *ListCertResponseBodyCertList {
 	s.BeforeDate = &v
+	return s
+}
+
+func (s *ListCertResponseBodyCertList) SetCertType(v string) *ListCertResponseBodyCertList {
+	s.CertType = &v
 	return s
 }
 
@@ -1839,12 +2151,32 @@ func (s *ListCertWarehouseResponse) SetBody(v *ListCertWarehouseResponseBody) *L
 }
 
 type ListUserCertificateOrderRequest struct {
-	CurrentPage     *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Keyword         *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OrderType       *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The number of the page to return.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The domain names that are bound or the ID of the order. Fuzzy match is supported.
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The type of the order. Valid values:
+	//
+	// *   **CPACK**: virtual resource order. If you set OrderType to CPACK, only the information about orders that are generated to consume the certificate quota is returned.
+	// *   **BUY**: purchase order. If you set OrderType to BUY, only the information about purchase orders is returned. In most cases, this type of order can be ignored.
+	// *   **UPLOAD**: uploaded certificate. If you set OrderType to UPLOAD, only uploaded certificates are returned.
+	// *   **CERT**: certificate. If you set OrderType to CERT, both issued certificates and uploaded certificates are returned.
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShowSize        *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of entries to return on each page. Default value: 50.
+	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The certificate status of the order. Valid values:
+	//
+	// *   **PAYED**: pending application. You can set Status to PAYED only if you set OrderType to CPACK or BUY.
+	// *   **CHECKING**: reviewing. You can set Status to CHECKING only if you set OrderType to CPACK or BUY.
+	// *   **CHECKED_FAIL**: review failed. You can set Status to CHECKED_FAIL only if you set OrderType to CPACK or BUY.
+	// *   **ISSUED**: issued.
+	// *   **WILLEXPIRED**: about to expire.
+	// *   **EXPIRED**: expired.
+	// *   **NOTACTIVATED**: not activated. You can set Status to NOTACTIVATED only if you set OrderType to CPACK or BUY.
+	// *   **REVOKED**: revoked. You can set Status to REVOKED only if you set OrderType to CPACK or BUY.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListUserCertificateOrderRequest) String() string {
@@ -1886,11 +2218,16 @@ func (s *ListUserCertificateOrderRequest) SetStatus(v string) *ListUserCertifica
 }
 
 type ListUserCertificateOrderResponseBody struct {
+	// An array that consists of the information about the certificates and orders.
 	CertificateOrderList []*ListUserCertificateOrderResponseBodyCertificateOrderList `json:"CertificateOrderList,omitempty" xml:"CertificateOrderList,omitempty" type:"Repeated"`
-	CurrentPage          *int64                                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize             *int64                                                      `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount           *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number of the returned page.
+	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The ID of the request, which is used to locate and troubleshoot issues.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of entries returned per page.
+	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	// The total number of entries returned.
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserCertificateOrderResponseBody) String() string {
@@ -1927,42 +2264,104 @@ func (s *ListUserCertificateOrderResponseBody) SetTotalCount(v int64) *ListUserC
 }
 
 type ListUserCertificateOrderResponseBodyCertificateOrderList struct {
-	Algorithm       *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	AliyunOrderId   *int64  `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	BuyDate         *int64  `json:"BuyDate,omitempty" xml:"BuyDate,omitempty"`
-	CertEndTime     *int64  `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
-	CertStartTime   *int64  `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
-	CertType        *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	CertificateId   *int64  `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	City            *string `json:"City,omitempty" xml:"City,omitempty"`
-	CommonName      *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	Country         *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	DomainCount     *int64  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	DomainType      *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	EndDate         *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Expired         *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	Fingerprint     *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrgName         *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	PartnerOrderId  *string `json:"PartnerOrderId,omitempty" xml:"PartnerOrderId,omitempty"`
-	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Province        *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The algorithm. This parameter is returned only if OrderType is set to CPACK or BUY.
+	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// The ID of the Alibaba Cloud order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	AliyunOrderId *int64 `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	// The time at which the order was placed. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	BuyDate *int64 `json:"BuyDate,omitempty" xml:"BuyDate,omitempty"`
+	// The time at which the certificate expires. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	CertEndTime *int64 `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
+	// The time at which the certificate starts to take effect. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+	CertStartTime *int64 `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	// The type of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	//
+	// *   **DV**: domain validated (DV) certificate
+	// *   **EV**: extended validation (EV) certificate
+	// *   **OV**: organization validated (OV) certificate
+	// *   **FREE**: free certificate
+	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	// The ID of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The city in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The parent domain name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// The code of the country in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The domain name. This parameter is returned only if OrderType is set to CPACK or BUY.
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The total number of domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// The type of the domain name. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+	//
+	// *   **ONE**: single domain name
+	// *   **MULTIPLE**: multiple domain names
+	// *   **WILDCARD**: single wildcard domain name
+	// *   **M_WILDCARD**: multiple wildcard domain names
+	// *   **MIX**: hybrid domain name
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The time at which the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Indicates whether the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The fingerprint of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
+	// The ID of the resource.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The issuer of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order ID. This parameter is returned only if OrderType is set to CPACK or BUY.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The name of the organization that is associated with the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// The ID of the certificate authority (CA) order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	PartnerOrderId *string `json:"PartnerOrderId,omitempty" xml:"PartnerOrderId,omitempty"`
+	// The specification ID of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The specification name of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The name of the province or autonomous region in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The ID of the resource group. This parameter is returned only if OrderType is set to CERT or UPLOAD.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	RootBrand       *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
-	Sans            *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
-	SerialNo        *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
-	Sha2            *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	StartDate       *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TrusteeStatus   *string `json:"TrusteeStatus,omitempty" xml:"TrusteeStatus,omitempty"`
-	Upload          *bool   `json:"Upload,omitempty" xml:"Upload,omitempty"`
-	WildDomainCount *int64  `json:"WildDomainCount,omitempty" xml:"WildDomainCount,omitempty"`
+	// The brand of the certificate. Valid values: WoSign, CFCA, DigiCert, and vTrus. This parameter is returned only if OrderType is set to CPACK or BUY.
+	RootBrand *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
+	// All domain names that are bound to the certificate. Multiple domain names are separated by commas (,). This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Sans *string `json:"Sans,omitempty" xml:"Sans,omitempty"`
+	// The serial number of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	SerialNo *string `json:"SerialNo,omitempty" xml:"SerialNo,omitempty"`
+	// The SHA-2 value of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Sha2 *string `json:"Sha2,omitempty" xml:"Sha2,omitempty"`
+	// The type of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	//
+	// *   **cpack**: virtual resource order
+	// *   **buy**: purchase order
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The time at which the certificate starts to take effect. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The certificate status of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+	//
+	// *   **PAYED**: pending application
+	// *   **CHECKING**: reviewing
+	// *   **CHECKED_FAIL**: review failed
+	// *   **ISSUED**: issued
+	// *   **WILLEXPIRED**: about to expire
+	// *   **EXPIRED**: expired
+	// *   **NOTACTIVATED**: not activated
+	// *   **REVOKED**: revoked
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The hosting status of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+	//
+	// *   **unTrustee**: not hosted
+	// *   **trustee**: hosted
+	TrusteeStatus *string `json:"TrusteeStatus,omitempty" xml:"TrusteeStatus,omitempty"`
+	// Indicates whether the certificate is an uploaded certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+	Upload *bool `json:"Upload,omitempty" xml:"Upload,omitempty"`
+	// The number of wildcard domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+	WildDomainCount *int64 `json:"WildDomainCount,omitempty" xml:"WildDomainCount,omitempty"`
 }
 
 func (s ListUserCertificateOrderResponseBodyCertificateOrderList) String() string {
@@ -2183,8 +2582,18 @@ func (s *ListUserCertificateOrderResponse) SetBody(v *ListUserCertificateOrderRe
 }
 
 type RenewCertificateOrderForPackageRequestRequest struct {
-	Csr     *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The content of the certificate signing request (CSR) file that is manually generated for the domain name by using OpenSSL or Keytool. The key algorithm in the CSR file must be Rivest-Shamir-Adleman (RSA) or elliptic-curve cryptography (ECC), and the key length of the RSA algorithm must be greater than or equal to 2,048 characters. For more information about how to create a CSR file, see [How do I create a CSR file?](~~42218~~)
+	//
+	// If you do not specify this parameter, Certificate Management Service automatically generates a CSR file for the domain name in the certificate application order that you want to renew.
+	//
+	// A CSR file contains the information about your server and company. When you apply for a certificate, you must submit the CSR file to the CA. The CA signs the CSR file by using the private key of the root certificate and generates a public key file to issue your certificate.
+	//
+	// > The **CN** field in the CSR file specifies the domain name that is bound to the certificate.
+	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The ID of the certificate application order that you want to renew.
+	//
+	// > After you call the [CreateCertificateForPackageRequest](~~455296~~), [CreateCertificateRequest](~~455292~~), or [CreateCertificateWithCsrRequest](~~455801~~) operation to submit a certificate application, you can obtain the ID of the certificate application order from the **OrderId** response parameter.
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s RenewCertificateOrderForPackageRequestRequest) String() string {
@@ -2206,7 +2615,11 @@ func (s *RenewCertificateOrderForPackageRequestRequest) SetOrderId(v int64) *Ren
 }
 
 type RenewCertificateOrderForPackageRequestResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the certificate application order that is renewed.
+	//
+	// > You can use the ID to query the status of the certificate application. For more information, see [DescribeCertificateState](~~455800~~).
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2408,10 +2821,18 @@ func (s *SignResponse) SetBody(v *SignResponseBody) *SignResponse {
 }
 
 type UploadPCACertRequest struct {
-	Cert        *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	WarehouseId *int64  `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
+	// <UploadPCACertResponse>
+	//     <RequestId>15C66C7B-671A-4297-9187-2C4477247A74</RequestId>
+	// </UploadPCACertResponse>
+	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// UploadPCACert
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Uploads a private certificate to a certificate repository.
+	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+	// {
+	//     "RequestId": "15C66C7B-671A-4297-9187-2C4477247A74"
+	// }
+	WarehouseId *int64 `json:"WarehouseId,omitempty" xml:"WarehouseId,omitempty"`
 }
 
 func (s UploadPCACertRequest) String() string {
@@ -2495,14 +2916,24 @@ func (s *UploadPCACertResponse) SetBody(v *UploadPCACertResponseBody) *UploadPCA
 }
 
 type UploadUserCertificateRequest struct {
-	Cert              *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	EncryptCert       *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	// The content of the certificate in the PEM format.
+	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	// The content of the encryption certificate in PEM format.
+	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
+	// The private key of the encryption certificate in the PEM format.
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	Key               *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SignCert          *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	SignPrivateKey    *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+	// The private key of the certificate in the PEM format.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the certificate. The name can contain up to 128 characters in length. The name can contain all types of characters, such as letters, digits, and underscores (\_).
+	//
+	// >  The name must be unique within an Alibaba Cloud account.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// the resource group id.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The content of the signing certificate in the PEM format.
+	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
+	// The private key of the signing certificate in the PEM format.
+	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
 }
 
 func (s UploadUserCertificateRequest) String() string {
@@ -2554,7 +2985,9 @@ func (s *UploadUserCertificateRequest) SetSignPrivateKey(v string) *UploadUserCe
 }
 
 type UploadUserCertificateResponseBody struct {
-	CertId    *int64  `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate.
+	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2717,7 +3150,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 tea.String("cas.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("cas.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("cas.aliyuncs.com"),
 		"ap-southeast-3":              tea.String("cas.aliyuncs.com"),
 		"ap-southeast-5":              tea.String("cas.aliyuncs.com"),
 		"cn-beijing":                  tea.String("cas.aliyuncs.com"),
@@ -2739,6 +3171,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-hongkong":                 tea.String("cas.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("cas.aliyuncs.com"),
 		"cn-huhehaote":                tea.String("cas.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("cas.aliyuncs.com"),
 		"cn-north-2-gov-1":            tea.String("cas.aliyuncs.com"),
 		"cn-qingdao":                  tea.String("cas.aliyuncs.com"),
 		"cn-qingdao-nebula":           tea.String("cas.aliyuncs.com"),
@@ -2754,7 +3187,9 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shenzhen-st4-d01":         tea.String("cas.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("cas.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("cas.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("cas.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("cas.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("cas.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("cas.aliyuncs.com"),
 		"cn-zhangjiakou":              tea.String("cas.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("cas.aliyuncs.com"),
@@ -2796,6 +3231,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+/**
+ * Revokes an issued certificate and cancels the application order of the certificate.
+ *
+ * @param request CancelCertificateForPackageRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelCertificateForPackageRequestResponse
+ */
 func (client *Client) CancelCertificateForPackageRequestWithOptions(request *CancelCertificateForPackageRequestRequest, runtime *util.RuntimeOptions) (_result *CancelCertificateForPackageRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2829,6 +3271,12 @@ func (client *Client) CancelCertificateForPackageRequestWithOptions(request *Can
 	return _result, _err
 }
 
+/**
+ * Revokes an issued certificate and cancels the application order of the certificate.
+ *
+ * @param request CancelCertificateForPackageRequestRequest
+ * @return CancelCertificateForPackageRequestResponse
+ */
 func (client *Client) CancelCertificateForPackageRequest(request *CancelCertificateForPackageRequestRequest) (_result *CancelCertificateForPackageRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelCertificateForPackageRequestResponse{}
@@ -2840,6 +3288,16 @@ func (client *Client) CancelCertificateForPackageRequest(request *CancelCertific
 	return _result, _err
 }
 
+/**
+ * You can call the CancelOrderRequest operation to cancel a certificate application order only in the following scenarios:
+ * *   The order is in the **pending validation** state. You have submitted a certificate application but the verification of the domain name ownership is not complete.
+ * *   The order is in the **being reviewed** state. You have submitted a certificate application and the verification of the domain name ownership is complete, but the certificate authority (CA) does not complete the review of the certificate application.
+ * After a certificate application order is canceled, the status of the order changes to the **pending application** state. In this case, you can call the [DeleteCertificateRequest](~~164109~~) operation to delete the certificate application order. Then, the consumed certificate quota is returned to you.
+ *
+ * @param request CancelOrderRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CancelOrderRequestResponse
+ */
 func (client *Client) CancelOrderRequestWithOptions(request *CancelOrderRequestRequest, runtime *util.RuntimeOptions) (_result *CancelOrderRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2873,6 +3331,15 @@ func (client *Client) CancelOrderRequestWithOptions(request *CancelOrderRequestR
 	return _result, _err
 }
 
+/**
+ * You can call the CancelOrderRequest operation to cancel a certificate application order only in the following scenarios:
+ * *   The order is in the **pending validation** state. You have submitted a certificate application but the verification of the domain name ownership is not complete.
+ * *   The order is in the **being reviewed** state. You have submitted a certificate application and the verification of the domain name ownership is complete, but the certificate authority (CA) does not complete the review of the certificate application.
+ * After a certificate application order is canceled, the status of the order changes to the **pending application** state. In this case, you can call the [DeleteCertificateRequest](~~164109~~) operation to delete the certificate application order. Then, the consumed certificate quota is returned to you.
+ *
+ * @param request CancelOrderRequestRequest
+ * @return CancelOrderRequestResponse
+ */
 func (client *Client) CancelOrderRequest(request *CancelOrderRequestRequest) (_result *CancelOrderRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOrderRequestResponse{}
@@ -2884,6 +3351,15 @@ func (client *Client) CancelOrderRequest(request *CancelOrderRequestRequest) (_r
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~455800~~) operation to query the usage of certificate resource plans of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that are submitted, and the number of certificates that are issued.
+ * *   After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate that you want to apply for.
+ * *   After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](~~455800~~) operation to obtain the information that is required to complete the verification of the domain name ownership, and complete the verification. If you use the DNS verification method, you must complete the verification in the management platform of the domain name. If you use the file verification method, you must complete the verification in the DNS server. Then, the certificate application order will be reviewed by the certificate authority (CA).
+ *
+ * @param request CreateCertificateForPackageRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCertificateForPackageRequestResponse
+ */
 func (client *Client) CreateCertificateForPackageRequestWithOptions(request *CreateCertificateForPackageRequestRequest, runtime *util.RuntimeOptions) (_result *CreateCertificateForPackageRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2945,6 +3421,14 @@ func (client *Client) CreateCertificateForPackageRequestWithOptions(request *Cre
 	return _result, _err
 }
 
+/**
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~455800~~) operation to query the usage of certificate resource plans of specified specifications, including the total number of certificate resource plans that you purchase, the number of certificate applications that are submitted, and the number of certificates that are issued.
+ * *   After you call this operation to submit a certificate application and the certificate is issued, the certificate quota provided by the resource plan that you purchased is consumed. When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate that you want to apply for.
+ * *   After you call this operation to submit a certificate application, you also need to call the [DescribeCertificateState](~~455800~~) operation to obtain the information that is required to complete the verification of the domain name ownership, and complete the verification. If you use the DNS verification method, you must complete the verification in the management platform of the domain name. If you use the file verification method, you must complete the verification in the DNS server. Then, the certificate application order will be reviewed by the certificate authority (CA).
+ *
+ * @param request CreateCertificateForPackageRequestRequest
+ * @return CreateCertificateForPackageRequestResponse
+ */
 func (client *Client) CreateCertificateForPackageRequest(request *CreateCertificateForPackageRequestRequest) (_result *CreateCertificateForPackageRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateForPackageRequestResponse{}
@@ -2956,6 +3440,16 @@ func (client *Client) CreateCertificateForPackageRequest(request *CreateCertific
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](~~455296~~) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~455803~~) operation to query the usage of certificate resource plans of specified specifications, including the total number of purchased certificate resource plans of the specified specifications, the number of times that certificate applications have been submitted, and the number of times that certificates have been issued.
+ * *   When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate.
+ * *   After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](~~455800~~) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
+ *
+ * @param request CreateCertificateRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCertificateRequestResponse
+ */
 func (client *Client) CreateCertificateRequestWithOptions(request *CreateCertificateRequestRequest, runtime *util.RuntimeOptions) (_result *CreateCertificateRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3009,6 +3503,15 @@ func (client *Client) CreateCertificateRequestWithOptions(request *CreateCertifi
 	return _result, _err
 }
 
+/**
+ * *   You can call this operation to apply for only DV certificates. If you want to apply for an organization validated (OV) or extended validation (EV) certificate, we recommend that you call the [CreateCertificateForPackageRequest](~~455296~~) operation. This operation allows you to apply for certificates of all specifications and specify the method to generate a certificate signing request (CSR) file.
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~455803~~) operation to query the usage of certificate resource plans of specified specifications, including the total number of purchased certificate resource plans of the specified specifications, the number of times that certificate applications have been submitted, and the number of times that certificates have been issued.
+ * *   When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate.
+ * *   After you call this operation to submit a certificate application, Certificate Management Service automatically creates a CSR file for your application and consumes the certificate quota in the certificate resource plans of the specified specifications that you purchased. After you call this operation, you also need to call the [DescribeCertificateState](~~455800~~) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. Then, the certificate authority (CA) will review your certificate application.
+ *
+ * @param request CreateCertificateRequestRequest
+ * @return CreateCertificateRequestResponse
+ */
 func (client *Client) CreateCertificateRequest(request *CreateCertificateRequestRequest) (_result *CreateCertificateRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateRequestResponse{}
@@ -3020,6 +3523,16 @@ func (client *Client) CreateCertificateRequest(request *CreateCertificateRequest
 	return _result, _err
 }
 
+/**
+ * *   You can call the CreateCertificateWithCsrRequest operation to apply only for DV certificates. We recommend that you call the [CreateCertificateForPackageRequest](~~455296~~) operation to submit a certificate application. This operation allows you to apply for certificates of all specifications and specify the method to generate a CSR file.
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~164110~~) operation to query the usage of certificate resource plans of specified specifications. The usage information includes the total number of purchased certificate resource plans of the specified specifications, the number of times that certificate applications are submitted, and the number of times that certificates are issued.
+ * *   When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate.
+ * *   After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you also need to call the [DescribeCertificateState](~~164111~~) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. The certificate authority (CA) starts to review your certificate application only after the domain name verification is complete.
+ *
+ * @param request CreateCertificateWithCsrRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return CreateCertificateWithCsrRequestResponse
+ */
 func (client *Client) CreateCertificateWithCsrRequestWithOptions(request *CreateCertificateWithCsrRequestRequest, runtime *util.RuntimeOptions) (_result *CreateCertificateWithCsrRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3073,6 +3586,15 @@ func (client *Client) CreateCertificateWithCsrRequestWithOptions(request *Create
 	return _result, _err
 }
 
+/**
+ * *   You can call the CreateCertificateWithCsrRequest operation to apply only for DV certificates. We recommend that you call the [CreateCertificateForPackageRequest](~~455296~~) operation to submit a certificate application. This operation allows you to apply for certificates of all specifications and specify the method to generate a CSR file.
+ * *   Before you call this operation, make sure that you have purchased a certificate resource plan of the required specifications. For more information about how to purchase a certificate resource plan, see [Purchase a certificate resource plan](~~28542~~). You can call the [DescribePackageState](~~164110~~) operation to query the usage of certificate resource plans of specified specifications. The usage information includes the total number of purchased certificate resource plans of the specified specifications, the number of times that certificate applications are submitted, and the number of times that certificates are issued.
+ * *   When you call this operation, you can use the **ProductCode** parameter to specify the specifications of the certificate.
+ * *   After you call this operation to submit a certificate application, the certificate quota of the required specifications that you purchased is consumed. After you call this operation, you also need to call the [DescribeCertificateState](~~164111~~) operation to obtain the information that is required to complete domain name verification, and manually complete the verification. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on your DNS server. The certificate authority (CA) starts to review your certificate application only after the domain name verification is complete.
+ *
+ * @param request CreateCertificateWithCsrRequestRequest
+ * @return CreateCertificateWithCsrRequestResponse
+ */
 func (client *Client) CreateCertificateWithCsrRequest(request *CreateCertificateWithCsrRequestRequest) (_result *CreateCertificateWithCsrRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCertificateWithCsrRequestResponse{}
@@ -3248,6 +3770,15 @@ func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete a certificate application order only in the following scenarios:
+ * *   The status of the order is review failed. You have called the [DescribeCertificateState](~~455800~~)  operation to query the status of the certificate application order and the value of the **Type** parameter is **verify_fail**.
+ * *   The status of the order is **pending application**. You have called the [CancelOrderRequest](~~455299~~) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
+ *
+ * @param request DeleteCertificateRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteCertificateRequestResponse
+ */
 func (client *Client) DeleteCertificateRequestWithOptions(request *DeleteCertificateRequestRequest, runtime *util.RuntimeOptions) (_result *DeleteCertificateRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3281,6 +3812,14 @@ func (client *Client) DeleteCertificateRequestWithOptions(request *DeleteCertifi
 	return _result, _err
 }
 
+/**
+ * You can call this operation to delete a certificate application order only in the following scenarios:
+ * *   The status of the order is review failed. You have called the [DescribeCertificateState](~~455800~~)  operation to query the status of the certificate application order and the value of the **Type** parameter is **verify_fail**.
+ * *   The status of the order is **pending application**. You have called the [CancelOrderRequest](~~455299~~) operation to cancel a certificate application order whose status is pending review or being reviewed. The status of the certificate application order that is canceled in this case changes to **pending application**.
+ *
+ * @param request DeleteCertificateRequestRequest
+ * @return DeleteCertificateRequestResponse
+ */
 func (client *Client) DeleteCertificateRequest(request *DeleteCertificateRequestRequest) (_result *DeleteCertificateRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCertificateRequestResponse{}
@@ -3336,6 +3875,13 @@ func (client *Client) DeletePCACert(request *DeletePCACertRequest) (_result *Del
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteUserCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DeleteUserCertificateResponse
+ */
 func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertificateRequest, runtime *util.RuntimeOptions) (_result *DeleteUserCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3369,6 +3915,12 @@ func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertif
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request DeleteUserCertificateRequest
+ * @return DeleteUserCertificateResponse
+ */
 func (client *Client) DeleteUserCertificate(request *DeleteUserCertificateRequest) (_result *DeleteUserCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserCertificateResponse{}
@@ -3380,6 +3932,14 @@ func (client *Client) DeleteUserCertificate(request *DeleteUserCertificateReques
 	return _result, _err
 }
 
+/**
+ * If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
+ * The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
+ *
+ * @param request DescribeCertificateStateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return DescribeCertificateStateResponse
+ */
 func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCertificateStateRequest, runtime *util.RuntimeOptions) (_result *DescribeCertificateStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3413,6 +3973,13 @@ func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCerti
 	return _result, _err
 }
 
+/**
+ * If you do not complete the verification of the domain name ownership after you submit a certificate application, you can call this operation to obtain the information that is required to complete the verification. You can complete the verification of the domain name ownership based on the data returned. If you use the DNS verification method, you must complete the verification on the management platform of the domain name. If you use the file verification method, you must complete the verification on the DNS server.
+ * The certificate authority (CA) reviews your certificate application only after you complete the verification of the domain name ownership. After the CA approves your certificate application, the CA issues the certificate. If a certificate is issued, you can call this operation to obtain the CA certificate and private key of the certificate.
+ *
+ * @param request DescribeCertificateStateRequest
+ * @return DescribeCertificateStateResponse
+ */
 func (client *Client) DescribeCertificateState(request *DescribeCertificateStateRequest) (_result *DescribeCertificateStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCertificateStateResponse{}
@@ -3557,12 +4124,23 @@ func (client *Client) GetCertWarehouseQuota() (_result *GetCertWarehouseQuotaRes
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetUserCertificateDetailRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return GetUserCertificateDetailResponse
+ */
 func (client *Client) GetUserCertificateDetailWithOptions(request *GetUserCertificateDetailRequest, runtime *util.RuntimeOptions) (_result *GetUserCertificateDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertFilter)) {
+		query["CertFilter"] = request.CertFilter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CertId)) {
 		query["CertId"] = request.CertId
 	}
@@ -3590,6 +4168,12 @@ func (client *Client) GetUserCertificateDetailWithOptions(request *GetUserCertif
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request GetUserCertificateDetailRequest
+ * @return GetUserCertificateDetailResponse
+ */
 func (client *Client) GetUserCertificateDetail(request *GetUserCertificateDetailRequest) (_result *GetUserCertificateDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserCertificateDetailResponse{}
@@ -3601,12 +4185,23 @@ func (client *Client) GetUserCertificateDetail(request *GetUserCertificateDetail
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListCertRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListCertResponse
+ */
 func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *util.RuntimeOptions) (_result *ListCertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertType)) {
+		query["CertType"] = request.CertType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -3654,6 +4249,12 @@ func (client *Client) ListCertWithOptions(request *ListCertRequest, runtime *uti
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListCertRequest
+ * @return ListCertResponse
+ */
 func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCertResponse{}
@@ -3725,6 +4326,15 @@ func (client *Client) ListCertWarehouse(request *ListCertWarehouseRequest) (_res
 	return _result, _err
 }
 
+/**
+ * You can call the ListUserCertificateOrder operation to query the certificates or certificate orders of users. If you set OrderType to CERT or UPLOAD, certificates are returned. If you set OrderType to CPACK or BUY, certificate orders are returned.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListUserCertificateOrderRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListUserCertificateOrderResponse
+ */
 func (client *Client) ListUserCertificateOrderWithOptions(request *ListUserCertificateOrderRequest, runtime *util.RuntimeOptions) (_result *ListUserCertificateOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3778,6 +4388,14 @@ func (client *Client) ListUserCertificateOrderWithOptions(request *ListUserCerti
 	return _result, _err
 }
 
+/**
+ * You can call the ListUserCertificateOrder operation to query the certificates or certificate orders of users. If you set OrderType to CERT or UPLOAD, certificates are returned. If you set OrderType to CPACK or BUY, certificate orders are returned.
+ * ## Limits
+ * You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request ListUserCertificateOrderRequest
+ * @return ListUserCertificateOrderResponse
+ */
 func (client *Client) ListUserCertificateOrder(request *ListUserCertificateOrderRequest) (_result *ListUserCertificateOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserCertificateOrderResponse{}
@@ -3789,6 +4407,14 @@ func (client *Client) ListUserCertificateOrder(request *ListUserCertificateOrder
 	return _result, _err
 }
 
+/**
+ * You can call this operation to submit a renewal application for a certificate only when the order of the certificate is in the expiring state. After the renewal is complete, a new certificate order whose status is pending application is generated. You must submit a certificate application for the new certificate order and install the new certificate after the new certificate is issued.
+ * > You can call the [DescribeCertificateState](~~455800~~) operation to query the status of a certificate application order. If the value of the **Type** response parameter is **certificate**, the certificate is issued.
+ *
+ * @param request RenewCertificateOrderForPackageRequestRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return RenewCertificateOrderForPackageRequestResponse
+ */
 func (client *Client) RenewCertificateOrderForPackageRequestWithOptions(request *RenewCertificateOrderForPackageRequestRequest, runtime *util.RuntimeOptions) (_result *RenewCertificateOrderForPackageRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3826,6 +4452,13 @@ func (client *Client) RenewCertificateOrderForPackageRequestWithOptions(request 
 	return _result, _err
 }
 
+/**
+ * You can call this operation to submit a renewal application for a certificate only when the order of the certificate is in the expiring state. After the renewal is complete, a new certificate order whose status is pending application is generated. You must submit a certificate application for the new certificate order and install the new certificate after the new certificate is issued.
+ * > You can call the [DescribeCertificateState](~~455800~~) operation to query the status of a certificate application order. If the value of the **Type** response parameter is **certificate**, the certificate is issued.
+ *
+ * @param request RenewCertificateOrderForPackageRequestRequest
+ * @return RenewCertificateOrderForPackageRequestResponse
+ */
 func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCertificateOrderForPackageRequestRequest) (_result *RenewCertificateOrderForPackageRequestResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewCertificateOrderForPackageRequestResponse{}
@@ -3937,6 +4570,13 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 	return _result, _err
 }
 
+/**
+ * The unique identifier of the certificate.
+ *
+ * @param request UploadPCACertRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UploadPCACertResponse
+ */
 func (client *Client) UploadPCACertWithOptions(request *UploadPCACertRequest, runtime *util.RuntimeOptions) (_result *UploadPCACertResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3982,6 +4622,12 @@ func (client *Client) UploadPCACertWithOptions(request *UploadPCACertRequest, ru
 	return _result, _err
 }
 
+/**
+ * The unique identifier of the certificate.
+ *
+ * @param request UploadPCACertRequest
+ * @return UploadPCACertResponse
+ */
 func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *UploadPCACertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadPCACertResponse{}
@@ -3993,6 +4639,13 @@ func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *Upl
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UploadUserCertificateRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return UploadUserCertificateResponse
+ */
 func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertificateRequest, runtime *util.RuntimeOptions) (_result *UploadUserCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4054,6 +4707,12 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 	return _result, _err
 }
 
+/**
+ * You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+ *
+ * @param request UploadUserCertificateRequest
+ * @return UploadUserCertificateResponse
+ */
 func (client *Client) UploadUserCertificate(request *UploadUserCertificateRequest) (_result *UploadUserCertificateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UploadUserCertificateResponse{}
