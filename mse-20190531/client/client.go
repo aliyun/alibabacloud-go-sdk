@@ -3274,7 +3274,7 @@ func (s *AddGatewayRouteShrinkRequest) SetServicesShrink(v string) *AddGatewayRo
 type AddGatewayRouteResponseBody struct {
 	// The status code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The ID of the created route.
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code that is returned.
 	//
@@ -5922,7 +5922,8 @@ type CreateCircuitBreakerRuleRequest struct {
 	// The region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
 	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
 	// The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes. The default value is 20000. This value indicates 20 seconds.
@@ -6019,6 +6020,11 @@ func (s *CreateCircuitBreakerRuleRequest) SetRegionId(v string) *CreateCircuitBr
 
 func (s *CreateCircuitBreakerRuleRequest) SetResource(v string) *CreateCircuitBreakerRuleRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *CreateCircuitBreakerRuleRequest) SetResourceType(v int32) *CreateCircuitBreakerRuleRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -6922,7 +6928,8 @@ type CreateFlowRuleRequest struct {
 	// The region in which the instance resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the API resource.
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The throttling threshold.
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
@@ -6977,6 +6984,11 @@ func (s *CreateFlowRuleRequest) SetRegionId(v string) *CreateFlowRuleRequest {
 
 func (s *CreateFlowRuleRequest) SetResource(v string) *CreateFlowRuleRequest {
 	s.Resource = &v
+	return s
+}
+
+func (s *CreateFlowRuleRequest) SetResourceType(v int32) *CreateFlowRuleRequest {
+	s.ResourceType = &v
 	return s
 }
 
@@ -14777,7 +14789,18 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
 	// The specifications of the gateway.
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the gateway. Valid values: 0: The gateway is being created. 1: The gateway fails to be created. 2: The gateway is running. 3: The gateway is changing. 4: The gateway is scaling down. 6: The gateway is scaling up. 8: The gateway is being deleted. 10: The gateway is restarting. 11: The gateway is being rebuilt. 12: The gateway is updating. 13: The gateway fails to be updated.
+	// The status of the gateway. Valid values:
+	// * 0: The gateway is being created.
+	// * 1: The gateway fails to be created.
+	// * 2: The gateway is running.
+	// * 3: The gateway is changing.
+	// * 4: The gateway is scaling down.
+	// * 6: The gateway is scaling up.
+	// * 8: The gateway is being deleted.
+	// * 10: The gateway is restarting.
+	// * 11: The gateway is being rebuilt.
+	// * 12: The gateway is updating.
+	// * 13: The gateway fails to be updated.
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The description of the status.
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
@@ -24328,7 +24351,8 @@ type ListCircuitBreakerRulesResponseBodyDataResult struct {
 	// The region where the cluster resides.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
 	RetryTimeoutMs *int32 `json:"RetryTimeoutMs,omitempty" xml:"RetryTimeoutMs,omitempty"`
 	// The ID of the rule.
@@ -24427,6 +24451,11 @@ func (s *ListCircuitBreakerRulesResponseBodyDataResult) SetRegionId(v string) *L
 
 func (s *ListCircuitBreakerRulesResponseBodyDataResult) SetResource(v string) *ListCircuitBreakerRulesResponseBodyDataResult {
 	s.Resource = &v
+	return s
+}
+
+func (s *ListCircuitBreakerRulesResponseBodyDataResult) SetResourceType(v int32) *ListCircuitBreakerRulesResponseBodyDataResult {
+	s.ResourceType = &v
 	return s
 }
 
@@ -27273,7 +27302,8 @@ type ListFlowRulesResponseBodyDataResult struct {
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the interface resource.
-	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the rule.
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The throttling threshold.
@@ -27337,6 +27367,11 @@ func (s *ListFlowRulesResponseBodyDataResult) SetRegionId(v string) *ListFlowRul
 
 func (s *ListFlowRulesResponseBodyDataResult) SetResource(v string) *ListFlowRulesResponseBodyDataResult {
 	s.Resource = &v
+	return s
+}
+
+func (s *ListFlowRulesResponseBodyDataResult) SetResourceType(v int32) *ListFlowRulesResponseBodyDataResult {
+	s.ResourceType = &v
 	return s
 }
 
@@ -34514,9 +34549,10 @@ type ModifyGovernanceKubernetesClusterRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the instance.
-	ClusterId      *string                                                   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
 	NamespaceInfos []*ModifyGovernanceKubernetesClusterRequestNamespaceInfos `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty" type:"Repeated"`
-	// The region in which the cluster resides.
+	// The ID of the region in which the instance resides. The region is supported by MSE.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -34549,8 +34585,10 @@ func (s *ModifyGovernanceKubernetesClusterRequest) SetRegionId(v string) *Modify
 }
 
 type ModifyGovernanceKubernetesClusterRequestNamespaceInfos struct {
+	// The microservice namespace.If you do not specify this parameter, Microservice Governance is not enabled for the namespace.
 	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Kubernetes namespace.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyGovernanceKubernetesClusterRequestNamespaceInfos) String() string {
@@ -34578,9 +34616,10 @@ type ModifyGovernanceKubernetesClusterShrinkRequest struct {
 	// *   en: English
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The ID of the instance.
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
 	NamespaceInfosShrink *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	// The region in which the cluster resides.
+	// The ID of the region in which the instance resides. The region is supported by MSE.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -34613,9 +34652,9 @@ func (s *ModifyGovernanceKubernetesClusterShrinkRequest) SetRegionId(v string) *
 }
 
 type ModifyGovernanceKubernetesClusterResponseBody struct {
-	// The status code returned.
+	// The response code returned.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The deletion result.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The HTTP status code returned.
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
@@ -50971,6 +51010,10 @@ func (client *Client) CreateCircuitBreakerRuleWithOptions(request *CreateCircuit
 		query["Resource"] = request.Resource
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RetryTimeoutMs)) {
 		query["RetryTimeoutMs"] = request.RetryTimeoutMs
 	}
@@ -51270,6 +51313,10 @@ func (client *Client) CreateFlowRuleWithOptions(request *CreateFlowRuleRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Resource)) {
 		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
