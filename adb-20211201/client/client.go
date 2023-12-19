@@ -1931,8 +1931,12 @@ func (s *BindDBResourceGroupWithUserResponse) SetBody(v *BindDBResourceGroupWith
 }
 
 type CheckBindRamUserRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the cluster.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CheckBindRamUserRequest) String() string {
@@ -1954,8 +1958,13 @@ func (s *CheckBindRamUserRequest) SetRegionId(v string) *CheckBindRamUserRequest
 }
 
 type CheckBindRamUserResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	// The returned result of the request. Valid values:
+	//
+	// *   **true**: the database account is associated with a RAM user.
+	// *   **false**: the database account is not associated with a RAM user.
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s CheckBindRamUserResponseBody) String() string {
@@ -2489,6 +2498,7 @@ type CreateDBResourceGroupRequest struct {
 	// *   When GroupType is set to Interactive, set this parameter to 16 ACUs.
 	// *   When GroupType is set to Job, set this parameter to 0 ACUs.
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateDBResourceGroupRequest) String() string {
@@ -2541,6 +2551,11 @@ func (s *CreateDBResourceGroupRequest) SetMinClusterCount(v int32) *CreateDBReso
 
 func (s *CreateDBResourceGroupRequest) SetMinComputeResource(v string) *CreateDBResourceGroupRequest {
 	s.MinComputeResource = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequest) SetRegionId(v string) *CreateDBResourceGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -7779,12 +7794,57 @@ func (s *DescribeDBClusterHealthStatusResponse) SetBody(v *DescribeDBClusterHeal
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	DBClusterId   *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	//
+	// > The end time must be later than the start time. The maximum time range that can be specified is two days.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The performance metrics to be queried. Separate multiple values with commas (,). Valid values:
+	//
+	// *   CPU
+	//
+	//     *   **AnalyticDB_CPU_Usage_Percentage**: the average CPU utilization.
+	//
+	// *   Connections
+	//
+	//     *   **AnalyticDB_Instance_Connection_Count**: the number of database connections.
+	//
+	// *   Writes
+	//
+	//     *   **AnalyticDB_TPS**: the write transactions per second (TPS).
+	//     *   **AnalyticDB_InsertRT**: the write response time.
+	//     *   **AnalyticDB_InsertBytes**: the write throughput.
+	//
+	// *   Queries
+	//
+	//     *   **AnalyticDB_QPS**: the queries per second (QPS).
+	//     *   **AnalyticDB_QueryRT**: the query response time.
+	//     *   **AnalyticDB_QueryWaitTime**: the query wait time.
+	//
+	// *   Disks
+	//
+	//     *   **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O utilization.
+	//     *   **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
+	//     *   **AnalyticDB_IO_Throughput**: the disk throughput.
+	//     *   **AnalyticDB_IOPS**: the disk IOPS.
+	//     *   **AnalyticDB_Disk_Usage**: the disk space that is used.
+	//     *   **AnalyticDB_Disk_Usage_Percentage**: the disk usage.
+	//     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
+	//     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by hot data.
+	//
+	// > This parameter must be specified.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The region ID of the cluster.
+	//
+	// > You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
 	ResourcePools *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceRequest) String() string {
@@ -7826,11 +7886,18 @@ func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDB
 }
 
 type DescribeDBClusterPerformanceResponseBody struct {
-	DBClusterId  *string                                                 `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EndTime      *string                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The queried performance metrics.
 	Performances []*DescribeDBClusterPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
-	RequestId    *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime    *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBody) String() string {
@@ -7867,9 +7934,12 @@ func (s *DescribeDBClusterPerformanceResponseBody) SetStartTime(v string) *Descr
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformances struct {
-	Key    *string                                                       `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the performance metric.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The queried performance metric data.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformancesSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	Unit   *string                                                       `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// The unit of the performance metric.
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceResponseBodyPerformances) String() string {
@@ -7896,8 +7966,11 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) SetUnit(v string)
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Tags   *string   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The name of the performance metric value.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag value.
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The values of the performance metric at different points in time.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -8059,8 +8132,9 @@ type DescribeDBClustersRequest struct {
 	// The ID of the resource group.
 	//
 	// If you do not specify this parameter, the information of all resource groups in the cluster is returned.
-	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// 实例的标签信息。
+	Tag []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClustersRequest) String() string {
@@ -8112,7 +8186,9 @@ func (s *DescribeDBClustersRequest) SetTag(v []*DescribeDBClustersRequestTag) *D
 }
 
 type DescribeDBClustersRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 实例的标签键。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 实例的标签值。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8272,8 +8348,9 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// The ID of the resource group.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The specifications of the reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources serve read and write requests. The amount of storage resources is proportional to the read and write performance of the cluster.
-	StorageResource *string                                           `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	Tags            *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
+	// 标签列表。
+	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the virtual private cloud (VPC).
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
@@ -8438,7 +8515,10 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*DescribeD
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签键。
+	// > 您可以调用[TagResources](~~179253~~)接口为目标集群创建标签。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 标签值。
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12580,6 +12660,7 @@ func (s *DescribeUserQuotaResponse) SetBody(v *DescribeUserQuotaResponseBody) *D
 }
 
 type DetachUserENIRequest struct {
+	// The instance ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -12597,6 +12678,7 @@ func (s *DetachUserENIRequest) SetDBClusterId(v string) *DetachUserENIRequest {
 }
 
 type DetachUserENIResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17580,6 +17662,7 @@ type ModifyDBResourceGroupRequest struct {
 	// *   If GroupType is set to Interactive, set the value to 16ACU.
 	// *   If GroupType is set to Job, set the value to 0ACU.
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDBResourceGroupRequest) String() string {
@@ -17632,6 +17715,11 @@ func (s *ModifyDBResourceGroupRequest) SetMinClusterCount(v int32) *ModifyDBReso
 
 func (s *ModifyDBResourceGroupRequest) SetMinComputeResource(v string) *ModifyDBResourceGroupRequest {
 	s.MinComputeResource = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequest) SetRegionId(v string) *ModifyDBResourceGroupRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -19616,6 +19704,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(request *CreateDBResource
 
 	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
 		query["MinComputeResource"] = request.MinComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -25360,6 +25452,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(request *ModifyDBResource
 
 	if !tea.BoolValue(util.IsUnset(request.MinComputeResource)) {
 		query["MinComputeResource"] = request.MinComputeResource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
