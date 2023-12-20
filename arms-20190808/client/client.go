@@ -11547,6 +11547,7 @@ func (s *DeleteContactResponse) SetBody(v *DeleteContactResponseBody) *DeleteCon
 }
 
 type DeleteContactGroupRequest struct {
+	// The ID of the alert contact group.
 	ContactGroupId *int64 `json:"ContactGroupId,omitempty" xml:"ContactGroupId,omitempty"`
 }
 
@@ -11564,7 +11565,12 @@ func (s *DeleteContactGroupRequest) SetContactGroupId(v int64) *DeleteContactGro
 }
 
 type DeleteContactGroupResponseBody struct {
-	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Indicates whether the alert contact group was deleted. Valid values:
+	//
+	// *   `true`
+	// *   `false`
+	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25606,17 +25612,35 @@ func (s *InstallCmsExporterResponse) SetBody(v *InstallCmsExporterResponseBody) 
 }
 
 type InstallEnvironmentFeatureRequest struct {
-	// Language,the default language is Chinese.
+	// The language. Valid values: zh and en. Default value: zh.
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Config information of Feature.
+	// The metadata of the feature.
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Environment ID.
+	// The environment ID.
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Name of Feature.
+	// The name of the feature.
+	//
+	// Valid values:
+	//
+	// *   app-agent-pilot
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// *   metric-agent
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
 	FeatureName *string `json:"FeatureName,omitempty" xml:"FeatureName,omitempty"`
-	// Version of Feature.
+	// The version of the feature.
 	FeatureVersion *string `json:"FeatureVersion,omitempty" xml:"FeatureVersion,omitempty"`
-	// Region of Feature.
+	// The region ID of the feature.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The region ID.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -25666,18 +25690,18 @@ func (s *InstallEnvironmentFeatureRequest) SetRegionId(v string) *InstallEnviron
 }
 
 type InstallEnvironmentFeatureResponseBody struct {
-	// Status code: 200 indicates success.
+	// The HTTP status code. The status code 200 indicates that the request was successful.
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// ReleaseId after installation.
+	// The release ID.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Prompt message.
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// api was successful:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - true: success.
-	// - false: fails.
+	// *   true
+	// *   false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -27812,7 +27836,8 @@ func (s *ListDashboardsRequest) SetTitle(v string) *ListDashboardsRequest {
 
 type ListDashboardsResponseBody struct {
 	// The information about the Grafana dashboard.
-	DashboardVos []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	DashboardVos  []*ListDashboardsResponseBodyDashboardVos `json:"DashboardVos,omitempty" xml:"DashboardVos,omitempty" type:"Repeated"`
+	EnvironmentId *string                                   `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
 	// The indicators of whether the Prometheus service has been activated.
 	PrometheusServiceOpened *string `json:"PrometheusServiceOpened,omitempty" xml:"PrometheusServiceOpened,omitempty"`
 	// The request ID.
@@ -27829,6 +27854,11 @@ func (s ListDashboardsResponseBody) GoString() string {
 
 func (s *ListDashboardsResponseBody) SetDashboardVos(v []*ListDashboardsResponseBodyDashboardVos) *ListDashboardsResponseBody {
 	s.DashboardVos = v
+	return s
+}
+
+func (s *ListDashboardsResponseBody) SetEnvironmentId(v string) *ListDashboardsResponseBody {
+	s.EnvironmentId = &v
 	return s
 }
 
@@ -32000,6 +32030,7 @@ func (s *ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyData) SetProme
 }
 
 type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstances struct {
+	// Auth Token string.
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// The ID of the Prometheus instance.
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -32015,24 +32046,32 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	HttpApiInterUrl   *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
-	HttpApiIntraUrl   *string `json:"HttpApiIntraUrl,omitempty" xml:"HttpApiIntraUrl,omitempty"`
+	// HTTP Api internet url.
+	HttpApiInterUrl *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
+	// HTTP Api intranet url.
+	HttpApiIntraUrl *string `json:"HttpApiIntraUrl,omitempty" xml:"HttpApiIntraUrl,omitempty"`
 	// The billing method. Valid values:
 	//
 	// *   PREPAY: subscription.
 	// *   POSTPAY: pay-as-you-go.
-	PaymentType         *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// Push Gateway internet url.
 	PushGatewayInterUrl *string `json:"PushGatewayInterUrl,omitempty" xml:"PushGatewayInterUrl,omitempty"`
+	// Push Gateway intranet url.
 	PushGatewayIntraUrl *string `json:"PushGatewayIntraUrl,omitempty" xml:"PushGatewayIntraUrl,omitempty"`
 	// The region ID of the Prometheus instance.
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoteReadInterUrl  *string `json:"RemoteReadInterUrl,omitempty" xml:"RemoteReadInterUrl,omitempty"`
-	RemoteReadIntraUrl  *string `json:"RemoteReadIntraUrl,omitempty" xml:"RemoteReadIntraUrl,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Remote Read internet url.
+	RemoteReadInterUrl *string `json:"RemoteReadInterUrl,omitempty" xml:"RemoteReadInterUrl,omitempty"`
+	// Remote Read intranet url.
+	RemoteReadIntraUrl *string `json:"RemoteReadIntraUrl,omitempty" xml:"RemoteReadIntraUrl,omitempty"`
+	// Remote Write internet url.
 	RemoteWriteInterUrl *string `json:"RemoteWriteInterUrl,omitempty" xml:"RemoteWriteInterUrl,omitempty"`
+	// Remote Write intranet url.
 	RemoteWriteIntraUrl *string `json:"RemoteWriteIntraUrl,omitempty" xml:"RemoteWriteIntraUrl,omitempty"`
 	// The ID of the resource group to which the Prometheus instance belongs.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 资源类型
+	// Resource type.
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the security group.
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
@@ -34803,6 +34842,250 @@ func (s *QueryAppMetadataResponse) SetStatusCode(v int32) *QueryAppMetadataRespo
 }
 
 func (s *QueryAppMetadataResponse) SetBody(v *QueryAppMetadataResponseBody) *QueryAppMetadataResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAppTopologyRequest struct {
+	// The application type
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The database domain name.
+	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter conditions.
+	Filters map[string]*string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The ID of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// RPC interface name.
+	Rpc *string `json:"Rpc,omitempty" xml:"Rpc,omitempty"`
+	// The start of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type kind of topology.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryAppTopologyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppTopologyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppTopologyRequest) SetAppType(v string) *QueryAppTopologyRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetDb(v string) *QueryAppTopologyRequest {
+	s.Db = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetDbName(v string) *QueryAppTopologyRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetEndTime(v int64) *QueryAppTopologyRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetFilters(v map[string]*string) *QueryAppTopologyRequest {
+	s.Filters = v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetPid(v string) *QueryAppTopologyRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetRegionId(v string) *QueryAppTopologyRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetRpc(v string) *QueryAppTopologyRequest {
+	s.Rpc = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetStartTime(v int64) *QueryAppTopologyRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryAppTopologyRequest) SetType(v string) *QueryAppTopologyRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryAppTopologyShrinkRequest struct {
+	// The application type
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The database domain name.
+	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
+	// The name of the database.
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The end of the time range to query. Unit: milliseconds.
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The filter conditions.
+	FiltersShrink *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	// The ID of the application.
+	//
+	// Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	// The ID of the region.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// RPC interface name.
+	Rpc *string `json:"Rpc,omitempty" xml:"Rpc,omitempty"`
+	// The start of the time range to query. Unit: milliseconds.
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type kind of topology.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryAppTopologyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppTopologyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetAppType(v string) *QueryAppTopologyShrinkRequest {
+	s.AppType = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetDb(v string) *QueryAppTopologyShrinkRequest {
+	s.Db = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetDbName(v string) *QueryAppTopologyShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetEndTime(v int64) *QueryAppTopologyShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetFiltersShrink(v string) *QueryAppTopologyShrinkRequest {
+	s.FiltersShrink = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetPid(v string) *QueryAppTopologyShrinkRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetRegionId(v string) *QueryAppTopologyShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetRpc(v string) *QueryAppTopologyShrinkRequest {
+	s.Rpc = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetStartTime(v int64) *QueryAppTopologyShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryAppTopologyShrinkRequest) SetType(v string) *QueryAppTopologyShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryAppTopologyResponseBody struct {
+	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned struct.
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// *   true: The call was successful.
+	// *   false: The call failed.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAppTopologyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppTopologyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppTopologyResponseBody) SetCode(v int64) *QueryAppTopologyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAppTopologyResponseBody) SetData(v interface{}) *QueryAppTopologyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAppTopologyResponseBody) SetMessage(v string) *QueryAppTopologyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAppTopologyResponseBody) SetRequestId(v string) *QueryAppTopologyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAppTopologyResponseBody) SetSuccess(v bool) *QueryAppTopologyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAppTopologyResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryAppTopologyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryAppTopologyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAppTopologyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAppTopologyResponse) SetHeaders(v map[string]*string) *QueryAppTopologyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAppTopologyResponse) SetStatusCode(v int32) *QueryAppTopologyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAppTopologyResponse) SetBody(v *QueryAppTopologyResponseBody) *QueryAppTopologyResponse {
 	s.Body = v
 	return s
 }
@@ -54221,6 +54504,92 @@ func (client *Client) QueryAppMetadata(request *QueryAppMetadataRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAppMetadataResponse{}
 	_body, _err := client.QueryAppMetadataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryAppTopologyWithOptions(tmpReq *QueryAppTopologyRequest, runtime *util.RuntimeOptions) (_result *QueryAppTopologyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryAppTopologyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Filters)) {
+		request.FiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filters, tea.String("Filters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Db)) {
+		query["Db"] = request.Db
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FiltersShrink)) {
+		query["Filters"] = request.FiltersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rpc)) {
+		query["Rpc"] = request.Rpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAppTopology"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAppTopologyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryAppTopology(request *QueryAppTopologyRequest) (_result *QueryAppTopologyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAppTopologyResponse{}
+	_body, _err := client.QueryAppTopologyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
