@@ -10130,12 +10130,14 @@ func (s *ListDeployConfigResponseBody) SetTotalCount(v int64) *ListDeployConfigR
 }
 
 type ListDeployConfigResponseBodyData struct {
-	AppId             *int64                                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	ContainerCodePath *ListDeployConfigResponseBodyDataContainerCodePath `json:"ContainerCodePath,omitempty" xml:"ContainerCodePath,omitempty" type:"Struct"`
-	ContainerYamlConf *ListDeployConfigResponseBodyDataContainerYamlConf `json:"ContainerYamlConf,omitempty" xml:"ContainerYamlConf,omitempty" type:"Struct"`
-	EnvType           *string                                            `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Id                *int64                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name              *string                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+	AppId                    *int64                                                    `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ContainerCodePath        *ListDeployConfigResponseBodyDataContainerCodePath        `json:"ContainerCodePath,omitempty" xml:"ContainerCodePath,omitempty" type:"Struct"`
+	ContainerResourceLimit   *ListDeployConfigResponseBodyDataContainerResourceLimit   `json:"ContainerResourceLimit,omitempty" xml:"ContainerResourceLimit,omitempty" type:"Struct"`
+	ContainerResourceRequest *ListDeployConfigResponseBodyDataContainerResourceRequest `json:"ContainerResourceRequest,omitempty" xml:"ContainerResourceRequest,omitempty" type:"Struct"`
+	ContainerYamlConf        *ListDeployConfigResponseBodyDataContainerYamlConf        `json:"ContainerYamlConf,omitempty" xml:"ContainerYamlConf,omitempty" type:"Struct"`
+	EnvType                  *string                                                   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	Id                       *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                     *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ListDeployConfigResponseBodyData) String() string {
@@ -10153,6 +10155,16 @@ func (s *ListDeployConfigResponseBodyData) SetAppId(v int64) *ListDeployConfigRe
 
 func (s *ListDeployConfigResponseBodyData) SetContainerCodePath(v *ListDeployConfigResponseBodyDataContainerCodePath) *ListDeployConfigResponseBodyData {
 	s.ContainerCodePath = v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyData) SetContainerResourceLimit(v *ListDeployConfigResponseBodyDataContainerResourceLimit) *ListDeployConfigResponseBodyData {
+	s.ContainerResourceLimit = v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyData) SetContainerResourceRequest(v *ListDeployConfigResponseBodyDataContainerResourceRequest) *ListDeployConfigResponseBodyData {
+	s.ContainerResourceRequest = v
 	return s
 }
 
@@ -10190,6 +10202,76 @@ func (s ListDeployConfigResponseBodyDataContainerCodePath) GoString() string {
 
 func (s *ListDeployConfigResponseBodyDataContainerCodePath) SetCodePath(v string) *ListDeployConfigResponseBodyDataContainerCodePath {
 	s.CodePath = &v
+	return s
+}
+
+type ListDeployConfigResponseBodyDataContainerResourceLimit struct {
+	Cpu     *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu     *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Memory  *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+}
+
+func (s ListDeployConfigResponseBodyDataContainerResourceLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeployConfigResponseBodyDataContainerResourceLimit) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceLimit) SetCpu(v string) *ListDeployConfigResponseBodyDataContainerResourceLimit {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceLimit) SetGpu(v string) *ListDeployConfigResponseBodyDataContainerResourceLimit {
+	s.Gpu = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceLimit) SetMemory(v string) *ListDeployConfigResponseBodyDataContainerResourceLimit {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceLimit) SetStorage(v string) *ListDeployConfigResponseBodyDataContainerResourceLimit {
+	s.Storage = &v
+	return s
+}
+
+type ListDeployConfigResponseBodyDataContainerResourceRequest struct {
+	Cpu     *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Gpu     *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
+	Memory  *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Storage *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+}
+
+func (s ListDeployConfigResponseBodyDataContainerResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeployConfigResponseBodyDataContainerResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceRequest) SetCpu(v string) *ListDeployConfigResponseBodyDataContainerResourceRequest {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceRequest) SetGpu(v string) *ListDeployConfigResponseBodyDataContainerResourceRequest {
+	s.Gpu = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceRequest) SetMemory(v string) *ListDeployConfigResponseBodyDataContainerResourceRequest {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListDeployConfigResponseBodyDataContainerResourceRequest) SetStorage(v string) *ListDeployConfigResponseBodyDataContainerResourceRequest {
+	s.Storage = &v
 	return s
 }
 
@@ -20702,12 +20784,12 @@ func (client *Client) UpdateNormalDeployConfigWithOptions(tmpReq *UpdateNormalDe
 	}
 	request := &UpdateNormalDeployConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ContainerResourceLimit))) {
-		request.ContainerResourceLimitShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ContainerResourceLimit), tea.String("ContainerResourceLimit"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContainerResourceLimit)) {
+		request.ContainerResourceLimitShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContainerResourceLimit, tea.String("ContainerResourceLimit"), tea.String("json"))
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.ContainerResourceRequest))) {
-		request.ContainerResourceRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.ContainerResourceRequest), tea.String("ContainerResourceRequest"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContainerResourceRequest)) {
+		request.ContainerResourceRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContainerResourceRequest, tea.String("ContainerResourceRequest"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
