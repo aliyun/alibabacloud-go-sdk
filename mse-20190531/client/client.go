@@ -37044,6 +37044,7 @@ type QueryClusterInfoResponseBodyData struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// The version of the instance.
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	CanUpdate  *bool   `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
 	// The billing method, such as subscription or pay-as-you-go.
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The alias of the instance.
@@ -37118,7 +37119,8 @@ type QueryClusterInfoResponseBodyData struct {
 	// The tag.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the vSwitch.
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
 	// The ID of the VPC where the instance resides.
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -37143,6 +37145,11 @@ func (s *QueryClusterInfoResponseBodyData) SetAclId(v string) *QueryClusterInfoR
 
 func (s *QueryClusterInfoResponseBodyData) SetAppVersion(v string) *QueryClusterInfoResponseBodyData {
 	s.AppVersion = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetCanUpdate(v bool) *QueryClusterInfoResponseBodyData {
+	s.CanUpdate = &v
 	return s
 }
 
@@ -37328,6 +37335,11 @@ func (s *QueryClusterInfoResponseBodyData) SetTags(v map[string]interface{}) *Qu
 
 func (s *QueryClusterInfoResponseBodyData) SetVSwitchId(v string) *QueryClusterInfoResponseBodyData {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetVersionCode(v string) *QueryClusterInfoResponseBodyData {
+	s.VersionCode = &v
 	return s
 }
 
