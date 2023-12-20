@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/tingwu-20230930
+module github.com/alibabacloud-go/tingwu-20230930/v2
 
 go 1.15
 

@@ -195,7 +195,7 @@ func (s *CreateTaskRequestParametersMeetingAssistance) SetTypes(v []*string) *Cr
 }
 
 type CreateTaskRequestParametersSummarization struct {
-	Types map[string]interface{} `json:"Types,omitempty" xml:"Types,omitempty"`
+	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
 func (s CreateTaskRequestParametersSummarization) String() string {
@@ -206,7 +206,7 @@ func (s CreateTaskRequestParametersSummarization) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTaskRequestParametersSummarization) SetTypes(v map[string]interface{}) *CreateTaskRequestParametersSummarization {
+func (s *CreateTaskRequestParametersSummarization) SetTypes(v []*string) *CreateTaskRequestParametersSummarization {
 	s.Types = v
 	return s
 }
@@ -305,8 +305,8 @@ func (s *CreateTaskRequestParametersTranscriptionDiarization) SetSpeakerCount(v 
 }
 
 type CreateTaskRequestParametersTranslation struct {
-	OutputLevel     *int32                 `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
-	TargetLanguages map[string]interface{} `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty"`
+	OutputLevel     *int32    `json:"OutputLevel,omitempty" xml:"OutputLevel,omitempty"`
+	TargetLanguages []*string `json:"TargetLanguages,omitempty" xml:"TargetLanguages,omitempty" type:"Repeated"`
 }
 
 func (s CreateTaskRequestParametersTranslation) String() string {
@@ -322,7 +322,7 @@ func (s *CreateTaskRequestParametersTranslation) SetOutputLevel(v int32) *Create
 	return s
 }
 
-func (s *CreateTaskRequestParametersTranslation) SetTargetLanguages(v map[string]interface{}) *CreateTaskRequestParametersTranslation {
+func (s *CreateTaskRequestParametersTranslation) SetTargetLanguages(v []*string) *CreateTaskRequestParametersTranslation {
 	s.TargetLanguages = v
 	return s
 }
