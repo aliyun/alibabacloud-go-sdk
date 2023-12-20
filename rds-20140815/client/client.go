@@ -22406,6 +22406,7 @@ type DescribeDBInstanceSSLResponseBody struct {
 	ClientCertRevocationList *string `json:"ClientCertRevocationList,omitempty" xml:"ClientCertRevocationList,omitempty"`
 	// The endpoint that is protected by SSL encryption.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	ForceEncryption  *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
 	// The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
 	//
 	// *   **success**
@@ -22460,7 +22461,8 @@ type DescribeDBInstanceSSLResponseBody struct {
 	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
-	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ServerKey  *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s DescribeDBInstanceSSLResponseBody) String() string {
@@ -22498,6 +22500,11 @@ func (s *DescribeDBInstanceSSLResponseBody) SetClientCertRevocationList(v string
 
 func (s *DescribeDBInstanceSSLResponseBody) SetConnectionString(v string) *DescribeDBInstanceSSLResponseBody {
 	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetForceEncryption(v string) *DescribeDBInstanceSSLResponseBody {
+	s.ForceEncryption = &v
 	return s
 }
 
@@ -22563,6 +22570,11 @@ func (s *DescribeDBInstanceSSLResponseBody) SetServerCert(v string) *DescribeDBI
 
 func (s *DescribeDBInstanceSSLResponseBody) SetServerKey(v string) *DescribeDBInstanceSSLResponseBody {
 	s.ServerKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSSLResponseBody) SetTlsVersion(v string) *DescribeDBInstanceSSLResponseBody {
+	s.TlsVersion = &v
 	return s
 }
 
@@ -48132,9 +48144,10 @@ type ModifyDBInstanceSSLRequest struct {
 	// The internal or public endpoint for which the server certificate needs to be created or updated.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DBInstanceId    *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	ForceEncryption *string `json:"ForceEncryption,omitempty" xml:"ForceEncryption,omitempty"`
+	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
 	//
 	// *   **cert**
@@ -48152,7 +48165,8 @@ type ModifyDBInstanceSSLRequest struct {
 	// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
 	ServerCert *string `json:"ServerCert,omitempty" xml:"ServerCert,omitempty"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
-	ServerKey *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	ServerKey  *string `json:"ServerKey,omitempty" xml:"ServerKey,omitempty"`
+	TlsVersion *string `json:"TlsVersion,omitempty" xml:"TlsVersion,omitempty"`
 }
 
 func (s ModifyDBInstanceSSLRequest) String() string {
@@ -48203,6 +48217,11 @@ func (s *ModifyDBInstanceSSLRequest) SetDBInstanceId(v string) *ModifyDBInstance
 	return s
 }
 
+func (s *ModifyDBInstanceSSLRequest) SetForceEncryption(v string) *ModifyDBInstanceSSLRequest {
+	s.ForceEncryption = &v
+	return s
+}
+
 func (s *ModifyDBInstanceSSLRequest) SetOwnerAccount(v string) *ModifyDBInstanceSSLRequest {
 	s.OwnerAccount = &v
 	return s
@@ -48240,6 +48259,11 @@ func (s *ModifyDBInstanceSSLRequest) SetServerCert(v string) *ModifyDBInstanceSS
 
 func (s *ModifyDBInstanceSSLRequest) SetServerKey(v string) *ModifyDBInstanceSSLRequest {
 	s.ServerKey = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetTlsVersion(v string) *ModifyDBInstanceSSLRequest {
+	s.TlsVersion = &v
 	return s
 }
 
@@ -79546,6 +79570,10 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ForceEncryption)) {
+		query["ForceEncryption"] = request.ForceEncryption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -79576,6 +79604,10 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 
 	if !tea.BoolValue(util.IsUnset(request.ServerKey)) {
 		query["ServerKey"] = request.ServerKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TlsVersion)) {
+		query["TlsVersion"] = request.TlsVersion
 	}
 
 	req := &openapi.OpenApiRequest{
