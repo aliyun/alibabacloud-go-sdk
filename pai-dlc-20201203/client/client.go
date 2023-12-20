@@ -12,6 +12,53 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AIMasterMessage struct {
+	Extended        *string `json:"Extended,omitempty" xml:"Extended,omitempty"`
+	JobRestartCount *int32  `json:"JobRestartCount,omitempty" xml:"JobRestartCount,omitempty"`
+	MessageContent  *string `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	MessageEvent    *string `json:"MessageEvent,omitempty" xml:"MessageEvent,omitempty"`
+	MessageVersion  *int32  `json:"MessageVersion,omitempty" xml:"MessageVersion,omitempty"`
+	RestartType     *string `json:"RestartType,omitempty" xml:"RestartType,omitempty"`
+}
+
+func (s AIMasterMessage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AIMasterMessage) GoString() string {
+	return s.String()
+}
+
+func (s *AIMasterMessage) SetExtended(v string) *AIMasterMessage {
+	s.Extended = &v
+	return s
+}
+
+func (s *AIMasterMessage) SetJobRestartCount(v int32) *AIMasterMessage {
+	s.JobRestartCount = &v
+	return s
+}
+
+func (s *AIMasterMessage) SetMessageContent(v string) *AIMasterMessage {
+	s.MessageContent = &v
+	return s
+}
+
+func (s *AIMasterMessage) SetMessageEvent(v string) *AIMasterMessage {
+	s.MessageEvent = &v
+	return s
+}
+
+func (s *AIMasterMessage) SetMessageVersion(v int32) *AIMasterMessage {
+	s.MessageVersion = &v
+	return s
+}
+
+func (s *AIMasterMessage) SetRestartType(v string) *AIMasterMessage {
+	s.RestartType = &v
+	return s
+}
+
 type AliyunAccounts struct {
 	AliyunUid     *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 	EmployeeId    *string `json:"EmployeeId,omitempty" xml:"EmployeeId,omitempty"`
@@ -1323,12 +1370,14 @@ type JobSettings struct {
 	EnableErrorMonitoringInAIMaster *bool                  `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
 	EnableOssAppend                 *bool                  `json:"EnableOssAppend,omitempty" xml:"EnableOssAppend,omitempty"`
 	EnableRDMA                      *bool                  `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
+	EnableSanityCheck               *bool                  `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
 	EnableTideResource              *bool                  `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
 	ErrorMonitoringArgs             *string                `json:"ErrorMonitoringArgs,omitempty" xml:"ErrorMonitoringArgs,omitempty"`
 	JobReservedMinutes              *int32                 `json:"JobReservedMinutes,omitempty" xml:"JobReservedMinutes,omitempty"`
 	JobReservedPolicy               *string                `json:"JobReservedPolicy,omitempty" xml:"JobReservedPolicy,omitempty"`
 	OversoldType                    *string                `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
 	PipelineId                      *string                `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	SanityCheckArgs                 *string                `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
 	Tags                            map[string]*string     `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -1375,6 +1424,11 @@ func (s *JobSettings) SetEnableRDMA(v bool) *JobSettings {
 	return s
 }
 
+func (s *JobSettings) SetEnableSanityCheck(v bool) *JobSettings {
+	s.EnableSanityCheck = &v
+	return s
+}
+
 func (s *JobSettings) SetEnableTideResource(v bool) *JobSettings {
 	s.EnableTideResource = &v
 	return s
@@ -1402,6 +1456,11 @@ func (s *JobSettings) SetOversoldType(v string) *JobSettings {
 
 func (s *JobSettings) SetPipelineId(v string) *JobSettings {
 	s.PipelineId = &v
+	return s
+}
+
+func (s *JobSettings) SetSanityCheckArgs(v string) *JobSettings {
+	s.SanityCheckArgs = &v
 	return s
 }
 
@@ -2029,6 +2088,47 @@ func (s *SmartCache) SetType(v string) *SmartCache {
 
 func (s *SmartCache) SetUserId(v string) *SmartCache {
 	s.UserId = &v
+	return s
+}
+
+type StatusTransitionItem struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ReasonCode    *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s StatusTransitionItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StatusTransitionItem) GoString() string {
+	return s.String()
+}
+
+func (s *StatusTransitionItem) SetEndTime(v string) *StatusTransitionItem {
+	s.EndTime = &v
+	return s
+}
+
+func (s *StatusTransitionItem) SetReasonCode(v string) *StatusTransitionItem {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *StatusTransitionItem) SetReasonMessage(v string) *StatusTransitionItem {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *StatusTransitionItem) SetStartTime(v string) *StatusTransitionItem {
+	s.StartTime = &v
+	return s
+}
+
+func (s *StatusTransitionItem) SetStatus(v string) *StatusTransitionItem {
+	s.Status = &v
 	return s
 }
 
