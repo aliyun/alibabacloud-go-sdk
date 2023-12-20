@@ -7535,6 +7535,241 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type ListEiamInstancesRequest struct {
+	// 实例ID列表，支持0到100个
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// 实例所属Region
+	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
+}
+
+func (s ListEiamInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamInstancesRequest) SetInstanceIds(v []*string) *ListEiamInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListEiamInstancesRequest) SetInstanceRegionId(v string) *ListEiamInstancesRequest {
+	s.InstanceRegionId = &v
+	return s
+}
+
+type ListEiamInstancesResponseBody struct {
+	Instances []*ListEiamInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEiamInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamInstancesResponseBody) SetInstances(v []*ListEiamInstancesResponseBodyInstances) *ListEiamInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBody) SetRequestId(v string) *ListEiamInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEiamInstancesResponseBodyInstances struct {
+	// 实例描述信息
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 实例developer私网域名地址
+	DeveloperAPIPrivateDomain *string `json:"DeveloperAPIPrivateDomain,omitempty" xml:"DeveloperAPIPrivateDomain,omitempty"`
+	// 实例developer公网域名地址
+	DeveloperAPIPublicDomain *string `json:"DeveloperAPIPublicDomain,omitempty" xml:"DeveloperAPIPublicDomain,omitempty"`
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例状态，Pending(初始状态)、Creating(创建中)、Running(运行中)、Disabled(禁用)、CreateFailed(创建失败)
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// 实例版本，EIAM2.0/ EIAM1.0
+	InstanceVersion *string `json:"InstanceVersion,omitempty" xml:"InstanceVersion,omitempty"`
+	// 实例openApi私网域名地址
+	OpenAPIPrivateDomain *string `json:"OpenAPIPrivateDomain,omitempty" xml:"OpenAPIPrivateDomain,omitempty"`
+	// 实例openApi公网域名地址
+	OpenAPIPublicDomain *string `json:"OpenAPIPublicDomain,omitempty" xml:"OpenAPIPublicDomain,omitempty"`
+	// 实例域名地址
+	SSODomain *string `json:"SSODomain,omitempty" xml:"SSODomain,omitempty"`
+	// 实例的创建时间
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListEiamInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetDescription(v string) *ListEiamInstancesResponseBodyInstances {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetDeveloperAPIPrivateDomain(v string) *ListEiamInstancesResponseBodyInstances {
+	s.DeveloperAPIPrivateDomain = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetDeveloperAPIPublicDomain(v string) *ListEiamInstancesResponseBodyInstances {
+	s.DeveloperAPIPublicDomain = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetInstanceId(v string) *ListEiamInstancesResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetInstanceStatus(v string) *ListEiamInstancesResponseBodyInstances {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetInstanceVersion(v string) *ListEiamInstancesResponseBodyInstances {
+	s.InstanceVersion = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetOpenAPIPrivateDomain(v string) *ListEiamInstancesResponseBodyInstances {
+	s.OpenAPIPrivateDomain = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetOpenAPIPublicDomain(v string) *ListEiamInstancesResponseBodyInstances {
+	s.OpenAPIPublicDomain = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetSSODomain(v string) *ListEiamInstancesResponseBodyInstances {
+	s.SSODomain = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponseBodyInstances) SetStartTime(v int64) *ListEiamInstancesResponseBodyInstances {
+	s.StartTime = &v
+	return s
+}
+
+type ListEiamInstancesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEiamInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEiamInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamInstancesResponse) SetHeaders(v map[string]*string) *ListEiamInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEiamInstancesResponse) SetStatusCode(v int32) *ListEiamInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEiamInstancesResponse) SetBody(v *ListEiamInstancesResponseBody) *ListEiamInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListEiamRegionsResponseBody struct {
+	Regions   []*ListEiamRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEiamRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamRegionsResponseBody) SetRegions(v []*ListEiamRegionsResponseBodyRegions) *ListEiamRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *ListEiamRegionsResponseBody) SetRequestId(v string) *ListEiamRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEiamRegionsResponseBodyRegions struct {
+	// 地域名称
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// 地域ID
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListEiamRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamRegionsResponseBodyRegions) SetLocalName(v string) *ListEiamRegionsResponseBodyRegions {
+	s.LocalName = &v
+	return s
+}
+
+func (s *ListEiamRegionsResponseBodyRegions) SetRegionId(v string) *ListEiamRegionsResponseBodyRegions {
+	s.RegionId = &v
+	return s
+}
+
+type ListEiamRegionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEiamRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEiamRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEiamRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEiamRegionsResponse) SetHeaders(v map[string]*string) *ListEiamRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEiamRegionsResponse) SetStatusCode(v int32) *ListEiamRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEiamRegionsResponse) SetBody(v *ListEiamRegionsResponseBody) *ListEiamRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupsRequest struct {
 	// The external ID of the group.
 	GroupExternalId *string `json:"GroupExternalId,omitempty" xml:"GroupExternalId,omitempty"`
@@ -16356,6 +16591,87 @@ func (client *Client) ListDomains(request *ListDomainsRequest) (_result *ListDom
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDomainsResponse{}
 	_body, _err := client.ListDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEiamInstancesWithOptions(request *ListEiamInstancesRequest, runtime *util.RuntimeOptions) (_result *ListEiamInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceRegionId)) {
+		query["InstanceRegionId"] = request.InstanceRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEiamInstances"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEiamInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEiamInstances(request *ListEiamInstancesRequest) (_result *ListEiamInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEiamInstancesResponse{}
+	_body, _err := client.ListEiamInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEiamRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListEiamRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListEiamRegions"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEiamRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEiamRegionsResponse{}
+	_body, _err := client.ListEiamRegionsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
