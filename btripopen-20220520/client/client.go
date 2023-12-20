@@ -9186,6 +9186,164 @@ func (s *ApplyQueryResponse) SetBody(v *ApplyQueryResponseBody) *ApplyQueryRespo
 	return s
 }
 
+type BaseCityInfoSearchHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XAcsBtripAccessToken *string            `json:"x-acs-btrip-access-token,omitempty" xml:"x-acs-btrip-access-token,omitempty"`
+}
+
+func (s BaseCityInfoSearchHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCityInfoSearchHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCityInfoSearchHeaders) SetCommonHeaders(v map[string]*string) *BaseCityInfoSearchHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *BaseCityInfoSearchHeaders) SetXAcsBtripAccessToken(v string) *BaseCityInfoSearchHeaders {
+	s.XAcsBtripAccessToken = &v
+	return s
+}
+
+type BaseCityInfoSearchRequest struct {
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Region  *string `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s BaseCityInfoSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCityInfoSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCityInfoSearchRequest) SetKeyword(v string) *BaseCityInfoSearchRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchRequest) SetRegion(v string) *BaseCityInfoSearchRequest {
+	s.Region = &v
+	return s
+}
+
+type BaseCityInfoSearchResponseBody struct {
+	Code      *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Message   *string                                 `json:"message,omitempty" xml:"message,omitempty"`
+	Module    []*BaseCityInfoSearchResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool                                   `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s BaseCityInfoSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCityInfoSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetCode(v string) *BaseCityInfoSearchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetMessage(v string) *BaseCityInfoSearchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetModule(v []*BaseCityInfoSearchResponseBodyModule) *BaseCityInfoSearchResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetRequestId(v string) *BaseCityInfoSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetSuccess(v bool) *BaseCityInfoSearchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBody) SetTraceId(v string) *BaseCityInfoSearchResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type BaseCityInfoSearchResponseBodyModule struct {
+	Code     *string `json:"code,omitempty" xml:"code,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameTree *string `json:"nameTree,omitempty" xml:"nameTree,omitempty"`
+	Region   *string `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s BaseCityInfoSearchResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCityInfoSearchResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCityInfoSearchResponseBodyModule) SetCode(v string) *BaseCityInfoSearchResponseBodyModule {
+	s.Code = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBodyModule) SetName(v string) *BaseCityInfoSearchResponseBodyModule {
+	s.Name = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBodyModule) SetNameTree(v string) *BaseCityInfoSearchResponseBodyModule {
+	s.NameTree = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponseBodyModule) SetRegion(v string) *BaseCityInfoSearchResponseBodyModule {
+	s.Region = &v
+	return s
+}
+
+type BaseCityInfoSearchResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BaseCityInfoSearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BaseCityInfoSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BaseCityInfoSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BaseCityInfoSearchResponse) SetHeaders(v map[string]*string) *BaseCityInfoSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponse) SetStatusCode(v int32) *BaseCityInfoSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BaseCityInfoSearchResponse) SetBody(v *BaseCityInfoSearchResponseBody) *BaseCityInfoSearchResponse {
+	s.Body = v
+	return s
+}
+
 type BtripBillInfoAdjustHeaders struct {
 	CommonHeaders      map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XAcsBtripCorpToken *string            `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
@@ -10478,6 +10636,8 @@ type CarBillSettlementQueryResponseBodyModuleDataList struct {
 	OrderId               *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OrderPrice            *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
 	OverApplyId           *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId   *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
 	PersonSettleFee       *float64 `json:"person_settle_fee,omitempty" xml:"person_settle_fee,omitempty"`
 	PrimaryId             *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
 	ProjectCode           *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
@@ -10739,6 +10899,16 @@ func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetOrderPrice(v float
 
 func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *CarBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *CarBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -15683,6 +15853,7 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	AdvanceDay       *int32  `json:"advance_day,omitempty" xml:"advance_day,omitempty"`
 	AirlineCorpCode  *string `json:"airline_corp_code,omitempty" xml:"airline_corp_code,omitempty"`
 	AirlineCorpName  *string `json:"airline_corp_name,omitempty" xml:"airline_corp_name,omitempty"`
+	AlipayId         *string `json:"alipay_id,omitempty" xml:"alipay_id,omitempty"`
 	AlipayTradeNo    *string `json:"alipay_trade_no,omitempty" xml:"alipay_trade_no,omitempty"`
 	ApplyArrCityCode *string `json:"apply_arr_city_code,omitempty" xml:"apply_arr_city_code,omitempty"`
 	ApplyArrCityName *string `json:"apply_arr_city_name,omitempty" xml:"apply_arr_city_name,omitempty"`
@@ -15747,6 +15918,8 @@ type FlightBillSettlementQueryResponseBodyModuleDataList struct {
 	OilFee                 *float64 `json:"oil_fee,omitempty" xml:"oil_fee,omitempty"`
 	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
 	PersonSettlePrice      *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
 	PreBookTip             *string  `json:"pre_book_tip,omitempty" xml:"pre_book_tip,omitempty"`
 	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
@@ -15798,6 +15971,11 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpCode
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAirlineCorpName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.AirlineCorpName = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetAlipayId(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.AlipayId = &v
 	return s
 }
 
@@ -16113,6 +16291,16 @@ func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetOrderId(v strin
 
 func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *FlightBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *FlightBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -39521,67 +39709,69 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
 	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
-	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
-	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	AverageNights      *string  `json:"average_nights,omitempty" xml:"average_nights,omitempty"`
-	BillRecordTime     *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
-	BookReason         *string  `json:"book_reason,omitempty" xml:"book_reason,omitempty"`
-	BookTime           *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	BookerId           *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
-	BookerJobNo        *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
-	BookerName         *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
-	BrandGroup         *string  `json:"brand_group,omitempty" xml:"brand_group,omitempty"`
-	BrandName          *string  `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
-	BusinessTripResult *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
-	CapitalDirection   *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
-	CascadeDepartment  *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
-	CheckInDate        *string  `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
-	CheckoutDate       *string  `json:"checkout_date,omitempty" xml:"checkout_date,omitempty"`
-	City               *string  `json:"city,omitempty" xml:"city,omitempty"`
-	CityCode           *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	CityCounty         *string  `json:"city_county,omitempty" xml:"city_county,omitempty"`
-	CityCountyCode     *string  `json:"city_county_code,omitempty" xml:"city_county_code,omitempty"`
-	CorpRefundFee      *float64 `json:"corp_refund_fee,omitempty" xml:"corp_refund_fee,omitempty"`
-	CorpTotalFee       *float64 `json:"corp_total_fee,omitempty" xml:"corp_total_fee,omitempty"`
-	CostCenter         *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	CostCenterNumber   *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	Department         *string  `json:"department,omitempty" xml:"department,omitempty"`
-	DepartmentId       *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
-	ExceedReason       *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	FeeType            *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	Fees               *float64 `json:"fees,omitempty" xml:"fees,omitempty"`
-	Fines              *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
-	FuPointFee         *float64 `json:"fu_point_fee,omitempty" xml:"fu_point_fee,omitempty"`
-	HotelName          *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
-	Index              *string  `json:"index,omitempty" xml:"index,omitempty"`
-	InvoiceTitle       *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	IsEarlyDeparture   *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
-	IsNegotiation      *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
-	IsShareStr         *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
-	Nights             *int32   `json:"nights,omitempty" xml:"nights,omitempty"`
-	OrderId            *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderPrice         *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
-	OrderType          *string  `json:"order_type,omitempty" xml:"order_type,omitempty"`
-	OverApplyId        *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
-	PersonRefundFee    *float64 `json:"person_refund_fee,omitempty" xml:"person_refund_fee,omitempty"`
-	PersonSettlePrice  *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
-	PrimaryId          *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
-	ProjectCode        *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName        *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	PromotionFee       *float64 `json:"promotion_fee,omitempty" xml:"promotion_fee,omitempty"`
-	Remark             *string  `json:"remark,omitempty" xml:"remark,omitempty"`
-	ReserveRule        *string  `json:"reserve_rule,omitempty" xml:"reserve_rule,omitempty"`
-	RoomNo             *string  `json:"room_no,omitempty" xml:"room_no,omitempty"`
-	RoomNumber         *int32   `json:"room_number,omitempty" xml:"room_number,omitempty"`
-	RoomPrice          *float64 `json:"room_price,omitempty" xml:"room_price,omitempty"`
-	RoomType           *string  `json:"room_type,omitempty" xml:"room_type,omitempty"`
-	ServiceFee         *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	SettlementFee      *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
-	SettlementGrantFee *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
-	SettlementTime     *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
-	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	Star               *string  `json:"star,omitempty" xml:"star,omitempty"`
-	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	ApplyExtendField      *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId               *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	AverageNights         *string  `json:"average_nights,omitempty" xml:"average_nights,omitempty"`
+	BillRecordTime        *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookReason            *string  `json:"book_reason,omitempty" xml:"book_reason,omitempty"`
+	BookTime              *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId              *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo           *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName            *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BrandGroup            *string  `json:"brand_group,omitempty" xml:"brand_group,omitempty"`
+	BrandName             *string  `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
+	BusinessTripResult    *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
+	CapitalDirection      *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment     *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	CheckInDate           *string  `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	CheckoutDate          *string  `json:"checkout_date,omitempty" xml:"checkout_date,omitempty"`
+	City                  *string  `json:"city,omitempty" xml:"city,omitempty"`
+	CityCode              *string  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityCounty            *string  `json:"city_county,omitempty" xml:"city_county,omitempty"`
+	CityCountyCode        *string  `json:"city_county_code,omitempty" xml:"city_county_code,omitempty"`
+	CorpRefundFee         *float64 `json:"corp_refund_fee,omitempty" xml:"corp_refund_fee,omitempty"`
+	CorpTotalFee          *float64 `json:"corp_total_fee,omitempty" xml:"corp_total_fee,omitempty"`
+	CostCenter            *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber      *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Department            *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId          *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	ExceedReason          *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	FeeType               *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	Fees                  *float64 `json:"fees,omitempty" xml:"fees,omitempty"`
+	Fines                 *float64 `json:"fines,omitempty" xml:"fines,omitempty"`
+	FuPointFee            *float64 `json:"fu_point_fee,omitempty" xml:"fu_point_fee,omitempty"`
+	HotelName             *string  `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	Index                 *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InvoiceTitle          *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IsEarlyDeparture      *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
+	IsNegotiation         *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
+	IsShareStr            *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	Nights                *int32   `json:"nights,omitempty" xml:"nights,omitempty"`
+	OrderId               *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderPrice            *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OrderType             *string  `json:"order_type,omitempty" xml:"order_type,omitempty"`
+	OverApplyId           *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId   *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	PersonRefundFee       *float64 `json:"person_refund_fee,omitempty" xml:"person_refund_fee,omitempty"`
+	PersonSettlePrice     *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
+	PrimaryId             *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	ProjectCode           *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName           *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	PromotionFee          *float64 `json:"promotion_fee,omitempty" xml:"promotion_fee,omitempty"`
+	Remark                *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReserveRule           *string  `json:"reserve_rule,omitempty" xml:"reserve_rule,omitempty"`
+	RoomNo                *string  `json:"room_no,omitempty" xml:"room_no,omitempty"`
+	RoomNumber            *int32   `json:"room_number,omitempty" xml:"room_number,omitempty"`
+	RoomPrice             *float64 `json:"room_price,omitempty" xml:"room_price,omitempty"`
+	RoomType              *string  `json:"room_type,omitempty" xml:"room_type,omitempty"`
+	ServiceFee            *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee         *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee    *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime        *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType        *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	Star                  *string  `json:"star,omitempty" xml:"star,omitempty"`
+	Status                *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
 	TaxRate                *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
 	ThirdItineraryId       *string `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
@@ -39833,6 +40023,16 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetOrderType(v stri
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -47488,6 +47688,8 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	OrderId                *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
 	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
 	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
 	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
 	ProjectCode            *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
 	ProjectName            *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
@@ -47821,6 +48023,16 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetOrderStatusDe
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -48195,6 +48407,8 @@ type IeHotelBillSettlementQueryResponseBodyModuleDataList struct {
 	OrderStatusDesc        *string  `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
 	OrderType              *string  `json:"order_type,omitempty" xml:"order_type,omitempty"`
 	OverApplyId            *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId    *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName  *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
 	PersonRefundFee        *float64 `json:"person_refund_fee,omitempty" xml:"person_refund_fee,omitempty"`
 	PersonSettlePrice      *float64 `json:"person_settle_price,omitempty" xml:"person_settle_price,omitempty"`
 	PrimaryId              *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
@@ -48488,6 +48702,16 @@ func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOrderType(v st
 
 func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *IeHotelBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *IeHotelBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -61492,60 +61716,62 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	ApplyDepCityCode *string `json:"apply_dep_city_code,omitempty" xml:"apply_dep_city_code,omitempty"`
 	ApplyDepCityName *string `json:"apply_dep_city_name,omitempty" xml:"apply_dep_city_name,omitempty"`
 	// 审批扩展自定义字段
-	ApplyExtendField   *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
-	ApplyId            *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
-	ArrCityCode        *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
-	ArrCityName        *string  `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
-	ArrDate            *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
-	ArrStation         *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
-	ArrTime            *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
-	BillRecordTime     *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
-	BookTime           *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
-	BookerId           *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
-	BookerJobNo        *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
-	BookerName         *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
-	BusinessTripResult *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
-	CapitalDirection   *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
-	CascadeDepartment  *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
-	ChangeFee          *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
-	ChangeResult       *string  `json:"change_result,omitempty" xml:"change_result,omitempty"`
-	CoachNo            *string  `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
-	CostCenter         *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
-	CostCenterNumber   *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
-	Coupon             *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
-	DepCityCode        *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
-	DepCityName        *string  `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
-	Department         *string  `json:"department,omitempty" xml:"department,omitempty"`
-	DepartmentId       *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
-	DeptDate           *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
-	DeptStation        *string  `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
-	DeptTime           *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
-	ExceedReason       *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
-	FeeType            *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
-	Index              *string  `json:"index,omitempty" xml:"index,omitempty"`
-	InvoiceTitle       *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	IsTransferOrder    *string  `json:"is_transfer_order,omitempty" xml:"is_transfer_order,omitempty"`
-	OrderId            *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
-	OrderPrice         *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
-	OverApplyId        *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
-	PrimaryId          *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
-	PrintTicketPrice   *float64 `json:"print_ticket_price,omitempty" xml:"print_ticket_price,omitempty"`
-	ProjectCode        *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName        *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
-	RefundFee          *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
-	RefundReason       *string  `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
-	Remark             *string  `json:"remark,omitempty" xml:"remark,omitempty"`
-	ReserveMode        *string  `json:"reserve_mode,omitempty" xml:"reserve_mode,omitempty"`
-	RunTime            *string  `json:"run_time,omitempty" xml:"run_time,omitempty"`
-	SeatNo             *string  `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
-	SeatType           *string  `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
-	ServiceFee         *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
-	SettlementFee      *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
-	SettlementGrantFee *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
-	SettlementTime     *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
-	SettlementType     *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	ShortTicketNo      *string  `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
-	Status             *int32   `json:"status,omitempty" xml:"status,omitempty"`
+	ApplyExtendField      *string  `json:"apply_extend_field,omitempty" xml:"apply_extend_field,omitempty"`
+	ApplyId               *string  `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ArrCityCode           *string  `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCityName           *string  `json:"arr_city_name,omitempty" xml:"arr_city_name,omitempty"`
+	ArrDate               *string  `json:"arr_date,omitempty" xml:"arr_date,omitempty"`
+	ArrStation            *string  `json:"arr_station,omitempty" xml:"arr_station,omitempty"`
+	ArrTime               *string  `json:"arr_time,omitempty" xml:"arr_time,omitempty"`
+	BillRecordTime        *string  `json:"bill_record_time,omitempty" xml:"bill_record_time,omitempty"`
+	BookTime              *string  `json:"book_time,omitempty" xml:"book_time,omitempty"`
+	BookerId              *string  `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerJobNo           *string  `json:"booker_job_no,omitempty" xml:"booker_job_no,omitempty"`
+	BookerName            *string  `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	BusinessTripResult    *string  `json:"business_trip_result,omitempty" xml:"business_trip_result,omitempty"`
+	CapitalDirection      *string  `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
+	CascadeDepartment     *string  `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ChangeFee             *float64 `json:"change_fee,omitempty" xml:"change_fee,omitempty"`
+	ChangeResult          *string  `json:"change_result,omitempty" xml:"change_result,omitempty"`
+	CoachNo               *string  `json:"coach_no,omitempty" xml:"coach_no,omitempty"`
+	CostCenter            *string  `json:"cost_center,omitempty" xml:"cost_center,omitempty"`
+	CostCenterNumber      *string  `json:"cost_center_number,omitempty" xml:"cost_center_number,omitempty"`
+	Coupon                *float64 `json:"coupon,omitempty" xml:"coupon,omitempty"`
+	DepCityCode           *string  `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCityName           *string  `json:"dep_city_name,omitempty" xml:"dep_city_name,omitempty"`
+	Department            *string  `json:"department,omitempty" xml:"department,omitempty"`
+	DepartmentId          *string  `json:"department_id,omitempty" xml:"department_id,omitempty"`
+	DeptDate              *string  `json:"dept_date,omitempty" xml:"dept_date,omitempty"`
+	DeptStation           *string  `json:"dept_station,omitempty" xml:"dept_station,omitempty"`
+	DeptTime              *string  `json:"dept_time,omitempty" xml:"dept_time,omitempty"`
+	ExceedReason          *string  `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	FeeType               *string  `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	Index                 *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InvoiceTitle          *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IsTransferOrder       *string  `json:"is_transfer_order,omitempty" xml:"is_transfer_order,omitempty"`
+	OrderId               *string  `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderPrice            *float64 `json:"order_price,omitempty" xml:"order_price,omitempty"`
+	OverApplyId           *string  `json:"over_apply_id,omitempty" xml:"over_apply_id,omitempty"`
+	PaymentDepartmentId   *string  `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
+	PaymentDepartmentName *string  `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
+	PrimaryId             *int64   `json:"primary_id,omitempty" xml:"primary_id,omitempty"`
+	PrintTicketPrice      *float64 `json:"print_ticket_price,omitempty" xml:"print_ticket_price,omitempty"`
+	ProjectCode           *string  `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName           *string  `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	RefundFee             *float64 `json:"refund_fee,omitempty" xml:"refund_fee,omitempty"`
+	RefundReason          *string  `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
+	Remark                *string  `json:"remark,omitempty" xml:"remark,omitempty"`
+	ReserveMode           *string  `json:"reserve_mode,omitempty" xml:"reserve_mode,omitempty"`
+	RunTime               *string  `json:"run_time,omitempty" xml:"run_time,omitempty"`
+	SeatNo                *string  `json:"seat_no,omitempty" xml:"seat_no,omitempty"`
+	SeatType              *string  `json:"seat_type,omitempty" xml:"seat_type,omitempty"`
+	ServiceFee            *float64 `json:"service_fee,omitempty" xml:"service_fee,omitempty"`
+	SettlementFee         *float64 `json:"settlement_fee,omitempty" xml:"settlement_fee,omitempty"`
+	SettlementGrantFee    *float64 `json:"settlement_grant_fee,omitempty" xml:"settlement_grant_fee,omitempty"`
+	SettlementTime        *string  `json:"settlement_time,omitempty" xml:"settlement_time,omitempty"`
+	SettlementType        *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	ShortTicketNo         *string  `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
+	Status                *int32   `json:"status,omitempty" xml:"status,omitempty"`
 	// 税率
 	TaxRate                *string  `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
 	ThirdItineraryId       *string  `json:"third_itinerary_id,omitempty" xml:"third_itinerary_id,omitempty"`
@@ -61772,6 +61998,16 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetOrderPrice(v flo
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetOverApplyId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.OverApplyId = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentId = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetPaymentDepartmentName(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.PaymentDepartmentName = &v
 	return s
 }
 
@@ -63847,6 +64083,7 @@ type TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList struct {
 	SegmentIndex        *int32   `json:"segment_index,omitempty" xml:"segment_index,omitempty"`
 	StartTime           *string  `json:"start_time,omitempty" xml:"start_time,omitempty"`
 	TicketNo            *string  `json:"ticket_no,omitempty" xml:"ticket_no,omitempty"`
+	TicketStatus        *int32   `json:"ticket_status,omitempty" xml:"ticket_status,omitempty"`
 	ToCityName          *string  `json:"to_city_name,omitempty" xml:"to_city_name,omitempty"`
 	ToStationName       *string  `json:"to_station_name,omitempty" xml:"to_station_name,omitempty"`
 	UseTicket           *string  `json:"use_ticket,omitempty" xml:"use_ticket,omitempty"`
@@ -63958,6 +64195,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetStartTime(v
 
 func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetTicketNo(v string) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
 	s.TicketNo = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList) SetTicketStatus(v int32) *TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList {
+	s.TicketStatus = &v
 	return s
 }
 
@@ -67200,6 +67442,65 @@ func (client *Client) ApplyQuery(request *ApplyQueryRequest) (_result *ApplyQuer
 	headers := &ApplyQueryHeaders{}
 	_result = &ApplyQueryResponse{}
 	_body, _err := client.ApplyQueryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BaseCityInfoSearchWithOptions(request *BaseCityInfoSearchRequest, headers *BaseCityInfoSearchHeaders, runtime *util.RuntimeOptions) (_result *BaseCityInfoSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["region"] = request.Region
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripAccessToken)) {
+		realHeaders["x-acs-btrip-access-token"] = util.ToJSONString(headers.XAcsBtripAccessToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BaseCityInfoSearch"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/city/v1/cities/action/search"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BaseCityInfoSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BaseCityInfoSearch(request *BaseCityInfoSearchRequest) (_result *BaseCityInfoSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &BaseCityInfoSearchHeaders{}
+	_result = &BaseCityInfoSearchResponse{}
+	_body, _err := client.BaseCityInfoSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
