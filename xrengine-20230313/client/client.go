@@ -1734,9 +1734,10 @@ func (s *PopBatchQueryObjectGenerationProjectStatusResponseBody) SetSuccess(v bo
 }
 
 type PopBatchQueryObjectGenerationProjectStatusResponseBodyData struct {
-	Dataset *PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset `json:"Dataset,omitempty" xml:"Dataset,omitempty" type:"Struct"`
-	Id      *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
-	Status  *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	BizUsage *string                                                            `json:"BizUsage,omitempty" xml:"BizUsage,omitempty"`
+	Dataset  *PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset `json:"Dataset,omitempty" xml:"Dataset,omitempty" type:"Struct"`
+	Id       *string                                                            `json:"Id,omitempty" xml:"Id,omitempty"`
+	Status   *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s PopBatchQueryObjectGenerationProjectStatusResponseBodyData) String() string {
@@ -1745,6 +1746,11 @@ func (s PopBatchQueryObjectGenerationProjectStatusResponseBodyData) String() str
 
 func (s PopBatchQueryObjectGenerationProjectStatusResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *PopBatchQueryObjectGenerationProjectStatusResponseBodyData) SetBizUsage(v string) *PopBatchQueryObjectGenerationProjectStatusResponseBodyData {
+	s.BizUsage = &v
+	return s
 }
 
 func (s *PopBatchQueryObjectGenerationProjectStatusResponseBodyData) SetDataset(v *PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset) *PopBatchQueryObjectGenerationProjectStatusResponseBodyData {
@@ -3224,6 +3230,7 @@ func (s *PopCreateMaterialResponse) SetBody(v *PopCreateMaterialResponseBody) *P
 }
 
 type PopCreateObjectGenerationProjectRequest struct {
+	BizUsage *string `json:"BizUsage,omitempty" xml:"BizUsage,omitempty"`
 	ExtInfo  *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 	Intro    *string `json:"Intro,omitempty" xml:"Intro,omitempty"`
 	JwtToken *string `json:"JwtToken,omitempty" xml:"JwtToken,omitempty"`
@@ -3236,6 +3243,11 @@ func (s PopCreateObjectGenerationProjectRequest) String() string {
 
 func (s PopCreateObjectGenerationProjectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PopCreateObjectGenerationProjectRequest) SetBizUsage(v string) *PopCreateObjectGenerationProjectRequest {
+	s.BizUsage = &v
+	return s
 }
 
 func (s *PopCreateObjectGenerationProjectRequest) SetExtInfo(v string) *PopCreateObjectGenerationProjectRequest {
@@ -10694,6 +10706,7 @@ func (s *PopListObjectGenerationProjectResponseBody) SetTotal(v int32) *PopListO
 }
 
 type PopListObjectGenerationProjectResponseBodyData struct {
+	BizUsage    *string                                                    `json:"BizUsage,omitempty" xml:"BizUsage,omitempty"`
 	BuildDetail *PopListObjectGenerationProjectResponseBodyDataBuildDetail `json:"BuildDetail,omitempty" xml:"BuildDetail,omitempty" type:"Struct"`
 	Dataset     *PopListObjectGenerationProjectResponseBodyDataDataset     `json:"Dataset,omitempty" xml:"Dataset,omitempty" type:"Struct"`
 	Ext         *string                                                    `json:"Ext,omitempty" xml:"Ext,omitempty"`
@@ -10709,6 +10722,11 @@ func (s PopListObjectGenerationProjectResponseBodyData) String() string {
 
 func (s PopListObjectGenerationProjectResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *PopListObjectGenerationProjectResponseBodyData) SetBizUsage(v string) *PopListObjectGenerationProjectResponseBodyData {
+	s.BizUsage = &v
+	return s
 }
 
 func (s *PopListObjectGenerationProjectResponseBodyData) SetBuildDetail(v *PopListObjectGenerationProjectResponseBodyDataBuildDetail) *PopListObjectGenerationProjectResponseBodyData {
@@ -13858,6 +13876,7 @@ func (s *PopQueryObjectGenerationProjectDetailResponseBody) SetSuccess(v bool) *
 }
 
 type PopQueryObjectGenerationProjectDetailResponseBodyData struct {
+	BizUsage    *string                                                           `json:"BizUsage,omitempty" xml:"BizUsage,omitempty"`
 	BuildDetail *PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail `json:"BuildDetail,omitempty" xml:"BuildDetail,omitempty" type:"Struct"`
 	Dataset     *PopQueryObjectGenerationProjectDetailResponseBodyDataDataset     `json:"Dataset,omitempty" xml:"Dataset,omitempty" type:"Struct"`
 	Ext         *string                                                           `json:"Ext,omitempty" xml:"Ext,omitempty"`
@@ -13873,6 +13892,11 @@ func (s PopQueryObjectGenerationProjectDetailResponseBodyData) String() string {
 
 func (s PopQueryObjectGenerationProjectDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *PopQueryObjectGenerationProjectDetailResponseBodyData) SetBizUsage(v string) *PopQueryObjectGenerationProjectDetailResponseBodyData {
+	s.BizUsage = &v
+	return s
 }
 
 func (s *PopQueryObjectGenerationProjectDetailResponseBodyData) SetBuildDetail(v *PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail) *PopQueryObjectGenerationProjectDetailResponseBodyData {
@@ -16332,6 +16356,10 @@ func (client *Client) PopCreateObjectGenerationProjectWithOptions(request *PopCr
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizUsage)) {
+		body["BizUsage"] = request.BizUsage
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
 		body["ExtInfo"] = request.ExtInfo
 	}
