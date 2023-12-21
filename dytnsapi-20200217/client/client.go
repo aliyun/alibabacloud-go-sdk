@@ -12,6 +12,140 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CertNoTwoElementVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	CertName             *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CertNo               *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CertNoTwoElementVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoTwoElementVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetAuthCode(v string) *CertNoTwoElementVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetCertName(v string) *CertNoTwoElementVerificationRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetCertNo(v string) *CertNoTwoElementVerificationRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetOwnerId(v int64) *CertNoTwoElementVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetResourceOwnerAccount(v string) *CertNoTwoElementVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationRequest) SetResourceOwnerId(v int64) *CertNoTwoElementVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CertNoTwoElementVerificationResponseBody struct {
+	AccessDeniedDetail *string                                       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *CertNoTwoElementVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CertNoTwoElementVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoTwoElementVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoTwoElementVerificationResponseBody) SetAccessDeniedDetail(v string) *CertNoTwoElementVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponseBody) SetCode(v string) *CertNoTwoElementVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponseBody) SetData(v *CertNoTwoElementVerificationResponseBodyData) *CertNoTwoElementVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponseBody) SetMessage(v string) *CertNoTwoElementVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponseBody) SetRequestId(v string) *CertNoTwoElementVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CertNoTwoElementVerificationResponseBodyData struct {
+	IsConsistent *string `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+}
+
+func (s CertNoTwoElementVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoTwoElementVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoTwoElementVerificationResponseBodyData) SetIsConsistent(v string) *CertNoTwoElementVerificationResponseBodyData {
+	s.IsConsistent = &v
+	return s
+}
+
+type CertNoTwoElementVerificationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CertNoTwoElementVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CertNoTwoElementVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoTwoElementVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoTwoElementVerificationResponse) SetHeaders(v map[string]*string) *CertNoTwoElementVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponse) SetStatusCode(v int32) *CertNoTwoElementVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CertNoTwoElementVerificationResponse) SetBody(v *CertNoTwoElementVerificationResponseBody) *CertNoTwoElementVerificationResponse {
+	s.Body = v
+	return s
+}
+
 type CompanyFourElementsVerificationRequest struct {
 	// The authorization code.
 	//
@@ -1118,6 +1252,170 @@ func (s *DescribePhoneNumberAnalysisAIResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribePhoneNumberAnalysisAIResponse) SetBody(v *DescribePhoneNumberAnalysisAIResponseBody) *DescribePhoneNumberAnalysisAIResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePhoneNumberAnalysisTransparentRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Ip                   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NumberType           *string `json:"NumberType,omitempty" xml:"NumberType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisTransparentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisTransparentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetAuthCode(v string) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetInputNumber(v string) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetIp(v string) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetNumberType(v string) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.NumberType = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetOwnerId(v int64) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetResourceOwnerAccount(v string) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentRequest) SetResourceOwnerId(v int64) *DescribePhoneNumberAnalysisTransparentRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisTransparentResponseBody struct {
+	AccessDeniedDetail *string                                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *DescribePhoneNumberAnalysisTransparentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberAnalysisTransparentResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBody) SetCode(v string) *DescribePhoneNumberAnalysisTransparentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBody) SetData(v *DescribePhoneNumberAnalysisTransparentResponseBodyData) *DescribePhoneNumberAnalysisTransparentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBody) SetMessage(v string) *DescribePhoneNumberAnalysisTransparentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBody) SetRequestId(v string) *DescribePhoneNumberAnalysisTransparentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisTransparentResponseBodyData struct {
+	DeviceRisk *string `json:"Device_risk,omitempty" xml:"Device_risk,omitempty"`
+	IpRisk     *string `json:"Ip_risk,omitempty" xml:"Ip_risk,omitempty"`
+	Score1     *string `json:"Score1,omitempty" xml:"Score1,omitempty"`
+	Score2     *string `json:"Score2,omitempty" xml:"Score2,omitempty"`
+	Score3     *string `json:"Score3,omitempty" xml:"Score3,omitempty"`
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetDeviceRisk(v string) *DescribePhoneNumberAnalysisTransparentResponseBodyData {
+	s.DeviceRisk = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetIpRisk(v string) *DescribePhoneNumberAnalysisTransparentResponseBodyData {
+	s.IpRisk = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetScore1(v string) *DescribePhoneNumberAnalysisTransparentResponseBodyData {
+	s.Score1 = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetScore2(v string) *DescribePhoneNumberAnalysisTransparentResponseBodyData {
+	s.Score2 = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponseBodyData) SetScore3(v string) *DescribePhoneNumberAnalysisTransparentResponseBodyData {
+	s.Score3 = &v
+	return s
+}
+
+type DescribePhoneNumberAnalysisTransparentResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberAnalysisTransparentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePhoneNumberAnalysisTransparentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAnalysisTransparentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponse) SetStatusCode(v int32) *DescribePhoneNumberAnalysisTransparentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisTransparentResponse) SetBody(v *DescribePhoneNumberAnalysisTransparentResponseBody) *DescribePhoneNumberAnalysisTransparentResponse {
 	s.Body = v
 	return s
 }
@@ -5232,6 +5530,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) CertNoTwoElementVerificationWithOptions(request *CertNoTwoElementVerificationRequest, runtime *util.RuntimeOptions) (_result *CertNoTwoElementVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNo)) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertNoTwoElementVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CertNoTwoElementVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CertNoTwoElementVerification(request *CertNoTwoElementVerificationRequest) (_result *CertNoTwoElementVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CertNoTwoElementVerificationResponse{}
+	_body, _err := client.CertNoTwoElementVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 /**
  * *   Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
  * *   You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
@@ -5724,6 +6086,74 @@ func (client *Client) DescribePhoneNumberAnalysisAI(request *DescribePhoneNumber
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberAnalysisAIResponse{}
 	_body, _err := client.DescribePhoneNumberAnalysisAIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAnalysisTransparentWithOptions(request *DescribePhoneNumberAnalysisTransparentRequest, runtime *util.RuntimeOptions) (_result *DescribePhoneNumberAnalysisTransparentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberType)) {
+		query["NumberType"] = request.NumberType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePhoneNumberAnalysisTransparent"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePhoneNumberAnalysisTransparentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePhoneNumberAnalysisTransparent(request *DescribePhoneNumberAnalysisTransparentRequest) (_result *DescribePhoneNumberAnalysisTransparentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePhoneNumberAnalysisTransparentResponse{}
+	_body, _err := client.DescribePhoneNumberAnalysisTransparentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
