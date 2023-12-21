@@ -3639,11 +3639,12 @@ func (s *CreateDeliveryPlanShrinkHeaders) SetAccountContextShrink(v string) *Cre
 }
 
 type CreateDeliveryPlanRequest struct {
-	Content    map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime    *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ResId      *string                `json:"ResId,omitempty" xml:"ResId,omitempty"`
-	StartTime  *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UserIdList []*string              `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
+	Content       map[string]interface{}                  `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId         *string                                 `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime     *int64                                  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *CreateDeliveryPlanRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	UserIdList    []*string                               `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 
 func (s CreateDeliveryPlanRequest) String() string {
@@ -3674,17 +3675,40 @@ func (s *CreateDeliveryPlanRequest) SetStartTime(v int64) *CreateDeliveryPlanReq
 	return s
 }
 
+func (s *CreateDeliveryPlanRequest) SetTenantContext(v *CreateDeliveryPlanRequestTenantContext) *CreateDeliveryPlanRequest {
+	s.TenantContext = v
+	return s
+}
+
 func (s *CreateDeliveryPlanRequest) SetUserIdList(v []*string) *CreateDeliveryPlanRequest {
 	s.UserIdList = v
 	return s
 }
 
+type CreateDeliveryPlanRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateDeliveryPlanRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeliveryPlanRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeliveryPlanRequestTenantContext) SetTenantId(v string) *CreateDeliveryPlanRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
 type CreateDeliveryPlanShrinkRequest struct {
-	ContentShrink    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime          *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ResId            *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
-	StartTime        *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	UserIdListShrink *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
+	ContentShrink       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResId               *string `json:"ResId,omitempty" xml:"ResId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	UserIdListShrink    *string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty"`
 }
 
 func (s CreateDeliveryPlanShrinkRequest) String() string {
@@ -3712,6 +3736,11 @@ func (s *CreateDeliveryPlanShrinkRequest) SetResId(v string) *CreateDeliveryPlan
 
 func (s *CreateDeliveryPlanShrinkRequest) SetStartTime(v int64) *CreateDeliveryPlanShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *CreateDeliveryPlanShrinkRequest) SetTenantContextShrink(v string) *CreateDeliveryPlanShrinkRequest {
+	s.TenantContextShrink = &v
 	return s
 }
 
@@ -34348,9 +34377,10 @@ func (s *SendBannerShrinkHeaders) SetAccountContextShrink(v string) *SendBannerS
 }
 
 type SendBannerRequest struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime   *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Content       map[string]interface{}          `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *int64                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *SendBannerRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s SendBannerRequest) String() string {
@@ -34376,10 +34406,33 @@ func (s *SendBannerRequest) SetStartTime(v int64) *SendBannerRequest {
 	return s
 }
 
+func (s *SendBannerRequest) SetTenantContext(v *SendBannerRequestTenantContext) *SendBannerRequest {
+	s.TenantContext = v
+	return s
+}
+
+type SendBannerRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SendBannerRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBannerRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SendBannerRequestTenantContext) SetTenantId(v string) *SendBannerRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
 type SendBannerShrinkRequest struct {
-	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ContentShrink       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
 
 func (s SendBannerShrinkRequest) String() string {
@@ -34402,6 +34455,11 @@ func (s *SendBannerShrinkRequest) SetEndTime(v int64) *SendBannerShrinkRequest {
 
 func (s *SendBannerShrinkRequest) SetStartTime(v int64) *SendBannerShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *SendBannerShrinkRequest) SetTenantContextShrink(v string) *SendBannerShrinkRequest {
+	s.TenantContextShrink = &v
 	return s
 }
 
@@ -34539,9 +34597,10 @@ func (s *SendPopupShrinkHeaders) SetAccountContextShrink(v string) *SendPopupShr
 }
 
 type SendPopupRequest struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime   *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Content       map[string]interface{}         `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *int64                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *SendPopupRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s SendPopupRequest) String() string {
@@ -34567,10 +34626,33 @@ func (s *SendPopupRequest) SetStartTime(v int64) *SendPopupRequest {
 	return s
 }
 
+func (s *SendPopupRequest) SetTenantContext(v *SendPopupRequestTenantContext) *SendPopupRequest {
+	s.TenantContext = v
+	return s
+}
+
+type SendPopupRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SendPopupRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendPopupRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SendPopupRequestTenantContext) SetTenantId(v string) *SendPopupRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
 type SendPopupShrinkRequest struct {
-	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ContentShrink       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
 
 func (s SendPopupShrinkRequest) String() string {
@@ -34593,6 +34675,11 @@ func (s *SendPopupShrinkRequest) SetEndTime(v int64) *SendPopupShrinkRequest {
 
 func (s *SendPopupShrinkRequest) SetStartTime(v int64) *SendPopupShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *SendPopupShrinkRequest) SetTenantContextShrink(v string) *SendPopupShrinkRequest {
+	s.TenantContextShrink = &v
 	return s
 }
 
@@ -34730,9 +34817,10 @@ func (s *SendSearchShadeShrinkHeaders) SetAccountContextShrink(v string) *SendSe
 }
 
 type SendSearchShadeRequest struct {
-	Content   map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime   *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Content       map[string]interface{}               `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime       *int64                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime     *int64                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContext *SendSearchShadeRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
 
 func (s SendSearchShadeRequest) String() string {
@@ -34758,10 +34846,33 @@ func (s *SendSearchShadeRequest) SetStartTime(v int64) *SendSearchShadeRequest {
 	return s
 }
 
+func (s *SendSearchShadeRequest) SetTenantContext(v *SendSearchShadeRequestTenantContext) *SendSearchShadeRequest {
+	s.TenantContext = v
+	return s
+}
+
+type SendSearchShadeRequestTenantContext struct {
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SendSearchShadeRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSearchShadeRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SendSearchShadeRequestTenantContext) SetTenantId(v string) *SendSearchShadeRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
 type SendSearchShadeShrinkRequest struct {
-	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	ContentShrink       *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
 
 func (s SendSearchShadeShrinkRequest) String() string {
@@ -34784,6 +34895,11 @@ func (s *SendSearchShadeShrinkRequest) SetEndTime(v int64) *SendSearchShadeShrin
 
 func (s *SendSearchShadeShrinkRequest) SetStartTime(v int64) *SendSearchShadeShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *SendSearchShadeShrinkRequest) SetTenantContextShrink(v string) *SendSearchShadeShrinkRequest {
+	s.TenantContextShrink = &v
 	return s
 }
 
@@ -41828,6 +41944,10 @@ func (client *Client) CreateDeliveryPlanWithOptions(tmpReq *CreateDeliveryPlanRe
 		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UserIdList)) {
 		request.UserIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIdList, tea.String("UserIdList"), tea.String("json"))
 	}
@@ -41847,6 +41967,10 @@ func (client *Client) CreateDeliveryPlanWithOptions(tmpReq *CreateDeliveryPlanRe
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserIdListShrink)) {
@@ -50474,6 +50598,10 @@ func (client *Client) SendBannerWithOptions(tmpReq *SendBannerRequest, tmpHeader
 		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
 		body["Content"] = request.ContentShrink
@@ -50485,6 +50613,10 @@ func (client *Client) SendBannerWithOptions(tmpReq *SendBannerRequest, tmpHeader
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
 	}
 
 	realHeaders := make(map[string]*string)
@@ -50549,6 +50681,10 @@ func (client *Client) SendPopupWithOptions(tmpReq *SendPopupRequest, tmpHeader *
 		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
 		body["Content"] = request.ContentShrink
@@ -50560,6 +50696,10 @@ func (client *Client) SendPopupWithOptions(tmpReq *SendPopupRequest, tmpHeader *
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
 	}
 
 	realHeaders := make(map[string]*string)
@@ -50624,6 +50764,10 @@ func (client *Client) SendSearchShadeWithOptions(tmpReq *SendSearchShadeRequest,
 		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
 		body["Content"] = request.ContentShrink
@@ -50635,6 +50779,10 @@ func (client *Client) SendSearchShadeWithOptions(tmpReq *SendSearchShadeRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
 	}
 
 	realHeaders := make(map[string]*string)
