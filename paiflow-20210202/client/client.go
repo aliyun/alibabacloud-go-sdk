@@ -5,48 +5,31 @@
 package client
 
 import (
-	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
-	util "github.com/alibabacloud-go/tea-utils/service"
+	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type BriefPipelineRun struct {
-	// 工作流任务的可见性。
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 工作流任务的运行时长，单位为秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 工作流任务的结束UTC时间，格式iso8601。
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// 创建UTC时间，格式iso8601。
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 最近修改UTC时间，格式iso8601。
+	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Duration        *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FinishedAt      *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 工作流任务失败提示信息。
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 工作流任务名字。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 工作流任务的根节点ID。
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 用户主账户的ID。
-	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// 工作流ID。
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 工作流任务ID。
-	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// 工作流任务的来源ID。
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 工作流任务的来源类型。
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// 工作流任务的开始UTC时间，格式iso8601。
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 需要过滤的工作流任务的状态，目前有如下几种状态：  Initialized Running Succeeded Failed Suspended Terminated Unknown Skipped Terminating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 创建用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 所属工作空间ID。
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ParentUserId    *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineRunId   *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartedAt       *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s BriefPipelineRun) String() string {
@@ -143,46 +126,26 @@ func (s *BriefPipelineRun) SetWorkspaceId(v string) *BriefPipelineRun {
 }
 
 type FullPipelineRun struct {
-	// 工作流任务的可见性。
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 工作流任务的参数。
-	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// 工作流任务的运行时长，单位为秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 工作流任务的结束UTC时间，格式iso8601。
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// 创建UTC时间，格式iso8601。
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 最近修改UTC时间，格式iso8601。
+	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Arguments       *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	Duration        *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FinishedAt      *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 工作流任务的定义。
-	Manifest *string `json:"Manifest,omitempty" xml:"Manifest,omitempty"`
-	// 工作流任务失败提示信息。
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 工作流任务名字。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 工作流任务的根节点ID。
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 工作流任务选项，格式为JSON。
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 用户主账户的ID。
-	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// 工作流ID。
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 工作流任务ID。
-	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// 工作流任务的来源ID。
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 工作流任务的来源类型。
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// 工作流任务的开始UTC时间，格式iso8601。
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 需要过滤的工作流任务的状态，目前有如下几种状态：  Initialized Running Succeeded Failed Suspended Terminated Unknown Skipped Terminating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 创建用户ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 所属工作空间ID。
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Manifest        *string `json:"Manifest,omitempty" xml:"Manifest,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Options         *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	ParentUserId    *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineRunId   *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartedAt       *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s FullPipelineRun) String() string {
@@ -294,13 +257,9 @@ func (s *FullPipelineRun) SetWorkspaceId(v string) *FullPipelineRun {
 }
 
 type Node struct {
-	// 工作流定义的版本。
-	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	// 节点的元信息。
-	Metadata *NodeMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
-	// 节点的执行体信息。
-	Spec *NodeSpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	// 节点的执行状态信息。
+	ApiVersion *string         `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	Metadata   *NodeMetadata   `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	Spec       *NodeSpec       `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
 	StatusInfo *NodeStatusInfo `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty" type:"Struct"`
 }
 
@@ -333,22 +292,14 @@ func (s *Node) SetStatusInfo(v *NodeStatusInfo) *Node {
 }
 
 type NodeMetadata struct {
-	// 节点的展示名称（可能会被修改）。
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 节点所对应的工作流的标识名。
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// 节点的名字。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 节点的ID。
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点的类型，包含有以下类型：  Task，具体运行的一个节点 ；Dag，复合类型节点，本质是一个由子节点组成的Dag图；Loop，循环节点
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// 节点所对应的工作流的提供方，通常情况下指代工作流的上传者（官方提供的工作流Provider为pai）。
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// Alink逻辑节点所对应的物理节点ID / Alink物理节点所对应的逻辑节点ID
+	DisplayName    *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Identifier     *string   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId         *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType       *string   `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Provider       *string   `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	RelatedNodeIds []*string `json:"RelatedNodeIds,omitempty" xml:"RelatedNodeIds,omitempty" type:"Repeated"`
-	// 节点所对应的工作流的版本。
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version        *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s NodeMetadata) String() string {
@@ -400,25 +351,15 @@ func (s *NodeMetadata) SetVersion(v string) *NodeMetadata {
 }
 
 type NodeSpec struct {
-	// 节点与其他节点的依赖关系。
-	Dependencies []*string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// 该节点是否含有子节点：  true：该节点为复合类型节点，如果需要进一步查询其子节点信息，需要传入更深的Depth参数。 false：该节点为实际运行的节点。
-	HasPipelines *bool `json:"HasPipelines,omitempty" xml:"HasPipelines,omitempty"`
-	// 节点的输入信息。
-	Inputs *NodeIO `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
-	// 节点的输出信息。
-	Outputs *NodeIO `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
-	// 节点的并行度。
-	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// 子工作流列表。
-	Pipelines []*Node `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
-	// 节点的条件判断信息。
-	When *string `json:"When,omitempty" xml:"When,omitempty"`
-	// 定义了一个数组，每一项会扩展为一个节点。
-	WithItems []*string `json:"WithItems,omitempty" xml:"WithItems,omitempty" type:"Repeated"`
-	// 定义了对一个参数的引用，参数值是一个数组，每一项会扩展为一个节点。
-	WithParam *string `json:"WithParam,omitempty" xml:"WithParam,omitempty"`
-	// 定义了一个数字序列，序列每一项会扩展为一个节点。
+	Dependencies []*string             `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	HasPipelines *bool                 `json:"HasPipelines,omitempty" xml:"HasPipelines,omitempty"`
+	Inputs       *NodeIO               `json:"Inputs,omitempty" xml:"Inputs,omitempty"`
+	Outputs      *NodeIO               `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	Parallelism  *int64                `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	Pipelines    []*Node               `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
+	When         *string               `json:"When,omitempty" xml:"When,omitempty"`
+	WithItems    []*string             `json:"WithItems,omitempty" xml:"WithItems,omitempty" type:"Repeated"`
+	WithParam    *string               `json:"WithParam,omitempty" xml:"WithParam,omitempty"`
 	WithSequence *NodeSpecWithSequence `json:"WithSequence,omitempty" xml:"WithSequence,omitempty" type:"Struct"`
 }
 
@@ -481,12 +422,9 @@ func (s *NodeSpec) SetWithSequence(v *NodeSpecWithSequence) *NodeSpec {
 }
 
 type NodeSpecWithSequence struct {
-	// 结束数字
-	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// 展现格式
+	End    *int64  `json:"End,omitempty" xml:"End,omitempty"`
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// 起始数字
-	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
+	Start  *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s NodeSpecWithSequence) String() string {
@@ -513,16 +451,11 @@ func (s *NodeSpecWithSequence) SetStart(v int64) *NodeSpecWithSequence {
 }
 
 type NodeStatusInfo struct {
-	// 节点的运行状况。
 	Conditions []*NodeStatusInfoConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// 节点执行的结束时间。
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// 节点的运行进度。
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 节点执行的开始时间。
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 节点的运行状态：  Succeed：运行成功。 Running：运行中。 Failed：运行失败。 Skipped：跳过（前序节点失败导致）。 ReadyToSchedule：准备运行（前序节点未完成导致）。 Unknown：未知。
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FinishedAt *string                     `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	Progress   *string                     `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartedAt  *string                     `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status     *string                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s NodeStatusInfo) String() string {
@@ -559,10 +492,8 @@ func (s *NodeStatusInfo) SetStatus(v string) *NodeStatusInfo {
 }
 
 type NodeStatusInfoConditions struct {
-	// 状态。
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 类型。
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s NodeStatusInfoConditions) String() string {
@@ -584,9 +515,7 @@ func (s *NodeStatusInfoConditions) SetType(v string) *NodeStatusInfoConditions {
 }
 
 type NodeIO struct {
-	// 节点的产物，例如输入、输出的数据等。
-	Artifacts []map[string]interface{} `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
-	// 节点的参数列表。
+	Artifacts  []map[string]interface{} `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
 	Parameters []map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -609,22 +538,14 @@ func (s *NodeIO) SetParameters(v []map[string]interface{}) *NodeIO {
 }
 
 type Pipeline struct {
-	// 创建UTC时间，日期格式iso8601。
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 修改UTC时间，日期格式iso8601。
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Pipeline标识。
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// Pipeline ID。
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// 用户自定义Pipeline时，为用户ID。 官方Pipeline为pai。
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// Pipeline当前版本标识，用户每次更新，会生成该uuid。
-	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// Pipeline版本。
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// AI工作空间ID。
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Identifier      *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	Provider        *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Pipeline) String() string {
@@ -676,38 +597,22 @@ func (s *Pipeline) SetWorkspaceId(v string) *Pipeline {
 }
 
 type Run struct {
-	// 实验可见度，目前有PUBLIC（公开）、PRIVATE（私有）。
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 运行时长，单位为秒。
-	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// 实验ID。
-	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// Run运行完成时间。
-	FinishedAt *int64 `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// Run的创建UTC时间，格式iso8601。
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// Run最近修改的UTC时间，格式iso8601。
+	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Duration        *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	ExperimentId    *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	FinishedAt      *int64  `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 错误信息。
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Run的名称。
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 节点ID。
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Owner ID。
-	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// Run ID。
-	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// 来源。
-	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Run运行开始时间。
-	StartedAt *int64 `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// Run的状态，目前如下几种状态。  Initialized Running Succeeded Failed Suspended Terminated Unknown Skipped Terminating
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 创建人ID。
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 所属工作空间ID。
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId          *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ParentUserId    *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	RunId           *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartedAt       *int64  `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Run) String() string {
@@ -823,8 +728,7 @@ func (s *CreatePipelineRequest) SetWorkspaceId(v string) *CreatePipelineRequest 
 
 type CreatePipelineResponseBody struct {
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePipelineResponseBody) String() string {
@@ -875,26 +779,16 @@ func (s *CreatePipelineResponse) SetBody(v *CreatePipelineResponseBody) *CreateP
 }
 
 type CreatePipelineRunRequest struct {
-	// PUBLIC 公开；PRIVATE 私有
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 参数
-	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// Run的名字，若为空，则自动生成名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// true代表直接启动; false代表只创建run但先不启动
-	NoConfirmRequired *bool `json:"NoConfirmRequired,omitempty" xml:"NoConfirmRequired,omitempty"`
-	// 选项，json格式
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// Pipeline的id; PipelineId和PipelineManifest 二选一
-	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Pipeline内容; PipelineId和PipelineManifest 二选一一
-	PipelineManifest *string `json:"PipelineManifest,omitempty" xml:"PipelineManifest,omitempty"`
-	// 实验id
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 来源，支持如下值：SDK; PAI_STUDIO; M6; UNKNOWN;
-	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// 项目空间id
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility     *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Arguments         *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NoConfirmRequired *bool   `json:"NoConfirmRequired,omitempty" xml:"NoConfirmRequired,omitempty"`
+	Options           *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	PipelineId        *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	PipelineManifest  *string `json:"PipelineManifest,omitempty" xml:"PipelineManifest,omitempty"`
+	SourceId          *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	WorkspaceId       *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreatePipelineRunRequest) String() string {
@@ -956,10 +850,8 @@ func (s *CreatePipelineRunRequest) SetWorkspaceId(v string) *CreatePipelineRunRe
 }
 
 type CreatePipelineRunResponseBody struct {
-	// run的id
 	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreatePipelineRunResponseBody) String() string {
@@ -1010,7 +902,6 @@ func (s *CreatePipelineRunResponse) SetBody(v *CreatePipelineRunResponseBody) *C
 }
 
 type DeletePipelineResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1057,7 +948,6 @@ func (s *DeletePipelineResponse) SetBody(v *DeletePipelineResponseBody) *DeleteP
 }
 
 type DeletePipelineRunResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1110,11 +1000,10 @@ type GetPipelineResponseBody struct {
 	Manifest        *string `json:"Manifest,omitempty" xml:"Manifest,omitempty"`
 	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	Provider        *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Uuid        *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	WorkspaceId     *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetPipelineResponseBody) String() string {
@@ -1206,8 +1095,8 @@ func (s *GetPipelineResponse) SetBody(v *GetPipelineResponseBody) *GetPipelineRe
 
 type GetPipelineRunRequest struct {
 	ManifestType *string `json:"ManifestType,omitempty" xml:"ManifestType,omitempty"`
-	// 是否返回详细信息，目前详细信息包含： RuntimeManifest
-	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	TokenId      *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
 func (s GetPipelineRunRequest) String() string {
@@ -1220,6 +1109,11 @@ func (s GetPipelineRunRequest) GoString() string {
 
 func (s *GetPipelineRunRequest) SetManifestType(v string) *GetPipelineRunRequest {
 	s.ManifestType = &v
+	return s
+}
+
+func (s *GetPipelineRunRequest) SetTokenId(v string) *GetPipelineRunRequest {
+	s.TokenId = &v
 	return s
 }
 
@@ -1243,6 +1137,7 @@ type GetPipelineRunResponseBody struct {
 	ParentUserId    *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	PipelineRunId   *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	PipelineRunUri  *string `json:"PipelineRunUri,omitempty" xml:"PipelineRunUri,omitempty"`
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
@@ -1330,6 +1225,11 @@ func (s *GetPipelineRunResponseBody) SetPipelineRunId(v string) *GetPipelineRunR
 	return s
 }
 
+func (s *GetPipelineRunResponseBody) SetPipelineRunUri(v string) *GetPipelineRunResponseBody {
+	s.PipelineRunUri = &v
+	return s
+}
+
 func (s *GetPipelineRunResponseBody) SetRequestId(v string) *GetPipelineRunResponseBody {
 	s.RequestId = &v
 	return s
@@ -1395,9 +1295,9 @@ func (s *GetPipelineRunResponse) SetBody(v *GetPipelineRunResponseBody) *GetPipe
 }
 
 type GetPipelineRunNodeRequest struct {
-	// 查询深度
-	Depth *int32  `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Depth   *int32  `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	TokenId *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetPipelineRunNodeRequest) String() string {
@@ -1413,21 +1313,21 @@ func (s *GetPipelineRunNodeRequest) SetDepth(v int32) *GetPipelineRunNodeRequest
 	return s
 }
 
+func (s *GetPipelineRunNodeRequest) SetTokenId(v string) *GetPipelineRunNodeRequest {
+	s.TokenId = &v
+	return s
+}
+
 func (s *GetPipelineRunNodeRequest) SetType(v string) *GetPipelineRunNodeRequest {
 	s.Type = &v
 	return s
 }
 
 type GetPipelineRunNodeResponseBody struct {
-	// api 版本
-	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	// node 的元信息
-	Metadata *GetPipelineRunNodeResponseBodyMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
-	// 请求 id
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 算法体
-	Spec *GetPipelineRunNodeResponseBodySpec `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
-	// node 运行状态
+	ApiVersion *string                                   `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
+	Metadata   *GetPipelineRunNodeResponseBodyMetadata   `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Spec       *GetPipelineRunNodeResponseBodySpec       `json:"Spec,omitempty" xml:"Spec,omitempty" type:"Struct"`
 	StatusInfo *GetPipelineRunNodeResponseBodyStatusInfo `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty" type:"Struct"`
 }
 
@@ -1465,22 +1365,14 @@ func (s *GetPipelineRunNodeResponseBody) SetStatusInfo(v *GetPipelineRunNodeResp
 }
 
 type GetPipelineRunNodeResponseBodyMetadata struct {
-	// 展示名称
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// 标识符
-	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// 名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 节点 id
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点类型
-	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// 提供方
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// Alink逻辑节点所对应的物理节点ID / Alink物理节点所对应的逻辑节点ID
+	DisplayName    *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Identifier     *string   `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Name           *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId         *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeType       *string   `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Provider       *string   `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	RelatedNodeIds []*string `json:"RelatedNodeIds,omitempty" xml:"RelatedNodeIds,omitempty" type:"Repeated"`
-	// 版本
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version        *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetPipelineRunNodeResponseBodyMetadata) String() string {
@@ -1532,14 +1424,11 @@ func (s *GetPipelineRunNodeResponseBodyMetadata) SetVersion(v string) *GetPipeli
 }
 
 type GetPipelineRunNodeResponseBodySpec struct {
-	// 依赖
-	Dependencies []*string `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
-	// 是否有子 pipeline
-	HasPipelines *bool                                      `json:"HasPipelines,omitempty" xml:"HasPipelines,omitempty"`
-	Inputs       *GetPipelineRunNodeResponseBodySpecInputs  `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	Outputs      *GetPipelineRunNodeResponseBodySpecOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
-	Parallelism  *int32                                     `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
-	// 子 pipeline 列表
+	Dependencies []*string                                       `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Repeated"`
+	HasPipelines *bool                                           `json:"HasPipelines,omitempty" xml:"HasPipelines,omitempty"`
+	Inputs       *GetPipelineRunNodeResponseBodySpecInputs       `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
+	Outputs      *GetPipelineRunNodeResponseBodySpecOutputs      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Struct"`
+	Parallelism  *int32                                          `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	Pipelines    []map[string]interface{}                        `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
 	When         *string                                         `json:"When,omitempty" xml:"When,omitempty"`
 	WithItems    []*string                                       `json:"WithItems,omitempty" xml:"WithItems,omitempty" type:"Repeated"`
@@ -1682,13 +1571,10 @@ func (s *GetPipelineRunNodeResponseBodySpecWithSequence) SetStart(v int32) *GetP
 
 type GetPipelineRunNodeResponseBodyStatusInfo struct {
 	Conditions []map[string]interface{} `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// 结束时间
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	Progress   *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 开始时间
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FinishedAt *string                  `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	Progress   *string                  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	StartedAt  *string                  `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status     *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetPipelineRunNodeResponseBodyStatusInfo) String() string {
@@ -1754,18 +1640,13 @@ func (s *GetPipelineRunNodeResponse) SetBody(v *GetPipelineRunNodeResponseBody) 
 }
 
 type ListPipelineRunNodeLogsRequest struct {
-	// 开始时间
-	FromTimeInSeconds *int64 `json:"FromTimeInSeconds,omitempty" xml:"FromTimeInSeconds,omitempty"`
-	// 搜索词
-	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// 当前偏移量
-	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// 每页返回的log数目
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 是否倒排
-	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// 结束时间
-	ToTimeInSeconds *int64 `json:"ToTimeInSeconds,omitempty" xml:"ToTimeInSeconds,omitempty"`
+	FromTimeInSeconds *int64  `json:"FromTimeInSeconds,omitempty" xml:"FromTimeInSeconds,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Offset            *int32  `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reverse           *bool   `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
+	ToTimeInSeconds   *int64  `json:"ToTimeInSeconds,omitempty" xml:"ToTimeInSeconds,omitempty"`
+	TokenId           *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
 }
 
 func (s ListPipelineRunNodeLogsRequest) String() string {
@@ -1806,13 +1687,15 @@ func (s *ListPipelineRunNodeLogsRequest) SetToTimeInSeconds(v int64) *ListPipeli
 	return s
 }
 
+func (s *ListPipelineRunNodeLogsRequest) SetTokenId(v string) *ListPipelineRunNodeLogsRequest {
+	s.TokenId = &v
+	return s
+}
+
 type ListPipelineRunNodeLogsResponseBody struct {
-	// 日志列表
-	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// 请求 ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的作业数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Logs       []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPipelineRunNodeLogsResponseBody) String() string {
@@ -1868,20 +1751,14 @@ func (s *ListPipelineRunNodeLogsResponse) SetBody(v *ListPipelineRunNodeLogsResp
 }
 
 type ListPipelineRunNodeOutputsRequest struct {
-	// 节点往下拿多少层子节点
-	Depth *int32 `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	// 节点名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 排序顺序， 顺序：ASC，倒序：DESC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 当前页，页码从1开始
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页返回的输出数目
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 排序字段
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// artifact 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Depth      *int32  `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TokenId    *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListPipelineRunNodeOutputsRequest) String() string {
@@ -1922,18 +1799,20 @@ func (s *ListPipelineRunNodeOutputsRequest) SetSortBy(v string) *ListPipelineRun
 	return s
 }
 
+func (s *ListPipelineRunNodeOutputsRequest) SetTokenId(v string) *ListPipelineRunNodeOutputsRequest {
+	s.TokenId = &v
+	return s
+}
+
 func (s *ListPipelineRunNodeOutputsRequest) SetType(v string) *ListPipelineRunNodeOutputsRequest {
 	s.Type = &v
 	return s
 }
 
 type ListPipelineRunNodeOutputsResponseBody struct {
-	// 输出列表
-	Outputs []*ListPipelineRunNodeOutputsResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 符合过滤条件的作业数量
-	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Outputs    []*ListPipelineRunNodeOutputsResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPipelineRunNodeOutputsResponseBody) String() string {
@@ -1960,24 +1839,15 @@ func (s *ListPipelineRunNodeOutputsResponseBody) SetTotalCount(v int64) *ListPip
 }
 
 type ListPipelineRunNodeOutputsResponseBodyOutputs struct {
-	// 可扩展artifact的名字
-	ExpandableArtifactName *string `json:"ExpandableArtifactName,omitempty" xml:"ExpandableArtifactName,omitempty"`
-	// 被扩展artifact的索引号，以0开始
-	ExpandedArtifactIndex *int64 `json:"ExpandedArtifactIndex,omitempty" xml:"ExpandedArtifactIndex,omitempty"`
-	// 创建时间
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// id
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// artifact内容
-	Info map[string]interface{} `json:"Info,omitempty" xml:"Info,omitempty"`
-	// 名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 输出所属节点 id
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// rtifact生产者
-	Producer *string `json:"Producer,omitempty" xml:"Producer,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	ExpandableArtifactName *string                `json:"ExpandableArtifactName,omitempty" xml:"ExpandableArtifactName,omitempty"`
+	ExpandedArtifactIndex  *int64                 `json:"ExpandedArtifactIndex,omitempty" xml:"ExpandedArtifactIndex,omitempty"`
+	GmtCreateTime          *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	Id                     *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Info                   map[string]interface{} `json:"Info,omitempty" xml:"Info,omitempty"`
+	Name                   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId                 *string                `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Producer               *string                `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	Type                   *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListPipelineRunNodeOutputsResponseBodyOutputs) String() string {
@@ -2063,10 +1933,9 @@ func (s *ListPipelineRunNodeOutputsResponse) SetBody(v *ListPipelineRunNodeOutpu
 }
 
 type ListPipelineRunNodeStatusRequest struct {
-	// 深度
-	Depth *int64 `json:"Depth,omitempty" xml:"Depth,omitempty"`
-	// 类型
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Depth   *int64  `json:"Depth,omitempty" xml:"Depth,omitempty"`
+	TokenId *string `json:"TokenId,omitempty" xml:"TokenId,omitempty"`
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListPipelineRunNodeStatusRequest) String() string {
@@ -2082,16 +1951,19 @@ func (s *ListPipelineRunNodeStatusRequest) SetDepth(v int64) *ListPipelineRunNod
 	return s
 }
 
+func (s *ListPipelineRunNodeStatusRequest) SetTokenId(v string) *ListPipelineRunNodeStatusRequest {
+	s.TokenId = &v
+	return s
+}
+
 func (s *ListPipelineRunNodeStatusRequest) SetType(v string) *ListPipelineRunNodeStatusRequest {
 	s.Type = &v
 	return s
 }
 
 type ListPipelineRunNodeStatusResponseBody struct {
-	// 请求ID
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 工作流任务的节点状态列表
-	Status []*ListPipelineRunNodeStatusResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    []*ListPipelineRunNodeStatusResponseBodyStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s ListPipelineRunNodeStatusResponseBody) String() string {
@@ -2113,18 +1985,12 @@ func (s *ListPipelineRunNodeStatusResponseBody) SetStatus(v []*ListPipelineRunNo
 }
 
 type ListPipelineRunNodeStatusResponseBodyStatus struct {
-	// 节点结束运行时间
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// 工作流中节点ID
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 工作流中节点名字
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 节点运行时信息
+	FinishedAt  *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	NodeId      *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName    *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	RuntimeInfo *string `json:"RuntimeInfo,omitempty" xml:"RuntimeInfo,omitempty"`
-	// 节点开始运行时间
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 节点运行状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StartedAt   *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPipelineRunNodeStatusResponseBodyStatus) String() string {
@@ -2195,19 +2061,18 @@ func (s *ListPipelineRunNodeStatusResponse) SetBody(v *ListPipelineRunNodeStatus
 }
 
 type ListPipelineRunsRequest struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Pipeline的id集合，只有Source为M6可以使用该参数
-	PipelineIds *string `json:"PipelineIds,omitempty" xml:"PipelineIds,omitempty"`
-	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SourceId    *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户id
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order         *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PipelineIds   *string `json:"PipelineIds,omitempty" xml:"PipelineIds,omitempty"`
+	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId   *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListPipelineRunsRequest) String() string {
@@ -2243,6 +2108,11 @@ func (s *ListPipelineRunsRequest) SetPipelineIds(v string) *ListPipelineRunsRequ
 	return s
 }
 
+func (s *ListPipelineRunsRequest) SetPipelineRunId(v string) *ListPipelineRunsRequest {
+	s.PipelineRunId = &v
+	return s
+}
+
 func (s *ListPipelineRunsRequest) SetSortBy(v string) *ListPipelineRunsRequest {
 	s.SortBy = &v
 	return s
@@ -2275,9 +2145,8 @@ func (s *ListPipelineRunsRequest) SetWorkspaceId(v string) *ListPipelineRunsRequ
 
 type ListPipelineRunsResponseBody struct {
 	PipelineRuns []*ListPipelineRunsResponseBodyPipelineRuns `json:"PipelineRuns,omitempty" xml:"PipelineRuns,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPipelineRunsResponseBody) String() string {
@@ -2315,6 +2184,7 @@ type ListPipelineRunsResponseBodyPipelineRuns struct {
 	ParentUserId    *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PipelineId      *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	PipelineRunId   *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	PipelineRunUri  *string `json:"PipelineRunUri,omitempty" xml:"PipelineRunUri,omitempty"`
 	SourceId        *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	StartedAt       *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
@@ -2386,6 +2256,11 @@ func (s *ListPipelineRunsResponseBodyPipelineRuns) SetPipelineRunId(v string) *L
 	return s
 }
 
+func (s *ListPipelineRunsResponseBodyPipelineRuns) SetPipelineRunUri(v string) *ListPipelineRunsResponseBodyPipelineRuns {
+	s.PipelineRunUri = &v
+	return s
+}
+
 func (s *ListPipelineRunsResponseBodyPipelineRuns) SetSourceId(v string) *ListPipelineRunsResponseBodyPipelineRuns {
 	s.SourceId = &v
 	return s
@@ -2447,6 +2322,7 @@ func (s *ListPipelineRunsResponse) SetBody(v *ListPipelineRunsResponseBody) *Lis
 
 type ListPipelineRunsStatusRequest struct {
 	Nodes        []*ListPipelineRunsStatusRequestNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	OutputType   *string                               `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
 	PipelineRuns []*string                             `json:"PipelineRuns,omitempty" xml:"PipelineRuns,omitempty" type:"Repeated"`
 	WorkspaceId  *string                               `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -2461,6 +2337,11 @@ func (s ListPipelineRunsStatusRequest) GoString() string {
 
 func (s *ListPipelineRunsStatusRequest) SetNodes(v []*ListPipelineRunsStatusRequestNodes) *ListPipelineRunsStatusRequest {
 	s.Nodes = v
+	return s
+}
+
+func (s *ListPipelineRunsStatusRequest) SetOutputType(v string) *ListPipelineRunsStatusRequest {
+	s.OutputType = &v
 	return s
 }
 
@@ -2499,9 +2380,9 @@ func (s *ListPipelineRunsStatusRequestNodes) SetPipelineRunId(v string) *ListPip
 
 type ListPipelineRunsStatusResponseBody struct {
 	Nodes        []*ListPipelineRunsStatusResponseBodyNodes        `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Outputs      []*ListPipelineRunsStatusResponseBodyOutputs      `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
 	PipelineRuns []*ListPipelineRunsStatusResponseBodyPipelineRuns `json:"PipelineRuns,omitempty" xml:"PipelineRuns,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListPipelineRunsStatusResponseBody) String() string {
@@ -2517,6 +2398,11 @@ func (s *ListPipelineRunsStatusResponseBody) SetNodes(v []*ListPipelineRunsStatu
 	return s
 }
 
+func (s *ListPipelineRunsStatusResponseBody) SetOutputs(v []*ListPipelineRunsStatusResponseBodyOutputs) *ListPipelineRunsStatusResponseBody {
+	s.Outputs = v
+	return s
+}
+
 func (s *ListPipelineRunsStatusResponseBody) SetPipelineRuns(v []*ListPipelineRunsStatusResponseBodyPipelineRuns) *ListPipelineRunsStatusResponseBody {
 	s.PipelineRuns = v
 	return s
@@ -2528,22 +2414,14 @@ func (s *ListPipelineRunsStatusResponseBody) SetRequestId(v string) *ListPipelin
 }
 
 type ListPipelineRunsStatusResponseBodyNodes struct {
-	// 修改 UTC 时间，日期格式 iso8601
-	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	// 输入artifact是否已保存
-	InputArtifactArchived *bool `json:"InputArtifactArchived,omitempty" xml:"InputArtifactArchived,omitempty"`
-	// 节点Id
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 节点名
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// 输出artifact是否已保存
-	OutputArtifactArchived *bool `json:"OutputArtifactArchived,omitempty" xml:"OutputArtifactArchived,omitempty"`
-	// 运行Id
-	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// 修改 UTC 时间，日期格式 iso8601
-	StartedAt *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
-	// 状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	FinishedAt             *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	InputArtifactArchived  *bool   `json:"InputArtifactArchived,omitempty" xml:"InputArtifactArchived,omitempty"`
+	NodeId                 *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName               *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OutputArtifactArchived *bool   `json:"OutputArtifactArchived,omitempty" xml:"OutputArtifactArchived,omitempty"`
+	PipelineRunId          *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	StartedAt              *string `json:"StartedAt,omitempty" xml:"StartedAt,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListPipelineRunsStatusResponseBodyNodes) String() string {
@@ -2594,23 +2472,92 @@ func (s *ListPipelineRunsStatusResponseBodyNodes) SetStatus(v string) *ListPipel
 	return s
 }
 
+type ListPipelineRunsStatusResponseBodyOutputs struct {
+	ExpandableArtifactName *string                `json:"ExpandableArtifactName,omitempty" xml:"ExpandableArtifactName,omitempty"`
+	ExpandedArtifactIndex  *int32                 `json:"ExpandedArtifactIndex,omitempty" xml:"ExpandedArtifactIndex,omitempty"`
+	GmtCreateTime          *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	Id                     *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Metadata               map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Name                   *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId                 *string                `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	PipelineRunId          *string                `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	Producer               *string                `json:"Producer,omitempty" xml:"Producer,omitempty"`
+	Type                   *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value                  *string                `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListPipelineRunsStatusResponseBodyOutputs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunsStatusResponseBodyOutputs) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetExpandableArtifactName(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.ExpandableArtifactName = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetExpandedArtifactIndex(v int32) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.ExpandedArtifactIndex = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetGmtCreateTime(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetId(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetMetadata(v map[string]interface{}) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetName(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetNodeId(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetPipelineRunId(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.PipelineRunId = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetProducer(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Producer = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetType(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Type = &v
+	return s
+}
+
+func (s *ListPipelineRunsStatusResponseBodyOutputs) SetValue(v string) *ListPipelineRunsStatusResponseBodyOutputs {
+	s.Value = &v
+	return s
+}
+
 type ListPipelineRunsStatusResponseBodyPipelineRuns struct {
-	// 是否被删除
-	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// run名字
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 节点id
-	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// 父账户id
-	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	// run的id
+	IsDeleted     *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeId        *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	ParentUserId  *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
-	// 实验id
-	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// run状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户id
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	SourceId      *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListPipelineRunsStatusResponseBodyPipelineRuns) String() string {
@@ -2691,7 +2638,6 @@ func (s *ListPipelineRunsStatusResponse) SetBody(v *ListPipelineRunsStatusRespon
 }
 
 type ListPipelinesRequest struct {
-	// 模糊匹配
 	FuzzyMatching      *bool   `json:"FuzzyMatching,omitempty" xml:"FuzzyMatching,omitempty"`
 	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -2745,10 +2691,9 @@ func (s *ListPipelinesRequest) SetWorkspaceId(v string) *ListPipelinesRequest {
 }
 
 type ListPipelinesResponseBody struct {
-	Pipelines []*ListPipelinesResponseBodyPipelines `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Pipelines  []*ListPipelinesResponseBodyPipelines `json:"Pipelines,omitempty" xml:"Pipelines,omitempty" type:"Repeated"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListPipelinesResponseBody) String() string {
@@ -2862,8 +2807,54 @@ func (s *ListPipelinesResponse) SetBody(v *ListPipelinesResponseBody) *ListPipel
 	return s
 }
 
-type StartPipelineRunResponseBody struct {
+type RerunPipelineRunResponseBody struct {
 	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RerunPipelineRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunPipelineRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RerunPipelineRunResponseBody) SetRequestId(v string) *RerunPipelineRunResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RerunPipelineRunResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RerunPipelineRunResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RerunPipelineRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RerunPipelineRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RerunPipelineRunResponse) SetHeaders(v map[string]*string) *RerunPipelineRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RerunPipelineRunResponse) SetStatusCode(v int32) *RerunPipelineRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RerunPipelineRunResponse) SetBody(v *RerunPipelineRunResponseBody) *RerunPipelineRunResponse {
+	s.Body = v
+	return s
+}
+
+type StartPipelineRunResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2910,7 +2901,6 @@ func (s *StartPipelineRunResponse) SetBody(v *StartPipelineRunResponseBody) *Sta
 }
 
 type TerminatePipelineRunResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2974,7 +2964,6 @@ func (s *UpdatePipelineRequest) SetManifest(v string) *UpdatePipelineRequest {
 }
 
 type UpdatePipelineResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3038,7 +3027,6 @@ func (s *UpdatePipelineRunRequest) SetName(v string) *UpdatePipelineRunRequest {
 }
 
 type UpdatePipelineRunResponseBody struct {
-	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3131,18 +3119,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreatePipelineResponse{}
-	_body, _err := client.CreatePipelineWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePipelineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3181,11 +3157,11 @@ func (client *Client) CreatePipelineWithOptions(request *CreatePipelineRequest, 
 	return _result, _err
 }
 
-func (client *Client) CreatePipelineRun(request *CreatePipelineRunRequest) (_result *CreatePipelineRunResponse, _err error) {
+func (client *Client) CreatePipeline(request *CreatePipelineRequest) (_result *CreatePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &CreatePipelineRunResponse{}
-	_body, _err := client.CreatePipelineRunWithOptions(request, headers, runtime)
+	_result = &CreatePipelineResponse{}
+	_body, _err := client.CreatePipelineWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3263,6 +3239,42 @@ func (client *Client) CreatePipelineRunWithOptions(request *CreatePipelineRunReq
 	return _result, _err
 }
 
+func (client *Client) CreatePipelineRun(request *CreatePipelineRunRequest) (_result *CreatePipelineRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePipelineRunResponse{}
+	_body, _err := client.CreatePipelineRunWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePipelineWithOptions(PipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePipeline"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePipelineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeletePipeline(PipelineId *string) (_result *DeletePipelineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3275,23 +3287,22 @@ func (client *Client) DeletePipeline(PipelineId *string) (_result *DeletePipelin
 	return _result, _err
 }
 
-func (client *Client) DeletePipelineWithOptions(PipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineResponse, _err error) {
-	PipelineId = openapiutil.GetEncodeParam(PipelineId)
+func (client *Client) DeletePipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineRunResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeletePipeline"),
+		Action:      tea.String("DeletePipelineRun"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(PipelineId)),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePipelineResponse{}
+	_result = &DeletePipelineRunResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3312,23 +3323,22 @@ func (client *Client) DeletePipelineRun(PipelineRunId *string) (_result *DeleteP
 	return _result, _err
 }
 
-func (client *Client) DeletePipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePipelineRunResponse, _err error) {
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
+func (client *Client) GetPipelineWithOptions(PipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DeletePipelineRun"),
+		Action:      tea.String("GetPipeline"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId)),
-		Method:      tea.String("DELETE"),
+		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineId))),
+		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePipelineRunResponse{}
+	_result = &GetPipelineResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3349,23 +3359,40 @@ func (client *Client) GetPipeline(PipelineId *string) (_result *GetPipelineRespo
 	return _result, _err
 }
 
-func (client *Client) GetPipelineWithOptions(PipelineId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineResponse, _err error) {
-	PipelineId = openapiutil.GetEncodeParam(PipelineId)
+func (client *Client) GetPipelineRunWithOptions(PipelineRunId *string, request *GetPipelineRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ManifestType)) {
+		query["ManifestType"] = request.ManifestType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetPipeline"),
+		Action:      tea.String("GetPipelineRun"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(PipelineId)),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPipelineResponse{}
+	_result = &GetPipelineRunResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3386,19 +3413,22 @@ func (client *Client) GetPipelineRun(PipelineRunId *string, request *GetPipeline
 	return _result, _err
 }
 
-func (client *Client) GetPipelineRunWithOptions(PipelineRunId *string, request *GetPipelineRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunResponse, _err error) {
+func (client *Client) GetPipelineRunNodeWithOptions(PipelineRunId *string, NodeId *string, request *GetPipelineRunNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ManifestType)) {
-		query["ManifestType"] = request.ManifestType
+	if !tea.BoolValue(util.IsUnset(request.Depth)) {
+		query["Depth"] = request.Depth
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
-		query["Verbose"] = request.Verbose
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3406,17 +3436,17 @@ func (client *Client) GetPipelineRunWithOptions(PipelineRunId *string, request *
 		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("GetPipelineRun"),
+		Action:      tea.String("GetPipelineRunNode"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId)),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId))),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetPipelineRunResponse{}
+	_result = &GetPipelineRunNodeResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3437,65 +3467,11 @@ func (client *Client) GetPipelineRunNode(PipelineRunId *string, NodeId *string, 
 	return _result, _err
 }
 
-func (client *Client) GetPipelineRunNodeWithOptions(PipelineRunId *string, NodeId *string, request *GetPipelineRunNodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPipelineRunNodeResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Depth)) {
-		query["Depth"] = request.Depth
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPipelineRunNode"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/nodes/" + tea.StringValue(NodeId)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetPipelineRunNodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListPipelineRunNodeLogs(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeLogsRequest) (_result *ListPipelineRunNodeLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListPipelineRunNodeLogsResponse{}
-	_body, _err := client.ListPipelineRunNodeLogsWithOptions(PipelineRunId, NodeId, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListPipelineRunNodeLogsWithOptions(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPipelineRunNodeLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FromTimeInSeconds)) {
 		query["FromTimeInSeconds"] = request.FromTimeInSeconds
@@ -3521,6 +3497,10 @@ func (client *Client) ListPipelineRunNodeLogsWithOptions(PipelineRunId *string, 
 		query["ToTimeInSeconds"] = request.ToTimeInSeconds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3529,7 +3509,7 @@ func (client *Client) ListPipelineRunNodeLogsWithOptions(PipelineRunId *string, 
 		Action:      tea.String("ListPipelineRunNodeLogs"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/nodes/" + tea.StringValue(NodeId) + "/logs"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/logs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3545,11 +3525,11 @@ func (client *Client) ListPipelineRunNodeLogsWithOptions(PipelineRunId *string, 
 	return _result, _err
 }
 
-func (client *Client) ListPipelineRunNodeOutputs(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeOutputsRequest) (_result *ListPipelineRunNodeOutputsResponse, _err error) {
+func (client *Client) ListPipelineRunNodeLogs(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeLogsRequest) (_result *ListPipelineRunNodeLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineRunNodeOutputsResponse{}
-	_body, _err := client.ListPipelineRunNodeOutputsWithOptions(PipelineRunId, NodeId, request, headers, runtime)
+	_result = &ListPipelineRunNodeLogsResponse{}
+	_body, _err := client.ListPipelineRunNodeLogsWithOptions(PipelineRunId, NodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3562,8 +3542,6 @@ func (client *Client) ListPipelineRunNodeOutputsWithOptions(PipelineRunId *strin
 	if _err != nil {
 		return _result, _err
 	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Depth)) {
 		query["Depth"] = request.Depth
@@ -3589,6 +3567,10 @@ func (client *Client) ListPipelineRunNodeOutputsWithOptions(PipelineRunId *strin
 		query["SortBy"] = request.SortBy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		query["Type"] = request.Type
 	}
@@ -3601,7 +3583,7 @@ func (client *Client) ListPipelineRunNodeOutputsWithOptions(PipelineRunId *strin
 		Action:      tea.String("ListPipelineRunNodeOutputs"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/nodes/" + tea.StringValue(NodeId) + "/outputs"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/outputs"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3617,11 +3599,11 @@ func (client *Client) ListPipelineRunNodeOutputsWithOptions(PipelineRunId *strin
 	return _result, _err
 }
 
-func (client *Client) ListPipelineRunNodeStatus(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeStatusRequest) (_result *ListPipelineRunNodeStatusResponse, _err error) {
+func (client *Client) ListPipelineRunNodeOutputs(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeOutputsRequest) (_result *ListPipelineRunNodeOutputsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineRunNodeStatusResponse{}
-	_body, _err := client.ListPipelineRunNodeStatusWithOptions(PipelineRunId, NodeId, request, headers, runtime)
+	_result = &ListPipelineRunNodeOutputsResponse{}
+	_body, _err := client.ListPipelineRunNodeOutputsWithOptions(PipelineRunId, NodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3634,11 +3616,13 @@ func (client *Client) ListPipelineRunNodeStatusWithOptions(PipelineRunId *string
 	if _err != nil {
 		return _result, _err
 	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
-	NodeId = openapiutil.GetEncodeParam(NodeId)
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Depth)) {
 		query["Depth"] = request.Depth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TokenId)) {
+		query["TokenId"] = request.TokenId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -3653,7 +3637,7 @@ func (client *Client) ListPipelineRunNodeStatusWithOptions(PipelineRunId *string
 		Action:      tea.String("ListPipelineRunNodeStatus"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/nodes/" + tea.StringValue(NodeId) + "/status"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/nodes/" + tea.StringValue(openapiutil.GetEncodeParam(NodeId)) + "/status"),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -3669,11 +3653,11 @@ func (client *Client) ListPipelineRunNodeStatusWithOptions(PipelineRunId *string
 	return _result, _err
 }
 
-func (client *Client) ListPipelineRuns(request *ListPipelineRunsRequest) (_result *ListPipelineRunsResponse, _err error) {
+func (client *Client) ListPipelineRunNodeStatus(PipelineRunId *string, NodeId *string, request *ListPipelineRunNodeStatusRequest) (_result *ListPipelineRunNodeStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineRunsResponse{}
-	_body, _err := client.ListPipelineRunsWithOptions(request, headers, runtime)
+	_result = &ListPipelineRunNodeStatusResponse{}
+	_body, _err := client.ListPipelineRunNodeStatusWithOptions(PipelineRunId, NodeId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3705,6 +3689,10 @@ func (client *Client) ListPipelineRunsWithOptions(request *ListPipelineRunsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PipelineIds)) {
 		query["PipelineIds"] = request.PipelineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipelineRunId)) {
+		query["PipelineRunId"] = request.PipelineRunId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
@@ -3755,11 +3743,11 @@ func (client *Client) ListPipelineRunsWithOptions(request *ListPipelineRunsReque
 	return _result, _err
 }
 
-func (client *Client) ListPipelineRunsStatus(request *ListPipelineRunsStatusRequest) (_result *ListPipelineRunsStatusResponse, _err error) {
+func (client *Client) ListPipelineRuns(request *ListPipelineRunsRequest) (_result *ListPipelineRunsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelineRunsStatusResponse{}
-	_body, _err := client.ListPipelineRunsStatusWithOptions(request, headers, runtime)
+	_result = &ListPipelineRunsResponse{}
+	_body, _err := client.ListPipelineRunsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3775,6 +3763,10 @@ func (client *Client) ListPipelineRunsStatusWithOptions(request *ListPipelineRun
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Nodes)) {
 		body["Nodes"] = request.Nodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputType)) {
+		body["OutputType"] = request.OutputType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PipelineRuns)) {
@@ -3809,11 +3801,11 @@ func (client *Client) ListPipelineRunsStatusWithOptions(request *ListPipelineRun
 	return _result, _err
 }
 
-func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+func (client *Client) ListPipelineRunsStatus(request *ListPipelineRunsStatusRequest) (_result *ListPipelineRunsStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListPipelinesResponse{}
-	_body, _err := client.ListPipelinesWithOptions(request, headers, runtime)
+	_result = &ListPipelineRunsStatusResponse{}
+	_body, _err := client.ListPipelineRunsStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3879,6 +3871,78 @@ func (client *Client) ListPipelinesWithOptions(request *ListPipelinesRequest, he
 	return _result, _err
 }
 
+func (client *Client) ListPipelines(request *ListPipelinesRequest) (_result *ListPipelinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPipelinesResponse{}
+	_body, _err := client.ListPipelinesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RerunPipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RerunPipelineRunResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RerunPipelineRun"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/rerun"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RerunPipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RerunPipelineRun(PipelineRunId *string) (_result *RerunPipelineRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RerunPipelineRunResponse{}
+	_body, _err := client.RerunPipelineRunWithOptions(PipelineRunId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartPipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartPipelineRunResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartPipelineRun"),
+		Version:     tea.String("2021-02-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartPipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StartPipelineRun(PipelineRunId *string) (_result *StartPipelineRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3891,23 +3955,22 @@ func (client *Client) StartPipelineRun(PipelineRunId *string) (_result *StartPip
 	return _result, _err
 }
 
-func (client *Client) StartPipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartPipelineRunResponse, _err error) {
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
+func (client *Client) TerminatePipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TerminatePipelineRunResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("StartPipelineRun"),
+		Action:      tea.String("TerminatePipelineRun"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/start"),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId)) + "/termination"),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartPipelineRunResponse{}
+	_result = &TerminatePipelineRunResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3928,23 +3991,32 @@ func (client *Client) TerminatePipelineRun(PipelineRunId *string) (_result *Term
 	return _result, _err
 }
 
-func (client *Client) TerminatePipelineRunWithOptions(PipelineRunId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TerminatePipelineRunResponse, _err error) {
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
+func (client *Client) UpdatePipelineWithOptions(PipelineId *string, request *UpdatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Manifest)) {
+		body["Manifest"] = request.Manifest
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("TerminatePipelineRun"),
+		Action:      tea.String("UpdatePipeline"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId) + "/termination"),
+		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &TerminatePipelineRunResponse{}
+	_result = &UpdatePipelineResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3965,15 +4037,14 @@ func (client *Client) UpdatePipeline(PipelineId *string, request *UpdatePipeline
 	return _result, _err
 }
 
-func (client *Client) UpdatePipelineWithOptions(PipelineId *string, request *UpdatePipelineRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineResponse, _err error) {
+func (client *Client) UpdatePipelineRunWithOptions(PipelineRunId *string, request *UpdatePipelineRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineRunResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	PipelineId = openapiutil.GetEncodeParam(PipelineId)
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Manifest)) {
-		body["Manifest"] = request.Manifest
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -3981,17 +4052,17 @@ func (client *Client) UpdatePipelineWithOptions(PipelineId *string, request *Upd
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("UpdatePipeline"),
+		Action:      tea.String("UpdatePipelineRun"),
 		Version:     tea.String("2021-02-02"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelines/" + tea.StringValue(PipelineId)),
+		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(openapiutil.GetEncodeParam(PipelineRunId))),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdatePipelineResponse{}
+	_result = &UpdatePipelineRunResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4009,40 +4080,5 @@ func (client *Client) UpdatePipelineRun(PipelineRunId *string, request *UpdatePi
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdatePipelineRunWithOptions(PipelineRunId *string, request *UpdatePipelineRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePipelineRunResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	PipelineRunId = openapiutil.GetEncodeParam(PipelineRunId)
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdatePipelineRun"),
-		Version:     tea.String("2021-02-02"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/pipelineruns/" + tea.StringValue(PipelineRunId)),
-		Method:      tea.String("PUT"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdatePipelineRunResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
