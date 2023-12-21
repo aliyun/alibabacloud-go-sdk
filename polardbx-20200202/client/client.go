@@ -789,6 +789,7 @@ type CreateDBRequest struct {
 	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
+	StoragePoolName         *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
 
 func (s CreateDBRequest) String() string {
@@ -846,6 +847,11 @@ func (s *CreateDBRequest) SetSecurityAccountName(v string) *CreateDBRequest {
 
 func (s *CreateDBRequest) SetSecurityAccountPassword(v string) *CreateDBRequest {
 	s.SecurityAccountPassword = &v
+	return s
+}
+
+func (s *CreateDBRequest) SetStoragePoolName(v string) *CreateDBRequest {
+	s.StoragePoolName = &v
 	return s
 }
 
@@ -908,27 +914,28 @@ func (s *CreateDBResponse) SetBody(v *CreateDBResponseBody) *CreateDBResponse {
 }
 
 type CreateDBInstanceRequest struct {
-	AutoRenew             *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CNNodeCount           *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CnClass               *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
-	DBNodeClass           *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeCount           *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DNNodeCount           *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
-	DnClass               *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
-	EngineVersion         *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	IsReadDBInstance      *bool   `json:"IsReadDBInstance,omitempty" xml:"IsReadDBInstance,omitempty"`
-	NetworkType           *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period                *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrimaryDBInstanceName *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
-	PrimaryZone           *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecondaryZone         *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
-	TertiaryZone          *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
-	TopologyType          *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	UsedTime              *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	AutoRenew                *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CNNodeCount              *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
+	ClientToken              *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CnClass                  *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	DBNodeClass              *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	DBNodeCount              *int32  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	DNNodeCount              *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
+	DnClass                  *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	EngineVersion            *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	IsColumnarReadDBInstance *bool   `json:"IsColumnarReadDBInstance,omitempty" xml:"IsColumnarReadDBInstance,omitempty"`
+	IsReadDBInstance         *bool   `json:"IsReadDBInstance,omitempty" xml:"IsReadDBInstance,omitempty"`
+	NetworkType              *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType                  *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period                   *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrimaryDBInstanceName    *string `json:"PrimaryDBInstanceName,omitempty" xml:"PrimaryDBInstanceName,omitempty"`
+	PrimaryZone              *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId          *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZone            *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
+	TertiaryZone             *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
+	TopologyType             *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
+	UsedTime                 *int32  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// VPC ID。
 	VPCId     *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -985,6 +992,11 @@ func (s *CreateDBInstanceRequest) SetDnClass(v string) *CreateDBInstanceRequest 
 
 func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetIsColumnarReadDBInstance(v bool) *CreateDBInstanceRequest {
+	s.IsColumnarReadDBInstance = &v
 	return s
 }
 
@@ -8404,12 +8416,16 @@ func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTas
 }
 
 type ModifyDBInstanceClassRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CnClass               *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
-	DBInstanceName        *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DnClass               *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TargetDBInstanceClass *string `json:"TargetDBInstanceClass,omitempty" xml:"TargetDBInstanceClass,omitempty"`
+	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CnClass                *string `json:"CnClass,omitempty" xml:"CnClass,omitempty"`
+	DBInstanceName         *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DnClass                *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SpecifiedDNScale       *bool   `json:"SpecifiedDNScale,omitempty" xml:"SpecifiedDNScale,omitempty"`
+	SpecifiedDNSpecMapJson *string `json:"SpecifiedDNSpecMapJson,omitempty" xml:"SpecifiedDNSpecMapJson,omitempty"`
+	SwitchTime             *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	SwitchTimeMode         *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
+	TargetDBInstanceClass  *string `json:"TargetDBInstanceClass,omitempty" xml:"TargetDBInstanceClass,omitempty"`
 }
 
 func (s ModifyDBInstanceClassRequest) String() string {
@@ -8442,6 +8458,26 @@ func (s *ModifyDBInstanceClassRequest) SetDnClass(v string) *ModifyDBInstanceCla
 
 func (s *ModifyDBInstanceClassRequest) SetRegionId(v string) *ModifyDBInstanceClassRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetSpecifiedDNScale(v bool) *ModifyDBInstanceClassRequest {
+	s.SpecifiedDNScale = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetSpecifiedDNSpecMapJson(v string) *ModifyDBInstanceClassRequest {
+	s.SpecifiedDNSpecMapJson = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetSwitchTime(v string) *ModifyDBInstanceClassRequest {
+	s.SwitchTime = &v
+	return s
+}
+
+func (s *ModifyDBInstanceClassRequest) SetSwitchTimeMode(v string) *ModifyDBInstanceClassRequest {
+	s.SwitchTimeMode = &v
 	return s
 }
 
@@ -10252,12 +10288,15 @@ func (s *UpdateDBInstanceTDEResponse) SetBody(v *UpdateDBInstanceTDEResponseBody
 }
 
 type UpdatePolarDBXInstanceNodeRequest struct {
+	AddDNSpec           *string `json:"AddDNSpec,omitempty" xml:"AddDNSpec,omitempty"`
 	CNNodeCount         *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
 	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	DNNodeCount         *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
 	DbInstanceNodeCount *string `json:"DbInstanceNodeCount,omitempty" xml:"DbInstanceNodeCount,omitempty"`
+	DeleteDNIds         *string `json:"DeleteDNIds,omitempty" xml:"DeleteDNIds,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StoragePoolName     *string `json:"StoragePoolName,omitempty" xml:"StoragePoolName,omitempty"`
 }
 
 func (s UpdatePolarDBXInstanceNodeRequest) String() string {
@@ -10266,6 +10305,11 @@ func (s UpdatePolarDBXInstanceNodeRequest) String() string {
 
 func (s UpdatePolarDBXInstanceNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdatePolarDBXInstanceNodeRequest) SetAddDNSpec(v string) *UpdatePolarDBXInstanceNodeRequest {
+	s.AddDNSpec = &v
+	return s
 }
 
 func (s *UpdatePolarDBXInstanceNodeRequest) SetCNNodeCount(v string) *UpdatePolarDBXInstanceNodeRequest {
@@ -10293,8 +10337,18 @@ func (s *UpdatePolarDBXInstanceNodeRequest) SetDbInstanceNodeCount(v string) *Up
 	return s
 }
 
+func (s *UpdatePolarDBXInstanceNodeRequest) SetDeleteDNIds(v string) *UpdatePolarDBXInstanceNodeRequest {
+	s.DeleteDNIds = &v
+	return s
+}
+
 func (s *UpdatePolarDBXInstanceNodeRequest) SetRegionId(v string) *UpdatePolarDBXInstanceNodeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdatePolarDBXInstanceNodeRequest) SetStoragePoolName(v string) *UpdatePolarDBXInstanceNodeRequest {
+	s.StoragePoolName = &v
 	return s
 }
 
@@ -11045,6 +11099,10 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *uti
 		query["SecurityAccountPassword"] = request.SecurityAccountPassword
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StoragePoolName)) {
+		query["StoragePoolName"] = request.StoragePoolName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11119,6 +11177,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
 		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsColumnarReadDBInstance)) {
+		query["IsColumnarReadDBInstance"] = request.IsColumnarReadDBInstance
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsReadDBInstance)) {
@@ -13482,6 +13544,22 @@ func (client *Client) ModifyDBInstanceClassWithOptions(request *ModifyDBInstance
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SpecifiedDNScale)) {
+		query["SpecifiedDNScale"] = request.SpecifiedDNScale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecifiedDNSpecMapJson)) {
+		query["SpecifiedDNSpecMapJson"] = request.SpecifiedDNSpecMapJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTime)) {
+		query["SwitchTime"] = request.SwitchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchTimeMode)) {
+		query["SwitchTimeMode"] = request.SwitchTimeMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TargetDBInstanceClass)) {
 		query["TargetDBInstanceClass"] = request.TargetDBInstanceClass
 	}
@@ -14514,6 +14592,10 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolar
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddDNSpec)) {
+		query["AddDNSpec"] = request.AddDNSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CNNodeCount)) {
 		query["CNNodeCount"] = request.CNNodeCount
 	}
@@ -14534,8 +14616,16 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithOptions(request *UpdatePolar
 		query["DbInstanceNodeCount"] = request.DbInstanceNodeCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeleteDNIds)) {
+		query["DeleteDNIds"] = request.DeleteDNIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoragePoolName)) {
+		query["StoragePoolName"] = request.StoragePoolName
 	}
 
 	req := &openapi.OpenApiRequest{
