@@ -12,6 +12,29 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ExperimentReportValue struct {
+	Baseline      *bool                             `json:"Baseline,omitempty" xml:"Baseline,omitempty"`
+	MetricResults map[string]map[string]interface{} `json:"MetricResults,omitempty" xml:"MetricResults,omitempty"`
+}
+
+func (s ExperimentReportValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExperimentReportValue) GoString() string {
+	return s.String()
+}
+
+func (s *ExperimentReportValue) SetBaseline(v bool) *ExperimentReportValue {
+	s.Baseline = &v
+	return s
+}
+
+func (s *ExperimentReportValue) SetMetricResults(v map[string]map[string]interface{}) *ExperimentReportValue {
+	s.MetricResults = v
+	return s
+}
+
 type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
 	InstanceId                         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -125,6 +148,110 @@ func (s *BackflowFeatureConsistencyCheckJobDataResponse) SetStatusCode(v int32) 
 }
 
 func (s *BackflowFeatureConsistencyCheckJobDataResponse) SetBody(v *BackflowFeatureConsistencyCheckJobDataResponseBody) *BackflowFeatureConsistencyCheckJobDataResponse {
+	s.Body = v
+	return s
+}
+
+type CheckInstanceResourcesRequest struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri  *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CheckInstanceResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstanceResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstanceResourcesRequest) SetType(v string) *CheckInstanceResourcesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CheckInstanceResourcesRequest) SetUri(v string) *CheckInstanceResourcesRequest {
+	s.Uri = &v
+	return s
+}
+
+type CheckInstanceResourcesResponseBody struct {
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources []*CheckInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s CheckInstanceResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstanceResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstanceResourcesResponseBody) SetRequestId(v string) *CheckInstanceResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckInstanceResourcesResponseBody) SetResources(v []*CheckInstanceResourcesResponseBodyResources) *CheckInstanceResourcesResponseBody {
+	s.Resources = v
+	return s
+}
+
+type CheckInstanceResourcesResponseBodyResources struct {
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CheckInstanceResourcesResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstanceResourcesResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstanceResourcesResponseBodyResources) SetStatus(v string) *CheckInstanceResourcesResponseBodyResources {
+	s.Status = &v
+	return s
+}
+
+func (s *CheckInstanceResourcesResponseBodyResources) SetType(v string) *CheckInstanceResourcesResponseBodyResources {
+	s.Type = &v
+	return s
+}
+
+func (s *CheckInstanceResourcesResponseBodyResources) SetUri(v string) *CheckInstanceResourcesResponseBodyResources {
+	s.Uri = &v
+	return s
+}
+
+type CheckInstanceResourcesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckInstanceResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckInstanceResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckInstanceResourcesResponse) SetHeaders(v map[string]*string) *CheckInstanceResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckInstanceResourcesResponse) SetStatusCode(v int32) *CheckInstanceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckInstanceResourcesResponse) SetBody(v *CheckInstanceResourcesResponseBody) *CheckInstanceResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -428,6 +555,333 @@ func (s *CloneLaboratoryResponse) SetStatusCode(v int32) *CloneLaboratoryRespons
 }
 
 func (s *CloneLaboratoryResponse) SetBody(v *CloneLaboratoryResponseBody) *CloneLaboratoryResponse {
+	s.Body = v
+	return s
+}
+
+type CreateABMetricRequest struct {
+	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LeftMetricId     *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator         *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Realtime         *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	RightMetricId    *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	SceneId          *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StatisticsCycle  *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	TableMetaId      *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateABMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricRequest) SetDefinition(v string) *CreateABMetricRequest {
+	s.Definition = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetDescription(v string) *CreateABMetricRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetInstanceId(v string) *CreateABMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetLeftMetricId(v string) *CreateABMetricRequest {
+	s.LeftMetricId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetName(v string) *CreateABMetricRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetOperator(v string) *CreateABMetricRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetRealtime(v bool) *CreateABMetricRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetResultResourceId(v string) *CreateABMetricRequest {
+	s.ResultResourceId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetRightMetricId(v string) *CreateABMetricRequest {
+	s.RightMetricId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetSceneId(v string) *CreateABMetricRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetStatisticsCycle(v int32) *CreateABMetricRequest {
+	s.StatisticsCycle = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetTableMetaId(v string) *CreateABMetricRequest {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *CreateABMetricRequest) SetType(v string) *CreateABMetricRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateABMetricResponseBody struct {
+	ABMetricId *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateABMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricResponseBody) SetABMetricId(v string) *CreateABMetricResponseBody {
+	s.ABMetricId = &v
+	return s
+}
+
+func (s *CreateABMetricResponseBody) SetRequestId(v string) *CreateABMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateABMetricResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateABMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateABMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricResponse) SetHeaders(v map[string]*string) *CreateABMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateABMetricResponse) SetStatusCode(v int32) *CreateABMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateABMetricResponse) SetBody(v *CreateABMetricResponseBody) *CreateABMetricResponse {
+	s.Body = v
+	return s
+}
+
+type CreateABMetricGroupRequest struct {
+	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s CreateABMetricGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricGroupRequest) SetABMetricIds(v string) *CreateABMetricGroupRequest {
+	s.ABMetricIds = &v
+	return s
+}
+
+func (s *CreateABMetricGroupRequest) SetDescription(v string) *CreateABMetricGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateABMetricGroupRequest) SetInstanceId(v string) *CreateABMetricGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateABMetricGroupRequest) SetName(v string) *CreateABMetricGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateABMetricGroupRequest) SetRealtime(v bool) *CreateABMetricGroupRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *CreateABMetricGroupRequest) SetSceneId(v string) *CreateABMetricGroupRequest {
+	s.SceneId = &v
+	return s
+}
+
+type CreateABMetricGroupResponseBody struct {
+	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateABMetricGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricGroupResponseBody) SetABMetricGroupId(v string) *CreateABMetricGroupResponseBody {
+	s.ABMetricGroupId = &v
+	return s
+}
+
+func (s *CreateABMetricGroupResponseBody) SetRequestId(v string) *CreateABMetricGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateABMetricGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateABMetricGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateABMetricGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateABMetricGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateABMetricGroupResponse) SetHeaders(v map[string]*string) *CreateABMetricGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateABMetricGroupResponse) SetStatusCode(v int32) *CreateABMetricGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateABMetricGroupResponse) SetBody(v *CreateABMetricGroupResponseBody) *CreateABMetricGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCalculationJobsRequest struct {
+	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	EndDate     *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	StartDate   *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s CreateCalculationJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCalculationJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCalculationJobsRequest) SetABMetricIds(v string) *CreateCalculationJobsRequest {
+	s.ABMetricIds = &v
+	return s
+}
+
+func (s *CreateCalculationJobsRequest) SetEndDate(v string) *CreateCalculationJobsRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateCalculationJobsRequest) SetInstanceId(v string) *CreateCalculationJobsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateCalculationJobsRequest) SetStartDate(v string) *CreateCalculationJobsRequest {
+	s.StartDate = &v
+	return s
+}
+
+type CreateCalculationJobsResponseBody struct {
+	CalculationJobIds []*string `json:"CalculationJobIds,omitempty" xml:"CalculationJobIds,omitempty" type:"Repeated"`
+	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCalculationJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCalculationJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCalculationJobsResponseBody) SetCalculationJobIds(v []*string) *CreateCalculationJobsResponseBody {
+	s.CalculationJobIds = v
+	return s
+}
+
+func (s *CreateCalculationJobsResponseBody) SetRequestId(v string) *CreateCalculationJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCalculationJobsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCalculationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCalculationJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCalculationJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCalculationJobsResponse) SetHeaders(v map[string]*string) *CreateCalculationJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCalculationJobsResponse) SetStatusCode(v int32) *CreateCalculationJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCalculationJobsResponse) SetBody(v *CreateCalculationJobsResponseBody) *CreateCalculationJobsResponse {
 	s.Body = v
 	return s
 }
@@ -1092,6 +1546,93 @@ func (s *CreateFeatureConsistencyCheckJobConfigResponse) SetBody(v *CreateFeatur
 	return s
 }
 
+type CreateInstanceResourceRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Group    *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri      *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateInstanceResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResourceRequest) SetCategory(v string) *CreateInstanceResourceRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateInstanceResourceRequest) SetGroup(v string) *CreateInstanceResourceRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *CreateInstanceResourceRequest) SetType(v string) *CreateInstanceResourceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateInstanceResourceRequest) SetUri(v string) *CreateInstanceResourceRequest {
+	s.Uri = &v
+	return s
+}
+
+type CreateInstanceResourceResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s CreateInstanceResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResourceResponseBody) SetRequestId(v string) *CreateInstanceResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceResourceResponseBody) SetResourceId(v string) *CreateInstanceResourceResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+type CreateInstanceResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstanceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceResourceResponse) SetHeaders(v map[string]*string) *CreateInstanceResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceResourceResponse) SetStatusCode(v int32) *CreateInstanceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateInstanceResourceResponse) SetBody(v *CreateInstanceResourceResponseBody) *CreateInstanceResourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLaboratoryRequest struct {
 	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
 	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
@@ -1603,6 +2144,272 @@ func (s *CreateSubCrowdResponse) SetBody(v *CreateSubCrowdResponseBody) *CreateS
 	return s
 }
 
+type CreateTableMetaRequest struct {
+	Description *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields      []*CreateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	InstanceId  *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Module      *string                         `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceId  *string                         `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TableName   *string                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s CreateTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTableMetaRequest) SetDescription(v string) *CreateTableMetaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetFields(v []*CreateTableMetaRequestFields) *CreateTableMetaRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetInstanceId(v string) *CreateTableMetaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetModule(v string) *CreateTableMetaRequest {
+	s.Module = &v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetName(v string) *CreateTableMetaRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetResourceId(v string) *CreateTableMetaRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CreateTableMetaRequest) SetTableName(v string) *CreateTableMetaRequest {
+	s.TableName = &v
+	return s
+}
+
+type CreateTableMetaRequestFields struct {
+	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateTableMetaRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTableMetaRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTableMetaRequestFields) SetIsDimensionField(v bool) *CreateTableMetaRequestFields {
+	s.IsDimensionField = &v
+	return s
+}
+
+func (s *CreateTableMetaRequestFields) SetMeaning(v string) *CreateTableMetaRequestFields {
+	s.Meaning = &v
+	return s
+}
+
+func (s *CreateTableMetaRequestFields) SetName(v string) *CreateTableMetaRequestFields {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateTableMetaRequestFields) SetType(v string) *CreateTableMetaRequestFields {
+	s.Type = &v
+	return s
+}
+
+type CreateTableMetaResponseBody struct {
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+}
+
+func (s CreateTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTableMetaResponseBody) SetRequestId(v string) *CreateTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTableMetaResponseBody) SetTableMetaId(v string) *CreateTableMetaResponseBody {
+	s.TableMetaId = &v
+	return s
+}
+
+type CreateTableMetaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTableMetaResponse) SetHeaders(v map[string]*string) *CreateTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTableMetaResponse) SetStatusCode(v int32) *CreateTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTableMetaResponse) SetBody(v *CreateTableMetaResponseBody) *CreateTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteABMetricRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteABMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricRequest) SetInstanceId(v string) *DeleteABMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteABMetricResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteABMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricResponseBody) SetRequestId(v string) *DeleteABMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteABMetricResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteABMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteABMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricResponse) SetHeaders(v map[string]*string) *DeleteABMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteABMetricResponse) SetStatusCode(v int32) *DeleteABMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteABMetricResponse) SetBody(v *DeleteABMetricResponseBody) *DeleteABMetricResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteABMetricGroupRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteABMetricGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricGroupRequest) SetInstanceId(v string) *DeleteABMetricGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteABMetricGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteABMetricGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricGroupResponseBody) SetRequestId(v string) *DeleteABMetricGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteABMetricGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteABMetricGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteABMetricGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteABMetricGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteABMetricGroupResponse) SetHeaders(v map[string]*string) *DeleteABMetricGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteABMetricGroupResponse) SetStatusCode(v int32) *DeleteABMetricGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteABMetricGroupResponse) SetBody(v *DeleteABMetricGroupResponseBody) *DeleteABMetricGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCrowdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -1791,6 +2598,52 @@ func (s *DeleteExperimentGroupResponse) SetStatusCode(v int32) *DeleteExperiment
 }
 
 func (s *DeleteExperimentGroupResponse) SetBody(v *DeleteExperimentGroupResponseBody) *DeleteExperimentGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResourceResponseBody) SetRequestId(v string) *DeleteInstanceResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceResourceResponse) SetHeaders(v map[string]*string) *DeleteInstanceResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceResourceResponse) SetStatusCode(v int32) *DeleteInstanceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceResourceResponse) SetBody(v *DeleteInstanceResourceResponseBody) *DeleteInstanceResourceResponse {
 	s.Body = v
 	return s
 }
@@ -2111,6 +2964,432 @@ func (s *DeleteSubCrowdResponse) SetStatusCode(v int32) *DeleteSubCrowdResponse 
 }
 
 func (s *DeleteSubCrowdResponse) SetBody(v *DeleteSubCrowdResponseBody) *DeleteSubCrowdResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTableMetaRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTableMetaRequest) SetInstanceId(v string) *DeleteTableMetaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteTableMetaResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTableMetaResponseBody) SetRequestId(v string) *DeleteTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTableMetaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTableMetaResponse) SetHeaders(v map[string]*string) *DeleteTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTableMetaResponse) SetStatusCode(v int32) *DeleteTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTableMetaResponse) SetBody(v *DeleteTableMetaResponseBody) *DeleteTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type GetABMetricRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetABMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricRequest) SetInstanceId(v string) *GetABMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetABMetricResponseBody struct {
+	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LeftMetricId      *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Realtime          *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultResourceId  *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
+	RightMetricId     *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName         *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	StatisticsCycle   *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	TableMetaId       *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetABMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricResponseBody) SetDefinition(v string) *GetABMetricResponseBody {
+	s.Definition = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetDescription(v string) *GetABMetricResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetLeftMetricId(v string) *GetABMetricResponseBody {
+	s.LeftMetricId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetName(v string) *GetABMetricResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetOperator(v string) *GetABMetricResponseBody {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetRealtime(v string) *GetABMetricResponseBody {
+	s.Realtime = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetRequestId(v string) *GetABMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetResultResourceId(v string) *GetABMetricResponseBody {
+	s.ResultResourceId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetResultTableMetaId(v string) *GetABMetricResponseBody {
+	s.ResultTableMetaId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetRightMetricId(v string) *GetABMetricResponseBody {
+	s.RightMetricId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetSceneId(v string) *GetABMetricResponseBody {
+	s.SceneId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetSceneName(v string) *GetABMetricResponseBody {
+	s.SceneName = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetStatisticsCycle(v int32) *GetABMetricResponseBody {
+	s.StatisticsCycle = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetTableMetaId(v string) *GetABMetricResponseBody {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *GetABMetricResponseBody) SetType(v string) *GetABMetricResponseBody {
+	s.Type = &v
+	return s
+}
+
+type GetABMetricResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetABMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetABMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricResponse) SetHeaders(v map[string]*string) *GetABMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetABMetricResponse) SetStatusCode(v int32) *GetABMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetABMetricResponse) SetBody(v *GetABMetricResponseBody) *GetABMetricResponse {
+	s.Body = v
+	return s
+}
+
+type GetABMetricGroupRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetABMetricGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricGroupRequest) SetInstanceId(v string) *GetABMetricGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetABMetricGroupResponseBody struct {
+	ABMetricIds   *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	ABMetricNames *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Realtime      *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SceneId       *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s GetABMetricGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricGroupResponseBody) SetABMetricIds(v string) *GetABMetricGroupResponseBody {
+	s.ABMetricIds = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetABMetricNames(v string) *GetABMetricGroupResponseBody {
+	s.ABMetricNames = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetDescription(v string) *GetABMetricGroupResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetName(v string) *GetABMetricGroupResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetOwner(v string) *GetABMetricGroupResponseBody {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetRealtime(v bool) *GetABMetricGroupResponseBody {
+	s.Realtime = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetRequestId(v string) *GetABMetricGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponseBody) SetSceneId(v string) *GetABMetricGroupResponseBody {
+	s.SceneId = &v
+	return s
+}
+
+type GetABMetricGroupResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetABMetricGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetABMetricGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetABMetricGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetABMetricGroupResponse) SetHeaders(v map[string]*string) *GetABMetricGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetABMetricGroupResponse) SetStatusCode(v int32) *GetABMetricGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetABMetricGroupResponse) SetBody(v *GetABMetricGroupResponseBody) *GetABMetricGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetCalculationJobRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetCalculationJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCalculationJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCalculationJobRequest) SetInstanceId(v string) *GetCalculationJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetCalculationJobResponseBody struct {
+	ABMetricId   *string   `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	ABMetricName *string   `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	BizDate      *string   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	Config       *string   `json:"Config,omitempty" xml:"Config,omitempty"`
+	GmtRanTime   *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	JobMessage   []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	JobSource    *string   `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCalculationJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCalculationJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCalculationJobResponseBody) SetABMetricId(v string) *GetCalculationJobResponseBody {
+	s.ABMetricId = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetABMetricName(v string) *GetCalculationJobResponseBody {
+	s.ABMetricName = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetBizDate(v string) *GetCalculationJobResponseBody {
+	s.BizDate = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetConfig(v string) *GetCalculationJobResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetGmtRanTime(v string) *GetCalculationJobResponseBody {
+	s.GmtRanTime = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetJobMessage(v []*string) *GetCalculationJobResponseBody {
+	s.JobMessage = v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetJobSource(v string) *GetCalculationJobResponseBody {
+	s.JobSource = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetRequestId(v string) *GetCalculationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCalculationJobResponseBody) SetStatus(v string) *GetCalculationJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetCalculationJobResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCalculationJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCalculationJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCalculationJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCalculationJobResponse) SetHeaders(v map[string]*string) *GetCalculationJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCalculationJobResponse) SetStatusCode(v int32) *GetCalculationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCalculationJobResponse) SetBody(v *GetCalculationJobResponseBody) *GetCalculationJobResponse {
 	s.Body = v
 	return s
 }
@@ -3029,6 +4308,193 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 	return s
 }
 
+type GetInstanceResourceResponseBody struct {
+	Category        *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Config          *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Group           *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri             *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s GetInstanceResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResourceResponseBody) SetCategory(v string) *GetInstanceResourceResponseBody {
+	s.Category = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetConfig(v string) *GetInstanceResourceResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetGmtCreateTime(v string) *GetInstanceResourceResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetGmtModifiedTime(v string) *GetInstanceResourceResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetGroup(v string) *GetInstanceResourceResponseBody {
+	s.Group = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetRequestId(v string) *GetInstanceResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetResourceId(v string) *GetInstanceResourceResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetType(v string) *GetInstanceResourceResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponseBody) SetUri(v string) *GetInstanceResourceResponseBody {
+	s.Uri = &v
+	return s
+}
+
+type GetInstanceResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResourceResponse) SetHeaders(v map[string]*string) *GetInstanceResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResourceResponse) SetStatusCode(v int32) *GetInstanceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceResourceResponse) SetBody(v *GetInstanceResourceResponseBody) *GetInstanceResourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceResourceTableResponseBody struct {
+	Fields    []*GetInstanceResourceTableResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TableName *string                                       `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetInstanceResourceTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResourceTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResourceTableResponseBody) SetFields(v []*GetInstanceResourceTableResponseBodyFields) *GetInstanceResourceTableResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponseBody) SetRequestId(v string) *GetInstanceResourceTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponseBody) SetTableName(v string) *GetInstanceResourceTableResponseBody {
+	s.TableName = &v
+	return s
+}
+
+type GetInstanceResourceTableResponseBodyFields struct {
+	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetInstanceResourceTableResponseBodyFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResourceTableResponseBodyFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResourceTableResponseBodyFields) SetIsDimensionField(v bool) *GetInstanceResourceTableResponseBodyFields {
+	s.IsDimensionField = &v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponseBodyFields) SetMeaning(v string) *GetInstanceResourceTableResponseBodyFields {
+	s.Meaning = &v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponseBodyFields) SetName(v string) *GetInstanceResourceTableResponseBodyFields {
+	s.Name = &v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponseBodyFields) SetType(v string) *GetInstanceResourceTableResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+type GetInstanceResourceTableResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetInstanceResourceTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceResourceTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResourceTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResourceTableResponse) SetHeaders(v map[string]*string) *GetInstanceResourceTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponse) SetStatusCode(v int32) *GetInstanceResourceTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetInstanceResourceTableResponse) SetBody(v *GetInstanceResourceTableResponseBody) *GetInstanceResourceTableResponse {
+	s.Body = v
+	return s
+}
+
 type GetLaboratoryRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -3448,6 +4914,704 @@ func (s *GetSubCrowdResponse) SetStatusCode(v int32) *GetSubCrowdResponse {
 }
 
 func (s *GetSubCrowdResponse) SetBody(v *GetSubCrowdResponseBody) *GetSubCrowdResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableMetaRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableMetaRequest) SetInstanceId(v string) *GetTableMetaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetTableMetaResponseBody struct {
+	CanDelete       *bool                             `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	Description     *string                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields          []*GetTableMetaResponseBodyFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	GmtCreateTime   *string                           `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                           `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Module          *string                           `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name            *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	RequestId       *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceId      *string                           `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TableName       *string                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type            *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url             *string                           `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableMetaResponseBody) SetCanDelete(v bool) *GetTableMetaResponseBody {
+	s.CanDelete = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetDescription(v string) *GetTableMetaResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetFields(v []*GetTableMetaResponseBodyFields) *GetTableMetaResponseBody {
+	s.Fields = v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetGmtCreateTime(v string) *GetTableMetaResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetGmtModifiedTime(v string) *GetTableMetaResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetModule(v string) *GetTableMetaResponseBody {
+	s.Module = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetName(v string) *GetTableMetaResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetRequestId(v string) *GetTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetResourceId(v string) *GetTableMetaResponseBody {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetTableName(v string) *GetTableMetaResponseBody {
+	s.TableName = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetType(v string) *GetTableMetaResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBody) SetUrl(v string) *GetTableMetaResponseBody {
+	s.Url = &v
+	return s
+}
+
+type GetTableMetaResponseBodyFields struct {
+	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetTableMetaResponseBodyFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableMetaResponseBodyFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableMetaResponseBodyFields) SetIsDimensionField(v bool) *GetTableMetaResponseBodyFields {
+	s.IsDimensionField = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBodyFields) SetMeaning(v string) *GetTableMetaResponseBodyFields {
+	s.Meaning = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBodyFields) SetName(v string) *GetTableMetaResponseBodyFields {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTableMetaResponseBodyFields) SetType(v string) *GetTableMetaResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+type GetTableMetaResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableMetaResponse) SetHeaders(v map[string]*string) *GetTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableMetaResponse) SetStatusCode(v int32) *GetTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableMetaResponse) SetBody(v *GetTableMetaResponseBody) *GetTableMetaResponse {
+	s.Body = v
+	return s
+}
+
+type ListABMetricGroupsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Realtime   *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s ListABMetricGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricGroupsRequest) SetInstanceId(v string) *ListABMetricGroupsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListABMetricGroupsRequest) SetPageNumber(v int32) *ListABMetricGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListABMetricGroupsRequest) SetPageSize(v int32) *ListABMetricGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListABMetricGroupsRequest) SetRealtime(v bool) *ListABMetricGroupsRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *ListABMetricGroupsRequest) SetSceneId(v string) *ListABMetricGroupsRequest {
+	s.SceneId = &v
+	return s
+}
+
+type ListABMetricGroupsResponseBody struct {
+	ABMetricGroups []*ListABMetricGroupsResponseBodyABMetricGroups `json:"ABMetricGroups,omitempty" xml:"ABMetricGroups,omitempty" type:"Repeated"`
+	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListABMetricGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricGroupsResponseBody) SetABMetricGroups(v []*ListABMetricGroupsResponseBodyABMetricGroups) *ListABMetricGroupsResponseBody {
+	s.ABMetricGroups = v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBody) SetRequestId(v string) *ListABMetricGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBody) SetTotalCount(v int64) *ListABMetricGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListABMetricGroupsResponseBodyABMetricGroups struct {
+	ABMetricGroupId *string `json:"ABMetricGroupId,omitempty" xml:"ABMetricGroupId,omitempty"`
+	ABMetricIds     *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	ABMetricNames   *string `json:"ABMetricNames,omitempty" xml:"ABMetricNames,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Realtime        *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	SceneId         *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s ListABMetricGroupsResponseBodyABMetricGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricGroupsResponseBodyABMetricGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetABMetricGroupId(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.ABMetricGroupId = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetABMetricIds(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.ABMetricIds = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetABMetricNames(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.ABMetricNames = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetDescription(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.Description = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetName(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.Name = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetOwner(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetRealtime(v bool) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.Realtime = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponseBodyABMetricGroups) SetSceneId(v string) *ListABMetricGroupsResponseBodyABMetricGroups {
+	s.SceneId = &v
+	return s
+}
+
+type ListABMetricGroupsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListABMetricGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListABMetricGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricGroupsResponse) SetHeaders(v map[string]*string) *ListABMetricGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListABMetricGroupsResponse) SetStatusCode(v int32) *ListABMetricGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListABMetricGroupsResponse) SetBody(v *ListABMetricGroupsResponseBody) *ListABMetricGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListABMetricsRequest struct {
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	TableMetaId *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListABMetricsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricsRequest) SetInstanceId(v string) *ListABMetricsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetName(v string) *ListABMetricsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetPageNumber(v int32) *ListABMetricsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetPageSize(v int32) *ListABMetricsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetRealtime(v bool) *ListABMetricsRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetSceneId(v string) *ListABMetricsRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetTableMetaId(v string) *ListABMetricsRequest {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *ListABMetricsRequest) SetType(v string) *ListABMetricsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListABMetricsResponseBody struct {
+	ABMetrics  []*ListABMetricsResponseBodyABMetrics `json:"ABMetrics,omitempty" xml:"ABMetrics,omitempty" type:"Repeated"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListABMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricsResponseBody) SetABMetrics(v []*ListABMetricsResponseBodyABMetrics) *ListABMetricsResponseBody {
+	s.ABMetrics = v
+	return s
+}
+
+func (s *ListABMetricsResponseBody) SetRequestId(v string) *ListABMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBody) SetTotalCount(v int64) *ListABMetricsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListABMetricsResponseBodyABMetrics struct {
+	ABMetricId        *string `json:"ABMetricId,omitempty" xml:"ABMetricId,omitempty"`
+	Definition        *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LeftMetricId      *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Realtime          *string `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	ResultResourceId  *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	ResultTableMetaId *string `json:"ResultTableMetaId,omitempty" xml:"ResultTableMetaId,omitempty"`
+	RightMetricId     *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	SceneId           *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SceneName         *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	StatisticsCycle   *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	TableMetaId       *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListABMetricsResponseBodyABMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricsResponseBodyABMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetABMetricId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.ABMetricId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetDefinition(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Definition = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetDescription(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Description = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetLeftMetricId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.LeftMetricId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetName(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Name = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetOperator(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetRealtime(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Realtime = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetResultResourceId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.ResultResourceId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetResultTableMetaId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.ResultTableMetaId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetRightMetricId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.RightMetricId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetSceneId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetSceneName(v string) *ListABMetricsResponseBodyABMetrics {
+	s.SceneName = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetStatisticsCycle(v int32) *ListABMetricsResponseBodyABMetrics {
+	s.StatisticsCycle = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetTableMetaId(v string) *ListABMetricsResponseBodyABMetrics {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *ListABMetricsResponseBodyABMetrics) SetType(v string) *ListABMetricsResponseBodyABMetrics {
+	s.Type = &v
+	return s
+}
+
+type ListABMetricsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListABMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListABMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListABMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListABMetricsResponse) SetHeaders(v map[string]*string) *ListABMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListABMetricsResponse) SetStatusCode(v int32) *ListABMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListABMetricsResponse) SetBody(v *ListABMetricsResponseBody) *ListABMetricsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCalculationJobsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SceneId    *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCalculationJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCalculationJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCalculationJobsRequest) SetInstanceId(v string) *ListCalculationJobsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCalculationJobsRequest) SetPageNumber(v int32) *ListCalculationJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCalculationJobsRequest) SetPageSize(v int32) *ListCalculationJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCalculationJobsRequest) SetSceneId(v string) *ListCalculationJobsRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ListCalculationJobsRequest) SetStatus(v string) *ListCalculationJobsRequest {
+	s.Status = &v
+	return s
+}
+
+type ListCalculationJobsResponseBody struct {
+	CalculationJobs []*ListCalculationJobsResponseBodyCalculationJobs `json:"CalculationJobs,omitempty" xml:"CalculationJobs,omitempty" type:"Repeated"`
+	RequestId       *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount      *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCalculationJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCalculationJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCalculationJobsResponseBody) SetCalculationJobs(v []*ListCalculationJobsResponseBodyCalculationJobs) *ListCalculationJobsResponseBody {
+	s.CalculationJobs = v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBody) SetRequestId(v string) *ListCalculationJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBody) SetTotalCount(v int64) *ListCalculationJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCalculationJobsResponseBodyCalculationJobs struct {
+	ABMetricName     *string   `json:"ABMetricName,omitempty" xml:"ABMetricName,omitempty"`
+	BizDate          *string   `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
+	CalculationJobId *string   `json:"CalculationJobId,omitempty" xml:"CalculationJobId,omitempty"`
+	Config           *string   `json:"Config,omitempty" xml:"Config,omitempty"`
+	GmtRanTime       *string   `json:"GmtRanTime,omitempty" xml:"GmtRanTime,omitempty"`
+	JobMessage       []*string `json:"JobMessage,omitempty" xml:"JobMessage,omitempty" type:"Repeated"`
+	JobSource        *string   `json:"JobSource,omitempty" xml:"JobSource,omitempty"`
+	Status           *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCalculationJobsResponseBodyCalculationJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCalculationJobsResponseBodyCalculationJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetABMetricName(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.ABMetricName = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetBizDate(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.BizDate = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetCalculationJobId(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.CalculationJobId = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetConfig(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.Config = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetGmtRanTime(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.GmtRanTime = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetJobMessage(v []*string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.JobMessage = v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetJobSource(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.JobSource = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponseBodyCalculationJobs) SetStatus(v string) *ListCalculationJobsResponseBodyCalculationJobs {
+	s.Status = &v
+	return s
+}
+
+type ListCalculationJobsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCalculationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCalculationJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCalculationJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCalculationJobsResponse) SetHeaders(v map[string]*string) *ListCalculationJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCalculationJobsResponse) SetStatusCode(v int32) *ListCalculationJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCalculationJobsResponse) SetBody(v *ListCalculationJobsResponseBody) *ListCalculationJobsResponse {
 	s.Body = v
 	return s
 }
@@ -4852,6 +7016,152 @@ func (s *ListFeatureConsistencyCheckJobsResponse) SetBody(v *ListFeatureConsiste
 	return s
 }
 
+type ListInstanceResourcesRequest struct {
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Group    *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListInstanceResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResourcesRequest) SetCategory(v string) *ListInstanceResourcesRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInstanceResourcesRequest) SetGroup(v string) *ListInstanceResourcesRequest {
+	s.Group = &v
+	return s
+}
+
+func (s *ListInstanceResourcesRequest) SetType(v string) *ListInstanceResourcesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListInstanceResourcesResponseBody struct {
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Resources  []*ListInstanceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInstanceResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResourcesResponseBody) SetRequestId(v string) *ListInstanceResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBody) SetResources(v []*ListInstanceResourcesResponseBodyResources) *ListInstanceResourcesResponseBody {
+	s.Resources = v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBody) SetTotalCount(v int64) *ListInstanceResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceResourcesResponseBodyResources struct {
+	Category      *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Config        *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	GmtCreateAt   *string `json:"GmtCreateAt,omitempty" xml:"GmtCreateAt,omitempty"`
+	GmtModifiedAt *string `json:"GmtModifiedAt,omitempty" xml:"GmtModifiedAt,omitempty"`
+	Group         *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uri           *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s ListInstanceResourcesResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceResourcesResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetCategory(v string) *ListInstanceResourcesResponseBodyResources {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetConfig(v string) *ListInstanceResourcesResponseBodyResources {
+	s.Config = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetGmtCreateAt(v string) *ListInstanceResourcesResponseBodyResources {
+	s.GmtCreateAt = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetGmtModifiedAt(v string) *ListInstanceResourcesResponseBodyResources {
+	s.GmtModifiedAt = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetGroup(v string) *ListInstanceResourcesResponseBodyResources {
+	s.Group = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetResourceId(v string) *ListInstanceResourcesResponseBodyResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetType(v string) *ListInstanceResourcesResponseBodyResources {
+	s.Type = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponseBodyResources) SetUri(v string) *ListInstanceResourcesResponseBodyResources {
+	s.Uri = &v
+	return s
+}
+
+type ListInstanceResourcesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstanceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceResourcesResponse) SetHeaders(v map[string]*string) *ListInstanceResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceResourcesResponse) SetStatusCode(v int32) *ListInstanceResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstanceResourcesResponse) SetBody(v *ListInstanceResourcesResponseBody) *ListInstanceResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -5860,6 +8170,235 @@ func (s *ListSubCrowdsResponse) SetBody(v *ListSubCrowdsResponseBody) *ListSubCr
 	return s
 }
 
+type ListTableMetasRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Module     *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTableMetasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableMetasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableMetasRequest) SetInstanceId(v string) *ListTableMetasRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTableMetasRequest) SetModule(v string) *ListTableMetasRequest {
+	s.Module = &v
+	return s
+}
+
+func (s *ListTableMetasRequest) SetName(v string) *ListTableMetasRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTableMetasRequest) SetPageNumber(v int32) *ListTableMetasRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTableMetasRequest) SetPageSize(v int32) *ListTableMetasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTableMetasRequest) SetType(v string) *ListTableMetasRequest {
+	s.Type = &v
+	return s
+}
+
+type ListTableMetasResponseBody struct {
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TableMetas []*ListTableMetasResponseBodyTableMetas `json:"TableMetas,omitempty" xml:"TableMetas,omitempty" type:"Repeated"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTableMetasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableMetasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableMetasResponseBody) SetRequestId(v string) *ListTableMetasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBody) SetTableMetas(v []*ListTableMetasResponseBodyTableMetas) *ListTableMetasResponseBody {
+	s.TableMetas = v
+	return s
+}
+
+func (s *ListTableMetasResponseBody) SetTotalCount(v int64) *ListTableMetasResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTableMetasResponseBodyTableMetas struct {
+	CanDelete       *bool                                         `json:"CanDelete,omitempty" xml:"CanDelete,omitempty"`
+	Description     *string                                       `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields          []*ListTableMetasResponseBodyTableMetasFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	GmtCreateTime   *string                                       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtImportedTime *string                                       `json:"GmtImportedTime,omitempty" xml:"GmtImportedTime,omitempty"`
+	GmtModifiedTime *string                                       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Module          *string                                       `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceId      *string                                       `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TableMetaId     *string                                       `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	TableName       *string                                       `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	Type            *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url             *string                                       `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListTableMetasResponseBodyTableMetas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableMetasResponseBodyTableMetas) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetCanDelete(v bool) *ListTableMetasResponseBodyTableMetas {
+	s.CanDelete = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetDescription(v string) *ListTableMetasResponseBodyTableMetas {
+	s.Description = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetFields(v []*ListTableMetasResponseBodyTableMetasFields) *ListTableMetasResponseBodyTableMetas {
+	s.Fields = v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetGmtCreateTime(v string) *ListTableMetasResponseBodyTableMetas {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetGmtImportedTime(v string) *ListTableMetasResponseBodyTableMetas {
+	s.GmtImportedTime = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetGmtModifiedTime(v string) *ListTableMetasResponseBodyTableMetas {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetModule(v string) *ListTableMetasResponseBodyTableMetas {
+	s.Module = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetName(v string) *ListTableMetasResponseBodyTableMetas {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetResourceId(v string) *ListTableMetasResponseBodyTableMetas {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetTableMetaId(v string) *ListTableMetasResponseBodyTableMetas {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetTableName(v string) *ListTableMetasResponseBodyTableMetas {
+	s.TableName = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetType(v string) *ListTableMetasResponseBodyTableMetas {
+	s.Type = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetas) SetUrl(v string) *ListTableMetasResponseBodyTableMetas {
+	s.Url = &v
+	return s
+}
+
+type ListTableMetasResponseBodyTableMetasFields struct {
+	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListTableMetasResponseBodyTableMetasFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableMetasResponseBodyTableMetasFields) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableMetasResponseBodyTableMetasFields) SetIsDimensionField(v bool) *ListTableMetasResponseBodyTableMetasFields {
+	s.IsDimensionField = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetasFields) SetMeaning(v string) *ListTableMetasResponseBodyTableMetasFields {
+	s.Meaning = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetasFields) SetName(v string) *ListTableMetasResponseBodyTableMetasFields {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTableMetasResponseBodyTableMetasFields) SetType(v string) *ListTableMetasResponseBodyTableMetasFields {
+	s.Type = &v
+	return s
+}
+
+type ListTableMetasResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTableMetasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTableMetasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTableMetasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTableMetasResponse) SetHeaders(v map[string]*string) *ListTableMetasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTableMetasResponse) SetStatusCode(v int32) *ListTableMetasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTableMetasResponse) SetBody(v *ListTableMetasResponseBody) *ListTableMetasResponse {
+	s.Body = v
+	return s
+}
+
 type OfflineExperimentRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
@@ -6308,6 +8847,135 @@ func (s *PushAllExperimentResponse) SetBody(v *PushAllExperimentResponseBody) *P
 	return s
 }
 
+type ReportABMetricGroupRequest struct {
+	BaseExperimentId     *string `json:"BaseExperimentId,omitempty" xml:"BaseExperimentId,omitempty"`
+	DimensionFields      *string `json:"DimensionFields,omitempty" xml:"DimensionFields,omitempty"`
+	EndDate              *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	ExperimentGroupId    *string `json:"ExperimentGroupId,omitempty" xml:"ExperimentGroupId,omitempty"`
+	ExperimentIds        *string `json:"ExperimentIds,omitempty" xml:"ExperimentIds,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ReportType           *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	SceneId              *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StartDate            *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TimeStatisticsMethod *string `json:"TimeStatisticsMethod,omitempty" xml:"TimeStatisticsMethod,omitempty"`
+}
+
+func (s ReportABMetricGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportABMetricGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReportABMetricGroupRequest) SetBaseExperimentId(v string) *ReportABMetricGroupRequest {
+	s.BaseExperimentId = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetDimensionFields(v string) *ReportABMetricGroupRequest {
+	s.DimensionFields = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetEndDate(v string) *ReportABMetricGroupRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetExperimentGroupId(v string) *ReportABMetricGroupRequest {
+	s.ExperimentGroupId = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetExperimentIds(v string) *ReportABMetricGroupRequest {
+	s.ExperimentIds = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetInstanceId(v string) *ReportABMetricGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetReportType(v string) *ReportABMetricGroupRequest {
+	s.ReportType = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetSceneId(v string) *ReportABMetricGroupRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetStartDate(v string) *ReportABMetricGroupRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *ReportABMetricGroupRequest) SetTimeStatisticsMethod(v string) *ReportABMetricGroupRequest {
+	s.TimeStatisticsMethod = &v
+	return s
+}
+
+type ReportABMetricGroupResponseBody struct {
+	ExperimentReport map[string]*ExperimentReportValue `json:"ExperimentReport,omitempty" xml:"ExperimentReport,omitempty"`
+	GroupDimension   []*string                         `json:"GroupDimension,omitempty" xml:"GroupDimension,omitempty" type:"Repeated"`
+	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReportABMetricGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportABMetricGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReportABMetricGroupResponseBody) SetExperimentReport(v map[string]*ExperimentReportValue) *ReportABMetricGroupResponseBody {
+	s.ExperimentReport = v
+	return s
+}
+
+func (s *ReportABMetricGroupResponseBody) SetGroupDimension(v []*string) *ReportABMetricGroupResponseBody {
+	s.GroupDimension = v
+	return s
+}
+
+func (s *ReportABMetricGroupResponseBody) SetRequestId(v string) *ReportABMetricGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReportABMetricGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportABMetricGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReportABMetricGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportABMetricGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReportABMetricGroupResponse) SetHeaders(v map[string]*string) *ReportABMetricGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReportABMetricGroupResponse) SetStatusCode(v int32) *ReportABMetricGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReportABMetricGroupResponse) SetBody(v *ReportABMetricGroupResponseBody) *ReportABMetricGroupResponse {
+	s.Body = v
+	return s
+}
+
 type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	ContextFeatures                    *string `json:"ContextFeatures,omitempty" xml:"ContextFeatures,omitempty"`
 	FeatureConsistencyCheckJobConfigId *string `json:"FeatureConsistencyCheckJobConfigId,omitempty" xml:"FeatureConsistencyCheckJobConfigId,omitempty"`
@@ -6484,6 +9152,234 @@ func (s *TerminateFeatureConsistencyCheckJobResponse) SetStatusCode(v int32) *Te
 }
 
 func (s *TerminateFeatureConsistencyCheckJobResponse) SetBody(v *TerminateFeatureConsistencyCheckJobResponseBody) *TerminateFeatureConsistencyCheckJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateABMetricRequest struct {
+	Definition       *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	LeftMetricId     *string `json:"LeftMetricId,omitempty" xml:"LeftMetricId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Operator         *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Realtime         *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	ResultResourceId *string `json:"ResultResourceId,omitempty" xml:"ResultResourceId,omitempty"`
+	RightMetricId    *string `json:"RightMetricId,omitempty" xml:"RightMetricId,omitempty"`
+	SceneId          *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	StatisticsCycle  *int32  `json:"StatisticsCycle,omitempty" xml:"StatisticsCycle,omitempty"`
+	TableMetaId      *string `json:"TableMetaId,omitempty" xml:"TableMetaId,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateABMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricRequest) SetDefinition(v string) *UpdateABMetricRequest {
+	s.Definition = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetDescription(v string) *UpdateABMetricRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetInstanceId(v string) *UpdateABMetricRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetLeftMetricId(v string) *UpdateABMetricRequest {
+	s.LeftMetricId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetName(v string) *UpdateABMetricRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetOperator(v string) *UpdateABMetricRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetRealtime(v bool) *UpdateABMetricRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetResultResourceId(v string) *UpdateABMetricRequest {
+	s.ResultResourceId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetRightMetricId(v string) *UpdateABMetricRequest {
+	s.RightMetricId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetSceneId(v string) *UpdateABMetricRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetStatisticsCycle(v int32) *UpdateABMetricRequest {
+	s.StatisticsCycle = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetTableMetaId(v string) *UpdateABMetricRequest {
+	s.TableMetaId = &v
+	return s
+}
+
+func (s *UpdateABMetricRequest) SetType(v string) *UpdateABMetricRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateABMetricResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateABMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricResponseBody) SetRequestId(v string) *UpdateABMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateABMetricResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateABMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateABMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricResponse) SetHeaders(v map[string]*string) *UpdateABMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateABMetricResponse) SetStatusCode(v int32) *UpdateABMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateABMetricResponse) SetBody(v *UpdateABMetricResponseBody) *UpdateABMetricResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateABMetricGroupRequest struct {
+	ABMetricIds *string `json:"ABMetricIds,omitempty" xml:"ABMetricIds,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Realtime    *bool   `json:"Realtime,omitempty" xml:"Realtime,omitempty"`
+	SceneId     *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s UpdateABMetricGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricGroupRequest) SetABMetricIds(v string) *UpdateABMetricGroupRequest {
+	s.ABMetricIds = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupRequest) SetDescription(v string) *UpdateABMetricGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupRequest) SetInstanceId(v string) *UpdateABMetricGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupRequest) SetName(v string) *UpdateABMetricGroupRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupRequest) SetRealtime(v bool) *UpdateABMetricGroupRequest {
+	s.Realtime = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupRequest) SetSceneId(v string) *UpdateABMetricGroupRequest {
+	s.SceneId = &v
+	return s
+}
+
+type UpdateABMetricGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateABMetricGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricGroupResponseBody) SetRequestId(v string) *UpdateABMetricGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateABMetricGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateABMetricGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateABMetricGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateABMetricGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateABMetricGroupResponse) SetHeaders(v map[string]*string) *UpdateABMetricGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateABMetricGroupResponse) SetStatusCode(v int32) *UpdateABMetricGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateABMetricGroupResponse) SetBody(v *UpdateABMetricGroupResponseBody) *UpdateABMetricGroupResponse {
 	s.Body = v
 	return s
 }
@@ -7013,6 +9909,75 @@ func (s *UpdateFeatureConsistencyCheckJobConfigResponse) SetBody(v *UpdateFeatur
 	return s
 }
 
+type UpdateInstanceResourceRequest struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Uri    *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s UpdateInstanceResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResourceRequest) SetConfig(v string) *UpdateInstanceResourceRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateInstanceResourceRequest) SetUri(v string) *UpdateInstanceResourceRequest {
+	s.Uri = &v
+	return s
+}
+
+type UpdateInstanceResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInstanceResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResourceResponseBody) SetRequestId(v string) *UpdateInstanceResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstanceResourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateInstanceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceResourceResponse) SetHeaders(v map[string]*string) *UpdateInstanceResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceResourceResponse) SetStatusCode(v int32) *UpdateInstanceResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceResourceResponse) SetBody(v *UpdateInstanceResourceResponseBody) *UpdateInstanceResourceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateLaboratoryRequest struct {
 	BucketCount  *int32  `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
 	BucketType   *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
@@ -7388,6 +10353,140 @@ func (s *UpdateSceneResponse) SetBody(v *UpdateSceneResponseBody) *UpdateSceneRe
 	return s
 }
 
+type UpdateTableMetaRequest struct {
+	Description *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	Fields      []*UpdateTableMetaRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	InstanceId  *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Module      *string                         `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name        *string                         `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceId  *string                         `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	TableName   *string                         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s UpdateTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableMetaRequest) SetDescription(v string) *UpdateTableMetaRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetFields(v []*UpdateTableMetaRequestFields) *UpdateTableMetaRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetInstanceId(v string) *UpdateTableMetaRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetModule(v string) *UpdateTableMetaRequest {
+	s.Module = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetName(v string) *UpdateTableMetaRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetResourceId(v string) *UpdateTableMetaRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequest) SetTableName(v string) *UpdateTableMetaRequest {
+	s.TableName = &v
+	return s
+}
+
+type UpdateTableMetaRequestFields struct {
+	IsDimensionField *bool   `json:"IsDimensionField,omitempty" xml:"IsDimensionField,omitempty"`
+	Meaning          *string `json:"Meaning,omitempty" xml:"Meaning,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateTableMetaRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableMetaRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableMetaRequestFields) SetIsDimensionField(v bool) *UpdateTableMetaRequestFields {
+	s.IsDimensionField = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequestFields) SetMeaning(v string) *UpdateTableMetaRequestFields {
+	s.Meaning = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequestFields) SetName(v string) *UpdateTableMetaRequestFields {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateTableMetaRequestFields) SetType(v string) *UpdateTableMetaRequestFields {
+	s.Type = &v
+	return s
+}
+
+type UpdateTableMetaResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableMetaResponseBody) SetRequestId(v string) *UpdateTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTableMetaResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableMetaResponse) SetHeaders(v map[string]*string) *UpdateTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTableMetaResponse) SetStatusCode(v int32) *UpdateTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTableMetaResponse) SetBody(v *UpdateTableMetaResponseBody) *UpdateTableMetaResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -7510,6 +10609,56 @@ func (client *Client) BackflowFeatureConsistencyCheckJobData(request *BackflowFe
 	headers := make(map[string]*string)
 	_result = &BackflowFeatureConsistencyCheckJobDataResponse{}
 	_body, _err := client.BackflowFeatureConsistencyCheckJobDataWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckInstanceResourcesWithOptions(InstanceId *string, request *CheckInstanceResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckInstanceResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckInstanceResources"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/action/checkresources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckInstanceResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckInstanceResourcesRequest) (_result *CheckInstanceResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckInstanceResourcesResponse{}
+	_body, _err := client.CheckInstanceResourcesWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7710,6 +10859,224 @@ func (client *Client) CloneLaboratory(LaboratoryId *string, request *CloneLabora
 	headers := make(map[string]*string)
 	_result = &CloneLaboratoryResponse{}
 	_body, _err := client.CloneLaboratoryWithOptions(LaboratoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateABMetricWithOptions(request *CreateABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		body["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LeftMetricId)) {
+		body["LeftMetricId"] = request.LeftMetricId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		body["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultResourceId)) {
+		body["ResultResourceId"] = request.ResultResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RightMetricId)) {
+		body["RightMetricId"] = request.RightMetricId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsCycle)) {
+		body["StatisticsCycle"] = request.StatisticsCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableMetaId)) {
+		body["TableMetaId"] = request.TableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateABMetric"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetrics"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateABMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateABMetric(request *CreateABMetricRequest) (_result *CreateABMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateABMetricResponse{}
+	_body, _err := client.CreateABMetricWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateABMetricGroupWithOptions(request *CreateABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateABMetricGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ABMetricIds)) {
+		body["ABMetricIds"] = request.ABMetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		body["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateABMetricGroup"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateABMetricGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateABMetricGroup(request *CreateABMetricGroupRequest) (_result *CreateABMetricGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateABMetricGroupResponse{}
+	_body, _err := client.CreateABMetricGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCalculationJobsWithOptions(request *CreateCalculationJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCalculationJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ABMetricIds)) {
+		body["ABMetricIds"] = request.ABMetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCalculationJobs"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/batch/calculationjobs/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCalculationJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCalculationJobs(request *CreateCalculationJobsRequest) (_result *CreateCalculationJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateCalculationJobsResponse{}
+	_body, _err := client.CreateCalculationJobsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8155,6 +11522,64 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfig(request *CreateFeat
 	return _result, _err
 }
 
+func (client *Client) CreateInstanceResourceWithOptions(InstanceId *string, request *CreateInstanceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		body["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceResource"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceResource(InstanceId *string, request *CreateInstanceResourceRequest) (_result *CreateInstanceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceResourceResponse{}
+	_body, _err := client.CreateInstanceResourceWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateLaboratoryWithOptions(request *CreateLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8477,6 +11902,168 @@ func (client *Client) CreateSubCrowd(CrowdId *string, request *CreateSubCrowdReq
 	return _result, _err
 }
 
+func (client *Client) CreateTableMetaWithOptions(request *CreateTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		body["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTableMeta"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tablemetas"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTableMeta(request *CreateTableMetaRequest) (_result *CreateTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTableMetaResponse{}
+	_body, _err := client.CreateTableMetaWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteABMetricWithOptions(ABMetricId *string, request *DeleteABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteABMetric"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetrics/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteABMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteABMetric(ABMetricId *string, request *DeleteABMetricRequest) (_result *DeleteABMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteABMetricResponse{}
+	_body, _err := client.DeleteABMetricWithOptions(ABMetricId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteABMetricGroupWithOptions(ABMetricGroupId *string, request *DeleteABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteABMetricGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteABMetricGroup"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricGroupId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteABMetricGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteABMetricGroup(ABMetricGroupId *string, request *DeleteABMetricGroupRequest) (_result *DeleteABMetricGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteABMetricGroupResponse{}
+	_body, _err := client.DeleteABMetricGroupWithOptions(ABMetricGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteCrowdWithOptions(CrowdId *string, request *DeleteCrowdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCrowdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8608,6 +12195,42 @@ func (client *Client) DeleteExperimentGroup(ExperimentGroupId *string, request *
 	headers := make(map[string]*string)
 	_result = &DeleteExperimentGroupResponse{}
 	_body, _err := client.DeleteExperimentGroupWithOptions(ExperimentGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceResource"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceResource(InstanceId *string, ResourceId *string) (_result *DeleteInstanceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceResourceResponse{}
+	_body, _err := client.DeleteInstanceResourceWithOptions(InstanceId, ResourceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8845,6 +12468,190 @@ func (client *Client) DeleteSubCrowd(CrowdId *string, SubCrowdId *string, reques
 	return _result, _err
 }
 
+func (client *Client) DeleteTableMetaWithOptions(TableMetaId *string, request *DeleteTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTableMeta"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tablemetas/" + tea.StringValue(openapiutil.GetEncodeParam(TableMetaId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTableMeta(TableMetaId *string, request *DeleteTableMetaRequest) (_result *DeleteTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTableMetaResponse{}
+	_body, _err := client.DeleteTableMetaWithOptions(TableMetaId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetABMetricWithOptions(ABMetricId *string, request *GetABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetABMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetABMetric"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetrics/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetABMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetABMetric(ABMetricId *string, request *GetABMetricRequest) (_result *GetABMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetABMetricResponse{}
+	_body, _err := client.GetABMetricWithOptions(ABMetricId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetABMetricGroupWithOptions(ABMetricGroupId *string, request *GetABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetABMetricGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetABMetricGroup"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricGroupId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetABMetricGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetABMetricGroup(ABMetricGroupId *string, request *GetABMetricGroupRequest) (_result *GetABMetricGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetABMetricGroupResponse{}
+	_body, _err := client.GetABMetricGroupWithOptions(ABMetricGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCalculationJobWithOptions(CalculationJobId *string, request *GetCalculationJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCalculationJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCalculationJob"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/calculationjobs/" + tea.StringValue(openapiutil.GetEncodeParam(CalculationJobId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCalculationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCalculationJobRequest) (_result *GetCalculationJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCalculationJobResponse{}
+	_body, _err := client.GetCalculationJobWithOptions(CalculationJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *GetExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9065,6 +12872,78 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 	return _result, _err
 }
 
+func (client *Client) GetInstanceResourceWithOptions(InstanceId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResourceResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceResource"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceResource(InstanceId *string, ResourceId *string) (_result *GetInstanceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceResourceResponse{}
+	_body, _err := client.GetInstanceResourceWithOptions(InstanceId, ResourceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceResourceTableWithOptions(InstanceId *string, ResourceId *string, TableName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceResourceTableResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceResourceTable"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId)) + "/tables/" + tea.StringValue(openapiutil.GetEncodeParam(TableName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceResourceTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceResourceTable(InstanceId *string, ResourceId *string, TableName *string) (_result *GetInstanceResourceTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceResourceTableResponse{}
+	_body, _err := client.GetInstanceResourceTableWithOptions(InstanceId, ResourceId, TableName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetLaboratoryWithOptions(LaboratoryId *string, request *GetLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9242,6 +13121,250 @@ func (client *Client) GetSubCrowd(CrowdId *string, SubCrowdId *string, request *
 	headers := make(map[string]*string)
 	_result = &GetSubCrowdResponse{}
 	_body, _err := client.GetSubCrowdWithOptions(CrowdId, SubCrowdId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTableMetaWithOptions(TableMetaId *string, request *GetTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableMeta"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tablemetas/" + tea.StringValue(openapiutil.GetEncodeParam(TableMetaId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTableMeta(TableMetaId *string, request *GetTableMetaRequest) (_result *GetTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTableMetaResponse{}
+	_body, _err := client.GetTableMetaWithOptions(TableMetaId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListABMetricGroupsWithOptions(request *ListABMetricGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABMetricGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		query["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListABMetricGroups"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListABMetricGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListABMetricGroups(request *ListABMetricGroupsRequest) (_result *ListABMetricGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListABMetricGroupsResponse{}
+	_body, _err := client.ListABMetricGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListABMetricsWithOptions(request *ListABMetricsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListABMetricsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		query["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableMetaId)) {
+		query["TableMetaId"] = request.TableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListABMetrics"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetrics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListABMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListABMetrics(request *ListABMetricsRequest) (_result *ListABMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListABMetricsResponse{}
+	_body, _err := client.ListABMetricsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCalculationJobsWithOptions(request *ListCalculationJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCalculationJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCalculationJobs"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/calculationjobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCalculationJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCalculationJobs(request *ListCalculationJobsRequest) (_result *ListCalculationJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCalculationJobsResponse{}
+	_body, _err := client.ListCalculationJobsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9695,6 +13818,60 @@ func (client *Client) ListFeatureConsistencyCheckJobs(request *ListFeatureConsis
 	return _result, _err
 }
 
+func (client *Client) ListInstanceResourcesWithOptions(InstanceId *string, request *ListInstanceResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["Category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Group)) {
+		query["Group"] = request.Group
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceResources"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceResources(InstanceId *string, request *ListInstanceResourcesRequest) (_result *ListInstanceResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceResourcesResponse{}
+	_body, _err := client.ListInstanceResourcesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10031,6 +14208,72 @@ func (client *Client) ListSubCrowds(CrowdId *string, request *ListSubCrowdsReque
 	return _result, _err
 }
 
+func (client *Client) ListTableMetasWithOptions(request *ListTableMetasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTableMetasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		query["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTableMetas"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tablemetas"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTableMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTableMetas(request *ListTableMetasRequest) (_result *ListTableMetasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTableMetasResponse{}
+	_body, _err := client.ListTableMetasWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OfflineExperimentWithOptions(ExperimentId *string, request *OfflineExperimentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *OfflineExperimentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10353,6 +14596,88 @@ func (client *Client) PushAllExperiment(ExperimentId *string, request *PushAllEx
 	return _result, _err
 }
 
+func (client *Client) ReportABMetricGroupWithOptions(ABMetricGroupId *string, request *ReportABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReportABMetricGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseExperimentId)) {
+		body["BaseExperimentId"] = request.BaseExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DimensionFields)) {
+		body["DimensionFields"] = request.DimensionFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentGroupId)) {
+		body["ExperimentGroupId"] = request.ExperimentGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExperimentIds)) {
+		body["ExperimentIds"] = request.ExperimentIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportType)) {
+		body["ReportType"] = request.ReportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStatisticsMethod)) {
+		body["TimeStatisticsMethod"] = request.TimeStatisticsMethod
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportABMetricGroup"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricGroupId)) + "/action/report"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReportABMetricGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReportABMetricGroup(ABMetricGroupId *string, request *ReportABMetricGroupRequest) (_result *ReportABMetricGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReportABMetricGroupResponse{}
+	_body, _err := client.ReportABMetricGroupWithOptions(ABMetricGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request *SyncFeatureConsistencyCheckJobReplayLogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SyncFeatureConsistencyCheckJobReplayLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10474,6 +14799,166 @@ func (client *Client) TerminateFeatureConsistencyCheckJob(FeatureConsistencyChec
 	headers := make(map[string]*string)
 	_result = &TerminateFeatureConsistencyCheckJobResponse{}
 	_body, _err := client.TerminateFeatureConsistencyCheckJobWithOptions(FeatureConsistencyCheckJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateABMetricWithOptions(ABMetricId *string, request *UpdateABMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Definition)) {
+		body["Definition"] = request.Definition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LeftMetricId)) {
+		body["LeftMetricId"] = request.LeftMetricId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		body["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultResourceId)) {
+		body["ResultResourceId"] = request.ResultResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RightMetricId)) {
+		body["RightMetricId"] = request.RightMetricId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticsCycle)) {
+		body["StatisticsCycle"] = request.StatisticsCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableMetaId)) {
+		body["TableMetaId"] = request.TableMetaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateABMetric"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetrics/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateABMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateABMetric(ABMetricId *string, request *UpdateABMetricRequest) (_result *UpdateABMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateABMetricResponse{}
+	_body, _err := client.UpdateABMetricWithOptions(ABMetricId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateABMetricGroupWithOptions(ABMetricGroupId *string, request *UpdateABMetricGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateABMetricGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ABMetricIds)) {
+		body["ABMetricIds"] = request.ABMetricIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Realtime)) {
+		body["Realtime"] = request.Realtime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		body["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateABMetricGroup"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/abmetricgroups/" + tea.StringValue(openapiutil.GetEncodeParam(ABMetricGroupId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateABMetricGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateABMetricGroup(ABMetricGroupId *string, request *UpdateABMetricGroupRequest) (_result *UpdateABMetricGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateABMetricGroupResponse{}
+	_body, _err := client.UpdateABMetricGroupWithOptions(ABMetricGroupId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10845,6 +15330,56 @@ func (client *Client) UpdateFeatureConsistencyCheckJobConfig(FeatureConsistencyC
 	return _result, _err
 }
 
+func (client *Client) UpdateInstanceResourceWithOptions(InstanceId *string, ResourceId *string, request *UpdateInstanceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uri)) {
+		body["Uri"] = request.Uri
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceResource"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/resources/" + tea.StringValue(openapiutil.GetEncodeParam(ResourceId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceResource(InstanceId *string, ResourceId *string, request *UpdateInstanceResourceRequest) (_result *UpdateInstanceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceResourceResponse{}
+	_body, _err := client.UpdateInstanceResourceWithOptions(InstanceId, ResourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateLaboratoryWithOptions(LaboratoryId *string, request *UpdateLaboratoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLaboratoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11086,6 +15621,76 @@ func (client *Client) UpdateScene(SceneId *string, request *UpdateSceneRequest) 
 	headers := make(map[string]*string)
 	_result = &UpdateSceneResponse{}
 	_body, _err := client.UpdateSceneWithOptions(SceneId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateTableMetaWithOptions(TableMetaId *string, request *UpdateTableMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		body["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTableMeta"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/tablemetas/" + tea.StringValue(openapiutil.GetEncodeParam(TableMetaId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateTableMeta(TableMetaId *string, request *UpdateTableMetaRequest) (_result *UpdateTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateTableMetaResponse{}
+	_body, _err := client.UpdateTableMetaWithOptions(TableMetaId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
