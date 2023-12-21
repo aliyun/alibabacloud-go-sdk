@@ -28900,6 +28900,189 @@ func (s *ModifyDtsJobDuLimitResponse) SetBody(v *ModifyDtsJobDuLimitResponseBody
 	return s
 }
 
+type ModifyDtsJobEndpointRequest struct {
+	AliyunUid                *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	Database                 *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	DryRun                   *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DtsInstanceId            *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
+	DtsJobId                 *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	Endpoint                 *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	EndpointInstanceId       *string `json:"EndpointInstanceId,omitempty" xml:"EndpointInstanceId,omitempty"`
+	EndpointInstanceType     *string `json:"EndpointInstanceType,omitempty" xml:"EndpointInstanceType,omitempty"`
+	EndpointIp               *string `json:"EndpointIp,omitempty" xml:"EndpointIp,omitempty"`
+	EndpointPort             *string `json:"EndpointPort,omitempty" xml:"EndpointPort,omitempty"`
+	Password                 *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleName                 *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	ShardPassword            *string `json:"ShardPassword,omitempty" xml:"ShardPassword,omitempty"`
+	ShardUsername            *string `json:"ShardUsername,omitempty" xml:"ShardUsername,omitempty"`
+	SynchronizationDirection *string `json:"SynchronizationDirection,omitempty" xml:"SynchronizationDirection,omitempty"`
+	Username                 *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ModifyDtsJobEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetAliyunUid(v string) *ModifyDtsJobEndpointRequest {
+	s.AliyunUid = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetDatabase(v string) *ModifyDtsJobEndpointRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetDryRun(v bool) *ModifyDtsJobEndpointRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetDtsInstanceId(v string) *ModifyDtsJobEndpointRequest {
+	s.DtsInstanceId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetDtsJobId(v string) *ModifyDtsJobEndpointRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpoint(v string) *ModifyDtsJobEndpointRequest {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointInstanceId(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointInstanceId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointInstanceType(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointInstanceType = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointIp(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointIp = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetEndpointPort(v string) *ModifyDtsJobEndpointRequest {
+	s.EndpointPort = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetPassword(v string) *ModifyDtsJobEndpointRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetRegionId(v string) *ModifyDtsJobEndpointRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetRoleName(v string) *ModifyDtsJobEndpointRequest {
+	s.RoleName = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetShardPassword(v string) *ModifyDtsJobEndpointRequest {
+	s.ShardPassword = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetShardUsername(v string) *ModifyDtsJobEndpointRequest {
+	s.ShardUsername = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetSynchronizationDirection(v string) *ModifyDtsJobEndpointRequest {
+	s.SynchronizationDirection = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetUsername(v string) *ModifyDtsJobEndpointRequest {
+	s.Username = &v
+	return s
+}
+
+type ModifyDtsJobEndpointResponseBody struct {
+	ErrCode        *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage     *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyDtsJobEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobEndpointResponseBody) SetErrCode(v string) *ModifyDtsJobEndpointResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponseBody) SetErrMessage(v string) *ModifyDtsJobEndpointResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponseBody) SetHttpStatusCode(v string) *ModifyDtsJobEndpointResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponseBody) SetRequestId(v string) *ModifyDtsJobEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponseBody) SetSuccess(v bool) *ModifyDtsJobEndpointResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyDtsJobEndpointResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDtsJobEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDtsJobEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDtsJobEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDtsJobEndpointResponse) SetHeaders(v map[string]*string) *ModifyDtsJobEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponse) SetStatusCode(v int32) *ModifyDtsJobEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointResponse) SetBody(v *ModifyDtsJobEndpointResponseBody) *ModifyDtsJobEndpointResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyDtsJobNameRequest struct {
 	// The ID of the data migration, data synchronization, or change tracking task.
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
@@ -39791,6 +39974,114 @@ func (client *Client) ModifyDtsJobDuLimit(request *ModifyDtsJobDuLimitRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDtsJobDuLimitResponse{}
 	_body, _err := client.ModifyDtsJobDuLimitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpointRequest, runtime *util.RuntimeOptions) (_result *ModifyDtsJobEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliyunUid)) {
+		query["AliyunUid"] = request.AliyunUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsInstanceId)) {
+		query["DtsInstanceId"] = request.DtsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
+		query["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointInstanceId)) {
+		query["EndpointInstanceId"] = request.EndpointInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointInstanceType)) {
+		query["EndpointInstanceType"] = request.EndpointInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointIp)) {
+		query["EndpointIp"] = request.EndpointIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndpointPort)) {
+		query["EndpointPort"] = request.EndpointPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardPassword)) {
+		query["ShardPassword"] = request.ShardPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardUsername)) {
+		query["ShardUsername"] = request.ShardUsername
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationDirection)) {
+		query["SynchronizationDirection"] = request.SynchronizationDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDtsJobEndpoint"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDtsJobEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDtsJobEndpoint(request *ModifyDtsJobEndpointRequest) (_result *ModifyDtsJobEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDtsJobEndpointResponse{}
+	_body, _err := client.ModifyDtsJobEndpointWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
