@@ -1713,6 +1713,9 @@ func (s *AllocateClusterPublicConnectionResponse) SetBody(v *AllocateClusterPubl
 }
 
 type AttachUserENIRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -1730,6 +1733,7 @@ func (s *AttachUserENIRequest) SetDBClusterId(v string) *AttachUserENIRequest {
 }
 
 type AttachUserENIResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1855,9 +1859,12 @@ func (s *BindAccountResponse) SetBody(v *BindAccountResponseBody) *BindAccountRe
 }
 
 type BindDBResourceGroupWithUserRequest struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupUser   *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
+	// The name of the resource group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the database account. It can be a standard account or a privileged account.
+	GroupUser *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
 }
 
 func (s BindDBResourceGroupWithUserRequest) String() string {
@@ -1884,7 +1891,7 @@ func (s *BindDBResourceGroupWithUserRequest) SetGroupUser(v string) *BindDBResou
 }
 
 type BindDBResourceGroupWithUserResponseBody struct {
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2015,6 +2022,7 @@ func (s *CheckBindRamUserResponse) SetBody(v *CheckBindRamUserResponseBody) *Che
 }
 
 type CheckSampleDataSetRequest struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -2032,8 +2040,15 @@ func (s *CheckSampleDataSetRequest) SetDBClusterId(v string) *CheckSampleDataSet
 }
 
 type CheckSampleDataSetResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The state of the built-in dataset. Valid values:
+	//
+	// *   **SUCCEED**: The dataset is loaded.
+	// *   **INIT**: The dataset is being loaded.
+	// *   **FAILED**: The dataset failed to be loaded.
+	// *   **UNINITIALIZED**: The dataset is not loaded.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CheckSampleDataSetResponseBody) String() string {
@@ -5859,6 +5874,9 @@ func (s *DescribeAuditLogRecordsResponse) SetBody(v *DescribeAuditLogRecordsResp
 }
 
 type DescribeBackupPolicyRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5900,12 +5918,29 @@ func (s *DescribeBackupPolicyRequest) SetResourceOwnerId(v int64) *DescribeBacku
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	BackupRetentionPeriod    *int32  `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	EnableBackupLog          *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	LogBackupRetentionPeriod *int32  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	PreferredBackupPeriod    *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime      *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	RequestId                *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of days for which data backup files are retained.
+	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// Indicates whether log backup is enabled. Valid values:
+	//
+	// *   **Enable**
+	// *   **Disable**
+	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// The number of days for which the log backup files are retained.
+	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
+	// The cycle based on which backups are performed. If more than one day of the week are specified, the days of the week are separated by commas (,). Valid value:
+	//
+	// *   Monday
+	// *   Tuesday
+	// *   Wednesday
+	// *   Thursday
+	// *   Friday
+	// *   Saturday
+	// *   Sunday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The data backup time. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -8027,6 +8062,9 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 }
 
 type DescribeDBClusterStatusRequest struct {
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8044,8 +8082,10 @@ func (s *DescribeDBClusterStatusRequest) SetRegionId(v string) *DescribeDBCluste
 }
 
 type DescribeDBClusterStatusResponseBody struct {
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried cluster states.
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDBClusterStatusResponseBody) String() string {
@@ -8099,29 +8139,38 @@ type DescribeDBClustersRequest struct {
 	// The description of the cluster.
 	//
 	// *   The description cannot start with `http://` or `https://`.
-	// *   The description must be 2 to 256 characters in length.
+	// *   The description must be 2 to 256 characters in length
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
-	// If you do not specify this parameter, the information of all clusters that reside in the specified region is returned.
+	// If you do not specify this parameter, the information about all clusters that reside in the region is returned.
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	// The state of the cluster. Valid values:
 	//
-	// *   **Preparing**: The cluster is being prepared.
-	// *   **Creating**: The cluster is being created.
-	// *   **Running**: The cluster is running.
-	// *   **Deleting**: The cluster is being deleted.
-	// *   **Restoring**: The cluster is being restored from a backup.
-	// *   **ClassChanging**: The cluster specifications are being changed.
-	// *   **NetAddressCreating**: A network connection is being created.
-	// *   **NetAddressDeleting**: A network connection is being deleted.
-	// *   **NetAddressModifying**: A network connection is being modified.
-	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 30. Valid values:
+	// *   **Preparing**
 	//
-	// *   **30**
+	// <!---->
+	//
+	// *   **Creating**
+	// *   **Running**
+	// *   **Deleting**
+	//
+	// <!---->
+	//
+	// *   **Restoring**
+	//
+	// <!---->
+	//
+	// *   **ClassChanging**
+	// *   **NetAddressCreating**
+	// *   **NetAddressDeleting**
+	// *   **NetAddressModifying**
+	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// The page number. Pages start from page 1. Default value: **1**.
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// *   **30** (default)
 	// *   **50**
 	// *   **100**
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -8129,11 +8178,9 @@ type DescribeDBClustersRequest struct {
 	//
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
-	//
-	// If you do not specify this parameter, the information of all resource groups in the cluster is returned.
+	// The resource group ID. If you do not specify this parameter, the information about all resource groups in the cluster is returned.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 实例的标签信息。
+	// The tags that are added to the cluster.
 	Tag []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -8186,9 +8233,9 @@ func (s *DescribeDBClustersRequest) SetTag(v []*DescribeDBClustersRequestTag) *D
 }
 
 type DescribeDBClustersRequestTag struct {
-	// 实例的标签键。
+	// The tag key.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 实例的标签值。
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -8211,15 +8258,15 @@ func (s *DescribeDBClustersRequestTag) SetValue(v string) *DescribeDBClustersReq
 }
 
 type DescribeDBClustersResponseBody struct {
-	// Details of the clusters.
+	// The queried cluster.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8276,12 +8323,12 @@ func (s *DescribeDBClustersResponseBodyItems) SetDBCluster(v []*DescribeDBCluste
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **ads**: pay-as-you-go
-	// *   **ads_pre**: subscription
+	// *   **ads**: pay-as-you-go.
+	// *   **ads_pre**: subscription.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The specifications of the reserved computing resources. Each ACU is equivalent to 1 core and 4 GB memory. Computing resources serve compute operations. The amount of computing resources is proportional to the query speed of the cluster. You can scale computing resources based on your needs.
+	// The specifications of reserved computing resources. Each ACU is equivalent to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	// The public endpoint of the cluster.
+	// The public endpoint that is used to connect to the cluster.
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The time when the cluster was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ* format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
@@ -8293,36 +8340,51 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
 	// The state of the cluster. Valid values:
 	//
-	// *   **Preparing**: The cluster is being prepared.
-	// *   **Creating**: The cluster is being created.
-	// *   **Running**: The cluster is running.
-	// *   **Deleting**: The cluster is being deleted.
-	// *   **Restoring**: The cluster is being restored from a backup.
-	// *   **ClassChanging**: The cluster specifications are being changed.
-	// *   **NetAddressCreating**: A network connection is being created.
-	// *   **NetAddressDeleting**: A network connection is being deleted.
-	// *   **NetAddressModifying**: A network connection is being modified.
+	// *   **Preparing**
+	//
+	// <!---->
+	//
+	// *   **Creating**
+	// *   **Running**
+	// *   **Deleting**
+	//
+	// <!---->
+	//
+	// *   **Restoring**
+	//
+	// <!---->
+	//
+	// *   **ClassChanging**
+	// *   **NetAddressCreating**
+	// *   **NetAddressDeleting**
+	// *   **NetAddressModifying**
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The type of the cluster. By default, **Common** is returned, which indicates a common cluster.
 	DBClusterType *string `json:"DBClusterType,omitempty" xml:"DBClusterType,omitempty"`
-	// The version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. Only the version **5.0** is supported.
+	// The version of AnalyticDB for MySQL Data Lakehouse Edition. **5.0** is returned.
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The engine of the cluster. **AnalyticDB** is returned.
+	// The database engine of the cluster. **AnalyticDB** is returned.
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The time when the cluster expired. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
 	//
-	// > *   The expiration time is returned for a subscription cluster.
-	// > *   An empty string is returned for a pay-as-you-go cluster.
+	// >
+	//
+	// *   The expiration time is returned for a subscription cluster.
+	//
+	// *   An empty string is returned for a pay-as-you-go cluster.
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the subscription cluster has expired. Valid values:
 	//
-	// *   **true**: The cluster has expired.
-	// *   **false**: The cluster has not expired.
+	// *   **true**
+	// *   **false**
 	//
-	// > *   If the cluster has expired, the system locks or releases the cluster within a specific time period. We recommend that you renew expired clusters. For more information, see [Renewal policy](~~135246~~).
-	// > *  This parameter is not returned for pay-as-you-go clusters.
+	// >
+	//
+	// *   If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew expired clusters. For more information, see [Renewal policy](~~135246~~).
+	//
+	// *   This parameter is not returned for pay-as-you-go clusters.
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The lock state of the instance. Valid values:
+	// The lock state of the cluster. Valid values:
 	//
 	// *   **Unlock**: The cluster is not locked.
 	// *   **ManualLock**: The cluster is manually locked.
@@ -8330,28 +8392,28 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The reason why the cluster is locked.
 	//
-	// >  This parameter is returned only when the cluster is locked. The value is **instance_expire**.
+	// >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The mode of the cluster. By default, **flexible** is returned, which indicates that the cluster is in elastic mode.
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// *   **Postpaid**: pay-as-you-go.
+	// *   **Prepaid**: subscription.
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The port number that is used to connect to the cluster.
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The region ID of the cluster.
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
 	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of the reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources serve read and write requests. The amount of storage resources is proportional to the read and write performance of the cluster.
+	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	// 标签列表。
+	// The tags that are added to the cluster.
 	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the virtual private cloud (VPC).
+	// The virtual private cloud (VPC) ID of the cluster.
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -8515,10 +8577,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*DescribeD
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
-	// 标签键。
-	// > 您可以调用[TagResources](~~179253~~)接口为目标集群创建标签。
+	// The tag key.
+	//
+	// >  You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。
+	// The tag value.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10317,6 +10380,8 @@ func (s *DescribeElasticPlansResponse) SetBody(v *DescribeElasticPlansResponseBo
 }
 
 type DescribeEnabledPrivilegesRequest struct {
+	// 数据库账号名称。
+	// > 您可以调用[DescribeAccounts](~~612430~~)接口查看指定集群的数据库账号信息，包括账号名称。
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
@@ -10348,9 +10413,9 @@ func (s *DescribeEnabledPrivilegesRequest) SetRegionId(v string) *DescribeEnable
 }
 
 type DescribeEnabledPrivilegesResponseBody struct {
-	// The permission levels and specific permissions.
+	// The queried permission level and permissions.
 	Data []*DescribeEnabledPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10375,7 +10440,7 @@ func (s *DescribeEnabledPrivilegesResponseBody) SetRequestId(v string) *Describe
 type DescribeEnabledPrivilegesResponseBodyData struct {
 	// The description of the permission level.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Details of the permissions.
+	// The queried permissions.
 	Privileges []*DescribeEnabledPrivilegesResponseBodyDataPrivileges `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 	// The permission level.
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
@@ -12567,8 +12632,12 @@ func (s *DescribeTablesResponse) SetBody(v *DescribeTablesResponseBody) *Describ
 }
 
 type DescribeUserQuotaRequest struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeUserQuotaRequest) String() string {
@@ -12590,11 +12659,16 @@ func (s *DescribeUserQuotaRequest) SetRegionId(v string) *DescribeUserQuotaReque
 }
 
 type DescribeUserQuotaResponseBody struct {
-	ElasticACU          *string `json:"ElasticACU,omitempty" xml:"ElasticACU,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReserverdCompteACU  *string `json:"ReserverdCompteACU,omitempty" xml:"ReserverdCompteACU,omitempty"`
+	// The available elastic AnalyticDB compute units (ACUs).
+	ElasticACU *string `json:"ElasticACU,omitempty" xml:"ElasticACU,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The available reserved computing resources.
+	ReserverdCompteACU *string `json:"ReserverdCompteACU,omitempty" xml:"ReserverdCompteACU,omitempty"`
+	// The available reserved storage resources.
 	ReserverdStorageACU *string `json:"ReserverdStorageACU,omitempty" xml:"ReserverdStorageACU,omitempty"`
-	ResourceGroupCount  *string `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	// The number of available resource groups.
+	ResourceGroupCount *string `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
 }
 
 func (s DescribeUserQuotaResponseBody) String() string {
@@ -13438,7 +13512,10 @@ type GetSparkAppInfoRequest struct {
 	// The application ID.
 	//
 	// >  You can call the [ListSparkApps](~~455888~~) operation to query the Spark application IDs.
-	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](~~612397~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 }
 
@@ -17025,16 +17102,43 @@ func (s *ModifyAuditLogConfigResponse) SetBody(v *ModifyAuditLogConfigResponseBo
 }
 
 type ModifyBackupPolicyRequest struct {
-	BackupRetentionPeriod    *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	DBClusterId              *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	EnableBackupLog          *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// The number of days for which to retain full backup files. Valid values: 7 to 730.
+	//
+	// >  If you do not specify this parameter, the default value 7 is used.
+	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable log backup. Valid values:
+	//
+	// *   **Enable**
+	// *   **Disable**
+	//
+	// >  If you do not specify this parameter, the default value Enable is used.
+	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// The number of days for which to retain log backup files. Valid values: 7 to 730.
+	//
+	// >  If you do not specify this parameter, the default value 7 is used.
 	LogBackupRetentionPeriod *int32  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PreferredBackupPeriod    *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupTime      *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The days of the week on which to perform a full backup. Separate multiple values with commas (,). Valid values:
+	//
+	// *   **Monday**
+	// *   **Tuesday**
+	// *   **Wednesday**
+	// *   **Thursday**
+	// *   **Friday**
+	// *   **Saturday**
+	// *   **Sunday**
+	//
+	// >  To ensure data security, we recommend that you specify at least two values.
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// The start time to perform a full backup. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC.
+	//
+	// >  The time range must be 1 hour.
+	PreferredBackupTime  *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -17096,6 +17200,7 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPol
 }
 
 type ModifyBackupPolicyResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17350,7 +17455,7 @@ func (s *ModifyClusterConnectionStringResponse) SetBody(v *ModifyClusterConnecti
 }
 
 type ModifyDBClusterRequest struct {
-	// The amount of reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
@@ -17370,7 +17475,7 @@ type ModifyDBClusterRequest struct {
 	// >  You can call the [DescribeRegions](~~454314~~) operation to query the most recent region list.
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The amount of reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
@@ -18914,9 +19019,12 @@ func (s *UnbindAccountResponse) SetBody(v *UnbindAccountResponseBody) *UnbindAcc
 }
 
 type UnbindDBResourceGroupWithUserRequest struct {
+	// The cluster ID.
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	GroupUser   *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
+	// The name of the resource group.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The name of the database account.
+	GroupUser *string `json:"GroupUser,omitempty" xml:"GroupUser,omitempty"`
 }
 
 func (s UnbindDBResourceGroupWithUserRequest) String() string {
@@ -18943,7 +19051,7 @@ func (s *UnbindDBResourceGroupWithUserRequest) SetGroupUser(v string) *UnbindDBR
 }
 
 type UnbindDBResourceGroupWithUserResponseBody struct {
-	// Id of the request
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
