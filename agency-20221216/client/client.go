@@ -216,6 +216,200 @@ func (s *CreateCustomerResponse) SetBody(v *CreateCustomerResponseBody) *CreateC
 	return s
 }
 
+type CustomerQuotaRecordListRequest struct {
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndUserPk     *int64  `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	PageNo        *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s CustomerQuotaRecordListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomerQuotaRecordListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CustomerQuotaRecordListRequest) SetEndDate(v string) *CustomerQuotaRecordListRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetEndUserPk(v int64) *CustomerQuotaRecordListRequest {
+	s.EndUserPk = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetLanguage(v string) *CustomerQuotaRecordListRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetOperationType(v string) *CustomerQuotaRecordListRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetPageNo(v int32) *CustomerQuotaRecordListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetPageSize(v int32) *CustomerQuotaRecordListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListRequest) SetStartDate(v string) *CustomerQuotaRecordListRequest {
+	s.StartDate = &v
+	return s
+}
+
+type CustomerQuotaRecordListResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*CustomerQuotaRecordListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Msg       *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	PageNo    *int32                                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s CustomerQuotaRecordListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomerQuotaRecordListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetCode(v string) *CustomerQuotaRecordListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetData(v []*CustomerQuotaRecordListResponseBodyData) *CustomerQuotaRecordListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetMsg(v string) *CustomerQuotaRecordListResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetPageNo(v int32) *CustomerQuotaRecordListResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetPageSize(v int32) *CustomerQuotaRecordListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetRequestId(v string) *CustomerQuotaRecordListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBody) SetTotal(v int32) *CustomerQuotaRecordListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type CustomerQuotaRecordListResponseBodyData struct {
+	OperationSubmitType *string `json:"OperationSubmitType,omitempty" xml:"OperationSubmitType,omitempty"`
+	OperationTime       *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
+	OperationTypeCode   *string `json:"OperationTypeCode,omitempty" xml:"OperationTypeCode,omitempty"`
+	OperationTypeDesc   *string `json:"OperationTypeDesc,omitempty" xml:"OperationTypeDesc,omitempty"`
+	OperationUid        *string `json:"OperationUid,omitempty" xml:"OperationUid,omitempty"`
+	UpdateAfterAmount   *string `json:"UpdateAfterAmount,omitempty" xml:"UpdateAfterAmount,omitempty"`
+	UpdateAmount        *string `json:"UpdateAmount,omitempty" xml:"UpdateAmount,omitempty"`
+	UpdateBeforeAmount  *string `json:"UpdateBeforeAmount,omitempty" xml:"UpdateBeforeAmount,omitempty"`
+}
+
+func (s CustomerQuotaRecordListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomerQuotaRecordListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetOperationSubmitType(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.OperationSubmitType = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetOperationTime(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.OperationTime = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetOperationTypeCode(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.OperationTypeCode = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetOperationTypeDesc(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.OperationTypeDesc = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetOperationUid(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.OperationUid = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetUpdateAfterAmount(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.UpdateAfterAmount = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetUpdateAmount(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.UpdateAmount = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponseBodyData) SetUpdateBeforeAmount(v string) *CustomerQuotaRecordListResponseBodyData {
+	s.UpdateBeforeAmount = &v
+	return s
+}
+
+type CustomerQuotaRecordListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CustomerQuotaRecordListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CustomerQuotaRecordListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CustomerQuotaRecordListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CustomerQuotaRecordListResponse) SetHeaders(v map[string]*string) *CustomerQuotaRecordListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponse) SetStatusCode(v int32) *CustomerQuotaRecordListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CustomerQuotaRecordListResponse) SetBody(v *CustomerQuotaRecordListResponseBody) *CustomerQuotaRecordListResponse {
+	s.Body = v
+	return s
+}
+
 type DeductOutstandingBalanceRequest struct {
 	DeductAmount *string `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	Uid          *int64  `json:"Uid,omitempty" xml:"Uid,omitempty"`
@@ -580,6 +774,136 @@ func (s *EditZeroCreditShutdownResponse) SetStatusCode(v int32) *EditZeroCreditS
 }
 
 func (s *EditZeroCreditShutdownResponse) SetBody(v *EditZeroCreditShutdownResponseBody) *EditZeroCreditShutdownResponse {
+	s.Body = v
+	return s
+}
+
+type ExportCustomerQuotaRecordRequest struct {
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndUserPk     *int64  `json:"EndUserPk,omitempty" xml:"EndUserPk,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s ExportCustomerQuotaRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomerQuotaRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomerQuotaRecordRequest) SetEndDate(v string) *ExportCustomerQuotaRecordRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordRequest) SetEndUserPk(v int64) *ExportCustomerQuotaRecordRequest {
+	s.EndUserPk = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordRequest) SetLanguage(v string) *ExportCustomerQuotaRecordRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordRequest) SetOperationType(v string) *ExportCustomerQuotaRecordRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordRequest) SetStartDate(v string) *ExportCustomerQuotaRecordRequest {
+	s.StartDate = &v
+	return s
+}
+
+type ExportCustomerQuotaRecordResponseBody struct {
+	// code
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ExportCustomerQuotaRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Msg  *string                                    `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportCustomerQuotaRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomerQuotaRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomerQuotaRecordResponseBody) SetCode(v string) *ExportCustomerQuotaRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponseBody) SetData(v *ExportCustomerQuotaRecordResponseBodyData) *ExportCustomerQuotaRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponseBody) SetMsg(v string) *ExportCustomerQuotaRecordResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponseBody) SetRequestId(v string) *ExportCustomerQuotaRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportCustomerQuotaRecordResponseBodyData struct {
+	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Id   *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s ExportCustomerQuotaRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomerQuotaRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomerQuotaRecordResponseBodyData) SetCost(v int32) *ExportCustomerQuotaRecordResponseBodyData {
+	s.Cost = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponseBodyData) SetId(v int64) *ExportCustomerQuotaRecordResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type ExportCustomerQuotaRecordResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExportCustomerQuotaRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportCustomerQuotaRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportCustomerQuotaRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportCustomerQuotaRecordResponse) SetHeaders(v map[string]*string) *ExportCustomerQuotaRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponse) SetStatusCode(v int32) *ExportCustomerQuotaRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportCustomerQuotaRecordResponse) SetBody(v *ExportCustomerQuotaRecordResponseBody) *ExportCustomerQuotaRecordResponse {
 	s.Body = v
 	return s
 }
@@ -1972,6 +2296,164 @@ func (s *ListCountriesResponse) SetBody(v *ListCountriesResponseBody) *ListCount
 	return s
 }
 
+type QuotaListExportPagedRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Language    *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QuotaListExportPagedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaListExportPagedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaListExportPagedRequest) SetCurrentPage(v int32) *QuotaListExportPagedRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QuotaListExportPagedRequest) SetLanguage(v string) *QuotaListExportPagedRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *QuotaListExportPagedRequest) SetPageSize(v int32) *QuotaListExportPagedRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QuotaListExportPagedResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QuotaListExportPagedResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Msg       *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	PageNo    *int32                                  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize  *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total     *int32                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuotaListExportPagedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaListExportPagedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaListExportPagedResponseBody) SetCode(v string) *QuotaListExportPagedResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetData(v []*QuotaListExportPagedResponseBodyData) *QuotaListExportPagedResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetMsg(v string) *QuotaListExportPagedResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetPageNo(v int32) *QuotaListExportPagedResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetPageSize(v int32) *QuotaListExportPagedResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetRequestId(v string) *QuotaListExportPagedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBody) SetTotal(v int32) *QuotaListExportPagedResponseBody {
+	s.Total = &v
+	return s
+}
+
+type QuotaListExportPagedResponseBodyData struct {
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s QuotaListExportPagedResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaListExportPagedResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetCreateTime(v string) *QuotaListExportPagedResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetFileName(v string) *QuotaListExportPagedResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetMessage(v string) *QuotaListExportPagedResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetStatus(v string) *QuotaListExportPagedResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetStatusCode(v string) *QuotaListExportPagedResponseBodyData {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponseBodyData) SetUrl(v string) *QuotaListExportPagedResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type QuotaListExportPagedResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuotaListExportPagedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuotaListExportPagedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuotaListExportPagedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuotaListExportPagedResponse) SetHeaders(v map[string]*string) *QuotaListExportPagedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuotaListExportPagedResponse) SetStatusCode(v int32) *QuotaListExportPagedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuotaListExportPagedResponse) SetBody(v *QuotaListExportPagedResponseBody) *QuotaListExportPagedResponse {
+	s.Body = v
+	return s
+}
+
 type ResendEmailRequest struct {
 	InviteId *int64 `json:"InviteId,omitempty" xml:"InviteId,omitempty"`
 }
@@ -2697,6 +3179,46 @@ func (client *Client) CreateCustomer(request *CreateCustomerRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CustomerQuotaRecordListWithOptions(request *CustomerQuotaRecordListRequest, runtime *util.RuntimeOptions) (_result *CustomerQuotaRecordListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CustomerQuotaRecordList"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CustomerQuotaRecordListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CustomerQuotaRecordList(request *CustomerQuotaRecordListRequest) (_result *CustomerQuotaRecordListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CustomerQuotaRecordListResponse{}
+	_body, _err := client.CustomerQuotaRecordListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeductOutstandingBalanceWithOptions(request *DeductOutstandingBalanceRequest, runtime *util.RuntimeOptions) (_result *DeductOutstandingBalanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2874,6 +3396,66 @@ func (client *Client) EditZeroCreditShutdown(request *EditZeroCreditShutdownRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &EditZeroCreditShutdownResponse{}
 	_body, _err := client.EditZeroCreditShutdownWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportCustomerQuotaRecordWithOptions(request *ExportCustomerQuotaRecordRequest, runtime *util.RuntimeOptions) (_result *ExportCustomerQuotaRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserPk)) {
+		query["EndUserPk"] = request.EndUserPk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportCustomerQuotaRecord"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportCustomerQuotaRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportCustomerQuotaRecord(request *ExportCustomerQuotaRecordRequest) (_result *ExportCustomerQuotaRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportCustomerQuotaRecordResponse{}
+	_body, _err := client.ExportCustomerQuotaRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3219,6 +3801,46 @@ func (client *Client) ListCountries() (_result *ListCountriesResponse, _err erro
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCountriesResponse{}
 	_body, _err := client.ListCountriesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuotaListExportPagedWithOptions(request *QuotaListExportPagedRequest, runtime *util.RuntimeOptions) (_result *QuotaListExportPagedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuotaListExportPaged"),
+		Version:     tea.String("2022-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuotaListExportPagedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuotaListExportPaged(request *QuotaListExportPagedRequest) (_result *QuotaListExportPagedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuotaListExportPagedResponse{}
+	_body, _err := client.QuotaListExportPagedWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
