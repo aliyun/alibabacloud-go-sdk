@@ -183,7 +183,8 @@ func (s *VerifyIntelligentCaptchaResponseBody) SetSuccess(v bool) *VerifyIntelli
 }
 
 type VerifyIntelligentCaptchaResponseBodyResult struct {
-	VerifyResult *bool `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
+	VerifyCode   *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
+	VerifyResult *bool   `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
 }
 
 func (s VerifyIntelligentCaptchaResponseBodyResult) String() string {
@@ -192,6 +193,11 @@ func (s VerifyIntelligentCaptchaResponseBodyResult) String() string {
 
 func (s VerifyIntelligentCaptchaResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *VerifyIntelligentCaptchaResponseBodyResult) SetVerifyCode(v string) *VerifyIntelligentCaptchaResponseBodyResult {
+	s.VerifyCode = &v
+	return s
 }
 
 func (s *VerifyIntelligentCaptchaResponseBodyResult) SetVerifyResult(v bool) *VerifyIntelligentCaptchaResponseBodyResult {
