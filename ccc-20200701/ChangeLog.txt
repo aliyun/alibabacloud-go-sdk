@@ -1,3 +1,6 @@
+2023-12-22 Version: v2.12.0
+- Generated golang 2020-07-01 for CCC.
+
 2023-11-24 Version: v2.11.5
 - Generated golang 2020-07-01 for CCC.
 

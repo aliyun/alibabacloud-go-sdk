@@ -2772,6 +2772,182 @@ func (s *CancelAttendedTransferResponse) SetBody(v *CancelAttendedTransferRespon
 	return s
 }
 
+type ChangeVisibilityRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Invisible  *bool   `json:"Invisible,omitempty" xml:"Invisible,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ChangeVisibilityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVisibilityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVisibilityRequest) SetInstanceId(v string) *ChangeVisibilityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ChangeVisibilityRequest) SetInvisible(v bool) *ChangeVisibilityRequest {
+	s.Invisible = &v
+	return s
+}
+
+func (s *ChangeVisibilityRequest) SetUserId(v string) *ChangeVisibilityRequest {
+	s.UserId = &v
+	return s
+}
+
+type ChangeVisibilityResponseBody struct {
+	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ChangeVisibilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string                         `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeVisibilityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVisibilityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVisibilityResponseBody) SetCode(v string) *ChangeVisibilityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBody) SetData(v *ChangeVisibilityResponseBodyData) *ChangeVisibilityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBody) SetHttpStatusCode(v int32) *ChangeVisibilityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBody) SetMessage(v string) *ChangeVisibilityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBody) SetParams(v []*string) *ChangeVisibilityResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBody) SetRequestId(v string) *ChangeVisibilityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeVisibilityResponseBodyData struct {
+	BreakCode              *string   `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	DeviceId               *string   `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	Extension              *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                  *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	UserId                 *string   `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserState              *string   `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	WorkMode               *string   `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+}
+
+func (s ChangeVisibilityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVisibilityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetBreakCode(v string) *ChangeVisibilityResponseBodyData {
+	s.BreakCode = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetDeviceId(v string) *ChangeVisibilityResponseBodyData {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetExtension(v string) *ChangeVisibilityResponseBodyData {
+	s.Extension = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetInstanceId(v string) *ChangeVisibilityResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetJobId(v string) *ChangeVisibilityResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetOutboundScenario(v bool) *ChangeVisibilityResponseBodyData {
+	s.OutboundScenario = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetSignedSkillGroupIdList(v []*string) *ChangeVisibilityResponseBodyData {
+	s.SignedSkillGroupIdList = v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetUserId(v string) *ChangeVisibilityResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetUserState(v string) *ChangeVisibilityResponseBodyData {
+	s.UserState = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponseBodyData) SetWorkMode(v string) *ChangeVisibilityResponseBodyData {
+	s.WorkMode = &v
+	return s
+}
+
+type ChangeVisibilityResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeVisibilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeVisibilityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeVisibilityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeVisibilityResponse) SetHeaders(v map[string]*string) *ChangeVisibilityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeVisibilityResponse) SetStatusCode(v int32) *ChangeVisibilityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeVisibilityResponse) SetBody(v *ChangeVisibilityResponseBody) *ChangeVisibilityResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeWorkModeRequest struct {
 	DeviceId               *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -41814,6 +41990,58 @@ func (client *Client) CancelAttendedTransfer(request *CancelAttendedTransferRequ
 	return _result, _err
 }
 
+func (client *Client) ChangeVisibilityWithOptions(request *ChangeVisibilityRequest, runtime *util.RuntimeOptions) (_result *ChangeVisibilityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Invisible)) {
+		query["Invisible"] = request.Invisible
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeVisibility"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeVisibilityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeVisibility(request *ChangeVisibilityRequest) (_result *ChangeVisibilityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeVisibilityResponse{}
+	_body, _err := client.ChangeVisibilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ChangeWorkModeWithOptions(request *ChangeWorkModeRequest, runtime *util.RuntimeOptions) (_result *ChangeWorkModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45050,6 +45278,14 @@ func (client *Client) ListAgentStateLogs(request *ListAgentStateLogsRequest) (_r
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+ *
+ * @param request ListAgentStatesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAgentStatesResponse
+ */
+// Deprecated
 func (client *Client) ListAgentStatesWithOptions(request *ListAgentStatesRequest, runtime *util.RuntimeOptions) (_result *ListAgentStatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45107,6 +45343,13 @@ func (client *Client) ListAgentStatesWithOptions(request *ListAgentStatesRequest
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListAgentStates is deprecated, please use CCC::2020-07-01::ListRealtimeAgentStates instead.
+ *
+ * @param request ListAgentStatesRequest
+ * @return ListAgentStatesResponse
+ */
+// Deprecated
 func (client *Client) ListAgentStates(request *ListAgentStatesRequest) (_result *ListAgentStatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAgentStatesResponse{}
@@ -45118,6 +45361,14 @@ func (client *Client) ListAgentStates(request *ListAgentStatesRequest) (_result 
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+ *
+ * @param request ListAgentSummaryReportsSinceMidnightRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListAgentSummaryReportsSinceMidnightResponse
+ */
+// Deprecated
 func (client *Client) ListAgentSummaryReportsSinceMidnightWithOptions(request *ListAgentSummaryReportsSinceMidnightRequest, runtime *util.RuntimeOptions) (_result *ListAgentSummaryReportsSinceMidnightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45147,6 +45398,13 @@ func (client *Client) ListAgentSummaryReportsSinceMidnightWithOptions(request *L
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListAgentSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalAgentReport instead.
+ *
+ * @param request ListAgentSummaryReportsSinceMidnightRequest
+ * @return ListAgentSummaryReportsSinceMidnightResponse
+ */
+// Deprecated
 func (client *Client) ListAgentSummaryReportsSinceMidnight(request *ListAgentSummaryReportsSinceMidnightRequest) (_result *ListAgentSummaryReportsSinceMidnightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAgentSummaryReportsSinceMidnightResponse{}
@@ -47529,6 +47787,14 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+ *
+ * @param request ListSkillGroupStatesRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSkillGroupStatesResponse
+ */
+// Deprecated
 func (client *Client) ListSkillGroupStatesWithOptions(request *ListSkillGroupStatesRequest, runtime *util.RuntimeOptions) (_result *ListSkillGroupStatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47558,6 +47824,13 @@ func (client *Client) ListSkillGroupStatesWithOptions(request *ListSkillGroupSta
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListSkillGroupStates is deprecated, please use CCC::2020-07-01::ListRealtimeSkillGroupStates instead.
+ *
+ * @param request ListSkillGroupStatesRequest
+ * @return ListSkillGroupStatesResponse
+ */
+// Deprecated
 func (client *Client) ListSkillGroupStates(request *ListSkillGroupStatesRequest) (_result *ListSkillGroupStatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSkillGroupStatesResponse{}
@@ -47569,6 +47842,14 @@ func (client *Client) ListSkillGroupStates(request *ListSkillGroupStatesRequest)
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+ *
+ * @param request ListSkillGroupSummaryReportsSinceMidnightRequest
+ * @param runtime runtime options for this request RuntimeOptions
+ * @return ListSkillGroupSummaryReportsSinceMidnightResponse
+ */
+// Deprecated
 func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithOptions(request *ListSkillGroupSummaryReportsSinceMidnightRequest, runtime *util.RuntimeOptions) (_result *ListSkillGroupSummaryReportsSinceMidnightResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47598,6 +47879,13 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithOptions(reque
 	return _result, _err
 }
 
+/**
+ * @deprecated : ListSkillGroupSummaryReportsSinceMidnight is deprecated, please use CCC::2020-07-01::ListHistoricalSkillGroupReport instead.
+ *
+ * @param request ListSkillGroupSummaryReportsSinceMidnightRequest
+ * @return ListSkillGroupSummaryReportsSinceMidnightResponse
+ */
+// Deprecated
 func (client *Client) ListSkillGroupSummaryReportsSinceMidnight(request *ListSkillGroupSummaryReportsSinceMidnightRequest) (_result *ListSkillGroupSummaryReportsSinceMidnightResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSkillGroupSummaryReportsSinceMidnightResponse{}
