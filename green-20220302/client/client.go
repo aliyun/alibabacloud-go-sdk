@@ -12,6 +12,316 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DescribeFileModerationResultRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s DescribeFileModerationResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultRequest) SetService(v string) *DescribeFileModerationResultRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultRequest) SetServiceParameters(v string) *DescribeFileModerationResultRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBody struct {
+	Code    *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBody) SetCode(v int32) *DescribeFileModerationResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBody) SetData(v *DescribeFileModerationResultResponseBodyData) *DescribeFileModerationResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBody) SetMessage(v string) *DescribeFileModerationResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBody) SetRequestId(v string) *DescribeFileModerationResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyData struct {
+	DataId     *string                                                   `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DocType    *string                                                   `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
+	Url        *string                                                   `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetDataId(v string) *DescribeFileModerationResultResponseBodyData {
+	s.DataId = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetDocType(v string) *DescribeFileModerationResultResponseBodyData {
+	s.DocType = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetPageResult(v []*DescribeFileModerationResultResponseBodyDataPageResult) *DescribeFileModerationResultResponseBodyData {
+	s.PageResult = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetUrl(v string) *DescribeFileModerationResultResponseBodyData {
+	s.Url = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResult struct {
+	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
+	ImageUrl    *string                                                              `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	PageNum     *int32                                                               `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	TextResult  []*DescribeFileModerationResultResponseBodyDataPageResultTextResult  `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
+	TextUrl     *string                                                              `json:"TextUrl,omitempty" xml:"TextUrl,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetImageResult(v []*DescribeFileModerationResultResponseBodyDataPageResultImageResult) *DescribeFileModerationResultResponseBodyDataPageResult {
+	s.ImageResult = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetImageUrl(v string) *DescribeFileModerationResultResponseBodyDataPageResult {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetPageNum(v int32) *DescribeFileModerationResultResponseBodyDataPageResult {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetTextResult(v []*DescribeFileModerationResultResponseBodyDataPageResultTextResult) *DescribeFileModerationResultResponseBodyDataPageResult {
+	s.TextResult = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetTextUrl(v string) *DescribeFileModerationResultResponseBodyDataPageResult {
+	s.TextUrl = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
+	Description *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
+	Location    *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation      `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	Service     *string                                                                         `json:"Service,omitempty" xml:"Service,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetLabelResult(v []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
+	s.LabelResult = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetLocation(v *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
+	s.Location = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetService(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResult {
+	s.Service = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) SetConfidence(v float32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult {
+	s.Confidence = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult) SetLabel(v string) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult {
+	s.Label = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) SetH(v int32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation {
+	s.H = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) SetW(v int32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation {
+	s.W = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) SetX(v int32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation {
+	s.X = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation) SetY(v int32) *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation {
+	s.Y = &v
+	return s
+}
+
+type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	RiskTips    *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	RiskWords   *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	Service     *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextSegment *string `json:"TextSegment,omitempty" xml:"TextSegment,omitempty"`
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponseBodyDataPageResultTextResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetDescription(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetLabels(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Labels = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetRiskTips(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.RiskTips = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetRiskWords(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.RiskWords = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetService(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Service = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetText(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.Text = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) SetTextSegment(v string) *DescribeFileModerationResultResponseBodyDataPageResultTextResult {
+	s.TextSegment = &v
+	return s
+}
+
+type DescribeFileModerationResultResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFileModerationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFileModerationResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileModerationResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileModerationResultResponse) SetHeaders(v map[string]*string) *DescribeFileModerationResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponse) SetStatusCode(v int32) *DescribeFileModerationResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponse) SetBody(v *DescribeFileModerationResultResponseBody) *DescribeFileModerationResultResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeImageModerationResultRequest struct {
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 }
@@ -465,6 +775,111 @@ func (s *DescribeUploadTokenResponse) SetStatusCode(v int32) *DescribeUploadToke
 }
 
 func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody) *DescribeUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
+type FileModerationRequest struct {
+	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+}
+
+func (s FileModerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileModerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FileModerationRequest) SetService(v string) *FileModerationRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *FileModerationRequest) SetServiceParameters(v string) *FileModerationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+type FileModerationResponseBody struct {
+	Code    *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *FileModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FileModerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileModerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FileModerationResponseBody) SetCode(v int32) *FileModerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FileModerationResponseBody) SetData(v *FileModerationResponseBodyData) *FileModerationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *FileModerationResponseBody) SetMessage(v string) *FileModerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FileModerationResponseBody) SetRequestId(v string) *FileModerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FileModerationResponseBodyData struct {
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s FileModerationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileModerationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *FileModerationResponseBodyData) SetTaskId(v string) *FileModerationResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type FileModerationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FileModerationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FileModerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FileModerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FileModerationResponse) SetHeaders(v map[string]*string) *FileModerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FileModerationResponse) SetStatusCode(v int32) *FileModerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FileModerationResponse) SetBody(v *FileModerationResponseBody) *FileModerationResponse {
 	s.Body = v
 	return s
 }
@@ -1796,6 +2211,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeFileModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeFileModerationResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFileModerationResult"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFileModerationResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFileModerationResult(request *DescribeFileModerationResultRequest) (_result *DescribeFileModerationResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFileModerationResultResponse{}
+	_body, _err := client.DescribeFileModerationResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeImageModerationResultWithOptions(request *DescribeImageModerationResultRequest, runtime *util.RuntimeOptions) (_result *DescribeImageModerationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1914,6 +2377,54 @@ func (client *Client) DescribeUploadToken() (_result *DescribeUploadTokenRespons
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUploadTokenResponse{}
 	_body, _err := client.DescribeUploadTokenWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FileModerationWithOptions(request *FileModerationRequest, runtime *util.RuntimeOptions) (_result *FileModerationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		body["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		body["ServiceParameters"] = request.ServiceParameters
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FileModeration"),
+		Version:     tea.String("2022-03-02"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FileModerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) FileModeration(request *FileModerationRequest) (_result *FileModerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FileModerationResponse{}
+	_body, _err := client.FileModerationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
