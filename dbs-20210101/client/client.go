@@ -17,6 +17,7 @@ type ChangeResourceGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group to which you want to move the resource.
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	RegionCode         *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The ID of the resource.
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. Set the value to backupplan.
@@ -38,6 +39,11 @@ func (s *ChangeResourceGroupRequest) SetClientToken(v string) *ChangeResourceGro
 
 func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
 	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetRegionCode(v string) *ChangeResourceGroupRequest {
+	s.RegionCode = &v
 	return s
 }
 
@@ -2546,6 +2552,10 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
 		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
