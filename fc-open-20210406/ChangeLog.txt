@@ -1,3 +1,6 @@
+2023-12-22 Version: v2.0.10
+- Generated golang 2021-04-06 for FC-Open.
+
 2023-05-30 Version: v2.0.9
 - Add Request Level Stateful Invocation.
 
