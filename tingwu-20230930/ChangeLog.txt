@@ -1,3 +1,6 @@
+2023-12-25 Version: v2.0.1
+- Generated golang 2023-09-30 for tingwu.
+
 2023-12-20 Version: v2.0.0
 - Generated golang 2023-09-30 for tingwu.
 

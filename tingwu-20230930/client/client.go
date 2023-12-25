@@ -637,9 +637,10 @@ func (s *GetTaskInfoResponseBody) SetRequestId(v string) *GetTaskInfoResponseBod
 }
 
 type GetTaskInfoResponseBodyData struct {
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskKey    *string `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
-	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Result     *GetTaskInfoResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	TaskId     *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskKey    *string                            `json:"TaskKey,omitempty" xml:"TaskKey,omitempty"`
+	TaskStatus *string                            `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
 func (s GetTaskInfoResponseBodyData) String() string {
@@ -648,6 +649,11 @@ func (s GetTaskInfoResponseBodyData) String() string {
 
 func (s GetTaskInfoResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetTaskInfoResponseBodyData) SetResult(v *GetTaskInfoResponseBodyDataResult) *GetTaskInfoResponseBodyData {
+	s.Result = v
+	return s
 }
 
 func (s *GetTaskInfoResponseBodyData) SetTaskId(v string) *GetTaskInfoResponseBodyData {
@@ -662,6 +668,53 @@ func (s *GetTaskInfoResponseBodyData) SetTaskKey(v string) *GetTaskInfoResponseB
 
 func (s *GetTaskInfoResponseBodyData) SetTaskStatus(v string) *GetTaskInfoResponseBodyData {
 	s.TaskStatus = &v
+	return s
+}
+
+type GetTaskInfoResponseBodyDataResult struct {
+	AutoChapters      *string `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty"`
+	MeetingAssistance *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
+	PptExtraction     *string `json:"PptExtraction,omitempty" xml:"PptExtraction,omitempty"`
+	Summarization     *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	Transcription     *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
+	Translation       *string `json:"Translation,omitempty" xml:"Translation,omitempty"`
+}
+
+func (s GetTaskInfoResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInfoResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetAutoChapters(v string) *GetTaskInfoResponseBodyDataResult {
+	s.AutoChapters = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetMeetingAssistance(v string) *GetTaskInfoResponseBodyDataResult {
+	s.MeetingAssistance = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetPptExtraction(v string) *GetTaskInfoResponseBodyDataResult {
+	s.PptExtraction = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetSummarization(v string) *GetTaskInfoResponseBodyDataResult {
+	s.Summarization = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetTranscription(v string) *GetTaskInfoResponseBodyDataResult {
+	s.Transcription = &v
+	return s
+}
+
+func (s *GetTaskInfoResponseBodyDataResult) SetTranslation(v string) *GetTaskInfoResponseBodyDataResult {
+	s.Translation = &v
 	return s
 }
 
