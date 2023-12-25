@@ -58,6 +58,7 @@ func (s *AcceptResourceShareInvitationResponseBody) SetResourceShareInvitation(v
 }
 
 type AcceptResourceShareInvitationResponseBodyResourceShareInvitation struct {
+	AcceptInvitationFailedDetails []*AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails `json:"AcceptInvitationFailedDetails,omitempty" xml:"AcceptInvitationFailedDetails,omitempty" type:"Repeated"`
 	// The time when the invitation was created. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The Alibaba Cloud account ID of the invitee.
@@ -86,6 +87,11 @@ func (s AcceptResourceShareInvitationResponseBodyResourceShareInvitation) String
 
 func (s AcceptResourceShareInvitationResponseBodyResourceShareInvitation) GoString() string {
 	return s.String()
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitation) SetAcceptInvitationFailedDetails(v []*AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) *AcceptResourceShareInvitationResponseBodyResourceShareInvitation {
+	s.AcceptInvitationFailedDetails = v
+	return s
 }
 
 func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitation) SetCreateTime(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitation {
@@ -123,6 +129,47 @@ func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitation) SetSt
 	return s
 }
 
+type AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails struct {
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) GoString() string {
+	return s.String()
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetAssociateType(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.AssociateType = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetResourceId(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetResourceType(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetStatus(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails) SetStatusMessage(v string) *AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails {
+	s.StatusMessage = &v
+	return s
+}
+
 type AcceptResourceShareInvitationResponse struct {
 	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -153,11 +200,14 @@ func (s *AcceptResourceShareInvitationResponse) SetBody(v *AcceptResourceShareIn
 }
 
 type AssociateResourceShareRequest struct {
+	// The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
 	PermissionNames []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
 	// The ID of the resource share.
-	ResourceShareId *string                                   `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	Resources       []*AssociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Targets         []*string                                 `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The information about the resources.
+	Resources []*AssociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The information about the principals.
+	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s AssociateResourceShareRequest) String() string {
@@ -224,9 +274,9 @@ func (s *AssociateResourceShareRequestResources) SetResourceType(v string) *Asso
 }
 
 type AssociateResourceShareResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the entities that are associated with the resource share.
+	// The information about the entities that are associated with the resource share.
 	ResourceShareAssociations []*AssociateResourceShareResponseBodyResourceShareAssociations `json:"ResourceShareAssociations,omitempty" xml:"ResourceShareAssociations,omitempty" type:"Repeated"`
 }
 
@@ -457,8 +507,11 @@ func (s *AssociateResourceSharePermissionResponse) SetBody(v *AssociateResourceS
 }
 
 type ChangeResourceGroupRequest struct {
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The ID of the destination resource group.
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The ID of the resource share.
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The region ID of the resource share.
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 }
 
@@ -486,6 +539,7 @@ func (s *ChangeResourceGroupRequest) SetResourceRegionId(v string) *ChangeResour
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -532,8 +586,13 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CheckSharingWithResourceDirectoryStatusResponseBody struct {
-	EnableSharingWithRd *bool   `json:"EnableSharingWithRd,omitempty" xml:"EnableSharingWithRd,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether resource sharing within a resource directory is enabled. Valid values:
+	//
+	// *   false
+	// *   true
+	EnableSharingWithRd *bool `json:"EnableSharingWithRd,omitempty" xml:"EnableSharingWithRd,omitempty"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckSharingWithResourceDirectoryStatusResponseBody) String() string {
@@ -586,18 +645,21 @@ func (s *CheckSharingWithResourceDirectoryStatusResponse) SetBody(v *CheckSharin
 type CreateResourceShareRequest struct {
 	// Specifies whether resources in the resource share can be shared with accounts outside the resource directory. Valid values:
 	//
-	// *   false: Resources in the resource share can be shared only with accounts in the resource directory. This is the default value.
+	// *   false (default): Resources in the resource share can be shared only with accounts in the resource directory.
 	// *   true: Resources in the resource share can be shared with both accounts in the resource directory and accounts outside the resource directory.
-	AllowExternalTargets *bool     `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
-	PermissionNames      []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
+	AllowExternalTargets *bool `json:"AllowExternalTargets,omitempty" xml:"AllowExternalTargets,omitempty"`
+	// The information about the permissions. If you do not configure this parameter, the system automatically associates the default permission for the specified resource type with the resource share. For more information, see [Permission library](~~465474~~).
+	PermissionNames []*string `json:"PermissionNames,omitempty" xml:"PermissionNames,omitempty" type:"Repeated"`
 	// The name of the resource share.
 	//
 	// The name must be 1 to 50 characters in length.
 	//
 	// The name can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
-	ResourceShareName *string                                `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
-	Resources         []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Targets           []*string                              `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
+	// The information about the shared resources.
+	Resources []*CreateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The information about the principals.
+	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s CreateResourceShareRequest) String() string {
@@ -669,9 +731,9 @@ func (s *CreateResourceShareRequestResources) SetResourceType(v string) *CreateR
 }
 
 type CreateResourceShareResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information of the resource share.
+	// The information about the resource share.
 	ResourceShare *CreateResourceShareResponseBodyResourceShare `json:"ResourceShare,omitempty" xml:"ResourceShare,omitempty" type:"Struct"`
 }
 
@@ -714,7 +776,7 @@ type CreateResourceShareResponseBodyResourceShare struct {
 	// *   Deleting: The resource share is being deleted.
 	// *   Deleted: The resource share is deleted.
 	//
-	// >  The system deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
+	// >  The system automatically deletes the records of resource shares in the Deleted state within 48 hours to 96 hours after you delete the resource shares.
 	ResourceShareStatus *string `json:"ResourceShareStatus,omitempty" xml:"ResourceShareStatus,omitempty"`
 	// The time when the resource share was updated.
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
@@ -971,9 +1033,11 @@ type DisassociateResourceShareRequest struct {
 	// *   OtherAccounts: The resource share belongs to another account. If you are not the management account or a member of a resource directory and you want to exit a resource share, set this parameter to OtherAccounts.
 	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	// The ID of the resource share.
-	ResourceShareId *string                                      `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
-	Resources       []*DisassociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	Targets         []*string                                    `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	ResourceShareId *string `json:"ResourceShareId,omitempty" xml:"ResourceShareId,omitempty"`
+	// The shared resource.
+	Resources []*DisassociateResourceShareRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The ID of a principal.
+	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s DisassociateResourceShareRequest) String() string {
@@ -1263,7 +1327,7 @@ func (s *DisassociateResourceSharePermissionResponse) SetBody(v *DisassociateRes
 }
 
 type EnableSharingWithResourceDirectoryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1816,7 +1880,8 @@ type ListResourceShareAssociationsRequest struct {
 	// The ID of the resource.
 	//
 	// >  This parameter is unavailable if you set the `AssociationType` parameter to `Target`.
-	ResourceId       *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The IDs of the resource shares.
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	// The ID of the principal.
 	//
@@ -2041,8 +2106,10 @@ type ListResourceShareInvitationsRequest struct {
 	// Valid values: 1 to 100. Default value: 20.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
-	NextToken                  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceShareIds           []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The IDs of the resource shares.
+	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
+	// The IDs of the resource sharing invitations.
 	ResourceShareInvitationIds []*string `json:"ResourceShareInvitationIds,omitempty" xml:"ResourceShareInvitationIds,omitempty" type:"Repeated"`
 }
 
@@ -2108,7 +2175,8 @@ func (s *ListResourceShareInvitationsResponseBody) SetResourceShareInvitations(v
 
 type ListResourceShareInvitationsResponseBodyResourceShareInvitations struct {
 	// The time when the invitation was created. The time is displayed in UTC.
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime              *string                                                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InvitationFailedDetails []*ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails `json:"InvitationFailedDetails,omitempty" xml:"InvitationFailedDetails,omitempty" type:"Repeated"`
 	// The Alibaba Cloud account ID of the invitee.
 	ReceiverAccountId *string `json:"ReceiverAccountId,omitempty" xml:"ReceiverAccountId,omitempty"`
 	// The ID of the resource share.
@@ -2142,6 +2210,11 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetCr
 	return s
 }
 
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetInvitationFailedDetails(v []*ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) *ListResourceShareInvitationsResponseBodyResourceShareInvitations {
+	s.InvitationFailedDetails = v
+	return s
+}
+
 func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetReceiverAccountId(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitations {
 	s.ReceiverAccountId = &v
 	return s
@@ -2169,6 +2242,47 @@ func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetSe
 
 func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitations) SetStatus(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitations {
 	s.Status = &v
+	return s
+}
+
+type ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails struct {
+	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
+	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+}
+
+func (s ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetAssociateType(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.AssociateType = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetResourceId(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetResourceType(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetStatus(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails) SetStatusMessage(v string) *ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails {
+	s.StatusMessage = &v
 	return s
 }
 
@@ -2387,7 +2501,8 @@ type ListResourceSharesRequest struct {
 	//
 	// *   Self: the current account
 	// *   OtherAccounts: an account other than the current account
-	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of a resource share.
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	// The name of the resource share.
 	ResourceShareName *string `json:"ResourceShareName,omitempty" xml:"ResourceShareName,omitempty"`
@@ -2582,13 +2697,15 @@ type ListSharedResourcesRequest struct {
 	// Valid values: 1 to 100. Default value: 20.
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
-	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of a shared resource.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The owner of the resource shares. Valid values:
 	//
 	// *   Self: your account. If you set the value to Self, the resources you share with other accounts are queried.
 	// *   OtherAccounts: another account. If you set the value to OtherAccounts, the resources other accounts share with you are queried.
-	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of a resource share.
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	// The type of the shared resources.
 	//
@@ -2787,13 +2904,15 @@ type ListSharedTargetsRequest struct {
 	//
 	// *   Self: your account. If you set the value to Self, the principals that are associated with your resource shares are queried.
 	// *   OtherAccounts: another account. If you set the value to OtherAccounts, the resource shares with which your account is associated and the owners of the resource shares are queried.
-	ResourceOwner    *string   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ResourceOwner *string `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of a resource share.
 	ResourceShareIds []*string `json:"ResourceShareIds,omitempty" xml:"ResourceShareIds,omitempty" type:"Repeated"`
 	// The type of the shared resources.
 	//
 	// For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Targets      []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The ID of a principal.
+	Targets []*string `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 }
 
 func (s ListSharedTargetsRequest) String() string {
@@ -3365,8 +3484,6 @@ func (client *Client) AcceptResourceShareInvitation(request *AcceptResourceShare
 
 /**
  * This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql****` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AssociateResourceShareRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3419,8 +3536,6 @@ func (client *Client) AssociateResourceShareWithOptions(request *AssociateResour
 
 /**
  * This topic provides an example on how to call the API operation to associate the vSwitch `vsw-bp183p93qs667muql****` and the member `172050525300****` with the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the association, the vSwitch is shared with the member.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AssociateResourceShareRequest
  * @return AssociateResourceShareResponse
@@ -3438,8 +3553,6 @@ func (client *Client) AssociateResourceShare(request *AssociateResourceShareRequ
 
 /**
  * This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AssociateResourceSharePermissionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3488,8 +3601,6 @@ func (client *Client) AssociateResourceSharePermissionWithOptions(request *Assoc
 
 /**
  * This topic provides an example on how to call the API operation to associate the `AliyunRSDefaultPermissionVSwitch` permission with the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request AssociateResourceSharePermissionRequest
  * @return AssociateResourceSharePermissionResponse
@@ -3593,8 +3704,6 @@ func (client *Client) CheckSharingWithResourceDirectoryStatus() (_result *CheckS
 /**
  * Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
  * This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateResourceShareRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3652,8 +3761,6 @@ func (client *Client) CreateResourceShareWithOptions(request *CreateResourceShar
 /**
  * Resource Sharing allows you to share your resources with one or more accounts and access the resources shared by other accounts. For more information, see [Resource Sharing overview](~~160622~~).
  * This topic provides an example on how to call the API operation to create a resource share named `test` in the `cn-hangzhou` region to share the vSwitch `vsw-bp183p93qs667muql****` with the member `172050525300****`. In this example, the management account of a resource directory is used to call this API operation.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request CreateResourceShareRequest
  * @return CreateResourceShareResponse
@@ -3778,8 +3885,6 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
  * *   A resource owner can call this API operation to remove shared resources or principals from a resource share.
  * *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
  * This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DisassociateResourceShareRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3834,8 +3939,6 @@ func (client *Client) DisassociateResourceShareWithOptions(request *Disassociate
  * *   A resource owner can call this API operation to remove shared resources or principals from a resource share.
  * *   If an Alibaba Cloud account that is not the management account or a member of a resource directory is added to a resource share as a principal, you can use the Alibaba Cloud account to call this API operation to exit the resource share. For more information, see [Exit a resource share](~~440614~~).
  * This topic provides an example on how to use the management account of a resource directory to call the API operation to remove the member `172050525300****` from the resource share `rs-6GRmdD3X****` in the `cn-hangzhou` region. After the member is removed from the resource share, the member cannot share the resources in the resource share.
- * ## Limits
- * You can call this operation up to 10 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DisassociateResourceShareRequest
  * @return DisassociateResourceShareResponse
@@ -3853,8 +3956,6 @@ func (client *Client) DisassociateResourceShare(request *DisassociateResourceSha
 
 /**
  * This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DisassociateResourceSharePermissionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -3899,8 +4000,6 @@ func (client *Client) DisassociateResourceSharePermissionWithOptions(request *Di
 
 /**
  * This topic provides an example on how to call the API operation to disassociate the `AliyunRSDefaultPermissionVSwitch` permission from the `rs-6GRmdD3X****` resource share in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request DisassociateResourceSharePermissionRequest
  * @return DisassociateResourceSharePermissionResponse
@@ -3965,8 +4064,6 @@ func (client *Client) EnableSharingWithResourceDirectory() (_result *EnableShari
 
 /**
  * This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetPermissionRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4011,8 +4108,6 @@ func (client *Client) GetPermissionWithOptions(request *GetPermissionRequest, ru
 
 /**
  * This topic provides an example on how to call the API operation to query the information about the `AliyunRSDefaultPermissionVSwitch` permission whose version is `v1` in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request GetPermissionRequest
  * @return GetPermissionResponse
@@ -4030,8 +4125,6 @@ func (client *Client) GetPermission(request *GetPermissionRequest) (_result *Get
 
 /**
  * This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionVersionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4080,8 +4173,6 @@ func (client *Client) ListPermissionVersionsWithOptions(request *ListPermissionV
 
 /**
  * This topic provides an example on how to call the API operation to query the versions of the `AliyunRSDefaultPermissionVSwitch` permission in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionVersionsRequest
  * @return ListPermissionVersionsResponse
@@ -4099,8 +4190,6 @@ func (client *Client) ListPermissionVersions(request *ListPermissionVersionsRequ
 
 /**
  * This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4149,8 +4238,6 @@ func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest
 
 /**
  * This topic provides an example on how to call the API operation to query the information about the default permission for the `VSwitch` resource type in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListPermissionsRequest
  * @return ListPermissionsResponse
@@ -4170,8 +4257,6 @@ func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result 
  * This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
  * *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
  * *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceShareAssociationsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4238,8 +4323,6 @@ func (client *Client) ListResourceShareAssociationsWithOptions(request *ListReso
  * This topic provides an example on how to call the API operation to query the association records of the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows the following records:
  * *   The resource `vsw-bp1upw03qyz8n7us9****` of the `VSwitch` type has been associated with the resource share `rs-6GRmdD3X****`. The resource is in the `Associated` state. This indicates that the resource is being shared.
  * *   The resource `vsw-bp183p93qs667muql****` of the `VSwitch` type has been disassociated from the resource share `rs-6GRmdD3X****`. The resource is in the `Disassociated` state. This indicates that the sharing of the resource is stopped.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceShareAssociationsRequest
  * @return ListResourceShareAssociationsResponse
@@ -4326,8 +4409,6 @@ func (client *Client) ListResourceShareInvitations(request *ListResourceShareInv
 
 /**
  * This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceSharePermissionsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4380,8 +4461,6 @@ func (client *Client) ListResourceSharePermissionsWithOptions(request *ListResou
 
 /**
  * This topic provides an example on how to call the API operation to query the permissions that are associated with the resource share created by using the current Alibaba Cloud account in the `cn-hangzhou` region.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceSharePermissionsRequest
  * @return ListResourceSharePermissionsResponse
@@ -4401,8 +4480,6 @@ func (client *Client) ListResourceSharePermissions(request *ListResourceSharePer
  * This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691****`:
  * *   `rs-hX9wC5jO****`, which is in the `Deleted` state
  * *   `rs-PqysnzIj****`, which is in the `Active` state
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceSharesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4469,8 +4546,6 @@ func (client *Client) ListResourceSharesWithOptions(request *ListResourceSharesR
  * This topic provides an example on how to call the API operation to query the resource shares that are created by using the current Alibaba Cloud account in the `cn-hangzhou` region. The response shows that the following resource shares are created by using the account whose ID is `151266687691****`:
  * *   `rs-hX9wC5jO****`, which is in the `Deleted` state
  * *   `rs-PqysnzIj****`, which is in the `Active` state
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListResourceSharesRequest
  * @return ListResourceSharesResponse
@@ -4488,8 +4563,6 @@ func (client *Client) ListResourceShares(request *ListResourceSharesRequest) (_r
 
 /**
  * This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X****`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSharedResourcesRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4554,8 +4627,6 @@ func (client *Client) ListSharedResourcesWithOptions(request *ListSharedResource
 
 /**
  * This topic provides an example on how to call the API operation to query the resources that you share with other accounts in the `cn-hangzhou` region. The response shows that in the resource share `rs-6GRmdD3X****`, you share the `vsw-bp1upw03qyz8n7us9****` resource of the `VSwitch` type with other accounts.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSharedResourcesRequest
  * @return ListSharedResourcesResponse
@@ -4575,8 +4646,6 @@ func (client *Client) ListSharedResources(request *ListSharedResourcesRequest) (
  * If you are a resource owner, you can query the principals with which you share your resources.
  * If you are a principal, you can query the resources that are shared with you.
  * This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSharedTargetsRequest
  * @param runtime runtime options for this request RuntimeOptions
@@ -4643,8 +4712,6 @@ func (client *Client) ListSharedTargetsWithOptions(request *ListSharedTargetsReq
  * If you are a resource owner, you can query the principals with which you share your resources.
  * If you are a principal, you can query the resources that are shared with you.
  * This topic provides an example on how to call the API operation to query the principals with which you share your resources in the `cn-hangzhou` region. The response shows that you share your resources with the principals `114240524784****` and `172050525300****`.
- * ## Limits
- * You can call this operation up to 20 times per second per account. This operation is globally limited to 500 times per second across all accounts. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
  *
  * @param request ListSharedTargetsRequest
  * @return ListSharedTargetsResponse
