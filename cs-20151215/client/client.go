@@ -4666,6 +4666,8 @@ func (s *DeleteClusterShrinkRequest) SetRetainResourcesShrink(v string) *DeleteC
 }
 
 type DeleteClusterResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
@@ -4676,6 +4678,16 @@ func (s DeleteClusterResponseBody) String() string {
 
 func (s DeleteClusterResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteClusterResponseBody) SetClusterId(v string) *DeleteClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteClusterResponseBody) SetRequestId(v string) *DeleteClusterResponseBody {
+	s.RequestId = &v
+	return s
 }
 
 func (s *DeleteClusterResponseBody) SetTaskId(v string) *DeleteClusterResponseBody {
@@ -18792,9 +18804,39 @@ func (s *UpdateControlPlaneLogRequest) SetLogTtl(v string) *UpdateControlPlaneLo
 	return s
 }
 
+type UpdateControlPlaneLogResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UpdateControlPlaneLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateControlPlaneLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateControlPlaneLogResponseBody) SetClusterId(v string) *UpdateControlPlaneLogResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogResponseBody) SetRequestId(v string) *UpdateControlPlaneLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogResponseBody) SetTaskId(v string) *UpdateControlPlaneLogResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type UpdateControlPlaneLogResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateControlPlaneLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateControlPlaneLogResponse) String() string {
@@ -18812,6 +18854,11 @@ func (s *UpdateControlPlaneLogResponse) SetHeaders(v map[string]*string) *Update
 
 func (s *UpdateControlPlaneLogResponse) SetStatusCode(v int32) *UpdateControlPlaneLogResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateControlPlaneLogResponse) SetBody(v *UpdateControlPlaneLogResponseBody) *UpdateControlPlaneLogResponse {
+	s.Body = v
 	return s
 }
 
@@ -25618,7 +25665,7 @@ func (client *Client) UpdateControlPlaneLogWithOptions(ClusterId *string, reques
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateControlPlaneLogResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
