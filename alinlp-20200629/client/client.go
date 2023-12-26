@@ -12,6 +12,41 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataValue struct {
+	ServiceId *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s DataValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataValue) SetServiceId(v int64) *DataValue {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *DataValue) SetStatus(v string) *DataValue {
+	s.Status = &v
+	return s
+}
+
+func (s *DataValue) SetCode(v int32) *DataValue {
+	s.Code = &v
+	return s
+}
+
+func (s *DataValue) SetMessage(v string) *DataValue {
+	s.Message = &v
+	return s
+}
+
 type ADClockRequest struct {
 	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
@@ -308,6 +343,238 @@ func (s *ADMiniCogResultResponse) SetStatusCode(v int32) *ADMiniCogResultRespons
 }
 
 func (s *ADMiniCogResultResponse) SetBody(v *ADMiniCogResultResponseBody) *ADMiniCogResultResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteServiceDataByConditionsRequest struct {
+	Conditions map[string]interface{} `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	ServiceId  *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteServiceDataByConditionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByConditionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByConditionsRequest) SetConditions(v map[string]interface{}) *DeleteServiceDataByConditionsRequest {
+	s.Conditions = v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsRequest) SetServiceId(v int64) *DeleteServiceDataByConditionsRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteServiceDataByConditionsShrinkRequest struct {
+	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	ServiceId        *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteServiceDataByConditionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByConditionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByConditionsShrinkRequest) SetConditionsShrink(v string) *DeleteServiceDataByConditionsShrinkRequest {
+	s.ConditionsShrink = &v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsShrinkRequest) SetServiceId(v int64) *DeleteServiceDataByConditionsShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteServiceDataByConditionsResponseBody struct {
+	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteServiceDataByConditionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByConditionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByConditionsResponseBody) SetCode(v int32) *DeleteServiceDataByConditionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponseBody) SetData(v interface{}) *DeleteServiceDataByConditionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponseBody) SetMsg(v string) *DeleteServiceDataByConditionsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponseBody) SetRequestId(v string) *DeleteServiceDataByConditionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponseBody) SetSuccess(v bool) *DeleteServiceDataByConditionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteServiceDataByConditionsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceDataByConditionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceDataByConditionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByConditionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByConditionsResponse) SetHeaders(v map[string]*string) *DeleteServiceDataByConditionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponse) SetStatusCode(v int32) *DeleteServiceDataByConditionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceDataByConditionsResponse) SetBody(v *DeleteServiceDataByConditionsResponseBody) *DeleteServiceDataByConditionsResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteServiceDataByIdsRequest struct {
+	Ids       []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	ServiceId *int64    `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteServiceDataByIdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByIdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByIdsRequest) SetIds(v []*string) *DeleteServiceDataByIdsRequest {
+	s.Ids = v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsRequest) SetServiceId(v int64) *DeleteServiceDataByIdsRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteServiceDataByIdsShrinkRequest struct {
+	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	ServiceId *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s DeleteServiceDataByIdsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByIdsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByIdsShrinkRequest) SetIdsShrink(v string) *DeleteServiceDataByIdsShrinkRequest {
+	s.IdsShrink = &v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsShrinkRequest) SetServiceId(v int64) *DeleteServiceDataByIdsShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type DeleteServiceDataByIdsResponseBody struct {
+	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteServiceDataByIdsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByIdsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByIdsResponseBody) SetCode(v int32) *DeleteServiceDataByIdsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponseBody) SetData(v interface{}) *DeleteServiceDataByIdsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponseBody) SetMsg(v string) *DeleteServiceDataByIdsResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponseBody) SetRequestId(v string) *DeleteServiceDataByIdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponseBody) SetSuccess(v bool) *DeleteServiceDataByIdsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteServiceDataByIdsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceDataByIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteServiceDataByIdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteServiceDataByIdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteServiceDataByIdsResponse) SetHeaders(v map[string]*string) *DeleteServiceDataByIdsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponse) SetStatusCode(v int32) *DeleteServiceDataByIdsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteServiceDataByIdsResponse) SetBody(v *DeleteServiceDataByIdsResponseBody) *DeleteServiceDataByIdsResponse {
 	s.Body = v
 	return s
 }
@@ -1005,6 +1272,87 @@ func (s *GetEcEnGeneralResponse) SetBody(v *GetEcEnGeneralResponseBody) *GetEcEn
 	return s
 }
 
+type GetEmbeddingRequest struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextType    *string `json:"TextType,omitempty" xml:"TextType,omitempty"`
+}
+
+func (s GetEmbeddingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingRequest) SetServiceCode(v string) *GetEmbeddingRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetEmbeddingRequest) SetText(v string) *GetEmbeddingRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *GetEmbeddingRequest) SetTextType(v string) *GetEmbeddingRequest {
+	s.TextType = &v
+	return s
+}
+
+type GetEmbeddingResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetEmbeddingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingResponseBody) SetData(v string) *GetEmbeddingResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetEmbeddingResponseBody) SetRequestId(v string) *GetEmbeddingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetEmbeddingResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEmbeddingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEmbeddingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEmbeddingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEmbeddingResponse) SetHeaders(v map[string]*string) *GetEmbeddingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEmbeddingResponse) SetStatusCode(v int32) *GetEmbeddingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEmbeddingResponse) SetBody(v *GetEmbeddingResponseBody) *GetEmbeddingResponse {
+	s.Body = v
+	return s
+}
+
 type GetItemPubChEcomRequest struct {
 	ImageUrl    *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
@@ -1653,6 +2001,192 @@ func (s *GetNerCustomizedSeaEcomResponse) SetBody(v *GetNerCustomizedSeaEcomResp
 	return s
 }
 
+type GetOpenNLURequest struct {
+	Examples    *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
+	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Sentence    *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s GetOpenNLURequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLURequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLURequest) SetExamples(v string) *GetOpenNLURequest {
+	s.Examples = &v
+	return s
+}
+
+func (s *GetOpenNLURequest) SetLabels(v string) *GetOpenNLURequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *GetOpenNLURequest) SetSentence(v string) *GetOpenNLURequest {
+	s.Sentence = &v
+	return s
+}
+
+func (s *GetOpenNLURequest) SetServiceCode(v string) *GetOpenNLURequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetOpenNLURequest) SetTask(v string) *GetOpenNLURequest {
+	s.Task = &v
+	return s
+}
+
+type GetOpenNLUResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOpenNLUResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLUResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLUResponseBody) SetData(v string) *GetOpenNLUResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetOpenNLUResponseBody) SetRequestId(v string) *GetOpenNLUResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOpenNLUResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOpenNLUResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOpenNLUResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLUResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLUResponse) SetHeaders(v map[string]*string) *GetOpenNLUResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOpenNLUResponse) SetStatusCode(v int32) *GetOpenNLUResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOpenNLUResponse) SetBody(v *GetOpenNLUResponseBody) *GetOpenNLUResponse {
+	s.Body = v
+	return s
+}
+
+type GetOpenNLUHighRecallRequest struct {
+	Examples    *string `json:"Examples,omitempty" xml:"Examples,omitempty"`
+	Labels      *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Sentence    *string `json:"Sentence,omitempty" xml:"Sentence,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s GetOpenNLUHighRecallRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLUHighRecallRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLUHighRecallRequest) SetExamples(v string) *GetOpenNLUHighRecallRequest {
+	s.Examples = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallRequest) SetLabels(v string) *GetOpenNLUHighRecallRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallRequest) SetSentence(v string) *GetOpenNLUHighRecallRequest {
+	s.Sentence = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallRequest) SetServiceCode(v string) *GetOpenNLUHighRecallRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallRequest) SetTask(v string) *GetOpenNLUHighRecallRequest {
+	s.Task = &v
+	return s
+}
+
+type GetOpenNLUHighRecallResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOpenNLUHighRecallResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLUHighRecallResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLUHighRecallResponseBody) SetData(v string) *GetOpenNLUHighRecallResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallResponseBody) SetRequestId(v string) *GetOpenNLUHighRecallResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOpenNLUHighRecallResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOpenNLUHighRecallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOpenNLUHighRecallResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOpenNLUHighRecallResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOpenNLUHighRecallResponse) SetHeaders(v map[string]*string) *GetOpenNLUHighRecallResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallResponse) SetStatusCode(v int32) *GetOpenNLUHighRecallResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOpenNLUHighRecallResponse) SetBody(v *GetOpenNLUHighRecallResponseBody) *GetOpenNLUHighRecallResponse {
+	s.Body = v
+	return s
+}
+
 type GetOperationChMedicalRequest struct {
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
@@ -1977,6 +2511,81 @@ func (s *GetPriceChEcomResponse) SetBody(v *GetPriceChEcomResponseBody) *GetPric
 	return s
 }
 
+type GetSSETestRequest struct {
+	Params      *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s GetSSETestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSSETestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSSETestRequest) SetParams(v string) *GetSSETestRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *GetSSETestRequest) SetServiceCode(v string) *GetSSETestRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type GetSSETestResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSSETestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSSETestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSSETestResponseBody) SetData(v string) *GetSSETestResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetSSETestResponseBody) SetRequestId(v string) *GetSSETestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSSETestResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSSETestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSSETestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSSETestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSSETestResponse) SetHeaders(v map[string]*string) *GetSSETestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSSETestResponse) SetStatusCode(v int32) *GetSSETestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSSETestResponse) SetBody(v *GetSSETestResponseBody) *GetSSETestResponse {
+	s.Body = v
+	return s
+}
+
 type GetSaChGeneralRequest struct {
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
 	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
@@ -2129,6 +2738,110 @@ func (s *GetSaSeaEcomResponse) SetStatusCode(v int32) *GetSaSeaEcomResponse {
 }
 
 func (s *GetSaSeaEcomResponse) SetBody(v *GetSaSeaEcomResponseBody) *GetSaSeaEcomResponse {
+	s.Body = v
+	return s
+}
+
+type GetServiceDataImportStatusRequest struct {
+	DataImportIds []*int64 `json:"DataImportIds,omitempty" xml:"DataImportIds,omitempty" type:"Repeated"`
+}
+
+func (s GetServiceDataImportStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceDataImportStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceDataImportStatusRequest) SetDataImportIds(v []*int64) *GetServiceDataImportStatusRequest {
+	s.DataImportIds = v
+	return s
+}
+
+type GetServiceDataImportStatusShrinkRequest struct {
+	DataImportIdsShrink *string `json:"DataImportIds,omitempty" xml:"DataImportIds,omitempty"`
+}
+
+func (s GetServiceDataImportStatusShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceDataImportStatusShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceDataImportStatusShrinkRequest) SetDataImportIdsShrink(v string) *GetServiceDataImportStatusShrinkRequest {
+	s.DataImportIdsShrink = &v
+	return s
+}
+
+type GetServiceDataImportStatusResponseBody struct {
+	Code      *int32                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      map[string]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string               `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetServiceDataImportStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceDataImportStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceDataImportStatusResponseBody) SetCode(v int32) *GetServiceDataImportStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponseBody) SetData(v map[string]*DataValue) *GetServiceDataImportStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponseBody) SetMsg(v string) *GetServiceDataImportStatusResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponseBody) SetRequestId(v string) *GetServiceDataImportStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponseBody) SetSuccess(v bool) *GetServiceDataImportStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetServiceDataImportStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetServiceDataImportStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetServiceDataImportStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceDataImportStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceDataImportStatusResponse) SetHeaders(v map[string]*string) *GetServiceDataImportStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponse) SetStatusCode(v int32) *GetServiceDataImportStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetServiceDataImportStatusResponse) SetBody(v *GetServiceDataImportStatusResponseBody) *GetServiceDataImportStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2597,6 +3310,75 @@ func (s *GetTsChEcomResponse) SetStatusCode(v int32) *GetTsChEcomResponse {
 }
 
 func (s *GetTsChEcomResponse) SetBody(v *GetTsChEcomResponseBody) *GetTsChEcomResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserUploadSignRequest struct {
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s GetUserUploadSignRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserUploadSignRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserUploadSignRequest) SetServiceCode(v string) *GetUserUploadSignRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type GetUserUploadSignResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetUserUploadSignResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserUploadSignResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserUploadSignResponseBody) SetData(v string) *GetUserUploadSignResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetUserUploadSignResponseBody) SetRequestId(v string) *GetUserUploadSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetUserUploadSignResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetUserUploadSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserUploadSignResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserUploadSignResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserUploadSignResponse) SetHeaders(v map[string]*string) *GetUserUploadSignResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserUploadSignResponse) SetStatusCode(v int32) *GetUserUploadSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserUploadSignResponse) SetBody(v *GetUserUploadSignResponseBody) *GetUserUploadSignResponse {
 	s.Body = v
 	return s
 }
@@ -3861,6 +4643,245 @@ func (s *GetWsCustomizedSeaGeneralResponse) SetBody(v *GetWsCustomizedSeaGeneral
 	return s
 }
 
+type ImportServiceDataRequest struct {
+	Partition []map[string]*string `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Repeated"`
+	ServiceId *int64               `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SubPath   *string              `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Url       *string              `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ImportServiceDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataRequest) SetPartition(v []map[string]*string) *ImportServiceDataRequest {
+	s.Partition = v
+	return s
+}
+
+func (s *ImportServiceDataRequest) SetServiceId(v int64) *ImportServiceDataRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ImportServiceDataRequest) SetSubPath(v string) *ImportServiceDataRequest {
+	s.SubPath = &v
+	return s
+}
+
+func (s *ImportServiceDataRequest) SetUrl(v string) *ImportServiceDataRequest {
+	s.Url = &v
+	return s
+}
+
+type ImportServiceDataShrinkRequest struct {
+	PartitionShrink *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	ServiceId       *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SubPath         *string `json:"SubPath,omitempty" xml:"SubPath,omitempty"`
+	Url             *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ImportServiceDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataShrinkRequest) SetPartitionShrink(v string) *ImportServiceDataShrinkRequest {
+	s.PartitionShrink = &v
+	return s
+}
+
+func (s *ImportServiceDataShrinkRequest) SetServiceId(v int64) *ImportServiceDataShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ImportServiceDataShrinkRequest) SetSubPath(v string) *ImportServiceDataShrinkRequest {
+	s.SubPath = &v
+	return s
+}
+
+func (s *ImportServiceDataShrinkRequest) SetUrl(v string) *ImportServiceDataShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+type ImportServiceDataResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ImportServiceDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataResponseBody) SetCode(v int32) *ImportServiceDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportServiceDataResponseBody) SetData(v int64) *ImportServiceDataResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportServiceDataResponseBody) SetMsg(v string) *ImportServiceDataResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *ImportServiceDataResponseBody) SetRequestId(v string) *ImportServiceDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportServiceDataResponseBody) SetSuccess(v bool) *ImportServiceDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ImportServiceDataResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportServiceDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportServiceDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportServiceDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportServiceDataResponse) SetHeaders(v map[string]*string) *ImportServiceDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportServiceDataResponse) SetStatusCode(v int32) *ImportServiceDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportServiceDataResponse) SetBody(v *ImportServiceDataResponseBody) *ImportServiceDataResponse {
+	s.Body = v
+	return s
+}
+
+type InsertCustomRequest struct {
+	ApiId          *int32  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	CustomFileName *string `json:"CustomFileName,omitempty" xml:"CustomFileName,omitempty"`
+	CustomUrl      *string `json:"CustomUrl,omitempty" xml:"CustomUrl,omitempty"`
+	RegFileName    *string `json:"RegFileName,omitempty" xml:"RegFileName,omitempty"`
+	RegUrl         *string `json:"RegUrl,omitempty" xml:"RegUrl,omitempty"`
+	ServiceCode    *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+}
+
+func (s InsertCustomRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertCustomRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertCustomRequest) SetApiId(v int32) *InsertCustomRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *InsertCustomRequest) SetCustomFileName(v string) *InsertCustomRequest {
+	s.CustomFileName = &v
+	return s
+}
+
+func (s *InsertCustomRequest) SetCustomUrl(v string) *InsertCustomRequest {
+	s.CustomUrl = &v
+	return s
+}
+
+func (s *InsertCustomRequest) SetRegFileName(v string) *InsertCustomRequest {
+	s.RegFileName = &v
+	return s
+}
+
+func (s *InsertCustomRequest) SetRegUrl(v string) *InsertCustomRequest {
+	s.RegUrl = &v
+	return s
+}
+
+func (s *InsertCustomRequest) SetServiceCode(v string) *InsertCustomRequest {
+	s.ServiceCode = &v
+	return s
+}
+
+type InsertCustomResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InsertCustomResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertCustomResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertCustomResponseBody) SetData(v string) *InsertCustomResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InsertCustomResponseBody) SetRequestId(v string) *InsertCustomResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InsertCustomResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InsertCustomResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InsertCustomResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertCustomResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertCustomResponse) SetHeaders(v map[string]*string) *InsertCustomResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertCustomResponse) SetStatusCode(v int32) *InsertCustomResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertCustomResponse) SetBody(v *InsertCustomResponseBody) *InsertCustomResponse {
+	s.Body = v
+	return s
+}
+
 type OpenAlinlpServiceResponseBody struct {
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3909,6 +4930,337 @@ func (s *OpenAlinlpServiceResponse) SetStatusCode(v int32) *OpenAlinlpServiceRes
 }
 
 func (s *OpenAlinlpServiceResponse) SetBody(v *OpenAlinlpServiceResponseBody) *OpenAlinlpServiceResponse {
+	s.Body = v
+	return s
+}
+
+type PostMSConvSearchTokenGeneratedResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Msg            *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PostMSConvSearchTokenGeneratedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSConvSearchTokenGeneratedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetCode(v int32) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetData(v string) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetHttpStatusCode(v int32) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetMsg(v string) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetRequestId(v string) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponseBody) SetSuccess(v bool) *PostMSConvSearchTokenGeneratedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PostMSConvSearchTokenGeneratedResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PostMSConvSearchTokenGeneratedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PostMSConvSearchTokenGeneratedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSConvSearchTokenGeneratedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponse) SetHeaders(v map[string]*string) *PostMSConvSearchTokenGeneratedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponse) SetStatusCode(v int32) *PostMSConvSearchTokenGeneratedResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostMSConvSearchTokenGeneratedResponse) SetBody(v *PostMSConvSearchTokenGeneratedResponseBody) *PostMSConvSearchTokenGeneratedResponse {
+	s.Body = v
+	return s
+}
+
+type PostMSSearchEnhanceRequest struct {
+	Body             *string                `json:"Body,omitempty" xml:"Body,omitempty"`
+	CustomConfigInfo map[string]interface{} `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
+	Debug            *bool                  `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	Fields           []*string              `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Filters          *string                `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	Page             *int32                 `json:"Page,omitempty" xml:"Page,omitempty"`
+	Queries          *string                `json:"Queries,omitempty" xml:"Queries,omitempty"`
+	RankModelInfo    map[string]interface{} `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
+	Rows             *int32                 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	ServiceId        *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Sort             []*string              `json:"Sort,omitempty" xml:"Sort,omitempty" type:"Repeated"`
+	Type             *string                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uq               *string                `json:"Uq,omitempty" xml:"Uq,omitempty"`
+}
+
+func (s PostMSSearchEnhanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSSearchEnhanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSSearchEnhanceRequest) SetBody(v string) *PostMSSearchEnhanceRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetCustomConfigInfo(v map[string]interface{}) *PostMSSearchEnhanceRequest {
+	s.CustomConfigInfo = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetDebug(v bool) *PostMSSearchEnhanceRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetFields(v []*string) *PostMSSearchEnhanceRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetFilters(v string) *PostMSSearchEnhanceRequest {
+	s.Filters = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetPage(v int32) *PostMSSearchEnhanceRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetQueries(v string) *PostMSSearchEnhanceRequest {
+	s.Queries = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetRankModelInfo(v map[string]interface{}) *PostMSSearchEnhanceRequest {
+	s.RankModelInfo = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetRows(v int32) *PostMSSearchEnhanceRequest {
+	s.Rows = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetServiceId(v int64) *PostMSSearchEnhanceRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetSort(v []*string) *PostMSSearchEnhanceRequest {
+	s.Sort = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetType(v string) *PostMSSearchEnhanceRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceRequest) SetUq(v string) *PostMSSearchEnhanceRequest {
+	s.Uq = &v
+	return s
+}
+
+type PostMSSearchEnhanceShrinkRequest struct {
+	Body                   *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	CustomConfigInfoShrink *string `json:"CustomConfigInfo,omitempty" xml:"CustomConfigInfo,omitempty"`
+	Debug                  *bool   `json:"Debug,omitempty" xml:"Debug,omitempty"`
+	FieldsShrink           *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Filters                *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	Page                   *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	Queries                *string `json:"Queries,omitempty" xml:"Queries,omitempty"`
+	RankModelInfoShrink    *string `json:"RankModelInfo,omitempty" xml:"RankModelInfo,omitempty"`
+	Rows                   *int32  `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	ServiceId              *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	SortShrink             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uq                     *string `json:"Uq,omitempty" xml:"Uq,omitempty"`
+}
+
+func (s PostMSSearchEnhanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSSearchEnhanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetBody(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetCustomConfigInfoShrink(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.CustomConfigInfoShrink = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetDebug(v bool) *PostMSSearchEnhanceShrinkRequest {
+	s.Debug = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetFieldsShrink(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.FieldsShrink = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetFilters(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.Filters = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetPage(v int32) *PostMSSearchEnhanceShrinkRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetQueries(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.Queries = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetRankModelInfoShrink(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.RankModelInfoShrink = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetRows(v int32) *PostMSSearchEnhanceShrinkRequest {
+	s.Rows = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetServiceId(v int64) *PostMSSearchEnhanceShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetSortShrink(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.SortShrink = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetType(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceShrinkRequest) SetUq(v string) *PostMSSearchEnhanceShrinkRequest {
+	s.Uq = &v
+	return s
+}
+
+type PostMSSearchEnhanceResponseBody struct {
+	Code           *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Msg            *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PostMSSearchEnhanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSSearchEnhanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetCode(v int32) *PostMSSearchEnhanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetData(v interface{}) *PostMSSearchEnhanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetHttpStatusCode(v int32) *PostMSSearchEnhanceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetMsg(v string) *PostMSSearchEnhanceResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetRequestId(v string) *PostMSSearchEnhanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponseBody) SetSuccess(v bool) *PostMSSearchEnhanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PostMSSearchEnhanceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PostMSSearchEnhanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PostMSSearchEnhanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PostMSSearchEnhanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PostMSSearchEnhanceResponse) SetHeaders(v map[string]*string) *PostMSSearchEnhanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponse) SetStatusCode(v int32) *PostMSSearchEnhanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PostMSSearchEnhanceResponse) SetBody(v *PostMSSearchEnhanceResponseBody) *PostMSSearchEnhanceResponse {
 	s.Body = v
 	return s
 }
@@ -4071,6 +5423,122 @@ func (s *RequestTableQAOnlineResponse) SetStatusCode(v int32) *RequestTableQAOnl
 }
 
 func (s *RequestTableQAOnlineResponse) SetBody(v *RequestTableQAOnlineResponseBody) *RequestTableQAOnlineResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateServiceDataRequest struct {
+	Conditions map[string]interface{} `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	ServiceId  *int64                 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s UpdateServiceDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceDataRequest) SetConditions(v map[string]interface{}) *UpdateServiceDataRequest {
+	s.Conditions = v
+	return s
+}
+
+func (s *UpdateServiceDataRequest) SetServiceId(v int64) *UpdateServiceDataRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type UpdateServiceDataShrinkRequest struct {
+	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	ServiceId        *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s UpdateServiceDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceDataShrinkRequest) SetConditionsShrink(v string) *UpdateServiceDataShrinkRequest {
+	s.ConditionsShrink = &v
+	return s
+}
+
+func (s *UpdateServiceDataShrinkRequest) SetServiceId(v int64) *UpdateServiceDataShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type UpdateServiceDataResponseBody struct {
+	Code      *int32      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg       *string     `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateServiceDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceDataResponseBody) SetCode(v int32) *UpdateServiceDataResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateServiceDataResponseBody) SetData(v interface{}) *UpdateServiceDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateServiceDataResponseBody) SetMsg(v string) *UpdateServiceDataResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UpdateServiceDataResponseBody) SetRequestId(v string) *UpdateServiceDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateServiceDataResponseBody) SetSuccess(v bool) *UpdateServiceDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateServiceDataResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceDataResponse) SetHeaders(v map[string]*string) *UpdateServiceDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceDataResponse) SetStatusCode(v int32) *UpdateServiceDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceDataResponse) SetBody(v *UpdateServiceDataResponseBody) *UpdateServiceDataResponse {
 	s.Body = v
 	return s
 }
@@ -4307,6 +5775,114 @@ func (client *Client) ADMiniCogResult(request *ADMiniCogResultRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ADMiniCogResultResponse{}
 	_body, _err := client.ADMiniCogResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceDataByConditionsWithOptions(tmpReq *DeleteServiceDataByConditionsRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceDataByConditionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteServiceDataByConditionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Conditions)) {
+		request.ConditionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Conditions, tea.String("Conditions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionsShrink)) {
+		body["Conditions"] = request.ConditionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceDataByConditions"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceDataByConditionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceDataByConditions(request *DeleteServiceDataByConditionsRequest) (_result *DeleteServiceDataByConditionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceDataByConditionsResponse{}
+	_body, _err := client.DeleteServiceDataByConditionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceDataByIdsWithOptions(tmpReq *DeleteServiceDataByIdsRequest, runtime *util.RuntimeOptions) (_result *DeleteServiceDataByIdsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteServiceDataByIdsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ids)) {
+		request.IdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ids, tea.String("Ids"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdsShrink)) {
+		body["Ids"] = request.IdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServiceDataByIds"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteServiceDataByIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteServiceDataByIds(request *DeleteServiceDataByIdsRequest) (_result *DeleteServiceDataByIdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteServiceDataByIdsResponse{}
+	_body, _err := client.DeleteServiceDataByIdsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4758,6 +6334,58 @@ func (client *Client) GetEcEnGeneral(request *GetEcEnGeneralRequest) (_result *G
 	return _result, _err
 }
 
+func (client *Client) GetEmbeddingWithOptions(request *GetEmbeddingRequest, runtime *util.RuntimeOptions) (_result *GetEmbeddingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TextType)) {
+		body["TextType"] = request.TextType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEmbedding"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEmbeddingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEmbedding(request *GetEmbeddingRequest) (_result *GetEmbeddingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEmbeddingResponse{}
+	_body, _err := client.GetEmbeddingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetItemPubChEcomWithOptions(request *GetItemPubChEcomRequest, runtime *util.RuntimeOptions) (_result *GetItemPubChEcomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5174,6 +6802,126 @@ func (client *Client) GetNerCustomizedSeaEcom(request *GetNerCustomizedSeaEcomRe
 	return _result, _err
 }
 
+func (client *Client) GetOpenNLUWithOptions(request *GetOpenNLURequest, runtime *util.RuntimeOptions) (_result *GetOpenNLUResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Examples)) {
+		body["Examples"] = request.Examples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sentence)) {
+		body["Sentence"] = request.Sentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["Task"] = request.Task
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOpenNLU"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOpenNLUResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOpenNLU(request *GetOpenNLURequest) (_result *GetOpenNLUResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOpenNLUResponse{}
+	_body, _err := client.GetOpenNLUWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOpenNLUHighRecallWithOptions(request *GetOpenNLUHighRecallRequest, runtime *util.RuntimeOptions) (_result *GetOpenNLUHighRecallResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Examples)) {
+		body["Examples"] = request.Examples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sentence)) {
+		body["Sentence"] = request.Sentence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Task)) {
+		body["Task"] = request.Task
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOpenNLUHighRecall"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOpenNLUHighRecallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOpenNLUHighRecall(request *GetOpenNLUHighRecallRequest) (_result *GetOpenNLUHighRecallResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOpenNLUHighRecallResponse{}
+	_body, _err := client.GetOpenNLUHighRecallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOperationChMedicalWithOptions(request *GetOperationChMedicalRequest, runtime *util.RuntimeOptions) (_result *GetOperationChMedicalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5382,6 +7130,54 @@ func (client *Client) GetPriceChEcom(request *GetPriceChEcomRequest) (_result *G
 	return _result, _err
 }
 
+func (client *Client) GetSSETestWithOptions(request *GetSSETestRequest, runtime *util.RuntimeOptions) (_result *GetSSETestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSSETest"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSSETestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSSETest(request *GetSSETestRequest) (_result *GetSSETestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSSETestResponse{}
+	_body, _err := client.GetSSETestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSaChGeneralWithOptions(request *GetSaChGeneralRequest, runtime *util.RuntimeOptions) (_result *GetSaChGeneralResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5475,6 +7271,56 @@ func (client *Client) GetSaSeaEcom(request *GetSaSeaEcomRequest) (_result *GetSa
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSaSeaEcomResponse{}
 	_body, _err := client.GetSaSeaEcomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetServiceDataImportStatusWithOptions(tmpReq *GetServiceDataImportStatusRequest, runtime *util.RuntimeOptions) (_result *GetServiceDataImportStatusResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetServiceDataImportStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataImportIds)) {
+		request.DataImportIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataImportIds, tea.String("DataImportIds"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataImportIdsShrink)) {
+		body["DataImportIds"] = request.DataImportIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetServiceDataImportStatus"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetServiceDataImportStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetServiceDataImportStatus(request *GetServiceDataImportStatusRequest) (_result *GetServiceDataImportStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetServiceDataImportStatusResponse{}
+	_body, _err := client.GetServiceDataImportStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5775,6 +7621,50 @@ func (client *Client) GetTsChEcom(request *GetTsChEcomRequest) (_result *GetTsCh
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTsChEcomResponse{}
 	_body, _err := client.GetTsChEcomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserUploadSignWithOptions(request *GetUserUploadSignRequest, runtime *util.RuntimeOptions) (_result *GetUserUploadSignResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserUploadSign"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserUploadSignResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserUploadSign(request *GetUserUploadSignRequest) (_result *GetUserUploadSignResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserUploadSignResponse{}
+	_body, _err := client.GetUserUploadSignWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6594,6 +8484,132 @@ func (client *Client) GetWsCustomizedSeaGeneral(request *GetWsCustomizedSeaGener
 	return _result, _err
 }
 
+func (client *Client) ImportServiceDataWithOptions(tmpReq *ImportServiceDataRequest, runtime *util.RuntimeOptions) (_result *ImportServiceDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportServiceDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Partition)) {
+		request.PartitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Partition, tea.String("Partition"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PartitionShrink)) {
+		body["Partition"] = request.PartitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubPath)) {
+		body["SubPath"] = request.SubPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportServiceData"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportServiceDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportServiceData(request *ImportServiceDataRequest) (_result *ImportServiceDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportServiceDataResponse{}
+	_body, _err := client.ImportServiceDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InsertCustomWithOptions(request *InsertCustomRequest, runtime *util.RuntimeOptions) (_result *InsertCustomResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomFileName)) {
+		body["CustomFileName"] = request.CustomFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomUrl)) {
+		body["CustomUrl"] = request.CustomUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegFileName)) {
+		body["RegFileName"] = request.RegFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegUrl)) {
+		body["RegUrl"] = request.RegUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceCode)) {
+		body["ServiceCode"] = request.ServiceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertCustom"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertCustomResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InsertCustom(request *InsertCustomRequest) (_result *InsertCustomResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InsertCustomResponse{}
+	_body, _err := client.InsertCustomWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenAlinlpServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenAlinlpServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -6620,6 +8636,149 @@ func (client *Client) OpenAlinlpService() (_result *OpenAlinlpServiceResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAlinlpServiceResponse{}
 	_body, _err := client.OpenAlinlpServiceWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostMSConvSearchTokenGeneratedWithOptions(runtime *util.RuntimeOptions) (_result *PostMSConvSearchTokenGeneratedResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("PostMSConvSearchTokenGenerated"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostMSConvSearchTokenGeneratedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostMSConvSearchTokenGenerated() (_result *PostMSConvSearchTokenGeneratedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostMSConvSearchTokenGeneratedResponse{}
+	_body, _err := client.PostMSConvSearchTokenGeneratedWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PostMSSearchEnhanceWithOptions(tmpReq *PostMSSearchEnhanceRequest, runtime *util.RuntimeOptions) (_result *PostMSSearchEnhanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PostMSSearchEnhanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomConfigInfo)) {
+		request.CustomConfigInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomConfigInfo, tea.String("CustomConfigInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Fields)) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, tea.String("Fields"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RankModelInfo)) {
+		request.RankModelInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RankModelInfo, tea.String("RankModelInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sort)) {
+		request.SortShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sort, tea.String("Sort"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		body["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomConfigInfoShrink)) {
+		body["CustomConfigInfo"] = request.CustomConfigInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Debug)) {
+		body["Debug"] = request.Debug
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldsShrink)) {
+		body["Fields"] = request.FieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		body["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		body["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Queries)) {
+		body["Queries"] = request.Queries
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RankModelInfoShrink)) {
+		body["RankModelInfo"] = request.RankModelInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rows)) {
+		body["Rows"] = request.Rows
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortShrink)) {
+		body["Sort"] = request.SortShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uq)) {
+		body["Uq"] = request.Uq
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PostMSSearchEnhance"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PostMSSearchEnhanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PostMSSearchEnhance(request *PostMSSearchEnhanceRequest) (_result *PostMSSearchEnhanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PostMSSearchEnhanceResponse{}
+	_body, _err := client.PostMSSearchEnhanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6724,6 +8883,60 @@ func (client *Client) RequestTableQAOnline(request *RequestTableQAOnlineRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RequestTableQAOnlineResponse{}
 	_body, _err := client.RequestTableQAOnlineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceDataWithOptions(tmpReq *UpdateServiceDataRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateServiceDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Conditions)) {
+		request.ConditionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Conditions, tea.String("Conditions"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConditionsShrink)) {
+		body["Conditions"] = request.ConditionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		body["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceData"),
+		Version:     tea.String("2020-06-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceData(request *UpdateServiceDataRequest) (_result *UpdateServiceDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceDataResponse{}
+	_body, _err := client.UpdateServiceDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
