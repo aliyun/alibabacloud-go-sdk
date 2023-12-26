@@ -6586,6 +6586,7 @@ type CreateStandardGroupResponseBodyStandardGroup struct {
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The description of the security rule set.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId     *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The control mode. Valid values:
 	//
 	// *   **NONE_CONTROL**: Flexible Management
@@ -6613,6 +6614,11 @@ func (s *CreateStandardGroupResponseBodyStandardGroup) SetDbType(v string) *Crea
 
 func (s *CreateStandardGroupResponseBodyStandardGroup) SetDescription(v string) *CreateStandardGroupResponseBodyStandardGroup {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetGroupId(v int64) *CreateStandardGroupResponseBodyStandardGroup {
+	s.GroupId = &v
 	return s
 }
 
@@ -37396,7 +37402,8 @@ type RegisterInstanceRequest struct {
 	// The account that is used to log on to the database.
 	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
 	// The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
-	DbaUid         *int64  `json:"DbaUid,omitempty" xml:"DbaUid,omitempty"`
+	DbaUid *int64 `json:"DbaUid,omitempty" xml:"DbaUid,omitempty"`
+	// The ID of the user who assumes the DBA role of the database instance. If the user ID is a non-numeric value such as a role or an account, you can use this parameter to replace DbaUid.
 	DbaUidByString *string `json:"DbaUidByString,omitempty" xml:"DbaUidByString,omitempty"`
 	// Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
 	//
