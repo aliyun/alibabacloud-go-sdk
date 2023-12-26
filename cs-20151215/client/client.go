@@ -52,13 +52,16 @@ type DataDisk struct {
 	AutoSnapshotPolicyId *string `json:"auto_snapshot_policy_id,omitempty" xml:"auto_snapshot_policy_id,omitempty"`
 	BurstingEnabled      *bool   `json:"bursting_enabled,omitempty" xml:"bursting_enabled,omitempty"`
 	Category             *string `json:"category,omitempty" xml:"category,omitempty"`
+	Device               *string `json:"device,omitempty" xml:"device,omitempty"`
 	Encrypted            *string `json:"encrypted,omitempty" xml:"encrypted,omitempty"`
 	FileSystem           *string `json:"file_system,omitempty" xml:"file_system,omitempty"`
 	KmsKeyId             *string `json:"kms_key_id,omitempty" xml:"kms_key_id,omitempty"`
 	MountTarget          *string `json:"mount_target,omitempty" xml:"mount_target,omitempty"`
+	Name                 *string `json:"name,omitempty" xml:"name,omitempty"`
 	PerformanceLevel     *string `json:"performance_level,omitempty" xml:"performance_level,omitempty"`
 	ProvisionedIops      *int64  `json:"provisioned_iops,omitempty" xml:"provisioned_iops,omitempty"`
 	Size                 *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	SnapshotId           *string `json:"snapshot_id,omitempty" xml:"snapshot_id,omitempty"`
 }
 
 func (s DataDisk) String() string {
@@ -89,6 +92,11 @@ func (s *DataDisk) SetCategory(v string) *DataDisk {
 	return s
 }
 
+func (s *DataDisk) SetDevice(v string) *DataDisk {
+	s.Device = &v
+	return s
+}
+
 func (s *DataDisk) SetEncrypted(v string) *DataDisk {
 	s.Encrypted = &v
 	return s
@@ -109,6 +117,11 @@ func (s *DataDisk) SetMountTarget(v string) *DataDisk {
 	return s
 }
 
+func (s *DataDisk) SetName(v string) *DataDisk {
+	s.Name = &v
+	return s
+}
+
 func (s *DataDisk) SetPerformanceLevel(v string) *DataDisk {
 	s.PerformanceLevel = &v
 	return s
@@ -121,6 +134,11 @@ func (s *DataDisk) SetProvisionedIops(v int64) *DataDisk {
 
 func (s *DataDisk) SetSize(v int64) *DataDisk {
 	s.Size = &v
+	return s
+}
+
+func (s *DataDisk) SetSnapshotId(v string) *DataDisk {
+	s.SnapshotId = &v
 	return s
 }
 
