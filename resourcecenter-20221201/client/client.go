@@ -12,6 +12,138 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AssociateDefaultFilterRequest struct {
+	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+}
+
+func (s AssociateDefaultFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateDefaultFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateDefaultFilterRequest) SetFilterName(v string) *AssociateDefaultFilterRequest {
+	s.FilterName = &v
+	return s
+}
+
+type AssociateDefaultFilterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateDefaultFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateDefaultFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateDefaultFilterResponseBody) SetRequestId(v string) *AssociateDefaultFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateDefaultFilterResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssociateDefaultFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateDefaultFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateDefaultFilterResponse) SetHeaders(v map[string]*string) *AssociateDefaultFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateDefaultFilterResponse) SetStatusCode(v int32) *AssociateDefaultFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssociateDefaultFilterResponse) SetBody(v *AssociateDefaultFilterResponseBody) *AssociateDefaultFilterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFilterRequest struct {
+	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
+	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+}
+
+func (s CreateFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFilterRequest) SetFilterConfiguration(v string) *CreateFilterRequest {
+	s.FilterConfiguration = &v
+	return s
+}
+
+func (s *CreateFilterRequest) SetFilterName(v string) *CreateFilterRequest {
+	s.FilterName = &v
+	return s
+}
+
+type CreateFilterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFilterResponseBody) SetRequestId(v string) *CreateFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFilterResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFilterResponse) SetHeaders(v map[string]*string) *CreateFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFilterResponse) SetStatusCode(v int32) *CreateFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFilterResponse) SetBody(v *CreateFilterResponseBody) *CreateFilterResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSavedQueryRequest struct {
 	// The description of the template.
 	//
@@ -100,6 +232,69 @@ func (s *CreateSavedQueryResponse) SetStatusCode(v int32) *CreateSavedQueryRespo
 }
 
 func (s *CreateSavedQueryResponse) SetBody(v *CreateSavedQueryResponseBody) *CreateSavedQueryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFilterRequest struct {
+	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+}
+
+func (s DeleteFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilterRequest) SetFilterName(v string) *DeleteFilterRequest {
+	s.FilterName = &v
+	return s
+}
+
+type DeleteFilterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilterResponseBody) SetRequestId(v string) *DeleteFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteFilterResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFilterResponse) SetHeaders(v map[string]*string) *DeleteFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFilterResponse) SetStatusCode(v int32) *DeleteFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFilterResponse) SetBody(v *DeleteFilterResponseBody) *DeleteFilterResponse {
 	s.Body = v
 	return s
 }
@@ -261,6 +456,52 @@ func (s *DisableResourceCenterResponse) SetStatusCode(v int32) *DisableResourceC
 }
 
 func (s *DisableResourceCenterResponse) SetBody(v *DisableResourceCenterResponseBody) *DisableResourceCenterResponse {
+	s.Body = v
+	return s
+}
+
+type DisassociateDefaultFilterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisassociateDefaultFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateDefaultFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateDefaultFilterResponseBody) SetRequestId(v string) *DisassociateDefaultFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisassociateDefaultFilterResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisassociateDefaultFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisassociateDefaultFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateDefaultFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateDefaultFilterResponse) SetHeaders(v map[string]*string) *DisassociateDefaultFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisassociateDefaultFilterResponse) SetStatusCode(v int32) *DisassociateDefaultFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisassociateDefaultFilterResponse) SetBody(v *DisassociateDefaultFilterResponseBody) *DisassociateDefaultFilterResponse {
 	s.Body = v
 	return s
 }
@@ -846,8 +1087,10 @@ type GetMultiAccountResourceConfigurationResponseBody struct {
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
-	CreateTime          *string                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime          *string                                                                `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The attributes of the IP address.
 	IpAddressAttributes []*GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
@@ -950,9 +1193,15 @@ func (s *GetMultiAccountResourceConfigurationResponseBody) SetZoneId(v string) *
 }
 
 type GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes struct {
-	IpAddress   *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The IP address.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Public**: the Internet
+	// *   **Private**: internal network
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) String() string {
@@ -979,9 +1228,9 @@ func (s *GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes) Se
 }
 
 type GetMultiAccountResourceConfigurationResponseBodyTags struct {
-	// The key of the tag.
+	// The key of tag N.
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The value of tag N.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1035,7 +1284,7 @@ func (s *GetMultiAccountResourceConfigurationResponse) SetBody(v *GetMultiAccoun
 type GetResourceCenterServiceStatusResponseBody struct {
 	// The initialization status of the service. Valid values:
 	//
-	// *   Pending: The service being initialized.
+	// *   Pending: The service is being initialized.
 	// *   Finished: The service is initialized.
 	InitialStatus *string `json:"InitialStatus,omitempty" xml:"InitialStatus,omitempty"`
 	// The ID of the request.
@@ -1139,8 +1388,10 @@ type GetResourceConfigurationResponseBody struct {
 	// The configurations of the resource.
 	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The time when the resource was created.
-	CreateTime          *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpireTime          *string                                                    `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the resource expires.
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The attributes of the IP address.
 	IpAddressAttributes []*GetResourceConfigurationResponseBodyIpAddressAttributes `json:"IpAddressAttributes,omitempty" xml:"IpAddressAttributes,omitempty" type:"Repeated"`
 	// The IP addresses.
 	//
@@ -1243,9 +1494,15 @@ func (s *GetResourceConfigurationResponseBody) SetZoneId(v string) *GetResourceC
 }
 
 type GetResourceConfigurationResponseBodyIpAddressAttributes struct {
-	IpAddress   *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The IP address.
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The network type. Valid values:
+	//
+	// *   **Public**: the Internet
+	// *   **Private**: internal network
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version.
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s GetResourceConfigurationResponseBodyIpAddressAttributes) String() string {
@@ -1760,6 +2017,87 @@ func (s *ListExampleQueriesResponse) SetStatusCode(v int32) *ListExampleQueriesR
 }
 
 func (s *ListExampleQueriesResponse) SetBody(v *ListExampleQueriesResponseBody) *ListExampleQueriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListFiltersResponseBody struct {
+	DefaultFilterName *string                           `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
+	Filters           []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	RequestId         *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListFiltersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFiltersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFiltersResponseBody) SetDefaultFilterName(v string) *ListFiltersResponseBody {
+	s.DefaultFilterName = &v
+	return s
+}
+
+func (s *ListFiltersResponseBody) SetFilters(v []*ListFiltersResponseBodyFilters) *ListFiltersResponseBody {
+	s.Filters = v
+	return s
+}
+
+func (s *ListFiltersResponseBody) SetRequestId(v string) *ListFiltersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListFiltersResponseBodyFilters struct {
+	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
+	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+}
+
+func (s ListFiltersResponseBodyFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFiltersResponseBodyFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListFiltersResponseBodyFilters) SetFilterConfiguration(v string) *ListFiltersResponseBodyFilters {
+	s.FilterConfiguration = &v
+	return s
+}
+
+func (s *ListFiltersResponseBodyFilters) SetFilterName(v string) *ListFiltersResponseBodyFilters {
+	s.FilterName = &v
+	return s
+}
+
+type ListFiltersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFiltersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFiltersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFiltersResponse) SetHeaders(v map[string]*string) *ListFiltersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFiltersResponse) SetStatusCode(v int32) *ListFiltersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFiltersResponse) SetBody(v *ListFiltersResponseBody) *ListFiltersResponse {
 	s.Body = v
 	return s
 }
@@ -3455,6 +3793,75 @@ func (s *SearchResourcesResponse) SetBody(v *SearchResourcesResponseBody) *Searc
 	return s
 }
 
+type UpdateFilterRequest struct {
+	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
+	FilterName          *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
+}
+
+func (s UpdateFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFilterRequest) SetFilterConfiguration(v string) *UpdateFilterRequest {
+	s.FilterConfiguration = &v
+	return s
+}
+
+func (s *UpdateFilterRequest) SetFilterName(v string) *UpdateFilterRequest {
+	s.FilterName = &v
+	return s
+}
+
+type UpdateFilterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFilterResponseBody) SetRequestId(v string) *UpdateFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateFilterResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFilterResponse) SetHeaders(v map[string]*string) *UpdateFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFilterResponse) SetStatusCode(v int32) *UpdateFilterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFilterResponse) SetBody(v *UpdateFilterResponseBody) *UpdateFilterResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSavedQueryRequest struct {
 	// The description of the template.
 	//
@@ -3594,6 +4001,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AssociateDefaultFilterWithOptions(request *AssociateDefaultFilterRequest, runtime *util.RuntimeOptions) (_result *AssociateDefaultFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterName)) {
+		query["FilterName"] = request.FilterName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateDefaultFilter"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateDefaultFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssociateDefaultFilter(request *AssociateDefaultFilterRequest) (_result *AssociateDefaultFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateDefaultFilterResponse{}
+	_body, _err := client.AssociateDefaultFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFilterWithOptions(request *CreateFilterRequest, runtime *util.RuntimeOptions) (_result *CreateFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterConfiguration)) {
+		query["FilterConfiguration"] = request.FilterConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterName)) {
+		query["FilterName"] = request.FilterName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFilter"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFilter(request *CreateFilterRequest) (_result *CreateFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFilterResponse{}
+	_body, _err := client.CreateFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryRequest, runtime *util.RuntimeOptions) (_result *CreateSavedQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3639,6 +4138,50 @@ func (client *Client) CreateSavedQuery(request *CreateSavedQueryRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSavedQueryResponse{}
 	_body, _err := client.CreateSavedQueryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFilterWithOptions(request *DeleteFilterRequest, runtime *util.RuntimeOptions) (_result *DeleteFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterName)) {
+		query["FilterName"] = request.FilterName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFilter"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFilter(request *DeleteFilterRequest) (_result *DeleteFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFilterResponse{}
+	_body, _err := client.DeleteFilterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3749,6 +4292,39 @@ func (client *Client) DisableResourceCenter() (_result *DisableResourceCenterRes
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableResourceCenterResponse{}
 	_body, _err := client.DisableResourceCenterWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DisassociateDefaultFilterWithOptions(runtime *util.RuntimeOptions) (_result *DisassociateDefaultFilterResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DisassociateDefaultFilter"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisassociateDefaultFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisassociateDefaultFilter() (_result *DisassociateDefaultFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisassociateDefaultFilterResponse{}
+	_body, _err := client.DisassociateDefaultFilterWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4281,6 +4857,39 @@ func (client *Client) ListExampleQueries(request *ListExampleQueriesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExampleQueriesResponse{}
 	_body, _err := client.ListExampleQueriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFiltersWithOptions(runtime *util.RuntimeOptions) (_result *ListFiltersResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListFilters"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFiltersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFilters() (_result *ListFiltersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFiltersResponse{}
+	_body, _err := client.ListFiltersWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4841,6 +5450,54 @@ func (client *Client) SearchResources(request *SearchResourcesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchResourcesResponse{}
 	_body, _err := client.SearchResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateFilterWithOptions(request *UpdateFilterRequest, runtime *util.RuntimeOptions) (_result *UpdateFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterConfiguration)) {
+		query["FilterConfiguration"] = request.FilterConfiguration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterName)) {
+		query["FilterName"] = request.FilterName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFilter"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateFilter(request *UpdateFilterRequest) (_result *UpdateFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFilterResponse{}
+	_body, _err := client.UpdateFilterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
