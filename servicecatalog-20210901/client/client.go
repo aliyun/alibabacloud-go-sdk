@@ -3533,7 +3533,7 @@ type GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationRecor
 	// *   Submit: submits the plan.
 	// *   Cancel: cancels the plan.
 	// *   Approve: approves the plan.
-	// *   reject: rejectes the plan.
+	// *   reject: rejects the plan.
 	ApprovalAction *string `json:"ApprovalAction,omitempty" xml:"ApprovalAction,omitempty"`
 	// The review comment of the operator.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -3822,7 +3822,7 @@ func (s *GetProvisionedProductPlanResponseBodyProductDetail) SetProviderName(v s
 type GetProvisionedProductPlanResponseBodyProductVersionDetail struct {
 	// Indicates whether the product version is visible to end users. Valid values:
 	//
-	// *   true (defaut)
+	// *   true (default)
 	// *   false
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The time when the product version was created.
@@ -4162,11 +4162,11 @@ type GetTaskResponseBodyTaskDetail struct {
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The logs of the product instance.
+	// The logs of the instance.
 	Log *GetTaskResponseBodyTaskDetailLog `json:"Log,omitempty" xml:"Log,omitempty" type:"Struct"`
 	// The output parameters of the template.
 	Outputs []*GetTaskResponseBodyTaskDetailOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	// The input parameters of the template.
+	// The parameters that are specified in the template.
 	Parameters []*GetTaskResponseBodyTaskDetailParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	// The ID of the product portfolio.
 	PortfolioId *string `json:"PortfolioId,omitempty" xml:"PortfolioId,omitempty"`
@@ -4193,7 +4193,8 @@ type GetTaskResponseBodyTaskDetail struct {
 	// > This parameter is returned only when Failed is returned for the Status parameter.
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 	// The ID of the task.
-	TaskId   *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The custom tags.
 	TaskTags []*GetTaskResponseBodyTaskDetailTaskTags `json:"TaskTags,omitempty" xml:"TaskTags,omitempty" type:"Repeated"`
 	// The type of the task. Valid values:
 	//
@@ -4418,7 +4419,13 @@ func (s *GetTaskResponseBodyTaskDetailParameters) SetParameterValue(v string) *G
 }
 
 type GetTaskResponseBodyTaskDetailTaskTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom tag key.
+	//
+	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom tag value.
+	//
+	// The value must be 1 to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
