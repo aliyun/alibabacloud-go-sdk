@@ -423,14 +423,16 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateAppSessionRequest struct {
-	AdapterFileId   *string                                   `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
-	AppId           *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion      *string                                   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	ClientIp        *string                                   `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	CustomSessionId *string                                   `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	CustomUserId    *string                                   `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
-	DistrictId      *string                                   `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
-	EnablePostpaid  *bool                                     `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
+	// 适配文件ID。此功能灰度开放，如未约定使用请勿传入。
+	AdapterFileId   *string `json:"AdapterFileId,omitempty" xml:"AdapterFileId,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion      *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	ClientIp        *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	CustomSessionId *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	CustomUserId    *string `json:"CustomUserId,omitempty" xml:"CustomUserId,omitempty"`
+	DistrictId      *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	EnablePostpaid  *bool   `json:"EnablePostpaid,omitempty" xml:"EnablePostpaid,omitempty"`
+	// 项目ID。如果已将应用关联到项目，创建会话时需填写正确的项目ID。
 	ProjectId       *string                                   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	StartParameters []*CreateAppSessionRequestStartParameters `json:"StartParameters,omitempty" xml:"StartParameters,omitempty" type:"Repeated"`
 	SystemInfo      []*CreateAppSessionRequestSystemInfo      `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Repeated"`
@@ -3330,8 +3332,9 @@ func (s *ListAppSessionsResponseBody) SetTotalCount(v int32) *ListAppSessionsRes
 }
 
 type ListAppSessionsResponseBodyAppSessions struct {
-	AppId             *string                                        `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppVersion        *string                                        `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// 业务特定的信息，如会话启动/停止时间。
 	BizInfo           *ListAppSessionsResponseBodyAppSessionsBizInfo `json:"BizInfo,omitempty" xml:"BizInfo,omitempty" type:"Struct"`
 	CustomSessionId   *string                                        `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string                                        `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
@@ -3383,8 +3386,10 @@ func (s *ListAppSessionsResponseBodyAppSessions) SetStatus(v string) *ListAppSes
 }
 
 type ListAppSessionsResponseBodyAppSessionsBizInfo struct {
+	// 会话启动时间
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StopTime  *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// 会话停止时间
+	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 }
 
 func (s ListAppSessionsResponseBodyAppSessionsBizInfo) String() string {
@@ -3600,6 +3605,170 @@ func (s *ListAppVersionResponse) SetStatusCode(v int32) *ListAppVersionResponse 
 }
 
 func (s *ListAppVersionResponse) SetBody(v *ListAppVersionResponseBody) *ListAppVersionResponse {
+	s.Body = v
+	return s
+}
+
+type ListInstancesRequest struct {
+	DistrictId   *string   `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
+	InstanceType *string   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaxResults   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectId    *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequest) SetDistrictId(v string) *ListInstancesRequest {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceId(v []*string) *ListInstancesRequest {
+	s.InstanceId = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetInstanceType(v string) *ListInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetMaxResults(v int32) *ListInstancesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetProjectId(v string) *ListInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetStatus(v string) *ListInstancesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListInstancesResponseBody struct {
+	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	MaxResults *string                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetMaxResults(v string) *ListInstancesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetNextToken(v string) *ListInstancesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstances struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstances) SetCreationTime(v string) *ListInstancesResponseBodyInstances {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetDistrictId(v string) *ListInstancesResponseBodyInstances {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceType(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetProjectId(v string) *ListInstancesResponseBodyInstances {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetStatus(v string) *ListInstancesResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
+type ListInstancesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -3910,10 +4079,254 @@ func (s *ReleaseCapacityByBatchResponse) SetBody(v *ReleaseCapacityByBatchRespon
 	return s
 }
 
+type ReleaseInstancesRequest struct {
+	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ReleaseInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstancesRequest) SetAmount(v int32) *ReleaseInstancesRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *ReleaseInstancesRequest) SetDistrictId(v string) *ReleaseInstancesRequest {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *ReleaseInstancesRequest) SetInstanceType(v string) *ReleaseInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ReleaseInstancesRequest) SetProjectId(v string) *ReleaseInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ReleaseInstancesResponseBody struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstancesResponseBody) SetInstanceIds(v []*string) *ReleaseInstancesResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ReleaseInstancesResponseBody) SetRequestId(v string) *ReleaseInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseInstancesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstancesResponse) SetHeaders(v map[string]*string) *ReleaseInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseInstancesResponse) SetStatusCode(v int32) *ReleaseInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseInstancesResponse) SetBody(v *ReleaseInstancesResponseBody) *ReleaseInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ReserveInstancesRequest struct {
+	Amount       *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	DistrictId   *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	ProjectId    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ReserveInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReserveInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReserveInstancesRequest) SetAmount(v int32) *ReserveInstancesRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *ReserveInstancesRequest) SetDistrictId(v string) *ReserveInstancesRequest {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *ReserveInstancesRequest) SetInstanceType(v string) *ReserveInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ReserveInstancesRequest) SetProjectId(v string) *ReserveInstancesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ReserveInstancesResponseBody struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReserveInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReserveInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReserveInstancesResponseBody) SetInstanceIds(v []*string) *ReserveInstancesResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ReserveInstancesResponseBody) SetRequestId(v string) *ReserveInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReserveInstancesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReserveInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReserveInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReserveInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReserveInstancesResponse) SetHeaders(v map[string]*string) *ReserveInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReserveInstancesResponse) SetStatusCode(v int32) *ReserveInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReserveInstancesResponse) SetBody(v *ReserveInstancesResponseBody) *ReserveInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type SendBizCocChangeCallbackRequest struct {
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	Result            *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s SendBizCocChangeCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBizCocChangeCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendBizCocChangeCallbackRequest) SetPlatformSessionId(v string) *SendBizCocChangeCallbackRequest {
+	s.PlatformSessionId = &v
+	return s
+}
+
+func (s *SendBizCocChangeCallbackRequest) SetResult(v bool) *SendBizCocChangeCallbackRequest {
+	s.Result = &v
+	return s
+}
+
+type SendBizCocChangeCallbackResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendBizCocChangeCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBizCocChangeCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendBizCocChangeCallbackResponseBody) SetRequestId(v string) *SendBizCocChangeCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendBizCocChangeCallbackResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendBizCocChangeCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendBizCocChangeCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBizCocChangeCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendBizCocChangeCallbackResponse) SetHeaders(v map[string]*string) *SendBizCocChangeCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendBizCocChangeCallbackResponse) SetStatusCode(v int32) *SendBizCocChangeCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendBizCocChangeCallbackResponse) SetBody(v *SendBizCocChangeCallbackResponseBody) *SendBizCocChangeCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type StopAppSessionRequest struct {
-	CustomSessionId   *string                           `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
-	PlatformSessionId *string                           `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	StopParam         []*StopAppSessionRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
+	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
+	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
+	// 停止容器参数。此参数将透传到Agent。
+	StopParam []*StopAppSessionRequestStopParam `json:"StopParam,omitempty" xml:"StopParam,omitempty" type:"Repeated"`
 }
 
 func (s StopAppSessionRequest) String() string {
@@ -3940,7 +4353,10 @@ func (s *StopAppSessionRequest) SetStopParam(v []*StopAppSessionRequestStopParam
 }
 
 type StopAppSessionRequestStopParam struct {
-	Key   *string     `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 目前支持的枚举值包括：
+	// - reason：停止原因。
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// key对应的取值。
 	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3965,7 +4381,8 @@ func (s *StopAppSessionRequestStopParam) SetValue(v interface{}) *StopAppSession
 type StopAppSessionShrinkRequest struct {
 	CustomSessionId   *string `json:"CustomSessionId,omitempty" xml:"CustomSessionId,omitempty"`
 	PlatformSessionId *string `json:"PlatformSessionId,omitempty" xml:"PlatformSessionId,omitempty"`
-	StopParamShrink   *string `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
+	// 停止容器参数。此参数将透传到Agent。
+	StopParamShrink *string `json:"StopParam,omitempty" xml:"StopParam,omitempty"`
 }
 
 func (s StopAppSessionShrinkRequest) String() string {
@@ -5703,6 +6120,46 @@ func (client *Client) ListAppVersion(request *ListAppVersionRequest) (_result *L
 	return _result, _err
 }
 
+func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *util.RuntimeOptions) (_result *ModifyAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5896,6 +6353,166 @@ func (client *Client) ReleaseCapacityByBatch(request *ReleaseCapacityByBatchRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCapacityByBatchResponse{}
 	_body, _err := client.ReleaseCapacityByBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReleaseInstancesWithOptions(request *ReleaseInstancesRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistrictId)) {
+		body["DistrictId"] = request.DistrictId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseInstances"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseInstances(request *ReleaseInstancesRequest) (_result *ReleaseInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseInstancesResponse{}
+	_body, _err := client.ReleaseInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReserveInstancesWithOptions(request *ReserveInstancesRequest, runtime *util.RuntimeOptions) (_result *ReserveInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		body["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistrictId)) {
+		body["DistrictId"] = request.DistrictId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		body["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReserveInstances"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReserveInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReserveInstances(request *ReserveInstancesRequest) (_result *ReserveInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReserveInstancesResponse{}
+	_body, _err := client.ReserveInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendBizCocChangeCallbackWithOptions(request *SendBizCocChangeCallbackRequest, runtime *util.RuntimeOptions) (_result *SendBizCocChangeCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PlatformSessionId)) {
+		query["PlatformSessionId"] = request.PlatformSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Result)) {
+		query["Result"] = request.Result
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendBizCocChangeCallback"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendBizCocChangeCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendBizCocChangeCallback(request *SendBizCocChangeCallbackRequest) (_result *SendBizCocChangeCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendBizCocChangeCallbackResponse{}
+	_body, _err := client.SendBizCocChangeCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
