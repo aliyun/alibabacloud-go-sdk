@@ -1,3 +1,6 @@
+2023-12-26 Version: v1.2.1
+- Generated golang 2022-01-04 for MaxCompute.
+
 2023-12-11 Version: v1.2.0
 - Generated golang 2022-01-04 for MaxCompute.
 
