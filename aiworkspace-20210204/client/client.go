@@ -107,6 +107,47 @@ func (s *CodeSourceItem) SetWorkspaceId(v string) *CodeSourceItem {
 	return s
 }
 
+type Collection struct {
+	CollectionName  *string `json:"CollectionName,omitempty" xml:"CollectionName,omitempty"`
+	GmtCreateTime   *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s Collection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Collection) GoString() string {
+	return s.String()
+}
+
+func (s *Collection) SetCollectionName(v string) *Collection {
+	s.CollectionName = &v
+	return s
+}
+
+func (s *Collection) SetGmtCreateTime(v string) *Collection {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *Collection) SetGmtModifiedTime(v string) *Collection {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Collection) SetOwnerId(v string) *Collection {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *Collection) SetUserId(v string) *Collection {
+	s.UserId = &v
+	return s
+}
+
 type Dataset struct {
 	Accessibility   *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	DataSourceType  *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
@@ -273,25 +314,25 @@ func (s *Label) SetValue(v string) *Label {
 }
 
 type Model struct {
-	Accessibility    *string       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string       `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	GmtCreateTime    *string       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string       `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	OrderNumber      *int64        `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string       `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider         *string       `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	SourceId         *string       `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType       *string       `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Task             *string       `json:"Task,omitempty" xml:"Task,omitempty"`
-	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	GmtCreateTime    *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime  *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *ModelVersion          `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelId          *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	OwnerId          *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider         *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
+	UserId           *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s Model) String() string {
@@ -309,6 +350,11 @@ func (s *Model) SetAccessibility(v string) *Model {
 
 func (s *Model) SetDomain(v string) *Model {
 	s.Domain = &v
+	return s
+}
+
+func (s *Model) SetExtraInfo(v map[string]interface{}) *Model {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -352,6 +398,11 @@ func (s *Model) SetModelName(v string) *Model {
 	return s
 }
 
+func (s *Model) SetModelType(v string) *Model {
+	s.ModelType = &v
+	return s
+}
+
 func (s *Model) SetOrderNumber(v int64) *Model {
 	s.OrderNumber = &v
 	return s
@@ -372,16 +423,6 @@ func (s *Model) SetProvider(v string) *Model {
 	return s
 }
 
-func (s *Model) SetSourceId(v string) *Model {
-	s.SourceId = &v
-	return s
-}
-
-func (s *Model) SetSourceType(v string) *Model {
-	s.SourceType = &v
-	return s
-}
-
 func (s *Model) SetTask(v string) *Model {
 	s.Task = &v
 	return s
@@ -399,6 +440,8 @@ func (s *Model) SetWorkspaceId(v string) *Model {
 
 type ModelVersion struct {
 	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -427,6 +470,16 @@ func (s ModelVersion) GoString() string {
 
 func (s *ModelVersion) SetApprovalStatus(v string) *ModelVersion {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *ModelVersion) SetEvaluationSpec(v map[string]interface{}) *ModelVersion {
+	s.EvaluationSpec = v
+	return s
+}
+
+func (s *ModelVersion) SetExtraInfo(v map[string]interface{}) *ModelVersion {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -1308,18 +1361,18 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 }
 
 type CreateModelRequest struct {
-	Accessibility    *string  `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string  `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Labels           []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ModelDescription *string  `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string  `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelName        *string  `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	OrderNumber      *int64   `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string  `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	SourceId         *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType       *string  `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Task             *string  `json:"Task,omitempty" xml:"Task,omitempty"`
-	WorkspaceId      *string  `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
+	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateModelRequest) String() string {
@@ -1337,6 +1390,11 @@ func (s *CreateModelRequest) SetAccessibility(v string) *CreateModelRequest {
 
 func (s *CreateModelRequest) SetDomain(v string) *CreateModelRequest {
 	s.Domain = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetExtraInfo(v map[string]interface{}) *CreateModelRequest {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -1360,6 +1418,11 @@ func (s *CreateModelRequest) SetModelName(v string) *CreateModelRequest {
 	return s
 }
 
+func (s *CreateModelRequest) SetModelType(v string) *CreateModelRequest {
+	s.ModelType = &v
+	return s
+}
+
 func (s *CreateModelRequest) SetOrderNumber(v int64) *CreateModelRequest {
 	s.OrderNumber = &v
 	return s
@@ -1367,16 +1430,6 @@ func (s *CreateModelRequest) SetOrderNumber(v int64) *CreateModelRequest {
 
 func (s *CreateModelRequest) SetOrigin(v string) *CreateModelRequest {
 	s.Origin = &v
-	return s
-}
-
-func (s *CreateModelRequest) SetSourceId(v string) *CreateModelRequest {
-	s.SourceId = &v
-	return s
-}
-
-func (s *CreateModelRequest) SetSourceType(v string) *CreateModelRequest {
-	s.SourceType = &v
 	return s
 }
 
@@ -1507,6 +1560,8 @@ func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *C
 
 type CreateModelVersionRequest struct {
 	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
@@ -1531,6 +1586,16 @@ func (s CreateModelVersionRequest) GoString() string {
 
 func (s *CreateModelVersionRequest) SetApprovalStatus(v string) *CreateModelVersionRequest {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetEvaluationSpec(v map[string]interface{}) *CreateModelVersionRequest {
+	s.EvaluationSpec = v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetExtraInfo(v map[string]interface{}) *CreateModelVersionRequest {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -2722,7 +2787,8 @@ func (s *DeleteWorkspaceResourceRequest) SetResourceType(v string) *DeleteWorksp
 }
 
 type DeleteWorkspaceResourceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
 func (s DeleteWorkspaceResourceResponseBody) String() string {
@@ -2735,6 +2801,11 @@ func (s DeleteWorkspaceResourceResponseBody) GoString() string {
 
 func (s *DeleteWorkspaceResourceResponseBody) SetRequestId(v string) *DeleteWorkspaceResourceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteWorkspaceResourceResponseBody) SetResourceIds(v []*string) *DeleteWorkspaceResourceResponseBody {
+	s.ResourceIds = v
 	return s
 }
 
@@ -3496,23 +3567,26 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 }
 
 type GetModelResponseBody struct {
-	Accessibility    *string       `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string       `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	GmtCreateTime    *string       `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string       `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelId          *string       `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	ModelName        *string       `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	Origin           *string       `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	OwnerId          *string       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Provider         *string       `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	RequestId        *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Task             *string       `json:"Task,omitempty" xml:"Task,omitempty"`
-	UserId           *string       `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	WorkspaceId      *string       `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	GmtCreateTime    *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime  *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	LatestVersion    *ModelVersion          `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelId          *string                `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	OwnerId          *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Provider         *string                `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	RequestId        *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
+	UserId           *string                `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId      *string                `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetModelResponseBody) String() string {
@@ -3530,6 +3604,11 @@ func (s *GetModelResponseBody) SetAccessibility(v string) *GetModelResponseBody 
 
 func (s *GetModelResponseBody) SetDomain(v string) *GetModelResponseBody {
 	s.Domain = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetExtraInfo(v map[string]interface{}) *GetModelResponseBody {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -3570,6 +3649,16 @@ func (s *GetModelResponseBody) SetModelId(v string) *GetModelResponseBody {
 
 func (s *GetModelResponseBody) SetModelName(v string) *GetModelResponseBody {
 	s.ModelName = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetModelType(v string) *GetModelResponseBody {
+	s.ModelType = &v
+	return s
+}
+
+func (s *GetModelResponseBody) SetOrderNumber(v int64) *GetModelResponseBody {
+	s.OrderNumber = &v
 	return s
 }
 
@@ -3639,12 +3728,15 @@ func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
 
 type GetModelVersionResponseBody struct {
 	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	FormatType         *string                `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	FrameworkType      *string                `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
 	GmtCreateTime      *string                `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	GmtModifiedTime    *string                `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
 	Labels             []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
 	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RequestId          *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3667,6 +3759,16 @@ func (s GetModelVersionResponseBody) GoString() string {
 
 func (s *GetModelVersionResponseBody) SetApprovalStatus(v string) *GetModelVersionResponseBody {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetEvaluationSpec(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.EvaluationSpec = v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetExtraInfo(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -3697,6 +3799,11 @@ func (s *GetModelVersionResponseBody) SetInferenceSpec(v map[string]interface{})
 
 func (s *GetModelVersionResponseBody) SetLabels(v []*Label) *GetModelVersionResponseBody {
 	s.Labels = v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetMetrics(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.Metrics = v
 	return s
 }
 
@@ -5056,9 +5163,11 @@ func (s *ListModelVersionsResponse) SetBody(v *ListModelVersionsResponseBody) *L
 }
 
 type ListModelsRequest struct {
+	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
 	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	Label       *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	ModelName   *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType   *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	Origin      *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -5066,8 +5175,6 @@ type ListModelsRequest struct {
 	Provider    *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	Query       *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	SouceType   *string `json:"SouceType,omitempty" xml:"SouceType,omitempty"`
-	SourceId    *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	Task        *string `json:"Task,omitempty" xml:"Task,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
@@ -5078,6 +5185,11 @@ func (s ListModelsRequest) String() string {
 
 func (s ListModelsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListModelsRequest) SetCollections(v string) *ListModelsRequest {
+	s.Collections = &v
+	return s
 }
 
 func (s *ListModelsRequest) SetDomain(v string) *ListModelsRequest {
@@ -5092,6 +5204,11 @@ func (s *ListModelsRequest) SetLabel(v string) *ListModelsRequest {
 
 func (s *ListModelsRequest) SetModelName(v string) *ListModelsRequest {
 	s.ModelName = &v
+	return s
+}
+
+func (s *ListModelsRequest) SetModelType(v string) *ListModelsRequest {
+	s.ModelType = &v
 	return s
 }
 
@@ -5127,16 +5244,6 @@ func (s *ListModelsRequest) SetQuery(v string) *ListModelsRequest {
 
 func (s *ListModelsRequest) SetSortBy(v string) *ListModelsRequest {
 	s.SortBy = &v
-	return s
-}
-
-func (s *ListModelsRequest) SetSouceType(v string) *ListModelsRequest {
-	s.SouceType = &v
-	return s
-}
-
-func (s *ListModelsRequest) SetSourceId(v string) *ListModelsRequest {
-	s.SourceId = &v
 	return s
 }
 
@@ -6873,16 +6980,16 @@ func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceRespon
 }
 
 type UpdateModelRequest struct {
-	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Domain           *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
-	ModelDoc         *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
-	ModelName        *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	OrderNumber      *int64  `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	Origin           *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	SourceId         *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType       *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Task             *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	Accessibility    *string                `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	ModelDoc         *string                `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelName        *string                `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelType        *string                `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	OrderNumber      *int64                 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	Origin           *string                `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Task             *string                `json:"Task,omitempty" xml:"Task,omitempty"`
 }
 
 func (s UpdateModelRequest) String() string {
@@ -6903,6 +7010,11 @@ func (s *UpdateModelRequest) SetDomain(v string) *UpdateModelRequest {
 	return s
 }
 
+func (s *UpdateModelRequest) SetExtraInfo(v map[string]interface{}) *UpdateModelRequest {
+	s.ExtraInfo = v
+	return s
+}
+
 func (s *UpdateModelRequest) SetModelDescription(v string) *UpdateModelRequest {
 	s.ModelDescription = &v
 	return s
@@ -6918,6 +7030,11 @@ func (s *UpdateModelRequest) SetModelName(v string) *UpdateModelRequest {
 	return s
 }
 
+func (s *UpdateModelRequest) SetModelType(v string) *UpdateModelRequest {
+	s.ModelType = &v
+	return s
+}
+
 func (s *UpdateModelRequest) SetOrderNumber(v int64) *UpdateModelRequest {
 	s.OrderNumber = &v
 	return s
@@ -6925,16 +7042,6 @@ func (s *UpdateModelRequest) SetOrderNumber(v int64) *UpdateModelRequest {
 
 func (s *UpdateModelRequest) SetOrigin(v string) *UpdateModelRequest {
 	s.Origin = &v
-	return s
-}
-
-func (s *UpdateModelRequest) SetSourceId(v string) *UpdateModelRequest {
-	s.SourceId = &v
-	return s
-}
-
-func (s *UpdateModelRequest) SetSourceType(v string) *UpdateModelRequest {
-	s.SourceType = &v
 	return s
 }
 
@@ -6991,6 +7098,8 @@ func (s *UpdateModelResponse) SetBody(v *UpdateModelResponseBody) *UpdateModelRe
 
 type UpdateModelVersionRequest struct {
 	ApprovalStatus     *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	EvaluationSpec     map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo          map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	InferenceSpec      map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
 	Metrics            map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	Options            *string                `json:"Options,omitempty" xml:"Options,omitempty"`
@@ -7010,6 +7119,16 @@ func (s UpdateModelVersionRequest) GoString() string {
 
 func (s *UpdateModelVersionRequest) SetApprovalStatus(v string) *UpdateModelVersionRequest {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetEvaluationSpec(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.EvaluationSpec = v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetExtraInfo(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.ExtraInfo = v
 	return s
 }
 
@@ -7240,7 +7359,8 @@ func (s *UpdateWorkspaceResourceRequestLabels) SetValue(v string) *UpdateWorkspa
 }
 
 type UpdateWorkspaceResourceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateWorkspaceResourceResponseBody) String() string {
@@ -7253,6 +7373,11 @@ func (s UpdateWorkspaceResourceResponseBody) GoString() string {
 
 func (s *UpdateWorkspaceResourceResponseBody) SetRequestId(v string) *UpdateWorkspaceResourceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResourceResponseBody) SetResourceIds(v []*string) *UpdateWorkspaceResourceResponseBody {
+	s.ResourceIds = v
 	return s
 }
 
@@ -7766,6 +7891,10 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		body["Domain"] = request.Domain
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["ExtraInfo"] = request.ExtraInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
 	}
@@ -7782,20 +7911,16 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		body["ModelName"] = request.ModelName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		body["ModelType"] = request.ModelType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderNumber)) {
 		body["OrderNumber"] = request.OrderNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		body["Origin"] = request.Origin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
-		body["SourceId"] = request.SourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
-		body["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
@@ -7896,6 +8021,14 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
 		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EvaluationSpec)) {
+		body["EvaluationSpec"] = request.EvaluationSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["ExtraInfo"] = request.ExtraInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
@@ -9488,6 +9621,10 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Collections)) {
+		query["Collections"] = request.Collections
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
 	}
@@ -9498,6 +9635,10 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
 		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		query["ModelType"] = request.ModelType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Order)) {
@@ -9526,14 +9667,6 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		query["SortBy"] = request.SortBy
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SouceType)) {
-		query["SouceType"] = request.SouceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
-		query["SourceId"] = request.SourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
@@ -10156,7 +10289,7 @@ func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse
 	return _result, _err
 }
 
-func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKeys *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
+func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveImageLabelsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
@@ -10164,7 +10297,7 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKeys *s
 		Action:      tea.String("RemoveImageLabels"),
 		Version:     tea.String("2021-02-04"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId)) + "/labels/" + tea.StringValue(openapiutil.GetEncodeParam(LabelKeys))),
+		Pathname:    tea.String("/api/v1/images/" + tea.StringValue(openapiutil.GetEncodeParam(ImageId)) + "/labels/" + tea.StringValue(openapiutil.GetEncodeParam(LabelKey))),
 		Method:      tea.String("DELETE"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -10180,11 +10313,11 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKeys *s
 	return _result, _err
 }
 
-func (client *Client) RemoveImageLabels(ImageId *string, LabelKeys *string) (_result *RemoveImageLabelsResponse, _err error) {
+func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_result *RemoveImageLabelsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &RemoveImageLabelsResponse{}
-	_body, _err := client.RemoveImageLabelsWithOptions(ImageId, LabelKeys, headers, runtime)
+	_body, _err := client.RemoveImageLabelsWithOptions(ImageId, LabelKey, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10342,6 +10475,10 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 		body["Domain"] = request.Domain
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["ExtraInfo"] = request.ExtraInfo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ModelDescription)) {
 		body["ModelDescription"] = request.ModelDescription
 	}
@@ -10354,20 +10491,16 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 		body["ModelName"] = request.ModelName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelType)) {
+		body["ModelType"] = request.ModelType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OrderNumber)) {
 		body["OrderNumber"] = request.OrderNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		body["Origin"] = request.Origin
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
-		body["SourceId"] = request.SourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
-		body["SourceType"] = request.SourceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
@@ -10418,6 +10551,14 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
 		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EvaluationSpec)) {
+		body["EvaluationSpec"] = request.EvaluationSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["ExtraInfo"] = request.ExtraInfo
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InferenceSpec)) {
